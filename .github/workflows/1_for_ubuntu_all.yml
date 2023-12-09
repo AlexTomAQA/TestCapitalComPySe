@@ -300,8 +300,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_token: ${{ secrets.MY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          github_token: ${{ secrets.MY_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           publish_dir: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
