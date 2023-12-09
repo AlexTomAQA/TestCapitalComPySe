@@ -3,8 +3,8 @@ on:
 #  push:
   workflow_dispatch:
   
-#permissions:
-#  contents: write
+permissions:
+  contents: write
 
 #  schedule:
 #    - cron: '00 13 * * *'
@@ -291,7 +291,7 @@ jobs:
 
       - name: 4. Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v2
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 #          personal_token: ${{ secrets.FOR_DEPLOY }}
