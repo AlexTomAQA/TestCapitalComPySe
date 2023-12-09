@@ -61,6 +61,13 @@ jobs:
         if: always()
         run: poetry update
 
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: python3 tests/hwinfo.py
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: poetry run python3 tests/hwinfo.py
+
 #      - name: 6. Check code for errors by flake8 and format code with black
 #        if: always()
 #        uses: ricardochaves/python-lint@v1.4.0
@@ -286,8 +293,8 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERSONAL_TOKEN: ${{ secrets.FOR_DEPLOY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          PERSONAL_TOKEN: ${{ secrets.FOR_DEPLOY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
