@@ -274,7 +274,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERSONAL_TOKEN: ${{ secrets.FOR_DEPLOY }}
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
