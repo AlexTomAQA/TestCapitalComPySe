@@ -294,7 +294,7 @@ def pytest_runtest_makereport(item, call):
                 return driver.execute_script(
                     "return document.body.parentNode.scroll" + x)
 
-            driver.set_window_size(s("Width"), s("Height"))
+            # driver.set_window_size(s("Width"), s("Height"))
             driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
             allure.attach(
                 driver.get_screenshot_as_png(),
