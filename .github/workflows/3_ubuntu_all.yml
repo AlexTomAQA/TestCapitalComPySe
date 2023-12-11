@@ -38,7 +38,7 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
       
-      - name: 3.3. Install Neofetch
+      - name: 3.3. Install neofetch
         if: always()
         run: brew install neofetch
 
@@ -52,6 +52,10 @@ jobs:
       - name: For Run hwinfo.py first time
         if: always()
         run: python3 tests/hwinfo.py
+
+      - name: 4. install Zbar for QReader
+        if: always()
+        run: sudo apt-get install libzbar0
 
       - name: 4. install Poetry
         if: always()
