@@ -53,6 +53,10 @@ jobs:
         if: always()
         run: python3 tests/hwinfo.py
 
+      - name: Install Zbar for QReader
+        if: always()
+        run: brew install zbar
+
       - name: 4. install Poetry
         if: always()
         run: pip3 install poetry
