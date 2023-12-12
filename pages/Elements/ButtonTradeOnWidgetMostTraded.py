@@ -123,6 +123,12 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         instrument = trade_instrument_list[random_index]
         instrument = instrument.get_attribute('title')
         print(f"{datetime.now()}   MOST_TRADED scroll =>")
+
+        # Checking if [SignUP for is popped up on the page]
+        check_popup = SignupLogin(self.browser, self.link)
+        check_popup.check_popup_signup_form()
+        #
+
         self.browser.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
