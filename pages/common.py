@@ -31,9 +31,7 @@ class Common:
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   {url}")
-						if url != url_prev:
-							break
-						if url not in list_url_out:
+						if url != url_prev and url not in list_url_out:
 							break
 					list_url_out.append(url)
 					url_prev = url
@@ -41,7 +39,7 @@ class Common:
 
 		try:
 			file = open(file_name, "w")
-			print(f"{datetime.now()}   The link file contains the following URLs:")
+			print(f"{datetime.now()}   The file of hrefs contains the following URLs:")
 			for i in range(len(list_url_out)):
 				url = list_url_out[i]
 				file.write(url + "\n")
