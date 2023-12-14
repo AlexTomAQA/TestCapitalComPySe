@@ -6,9 +6,8 @@
 # import os.path
 import pytest
 import allure
-import random  # for new method
 from datetime import datetime
-import conf
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v2
 from pages.conditions import Conditions
@@ -53,29 +52,6 @@ class TestCommoditiesTradingPretest:
         print(f"{datetime.now()}   "
               f"Commodities trading include {count_in} material items on selected '{cur_language}' language")
 
-        file = None
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            if count_in > 0:
-                for i in range(conf.QTY_LINKS):
-                    if i < count_in:
-                        k = random.randint(1, count_in)
-                        item = list_items[k - 1]
-                        file.write(item.get_property("href") + "\n")
-                        count_out += 1
-            file.write(d.current_url + "\n")
-            count_in += 1
-            count_out += 1
-            print(f"{datetime.now()}   Plus 1 main page Commodities trading. Total: {count_in} for testing")
-        finally:
-            file.close()
-            del file
-
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
+        Common().creating_file_of_hrefs(list_items, file_name)
 
         count -= 1
