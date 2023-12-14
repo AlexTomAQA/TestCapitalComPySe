@@ -5,9 +5,8 @@
 """
 import pytest
 import allure
-import random
 from datetime import datetime
-from conf import QTY_LINKS
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
@@ -137,7 +136,7 @@ class TestCFDTradingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start pretest")
-    def test_cfd_trading_guide_pretest(
+    def test_99(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
         global cur_page_url
@@ -158,37 +157,12 @@ class TestCFDTradingGuide:
         page_menu = MenuSection(d, main_page_link)
         cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
 
-        file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+        file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"
 
         count_in = len(list_items)
         print(f"{datetime.now()}   CFD Trading include {count_in} items on selected '{cur_language}' language")
-        file = None
 
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            url_prev = ""
-            if count_in > 0:
-                for i in range(QTY_LINKS):
-                    if i < count_in:
-                        while True:
-                            k = random.randint(1, count_in - 1)
-                            item = list_items[k]
-                            url = item.get_property("href")
-                            print(f"{datetime.now()}   {url}")
-                            if url != url_prev:
-                                break
-                        file.write(url + "\n")
-                        url_prev = url
-                        count_out += 1
-        finally:
-            file.close()
-            del file
+        Common().creating_file_of_hrefs(list_items, file_name)
 
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
         count -= 1
