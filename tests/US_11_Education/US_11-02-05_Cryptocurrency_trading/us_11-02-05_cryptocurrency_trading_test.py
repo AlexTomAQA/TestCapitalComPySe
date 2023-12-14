@@ -65,7 +65,6 @@ class TestCryptocurrencyTrading:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_03")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "03", "Testing button [Start Trading] on Main banner")
@@ -88,7 +87,7 @@ class TestCryptocurrencyTrading:
                 case "Reg/NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -100,7 +99,6 @@ class TestCryptocurrencyTrading:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_04")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "04", "Testing button [Try demo] on Main banner")
@@ -116,14 +114,13 @@ class TestCryptocurrencyTrading:
             test_element.element_click()
 
             test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Reg/NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -135,7 +132,6 @@ class TestCryptocurrencyTrading:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_05")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "05", "Testing button [Trade] in Most traded block")
@@ -151,18 +147,16 @@ class TestCryptocurrencyTrading:
                 test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link)
                 test_element.arrange_v3(d, cur_item_link)
 
-                # test_element.element_click(cur_item_link, cur_language, cur_role)
                 test_element.element_click_v3(i, cur_role)
 
                 test_element = AssertClass(d, cur_item_link)
                 match cur_role:
                     case "NoReg":
-                        # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
                         test_element.assert_signup(d, cur_language, cur_item_link)
                     case "Reg/NoAuth":
                         test_element.assert_login(d, cur_language, cur_item_link)
                     case "Auth":
-                        test_element.assert_trading_platform_v3(d, cur_item_link)
+                        test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -174,7 +168,6 @@ class TestCryptocurrencyTrading:
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_06")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "06", "Testing button [Start trading] in article")
@@ -199,7 +192,6 @@ class TestCryptocurrencyTrading:
         Check: Buttons [Sign up] on page
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_07")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "07", "Testing buttons [Sign up] on page")
@@ -224,7 +216,6 @@ class TestCryptocurrencyTrading:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_08")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "08", "Testing button [Create your account] in block [Steps trading]")
@@ -240,12 +231,11 @@ class TestCryptocurrencyTrading:
             test_element.element_click()
 
             test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
             match cur_role:
                 case "NoReg" | "Reg/NoAuth":
                     test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -257,7 +247,6 @@ class TestCryptocurrencyTrading:
         Check: Button [1. Sell] in content block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_09")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "09", "Testing button [Sell] in content block")
@@ -267,21 +256,19 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         if cur_country != 'gb':
-            # test_element = SellButtonContentBlock(d, cur_item_link)
             test_element = ButtonsSellBuyInContentBlock(d, cur_item_link)
             test_element.arrange_(cur_item_link, button='sell')
 
             test_element.element_click(cur_role)
 
             test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Reg/NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -293,7 +280,6 @@ class TestCryptocurrencyTrading:
         Check: Button [1. Buy] in content block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_10")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "10", "Testing button [Sell] in content block")
@@ -303,21 +289,19 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         if cur_country != 'gb':
-            # test_element = BuyButtonContentBlock(d, cur_item_link)
             test_element = ButtonsSellBuyInContentBlock(d, cur_item_link)
             test_element.arrange_(cur_item_link, button='buy')
 
             test_element.element_click(cur_role)
 
             test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Reg/NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
 
@@ -329,7 +313,6 @@ class TestCryptocurrencyTrading:
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.05_11")
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
                              "11", "Testing button [Get started] on Sticky bar")
@@ -345,13 +328,12 @@ class TestCryptocurrencyTrading:
             test_element.element_click()
 
             test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Reg/NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    test_element.assert_trading_platform_v3(d, cur_item_link)
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
