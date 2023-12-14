@@ -41,8 +41,11 @@ def pytest_generate_tests(metafunc):
                 print(f"{datetime.now()}   {line[:-1]}")
             file.close()
 
-        if len(list_item_link) == 0:
+        qty = len(list_item_link)
+        if qty == 0:
             pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+        else:
+            print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
         metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
