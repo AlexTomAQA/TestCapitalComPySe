@@ -154,7 +154,7 @@ class TestTradingPsychologyGuideItem:
                              "11.03.08",
                              "Education > Menu item [Trading Psychology Guide]",
                              ".01_04",
-                             "Testing button [Start trading] in Content block")
+                             "Testing button [Practise for free] in Content block")
 
         if cur_language not in [""]:
             pytest.skip(f"This test not for {cur_language} language")
