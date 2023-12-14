@@ -264,33 +264,7 @@ class TestSharesTrading:
 
         count_in = len(list_items)
         print(f"{datetime.now()}   Shares trading include {count_in} item(s) on page")
-        file = None
 
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            url_prev = ""
-            if count_in > 0:
-                for i in range(QTY_LINKS):
-                    if i < count_in:
-                        while True:
-                            k = random.randint(0, count_in - 1)
-                            item = list_items[k]
-                            url = item.get_property("href")
-                            print(f"{datetime.now()}   {url}")
-                            if url != url_prev:
-                                break
-                        file.write(url + "\n")
-                        url_prev = url
-                        count_out += 1
-        finally:
-            file.close()
-            del file
-
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out / count_in * 100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
+        Common().creating_file_of_hrefs(list_items, file_name)
 
         count -= 1
