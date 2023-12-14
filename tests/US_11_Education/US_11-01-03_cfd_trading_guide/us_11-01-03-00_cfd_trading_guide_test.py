@@ -136,7 +136,7 @@ class TestCFDTradingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start pretest")
-    def test_cfd_trading_guide_pretest(
+    def test_99(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
         global cur_page_url
