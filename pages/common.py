@@ -17,10 +17,10 @@ class Common:
 	def skip_test_for_country(self, cur_country):
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
-	def creating_file_of_href(self, list_items, file_name):
+	def creating_file_of_hrefs(self, list_items, file_name):
 		file = None
 		list_url_out = list()
-		count_in = len()
+		count_in = len(list_items)
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
