@@ -37,7 +37,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.04", "Educations > Menu item [Spread betting guide]",
-                             ".01_01", "Testing button [Start Trading] on Main banner")
+                             ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -61,7 +61,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.04", "Educations > Menu item [Spread betting guide]",
-                             ".01_02", "Testing button [Try demo] on Main banner")
+                             ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -85,7 +85,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_03", "Testing button [Trade] in Most traded block")
+                             ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -109,7 +109,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.04", "Educations > Menu item [Spread betting guide]",
-                             ".01_04", "Testing button [Create your account] in block [Steps trading]")
+                             ".00_04", "Testing button [Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -133,7 +133,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.04", "Educations > Menu item [Spread betting guide]",
-                             ".01_05", "Testing button [Start trading] in article")
+                             ".00_05", "Testing button [Start trading] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -157,7 +157,7 @@ class TestSpreadBettingGuidePretest:
         """
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.04", "Educations > Menu item [Spread betting guide]",
-                             ".01_06", "Testing button [Create account] in article")
+                             ".00_06", "Testing button [Create account] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
