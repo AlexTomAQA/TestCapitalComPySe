@@ -37,8 +37,7 @@ class TestTradingStrategiesGuides:
                                     ".00_01",
                                     "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -64,8 +63,7 @@ class TestTradingStrategiesGuides:
                                     ".00_02",
                                     "Testing button [Try demo] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -91,11 +89,8 @@ class TestTradingStrategiesGuides:
                              ".00_03",
                              "Testing button [Trade] in Most traded block")
 
-        if cur_country == 'gb':
-            pytest.skip("This test is not supported on UK location")
-
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -121,8 +116,7 @@ class TestTradingStrategiesGuides:
                                     ".00_04",
                                     "Testing button [1. Create your account] in block [Steps trading]")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -145,8 +139,7 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".00_99", "Pretest for US_11.03.01.01")
 
-        if cur_language not in ["", "de", "es", "it", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         if count == 0:
             pytest.skip("The list of Trading courses links is already created")
