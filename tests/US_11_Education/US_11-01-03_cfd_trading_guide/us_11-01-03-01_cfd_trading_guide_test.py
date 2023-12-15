@@ -62,6 +62,7 @@ def check_cur_href(cur_item_link, list_href):
 class TestCFDTradingGuide:
     page_conditions = None
 
+    @pytest.mark.test_01
     @allure.step("Start test of button [Start trading] on Main banner")
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -69,9 +70,11 @@ class TestCFDTradingGuide:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
+        us = "11.01.03"
+        tc = ".01_01"
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_01", "Testing button [Start Trading] on Main banner")
+                             us, "Educations > Menu item [CFD trading guide]",
+                             tc, "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
