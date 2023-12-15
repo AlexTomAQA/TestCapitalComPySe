@@ -136,8 +136,8 @@ class TestCFDTradingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start pretest")
-    def test_99(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_99(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+
         global count
         global cur_page_url
 
@@ -145,7 +145,8 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_99", "Pretest for US_11.01.03.01")
 
-        check_language(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         if count == 0:
             pytest.skip('The list of "CFD trading guide" links is already created')

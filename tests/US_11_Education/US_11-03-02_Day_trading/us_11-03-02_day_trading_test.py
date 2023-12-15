@@ -1,6 +1,5 @@
 import pytest
 import allure
-from datetime import datetime
 
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonDownloadAppStore import ButtonDownloadAppStore

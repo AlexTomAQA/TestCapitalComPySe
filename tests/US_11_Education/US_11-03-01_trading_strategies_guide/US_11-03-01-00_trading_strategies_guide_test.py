@@ -1,8 +1,6 @@
 import allure
 import pytest
 from datetime import datetime
-import random  # for new method
-from conf import QTY_LINKS
 from pages.Education.Trading_strategies_guide_locators import TradingStrategiesContentList
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
@@ -12,7 +10,6 @@ from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
 
 count = 1

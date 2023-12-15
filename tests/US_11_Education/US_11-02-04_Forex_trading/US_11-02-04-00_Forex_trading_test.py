@@ -5,9 +5,7 @@
 """
 import pytest
 import allure
-import random  # for new method
 from datetime import datetime
-from conf import QTY_LINKS
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v3
@@ -33,8 +31,8 @@ class TestForexTradingMainPage:
     page_conditions = None
 
     @allure.step("Start test of button [Start trading] on Main banner")
-    def test_01_main_banner_start_trading_button(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_01_main_banner_start_trading_button(self, worker_id, d,
+                                                 cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
@@ -59,8 +57,8 @@ class TestForexTradingMainPage:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Try demo] on Main banner")
-    def test_02_main_banner_try_demo_button(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_02_main_banner_try_demo_button(self, worker_id, d,
+                                            cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
@@ -85,8 +83,8 @@ class TestForexTradingMainPage:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Sell] in content block")
-    def test_04_content_block_button_sell(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_04_content_block_button_sell(self, worker_id, d,
+                                          cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Sell] in content block
         Language: All. License: All.
@@ -113,8 +111,8 @@ class TestForexTradingMainPage:
         test_element = SellButtonContentBlock(d, cur_page_url)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_page_url)
 
-    def test_05_content_block_button_buy(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_05_content_block_button_buy(self, worker_id, d,
+                                         cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Buy] in content block
         Language: All. License: All.
@@ -142,8 +140,8 @@ class TestForexTradingMainPage:
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
-    def test_06_most_traded_trade_button(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_06_most_traded_trade_button(self, worker_id, d,
+                                         cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
@@ -171,7 +169,7 @@ class TestForexTradingMainPage:
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
     def test_07_block_steps_trading_button_1_create_your_account(
-        self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
