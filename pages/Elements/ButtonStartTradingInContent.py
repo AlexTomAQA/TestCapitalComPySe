@@ -115,7 +115,7 @@ class ContentStartTrading(BasePage):
 
         # button_list[0].click()
         self.browser.execute_script("arguments[0].click();", button_list[int(i)])
-        print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is clicked")
+        print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE is clicked")
 
     def click__button(self, times, cur_item_link, cur_language, cur_role):
         for i in range(times):
