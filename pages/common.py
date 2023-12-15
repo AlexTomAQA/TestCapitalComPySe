@@ -11,6 +11,26 @@ from conf import QTY_LINKS
 
 class Common:
 
+	def check_language_in_list_and_skip_if_present(self, cur_language, list_languages):
+		if cur_language in list_languages:
+			pytest.skip(f"This test is not for '{cur_language}' language")
+		return
+
+	def check_language_in_list_and_skip_if_not_present(self, cur_language, list_languages):
+		if cur_language not in list_languages:
+			pytest.skip(f"This test is not for '{cur_language}' language")
+		return
+
+	def check_country_in_list_and_skip_if_present(self, cur_country, list_countries):
+		if cur_country in list_countries:
+			pytest.skip(f"This test is not for '{cur_country}' country")
+		return
+
+	def check_country_in_list_and_skip_if_not_present(self, cur_country, list_countries):
+		if cur_country not in list_countries:
+			pytest.skip(f"This test is not for '{cur_country}' country")
+		return
+
 	def skip_test_for_language(self, cur_language) -> None:
 		pytest.skip(f"This test-case is not for {cur_language} language")
 
@@ -30,7 +50,7 @@ class Common:
 						k = randint(1, count_in - 1)
 						item = list_items[k]
 						url = item.get_property("href")
-						print(f"{datetime.now()}   {url}")
+						print(f"{datetime.now()}   k = {k} - {url}")
 						if url != url_prev and url not in list_url_out:
 							break
 					list_url_out.append(url)
