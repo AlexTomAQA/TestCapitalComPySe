@@ -65,8 +65,7 @@ class TestTradingStrategiesGuides:
                              ".01_01",
                              "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["", "de", "es", "it", "zh", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(

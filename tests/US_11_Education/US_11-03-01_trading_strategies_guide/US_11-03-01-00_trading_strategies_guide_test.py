@@ -148,7 +148,7 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".00_99", "Pretest for US_11.03.01.01")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
+        if cur_language not in ["", "de", "es", "it", "ru", "zh"]:
             Common().skip_test_for_language(cur_language)
 
         if count == 0:
