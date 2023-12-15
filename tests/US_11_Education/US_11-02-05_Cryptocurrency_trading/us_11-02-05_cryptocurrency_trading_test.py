@@ -11,11 +11,7 @@ from datetime import datetime
 from tests.build_dynamic_arg import build_dynamic_arg_v2
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
-from pages.Elements.HeaderButtonTrade import HeaderButtonTrade
 from pages.Elements.BlockStepTrading import BlockStepTrading
-# from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-# from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonsSellBuyInContentBlock import ButtonsSellBuyInContentBlock
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
