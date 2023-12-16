@@ -165,9 +165,9 @@ class TestTradingPsychologyGuideMain:
 
         file_name = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
         list_items = d.find_elements(*TradingPsychologyContentList.LISTS)
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Trading Psychology Guide page include {count_in} lists item(s)")  # for new method
 
-        Common().creating_file_of_hrefs(list_items, file_name)
+        print(f"{datetime.now()}   Trading Psychology Guide page include {len(list_items)} lists item(s)")  # for new method
+
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
 
         count -= 1
