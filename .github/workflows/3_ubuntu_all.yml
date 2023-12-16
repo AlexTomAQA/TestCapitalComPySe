@@ -192,13 +192,13 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05_cryptocurrency_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-06_pre_test (Андрей)
+      - name: 8. Run US_11.02.03 test (Андрей)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06_indices_trading_pre_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-00_indices_trading_test.py
         continue-on-error: true
-      - name: 8. Run US_11-02-06 (Андрей)
+      - name: 8. Run US_11.02.03.01 (Андрей)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06_indices_trading_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-01_indices_trading_test.py
         continue-on-error: true
 
 ##      - name: ls- la
