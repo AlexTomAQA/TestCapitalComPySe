@@ -1,0 +1,45 @@
+2023-12-16 12:44:44 ERROR The element is no longer attached to the DOM on page: https://apps.apple.com/ie/app/capital-com-trading-finance/id1230088754?mt=8
+2023-12-16 12:44:44 ERROR stale element reference: stale element not found
+  (Session info: chrome=120.0.6099.71); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 520, in get_text
+    return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py", line 90, in text
+    return self._execute(Command.GET_ELEMENT_TEXT)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=120.0.6099.71); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+#0 0x56376b2c6d33 <unknown>
+#1 0x56376af83f87 <unknown>
+#2 0x56376af8a533 <unknown>
+#3 0x56376af8ca28 <unknown>
+#4 0x56376af8cb7c <unknown>
+#5 0x56376afcd552 <unknown>
+#6 0x56376affd342 <unknown>
+#7 0x56376afc6db9 <unknown>
+#8 0x56376affd75e <unknown>
+#9 0x56376b01c297 <unknown>
+#10 0x56376affd0e3 <unknown>
+#11 0x56376afc5044 <unknown>
+#12 0x56376afc644e <unknown>
+#13 0x56376b28b861 <unknown>
+#14 0x56376b28f785 <unknown>
+#15 0x56376b279285 <unknown>
+#16 0x56376b29041f <unknown>
+#17 0x56376b25d20f <unknown>
+#18 0x56376b2b4028 <unknown>
+#19 0x56376b2b41f7 <unknown>
+#20 0x56376b2c5ed4 <unknown>
+#21 0x7f0f54294ac3 <unknown>
