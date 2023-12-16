@@ -157,9 +157,8 @@ class TestTradingStrategiesGuides:
         file_name = "tests/US_11_Education/US_11-03-01_trading_strategies_guide/list_of_href.txt"
         list_items = d.find_elements(*TradingStrategiesContentList.LISTS)
 
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Trading Strategies Guide page include {count_in} lists item(s)")  # for new method
+        print(f"{datetime.now()}   Trading Strategies Guide page include {len(list_items)} lists item(s)")
 
-        Common().creating_file_of_hrefs(list_items, file_name)
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
 
         count -= 1
