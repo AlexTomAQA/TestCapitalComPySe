@@ -104,9 +104,8 @@ class TestGlossaryOfTradingTerms:
         file_name = "tests/US_11_Education/US_11-01-07_Glossary/list_of_href.txt"
         list_items = d.find_elements(*FinancialDictionary.ITEM_LIST)
 
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Glossary include {count_in} financial item(s)")
+        print(f"{datetime.now()}   Glossary include {len(list_items)} addition financial item(s)")
 
-        Common().creating_file_of_hrefs(list_items, file_name)
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
 
         count -= 1
