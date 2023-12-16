@@ -50,9 +50,7 @@ class TestIndicesTradingGuidePreset:
         file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
 
-        print(f"{datetime.now()}   Indices trading page include {len(list_items) - 1} child item(s)")
-
-        Common().creating_file_of_hrefs(list_items, file_name)
+        Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
 
         count -= 1
 

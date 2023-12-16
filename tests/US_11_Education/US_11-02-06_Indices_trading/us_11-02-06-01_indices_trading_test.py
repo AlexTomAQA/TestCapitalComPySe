@@ -283,7 +283,7 @@ class TestIndicesTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ContentStartTrading(d, cur_item_link)
-        test_elements_list = test_element.arrange_v2_()
+        test_elements_list = test_element.arrange_v4()
 
         for index, element in enumerate(test_elements_list):
             logger.info(f"Testing element #{index + 1}")
