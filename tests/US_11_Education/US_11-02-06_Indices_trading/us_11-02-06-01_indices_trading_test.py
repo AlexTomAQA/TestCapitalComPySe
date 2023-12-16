@@ -12,7 +12,7 @@ from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMost
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.AssertClass import AssertClass
 
 logger = logging.getLogger()
@@ -42,7 +42,7 @@ def pytest_generate_tests(metafunc):
     logger.info(f"====== End Fixture generation test data ======")
 
 
-@pytest.mark.us_11_02_06
+@pytest.mark.us_11_02_06_01
 class TestIndicesTrading:
     page_conditions = None
 
@@ -73,17 +73,16 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Start trading] on Main banner")
     def test_01_main_banner_start_trading_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", "01",
+        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", ".01_01",
                       "Testing button [Start Trading] on Main banner")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -110,18 +109,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Try demo] on Main banner")
     def test_02_main_banner_try_demo_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "02", "Testing button [Try demo] on Main banner")
+                      ".01_02", "Testing button [Try demo] on Main banner")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -148,19 +146,18 @@ class TestIndicesTrading:
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     def test_03_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
 
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "03", "Testing button [Trade] in Most traded block")
+                      ".01_03", "Testing button [Trade] in Most traded block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         if cur_country == 'gb':
             logger.info(f"This test is not supported on UK location")
@@ -192,18 +189,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
     def test_04_create_and_verify_your_account_button_in_block_steps_trading(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Create & verify your account] in block 'Steps trading'
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", "04",
-                      "Testing button [1. Create & verify your account] in Block 'Steps trading'")
+        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+                      ".01_04", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -228,18 +224,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     def test_05_sticky_bar_button_get_started(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
-            cur_item_link, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "05", "Testing button [Get started] on Sticky bar")
+                      ".01_05", "Testing button [Get started] on Sticky bar")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -268,18 +263,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Start trading] in content block")
     def test_06_start_trading_in_content_block_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "06", "Testing button [Start trading] in Content block")
+                      ".01_06", "Testing button [Start trading] in Content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
         self.not_for_the_sixth_test(cur_item_link)
@@ -289,7 +283,7 @@ class TestIndicesTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ContentStartTrading(d, cur_item_link)
-        test_elements_list = test_element.arrange_v2_()
+        test_elements_list = test_element.arrange_v4()
 
         for index, element in enumerate(test_elements_list):
             logger.info(f"Testing element #{index + 1}")
@@ -311,18 +305,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Sell] in content block")
     def test_07_content_block_button_sell(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
-            cur_item_link, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Sell] in content block
         Language: All. License: All.
         """
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "07", "Testing button [Sell] in content block")
+                      ".01_07", "Testing button [Sell] in content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -351,18 +344,17 @@ class TestIndicesTrading:
 
     @allure.step("Start test of button [Buy] in content block")
     def test_08_content_block_button_buy(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
-            cur_item_link, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Buy] in content block
         Language: All. License: All.
         """
         test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
-                      "08", "Testing button [Buy] in content block")
+                      ".01_08", "Testing button [Buy] in content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 

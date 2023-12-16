@@ -37,9 +37,13 @@ class Common:
 	def skip_test_for_country(self, cur_country):
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
-	def creating_file_of_hrefs(self, list_items, file_name, first_index=1):
+	def creating_file_of_hrefs(self, title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
+
+		print(f"{datetime.now()}")
+		print(f"{datetime.now()}   {title_us} include {len(list_items) - first_index} child items for random select")
+
 		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу в списке
 		count_out = 0
 		url_prev = ""
