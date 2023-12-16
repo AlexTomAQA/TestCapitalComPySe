@@ -200,8 +200,7 @@ class TestSpreadBettingGuidePretest:
         file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
 
         count_in = len(list_items)
-        print(f"{datetime.now()}   Spread betting guide include {count_in} items on selected '{cur_language}' language")
 
-        Common().creating_file_of_hrefs(list_items, file_name)
+        Common().creating_file_of_hrefs("Spread betting guide", list_items, file_name)
 
         count -= 1
