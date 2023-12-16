@@ -42,7 +42,7 @@ def pytest_generate_tests(metafunc):
     logger.info(f"====== End Fixture generation test data ======")
 
 
-@pytest.mark.us_11_02_06
+@pytest.mark.us_11_02_06_01
 class TestIndicesTrading:
     page_conditions = None
 

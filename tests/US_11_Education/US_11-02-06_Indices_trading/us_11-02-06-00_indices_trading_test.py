@@ -3,74 +3,109 @@
 @Time    : 2023/06/25 18:30 GMT+3
 @Author  : Andrey Bozhko
 """
-import random
+# import random
+from datetime import datetime
 import pytest
 import allure
-import logging
+# import logging
+
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.testing_elements_locators import SubPages
 
-logger = logging.getLogger()
-first_run_pretest = True
+# logger = logging.getLogger()
+# first_run_pretest = True
+count = 1
+cur_page_url = ""
 
 
-@pytest.mark.us_11_02_06_pre
+@pytest.mark.us_11_02_06_00
 class TestIndicesTradingGuidePreset:
     page_conditions = None
 
     @allure.step("Start pretest")
-    def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
-                                           cur_password, prob_run_tc):
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", "00", "Pretest")
+    def test_99_indices_trading_guide_pretest(self, worker_id, d,
+                                              cur_language, cur_country, cur_role, cur_login, cur_password):
 
-        global first_run_pretest
+        global count
+        global cur_page_url
 
-        logger.info(f"====== START testing {', '.join(test_title)} ======")
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+                             "11.02.06", "Educations > Menu item [Indices Trading]",
+                             ".00_99", "Pretest for US_11.02.06.01")
 
-        link = build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
-
-        if not first_run_pretest:
-            logger.info("Skip the pretest, since we've already passed it before.")
-            logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
-            pytest.skip("Skip the pretest, since we've already passed it before.")
-
-        if cur_language not in ["", "ar", "de", "es", "it", "ch"]:
-            logger.info(f"Test section released not for '{cur_language}' language.")
-            logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
-            pytest.skip(f"Test section released not for '{cur_language}' language.")
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
         page_menu.menu_education_move_focus(d, cur_language)
         page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
 
-        name_file = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
-
+        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
 
-        href_list = list()
-        if len(list_items) > 0:
-            href_list = list(map(lambda element: element.get_property("href"), list_items))
-        else:
-            href_list.append(d.current_url)
+        print(f"{datetime.now()}   Indices trading page include {len(list_items) - 1} child item(s)")
 
-        count_all = len(href_list)
-        logger.info(f"Indices Trading Guide include {count_all} items on selected "
-                    f"'{'en' if cur_language == '' else cur_language}' language")
-        logger.info("Choose no more than 3 random items")
-        random_list = random.sample(href_list, 3 if count_all >= 3 else count_all)
-        with open(name_file, "w", encoding='UTF-8') as f:
-            for val in random_list:
-                f.write(val + "\n")
-                logger.info(f"The element '{val}' has been added to the file")
-        logger.info(f"Test data include {len(random_list)} Indices Trading Guide item(s)")
-        logger.info(f"The probability of test coverage = {len(random_list) / count_all * 100} %")
-        first_run_pretest = False
+        Common().creating_file_of_hrefs(list_items, file_name)
 
-        logger.info(f"====== END testing {', '.join(test_title)} ======")
+        count -= 1
+
+    # @allure.step("Start pretest")
+    # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
+    #                                        cur_password, prob_run_tc):
+    #     test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", "00", "Pretest")
+    #
+    #     global first_run_pretest
+    #
+    #     logger.info(f"====== START testing {', '.join(test_title)} ======")
+    #
+    #     link = build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc, *test_title)
+    #
+    #     if not first_run_pretest:
+    #         logger.info("Skip the pretest, since we've already passed it before.")
+    #         logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
+    #         pytest.skip("Skip the pretest, since we've already passed it before.")
+    #
+    #     if cur_language not in ["", "ar", "de", "es", "it", "ch"]:
+    #         logger.info(f"Test section released not for '{cur_language}' language.")
+    #         logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
+    #         pytest.skip(f"Test section released not for '{cur_language}' language.")
+    #
+    #     page_conditions = Conditions(d, "")
+    #     page_conditions.preconditions(
+    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+    #
+    #     page_menu = MenuSection(d, link)
+    #     page_menu.menu_education_move_focus(d, cur_language)
+    #     page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+    #
+    #     name_file = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
+    #
+    #     list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+    #
+    #     href_list = list()
+    #     if len(list_items) > 0:
+    #         href_list = list(map(lambda element: element.get_property("href"), list_items))
+    #     else:
+    #         href_list.append(d.current_url)
+    #
+    #     count_all = len(href_list)
+    #     logger.info(f"Indices Trading Guide include {count_all} items on selected "
+    #                 f"'{'en' if cur_language == '' else cur_language}' language")
+    #     logger.info("Choose no more than 3 random items")
+    #     random_list = random.sample(href_list, 3 if count_all >= 3 else count_all)
+    #     with open(name_file, "w", encoding='UTF-8') as f:
+    #         for val in random_list:
+    #             f.write(val + "\n")
+    #             logger.info(f"The element '{val}' has been added to the file")
+    #     logger.info(f"Test data include {len(random_list)} Indices Trading Guide item(s)")
+    #     logger.info(f"The probability of test coverage = {len(random_list) / count_all * 100} %")
+    #     first_run_pretest = False
+    #
+    #     logger.info(f"====== END testing {', '.join(test_title)} ======")
