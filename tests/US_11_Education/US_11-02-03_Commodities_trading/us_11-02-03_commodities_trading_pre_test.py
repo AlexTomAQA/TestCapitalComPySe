@@ -9,7 +9,7 @@ import allure
 from datetime import datetime
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.testing_elements_locators import SubPages
@@ -24,18 +24,18 @@ class TestCommoditiesTradingPretest:
 
     @allure.step("Start pretest")
     def test_commodities_trading_item_pretest(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_00")
-
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "00", "Pretest")
+                             ".00_99", "Pretest")
 
         if count == 0:
             pytest.skip("Так надо")
 
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "fr", "it",
+                                                                               "pl", "cn", "nl", "ro", "ru", "zh"])
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
