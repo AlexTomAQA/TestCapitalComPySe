@@ -6,9 +6,8 @@
 # import os.path
 import pytest
 import allure
-import random  # for new method
-import conf
 from datetime import datetime
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v2
 from pages.conditions import Conditions
@@ -60,33 +59,10 @@ class TestCryptocurrencyTradingPretest:
         file_name = "tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)  # for new method
 
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Cryptocurrency trading include {count_in} coins items on selected '{cur_language}' "
+        print(f"{datetime.now()}   Cryptocurrency trading include {len(list_items) - 1} coins items on selected "
+              f"'{cur_language}' "
               f"language")
 
-        file = None
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            if count_in > 0:
-                for i in range(conf.QTY_LINKS):
-                    if i < count_in:
-                        k = random.randint(1, count_in)
-                        item = list_items[k - 1]
-                        file.write(item.get_property("href") + "\n")
-                        count_out += 1
+        Common().creating_file_of_hrefs(list_items, file_name)
 
-            file.write(d.current_url + "\n")    # для добавления головной страницы
-            count_in += 1    # для добавления головной страницы
-            count_out += 1    # для добавления головной страницы
-            print(f"{datetime.now()}   Plus 1 main page Cryptocurrency trading. Total: {count_in} for testing")
-        finally:
-            file.close()
-            del file
-
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-            count -= 1
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
+        count -= 1

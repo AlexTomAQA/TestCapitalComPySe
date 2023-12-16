@@ -91,7 +91,7 @@ class Conditions(BasePage):
             self.button_accept_all_cookies_click()
 
             match cur_role:
-                case "Reg/NoAuth":
+                case "NoAuth":
                     self.to_do_authorisation(d, host, cur_login, cur_password)
                     self.to_do_de_authorisation(d, host)
                 case "Auth":

@@ -4,17 +4,12 @@
 @Author  : Alexander Tomelo
 """
 from datetime import datetime
-import random
 import pytest
 import allure
-# import sys
-# from memory_profiler import profile
-from conf import QTY_LINKS
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
-# from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
-# from pages.Elements.HeaderButtonTrade import HeaderButtonTrade
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
@@ -69,10 +64,10 @@ class TestGlossaryOfTradingTerms:
 
         test_element = AssertClass(d, link)
         match cur_role:
-            case "NoReg" | "Reg/NoAuth":
+            case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, link)
             case "Auth":
-                test_element.assert_trading_platform_v3(d, link)
+                test_element.assert_trading_platform_v4(d, link)
 
         del test_element
         del page_menu
@@ -109,34 +104,8 @@ class TestGlossaryOfTradingTerms:
         file_name = "tests/US_11_Education/US_11-01-07_Glossary/list_of_href.txt"
         list_items = d.find_elements(*FinancialDictionary.ITEM_LIST)
 
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Glossary include {count_in} financial item(s)")
-        file = None
+        print(f"{datetime.now()}   Glossary include {len(list_items)} addition financial item(s)")
 
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            url_prev = ""
-            if count_in > 0:
-                for i in range(QTY_LINKS):
-                    if i < count_in:
-                        while True:
-                            k = random.randint(0, count_in - 1)
-                            item = list_items[k]
-                            url = item.get_property("href")
-                            print(f"{datetime.now()}   {url}")
-                            if url != url_prev:
-                                break
-                        file.write(url + "\n")
-                        url_prev = url
-                        count_out += 1
-        finally:
-            file.close()
-            del file
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
 
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
         count -= 1

@@ -5,10 +5,9 @@
 """
 import allure
 import pytest
-import random  # for new method
 from datetime import datetime
 
-from conf import QTY_LINKS
+from pages.common import Common
 from pages.Education.Trading_psychology_guide_locators import TradingPsychologyContentList
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v3
@@ -166,34 +165,9 @@ class TestTradingPsychologyGuideMain:
 
         file_name = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
         list_items = d.find_elements(*TradingPsychologyContentList.LISTS)
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Trading Psychology Guide page include {count_in} lists item(s)")  # for new method
-        file = None
 
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            url_prev = ""
-            if count_in > 0:
-                for i in range(QTY_LINKS):
-                    if i < count_in:
-                        while True:
-                            k = random.randint(1, count_in - 1)
-                            item = list_items[k]
-                            url = item.get_property("href")
-                            print(f"{datetime.now()}   {url}")
-                            if url != url_prev:
-                                break
-                        file.write(url + "\n")
-                        url_prev = url
-                        count_out += 1
-        finally:
-            file.close()
-            del file
+        print(f"{datetime.now()}   Trading Psychology Guide page include {len(list_items)} lists item(s)")  # for new method
 
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
+
         count -= 1

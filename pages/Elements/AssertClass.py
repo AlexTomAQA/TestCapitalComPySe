@@ -39,7 +39,7 @@ class AssertClass(BasePage):
             self.page_signup_login.close_trading_platform_signup_form()
         else:
             del self.page_signup_login
-            pytest.fail("Bug! Sign Up form is not opened")
+            pytest.fail("Bug # 4. Unknown situation instead 'Sign Up' form opened")
         # time.sleep(2)
         del self.page_signup_login
 
@@ -58,14 +58,14 @@ class AssertClass(BasePage):
             self.page_signup_login.close_trading_platform_login_form()
             del self.page_signup_login
         elif self.page_signup_login.should_be_signup_form(cur_language):
-            pytest.fail("Bug! Opened a 'Sign up' form instead of a 'Login'", False)
+            pytest.fail("Bug # 5. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
-            pytest.fail("Bug! Opened a 'Sign up' page instead of a 'Login'", False)
+            pytest.fail("Bug # 6. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
-            pytest.fail("Bug! Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
+            pytest.fail("Bug # 7. Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
         else:
             del self.page_signup_login
-            pytest.fail("Bug! Unknown situation", False)
+            pytest.fail("Bug # 8. Unknown situation instead 'Login' form opened", False)
 
     @allure.step('Checking that "Trading platform" page opened')
     def assert_trading_platform(self, d):

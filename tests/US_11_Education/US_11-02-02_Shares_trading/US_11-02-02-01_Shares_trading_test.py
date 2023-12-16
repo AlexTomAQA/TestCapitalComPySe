@@ -21,8 +21,6 @@ from pages.common import Common
 from datetime import datetime
 from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
-# from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
-# from pages.Elements.HeaderButtonTrade import HeaderButtonTrade
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading

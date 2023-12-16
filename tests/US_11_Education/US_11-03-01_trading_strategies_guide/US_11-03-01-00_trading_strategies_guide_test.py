@@ -1,8 +1,6 @@
 import allure
 import pytest
 from datetime import datetime
-import random  # for new method
-from conf import QTY_LINKS
 from pages.Education.Trading_strategies_guide_locators import TradingStrategiesContentList
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
@@ -12,7 +10,6 @@ from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
 
 count = 1
@@ -40,8 +37,7 @@ class TestTradingStrategiesGuides:
                                     ".00_01",
                                     "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -67,8 +63,7 @@ class TestTradingStrategiesGuides:
                                     ".00_02",
                                     "Testing button [Try demo] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -94,11 +89,8 @@ class TestTradingStrategiesGuides:
                              ".00_03",
                              "Testing button [Trade] in Most traded block")
 
-        if cur_country == 'gb':
-            pytest.skip("This test is not supported on UK location")
-
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -124,8 +116,7 @@ class TestTradingStrategiesGuides:
                                     ".00_04",
                                     "Testing button [1. Create your account] in block [Steps trading]")
 
-        if cur_language not in ["", "de", "es", "it", "cn", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -148,8 +139,7 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".00_99", "Pretest for US_11.03.01.01")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         if count == 0:
             pytest.skip("The list of Trading courses links is already created")
@@ -167,35 +157,8 @@ class TestTradingStrategiesGuides:
         file_name = "tests/US_11_Education/US_11-03-01_trading_strategies_guide/list_of_href.txt"
         list_items = d.find_elements(*TradingStrategiesContentList.LISTS)
 
-        count_in = len(list_items)
-        print(f"{datetime.now()}   Trading Strategies Guide page include {count_in} lists item(s)")  # for new method
-        file = None
+        print(f"{datetime.now()}   Trading Strategies Guide page include {len(list_items)} lists item(s)")
 
-        try:
-            file = open(file_name, "w")
-            count_out = 0
-            url_prev = ""
-            if count_in > 0:
-                for i in range(QTY_LINKS):
-                    if i < count_in:
-                        while True:
-                            k = random.randint(0, count_in - 1)
-                            item = list_items[k]
-                            url = item.get_property("href")
-                            print(f"{datetime.now()}   {url}")
-                            if url != url_prev:
-                                break
-                        file.write(url + "\n")
-                        url_prev = url
-                        count_out += 1
-        finally:
-            file.close()
-            del file
-
-        print(f"{datetime.now()}   Test data include {count_out} item(s)")
-        if count_in != 0:
-            print(f"{datetime.now()}   The test coverage = {count_out/count_in*100} %")
-        else:
-            print(f"{datetime.now()}   The test coverage = 0 %")
+        Common().creating_file_of_hrefs(list_items, file_name, 0)
 
         count -= 1

@@ -25,7 +25,7 @@ class ContentStartTrading(BasePage):
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(d, cur_language, cur_item_link)
-                case "Reg/NoAuth":
+                case "NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(d, cur_item_link)
@@ -39,7 +39,7 @@ class ContentStartTrading(BasePage):
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, cur_item_link)
@@ -115,7 +115,7 @@ class ContentStartTrading(BasePage):
 
         # button_list[0].click()
         self.browser.execute_script("arguments[0].click();", button_list[int(i)])
-        print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is clicked")
+        print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE is clicked")
 
     def click__button(self, times, cur_item_link, cur_language, cur_role):
         for i in range(times):
@@ -146,7 +146,7 @@ class ContentStartTrading(BasePage):
                 match cur_role:
                     case "NoReg":
                         test_element.assert_signup(self.browser, cur_language, cur_item_link)
-                    case "Reg/NoAuth":
+                    case "NoAuth":
                         test_element.assert_login(self.browser, cur_language, cur_item_link)
                     case "Auth":
                         test_element.assert_trading_platform_v4(self.browser, cur_item_link)

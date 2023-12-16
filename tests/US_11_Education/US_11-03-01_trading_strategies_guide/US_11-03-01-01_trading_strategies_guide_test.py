@@ -42,12 +42,6 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
-@pytest.fixture()
-def cur_time():
-    """Fixture"""
-    return str(datetime.now())
-
-
 class TestTradingStrategiesGuides:
 
     page_conditions = None
@@ -65,8 +59,7 @@ class TestTradingStrategiesGuides:
                              ".01_01",
                              "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "zh", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -88,8 +81,7 @@ class TestTradingStrategiesGuides:
                              ".01_02",
                              "Testing button [Try demo] on Main banner")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -111,11 +103,8 @@ class TestTradingStrategiesGuides:
                              ".01_03",
                              "Testing button [Trade] in Most traded block")
 
-        if cur_country == 'gb':
-            pytest.skip("This test is not supported on UK location")
-
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -137,8 +126,7 @@ class TestTradingStrategiesGuides:
                              ".01_06",
                              "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -165,8 +153,7 @@ class TestTradingStrategiesGuides:
                              ".01_07",
                              "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -193,8 +180,7 @@ class TestTradingStrategiesGuides:
                              ".01_08",
                              "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -209,7 +195,7 @@ class TestTradingStrategiesGuides:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup_form_on_the_trading_platform(d)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login_form_on_the_trading_platform(d)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
@@ -228,8 +214,7 @@ class TestTradingStrategiesGuides:
                              ".01_09",
                              "Testing button [1. Create your account] in block [Steps trading]")
 
-        if cur_language not in ["", "de", "es", "it", "zh", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -249,11 +234,8 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".01_10", "Testing button [Sell] in Banner [Trading Instrument]")
 
-        if cur_country == 'gb':
-            pytest.skip("This test is not supported on UK location")
-
-        if cur_language not in [""]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -273,11 +255,8 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".01_11", "Testing button [Buy] in Banner [Trading Instrument]")
 
-        if cur_country == 'gb':
-            pytest.skip("This test is not supported on UK location")
-
-        if cur_language not in [""]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -298,8 +277,7 @@ class TestTradingStrategiesGuides:
                              "11.03.01", "Education > Menu item [Trading Strategies Guides]",
                              ".01_12", "Testing button [Start trading] in Content block")
 
-        if cur_language not in ["de"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["de"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(

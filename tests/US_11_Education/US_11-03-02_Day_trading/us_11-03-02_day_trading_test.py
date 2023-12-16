@@ -1,6 +1,5 @@
 import pytest
 import allure
-from datetime import datetime
 
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonDownloadAppStore import ButtonDownloadAppStore
@@ -14,7 +13,7 @@ from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.AssertClass import AssertClass
 
 
@@ -43,14 +42,14 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Start trading] on Main banner")
     def test_01_main_banner_start_trading_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "01", "Testing button [Start Trading] on Main banner")
+                             "_01", "Testing button [Start Trading] on Main banner")
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -59,14 +58,14 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Try demo] on Main banner")
     def test_02_main_banner_try_demo_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "02", "Testing button [Try demo] on Main banner")
+                             "_02", "Testing button [Try demo] on Main banner")
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -75,12 +74,12 @@ class TestDayTrading:
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     def test_03_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
                              "03", "Testing button [Trade] in Most traded block")
 
@@ -94,14 +93,14 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Start trading] in content block")
     def test_04_start_trading_in_content_block_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "04", "Testing button [Start trading] in Content block")
+                             "_04", "Testing button [Start trading] in Content block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
@@ -113,12 +112,12 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Practise for free] in content block")
     def test_05_practise_for_free_in_content_block_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Practise for free] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
                              "05", "Testing button [Practise for free] in Content block")
 
@@ -137,21 +136,22 @@ class TestDayTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, menu_link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, menu_link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link)
 
     @allure.step("Start test of button [Download on the App Store] in Block 'Sign up and trade smart today!'")
     def test_06_button_download_on_the_app_store(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Download on the App Store] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.02", "Educations > Menu item [Day Trading]", "06",
-                             "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+                             "11.03.02", "Educations > Menu item [Day Trading]",
+                             "_06", "Test button [Download on the App Store] in Block \"Sign up and trade smart "
+                                    "today!\"")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -164,14 +164,14 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Get it on Google Play] in Block 'Sign up and trade smart today!'")
     def test_07_button_get_it_on_google_play(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Get it on Google Play] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
+                             "_07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -185,14 +185,14 @@ class TestDayTrading:
 
     @allure.step("Start test of button [Explore Web Platform] in Block 'Sign up and trade smart today!'")
     def test_08_button_explore_web_platform(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Explore Web Platform] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
+                             "_08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -205,21 +205,21 @@ class TestDayTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup_form_on_the_trading_platform(d)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login_form_on_the_trading_platform(d)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
     def test_09_create_and_verify_your_account_button_in_block_steps_trading(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create & verify your account] in block 'Steps trading'
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
+        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.02", "Educations > Menu item [Day Trading]",
-                             "09", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
+                             "_09", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
