@@ -21,16 +21,6 @@ count = 1
 cur_page_url = ""
 
 
-def check_language(cur_language, list_languages):
-    if cur_language not in list_languages:
-        pytest.skip(f"This test is not for '{cur_language}' language")
-
-
-def check_country(cur_country, list_countries):
-    if cur_country in list_countries:
-        pytest.skip(f"This test is not for '{cur_country}' country")
-
-
 @pytest.mark.us_11_01_03
 class TestCFDTradingGuide:
     page_conditions = None
@@ -47,7 +37,7 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_01", "Testing button [Start Trading] on Main banner")
 
-        check_language(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -72,7 +62,7 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_02", "Testing button [Try demo] on Main banner")
 
-        check_language(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -97,8 +87,8 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_03", "Testing button [Trade] in Most traded block")
 
-        check_language(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
-        check_country(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -123,7 +113,7 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_04", "Testing button [Create your account] in block [Steps trading]")
 
-        check_language(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
