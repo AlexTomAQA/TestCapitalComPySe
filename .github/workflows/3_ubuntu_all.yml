@@ -151,52 +151,52 @@ jobs:
         if: always()
         run: poetry run python3 tests/hwinfo.py
 
-      - name: 8. Run US_11-02-01 (Мила Д/Саша Т)
+      - name: 8. Run US_11.02.01 (Мила Д/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-01_Market_guides/US_11-02-01_Market_guides_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-02 test (Михаил)
+      - name: 8. Run US_11.02.02.00 test (Михаил)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02_Shares_trading_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-00_Shares_trading_test.py
         continue-on-error: true
-      - name: 8. Run US_11-02-02-01 test (Михаил)
+      - name: 8. Run US_11.02.02.01 test (Михаил)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-03_pre_test (Сулейман/Саша Т)
+      - name: 8. Run US_11.02.03 pre test (Сулейман/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03_commodities_trading_pre_test.py
         continue-on-error: true
-      - name: 8. Run US_11-02-03 (Сулейман/Саша Т)
+      - name: 8. Run US_11.02.03 test (Сулейман/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03_commodities_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-04 (Саша Т)
+      - name: 8. Run US_11.02.04.00 (Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-04_Forex_trading/US_11-02-04-00_Forex_trading_test.py
         continue-on-error: true
-      - name: 8. Run US_11-02-04-01 (Саша Т)
+      - name: 8. Run US_11.02.04.01 (Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-04_Forex_trading/US_11-02-04-01_Forex_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-05_pre_test (Сулейман/Саша Т)
+      - name: 8. Run US_11.02.05 pre test (Сулейман/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05_cryptocurrency_trading_pre_test.py
         continue-on-error: true
-      - name: 8. Run US_11-02-05 (Сулейман/Саша Т)
+      - name: 8. Run US_11.02.05 test (Сулейман/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05_cryptocurrency_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11.02.03 test (Андрей)
+      - name: 8. Run US_11.02.06.00 test (Андрей)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-00_indices_trading_test.py
         continue-on-error: true
-      - name: 8. Run US_11.02.03.01 (Андрей)
+      - name: 8. Run US_11.02.06.01 (Андрей)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-01_indices_trading_test.py
         continue-on-error: true
