@@ -58,11 +58,10 @@ def check_cur_href(cur_item_link, list_href):
         pytest.skip(f"This test case is not for page: '{cur_item_link}'")
 
 
-@pytest.mark.us_11_01_03
+@pytest.mark.us_11_01_03_01
 class TestCFDTradingGuide:
     page_conditions = None
 
-    @pytest.mark.test_01
     @allure.step("Start test of button [Start trading] on Main banner")
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):

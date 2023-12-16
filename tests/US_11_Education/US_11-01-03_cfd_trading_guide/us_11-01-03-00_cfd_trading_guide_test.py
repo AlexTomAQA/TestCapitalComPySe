@@ -21,7 +21,7 @@ count = 1
 cur_page_url = ""
 
 
-@pytest.mark.us_11_01_03
+@pytest.mark.us_11_01_03_00
 class TestCFDTradingGuide:
     page_conditions = None
 
