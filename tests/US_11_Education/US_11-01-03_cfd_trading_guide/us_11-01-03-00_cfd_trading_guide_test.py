@@ -151,9 +151,6 @@ class TestCFDTradingGuide:
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
         file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"
 
-        print(f"{datetime.now()}   CFD Trading include {len(list_items) - 1} additional items on selected "
-              f"'{cur_language}' language")
-
-        Common().creating_file_of_hrefs(list_items, file_name, 1)
+        Common().creating_file_of_hrefs("CFD Trading guide", list_items, file_name, 1)
 
         count -= 1
