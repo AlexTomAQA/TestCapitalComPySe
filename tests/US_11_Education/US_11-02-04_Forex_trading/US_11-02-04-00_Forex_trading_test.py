@@ -204,7 +204,7 @@ class TestForexTradingMainPage:
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_99", "Pretest for US_11.02.04.01")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"]:
+        if cur_language not in ["", "ar", "de", "es", "it", "cn", "ru", "zh"]:
             Common().skip_test_for_language(cur_language)
 
         if count == 0:
