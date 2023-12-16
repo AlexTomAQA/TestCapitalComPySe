@@ -153,7 +153,7 @@ class TestTradingPsychologyGuideItem:
         build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.03.08",
                              "Education > Menu item [Trading Psychology Guide]",
-                             ".01_04",
+                             ".01_05",
                              "Testing button [Practise for free] in Content block")
 
         if cur_language not in [""]:
