@@ -145,7 +145,7 @@ class TestCFDTradingGuide:
                              "11.01.03", "Educations > Menu item [CFD trading guide]",
                              ".00_99", "Pretest for US_11.01.03.01")
 
-        Common().check_country_in_list_and_skip_if_not_present(
+        Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         if count == 0:
@@ -162,7 +162,8 @@ class TestCFDTradingGuide:
         file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"
 
         count_in = len(list_items)
-        print(f"{datetime.now()}   CFD Trading include {count_in} items on selected '{cur_language}' language")
+        print(f"{datetime.now()}   CFD Trading include {count_in - 1} additional items on selected '{cur_language}' "
+              f"language")
 
         Common().creating_file_of_hrefs(list_items, file_name)
 
