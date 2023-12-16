@@ -37,17 +37,17 @@ class Common:
 	def skip_test_for_country(self, cur_country):
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
-	def creating_file_of_hrefs(self, list_items, file_name):
+	def creating_file_of_hrefs(self, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
-		count_in = len(list_items) - 1  # иссключаем первую (родительскую) страницу в списке
+		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу в списке
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(1, count_in)
+						k = randint(first_index, count_in)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
