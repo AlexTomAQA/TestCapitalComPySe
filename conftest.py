@@ -31,7 +31,7 @@ test_browser = ""
     params=[
         "NoReg",
         "Auth",
-        "NoAuth",  # ""Reg/NoAuth"
+        "NoAuth",  # ""NoAuth"
     ],
 )
 def cur_role(request):

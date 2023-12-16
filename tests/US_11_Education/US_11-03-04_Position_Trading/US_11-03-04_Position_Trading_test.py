@@ -63,7 +63,7 @@ class TestPositionTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, menu_link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, menu_link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link)
@@ -92,7 +92,7 @@ class TestPositionTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, menu_link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, menu_link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link, demo=True)
@@ -124,7 +124,7 @@ class TestPositionTrading:
             match cur_role:
                 case "NoReg":
                     check_element.assert_signup(d, cur_language, menu_link)
-                case "Reg/NoAuth":
+                case "NoAuth":
                     check_element.assert_login(d, cur_language, menu_link)
                 case "Auth":
                     check_element.assert_trading_platform_v3(d, menu_link)
@@ -195,7 +195,7 @@ class TestPositionTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup_form_on_the_trading_platform(d)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login_form_on_the_trading_platform(d)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link)
@@ -222,7 +222,7 @@ class TestPositionTrading:
 
         test_element = AssertClass(d, menu_link)
         match cur_role:
-            case "NoReg" | "Reg/NoAuth":
+            case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, menu_link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, menu_link)
