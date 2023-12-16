@@ -40,14 +40,14 @@ class Common:
 	def creating_file_of_hrefs(self, list_items, file_name):
 		file = None
 		list_url_out = list()
-		count_in = len(list_items)
+		count_in = len(list_items) - 1  # иссключаем первую (родительскую) страницу в списке
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(1, count_in - 1)
+						k = randint(1, count_in)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
