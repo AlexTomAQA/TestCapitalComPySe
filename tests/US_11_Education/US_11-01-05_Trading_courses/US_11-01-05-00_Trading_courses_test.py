@@ -112,8 +112,6 @@ class TestTradingCourses:
         file_name = "tests/US_11_Education/US_11-01-05_Trading_courses/list_of_href.txt"
         list_items = d.find_elements(*CoursesPage.COURSES_PAGES_LIST)
 
-        print(f"{datetime.now()}   Trading courses page include {len(list_items)} addition item(s)")
-
-        Common().creating_file_of_hrefs(list_items, file_name, 0)
+        Common().creating_file_of_hrefs("Trading courses", list_items, file_name, 0)
 
         count -= 1
