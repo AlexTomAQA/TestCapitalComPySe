@@ -31,7 +31,7 @@ test_browser = ""
     params=[
         "NoReg",
         "Auth",
-        "Reg/NoAuth",
+        "NoAuth",  # ""Reg/NoAuth"
     ],
 )
 def cur_role(request):
@@ -44,14 +44,14 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
-        "fr",  # 11 us
+        # "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
@@ -72,10 +72,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -145,10 +145,10 @@ def pre_go(fixture_value):
 @pytest.fixture(
     scope="module",
     params=[
-        "chrome",
-        # "edge",
-        # "firefox",
-        # "safari",
+        "Chrome",
+        # "Edge",
+        # "Firefox",
+        # "Safari",
     ],
     autouse=True,
     ids=pre_go,
@@ -177,15 +177,15 @@ def d():
     global test_browser
     browser = test_browser
     driver = None
-    if browser == "chrome":
+    if browser == "Chrome":
         driver = init_remote_driver_chrome()
-    elif browser == "edge":
+    elif browser == "Edge":
         driver = init_remote_driver_edge()
-    elif browser == "firefox":
+    elif browser == "Firefox":
         driver = init_remote_driver_firefox()
-    elif browser == "safari":
+    elif browser == "Safari":
         driver = init_remote_driver_safari()
-    elif browser == "opera":
+    elif browser == "Opera":
         pass
     else:
         print('Please pass the correct browser name: {}'.format(browser))
