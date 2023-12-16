@@ -197,7 +197,7 @@ class TestTrendTrading:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup_form_on_the_trading_platform(d)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login_form_on_the_trading_platform(d)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, link)

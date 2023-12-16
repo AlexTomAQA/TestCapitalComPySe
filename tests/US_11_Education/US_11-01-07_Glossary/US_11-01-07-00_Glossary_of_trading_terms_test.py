@@ -64,7 +64,7 @@ class TestGlossaryOfTradingTerms:
 
         test_element = AssertClass(d, link)
         match cur_role:
-            case "NoReg" | "Reg/NoAuth":
+            case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link)

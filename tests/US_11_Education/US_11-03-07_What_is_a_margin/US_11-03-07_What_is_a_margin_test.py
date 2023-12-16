@@ -61,7 +61,7 @@ class TestWhatIsMargin:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link)
@@ -89,7 +89,7 @@ class TestWhatIsMargin:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link, True)
@@ -121,7 +121,7 @@ class TestWhatIsMargin:
             match cur_role:
                 case "NoReg":
                     check_element.assert_signup(d, cur_language, link)
-                case "Reg/NoAuth":
+                case "NoAuth":
                     check_element.assert_login(d, cur_language, link)
                 case "Auth":
                     check_element.assert_trading_platform_v3(d, link)
@@ -150,7 +150,7 @@ class TestWhatIsMargin:
 
         test_element = AssertClass(d, link)
         match cur_role:
-            case "NoReg" | "Reg/NoAuth":
+            case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link)
@@ -180,7 +180,7 @@ class TestWhatIsMargin:
 
         test_element = AssertClass(d, link)
         match cur_role:
-            case "NoReg" | "Reg/NoAuth":
+            case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link)
@@ -212,7 +212,7 @@ class TestWhatIsMargin:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_login(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, link)

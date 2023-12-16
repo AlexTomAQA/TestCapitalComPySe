@@ -40,7 +40,7 @@ class TestLearningHub:
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, link)
-            case "Reg/NoAuth":
+            case "NoAuth":
                 test_element.assert_signup(d, cur_language, link)
             case "Auth":
                 test_element.assert_trading_platform_v3(d, link)
