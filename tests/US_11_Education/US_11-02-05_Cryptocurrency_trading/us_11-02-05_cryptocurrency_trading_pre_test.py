@@ -59,10 +59,6 @@ class TestCryptocurrencyTradingPretest:
         file_name = "tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)  # for new method
 
-        print(f"{datetime.now()}   Cryptocurrency trading include {len(list_items) - 1} coins items on selected "
-              f"'{cur_language}' "
-              f"language")
-
-        Common().creating_file_of_hrefs(list_items, file_name)
+        Common().creating_file_of_hrefs("Cryptocurrency trading", list_items, file_name)
 
         count -= 1
