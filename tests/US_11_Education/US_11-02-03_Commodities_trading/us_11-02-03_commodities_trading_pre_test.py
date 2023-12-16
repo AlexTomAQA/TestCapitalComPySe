@@ -48,9 +48,10 @@ class TestCommoditiesTradingPretest:
         # Записываем ссылки в файл
         file_name = "tests/US_11_Education/US_11-02-03_Commodities_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
-        count_in = len(list_items)
+
         print(f"{datetime.now()}   "
-              f"Commodities trading include {count_in} material items on selected '{cur_language}' language")
+              f"Commodities trading include {len(list_items) - 1} addition material items on selected '{cur_language}' "
+              f"language")
 
         Common().creating_file_of_hrefs(list_items, file_name)
 
