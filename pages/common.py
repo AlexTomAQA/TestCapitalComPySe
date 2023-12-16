@@ -44,14 +44,14 @@ class Common:
 		print(f"{datetime.now()}")
 		print(f"{datetime.now()}   {title_us} include {len(list_items) - first_index} child items for random select")
 
-		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу в списке
+		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу, если first_index = 1
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(first_index, count_in)
+						k = randint(first_index, count_in - 1)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
