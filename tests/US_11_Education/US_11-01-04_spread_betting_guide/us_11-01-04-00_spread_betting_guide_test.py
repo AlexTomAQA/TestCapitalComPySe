@@ -199,8 +199,6 @@ class TestSpreadBettingGuidePretest:
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
         file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
 
-        count_in = len(list_items)
-
         Common().creating_file_of_hrefs("Spread betting guide", list_items, file_name)
 
         count -= 1
