@@ -1,0 +1,82 @@
+2023-12-17 21:29:11 ERROR Unable to initialize WebDriver
+2023-12-17 21:29:11 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 394, in element_is_visible
+    return Wait(self.browser, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x56373a30ad33 <unknown>
+#1 0x563739fc7f87 <unknown>
+#2 0x56373a017c0e <unknown>
+#3 0x56373a017d11 <unknown>
+#4 0x56373a063004 <unknown>
+#5 0x56373a04136d <unknown>
+#6 0x56373a060297 <unknown>
+#7 0x56373a0410e3 <unknown>
+#8 0x56373a009044 <unknown>
+#9 0x56373a00a44e <unknown>
+#10 0x56373a2cf861 <unknown>
+#11 0x56373a2d3785 <unknown>
+#12 0x56373a2bd285 <unknown>
+#13 0x56373a2d441f <unknown>
+#14 0x56373a2a120f <unknown>
+#15 0x56373a2f8028 <unknown>
+#16 0x56373a2f81f7 <unknown>
+#17 0x56373a309ed4 <unknown>
+#18 0x7feb57494ac3 <unknown>
+
+2023-12-17 21:29:18 ERROR Unable to initialize WebDriver
+2023-12-17 21:29:18 ERROR no such execution context
+  (Session info: chrome=120.0.6099.71)
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 609, in wait_for_target_url
+    return Wait(self.browser, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/expected_conditions.py", line 98, in _predicate
+    return url in driver.current_url
+                  ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 438, in current_url
+    return self.execute(Command.GET_CURRENT_URL)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: no such execution context
+  (Session info: chrome=120.0.6099.71)
+Stacktrace:
+#0 0x56373a30ad33 <unknown>
+#1 0x563739fc7dbb <unknown>
+#2 0x563739fae267 <unknown>
+#3 0x563739fabad9 <unknown>
+#4 0x563739fac43a <unknown>
+#5 0x563739fbdcb2 <unknown>
+#6 0x563739fd5a51 <unknown>
+#7 0x563739fdb93b <unknown>
+#8 0x563739facbdd <unknown>
+#9 0x563739fd56e9 <unknown>
+#10 0x56373a060496 <unknown>
+#11 0x56373a0410e3 <unknown>
+#12 0x56373a009044 <unknown>
+#13 0x56373a00a44e <unknown>
+#14 0x56373a2cf861 <unknown>
+#15 0x56373a2d3785 <unknown>
+#16 0x56373a2bd285 <unknown>
+#17 0x56373a2d441f <unknown>
+#18 0x56373a2a120f <unknown>
+#19 0x56373a2f8028 <unknown>
+#20 0x56373a2f81f7 <unknown>
+#21 0x56373a309ed4 <unknown>
+#22 0x7feb57494ac3 <unknown>
