@@ -26,6 +26,27 @@ test_browser = ""
 #     language = metafunc.config.getoption("--cur_language")
 
 
+def pytest_addoption(parser):
+    # проверка аргументов командной строки
+    parser.addoption('--retest', action='store', default=False,
+                     help="Re-Testing: '--retest=False' or '--retest=True'")
+
+    parser.addoption('--browser_name', action='store', default='Chrome',
+                     help="Choose browser: '--browser_name=Chrome' or '--browser_name=Edge'")
+
+    parser.addoption('--lang', action='store', default='',
+                     help="Choose language: ")
+
+    parser.addoption('--lic', action='store', default='de',
+                     help="Choose License: ")
+
+    parser.addoption('--role', action='store', default='NoReg',
+                     help="Choose Role: ")
+
+    parser.addoption('--tpi_link', action='store', default='',
+                     help="cur_item_link: ")
+
+
 @pytest.fixture(
     scope="class",
     params=[
@@ -37,7 +58,13 @@ test_browser = ""
 def cur_role(request):
     """Fixture"""
     print(f"\n\n\nCurrent test role - {request.param}")
-    return request.param
+    retest = request.config.getoption("retest")
+    if retest:
+        role = request.config.getoption("role")
+    else:
+        role = request.param
+    print(f"\n\n\nCurrent test role - {role}")
+    return role
 
 
 # Language parameter
@@ -62,8 +89,12 @@ def cur_role(request):
 )
 def cur_language(request):
     """Fixture"""
-    # language = request.config.getoption("--cur_language")
-    language = request.param
+    # проверка аргументов командной строки
+    retest = request.config.getoption("retest")
+    if retest:
+        language = request.config.getoption("lang")
+    else:
+        language = request.param
     print(f"Current test language - {language}")
     return language
 
@@ -96,9 +127,14 @@ def cur_language(request):
 )
 def cur_country(request):
     """Fixture"""
-    print(f"Current country of trading - {request.param}")
-    return request.param
-
+    # проверка аргументов командной строки
+    retest = request.config.getoption("retest")
+    if retest:
+        lic = request.config.getoption("lic")
+    else:
+        lic = request.param
+    print(f"Current country of trading - {lic}")
+    return lic
 
 @pytest.fixture(
     scope="class",
@@ -172,9 +208,14 @@ def cur_time():
 
 @pytest.fixture(scope="module")
 # def d(browser):
-def d():
+def d(request):
     """WebDriver Initialization"""
     global test_browser
+    # проверка аргументов командной строки
+    retest = request.config.getoption("retest")
+    if retest:
+        test_browser = request.config.getoption("browser_name")
+
     browser = test_browser
     driver = None
     if browser == "Chrome":
