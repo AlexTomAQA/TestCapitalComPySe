@@ -57,7 +57,7 @@ def pytest_addoption(parser):
 )
 def cur_role(request):
     """Fixture"""
-    print(f"\n\n\nCurrent test role - {request.param}")
+    # проверка аргументов командной строки
     retest = request.config.getoption("retest")
     if retest:
         role = request.config.getoption("role")
