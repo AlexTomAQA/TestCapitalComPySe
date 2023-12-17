@@ -29,22 +29,22 @@ test_browser = ""
 def pytest_addoption(parser):
     # проверка аргументов командной строки
     parser.addoption('--retest', action='store', default=False,
-                     help="Re-Testing: '--retest=False' or '--retest=True'")
+                     help="Re-Testing: '--retest=True'")
 
     parser.addoption('--browser_name', action='store', default='Chrome',
                      help="Choose browser: '--browser_name=Chrome' or '--browser_name=Edge'")
 
     parser.addoption('--lang', action='store', default='',
-                     help="Choose language: ")
+                     help="Choose language: '--lang='' for 'en'")
 
     parser.addoption('--lic', action='store', default='de',
-                     help="Choose License: ")
+                     help="Choose License: '--lic=ae'")
 
     parser.addoption('--role', action='store', default='NoReg',
-                     help="Choose Role: ")
+                     help="Choose Role: --role=NoAuth'")
 
     parser.addoption('--tpi_link', action='store', default='',
-                     help="cur_item_link: ")
+                     help="cur_item_link: '--tpi_link=https://capital.com/fr/trading-amazon'")
 
 
 @pytest.fixture(
