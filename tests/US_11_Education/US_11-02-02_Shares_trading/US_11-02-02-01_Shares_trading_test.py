@@ -28,8 +28,29 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
-    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    list_item_link = list()
+    # проверка аргументов командной строки
+    retest = metafunc.config.getoption("retest")
+    if retest:
+        list_item_link.append(metafunc.config.getoption("tpi_link"))
+    else:
+        #
+
+        if "cur_item_link" in metafunc.fixturenames:
+            file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
+
+            try:
+                file = open(file_name, "r")
+            except FileNotFoundError:
+                print(f"{datetime.now()}   There is no file with name {file_name}!")
+            else:
+                for line in file:
+                    list_item_link.append(line[:-1])
+                file.close()
+
+            if len(list_item_link) == 0:
+                pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
@@ -50,6 +71,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Start trading] on Main banner")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -75,6 +97,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Try demo] on Main banner")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -98,6 +121,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Sell] in content block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_03
     def test_03_content_block_button_sell(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -124,6 +148,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Buy] in content block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_04
     def test_04_content_block_button_buy(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -150,6 +175,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Start trading] in article")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_05
     def test_05_start_trading_button_in_content(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -173,6 +199,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_06
     def test_06_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -197,6 +224,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_07
     def test_07_sticky_bar_button_get_started(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -223,6 +251,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_08
     def test_08_block_steps_trading_button_1_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -246,6 +275,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button in block [Horizontal banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_09
     def test_09_block_hor_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -285,6 +315,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button in block [Vertical banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_10
     def test_10_block_vert_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):

@@ -37,8 +37,8 @@ def pytest_addoption(parser):
     parser.addoption('--lang', action='store', default='',
                      help="Choose language: '--lang='' for 'en'")
 
-    parser.addoption('--lic', action='store', default='de',
-                     help="Choose License: '--lic=ae'")
+    parser.addoption('--country', action='store', default='de',
+                     help="Choose License: '--country=ae'")
 
     parser.addoption('--role', action='store', default='NoReg',
                      help="Choose Role: --role=NoAuth'")
@@ -130,11 +130,11 @@ def cur_country(request):
     # проверка аргументов командной строки
     retest = request.config.getoption("retest")
     if retest:
-        lic = request.config.getoption("lic")
+        country = request.config.getoption("country")
     else:
-        lic = request.param
-    print(f"Current country of trading - {lic}")
-    return lic
+        country = request.param
+    print(f"Current country of trading - {country}")
+    return country
 
 @pytest.fixture(
     scope="class",
