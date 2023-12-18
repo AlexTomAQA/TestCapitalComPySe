@@ -77,3 +77,25 @@ class Common:
 			print(f"{datetime.now()}   The test coverage = {count_out / count_in * 100} %")
 		else:
 			print(f"{datetime.now()}   The test coverage = 0 %")
+
+	def generate_cur_item_link_parameter(self, file_name):
+
+		list_item_link = list()
+		try:
+			file = open(file_name, "r")
+		except FileNotFoundError:
+			print(f"{datetime.now()}   There is no file with name {file_name}!")
+		else:
+			for line in file:
+				list_item_link.append(line[:-1])
+				# print(f"{datetime.now()}   {line[:-1]}")
+			file.close()
+
+		qty = len(list_item_link)
+		if qty == 0:
+			# pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+			pass
+		else:
+			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
+
+		return list_item_link
