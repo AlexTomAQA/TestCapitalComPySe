@@ -3,24 +3,14 @@
 @Time    : 2023/11/03 00:40
 @Author  : Mike Taran
 """
+from datetime import datetime
+
 import allure
 import pytest
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-# import random
 
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-# from pages.Signup_login.signup_login import SignupLogin
-# import time
-# import os
-# import sys
-# import psutil
-# import subprocess
-# from memory_profiler import profile
 from pages.common import Common
-# import conf
-from datetime import datetime
-from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
@@ -29,8 +19,8 @@ from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
-# from pages.Elements.ButtonFreeDemoOnHorizontalBanner import ButtonFreeDemoOnHorizontalBanner
-# from pages.Elements.AssertClass import AssertClass
+from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
+from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from src.src import CapitalComPageSrc
 
 
@@ -38,23 +28,9 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(file_name, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {file_name}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 def check_language(cur_language):
