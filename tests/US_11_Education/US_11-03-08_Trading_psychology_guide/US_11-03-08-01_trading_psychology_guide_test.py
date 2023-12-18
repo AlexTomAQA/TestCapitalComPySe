@@ -37,9 +37,9 @@ def pytest_generate_tests(metafunc):
                 list_item_link.append(line[:-1])
             file.close()
 
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: отсутствует список ссылок на страницы")
-
+        # if len(list_item_link) == 0:
+        #     pytest.skip("Отсутствуют тестовые данные: отсутствует список ссылок на страницы")
+        #
         metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
