@@ -5,9 +5,8 @@
 """
 import pytest
 import allure
-# import sys
-# from memory_profiler import profile
-from datetime import datetime
+
+from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v2
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -29,24 +28,9 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        name_file = "tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(name_file, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {name_file}!")
-            pytest.skip("File not found")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_02_05
