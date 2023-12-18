@@ -44,7 +44,8 @@ def pytest_generate_tests(metafunc):
 
         qty = len(list_item_link)
         if qty == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+            # pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+            pass
         else:
             print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
