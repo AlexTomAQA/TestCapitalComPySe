@@ -47,20 +47,9 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        name_file = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
-        list_item_link = list()
-        try:
-            with open(name_file, "r", encoding='UTF-8') as file:
-                for line in file:
-                    list_item_link.append(line[:-1])
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {name_file}!")
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_01_04_01
