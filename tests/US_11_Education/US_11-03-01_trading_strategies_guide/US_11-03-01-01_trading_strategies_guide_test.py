@@ -1,7 +1,10 @@
 import allure
 import pytest
-from datetime import datetime
 
+from src.src import CapitalComPageSrc
+from pages.conditions import Conditions
+from pages.common import Common
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonDownloadAppStore import ButtonDownloadAppStore
 from pages.Elements.ButtonExploreWebPlatform import ButtonExploreWebPlatform
@@ -11,35 +14,17 @@ from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
-from pages.conditions import Conditions
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
-from src.src import CapitalComPageSrc
 
 
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        name_file = "tests/US_11_Education/US_11-03-01_trading_strategies_guide/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(name_file, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {name_file}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: отсутствует список ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-03-01_trading_strategies_guide/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 class TestTradingStrategiesGuides:
