@@ -808,6 +808,7 @@ class MenuUS11IndicesTrading:
     SUB_MENU_ALL_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/trade-indices']")
     SUB_MENU_DE_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/de/indizeshandel']")
     SUB_MENU_IT_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/trading-su-indici']")
+    SUB_MENU_ZH_INDICES_TRADING = (By.CSS_SELECTOR, ".nav.cc-nav__wrap a[href='https://capital.com/zh/trade-indices']")
 
 
 class MenuUS11WhatIsMargin:
