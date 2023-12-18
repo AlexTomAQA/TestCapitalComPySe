@@ -1,7 +1,9 @@
-import pytest
-import allure
 import logging
 
+import pytest
+import allure
+
+from pages.common import Common
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
@@ -19,27 +21,10 @@ logger = logging.getLogger()
 
 
 def pytest_generate_tests(metafunc):
-    logger.info(f"====== Start Fixture generation test data ======")
 
-    if "cur_item_link" in metafunc.fixturenames:
-        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
-        list_item_link = list()
-        try:
-            logger.info(f"Try reading the file with name {file_name}")
-            with open(file_name, "r", encoding='UTF-8') as file:
-                for line in file:
-                    list_item_link.append(line[:-1])
-            logger.info(f"File opened successfully")
-            logger.info(f"Test data include {len(list_item_link)} Indices Trading Guide item(s)")
-        except FileNotFoundError:
-            logger.warning(f"There is no file with name {file_name}!")
-
-        if len(list_item_link) == 0:
-            pytest.skip("No test data: no list of links to pages")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
-
-    logger.info(f"====== End Fixture generation test data ======")
+    file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_02_06_01

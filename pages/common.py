@@ -3,6 +3,7 @@
 @Time    : 2023/09/09 12:00
 @Author  : Alexander Tomelo
 """
+import sys
 from datetime import datetime
 from random import randint
 import pytest
@@ -93,7 +94,8 @@ class Common:
 
 		qty = len(list_item_link)
 		if qty == 0:
-			pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+			print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
+			sys.exit(1)
 		else:
 			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
