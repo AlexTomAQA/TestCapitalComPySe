@@ -93,8 +93,7 @@ class Common:
 
 		qty = len(list_item_link)
 		if qty == 0:
-			# pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-			pass
+			pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
 		else:
 			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
