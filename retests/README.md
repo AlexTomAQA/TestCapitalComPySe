@@ -12,7 +12,7 @@
        - Install the Google client library for Python:
            `pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`
        - если будет запуск с ошибкой доступа к GoogleSheets, удалить токен и попробовать запустить заново
-       - если снова будет ошибка, но необходима регистрация в Google Cloud API и создание файла credentials.json:
+       - если снова будет ошибка, то необходима регистрация в Google Cloud API и создание файла credentials.json:
 https://developers.google.com/sheets/api/quickstart/python
 	
 
