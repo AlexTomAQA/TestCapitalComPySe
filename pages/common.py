@@ -83,20 +83,30 @@ class Common:
 
 		list_item_link = list()
 		try:
-			file = open(file_name, "r")
-		except FileNotFoundError:
-			print(f"{datetime.now()}   There is no file with name {file_name}!")
+			# проверка аргументов командной строки
+			retest = sys.argv[1].split('=')[1]
+		except IndexError:
+			retest = False
+		if retest == 'True':
+			if sys.argv[6].split('=')[0] == "--tpi_link":
+				list_item_link.append(sys.argv[6].split('=')[1])
 		else:
-			for line in file:
-				list_item_link.append(line[:-1])
-				# print(f"{datetime.now()}   {line[:-1]}")
-			file.close()
 
-		qty = len(list_item_link)
-		if qty == 0:
-			print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
-			sys.exit(1)
-		else:
-			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
+			try:
+				file = open(file_name, "r")
+			except FileNotFoundError:
+				print(f"{datetime.now()}   There is no file with name {file_name}!")
+			else:
+				for line in file:
+					list_item_link.append(line[:-1])
+					# print(f"{datetime.now()}   {line[:-1]}")
+				file.close()
+
+			qty = len(list_item_link)
+			if qty == 0:
+				print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
+				sys.exit(1)
+			else:
+				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
 		return list_item_link
