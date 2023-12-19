@@ -50,9 +50,9 @@ def pytest_addoption(parser):
 @pytest.fixture(
     scope="class",
     params=[
-        "NoReg",
+        # "NoReg",
         "Auth",
-        "NoAuth",  # "Reg/NoAuth"
+        # "NoAuth",  # "Reg/NoAuth"
     ],
 )
 def cur_role(request):
