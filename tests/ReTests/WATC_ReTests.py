@@ -10,8 +10,8 @@ import subprocess
 import re
 from tkinter import messagebox
 
-from .GoogleSheets.googlesheets import GoogleSheet
-from .retest_data.us_data import us_data
+from .GoogleSheets import googlesheets
+from .retest_data import us_data
 
 global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
@@ -24,7 +24,7 @@ def pre_test(values):
         test_id = row[0]
         retest_date = row[1]
         browser_name = row[6]
-        path = us_data[row[7]]
+        path = us_data.us_data[row[7]]
         num_test = row[8]
         lang = '' if row[9] == 'en' else row[9]
         country = row[10]
@@ -34,7 +34,7 @@ def pre_test(values):
 
 def get_gs_data(num_row):
     # получение данных из Google Sheets
-    gs = GoogleSheet()
+    gs = googlesheets.GoogleSheet()
     values = gs.getRangeValues(num_row)
     return values
 
@@ -63,7 +63,7 @@ def main():
     # show_warning()
 
     num_row = 4
-    gs = GoogleSheet()
+    gs = googlesheets.GoogleSheet()
 
     # старт ретеста
     start_retest_date = datetime.now().strftime("%d/%m/%Y")
