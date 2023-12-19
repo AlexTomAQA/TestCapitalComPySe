@@ -10,8 +10,8 @@ import subprocess
 import re
 from tkinter import messagebox
 
-from .GoogleSheets import googlesheets
-from .retest_data import us_data
+from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
+from tests.ReTests.retest_data import us_data
 
 global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
@@ -34,7 +34,7 @@ def pre_test(values):
 
 def get_gs_data(num_row):
     # получение данных из Google Sheets
-    gs = googlesheets.GoogleSheet()
+    gs = GoogleSheet()
     values = gs.getRangeValues(num_row)
     return values
 
@@ -57,48 +57,6 @@ def run_pytest():
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
     return stdout, stderr
-
-
-def main():
-    # show_warning()
-
-    num_row = 4
-    gs = googlesheets.GoogleSheet()
-
-    # старт ретеста
-    start_retest_date = datetime.now().strftime("%d/%m/%Y")
-    start_time = datetime.now().strftime("%H:%M:%S")
-    gs_out = [["'=====> Bugs Report !!! Идет Retest <====="]]
-    gs.putRangeValues('A1', gs_out)
-    # gs.putRangeValues('AA2:AA3', [[start_retest_date], [start_time]])
-
-    while True:
-        # проверка данных ретеста
-        values = get_gs_data(num_row)
-
-        if not values:
-            break
-
-        # pre-test
-        pre_test(values)
-        # if num_row != 4:
-        #    if retest_date != old_date:
-        # Запуск pytest с параметрами
-        output, error = run_pytest()
-
-        # проверка результатов тестирования
-        gs_out = check_results(output, error)
-        # заполнение Google Sheets
-
-        gs.updateRangeValues(num_row, gs_out)
-        # old_date = retest_date
-        num_row += 1
-
-    # стоп ретеста
-    # end_time = datetime.now()
-    start_test_row = 'A1'
-    gs_out = [['Bugs Report']]
-    gs.putRangeValues(start_test_row, gs_out)
 
 
 def check_results(output, error):
@@ -153,4 +111,43 @@ def show_warning():
 
 
 if __name__ == '__main__':
-    main()
+    # show_warning()
+
+    num_row = 4
+    gs = GoogleSheet()
+
+    # старт ретеста
+    start_retest_date = datetime.now().strftime("%d/%m/%Y")
+    start_time = datetime.now().strftime("%H:%M:%S")
+    gs_out = [["'=====> Bugs Report !!! Идет Retest <====="]]
+    gs.putRangeValues('A1', gs_out)
+    # gs.putRangeValues('AA2:AA3', [[start_retest_date], [start_time]])
+
+    while True:
+        # проверка данных ретеста
+        values = get_gs_data(num_row)
+
+        if not values:
+            break
+
+        # pre-test
+        pre_test(values)
+        # if num_row != 4:
+        #    if retest_date != old_date:
+        # Запуск pytest с параметрами
+        output, error = run_pytest()
+
+        # проверка результатов тестирования
+        gs_out = check_results(output, error)
+        # заполнение Google Sheets
+
+        gs.updateRangeValues(num_row, gs_out)
+        # old_date = retest_date
+        num_row += 1
+
+    # стоп ретеста
+    # end_time = datetime.now()
+    start_test_row = 'A1'
+    gs_out = [['Bugs Report']]
+    gs.putRangeValues(start_test_row, gs_out)
+    exit(0)
