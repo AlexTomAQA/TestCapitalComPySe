@@ -23,34 +23,12 @@ from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
 from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from src.src import CapitalComPageSrc
 
-
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    list_item_link = list()
-    # проверка аргументов командной строки
-    retest = metafunc.config.getoption("retest")
-    if retest:
-        list_item_link.append(metafunc.config.getoption("tpi_link"))
-    else:
-        #
-
-        if "cur_item_link" in metafunc.fixturenames:
-            file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
-
-            try:
-                file = open(file_name, "r")
-            except FileNotFoundError:
-                print(f"{datetime.now()}   There is no file with name {file_name}!")
-            else:
-                for line in file:
-                    list_item_link.append(line[:-1])
-                file.close()
-
-            if len(list_item_link) == 0:
-                pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
+    file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
