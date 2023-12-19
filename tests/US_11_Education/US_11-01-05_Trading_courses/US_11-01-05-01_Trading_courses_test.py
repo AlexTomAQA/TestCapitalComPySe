@@ -34,6 +34,7 @@ class TestTradingCoursesItem:
 
     @allure.step("Start test_11.01.05.01_02 Click button [Create a demo account] "
                  "in block 'Build your skills with a risk-free demo account.'")
+    @pytest.mark.test_02
     def test_02_create_demo_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -65,6 +66,7 @@ class TestTradingCoursesItem:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test_11.01.05.01_03 button [Try demo] in block 'Learn first. Trade CFDs ...")
+    @pytest.mark.test_03
     def test_03_try_demo(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -97,6 +99,7 @@ class TestTradingCoursesItem:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test_11.01.05.01_04 button [1. Create your account] in block 'Steps trading'.")
+    @pytest.mark.test_04
     def test_04_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """

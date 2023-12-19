@@ -58,10 +58,6 @@ class GoogleSheet:
         )
         values = result.get("values", [])
 
-        if not values:
-            print("\n=====> No data found <======")
-            exit()
-
         return values
 
     def updateRangeValues(self, num_cell=4, values=""):

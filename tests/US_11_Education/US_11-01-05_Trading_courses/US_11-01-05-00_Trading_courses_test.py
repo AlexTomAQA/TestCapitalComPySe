@@ -27,6 +27,7 @@ class TestTradingCourses:
     page_conditions = None
 
     @allure.step("Start test_11.01.05_01 button [Create account] in the block 'Our courses'.")
+    @pytest.mark.test_01
     def test_01_create_account_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             prob_run_tc, cur_time):
@@ -55,6 +56,7 @@ class TestTradingCourses:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start test_11.01.05_04 button [1. Create your account] in block 'Steps trading'.")
+    @pytest.mark.test_04
     def test_04_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             prob_run_tc, cur_time):
