@@ -67,18 +67,25 @@ def main():
     while True:
         # проверка даты ретеста
         values = get_gs_data(num_row)
+        if not values:
+            print("\n=====> No data found <======")
+            exit()
+
         # pre-test
         pre_test(values)
-        if num_row != 4:
-            if retest_date != old_date:
-                break
+        # if num_row != 4:
+        #     if retest_date != old_date:
+        #         break
+
         # Запуск pytest с параметрами
         output, error = run_pytest()
+
         # проверка результатов тестирования
         gs_out = check_results(output, error)
         # заполнение Google Sheets
+
         gs.updateRangeValues(num_row, gs_out)
-        old_date = retest_date
+        # old_date = retest_date
         num_row += 1
 
 
