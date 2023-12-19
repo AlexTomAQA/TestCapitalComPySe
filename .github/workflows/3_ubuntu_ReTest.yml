@@ -1,4 +1,4 @@
-name: 3. Ubuntu, All US
+name: 3. Ubuntu, ReTests
 on:
 #  push:
   workflow_dispatch:
@@ -97,7 +97,7 @@ jobs:
 
       - name: Run WATC_ReTest
         if: always()
-        run: poetry run python3 retests/WATC_ReTest.py
+        run: poetry run python3 retests/WATC_ReTests.py
 
 #      - name: 9. Get Allure history
 #        uses: actions/checkout@v3
