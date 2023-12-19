@@ -104,8 +104,8 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
@@ -135,6 +135,7 @@ def cur_country(request):
         country = request.param
     print(f"Current country of trading - {country}")
     return country
+
 
 @pytest.fixture(
     scope="class",
