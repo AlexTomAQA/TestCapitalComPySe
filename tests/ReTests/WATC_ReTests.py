@@ -9,8 +9,9 @@ import os
 import subprocess
 import re
 from tkinter import messagebox
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
-from tests.ReTests.retest_data.us_data import us_data
+
+from .GoogleSheets.googlesheets import GoogleSheet
+from .retest_data.us_data import us_data
 
 global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
