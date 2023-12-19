@@ -95,6 +95,13 @@ jobs:
           extra-mypy-options: ""
           extra-isort-options: ""
 
+      - name: pwd
+        if: always()
+        run: pwd
+      - name: ls- la
+        if: always()
+        run: ls -la
+
       - name: Run WATC_ReTest
         if: always()
         run: poetry run python3 tests/ReTests/WATC_ReTests.py
