@@ -61,22 +61,26 @@ def run_pytest():
 def main():
     show_warning()
 
-    old_date = ""
     num_row = 4
     gs = GoogleSheet()
+
+    # старт ретеста
+    start_retest_date = datetime.now().strftime("%d/%m/%Y")
+    start_time = datetime.now().strftime("%H:%M:%S")
+    gs_out = [["'=====> Bugs Report !!! Идет Retest <====="]]
+    gs.putRangeValues('A1', gs_out)
+    # gs.putRangeValues('AA2:AA3', [[start_retest_date], [start_time]])
+
     while True:
-        # проверка даты ретеста
+        # проверка данных ретеста
         values = get_gs_data(num_row)
-        if not values:
-            print("\n=====> No data found <======")
-            exit()
 
         # pre-test
         pre_test(values)
         # if num_row != 4:
-        #     if retest_date != old_date:
-        #         break
-
+        #    if retest_date != old_date:
+        if not retest_date:
+            break
         # Запуск pytest с параметрами
         output, error = run_pytest()
 
@@ -87,6 +91,12 @@ def main():
         gs.updateRangeValues(num_row, gs_out)
         # old_date = retest_date
         num_row += 1
+
+    # стоп ретеста
+    end_time = datetime.now()
+    start_test_row = 'A1'
+    gs_out = [['Bugs Report']]
+    gs.putRangeValues(start_test_row, gs_out)
 
 
 def check_results(output, error):

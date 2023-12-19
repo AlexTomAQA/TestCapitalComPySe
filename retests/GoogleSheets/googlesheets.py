@@ -73,3 +73,19 @@ class GoogleSheet:
         result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
                                                                   body=body).execute()
         print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+
+    def putRangeValues(self, cell, values=""):
+        RANGE_NAME = f'BugsReport!{cell}'
+        data = [{
+            'range': RANGE_NAME,
+            'values': values
+        }]
+        body = {
+            'valueInputOption': 'USER_ENTERED',
+            'data': data
+        }
+        result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
+                                                                  body=body).execute()
+        # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+
+
