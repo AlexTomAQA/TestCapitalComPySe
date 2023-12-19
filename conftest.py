@@ -51,8 +51,8 @@ def pytest_addoption(parser):
     scope="class",
     params=[
         "NoReg",
-        # "Auth",
-        # "NoAuth",  # "Reg/NoAuth"
+        "Auth",
+        "NoAuth",  # "Reg/NoAuth"
     ],
 )
 def cur_role(request):
