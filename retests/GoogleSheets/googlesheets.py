@@ -16,7 +16,8 @@ class GoogleSheet:
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
-    RANGE_NAME = f"BugsReport!A4:O4"
+    # RANGE_NAME = f"BugsReport!A4:O4"
+    RANGE_NAME = "BugsReport!A4:O4"
     # If modifying these scopes, delete the file token.json.
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 

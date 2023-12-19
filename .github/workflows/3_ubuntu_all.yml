@@ -42,10 +42,10 @@ jobs:
         if: always()
         run: brew install neofetch
 
-      - name: 3.4. Install python-tk@3.11 for ReTest
-        if: always()
-        run: brew install python-tk@3.11
-
+#      - name: 3.4. Install python-tk@3.11 for ReTest
+#        if: always()
+#        run: brew install python-tk@3.11
+#
       - name: For Run hwinfo.py first time
         if: always()
         run: pip3 install psutil
@@ -53,7 +53,7 @@ jobs:
         if: always()
         run: pip3 install speedtest
 
-      - name: For Run hwinfo.py first time
+      - name: Run hwinfo.py first time
         if: always()
         run: python3 tests/hwinfo.py
 

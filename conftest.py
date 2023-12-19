@@ -136,6 +136,7 @@ def cur_country(request):
     print(f"Current country of trading - {country}")
     return country
 
+
 @pytest.fixture(
     scope="class",
     params=[
