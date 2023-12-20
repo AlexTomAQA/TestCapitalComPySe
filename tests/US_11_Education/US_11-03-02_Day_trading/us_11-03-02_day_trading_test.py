@@ -41,6 +41,7 @@ class TestDayTrading:
     us_link = USLink()
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -57,6 +58,7 @@ class TestDayTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -73,6 +75,7 @@ class TestDayTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
+    @pytest.mark.test_03
     def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -92,6 +95,7 @@ class TestDayTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Start trading] in content block")
+    @pytest.mark.test_04
     def test_04_start_trading_in_content_block_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -111,6 +115,7 @@ class TestDayTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Practise for free] in content block")
+    @pytest.mark.test_05
     def test_05_practise_for_free_in_content_block_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -142,6 +147,7 @@ class TestDayTrading:
                 test_element.assert_trading_platform_v3(d, menu_link)
 
     @allure.step("Start test of button [Download on the App Store] in Block 'Sign up and trade smart today!'")
+    @pytest.mark.test_06
     def test_06_button_download_on_the_app_store(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -163,6 +169,7 @@ class TestDayTrading:
         test_element.assert_app_store(d, menu_link)
 
     @allure.step("Start test of button [Get it on Google Play] in Block 'Sign up and trade smart today!'")
+    @pytest.mark.test_07
     def test_07_button_get_it_on_google_play(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -184,6 +191,7 @@ class TestDayTrading:
         test_element.assert_google_play(d, menu_link)
 
     @allure.step("Start test of button [Explore Web Platform] in Block 'Sign up and trade smart today!'")
+    @pytest.mark.test_08
     def test_08_button_explore_web_platform(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -211,6 +219,7 @@ class TestDayTrading:
                 test_element.assert_trading_platform_v3(d, menu_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
+    @pytest.mark.test_09
     def test_09_create_and_verify_your_account_button_in_block_steps_trading(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
