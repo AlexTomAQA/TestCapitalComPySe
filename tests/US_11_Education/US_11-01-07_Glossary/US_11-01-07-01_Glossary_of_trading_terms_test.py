@@ -37,6 +37,7 @@ class TestGlossaryItems:
     page_conditions = None
 
     @allure.step("Start test of button 'Create your account' in 'Steps trading' block")
+    @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -70,6 +71,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of video banner [Capital.com]")
+    @pytest.mark.test_02
     def test_02(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -103,6 +105,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Try Free Demo] under video banner [Capital.com]")
+    @pytest.mark.test_03
     def test_03(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -137,6 +140,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test of button [Create account] under video banner [Capital.com]")
+    @pytest.mark.test_04
     def test_04(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -171,6 +175,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Trade now] under video banner [Capital.com]")
+    @pytest.mark.test_05
     def test_05(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):

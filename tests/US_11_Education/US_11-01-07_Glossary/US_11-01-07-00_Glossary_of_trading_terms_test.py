@@ -33,6 +33,7 @@ class TestGlossaryOfTradingTerms:
 
     @allure.step("Start test of button 'Create your account' in 'Steps trading' block")
     # @profile(precision=3)
+    @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """

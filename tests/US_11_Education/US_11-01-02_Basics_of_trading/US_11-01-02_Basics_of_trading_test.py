@@ -12,6 +12,7 @@ class TestBasicsOfTrading:
     page_conditions = None
 
     @allure.step("Start test_11.01.02_01 button '1. Create & verify your account'")
+    @pytest.mark.test_01
     def test_01_create_verify_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
