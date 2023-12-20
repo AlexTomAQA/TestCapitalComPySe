@@ -13,6 +13,7 @@ class TestLearningHub:
     page_conditions = None
 
     @allure.step("Start test_11.01.01_01 button '1. Create your account' in the block [Steps trading].")
+    @pytest.mark.test_01
     def test_01_create_your_account(
             self, worker_id, d, cur_role, cur_language, cur_country, cur_login, cur_password):
         """
@@ -32,15 +33,4 @@ class TestLearningHub:
         link = menu.sub_menu_learning_hub_move_focus_click(d, cur_language)
 
         test_element = BlockStepTrading(d, link)
-        test_element.arrange_(d, link)
-
-        test_element.element_click()
-
-        test_element = AssertClass(d, link)
-        match cur_role:
-            case "NoReg":
-                test_element.assert_signup(d, cur_language, link)
-            case "NoAuth":
-                test_element.assert_signup(d, cur_language, link)
-            case "Auth":
-                test_element.assert_trading_platform_v3(d, link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
