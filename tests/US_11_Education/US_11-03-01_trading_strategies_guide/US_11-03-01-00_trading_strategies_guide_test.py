@@ -25,6 +25,7 @@ class TestTradingStrategiesGuides:
     page_conditions = None
 
     @allure.step("Start test_11.03.01_01 of button [Start Trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -51,6 +52,7 @@ class TestTradingStrategiesGuides:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test_11.03.01_02 of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -77,6 +79,7 @@ class TestTradingStrategiesGuides:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test_11.03.01_03 of buttons [Trade] in Most traded block")
+    @pytest.mark.test_03
     def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -104,6 +107,7 @@ class TestTradingStrategiesGuides:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test_11.03.01_04 button 'Create_verify_your_account' on the page.")
+    @pytest.mark.test_04
     def test_04_create_verify_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
