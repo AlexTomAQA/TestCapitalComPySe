@@ -33,6 +33,7 @@ class TestGlossaryOfTradingTerms:
 
     @allure.step("Start test of button 'Create your account' in 'Steps trading' block")
     # @profile(precision=3)
+    @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -104,8 +105,6 @@ class TestGlossaryOfTradingTerms:
         file_name = "tests/US_11_Education/US_11-01-07_Glossary/list_of_href.txt"
         list_items = d.find_elements(*FinancialDictionary.ITEM_LIST)
 
-        print(f"{datetime.now()}   Glossary include {len(list_items)} addition financial item(s)")
-
-        Common().creating_file_of_hrefs(list_items, file_name, 0)
+        Common().creating_file_of_hrefs("Glossary of trading terms", list_items, file_name, 0)
 
         count -= 1

@@ -5,8 +5,8 @@
 """
 import pytest
 import allure
-from datetime import datetime
 
+from pages.common import Common
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
@@ -24,23 +24,9 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        name_file = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(name_file, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {name_file}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: отсутствует список ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_03_08_01
@@ -48,6 +34,7 @@ class TestTradingPsychologyGuideItem:
     page_conditions = None
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -71,6 +58,7 @@ class TestTradingPsychologyGuideItem:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -94,6 +82,7 @@ class TestTradingPsychologyGuideItem:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Trade] in Widget Most traded block")
+    @pytest.mark.test_03
     def test_03(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -119,6 +108,7 @@ class TestTradingPsychologyGuideItem:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start trading] in Content block")
+    @pytest.mark.test_04
     def test_04(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -144,6 +134,7 @@ class TestTradingPsychologyGuideItem:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Practise for free] in Content block")
+    @pytest.mark.test_05
     def test_05(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -169,6 +160,7 @@ class TestTradingPsychologyGuideItem:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create_verify_your_account] in block [Steps trading].")
+    @pytest.mark.test_06
     def test_06(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """

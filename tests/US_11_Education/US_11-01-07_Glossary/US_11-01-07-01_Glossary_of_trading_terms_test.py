@@ -5,12 +5,8 @@
 """
 import allure
 import pytest
-# import os
-# import sys
-# import psutil
-# import subprocess
-# from memory_profiler import profile
-from datetime import datetime
+
+from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
 # from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
@@ -30,24 +26,9 @@ def pytest_generate_tests(metafunc):
     Fixture generation test data
     """
 
-    if "cur_item_link" in metafunc.fixturenames:
-        file_name = "tests/US_11_Education/US_11-01-07_Glossary/list_of_href.txt"
-
-        list_item_link = list()
-
-        try:
-            file = open(file_name, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {file_name}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-01-07_Glossary/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_01_07
@@ -56,6 +37,7 @@ class TestGlossaryItems:
     page_conditions = None
 
     @allure.step("Start test of button 'Create your account' in 'Steps trading' block")
+    @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -89,6 +71,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of video banner [Capital.com]")
+    @pytest.mark.test_02
     def test_02(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -122,6 +105,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Try Free Demo] under video banner [Capital.com]")
+    @pytest.mark.test_03
     def test_03(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -156,6 +140,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test of button [Create account] under video banner [Capital.com]")
+    @pytest.mark.test_04
     def test_04(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -190,6 +175,7 @@ class TestGlossaryItems:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Trade now] under video banner [Capital.com]")
+    @pytest.mark.test_05
     def test_05(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):

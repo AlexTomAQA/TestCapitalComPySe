@@ -3,24 +3,14 @@
 @Time    : 2023/11/03 00:40
 @Author  : Mike Taran
 """
+from datetime import datetime
+
 import allure
 import pytest
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-# import random
 
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-# from pages.Signup_login.signup_login import SignupLogin
-# import time
-# import os
-# import sys
-# import psutil
-# import subprocess
-# from memory_profiler import profile
 from pages.common import Common
-# import conf
-from datetime import datetime
-from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.conditions import Conditions
+from tests.build_dynamic_arg import build_dynamic_arg_v3
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
@@ -29,32 +19,17 @@ from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
-# from pages.Elements.ButtonFreeDemoOnHorizontalBanner import ButtonFreeDemoOnHorizontalBanner
-# from pages.Elements.AssertClass import AssertClass
+from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
+from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from src.src import CapitalComPageSrc
-
 
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(file_name, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {file_name}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-02-02_Shares_trading/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 def check_language(cur_language):
@@ -74,6 +49,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Start trading] on Main banner")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -99,6 +75,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Try demo] on Main banner")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -122,6 +99,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Sell] in content block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_03
     def test_03_content_block_button_sell(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -148,6 +126,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Buy] in content block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_04
     def test_04_content_block_button_buy(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -174,6 +153,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Start trading] in article")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_05
     def test_05_start_trading_button_in_content(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -197,6 +177,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_06
     def test_06_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -221,6 +202,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_07
     def test_07_sticky_bar_button_get_started(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -247,6 +229,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_08
     def test_08_block_steps_trading_button_1_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -270,6 +253,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button in block [Horizontal banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_09
     def test_09_block_hor_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):
@@ -309,6 +293,7 @@ class TestSharesTradingItems:
 
     @allure.step("Start test of button in block [Vertical banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.test_10
     def test_10_block_vert_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
             cur_item_link):

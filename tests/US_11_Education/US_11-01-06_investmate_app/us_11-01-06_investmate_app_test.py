@@ -41,6 +41,7 @@ class TestInvestmateApp:
     us_link = USLink()
 
     @allure.step("Start test of QR code in Investmate block")
+    @pytest.mark.test_01
     def test_01_qr_code_investmate_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -60,6 +61,7 @@ class TestInvestmateApp:
         test_element.assert_app_store_investmate()
 
     @allure.step("Start test of QR code in Easy learning block")
+    @pytest.mark.test_02
     def test_02_qr_code_easy_learning_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -79,6 +81,7 @@ class TestInvestmateApp:
         test_element.assert_app_store_investmate()
 
     @allure.step("Start test of button [Explore Web Platform] in Block 'capital.com'")
+    @pytest.mark.test_03
     def test_03_button_explore_web_platform(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -108,6 +111,7 @@ class TestInvestmateApp:
                 test_element.assert_trading_platform_v4(d, menu_link)
 
     @allure.step("Start test of QR code in Capital block")
+    @pytest.mark.test_04
     def test_04_qr_code_capital_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
@@ -128,6 +132,7 @@ class TestInvestmateApp:
         test_element.assert_app_store(d, menu_link)
 
     @allure.step("Start test of button [Create account] in block \"Why choose Capital?\"")
+    @pytest.mark.test_05
     def test_05_button_create_account_why_capital(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """

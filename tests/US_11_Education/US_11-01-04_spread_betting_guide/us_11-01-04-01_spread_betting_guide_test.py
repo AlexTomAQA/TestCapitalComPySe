@@ -17,51 +17,39 @@ from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMost
 from pages.Elements.BlockStepTrading import BlockStepTrading
 
 
-def pytest_generate_tests(metafunc):
-    """
-    Fixture generation test data
-    """
-    if "cur_item_link" in metafunc.fixturenames:
-        file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(file_name, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {file_name}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-                print(f"{datetime.now()}   {line[:-1]}")
-            file.close()
-
-        qty = len(list_item_link)
-        if qty == 0:
-            pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
-        else:
-            print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
-
-
 # def pytest_generate_tests(metafunc):
 #     """
 #     Fixture generation test data
 #     """
 #     if "cur_item_link" in metafunc.fixturenames:
-#         name_file = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
+#         file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
+#
 #         list_item_link = list()
 #         try:
-#             with open(name_file, "r", encoding='UTF-8') as file:
-#                 for line in file:
-#                     list_item_link.append(line[:-1])
+#             file = open(file_name, "r")
 #         except FileNotFoundError:
-#             print(f"{datetime.now()}   There is no file with name {name_file}!")
+#             print(f"{datetime.now()}   There is no file with name {file_name}!")
+#         else:
+#             for line in file:
+#                 list_item_link.append(line[:-1])
+#                 print(f"{datetime.now()}   {line[:-1]}")
+#             file.close()
 #
-#         if len(list_item_link) == 0:
+#         qty = len(list_item_link)
+#         if qty == 0:
 #             pytest.skip("Отсутствуют тестовые данные: нет списка ссылок на страницы")
+#         else:
+#             print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 #
 #         metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+#
+def pytest_generate_tests(metafunc):
+    """
+    Fixture generation test data
+    """
+    file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.mark.us_11_01_04_01
@@ -69,6 +57,7 @@ class TestSpreadBettingGuide:
     page_conditions = None
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -90,6 +79,7 @@ class TestSpreadBettingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -111,6 +101,7 @@ class TestSpreadBettingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
+    @pytest.mark.test_03
     def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -132,6 +123,7 @@ class TestSpreadBettingGuide:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
+    @pytest.mark.test_04
     def test_04_block_steps_trading_button_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """

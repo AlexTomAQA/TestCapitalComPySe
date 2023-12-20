@@ -3,6 +3,7 @@
 @Time    : 2023/09/09 12:00
 @Author  : Alexander Tomelo
 """
+import sys
 from datetime import datetime
 from random import randint
 import pytest
@@ -37,17 +38,21 @@ class Common:
 	def skip_test_for_country(self, cur_country):
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
-	def creating_file_of_hrefs(self, list_items, file_name, first_index=1):
+	def creating_file_of_hrefs(self, title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
-		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу в списке
+
+		print(f"{datetime.now()}")
+		print(f"{datetime.now()}   {title_us} include {len(list_items) - first_index} child items for random select")
+
+		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу, если first_index = 1
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(first_index, count_in)
+						k = randint(first_index, count_in - 1)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
@@ -73,3 +78,35 @@ class Common:
 			print(f"{datetime.now()}   The test coverage = {count_out / count_in * 100} %")
 		else:
 			print(f"{datetime.now()}   The test coverage = 0 %")
+
+	def generate_cur_item_link_parameter(self, file_name):
+
+		list_item_link = list()
+		try:
+			# проверка аргументов командной строки
+			retest = sys.argv[1].split('=')[1]
+		except IndexError:
+			retest = False
+		if retest == 'True':
+			if sys.argv[6].split('=')[0] == "--tpi_link":
+				list_item_link.append(sys.argv[6].split('=')[1])
+		else:
+
+			try:
+				file = open(file_name, "r")
+			except FileNotFoundError:
+				print(f"{datetime.now()}   There is no file with name {file_name}!")
+			else:
+				for line in file:
+					list_item_link.append(line[:-1])
+					# print(f"{datetime.now()}   {line[:-1]}")
+				file.close()
+
+			qty = len(list_item_link)
+			if qty == 0:
+				print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
+				sys.exit(1)
+			else:
+				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
+
+		return list_item_link

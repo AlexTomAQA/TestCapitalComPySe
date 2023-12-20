@@ -21,7 +21,7 @@ class ArticleCreateAccount(BasePage):
 
         self.arrange_(d, cur_item_link)
 
-        self.element_click(cur_item_link, cur_language, cur_role)
+        self.element_click()
 
         test_element = AssertClass(d, cur_item_link)
         match cur_role:
@@ -38,7 +38,8 @@ class ArticleCreateAccount(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   BUTTON_CREATE_ACCOUNT is visible? =>")
-        if self.element_is_visible(ButtonsOnPageLocators.BUTTON_CREATE_ACCOUNT):
+        # if self.element_is_visible(ButtonsOnPageLocators.BUTTON_CREATE_ACCOUNT):
+        if self.element_is_visible(*ButtonsOnPageLocators.BUTTON_CREATE_ACCOUNT):
             print(f"{datetime.now()}   => BUTTON_CREATE_ACCOUNT is visible on the page!")
         else:
             print(f"{datetime.now()}   => BUTTON_CREATE_ACCOUNT is not visible on the page!")

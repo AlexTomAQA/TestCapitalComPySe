@@ -17,23 +17,9 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    if "cur_item_link" in metafunc.fixturenames:
-        name_file = "tests/US_11_Education/US_11-01-05_Trading_courses/list_of_href.txt"
-
-        list_item_link = list()
-        try:
-            file = open(name_file, "r")
-        except FileNotFoundError:
-            print(f"{datetime.now()}   There is no file with name {name_file}!")
-        else:
-            for line in file:
-                list_item_link.append(line[:-1])
-            file.close()
-
-        if len(list_item_link) == 0:
-            pytest.skip("Отсутствуют тестовые данные: отсутствует список ссылок на страницы")
-
-        metafunc.parametrize("cur_item_link", list_item_link, scope="class")
+    file_name = "tests/US_11_Education/US_11-01-05_Trading_courses/list_of_href.txt"
+    list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
 @pytest.fixture()
@@ -48,6 +34,7 @@ class TestTradingCoursesItem:
 
     @allure.step("Start test_11.01.05.01_02 Click button [Create a demo account] "
                  "in block 'Build your skills with a risk-free demo account.'")
+    @pytest.mark.test_02
     def test_02_create_demo_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -79,6 +66,7 @@ class TestTradingCoursesItem:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test_11.01.05.01_03 button [Try demo] in block 'Learn first. Trade CFDs ...")
+    @pytest.mark.test_03
     def test_03_try_demo(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -111,6 +99,7 @@ class TestTradingCoursesItem:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test_11.01.05.01_04 button [1. Create your account] in block 'Steps trading'.")
+    @pytest.mark.test_04
     def test_04_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
