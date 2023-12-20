@@ -20,16 +20,19 @@ def pre_test(values):
     global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
     # аргументы командной строки
-    for row in values:
-        test_id = row[0]
-        retest_date = row[1]
-        browser_name = row[6]
-        path = us_data.us_data[row[7]]
-        num_test = row[8]
-        lang = '' if row[9] == 'en' else row[9]
-        country = row[10]
-        role = row[12]
-        url = row[13]
+    try:
+        for row in values:
+            test_id = row[0]
+            num_bug = row[1]
+            browser_name = row[4]
+            path = us_data.us_data[row[5]]
+            num_test = row[6]
+            lang = '' if row[7] == 'en' else row[7]
+            country = row[8]
+            role = row[10]
+            url = row[11]
+    except KeyError:
+        print("Не корректные входные данные из таблицы WATC_BugsReport")
 
 
 def get_gs_data(num_row):
@@ -41,7 +44,7 @@ def get_gs_data(num_row):
 
 def run_pytest():
     retest = True
-    host = "\\".join(os.getcwd().split('\\')[:-1]) + '\\'
+    host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
     command = (f"poetry run pytest"
                f" --retest={retest}"
                f" --browser_name={browser_name}"
@@ -49,7 +52,7 @@ def run_pytest():
                f" --country={country}"
                f" --role={role}"
                f" --tpi_link={url}"
-               f" -m test_{num_test}"
+               f" -m test{num_test}"
                # f" --json-report --json-report-omit keywords streams"
                f" --no-summary -v"
                f" {host}{path}")
@@ -116,12 +119,14 @@ if __name__ == '__main__':
     num_row = 4
     gs = GoogleSheet()
 
+    # добавление нового столбца для результатов ретеста
+    gs.add_new_column_after_()
+
     # старт ретеста
-    start_retest_date = datetime.now().strftime("%d/%m/%Y")
-    start_time = datetime.now().strftime("%H:%M:%S")
+    start_retest_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     gs_out = [["'=====> Bugs Report !!! Идет Retest <====="]]
-    gs.putRangeValues('A1', gs_out)
-    # gs.putRangeValues('AA2:AA3', [[start_retest_date], [start_time]])
+    gs.putRangeValues('B1', gs_out)
+    gs.putRangeValues('V1', [[start_retest_date]])
 
     while True:
         # проверка данных ретеста
@@ -146,8 +151,9 @@ if __name__ == '__main__':
         num_row += 1
 
     # стоп ретеста
-    # end_time = datetime.now()
-    start_test_row = 'A1'
+    end_retest_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
     gs_out = [['Bugs Report']]
-    gs.putRangeValues(start_test_row, gs_out)
+    gs.putRangeValues('B1', gs_out)
+    gs.putRangeValues('V2', [[end_retest_date]])
     exit(0)
