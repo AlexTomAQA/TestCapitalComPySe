@@ -285,7 +285,7 @@ class TestSharesTradingItems:
         # банеры должны открываться в Demo mode for US_01
         banner01_hor_tpd = ['199', '294']
         # банеры должны открываться в Live mode for US_01
-        banner01_hor_tp = ['169', '223', '254', '379', '392', '430']
+        banner01_hor_tp = ['169', '223', '254', '379', '392', '430', '429']
 
         test_element = ButtonOnHorizontalBanner(d, cur_item_link)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,

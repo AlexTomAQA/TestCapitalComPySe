@@ -183,7 +183,7 @@ class TestSharesTrading:
         # банеры должны открываться в Demo mode for US_00
         banner00_hor_tpd = ['103', '252', '167', '197', '220', '291']
         # банеры должны открываться в Live mode for US_00
-        banner00_hor_tp = ['378', '390', '428']
+        banner00_hor_tp = ['378', '390', '428', '427']
         # банеры должны открываться в Demo mode for US_01
         banner01_hor_tpd = []
         # банеры должны открываться в Live mode for US_01
