@@ -12,7 +12,7 @@ from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.AssertClass import AssertClass
 
 
@@ -42,15 +42,14 @@ class TestSwingTrading:
     @allure.step("Start test of button [Start trading] on Main banner")
     @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_01")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.05", "Educations > Menu item [Swing Trading]",
+                                   ".00_01", "Testing button [Start Trading] on Main banner")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -72,15 +71,14 @@ class TestSwingTrading:
     @allure.step("Start test of button [Try demo] on Main banner")
     @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_02")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.05", "Educations > Menu item [Swing Trading]",
+                                   "02", "Testing button [Try demo] on Main banner")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -102,15 +100,14 @@ class TestSwingTrading:
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
     def test_03_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_03")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.05", "Educations > Menu item [Swing Trading]",
+                                   ".00_03", "Testing button [Trade] in Most traded block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
@@ -135,15 +132,15 @@ class TestSwingTrading:
     @allure.step("Start test of button [Download on the App Store] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_04
     def test_04_button_download_on_the_app_store(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Download on the App Store] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_04")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]", "04",
-                             "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Educations > Menu item [Swing Trading]",
+            ".00_04", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -157,15 +154,15 @@ class TestSwingTrading:
     @allure.step("Start test of button [Get it on Google Play] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_05
     def test_05_button_get_it_on_google_play(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Get it on Google Play] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_05")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "05", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Educations > Menu item [Swing Trading]",
+            ".00_05", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -180,15 +177,15 @@ class TestSwingTrading:
     @allure.step("Start test of button [Explore Web Platform] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_06
     def test_06_button_explore_web_platform(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Explore Web Platform] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_06")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "06", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Educations > Menu item [Swing Trading]",
+            ".00_06", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -209,15 +206,15 @@ class TestSwingTrading:
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
     @pytest.mark.test_07
     def test_07_create_and_verify_your_account_button_in_block_steps_trading(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create & verify your account] in block 'Steps trading'
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.03.05_07")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.05", "Educations > Menu item [Swing Trading]",
-                             "07", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Educations > Menu item [Swing Trading]",
+            ".00_07", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
