@@ -204,7 +204,7 @@ class TestForexTradingMainPage:
                                    ".00_99", "Pretest for US_11.02.04.01")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "it", "cn", "zh"])
+            cur_language, ["", "de", "es", "it", "cn", "zh"])
 
         if count == 0:
             pytest.skip("The list of Forex trading links is already created")

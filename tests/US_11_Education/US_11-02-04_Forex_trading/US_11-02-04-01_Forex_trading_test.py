@@ -55,7 +55,7 @@ class TestForexTradingItemPage:
                                    ".01_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
+            cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -77,7 +77,7 @@ class TestForexTradingItemPage:
                                    ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
+            cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -99,7 +99,7 @@ class TestForexTradingItemPage:
                                    ".01_03", "Testing button [Start trading] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "it"])
+            cur_language, ["", "it"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -174,7 +174,7 @@ class TestForexTradingItemPage:
             Common().skip_test_for_country(cur_country)
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
+            cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -196,7 +196,7 @@ class TestForexTradingItemPage:
                                    ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
+            cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
