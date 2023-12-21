@@ -14,7 +14,7 @@ from pages.common import Common
 from pages.Elements.ButtonBuyInTable import BuyButtonTable
 from pages.Elements.ButtonSellInTable import SellButtonTable
 from test_data.cfd_markets import cfd_markets_href
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
@@ -55,9 +55,9 @@ class TestCFDTradingGuide:
         """
         us = "11.01.03"
         tc = ".01_01"
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             us, "Educations > Menu item [CFD trading guide]",
-                             tc, "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   us, "Educations > Menu item [CFD trading guide]",
+                                   tc, "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -77,9 +77,9 @@ class TestCFDTradingGuide:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -99,9 +99,9 @@ class TestCFDTradingGuide:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   ".01_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -122,9 +122,9 @@ class TestCFDTradingGuide:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_04", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   ".01_04", "Testing button [Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -192,9 +192,9 @@ class TestCFDTradingGuide:
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".01_07", "Testing button [Start trading] in article")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   ".01_07", "Testing button [Start trading] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "zh"])
