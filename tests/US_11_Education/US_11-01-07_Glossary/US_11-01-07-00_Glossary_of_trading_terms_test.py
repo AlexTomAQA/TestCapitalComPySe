@@ -80,7 +80,7 @@ class TestGlossaryOfTradingTerms:
 
         build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
-                             "Educations > Menu item [Glossary of trading terms]",
+                             "Education > Menu item [Glossary of trading terms]",
                              ".00_99",
                              "Pretest for US_11.01.07.01")
 
