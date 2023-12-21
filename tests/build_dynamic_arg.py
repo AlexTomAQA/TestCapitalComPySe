@@ -11,7 +11,7 @@ from datetime import datetime
 count = 1
 
 
-def build_dynamic_arg_v4(obj, d, worker_id, cur_language, cur_country, cur_role,
+def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                          us, desc_us, num_tc, desc_tc):
     """
     function for dynamic bild names pf epic, feature and story
@@ -23,7 +23,7 @@ def build_dynamic_arg_v4(obj, d, worker_id, cur_language, cur_country, cur_role,
     # print(f"\n{datetime.now()}   browser = {d.name}")
     print(f"\n{datetime.now()}   worker_id = {worker_id}")
     # print(f"\n{datetime.now()}   Start {tc}")
-    print(f"\n{datetime.now()}   0. Allure grouping")
+    print(f"\n{datetime.now()}   0. Allure grouping v4")
 
     # language = cur_language
     if cur_language == "":
@@ -60,7 +60,7 @@ def build_dynamic_arg_v3(obj, d, worker_id, cur_language, cur_country, cur_role,
     # print(f"\n{datetime.now()}   browser = {d.name}")
     print(f"\n{datetime.now()}   worker_id = {worker_id}")
     # print(f"\n{datetime.now()}   Start {tc}")
-    print(f"\n{datetime.now()}   0. Allure grouping")
+    print(f"\n{datetime.now()}   0. Allure grouping v3")
 
     language = cur_language
     if cur_language == "":
