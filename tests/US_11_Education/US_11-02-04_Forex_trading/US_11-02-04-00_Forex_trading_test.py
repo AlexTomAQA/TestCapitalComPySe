@@ -38,7 +38,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_01", "Testing button [Start Trading] on Main banner")
 
@@ -64,7 +64,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_02", "Testing button [Try demo] on Main banner")
 
@@ -90,7 +90,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_04", "Testing button [Sell] in content block")
 
@@ -118,7 +118,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_05", "Testing button [Buy] in content block")
 
@@ -147,7 +147,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_06", "Testing button [Trade] in Most traded block")
 
@@ -175,7 +175,7 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
 
@@ -199,7 +199,7 @@ class TestForexTradingMainPage:
         global count
         global cur_page_url
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".00_99", "Pretest for US_11.02.04.01")
 
