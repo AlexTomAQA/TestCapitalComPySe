@@ -40,7 +40,7 @@ class TestGlossaryOfTradingTerms:
         Language: All. License: All.
         """
         print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_01")
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".00_01",
@@ -79,7 +79,7 @@ class TestGlossaryOfTradingTerms:
 
         print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_99")
 
-        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".00_99",
