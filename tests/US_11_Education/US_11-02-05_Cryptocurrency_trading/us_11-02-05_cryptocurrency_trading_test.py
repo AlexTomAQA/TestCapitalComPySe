@@ -7,7 +7,7 @@ import pytest
 import allure
 
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.BlockStepTrading import BlockStepTrading
@@ -39,15 +39,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Start trading] on Main banner")
     def test_03_main_banner_start_trading_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "03", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_03", "Testing button [Start Trading] on Main banner")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -73,15 +73,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Try demo] on Main banner")
     def test_04_main_banner_try_demo_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "04", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
+            ".01_04", "Testing button [Try demo] on Main banner")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -106,15 +106,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     def test_05_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "05", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            "05", "Testing button [Trade] in Most traded block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -142,15 +142,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Start trading] in article")
     def test_06_start_trading_in_article_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "06", "Testing button [Start trading] in article")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
+            ".01_06", "Testing button [Start trading] in article")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -166,15 +166,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of buttons [Sign up] on page")
     def test_07_sign_up_on_page_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Buttons [Sign up] on page
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "07", "Testing buttons [Sign up] on page")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_07", "Testing buttons [Sign up] on page")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -190,15 +190,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
     def test_08_block_steps_trading_button_create_your_account(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "08", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_08", "Testing button [Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -221,15 +221,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Sell] in content block")
     def test_09_content_block_button_sell(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Sell] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "09", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_09", "Testing button [Sell] in content block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -254,15 +254,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Buy] in content block")
     def test_10_content_block_button_buy(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Buy] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "10", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            "10", "Testing button [Sell] in content block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -287,15 +287,15 @@ class TestCryptocurrencyTrading:
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     def test_11_sticky_bar_button_get_started(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "11", "Testing button [Get started] on Sticky bar")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_11", "Testing button [Get started] on Sticky bar")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
