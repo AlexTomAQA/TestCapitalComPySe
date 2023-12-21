@@ -56,7 +56,7 @@ class TestCFDTradingGuide:
         us = "11.01.03"
         tc = ".01_01"
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   us, "Educations > Menu item [CFD trading guide]",
+                                   us, "Education > Menu item [CFD trading guide]",
                                    tc, "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
@@ -78,7 +78,7 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   "11.01.03", "Education > Menu item [CFD trading guide]",
                                    ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
@@ -100,7 +100,7 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   "11.01.03", "Education > Menu item [CFD trading guide]",
                                    ".01_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(
@@ -123,7 +123,7 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   "11.01.03", "Education > Menu item [CFD trading guide]",
                                    ".01_04", "Testing button [Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(
@@ -193,7 +193,7 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.03", "Educations > Menu item [CFD trading guide]",
+                                   "11.01.03", "Education > Menu item [CFD trading guide]",
                                    ".01_07", "Testing button [Start trading] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(

@@ -37,7 +37,7 @@ class TestSpreadBettingGuidePretest:
         Language: EN, ES, CN. License: FCA.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
+                                   "11.01.04", "Education > Menu item [Spread betting guide]",
                                    ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
@@ -62,7 +62,7 @@ class TestSpreadBettingGuidePretest:
         Language: EN, ES, CN. License: FCA.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
+                                   "11.01.04", "Education > Menu item [Spread betting guide]",
                                    ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
@@ -87,8 +87,8 @@ class TestSpreadBettingGuidePretest:
         Language: All. License: All.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_03", "Testing button [Trade] in Most traded block")
+                                   "11.01.03", "Education > Menu item [CFD trading guide]",
+                                   ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -111,9 +111,10 @@ class TestSpreadBettingGuidePretest:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: EN, ES, CN. License: FCA.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
-                                   ".00_04", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.04", "Education > Menu item [Spread betting guide]",
+            ".00_04", "Testing button [Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -137,7 +138,7 @@ class TestSpreadBettingGuidePretest:
         Language: EN, ES, CN. License: FCA.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
+                                   "11.01.04", "Education > Menu item [Spread betting guide]",
                                    ".00_05", "Testing button [Start trading] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "es", "cn", "ru"])
@@ -162,7 +163,7 @@ class TestSpreadBettingGuidePretest:
         Language: EN, ES, CN. License: FCA.
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
+                                   "11.01.04", "Education > Menu item [Spread betting guide]",
                                    ".00_06", "Testing button [Create account] in article")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
@@ -185,7 +186,7 @@ class TestSpreadBettingGuidePretest:
         global cur_page_url
 
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Educations > Menu item [Spread betting guide]",
+                                   "11.01.04", "Education > Menu item [Spread betting guide]",
                                    ".00_99", "Pretest for US_11.01.04.01")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
