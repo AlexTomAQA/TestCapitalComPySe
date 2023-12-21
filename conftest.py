@@ -67,9 +67,9 @@ if retest == 'True':
 
 else:
     role_list = (
-            "Auth",
-            "NoAuth",  # "Reg/NoAuth"
-            "NoReg",
+        "Auth",
+        "NoAuth",  # "Reg/NoAuth"
+        "NoReg",
     )
 
 
@@ -89,7 +89,7 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
@@ -102,7 +102,7 @@ def cur_role(request):
         # "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
@@ -121,10 +121,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
