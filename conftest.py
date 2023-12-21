@@ -4,13 +4,12 @@
 @Author  : Alexander Tomelo
 """
 import sys
-
-import pytest
 import os
 import random
-import conf
-import allure
 from datetime import datetime
+
+import pytest
+import allure
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
@@ -20,6 +19,8 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 from allure_commons.types import AttachmentType
+
+import conf
 
 test_browser = ""
 
@@ -89,7 +90,7 @@ def cur_role(request):
     scope="class",
     params=[
         # "",  # "en" - 21 us
-        "es",  # 20 us
+        # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
@@ -101,7 +102,7 @@ def cur_role(request):
         # "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
-        # "hu",  # 5 us Magyar
+        "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
