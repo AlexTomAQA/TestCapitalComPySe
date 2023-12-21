@@ -19,7 +19,7 @@ from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Education.shares_trading_locators import SharesTradingItem
 from src.src import CapitalComPageSrc
@@ -57,9 +57,9 @@ class TestSharesTrading:
         Check: Button [Start Trading] on Main banner
         Language: All (Except: EL, HU, NL). License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_01", "Testing button [Start Trading] on Main banner")
 
         check_language(cur_language)
 
@@ -84,9 +84,9 @@ class TestSharesTrading:
         Language: All (Except: EL, HU, NL). License: All.
         """
         print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02_02")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_02", "Testing button [Try demo] on Main banner")
 
         check_language(cur_language)
 
@@ -109,10 +109,9 @@ class TestSharesTrading:
         Check: Button [Trade] in Most traded block
         Language: All (Except: EL, HU, NL). License: All (Except: FCA).
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02_06")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_06", "Testing button [Trade] in Most traded block")
 
         check_language(cur_language)
         check_country(cur_country)
@@ -137,10 +136,9 @@ class TestSharesTrading:
         Language: All (Except: EL, HU, NL). License: All.
         """
         print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02.00_08")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_08",
-                             "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_08", "Testing button [1. Create your account] in block [Steps trading]")
 
         check_language(cur_language)
 
@@ -167,10 +165,9 @@ class TestSharesTrading:
                 Demo mode if the banner in the Demo mode banners list
         """
 
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02.00_09")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_09", "Testing button in block [Horizontal banner]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_09", "Testing button in block [Horizontal banner]")
 
         check_language(cur_language)
         if cur_language in ["", "cn"]:
@@ -209,10 +206,9 @@ class TestSharesTrading:
                         Demo mode if the banner in the Demo mode banners list
                 """
 
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02.00_10")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_10", "Testing button in block [Vertical banner]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_10", "Testing button in block [Vertical banner]")
 
         check_language(cur_language)
         if cur_language in ["", "ar", "it", "cn"]:
@@ -245,11 +241,9 @@ class TestSharesTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02")
-
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.02", "Educations > Menu item [Shares trading]",
-                             ".00_99", "Pretest for US_11.02.02.01")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.02", "Education > Menu item [Shares trading]",
+                                   ".00_99", "Pretest for US_11.02.02.01")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)

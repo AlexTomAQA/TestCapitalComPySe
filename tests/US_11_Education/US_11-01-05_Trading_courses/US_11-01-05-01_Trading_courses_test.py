@@ -8,7 +8,7 @@ from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonCreateDemoAccBlockBuildYourSkills import BuildYourSkillsButtonCreateDemoAccount
 from pages.Elements.ButtonTryDemoBlockLearnFirstTradeCFD import BlockLearnFistTradeCFDTryDemo
 from pages.Elements.AssertClass import AssertClass
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
@@ -20,12 +20,6 @@ def pytest_generate_tests(metafunc):
     file_name = "tests/US_11_Education/US_11-01-05_Trading_courses/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
-
-
-@pytest.fixture()
-def cur_time():
-    """Fixture"""
-    return str(datetime.now())
 
 
 @pytest.mark.us_11_01_05
@@ -41,10 +35,9 @@ class TestTradingCoursesItem:
         Check: Block "Build your skills" -> button [Create a demo account]
         Language: All. License: All. Role: All
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.05", "Education > Menu Item [Trading courses]",
-                             ".01_02", "Testing button [Create a demo account] in block "
-                             "'Build your skills ...'")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.05", "Education > Menu Item [Trading courses]",
+                                   ".01_02", "Testing button [Create a demo account] in block 'Build your skills ...'")
 
         if cur_language not in [""]:
             Common().skip_test_for_language(cur_language)
@@ -73,9 +66,9 @@ class TestTradingCoursesItem:
         Check: Block "Learn first ..." -> button [Try demo]
         Language: All. License: All. Role: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.05", "Education > Menu Item [Trading courses]",
-                             ".01_03", "Testing button [Try demo] in block 'Learn first. Trade CFDs ...'")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.05", "Education > Menu Item [Trading courses]",
+                                   ".01_03", "Testing button [Try demo] in block 'Learn first. Trade CFDs ...'")
 
         if cur_language not in [""]:
             Common().skip_test_for_language(cur_language)
@@ -106,9 +99,9 @@ class TestTradingCoursesItem:
         Check: Steps trading -> button [1. Create your account]
         Language: All. License: All. Role: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.05", "Education > Menu Item [Trading courses]",
-                             ".01_04", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.01.05", "Education > Menu Item [Trading courses]",
+                                   ".01_04", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)

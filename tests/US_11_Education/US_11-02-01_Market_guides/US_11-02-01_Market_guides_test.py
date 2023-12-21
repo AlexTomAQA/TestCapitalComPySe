@@ -2,7 +2,7 @@ import allure
 import pytest
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
@@ -20,12 +20,12 @@ class TestMarketGuides:
         Language: En. License: FCA. Role All.
         """
 
-        link = build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                                    "11.02.01", "Education > Menu Item [Market guides]",
-                                    "01", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.01", "Education > Menu Item [Market guides]",
+                                   ".00_01", "Testing button [Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
