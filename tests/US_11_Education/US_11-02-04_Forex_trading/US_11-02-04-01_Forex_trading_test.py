@@ -50,9 +50,9 @@ class TestForexTradingItemPage:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_01", "Testing button [Start Trading] on Main banner")
 
         if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
             Common().skip_test_for_language(cur_country)
@@ -72,9 +72,9 @@ class TestForexTradingItemPage:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_02", "Testing button [Try demo] on Main banner")
 
         if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -94,9 +94,9 @@ class TestForexTradingItemPage:
         Check: Button [Start trading] in content
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_03", "Testing button [Start trading] in article")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_03", "Testing button [Start trading] in article")
 
         if cur_language not in ["", "ar", "it"]:
             Common().skip_test_for_language(cur_language)
@@ -116,9 +116,9 @@ class TestForexTradingItemPage:
         Check: Button [Sell] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_04", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_04", "Testing button [Sell] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -141,9 +141,9 @@ class TestForexTradingItemPage:
         Check: Button [Buy] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_05", "Testing button [Buy] in content block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_05", "Testing button [Buy] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -166,9 +166,9 @@ class TestForexTradingItemPage:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_06", "Testing button [Trade] in Most traded block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -191,9 +191,9 @@ class TestForexTradingItemPage:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -213,9 +213,9 @@ class TestForexTradingItemPage:
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".01_08", "Testing button [Get started] on Sticky bar")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".01_08", "Testing button [Get started] on Sticky bar")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
