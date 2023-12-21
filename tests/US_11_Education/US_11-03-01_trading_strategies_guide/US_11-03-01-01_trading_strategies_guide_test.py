@@ -4,7 +4,7 @@ import pytest
 from src.src import CapitalComPageSrc
 from pages.conditions import Conditions
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonDownloadAppStore import ButtonDownloadAppStore
 from pages.Elements.ButtonExploreWebPlatform import ButtonExploreWebPlatform
@@ -39,11 +39,9 @@ class TestTradingStrategiesGuides:
         Check: Button [Start Trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_01",
-                             "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+                                   ".01_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "zh", "ru"])
 
@@ -62,11 +60,9 @@ class TestTradingStrategiesGuides:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_02",
-                             "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+                                   ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -85,11 +81,9 @@ class TestTradingStrategiesGuides:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_03",
-                             "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+                                   ".01_03", "Testing button [Trade] in Most traded block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
@@ -110,10 +104,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Download on the App Store] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                             ".01_06",
-                             "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_06", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -137,11 +131,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Get it on Google Play] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_07",
-                             "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -165,11 +158,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Explore Web Platform] in Block "Sign up and trade smart today!"
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_08",
-                             "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -200,11 +192,10 @@ class TestTradingStrategiesGuides:
         Check: Header -> button [Log In]
         Language: En. License: FCA.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".01_09",
-                             "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_09", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -223,9 +214,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Sell] in Banner "Trading Instrument"
         Language: En. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                             ".01_10", "Testing button [Sell] in Banner [Trading Instrument]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_10", "Testing button [Sell] in Banner [Trading Instrument]")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
@@ -245,9 +237,9 @@ class TestTradingStrategiesGuides:
         Check: Button [Buy] in Banner [Trading Instrument]
         Language: En. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                             ".01_11", "Testing button [Buy] in Banner [Trading Instrument]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+                                   ".01_11", "Testing button [Buy] in Banner [Trading Instrument]")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
@@ -268,9 +260,9 @@ class TestTradingStrategiesGuides:
         Check: Button [Start trading] in Content block
         Language: DE. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                             ".01_12", "Testing button [Start trading] in Content block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+                                   ".01_12", "Testing button [Start trading] in Content block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["de"])
 
