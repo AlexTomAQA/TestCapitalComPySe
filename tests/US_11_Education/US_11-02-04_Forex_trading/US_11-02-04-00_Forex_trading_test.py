@@ -5,10 +5,9 @@
 """
 import pytest
 import allure
-from datetime import datetime
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Education.forex_trading_locators import ForexTradingItem
 from src.src import CapitalComPageSrc
@@ -39,12 +38,12 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_01", "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -65,12 +64,12 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_02", "Testing button [Try demo] on Main banner")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -91,15 +90,15 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_04", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_04", "Testing button [Sell] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "de", "es", "it", "cn", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -119,15 +118,15 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_05", "Testing button [Buy] in content block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_05", "Testing button [Buy] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "de", "es", "it", "cn", "ru"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -148,14 +147,14 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_06", "Testing button [Trade] in Most traded block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -176,12 +175,12 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -200,12 +199,12 @@ class TestForexTradingMainPage:
         global count
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.02.04", "Education > Menu item [Forex trading]",
-                             ".00_99", "Pretest for US_11.02.04.01")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.02.04", "Education > Menu item [Forex trading]",
+                                   ".00_99", "Pretest for US_11.02.04.01")
 
-        if cur_language not in ["", "ar", "de", "es", "it", "cn", "ru", "zh"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "cn", "zh"])
 
         if count == 0:
             pytest.skip("The list of Forex trading links is already created")
