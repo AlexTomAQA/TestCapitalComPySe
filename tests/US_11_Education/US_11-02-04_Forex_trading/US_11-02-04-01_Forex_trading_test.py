@@ -54,8 +54,8 @@ class TestForexTradingItemPage:
                                    "11.02.04", "Education > Menu item [Forex trading]",
                                    ".01_01", "Testing button [Start Trading] on Main banner")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_country)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -76,8 +76,8 @@ class TestForexTradingItemPage:
                                    "11.02.04", "Education > Menu item [Forex trading]",
                                    ".01_02", "Testing button [Try demo] on Main banner")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -98,8 +98,8 @@ class TestForexTradingItemPage:
                                    "11.02.04", "Education > Menu item [Forex trading]",
                                    ".01_03", "Testing button [Start trading] in article")
 
-        if cur_language not in ["", "ar", "it"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "it"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -123,8 +123,8 @@ class TestForexTradingItemPage:
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "de", "es", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -148,8 +148,8 @@ class TestForexTradingItemPage:
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "de", "es", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -173,8 +173,8 @@ class TestForexTradingItemPage:
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -195,8 +195,8 @@ class TestForexTradingItemPage:
                                    "11.02.04", "Education > Menu item [Forex trading]",
                                    ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
 
-        if cur_language not in ["", "ar", "de", "es", "fr", "it", "ru", "cn"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -220,8 +220,8 @@ class TestForexTradingItemPage:
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
 
-        if cur_language not in ["", "es", "it"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "es", "it"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
