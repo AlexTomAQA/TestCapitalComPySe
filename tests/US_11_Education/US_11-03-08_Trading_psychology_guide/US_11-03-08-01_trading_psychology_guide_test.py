@@ -15,7 +15,7 @@ from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonPractiseForFreeInContentBlock import ButtonPractiseForFreeInContentBlock
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 count = 1
 
@@ -41,11 +41,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_01",
-                             "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_01", "Testing button [Start Trading] on Main banner")
 
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
@@ -65,11 +64,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_02",
-                             "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_02", "Testing button [Try demo] on Main banner")
 
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
@@ -89,11 +87,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_03",
-                             "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_03", "Testing button [Trade] in Most traded block")
 
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
@@ -115,11 +112,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Start trading] in Content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_04",
-                             "Testing button [Start trading] in Content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_04", "Testing button [Start trading] in Content block")
 
         if cur_language not in [""]:
             pytest.skip(f"This test not for {cur_language} language")
@@ -141,11 +137,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Practise for free] in Content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_05",
-                             "Testing button [Practise for free] in Content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_05", "Testing button [Practise for free] in Content block")
 
         if cur_language not in [""]:
             pytest.skip(f"This test not for {cur_language} language")
@@ -167,11 +162,10 @@ class TestTradingPsychologyGuideItem:
         Check: Button [Create_verify_your_account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.08",
-                             "Education > Menu item [Trading Psychology Guide]",
-                             ".01_06",
-                             "Testing button [Create_verify_your_account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.08", "Education > Menu item [Trading Psychology Guide]",
+            ".01_06", "Testing button [Create_verify_your_account] in block [Steps trading]")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
