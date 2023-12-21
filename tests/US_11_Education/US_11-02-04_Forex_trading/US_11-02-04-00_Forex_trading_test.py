@@ -5,7 +5,6 @@
 """
 import pytest
 import allure
-from datetime import datetime
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
