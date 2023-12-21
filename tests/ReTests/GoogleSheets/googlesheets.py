@@ -12,13 +12,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 
-
 class GoogleSheet:
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
     # RANGE_NAME = f"BugsReport!A4:O4"
-    RANGE_NAME = "BugsReport!A4:O4"
+    RANGE_NAME = "BugsReport!A4:P4"
     # If modifying these scopes, delete the file token.json.
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
@@ -61,7 +60,7 @@ class GoogleSheet:
         return None  # Если лист не найден
 
     def getRangeValues(self, num_row=4):
-        RANGE_NAME = f"{self.SHEET_NAME}!A{num_row}:O{num_row}"
+        RANGE_NAME = f"{self.SHEET_NAME}!A{num_row}:P{num_row}"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
         result = (

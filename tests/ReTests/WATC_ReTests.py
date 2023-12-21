@@ -23,14 +23,14 @@ def pre_test(values):
     try:
         for row in values:
             test_id = row[0]
-            num_bug = row[1]
-            browser_name = row[4]
-            path = us_data.us_data[row[5]]
-            num_test = row[6]
-            lang = '' if row[7] == 'en' else row[7]
-            country = row[8]
-            role = row[10]
-            url = row[11]
+            browser_name = row[2]
+            path = us_data.us_data[row[3]]
+            num_test = row[4]
+            lang = '' if row[5] == 'en' else row[5]
+            country = row[6]
+            role = row[8]
+            url = row[9]
+            num_bug = row[12]
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
