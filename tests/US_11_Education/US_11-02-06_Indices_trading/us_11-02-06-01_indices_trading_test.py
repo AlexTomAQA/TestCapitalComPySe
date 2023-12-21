@@ -14,7 +14,7 @@ from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMost
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.AssertClass import AssertClass
 
 logger = logging.getLogger()
@@ -63,11 +63,11 @@ class TestIndicesTrading:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]", ".01_01",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
                       "Testing button [Start Trading] on Main banner")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -99,12 +99,12 @@ class TestIndicesTrading:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_02", "Testing button [Try demo] on Main banner")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -137,12 +137,12 @@ class TestIndicesTrading:
         Language: All. License: All.
         """
 
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_03", "Testing button [Trade] in Most traded block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         if cur_country == 'gb':
             logger.info(f"This test is not supported on UK location")
@@ -179,12 +179,12 @@ class TestIndicesTrading:
         Check: Button [1. Create & verify your account] in block 'Steps trading'
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_04", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -214,12 +214,12 @@ class TestIndicesTrading:
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_05", "Testing button [Get started] on Sticky bar")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -253,12 +253,12 @@ class TestIndicesTrading:
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_06", "Testing button [Start trading] in Content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
         self.not_for_the_sixth_test(cur_item_link)
@@ -295,12 +295,12 @@ class TestIndicesTrading:
         Check: Button [Sell] in content block
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_07", "Testing button [Sell] in content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -334,12 +334,12 @@ class TestIndicesTrading:
         Check: Button [Buy] in content block
         Language: All. License: All.
         """
-        test_title = ("11.02.06", "Educations > Menu item [Indices Trading]",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_08", "Testing button [Buy] in content block")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
