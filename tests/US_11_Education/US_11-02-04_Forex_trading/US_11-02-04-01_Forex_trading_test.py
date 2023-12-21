@@ -15,7 +15,7 @@ import allure
 import pytest
 
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
@@ -50,7 +50,7 @@ class TestForexTradingItemPage:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_01", "Testing button [Start Trading] on Main banner")
 
@@ -72,7 +72,7 @@ class TestForexTradingItemPage:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_02", "Testing button [Try demo] on Main banner")
 
@@ -94,7 +94,7 @@ class TestForexTradingItemPage:
         Check: Button [Start trading] in content
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_03", "Testing button [Start trading] in article")
 
@@ -116,7 +116,7 @@ class TestForexTradingItemPage:
         Check: Button [Sell] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_04", "Testing button [Sell] in content block")
 
@@ -141,7 +141,7 @@ class TestForexTradingItemPage:
         Check: Button [Buy] in content block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_05", "Testing button [Buy] in content block")
 
@@ -166,7 +166,7 @@ class TestForexTradingItemPage:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_06", "Testing button [Trade] in Most traded block")
 
@@ -191,7 +191,7 @@ class TestForexTradingItemPage:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
 
@@ -213,7 +213,7 @@ class TestForexTradingItemPage:
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.02.04", "Education > Menu item [Forex trading]",
                              ".01_08", "Testing button [Get started] on Sticky bar")
 
