@@ -33,13 +33,15 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     # dynamic_feature = f"Country: {cur_country} / Role: {cur_role} / TS_{us} | {desc_feature}"
     dynamic_feature = f"Language: {cur_language}"
     # dynamic_story = f"TC_{us}{num_tc} | {desc_story}"
-    dynamic_story = f"Country: {cur_country} / Role: {cur_role} / TC_{us}{num_tc} | {desc_tc}"
-    bug_id = f"BID{us}{num_tc}-{cur_language}{cur_country}{cur_role}"
+    # dynamic_story = f"Country: {cur_country} / Role: {cur_role} / TC_{us}{num_tc} | {desc_tc}"
+    dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+    bug_id = f"BID{us}{num_tc}:{cur_language}{cur_country}{cur_role}"
 
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)
     allure.dynamic.story(dynamic_story)
-    allure.dynamic.title(f"TC_{us}{num_tc} with param-s: {cur_language}, {cur_country}, {cur_role}. ({bug_id})")
+    allure.dynamic.title(
+        f"TC_{us}{num_tc} | {desc_tc} with param-s: {cur_language}, {cur_country}, {cur_role}. ({bug_id})")
     del dynamic_story
     del dynamic_feature
     del dynamic_epic
