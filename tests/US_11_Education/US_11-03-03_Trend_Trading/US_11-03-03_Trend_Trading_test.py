@@ -7,7 +7,7 @@ from pages.Elements.ButtonDownloadAppStore import ButtonDownloadAppStore
 from pages.Elements.ButtonExploreWebPlatform import ButtonExploreWebPlatform
 from pages.Elements.ButtonGetItOnGooglePlay import ButtonGetItOnGooglePlay
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Elements.AssertClass import AssertClass
@@ -28,17 +28,16 @@ class TestTrendTrading:
     @allure.step("Start test of button [Start Trading] on the Main banner")
     @pytest.mark.test_03
     def test_03_button_start_trading_main_banner(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading]
         Language: En. License: All.
         """
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03",
-                             "Education > Menu item [Trend Trading]",
-                             "03",
-                             "Testing button [Start Trading] in the Main banner 'What is trend trading?'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            "03", "Testing button [Start Trading] in the Main banner 'What is trend trading?'")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -57,15 +56,16 @@ class TestTrendTrading:
     @allure.step("Start test of button [Try demo] on Main banner")
     @pytest.mark.test_03
     def test_04_button_try_demo_main_banner(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Try demo] on Main banner
         Language: En. License: All.
         """
 
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "04", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_04", "Testing button [Try demo] on Main banner")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -84,14 +84,14 @@ class TestTrendTrading:
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_05
     def test_05_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Trade] in Most traded block
         Language: En. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "05", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
+                                   "11.03.03", "Education > Menu item [Trend Trading]",
+                                   ".00_05", "Testing button [Trade] in Most traded block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
@@ -113,14 +113,15 @@ class TestTrendTrading:
     @allure.step("Start test of button [Download on the App Store] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_06
     def test_06_button_download_on_the_app_store(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Download on the App Store] in Block "Sign up and trade smart today!"
         Language: En. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "06", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_06", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -143,14 +144,15 @@ class TestTrendTrading:
     @allure.step("Start test of button [Get it on Google Play] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_07
     def test_07_button_get_it_on_google_play(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Get it on Google Play] in Block "Sign up and trade smart today!"
         Language: En. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -174,14 +176,15 @@ class TestTrendTrading:
     @allure.step("Start test of button [Explore Web Platform] in Block 'Sign up and trade smart today!'")
     @pytest.mark.test_08
     def test_08_button_explore_web_platform(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Explore Web Platform] in Block "Sign up and trade smart today!"
         Language: En. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -211,14 +214,15 @@ class TestTrendTrading:
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
     @pytest.mark.test_09
     def test_09_create_and_verify_your_account_button_in_block_steps_trading(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create & verify your account] in block 'Steps trading'
         Language: En. License: All.
         """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.03.03", "Education > Menu item [Trend Trading]",
-                             "09", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_09", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
