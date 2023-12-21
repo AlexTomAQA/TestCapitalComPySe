@@ -7,7 +7,7 @@ import allure
 import pytest
 
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 # from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
 # from pages.Elements.HeaderButtonTrade import HeaderButtonTrade
@@ -45,7 +45,7 @@ class TestGlossaryItems:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".01_01",
@@ -79,7 +79,7 @@ class TestGlossaryItems:
         Check: Video banner [Capital.com]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".01_02",
@@ -113,7 +113,7 @@ class TestGlossaryItems:
         Check: Button [Try Free Demo] under video banner [Capital.com]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".01_03",
@@ -148,7 +148,7 @@ class TestGlossaryItems:
         Check: Button [Create account] under video banner [Capital.com]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".01_04",
@@ -183,7 +183,7 @@ class TestGlossaryItems:
         Check: Button [Trade now] under video banner [Capital.com]
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".01_05",

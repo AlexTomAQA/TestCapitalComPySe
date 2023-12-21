@@ -8,7 +8,7 @@ import pytest
 import allure
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
@@ -32,7 +32,6 @@ class TestGlossaryOfTradingTerms:
     # super().__init__(*args, **kwargs)
 
     @allure.step("Start test of button 'Create your account' in 'Steps trading' block")
-    # @profile(precision=3)
     @pytest.mark.test_01
     def test_01(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -41,7 +40,7 @@ class TestGlossaryOfTradingTerms:
         Language: All. License: All.
         """
         print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_01")
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".00_01",
@@ -80,7 +79,7 @@ class TestGlossaryOfTradingTerms:
 
         print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_99")
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
+        build_dynamic_arg_v4(self, d, worker_id, cur_language, cur_country, cur_role,
                              "11.01.07",
                              "Educations > Menu item [Glossary of trading terms]",
                              ".00_99",
