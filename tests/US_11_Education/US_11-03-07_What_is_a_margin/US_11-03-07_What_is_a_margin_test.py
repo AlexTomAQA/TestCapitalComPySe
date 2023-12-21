@@ -46,9 +46,10 @@ class TestWhatIsMargin:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.07", "Education > Menu item [What is a margin?]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.07", "Education > Menu item [What is a margin?]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -104,9 +105,10 @@ class TestWhatIsMargin:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.07", "Education > Menu item [What is a margin?]",
-                                   ".00_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.07", "Education > Menu item [What is a margin?]",
+            ".00_03", "Testing button [Trade] in Most traded block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
