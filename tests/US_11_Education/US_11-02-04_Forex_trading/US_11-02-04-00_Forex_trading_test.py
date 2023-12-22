@@ -30,6 +30,7 @@ class TestForexTradingMainPage:
     page_conditions = None
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(self, worker_id, d,
                                                  cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -38,9 +39,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -56,6 +58,7 @@ class TestForexTradingMainPage:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(self, worker_id, d,
                                             cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -64,9 +67,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -82,6 +86,7 @@ class TestForexTradingMainPage:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Sell] in content block")
+    @pytest.mark.test_04
     def test_04_content_block_button_sell(self, worker_id, d,
                                           cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -90,9 +95,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_04", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_04", "Testing button [Sell] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -110,6 +116,8 @@ class TestForexTradingMainPage:
         test_element = SellButtonContentBlock(d, cur_page_url)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_page_url)
 
+    @allure.step("Start test of button [Buy] in content block")
+    @pytest.mark.test_05
     def test_05_content_block_button_buy(self, worker_id, d,
                                          cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -118,9 +126,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_05", "Testing button [Buy] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_05", "Testing button [Buy] in content block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -139,6 +148,7 @@ class TestForexTradingMainPage:
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
+    @pytest.mark.test_06
     def test_06_most_traded_trade_button(self, worker_id, d,
                                          cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -147,9 +157,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_06", "Testing button [Trade] in Most traded block")
 
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -167,6 +178,7 @@ class TestForexTradingMainPage:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
+    @pytest.mark.test_07
     def test_07_block_steps_trading_button_1_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -175,9 +187,10 @@ class TestForexTradingMainPage:
         """
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -199,9 +212,10 @@ class TestForexTradingMainPage:
         global count
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.04", "Education > Menu item [Forex trading]",
-                                   ".00_99", "Pretest for US_11.02.04.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.04", "Education > Menu item [Forex trading]",
+            ".00_99", "Pretest for US_11.02.04.01")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "cn", "zh"])
