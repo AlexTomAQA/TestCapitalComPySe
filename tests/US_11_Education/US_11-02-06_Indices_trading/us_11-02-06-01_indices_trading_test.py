@@ -57,6 +57,7 @@ class TestIndicesTrading:
             pytest.skip("There is no test item on this page")
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -93,6 +94,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -130,6 +132,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
+    @pytest.mark.test_03
     def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -173,6 +176,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
+    @pytest.mark.test_04
     def test_04_create_and_verify_your_account_button_in_block_steps_trading(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -208,6 +212,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Get started] on Sticky bar")
+    @pytest.mark.test_05
     def test_05_sticky_bar_button_get_started(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -247,6 +252,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Start trading] in content block")
+    @pytest.mark.test_06
     def test_06_start_trading_in_content_block_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -289,6 +295,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Sell] in content block")
+    @pytest.mark.test_07
     def test_07_content_block_button_sell(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -328,6 +335,7 @@ class TestIndicesTrading:
         logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Buy] in content block")
+    @pytest.mark.test_08
     def test_08_content_block_button_buy(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
