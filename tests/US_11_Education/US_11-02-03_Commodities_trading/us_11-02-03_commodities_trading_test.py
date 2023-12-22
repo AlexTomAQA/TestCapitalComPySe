@@ -59,7 +59,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_01", "Testing button [Start Trading] on Main banner")
+            ".01_01", "Testing button [Start Trading] on Main banner")
 
         self.check_language(cur_language)
 
@@ -91,7 +91,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_02", "Testing button [Try demo] on Main banner")
+            ".01_02", "Testing button [Try demo] on Main banner")
 
         self.check_language(cur_language)
 
@@ -125,7 +125,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_03", "Testing button [Sell] in content block")
+            ".01_03", "Testing button [Sell] in content block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -164,7 +164,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_04", "Testing button [Buy] in content block")
+            ".01_04", "Testing button [Buy] in content block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -203,7 +203,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_05", "Testing button [Start trading] in article")
+            ".01_05", "Testing button [Start trading] in article")
 
         self.check_language(cur_language)
 
@@ -225,7 +225,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_06", "Testing button [Trade] in Most traded block")
+            ".01_06", "Testing button [Trade] in Most traded block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -266,7 +266,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_07", "Testing button [Get started] on Sticky bar")
+            ".01_07", "Testing button [Get started] on Sticky bar")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -301,7 +301,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            "08", "Testing button [Create your account] in block [Steps trading]")
+            ".01_08", "Testing button [Create your account] in block [Steps trading]")
 
         self.check_language(cur_language)
 
@@ -333,7 +333,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".00_09", "Testing buttons [Create account] in block [Open a trading account in less than 3 minutes]")
+            ".01_09", "Testing buttons [Create account] in block [Open a trading account in less than 3 minutes]")
 
         if cur_language not in ["de", "es", "it", "pl"]:
             pytest.skip(f"This test is not for {cur_language} language")
