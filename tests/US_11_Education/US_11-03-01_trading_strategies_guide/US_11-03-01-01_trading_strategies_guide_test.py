@@ -39,9 +39,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Start Trading]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                                   ".01_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "zh", "ru"])
 
@@ -60,9 +61,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                                   ".01_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -81,9 +83,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                                   ".01_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_03", "Testing button [Trade] in Most traded block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
@@ -237,9 +240,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Buy] in Banner [Trading Instrument]
         Language: En. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                                   ".01_11", "Testing button [Buy] in Banner [Trading Instrument]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_11", "Testing button [Buy] in Banner [Trading Instrument]")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
@@ -260,9 +264,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Start trading] in Content block
         Language: DE. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                                   ".01_12", "Testing button [Start trading] in Content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".01_12", "Testing button [Start trading] in Content block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["de"])
 
