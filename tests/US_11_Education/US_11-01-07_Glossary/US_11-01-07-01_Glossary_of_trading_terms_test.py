@@ -44,9 +44,10 @@ class TestGlossaryItems:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.07", "Education > Menu item [Glossary of trading terms]",
-                                   ".01_01", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".01_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "zh"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -75,9 +76,10 @@ class TestGlossaryItems:
         Check: Video banner [Capital.com]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.07", "Education > Menu item [Glossary of trading terms]",
-                                   ".01_02", "Testing video banner [Capital.com]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".01_02", "Testing video banner [Capital.com]")
 
         if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "pl"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -106,9 +108,10 @@ class TestGlossaryItems:
         Check: Button [Try Free Demo] under video banner [Capital.com]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.07", "Education > Menu item [Glossary of trading terms]",
-                                   ".01_03", "Testing button [Try Free Demo] under video banner [Capital.com]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".01_03", "Testing button [Try Free Demo] under video banner [Capital.com]")
 
         if cur_language not in [""]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -138,9 +141,10 @@ class TestGlossaryItems:
         Check: Button [Create account] under video banner [Capital.com]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.07", "Education > Menu item [Glossary of trading terms]",
-                                   ".01_04", "Testing button [Create account] under video banner [Capital.com]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".01_04", "Testing button [Create account] under video banner [Capital.com]")
 
         if cur_language not in ["de", "el", "es", "it", "hu"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -170,9 +174,10 @@ class TestGlossaryItems:
         Check: Button [Trade now] under video banner [Capital.com]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.07", "Education > Menu item [Glossary of trading terms]",
-                                   ".01_05", "Testing button [Trade now] under video banner [Capital.com]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".01_05", "Testing button [Trade now] under video banner [Capital.com]")
 
         if cur_language not in ["es", "fr", "pl"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
