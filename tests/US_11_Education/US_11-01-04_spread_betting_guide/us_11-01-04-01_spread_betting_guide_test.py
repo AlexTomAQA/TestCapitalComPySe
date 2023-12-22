@@ -37,9 +37,10 @@ class TestSpreadBettingGuide:
         Check: Button [Start Trading] on Main banner
         Language: EN, ES, CN. License: FCA.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Education > Menu item [Spread betting guide]",
-                                   ".01_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.04", "Education > Menu item [Spread betting guide]",
+            ".01_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -59,9 +60,10 @@ class TestSpreadBettingGuide:
         Check: Button [Try demo] on Main banner
         Language: EN, ES, CN. License: FCA.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.04", "Education > Menu item [Spread betting guide]",
-                                   ".01_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.04", "Education > Menu item [Spread betting guide]",
+            ".01_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -81,9 +83,10 @@ class TestSpreadBettingGuide:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.03", "Education > Menu item [CFD trading guide]",
-                                   ".01_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".01_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])

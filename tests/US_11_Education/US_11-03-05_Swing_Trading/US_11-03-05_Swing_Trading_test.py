@@ -47,9 +47,10 @@ class TestSwingTrading:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.05", "Education > Menu item [Swing Trading]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Education > Menu item [Swing Trading]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -76,9 +77,10 @@ class TestSwingTrading:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.05", "Education > Menu item [Swing Trading]",
-                                   "02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Education > Menu item [Swing Trading]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
