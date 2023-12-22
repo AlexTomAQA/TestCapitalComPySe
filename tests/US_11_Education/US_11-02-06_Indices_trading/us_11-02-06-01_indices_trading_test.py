@@ -68,7 +68,9 @@ class TestIndicesTrading:
                       "Testing button [Start Trading] on Main banner")
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -106,7 +108,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -145,7 +148,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         if cur_country == 'gb':
             logger.info(f"This test is not supported on UK location")
@@ -188,7 +192,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -224,7 +229,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -264,7 +270,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
         self.not_for_the_sixth_test(cur_item_link)
@@ -307,7 +314,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
@@ -347,7 +355,8 @@ class TestIndicesTrading:
 
         logger.info(f"====== START testing {', '.join(test_title)} ======")
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role, *test_title)
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         self.only_four_tests(cur_item_link)
 
