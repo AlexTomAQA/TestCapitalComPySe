@@ -20,9 +20,10 @@ class TestLearningHub:
         Check: Header -> button [Log In]
         Language: En. License: FCA.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.01", "Education > Menu Item [Learning hub]",
-                                   "_01", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.01", "Education > Menu Item [Learning hub]",
+            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
