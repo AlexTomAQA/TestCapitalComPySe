@@ -20,9 +20,10 @@ class TestMarketGuides:
         Language: En. License: FCA. Role All.
         """
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.01", "Education > Menu Item [Market guides]",
-                                   ".00_01", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.01", "Education > Menu Item [Market guides]",
+            ".00_01", "Testing button [Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(

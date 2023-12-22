@@ -33,9 +33,10 @@ class TestTradingCourses:
         Check: Block 'Our courses' -> button [Create account]
         Language: All. License: All. Role: All
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".00_01", "Testing button [Create account] in block [Our courses]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".00_01", "Testing button [Create account] in block [Our courses]")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
@@ -59,9 +60,10 @@ class TestTradingCourses:
         Check: Steps trading -> button [1. Create your account]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
@@ -81,9 +83,10 @@ class TestTradingCourses:
     def test_99_trading_courses_item_pretest(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".00_99", "Pretest for US_11.01.05.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".00_99", "Pretest for US_11.01.05.01")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)

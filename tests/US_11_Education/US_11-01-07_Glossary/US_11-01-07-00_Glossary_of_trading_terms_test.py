@@ -39,11 +39,10 @@ class TestGlossaryOfTradingTerms:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.07",
-                             "Education > Menu item [Glossary of trading terms]",
-                             ".00_01",
-                             "Testing button [1. Create your account] in block [Steps trading]")
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "zh"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -78,11 +77,10 @@ class TestGlossaryOfTradingTerms:
 
         print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_99")
 
-        build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.07",
-                             "Education > Menu item [Glossary of trading terms]",
-                             ".00_99",
-                             "Pretest for US_11.01.07.01")
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.07", "Education > Menu item [Glossary of trading terms]",
+            ".00_99", "Pretest for US_11.01.07.01")
 
         if count == 0:
             pytest.skip("The list of Glossary of trading terms links is already created")

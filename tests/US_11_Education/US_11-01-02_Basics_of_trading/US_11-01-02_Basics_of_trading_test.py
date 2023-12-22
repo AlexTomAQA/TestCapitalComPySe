@@ -19,9 +19,10 @@ class TestBasicsOfTrading:
         Check: Button [1. Create & verify account]
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.02", "Education > Menu Item [The basics of trading]",
-                                   "_01", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.02", "Education > Menu Item [The basics of trading]",
+            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(

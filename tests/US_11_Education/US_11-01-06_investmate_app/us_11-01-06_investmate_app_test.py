@@ -48,9 +48,10 @@ class TestInvestmateApp:
         Check: QR code in Investmate block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.06", "Education > Menu item [Investmate app]",
-                                   ".00_01", "Testing QR code in Investmate block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.06", "Education > Menu item [Investmate app]",
+            ".00_01", "Testing QR code in Investmate block")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -68,9 +69,10 @@ class TestInvestmateApp:
         Check: QR code in Easy learning block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.06", "Education > Menu item [Investmate app]",
-                                   ".00_02", "Testing QR code in Easy learning block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.06", "Education > Menu item [Investmate app]",
+            ".00_02", "Testing QR code in Easy learning block")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -88,9 +90,10 @@ class TestInvestmateApp:
         Check: Button [Explore Web Platform] in Block 'capital.com'
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.06", "Education > Menu item [Investmate app]",
-                                   ".00_03", "Testing button [Explore Web Platform] in block 'capital.com'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.06", "Education > Menu item [Investmate app]",
+            ".00_03", "Testing button [Explore Web Platform] in block 'capital.com'")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -119,9 +122,10 @@ class TestInvestmateApp:
         Check: QR code in Capital block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.06", "Education > Menu item [Investmate app]",
-                                   ".00_04", "Testing QR code in Capital block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.06", "Education > Menu item [Investmate app]",
+            ".00_04", "Testing QR code in Capital block")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -139,9 +143,10 @@ class TestInvestmateApp:
         Check: Button [Create account] in block "Why choose Capital?"
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.06", "Education > Menu item [Investmate app]",
-                                   ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.06", "Education > Menu item [Investmate app]",
+            ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
 
         if cur_language in ['', 'pl', 'cn']:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")

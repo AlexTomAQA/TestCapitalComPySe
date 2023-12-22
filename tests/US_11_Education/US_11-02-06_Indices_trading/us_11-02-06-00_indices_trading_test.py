@@ -32,9 +32,10 @@ class TestIndicesTradingGuidePreset:
         global count
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.06", "Education > Menu item [Indices Trading]",
-                                   ".00_99", "Pretest for US_11.02.06.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.06", "Education > Menu item [Indices Trading]",
+            ".00_99", "Pretest for US_11.02.06.01")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
 

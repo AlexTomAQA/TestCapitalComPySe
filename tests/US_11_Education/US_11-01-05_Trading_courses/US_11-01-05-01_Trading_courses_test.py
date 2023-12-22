@@ -35,9 +35,10 @@ class TestTradingCoursesItem:
         Check: Block "Build your skills" -> button [Create a demo account]
         Language: All. License: All. Role: All
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".01_02", "Testing button [Create a demo account] in block 'Build your skills ...'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".01_02", "Testing button [Create a demo account] in block 'Build your skills ...'")
 
         if cur_language not in [""]:
             Common().skip_test_for_language(cur_language)
@@ -66,9 +67,10 @@ class TestTradingCoursesItem:
         Check: Block "Learn first ..." -> button [Try demo]
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".01_03", "Testing button [Try demo] in block 'Learn first. Trade CFDs ...'")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".01_03", "Testing button [Try demo] in block 'Learn first. Trade CFDs ...'")
 
         if cur_language not in [""]:
             Common().skip_test_for_language(cur_language)
@@ -99,9 +101,10 @@ class TestTradingCoursesItem:
         Check: Steps trading -> button [1. Create your account]
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.01.05", "Education > Menu Item [Trading courses]",
-                                   ".01_04", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.05", "Education > Menu Item [Trading courses]",
+            ".01_04", "Testing button [1. Create your account] in block [Steps trading]")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
