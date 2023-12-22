@@ -37,7 +37,7 @@ class TestTrendTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.03.03", "Education > Menu item [Trend Trading]",
-            "03", "Testing button [Start Trading] in the Main banner 'What is trend trading?'")
+            ".00_03", "Testing button [Start Trading] in the Main banner 'What is trend trading?'")
 
         if cur_language != "":
             pytest.skip("This test-case only for english language")
@@ -89,9 +89,10 @@ class TestTrendTrading:
         Check: Button [Trade] in Most traded block
         Language: En. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.03", "Education > Menu item [Trend Trading]",
-                                   ".00_05", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.03", "Education > Menu item [Trend Trading]",
+            ".00_05", "Testing button [Trade] in Most traded block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
