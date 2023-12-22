@@ -107,9 +107,10 @@ class TestSwingTrading:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.05", "Education > Menu item [Swing Trading]",
-                                   ".00_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.05", "Education > Menu item [Swing Trading]",
+            ".00_03", "Testing button [Trade] in Most traded block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
