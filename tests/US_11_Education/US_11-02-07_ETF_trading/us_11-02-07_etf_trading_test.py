@@ -38,9 +38,10 @@ class TestETFTrading:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.07", "Education > Menu item [ETF trading]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.07", "Education > Menu item [ETF trading]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
@@ -63,9 +64,10 @@ class TestETFTrading:
         Check: Button [Try demo] on Main banner
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.07", "Education > Menu item [ETF trading]",
-                                   ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.07", "Education > Menu item [ETF trading]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
@@ -88,9 +90,10 @@ class TestETFTrading:
         Check: Button [Trade] in Most traded widget
         Language: All. License: All. Role: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.07", "Education > Menu item [ETF trading]",
-                                   ".00_03", "Testing button [Trade] in Most traded widget")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.07", "Education > Menu item [ETF trading]",
+            ".00_03", "Testing button [Trade] in Most traded widget")
 
         check_country(cur_country, ["gb"])
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
@@ -114,10 +117,11 @@ class TestETFTrading:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.07", "Education > Menu item [ETF trading]",
-                                   ".00_05",
-                                   "Testing button [1. Create & verify your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.07", "Education > Menu item [ETF trading]",
+            ".00_05",
+            "Testing button [1. Create & verify your account] in block [Steps trading]")
 
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
