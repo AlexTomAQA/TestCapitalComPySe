@@ -54,7 +54,7 @@ class TestTrendTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Try demo] on Main banner")
-    @pytest.mark.test_03
+    @pytest.mark.test_04
     def test_04_button_try_demo_main_banner(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """

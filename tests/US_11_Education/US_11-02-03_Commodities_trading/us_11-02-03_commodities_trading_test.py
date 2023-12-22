@@ -50,6 +50,7 @@ class TestCommoditiesTrading:
             pytest.skip(f"This test is not for {cur_country} country")
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -82,6 +83,7 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -115,7 +117,7 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test of button [Sell] in content block")
-    # @profile(precision=3)
+    @pytest.mark.test_03
     def test_03_content_block_button_sell(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -154,7 +156,7 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Buy] in content block")
-    # @profile(precision=3)
+    @pytest.mark.test_04
     def test_04_content_block_button_buy(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -193,7 +195,7 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Start trading] in article")
-    # @profile(precision=3)
+    @pytest.mark.test_05
     def test_05_start_trading_in_article_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -215,7 +217,7 @@ class TestCommoditiesTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
-    # @profile(precision=3)
+    @pytest.mark.test_06
     def test_06_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -256,7 +258,7 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Get started] on Sticky bar")
-    # @profile(precision=3)
+    @pytest.mark.test_07
     def test_07_sticky_bar_button_get_started(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -291,7 +293,7 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
-    # @profile(precision=3)
+    @pytest.mark.test_08
     def test_08_block_steps_trading_button_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
@@ -324,6 +326,7 @@ class TestCommoditiesTrading:
 
     # @pytest.skip
     @allure.step("Start test of button [Create account] in block [Open a trading account in less than 3 minutes]")
+    @pytest.mark.test_09
     def test_09_block_open_account_3_min_button_create_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """

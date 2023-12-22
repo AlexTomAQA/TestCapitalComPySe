@@ -141,7 +141,7 @@ class TestInvestmateApp:
         """
         bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                                    "11.01.06", "Education > Menu item [Investmate app]",
-                                   "_05", "Testing button [Create account] in block \"Why choose Capital?\"")
+                                   ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
 
         if cur_language in ['', 'pl', 'cn']:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")

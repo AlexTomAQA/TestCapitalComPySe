@@ -159,7 +159,7 @@ class TestSpreadBettingGuidePretest:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create account] in article")
-    @pytest.mark.test_05
+    @pytest.mark.test_06
     def test_06_create_account_in_article_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
