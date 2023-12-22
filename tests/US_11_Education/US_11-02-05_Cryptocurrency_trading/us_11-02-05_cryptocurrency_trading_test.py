@@ -117,7 +117,7 @@ class TestCryptocurrencyTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            "05", "Testing button [Trade] in Most traded block")
+            ".01_05", "Testing button [Trade] in Most traded block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -270,7 +270,7 @@ class TestCryptocurrencyTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            "10", "Testing button [Sell] in content block")
+            ".01_10", "Testing button [Sell] in content block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
