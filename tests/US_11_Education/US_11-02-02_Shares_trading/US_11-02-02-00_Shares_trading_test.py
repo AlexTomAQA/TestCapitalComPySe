@@ -165,9 +165,10 @@ class TestSharesTrading:
                 Demo mode if the banner in the Demo mode banners list
         """
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_09", "Testing button in block [Horizontal banner]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_09", "Testing button in block [Horizontal banner]")
 
         check_language(cur_language)
         if cur_language in ["", "cn"]:
@@ -206,9 +207,10 @@ class TestSharesTrading:
                         Demo mode if the banner in the Demo mode banners list
                 """
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_10", "Testing button in block [Vertical banner]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_10", "Testing button in block [Vertical banner]")
 
         check_language(cur_language)
         if cur_language in ["", "ar", "it", "cn"]:
@@ -241,9 +243,10 @@ class TestSharesTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_99", "Pretest for US_11.02.02.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_99", "Pretest for US_11.02.02.01")
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
