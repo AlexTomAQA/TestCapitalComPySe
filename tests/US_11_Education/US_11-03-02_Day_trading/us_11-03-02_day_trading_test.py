@@ -48,9 +48,10 @@ class TestDayTrading:
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.02", "Education > Menu item [Day Trading]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.02", "Education > Menu item [Day Trading]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -65,9 +66,10 @@ class TestDayTrading:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.02", "Education > Menu item [Day Trading]",
-                                   ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.02", "Education > Menu item [Day Trading]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -102,9 +104,10 @@ class TestDayTrading:
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.02", "Education > Menu item [Day Trading]",
-                                   ".00_04", "Testing button [Start trading] in Content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.02", "Education > Menu item [Day Trading]",
+            ".00_04", "Testing button [Start trading] in Content block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
@@ -122,9 +125,10 @@ class TestDayTrading:
         Check: Button [Practise for free] in content block
         Language: All. License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.03.02", "Education > Menu item [Day Trading]",
-                                   ".00_05", "Testing button [Practise for free] in Content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.02", "Education > Menu item [Day Trading]",
+            ".00_05", "Testing button [Practise for free] in Content block")
 
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
