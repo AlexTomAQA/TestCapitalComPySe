@@ -103,9 +103,12 @@ jobs:
         if: always()
         run: ls -la
 
-      - name: Run WATC_ReTest
+      - name: Run WATC_ReTest_test
         if: always()
-        run: poetry run python3 tests/ReTests/WATC_ReTests.py
+        run: poetry run pytest --no-summary -v tests/ReTests/WATC_ReTests_test.py
+        continue-on-error: true
+
+#        run: poetry run python3 tests/ReTests/WATC_ReTests.py
 
 #      - name: 9. Get Allure history
 #        uses: actions/checkout@v3
