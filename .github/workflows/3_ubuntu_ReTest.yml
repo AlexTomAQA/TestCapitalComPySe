@@ -103,9 +103,9 @@ jobs:
         if: always()
         run: ls -la
 
-      - name: Run WATC_ReTest_test
+      - name: Run WATC_ReTest
         if: always()
-        run: poetry run pytest --no-summary -v tests/ReTests/WATC_ReTests_test.py
+        run: poetry run pytest -v tests/ReTests/WATC_ReTests.py
         continue-on-error: true
 
 #        run: poetry run python3 tests/ReTests/WATC_ReTests.py
