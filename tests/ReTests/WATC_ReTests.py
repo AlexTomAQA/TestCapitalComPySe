@@ -144,18 +144,21 @@ class TestReTests:
 
             # заполнение Google Sheets по-строчно
             # ==================
-            # result = gs.updateRangeValues(f'V{start_row}', [gs_out])
-            # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+            print("4. Fixing check results in Google Sheet Bugs Report")
+            result = gs.updateRangeValues(f'V{start_row}', [gs_out])
+            print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
             # ==================
-            print("4. Fixing check results in memory")
-            gs_out_full.append(gs_out)
+
+            # print("4. Fixing check results in memory")
+            # gs_out_full.append(gs_out)
+
             start_row += 1
 
         # заполнение Google Sheets сразу весь столбец
         # ==================
-        print("\n5. Update results from memory into Google sheet Bugs Report")
-        result = gs.updateRangeValues('V4', gs_out_full)
-        print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
+        # print("\n5. Update results from memory into Google sheet Bugs Report")
+        # result = gs.updateRangeValues('V4', gs_out_full)
+        # print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
         # ==================
 
         # окончание ретеста
