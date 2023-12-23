@@ -9,6 +9,7 @@ import os
 import subprocess
 import re
 
+import pytest
 
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 from tests.ReTests.retest_data import us_data
@@ -106,12 +107,13 @@ def check_results(output, error):
     return gs_out
 
 
+@pytest.mark.ReTests
 class ReTests:
 
-    def test_retests(self):
+    def test_retests(self, worker_id, d):
         end_row = 1000
         gs = GoogleSheet()
-
+        print(worker_id)
         # проверка и получение данных ретеста
         values = get_gs_data(end_row)
 
@@ -159,6 +161,7 @@ class ReTests:
         gs_out = ['Bugs Report']
         gs.updateRangeValues('B1', [gs_out])
         gs.updateRangeValues('V2', [end_retest_date])
+        assert True
         # exit(0)
 
 
