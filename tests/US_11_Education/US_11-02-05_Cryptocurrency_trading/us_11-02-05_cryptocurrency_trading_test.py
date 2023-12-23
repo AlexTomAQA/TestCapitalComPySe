@@ -38,7 +38,7 @@ class TestCryptocurrencyTrading:
     page_conditions = None
 
     @allure.step("Start test of button [Start trading] on Main banner")
-    def test_03_main_banner_start_trading_button(
+    def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
             prob_run_tc):
         """
@@ -47,7 +47,7 @@ class TestCryptocurrencyTrading:
         """
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "03", "Testing button [Start Trading] on Main banner")
+                             "01", "Testing button [Start Trading] on Main banner")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -72,7 +72,7 @@ class TestCryptocurrencyTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Try demo] on Main banner")
-    def test_04_main_banner_try_demo_button(
+    def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
             prob_run_tc):
         """
@@ -81,7 +81,7 @@ class TestCryptocurrencyTrading:
         """
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "04", "Testing button [Try demo] on Main banner")
+                             "02", "Testing button [Try demo] on Main banner")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -105,7 +105,7 @@ class TestCryptocurrencyTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
-    def test_05_most_traded_trade_button(
+    def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
             prob_run_tc):
         """
@@ -114,7 +114,7 @@ class TestCryptocurrencyTrading:
         """
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "05", "Testing button [Trade] in Most traded block")
+                             "03", "Testing button [Trade] in Most traded block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -141,7 +141,7 @@ class TestCryptocurrencyTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Start trading] in article")
-    def test_06_start_trading_in_article_button(
+    def test_04_start_trading_in_article_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
             prob_run_tc):
         """
@@ -150,7 +150,7 @@ class TestCryptocurrencyTrading:
         """
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "06", "Testing button [Start trading] in article")
+                             "04", "Testing button [Start trading] in article")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -164,32 +164,8 @@ class TestCryptocurrencyTrading:
         else:
             pytest.skip("This test not for FCA licence.")
 
-    @allure.step("Start test of buttons [Sign up] on page")
-    def test_07_sign_up_on_page_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
-        """
-        Check: Buttons [Sign up] on page
-        Language: All. License: All.
-        """
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "07", "Testing buttons [Sign up] on page")
-
-        page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        if cur_country != 'gb':
-            test_element = PageSignUpLogin(d, cur_item_link)
-            test_element.arrange_(d, cur_item_link)
-
-            test_element.element_click(cur_item_link, cur_language, cur_role)
-        else:
-            pytest.skip("This test not for FCA licence.")
-
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
-    def test_08_block_steps_trading_button_create_your_account(
+    def test_07_block_steps_trading_button_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
             prob_run_tc):
         """
@@ -198,7 +174,7 @@ class TestCryptocurrencyTrading:
         """
         build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
                              "11.02.05", "Educations > Menu item [Cryptocurrency trading]",
-                             "08", "Testing button [Create your account] in block [Steps trading]")
+                             "07", "Testing button [Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
