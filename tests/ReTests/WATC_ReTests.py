@@ -9,14 +9,13 @@ import os
 import subprocess
 import re
 
-
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 from tests.ReTests.retest_data import us_data
 
 global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
 
-def pre_test(row):
+def pretest(row):
     global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
     # аргументы командной строки
@@ -106,56 +105,111 @@ def check_results(output, error):
     return gs_out
 
 
-if __name__ == '__main__':
+class TestReTests:
 
-    end_row = 1000
-    gs = GoogleSheet()
+    def test_retests(self):
+        end_row = 1000
+        gs = GoogleSheet()
+        # проверка и получение данных ретеста
+        values = get_gs_data(end_row)
 
-    # проверка и получение данных ретеста
-    values = get_gs_data(end_row)
+        # добавление нового столбца для результатов ретеста
+        gs.add_new_column_after_()
 
-    # добавление нового столбца для результатов ретеста
-    gs.add_new_column_after_()
+        # старт ретеста
+        start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
+        gs.updateRangeValues('B1', [gs_out])
+        gs.updateRangeValues('V1', [start_retest_date])
 
-    # старт ретеста
-    start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-    gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
-    gs.updateRangeValues('B1', [gs_out])
-    gs.updateRangeValues('V1', [start_retest_date])
+        start_row = 4
+        gs_out_full = list()
+        for row in values:
+            # проверка на пустую строку
+            if not row:
+                break
 
-    start_row = 4
-    gs_out_full = list()
-    for row in values:
-        # проверка на пустую строку
-        if not row:
-            break
+            # pre-test
+            pretest(row)
 
-        # pre-test
-        pre_test(row)
+            # Запуск pytest с параметрами
+            output, error = run_pytest()
 
-        # Запуск pytest с параметрами
-        output, error = run_pytest()
+            # проверка результатов тестирования
+            gs_out = check_results(output, error)
 
-        # проверка результатов тестирования
-        gs_out = check_results(output, error)
+            # заполнение Google Sheets по-строчно
+            # ==================
+            # result = gs.updateRangeValues(f'V{start_row}', [gs_out])
+            # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+            # ==================
+            gs_out_full.append(gs_out)
+            start_row += 1
 
-        # заполнение Google Sheets по-строчно
+        # заполнение Google Sheets сразу весь столбец
         # ==================
-        # result = gs.updateRangeValues(f'V{start_row}', [gs_out])
-        # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+        result = gs.updateRangeValues('V4', gs_out_full)
+        print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
         # ==================
-        gs_out_full.append(gs_out)
-        start_row += 1
 
-    # заполнение Google Sheets сразу весь столбец
-    # ==================
-    result = gs.updateRangeValues('V4', gs_out_full)
-    print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
-    # ==================
+        # окончание ретеста
+        end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        gs_out = ['Bugs Report']
+        gs.updateRangeValues('B1', [gs_out])
+        gs.updateRangeValues('V2', [end_retest_date])
+        # exit(0)
 
-    # окончание ретеста
-    end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-    gs_out = ['Bugs Report']
-    gs.updateRangeValues('B1', [gs_out])
-    gs.updateRangeValues('V2', [end_retest_date])
-    exit(0)
+
+# if __name__ == '__main__':
+#
+#     end_row = 1000
+#     gs = GoogleSheet()
+#
+#     # проверка и получение данных ретеста
+#     values = get_gs_data(end_row)
+#
+#     # добавление нового столбца для результатов ретеста
+#     gs.add_new_column_after_()
+#
+#     # старт ретеста
+#     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+#     gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
+#     gs.updateRangeValues('B1', [gs_out])
+#     gs.updateRangeValues('V1', [start_retest_date])
+#
+#     start_row = 4
+#     gs_out_full = list()
+#     for row in values:
+#         # проверка на пустую строку
+#         if not row:
+#             break
+#
+#         # pre-test
+#         pre_test(row)
+#
+#         # Запуск pytest с параметрами
+#         output, error = run_pytest()
+#
+#         # проверка результатов тестирования
+#         gs_out = check_results(output, error)
+#
+#         # заполнение Google Sheets по-строчно
+#         # ==================
+#         # result = gs.updateRangeValues(f'V{start_row}', [gs_out])
+#         # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+#         # ==================
+#         gs_out_full.append(gs_out)
+#         start_row += 1
+#
+#     # заполнение Google Sheets сразу весь столбец
+#     # ==================
+#     result = gs.updateRangeValues('V4', gs_out_full)
+#     print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
+#     # ==================
+#
+#     # окончание ретеста
+#     end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+#     gs_out = ['Bugs Report']
+#     gs.updateRangeValues('B1', [gs_out])
+#     gs.updateRangeValues('V2', [end_retest_date])
+#     exit(0)
