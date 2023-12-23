@@ -125,7 +125,8 @@ class TestReTests:
         start_row = 4
         gs_out_full = list()
         for row in values:
-            print(f"\nRow = {row}")
+            print(f"\n\nRow № = {start_row}")
+            print(f"Row Value = {row}")
             # проверка на пустую строку
             if not row:
                 break
@@ -135,7 +136,7 @@ class TestReTests:
             pretest(row)
 
             # Запуск pytest с параметрами
-            print(f"2. Run run_pytest with parameters from {row} row")
+            print("2. Run run_pytest with parameters from row")
             output, error = run_pytest()
 
             # проверка результатов тестирования
@@ -144,7 +145,7 @@ class TestReTests:
 
             # заполнение Google Sheets по-строчно
             # ==================
-            print("4. Fixing check results in Google Sheet Bugs Report")
+            print("4. Fixing one row check results into Google Sheet Bugs Report")
             result = gs.updateRangeValues(f'V{start_row}', [gs_out])
             print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
             # ==================
