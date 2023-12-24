@@ -9,6 +9,7 @@ import allure
 # import logging
 
 from pages.common import Common
+from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -25,34 +26,78 @@ cur_page_url = ""
 class TestIndicesTradingGuidePreset:
     page_conditions = None
 
-    @allure.step("Start pretest")
-    def test_99_indices_trading_guide_pretest(self, worker_id, d,
-                                              cur_language, cur_country, cur_role, cur_login, cur_password):
+    # @allure.step("Start pretest")
+    # def test_99_indices_trading_guide_pretest(
+    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    #
+    #     global count
+    #     global cur_page_url
+    #
+    #     bid = build_dynamic_arg_v4(
+    #         d, worker_id, cur_language, cur_country, cur_role,
+    #         "11.02.06", "Education > Menu item [Indices Trading]",
+    #         ".00_99", "Pretest for US_11.02.06.01")
+    #
+    #     Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
+    #
+    #     page_conditions = Conditions(d, "")
+    #     link = page_conditions.preconditions(
+    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+    #
+    #     page_menu = MenuSection(d, link)
+    #     page_menu.menu_education_move_focus(d, cur_language)
+    #     page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+    #
+    #     file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
+    #     list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+    #
+    #     Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
+    #
+    #     count -= 1
 
-        global count
-        global cur_page_url
+    @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
+    def test_01_main_banner_start_trading_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Start Trading] on Main banner
+        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
+        """
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
+                      "Testing button [Start Trading] on Main banner")
+
+        # logger.info(f"====== START testing {', '.join(test_title)} ======")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.06", "Education > Menu item [Indices Trading]",
-            ".00_99", "Pretest for US_11.02.06.01")
-
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, link)
+        page_menu = MenuSection(d, main_page_link)
         page_menu.menu_education_move_focus(d, cur_language)
-        page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_item_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
 
-        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
-        list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+        test_element = MainBannerStartTrading(d, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-        Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
+        # if not test_element.element_click():
+        #     logger.warning(f"Testing element is not clicked")
+        #     logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
+        #     pytest.fail("Testing element is not clicked")
 
-        count -= 1
+        # test_element = AssertClass(d, cur_item_link)
+        # match cur_role:
+        #     case "NoReg":
+        #         test_element.assert_signup(d, cur_language, cur_item_link)
+        #     case "NoAuth":
+        #         test_element.assert_login(d, cur_language, cur_item_link)
+        #     case "Auth":
+        #         test_element.assert_trading_platform_v4(d, cur_item_link)
+
+        # logger.info(f"====== END testing {', '.join(test_title)} ======")
+
 
     # @allure.step("Start pretest")
     # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
