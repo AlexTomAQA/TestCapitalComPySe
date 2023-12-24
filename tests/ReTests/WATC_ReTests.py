@@ -59,7 +59,7 @@ def run_pytest():
                # f" --json-report --json-report-omit keywords streams"
                f" --no-summary -v"
                f" {host}{path}")
-
+    print(f"command: {command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
     return stdout, stderr
@@ -73,34 +73,48 @@ def check_results(output, error):
         print(f"Ошибка: {error.decode('utf-8')}")
     else:
         test_results = output.decode('utf-8')
-        print(f'\n{datetime.now()} {test_id}: {path}:{num_test} ({browser_name}-{lang}-{country}-{role})')
-
-    # Проверка пройденных тестов
-    passed_match = re.search(r"(\d+ passed)", test_results)
-    if passed_match:
-        passed = passed_match.group(1)
-        print(f"Пройдено тестов: {passed}")
-        gs_out = ['passed']
-    else:
-        print("Пройденные тесты не найдены.")
+        print(f"test_results: {test_results}")
+        # print(f'\n{datetime.now()} {test_id}: {path}:{num_test} ({browser_name}-{lang}-{country}-{role})')
 
     # Проверка не пройденных тестов
     failed_match = re.search(r"(\d+ failed)", test_results)
+    failed = None
     if failed_match:
         failed = failed_match.group(1)
-        print(f"Не пройдено тестов: {failed}")
+        print(f"Текущий тест: {failed}")
         gs_out = ['failed']
     else:
-        print("Не пройденные тесты не найдены.")
+        print(f"Текущий тест: не {failed}")
+
+    # Проверка ошибочных тестов
+    broken_match = re.search(r"(\d+ broken)", test_results)
+    broken = None
+    if broken_match:
+        broken = broken_match.group(1)
+        print(f"Текущий тест: {broken}")
+        gs_out = ['broken']
+    else:
+        print(f"Текущий тест: не {broken}")
+
+    # Проверка пройденных тестов
+    passed_match = re.search(r"(\d+ passed)", test_results)
+    passed = None
+    if passed_match:
+        passed = passed_match.group(1)
+        print(f"Текущий тест: {passed}")
+        gs_out = ['passed']
+    else:
+        print(f"Текущий тест: не {passed}")
 
     # Проверка пропущенных тестов
     skipped_match = re.search(r"(\d+ skipped)", test_results)
+    skipped = None
     if skipped_match:
         skipped = skipped_match.group(1)
-        print(f"Пропущено тестов: {skipped}")
+        print(f"Текущий тест: {skipped}")
         gs_out = ['skipped']
     else:
-        print("Пропущенные тесты не найдены.")
+        print(f"Текущий тест: не {skipped}")
 
     return gs_out
 
