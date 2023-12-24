@@ -63,7 +63,7 @@ class TestIndicesTradingGuidePreset:
         Check: Button [Start Trading] on Main banner
         Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
         """
-        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", "_01",
                       "Testing button [Start Trading] on Main banner")
 
         # logger.info(f"====== START testing {', '.join(test_title)} ======")
