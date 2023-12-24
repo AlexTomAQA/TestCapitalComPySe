@@ -15,6 +15,16 @@ from tests.ReTests.retest_data import us_data
 global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
 
+def get_gs_data(end_row):
+    # получение данных из Google Sheets
+    gs = GoogleSheet()
+    values = gs.getRangeValues(end_row)
+    if not values:
+        print('Данных в таблице нет!')
+        exit()
+    return values
+
+
 def pretest(row):
     global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
 
@@ -33,32 +43,24 @@ def pretest(row):
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
 
-def get_gs_data(end_row):
-    # получение данных из Google Sheets
-    gs = GoogleSheet()
-    values = gs.getRangeValues(end_row)
-    if not values:
-        print('Не данных в таблице!')
-        exit()
-    return values
-
-
 def run_pytest():
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
+               f" -vv"
+               # f" --no-summary -v"
                f" --retest={retest}"
                f" --browser_name={browser_name}"
                f" --lang={lang}"
                f" --country={country}"
                f" --role={role}"
-               f" --tpi_link={url}"
                f" -m test{num_test}"
+               f" --tpi_link={url}"
                # f" --json-report --json-report-omit keywords streams"
-               f" --no-summary -v"
                f" {host}{path}")
+
     print(f"command: {command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
@@ -74,47 +76,34 @@ def check_results(output, error):
     else:
         test_results = output.decode('utf-8')
         print(f"test_results: {test_results}")
-        # print(f'\n{datetime.now()} {test_id}: {path}:{num_test} ({browser_name}-{lang}-{country}-{role})')
 
-    # Проверка не пройденных тестов
+    # Проверка на Failed
     failed_match = re.search(r"(\d+ failed)", test_results)
-    failed = None
     if failed_match:
         failed = failed_match.group(1)
         print(f"Текущий тест: {failed}")
         gs_out = ['failed']
-    else:
-        print(f"Текущий тест: не {failed}")
 
-    # Проверка ошибочных тестов
+    # Проверка на Broken
     broken_match = re.search(r"(\d+ broken)", test_results)
-    broken = None
     if broken_match:
         broken = broken_match.group(1)
         print(f"Текущий тест: {broken}")
         gs_out = ['broken']
-    else:
-        print(f"Текущий тест: не {broken}")
 
-    # Проверка пройденных тестов
+    # Проверка на Passed
     passed_match = re.search(r"(\d+ passed)", test_results)
-    passed = None
     if passed_match:
         passed = passed_match.group(1)
         print(f"Текущий тест: {passed}")
         gs_out = ['passed']
-    else:
-        print(f"Текущий тест: не {passed}")
 
-    # Проверка пропущенных тестов
+    # Проверка на Skipped
     skipped_match = re.search(r"(\d+ skipped)", test_results)
-    skipped = None
     if skipped_match:
         skipped = skipped_match.group(1)
         print(f"Текущий тест: {skipped}")
         gs_out = ['skipped']
-    else:
-        print(f"Текущий тест: не {skipped}")
 
     return gs_out
 
@@ -122,12 +111,13 @@ def check_results(output, error):
 class TestReTests:
 
     def test_retests(self):
-        end_row = 1000
-        gs = GoogleSheet()
-        # проверка и получение данных ретеста
-        values = get_gs_data(end_row)
+        # end_row = 1000
+        # gs = GoogleSheet()
+        # # проверка и получение данных ретеста
+        # values = get_gs_data(end_row)
 
         # добавление нового столбца для результатов ретеста
+        gs = GoogleSheet()
         gs.add_new_column_after_()
 
         # старт ретеста
@@ -138,16 +128,19 @@ class TestReTests:
 
         start_row = 4
         gs_out_full = list()
-        for row in values:
-            print(f"\n\nRow № = {start_row}")
-            print(f"Row Value = {row}")
+        # for row in values:
+        while True:
+            row = gs.getRangeValues(start_row)
             # проверка на пустую строку
-            if not row:
+            if not row[0]:
                 break
+
+            print(f"\n\nRow № = {start_row}")
+            print(f"Row Value = {row[0]}")
 
             # pre-test
             print("1. Run pretest")
-            pretest(row)
+            pretest(row[0])
 
             # Запуск pytest с параметрами
             print("2. Run run_pytest with parameters from row")
