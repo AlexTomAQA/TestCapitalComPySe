@@ -57,9 +57,10 @@ class TestSharesTrading:
         Check: Button [Start Trading] on Main banner
         Language: All (Except: EL, HU, NL). License: All.
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         check_language(cur_language)
 
@@ -83,10 +84,10 @@ class TestSharesTrading:
         Check: Button [Try demo] on Main banner
         Language: All (Except: EL, HU, NL). License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02_02")
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         check_language(cur_language)
 
@@ -109,9 +110,10 @@ class TestSharesTrading:
         Check: Button [Trade] in Most traded block
         Language: All (Except: EL, HU, NL). License: All (Except: FCA).
         """
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_06", "Testing button [Trade] in Most traded block")
 
         check_language(cur_language)
         check_country(cur_country)
@@ -135,10 +137,10 @@ class TestSharesTrading:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All (Except: EL, HU, NL). License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.02.00_08")
-        bid = build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
-                                   "11.02.02", "Education > Menu item [Shares trading]",
-                                   ".00_08", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.02", "Education > Menu item [Shares trading]",
+            ".00_08", "Testing button [1. Create your account] in block [Steps trading]")
 
         check_language(cur_language)
 

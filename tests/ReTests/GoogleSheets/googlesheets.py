@@ -5,6 +5,8 @@
 """
 
 import os.path
+from datetime import datetime
+
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -29,8 +31,8 @@ class GoogleSheet:
 
     def __init__(self):
         creds = None
-        if os.path.exists("token.json"):
-            creds = Credentials.from_authorized_user_file("token.json", self.SCOPES)
+        if os.path.exists("./tests/ReTests/token.json"):
+            creds = Credentials.from_authorized_user_file("./tests/ReTests/token.json", self.SCOPES)
 
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
@@ -38,10 +40,10 @@ class GoogleSheet:
             else:
                 print('flow')
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    "credentials.json", self.SCOPES
+                    "./tests/ReTests/credentials.json", self.SCOPES
                 )
                 creds = flow.run_local_server(port=0)
-            with open("token.json", "w") as token:
+            with open("./tests/ReTests/token.json", "w") as token:
                 token.write(creds.to_json())
 
         try:
@@ -59,35 +61,8 @@ class GoogleSheet:
                 return sheet['properties']['sheetId']
         return None  # Если лист не найден
 
-    def getRangeValues(self, end_row=4):
-        RANGE_NAME = f"{self.SHEET_NAME}!A4:P{end_row}"
-        # Call the Sheets API
-        sheet = self.service.spreadsheets()
-        result = (
-            sheet.values()
-            .get(spreadsheetId=self.SPREADSHEET_ID, range=RANGE_NAME)
-            .execute()
-        )
-        values = result.get("values", [])
-
-        return values
-
-    def updateRangeValues(self, cell='V4', values=""):
-        RANGE_NAME = f'{self.SHEET_NAME}!{cell}'
-        data = [{
-            'range': RANGE_NAME,
-            'values': values
-        }]
-        body = {
-            'valueInputOption': 'USER_ENTERED',
-            'data': data
-        }
-        result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
-                                                                  body=body).execute()
-        return result
-
     def add_new_column_after_(self, index_of_col=21):
-        print("Добавление нового столбца")
+        print(f"\n{datetime.now()}   Добавление нового столбца =>")
         if index_of_col is not None:
             request_body = {
                 'requests': [{
@@ -103,6 +78,34 @@ class GoogleSheet:
             }
             self.service.spreadsheets().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
                                                     body=request_body).execute()
-
         else:
             print(f"Столбец {index_of_col} не найден в таблице.")
+
+        print(f"\n{datetime.now()}   => Новый столбец добавлен")
+
+    def get_row_values(self, end_row=4):
+        range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
+        # Call the Sheets API
+        sheet = self.service.spreadsheets()
+        result = (
+            sheet.values()
+            .get(spreadsheetId=self.SPREADSHEET_ID, range=range_name)
+            .execute()
+        )
+        values = result.get("values", [])
+
+        return values
+
+    def update_range_values(self, cell='V4', values=""):
+        range_name = f'{self.SHEET_NAME}!{cell}'
+        data = [{
+            'range': range_name,
+            'values': values
+        }]
+        body = {
+            'valueInputOption': 'USER_ENTERED',
+            'data': data
+        }
+        result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
+                                                                  body=body).execute()
+        return result
