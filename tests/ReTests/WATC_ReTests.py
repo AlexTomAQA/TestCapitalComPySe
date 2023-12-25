@@ -4,62 +4,118 @@
 @Author  : Mike Taran
 """
 
-from datetime import datetime
 import os
 import subprocess
 import re
+from datetime import datetime
 
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 from tests.ReTests.retest_data import us_data
+from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
-global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
+test_id = None
+browser_name = None
+us = None
+path = None
+num_test = None
+lang = None
+country = None
+role = None
+url = None
 
 
-def get_gs_data(end_row):
-    # получение данных из Google Sheets
+def pytest_generate_tests(metafunc):
+    """
+    Fixture generation test data
+    """
+
+    list_number_rows = list()
+    start_row = 4
     gs = GoogleSheet()
-    values = gs.getRangeValues(end_row)
-    if not values:
-        print('Данных в таблице нет!')
-        exit()
-    return values
+    while True:
+        row_values = gs.get_row_values(start_row)
+        # проверка на пустую строку
+        if not row_values:
+            break
+
+        list_number_rows.append(start_row)
+
+        start_row += 1
+    del gs
+
+    print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
+
+    metafunc.parametrize("number_of_row", list_number_rows, scope="class")
 
 
-def pretest(row):
-    global test_id, retest_date, browser_name, path, num_test, lang, country, role, url
+class TestReTests:
+
+    def test_retests(self, d, gs, number_of_row):
+
+        print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
+        print(f"Row # = {number_of_row}")
+        row_values = gs.get_row_values(number_of_row)
+        print(f"Row Value = {row_values[0]}")
+
+        # pre-test
+        print(f"\n{datetime.now()}   1. Run pretest =>")
+        pretest(row_values[0])
+
+        # Запуск pytest с параметрами
+        print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
+        output, error = run_pytest()
+
+        # проверка результатов тестирования
+        print(f"\n{datetime.now()}   3. Run check_results =>")
+        gs_out = check_results(output, error)
+
+        # заполнение Google Sheets по-строчно
+        # ==================
+        print(f"\n{datetime.now()}   4. Fixing one row check results into Google Sheet Bugs Report =>")
+        result = gs.update_range_values(f'V{number_of_row}', [gs_out])
+        print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+        # ==================
+        assert True
+
+
+def pretest(row_loc):
+    global test_id, browser_name, us, path, num_test, lang, country, role, url
 
     # аргументы командной строки
     try:
-        test_id = row[0]
-        browser_name = row[2]
-        path = us_data.us_data[row[3]]
-        num_test = row[4]
-        lang = '' if row[5] == 'en' else row[5]
-        country = row[6]
-        role = row[8]
-        url = row[9]
-        # num_bug = row[12]
+        test_id = row_loc[0]
+        browser_name = row_loc[2]
+        us = row_loc[3]
+        path = us_data.us_data[row_loc[3]]
+        num_test = row_loc[4]
+        lang = '' if row_loc[5] == 'en' else row_loc[5]
+        country = row_loc[6]
+        role = row_loc[8]
+        url = row_loc[9]
+        # num_bug = row_loc[12]
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
 
 def run_pytest():
+    global test_id, browser_name, us, path, num_test, lang, country, role, url
+
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
-               f" -vv"
-               # f" --no-summary -v"
                f" --retest={retest}"
                f" --browser_name={browser_name}"
                f" --lang={lang}"
                f" --country={country}"
-               f" --role={role}"
-               f" -m test{num_test}"
-               f" --tpi_link={url}"
-               # f" --json-report --json-report-omit keywords streams"
-               f" {host}{path}")
+               f" --role={role}")
+    if us[-3::] != ".00":
+        command += f" --tpi_link={url}"
+    command += f" -m test{num_test}"
+    command += " -v"
+    # command += " --no-summary -v"
+    command += f" {host}{path}"
+    # command += f" --json-report --json-report-omit keywords streams"
 
     print(f"command: {command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -71,162 +127,39 @@ def check_results(output, error):
     # Проверка наличия ошибок при выполнении
     test_results = ""
     gs_out = [[]]
+
     if error:
         print(f"Ошибка: {error.decode('utf-8')}")
     else:
         test_results = output.decode('utf-8')
-        print(f"test_results: {test_results}")
+        print(f"{datetime.now()} test_results: \n{test_results}")
 
     # Проверка на Failed
     failed_match = re.search(r"(\d+ failed)", test_results)
     if failed_match:
         failed = failed_match.group(1)
-        print(f"Текущий тест: {failed}")
+        print(f"{datetime.now()}   => Текущий тест: {failed}")
         gs_out = ['failed']
 
     # Проверка на Broken
     broken_match = re.search(r"(\d+ broken)", test_results)
     if broken_match:
         broken = broken_match.group(1)
-        print(f"Текущий тест: {broken}")
+        print(f"{datetime.now()}   => Текущий тест: {broken}")
         gs_out = ['broken']
 
     # Проверка на Passed
     passed_match = re.search(r"(\d+ passed)", test_results)
     if passed_match:
         passed = passed_match.group(1)
-        print(f"Текущий тест: {passed}")
+        print(f"{datetime.now()}   => Текущий тест: {passed}")
         gs_out = ['passed']
 
     # Проверка на Skipped
     skipped_match = re.search(r"(\d+ skipped)", test_results)
     if skipped_match:
         skipped = skipped_match.group(1)
-        print(f"Текущий тест: {skipped}")
+        print(f"{datetime.now()}   => Текущий тест: {skipped}")
         gs_out = ['skipped']
 
     return gs_out
-
-
-class TestReTests:
-
-    def test_retests(self):
-        # end_row = 1000
-        # gs = GoogleSheet()
-        # # проверка и получение данных ретеста
-        # values = get_gs_data(end_row)
-
-        # добавление нового столбца для результатов ретеста
-        gs = GoogleSheet()
-        gs.add_new_column_after_()
-
-        # старт ретеста
-        start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-        gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
-        gs.updateRangeValues('B1', [gs_out])
-        gs.updateRangeValues('V1', [start_retest_date])
-
-        start_row = 4
-        gs_out_full = list()
-        # for row in values:
-        while True:
-            row = gs.getRangeValues(start_row)
-            # проверка на пустую строку
-            if not row[0]:
-                break
-
-            print(f"\n\nRow № = {start_row}")
-            print(f"Row Value = {row[0]}")
-
-            # pre-test
-            print("1. Run pretest")
-            pretest(row[0])
-
-            # Запуск pytest с параметрами
-            print("2. Run run_pytest with parameters from row")
-            output, error = run_pytest()
-
-            # проверка результатов тестирования
-            print("3. Run check_results")
-            gs_out = check_results(output, error)
-
-            # заполнение Google Sheets по-строчно
-            # ==================
-            print("4. Fixing one row check results into Google Sheet Bugs Report")
-            result = gs.updateRangeValues(f'V{start_row}', [gs_out])
-            print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
-            # ==================
-
-            # print("4. Fixing check results in memory")
-            # gs_out_full.append(gs_out)
-
-            start_row += 1
-
-        # заполнение Google Sheets сразу весь столбец
-        # ==================
-        # print("\n5. Update results from memory into Google sheet Bugs Report")
-        # result = gs.updateRangeValues('V4', gs_out_full)
-        # print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
-        # ==================
-
-        # окончание ретеста
-        end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-        gs_out = ['Bugs Report']
-        gs.updateRangeValues('B1', [gs_out])
-        gs.updateRangeValues('V2', [end_retest_date])
-        # exit(0)
-
-
-# if __name__ == '__main__':
-#
-#     end_row = 1000
-#     gs = GoogleSheet()
-#
-#     # проверка и получение данных ретеста
-#     values = get_gs_data(end_row)
-#
-#     # добавление нового столбца для результатов ретеста
-#     gs.add_new_column_after_()
-#
-#     # старт ретеста
-#     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-#     gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
-#     gs.updateRangeValues('B1', [gs_out])
-#     gs.updateRangeValues('V1', [start_retest_date])
-#
-#     start_row = 4
-#     gs_out_full = list()
-#     for row in values:
-#         # проверка на пустую строку
-#         if not row:
-#             break
-#
-#         # pre-test
-#         pre_test(row)
-#
-#         # Запуск pytest с параметрами
-#         output, error = run_pytest()
-#
-#         # проверка результатов тестирования
-#         gs_out = check_results(output, error)
-#
-#         # заполнение Google Sheets по-строчно
-#         # ==================
-#         # result = gs.updateRangeValues(f'V{start_row}', [gs_out])
-#         # print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
-#         # ==================
-#         gs_out_full.append(gs_out)
-#         start_row += 1
-#
-#     # заполнение Google Sheets сразу весь столбец
-#     # ==================
-#     result = gs.updateRangeValues('V4', gs_out_full)
-#     print('\n{0} cells updated.'.format(result.get('totalUpdatedCells')))
-#     # ==================
-#
-#     # окончание ретеста
-#     end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-#     gs_out = ['Bugs Report']
-#     gs.updateRangeValues('B1', [gs_out])
-#     gs.updateRangeValues('V2', [end_retest_date])
-#     exit(0)
