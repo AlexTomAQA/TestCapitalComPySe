@@ -3,13 +3,11 @@
 @Time    : 2023/04/19 17:00 GMT+3
 @Author  : Suleyman Alirzaev
 """
-from datetime import datetime
-
 import pytest
 import allure
 
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v2
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.BlockStepTrading import BlockStepTrading
@@ -52,17 +50,17 @@ class TestCommoditiesTrading:
             pytest.skip(f"This test is not for {cur_country} country")
 
     @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_01")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_01", "Testing button [Start Trading] on Main banner")
 
         self.check_language(cur_language)
 
@@ -85,18 +83,17 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
-    # @profile(precision=3)
+    @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_02")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_02", "Testing button [Try demo] on Main banner")
 
         self.check_language(cur_language)
 
@@ -120,18 +117,17 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     @allure.step("Start test of button [Sell] in content block")
-    # @profile(precision=3)
+    @pytest.mark.test_03
     def test_03_content_block_button_sell(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Sell] in content block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_03")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "03", "Testing button [Sell] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_03", "Testing button [Sell] in content block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -160,18 +156,17 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Buy] in content block")
-    # @profile(precision=3)
+    @pytest.mark.test_04
     def test_04_content_block_button_buy(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Buy] in content block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_04")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "04", "Testing button [Buy] in content block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_04", "Testing button [Buy] in content block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -200,18 +195,17 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Start trading] in article")
-    # @profile(precision=3)
+    @pytest.mark.test_05
     def test_05_start_trading_in_article_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start trading] in article
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_05")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "05", "Testing button [Start trading] in article")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_05", "Testing button [Start trading] in article")
 
         self.check_language(cur_language)
 
@@ -223,18 +217,17 @@ class TestCommoditiesTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
-    # @profile(precision=3)
+    @pytest.mark.test_06
     def test_06_most_traded_trade_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_06")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "06", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_06", "Testing button [Trade] in Most traded block")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -265,18 +258,17 @@ class TestCommoditiesTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Get started] on Sticky bar")
-    # @profile(precision=3)
+    @pytest.mark.test_07
     def test_07_sticky_bar_button_get_started(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Get started] on Sticky bar
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_07")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "07", "Testing button [Get started] on Sticky bar")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_07", "Testing button [Get started] on Sticky bar")
 
         self.check_language(cur_language)
         self.check_country(cur_country)
@@ -301,18 +293,17 @@ class TestCommoditiesTrading:
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
-    # @profile(precision=3)
+    @pytest.mark.test_08
     def test_08_block_steps_trading_button_create_your_account(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-            prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Create your account] in block [Steps trading]
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_08")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "08", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_08", "Testing button [Create your account] in block [Steps trading]")
 
         self.check_language(cur_language)
 
@@ -335,18 +326,17 @@ class TestCommoditiesTrading:
 
     # @pytest.skip
     @allure.step("Start test of button [Create account] in block [Open a trading account in less than 3 minutes]")
+    @pytest.mark.test_09
     def test_09_block_open_account_3_min_button_create_account(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
-            cur_item_link, prob_run_tc):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Create account] in block [Open a trading account in less than 3 minutes]
         Language: All. License: All.
         """
-        print(f"\n{datetime.now()}   Работает obj {self} с именем TC_11.02.03_09")
-        build_dynamic_arg_v2(self, d, worker_id, cur_language, cur_country, cur_role, prob_run_tc,
-                             "11.02.03", "Educations > Menu item [Commodities trading]",
-                             "09", "Testing buttons [Create account] "
-                                   "in block [Open a trading account in less than 3 minutes]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.03", "Education > Menu item [Commodities trading]",
+            ".01_09", "Testing buttons [Create account] in block [Open a trading account in less than 3 minutes]")
 
         if cur_language not in ["de", "es", "it", "pl"]:
             pytest.skip(f"This test is not for {cur_language} language")

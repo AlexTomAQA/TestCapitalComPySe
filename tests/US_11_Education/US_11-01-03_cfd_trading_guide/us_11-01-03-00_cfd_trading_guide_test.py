@@ -8,7 +8,7 @@ import allure
 from datetime import datetime
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.testing_elements_locators import SubPages
@@ -34,9 +34,10 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         global cur_page_url
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_01", "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -60,9 +61,10 @@ class TestCFDTradingGuide:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_02", "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -86,9 +88,10 @@ class TestCFDTradingGuide:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_03", "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -113,9 +116,10 @@ class TestCFDTradingGuide:
         """
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_04", "Testing button [Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".00_04", "Testing button [Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -135,9 +139,10 @@ class TestCFDTradingGuide:
         global count
         global cur_page_url
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.03", "Educations > Menu item [CFD trading guide]",
-                             ".00_99", "Pretest for US_11.01.03.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".00_99", "Pretest for US_11.01.03.01")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])

@@ -3,7 +3,7 @@ import pytest
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
@@ -20,9 +20,10 @@ class TestLearningHub:
         Check: Header -> button [Log In]
         Language: En. License: FCA.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.01.01", "Education > Menu Item [Learning hub]",
-                             "_01", "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.01", "Education > Menu Item [Learning hub]",
+            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(

@@ -6,7 +6,7 @@ from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v3
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from pages.Elements.BlockStepTrading import BlockStepTrading
@@ -32,16 +32,15 @@ class TestTradingStrategiesGuides:
         Check: Button [Start Trading]
         Language: All. License: All.
         """
-        link = build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                                    "11.03.01",
-                                    "Education > Menu item [Trading Strategies Guides]",
-                                    ".00_01",
-                                    "Testing button [Start Trading] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
@@ -59,16 +58,15 @@ class TestTradingStrategiesGuides:
         Check: Button [Try demo] on Main banner
         Language: All. License: All.
         """
-        link = build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                                    "11.03.01",
-                                    "Education > Menu item [Trading Strategies Guides]",
-                                    ".00_02",
-                                    "Testing button [Try demo] on Main banner")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
@@ -86,11 +84,10 @@ class TestTradingStrategiesGuides:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01",
-                             "Education > Menu item [Trading Strategies Guides]",
-                             ".00_03",
-                             "Testing button [Trade] in Most traded block")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
@@ -114,16 +111,15 @@ class TestTradingStrategiesGuides:
         Check: Steps trading -> button [1. Create your account]
         Language: All. License: All.
         """
-        link = build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                                    "11.03.01",
-                                    "Education > Menu item [Trading Strategies Guides]",
-                                    ".00_04",
-                                    "Testing button [1. Create your account] in block [Steps trading]")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
@@ -139,9 +135,10 @@ class TestTradingStrategiesGuides:
 
         global count
 
-        build_dynamic_arg_v3(self, d, worker_id, cur_language, cur_country, cur_role,
-                             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
-                             ".00_99", "Pretest for US_11.03.01.01")
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.03.01", "Education > Menu item [Trading Strategies Guides]",
+            ".00_99", "Pretest for US_11.03.01.01")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 

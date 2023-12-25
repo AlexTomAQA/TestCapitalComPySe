@@ -3,12 +3,13 @@
 @Time    : 2023/01/27 10:00
 @Author  : Alexander Tomelo
 """
-import pytest
+import sys
 import os
 import random
-import conf
-import allure
 from datetime import datetime
+
+import pytest
+import allure
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
@@ -18,6 +19,8 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.common.by import By
 from allure_commons.types import AttachmentType
+
+import conf
 
 test_browser = ""
 
@@ -47,24 +50,39 @@ def pytest_addoption(parser):
                      help="cur_item_link: '--tpi_link=https://capital.com/fr/trading-amazon'")
 
 
-@pytest.fixture(
-    scope="class",
-    params=[
+"""
+пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth 
+    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v 
+    tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+"""
+role_list = list()
+try:
+    # проверка аргументов командной строки
+    retest = sys.argv[1].split('=')[1]
+except IndexError:
+    retest = False
+if retest == 'True':
+    if sys.argv[5].split('=')[0] == "--role":
+        role_list = (sys.argv[5].split('=')[1],)
+
+else:
+    role_list = (
         "Auth",
         "NoAuth",  # "Reg/NoAuth"
         "NoReg",
-    ],
+    )
+
+
+@pytest.fixture(
+    scope="class",
+    params=[*role_list],
 )
 def cur_role(request):
     """Fixture"""
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
-        role = request.config.getoption("role")
-    else:
-        role = request.param
-    print(f"\n\n\nCurrent test role - {role}")
-    return role
+    cur_role = request.param
+    print(f"\n\n\nCurrent test role - {cur_role}")
+    return cur_role
 
 
 # Language parameter
@@ -76,10 +94,10 @@ def cur_role(request):
         # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
-        "cn",  # 13 us Education to trade present, financial glossary not present
+        # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
-        # "pl",  # 10 us
+        "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
@@ -104,8 +122,8 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
