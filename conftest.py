@@ -89,7 +89,7 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
@@ -97,7 +97,7 @@ def cur_role(request):
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
-        "pl",  # 10 us
+        # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
@@ -210,13 +210,13 @@ def pre_go(fixture_value):
 )
 def go(request, d):
     """Start execution program"""
-    print(f'autouse fixture {request.param}')
+    print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
     # d.get(conf.URL)
 
     yield d
 
     d.quit()
-    print("\n*** end fixture = teardown ***\n")
+    print(f"\n{datetime.now()}   *** end fixture Chrome = teardown ***\n")
 
 
 @pytest.fixture()
