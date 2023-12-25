@@ -108,52 +108,27 @@ jobs:
         run: poetry run pytest -v tests/ReTests/WATC_ReTests.py
         continue-on-error: true
 
-#        run: poetry run python3 tests/ReTests/WATC_ReTests.py
+      - name: 10. Generate allure report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
+          gh_pages: gh-pages
+          allure_history: allure-history
+          ref: gh-pages
+          path: gh-pages
+          keep_reports: 80
 
-#      - name: 9. Get Allure history
-#        uses: actions/checkout@v3
-#        if: always()
-#        continue-on-error: true
-#        with:
-#          ref: gh-pages
-#          path: gh-pages
-#
-#      - name: Run hwinfo.py
-#        if: always()
-#        run: poetry run python3 tests/hwinfo.py
-#
-#      - name: 10. Generate allure report
-#        uses: simple-elf/allure-report-action@master
-#        if: always()
-#        id: allure-report
-#        with:
-#          allure_results: allure-results
-#          allure_report: allure-report
-#          gh_pages: gh-pages
-#          allure_history: allure-history
-#          ref: gh-pages
-#          path: gh-pages
-#          keep_reports: 50
-#
-#      - name: Run hwinfo.py
-#        if: always()
-#        run: poetry run python3 tests/hwinfo.py
-#
-#      - name: 11.1 Deploy allure_report to Github Pages
-#        uses: peaceiris/actions-gh-pages@v3
-#        if: always()
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-##          github_token: ${{ secrets.MY_TOKEN }}
-#          PUBLISH_BRANCH: gh-pages
-#          publish_dir: ./allure-history
-#          commit_message: ${{ github.event.head_commit.message }}
-#          # force_orphan: true
-#
-#      - name: Run hwinfo.py
-#        if: always()
-#        run: poetry run python3 tests/hwinfo.py
-#
+      - name: 12. Upload artifact "allure-report"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report/
+          retention-days: 7
+
 #      - name: 12. Send telegram message on push
 #        uses: appleboy/telegram-action@master
 #        if: always()
