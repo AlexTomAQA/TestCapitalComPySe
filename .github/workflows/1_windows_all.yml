@@ -101,10 +101,10 @@ jobs:
           path: gh-pages
           keep_reports: 80
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
+#      - name: Run hwinfo.py
+#        if: always()
+#        run: poetry run python3 tests/hwinfo.py
+#
       - name: 4. Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
@@ -117,10 +117,10 @@ jobs:
           PUBLISH_DIR: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
+#      - name: Run hwinfo.py
+#        if: always()
+#        run: poetry run python3 tests/hwinfo.py
+#
 #      - name: 12. Send telegram message on push
 #        uses: appleboy/telegram-action@master
 #        if: always()
