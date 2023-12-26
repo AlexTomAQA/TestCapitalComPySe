@@ -72,6 +72,9 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -112,6 +115,9 @@ class TestIndicesTradingGuidePreset:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
