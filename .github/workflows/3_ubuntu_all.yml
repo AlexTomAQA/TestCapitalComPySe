@@ -231,19 +231,39 @@ jobs:
         if: always()
         run: poetry run python3 tests/hwinfo.py
 
-      - name: 9. Get Allure history
-        uses: actions/checkout@v3
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 1
+
+  generate_and_deploy_report:
+    name: II. Generate & Deploy Allure report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [ tests ]
+
+    steps:
+      - name: 1. Get Allure history
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
 
-      - name: Run hwinfo.py
+      - name: 2. Download Artifacts
+        uses: actions/download-artifact@v3
+        id: download
         if: always()
-        run: poetry run python3 tests/hwinfo.py
+        continue-on-error: true
+        with:
+          name: allure-results
+          path: allure-results
 
-      - name: 10. Generate allure report
+      - name: 3. Generate allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -256,11 +276,7 @@ jobs:
           path: gh-pages
           keep_reports: 80
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
-      - name: 11.1 Deploy allure_report to Github Pages
+      - name: 4. Deploy allure_report to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
@@ -271,23 +287,3 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           publish_dir: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
-
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
-#      - name: 12. Send telegram message on push
-#        uses: appleboy/telegram-action@master
-#        if: always()
-#        with:
-#          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
-##           to: ${{ secrets.TELEGRAM_TO }}
-#          token: ${{ secrets.TELEGRAM_TOKEN }}
-##           disable_web_page_preview: true
-#          message: |
-#            Message from GitHub CI Actions
-#
-#            Testing of the "Capital.com" web application in the "macOS/Chrome" environment is completed!
-#
-#            See allure-result testing: https://${{ github.actor }}.github.io/TestCapitalCom/
-##             Tests Repository: https://github.com/${{ github.repository }}
