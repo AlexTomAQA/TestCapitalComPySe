@@ -96,6 +96,19 @@ class GoogleSheet:
 
         return values
 
+    def get_cell_values(self, cell):
+        cell_range_name = f"{self.SHEET_NAME}!{cell}"
+        # Call the Sheets API
+        sheet = self.service.spreadsheets()
+        result = (
+            sheet.values()
+            .get(spreadsheetId=self.SPREADSHEET_ID, range=cell_range_name)
+            .execute()
+        )
+        values = result.get("values", [])
+
+        return values
+
     def update_range_values(self, cell='V4', values=""):
         range_name = f'{self.SHEET_NAME}!{cell}'
         data = [{

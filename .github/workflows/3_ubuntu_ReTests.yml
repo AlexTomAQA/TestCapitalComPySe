@@ -96,17 +96,18 @@ jobs:
           extra-mypy-options: ""
           extra-isort-options: ""
 
-      - name: pwd
-        if: always()
-        run: pwd
-      - name: ls- la
-        if: always()
-        run: ls -la
-
-      - name: Run WATC_ReTest
+      - name: 8. Run WATC_ReTest
         if: always()
         run: poetry run pytest -v tests/ReTests/WATC_ReTests.py
         continue-on-error: true
+
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 7
 
       - name: 10. Generate allure report
         uses: simple-elf/allure-report-action@master
@@ -121,26 +122,26 @@ jobs:
           path: gh-pages
           keep_reports: 80
 
-      - name: 12. Upload artifact "allure-report"
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 7
-
-#      - name: 12. Send telegram message on push
-#        uses: appleboy/telegram-action@master
+#      - name: 12. Upload artifact "allure-report"
 #        if: always()
+#        uses: actions/upload-artifact@v3
 #        with:
-#          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
-##           to: ${{ secrets.TELEGRAM_TO }}
-#          token: ${{ secrets.TELEGRAM_TOKEN }}
-##           disable_web_page_preview: true
-#          message: |
-#            Message from GitHub CI Actions
+#          name: allure-report
+#          path: allure-report/
+#          retention-days: 7
 #
-#            Testing of the "Capital.com" web application in the "macOS/Chrome" environment is completed!
-#
-#            See allure-result testing: https://${{ github.actor }}.github.io/TestCapitalCom/
-##             Tests Repository: https://github.com/${{ github.repository }}
+      - name: 13. Send telegram message on push
+        uses: appleboy/telegram-action@master
+        if: always()
+        with:
+          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
+#           to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+#           disable_web_page_preview: true
+          message: |
+            Message from GitHub CI Actions
+
+            ReTesting of the "Capital.com" web application according Bugs Report in the "Ubuntu/Chrome" environment is 
+            complete.
+
+            ReTests-results link: https://docs.google.com/spreadsheets/d/1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk/edit?usp=sharing

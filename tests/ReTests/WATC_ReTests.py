@@ -31,16 +31,11 @@ def pytest_generate_tests(metafunc):
     list_number_rows = list()
     start_row = 4
     gs = GoogleSheet()
-    while True:
-        row_values = gs.get_row_values(start_row)
-        # проверка на пустую строку
-        if not row_values:
-            break
-
-        list_number_rows.append(start_row)
-
-        start_row += 1
+    qty_of_bugs = gs.get_cell_values("A2")
     del gs
+    end_row = start_row + int(qty_of_bugs[0][0])
+    for num_row in range(start_row, end_row):
+        list_number_rows.append(num_row)
 
     print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
 
