@@ -31,7 +31,7 @@ test_browser = ""
 
 def pytest_addoption(parser):
     # проверка аргументов командной строки
-    parser.addoption('--retest', action='store', default=False,
+    parser.addoption('--retest', action='store', default='False',
                      help="Re-Testing: '--retest=True'")
 
     parser.addoption('--browser_name', action='store', default='Chrome',
@@ -56,26 +56,34 @@ def pytest_addoption(parser):
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 """
 role_list = list()
-try:
-    # проверка аргументов командной строки
-    retest = sys.argv[1].split('=')[1]
-except IndexError:
-    retest = False
-if retest == 'True':
-    if sys.argv[5].split('=')[0] == "--role":
-        role_list = (sys.argv[5].split('=')[1],)
 
-else:
-    role_list = (
-        "Auth",
-        "NoAuth",  # "Reg/NoAuth"
-        "NoReg",
-    )
+
+def pre_cur_role(fixture_value):
+    global role_list
+    role_list = fixture_value
+
+    try:
+        # проверка аргументов командной строки
+        retest = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest = "False"
+
+    if retest == 'True':
+        if sys.argv[5].split('=')[0] == "--role":
+            role_list = (sys.argv[5].split('=')[1],)
+    else:
+        role_list = (
+            "Auth",
+            "NoAuth",  # "Reg/NoAuth"
+            "NoReg",
+        )
+    return None
 
 
 @pytest.fixture(
     scope="class",
     params=[*role_list],
+    ids=pre_cur_role,
 )
 def cur_role(request):
     """Fixture"""
