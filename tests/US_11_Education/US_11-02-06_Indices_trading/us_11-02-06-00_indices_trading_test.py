@@ -10,6 +10,7 @@ import allure
 
 from pages.common import Common
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
+from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -71,6 +72,9 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -86,7 +90,6 @@ class TestIndicesTradingGuidePreset:
         #     logger.warning(f"Testing element is not clicked")
         #     logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
         #     pytest.fail("Testing element is not clicked")
-
         # test_element = AssertClass(d, cur_item_link)
         # match cur_role:
         #     case "NoReg":
@@ -95,9 +98,53 @@ class TestIndicesTradingGuidePreset:
         #         test_element.assert_login(d, cur_language, cur_item_link)
         #     case "Auth":
         #         test_element.assert_trading_platform_v4(d, cur_item_link)
-
         # logger.info(f"====== END testing {', '.join(test_title)} ======")
 
+    @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
+    def test_02_main_banner_try_demo_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Start Trading] on Main banner
+        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
+        """
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
+                      ".00_02", "Testing button [Try demo] on Main banner")
+
+        # logger.info(f"====== START testing {', '.join(test_title)} ======")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, main_page_link)
+        page_menu.menu_education_move_focus(d, cur_language)
+        cur_item_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+
+        test_element = MainBannerTryDemo(d, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+        # if not test_element.element_click():
+        #     logger.warning(f"Testing element is not clicked")
+        #     logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
+        #     pytest.fail("Testing element is not clicked")
+        #
+        # test_element = AssertClass(d, cur_item_link)
+        # match cur_role:
+        #     case "NoReg":
+        #         test_element.assert_signup(d, cur_language, cur_item_link)
+        #     case "NoAuth":
+        #         test_element.assert_login(d, cur_language, cur_item_link)
+        #     case "Auth":
+        #         test_element.assert_trading_platform_v4(d, cur_item_link, True)
+
+        # logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     # @allure.step("Start pretest")
     # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
