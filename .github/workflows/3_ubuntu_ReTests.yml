@@ -96,17 +96,18 @@ jobs:
           extra-mypy-options: ""
           extra-isort-options: ""
 
-      - name: pwd
-        if: always()
-        run: pwd
-      - name: ls- la
-        if: always()
-        run: ls -la
-
-      - name: Run WATC_ReTest
+      - name: 8. Run WATC_ReTest
         if: always()
         run: poetry run pytest -v tests/ReTests/WATC_ReTests.py
         continue-on-error: true
+
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 7
 
       - name: 10. Generate allure report
         uses: simple-elf/allure-report-action@master
@@ -121,14 +122,14 @@ jobs:
           path: gh-pages
           keep_reports: 80
 
-      - name: 12. Upload artifact "allure-report"
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: allure-report/
-          retention-days: 7
-
+#      - name: 12. Upload artifact "allure-report"
+#        if: always()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: allure-report
+#          path: allure-report/
+#          retention-days: 7
+#
       - name: 13. Send telegram message on push
         uses: appleboy/telegram-action@master
         if: always()
