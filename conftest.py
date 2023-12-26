@@ -64,11 +64,11 @@ def pre_cur_role(fixture_value):
 
     try:
         # проверка аргументов командной строки
-        retest = sys.argv[1].split('=')[1]
+        retest = bool(sys.argv[1].split('=')[1])
     except IndexError:
-        retest = "False"
+        retest = False
 
-    if retest == 'True':
+    if retest:
         if sys.argv[5].split('=')[0] == "--role":
             role_list = (sys.argv[5].split('=')[1],)
     else:
