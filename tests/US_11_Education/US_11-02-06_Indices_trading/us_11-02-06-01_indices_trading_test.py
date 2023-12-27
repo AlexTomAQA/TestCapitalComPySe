@@ -9,9 +9,9 @@ from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
 from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-# from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
+from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-# from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -95,7 +95,30 @@ class TestIndicesTrading:
     #
     #     logger.info(f"====== END testing {', '.join(test_title)} ======")
 
+    @allure.step("Start test of button [Start trading] on Main banner")
+    @pytest.mark.test_01
+    def test_01_main_banner_start_trading_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
+            cur_item_link):
+        """
+        Check: Button [Start Trading] on Main banner
+        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
+        """
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
+                      "Testing button [Start Trading] on Main banner")
 
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = MainBannerStartTrading(d, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
