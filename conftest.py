@@ -5,7 +5,6 @@
 """
 import sys
 import os
-import random
 from datetime import datetime
 
 import pytest
@@ -228,7 +227,7 @@ def cur_password(request):
     return request.param
 
 
-@pytest.fixture()
+# @pytest.fixture()
 # def prob_run_tc():
 #     """
 #     Fixture for реализации вероятности выполнения теста
@@ -281,8 +280,15 @@ def d(request):
     """WebDriver Initialization"""
     global test_browser
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+
+    try:
+        # проверка аргументов командной строки
+        retest_for_br = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_br = False
+
+    if retest_for_br:
         test_browser = request.config.getoption("browser_name")
 
     browser = test_browser
