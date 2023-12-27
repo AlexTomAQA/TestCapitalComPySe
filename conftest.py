@@ -55,6 +55,7 @@ def pytest_addoption(parser):
     --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v 
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 """
+
 role_list = list()
 
 
@@ -64,11 +65,11 @@ def pre_cur_role(fixture_value):
 
     try:
         # проверка аргументов командной строки
-        retest = bool(sys.argv[1].split('=')[1])
+        retest = sys.argv[1].split('=')[1]
     except IndexError:
         retest = False
 
-    if retest:
+    if retest == "True":
         if sys.argv[5].split('=')[0] == "--role":
             role_list = (sys.argv[5].split('=')[1],)
     else:
@@ -77,7 +78,7 @@ def pre_cur_role(fixture_value):
             "NoAuth",  # "Reg/NoAuth"
             "NoReg",
         )
-    return None
+    return role_list
 
 
 @pytest.fixture(
