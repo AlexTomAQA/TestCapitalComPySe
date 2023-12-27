@@ -143,9 +143,16 @@ def cur_role(request):
 )
 def cur_language(request):
     """Fixture"""
+    # retest_for_lang = None
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+    try:
+        # проверка аргументов командной строки
+        retest_for_lang = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_lang = False
+
+    if retest_for_lang:
         language = request.config.getoption("lang")
     else:
         language = request.param
@@ -182,8 +189,14 @@ def cur_language(request):
 def cur_country(request):
     """Fixture"""
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+    try:
+        # проверка аргументов командной строки
+        retest_for_count = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_count = False
+
+    if retest_for_count:
         country = request.config.getoption("country")
     else:
         country = request.param
@@ -216,15 +229,16 @@ def cur_password(request):
 
 
 @pytest.fixture()
-def prob_run_tc():
-    """
-    Fixture for реализации вероятности выполнения теста
-    """
-    prob = 100
-    if random.randint(1, 100) <= prob:
-        return ""
-    else:
-        return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
+# def prob_run_tc():
+#     """
+#     Fixture for реализации вероятности выполнения теста
+#     """
+#     prob = 100
+#     if random.randint(1, 100) <= prob:
+#         return ""
+#     else:
+#         return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
+#
 
 
 def pre_go(fixture_value):
