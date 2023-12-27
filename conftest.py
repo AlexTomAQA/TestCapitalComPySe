@@ -39,7 +39,7 @@ def pytest_addoption(parser):
     parser.addoption('--lang', action='store', default='',
                      help="Choose language: '--lang='' for 'en'")
 
-    parser.addoption('--country', action='store', default='de',
+    parser.addoption('--country', action='store', default='gb',
                      help="Choose License: '--country=ae'")
 
     parser.addoption('--role', action='store', default='NoReg',
@@ -163,8 +163,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        # "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
@@ -191,11 +191,11 @@ def cur_country(request):
     # retest = request.config.getoption("retest")
     try:
         # проверка аргументов командной строки
-        retest_for_count = sys.argv[1].split('=')[1]
+        retest_for_country = sys.argv[1].split('=')[1]
     except IndexError:
-        retest_for_count = False
+        retest_for_country = False
 
-    if retest_for_count:
+    if retest_for_country:
         country = request.config.getoption("country")
     else:
         country = request.param
@@ -267,11 +267,11 @@ def go(request, d):
     d.quit()
     print(f"\n{datetime.now()}   *** end fixture Chrome = teardown ***\n")
 
-
-@pytest.fixture()
-def cur_time():
-    """Fixture"""
-    return str(datetime.now())
+#
+# @pytest.fixture()
+# def cur_time():
+#     """Fixture"""
+#     return str(datetime.now())
 
 
 @pytest.fixture(scope="module")
