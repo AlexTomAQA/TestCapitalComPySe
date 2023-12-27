@@ -58,33 +58,26 @@ def pytest_addoption(parser):
 
 role_list = list()
 
+try:
+    # проверка аргументов командной строки
+    retest = sys.argv[1].split('=')[1]
+except IndexError:
+    retest = False
 
-def pre_cur_role(fixture_value):
-    global role_list
-    role_list = fixture_value
-
-    try:
-        # проверка аргументов командной строки
-        retest = sys.argv[1].split('=')[1]
-    except IndexError:
-        retest = False
-
-    if retest == "True":
-        if sys.argv[5].split('=')[0] == "--role":
-            role_list = (sys.argv[5].split('=')[1],)
-    else:
-        role_list = (
-            "Auth",
-            "NoAuth",  # "Reg/NoAuth"
-            "NoReg",
-        )
-    return role_list
+if retest == 'True':
+    if sys.argv[5].split('=')[0] == "--role":
+        role_list = (sys.argv[5].split('=')[1],)
+else:
+    role_list = (
+        "Auth",
+        "NoAuth",  # "Reg/NoAuth"
+        "NoReg",
+    )
 
 
 @pytest.fixture(
     scope="class",
     params=[*role_list],
-    ids=pre_cur_role,
 )
 def cur_role(request):
     """Fixture"""
@@ -92,6 +85,40 @@ def cur_role(request):
     cur_role = request.param
     print(f"\n\n\nCurrent test role - {cur_role}")
     return cur_role
+
+# def pre_cur_role(fixture_value):
+#     global role_list
+#     role_list = fixture_value
+#
+#     try:
+#         # проверка аргументов командной строки
+#         retest = sys.argv[1].split('=')[1]
+#     except IndexError:
+#         retest = False
+#
+#     if retest == "True":
+#         if sys.argv[5].split('=')[0] == "--role":
+#             role_list = (sys.argv[5].split('=')[1],)
+#     else:
+#         role_list = (
+#             "Auth",
+#             "NoAuth",  # "Reg/NoAuth"
+#             "NoReg",
+#         )
+#     return role_list
+#
+#
+# @pytest.fixture(
+#     scope="class",
+#     params=[*role_list],
+#     ids=pre_cur_role,
+# )
+# def cur_role(request):
+#     """Fixture"""
+#     # проверка аргументов командной строки
+#     cur_role = request.param
+#     print(f"\n\n\nCurrent test role - {cur_role}")
+#     return cur_role
 
 
 # Language parameter
