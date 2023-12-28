@@ -5,7 +5,6 @@
 """
 import sys
 import os
-import random
 from datetime import datetime
 
 import pytest
@@ -31,7 +30,7 @@ test_browser = ""
 
 def pytest_addoption(parser):
     # проверка аргументов командной строки
-    parser.addoption('--retest', action='store', default=False,
+    parser.addoption('--retest', action='store', default='False',
                      help="Re-Testing: '--retest=True'")
 
     parser.addoption('--browser_name', action='store', default='Chrome',
@@ -40,7 +39,7 @@ def pytest_addoption(parser):
     parser.addoption('--lang', action='store', default='',
                      help="Choose language: '--lang='' for 'en'")
 
-    parser.addoption('--country', action='store', default='de',
+    parser.addoption('--country', action='store', default='gb',
                      help="Choose License: '--country=ae'")
 
     parser.addoption('--role', action='store', default='NoReg',
@@ -55,16 +54,18 @@ def pytest_addoption(parser):
     --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v 
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 """
+
 role_list = list()
+
 try:
     # проверка аргументов командной строки
     retest = sys.argv[1].split('=')[1]
 except IndexError:
     retest = False
+
 if retest == 'True':
     if sys.argv[5].split('=')[0] == "--role":
         role_list = (sys.argv[5].split('=')[1],)
-
 else:
     role_list = (
         "Auth",
@@ -84,6 +85,40 @@ def cur_role(request):
     print(f"\n\n\nCurrent test role - {cur_role}")
     return cur_role
 
+# def pre_cur_role(fixture_value):
+#     global role_list
+#     role_list = fixture_value
+#
+#     try:
+#         # проверка аргументов командной строки
+#         retest = sys.argv[1].split('=')[1]
+#     except IndexError:
+#         retest = False
+#
+#     if retest == "True":
+#         if sys.argv[5].split('=')[0] == "--role":
+#             role_list = (sys.argv[5].split('=')[1],)
+#     else:
+#         role_list = (
+#             "Auth",
+#             "NoAuth",  # "Reg/NoAuth"
+#             "NoReg",
+#         )
+#     return role_list
+#
+#
+# @pytest.fixture(
+#     scope="class",
+#     params=[*role_list],
+#     ids=pre_cur_role,
+# )
+# def cur_role(request):
+#     """Fixture"""
+#     # проверка аргументов командной строки
+#     cur_role = request.param
+#     print(f"\n\n\nCurrent test role - {cur_role}")
+#     return cur_role
+
 
 # Language parameter
 @pytest.fixture(
@@ -91,12 +126,12 @@ def cur_role(request):
     params=[
         # "",  # "en" - 21 us
         # "es",  # 20 us
-        "de",  # 15 us
+        # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
-        # "fr",  # 11 us
+        "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
@@ -107,9 +142,16 @@ def cur_role(request):
 )
 def cur_language(request):
     """Fixture"""
+    # retest_for_lang = None
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+    try:
+        # проверка аргументов командной строки
+        retest_for_lang = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_lang = False
+
+    if retest_for_lang:
         language = request.config.getoption("lang")
     else:
         language = request.param
@@ -121,10 +163,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -146,8 +188,14 @@ def cur_language(request):
 def cur_country(request):
     """Fixture"""
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+    try:
+        # проверка аргументов командной строки
+        retest_for_country = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_country = False
+
+    if retest_for_country:
         country = request.config.getoption("country")
     else:
         country = request.param
@@ -179,16 +227,17 @@ def cur_password(request):
     return request.param
 
 
-@pytest.fixture()
-def prob_run_tc():
-    """
-    Fixture for реализации вероятности выполнения теста
-    """
-    prob = 100
-    if random.randint(1, 100) <= prob:
-        return ""
-    else:
-        return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
+# @pytest.fixture()
+# def prob_run_tc():
+#     """
+#     Fixture for реализации вероятности выполнения теста
+#     """
+#     prob = 100
+#     if random.randint(1, 100) <= prob:
+#         return ""
+#     else:
+#         return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
+#
 
 
 def pre_go(fixture_value):
@@ -218,11 +267,11 @@ def go(request, d):
     d.quit()
     print(f"\n{datetime.now()}   *** end fixture Chrome = teardown ***\n")
 
-
-@pytest.fixture()
-def cur_time():
-    """Fixture"""
-    return str(datetime.now())
+#
+# @pytest.fixture()
+# def cur_time():
+#     """Fixture"""
+#     return str(datetime.now())
 
 
 @pytest.fixture(scope="module")
@@ -231,8 +280,15 @@ def d(request):
     """WebDriver Initialization"""
     global test_browser
     # проверка аргументов командной строки
-    retest = request.config.getoption("retest")
-    if retest:
+    # retest = request.config.getoption("retest")
+
+    try:
+        # проверка аргументов командной строки
+        retest_for_br = sys.argv[1].split('=')[1]
+    except IndexError:
+        retest_for_br = False
+
+    if retest_for_br:
         test_browser = request.config.getoption("browser_name")
 
     browser = test_browser

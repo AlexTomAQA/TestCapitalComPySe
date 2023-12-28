@@ -31,7 +31,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     dynamic_epic = f"US_{us} | {desc_us}"
     dynamic_feature = f"Language: {cur_language}"
     dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
-    bug_id = f"Bid:{us}{num_tc}-{cur_language}_{cur_country}_{cur_role}"
+    bug_id = f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}"
 
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)

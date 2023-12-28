@@ -60,8 +60,10 @@ class Conditions(BasePage):
         #     self.open_page()
 
         print(f"\n{datetime.now()}   {d.get_window_size()}")
-        print(f"\n{datetime.now()}   Set windows position at (320, 180) =>")
-        d.set_window_position(320, 180)
+        # print(f"\n{datetime.now()}   Set windows position at (320, 180) =>")
+        # d.set_window_position(320, 180)
+        print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
+        d.set_window_position(0, 0)
         print(f"\n{datetime.now()}   Set resolution 1280 * 720 =>")
         d.set_window_size(1280, 720)
         print(f"\n{datetime.now()}   => Resolution seted {d.get_window_size()}")
