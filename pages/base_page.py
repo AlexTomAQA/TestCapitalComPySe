@@ -272,7 +272,7 @@ class BasePage:
         # time.sleep(1)
         print(f"{datetime.now()}   Click BUTTON_ACCEPT_ALL_COOKIE =>")
         buttons = self.browser.find_elements(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
-        button[0].click()
+        buttons[0].click()
         print(f"{datetime.now()}   => BUTTON_ACCEPT_ALL_COOKIE is clicked")
         print(f"{datetime.now()}   => Accepted All Cookies")
         time.sleep(0.5)
