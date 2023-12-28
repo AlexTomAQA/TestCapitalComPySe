@@ -105,6 +105,28 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новая строка добавлена")
 
+    def add_new_row_before_(self, index_of_row=4):
+        print(f"\n{datetime.now()}   Добавление новой строки =>")
+        if index_of_row is not None:
+            request_body = {
+                'requests': [{
+                    'insertDimension': {
+                        'range': {
+                            'sheetId': self.SHEET_ID,
+                            'dimension': 'ROWS',
+                            'startIndex': index_of_row,
+                            'endIndex': index_of_row - 1  # Вставляем перед строкой 4
+                        }
+                    }
+                }]
+            }
+            self.service.spreadsheets().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
+                                                    body=request_body).execute()
+        else:
+            print(f"Строка {index_of_row} не найдена в таблице.")
+
+        print(f"\n{datetime.now()}   => Новая строка добавлена")
+
     def get_row_values(self, end_row=4):
         range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
         # Call the Sheets API
