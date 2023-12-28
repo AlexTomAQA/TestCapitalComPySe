@@ -42,6 +42,7 @@ def add_new_row_with_format():
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
     gs.add_new_row_after_()
+    # gs.add_new_row_before_()
     gs.new_row_copy_past()
     # gs.clear_values_new_row()
     gs.update_range_values('U4', [start_update_date])
