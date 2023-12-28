@@ -32,5 +32,5 @@ class TestLearningHub:
         menu.menu_education_move_focus(d, cur_language)
         link = menu.sub_menu_learning_hub_move_focus_click(d, cur_language)
 
-        test_element = BlockStepTrading(d, link)
+        test_element = BlockStepTrading(d, link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
