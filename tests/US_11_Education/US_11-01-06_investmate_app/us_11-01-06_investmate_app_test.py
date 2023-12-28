@@ -81,7 +81,7 @@ class TestInvestmateApp:
         test_element = QRCodeDecode(d, menu_link, 'easy_learning')
         test_element.arrange().element_decode()
 
-        test_element = AssertClass(d, menu_link)
+        test_element = AssertClass(d, menu_link, bid)
         test_element.assert_app_store_investmate()
 
     @allure.step("Start test of button [Explore Web Platform] in Block 'capital.com'")
@@ -135,7 +135,7 @@ class TestInvestmateApp:
         test_element = QRCodeDecode(d, menu_link, 'capital')
         test_element.arrange().element_decode()
 
-        test_element = AssertClass(d, menu_link)
+        test_element = AssertClass(d, menu_link, bid)
         test_element.assert_app_store(d, menu_link)
 
     @allure.step("Start test of button [Create account] in block \"Why choose Capital?\"")
@@ -162,7 +162,7 @@ class TestInvestmateApp:
 
         test_element.element_click()
 
-        test_element = AssertClass(d, menu_link)
+        test_element = AssertClass(d, menu_link, bid)
 
         match cur_role:
             case "NoReg" | "NoAuth":

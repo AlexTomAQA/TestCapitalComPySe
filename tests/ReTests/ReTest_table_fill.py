@@ -26,9 +26,9 @@ def new_row_data(bid, bug_num, link):
     # bid = "Bid:11.01.01.00_01-de_ae_NoReg"
     us = bid.split(':')[1].split('-')[0].split('_')[0]
     tc = '_' + bid.split(':')[1].split('-')[0].split('_')[1]
-    lng = bid.split(':')[1].split('-')[1].split('_')[0]
-    ctr = bid.split(':')[1].split('-')[1].split('_')[1]
-    rol = bid.split(':')[1].split('-')[1].split('_')[2]
+    lng = bid.split(':')[1].split('-')[1].split('.')[0]
+    ctr = bid.split(':')[1].split('-')[1].split('.')[1]
+    rol = bid.split(':')[1].split('-')[1].split('.')[2]
     if us.split('.')[-1] == '00':
         link = ""
 
