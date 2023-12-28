@@ -23,10 +23,6 @@ import conf
 
 test_browser = ""
 
-# def pytest_addoption(parser):
-#     # parser.addoption("--cur_language", action="store_true", default="", help="run with language parameter")
-#     language = metafunc.config.getoption("--cur_language")
-
 
 def pytest_addoption(parser):
     # проверка аргументов командной строки
@@ -163,8 +159,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        # "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
