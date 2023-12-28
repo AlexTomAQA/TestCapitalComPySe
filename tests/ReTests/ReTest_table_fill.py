@@ -23,7 +23,7 @@ def check_gs_table(bid, bug_num):
 
 
 def new_row_data(bid, bug_num, link):
-    # bid = "Bid:11.01.01.00_01-de_ae_NoReg"
+    # bid = "Bid:11.01.01.00_01-de.ae.NoReg"
     us = bid.split(':')[1].split('-')[0].split('_')[0]
     tc = '_' + bid.split(':')[1].split('-')[0].split('_')[1]
     lng = bid.split(':')[1].split('-')[1].split('.')[0]
@@ -56,7 +56,7 @@ def fill_gs_table(value_1, value_2, bug_num):
 
 def retest_table_fill(bid="", bug_n="", link=""):
     # ========= не удалять ======================
-    # bid = "Bid:11.01.01.00_01-de_ae_NoReg"
+    # bid = "Bid:11.01.01.00_01-de.ae.NoReg"
     # bug_n = "05"
     # link = 'https://capital.com/pl/handlovac-amd'
     # ===========================================
@@ -78,7 +78,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
         # заполнение таблицы
         fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
 
-        print(f"\n{datetime.now()}   Bug: {bid}-{bug_num} добавлен в таблицу для ретеста")
+        print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} добавлен в таблицу для ретеста")
 
     else:
         print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
