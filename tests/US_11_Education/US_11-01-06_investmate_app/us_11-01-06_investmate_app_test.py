@@ -42,6 +42,7 @@ class TestInvestmateApp:
 
     @allure.step("Start test of QR code in Investmate block")
     @pytest.mark.test_01
+    # @pytest.mark.skip
     def test_01_qr_code_investmate_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -58,11 +59,12 @@ class TestInvestmateApp:
         test_element = QRCodeDecode(d, menu_link, 'investmate')
         test_element.arrange().element_decode()
 
-        test_element = AssertClass(d, menu_link)
+        test_element = AssertClass(d, menu_link, bid)
         test_element.assert_app_store_investmate()
 
     @allure.step("Start test of QR code in Easy learning block")
     @pytest.mark.test_02
+    # @pytest.mark.skip
     def test_02_qr_code_easy_learning_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -103,7 +105,7 @@ class TestInvestmateApp:
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 
-        test_element = AssertClass(d, menu_link)
+        test_element = AssertClass(d, menu_link, bid)
 
         match cur_role:
             case "NoReg":
@@ -115,6 +117,7 @@ class TestInvestmateApp:
 
     @allure.step("Start test of QR code in Capital block")
     @pytest.mark.test_04
+    # @pytest.mark.skip
     def test_04_qr_code_capital_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
@@ -137,6 +140,7 @@ class TestInvestmateApp:
 
     @allure.step("Start test of button [Create account] in block \"Why choose Capital?\"")
     @pytest.mark.test_05
+    # @pytest.mark.skip
     def test_05_button_create_account_why_capital(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """

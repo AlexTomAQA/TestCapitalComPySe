@@ -17,6 +17,7 @@ from pages.Capital.Trading_platform.trading_platform_locators \
 from pages.Capital.Trading_platform.trading_platform_locators \
     import TopBarLocators
 from test_data.trading_platform_data import data
+from tests.ReTests.ReTest_table_fill import retest_table_fill
 
 
 class TradingPlatform(BasePage):
@@ -228,6 +229,12 @@ class TradingPlatform(BasePage):
             else:
                 print(f"{datetime.now()}   => SIGNUP_FRAME is not visible")
             print(f"{datetime.now()}   => 'Login' page on the Trading Platform is not opened")
+
+            # new bug re-test checking =====
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '13')
+            # ==============================
+
             assert False, "Bug # 13. 'Sign up' form opened on the Trading Platform instead of 'Login' form"
         else:
             # self.open_page()
