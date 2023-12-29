@@ -63,7 +63,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
     gs = GoogleSheet()
-    if bid != "" and len(bid) == 30:
+    if bid != "":
         bug_num = "'" + bug_n
 
         # проверка таблицы багов
@@ -84,12 +84,12 @@ def retest_table_fill(bid="", bug_n="", link=""):
         else:
             print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
     else:
-        print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} не проверяется или имеет некорректный BID")
+        print(f"\n{datetime.now()}  Для Bug: {bid}-{bug_n} необходимо использовать проверку на ретест!!!")
 
     gs_out = ['Bugs Report']
     gs.update_range_values('B1', [gs_out])
 
 
 # # ========= не удалять ======================
-if __name__ == "__main__":
-    retest_table_fill()
+# if __name__ == "__main__":
+#     retest_table_fill()

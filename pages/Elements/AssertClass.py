@@ -64,26 +64,26 @@ class AssertClass(BasePage):
             del self.page_signup_login
         elif self.page_signup_login.should_be_signup_form(cur_language):
             del self.page_signup_login
-            # print(f'\nBug: {self.bid}')
-            # retest_table_fill(self.bid, '05', cur_link)
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '05', cur_link)
             assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
-            # print(f'\nBug: {self.bid}')
-            # retest_table_fill(self.bid, '06', cur_link)
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '06', cur_link)
             assert False, "Bug # 06. Opened a 'Sign up' page instead of a 'Login'"
             # pytest.fail("Bug # 06. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
             del self.page_signup_login
-            # print(f'\nBug: {self.bid}')
-            # retest_table_fill(self.bid, '07', cur_link)
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '07', cur_link)
             assert False, "Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'"
             # pytest.fail("Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
         else:
             del self.page_signup_login
-            # print(f'\nBug: {self.bid}')
-            # retest_table_fill(self.bid, '08', cur_link)
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '08', cur_link)
             assert False, "Bug # 08. Unknown situation instead 'Login' form opened"
             # pytest.fail("Bug # 08. Unknown situation instead 'Login' form opened", False)
 
@@ -122,7 +122,7 @@ class AssertClass(BasePage):
                     trade_instrument: corresponding trade instrument (False)
         """
         print(f"\n{datetime.now()}   3. Assert_v4")
-        self.page_trading = TradingPlatform(d, cur_link)
+        self.page_trading = TradingPlatform(d, cur_link, self.bid)
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
 
     @allure.step('Checking that "Trading platform" page opened with corresponding trading instrument - ver 5')
