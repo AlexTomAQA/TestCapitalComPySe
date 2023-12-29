@@ -41,18 +41,17 @@ def add_new_row_with_format():
     gs = GoogleSheet()
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
-    gs.add_new_row_after_()
-    # gs.add_new_row_before_()
+    gs.add_new_row_before_()
     gs.new_row_copy_past()
     # gs.clear_values_new_row()
-    gs.update_range_values('U4', [start_update_date])
+    gs.update_range_values('U5', [start_update_date])
 
 
 def fill_gs_table(value_1, value_2, bug_num):
     gs = GoogleSheet()
-    gs.update_range_values('A4', value_1)
-    gs.update_range_values('I4', value_2)
-    gs.update_range_values('P4', [[bug_num]])
+    gs.update_range_values('A5', value_1)
+    gs.update_range_values('I5', value_2)
+    gs.update_range_values('P5', [[bug_num]])
 
 
 def retest_table_fill(bid="", bug_n="", link=""):
@@ -63,30 +62,34 @@ def retest_table_fill(bid="", bug_n="", link=""):
     # ===========================================
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
-    bug_num = "'" + bug_n
     gs = GoogleSheet()
+    if bid != "" and len(bid) == 30:
+        bug_num = "'" + bug_n
 
-    # проверка таблицы багов
-    available = check_gs_table(bid, bug_n)
-    if available:
+        # проверка таблицы багов
+        available = check_gs_table(bid, bug_n)
+        if available:
 
-        # формирование данных для заполнения
-        new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
+            # формирование данных для заполнения
+            new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
 
-        # добавление новой строки с копипастом формул и форматов
-        add_new_row_with_format()
+            # добавление новой строки с копипастом формул и форматов
+            add_new_row_with_format()
 
-        # заполнение таблицы
-        fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
+            # заполнение таблицы
+            fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
 
-        print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} добавлен в таблицу для ретеста")
+            print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} добавлен в таблицу для ретеста")
 
+        else:
+            print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
     else:
-        print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
+        print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} не проверяется или имеет некорректный BID")
 
     gs_out = ['Bugs Report']
     gs.update_range_values('B1', [gs_out])
 
+
 # # ========= не удалять ======================
-# if __name__ == "__main__":
-#     retest_table_fill()
+if __name__ == "__main__":
+    retest_table_fill()

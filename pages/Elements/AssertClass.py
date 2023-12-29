@@ -30,11 +30,6 @@ class AssertClass(BasePage):
     @allure.step('Checking that "Signup" opened')
     def assert_signup(self, d, cur_language, cur_link):
         """Method Assert Signup"""
-        # ================для наладки==============
-        # print(f'\nBug: {self.bid}')
-        # retest_table_fill(self.bid, '04', cur_link)
-        # assert False, "Bug # 04. Unknown situation instead 'Sign Up' form opened"
-        # =========================================
 
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_signup_login = SignupLogin(d, cur_link)
