@@ -115,14 +115,14 @@ class TradingPlatform(BasePage):
                 print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
                 # проверка бага для ретеста
                 print(f'\nBug: {self.bid}')
-                retest_table_fill(self.bid, '09', cur_link)
+                retest_table_fill(self.bid, '09', self.link)
                 assert False, (f"Bug # 9. Loaded page with {cur_url} url, but expected the Trading platform in"
                                f"Demo mode(timeout=30c)")
             else:
                 print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
                 # проверка бага для ретеста
                 print(f'\nBug: {self.bid}')
-                retest_table_fill(self.bid, '10', cur_link)
+                retest_table_fill(self.bid, '10', self.link)
                 assert False, (f"Bug # 10. Loaded page with {cur_url} url, but expected the Trading platform in"
                                f"Live mode(timeout=30c)")
 
@@ -162,7 +162,7 @@ class TradingPlatform(BasePage):
         if not self.element_is_visible(TopBarLocators.MODE_DEMO, 30):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '11', cur_link)
+            retest_table_fill(self.bid, '11', self.link)
             assert False, "Bug # 11. Trading platform is opened in not DEMO mode"
 
     @allure.step("Check if the trading platform opened in LIVE mode")
@@ -244,7 +244,7 @@ class TradingPlatform(BasePage):
 
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '13')
+            retest_table_fill(self.bid, '13', self.link)
             # ==============================
             assert False, "Bug # 13. 'Sign up' form opened on the Trading Platform instead of 'Login' form"
         else:
@@ -258,18 +258,31 @@ class TradingPlatform(BasePage):
         Check Trading platform is opened for corresponding trade instrument
         """
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
-        assert "charting" in cur_url or "spotlight" in cur_url, \
-            f"Bug # 14. Trading platform was Not opened for corresponding trading instrument '{trade_instrument}'"
+        # new bug re-test checking =====
+        if "charting" not in cur_url or "spotlight" not in cur_url:
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '14', self.link)
+            assert False, ("Bug # 14. Trading platform was Not opened for corresponding trading instrument"
+                           " '{trade_instrument}'")
+        # ==============================
         print(f"{datetime.now()}   Trading Platform for '{trade_instrument}' trading instrument is opened")
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
         trade_instrument_name = trade_instrument.split(" ")[0]
         try:
             if len(top_chart_trade_list) == 0:
-                assert False, (f"Trading platform for '{trade_instrument}' trade instrument was opened, "
+                # new bug re-test checking =====
+                print(f'\nBug: {self.bid}')
+                retest_table_fill(self.bid, '17', self.link)
+                # ==============================
+                assert False, (f"Bug # 17. Trading platform for '{trade_instrument}' trade instrument was opened, "
                                f"but no one trade instrument on the Charts List")
         except TypeError:
-            assert False, (f"Trading platform for '{trade_instrument}' trade instrument was opened, "
+            # new bug re-test checking =====
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '18', self.link)
+            # ==============================
+            assert False, (f"Bug # 18. Trading platform for '{trade_instrument}' trade instrument was opened, "
                            f"but no one trade instrument on the Charts List =(empty list)=")
 
         # проверяем, есть ли вкладка для запрашиваемого торгового инструмента
@@ -282,7 +295,7 @@ class TradingPlatform(BasePage):
         if count:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '15', cur_url)
+            retest_table_fill(self.bid, '15', self.link)
             # ==============================
             assert False, f"Bug # 15. Trade instrument '{trade_instrument}' is Not on the Top Charts List"
 
@@ -291,7 +304,7 @@ class TradingPlatform(BasePage):
         if trade_instrument_name not in selected_trade_instrument:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '16', cur_url)
+            retest_table_fill(self.bid, '16', self.link)
             # ==============================
             assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is on the Top Charts List, but Not selected"
         print(f"{datetime.now()}   Trade instrument '{trade_instrument}' is on the Top Charts List and selected")
