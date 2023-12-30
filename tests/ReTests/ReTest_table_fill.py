@@ -84,7 +84,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
         else:
             print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
     else:
-        print(f"\n{datetime.now()}  Для Bug: {bid}-{bug_n} необходимо использовать проверку на ретест!!!")
+        print(f"\n{datetime.now()}  Для бага: {bid}-{bug_n} необходимо использовать проверку на ретест!!!")
 
     gs_out = ['Bugs Report']
     gs.update_range_values('B1', [gs_out])
