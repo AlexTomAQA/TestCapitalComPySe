@@ -16,6 +16,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
+
       - name: 1. Check out this repo, master branch
         uses: actions/checkout@v4
         with:
@@ -27,6 +32,11 @@ jobs:
         with:
           python-version: "3.11.7"
 
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
+
       - name: 3.1. Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -34,6 +44,11 @@ jobs:
       - name: 3.3. Install Neofetch
         if: always()
         run: brew install neofetch
+
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
 
       - name: For Run hwinfo.py first time
         if: always()
@@ -53,6 +68,11 @@ jobs:
         if: always()
         run: pip3 install poetry
 
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
+
       - name: 4.1. python3.11 -m venv .venv
         if: always()
         run: python3 -m venv .venv
@@ -60,6 +80,11 @@ jobs:
         run: poetry env use python3.11
       - name: 4.3. poetry shell
         run: poetry shell
+
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
 
       - name: 5. install dependencies
         if: always()
@@ -87,6 +112,11 @@ jobs:
 #          extra-mypy-options: ""
 #          extra-isort-options: ""
 #
+      - name: pwd
+        run: pwd
+      - name: ls -la
+        run: ls -la
+
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
         run: poetry run pytest -vv tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
