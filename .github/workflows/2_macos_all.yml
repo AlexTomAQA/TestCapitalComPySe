@@ -50,12 +50,14 @@ jobs:
       - name: ls -la
         run: ls -la
 
+      - name: /Library/Frameworks/Python.framework/Versions/3.12/bin/python -m pip install --upgrade pip
+        run: /Library/Frameworks/Python.framework/Versions/3.12/bin/python -m pip install --upgrade pip
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3 install psutil
+        run: pip3.11 install psutil
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3 install speedtest
+        run: pip3.11 install speedtest
       - name: Run hwinfo.py first time
         if: always()
         run: python3 tests/hwinfo.py
@@ -66,7 +68,7 @@ jobs:
 
       - name: 4. install Poetry
         if: always()
-        run: pip3 install poetry
+        run: pip3.11 install poetry
 
       - name: pwd
         run: pwd
