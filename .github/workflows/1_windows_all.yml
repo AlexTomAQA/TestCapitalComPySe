@@ -35,10 +35,6 @@ jobs:
         if: always()
         run: poetry install --sync
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
 #      - name: 6. Check code for errors by flake8 and format code with black
 #        if: always()
 #        uses: ricardochaves/python-lint@v1.4.0
@@ -206,10 +202,6 @@ jobs:
 #        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-08_Trading_psychology_guide/US_11-03-08-01_trading_psychology_guide_test.py
 #        continue-on-error: true
 #
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
       - name: 9. Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
