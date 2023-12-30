@@ -98,10 +98,10 @@ class TradingPlatform(BasePage):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if tpd:
-                self.should_be_platform_demo_mode()
+                self.should_be_platform_demo_mode(d, cur_link)
                 print(f"{datetime.now()}   => The page with {cur_url} url was opened in DEMO mode")
             else:
-                self.should_be_platform_live_mode()
+                self.should_be_platform_live_mode(d, cur_link)
                 print(f"{datetime.now()}   => The page with {cur_url} url was opened in lIVE mode")
             if tpi:
                 print(f"{datetime.now()}   => Opened page with {cur_url} url for corresponding trading"
@@ -113,10 +113,16 @@ class TradingPlatform(BasePage):
         else:
             if tpd:
                 print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
+                # проверка бага для ретеста
+                print(f'\nBug: {self.bid}')
+                retest_table_fill(self.bid, '09', cur_link)
                 assert False, (f"Bug # 9. Loaded page with {cur_url} url, but expected the Trading platform in"
                                f"Demo mode(timeout=30c)")
             else:
                 print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
+                # проверка бага для ретеста
+                print(f'\nBug: {self.bid}')
+                retest_table_fill(self.bid, '10', cur_link)
                 assert False, (f"Bug # 10. Loaded page with {cur_url} url, but expected the Trading platform in"
                                f"Live mode(timeout=30c)")
 
@@ -150,18 +156,24 @@ class TradingPlatform(BasePage):
             "Trading platform LOGO is not present on the page"
 
     @allure.step("Check if the trading platform opened in DEMO mode")
-    def should_be_platform_demo_mode(self, timeout=30):
+    def should_be_platform_demo_mode(self, d, cur_link):
         """Check that Trading platform opened in Demo mode"""
         print(f"{datetime.now()}   Checking that the Trading platform opened in DEMO mode =>")
-        assert self.element_is_visible(TopBarLocators.MODE_DEMO, timeout), \
-            "Bug # 11. Trading platform is opened in not DEMO mode"
+        if not self.element_is_visible(TopBarLocators.MODE_DEMO, 30):
+            # проверка бага для ретеста
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '11', cur_link)
+            assert False, "Bug # 11. Trading platform is opened in not DEMO mode"
 
     @allure.step("Check if the trading platform opened in LIVE mode")
-    def should_be_platform_live_mode(self, timeout=30):
+    def should_be_platform_live_mode(self, d, cur_link):
         """Check that Trading platform opened in Live mode"""
         print(f"{datetime.now()}   Checking that the Trading platform opened in LIVE mode =>")
-        assert self.element_is_visible(TopBarLocators.MODE_LIVE, timeout), \
-            "Bug # 12. Trading platform is opened in not LIVE mode"
+        if not self.element_is_visible(TopBarLocators.MODE_LIVE, 30):
+            # проверка бага для ретеста
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '12', self.link)
+            assert False, "Bug # 12. Trading platform is opened in not LIVE mode"
 
     @allure.step("Check that form [Sign Up] is opened on the Trading Platform page")
     # @profile(precision=3)
@@ -234,7 +246,6 @@ class TradingPlatform(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '13')
             # ==============================
-
             assert False, "Bug # 13. 'Sign up' form opened on the Trading Platform instead of 'Login' form"
         else:
             # self.open_page()
@@ -269,10 +280,18 @@ class TradingPlatform(BasePage):
                 count = False
                 break
         if count:
+            # new bug re-test checking =====
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '15', cur_url)
+            # ==============================
             assert False, f"Bug # 15. Trade instrument '{trade_instrument}' is Not on the Top Charts List"
 
         # проверяем, что запрашиваемый торговый инструмент выбран
         selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENTS).text
-        assert trade_instrument_name in selected_trade_instrument, \
-            f"Bug # 16. Trade instrument '{trade_instrument}' is on the Top Charts List, but Not selected"
+        if trade_instrument_name not in selected_trade_instrument:
+            # new bug re-test checking =====
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.bid, '16', cur_url)
+            # ==============================
+            assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is on the Top Charts List, but Not selected"
         print(f"{datetime.now()}   Trade instrument '{trade_instrument}' is on the Top Charts List and selected")

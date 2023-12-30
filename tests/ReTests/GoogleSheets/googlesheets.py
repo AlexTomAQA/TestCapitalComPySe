@@ -105,7 +105,7 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новая строка добавлена")
 
-    def add_new_row_before_(self, index_of_row=4):
+    def add_new_row_before_(self, index_of_row=5):
         print(f"\n{datetime.now()}   Добавление новой строки =>")
         if index_of_row is not None:
             request_body = {
@@ -114,8 +114,8 @@ class GoogleSheet:
                         'range': {
                             'sheetId': self.SHEET_ID,
                             'dimension': 'ROWS',
-                            'startIndex': index_of_row,
-                            'endIndex': index_of_row - 1  # Вставляем перед строкой 4
+                            'startIndex': index_of_row - 1,
+                            'endIndex': index_of_row  # Вставляем перед строкой 5
                         }
                     }
                 }]
@@ -127,7 +127,7 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новая строка добавлена")
 
-    def get_row_values(self, end_row=4):
+    def get_row_values(self, end_row=5):
         range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
@@ -140,7 +140,7 @@ class GoogleSheet:
 
         return values
 
-    def get_all_row_values(self, end_row=4):
+    def get_all_row_values(self, end_row=5):
         range_name = f"{self.SHEET_NAME}!A{end_row}:P"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
@@ -166,7 +166,7 @@ class GoogleSheet:
 
         return values
 
-    def update_range_values(self, cell='V4', values=""):
+    def update_range_values(self, cell='V5', values=""):
         range_name = f'{self.SHEET_NAME}!{cell}'
         data = [{
             'range': range_name,
@@ -180,7 +180,7 @@ class GoogleSheet:
                                                                   body=body).execute()
         return result
 
-    def new_row_copy_past(self, source_row=5, destination_row=4):
+    def new_row_copy_past(self, source_row=6, destination_row=5):
         sheet = self. service.spreadsheets()
 
         # Копирование формул и форматирования из предыдущей строки
@@ -210,7 +210,7 @@ class GoogleSheet:
 
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=copy_request).execute()
 
-    def clear_values_new_row(self, row=4):
+    def clear_values_new_row(self, row=5):
         sheet = self.service.spreadsheets()
 
         # Очистка значений в новой строке

@@ -70,7 +70,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = MainBannerStartTrading(d, cur_item_link)
+        test_element = MainBannerStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
@@ -94,7 +94,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = MainBannerTryDemo(d, cur_item_link)
+        test_element = MainBannerTryDemo(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Sell] in content block")
@@ -121,7 +121,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = SellButtonContentBlock(d, cur_item_link)
+        test_element = SellButtonContentBlock(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Buy] in content block")
@@ -148,7 +148,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BuyButtonContentBlock(d, cur_item_link)
+        test_element = BuyButtonContentBlock(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start trading] in article")
@@ -172,7 +172,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ContentStartTrading(d, cur_item_link)
+        test_element = ContentStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
@@ -224,7 +224,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = GetStartedOnStickyBar(d, cur_item_link)
+        test_element = GetStartedOnStickyBar(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
@@ -248,7 +248,7 @@ class TestSharesTradingItems:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BlockStepTrading(d, cur_item_link)
+        test_element = BlockStepTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button in block [Horizontal banner]")
@@ -287,7 +287,7 @@ class TestSharesTradingItems:
         # банеры должны открываться в Live mode for US_01
         banner01_hor_tp = ['169', '223', '254', '379', '392', '430', '429']
 
-        test_element = ButtonOnHorizontalBanner(d, cur_item_link)
+        test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
                                         banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
 
@@ -327,7 +327,7 @@ class TestSharesTradingItems:
         # банеры должны открываться в Live mode for US_01
         banner01_ver_tp = ['198', '293', '381', '391', '426']
 
-        test_element = ButtonOnVerticalBanner(d, cur_item_link)
+        test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
         test_element.full_test_with_tpi(
             d, cur_language, cur_country, cur_role, cur_item_link,
             banner00_ver_tpd, banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
