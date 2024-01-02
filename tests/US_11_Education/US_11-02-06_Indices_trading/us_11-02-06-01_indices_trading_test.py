@@ -120,6 +120,31 @@ class TestIndicesTrading:
         test_element = MainBannerStartTrading(d, cur_item_link)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
+    @allure.step("Start test of button [Try demo] on Main banner")
+    @pytest.mark.test_02
+    def test_02_main_banner_try_demo_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
+            cur_item_link):
+        """
+        Check: Button [Try demo] on Main banner
+        Language: EN, DE, ES, IT, RU, ZH. License: All.
+        """
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_02",
+                      "Testing button [Try demo] on Main banner")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = MainBannerTryDemo(d, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
     def test_03_most_traded_trade_button(
