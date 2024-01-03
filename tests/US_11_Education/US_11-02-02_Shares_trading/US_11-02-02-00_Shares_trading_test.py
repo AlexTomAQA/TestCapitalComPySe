@@ -72,7 +72,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = MainBannerStartTrading(d, cur_menu_link)
+        test_element = MainBannerStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
@@ -98,7 +98,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = MainBannerTryDemo(d, cur_menu_link)
+        test_element = MainBannerTryDemo(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded widget")
@@ -125,7 +125,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link)
+        test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     @allure.step("Start test of button '1. Create your account' in 'Steps trading' block")
@@ -151,7 +151,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = BlockStepTrading(d, cur_menu_link)
+        test_element = BlockStepTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     @allure.step("Start test of button in block [Horizontal banner]")
@@ -192,7 +192,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = ButtonOnHorizontalBanner(d, cur_menu_link)
+        test_element = ButtonOnHorizontalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
                                         banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
 
@@ -235,7 +235,7 @@ class TestSharesTrading:
         page_menu = MenuSection(d, main_page_link)
         cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, main_page_link)
 
-        test_element = ButtonOnVerticalBanner(d, cur_menu_link)
+        test_element = ButtonOnVerticalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link, banner00_ver_tpd,
                                         banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
 

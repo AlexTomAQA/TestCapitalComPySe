@@ -2,7 +2,6 @@ import allure
 import pytest
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.AssertClass import AssertClass
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -33,5 +32,5 @@ class TestLearningHub:
         menu.menu_education_move_focus(d, cur_language)
         link = menu.sub_menu_learning_hub_move_focus_click(d, cur_language)
 
-        test_element = BlockStepTrading(d, link)
+        test_element = BlockStepTrading(d, link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)

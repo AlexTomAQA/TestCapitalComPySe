@@ -83,8 +83,65 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новый столбец добавлен")
 
-    def get_row_values(self, end_row=4):
+    def add_new_row_after_(self, index_of_row=3):
+        print(f"\n{datetime.now()}   Добавление новой строки =>")
+        if index_of_row is not None:
+            request_body = {
+                'requests': [{
+                    'insertDimension': {
+                        'range': {
+                            'sheetId': self.SHEET_ID,
+                            'dimension': 'ROWS',
+                            'startIndex': index_of_row,
+                            'endIndex': index_of_row + 1  # Вставляем сразу после строки 3
+                        }
+                    }
+                }]
+            }
+            self.service.spreadsheets().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
+                                                    body=request_body).execute()
+        else:
+            print(f"Строка {index_of_row} не найдена в таблице.")
+
+        print(f"\n{datetime.now()}   => Новая строка добавлена")
+
+    def add_new_row_before_(self, index_of_row=5):
+        print(f"\n{datetime.now()}   Добавление новой строки =>")
+        if index_of_row is not None:
+            request_body = {
+                'requests': [{
+                    'insertDimension': {
+                        'range': {
+                            'sheetId': self.SHEET_ID,
+                            'dimension': 'ROWS',
+                            'startIndex': index_of_row - 1,
+                            'endIndex': index_of_row  # Вставляем перед строкой 5
+                        }
+                    }
+                }]
+            }
+            self.service.spreadsheets().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
+                                                    body=request_body).execute()
+        else:
+            print(f"Строка {index_of_row} не найдена в таблице.")
+
+        print(f"\n{datetime.now()}   => Новая строка добавлена")
+
+    def get_row_values(self, end_row=5):
         range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
+        # Call the Sheets API
+        sheet = self.service.spreadsheets()
+        result = (
+            sheet.values()
+            .get(spreadsheetId=self.SPREADSHEET_ID, range=range_name)
+            .execute()
+        )
+        values = result.get("values", [])
+
+        return values
+
+    def get_all_row_values(self, end_row=5):
+        range_name = f"{self.SHEET_NAME}!A{end_row}:P"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
         result = (
@@ -109,7 +166,7 @@ class GoogleSheet:
 
         return values
 
-    def update_range_values(self, cell='V4', values=""):
+    def update_range_values(self, cell='V5', values=""):
         range_name = f'{self.SHEET_NAME}!{cell}'
         data = [{
             'range': range_name,
@@ -122,3 +179,56 @@ class GoogleSheet:
         result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
                                                                   body=body).execute()
         return result
+
+    def new_row_copy_past(self, source_row=6, destination_row=5):
+        sheet = self. service.spreadsheets()
+
+        # Копирование формул и форматирования из предыдущей строки
+        copy_request = {
+            "requests": [
+                {
+                    "copyPaste": {
+                        "source": {
+                            "sheetId": self.SHEET_ID,
+                            "startRowIndex": source_row-1,
+                            "endRowIndex": source_row,
+                            "startColumnIndex": 0,
+                            "endColumnIndex": 17  # количество столбцов (A:Q)
+                        },
+                        "destination": {
+                            "sheetId": self.SHEET_ID,
+                            "startRowIndex": destination_row-1,
+                            "endRowIndex": destination_row,
+                            "startColumnIndex": 0,
+                            "endColumnIndex": 17    # количество столбцов (A:Q)
+                        },
+                        "pasteType": "PASTE_NORMAL"  # Копирование формул
+                    }
+                }
+            ]
+        }
+
+        response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=copy_request).execute()
+
+    def clear_values_new_row(self, row=5):
+        sheet = self.service.spreadsheets()
+
+        # Очистка значений в новой строке
+        clear_request = {
+            "requests": [
+                {
+                    "updateCells": {
+                        "range": {
+                            "sheetId": self.SHEET_ID,
+                            "startRowIndex": row - 1,
+                            "endRowIndex": row,
+                            "startColumnIndex": 0,
+                            "endColumnIndex": 16  # количество столбцов (A:P)
+                        },
+                        "fields": "userEnteredValue"  # Очистка только значений
+                    }
+                }
+            ]
+        }
+
+        response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=clear_request).execute()
