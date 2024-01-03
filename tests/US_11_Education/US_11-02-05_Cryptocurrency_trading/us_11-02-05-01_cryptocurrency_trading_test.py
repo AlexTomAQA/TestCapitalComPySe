@@ -143,67 +143,9 @@ class TestCryptocurrencyTrading:
         else:
             pytest.skip("This test not for FCA licence.")
 
-    @allure.step("Start test of button [Start trading] in article")
-    @pytest.mark.test_06
-    def test_06_start_trading_in_article_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
-        """
-        Check: Button [Start trading] in article
-        Language: All. License: All.
-        """
-
-        bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            ".01_06", "Testing button [Start trading] in article")
-
-        page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        if cur_country != 'gb':
-            test_element = ContentStartTrading(d, cur_item_link)
-            test_element.arrange_(cur_item_link)
-
-            test_element.element_click(cur_item_link, cur_language, cur_role)
-        else:
-            pytest.skip("This test not for FCA licence.")
-
-    @allure.step("Start test of button [Create your account] in block [Steps trading]")
-    @pytest.mark.test_07
-    def test_08_block_steps_trading_button_create_your_account(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
-        """
-        Check: Button [1. Create your account] in block [Steps trading]
-        Language: All. License: All.
-        """
-        bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            ".01_08", "Testing button [Create your account] in block [Steps trading]")
-
-        page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        if cur_country != 'gb':
-            test_element = BlockStepTrading(d, cur_item_link)
-            test_element.arrange_(d, cur_item_link)
-
-            test_element.element_click()
-
-            test_element = AssertClass(d, cur_item_link)
-            match cur_role:
-                case "NoReg" | "NoAuth":
-                    test_element.assert_signup(d, cur_language, cur_item_link)
-                case "Auth":
-                    test_element.assert_trading_platform_v4(d, cur_item_link)
-        else:
-            pytest.skip("This test not for FCA licence.")
-
     @allure.step("Start test of button [Sell] in content block")
-    @pytest.mark.test_09
-    def test_09_content_block_button_sell(
+    @pytest.mark.test_04
+    def test_04_content_block_button_sell(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Sell] in content block
@@ -212,7 +154,7 @@ class TestCryptocurrencyTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            ".01_09", "Testing button [Sell] in content block")
+            ".01_04", "Testing button [Sell] in content block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -236,8 +178,8 @@ class TestCryptocurrencyTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Buy] in content block")
-    @pytest.mark.test_10
-    def test_10_content_block_button_buy(
+    @pytest.mark.test_05
+    def test_05_content_block_button_buy(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Buy] in content block
@@ -246,7 +188,7 @@ class TestCryptocurrencyTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            ".01_10", "Testing button [Sell] in content block")
+            ".01_05", "Testing button [Buy] in content block")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -270,8 +212,8 @@ class TestCryptocurrencyTrading:
             pytest.skip("This test not for FCA licence.")
 
     @allure.step("Start test of button [Get started] on Sticky bar")
-    @pytest.mark.test_11
-    def test_11_sticky_bar_button_get_started(
+    @pytest.mark.test_06
+    def test_06_sticky_bar_button_get_started(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Get started] on Sticky bar
@@ -280,7 +222,7 @@ class TestCryptocurrencyTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-            ".01_11", "Testing button [Get started] on Sticky bar")
+            ".01_06", "Testing button [Get started] on Sticky bar")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -302,3 +244,61 @@ class TestCryptocurrencyTrading:
                     test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
             pytest.skip("This test not for FCA licence.")
+
+    @allure.step("Start test of button [Start trading] in content block")
+    @pytest.mark.test_07
+    def test_07_start_trading_in_article_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Start trading] in content block
+        Language: All. License: All.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_07", "Testing button [Start trading] in content block")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        if cur_country != 'gb':
+            test_element = ContentStartTrading(d, cur_item_link)
+            test_element.arrange_(cur_item_link)
+
+            test_element.element_click(cur_item_link, cur_language, cur_role)
+        else:
+            pytest.skip("This test not for FCA licence.")
+
+    @allure.step("Start test of button [Create your account] in block [Steps trading]")
+    @pytest.mark.test_10
+    def test_10_block_steps_trading_button_create_your_account(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [1. Create your account] in block [Steps trading]
+        Language: All. License: All.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_10", "Testing button [Create your account] in block [Steps trading]")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        if cur_country != 'gb':
+            test_element = BlockStepTrading(d, cur_item_link)
+            test_element.arrange_(d, cur_item_link)
+
+            test_element.element_click()
+
+            test_element = AssertClass(d, cur_item_link)
+            match cur_role:
+                case "NoReg" | "NoAuth":
+                    test_element.assert_signup(d, cur_language, cur_item_link)
+                case "Auth":
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
+        else:
+            pytest.skip("This gittest not for FCA licence.")
