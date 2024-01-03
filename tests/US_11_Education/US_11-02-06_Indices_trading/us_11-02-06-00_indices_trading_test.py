@@ -10,6 +10,7 @@ import allure
 
 from pages.common import Common
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
+from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
@@ -145,6 +146,44 @@ class TestIndicesTradingGuidePreset:
         #         test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
         # logger.info(f"====== END testing {', '.join(test_title)} ======")
+
+    @allure.step("Start test of buttons [Trade] in Most traded block")
+    @pytest.mark.test_03
+    def test_03_most_traded_trade_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Trade] in Most traded block
+        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All (Except: FCA).
+        """
+
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
+                      ".00_03", "Testing button [Trade] in Most traded block")
+
+        # logger.info(f"====== START testing {', '.join(test_title)} ======")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        # if cur_country == 'gb':
+        #     logger.info(f"This test is not supported on UK location")
+        #     logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
+        #     pytest.skip("This test is not supported on UK location")
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, main_page_link)
+        page_menu.menu_education_move_focus(d, cur_language)
+        cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+
+        test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     # @allure.step("Start pretest")
     # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
