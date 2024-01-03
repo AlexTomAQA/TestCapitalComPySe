@@ -50,8 +50,8 @@ jobs:
       - name: ls -la
         run: ls -la
 
-      - name: /Library/Frameworks/Python.framework/Versions/3.12/bin/python -m pip install --upgrade pip
-        run: /Library/Frameworks/Python.framework/Versions/3.12/bin/python -m pip install --upgrade pip
+#      - name: python3.11 -m pip install --upgrade pip
+#        run: python3.11 -m pip install --upgrade pip
       - name: For Run hwinfo.py first time
         if: always()
         run: pip3.11 install psutil
