@@ -117,7 +117,7 @@ class TestIndicesTrading:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = MainBannerStartTrading(d, cur_item_link)
+        test_element = MainBannerStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
@@ -142,7 +142,7 @@ class TestIndicesTrading:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = MainBannerTryDemo(d, cur_item_link)
+        test_element = MainBannerTryDemo(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
@@ -179,7 +179,7 @@ class TestIndicesTrading:
                 logger.warning(f"Testing element is not clicked")
                 logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
                 pytest.fail("Testing element is not clicked")
-            check_element = AssertClass(d, cur_item_link)
+            check_element = AssertClass(d, cur_item_link, bid)
             match cur_role:
                 case "NoReg":
                     check_element.assert_signup(d, cur_language, cur_item_link)
@@ -218,7 +218,7 @@ class TestIndicesTrading:
             logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
             pytest.fail("Testing element is not clicked")
 
-        test_element = AssertClass(d, cur_item_link)
+        test_element = AssertClass(d, cur_item_link, bid)
         match cur_role:
             case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, cur_item_link)
@@ -257,7 +257,7 @@ class TestIndicesTrading:
             logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
             pytest.fail("Testing element is not clicked")
 
-        test_element = AssertClass(d, cur_item_link)
+        test_element = AssertClass(d, cur_item_link, bid)
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
@@ -301,7 +301,7 @@ class TestIndicesTrading:
                 logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
                 pytest.fail("Testing element is not clicked")
 
-            check_element = AssertClass(d, cur_item_link)
+            check_element = AssertClass(d, cur_item_link, bid)
             match cur_role:
                 case "NoReg":
                     check_element.assert_signup(d, cur_language, cur_item_link)
@@ -342,7 +342,7 @@ class TestIndicesTrading:
             logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
             pytest.fail("Testing element is not clicked")
 
-        test_element = AssertClass(d, cur_item_link)
+        test_element = AssertClass(d, cur_item_link, bid)
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
@@ -383,7 +383,7 @@ class TestIndicesTrading:
             logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
             pytest.fail("Testing element is not clicked")
 
-        test_element = AssertClass(d, cur_item_link)
+        test_element = AssertClass(d, cur_item_link, bid)
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
