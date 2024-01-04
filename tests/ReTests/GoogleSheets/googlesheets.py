@@ -190,14 +190,14 @@ class GoogleSheet:
                     "copyPaste": {
                         "source": {
                             "sheetId": self.SHEET_ID,
-                            "startRowIndex": source_row-1,
+                            "startRowIndex": source_row - 1,
                             "endRowIndex": source_row,
                             "startColumnIndex": 0,
                             "endColumnIndex": 17  # количество столбцов (A:Q)
                         },
                         "destination": {
                             "sheetId": self.SHEET_ID,
-                            "startRowIndex": destination_row-1,
+                            "startRowIndex": destination_row - 1,
                             "endRowIndex": destination_row,
                             "startColumnIndex": 0,
                             "endColumnIndex": 17    # количество столбцов (A:Q)
