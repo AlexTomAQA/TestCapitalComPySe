@@ -98,7 +98,7 @@ jobs:
 
       - name: 8. Run WATC_ReTest
         if: always()
-        run: poetry run pytest -v tests/ReTests/WATC_ReTests.py
+        run: poetry run pytest -vv tests/ReTests/WATC_ReTests.py
         continue-on-error: true
 
       - name: 9. Upload artifact "allure-results"
