@@ -9,7 +9,10 @@ import pytest
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
 
-@pytest.fixture(scope="class", autouse=True)
+@pytest.fixture(
+    scope="class"
+    # , autouse=True
+)
 def gs():
     print(f"\n{datetime.now()}   *** start fixture gs = ... ***\n")
     """Start execution program"""
