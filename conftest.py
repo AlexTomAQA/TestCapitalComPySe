@@ -46,8 +46,8 @@ def pytest_addoption(parser):
 
 
 """
-пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth 
-    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v 
+пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
+    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 """
 
