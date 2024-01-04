@@ -199,8 +199,8 @@ def pre_go(fixture_value):
     scope="module",
     params=[
         # "Chrome",
-        "Edge",
-        # "Firefox",
+        # "Edge",
+        "Firefox",
         # "Safari",
     ],
     autouse=True,
