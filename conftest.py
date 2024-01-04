@@ -125,8 +125,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        # "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
@@ -189,19 +189,6 @@ def cur_password(request):
     return request.param
 
 
-# @pytest.fixture()
-# def prob_run_tc():
-#     """
-#     Fixture for реализации вероятности выполнения теста
-#     """
-#     prob = 100
-#     if random.randint(1, 100) <= prob:
-#         return ""
-#     else:
-#         return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
-#
-
-
 def pre_go(fixture_value):
     global test_browser
     test_browser = fixture_value
@@ -211,8 +198,8 @@ def pre_go(fixture_value):
 @pytest.fixture(
     scope="module",
     params=[
-        "Chrome",
-        # "Edge",
+        # "Chrome",
+        "Edge",
         # "Firefox",
         # "Safari",
     ],
