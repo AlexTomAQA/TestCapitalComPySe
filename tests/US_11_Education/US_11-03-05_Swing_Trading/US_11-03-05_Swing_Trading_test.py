@@ -97,7 +97,7 @@ class TestSwingTrading:
             case "NoAuth":
                 test_element.assert_login(d, cur_language, link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, link, demo=True)
+                test_element.assert_trading_platform_v4(d, link, True)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
