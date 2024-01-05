@@ -29,7 +29,7 @@ def pytest_generate_tests(metafunc):
     """
 
     list_number_rows = list()
-    start_row = 4
+    start_row = 5
     gs = GoogleSheet()
     qty_of_bugs = gs.get_cell_values("A2")
     del gs
