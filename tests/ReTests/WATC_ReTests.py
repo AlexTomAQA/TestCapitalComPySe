@@ -47,7 +47,6 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
-    @pytest.mark.timeout(300)
     def test_retests(self, d, gs, number_of_row):
 
         print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
@@ -95,6 +94,7 @@ def pretest(row_loc):
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
 
+@pytest.mark.timeout(300)
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
