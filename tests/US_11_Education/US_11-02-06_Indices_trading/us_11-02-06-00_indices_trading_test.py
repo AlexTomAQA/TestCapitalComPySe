@@ -84,7 +84,7 @@ class TestIndicesTradingGuidePreset:
         page_menu.menu_education_move_focus(d, cur_language)
         cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
 
-        test_element = MainBannerStartTrading(d, cur_menu_link)
+        test_element = MainBannerStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
         # if not test_element.element_click():
@@ -128,7 +128,7 @@ class TestIndicesTradingGuidePreset:
         page_menu.menu_education_move_focus(d, cur_language)
         cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
 
-        test_element = MainBannerTryDemo(d, cur_menu_link)
+        test_element = MainBannerTryDemo(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
         # if not test_element.element_click():
@@ -182,7 +182,7 @@ class TestIndicesTradingGuidePreset:
         page_menu.menu_education_move_focus(d, cur_language)
         cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
 
-        test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link)
+        test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     # @allure.step("Start pretest")

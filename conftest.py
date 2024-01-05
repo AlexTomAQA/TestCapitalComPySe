@@ -46,8 +46,8 @@ def pytest_addoption(parser):
 
 
 """
-пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth 
-    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v 
+пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
+    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 """
 
@@ -81,49 +81,15 @@ def cur_role(request):
     print(f"\n\n\nCurrent test role - {cur_role}")
     return cur_role
 
-# def pre_cur_role(fixture_value):
-#     global role_list
-#     role_list = fixture_value
-#
-#     try:
-#         # проверка аргументов командной строки
-#         retest = sys.argv[1].split('=')[1]
-#     except IndexError:
-#         retest = False
-#
-#     if retest == "True":
-#         if sys.argv[5].split('=')[0] == "--role":
-#             role_list = (sys.argv[5].split('=')[1],)
-#     else:
-#         role_list = (
-#             "Auth",
-#             "NoAuth",  # "Reg/NoAuth"
-#             "NoReg",
-#         )
-#     return role_list
-#
-#
-# @pytest.fixture(
-#     scope="class",
-#     params=[*role_list],
-#     ids=pre_cur_role,
-# )
-# def cur_role(request):
-#     """Fixture"""
-#     # проверка аргументов командной строки
-#     cur_role = request.param
-#     print(f"\n\n\nCurrent test role - {cur_role}")
-#     return cur_role
-
 
 # Language parameter
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
-        "it",  # 15 us
+        # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
@@ -159,9 +125,9 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
-        "de",  # Germany - "CYSEC"
+        # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
@@ -221,19 +187,6 @@ def cur_password(request):
     """Fixture"""
     print(f"Current login - {request.param}")
     return request.param
-
-
-# @pytest.fixture()
-# def prob_run_tc():
-#     """
-#     Fixture for реализации вероятности выполнения теста
-#     """
-#     prob = 100
-#     if random.randint(1, 100) <= prob:
-#         return ""
-#     else:
-#         return f"{datetime.now()}   Тест не попал в {prob}% выполняемых тестов."
-#
 
 
 def pre_go(fixture_value):

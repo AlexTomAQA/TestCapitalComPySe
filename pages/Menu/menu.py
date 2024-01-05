@@ -805,6 +805,8 @@ class MenuSection(BasePage):
             .click() \
             .perform()
 
+        print(f"{datetime.now()}   => Spread betting guide submenu focus moved and clicked")
+
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Set language")
