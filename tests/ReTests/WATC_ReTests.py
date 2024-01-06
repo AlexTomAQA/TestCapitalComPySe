@@ -10,7 +10,7 @@ import re
 from datetime import datetime
 
 import pytest
-# import pytest_timeout
+import pytest_timeout
 
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
@@ -47,6 +47,7 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
+    @pytest.mark.timeout(timeout=240, method="thread")
     def test_retests(self, d, gs, number_of_row):
 
         print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
@@ -94,7 +95,6 @@ def pretest(row_loc):
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
 
-@pytest.mark.timeout(300)
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
