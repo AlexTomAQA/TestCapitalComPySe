@@ -33,6 +33,11 @@ def gs():
     # копирование данных столбца
     gs.new_data_copy_past(0, rows_qty, 0, rows_qty,
                           21, 22, 22, 23)
+
+    # замена значения на дату теста
+    gs.update_range_values('W3', [["=W2"]])
+    gs.date_format()
+
     # установка времени старта ретеста
     gs.update_range_values('V1', [start_retest_date])
 
@@ -45,7 +50,7 @@ def gs():
 
     # очистка полей
     gs.clear_values(4, rows_qty, 21, 22)
-    print()
+
     yield gs
 
     # окончание ретеста

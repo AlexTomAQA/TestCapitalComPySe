@@ -24,8 +24,8 @@ class GoogleSheet:
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
     # The ID and range of a spreadsheet.
-    SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
-    # SPREADSHEET_ID = "1-aP54MqqU7nbCURAP_9CK40-RJh-mx34Lvm2MWCFxl0"
+    # SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
+    SPREADSHEET_ID = "1-aP54MqqU7nbCURAP_9CK40-RJh-mx34Lvm2MWCFxl0"     # copy for debugging
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
@@ -243,3 +243,32 @@ class GoogleSheet:
         }
 
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=clear_request).execute()
+
+    def date_format(self):
+        sheet = self.service.spreadsheets()
+        date_format_request = {
+            "requests": [
+                {
+                    "repeatCell": {
+                        "range": {
+                            "sheetId": self.SHEET_ID,
+                            "startRowIndex": 2,
+                            "endRowIndex": 3,
+                            "startColumnIndex": 22,
+                            "endColumnIndex": 23
+                        },
+                        "cell": {
+                            "userEnteredFormat": {
+                                "numberFormat": {
+                                    "type": "DATE",
+                                    "pattern": "dd/mm/yyyy"  # Формат даты W3
+                                }
+                            }
+                        },
+                        "fields": "userEnteredFormat.numberFormat"
+                    }
+                }
+            ]
+        }
+
+        response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=date_format_request).execute()
