@@ -244,7 +244,7 @@ class GoogleSheet:
 
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=clear_request).execute()
 
-    def date_format(self):
+    def date_format_cell(self):
         sheet = self.service.spreadsheets()
         date_format_request = {
             "requests": [

@@ -34,9 +34,9 @@ def gs():
     gs.new_data_copy_past(0, rows_qty, 0, rows_qty,
                           21, 22, 22, 23)
 
-    # замена значения на дату теста
+    # замена значения Status на дату ретеста
     gs.update_range_values('W3', [["=W2"]])
-    gs.date_format()
+    gs.date_format_cell()
 
     # установка времени старта ретеста
     gs.update_range_values('V1', [start_retest_date])
@@ -56,9 +56,9 @@ def gs():
     # окончание ретеста
     end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
     gs_out = ['Bugs Report']
-    gs.update_range_values('B1', [gs_out])
     gs.update_range_values('V2', [end_retest_date])
     gs.update_range_values('V4', [["=V2 - V1"]])
+    gs.update_range_values('B1', [gs_out])
     # exit(0)
 
     print(f"\n{datetime.now()}   *** end fixture gs = teardown ***\n")

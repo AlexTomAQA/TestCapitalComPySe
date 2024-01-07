@@ -10,7 +10,7 @@ import re
 from datetime import datetime
 
 import pytest
-import pytest_timeout
+# import pytest_timeout
 
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
