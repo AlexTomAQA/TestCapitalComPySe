@@ -9,6 +9,9 @@ import subprocess
 import re
 from datetime import datetime
 
+import pytest
+import pytest_timeout
+
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
@@ -44,6 +47,7 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
+    @pytest.mark.timeout(timeout=240, method="thread")
     def test_retests(self, d, gs, number_of_row):
 
         print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
