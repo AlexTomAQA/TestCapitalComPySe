@@ -48,8 +48,11 @@ def add_new_row_with_format():
     gs = GoogleSheet()
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
+    # добавление новой 4-й строки
     gs.add_new_row_before_()
-    gs.new_row_copy_past()
+    # копирование данных из предыдущей строки
+    gs.new_data_copy_past(5, 6, 4, 5,
+                          0, 17, 0, 17)
     # gs.clear_values_new_row()
     gs.update_range_values('U5', [start_update_date])
 

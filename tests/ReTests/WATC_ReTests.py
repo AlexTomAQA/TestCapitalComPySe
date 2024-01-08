@@ -10,7 +10,7 @@ import re
 from datetime import datetime
 
 import pytest
-import pytest_timeout
+# import pytest_timeout
 
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
@@ -101,6 +101,7 @@ def run_pytest():
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for debugging
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
                f" --retest={retest}"
