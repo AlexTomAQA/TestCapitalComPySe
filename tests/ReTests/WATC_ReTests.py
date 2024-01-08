@@ -9,6 +9,7 @@ import subprocess
 import re
 from datetime import datetime
 
+import allure
 import pytest
 # import pytest_timeout
 
@@ -56,11 +57,9 @@ class TestReTests:
         print(f"Row Value = {row_values[0]}")
 
         # pre-test
-        print(f"\n{datetime.now()}   1. Run pretest =>")
         pretest(row_values[0])
 
         # Запуск pytest с параметрами
-        print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
         output, error = run_pytest()
 
         # проверка результатов тестирования
@@ -76,8 +75,12 @@ class TestReTests:
         assert True
 
 
+@allure.step("Pretest")
 def pretest(row_loc):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
+
+    print(f"\n{datetime.now()}   2. Run pretest =>")
+    print(f"\n{datetime.now()}   row_loc = {row_loc}")
 
     # аргументы командной строки
     try:
@@ -94,9 +97,13 @@ def pretest(row_loc):
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
+    print(f"\n{datetime.now()}   => pretest finished")
+
 
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
+
+    print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
 
     retest = True
     # получение корня проекта
