@@ -56,45 +56,6 @@ class TestIndicesTrading:
             logger.info(f"====== SKIP testing page {cur_item_link} ======")
             pytest.skip("There is no test item on this page")
 
-    # @allure.step("Start test of button [Start trading] on Main banner")
-    # @pytest.mark.test_01
-    # def test_01_main_banner_start_trading_button(
-    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
-    #     """
-    #     Check: Button [Start Trading] on Main banner
-    #     Language: All. License: All.
-    #     """
-    #     test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
-    #                   "Testing button [Start Trading] on Main banner")
-    #
-    #     logger.info(f"====== START testing {', '.join(test_title)} ======")
-    #
-    #     bid = build_dynamic_arg_v4(
-    #         d, worker_id, cur_language, cur_country, cur_role, *test_title)
-    #
-    #     page_conditions = Conditions(d, "")
-    #     page_conditions.preconditions(
-    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-    #
-    #     test_element = MainBannerStartTrading(d, cur_item_link)
-    #     test_element.arrange_(d, cur_item_link)
-    #
-    #     if not test_element.element_click():
-    #         logger.warning(f"Testing element is not clicked")
-    #         logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
-    #         pytest.fail("Testing element is not clicked")
-    #
-    #     test_element = AssertClass(d, cur_item_link)
-    #     match cur_role:
-    #         case "NoReg":
-    #             test_element.assert_signup(d, cur_language, cur_item_link)
-    #         case "NoAuth":
-    #             test_element.assert_login(d, cur_language, cur_item_link)
-    #         case "Auth":
-    #             test_element.assert_trading_platform_v4(d, cur_item_link)
-    #
-    #     logger.info(f"====== END testing {', '.join(test_title)} ======")
-
     @allure.step("Start test of button [Start trading] on Main banner")
     @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
@@ -102,7 +63,7 @@ class TestIndicesTrading:
             cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
-        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
+        Language: EN, DE, ES, IT, RU, ZH. License: All.
         """
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
                       "Testing button [Start Trading] on Main banner")
@@ -111,7 +72,7 @@ class TestIndicesTrading:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+            cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -155,23 +116,18 @@ class TestIndicesTrading:
         """
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_03", "Testing button [Trade] in Most traded block")
-        # logger.info(f"====== START testing {', '.join(test_title)} ======")
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-        # if cur_country == 'gb':
-        #     logger.info(f"This test is not supported on UK location")
-        #     logger.info(f"====== SKIP testing {', '.join(test_title)} ======")
-        #     pytest.skip("This test is not supported on UK location")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link)
+        test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in Block 'Steps trading'")
@@ -180,36 +136,39 @@ class TestIndicesTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [1. Create & verify your account] in block 'Steps trading'
-        Language: All. License: All.
+        Language: EN, DE, ES, IT, RU, ZH. License: All.
         """
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".01_04", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
-        logger.info(f"====== START testing {', '.join(test_title)} ======")
+        # logger.info(f"====== START testing {', '.join(test_title)} ======")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BlockStepTrading(d, cur_item_link)
-        test_element.arrange_(d, cur_item_link)
+        test_element = BlockStepTrading(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-        if not test_element.element_click():
-            logger.warning(f"Testing element is not clicked")
-            logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
-            pytest.fail("Testing element is not clicked")
-
-        test_element = AssertClass(d, cur_item_link, bid)
-        match cur_role:
-            case "NoReg" | "NoAuth":
-                test_element.assert_signup(d, cur_language, cur_item_link)
-            case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
-
-        logger.info(f"====== END testing {', '.join(test_title)} ======")
+        # if not test_element.element_click():
+        #     logger.warning(f"Testing element is not clicked")
+        #     logger.info(f"====== FAIL testing {', '.join(test_title)} ======")
+        #     pytest.fail("Testing element is not clicked")
+        #
+        # test_element = AssertClass(d, cur_item_link, bid)
+        # match cur_role:
+        #     case "NoReg" | "NoAuth":
+        #         test_element.assert_signup(d, cur_language, cur_item_link)
+        #     case "Auth":
+        #         test_element.assert_trading_platform_v4(d, cur_item_link)
+        #
+        # logger.info(f"====== END testing {', '.join(test_title)} ======")
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     @pytest.mark.test_05
