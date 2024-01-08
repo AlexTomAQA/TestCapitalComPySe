@@ -7,6 +7,7 @@
 import os.path
 from datetime import datetime
 
+import allure
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -128,7 +129,9 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новая строка добавлена")
 
+    @allure.step("Get row values")
     def get_row_values(self, end_row=5):
+        print(f"\n{datetime.now()}   1. get_row_values from {end_row} row =>")
         range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
@@ -138,6 +141,7 @@ class GoogleSheet:
             .execute()
         )
         values = result.get("values", [])
+        print(f"\n{datetime.now()}   => row values = {values}")
 
         return values
 
