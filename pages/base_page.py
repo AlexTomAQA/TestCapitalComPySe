@@ -245,6 +245,8 @@ class BasePage:
         time_out = 30
         print(f"\n{datetime.now()}   Step 'Click button [Accept all cookies]'")
 
+        self.is_captcha()
+
         print(f"{datetime.now()}   Is Visible Button [Accept all cookies]? =>")
         button = self.element_is_visible(OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE, time_out)
         if not button:

@@ -168,4 +168,4 @@ class TestInvestmateApp:
             case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, menu_link)
             case "Auth":
-                test_element.assert_trading_platform_v3(d, menu_link)
+                test_element.assert_trading_platform_v4(d, menu_link)

@@ -2,7 +2,7 @@ from datetime import datetime
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
 
-def check_gs_table(bid, bug_num):
+def check_gs_table(bid, bug_n):
     gs = GoogleSheet()
     # старт проверки
     gs_out = ["'=====> Bugs Report !!! Идет Retest Data Update <====="]
@@ -11,12 +11,19 @@ def check_gs_table(bid, bug_num):
     available = True
     gs = GoogleSheet()
     values = gs.get_all_row_values()
-    for row in values:
+    for index, row in enumerate(values):
         if not row:
             break
         else:
             if bid in row[0]:
-                if bug_num in row[-1]:
+                if bug_n in row[-1]:
+                    available = False
+                    return available
+                else:
+                    bug_num = [["'" + bug_n]]
+                    gs.update_range_values(f'P{5 + index}', bug_num)
+                    print(f"\n{datetime.now()}   Bug: {bid} уже существует, "
+                          f"но тип бага изменился с {row[-1]} на {bug_n}")
                     available = False
                     return available
     return available
@@ -41,8 +48,11 @@ def add_new_row_with_format():
     gs = GoogleSheet()
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
+    # добавление новой 4-й строки
     gs.add_new_row_before_()
-    gs.new_row_copy_past()
+    # копирование данных из предыдущей строки
+    gs.new_data_copy_past(5, 6, 4, 5,
+                          0, 17, 0, 17)
     # gs.clear_values_new_row()
     gs.update_range_values('U5', [start_update_date])
 
@@ -56,7 +66,7 @@ def fill_gs_table(value_1, value_2, bug_num):
 
 def retest_table_fill(bid="", bug_n="", link=""):
     # ========= не удалять ======================
-    # bid = "Bid:11.01.01.00_01-de.ae.NoReg"
+    # bid = "Bid:11.02.02.01_07-en.de.Auth"
     # bug_n = "05"
     # link = 'https://capital.com/pl/handlovac-amd'
     # ===========================================
@@ -84,7 +94,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
         else:
             print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
     else:
-        print(f"\n{datetime.now()}  Для бага: {bid}-{bug_n} необходимо использовать проверку на ретест!!!")
+        print(f"\n{datetime.now()}  Для бага: Bid-{bug_n} необходимо использовать проверку на ретест!!!")
 
     gs_out = ['Bugs Report']
     gs.update_range_values('B1', [gs_out])

@@ -42,7 +42,7 @@ class AssertClass(BasePage):
         else:
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '04', cur_link)
+            retest_table_fill(self.bid, '04', self.link)
             assert False, "Bug # 04. Unknown situation instead 'Sign Up' form opened"
             # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
         # time.sleep(2)
@@ -65,25 +65,25 @@ class AssertClass(BasePage):
         elif self.page_signup_login.should_be_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '05', cur_link)
+            retest_table_fill(self.bid, '05', self.link)
             assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '06', cur_link)
+            retest_table_fill(self.bid, '06', self.link)
             assert False, "Bug # 06. Opened a 'Sign up' page instead of a 'Login'"
             # pytest.fail("Bug # 06. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '07', cur_link)
+            retest_table_fill(self.bid, '07', self,link)
             assert False, "Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'"
             # pytest.fail("Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
         else:
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '08', cur_link)
+            retest_table_fill(self.bid, '08', self.link)
             assert False, "Bug # 08. Unknown situation instead 'Login' form opened"
             # pytest.fail("Bug # 08. Unknown situation instead 'Login' form opened", False)
 
@@ -142,7 +142,7 @@ class AssertClass(BasePage):
     @allure.step('Checking that "App Store" page opened')
     def assert_app_store(self, d, cur_link):
         print(f"\n{datetime.now()}   3. Assert_v0")
-        self.page_app_store = AppStore(d, cur_link)
+        self.page_app_store = AppStore(d, cur_link, self.bid)
         self.page_app_store.should_be_app_store_page(cur_link)
 
     @allure.step('Checking that "App Store Investmate" page opened')
@@ -154,7 +154,7 @@ class AssertClass(BasePage):
     @allure.step('Checking that "Google Play" page opened')
     def assert_google_play(self, d, cur_link):
         print(f"\n{datetime.now()}   3. Assert_v0")
-        self.page_google_play = GooglePlay(d, cur_link)
+        self.page_google_play = GooglePlay(d, cur_link, self.bid)
         self.page_google_play.should_be_google_play_page(cur_link)
 
     @allure.step('Checking that "Sign Up" form on the Trading Platform page opened')

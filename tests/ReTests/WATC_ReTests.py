@@ -9,6 +9,10 @@ import subprocess
 import re
 from datetime import datetime
 
+import allure
+import pytest
+# import pytest_timeout
+
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
@@ -29,7 +33,7 @@ def pytest_generate_tests(metafunc):
     """
 
     list_number_rows = list()
-    start_row = 4
+    start_row = 5
     gs = GoogleSheet()
     qty_of_bugs = gs.get_cell_values("A2")
     del gs
@@ -44,6 +48,7 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
+    @pytest.mark.timeout(timeout=240, method="thread")
     def test_retests(self, d, gs, number_of_row):
 
         print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
@@ -52,11 +57,9 @@ class TestReTests:
         print(f"Row Value = {row_values[0]}")
 
         # pre-test
-        print(f"\n{datetime.now()}   1. Run pretest =>")
         pretest(row_values[0])
 
         # Запуск pytest с параметрами
-        print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
         output, error = run_pytest()
 
         # проверка результатов тестирования
@@ -72,8 +75,12 @@ class TestReTests:
         assert True
 
 
+@allure.step("Pretest")
 def pretest(row_loc):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
+
+    print(f"\n{datetime.now()}   2. Run pretest =>")
+    print(f"\n{datetime.now()}   row_loc = {row_loc}")
 
     # аргументы командной строки
     try:
@@ -90,13 +97,18 @@ def pretest(row_loc):
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
+    print(f"\n{datetime.now()}   => pretest finished")
+
 
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
+    print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
+
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for debugging
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
                f" --retest={retest}"
