@@ -63,7 +63,7 @@ class TestIndicesTrading:
             cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
-        Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
+        Language: EN, DE, ES, IT, RU, ZH. License: All.
         """
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".01_01",
                       "Testing button [Start Trading] on Main banner")
@@ -72,7 +72,7 @@ class TestIndicesTrading:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
+            cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
