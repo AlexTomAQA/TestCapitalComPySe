@@ -42,8 +42,7 @@ def pytest_generate_tests(metafunc):
 
 def check_language(cur_language):
     if cur_language in ["el", "hu", "nl", "ar", "fr", "zh", "cn"]:
-        return
-    pytest.skip(f"This test is not for {cur_language} language")
+        pytest.skip(f"This test is not for {cur_language} language")
 
 
 def check_country(cur_country):
