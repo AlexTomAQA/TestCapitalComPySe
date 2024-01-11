@@ -31,6 +31,15 @@ def pytest_generate_tests(metafunc):
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
+def check_language (cur_language):
+    if cur_language not in ['en', 'de', "es", "it", "pl", "ro", "ru", "zn"]:
+        return
+    pytest.skip(f"This test is not for {cur_language} language")
+
+def check_country (cur_country):
+    if cur_country in ["gb"]:
+        pytest.skip(f"This test is not for {cur_country} country")
+
 @pytest.mark.us_11_02_05
 class TestCryptocurrencyTrading:
     page_conditions = None
@@ -41,7 +50,7 @@ class TestCryptocurrencyTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Start Trading] on Main banner
-        Language: All. License: All.
+        Language: EN, DE, ES, IT, PL, RO, RU, ZN. License: All, except FCA (GB country)
         """
 
         bid = build_dynamic_arg_v4(
@@ -49,27 +58,14 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        check_language(cur_language)
+
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        if cur_country != 'gb':
-            test_element = MainBannerStartTrading(d, cur_item_link)
-            test_element.arrange_(d, cur_item_link)
-
-            test_element.element_click()
-
-            test_element = AssertClass(d, cur_item_link)
-            # test_element.assert_signup(d, cur_language, cur_role, cur_item_link)
-            match cur_role:
-                case "NoReg":
-                    test_element.assert_signup(d, cur_language, cur_item_link)
-                case "NoAuth":
-                    test_element.assert_login(d, cur_language, cur_item_link)
-                case "Auth":
-                    test_element.assert_trading_platform_v4(d, cur_item_link)
-        else:
-            pytest.skip("This test not for FCA licence.")
+        test_element = MainBannerStartTrading(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
     @pytest.mark.test_02
@@ -77,33 +73,21 @@ class TestCryptocurrencyTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Try demo] on Main banner
-        Language: All. License: All.
+        Language: EN, DE, ES, IT, PL, RO, RU, ZN. License: All, except FCA (GB country)
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        check_language(cur_language)
+
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        if cur_country != 'gb':
-            test_element = MainBannerTryDemo(d, cur_item_link)
-            test_element.arrange_(d, cur_item_link)
-
-            test_element.element_click()
-
-            test_element = AssertClass(d, cur_item_link)
-            match cur_role:
-                case "NoReg":
-                    test_element.assert_signup(d, cur_language, cur_item_link)
-                case "NoAuth":
-                    test_element.assert_login(d, cur_language, cur_item_link)
-                case "Auth":
-                    test_element.assert_trading_platform_v4(d, cur_item_link)
-        else:
-            pytest.skip("This test not for FCA licence.")
+        test_element = MainBannerTryDemo(d, cur_item_link, bid)
+        test_element.full_test (d, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
@@ -111,7 +95,7 @@ class TestCryptocurrencyTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Trade] in Most traded block
-        Language: All. License: All.
+        Language: EN, DE, ES, IT, PL, RO, RU, ZN. License: All, except FCA (GB country)
         """
 
         bid = build_dynamic_arg_v4(
@@ -301,4 +285,4 @@ class TestCryptocurrencyTrading:
                 case "Auth":
                     test_element.assert_trading_platform_v4(d, cur_item_link)
         else:
-            pytest.skip("This gittest not for FCA licence.")
+            pytest.skip("This test not for FCA licence.")
