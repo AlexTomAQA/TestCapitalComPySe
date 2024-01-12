@@ -48,6 +48,7 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
+    @allure.step("Start TestCase from ReTests")
     @pytest.mark.timeout(timeout=240, method="thread")
     def test_retests(self, d, gs, number_of_row):
 
@@ -63,15 +64,11 @@ class TestReTests:
         output, error = run_pytest()
 
         # проверка результатов тестирования
-        print(f"\n{datetime.now()}   3. Run check_results =>")
         gs_out = check_results(output, error)
 
         # заполнение Google Sheets по-строчно
-        # ==================
-        print(f"\n{datetime.now()}   4. Fixing one row check results into Google Sheet Bugs Report =>")
         result = gs.update_range_values(f'V{number_of_row}', [gs_out])
-        print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
-        # ==================
+
         assert True
 
 
@@ -79,7 +76,7 @@ class TestReTests:
 def pretest(row_loc):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
-    print(f"\n{datetime.now()}   2. Run pretest =>")
+    print(f"\n{datetime.now()}   1. Run pretest =>")
     print(f"\n{datetime.now()}   row_loc = {row_loc}")
 
     # аргументы командной строки
@@ -97,14 +94,25 @@ def pretest(row_loc):
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
-    print(f"\n{datetime.now()}   => pretest finished")
+    print(f"\n{datetime.now()}   => 1. pretest finished")
 
 
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
-    print(f"\n{datetime.now()}   2. Run run_pytest with parameters from row =>")
+    print(f"\n{datetime.now()}   2. Run run_pytest with Bid = {test_id} from row =>")
 
+    print(f"\n{datetime.now()}   2.1. Run hw_info.py in subprocess =>")
+    # формирование командной строки и запуск hw_info.py, как subprocess
+    command = "poetry run python3 tests/hwinfo.py"
+    print(f"\n{datetime.now()}   Run command: {command}")
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    print(f"\n{datetime.now()}   stdout = '{stdout}'")
+    print(f"\n{datetime.now()}   stderr = '{stderr}'")
+    print(f"\n{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
+
+    print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
@@ -124,13 +132,19 @@ def run_pytest():
     command += f" {host}{path}"
     # command += f" --json-report --json-report-omit keywords streams"
 
-    print(f"command: {command}")
+    print(f"\n{datetime.now()}   Run command: {command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
+    print(f"\n{datetime.now()}   stdout = '{stdout}'")
+    print(f"\n{datetime.now()}   stderr = '{stderr}'")
+    print(f"\n{datetime.now()}   => 2.2. pytest ... as subprocess finished")
+    print(f"\n{datetime.now()}   => 2. pytest with Bid = {test_id} from row finished")
+
     return stdout, stderr
 
 
 def check_results(output, error):
+    print(f"\n{datetime.now()}   3. Run check_results =>")
     # Проверка наличия ошибок при выполнении
     test_results = ""
     gs_out = [[]]
@@ -168,5 +182,7 @@ def check_results(output, error):
         skipped = skipped_match.group(1)
         print(f"{datetime.now()}   => Текущий тест: {skipped}")
         gs_out = ['skipped']
+
+    print(f"\n{datetime.now()}   => 3. check_results finished")
 
     return gs_out

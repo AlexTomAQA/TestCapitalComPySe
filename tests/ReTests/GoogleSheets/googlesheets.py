@@ -171,7 +171,9 @@ class GoogleSheet:
 
         return values
 
+    @allure.step("Fixing one row check results into Google Sheet Bugs Report")
     def update_range_values(self, cell='V5', values=""):
+        print(f"\n{datetime.now()}   4. Fixing one row check results into Google Sheet Bugs Report =>")
         range_name = f'{self.SHEET_NAME}!{cell}'
         data = [{
             'range': range_name,
@@ -183,6 +185,8 @@ class GoogleSheet:
         }
         result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
                                                                   body=body).execute()
+        print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+
         return result
 
     def new_data_copy_past(self, source_startRowIndex=5, source_endRowIndex=6,
