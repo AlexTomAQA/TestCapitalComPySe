@@ -190,8 +190,8 @@ def cur_password(request):
 
 
 @pytest.fixture(
-    scope="module",
-    # scope="session",
+    # scope="module",
+    scope="session",
     params=[
         "Chrome",
         # "Edge",
