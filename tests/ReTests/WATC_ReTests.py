@@ -10,7 +10,7 @@ import re
 from datetime import datetime
 
 import allure
-import pytest
+# import pytest
 # import pytest_timeout
 
 from tests.ReTests.retest_data import us_data
@@ -49,13 +49,13 @@ def pytest_generate_tests(metafunc):
 class TestReTests:
 
     @allure.step("Start TestCase from ReTests")
-    @pytest.mark.timeout(timeout=240, method="thread")
-    def test_retests(self, d, gs, number_of_row):
+    # @pytest.mark.timeout(timeout=240, method="thread")
+    def test_retests(self, gs, number_of_row):
 
-        print(f"\n\n\n{datetime.now()}   0. Get Value row =>")
-        print(f"Row # = {number_of_row}")
+        print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
+        print(f"{datetime.now()}   Row # = {number_of_row}")
         row_values = gs.get_row_values(number_of_row)
-        print(f"Row Value = {row_values[0]}")
+        print(f"{datetime.now()}   Row Values = \n{row_values[0]}")
 
         # pre-test
         pretest(row_values[0])
@@ -77,7 +77,7 @@ def pretest(row_loc):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
     print(f"\n{datetime.now()}   1. Run pretest =>")
-    print(f"\n{datetime.now()}   row_loc = {row_loc}")
+    print(f"\n{datetime.now()}   row_loc = \n{row_loc}")
 
     # аргументы командной строки
     try:
@@ -94,9 +94,10 @@ def pretest(row_loc):
     except KeyError:
         print("Не корректные входные данные из таблицы WATC_BugsReport")
 
-    print(f"\n{datetime.now()}   => 1. pretest finished")
+    print(f"\n{datetime.now()}   => 1. Pretest finished")
 
 
+@allure.step("Run aurotest with Bid parameters")
 def run_pytest():
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
@@ -105,12 +106,12 @@ def run_pytest():
     print(f"\n{datetime.now()}   2.1. Run hw_info.py in subprocess =>")
     # формирование командной строки и запуск hw_info.py, как subprocess
     command = "poetry run python3 tests/hwinfo.py"
-    print(f"\n{datetime.now()}   Run command: {command}")
+    print(f"\n{datetime.now()}   Run command: \n{command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate()
-    print(f"\n{datetime.now()}   stdout = '{stdout}'")
-    print(f"\n{datetime.now()}   stderr = '{stderr}'")
-    print(f"\n{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
+    hwinfo_stdout, stderr = process.communicate()
+    hwinfo_out = hwinfo_stdout.decode('utf-8')
+    print(f"{datetime.now()} hwinfo output: \n{hwinfo_out}")
+    print(f"{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
 
     print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
@@ -132,13 +133,13 @@ def run_pytest():
     command += f" {host}{path}"
     # command += f" --json-report --json-report-omit keywords streams"
 
-    print(f"\n{datetime.now()}   Run command: {command}")
+    print(f"\n{datetime.now()}   Run command: \n{command}")
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
-    print(f"\n{datetime.now()}   stdout = '{stdout}'")
-    print(f"\n{datetime.now()}   stderr = '{stderr}'")
+    # print(f"\n{datetime.now()}   stdout = '{stdout}'")
+    # print(f"\n{datetime.now()}   stderr = '{stderr}'")
     print(f"\n{datetime.now()}   => 2.2. pytest ... as subprocess finished")
-    print(f"\n{datetime.now()}   => 2. pytest with Bid = {test_id} from row finished")
+    print(f"\n{datetime.now()}   => 2. Autotest with Bid = {test_id} from row finished")
 
     return stdout, stderr
 
@@ -150,10 +151,10 @@ def check_results(output, error):
     gs_out = [[]]
 
     if error:
-        print(f"Ошибка: {error.decode('utf-8')}")
+        print(f"{datetime.now()}   Ошибка: \n{error.decode('utf-8')}")
     else:
         test_results = output.decode('utf-8')
-        print(f"{datetime.now()} test_results: \n{test_results}")
+        print(f"{datetime.now()}   test_results: \n{test_results}")
 
     # Проверка на Failed
     failed_match = re.search(r"(\d+ failed)", test_results)

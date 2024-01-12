@@ -129,7 +129,7 @@ class GoogleSheet:
 
         print(f"\n{datetime.now()}   => Новая строка добавлена")
 
-    @allure.step("Get row values")
+    @allure.step("Get row values from ... row")
     def get_row_values(self, end_row=5):
         print(f"\n{datetime.now()}   1. get_row_values from {end_row} row =>")
         range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
@@ -141,7 +141,8 @@ class GoogleSheet:
             .execute()
         )
         values = result.get("values", [])
-        print(f"\n{datetime.now()}   => row values = {values}")
+        print(f"{datetime.now()}   => row values = \n{values}")
+        print(f"\n{datetime.now()}   => 1. Get row values from {end_row} row finished")
 
         return values
 
@@ -186,6 +187,7 @@ class GoogleSheet:
         result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
                                                                   body=body).execute()
         print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
+        print(f"{datetime.now()}   => 4. One row check results into Google Sheet Bugs Report fixed")
 
         return result
 
