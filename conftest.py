@@ -21,7 +21,7 @@ from allure_commons.types import AttachmentType
 
 import conf
 
-test_browser = ""
+# test_browser = ""
 
 
 def pytest_addoption(parser):
@@ -86,12 +86,12 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "",  # "en" - 21 us
+        # "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
-        # "cn",  # 13 us Education to trade present, financial glossary not present
+        "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
         # "pl",  # 10 us
@@ -125,10 +125,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -189,14 +189,9 @@ def cur_password(request):
     return request.param
 
 
-def pre_go(fixture_value):
-    global test_browser
-    test_browser = fixture_value
-    return None
-
-
 @pytest.fixture(
     scope="module",
+    # scope="session",
     params=[
         "Chrome",
         # "Edge",
@@ -204,30 +199,13 @@ def pre_go(fixture_value):
         # "Safari",
     ],
     autouse=True,
-    ids=pre_go,
+    # ids=pre_go,
 )
-def go(request, d):
-    """Start execution program"""
-    print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
-    # d.get(conf.URL)
-
-    yield d
-
-    d.quit()
-    print(f"\n{datetime.now()}   *** end fixture Chrome = teardown ***\n")
-
-#
-# @pytest.fixture()
-# def cur_time():
-#     """Fixture"""
-#     return str(datetime.now())
-
-
-@pytest.fixture(scope="module")
-# def d(browser):
 def d(request):
     """WebDriver Initialization"""
-    global test_browser
+    print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
+
+    test_browser = request.param
     # проверка аргументов командной строки
     # retest = request.config.getoption("retest")
 
@@ -240,22 +218,25 @@ def d(request):
     if retest_for_br:
         test_browser = request.config.getoption("browser_name")
 
-    browser = test_browser
-    driver = None
-    if browser == "Chrome":
-        driver = init_remote_driver_chrome()
-    elif browser == "Edge":
-        driver = init_remote_driver_edge()
-    elif browser == "Firefox":
-        driver = init_remote_driver_firefox()
-    elif browser == "Safari":
-        driver = init_remote_driver_safari()
-    elif browser == "Opera":
+    d = None
+    if test_browser == "Chrome":
+        d = init_remote_driver_chrome()
+    elif test_browser == "Edge":
+        d = init_remote_driver_edge()
+    elif test_browser == "Firefox":
+        d = init_remote_driver_firefox()
+    elif test_browser == "Safari":
+        d = init_remote_driver_safari()
+    elif test_browser == "Opera":
         pass
     else:
-        print('Please pass the correct browser name: {}'.format(browser))
+        print(f'Please pass the correct browser name: {test_browser}')
         raise Exception('driver is not found')
-    return driver
+
+    yield d
+
+    d.quit()
+    print(f"\n{datetime.now()}   *** end fixture Browser = teardown ***\n")
 
 
 def init_remote_driver_chrome():
