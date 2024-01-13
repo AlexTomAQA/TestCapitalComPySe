@@ -56,8 +56,10 @@ jobs:
         run: pip3.11 install poetry
 
       - name: pwd
+        if: always()
         run: pwd
       - name: ls -la
+        if: always()
         run: ls -la
 
 #      - name: 4.1. python3.11 -m venv .venv
@@ -72,6 +74,7 @@ jobs:
 #        run: ls -la
 
       - name: 4.3. poetry shell
+        if: always()
         run: poetry shell
 
       - name: 5. install dependencies
