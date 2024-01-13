@@ -259,6 +259,8 @@ def init_remote_driver_chrome():
     if conf.HEADLESS:
         chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
 
+    chrome_options.add_argument("--disable-gpu")
+
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
     #                           options=options)
 
@@ -266,8 +268,6 @@ def init_remote_driver_chrome():
     # driver = webdriver.Chrome(
     #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
     # )
-
-    chrome_options.add_argument("--disable-gpu")
 
     print(driver.get_window_size())
     driver.implicitly_wait(4)
