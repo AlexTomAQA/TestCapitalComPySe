@@ -143,7 +143,8 @@ class BasePage:
         # time.sleep(1)
         print(f"{datetime.now()}   Load page {self.link}")
 
-    @allure.step("Accept all cookies")
+    @allure.step("Start Accepting all cookies")
+    @HandleExcElementsDecorator()
     def button_accept_all_cookies_click(self):
         time_out = 30
         print(f"\n{datetime.now()}   Step 'Click button [Accept all cookies]'")
@@ -161,6 +162,7 @@ class BasePage:
         time.sleep(1)
 
         print(f"{datetime.now()}   Is clickable Button [Accept all cookies] =>")
+        button = self.browser.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
         button = self.element_is_clickable(button, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not clickable after {time_out} sec.")
@@ -176,6 +178,7 @@ class BasePage:
         time.sleep(0.5)
 
     @allure.step("Reject all cookies")
+    @HandleExcElementsDecorator()
     def button_reject_all_cookies_click(self):
         print(f"\n"
               f"{datetime.now()}   Is visible BUTTON_REJECT_ALL_COOKIE? =>")
@@ -415,18 +418,6 @@ class BasePage:
         """
         return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
 
-    # def flatten(self, mylist):
-    #     """
-    #     Unpacks list of lists of elements into a single, flat list of elements
-    #
-    #     Args:
-    #         mylist: the list of the lists of WebElements.
-    #     Returns:
-    #         list[selenium.webdriver.remote.webelement.WebElement]: the list of WebElements.
-    #     """
-    #     return [item for sublist in mylist for item in sublist]
-    #
-
     @HandleExcElementsDecorator()
     def click_button(self, method, locator):
         """
@@ -511,6 +502,18 @@ class BasePage:
     def is_captcha(self):
         if self.elements_are_present(*Captcha.CAPTCHA_IFRAME):
             pytest.fail("Captcha on the page")
+
+# def flatten(self, mylist):
+#     """
+#     Unpacks list of lists of elements into a single, flat list of elements
+#
+#     Args:
+#         mylist: the list of the lists of WebElements.
+#     Returns:
+#         list[selenium.webdriver.remote.webelement.WebElement]: the list of WebElements.
+#     """
+#     return [item for sublist in mylist for item in sublist]
+#
 
 # class HandleExcElementDecorator(object):
 #     """A decorator that handles exceptions related to element on a webpage."""
