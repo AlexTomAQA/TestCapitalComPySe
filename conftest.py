@@ -245,8 +245,8 @@ def init_remote_driver_chrome():
     # chrome_version = "115.0.5790.114"
     # chrome_version = "116.0.5845.96"
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.page_load_strategy = "eager"
-    # chrome_options.page_load_strategy = "normal"
+    # chrome_options.page_load_strategy = "eager"
+    chrome_options.page_load_strategy = "normal"
     chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
     # chrome_options.add_argument(conf.CHROME_WINDOW_SIZES_4k)
 
@@ -259,6 +259,7 @@ def init_remote_driver_chrome():
     if conf.HEADLESS:
         chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
 
+    chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-gpu")
 
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
@@ -271,6 +272,8 @@ def init_remote_driver_chrome():
 
     print(driver.get_window_size())
     driver.implicitly_wait(4)
+    driver.set_script_timeout(20000)
+    
     return driver
 
 
