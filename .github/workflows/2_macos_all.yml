@@ -92,7 +92,7 @@ jobs:
 #
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
-        run: poetry run pytest -vv tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
+        run: poetry run pytest -vv -l --full-trace tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
         continue-on-error: true
 
       - name: Run hwinfo.py
