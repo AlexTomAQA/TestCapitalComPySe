@@ -267,6 +267,8 @@ def init_remote_driver_chrome():
     #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
     # )
 
+    chrome_options.add_argument("--disable-gpu")
+
     print(driver.get_window_size())
     driver.implicitly_wait(4)
     return driver

@@ -45,7 +45,7 @@ jobs:
         run: pip3.11 install speedtest
       - name: Run hwinfo.py first time
         if: always()
-        run: python3 tests/hwinfo.py
+        run: python3.11 tests/hwinfo.py
 
       - name: 4. Install Zbar for QReader
         if: always()
@@ -73,10 +73,10 @@ jobs:
 #      - name: ls -la
 #        run: ls -la
 
-      - name: 4.3. poetry shell
-        if: always()
-        run: poetry shell
-
+#      - name: 4.3. poetry shell
+#        if: always()
+#        run: poetry shell
+#
       - name: 5. install dependencies
         if: always()
         run: poetry install --sync
