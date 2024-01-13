@@ -839,13 +839,14 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Set country")
+    @allure.step(f"{datetime.now()}.   Start Set country")
     def set_country(self, cur_country):
         d = self.browser
 
         elements = d.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
             pytest.fail(f"For test country '{cur_country}' problem № 1 with set country")
+
         ActionChains(d) \
             .move_to_element(elements[0]) \
             .pause(0.5) \
@@ -853,25 +854,37 @@ class MenuSection(BasePage):
             .pause(1) \
             .perform()
 
-        # self.send_keys(cur_country, *MenuLanguageAndCountry.COUNTRIES_SEARCH_INPUT)
-        # time.sleep(1)
-        # countries_list = d.find_elements(*MenuLanguageAndCountry.COUNTRIES_LIST)
-        # if len(countries_list) == 0:
-        #     pytest.fail(f"For test country '{cur_country}' problem № 2 with set country")
-        #
+        self.send_keys(cur_country, *MenuLanguageAndCountry.COUNTRIES_SEARCH_INPUT)
+        time.sleep(1)
+
+        countries_list = d.find_elements(*MenuLanguageAndCountry.COUNTRIES_LIST)
+        if len(countries_list) == 0:
+            print(f"For test country '{cur_country}' problem № 2 with set country")
+
         css_sel_country = 'a[data-country="' + cur_country + '"]'
         if conf.DEBUG:
             print(f"\n{datetime.now()} Debug:   css_country_selector = {css_sel_country}")
+
         country_str_list = d.find_elements(By.CSS_SELECTOR, css_sel_country)
         if len(country_str_list) == 0:
-            time.sleep(10)
-            pytest.fail(f"Test country '{cur_country}' not listed")
+            # time.sleep(10)
+            pytest.fail(f"Test country '{cur_country}' not present in country list")
 
         ActionChains(d) \
             .move_to_element(country_str_list[0]) \
             .pause(0.5) \
-            .click() \
             .perform()
+
+        time_out = 3
+        country_str_list = self.element_is_visible(["By.CSS_Selector", css_sel_country], time_out)
+        if not country_str_list:
+            print(f"{datetime.now()}   => Country item is not visible after {time_out} sec.")
+            assert False, f"Country item in drop down country list is not visible after {time_out} sec."
+        else:
+            print(f"{datetime.now()}   => Country item in drop down country list is visible")
+
+        country_str_list.click()
+        time.sleep(0.5)
 
         return d.current_url
 
