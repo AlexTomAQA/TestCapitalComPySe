@@ -259,8 +259,9 @@ def init_remote_driver_chrome():
     if conf.HEADLESS:
         chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
 
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-browser-side-navigation")
+    # chrome_options.add_argument("--no-sandbox")
+    # chrome_options.add_argument("--disable-gpu")
 
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
     #                           options=options)
@@ -273,7 +274,7 @@ def init_remote_driver_chrome():
     print(driver.get_window_size())
     driver.implicitly_wait(4)
     driver.set_script_timeout(20000)
-    
+
     return driver
 
 
