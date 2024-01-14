@@ -26,7 +26,7 @@ class GoogleSheet:
 
     # The ID and range of a spreadsheet.
     SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
-    # SPREADSHEET_ID = "1-aP54MqqU7nbCURAP_9CK40-RJh-mx34Lvm2MWCFxl0"     # copy for debugging
+    # SPREADSHEET_ID = "1qpqNe8ZA6ypGbJh0uqRDIFJMtzaRARCOIVyoCuBXWz4"     # copy for debugging
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
@@ -174,6 +174,8 @@ class GoogleSheet:
 
     @allure.step("Fixing one row check results into Google Sheet Bugs Report")
     def update_range_values(self, cell='V5', values=""):
+        if values == "":
+            values = [[""]]
         print(f"\n{datetime.now()}   4. Fixing one row check results into Google Sheet Bugs Report =>")
         range_name = f'{self.SHEET_NAME}!{cell}'
         data = [{

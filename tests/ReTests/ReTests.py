@@ -10,6 +10,8 @@ import re
 from datetime import datetime
 
 import allure
+import pytest
+
 # import pytest
 # import pytest_timeout
 
@@ -58,7 +60,7 @@ class TestReTests:
         print(f"{datetime.now()}   Row Values = \n{row_values[0]}")
 
         # pre-test
-        pretest(row_values[0])
+        pretest(row_values[0], number_of_row, gs)
 
         # Запуск pytest с параметрами
         output, error = run_pytest()
@@ -73,7 +75,7 @@ class TestReTests:
 
 
 @allure.step("Pretest")
-def pretest(row_loc):
+def pretest(row_loc, number_of_row, gs):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
     print(f"\n{datetime.now()}   1. Run pretest =>")
@@ -84,7 +86,7 @@ def pretest(row_loc):
         test_id = row_loc[0]
         browser_name = row_loc[2]
         us = row_loc[3]
-        path = us_data.us_data[row_loc[3]]
+        path = us_data.us_data[us]
         num_test = row_loc[4]
         lang = '' if row_loc[5] == 'en' else row_loc[5]
         country = row_loc[6]
@@ -92,7 +94,9 @@ def pretest(row_loc):
         url = row_loc[9]
         # num_bug = row_loc[12]
     except KeyError:
-        print("Не корректные входные данные из таблицы WATC_BugsReport")
+        print(f"\n{datetime.now()}   =>  Не корректные входные данные из таблицы WATC_BugsReport")
+        gs.update_range_values(f'V{number_of_row}', [["skipped"]])
+        pytest.skip()
 
     print(f"\n{datetime.now()}   => 1. Pretest finished")
 
@@ -103,15 +107,15 @@ def run_pytest():
 
     print(f"\n{datetime.now()}   2. Run run_pytest with Bid = {test_id} from row =>")
 
-    print(f"\n{datetime.now()}   2.1. Run hw_info.py in subprocess =>")
-    # формирование командной строки и запуск hw_info.py, как subprocess
-    command = "poetry run python3 tests/hwinfo.py"
-    print(f"\n{datetime.now()}   Run command: \n{command}")
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    hwinfo_stdout, stderr = process.communicate()
-    hwinfo_out = hwinfo_stdout.decode('utf-8')
-    print(f"{datetime.now()} hwinfo output: \n{hwinfo_out}")
-    print(f"{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
+    # print(f"\n{datetime.now()}   2.1. Run hw_info.py in subprocess =>")
+    # # формирование командной строки и запуск hw_info.py, как subprocess
+    # command = "poetry run python3 tests/hwinfo.py"
+    # print(f"\n{datetime.now()}   Run command: \n{command}")
+    # process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # hwinfo_stdout, stderr = process.communicate()
+    # hwinfo_out = hwinfo_stdout.decode('utf-8')
+    # print(f"{datetime.now()} hwinfo output: \n{hwinfo_out}")
+    # print(f"{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
 
     print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
@@ -147,14 +151,31 @@ def run_pytest():
 def check_results(output, error):
     print(f"\n{datetime.now()}   3. Run check_results =>")
     # Проверка наличия ошибок при выполнении
-    test_results = ""
-    gs_out = [[]]
+    gs_out = ["WebDriver Error"]
 
     if error:
         print(f"{datetime.now()}   Ошибка: \n{error.decode('utf-8')}")
+        gs_out = ['Stdout error']
+        print(f"{datetime.now()}   => Текущий тест: skipped")
+        return gs_out
     else:
         test_results = output.decode('utf-8')
         print(f"{datetime.now()}   test_results: \n{test_results}")
+
+    # Проверка на выбор хотя бы одного теста
+    failed_match_selected = re.search(r"(\d+ selected)", test_results)
+    if failed_match_selected:
+        selected = failed_match_selected.group(1)
+        if selected == "0 selected":
+            print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
+            print(f"{datetime.now()}   => Текущий тест: skipped")
+            gs_out = ['0 TC selected']
+            return gs_out
+    else:
+        print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
+        print(f"{datetime.now()}   => Текущий тест: skipped")
+        gs_out = ['No one TC selected']
+        return gs_out
 
     # Проверка на Failed
     failed_match = re.search(r"(\d+ failed)", test_results)
