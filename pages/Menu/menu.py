@@ -178,11 +178,12 @@ class MenuSection(BasePage):
             case "cn":
                 ed_menu_locator = MenuUS11Education.SUB_MENU_CN_LEARN_TO_TRADE
 
+        time.sleep(0.5)
         menu = d.find_elements(*ed_menu_locator)
         if len(menu) == 0:
             print(f"{datetime.now()}   => Education menu not present")
             allure.attach(self.browser.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            pytest.skip(f"For '{test_language}' language menu [Education] not present")
+            pytest.skip(f"[Education] menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present")
 
         if not self.element_is_visible(ed_menu_locator, 5):
