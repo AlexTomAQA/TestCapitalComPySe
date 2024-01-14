@@ -151,11 +151,11 @@ def run_pytest():
 def check_results(output, error):
     print(f"\n{datetime.now()}   3. Run check_results =>")
     # Проверка наличия ошибок при выполнении
-    gs_out = ["skipped"]
+    gs_out = ["WebDriver Error"]
 
     if error:
         print(f"{datetime.now()}   Ошибка: \n{error.decode('utf-8')}")
-        gs_out = ['skipped']
+        gs_out = ['Stdout error']
         print(f"{datetime.now()}   => Текущий тест: skipped")
         return gs_out
     else:
@@ -169,12 +169,12 @@ def check_results(output, error):
         if selected == "0 selected":
             print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
             print(f"{datetime.now()}   => Текущий тест: skipped")
-            gs_out = ['skipped']
+            gs_out = ['0 TC selected']
             return gs_out
     else:
         print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
         print(f"{datetime.now()}   => Текущий тест: skipped")
-        gs_out = ['skipped']
+        gs_out = ['No one TC selected']
         return gs_out
 
     # Проверка на Failed
