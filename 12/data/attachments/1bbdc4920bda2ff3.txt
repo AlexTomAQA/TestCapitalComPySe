@@ -1,0 +1,36 @@
+2024-01-14 20:56:23 ERROR Elements not present after 0.5 seconds on page: https://capital.com/cn/trade-commodities
+2024-01-14 20:56:23 ERROR 
+Traceback (most recent call last):
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 293, in element_is_visible
+    return Wait(self.browser, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcom-ahTg7XpD-py3.11\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x01306EE3+174339]
+	(No symbol) [0x01230A51]
+	(No symbol) [0x00F46FF6]
+	(No symbol) [0x00F79876]
+	(No symbol) [0x00F79C2C]
+	(No symbol) [0x00FABD42]
+	(No symbol) [0x00F97054]
+	(No symbol) [0x00FAA104]
+	(No symbol) [0x00F96DA6]
+	(No symbol) [0x00F71034]
+	(No symbol) [0x00F71F8D]
+	GetHandleVerifier [0x013A4B1C+820540]
+	sqlite3_dbdata_init [0x014653EE+653550]
+	sqlite3_dbdata_init [0x01464E09+652041]
+	sqlite3_dbdata_init [0x014597CC+605388]
+	sqlite3_dbdata_init [0x01465D9B+656027]
+	(No symbol) [0x0123FE6C]
+	(No symbol) [0x012383B8]
+	(No symbol) [0x012384DD]
+	(No symbol) [0x01225818]
+	BaseThreadInitThunk [0x76736A39+25]
+	RtlGetFullPathName_UEx [0x77707F8D+173]
+	RtlGetFullPathName_UEx [0x77707F5B+123]
