@@ -233,6 +233,9 @@ def d(request):
         print(f'Please pass the correct browser name: {test_browser}')
         raise Exception('driver is not found')
 
+    # Установка максимального тайм-аута загрузки страницы
+    d.set_page_load_timeout(35)
+
     yield d
 
     d.quit()
@@ -347,7 +350,8 @@ def pytest_runtest_makereport(item, call):
                     "return document.body.parentNode.scroll" + x)
 
             # driver.set_window_size(s("Width"), s("Height"))
-            driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
+            # driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
+            driver.save_screenshot(destination_file)      # необходимо для корректной работы ретестов
             allure.attach(
                 driver.get_screenshot_as_png(),
                 name="Screenshot",
