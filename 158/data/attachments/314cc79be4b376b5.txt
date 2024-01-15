@@ -1,0 +1,32 @@
+2024-01-15 05:57:37 ERROR Elements not present after 0.5 seconds on page: https://capital.com/es/operar-cobre
+2024-01-15 05:57:37 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 293, in element_is_visible
+    return Wait(self.browser, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcom-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55d441d36f83 <unknown>
+#1 0x55d4419efcf7 <unknown>
+#2 0x55d441a3f99e <unknown>
+#3 0x55d441a3faa1 <unknown>
+#4 0x55d441a8ad64 <unknown>
+#5 0x55d441a690dd <unknown>
+#6 0x55d441a88006 <unknown>
+#7 0x55d441a68e53 <unknown>
+#8 0x55d441a30dd4 <unknown>
+#9 0x55d441a321de <unknown>
+#10 0x55d441cfb531 <unknown>
+#11 0x55d441cff455 <unknown>
+#12 0x55d441ce7f55 <unknown>
+#13 0x55d441d000ef <unknown>
+#14 0x55d441ccb99f <unknown>
+#15 0x55d441d24008 <unknown>
+#16 0x55d441d241d7 <unknown>
+#17 0x55d441d36124 <unknown>
+#18 0x7fdce3a94ac3 <unknown>
