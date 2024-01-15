@@ -18,6 +18,7 @@ import pytest
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
+flag_testing = True
 test_id = None
 browser_name = None
 us = None
@@ -53,25 +54,32 @@ class TestReTests:
     @allure.step("Start TestCase from ReTests")
     # @pytest.mark.timeout(timeout=240, method="thread")
     def test_retests(self, gs, number_of_row):
+        global flag_testing
 
-        print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
-        print(f"{datetime.now()}   Row # = {number_of_row}")
-        row_values = gs.get_row_values(number_of_row)
-        print(f"{datetime.now()}   Row Values = \n{row_values[0]}")
+        if flag_testing:
+            print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
+            print(f"{datetime.now()}   Row # = {number_of_row}")
+            row_values = gs.get_row_values(number_of_row)
+            if row_values:
+                print(f"{datetime.now()}   Row Values = \n{row_values[0]}")
 
-        # pre-test
-        pretest(row_values[0], number_of_row, gs)
+                # pre-test
+                pretest(row_values[0], number_of_row, gs)
 
-        # Запуск pytest с параметрами
-        output, error = run_pytest()
+                # Запуск pytest с параметрами
+                output, error = run_pytest()
 
-        # проверка результатов тестирования
-        gs_out = check_results(output, error)
+                # проверка результатов тестирования
+                gs_out = check_results(output, error)
 
-        # заполнение Google Sheets по-строчно
-        result = gs.update_range_values(f'V{number_of_row}', [gs_out])
+                # заполнение Google Sheets по-строчно
+                result = gs.update_range_values(f'V{number_of_row}', [gs_out])
 
-        assert True
+            else:
+                print(f"{datetime.now()}   Abort testing")
+                flag_testing = False
+
+        assert flag_testing
 
 
 @allure.step("Pretest")
