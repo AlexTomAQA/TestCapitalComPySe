@@ -29,6 +29,13 @@ country = None
 role = None
 url = None
 
+country_list = [
+        "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
+        "ae",  # United Arab Emirates - "SCB"
+]
+
 
 def pytest_generate_tests(metafunc):
     """
@@ -73,7 +80,7 @@ class TestReTests:
                 gs_out = check_results(output, error)
 
                 # заполнение Google Sheets по-строчно
-                result = gs.update_range_values(f'V{number_of_row}', [gs_out])
+                gs.update_range_values(f'V{number_of_row}', [gs_out])
 
             else:
                 print(f"{datetime.now()}   Abort testing")
@@ -98,12 +105,16 @@ def pretest(row_loc, number_of_row, gs):
         num_test = row_loc[4]
         lang = '' if row_loc[5] == 'en' else row_loc[5]
         country = row_loc[6]
+        if country not in country_list:
+            print(f"\n{datetime.now()}   =>  Данная лицензия:{country} не проверяется в этом ране")
+            gs.update_range_values(f'V{number_of_row}', [["skipped"]])
+            pytest.skip()
         role = row_loc[8]
         url = row_loc[9]
         # num_bug = row_loc[12]
     except KeyError:
         print(f"\n{datetime.now()}   =>  Не корректные входные данные из таблицы WATC_BugsReport")
-        gs.update_range_values(f'V{number_of_row}', [["skipped"]])
+        gs.update_range_values(f'V{number_of_row}', [["Error table data"]])
         pytest.skip()
 
     print(f"\n{datetime.now()}   => 1. Pretest finished")
@@ -129,7 +140,7 @@ def run_pytest():
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for debugging
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
                f" --retest={retest}"
