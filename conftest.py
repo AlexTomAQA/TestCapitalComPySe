@@ -21,7 +21,7 @@ from allure_commons.types import AttachmentType
 
 import conf
 
-test_browser = ""
+# test_browser = ""
 
 
 def pytest_addoption(parser):
@@ -89,11 +89,11 @@ def cur_role(request):
         # "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
-        # "it",  # 15 us
+        "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
-        "fr",  # 11 us
+        # "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
@@ -189,14 +189,9 @@ def cur_password(request):
     return request.param
 
 
-def pre_go(fixture_value):
-    global test_browser
-    test_browser = fixture_value
-    return None
-
-
 @pytest.fixture(
-    scope="module",
+    # scope="module",
+    scope="session",
     params=[
         "Chrome",
         # "Edge",
@@ -204,30 +199,13 @@ def pre_go(fixture_value):
         # "Safari",
     ],
     autouse=True,
-    ids=pre_go,
+    # ids=pre_go,
 )
-def go(request, d):
-    """Start execution program"""
-    print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
-    # d.get(conf.URL)
-
-    yield d
-
-    d.quit()
-    print(f"\n{datetime.now()}   *** end fixture Chrome = teardown ***\n")
-
-#
-# @pytest.fixture()
-# def cur_time():
-#     """Fixture"""
-#     return str(datetime.now())
-
-
-@pytest.fixture(scope="module")
-# def d(browser):
 def d(request):
     """WebDriver Initialization"""
-    global test_browser
+    print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
+
+    test_browser = request.param
     # проверка аргументов командной строки
     # retest = request.config.getoption("retest")
 
@@ -240,22 +218,28 @@ def d(request):
     if retest_for_br:
         test_browser = request.config.getoption("browser_name")
 
-    browser = test_browser
-    driver = None
-    if browser == "Chrome":
-        driver = init_remote_driver_chrome()
-    elif browser == "Edge":
-        driver = init_remote_driver_edge()
-    elif browser == "Firefox":
-        driver = init_remote_driver_firefox()
-    elif browser == "Safari":
-        driver = init_remote_driver_safari()
-    elif browser == "Opera":
+    d = None
+    if test_browser == "Chrome":
+        d = init_remote_driver_chrome()
+    elif test_browser == "Edge":
+        d = init_remote_driver_edge()
+    elif test_browser == "Firefox":
+        d = init_remote_driver_firefox()
+    elif test_browser == "Safari":
+        d = init_remote_driver_safari()
+    elif test_browser == "Opera":
         pass
     else:
-        print('Please pass the correct browser name: {}'.format(browser))
+        print(f'Please pass the correct browser name: {test_browser}')
         raise Exception('driver is not found')
-    return driver
+
+    # Установка максимального тайм-аута загрузки страницы
+    d.set_page_load_timeout(35)
+
+    yield d
+
+    d.quit()
+    print(f"\n{datetime.now()}   *** end fixture Browser = teardown ***\n")
 
 
 def init_remote_driver_chrome():
@@ -264,8 +248,10 @@ def init_remote_driver_chrome():
     # chrome_version = "115.0.5790.114"
     # chrome_version = "116.0.5845.96"
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.page_load_strategy = "eager"
-    # chrome_options.page_load_strategy = "normal"
+
+    chrome_options.page_load_strategy = "normal"
+    # chrome_options.page_load_strategy = "eager"
+
     chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
     # chrome_options.add_argument(conf.CHROME_WINDOW_SIZES_4k)
 
@@ -278,6 +264,10 @@ def init_remote_driver_chrome():
     if conf.HEADLESS:
         chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
 
+    # chrome_options.add_argument("--disable-browser-side-navigation")
+    # chrome_options.add_argument("--no-sandbox")
+    # chrome_options.add_argument("--disable-gpu")
+
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
     #                           options=options)
 
@@ -287,13 +277,18 @@ def init_remote_driver_chrome():
     # )
 
     print(driver.get_window_size())
-    driver.implicitly_wait(4)
+    driver.implicitly_wait(5)
+    # driver.set_script_timeout(20000)
+
     return driver
 
 
 def init_remote_driver_edge():
     edge_options = webdriver.EdgeOptions()
-    edge_options.page_load_strategy = "eager"  # 'normal'
+
+    edge_options.page_load_strategy = 'normal'
+    # edge_options.page_load_strategy = "eager"
+
     # edge_options.add_argument(conf.WINDOW_SIZES)
     edge_options.add_argument(conf.CHROMIUM_WINDOW_WIDTH)
     edge_options.add_argument(conf.CHROMIUM_WINDOW_HEIGHT)
@@ -307,13 +302,16 @@ def init_remote_driver_edge():
 
     print(driver.get_window_size())
     driver.implicitly_wait(5)
+
     return driver
 
 
 def init_remote_driver_firefox():
-
     firefox_options = webdriver.FirefoxOptions()
-    firefox_options.page_load_strategy = "eager"  # 'normal'
+
+    firefox_options.page_load_strategy = 'normal'
+    # firefox_options.page_load_strategy = "eager"
+
     firefox_options.add_argument(conf.FIREFOX_WINDOW_WIDTH)
     firefox_options.add_argument(conf.FIREFOX_WINDOW_HEIGHT)
 
@@ -335,6 +333,8 @@ def init_remote_driver_safari():
 
     driver = webdriver.Safari()
     driver.set_window_size(*conf.SAFARI_WINDOW_SIZES)
+
+    print(driver.get_window_size())
     driver.implicitly_wait(5)
     return driver
 
@@ -360,7 +360,8 @@ def pytest_runtest_makereport(item, call):
                     "return document.body.parentNode.scroll" + x)
 
             # driver.set_window_size(s("Width"), s("Height"))
-            driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
+            # driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
+            driver.save_screenshot(destination_file)      # необходимо для корректной работы ретестов
             allure.attach(
                 driver.get_screenshot_as_png(),
                 name="Screenshot",

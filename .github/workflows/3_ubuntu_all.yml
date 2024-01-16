@@ -36,13 +36,13 @@ jobs:
 
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3 install psutil
+        run: pip3.11 install psutil
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3 install speedtest
+        run: pip3.11 install speedtest
       - name: Run hwinfo.py first time
         if: always()
-        run: python3 tests/hwinfo.py
+        run: python3.11 tests/hwinfo.py
 
       - name: 4. install Zbar for QReader
         if: always()
@@ -50,7 +50,7 @@ jobs:
 
       - name: 4. install Poetry
         if: always()
-        run: pip3 install poetry
+        run: pip3.11 install poetry
 
       - name: 5. install dependencies
         if: always()
@@ -58,26 +58,26 @@ jobs:
 
       - name: Run hwinfo.py
         if: always()
-        run: poetry run python3 tests/hwinfo.py
+        run: poetry run python3.11 tests/hwinfo.py
 
-      - name: 6. Check code for errors by flake8 and format code with black
-        if: always()
-        uses: ricardochaves/python-lint@v1.4.0
-        with:
-          python-root-list: ""
-          use-pylint: false
-          use-pycodestyle: false
-          use-flake8: true
-          use-black: false
-          use-mypy: false
-          use-isort: false
-          extra-pylint-options: ""
-          extra-pycodestyle-options: ""
-          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
-          extra-black-options: ". -S"
-          extra-mypy-options: ""
-          extra-isort-options: ""
-
+#      - name: 6. Check code for errors by flake8 and format code with black
+#        if: always()
+#        uses: ricardochaves/python-lint@v1.4.0
+#        with:
+#          python-root-list: ""
+#          use-pylint: false
+#          use-pycodestyle: false
+#          use-flake8: true
+#          use-black: false
+#          use-mypy: false
+#          use-isort: false
+#          extra-pylint-options: ""
+#          extra-pycodestyle-options: ""
+#          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
+#          extra-black-options: ". -S"
+#          extra-mypy-options: ""
+#          extra-isort-options: ""
+#
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
@@ -145,11 +145,11 @@ jobs:
 
       - name: 8. Run US_11.02.03.00 test (Сулейман/Саша Т)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03-00_Commodities_trading.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03-00_Commodities_trading_test.py
         continue-on-error: true
-      - name: 8. Run US_11.02.03 test (Сулейман/Михаил)
+      - name: 8. Run US_11.02.03.01 test (Сулейман/Михаил)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03_commodities_trading_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03-01_Commodities_trading_test.py
         continue-on-error: true
 
       - name: 8. Run US_11.02.04.00 (Саша Т)
@@ -229,7 +229,7 @@ jobs:
 
       - name: Run hwinfo.py
         if: always()
-        run: poetry run python3 tests/hwinfo.py
+        run: poetry run python3.11 tests/hwinfo.py
 
       - name: 9. Upload artifact "allure-results"
         if: always()

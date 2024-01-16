@@ -21,6 +21,7 @@ def gs():
     # получение длины таблицы
     values = gs.get_all_row_values()
     rows_qty = len(values)
+    del values
 
     # старт ретеста
     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
