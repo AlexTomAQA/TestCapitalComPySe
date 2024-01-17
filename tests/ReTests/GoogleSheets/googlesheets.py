@@ -26,7 +26,7 @@ class GoogleSheet:
 
     # The ID and range of a spreadsheet.
     SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
-    # SPREADSHEET_ID = "1qpqNe8ZA6ypGbJh0uqRDIFJMtzaRARCOIVyoCuBXWz4"     # copy for debugging
+    # SPREADSHEET_ID = "1wNZwaZE0KPgeBQ40QdDxJCRMnVyr3gS8NbzFZwOtRWk"     # copy for debugging
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
