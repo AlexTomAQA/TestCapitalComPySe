@@ -31,16 +31,25 @@ url = None
 country_list = [
         "gb",  # United Kingdom - "FCA"
         "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "de",  # Germany - "CYSEC"
+        "ae",  # United Arab Emirates - "SCB"
 ]
+# ============================================================
+# для проверки одного или нескольких тестов ввести номера строк
+# в def run_pytest() изменить расчет {host}
+# так же необходимо поменять флаг unique_test = True
+# ============================================================
+# unique_test = True
+unique_test = False
+# ============================================================
+list_rows = [117, 118]
+# ============================================================
 
 
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-
     list_number_rows = list()
     start_row = 5
     gs = GoogleSheet()
@@ -50,8 +59,10 @@ def pytest_generate_tests(metafunc):
     end_row = start_row + int(qty_of_bugs[0][0])
     for num_row in range(start_row, end_row):
         list_number_rows.append(num_row)
-
     print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
+
+    if unique_test:
+        list_number_rows = list_rows
 
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
@@ -138,7 +149,11 @@ def run_pytest():
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+
+    if unique_test:
+        host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
+
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
                f" --retest={retest}"
