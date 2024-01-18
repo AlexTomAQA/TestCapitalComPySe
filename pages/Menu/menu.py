@@ -136,9 +136,10 @@ class MenuSection(BasePage):
         # print(f"\n\n{datetime.now()}   => Language and Country menu is clickable")
         #
 
-        menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)  # not Glossary
+        menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
+        time.sleep(1)
         ActionChains(d) \
-            .move_to_element(menu) \
+            .move_to_element(d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY) ) \
             .pause(0.5) \
             .perform()
         del menu
