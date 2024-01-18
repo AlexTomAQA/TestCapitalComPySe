@@ -12,7 +12,7 @@ from datetime import datetime
 import allure
 import pytest
 
-from tests.ReTests.conftest import unique_test
+# from tests.ReTests.conftest import unique_test
 # import pytest
 # import pytest_timeout
 
@@ -38,7 +38,11 @@ country_list = [
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
 # в def run_pytest() изменить расчет {host}
-# так же необходимо поменять флаг в conftest unique_test = True
+# так же необходимо поменять флаг unique_test = True
+# ============================================================
+# unique_test = True
+unique_test = False
+# ============================================================
 list_rows = [117, 118]
 # ============================================================
 

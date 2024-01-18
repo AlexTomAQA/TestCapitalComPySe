@@ -7,12 +7,14 @@ from datetime import datetime
 
 import pytest
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
+from tests.ReTests.ReTests import unique_test
+
 
 # ============================================================
 # для проверки одного или нескольких тестов
 # в def run_pytest() проверить расчет {host}
 # unique_test = True
-unique_test = False
+# unique_test = False
 # ============================================================
 
 
