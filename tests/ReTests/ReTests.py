@@ -12,7 +12,6 @@ from datetime import datetime
 import allure
 import pytest
 
-# from tests.ReTests.conftest import unique_test
 # import pytest
 # import pytest_timeout
 
@@ -64,7 +63,6 @@ def pytest_generate_tests(metafunc):
 
     if unique_test:
         list_number_rows = list_rows
-
 
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
