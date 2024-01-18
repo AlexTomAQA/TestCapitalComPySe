@@ -350,9 +350,9 @@ def pytest_runtest_makereport(item, call):
         driver = feature_request.getfixturevalue("d")
         xfail = hasattr(report, "wasxfail")
 
-        # if (report.skipped and xfail) or (report.failed and not xfail):
+        if (report.skipped and xfail) or (report.failed and not xfail):
             # Добавлен скриншот для пропущенных тестов
-        if (report.skipped and xfail) or (report.failed and not xfail) or (report.skipped and not xfail):
+        # if (report.skipped and xfail) or (report.failed and not xfail) or (report.skipped and not xfail):
             report_dir = os.path.dirname(item.config.option.htmlpath)
             len_dir = len(os.path.dirname(item.nodeid))
             file_name = report.nodeid[len_dir:].replace("::", "_")[1:] + ".png"
