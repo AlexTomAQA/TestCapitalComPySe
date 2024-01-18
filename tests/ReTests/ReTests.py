@@ -18,7 +18,6 @@ import pytest
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
-flag_testing = True
 test_id = None
 browser_name = None
 us = None
@@ -35,58 +34,68 @@ country_list = [
         "de",  # Germany - "CYSEC"
         "ae",  # United Arab Emirates - "SCB"
 ]
+# ============================================================
+# для проверки одного или нескольких тестов ввести номера строк
+# в def run_pytest() изменить расчет {host}
+# так же необходимо поменять флаг unique_test = True
+# ============================================================
+# unique_test = True
+unique_test = False
+# ============================================================
+list_rows = [117, 118]
+# ============================================================
 
 
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-
     list_number_rows = list()
     start_row = 5
     gs = GoogleSheet()
+    values = gs.get_all_row_values()
     qty_of_bugs = gs.get_cell_values("A2")
     del gs
     end_row = start_row + int(qty_of_bugs[0][0])
     for num_row in range(start_row, end_row):
         list_number_rows.append(num_row)
-
     print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
 
+    if unique_test:
+        list_number_rows = list_rows
+
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
+    metafunc.parametrize("values", [values], scope="class")
 
 
 class TestReTests:
 
     @allure.step("Start TestCase from ReTests")
     # @pytest.mark.timeout(timeout=240, method="thread")
-    def test_retests(self, gs, number_of_row):
-        global flag_testing
+    def test_retests(self, gs, number_of_row, values):
 
-        if flag_testing:
-            print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
-            print(f"{datetime.now()}   Row # = {number_of_row}")
-            row_values = gs.get_row_values(number_of_row)
-            if row_values:
-                print(f"{datetime.now()}   Row Values = \n{row_values[0]}")
+        print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
+        print(f"{datetime.now()}   Row # = {number_of_row}")
+        row_values = values[number_of_row - 5]
+        # row_values = gs.get_row_values(number_of_row)
+        if row_values:
+            print(f"{datetime.now()}   Row Values = \n{row_values}")
 
-                # pre-test
-                pretest(row_values[0], number_of_row, gs)
+            # pre-test
+            pretest(row_values, number_of_row, gs)
 
-                # Запуск pytest с параметрами
-                output, error = run_pytest()
+            # Запуск pytest с параметрами
+            output, error = run_pytest()
 
-                # проверка результатов тестирования
-                gs_out = check_results(output, error)
+            # проверка результатов тестирования
+            gs_out = check_results(output, error)
 
-                # заполнение Google Sheets по-строчно
-                gs.update_range_values(f'V{number_of_row}', [gs_out])
+            # заполнение Google Sheets по-строчно
+            gs.update_range_values(f'V{number_of_row}', [gs_out])
 
-            else:
-                print(f"{datetime.now()}   Abort testing")
-                flag_testing = False
-
-        assert flag_testing
+        else:
+            print(f"{datetime.now()}   Abort testing: empty string # {number_of_row}")
+            pytest.skip()
 
 
 @allure.step("Pretest")
@@ -98,17 +107,17 @@ def pretest(row_loc, number_of_row, gs):
 
     # аргументы командной строки
     try:
+        country = row_loc[6]
+        if country not in country_list:
+            print(f"\n{datetime.now()}   =>  Данная лицензия:{country} не проверяется в этом ране")
+            # gs.update_range_values(f'V{number_of_row}', [["skipped"]])
+            pytest.skip()
         test_id = row_loc[0]
         browser_name = row_loc[2]
         us = row_loc[3]
         path = us_data.us_data[us]
         num_test = row_loc[4]
         lang = '' if row_loc[5] == 'en' else row_loc[5]
-        country = row_loc[6]
-        if country not in country_list:
-            print(f"\n{datetime.now()}   =>  Данная лицензия:{country} не проверяется в этом ране")
-            gs.update_range_values(f'V{number_of_row}', [["skipped"]])
-            pytest.skip()
         role = row_loc[8]
         url = row_loc[9]
         # num_bug = row_loc[12]
@@ -140,7 +149,11 @@ def run_pytest():
     retest = True
     # получение корня проекта
     host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    # host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+
+    if unique_test:
+        host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
+
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
                f" --retest={retest}"
@@ -225,5 +238,6 @@ def check_results(output, error):
         gs_out = ['skipped']
 
     print(f"\n{datetime.now()}   => 3. check_results finished")
-
+    # if gs_out == ["WebDriver Error"]:
+    #     pytest.fail("WebDriver Error")
     return gs_out
