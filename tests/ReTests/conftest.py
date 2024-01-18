@@ -10,10 +10,11 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
 # ============================================================
 # для проверки одного или нескольких тестов
-# в def run_pytest() изменить расчет {host}
+# в def run_pytest() проверить расчет {host}
 # unique_test = True
 unique_test = False
 # ============================================================
+
 
 @pytest.fixture(
     scope="class"
