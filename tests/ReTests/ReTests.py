@@ -31,8 +31,8 @@ url = None
 country_list = [
         # "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
-        "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        # "de",  # Germany - "CYSEC"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
