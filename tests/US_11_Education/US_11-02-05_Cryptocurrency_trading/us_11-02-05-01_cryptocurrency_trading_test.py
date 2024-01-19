@@ -11,15 +11,14 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonsSellBuyInContentBlock import ButtonsSellBuyInContentBlock
+from pages.Elements.ButtonSellInContentBlock import  SellButtonContentBlock
+from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonSignupLoginOnPage import PageSignUpLogin
-from pages.Elements.AssertClass import AssertClass
-from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
+
 
 count = 1
 
@@ -58,7 +57,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -80,7 +81,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -103,7 +106,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_03", "Testing button [Trade] in Most traded block")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -125,13 +130,15 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_04", "Testing button [Sell] in content block")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ButtonsSellBuyInContentBlock (d, cur_item_link, bid)
+        test_element = SellButtonContentBlock (d, cur_item_link, bid)
         test_element.arrange_(d, cur_language)
 
     @allure.step("Start test of button [Buy] in content block")
@@ -147,14 +154,16 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_05", "Testing button [Buy] in content block")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ButtonsSellBuyInContentBlock(d, cur_item_link, bid)
-        test_element.arrange_ (d, cur_language)
+        test_element = BuyButtonContentBlock(d, cur_item_link, bid)
+        test_element.arrange_(d, cur_language)
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     @pytest.mark.test_06
@@ -169,7 +178,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_06", "Testing button [Get started] on Sticky bar")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -191,7 +202,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_07", "Testing button [Start trading] in content block")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "zn"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -213,7 +226,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_10", "Testing button [Create your account] in block [Steps trading]")
 
-        check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zn"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
