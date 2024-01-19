@@ -39,29 +39,33 @@ def gs():
 
     if not unique_test:
 
-        # добавление нового столбца для результатов ретеста
-        gs.add_new_column_after_()
-
-        # копирование данных столбца
-        gs.new_data_copy_past(0, rows_qty, 0, rows_qty,
-                              21, 22, 22, 23)
-
-        # замена значения Status на дату ретеста
-        gs.update_range_values('W3', [["=W2"]])
-        gs.date_format_cell()
+        # # добавление нового столбца для результатов ретеста
+        # gs.add_new_column_after_()
+        #
+        # # копирование данных столбца
+        # gs.new_data_copy_past(0, rows_qty, 0, rows_qty,
+        #                       21, 22, 22, 23)
+        #
+        # # очистка полей
+        # gs.clear_values(4, rows_qty, 21, 22)
+        #
+        # # замена значения Status на дату ретеста
+        # gs.update_range_values('W3', [["=W2"]])
+        # gs.date_format_cell()
 
         # установка времени старта ретеста
         gs.update_range_values('V1', [start_retest_date])
 
         # установка таймера выполнения ретестов
-        gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+        # # для запуска на Github
+        # gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+
+        # для запуска на локальном компе
+        gs.update_range_values('V4', [["=NOW()-V1"]])
 
         # установка счетчика пройденных тестов
         gs.new_data_copy_past(1, 2, 1, 2,
                               0, 1, 21, 22)
-
-        # очистка полей
-        gs.clear_values(4, rows_qty, 21, 22)
 
     yield gs
 
