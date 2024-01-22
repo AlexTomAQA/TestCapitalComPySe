@@ -147,7 +147,7 @@ class GoogleSheet:
         return values
 
     def get_all_row_values(self, start_row=5):
-        range_name = f"{self.SHEET_NAME}!A{start_row}:P"
+        range_name = f"{self.SHEET_NAME}!A{start_row}:V"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
         result = (

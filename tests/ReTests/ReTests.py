@@ -28,22 +28,35 @@ country = None
 role = None
 url = None
 
+# ===========================================================
+# выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
+        "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
         "ae",  # United Arab Emirates - "SCB"
 ]
+# ===========================================================
+# ретест без добавления нового столбца
+# ===========================================================
+# no_new_column = True
+no_new_column = False
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
-# в def run_pytest() изменить расчет {host}
+# в def run_pytest() проверить расчет {host}
 # так же необходимо поменять флаг unique_test = True
 # ============================================================
 # unique_test = True
 unique_test = False
 # ============================================================
-list_rows = [117, 118]
+list_rows = [8]
 # ============================================================
+# повторный проход только Skipped-tests
+# retest_skipped_tests = True
+retest_skipped_tests = False
+# в def run_pytest() проверить расчет {host}
+# ============================================================
+status_list = ['failed', 'passed']
 
 
 def pytest_generate_tests(metafunc):
@@ -58,11 +71,17 @@ def pytest_generate_tests(metafunc):
     del gs
     end_row = start_row + int(qty_of_bugs[0][0])
     for num_row in range(start_row, end_row):
-        list_number_rows.append(num_row)
+        val = values[num_row - 5]
+        if retest_skipped_tests:
+            if len(val) == 22 and val[21] not in status_list:
+                list_number_rows.append(num_row)
+        elif len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
+            list_number_rows.append(num_row)
     print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
 
     if unique_test:
         list_number_rows = list_rows
+        print(f"\n{datetime.now()}   Список номеров строк для выборочного ретеста = {list_number_rows}")
 
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
