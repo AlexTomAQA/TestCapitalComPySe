@@ -5,10 +5,10 @@
 """
 import pytest
 import allure
-import random  # for new method
+# import random  # for new method
 from datetime import datetime
 
-from conf import QTY_LINKS
+# from conf import QTY_LINKS
 # from pages.Elements.AssertClass import AssertClass
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
@@ -245,7 +245,7 @@ class TestSharesTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_99", "Pretest for US_11.02.02.01")
