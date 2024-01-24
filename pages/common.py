@@ -79,6 +79,7 @@ class Common:
 		else:
 			print(f"{datetime.now()}   The test coverage = 0 %")
 
+
 	def generate_cur_item_link_parameter(self, file_name):
 
 		list_item_link = list()

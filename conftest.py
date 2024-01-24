@@ -93,7 +93,7 @@ def cur_role(request):
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
-        # "fr",  # 11 us
+        "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
@@ -349,7 +349,10 @@ def pytest_runtest_makereport(item, call):
         feature_request = item.funcargs["request"]
         driver = feature_request.getfixturevalue("d")
         xfail = hasattr(report, "wasxfail")
+
         if (report.skipped and xfail) or (report.failed and not xfail):
+            # Добавлен скриншот для пропущенных тестов
+        # if (report.skipped and xfail) or (report.failed and not xfail) or (report.skipped and not xfail):
             report_dir = os.path.dirname(item.config.option.htmlpath)
             len_dir = len(os.path.dirname(item.nodeid))
             file_name = report.nodeid[len_dir:].replace("::", "_")[1:] + ".png"
@@ -361,7 +364,7 @@ def pytest_runtest_makereport(item, call):
 
             # driver.set_window_size(s("Width"), s("Height"))
             # driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
-            driver.save_screenshot(destination_file)      # необходимо для корректной работы ретестов
+            driver.save_screenshot(destination_file)  # необходимо для корректной работы ретестов
             allure.attach(
                 driver.get_screenshot_as_png(),
                 name="Screenshot",
