@@ -7,8 +7,8 @@ DEBUG = False
 QTY_LINKS = 3
 MSG_SKIP_LANGUAGE = 'f"This test-case is not for {cur_language} language"'
 
-HEADLESS = True  # режим браузера без отображения (безголовый)
-# HEADLESS = False  # режим с отображением браузера
+# HEADLESS = True  # режим браузера без отображения (безголовый)
+HEADLESS = False  # режим с отображением браузера
 
 URL = "https://capital.com/"
 CHROME_WINDOW_SIZES = "--window-size=1280,720"
@@ -29,8 +29,8 @@ FIREFOX_WINDOW_HEIGHT = "--height=720"
 SAFARI_WINDOW_SIZES = (1280, 720)
 # SAFARI_WINDOW_SIZES = (1920, 1080)
 
-# BROWSER_HEADLESS = True  # not visible
-BROWSER_HEADLESS = False  # visible
+BROWSER_HEADLESS = True  # not visible
+# BROWSER_HEADLESS = False  # visible
 
 # options parameters
 CHROMIUM_HEADLESS = "--headless=new"  # not visible
