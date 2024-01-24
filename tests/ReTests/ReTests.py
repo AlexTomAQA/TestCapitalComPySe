@@ -49,7 +49,7 @@ no_new_column = False
 # unique_test = True
 unique_test = False
 # ============================================================
-list_rows = [8]
+list_rows = [6, 7]
 # ============================================================
 # повторный проход только Skipped-tests
 # retest_skipped_tests = True

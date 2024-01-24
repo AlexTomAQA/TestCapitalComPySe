@@ -132,7 +132,7 @@ class GoogleSheet:
     @allure.step("Get row values from ... row")
     def get_row_values(self, end_row=5):
         print(f"\n{datetime.now()}   1. get_row_values from {end_row} row =>")
-        range_name = f"{self.SHEET_NAME}!A{end_row}:P{end_row}"
+        range_name = f"{self.SHEET_NAME}!A{end_row}:V{end_row}"
         # Call the Sheets API
         sheet = self.service.spreadsheets()
         result = (
