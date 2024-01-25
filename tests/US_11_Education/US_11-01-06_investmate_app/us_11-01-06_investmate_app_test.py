@@ -7,6 +7,7 @@
 import pytest
 import allure
 
+from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -54,6 +55,8 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_01", "Testing QR code in Investmate block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'investmate')
@@ -76,6 +79,8 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_02", "Testing QR code in Easy learning block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'easy_learning')
@@ -96,6 +101,8 @@ class TestInvestmateApp:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_03", "Testing button [Explore Web Platform] in block 'capital.com'")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -130,6 +137,8 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_04", "Testing QR code in Capital block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'capital')
@@ -151,6 +160,8 @@ class TestInvestmateApp:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if cur_language in ['', 'pl', 'cn']:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")

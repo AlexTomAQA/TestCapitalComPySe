@@ -6,6 +6,8 @@
 
 import pytest
 import allure
+
+from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
@@ -43,6 +45,8 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
         page_conditions = Conditions(d, "")
@@ -69,6 +73,8 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
         page_conditions = Conditions(d, "")
@@ -94,6 +100,8 @@ class TestETFTrading:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_03", "Testing button [Trade] in Most traded widget")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_country(cur_country, ["gb"])
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
@@ -122,6 +130,8 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_05",
             "Testing button [1. Create & verify your account] in block [Steps trading]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 

@@ -37,6 +37,8 @@ class TestTradingPsychologyGuideMain:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
@@ -65,6 +67,8 @@ class TestTradingPsychologyGuideMain:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
@@ -92,6 +96,8 @@ class TestTradingPsychologyGuideMain:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_03", "Testing button [Trade] in Most traded block")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
@@ -123,6 +129,8 @@ class TestTradingPsychologyGuideMain:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_06", "Testing button [Create_verify_your_account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -147,6 +155,8 @@ class TestTradingPsychologyGuideMain:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_99", "Pretest")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if count == 0:
             pytest.skip('The list of "Trading psychology guide" links is already created')

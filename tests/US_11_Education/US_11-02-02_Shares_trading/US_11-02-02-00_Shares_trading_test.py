@@ -5,10 +5,10 @@
 """
 import pytest
 import allure
-import random  # for new method
+# import random  # for new method
 from datetime import datetime
 
-from conf import QTY_LINKS
+# from conf import QTY_LINKS
 # from pages.Elements.AssertClass import AssertClass
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
@@ -62,6 +62,8 @@ class TestSharesTrading:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -89,6 +91,8 @@ class TestSharesTrading:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -114,6 +118,8 @@ class TestSharesTrading:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_06", "Testing button [Trade] in Most traded block")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
         check_country(cur_country)
@@ -141,6 +147,8 @@ class TestSharesTrading:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_08", "Testing button [1. Create your account] in block [Steps trading]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
 
@@ -171,6 +179,8 @@ class TestSharesTrading:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_09", "Testing button in block [Horizontal banner]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
         if cur_language in ["", "cn"]:
@@ -214,6 +224,8 @@ class TestSharesTrading:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_10", "Testing button in block [Vertical banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
         if cur_language in ["", "ar", "it", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -245,10 +257,12 @@ class TestSharesTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.02", "Education > Menu item [Shares trading]",
             ".00_99", "Pretest for US_11.02.02.01")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
