@@ -163,10 +163,10 @@ class TestIndicesTradingGuidePreset:
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
                       ".00_04", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
