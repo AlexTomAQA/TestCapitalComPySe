@@ -1,5 +1,7 @@
 import allure
 import pytest
+
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -23,6 +25,8 @@ class TestLearningHub:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.01", "Education > Menu Item [Learning hub]",
             ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
