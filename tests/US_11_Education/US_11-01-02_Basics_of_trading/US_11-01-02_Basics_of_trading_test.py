@@ -1,5 +1,7 @@
 import allure
 import pytest
+
+from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -24,9 +26,8 @@ class TestBasicsOfTrading:
             "11.01.02", "Education > Menu Item [The basics of trading]",
             ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
-        # if cur_country == "gb" and cur_language == "":
-        #     pytest.skip("Current submenu item is not present in [Education] menu")
-        #
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
