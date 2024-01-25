@@ -12,9 +12,6 @@ from datetime import datetime
 import allure
 import pytest
 
-# import pytest
-# import pytest_timeout
-
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
@@ -28,6 +25,31 @@ country = None
 role = None
 url = None
 
+# ===========================================================
+# выбор необходимых ролей для ретеста
+lang_list = [
+        "en",
+        "es",
+        "de",
+        "it",
+        "ru",
+        "cn",
+        "zh",
+        "fr",
+        "pl",
+        "ro",
+        "ar",
+        "nl",
+        "el",
+        "hu",
+    ]
+# ===========================================================
+# выбор необходимых ролей для ретеста
+role_list = [
+        "Auth",
+        "NoAuth",
+        "NoReg",
+    ]
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
@@ -49,7 +71,7 @@ no_new_column = False
 # unique_test = True
 unique_test = False
 # ============================================================
-list_rows = [6, 7]
+list_rows = [835]
 # ============================================================
 # повторный проход только Skipped-tests
 # retest_skipped_tests = True
@@ -70,19 +92,33 @@ def pytest_generate_tests(metafunc):
     qty_of_bugs = gs.get_cell_values("A2")
     del gs
     end_row = start_row + int(qty_of_bugs[0][0])
-    for num_row in range(start_row, end_row):
-        val = values[num_row - 5]
-        if retest_skipped_tests:
-            if len(val) == 22 and val[21] not in status_list:
-                list_number_rows.append(num_row)
-        elif len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
-            list_number_rows.append(num_row)
-    print(f"\n{datetime.now()}   Список номеров строк = {list_number_rows}")
 
+    # формирование списка строк для одиночного ретеста
     if unique_test:
         list_number_rows = list_rows
         print(f"\n{datetime.now()}   Список номеров строк для выборочного ретеста = {list_number_rows}")
-
+    else:
+        for num_row in range(start_row, end_row):
+            val = values[num_row - 5]
+            count = val[6]
+            if count not in country_list:
+                continue
+            rol = val[8]
+            if rol not in role_list:
+                continue
+            lan = val[5]
+            if lan not in lang_list:
+                continue
+        # формирование списка skipped строк для ретеста
+            if retest_skipped_tests:
+                if len(val) == 22 and val[21] not in status_list:
+                    list_number_rows.append(num_row)
+            elif len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
+                # формирование списка строк для ретеста
+                list_number_rows.append(num_row)
+        print(f"\n{datetime.now()}   Список номеров строк = {len(list_number_rows)}:{list_number_rows}")
+    if len(list_number_rows) == 0:
+        pytest.skip(f"Для country={country_list}:lang={lang_list}:role={role_list} не выбрано ни одной строки")
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
 
@@ -127,10 +163,6 @@ def pretest(row_loc, number_of_row, gs):
     # аргументы командной строки
     try:
         country = row_loc[6]
-        if country not in country_list:
-            print(f"\n{datetime.now()}   =>  Данная лицензия:{country} не проверяется в этом ране")
-            # gs.update_range_values(f'V{number_of_row}', [["skipped"]])
-            pytest.skip()
         test_id = row_loc[0]
         browser_name = row_loc[2]
         us = row_loc[3]
@@ -167,10 +199,10 @@ def run_pytest():
     print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
     # получение корня проекта
-    host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+    # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
+    host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
 
-    if unique_test:
+    if unique_test or retest_skipped_tests:
         host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
 
     # формирование командной строки и запуск pytest, как subprocess
