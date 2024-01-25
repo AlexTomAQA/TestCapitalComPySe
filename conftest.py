@@ -16,7 +16,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 from allure_commons.types import AttachmentType
 
 import conf
@@ -125,10 +125,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
