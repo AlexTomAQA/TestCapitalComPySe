@@ -8,13 +8,6 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 from tests.ReTests.ReTests import unique_test, retest_skipped_tests, no_new_column
 from datetime import datetime, timedelta
 
-# ============================================================
-# для проверки одного или нескольких тестов
-# в def run_pytest() проверить расчет {host}
-# unique_test = True
-# unique_test = False
-# ============================================================
-
 
 def time_concat(time1, time2):
 
@@ -29,7 +22,6 @@ def time_concat(time1, time2):
     result_time_str = result_time_obj.strftime("%H:%M:%S")
 
     return result_time_str
-
 
 
 @pytest.fixture(
@@ -88,7 +80,7 @@ def gs():
         gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
 
         # для запуска на локальном компе
-        gs.update_range_values('V4', [["=NOW()-V1"]])
+        # gs.update_range_values('V4', [["=NOW()-V1"]])
 
         # установка счетчика пройденных тестов
         gs.new_data_copy_past(1, 2, 1, 2,
