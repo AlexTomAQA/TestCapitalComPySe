@@ -39,7 +39,8 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
