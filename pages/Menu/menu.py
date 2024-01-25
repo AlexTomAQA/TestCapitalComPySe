@@ -61,7 +61,7 @@ class MenuSection(BasePage):
         return d.current_url
 
     @allure.step('Select "Education" menu, "CFD trading guide" submenu')
-    def open_education_cfd_trading_menu(self, d, cur_language, link):
+    def open_education_cfd_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Education" menu, "CFD trading guide" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -70,7 +70,7 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.menu_education_move_focus(d, cur_language)
+        self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_cfd_trading_guide_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
