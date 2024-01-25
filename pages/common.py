@@ -14,7 +14,7 @@ class Common:
 
 	def skip_if_eng_lang_and_fca_license(self, cur_language, cur_country):
 		if cur_country == "gb" and cur_language == "":
-			pytest.skip("Current submenu item is not present in [Education] menu for current parameters")
+			pytest.skip("Current menu item is not present in Education menu for current parameters")
 
 
 	def check_language_in_list_and_skip_if_present(self, cur_language, list_languages):
