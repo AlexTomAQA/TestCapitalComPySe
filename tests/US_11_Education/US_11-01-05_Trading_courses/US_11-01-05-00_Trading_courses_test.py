@@ -38,6 +38,8 @@ class TestTradingCourses:
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".00_01", "Testing button [Create account] in block [Our courses]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
 
@@ -65,6 +67,8 @@ class TestTradingCourses:
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
 
@@ -87,6 +91,8 @@ class TestTradingCourses:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".00_99", "Pretest for US_11.01.05.01")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if cur_language in ["ar"]:
             Common().skip_test_for_language(cur_language)
