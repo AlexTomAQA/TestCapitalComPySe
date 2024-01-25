@@ -38,6 +38,8 @@ class TestCryptocurrencyTradingPretest:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_99", "Pretest")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         if count == 0:
             pytest.skip("Так надо")
 
