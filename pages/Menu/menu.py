@@ -148,7 +148,7 @@ class MenuSection(BasePage):
     @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
     def menu_education_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
-        if test_country == "gb" and test_language == "":
+        if test_language == "" and test_country == "gb":
             ed_menu_locator = MenuUS11Education.SUB_MENU_EN_GB_LEARN_TO_TRADE
         else:
             match test_language:
