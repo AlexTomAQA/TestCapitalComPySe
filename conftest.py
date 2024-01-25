@@ -86,7 +86,7 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
@@ -234,7 +234,7 @@ def d(request):
         raise Exception('driver is not found')
 
     # Установка максимального тайм-аута загрузки страницы
-    d.set_page_load_timeout(35)
+    d.set_page_load_timeout(60)
 
     yield d
 
@@ -278,7 +278,7 @@ def init_remote_driver_chrome():
 
     print(driver.get_window_size())
     driver.implicitly_wait(5)
-    # driver.set_script_timeout(20000)
+    driver.set_script_timeout(20000)
 
     return driver
 
