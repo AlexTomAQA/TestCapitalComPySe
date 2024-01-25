@@ -59,6 +59,8 @@ class TestCommoditiesTradingPretest:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -86,6 +88,8 @@ class TestCommoditiesTradingPretest:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -111,6 +115,8 @@ class TestCommoditiesTradingPretest:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_06", "Testing button [Trade] in Most traded block")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
         check_country(cur_country)
@@ -138,6 +144,8 @@ class TestCommoditiesTradingPretest:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_08", "Testing button [1. Create your account] in block [Steps trading]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
 
@@ -168,6 +176,8 @@ class TestCommoditiesTradingPretest:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_09", "Testing button in block [Horizontal banner]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
         if cur_language in ["", "cn"]:
@@ -211,6 +221,8 @@ class TestCommoditiesTradingPretest:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_10", "Testing button in block [Vertical banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
         check_language(cur_language)
         if cur_language in ["", "ar", "it", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -245,6 +257,8 @@ class TestCommoditiesTradingPretest:
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".00_99", "Pretest for US_11.02.03.01")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         check_language(cur_language)
         if cur_language in ["ar", "fr", "cn", "zh"]:
