@@ -12,6 +12,9 @@ from datetime import datetime
 import allure
 import pytest
 
+from tests.ReTests.conftest import (
+    lang_list, country_list, role_list, list_rows, status_list, unique_test, retest_skipped_tests, no_new_column, host
+)
 from tests.ReTests.retest_data import us_data
 from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 
@@ -24,69 +27,6 @@ lang = None
 country = None
 role = None
 url = None
-
-# ===========================================================
-# выбор необходимых языков для ретеста
-lang_list = [
-        "en",
-        "ar",
-        "de",
-        "el",
-        "es",
-        "fr",
-        "it",
-        "hu",
-        "nl",
-        "pl",
-        "ro",
-        "ru",
-        "cn",
-        "zh",
-    ]
-
-# ===========================================================
-# выбор необходимых ролей для ретеста
-role_list = [
-        "Auth",
-        "NoAuth",
-        "NoReg",
-    ]
-
-# ===========================================================
-# выбор необходимых лицензий для ретеста
-country_list = [
-        "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
-]
-
-# ===========================================================
-# ретест без добавления нового столбца
-# ===========================================================
-# no_new_column = True
-no_new_column = False
-
-# ============================================================
-# для проверки одного или нескольких тестов ввести номера строк
-# так же необходимо поменять флаг unique_test = True
-# ============================================================
-# unique_test = True
-unique_test = False
-# ============================================================
-list_rows = [835]
-
-# ============================================================
-# повторный проход только Skipped-tests
-# retest_skipped_tests = True
-retest_skipped_tests = False
-# ============================================================
-status_list = ['failed', 'passed']
-# ============================================================
-# получение корня проекта
-host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-# host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
-# ============================================================
 
 
 def pytest_generate_tests(metafunc):
@@ -138,7 +78,7 @@ def pytest_generate_tests(metafunc):
 class TestReTests:
 
     @allure.step("Start TestCase from ReTests")
-    # @pytest.mark.timeout(timeout=240, method="thread")
+    @allure.epic("ReTests")
     def test_retests(self, gs, number_of_row, values):
 
         print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
@@ -192,31 +132,21 @@ def pretest(row_loc, number_of_row, gs):
     print(f"\n{datetime.now()}   => 1. Pretest finished")
 
 
-@allure.step("Run aurotest with Bid parameters")
+@allure.step("Run autotest with Bid parameters")
 def run_pytest():
-    global test_id, browser_name, us, path, num_test, lang, country, role, url, host
+    global test_id, browser_name, us, path, num_test, lang, country, role, url
 
     print(f"\n{datetime.now()}   2. Run run_pytest with Bid = {test_id} from row =>")
-
-    # print(f"\n{datetime.now()}   2.1. Run hw_info.py in subprocess =>")
-    # # формирование командной строки и запуск hw_info.py, как subprocess
-    # command = "poetry run python3 tests/hwinfo.py"
-    # print(f"\n{datetime.now()}   Run command: \n{command}")
-    # process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    # hwinfo_stdout, stderr = process.communicate()
-    # hwinfo_out = hwinfo_stdout.decode('utf-8')
-    # print(f"{datetime.now()} hwinfo output: \n{hwinfo_out}")
-    # print(f"{datetime.now()}   => 2.1. Finished subprocess hw_info.py")
 
     print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
 
-    # получение корня проекта
-    # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for no LOCAL debugging
-    host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+    # # получение корня проекта
+    # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for macOS debugging
+    # # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for Windows debugging
 
-    if unique_test or retest_skipped_tests:
-        host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
+    # if unique_test or retest_skipped_tests:
+    #     host = "\\".join(os.getcwd().split('\\')) + '\\'            # for Windows debugging одного теста
 
     # формирование командной строки и запуск pytest, как subprocess
     command = (f"poetry run pytest"
@@ -228,7 +158,7 @@ def run_pytest():
     if us[-3::] != ".00":
         command += f" --tpi_link={url}"
     command += f" -m test{num_test}"
-    command += " -v"
+    command += " -vs"
     # command += " --no-summary -v"
     command += f" {host}{path}"
     # command += f" --json-report --json-report-omit keywords streams"
