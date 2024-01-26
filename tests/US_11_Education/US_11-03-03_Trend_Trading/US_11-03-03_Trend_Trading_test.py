@@ -50,7 +50,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = MainBannerStartTrading(d, cur_page_url, bid)
@@ -80,7 +80,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = MainBannerTryDemo(d, cur_page_url, bid)
@@ -112,7 +112,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_page_url, bid)
@@ -141,7 +141,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         link = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = ButtonDownloadAppStore(d, link)
@@ -174,7 +174,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         link = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = ButtonGetItOnGooglePlay(d, link)
@@ -208,7 +208,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         link = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = ButtonExploreWebPlatform(d, link)
@@ -248,7 +248,7 @@ class TestTrendTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_trend_trading_move_focus_click(d, cur_language)
 
         test_element = BlockStepTrading(d, cur_page_url, bid)

@@ -54,7 +54,7 @@ class TestGlossaryOfTradingTerms:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         link = page_menu.sub_menu_glossary_move_focus_click(d, cur_language)
 
         test_element = BlockStepTrading(d, link)
@@ -97,7 +97,7 @@ class TestGlossaryOfTradingTerms:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
         page_menu.sub_menu_glossary_move_focus_click(d, cur_language)
         del page_menu
 

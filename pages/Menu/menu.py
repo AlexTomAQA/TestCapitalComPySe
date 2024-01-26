@@ -54,7 +54,7 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.menu_education_move_focus(d, cur_language)
+        self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_spread_betting_guide_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
@@ -85,7 +85,7 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.menu_education_move_focus(d, cur_language)
+        self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_forex_trading_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
@@ -98,7 +98,7 @@ class MenuSection(BasePage):
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
-        self.menu_education_move_focus(d, cur_language)
+        self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_shares_trading_move_focus_click(d, cur_language)
         return cur_menu_link
 
@@ -109,7 +109,7 @@ class MenuSection(BasePage):
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
-        self.menu_education_move_focus(d, cur_language)
+        self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_commodities_trading_move_focus_click(d, cur_language)
         return cur_menu_link
 
