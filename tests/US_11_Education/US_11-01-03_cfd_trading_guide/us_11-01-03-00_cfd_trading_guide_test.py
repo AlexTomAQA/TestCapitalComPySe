@@ -49,7 +49,7 @@ class TestCFDTradingGuide:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
+        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerStartTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -78,7 +78,7 @@ class TestCFDTradingGuide:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
+        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerTryDemo(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -108,7 +108,7 @@ class TestCFDTradingGuide:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
+        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -137,7 +137,7 @@ class TestCFDTradingGuide:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
+        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = BlockStepTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -166,7 +166,7 @@ class TestCFDTradingGuide:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, main_page_link)
+        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
 
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
         file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"

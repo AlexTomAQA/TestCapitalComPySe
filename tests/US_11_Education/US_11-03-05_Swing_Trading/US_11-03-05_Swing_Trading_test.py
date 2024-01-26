@@ -29,7 +29,7 @@ class USLink:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         if not self.user_story_menu_link:
             page_menu = MenuSection(d, main_link)
-            page_menu.menu_education_move_focus(d, cur_language)
+            page_menu.menu_education_move_focus(d, cur_language, cur_country)
             us_link = page_menu.sub_menu_swing_trading_move_focus_click(d, cur_language)
             self.user_story_menu_link = us_link
         return self.user_story_menu_link
