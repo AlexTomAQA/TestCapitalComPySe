@@ -69,7 +69,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -97,7 +97,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerTryDemo(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -126,7 +126,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -154,7 +154,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = BlockStepTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -197,7 +197,7 @@ class TestCommoditiesTradingPretest:
         banner01_hor_tp = []
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonOnHorizontalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
@@ -242,7 +242,7 @@ class TestCommoditiesTradingPretest:
         banner01_ver_tp = []
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        cur_menu_link = page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonOnVerticalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link, banner00_ver_tpd,
@@ -272,7 +272,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.open_education_commodities_trading_menu(d, cur_language, main_page_link)
+        page_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, main_page_link)
         del page_menu
 
         # Записываем ссылки в файл
