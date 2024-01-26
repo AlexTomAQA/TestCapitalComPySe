@@ -45,7 +45,7 @@ logger = logging.getLogger()
 class MenuSection(BasePage):
 
     @allure.step('Select "Education" menu, "Spread betting guide" submenu')
-    def open_education_spread_betting_guide_menu(self, d, cur_language, link):
+    def open_education_spread_betting_guide_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Education" menu, "Spread betting guide" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -77,7 +77,7 @@ class MenuSection(BasePage):
         return d.current_url
 
     @allure.step('Select "Education" menu, "Forex trading" submenu')
-    def open_education_forex_trading_menu(self, d, cur_language, link):
+    def open_education_forex_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
         print(f"\n{datetime.now()}   2. Link = {link}")
@@ -91,7 +91,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    def open_education_shares_trading_menu(self, d, cur_language, link):
+    def open_education_shares_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
         print(f"\n{datetime.now()}   2. Link = {link}")
@@ -102,7 +102,7 @@ class MenuSection(BasePage):
         cur_menu_link = self.sub_menu_shares_trading_move_focus_click(d, cur_language)
         return cur_menu_link
 
-    def open_education_commodities_trading_menu(self, d, cur_language, link):
+    def open_education_commodities_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
         print(f"\n{datetime.now()}   2. Link = {link}")
@@ -135,13 +135,13 @@ class MenuSection(BasePage):
         # print(f"\n\n{datetime.now()}   => Language and Country menu is clickable")
         #
 
-        menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
+        # menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
         time.sleep(1)
         ActionChains(d) \
             .move_to_element(d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)) \
             .pause(0.5) \
             .perform()
-        del menu
+        # del menu
 
         print(f"\n\n{datetime.now()}   => Focus is moved on Language and Country menu ")
 
