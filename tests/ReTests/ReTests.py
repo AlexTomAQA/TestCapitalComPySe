@@ -26,7 +26,7 @@ role = None
 url = None
 
 # ===========================================================
-# выбор необходимых ролей для ретеста
+# выбор необходимых языков для ретеста
 lang_list = [
         "en",
         "ar",
@@ -69,7 +69,6 @@ no_new_column = False
 
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
-# в def run_pytest() проверить расчет {host}
 # так же необходимо поменять флаг unique_test = True
 # ============================================================
 # unique_test = True
@@ -81,9 +80,13 @@ list_rows = [835]
 # повторный проход только Skipped-tests
 # retest_skipped_tests = True
 retest_skipped_tests = False
-# в def run_pytest() проверить расчет {host}
 # ============================================================
 status_list = ['failed', 'passed']
+# ============================================================
+# получение корня проекта
+host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
+# host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+# ============================================================
 
 
 def pytest_generate_tests(metafunc):
@@ -118,9 +121,13 @@ def pytest_generate_tests(metafunc):
             if retest_skipped_tests:
                 if len(val) == 22 and val[21] not in status_list:
                     list_number_rows.append(num_row)
-            elif len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
-                # формирование списка строк для ретеста
+            elif no_new_column:
+                if len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
+                    # формирование списка строк для ретеста
+                    list_number_rows.append(num_row)
+            else:
                 list_number_rows.append(num_row)
+
         print(f"\n{datetime.now()}   Список номеров строк = {len(list_number_rows)}:{list_number_rows}")
     if len(list_number_rows) == 0:
         pytest.skip(f"Для country={country_list}:lang={lang_list}:role={role_list} не выбрано ни одной строки")
@@ -187,7 +194,7 @@ def pretest(row_loc, number_of_row, gs):
 
 @allure.step("Run aurotest with Bid parameters")
 def run_pytest():
-    global test_id, browser_name, us, path, num_test, lang, country, role, url
+    global test_id, browser_name, us, path, num_test, lang, country, role, url, host
 
     print(f"\n{datetime.now()}   2. Run run_pytest with Bid = {test_id} from row =>")
 
@@ -205,7 +212,7 @@ def run_pytest():
     retest = True
     # получение корня проекта
     # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+    # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
 
     if unique_test or retest_skipped_tests:
         host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
