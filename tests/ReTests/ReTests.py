@@ -210,9 +210,10 @@ def run_pytest():
 
     print(f"\n{datetime.now()}   2.2. Run poetry run pytest ... in subprocess =>")
     retest = True
+
     # получение корня проекта
-    # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'
-    # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
+    # host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for no LOCAL debugging
+    host = "\\".join(os.getcwd().split('\\')) + '\\'  # for LOCAL debugging
 
     if unique_test or retest_skipped_tests:
         host = "\\".join(os.getcwd().split('\\')) + '\\'            # for LOCAL debugging одного теста
