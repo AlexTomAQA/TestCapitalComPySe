@@ -27,7 +27,7 @@ class HandleExcElementsDecorator(object):
 
     def __init__(
         self,
-        browser="self",
+        driver="self",
         timeout=0.5,
         title="title",
         value="value",
@@ -39,7 +39,7 @@ class HandleExcElementsDecorator(object):
         """Initializes the object.
 
         Args:
-            browser: WebDriver. Defaults to 'self'.
+            driver: WebDriver. Defaults to 'self'.
             timeout (optional): the time to wait for an element to be present on the
             page before throwing a TimeoutException. Defaults to 0.5.
             title (optional): the title of the page. Defaults to 'title'.
@@ -50,7 +50,7 @@ class HandleExcElementsDecorator(object):
             index (optional): extract all elements of the list of individual lines of text starting from the
                 ith element. Defaults to 0.
         """
-        self.browser = browser
+        self.driver = driver
         self.timeout = timeout
         self.title = title
         self.value = value
@@ -77,38 +77,38 @@ class HandleExcElementsDecorator(object):
         decorator_self = self
 
         def inner_function(*args, **kwargs):
-            self.browser = args[0].browser
+            self.driver = args[0].driver
             try:
                 return func(*args, **kwargs)
             except NoSuchElementException as e:
                 logging.error(
-                    f"Could not find elements on page: {decorator_self.browser.current_url}"
+                    f"Could not find elements on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except TimeoutException as e:
                 logging.error(
                     f"Elements not present after {decorator_self.timeout} "
-                    f"seconds on page: {decorator_self.browser.current_url}"
+                    f"seconds on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except NoSuchAttributeException as e:
                 logging.error(
-                    f"The attribute of elements could not be found on page: {decorator_self.browser.current_url}"
+                    f"The attribute of elements could not be found on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except ElementNotInteractableException as e:
                 logging.error(
-                    f"The element is not currently interactable on page: {decorator_self.browser.current_url}"
+                    f"The element is not currently interactable on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except InvalidElementStateException as e:
                 logging.error(
-                    f"The element is in an invalid state on page: {decorator_self.browser.current_url}"
+                    f"The element is in an invalid state on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except StaleElementReferenceException as e:
                 logging.error(
-                    f"The elements are no longer attached to the DOM on page: {decorator_self.browser.current_url}"
+                    f"The elements are no longer attached to the DOM on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except WebDriverException as e:
