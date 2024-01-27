@@ -47,14 +47,14 @@ class VideoBanner(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   Is present VIDEO_BANNER? =>")
-        button_list = self.browser.find_elements(*VideoBannerLocators.VIDEO_BANNER)
+        button_list = self.driver.find_elements(*VideoBannerLocators.VIDEO_BANNER)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => VIDEO_BANNER not present")
             del button_list
             return False
 
         print(f"{datetime.now()}   => VIDEO_BANNER is present")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -72,7 +72,7 @@ class VideoBanner(BasePage):
         except ElementClickInterceptedException:
             print("'Sign up'/'Log in' form or page is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

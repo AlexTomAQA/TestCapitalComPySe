@@ -34,7 +34,7 @@ class ButtonCreateAccountOnCounterBlock(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   CREATE_ACCOUNT_BUTTON is present? =>")
-        button_list = self.browser.find_elements(*CounterBanner.CREATE_ACCOUNT_BUTTON)
+        button_list = self.driver.find_elements(*CounterBanner.CREATE_ACCOUNT_BUTTON)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => CREATE_ACCOUNT_BUTTON is not present on the page!")
             del button_list
@@ -43,7 +43,7 @@ class ButtonCreateAccountOnCounterBlock(BasePage):
 
         print(f"{datetime.now()}   CREATE_ACCOUNT_BUTTON scroll =>")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -57,7 +57,7 @@ class ButtonCreateAccountOnCounterBlock(BasePage):
             print(f"{datetime.now()}   => CREATE_ACCOUNT_BUTTON NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

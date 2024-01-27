@@ -31,7 +31,7 @@ class GooglePlay(BasePage):
             self.open_page()
             assert True
         else:
-            current_page = self.browser.current_url
+            current_page = self.driver.current_url
             # self.open_page()
             # ==== new bug re-test checking =====
             print(f'\nBug: {self.bid}')

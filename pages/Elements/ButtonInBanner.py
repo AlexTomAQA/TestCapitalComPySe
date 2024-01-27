@@ -35,7 +35,7 @@ class ButtonInBanner(BasePage):
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*ButtonInBannerLocators.BUTTON_IN_BANNER)
+        button_list = self.driver.find_elements(*ButtonInBannerLocators.BUTTON_IN_BANNER)
 
         if len(button_list) == 0:
             del button_list
@@ -44,7 +44,7 @@ class ButtonInBanner(BasePage):
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -58,13 +58,13 @@ class ButtonInBanner(BasePage):
             print(f"{datetime.now()}   => BUTTON_IN_BANNER NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
                 page_.close_signup_page()
 
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 button_list[0]
             )

@@ -23,7 +23,7 @@ class MyAccount(BasePage):
               f"{datetime.now()}   Start Click [Logout] button:")
 
         print(f"{datetime.now()}   BUTTON_LOGOUT is present? =>")
-        button_list = self.browser.find_elements(*MyAccountLocator.LOGOUT)
+        button_list = self.driver.find_elements(*MyAccountLocator.LOGOUT)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_LOGOUT is not present!")
             return False
@@ -53,12 +53,12 @@ class MyAccount(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Trading Platform' button")
     def click_button_trading_platform(self):
-        button = self.browser.find_element(*MyAccountLocator.TRADING_PLATFORM)
+        button = self.driver.find_element(*MyAccountLocator.TRADING_PLATFORM)
         self.element_is_clickable(button, 5)
         button.click()
 
     @allure.step(f"{datetime.now()}.   Click 'Close MyAccount panel'")
     def click_close_user_panel(self):
-        button = self.browser.find_element(*MyAccountLocator.CLOSE)
+        button = self.driver.find_element(*MyAccountLocator.CLOSE)
         self.element_is_clickable(button, 5)
         button.click()

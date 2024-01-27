@@ -8,7 +8,7 @@ class TheBasicsOfTrading(BasePage):
     # Проверка текущего URL
     @allure.step(f"{datetime.datetime.now()}. Current_url.")
     def tc_01_01_current_url(self):
-        current_url = self.browser.current_url
+        current_url = self.driver.current_url
         check_current_url = "https://capital.com/basics-of-trading"
         assert current_url == check_current_url, f'Text on UI {current_url} is not eq {check_current_url}'
 
@@ -16,9 +16,9 @@ class TheBasicsOfTrading(BasePage):
     @allure.step(f"{datetime.datetime.now()}. Should_be_The_basics_of_trading_text.")
     def tc_should_be_the_basics_of_trading_text(self):
         if self.element_is_present(*TheBasicsOfTradingLocator.LOCATOR_THE_BASICS_OF_TRADING_TEXT):
-            basics_of_trading = self.browser.find_element(*TheBasicsOfTradingLocator.LOCATOR_THE_BASICS_OF_TRADING_TEXT)
+            basics_of_trading = self.driver.find_element(*TheBasicsOfTradingLocator.LOCATOR_THE_BASICS_OF_TRADING_TEXT)
             basics_of_trading_text = basics_of_trading.text
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 basics_of_trading)
             check_text = "The basics of trading"
@@ -33,9 +33,9 @@ class TheBasicsOfTrading(BasePage):
         if self.element_is_present(
                 *TheBasicsOfTradingLocator.LOCATOR_THE_BASICS_OF_TRADING_CREATE_VERIFY_YOUR_ACCOUNT_BUTTON
         ):
-            button = self.browser.find_element(*TheBasicsOfTradingLocator.
+            button = self.driver.find_element(*TheBasicsOfTradingLocator.
                                                LOCATOR_THE_BASICS_OF_TRADING_CREATE_VERIFY_YOUR_ACCOUNT_BUTTON)
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 button)
             self.element_is_clickable(button, 5)

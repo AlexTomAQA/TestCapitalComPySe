@@ -36,7 +36,7 @@ class HeaderButtonTrade(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   BUTTON_SIGNUP is present? =>")
-        button_list = self.browser.find_elements(*HeaderButtonTradeLocators.BUTTON_TRADE)
+        button_list = self.driver.find_elements(*HeaderButtonTradeLocators.BUTTON_TRADE)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_SIGNUP is not present on the page!")
             del button_list
@@ -45,7 +45,7 @@ class HeaderButtonTrade(BasePage):
 
         print(f"{datetime.now()}   BUTTON_SIGNUP scroll =>")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -59,7 +59,7 @@ class HeaderButtonTrade(BasePage):
             print(f"{datetime.now()}   => BUTTON_SIGNUP NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

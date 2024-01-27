@@ -52,13 +52,13 @@ class ButtonCreateAccountBlockOurCourses(BasePage):
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*BlockOurCoursesLocators.BUTTON_CREATE_ACCOUNT)
+        button_list = self.driver.find_elements(*BlockOurCoursesLocators.BUTTON_CREATE_ACCOUNT)
         if len(button_list) == 0:
             del button_list
             return False
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -69,7 +69,7 @@ class ButtonCreateAccountBlockOurCourses(BasePage):
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_CREATE_ACCOUNT NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form is auto opened")
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

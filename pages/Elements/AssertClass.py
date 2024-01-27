@@ -129,7 +129,7 @@ class AssertClass(BasePage):
     # @allure.step('Checking that "Trading platform" page opened with corresponding trading instrument - ver 5')
     # def assert_trading_platform_with_selected_item_and_operation(self, cur_link, sel_item, sel_operation):
     #     print(f"\n{datetime.now()}   3. Assert_v5")
-    #     self.page_trading = TradingPlatform(self.browser, cur_link)
+    #     self.page_trading = TradingPlatform(self.driver, cur_link)
     #     self.page_trading.should_be_trading_platform_with_sel_item_and_operation(sel_item, sel_operation)
     #
     @allure.step('Checking that "Trading platform" page opened in demo mode')
@@ -149,7 +149,7 @@ class AssertClass(BasePage):
     @allure.step('Checking that "App Store Investmate" page opened')
     def assert_app_store_investmate(self):
         print(f"\n{datetime.now()}   3. Assert_v0")
-        self.page_app_store = AppStore(self.browser, self.link, self.bid)
+        self.page_app_store = AppStore(self.driver, self.link, self.bid)
         self.page_app_store.should_be_app_store_investmane_page()
 
     @allure.step('Checking that "Google Play" page opened')

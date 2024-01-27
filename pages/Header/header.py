@@ -23,15 +23,15 @@ class Header(BasePage):
     @allure.step("Click button [My account]")
     def header_button_my_account_click(self):
         print(f"{datetime.now()}   1. BUTTON_MY_ACCOUNT is present? =>")
-        button_list = self.browser.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
+        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is not present on this page")
             del button_list
             return False
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is present on this page")
 
-        button_list = self.browser.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
-        ActionChains(self.browser) \
+        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
+        ActionChains(self.driver) \
             .pause(0.5) \
             .move_to_element(button_list[0]) \
             .pause(0.5) \
@@ -39,14 +39,14 @@ class Header(BasePage):
         print(f"{datetime.now()}   => Move to BUTTON_MY_ACCOUNT")
 
         print(f"{datetime.now()}   2. BUTTON_MY_ACCOUNT is clickable? =>")
-        button_list = self.browser.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
+        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
         if not self.element_is_clickable(button_list[0], 10):
             print("Button [My account] is not clickable!")
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clickable")
 
         print(f"{datetime.now()}   BUTTON_MY_ACCOUNT Click =>")
-        button_list = self.browser.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
-        ActionChains(self.browser) \
+        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
+        ActionChains(self.driver) \
             .click(button_list[0]) \
             .perform()
 
@@ -54,8 +54,8 @@ class Header(BasePage):
             print(f"{datetime.now()}   => User panel [My account] is not opened after first BUTTON_MY_ACCOUNT click")
 
             print(f"{datetime.now()}   BUTTON_MY_ACCOUNT second Click =>")
-            button_list = self.browser.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
-            ActionChains(self.browser) \
+            button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
+            ActionChains(self.driver) \
                 .click(button_list[0]) \
                 .perform()
 

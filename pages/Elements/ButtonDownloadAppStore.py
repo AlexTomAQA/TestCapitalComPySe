@@ -32,12 +32,12 @@ class ButtonDownloadAppStore(BasePage):
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*BlockSignUpAndTradeSmartTodayLocators.BUTTON_DOWNLOAD_APP_STORE)
+        button_list = self.driver.find_elements(*BlockSignUpAndTradeSmartTodayLocators.BUTTON_DOWNLOAD_APP_STORE)
         if len(button_list) == 0:
             return False
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )

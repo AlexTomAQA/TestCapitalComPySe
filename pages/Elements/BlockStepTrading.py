@@ -58,9 +58,9 @@ class BlockStepTrading(BasePage):
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act_v0")
-        button_list = self.browser.find_elements(*BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT)
+        button_list = self.driver.find_elements(*BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -73,8 +73,8 @@ class BlockStepTrading(BasePage):
             print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is not clickable after 5 sec")
             pytest.fail(f"Bug! Checking element is present in DOM, visible, but not clickable after 5 sec")
 
-        button_list = self.browser.find_elements(*BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT)
-        self.browser.execute_script("arguments[0].click();", button_list[0])
+        button_list = self.driver.find_elements(*BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT)
+        self.driver.execute_script("arguments[0].click();", button_list[0])
         print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is clicked")
 
         del button_list
