@@ -90,7 +90,7 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MainBannerTryDemo(d, cur_item_link, bid)
-        test_element.full_test (d,cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
@@ -115,7 +115,7 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
-        test_element.full_test_with_tpi (d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Sell] in content block")
     @pytest.mark.test_04
@@ -138,8 +138,8 @@ class TestCryptocurrencyTrading:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = SellButtonContentBlock (d, cur_item_link, bid)
-        test_element.arrange_(d, cur_language)
+        test_element = SellButtonContentBlock(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Buy] in content block")
     @pytest.mark.test_05
@@ -163,7 +163,7 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BuyButtonContentBlock(d, cur_item_link, bid)
-        test_element.arrange_(d, cur_language)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Get started] on Sticky bar")
     @pytest.mark.test_06
@@ -187,7 +187,7 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = GetStartedOnStickyBar(d, cur_item_link, bid)
-        test_element.arrange_(d, cur_language)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start trading] in content block")
     @pytest.mark.test_07
@@ -211,7 +211,7 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ContentStartTrading(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
     @pytest.mark.test_10
@@ -235,4 +235,4 @@ class TestCryptocurrencyTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
