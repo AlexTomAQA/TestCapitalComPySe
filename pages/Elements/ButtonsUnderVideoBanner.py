@@ -32,12 +32,12 @@ class ButtonUnderVideoBanner(BasePage):
     @allure.step("Click on button under video banner")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*ButtonsUnderVideoBannerLocators.BUTTON_UNDER_VIDEO_BANNER_OLD)
+        button_list = self.driver.find_elements(*ButtonsUnderVideoBannerLocators.BUTTON_UNDER_VIDEO_BANNER_OLD)
         if len(button_list) == 0:
             del button_list
             return False
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -50,7 +50,7 @@ class ButtonUnderVideoBanner(BasePage):
         except ElementClickInterceptedException:
             print("'Sign up' form or page is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
@@ -101,9 +101,9 @@ class ButtonsUnderVideoBanner(BasePage):
             case "trade_now":
                 button_under_video = ButtonsUnderVideoBannerLocators.BUTTON_TRADE_NOW_UNDER_VIDEO_BANNER
 
-        button_list = self.browser.find_elements(*button_under_video)
+        button_list = self.driver.find_elements(*button_under_video)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )

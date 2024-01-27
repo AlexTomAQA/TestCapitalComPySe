@@ -57,14 +57,14 @@ class MainBannerStartTrading(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.browser.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
+        button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_START_TRADING is not present on the page!")
             del button_list
             pytest.skip("Checking element 'BUTTON_START_TRADING on the main banner' is not on this page")
 
         print(f"{datetime.now()}   BUTTON_START_TRADING scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[0]
         )
 
@@ -80,7 +80,7 @@ class MainBannerStartTrading(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button [Start Trading] =>")
-        button_list = self.browser.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
+        button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
 
         print(f"{datetime.now()}   BUTTON_START_TRADING is clickable? =>")
         time_out = 3
@@ -96,7 +96,7 @@ class MainBannerStartTrading(BasePage):
             print(f"{datetime.now()}   => BUTTON_START_TRADING not clicked")
             print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             elif page_.close_login_form():

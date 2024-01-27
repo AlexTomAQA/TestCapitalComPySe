@@ -24,7 +24,7 @@ class TopBar(BasePage):
         print(f"{datetime.now()}   Start check that the Trading platform page is loaded and LOGO is present on it =>")
         timeout = 30
         print(f"{datetime.now()}   Set timeout = {timeout}")
-        wait = WebDriverWait(self.browser, timeout)
+        wait = WebDriverWait(self.driver, timeout)
 
         # Wait for the new tab to finish loading content
         print(f"{datetime.now()}   Wait until load page with special title =>")

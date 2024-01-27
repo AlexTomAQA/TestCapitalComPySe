@@ -115,7 +115,7 @@ class Conditions(BasePage):
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
-            test_link = self.browser.current_url
+            test_link = self.driver.current_url
             del page_menu
             prev_language = cur_language
 

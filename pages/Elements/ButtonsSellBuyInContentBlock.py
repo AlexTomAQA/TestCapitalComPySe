@@ -33,7 +33,7 @@ class ButtonsSellBuyInContentBlock(BasePage):
 
         print(f"{datetime.now()}   BUTTON_{button.upper()}_IN_CONTENT_BLOCK is visible? =>")
         try:
-            if self.browser.find_element(*self.button_locator):
+            if self.driver.find_element(*self.button_locator):
                 print(f"{datetime.now()}   => BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK is visible on the page!")
         except NoSuchElementException:
             print(f"{datetime.now()}   => BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK is not visible on the page!")
@@ -41,7 +41,7 @@ class ButtonsSellBuyInContentBlock(BasePage):
 
     @allure.step("Click button [Buy]/[Sell] in content block")
     def element_click(self, cur_role):
-        button_list = self.browser.find_elements(*self.button_locator)
+        button_list = self.driver.find_elements(*self.button_locator)
         # Вытаскиваем линку из кнопки
         button_link = button_list[0].get_attribute('href')
         # Берём ID итема, на который кликаем для сравнения с открытым ID на платформе
@@ -56,7 +56,7 @@ class ButtonsSellBuyInContentBlock(BasePage):
         print(f"{datetime.now()}   => BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK is present on the page")
 
         print(f"{datetime.now()}   BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -70,27 +70,27 @@ class ButtonsSellBuyInContentBlock(BasePage):
         try:
             print(f"{datetime.now()}   BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK CLICK =>")
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             print(f"{datetime.now()}   => BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK clicked!")
 
             # Сравниваем ID
-            if not self.browser.current_url.find(target_link) and (cur_role == "Auth"):
+            if not self.driver.current_url.find(target_link) and (cur_role == "Auth"):
                 pytest.fail(f"[{button_list[0].text}] Opened page's link doesn't match with clicked link."
-                            f"Current URL is {self.browser.current_url}")
+                            f"Current URL is {self.driver.current_url}")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_{self.button.upper()}_IN_CONTENT_BLOCK NOT CLICKED")
             # сейчас бы сделать скриншот!?
 
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
                 page_.close_signup_page()
 
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 
         del button_list

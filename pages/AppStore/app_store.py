@@ -29,7 +29,7 @@ class AppStore(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '01', self.link)
             # ==================================
-            assert False, f'Bug # 01. Loaded page with not {data["APP_URL"]} url. Current URL is {self.browser.current_url}'
+            assert False, f'Bug # 01. Loaded page with not {data["APP_URL"]} url. Current URL is {self.driver.current_url}'
 
     @allure.step("Checking that the App Store Investmate page has opened")
     def should_be_app_store_investmane_page(self):
@@ -49,7 +49,7 @@ class AppStore(BasePage):
             retest_table_fill(self.bid, '02', self.link)
             # ==================================
             assert False, (f'Bug # 02. Loaded page with not {data_investmate["APP_URL"]} url. '
-                           f'Current URL is {self.browser.current_url}')
+                           f'Current URL is {self.driver.current_url}')
 
     @allure.step("Checking that the App Store app title")
     def should_be_app_store_app_title(self, app_title):

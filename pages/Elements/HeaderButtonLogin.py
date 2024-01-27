@@ -14,7 +14,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 
 class HeaderButtonLogin(BasePage):
 
-    def arrange_(self, d, cur_role, cur_item_link):
+    def arrange_(self, cur_role, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange")
 
         if cur_role == "Auth":
@@ -35,14 +35,14 @@ class HeaderButtonLogin(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   Start Click button [Log in] =>")
-        button_list = self.browser.find_elements(*HeaderButtonLoginLocators.BUTTON_LOGIN)
+        button_list = self.driver.find_elements(*HeaderButtonLoginLocators.BUTTON_LOGIN)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_LOGIN is not present on the page!")
             del button_list
             return False
 
         print(f"{datetime.now()}   BUTTON_LOGIN scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -60,7 +60,7 @@ class HeaderButtonLogin(BasePage):
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_login_form():
                 pass
             else:

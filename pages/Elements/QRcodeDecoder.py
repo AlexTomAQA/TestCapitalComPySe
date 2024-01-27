@@ -52,13 +52,13 @@ class QRCodeDecode(BasePage):
                 locator_link = QRCodeLocators.QR_CODE_CAPITAL_LINK
 
         # Checking if [SignUP for is popped up on the page]
-        check_popup = SignupLogin(self.browser, self.link)
+        check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
         #
         print(f"{datetime.now()}   QR_CODE is located in the DOM? =>")
         qr_code_img = self.element_is_located(self.locator, 10)
         if qr_code_img:
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 qr_code_img
             )
@@ -84,7 +84,7 @@ class QRCodeDecode(BasePage):
             print(f"{datetime.now()}   QR_CODE_TITLE link: {qr_title_link}")
 
             # Checking if [SignUP for is popped up on the page]
-            check_popup = SignupLogin(self.browser, self.link)
+            check_popup = SignupLogin(self.driver, self.link)
             check_popup.check_popup_signup_form()
 
             # Start encoding QR-code image
@@ -103,7 +103,7 @@ class QRCodeDecode(BasePage):
 
         # print(f"\n{datetime.now()}   2. Act")
         # print(f"{datetime.now()}   QR_CODE_{self.filename.upper()} is present? =>")
-        # code_list = self.browser.find_elements(*self.locator_link)
+        # code_list = self.driver.find_elements(*self.locator_link)
         # if len(code_list) == 0:x
         #     print(f"{datetime.now()}   => QR_CODE_{self.filename.upper()} is not present on the page!")
         #     return False
@@ -111,25 +111,25 @@ class QRCodeDecode(BasePage):
         #
         # print(f"{datetime.now()}   QR_CODE_{self.filename.upper()} scroll =>")
         #
-        # self.browser.execute_script(
+        # self.driver.execute_script(
         #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
         #     code_list[0]
         # )
 
         # try:
-        # qr_code_locator = self.browser.find_element(*self.locator)
+        # qr_code_locator = self.driver.find_element(*self.locator)
         # link = qr_code_locator.get_attribute
         # link = self.get_attribute("title", *self.locator_link)
         # print(f"{datetime.now()}   => QR_CODE_{self.filename.upper()} found")
         # print(f"{datetime.now()}   => Opening link from QR_CODE")
         # self.link = link
         # self.open_page()
-        # self.browser.get(link)
+        # self.driver.get(link)
         # self.wait_for_target_url('apps.apple.com', 10)
 
         # time.sleep(5)
         # ########### Не удалять ############
-        # qr_code = self.browser.find_element(*self.locator)
+        # qr_code = self.driver.find_element(*self.locator)
         # src = qr_code.get_attribute('src')
         # # Download the image
         # print(f"{datetime.now()}   => QR_CODE_{self.filename.upper()} download started.")
@@ -146,7 +146,7 @@ class QRCodeDecode(BasePage):
         # for x in recognized_results:
         #     url_end = x.code_text.find(" ")
         #     url_2 = x.code_text[0:url_end]
-        # self.browser.get(url_2)
+        # self.driver.get(url_2)
         # os.remove(f"test_data/{self.filename}.png")
 
         # print(f"{datetime.now()}   => QR_CODE_{self.filename.upper()} scanned!")
@@ -191,7 +191,7 @@ class QRCodeDecode(BasePage):
                     assert False, "Bug! The QR-code is unreadable or absent."
 
         # Сделать скриншот
-        allure.attach(self.browser.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+        allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         # Удаляем временный файл qr_image.png
         os.remove(qr_code_image)
         return qr_link

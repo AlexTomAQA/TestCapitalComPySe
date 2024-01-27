@@ -24,7 +24,7 @@ class RightBannerTryDemo(BasePage):
         print(f"{datetime.now()}   Is visible BUTTON_CREATE_YOUR_ACCOUNT? =>")
         # if self.element_is_visible(ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE):
         try:
-            if self.browser.find_element(*RightBannerLocators.BUTTON_TRY_DEMO_RIGHT_BANNER):
+            if self.driver.find_element(*RightBannerLocators.BUTTON_TRY_DEMO_RIGHT_BANNER):
                 print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is visible on the page!")
         except NoSuchElementException:
             print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is not visible on the page!")
@@ -34,13 +34,13 @@ class RightBannerTryDemo(BasePage):
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*RightBannerLocators.BUTTON_TRY_DEMO_RIGHT_BANNER)
+        button_list = self.driver.find_elements(*RightBannerLocators.BUTTON_TRY_DEMO_RIGHT_BANNER)
         if len(button_list) == 0:
             del button_list
             return False
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -52,7 +52,7 @@ class RightBannerTryDemo(BasePage):
             print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT NOT CLICKED")
             print("'Sign up' form or page is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

@@ -39,11 +39,11 @@ class ButtonPractiseForFreeInContentBlock(BasePage):
         print(f"{datetime.now()}   Is visible BUTTON_PRACTISE_FOR_FREE? =>")
 
         print(f"{datetime.now()}   => BUTTON_PRACTISE_FOR_FREE? =>")
-        buttons = self.browser.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
+        buttons = self.driver.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
         if not buttons:
             pytest.skip("Checking element is not on this page")
             # print(f"{datetime.now()}   => BUTTON_PRACTISE_FOR_FREE? =>")
-            # buttons = self.browser.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE2)
+            # buttons = self.driver.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE2)
             # if not buttons:
             #     pytest.skip("Checking element is not on this page")
         return len(buttons)
@@ -66,28 +66,28 @@ class ButtonPractiseForFreeInContentBlock(BasePage):
     def element_click_v3(self, i):
         print(f"\n{datetime.now()}   2. Act_v3")
         print(f"{datetime.now()}   Start Click button BUTTON_PRACTISE_FOR_FREE_IN_ARTICLE =>")
-        button_list = self.browser.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[int(i)]
         )
         if not self.element_is_clickable(button_list[int(i)], 5):
             print(f"{datetime.now()}   => BUTTON_PRACTISE_FOR_FREE_IN_ARTICLE is not clickable")
             pytest.fail("BUTTON_PRACTISE_FOR_FREE_IN_ARTICLE is not clickable")
 
-        self.browser.execute_script("arguments[0].click();", button_list[int(i)])
+        self.driver.execute_script("arguments[0].click();", button_list[int(i)])
         print(f"{datetime.now()}   => BUTTON_PRACTISE_FOR_FREE_IN_ARTICLE is clicked")
 
     @allure.step("Click 'Button Practise for free' in Content Block")
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_PRACTISE_FOR_FREE)
         if len(button_list) == 0:
             return False
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )

@@ -58,73 +58,73 @@ class Capital(BasePage):
     def banner_main_tab1_click(self, cur_language):
         if cur_language == "":
             self.element_is_clickable(MainBanner.TAB1_NEW, 10)
-            self.browser.find_element(*MainBanner.TAB1_NEW).click()
+            self.driver.find_element(*MainBanner.TAB1_NEW).click()
         else:
             self.element_is_clickable(MainBanner.TAB1, 10)
-            self.browser.find_element(*MainBanner.TAB1).click()
+            self.driver.find_element(*MainBanner.TAB1).click()
 
     @allure.step(f"{datetime.now()}. "
                  f"Click button 'Open account' on banner 'Main' tab 'Spread betting'(tab1).")
     # Click button on select tab
     def banner_main_tab1_button_open_account_click(self):
         self.element_is_clickable(MainBanner.TAB1_OPEN_ACCOUNT, 10)
-        self.browser.find_element(*MainBanner.TAB1_OPEN_ACCOUNT).click()
+        self.driver.find_element(*MainBanner.TAB1_OPEN_ACCOUNT).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Trade now' on banner 'Main' tab '1'.")
     def banner_main_tab1_button_trade_now_click(self, cur_language):
         if cur_language == "":
             self.element_is_clickable(MainBanner.TAB1_NEW_TRADE_NOW, 10)
-            self.browser.find_element(*MainBanner.TAB1_NEW_TRADE_NOW).click()
+            self.driver.find_element(*MainBanner.TAB1_NEW_TRADE_NOW).click()
         else:
             self.element_is_clickable(MainBanner.TAB1_TRADE_NOW, 10)
-            self.browser.find_element(*MainBanner.TAB1_TRADE_NOW).click()
+            self.driver.find_element(*MainBanner.TAB1_TRADE_NOW).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Practise for free' on banner 'Main' tab '1'.")
     def banner_main_tab1_button_practise_for_free_click(self, cur_language):
         if cur_language == "":
             self.element_is_clickable(MainBanner.TAB1_NEW_PRACTISE_FOR_FREE, 10)
-            self.browser.find_element(*MainBanner.TAB1_NEW_PRACTISE_FOR_FREE).click()
+            self.driver.find_element(*MainBanner.TAB1_NEW_PRACTISE_FOR_FREE).click()
         else:
             self.element_is_clickable(MainBanner.TAB1_PRACTISE_FOR_FREE, 10)
-            self.browser.find_element(*MainBanner.TAB1_PRACTISE_FOR_FREE).click()
+            self.driver.find_element(*MainBanner.TAB1_PRACTISE_FOR_FREE).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Start trading' on banner 'Main' tab '1'.")
     def banner_main_tab1_button_start_trading_click(self):
         self.element_is_clickable(MainBanner.TAB1_START_TRADING, 10)
-        self.browser.find_element(*MainBanner.TAB1_START_TRADING).click()
+        self.driver.find_element(*MainBanner.TAB1_START_TRADING).click()
 
     @allure.step(f"{datetime.now()}.   Click tab '2' on banner 'Main'.")
     def banner_main_tab2_click(self, cur_language):
         if cur_language == "":
             self.element_is_clickable(MainBanner.TAB2_NEW, 10)
-            self.browser.find_element(*MainBanner.TAB2_NEW).click()
+            self.driver.find_element(*MainBanner.TAB2_NEW).click()
         else:
             self.element_is_clickable(MainBanner.TAB2, 10)
-            self.browser.find_element(*MainBanner.TAB2).click()
+            self.driver.find_element(*MainBanner.TAB2).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Start trading' on banner 'Main' tab '2'.")
     def banner_main_tab2_button_start_trading_click(self):
         self.element_is_clickable(MainBanner.TAB2_START_TRADING, 10)
-        self.browser.find_element(*MainBanner.TAB2_START_TRADING).click()
+        self.driver.find_element(*MainBanner.TAB2_START_TRADING).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Practise for free' on banner 'Main' tab '2'.")
     def banner_main_tab2_button_practise_for_free_click(self):
         self.element_is_clickable(MainBanner.TAB2_PRACTISE_FOR_FREE, 10)
-        self.browser.find_element(*MainBanner.TAB2_PRACTISE_FOR_FREE).click()
+        self.driver.find_element(*MainBanner.TAB2_PRACTISE_FOR_FREE).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Take me there' on banner 'Main' tab '2'.")
     def banner_main_tab2_button_take_me_there_click(self, cur_language):
         if cur_language == "":
             self.element_is_clickable(MainBanner.TAB2_TAKE_ME_THERE, 10)
-            self.browser.find_element(*MainBanner.TAB2_TAKE_ME_THERE).click()
+            self.driver.find_element(*MainBanner.TAB2_TAKE_ME_THERE).click()
         else:
             self.element_is_clickable(MainBanner.TAB2_TAKE_ME_THERE, 10)
-            self.browser.find_element(*MainBanner.TAB2_TAKE_ME_THERE).click()
+            self.driver.find_element(*MainBanner.TAB2_TAKE_ME_THERE).click()
 
     @allure.step(f"{datetime.now()}.   Click tab '3' on banner 'Main'.")
     def banner_main_tab3_click(self):
         data_type = self.get_attribute("data-type", *MainBanner.TAB3)
-        self.browser.find_element(*MainBanner.TAB3).click()
+        self.driver.find_element(*MainBanner.TAB3).click()
         print(f"data_type = {data_type}")
         if data_type == "topbanner_pro_au_slider":
             layout = 1
@@ -138,48 +138,48 @@ class Capital(BasePage):
     @allure.step(f"{datetime.now()}.   Click button 'Learn more' on banner 'Main' tab '3' (l1: ASIC).")
     def banner_main_tab3_l1_button_learn_more_asic_click(self):
         self.element_is_clickable(MainBanner.TAB3_L1_LEARN_MORE_ASIC, 10)
-        self.browser.find_element(*MainBanner.TAB3_L1_LEARN_MORE_ASIC).click()
+        self.driver.find_element(*MainBanner.TAB3_L1_LEARN_MORE_ASIC).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Start trading' on banner 'Main' tab '3' (l1: ASIC).")
     def banner_main_tab3_l1_button_start_trading_asic_click(self):
         self.element_is_clickable(MainBanner.TAB3_L1_START_TRADING_ASIC, 10)
-        self.browser.find_element(*MainBanner.TAB3_L1_START_TRADING_ASIC).click()
+        self.driver.find_element(*MainBanner.TAB3_L1_START_TRADING_ASIC).click()
 
     @allure.step(f"{datetime.now()}.   "
                  f"Click button 'Start trading' on banner 'Main' tab '3' (l2: All, except ASIC).")
     def banner_main_tab3_l2_button_start_trading_fca_click(self):
         self.element_is_clickable(MainBanner.TAB3_L2_START_TRADING_FCA, 10)
-        self.browser.find_element(*MainBanner.TAB3_L2_START_TRADING_FCA).click()
+        self.driver.find_element(*MainBanner.TAB3_L2_START_TRADING_FCA).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Practise for free 'Main' tab '3' (l2: All, except ASIC).")
     def banner_main_tab3_l2_button_practise_for_free_fca_click(self):
         self.element_is_clickable(MainBanner.TAB3_L2_PRACTISE_FOR_FREE_FCA, 10)
-        self.browser.find_element(*MainBanner.TAB3_L2_PRACTISE_FOR_FREE_FCA).click()
+        self.driver.find_element(*MainBanner.TAB3_L2_PRACTISE_FOR_FREE_FCA).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Show me now' on banner 'Main' tab '3'.")
     def banner_main_tab3_button_show_me_how_click(self):
         self.element_is_clickable(MainBanner.TAB3_SHOW_ME_HOW, 10)
-        self.browser.find_element(*MainBanner.TAB3_SHOW_ME_HOW).click()
+        self.driver.find_element(*MainBanner.TAB3_SHOW_ME_HOW).click()
 
     @allure.step(f"{datetime.now()}.   Click tab '4' on banner 'Main'.")
     def tc0601_banner_main_tab4_click(self):
         self.element_is_clickable(MainBanner.TAB4, 10)
-        self.browser.find_element(*MainBanner.TAB4).click()
+        self.driver.find_element(*MainBanner.TAB4).click()
 
     @allure.step(f"{datetime.now()}.   Click button 'Explore features' on banner 'Main' tab '4'.")
     def tc0601_banner_main_tab4_button_explore_features_click(self):
         self.element_is_clickable(MainBanner.TAB4_EXPLORE_FEATURES, 10)
-        self.browser.find_element(*MainBanner.TAB4_EXPLORE_FEATURES).click()
+        self.driver.find_element(*MainBanner.TAB4_EXPLORE_FEATURES).click()
 
     @allure.step(f"{datetime.now()}.   What is the current layout Widget 'Trading instrument'?")
     def tc08_what_is_the_current_layout(self):
         layout = 0
 
-        len_list_1 = len(self.browser.find_elements(*WidgetTradingInstrument.LIST_TABS_1))
+        len_list_1 = len(self.driver.find_elements(*WidgetTradingInstrument.LIST_TABS_1))
         if len_list_1 > 0:
             layout = 1
 
-        len_list_2 = len(self.browser.find_elements(*WidgetTradingInstrument.LIST_TABS_2))
+        len_list_2 = len(self.driver.find_elements(*WidgetTradingInstrument.LIST_TABS_2))
         if len_list_2 > 0:
             layout = 2
 
@@ -195,36 +195,36 @@ class Capital(BasePage):
 
         if layout == 1:
             if tab_name == "Most":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_MOST_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_MOST_1)
             elif tab_name == "Commodities":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_COMMOD_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_COMMOD_1)
             elif tab_name == "Indices":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_INDICES_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_INDICES_1)
             elif tab_name == "Crypto":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_CRYPTO_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_CRYPTO_1)
             elif tab_name == "Shares":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_SHARES_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_SHARES_1)
             elif tab_name == "Forex":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_FOREX_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_FOREX_1)
             elif tab_name == "ETFs":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_ETFS_1)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_ETFS_1)
         elif layout == 2:
             if tab_name == "Most":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_MOST_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_MOST_2)
             elif tab_name == "Commodities":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_COMMOD_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_COMMOD_2)
             elif tab_name == "Indices":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_INDICES_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_INDICES_2)
             elif tab_name == "Crypto":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_CRYPTO_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_CRYPTO_2)
             elif tab_name == "Shares":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_SHARES_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_SHARES_2)
             elif tab_name == "Forex":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_FOREX_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_FOREX_2)
             elif tab_name == "ETFs":
-                button_tab = self.browser.find_element(*WidgetTradingInstrument.BUT_ETFS_2)
+                button_tab = self.driver.find_element(*WidgetTradingInstrument.BUT_ETFS_2)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_tab
         )
@@ -240,34 +240,34 @@ class Capital(BasePage):
 
         if layout == 1:
             if tab_name == "Most":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_MTR_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_MTR_1)
             elif tab_name == "Commodities":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_COM_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_COM_1)
             elif tab_name == "Indices":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_IND_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_IND_1)
             elif tab_name == "Crypto":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_CRY_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_CRY_1)
             elif tab_name == "Shares":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_SHAR_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_SHAR_1)
             elif tab_name == "Forex":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_FX_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_FX_1)
             elif tab_name == "ETFs":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_ETF_1)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_ETF_1)
         elif layout == 2:
             if tab_name == "Most":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_MTR_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_MTR_2)
             elif tab_name == "Commodities":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_COM_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_COM_2)
             elif tab_name == "Indices":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_IND_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_IND_2)
             elif tab_name == "Crypto":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_CRY_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_CRY_2)
             elif tab_name == "Shares":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_SHAR_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_SHAR_2)
             elif tab_name == "Forex":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_FX_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_FX_2)
             elif tab_name == "ETFs":
-                list_buttons = self.browser.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_ETF_2)
+                list_buttons = self.driver.find_elements(*WidgetTradingInstrument.LIST_BUTTONS_TRADE_FOR_ETF_2)
         else:
             return
         print(f"{tab_name} tab has {len(list_buttons)} lines with ' Trade' button")
@@ -277,7 +277,7 @@ class Capital(BasePage):
     @allure.step(f"{datetime.now()}.   Click button 'Trade' on the '{{y}}' line selected tab.")
     def tc08_selected_tab_and_line_button_trade_click(self, list_buttons, y):
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             list_buttons[y]
         )
@@ -298,8 +298,8 @@ class Capital(BasePage):
         # loc_button = None
         loc_return = self.element_is_present(*WidgetStillLookingFor.BUT_CREATE_YOUR_ACCOUNT)
         assert loc_return, "Widget 'Still looking for a broker ...' are not present on this page"
-        loc_button = self.browser.find_element(*WidgetStillLookingFor.BUT_CREATE_YOUR_ACCOUNT)
-        self.browser.execute_script(
+        loc_button = self.driver.find_element(*WidgetStillLookingFor.BUT_CREATE_YOUR_ACCOUNT)
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             loc_button
         )
@@ -308,7 +308,7 @@ class Capital(BasePage):
 
     @allure.step(f"{datetime.now()}.   How many different buttons 'Trade Now' on widget 'Promo Market'.")
     def tc1001_how_many_dif_buttons_trade_now_on_widget_promo_market(self):
-        list_but = self.browser.find_elements(*WidgetPromoMarket.LIST_BUTs_TRADE_NOW_2)
+        list_but = self.driver.find_elements(*WidgetPromoMarket.LIST_BUTs_TRADE_NOW_2)
         qty = len(list_but)
         print(f"This widget has {qty} different slider lines with 'Trade Now' button")
         return qty
@@ -318,15 +318,15 @@ class Capital(BasePage):
         button = None
 
         if i == 0:
-            button = self.browser.find_element(*WidgetPromoMarket.BUT_1_TRADE_NOW_ACTIVE)
+            button = self.driver.find_element(*WidgetPromoMarket.BUT_1_TRADE_NOW_ACTIVE)
         elif i == 1:
-            button = self.browser.find_element(*WidgetPromoMarket.BUT_2_TRADE_NOW_ACTIVE)
+            button = self.driver.find_element(*WidgetPromoMarket.BUT_2_TRADE_NOW_ACTIVE)
         elif i == 2:
-            button = self.browser.find_element(*WidgetPromoMarket.BUT_3_TRADE_NOW_ACTIVE)
+            button = self.driver.find_element(*WidgetPromoMarket.BUT_3_TRADE_NOW_ACTIVE)
         elif i == 3:
-            button = self.browser.find_element(*WidgetPromoMarket.BUT_4_TRADE_NOW_ACTIVE)
+            button = self.driver.find_element(*WidgetPromoMarket.BUT_4_TRADE_NOW_ACTIVE)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
@@ -338,9 +338,9 @@ class Capital(BasePage):
         button = None
         button = self.element_is_present(*WidgetExploreOurPlatform.BUTTON_TRY_NOW)
         assert button, "Widget 'Explore our platform' are not present on this page"
-        button = self.browser.find_element(*WidgetExploreOurPlatform.BUTTON_TRY_NOW)
+        button = self.driver.find_element(*WidgetExploreOurPlatform.BUTTON_TRY_NOW)
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
@@ -349,10 +349,10 @@ class Capital(BasePage):
 
     # @allure.step(f"{datetime.now()}.   Click 'Practise for free' button on the 'New to trading?' banner (de).")
     # def tc1201_banner_new_to_trading_button_practise_fo_free_click(self):
-    #     list_buttons = self.browser.find_elements(*BannerNewToTrading.BUTTON_PRACTISE_FOR_FREE)
+    #     list_buttons = self.driver.find_elements(*BannerNewToTrading.BUTTON_PRACTISE_FOR_FREE)
     #     qty = len(list_buttons)
     #     if qty != 0:
-    #         self.browser.execute_script(
+    #         self.driver.execute_script(
     #             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
     #             list_buttons[0]
     #         )
@@ -365,13 +365,13 @@ class Capital(BasePage):
     def tc1301_widget_new_to_trading_button_practise_for_free_click(self):
         button = None
 
-        section_new_to_trading = self.browser.find_element(*WidgetNewToTrading.SECTION_NEW_TO_TRADING_EN)
-        self.browser.execute_script(
+        section_new_to_trading = self.driver.find_element(*WidgetNewToTrading.SECTION_NEW_TO_TRADING_EN)
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             section_new_to_trading
         )
-        button = self.browser.find_element(*WidgetNewToTrading.BUTTON_PRACTISE_FOR_FREE_EN)
-        self.browser.execute_script(
+        button = self.driver.find_element(*WidgetNewToTrading.BUTTON_PRACTISE_FOR_FREE_EN)
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
@@ -385,8 +385,8 @@ class Capital(BasePage):
     def widget_trading_calculator_button_start_trading_click(self):
         loc_return = self.element_is_present(*WidgetTradingCalculator.BUTTON_START_TRADING)
         assert loc_return, "Widget 'Trading calculator' are not present on this page"
-        button = self.browser.find_element(*WidgetTradingCalculator.BUTTON_START_TRADING)
-        self.browser.execute_script(
+        button = self.driver.find_element(*WidgetTradingCalculator.BUTTON_START_TRADING)
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
@@ -395,20 +395,20 @@ class Capital(BasePage):
 
     @allure.step(f"{datetime.now()}.   How many lines with buttons 'Trade' on widget 'Trader's Dashboard'?.")
     def how_many_buttons_trade_on_widget_traders_dashboard(self):
-        list_but = self.browser.find_elements(*WidgetTradersDashboard.LIST_BUTTONS_TRADE)
+        list_but = self.driver.find_elements(*WidgetTradersDashboard.LIST_BUTTONS_TRADE)
         qty = len(list_but)
         print(f"This tab Trader's Dashboard widget has {qty} lines with 'Trade' button")
         return qty
 
     @allure.step(f"{datetime.now()}.   Click 'Trade' button {{i}} line on widget 'Trader's Dashboard'.")
     def widget_traders_dashboard_button_trade_click(self, i):
-        list_buttons = self.browser.find_elements(*WidgetTradersDashboard.LIST_BUTTONS_TRADE)
-        self.browser.execute_script(
+        list_buttons = self.driver.find_elements(*WidgetTradersDashboard.LIST_BUTTONS_TRADE)
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             list_buttons[i]
         )
         time.sleep(1)
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             list_buttons[i]
         )
@@ -420,12 +420,12 @@ class Capital(BasePage):
         button = None
         layout = 0
 
-        list_buttons = self.browser.find_elements(*BannerOfCounters.BUTTON_1)
+        list_buttons = self.driver.find_elements(*BannerOfCounters.BUTTON_1)
         if len(list_buttons) != 0:
             layout = 1
             button = list_buttons[0]
 
-        list_buttons = self.browser.find_elements(*BannerOfCounters.BUTTON_2)
+        list_buttons = self.driver.find_elements(*BannerOfCounters.BUTTON_2)
         if len(list_buttons) != 0:
             layout = 2
             button = list_buttons[0]
@@ -433,7 +433,7 @@ class Capital(BasePage):
         print(f"Current layout = {layout}")
 
         if layout != 0:
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 button
             )
@@ -444,10 +444,10 @@ class Capital(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Jetzt traden' button on 'Main' banner.")
     def tc0201_de_banner_main_button_left_click(self):
-        list_buttons = self.browser.find_elements(*MainBannerDe.BUTTON_LEFT)
+        list_buttons = self.driver.find_elements(*MainBannerDe.BUTTON_LEFT)
         qty = len(list_buttons)
         if qty != 0:
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 list_buttons[0]
             )
@@ -457,10 +457,10 @@ class Capital(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Kostenloses Demokonto' button on 'Main' banner.")
     def tc0202_de_banner_main_button_right_click(self):
-        list_buttons = self.browser.find_elements(*MainBannerDe.BUTTON_RIGH)
+        list_buttons = self.driver.find_elements(*MainBannerDe.BUTTON_RIGH)
         qty = len(list_buttons)
         if qty != 0:
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 list_buttons[0]
             )
@@ -470,10 +470,10 @@ class Capital(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Jetzt traden' button on 'Warum Capital.com?' banner.")
     def tc0701_de_banner_why_capital_button_trade_now_click(self):
-        list_buttons = self.browser.find_elements(*WhyCapitalDe.BUTTON_TRADE_NOW_DE)
+        list_buttons = self.driver.find_elements(*WhyCapitalDe.BUTTON_TRADE_NOW_DE)
         qty = len(list_buttons)
         if qty != 0:
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 list_buttons[0]
             )

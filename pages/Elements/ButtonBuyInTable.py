@@ -49,13 +49,13 @@ class BuyButtonTable(BasePage):
 
         print(f"{datetime.now()}   BUTTON_TRADING_BUY_IN_TABLES is visible? =>")
         try:
-            if self.browser.find_element(*self.current_tab):
+            if self.driver.find_element(*self.current_tab):
                 # print("OK")
-                el = self.browser.find_element(*self.current_tab)
-                # self.browser.find_element(*self.current_tab).click()
-                self.browser.execute_script("arguments[0].click();", el)
+                el = self.driver.find_element(*self.current_tab)
+                # self.driver.find_element(*self.current_tab).click()
+                self.driver.execute_script("arguments[0].click();", el)
                 # print(f"{datetime.now()} Current tab {self.current_tab} is opened")
-            if self.browser.find_element(*self.locator):
+            if self.driver.find_element(*self.locator):
                 print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES is visible on the page!")
         except NoSuchElementException:
             print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES is not visible on the page!")
@@ -65,7 +65,7 @@ class BuyButtonTable(BasePage):
     def element_click(self, cur_item_link, cur_language, cur_role, cur_tab):
         print(f"\n{datetime.now()}   2. Act_v0 for \"{cur_tab}\" tab")
         print(f"{datetime.now()}   Start Click button BUTTON_TRADING_BUY_IN_TABLES =>")
-        button_list = self.browser.find_elements(*self.locator)
+        button_list = self.driver.find_elements(*self.locator)
         if len(button_list) >= 1:
             self.click_button_2(len(button_list), cur_item_link, cur_language, cur_role)
         else:
@@ -76,23 +76,23 @@ class BuyButtonTable(BasePage):
     def click_button_2(self, times, cur_item_link, cur_language, cur_role):
         j = 0
         for i in range(times):
-            button_list = self.browser.find_elements(*self.locator)
-            item_list = self.browser.find_elements(*self.item)
-            cur_tab = self.browser.find_elements(*self.current_tab)
+            button_list = self.driver.find_elements(*self.locator)
+            item_list = self.driver.find_elements(*self.item)
+            cur_tab = self.driver.find_elements(*self.current_tab)
             print()
             print(f"{datetime.now()}   BUTTON_TRADING_BUY_IN_TABLES_#{i + 1} scroll =>")
             try:
-                if self.browser.find_elements(*self.current_tab):
-                    # ActionChains(self.browser).move_to_element\
-                    #     (self.browser.find_elements(*self.current_tab)[j]).perform()
-                    self.browser.execute_script(
+                if self.driver.find_elements(*self.current_tab):
+                    # ActionChains(self.driver).move_to_element\
+                    #     (self.driver.find_elements(*self.current_tab)[j]).perform()
+                    self.driver.execute_script(
                         'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                         cur_tab[j]
                     )
                     cur_tab[j].click()
                     if i == 4 or i == 9 or i == 14 or i == 19:
                         j += 1
-                if self.browser.find_element(*self.locator):
+                if self.driver.find_element(*self.locator):
                     print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES is visible on the page!")
             except NoSuchElementException:
                 print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES is not visible on the page!")
@@ -112,21 +112,21 @@ class BuyButtonTable(BasePage):
                 button_list[i].click()
                 print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES_#{i + 1} clicked!")
 
-                test_element = AssertClass(self.browser, cur_item_link)
+                test_element = AssertClass(self.driver, cur_item_link)
                 match cur_role:
                     case "NoReg":
-                        test_element.assert_signup(self.browser, cur_language, cur_item_link)
+                        test_element.assert_signup(self.driver, cur_language, cur_item_link)
                     case "NoAuth":
-                        test_element.assert_login(self.browser, cur_language, cur_item_link)
+                        test_element.assert_login(self.driver, cur_language, cur_item_link)
                     case "Auth":
                         test_element.assert_trading_platform_v4(
-                            self.browser, cur_item_link, False, True, trade_instrument)
-                self.browser.get(cur_item_link)
+                            self.driver, cur_item_link, False, True, trade_instrument)
+                self.driver.get(cur_item_link)
 
             except ElementClickInterceptedException:
                 print(f"{datetime.now()}   => BUTTON_TRADING_BUY_IN_TABLES_#{i + 1} not clicked!")
                 print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened, maybe")
-                page_ = SignupLogin(self.browser)
+                page_ = SignupLogin(self.driver)
                 if page_.close_signup_page():
                     pass
                 else:
