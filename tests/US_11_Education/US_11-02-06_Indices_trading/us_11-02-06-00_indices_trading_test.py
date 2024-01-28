@@ -13,6 +13,8 @@ from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
+from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -28,35 +30,6 @@ cur_page_url = ""
 @pytest.mark.us_11_02_06_00
 class TestIndicesTradingGuidePreset:
     page_conditions = None
-
-    # @allure.step("Start pretest")
-    # def test_99_indices_trading_guide_pretest(
-    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-    #
-    #     global count
-    #     global cur_page_url
-    #
-    #     bid = build_dynamic_arg_v4(
-    #         d, worker_id, cur_language, cur_country, cur_role,
-    #         "11.02.06", "Education > Menu item [Indices Trading]",
-    #         ".00_99", "Pretest for US_11.02.06.01")
-    #
-    #     Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
-    #
-    #     page_conditions = Conditions(d, "")
-    #     link = page_conditions.preconditions(
-    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-    #
-    #     page_menu = MenuSection(d, link)
-    #     page_menu.menu_education_move_focus(d, cur_language, cur_country)
-    #     page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
-    #
-    #     file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
-    #     list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
-    #
-    #     Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
-    #
-    #     count -= 1
 
     @allure.step("Start test of button [Start trading] on Main banner")
     @pytest.mark.test_01
@@ -181,6 +154,119 @@ class TestIndicesTradingGuidePreset:
 
         test_element = BlockStepTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
+
+    @allure.step("Start test of button in block [Vertical banner]")
+    @pytest.mark.test_11
+    def test_11_block_vert_banner_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+                Check the [Button] on the Vertical side banner at the bottom of the page.
+                Language: DE, ES, ZH. License: All.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.06", "Education > Menu item [Indices Trading]",
+            ".00_11", "Testing button in block [Vertical banner]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["de", "es", "zh"])
+
+        # test_element.arrange_0()
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        # банеры должны открываться в Demo mode for US_00
+        banner00_ver_tpd = []
+        # банеры должны открываться в Live mode for US_00
+        banner00_ver_tp = ['166', '196', 'b_vert_v0_425']
+        # банеры должны открываться в Demo mode for US_01
+        banner01_ver_tpd = []
+        # банеры должны открываться в Live mode for US_01
+        banner01_ver_tp = []
+
+        page_menu = MenuSection(d, main_page_link)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
+
+        test_element = ButtonOnVerticalBanner(d, cur_menu_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link, banner00_ver_tpd,
+                                        banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
+
+    @allure.step("Start test of button in block [Horizontal banner]")
+    @pytest.mark.test_12
+    def test_12_block_hor_banner_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check the [Button] on the Horizontal banner at the bottom of the page.
+        Language: AR, DE, ES, IT, RU, ZH. License: All.
+        For "Authorized user" role:
+        The trading platform page is opened depend on the banner [type-id]:
+                Live mode if the banner in the Live mode banners list
+                Demo mode if the banner in the Demo mode banners list
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.06", "Education > Menu item [Indices Trading]",
+            ".00_12", "Testing button in block [Horizontal banner]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["ar", "de", "es", "it", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        # банеры должны открываться в Demo mode for US_00
+        banner00_hor_tpd = ['197']
+        # банеры должны открываться в Live mode for US_00
+        banner00_hor_tp = ['103', '167', '252', '390', '428']
+        # банеры должны открываться в Demo mode for US_01
+        banner01_hor_tpd = []
+        # банеры должны открываться в Live mode for US_01
+        banner01_hor_tp = []
+
+        page_menu = MenuSection(d, main_page_link)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
+
+        test_element = ButtonOnHorizontalBanner(d, cur_menu_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
+                                        banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
+
+    @allure.step("Start pretest")
+    def test_99_indices_trading_guide_pretest(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        global count
+        global cur_page_url
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.06", "Education > Menu item [Indices Trading]",
+            ".00_99", "Pretest for US_11.02.06.01")
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, link)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
+        page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+
+        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
+        list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+
+        Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
+
+        count -= 1
+
+    # "------------------------------------"
 
     # @allure.step("Start pretest")
     # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,

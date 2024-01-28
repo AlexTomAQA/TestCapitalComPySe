@@ -113,6 +113,17 @@ class MenuSection(BasePage):
         cur_menu_link = self.sub_menu_commodities_trading_move_focus_click(d, cur_language)
         return cur_menu_link
 
+    def open_education_indices_trading_menu(self, d, cur_language, cur_country, link):
+
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+        self.menu_education_move_focus(d, cur_language, cur_country)
+        cur_menu_link = self.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        return cur_menu_link
+
     @allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
     def menu_language_and_country_move_focus(self, test_language):
         d = self.driver
