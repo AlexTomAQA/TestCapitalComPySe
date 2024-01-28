@@ -67,11 +67,7 @@ class Conditions(BasePage):
         d.set_window_size(1280, 720)
         print(f"\n{datetime.now()}   => Resolution seted {d.get_window_size()}")
 
-        captcha = Captcha(d)
-        if captcha.is_captcha_v2(d):
-            captcha.print_env(d)
-            pytest.fail("reCaptcha V2")
-        del captcha
+        Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Prev. Role: {prev_role}")
@@ -105,6 +101,7 @@ class Conditions(BasePage):
         print(f"\n{datetime.now()}   Current role: {cur_role}")
 
         # устанавливаем Язык, если не соответствует предыдущему
+        Captcha(d).fail_test_if_captcha_present_v2()
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
@@ -118,13 +115,14 @@ class Conditions(BasePage):
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
-            test_link = self.browser.current_url
+            test_link = self.driver.current_url
             del page_menu
             prev_language = cur_language
 
         print(f"\n{datetime.now()}   => Current language: {language_cur}")
 
         # устанавливаем Страну, если не соответствует предыдущей
+        Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev country: {prev_country}")
         if cur_country != prev_country:
             print(f"\n{datetime.now()}   "

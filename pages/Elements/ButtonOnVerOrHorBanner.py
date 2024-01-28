@@ -39,7 +39,7 @@ class ButtonOnVerOrHorBanner(BasePage):
     @allure.step("Click button on vertical or horizontal banner")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(*VerHorBannerButtonLocators.VER_HOR_BANNER_BUTTON)
+        button_list = self.driver.find_elements(*VerHorBannerButtonLocators.VER_HOR_BANNER_BUTTON)
 
         if len(button_list) == 0:
             del button_list
@@ -48,7 +48,7 @@ class ButtonOnVerOrHorBanner(BasePage):
         print(f"{datetime.now()}   "
               f"{len(button_list)} checking element(s) with current CSS locator is(are) present(s) on this page")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -61,7 +61,7 @@ class ButtonOnVerOrHorBanner(BasePage):
         except ElementClickInterceptedException:
             print("'Sign up' form or page is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

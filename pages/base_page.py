@@ -27,7 +27,7 @@ class HandleExcElementsDecorator(object):
 
     def __init__(
         self,
-        browser="self",
+        driver="self",
         timeout=0.5,
         title="title",
         value="value",
@@ -39,7 +39,7 @@ class HandleExcElementsDecorator(object):
         """Initializes the object.
 
         Args:
-            browser: WebDriver. Defaults to 'self'.
+            driver: WebDriver. Defaults to 'self'.
             timeout (optional): the time to wait for an element to be present on the
             page before throwing a TimeoutException. Defaults to 0.5.
             title (optional): the title of the page. Defaults to 'title'.
@@ -50,7 +50,7 @@ class HandleExcElementsDecorator(object):
             index (optional): extract all elements of the list of individual lines of text starting from the
                 ith element. Defaults to 0.
         """
-        self.browser = browser
+        self.driver = driver
         self.timeout = timeout
         self.title = title
         self.value = value
@@ -77,38 +77,38 @@ class HandleExcElementsDecorator(object):
         decorator_self = self
 
         def inner_function(*args, **kwargs):
-            self.browser = args[0].browser
+            self.driver = args[0].driver
             try:
                 return func(*args, **kwargs)
             except NoSuchElementException as e:
                 logging.error(
-                    f"Could not find elements on page: {decorator_self.browser.current_url}"
+                    f"Could not find elements on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except TimeoutException as e:
                 logging.error(
                     f"Elements not present after {decorator_self.timeout} "
-                    f"seconds on page: {decorator_self.browser.current_url}"
+                    f"seconds on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except NoSuchAttributeException as e:
                 logging.error(
-                    f"The attribute of elements could not be found on page: {decorator_self.browser.current_url}"
+                    f"The attribute of elements could not be found on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except ElementNotInteractableException as e:
                 logging.error(
-                    f"The element is not currently interactable on page: {decorator_self.browser.current_url}"
+                    f"The element is not currently interactable on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except InvalidElementStateException as e:
                 logging.error(
-                    f"The element is in an invalid state on page: {decorator_self.browser.current_url}"
+                    f"The element is in an invalid state on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except StaleElementReferenceException as e:
                 logging.error(
-                    f"The elements are no longer attached to the DOM on page: {decorator_self.browser.current_url}"
+                    f"The elements are no longer attached to the DOM on page: {decorator_self.driver.current_url}"
                 )
                 logging.exception(e.msg)
             except WebDriverException as e:
@@ -121,16 +121,16 @@ class HandleExcElementsDecorator(object):
 class BasePage:
     """This class used as a base class for other page classes that represent specific pages on a website"""
 
-    def __init__(self, browser, link="", bid=""):
+    def __init__(self, driver, link="", bid=""):
         """
         Initializes the object.
 
         Args:
-            browser: WebDriver
+            driver: WebDriver
             link: URL
             bid: ID bug
         """
-        self.browser = browser
+        self.driver = driver
         self.link = link
         self.bid = bid
 
@@ -139,7 +139,7 @@ class BasePage:
         """
         Navigates to a page given by the URL.
         """
-        self.browser.get(self.link)
+        self.driver.get(self.link)
         # time.sleep(1)
         print(f"{datetime.now()}   Load page {self.link}")
 
@@ -162,7 +162,7 @@ class BasePage:
         time.sleep(1)
 
         print(f"{datetime.now()}   Is clickable Button [Accept all cookies] =>")
-        button = self.browser.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
+        button = self.driver.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
         button = self.element_is_clickable(button, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not clickable after {time_out} sec.")
@@ -171,7 +171,7 @@ class BasePage:
             print(f"{datetime.now()}   => Button [Accept all cookies] is clickable")
 
         print(f"{datetime.now()}   Click Button [Accept all cookies] =>")
-        button = self.browser.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
+        button = self.driver.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
         button.click()
         print(f"{datetime.now()}   => Button [Accept all cookies] is clicked")
         print(f"{datetime.now()}   => Accepted All Cookies")
@@ -184,7 +184,7 @@ class BasePage:
               f"{datetime.now()}   Is visible BUTTON_REJECT_ALL_COOKIE? =>")
         self.element_is_visible(OnTrustLocators.BUTTON_REJECT_ALL_COOKIE, 30)
         print(f"{datetime.now()}   Find BUTTON_REJECT_ALL_COOKIE =>")
-        button = self.browser.find_element(*OnTrustLocators.BUTTON_REJECT_ALL_COOKIE)
+        button = self.driver.find_element(*OnTrustLocators.BUTTON_REJECT_ALL_COOKIE)
         print(f"{datetime.now()}   Is clickable BUTTON_REJECT_ALL_COOKIE? =>")
         self.element_is_clickable(button, 30)
         time.sleep(1)
@@ -208,7 +208,7 @@ class BasePage:
             NoSuchElementException: if the element cannot be found on the page
             WebDriverException:  if an error occurs while initializing the WebDriver
         """
-        return self.browser.find_element(method, locator)
+        return self.driver.find_element(method, locator)
 
     @HandleExcElementsDecorator()
     def elements_are_present(self, method, locator):
@@ -227,7 +227,7 @@ class BasePage:
             StaleElementReferenceException: if the elements are no longer attached to the DOM
             WebDriverException: if an error occurs while initializing the WebDriver
         """
-        return self.browser.find_elements(method, locator)
+        return self.driver.find_elements(method, locator)
 
     @HandleExcElementsDecorator()
     def send_keys(self, value, method, locator):
@@ -239,7 +239,7 @@ class BasePage:
             method: used for locating the element on the page
             locator: used with the specified method to find the element
         """
-        list_of_elements = self.browser.find_elements(method, locator)
+        list_of_elements = self.driver.find_elements(method, locator)
         if len(list_of_elements) == 0:
             print(f"{datetime.now()}   => TextBox with '{locator}' locator is not present")
             return False
@@ -260,7 +260,7 @@ class BasePage:
                 if there's no attribute
                 with that name
         """
-        return self.browser.find_element(method, locator).get_attribute(attribute)
+        return self.driver.find_element(method, locator).get_attribute(attribute)
 
     @HandleExcElementsDecorator()
     def get_property(self, property_atr, method, locator):
@@ -275,7 +275,7 @@ class BasePage:
             str | bool | WebElement | dict: the value of a property with the given name or None if there's no property
                 with that name
         """
-        return self.browser.find_element(method, locator).get_property(property_atr)
+        return self.driver.find_element(method, locator).get_property(property_atr)
 
     @HandleExcElementsDecorator()
     def element_is_visible(self, locator, timeout=1):
@@ -290,7 +290,7 @@ class BasePage:
         Returns:
             selenium.webdriver.remote.webelement.WebElement: it is located and visible
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator)
         )
 
@@ -307,7 +307,7 @@ class BasePage:
             selenium.webdriver.remote.webelement.WebElement: it is located and visible
             False: not clickable
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.element_to_be_clickable(loc_or_elem)
         )
 
@@ -322,7 +322,7 @@ class BasePage:
         Returns:
             list[selenium.webdriver.remote.webelement.WebElement]: the list of all matched WebElements
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.presence_of_all_elements_located(locator)
         )
 
@@ -337,17 +337,17 @@ class BasePage:
         Returns:
             selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.presence_of_element_located(locator)
         )
 
     @HandleExcElementsDecorator()
     def current_page_is(self, link):
-        return link == self.browser.current_url
+        return link == self.driver.current_url
 
     @HandleExcElementsDecorator()
     def current_page_url_contain_the(self, host):
-        cur_url = self.browser.current_url
+        cur_url = self.driver.current_url
         result = host in cur_url
         return result
 
@@ -355,7 +355,7 @@ class BasePage:
     @allure.step("Check the current page has URL: '{link}'")
     def check_current_page_is(self, link):
         print(f"{datetime.now()}   Cur page is {link}? =>")
-        assert (self.browser.current_url == link), f"Expected page: {link}. Actual page: {self.browser.current_url}"
+        assert (self.driver.current_url == link), f"Expected page: {link}. Actual page: {self.driver.current_url}"
         print(f"{datetime.now()}   => Cur page is {link}")
 
     @HandleExcElementsDecorator()
@@ -368,8 +368,8 @@ class BasePage:
             link: link browser
         """
         assert (
-            link == self.browser.current_url
-        ), f"Expected link {link} not found in URL {self.browser.current_url}"
+            link == self.driver.current_url
+        ), f"Expected link {link} not found in URL {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
     def should_be_page_title(self, title, method, locator):
@@ -381,13 +381,13 @@ class BasePage:
             method: used for locating the element on the page
             locator: used with the specified method to find the element
         """
-        el_title = self.browser.find_element(method, locator)
+        el_title = self.driver.find_element(method, locator)
         # Gets the page title element
-        assert el_title, f"Title element not found on page: {self.browser.current_url}"
+        assert el_title, f"Title element not found on page: {self.driver.current_url}"
         # Checks that the page title element meets the requirements
         assert (
             el_title.text == title
-        ), f"Expected title {title} but got {el_title.text} on page: {self.browser.current_url}"
+        ), f"Expected title {title} but got {el_title.text} on page: {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
     @allure.step("Check that the page has the expected title - ver 2")
@@ -398,11 +398,11 @@ class BasePage:
         Args:
             title: expected page's title
         """
-        el_title = self.browser.title
+        el_title = self.driver.title
         print(f"{datetime.now()}   => Current page title: {el_title}")
         # Checks that the page title meets the requirements
         if title not in el_title:
-            pytest.fail(f"Bug! Expected title '{title}' but got '{el_title}' on page: {self.browser.current_url}")
+            pytest.fail(f"Bug! Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}")
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):
@@ -416,7 +416,7 @@ class BasePage:
         Returns:
             str: the text of the element
         """
-        return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
+        return "".join(self.driver.find_element(method, locator).text.split("\n")[i:])
 
     @HandleExcElementsDecorator()
     def click_button(self, method, locator):
@@ -427,7 +427,7 @@ class BasePage:
             method: used for locating the element on the page
             locator: used with the specified method to find the element
         """
-        self.browser.find_element(method, locator).click()
+        self.driver.find_element(method, locator).click()
 
     @HandleExcElementsDecorator()
     def get_src(self, i, method, locator):
@@ -449,7 +449,7 @@ class BasePage:
             WebDriverException: if an error occurs while initializing the WebDriver
         """
         return "".join(
-            self.browser.find_element(method, locator)
+            self.driver.find_element(method, locator)
             .get_property("src")
             .split("\n")[i:]
         )
@@ -469,7 +469,7 @@ class BasePage:
             StaleElementReferenceException: if the elements are no longer attached to the DOM
             WebDriverException:  If an error occurs while initializing the WebDriver
         """
-        list_prices = self.browser.find_elements(method, locator)
+        list_prices = self.driver.find_elements(method, locator)
         return list(map(lambda element: element.text[i:], list_prices))
 
     @HandleExcElementsDecorator()
@@ -481,7 +481,7 @@ class BasePage:
             timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 1.
 
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.url_changes(cur_link)
         )
 
@@ -494,7 +494,7 @@ class BasePage:
             timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 1.
 
         """
-        return Wait(self.browser, timeout).until(
+        return Wait(self.driver, timeout).until(
             EC.url_contains(link)
         )
 
@@ -543,7 +543,7 @@ class BasePage:
 #             index (optional): extract all elements of the list of individual lines of text starting from the
 #                 ith element. Defaults to 0.
 #         """
-#         self.browser = browser
+#         self.driver = driver
 #         self.timeout = timeout
 #         self.title = title
 #         self.value = value
@@ -570,39 +570,39 @@ class BasePage:
 #         decorator_self = self
 #
 #         def inner_function(*args, **kwargs):
-#             self.browser = args[0].browser
+#             self.driver = args[0].browser
 #             try:
 #                 return func(*args, **kwargs)
 #             except NoSuchElementException as e:
 #                 logging.error(
-#                     # f"Could not find element on page: {decorator_self.browser.current_url}"
-#                     f"Could not find element on page: {self.browser.current_url}"
+#                     # f"Could not find element on page: {decorator_self.driver.current_url}"
+#                     f"Could not find element on page: {self.driver.current_url}"
 #                 )
 #                 logging.exception(e.msg)
 #             # except TimeoutException as e:
 #             #     logging.error(
 #             #         f"Element not present after {decorator_self.timeout} seconds on page: "
-#             #         f"{decorator_self.browser.current_url}"
+#             #         f"{decorator_self.driver.current_url}"
 #             #     )
 #             #     logging.exception(e.msg)
 #             except NoSuchAttributeException as e:
 #                 logging.error(
-#                     f"The attribute of element could not be found on page: {decorator_self.browser.current_url}"
+#                     f"The attribute of element could not be found on page: {decorator_self.driver.current_url}"
 #                 )
 #                 logging.exception(e.msg)
 #             except ElementNotInteractableException as e:
 #                 logging.error(
-#                     f"The element is not currently interactable on page: {decorator_self.browser.current_url}"
+#                     f"The element is not currently interactable on page: {decorator_self.driver.current_url}"
 #                 )
 #                 logging.exception(e.msg)
 #             except InvalidElementStateException as e:
 #                 logging.error(
-#                     f"The element is in an invalid state on page: {decorator_self.browser.current_url}"
+#                     f"The element is in an invalid state on page: {decorator_self.driver.current_url}"
 #                 )
 #                 logging.exception(e.msg)
 #             except StaleElementReferenceException as e:
 #                 logging.error(
-#                     f"The element is no longer attached to the DOM on page: {decorator_self.browser.current_url}"
+#                     f"The element is no longer attached to the DOM on page: {decorator_self.driver.current_url}"
 #                 )
 #                 logging.exception(e.msg)
 #             except WebDriverException as e:

@@ -283,7 +283,7 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   => 'Sign up' form is not opened")
             return False
 
-        elements = self.browser.find_elements(*SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM)
+        elements = self.driver.find_elements(*SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM)
         # if len(elements) == 0:
         #     print(f"{datetime.now()}   => 'Sign up' form is not opened")
         #     return False
@@ -299,7 +299,7 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   'Sign up' page not opened")
             return False
 
-        self.browser.back()
+        self.driver.back()
         print(f"{datetime.now()}   => [Sign up] page is closed")
         return True
 
@@ -311,7 +311,7 @@ class SignupLogin(BasePage):
         #     print(f"{datetime.now()}   'Sign up' page on trading platform page not opened")
         #     return False
 
-        self.browser.back()
+        self.driver.back()
         print(f"{datetime.now()}   => [Sign up] form with trading platform page is closed")
         return True
 
@@ -320,7 +320,7 @@ class SignupLogin(BasePage):
         if not self.element_is_clickable(LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM, 3):
             return False
         print(f"{datetime.now()}   Click 'Close' button on 'Login' form =>")
-        self.browser.find_element(*LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()
+        self.driver.find_element(*LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()
         print(f"{datetime.now()}   => 'Login' form closed")
         return True
 
@@ -331,7 +331,7 @@ class SignupLogin(BasePage):
             return False
 
         print(f"{datetime.now()}   Close 'Login' page =>")
-        self.browser.back()
+        self.driver.back()
         print(f"{datetime.now()}   => 'Login' page closed")
         return True
 
@@ -343,6 +343,6 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   'Login' form on trading platform page not opened")
             return False
 
-        self.browser.back()
+        self.driver.back()
         print(f"{datetime.now()}   => [Login] form with trading platform page is closed")
         return True

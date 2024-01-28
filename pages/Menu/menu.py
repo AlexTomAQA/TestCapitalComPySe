@@ -126,12 +126,12 @@ class MenuSection(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
     def menu_language_and_country_move_focus(self, test_language):
-        d = self.browser
+        d = self.driver
         # menu = list()
         menu = d.find_elements(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)  # not Glossary
         if len(menu) == 0:
             print(f"\n\n{datetime.now()}   => Language and Country menu not present")
-            allure.attach(self.browser.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
             pytest.skip(f"For '{test_language}' language menu [Language & Country] not present")
         print(f"\n\n{datetime.now()}   => Language and Country menu is present")
 
@@ -196,7 +196,7 @@ class MenuSection(BasePage):
         menu = d.find_elements(*ed_menu_locator)
         if len(menu) == 0:
             print(f"{datetime.now()}   => Education menu not present")
-            allure.attach(self.browser.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
             pytest.skip(f"[Education] menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present")
 
@@ -841,7 +841,7 @@ class MenuSection(BasePage):
 
     @allure.step(f"{datetime.now()}.   Set language")
     def set_language(self, cur_language):
-        d = self.browser
+        d = self.driver
 
         if cur_language == "":
             cur_language = "en"
@@ -860,7 +860,7 @@ class MenuSection(BasePage):
 
     @allure.step(f"{datetime.now()}.   Start Set country")
     def set_country(self, cur_country):
-        d = self.browser
+        d = self.driver
 
         elements = d.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
@@ -895,9 +895,9 @@ class MenuSection(BasePage):
 
         ActionChains(d) \
             .move_to_element(country_str_list[0]) \
+            .pause(0.5) \
             .click(country_str_list[0]) \
             .perform()
-        # .pause(0.5) \
 
 # -----------------------
 #         time_out = 3

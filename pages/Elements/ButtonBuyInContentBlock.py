@@ -53,7 +53,7 @@ class BuyButtonContentBlock(BasePage):
     @allure.step("Click button [Buy] in content block")
     def element_click(self, cur_role):
         print(f"\n{datetime.now()}   2. Act_v0")
-        button_list = self.browser.find_elements(*ButtonsOnPageLocators.BUTTON_TRADING_BUY)
+        button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_TRADING_BUY)
 
         print(f"{datetime.now()}   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>")
         if len(button_list) == 0:
@@ -63,7 +63,7 @@ class BuyButtonContentBlock(BasePage):
         print(f"{datetime.now()}   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page")
 
         print(f"{datetime.now()}   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -81,7 +81,7 @@ class BuyButtonContentBlock(BasePage):
         try:
             print(f"{datetime.now()}   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>")
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             print(f"{datetime.now()}   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!")
 
         except ElementClickInterceptedException:
@@ -90,14 +90,14 @@ class BuyButtonContentBlock(BasePage):
 
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
                 page_.close_signup_page()
 
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 
         del button_list

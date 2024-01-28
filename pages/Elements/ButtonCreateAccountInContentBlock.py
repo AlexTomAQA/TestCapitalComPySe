@@ -49,7 +49,7 @@ class ArticleCreateAccount(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   BUTTON_CREATE_ACCOUNT is present? =>")
-        button_list = self.browser.find_elements(*ButtonsOnPageLocators.BUTTON_CREATE_ACCOUNT)
+        button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_CREATE_ACCOUNT)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_CREATE_ACCOUNT is not present on the page!")
             del button_list
@@ -58,7 +58,7 @@ class ArticleCreateAccount(BasePage):
 
         print(f"{datetime.now()}   BUTTON_CREATE_ACCOUNT scroll =>")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -72,7 +72,7 @@ class ArticleCreateAccount(BasePage):
             print(f"{datetime.now()}   => BUTTON_CREATE_ACCOUNT NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

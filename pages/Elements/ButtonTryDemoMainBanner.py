@@ -61,7 +61,7 @@ class MainBannerTryDemo(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   BUTTON_TRY_DEMO is present? =>")
-        button_list = self.browser.find_elements(*MainBannerLocators.BUTTON_TRY_DEMO)
+        button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_TRY_DEMO)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not present on the page!")
             del button_list
@@ -70,7 +70,7 @@ class MainBannerTryDemo(BasePage):
 
         print(f"{datetime.now()}   BUTTON_TRY_DEMO scroll =>")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -79,20 +79,20 @@ class MainBannerTryDemo(BasePage):
 
         try:
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
                 page_.close_signup_page()
 
             # button_list[0].click()
-            self.browser.execute_script("arguments[0].click();", button_list[0])
+            self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 
         del button_list

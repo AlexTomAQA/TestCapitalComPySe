@@ -31,14 +31,14 @@ class ButtonFreeDemoOnHorizontalBanner(BasePage):
     @allure.step("Click button on horizontal banner")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
-        button_list = self.browser.find_elements(
+        button_list = self.driver.find_elements(
             *ButtonFreeDemoOnHorizontalBannerLocators.BUTTON_FREE_DEMO_ON_HOR_BANNER)
 
         if len(button_list) == 0:
             del button_list
             return False
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -51,7 +51,7 @@ class ButtonFreeDemoOnHorizontalBanner(BasePage):
         except ElementClickInterceptedException:
             print("'Sign up' form or page is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

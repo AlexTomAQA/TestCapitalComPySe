@@ -69,7 +69,7 @@ class ButtonOnVerticalBanner(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
         print(f"{datetime.now()}   BUTTON_ON_VER_BANNER is present? =>")
-        button_list = self.browser.find_elements(*ButtonOnVerticalBannerLocators.BUTTON_ON_VER_BANNER)
+        button_list = self.driver.find_elements(*ButtonOnVerticalBannerLocators.BUTTON_ON_VER_BANNER)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER is not present on the page!")
             del button_list
@@ -78,7 +78,7 @@ class ButtonOnVerticalBanner(BasePage):
 
         print(f"{datetime.now()}   BUTTON_ON_VER_BANNER scroll =>")
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
@@ -95,7 +95,7 @@ class ButtonOnVerticalBanner(BasePage):
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:

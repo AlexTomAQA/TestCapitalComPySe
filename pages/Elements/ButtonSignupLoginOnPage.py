@@ -28,7 +28,7 @@ class PageSignUpLogin(BasePage):
         print(f"{datetime.now()}   Is visible BUTTON_SIGNUP_LOGIN? =>")
         # if self.element_is_visible(ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN):
         try:
-            if self.browser.find_element(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN):
+            if self.driver.find_element(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN):
                 print(f"{datetime.now()}   => BUTTON_SIGNUP_LOGIN is visible on the page!")
         except NoSuchElementException:
             print(f"{datetime.now()}   => BUTTON_SIGNUP_LOGIN is not visible on the page!")
@@ -38,7 +38,7 @@ class PageSignUpLogin(BasePage):
     def element_click(self, cur_item_link, cur_language, cur_role):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button BUTTON_SIGNUP_LOGIN =>")
-        button_list = self.browser.find_elements(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN)
+        button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN)
         if len(button_list) >= 1:
             self.click__button(len(button_list), cur_item_link, cur_language, cur_role)
         else:
@@ -47,15 +47,15 @@ class PageSignUpLogin(BasePage):
             pytest.skip("Checking element is not present on this page")
 
     def click__button(self, times, cur_item_link, cur_language, cur_role):
-        # wait = WebDriverWait(self.browser, 30)
+        # wait = WebDriverWait(self.driver, 30)
         for i in range(times):
-            button_list = self.browser.find_elements(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN)
+            button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_SIGNUP_LOGIN)
             print(f"{datetime.now()}   BUTTON_SIGNUP_LOGIN#{i + 1} scroll =>")
             # Наводим на тестовый элемент, чтобы кнопка могла корректно отработать нажатие
-            # hover = ActionChains(self.browser).move_to_element(button_list[i])
+            # hover = ActionChains(self.driver).move_to_element(button_list[i])
 
             print(f"{datetime.now()}   BUTTON_SIGNUP_LOGIN#{i + 1} scroll =>")
-            self.browser.execute_script(
+            self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 button_list[i]
             )
@@ -68,29 +68,29 @@ class PageSignUpLogin(BasePage):
             try:
                 # hover.perform()
                 # button_list[i].click()
-                self.browser.execute_script("arguments[0].click();", button_list[i])
+                self.driver.execute_script("arguments[0].click();", button_list[i])
                 print(f"{datetime.now()}   => BUTTON_SIGNUP_LOGIN#{i + 1} clicked!")
-                # self.browser.back()
-                test_element = AssertClass(self.browser, cur_item_link)
-                # test_element.assert_signup(self.browser, cur_language, cur_role, cur_item_link)
+                # self.driver.back()
+                test_element = AssertClass(self.driver, cur_item_link)
+                # test_element.assert_signup(self.driver, cur_language, cur_role, cur_item_link)
                 match cur_role:
                     case "NoReg":
-                        test_element.assert_signup(self.browser, cur_language, cur_item_link)
+                        test_element.assert_signup(self.driver, cur_language, cur_item_link)
                     case "NoAuth":
-                        # test_element.assert_login(self.browser, cur_language, cur_item_link)
+                        # test_element.assert_login(self.driver, cur_language, cur_item_link)
                         match i:
                             case 1:
-                                test_element.assert_login(self.browser, cur_language, cur_item_link)
+                                test_element.assert_login(self.driver, cur_language, cur_item_link)
                             case 2:
-                                test_element.assert_signup(self.browser, cur_language, cur_item_link)
+                                test_element.assert_signup(self.driver, cur_language, cur_item_link)
                     case "Auth":
-                        test_element.assert_trading_platform_v4(self.browser, cur_item_link)
-                self.browser.get(cur_item_link)
+                        test_element.assert_trading_platform_v4(self.driver, cur_item_link)
+                self.driver.get(cur_item_link)
             # except Exception as e:
             #     print(f"EXC_IS: {e}")
             except ElementClickInterceptedException:
                 print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
-                page_ = SignupLogin(self.browser)
+                page_ = SignupLogin(self.driver)
                 if page_.close_signup_page():
                     pass
                 else:

@@ -135,7 +135,7 @@ class TestSpreadBettingGuidePretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, main_page_link)
+        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
@@ -163,7 +163,7 @@ class TestSpreadBettingGuidePretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, main_page_link)
+        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ContentStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)

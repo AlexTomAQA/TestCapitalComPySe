@@ -3,10 +3,78 @@
 @Time    : 2023/12/24 10:00
 @Author  : Alexander Tomelo
 """
-import pytest
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
-from tests.ReTests.ReTests import unique_test, retest_skipped_tests, no_new_column
+import os
 from datetime import datetime, timedelta
+
+import pytest
+
+from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
+# from tests.ReTests.ReTests import unique_test, retest_skipped_tests, no_new_column
+
+# ===========================================================
+# выбор необходимых языков для ретеста
+lang_list = [
+        "en",
+        "ar",
+        "de",
+        "el",
+        "es",
+        "fr",
+        "it",
+        "hu",
+        "nl",
+        "pl",
+        "ro",
+        "ru",
+        "zh",
+        "cn",
+    ]
+
+# ===========================================================
+# выбор необходимых ролей для ретеста
+role_list = [
+        "Auth",
+        "NoAuth",
+        "NoReg",
+    ]
+
+# ===========================================================
+# выбор необходимых лицензий для ретеста
+country_list = [
+        # "gb",  # United Kingdom - "FCA"
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
+        # "ae",  # United Arab Emirates - "SCB"
+]
+
+# ===========================================================
+# ретест без добавления нового столбца
+# ===========================================================
+no_new_column = True
+# no_new_column = False
+
+# ============================================================
+# для проверки одного или нескольких тестов ввести номера строк
+# так же необходимо поменять флаг unique_test = True
+# ============================================================
+# unique_test = True
+unique_test = False
+# ============================================================
+list_rows = [835]
+
+# ============================================================
+# повторный проход только Skipped-tests
+# retest_skipped_tests = True
+retest_skipped_tests = False
+
+# ============================================================
+status_list = ['failed', 'passed']
+
+# ============================================================
+# получение корня проекта
+host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for macOS & Linux debugging
+# host = "\\".join(os.getcwd().split('\\')) + '\\'  # for Windows debugging
+# ============================================================
 
 
 def time_concat(time1, time2):

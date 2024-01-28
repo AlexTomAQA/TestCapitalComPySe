@@ -36,7 +36,7 @@ class TradingPlatform(BasePage):
                 del page_
                 assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
         else:
-            assert False, f'Loaded page with not {link} url. Current url is {self.browser.current_url}'
+            assert False, f'Loaded page with not {link} url. Current url is {self.driver.current_url}'
 
     @allure.step("Checking that the trading platform page has opened - ver 2")
     def should_be_trading_platform_page_v2(self, d, cur_link, demo=False):
@@ -46,15 +46,15 @@ class TradingPlatform(BasePage):
         # print(platform_url)
         # print(self.wait_for_change_url(platform_url, 120))
         if self.wait_for_target_url(platform_url, 10):
-            print(f"{datetime.now()}   => Opened page with {self.browser.current_url} url. Expected: {platform_url} ")
+            print(f"{datetime.now()}   => Opened page with {self.driver.current_url} url. Expected: {platform_url} ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             self.should_be_corresponding_trading_instrument()
             self.open_page()
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
-            print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
-            cur_url = self.browser.current_url
+            print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
+            cur_url = self.driver.current_url
             self.open_page()
             assert False, f"Loaded page with {cur_url} url, but expected {platform_url}"
 
@@ -64,7 +64,7 @@ class TradingPlatform(BasePage):
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v3) =>")
         platform_url = data["PLATFORM_URL"]
         if self.current_page_url_contain_the(platform_url):
-            print(f"{datetime.now()}   => Opened page with {self.browser.current_url} url. Expected: {platform_url} ")
+            print(f"{datetime.now()}   => Opened page with {self.driver.current_url} url. Expected: {platform_url} ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if demo:
@@ -73,8 +73,8 @@ class TradingPlatform(BasePage):
                 self.should_be_platform_live_mode()
             self.open_page()
         else:
-            print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
-            # self.link = self.browser.current_url
+            print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
+            # self.link = self.driver.current_url
             # self.open_page()
             assert False, "Bug! The trading platform page is not opened"
 
@@ -91,7 +91,7 @@ class TradingPlatform(BasePage):
         """
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v4) =>")
         platform_url = data["PLATFORM_URL/"]
-        cur_url = self.browser.current_url
+        cur_url = self.driver.current_url
         # if self.wait_for_target_url(platform_url, 15):
         if self.wait_for_target_url(platform_url, 10):
 
@@ -112,14 +112,14 @@ class TradingPlatform(BasePage):
             self.open_page()
         else:
             if tpd:
-                print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
+                print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
                 # проверка бага для ретеста
                 print(f'\nBug: {self.bid}')
                 retest_table_fill(self.bid, '09', self.link)
                 assert False, (f"Bug # 9. Loaded page with {cur_url} url, but expected the Trading platform in"
                                f"Demo mode(timeout=15c)")
             else:
-                print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
+                print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
                 # проверка бага для ретеста
                 print(f'\nBug: {self.bid}')
                 retest_table_fill(self.bid, '10', self.link)
@@ -137,15 +137,15 @@ class TradingPlatform(BasePage):
         # if self.wait_for_target_url(platform_url, 60):
         # if self.wait_for_target_url(platform_url, 30):
         if self.wait_for_target_url(platform_url, 15):
-            print(f"{datetime.now()}   => Opened page with {self.browser.current_url} url. Expected: {platform_url} ")
+            print(f"{datetime.now()}   => Opened page with {self.driver.current_url} url. Expected: {platform_url} ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             print(f"{datetime.now()}   !!! надо писать проверку выбранного инструмента и операции")
             self.open_page()
             assert True, 'Trading platform with title "Trading Platform | Capital.com", "Capital.com" Logo,  opened'
         else:
-            print(f"{datetime.now()}   => Loaded page {self.browser.current_url} with not {platform_url} url")
-            cur_url = self.browser.current_url
+            print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
+            cur_url = self.driver.current_url
             self.open_page()
             assert False, f"Loaded page with {cur_url} url, but expected {platform_url}"
 
@@ -219,7 +219,7 @@ class TradingPlatform(BasePage):
         Check there are an elements to on 'Log in' page on the Trading Platform
         """
         print(f"{datetime.now()}   Start method Check that [Log in] page opened on the Trading Platform =>")
-        print(self.browser.current_url)
+        print(self.driver.current_url)
         if self.current_page_url_contain_the(tp_data["LOGIN_URL"]):
             print(f"{datetime.now()}   => 'Log in' page opened on the Trading Platform")
 

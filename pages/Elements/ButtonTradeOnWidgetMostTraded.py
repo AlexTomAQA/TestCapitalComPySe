@@ -77,7 +77,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   MOST_TRADED is visible? =>")
-        item_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         num_item = len(item_list)
         if num_item == 0:
             print(f"{datetime.now()}   => MOST_TRADED is not visible on the page!")
@@ -114,22 +114,22 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
         # (кнопки меняют состояние каждые ~2.5 секунды)
         print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
-        self.browser.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+        self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
                                     'classList.remove("js-mostTraded");')
 
-        item_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
-        trade_instrument_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
+        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
         element = item_list[random_index]
         instrument = trade_instrument_list[random_index]
         instrument = instrument.get_attribute('title')
         print(f"{datetime.now()}   MOST_TRADED scroll =>")
 
         # Checking if [SignUP for is popped up on the page]
-        check_popup = SignupLogin(self.browser, self.link)
+        check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
         #
 
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
         print(f"{datetime.now()}   MOST_TRADED click for '{instrument}' trading instrument =>")
@@ -149,7 +149,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   MOST_TRADED is visible? =>")
-        if len(self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)) == 0:
+        if len(self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)) == 0:
             print(f"{datetime.now()}   => MOST_TRADED is not visible on the page!")
             pytest.skip("Checking element is not on this page")
         print(f"{datetime.now()}   => MOST_TRADED is visible on the page!")
@@ -158,14 +158,14 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
     def element_click_v3(self, i, cur_role):
         print(f"\n{datetime.now()}   2. Act_v3")
         i -= 1
-        button_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        button_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         # if len(button_list) == 0:
         #     print(f"{datetime.now()}   => MOST_TRADED is not present on the page!")
         #     del button_list
         #     return False
 
         print(f"{datetime.now()}   MOST_TRADED scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[i]
         )
@@ -174,9 +174,9 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         # (кнопки меняют состояние каждые ~2.5 секунды)
         print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
         # if i == 0:
-        #     self.browser.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+        #     self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
         #                                 'classList.remove("js-mostTraded");')
-        self.browser.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+        self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
                                     'classList.remove("js-mostTraded");')
 
         # Вытаскиваем линку из кнопки
@@ -186,26 +186,26 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         print(f"{datetime.now()}   Start Click button MOST_TRADED with id item {target_link} =>")
 
         # Наводим на тестовый элемент, чтобы кнопка могла корректно отработать нажатие
-        # hover = ActionChains(self.browser).move_to_element(button_list[i])
+        # hover = ActionChains(self.driver).move_to_element(button_list[i])
 
         print(f"{datetime.now()}   MOST_TRADED click =>")
         try:
             print(f"{datetime.now()}   MOST_TRADED is clickable? =>")
             self.element_is_clickable(button_list[i], 10)
             # button_list[i].click()
-            self.browser.execute_script("arguments[0].click();", button_list[i])
+            self.driver.execute_script("arguments[0].click();", button_list[i])
             print(f"{datetime.now()}   => MOST_TRADED clicked!")
 
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
-            page_ = SignupLogin(self.browser)
+            page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
                 pass
             else:
                 page_.close_signup_form()
             del page_
-            self.browser.execute_script("arguments[0].click();", button_list[i])
+            self.driver.execute_script("arguments[0].click();", button_list[i])
             print(f"{datetime.now()}   => MOST_TRADED clicked!")
 
         return target_link
@@ -214,7 +214,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
     def arrange_v2_(self):
         print(f"\n{datetime.now()}   1. Arrange_v2")
         self.open_page()
-        item_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         if len(item_list) == 0:
             pytest.skip("No items found for testing")
         print(f"{datetime.now()}   => Found {len(item_list)} elements in block MOST_TRADED")
@@ -222,18 +222,18 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         for i in random_element_for_test:
             yield item_list[i]
             self.open_page()
-            item_list = self.browser.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+            item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
 
     @allure.step("Click button MOST_TRADED - ver 2")
     def element_click_v2(self, web_element):
         print(f"\n{datetime.now()}   2. Act_v2")
         print(f"{datetime.now()}   Start Click button MOST_TRADED =>")
         print(f"{datetime.now()}   MOST_TRADED Deleting a class that expanded items =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'document.getElementsByClassName("mostTraded__box--expanded")[0]'
             '.classList.remove("mostTraded__box--expanded");')
         print(f"{datetime.now()}   MOST_TRADED scroll =>")
-        self.browser.execute_script(
+        self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             web_element
         )
