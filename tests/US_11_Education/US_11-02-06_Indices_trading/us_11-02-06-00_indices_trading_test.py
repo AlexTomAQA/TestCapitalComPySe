@@ -31,35 +31,6 @@ cur_page_url = ""
 class TestIndicesTradingGuidePreset:
     page_conditions = None
 
-    @allure.step("Start pretest")
-    def test_99_indices_trading_guide_pretest(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-
-        global count
-        global cur_page_url
-
-        bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.06", "Education > Menu item [Indices Trading]",
-            ".00_99", "Pretest for US_11.02.06.01")
-
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "ar", "de", "es", "it", "ch"])
-
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
-
-        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
-        list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
-
-        Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
-
-        count -= 1
-
     @allure.step("Start test of button [Start trading] on Main banner")
     @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
@@ -266,6 +237,36 @@ class TestIndicesTradingGuidePreset:
         test_element = ButtonOnHorizontalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
                                         banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
+
+    @allure.step("Start pretest")
+    def test_99_indices_trading_guide_pretest(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        global count
+        global cur_page_url
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.06", "Education > Menu item [Indices Trading]",
+            ".00_99", "Pretest for US_11.02.06.01")
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, link)
+        page_menu.menu_education_move_focus(d, cur_language, cur_country)
+        page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+
+        file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
+        list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
+
+        Common().creating_file_of_hrefs("Indices trading", list_items, file_name)
+
+        count -= 1
+
+    # "------------------------------------"
 
     # @allure.step("Start pretest")
     # def test_indices_trading_guide_pretest(self, worker_id, d, cur_language, cur_country, cur_role, cur_login,
