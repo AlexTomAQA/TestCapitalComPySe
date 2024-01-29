@@ -196,11 +196,13 @@ class Conditions(BasePage):
         del header
 
         # Wait for the new tab to finish loading content
-        wait = WebDriverWait(d, 40)
+        timeout = 60
+        print(f"{datetime.now()}   Set timeout = {timeout}")
+        wait = WebDriverWait(d, timeout)
         wait.until(EC.title_is("Trading Platform | Capital.com"))
-        platform_url = "https://capital.com/trading/platform/"
-        # print(f"{datetime.now()}   -> Page with 'Trading Platform | Capital.com' title opened")
+        print(f"{datetime.now()}   -> Page with 'Trading Platform | Capital.com' title opened")
 
+        platform_url = "https://capital.com/trading/platform/"
         top_bar = TopBar(d, platform_url)
 
         if top_bar.trading_platform_logo_is_present():
