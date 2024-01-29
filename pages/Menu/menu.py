@@ -215,7 +215,7 @@ class MenuSection(BasePage):
         del menu
         print(f"{datetime.now()}   => Education menu focus moved")
 
-    @allure.step(f"{datetime.now()}.   Click 'learning hub' menu section.")
+    @allure.step(f"{datetime.now()}.   Focus move to 'learning hub' menu item and click (US_11.01.01).")
     def sub_menu_learning_hub_move_focus_click(self, d, test_language, test_country):
         sub_menu = None
         match test_language:
@@ -262,7 +262,53 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Glossary' hyperlink.")
+    @allure.step(f"{datetime.now()}.   Focus move to 'Basics_of_trading' menu item and click (US_11.01.02).")
+    def sub_menu_basics_of_trading_move_focus_click(self, d, test_language, test_country):
+        sub_menu = list()
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_EN_ITEM_BASICS_OF_TRADING)
+            case "ar":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_AR_ITEM_BASICS_OF_TRADING)
+            case "de":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_DE_ITEM_BASICS_OF_TRADING)
+            case "el":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_EL_ITEM_BASICS_OF_TRADING)
+            case "es":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_ES_ITEM_BASICS_OF_TRADING)
+            case "fr":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_FR_ITEM_BASICS_OF_TRADING)
+            case "it":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_IT_ITEM_BASICS_OF_TRADING)
+            case "hu":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_HU_ITEM_BASICS_OF_TRADING)
+            case "nl":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_NL_ITEM_BASICS_OF_TRADING)
+            case "pl":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_PL_ITEM_BASICS_OF_TRADING)
+            case "ro":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_RO_ITEM_BASICS_OF_TRADING)
+            case "ru":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_RU_ITEM_BASICS_OF_TRADING)
+            case "zh":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_ZH_ITEM_BASICS_OF_TRADING)
+            case "cn":
+                sub_menu = d.find_elements(*Menu1101.SUB_MENU_CN_ITEM_BASICS_OF_TRADING)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Education > Menu item [The basics of trading]\" "
+                        f"doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Focus move to 'Glossary' menu item and click (US_11.01.07).")
     def sub_menu_glossary_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -382,81 +428,6 @@ class MenuSection(BasePage):
         print(f"\n\n{datetime.now()}   => Forex trading sub-menu clicked")
 
         del sub_menu
-        return d.current_url
-
-    @allure.step(f"{datetime.now()}.   Click 'Basics_of_trading' hyperlink.")
-    def sub_menu_basics_of_trading_move_focus_click(self, d, test_language, test_country):
-        sub_menu = list()
-        if test_country == "gb":
-            pass
-        else:
-            match test_language:
-                case "":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_EN_ITEM_BASICS_OF_TRADING)
-                case "de":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_DE_ITEM_BASICS_OF_TRADING)
-                case "ru":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_RU_ITEM_BASICS_OF_TRADING)
-                case "bg":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_BG_ITEM_BASICS_OF_TRADING)
-                case "cs":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_CS_ITEM_BASICS_OF_TRADING)
-                case "fr":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_FR_ITEM_BASICS_OF_TRADING)
-                case "ar":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_AR_ITEM_BASICS_OF_TRADING)
-                case "et":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_ET_ITEM_BASICS_OF_TRADING)
-                case "da":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_DA_ITEM_BASICS_OF_TRADING)
-                case "el":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_EL_ITEM_BASICS_OF_TRADING)
-                case "es":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_ES_ITEM_BASICS_OF_TRADING)
-                case "hr":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_HR_ITEM_BASICS_OF_TRADING)
-                case "it":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_IT_ITEM_BASICS_OF_TRADING)
-                case "lv":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_LV_ITEM_BASICS_OF_TRADING)
-                case "hu":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_HU_ITEM_BASICS_OF_TRADING)
-                case "nl":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_NL_ITEM_BASICS_OF_TRADING)
-                case "pl":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_PL_ITEM_BASICS_OF_TRADING)
-                case "pt":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_PT_ITEM_BASICS_OF_TRADING)
-                case "ro":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_RO_ITEM_BASICS_OF_TRADING)
-                case "sk":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_SK_ITEM_BASICS_OF_TRADING)
-                case "sl":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_SL_ITEM_BASICS_OF_TRADING)
-                case "fi":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_FI_ITEM_BASICS_OF_TRADING)
-                case "sv":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_SV_ITEM_BASICS_OF_TRADING)
-                case "vi":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_VI_ITEM_BASICS_OF_TRADING)
-                case "zh":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_ZH_ITEM_BASICS_OF_TRADING)
-                case "lt":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_LT_ITEM_BASICS_OF_TRADING)
-                case "cn":
-                    sub_menu = d.find_elements(*Menu1101.SUB_MENU_CN_ITEM_BASICS_OF_TRADING)
-
-        if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
-                        f"the page \"Education > Menu item [The basics of trading]\" "
-                        f"doesn't exist on production")
-
-        ActionChains(d) \
-            .move_to_element(sub_menu[0]) \
-            .pause(0.5) \
-            .click() \
-            .perform()
-
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Trading courses hyperlink.")
