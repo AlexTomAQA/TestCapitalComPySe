@@ -5,7 +5,7 @@
 """
 import pytest
 import allure
-from datetime import datetime
+# from datetime import datetime
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -71,7 +71,9 @@ class TestCFDTradingGuide:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"]
+        )
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -100,7 +102,9 @@ class TestCFDTradingGuide:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"]
+        )
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
@@ -130,7 +134,9 @@ class TestCFDTradingGuide:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"]
+        )
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -148,7 +154,7 @@ class TestCFDTradingGuide:
         global count
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_99", "Pretest for US_11.01.03.01")
