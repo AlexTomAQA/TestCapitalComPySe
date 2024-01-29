@@ -244,7 +244,7 @@ class TestIndicesTradingGuidePreset:
         global count
         global cur_page_url
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.06", "Education > Menu item [Indices Trading]",
             ".00_99", "Pretest for US_11.02.06.01")
