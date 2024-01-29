@@ -277,7 +277,7 @@ def init_remote_driver_chrome():
     # )
 
     print(driver.get_window_size())
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(1)
     driver.set_script_timeout(20000)
 
     return driver
