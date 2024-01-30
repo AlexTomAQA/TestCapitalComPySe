@@ -39,8 +39,8 @@ class TestIndicesTradingGuidePreset:
         Check: Button [Start Trading] on Main banner
         Language: EN, AR, DE, ES, IT, CN, RU, ZH. License: All.
         """
-        test_title = ("11.02.06", "Education > Menu item [Indices Trading]", ".00_01",
-                      "Testing button [Start Trading] on Main banner")
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
+                      ".00_01", "Testing button [Start Trading] on Main banner")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
