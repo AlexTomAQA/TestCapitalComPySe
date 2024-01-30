@@ -3,25 +3,23 @@
 @Time    : 2023/05/23 19:00 GMT+3
 @Author  : Suleyman Alirzaev
 """
-import pytest
 import allure
+import pytest
 
-from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
-from pages.conditions import Conditions
-from src.src import CapitalComPageSrc
 from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
+from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
+from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
+from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
+from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-
-# from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-# from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-
+from pages.common import Common
+from pages.conditions import Conditions
+from src.src import CapitalComPageSrc
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 count = 1
 
@@ -220,38 +218,71 @@ class TestCryptocurrencyTrading:
         test_element = ContentStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    # @allure.step("Start test button on the block [Vertical banner]")
-    # @pytest.mark.test_08
-    # def test_08_block_vertical_banner_button(
-    #         self, worker_id, d, cur_language, cur_country,cur_role, cur_login, cur_password,cur_item_link):
-    #     """
-    #     Check: Button on the block [Vertical banner]
-    #     Language: DE, ES, IT, PL, RO, RU, ZN. License: All,except FCA (GB country)
-    #     For "Authorized user" role:
-    #         The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
-    #         TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
-    #     """
-    #     bid = build_dynamic_arg_v4(
-    #         d, worker_id, cur_language, cur_country, cur_role,
-    #         "11.02.05", "Education > Menu item [Cryptocurrency trading]",
-    #         ".01_08", "Testing button on the block [Vertical banner]")
-    #
-    #     Common().check_language_in_list_and_skip_if_not_present(
-    #         cur_language, ["de", "es", "it", "pl", "ro", "ru", "zn"])
-    #     Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
-    #
-    #     page_conditions = Conditions(d, "")
-    #     page_conditions.preconditions(
-    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-    #
-    #     # баннеры открываются в Demo mode
-    #     banner01_ver_tp = ['198', '293', '381', '391', '426']
-    #     # баннеры открываются в Live mode
-    #     banner01_ver_tpd = ['168', '253', '380', '393']
-    #
-    #     test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
-    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
-    #                                     banner01_ver_tp, banner01_ver_tpd)
+    @allure.step("Start test button on the block [Vertical banner]")
+    @pytest.mark.test_08
+    def test_08_block_vertical_banner_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button on the block [Vertical banner]
+        Language: DE, ES, IT, PL, RO, RU, ZN. License: All,except FCA (GB country)
+        For "Authorized user" role:
+            The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
+            TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_08", "Testing button on the block [Vertical banner]")
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zn"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        # баннеры открываются в Demo mode
+        banner01_ver_tp = ['198', '293', '381', '391', '426']
+        # баннеры открываются в Live mode
+        banner01_ver_tpd = ['168', '253', '380', '393']
+
+        test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link, banner01_ver_tpd,
+                                        banner01_ver_tp)
+
+    @allure.step("Start test button on the block [Horizontal banner]")
+    @pytest.mark.test_09
+    def test_09_block_horizontal_banner_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button on the block [Horizontal banner]
+        Language: DE, ES, IT, PL, RO, RU, ZN. License: All,except FCA (GB country)
+        For "Authorized user" role:
+            The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
+            TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".01_09", "Testing button on the block [Horizontal banner]")
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zn"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        # баннеры открываются в Demo mode
+        banner01_hor_tp = ['199']
+        # баннеры открываются в Live mode
+        banner01_hor_tpd = ['169', '254', '294', '379', '390', '429', '430']
+
+        test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link, banner01_hor_tp,
+                                        banner01_hor_tpd)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
     @pytest.mark.test_10
