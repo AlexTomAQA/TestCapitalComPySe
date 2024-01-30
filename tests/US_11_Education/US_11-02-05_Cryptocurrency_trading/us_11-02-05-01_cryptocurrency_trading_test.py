@@ -224,7 +224,7 @@ class TestCryptocurrencyTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button on the block [Vertical banner]
-        Language: DE, ES, IT, PL, RO, RU, ZN. License: All,except FCA (GB country)
+        Language: DE, ES, IT, PL, RO, RU, ZH. License: All,except FCA (GB country)
         For "Authorized user" role:
             The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
             TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
@@ -235,21 +235,25 @@ class TestCryptocurrencyTrading:
             ".01_08", "Testing button on the block [Vertical banner]")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zn"])
+            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        # баннеры открываются в Demo mode
-        banner01_ver_tp = ['198', '293', '381', '391', '426']
-        # баннеры открываются в Live mode
+        # банеры должны открываться в Demo mode for US_00
+        banner00_ver_tpd = []
+        # банеры должны открываться в Live mode for US_00
+        banner00_ver_tp = []
+        # баннеры открываются в Demo mode for US_01
         banner01_ver_tpd = ['168', '253', '380', '393']
+        # баннеры открываются в Live mode for US_01
+        banner01_ver_tp = ['198', '293', '381', '391', '426']
 
         test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link, banner01_ver_tpd,
-                                        banner01_ver_tp)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
+                                        banner00_ver_tpd, banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
 
     @allure.step("Start test button on the block [Horizontal banner]")
     @pytest.mark.test_09
@@ -257,7 +261,7 @@ class TestCryptocurrencyTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button on the block [Horizontal banner]
-        Language: DE, ES, IT, PL, RO, RU, ZN. License: All,except FCA (GB country)
+        Language: DE, ES, IT, PL, RO, RU, ZH. License: All,except FCA (GB country)
         For "Authorized user" role:
             The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
             TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
@@ -268,21 +272,25 @@ class TestCryptocurrencyTrading:
             ".01_09", "Testing button on the block [Horizontal banner]")
 
         Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zn"])
+            cur_language, ["de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        # баннеры открываются в Demo mode
-        banner01_hor_tp = ['199']
-        # баннеры открываются в Live mode
-        banner01_hor_tpd = ['169', '254', '294', '379', '390', '429', '430']
+        # банеры должны открываться в Demo mode for US_00
+        banner00_hor_tpd = []
+        # банеры должны открываться в Live mode for US_00
+        banner00_hor_tp = []
+        # баннеры открываются в Demo mode for US_01
+        banner01_hor_tpd = ['199']
+        # баннеры открываются в Live mode for US_01
+        banner01_hor_tp = ['169', '254', '294', '379', '390', '429', '430']
 
         test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link, banner01_hor_tp,
-                                        banner01_hor_tpd)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
+                                        banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
     @pytest.mark.test_10
