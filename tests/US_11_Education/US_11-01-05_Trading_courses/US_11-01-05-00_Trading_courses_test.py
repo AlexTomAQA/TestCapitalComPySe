@@ -25,7 +25,7 @@ def cur_time():
 class TestTradingCourses:
     page_conditions = None
 
-    @allure.step("Start test_11.01.05_01 button [Create account] in the block 'Our courses'.")
+    @allure.step(f"{datetime.now()}   Start test_11.01.05_01 button [Create account] in the block 'Our courses'.")
     @pytest.mark.test_01
     def test_01_create_account_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -40,8 +40,8 @@ class TestTradingCourses:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        if cur_language in ["ar"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -54,7 +54,7 @@ class TestTradingCourses:
         test_element = ButtonCreateAccountBlockOurCourses(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
-    @allure.step("Start test_11.01.05_04 button [1. Create your account] in block 'Steps trading'.")
+    @allure.step(f"{datetime.now()}   Start test_11.01.05_04 button [1. Create your account] in block 'Steps trading'.")
     @pytest.mark.test_04
     def test_04_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -69,8 +69,8 @@ class TestTradingCourses:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        if cur_language in ["ar"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -83,19 +83,19 @@ class TestTradingCourses:
         test_element = BlockStepTrading(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
-    @allure.step("Start pretest")
+    @allure.step(f"{datetime.now()}   Start pretest")
     def test_99_trading_courses_item_pretest(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".00_99", "Pretest for US_11.01.05.01")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        if cur_language in ["ar"]:
-            Common().skip_test_for_language(cur_language)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
         if count == 0:
             pytest.skip("The list of Trading courses links is already created")
