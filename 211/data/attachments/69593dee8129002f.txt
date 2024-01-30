@@ -1,0 +1,45 @@
+2024-01-30 12:47:14 ERROR Elements not present after 0.5 seconds on page: https://capital.com/de/indizeshandel
+2024-01-30 12:47:14 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 497, in wait_for_target_url
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+2024-01-30 12:47:20 ERROR Elements not present after 0.5 seconds on page: https://capital.com/de/indizeshandel
+2024-01-30 12:47:20 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 293, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x557d0947bf83 <unknown>
+#1 0x557d09134cf7 <unknown>
+#2 0x557d0918499e <unknown>
+#3 0x557d09184aa1 <unknown>
+#4 0x557d091cfd64 <unknown>
+#5 0x557d091ae0dd <unknown>
+#6 0x557d091cd006 <unknown>
+#7 0x557d091ade53 <unknown>
+#8 0x557d09175dd4 <unknown>
+#9 0x557d091771de <unknown>
+#10 0x557d09440531 <unknown>
+#11 0x557d09444455 <unknown>
+#12 0x557d0942cf55 <unknown>
+#13 0x557d094450ef <unknown>
+#14 0x557d0941099f <unknown>
+#15 0x557d09469008 <unknown>
+#16 0x557d094691d7 <unknown>
+#17 0x557d0947b124 <unknown>
+#18 0x7f718ea94ac3 <unknown>
