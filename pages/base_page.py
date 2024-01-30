@@ -157,6 +157,7 @@ class BasePage:
         button = self.element_is_visible(OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not visible after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             assert False, f"Button [Accept all cookies] is not visible after {time_out} sec."
         else:
             print(f"{datetime.now()}   => Button [Accept all cookies] is visible")
@@ -168,6 +169,7 @@ class BasePage:
         button = self.element_is_clickable(button, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not clickable after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             assert False, f"Button [Accept all cookies] is not clickable after {time_out} sec."
         else:
             print(f"{datetime.now()}   => Button [Accept all cookies] is clickable")
