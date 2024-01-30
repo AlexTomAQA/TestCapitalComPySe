@@ -26,7 +26,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         counter = 0
         for i, index in enumerate(random_indexes):
             if counter:
-                self.clear_chart_list()
+                # self.clear_chart_list()
                 self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
@@ -45,13 +45,13 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
                     check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
-        self.clear_chart_list()
+        # self.clear_chart_list()
         num_item = self.arrange_v4(cur_item_link)
         random_indexes = random.sample(range(0, num_item), 2)
         counter = 0
         for i, index in enumerate(random_indexes):
             if counter:
-                self.clear_chart_list()
+                # self.clear_chart_list()
                 self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
@@ -76,13 +76,13 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   MOST_TRADED is visible? =>")
+        print(f"{datetime.now()}   MOST_TRADED is present? =>")
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         num_item = len(item_list)
         if num_item == 0:
-            print(f"{datetime.now()}   => MOST_TRADED is not visible on the page!")
+            print(f"{datetime.now()}   => MOST_TRADED is not present on this page")
             pytest.skip("Checking element is not on this page")
-        print(f"{datetime.now()}   => MOST_TRADED is visible on the page!")
+        print(f"{datetime.now()}   => MOST_TRADED widget is present on this page")
         print(f"{datetime.now()}   => Found {num_item} elements in block MOST_TRADED")
         # возвращаем количество элементов в Most Trade block
         return num_item
@@ -115,20 +115,21 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         # (кнопки меняют состояние каждые ~2.5 секунды)
         print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
         self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
-                                    'classList.remove("js-mostTraded");')
+                                   'classList.remove("js-mostTraded");')
 
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
         element = item_list[random_index]
         instrument = trade_instrument_list[random_index]
         instrument = instrument.get_attribute('title')
-        print(f"{datetime.now()}   MOST_TRADED scroll =>")
 
         # Checking if [SignUP for is popped up on the page]
         check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
+        del check_popup
         #
 
+        print(f"{datetime.now()}   MOST_TRADED scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
