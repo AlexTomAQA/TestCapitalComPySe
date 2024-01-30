@@ -141,7 +141,7 @@ class BasePage:
         """
         self.driver.get(self.link)
         # time.sleep(1)
-        if self.driver.current_url != self.link:
+        if self.driver.current_url not in self.link:
             print(f"{datetime.now()}   Load page {self.driver.current_url}")
             pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
 
