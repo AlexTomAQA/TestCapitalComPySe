@@ -300,7 +300,7 @@ class TestIndicesTrading:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.06", "Education > Menu item [Indices trading]",
+            "11.02.06", "Education > Menu item [Indices Trading]",
             ".01_11", "Testing button in block [Vertical banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
@@ -342,7 +342,7 @@ class TestIndicesTrading:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "11.02.06", "Education > Menu item [Indices trading]",
+            "11.02.06", "Education > Menu item [Indices Trading]",
             ".01_12", "Testing button in block [Horizontal banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
