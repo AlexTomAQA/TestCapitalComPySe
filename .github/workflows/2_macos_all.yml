@@ -95,6 +95,15 @@ jobs:
         run: poetry run pytest -vv -l --full-trace tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
         continue-on-error: true
 
+      - name: 8. Run US_11.02.05.00 test (Сулейман/Саша Т/Дима)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05-00_cryptocurrency_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.05.01 test (Сулейман/Саша Т/Дима)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05-01_cryptocurrency_trading_test.py
+        continue-on-error: true
+
       - name: Run hwinfo.py
         if: always()
         run: poetry run python3.11 tests/hwinfo.py
