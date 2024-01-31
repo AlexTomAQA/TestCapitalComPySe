@@ -5,8 +5,10 @@
 """
 import random
 from datetime import datetime
+
 import pytest
 import allure
+from selenium.webdriver import ActionChains
 
 from pages.Capital.Trading_platform.trading_platform_locators import TradingInstruments
 from pages.Signup_login.signup_login import SignupLogin
@@ -51,9 +53,9 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         random_indexes = random.sample(range(0, num_item), 2)
         counter = 0
         for i, index in enumerate(random_indexes):
-            if counter:
-                # self.clear_chart_list()
-                self.arrange_v4(cur_item_link)
+            # if counter:
+            #     # self.clear_chart_list()
+            #     self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
             trade_instrument = self.element_click_v4(index)
@@ -112,17 +114,11 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
     def element_click_v4(self, random_index):
         print(f"\n{datetime.now()}   2. Act_v4")
 
-        # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
-        # (кнопки меняют состояние каждые ~2.5 секунды)
-        print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
-        self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
-                                   'classList.remove("js-mostTraded");')
-
-        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
-        trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
-        element = item_list[random_index]
-        instrument = trade_instrument_list[random_index]
-        instrument = instrument.get_attribute('title')
+        # # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
+        # # (кнопки меняют состояние каждые ~2.5 секунды)
+        # print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
+        # self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+        #                            'classList.remove("js-mostTraded");')
 
         # Checking if [SignUP for is popped up on the page]
         check_popup = SignupLogin(self.driver, self.link)
@@ -130,16 +126,27 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         del check_popup
         #
 
+        trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
+        instrument = trade_instrument_list[random_index]
+        instrument = instrument.get_attribute('title')
+
+        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        element = item_list[random_index]
+
         print(f"{datetime.now()}   MOST_TRADED scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
-        print(f"{datetime.now()}   MOST_TRADED click for '{instrument}' trading instrument =>")
+        print(f"{datetime.now()}   Trade button click for '{instrument}' trading instrument =>")
+
         try:
-            element.click()
-            print(f"{datetime.now()}   => MOST_TRADED clicked!")
-            # возвращаем название торгового инструмента
-            return instrument
+            ActionChains(self.driver) \
+                .move_to_element(element) \
+                .pause(0.5) \
+                .click() \
+                .perform()
+            print(f"{datetime.now()}   => Trade button clicked!")
+            return instrument  # возвращаем название торгового инструмента
         except ElementClickInterceptedException:
             return False
 
