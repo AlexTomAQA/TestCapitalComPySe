@@ -6,6 +6,8 @@
 import sys
 from datetime import datetime
 from random import randint
+
+import allure
 import pytest
 from conf import QTY_LINKS
 
@@ -50,6 +52,7 @@ class Common:
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
 	@staticmethod
+	@allure.step(f'{datetime.now()}   Start Creating file of href method')
 	def creating_file_of_hrefs(title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
