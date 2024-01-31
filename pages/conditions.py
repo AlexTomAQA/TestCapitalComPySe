@@ -38,7 +38,7 @@ class Conditions(BasePage):
     """This class used as a base class for other page classes that represent specific pages on a website"""
     debug = False
 
-    @allure.step("Set preconditions")
+    @allure.step(f"{datetime.now()}   Set preconditions")
     def preconditions(self, d, host, end_point, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Method Preconditions
@@ -163,7 +163,7 @@ class Conditions(BasePage):
     #     # ввести логин, вести пароль, нажать подтвердить
 
     # авторизация пользователя
-    @allure.step("Start Authorisation")
+    @allure.step(f"{datetime.now()}   Start Authorisation")
     # @profile(precision=3)
     def to_do_authorisation(self, d, link, login, password):
         """Authorisation"""
@@ -212,7 +212,7 @@ class Conditions(BasePage):
         del top_bar
         d.back()
 
-    @allure.step('Start DeAuthorisation')
+    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
     def to_do_de_authorisation(self, d, link):
         """DeAuthorisation"""
         print(f"\n"
