@@ -15,6 +15,7 @@ from selenium.common.exceptions import ElementClickInterceptedException, NoSuchE
 
 class BlockStepTrading(BasePage):
 
+    @allure.step(f"{datetime.now()}   Start full test for Step trading block")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
         self.arrange_(d, cur_item_link)
@@ -54,7 +55,7 @@ class BlockStepTrading(BasePage):
             print(f"{datetime.now()}   => Current URL = {d.current_url}")
             pytest.fail("Bug! Checking element (Button create your account) is not in DOM after 10 sec")
 
-    @allure.step("Click '1. Create your account' button in 'Three first steps' section")
+    @allure.step(f"{datetime.now()}   Click '1. Create your account' button in 'Three first steps' section")
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act_v0")
