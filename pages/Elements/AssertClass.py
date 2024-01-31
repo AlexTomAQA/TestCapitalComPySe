@@ -4,9 +4,10 @@
 @Author  : Alexander Tomelo
 """
 
-import pytest
-import allure
+# import pytest
 from datetime import datetime
+
+import allure
 
 from pages.AppStore.app_store import AppStore
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
@@ -27,7 +28,7 @@ class AssertClass(BasePage):
         super().__init__(*args)
         # self.is_captcha()
 
-    @allure.step('Checking that "Signup" opened')
+    @allure.step(f'{datetime.now()}   Checking that "Signup" opened')
     def assert_signup(self, d, cur_language, cur_link):
         """Method Assert Signup"""
 
@@ -48,7 +49,7 @@ class AssertClass(BasePage):
         # time.sleep(2)
         del self.page_signup_login
 
-    @allure.step('Checking that "Login" form or page opened')
+    @allure.step(f'{datetime.now()}   Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):
         """Method Assert Login form or page"""
         print(f"\n{datetime.now()}   3. Assert_Login_v0")
@@ -110,7 +111,7 @@ class AssertClass(BasePage):
         self.page_trading = TradingPlatform(d, cur_link)
         self.page_trading.should_be_trading_platform_page_v3(demo)
 
-    @allure.step('Checking that "Trading platform" page opened - ver 4')
+    @allure.step(f'{datetime.now()}   Checking that "Trading platform" page opened - ver 4')
     def assert_trading_platform_v4(self, d, cur_link, tpd=False, tpi=False, trade_instrument=""):
         """
                 Check if the trading platform page for the corresponding trade instrument is opened
