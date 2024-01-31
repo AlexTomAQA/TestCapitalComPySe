@@ -23,11 +23,12 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         # self.clear_chart_list()
         num_item = self.arrange_v4(cur_item_link)
         random_indexes = random.sample(range(0, num_item), 2)
+        print(f"\n{datetime.now()}   Random indexes = {random_indexes}")
         counter = 0
         for i, index in enumerate(random_indexes):
-            if counter:
-                # self.clear_chart_list()
-                self.arrange_v4(cur_item_link)
+            # if counter:
+            #     self.clear_chart_list()
+            #     self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
             trade_instrument = self.element_click_v4(index)
