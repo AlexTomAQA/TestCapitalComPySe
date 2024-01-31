@@ -6,9 +6,9 @@
 import logging
 # import re
 import time
+from datetime import datetime
 
 import allure
-from datetime import datetime
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
