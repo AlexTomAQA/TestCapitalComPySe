@@ -12,7 +12,7 @@ from pages.Capital.Trading_platform.trading_platform_locators import TradingInst
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
-from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import ElementClickInterceptedException, JavascriptException
 from test_data.trading_platform_data import data
 from pages.Elements.AssertClass import AssertClass
 
@@ -115,8 +115,11 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
         # (кнопки меняют состояние каждые ~2.5 секунды)
         print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
-        self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
-                                   'classList.remove("js-mostTraded");')
+        try:
+            self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+                                       'classList.remove("js-mostTraded");')
+        except JavascriptException:
+            print(f"{datetime.now()}   MOST_TRADED js-mostTraded class JavascriptException")
 
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
