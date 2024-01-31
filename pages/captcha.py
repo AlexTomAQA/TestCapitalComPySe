@@ -17,7 +17,7 @@ class Captcha(BasePage):
     CAPTCHA_API_KEY = "8729f4a5a40472cb058438731884ded9"
     LOCATOR = "div.g-recaptcha[data-sitekey]"
 
-    @allure.step("Start Checking Captcha")
+    @allure.step(f"{datetime.now()}   Start Checking Captcha")
     def fail_test_if_captcha_present_v2(self):
         captcha = self.driver.find_elements(By.CSS_SELECTOR, self.LOCATOR)
         if len(captcha) == 0:
