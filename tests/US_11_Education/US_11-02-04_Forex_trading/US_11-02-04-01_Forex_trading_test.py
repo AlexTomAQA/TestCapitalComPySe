@@ -23,10 +23,8 @@ from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-# from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
-# from pages.Elements.ButtonFreeDemoOnHorizontalBanner import ButtonFreeDemoOnHorizontalBanner
 from src.src import CapitalComPageSrc
 
 

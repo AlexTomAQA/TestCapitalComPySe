@@ -15,6 +15,7 @@ from pages.Elements.AssertClass import AssertClass
 
 
 class ContentStartTrading(BasePage):
+    @allure.step(f'{datetime.now()}   Start Full test for Start trading button in Content')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         qty = self.arrange_v3(cur_item_link)
 
@@ -96,7 +97,7 @@ class ContentStartTrading(BasePage):
             print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE is not present on the page!")
             pytest.skip("Checking element is not present on this page")
 
-    @allure.step("Click button BUTTON_START_TRADING_IN_ARTICLE. V3")
+    @allure.step(f'{datetime.now()}   Click button BUTTON_START_TRADING_IN_ARTICLE. V3')
     def element_click_v3(self, i):
         print(f"\n{datetime.now()}   2. Act_v3")
         button_list = list()

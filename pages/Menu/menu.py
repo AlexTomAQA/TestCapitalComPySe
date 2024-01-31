@@ -6,9 +6,9 @@
 import logging
 # import re
 import time
+from datetime import datetime
 
 import allure
-from datetime import datetime
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
@@ -60,7 +60,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step('Select "Education" menu, "CFD trading guide" submenu')
+    @allure.step(f'{datetime.now()}   Select "Education" menu, "CFD trading guide" submenu')
     def open_education_cfd_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Education" menu, "CFD trading guide" submenu =>')
@@ -725,7 +725,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'CFD trading guide' hyperlink.")
+    @allure.step(f"{datetime.now()}   Click 'CFD trading guide' hyperlink.")
     def sub_menu_cfd_trading_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -810,7 +810,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Set language")
+    @allure.step(f"{datetime.now()}   Set language")
     def set_language(self, cur_language):
 
         if cur_language == "":
@@ -830,7 +830,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
         return self.driver.current_url
 
-    @allure.step(f"{datetime.now()}.   Start Set country")
+    @allure.step(f"{datetime.now()}   Start Set country")
     def set_country(self, cur_country):
 
         elements = self.driver.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
