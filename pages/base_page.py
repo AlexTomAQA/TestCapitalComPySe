@@ -145,7 +145,7 @@ class BasePage:
             print(f"{datetime.now()}   Load page {self.driver.current_url}")
             pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
 
-    @allure.step("Start Accepting all cookies")
+    @allure.step(f"{datetime.now()}   Start Accepting all cookies")
     @HandleExcElementsDecorator()
     def button_accept_all_cookies_click(self):
         time_out = 30
@@ -181,7 +181,7 @@ class BasePage:
         print(f"{datetime.now()}   => Accepted All Cookies")
         time.sleep(0.5)
 
-    @allure.step("Reject all cookies")
+    @allure.step(f"{datetime.now()}   Reject all cookies")
     @HandleExcElementsDecorator()
     def button_reject_all_cookies_click(self):
         print(f"\n"
