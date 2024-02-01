@@ -41,7 +41,6 @@ class TestTrendTrading:
             ".00_03", "Testing button [Start Trading] in the Main banner 'What is trend trading?'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -71,7 +70,6 @@ class TestTrendTrading:
             ".00_04", "Testing button [Try demo] on Main banner")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -100,10 +98,8 @@ class TestTrendTrading:
             ".00_05", "Testing button [Trade] in Most traded block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -132,7 +128,6 @@ class TestTrendTrading:
             ".00_06", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -146,6 +141,7 @@ class TestTrendTrading:
 
         test_element = ButtonDownloadAppStore(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
         test_element = AssertClass(d, link, bid)
@@ -165,7 +161,6 @@ class TestTrendTrading:
             ".00_07", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -179,6 +174,7 @@ class TestTrendTrading:
 
         test_element = ButtonGetItOnGooglePlay(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 
@@ -199,7 +195,6 @@ class TestTrendTrading:
             ".00_08", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
@@ -213,6 +208,7 @@ class TestTrendTrading:
 
         test_element = ButtonExploreWebPlatform(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 
@@ -239,7 +235,6 @@ class TestTrendTrading:
             ".00_09", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 

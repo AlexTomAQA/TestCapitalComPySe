@@ -54,6 +54,7 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
@@ -78,6 +79,7 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
@@ -102,6 +104,7 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_03", "Testing button [Start trading] in article")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "it"])
 
@@ -126,9 +129,9 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_04", "Testing button [Sell] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "cn", "ru"])
 
@@ -153,9 +156,9 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_05", "Testing button [Buy] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "cn", "ru"])
 
@@ -180,9 +183,9 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_06", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
@@ -207,6 +210,7 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_07", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "it", "cn", "ru"])
 
@@ -231,9 +235,9 @@ class TestForexTradingItemPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".01_08", "Testing button [Get started] on Sticky bar")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "es", "it"])
 

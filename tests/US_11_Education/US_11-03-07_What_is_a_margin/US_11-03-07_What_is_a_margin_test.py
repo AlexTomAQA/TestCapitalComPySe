@@ -117,7 +117,6 @@ class TestWhatIsMargin:
             ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
 
@@ -125,10 +124,13 @@ class TestWhatIsMargin:
 
         test_element = ButtonTradeOnWidgetMostTraded(d, link)
         test_elements_list = test_element.arrange_v2_()
+
         for index, element in enumerate(test_elements_list):
             print(f"\n{datetime.now()}   Testing element #{index + 1}")
+
             if not test_element.element_click_v2(element):
                 pytest.fail("Testing element is not clicked")
+
             check_element = AssertClass(d, link, bid)
             match cur_role:
                 case "NoReg":
@@ -152,7 +154,6 @@ class TestWhatIsMargin:
             ".00_04", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language not in ['', "de", "es", "cn"]:
             pytest.skip(f"This test is not for {cur_language} language")
 
@@ -185,7 +186,6 @@ class TestWhatIsMargin:
             ".00_05", "Testing button [Create account] in Block 'Open a trading account in less than 3 minutes'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language in ["", "cn"]:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")
 
@@ -218,7 +218,6 @@ class TestWhatIsMargin:
             ".00_06", "Testing button [Try Free Demo] in Block 'Want a test drive?'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language in ["", "cn"]:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")
 

@@ -55,6 +55,7 @@ class TestDayTrading:
             ".00_01", "Testing button [Start Trading] on Main banner")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -75,6 +76,7 @@ class TestDayTrading:
             ".00_02", "Testing button [Try demo] on Main banner")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         cur_page_url = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -94,7 +96,7 @@ class TestDayTrading:
                                    ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
 
@@ -117,7 +119,7 @@ class TestDayTrading:
             ".00_04", "Testing button [Start trading] in Content block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
 
@@ -140,7 +142,7 @@ class TestDayTrading:
             ".00_05", "Testing button [Practise for free] in Content block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
 
@@ -175,13 +177,16 @@ class TestDayTrading:
             ".00_06", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ButtonDownloadAppStore(d, menu_link)
         test_element.arrange_(menu_link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
+
         test_element = AssertClass(d, menu_link, bid)
         test_element.assert_app_store(d, menu_link)
 
@@ -204,6 +209,7 @@ class TestDayTrading:
 
         test_element = ButtonGetItOnGooglePlay(d, menu_link)
         test_element.arrange_(menu_link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 
@@ -229,6 +235,7 @@ class TestDayTrading:
 
         test_element = ButtonExploreWebPlatform(d, menu_link)
         test_element.arrange_(menu_link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 

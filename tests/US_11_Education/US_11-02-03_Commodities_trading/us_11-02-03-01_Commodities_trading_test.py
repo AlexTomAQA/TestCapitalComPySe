@@ -67,6 +67,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -89,6 +90,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -111,6 +113,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_03", "Testing button [Sell] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
 
@@ -134,6 +137,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_04", "Testing button [Buy] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
 
@@ -157,6 +161,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_05", "Testing button [Start trading] in article")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -179,6 +184,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_06", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
 
@@ -202,6 +208,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_07", "Testing button [Get started] on Sticky bar")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
 
@@ -228,6 +235,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_08", "Testing button [Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -251,6 +259,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_09", "Testing buttons [Create account] in block [Open a trading account in less than 3 minutes]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in [""]:
             Common().skip_test_for_language(cur_language)
@@ -291,6 +300,7 @@ class TestCommoditiesTrading:
             "11.02.03", "Education > Menu item [Commodities trading]",
             ".01_10", "Testing button in block [Vertical banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in [""]:
             Common().skip_test_for_language(cur_language)
