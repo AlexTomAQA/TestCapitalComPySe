@@ -46,6 +46,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
@@ -69,6 +70,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
@@ -92,6 +94,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_03", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in [""]:
             pytest.skip(f"Test-case not for '{cur_language}' language")
         if cur_country == "gb":
@@ -117,6 +120,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_04", "Testing button [Start trading] in Content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in [""]:
             pytest.skip(f"This test not for {cur_language} language")
         if cur_country == 'gb':
@@ -142,6 +146,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_05", "Testing button [Practise for free] in Content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in [""]:
             pytest.skip(f"This test not for {cur_language} language")
         if cur_country == 'gb':
@@ -167,6 +172,7 @@ class TestTradingPsychologyGuideItem:
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".01_06", "Testing button [Create_verify_your_account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language != "":
             pytest.skip("This test-case only for english language")
 
