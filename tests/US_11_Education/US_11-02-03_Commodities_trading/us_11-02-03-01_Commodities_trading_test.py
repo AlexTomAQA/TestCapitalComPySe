@@ -251,8 +251,11 @@ class TestCommoditiesTrading:
     def test_09_block_hor_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
-        Check: Button [Create account] in block [Open a trading account in less than 3 minutes]
-        Language: All. License: All.
+        Check the [Button] on the Horizontal banner at the bottom of the page.
+        For "Authorized user" role:
+        The trading platform page is opened depend on the banner [type-id]:
+                Live mode if the banner in the Live mode banners list
+                Demo mode if the banner in the Demo mode banners list
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
