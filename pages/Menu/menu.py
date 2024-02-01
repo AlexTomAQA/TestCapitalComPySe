@@ -147,7 +147,7 @@ class MenuSection(BasePage):
         #
 
         # menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
-        time.sleep(1)
+        time.sleep(0.5)
         ActionChains(d) \
             .move_to_element(d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)) \
             .pause(0.5) \
@@ -821,12 +821,14 @@ class MenuSection(BasePage):
             print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             pytest.fail(f"For test language '{cur_language}' problem № 2 with set language")
 
+        print(f"{datetime.now()}   Move focus on {cur_language} item and click =>")
         ActionChains(self.driver) \
             .move_to_element(language_str_list[0]) \
             .pause(0.5) \
             .click() \
             .perform()
 
+        print(f"{datetime.now()}   => Focus moved on {cur_language} item and clicked")
         print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
         return self.driver.current_url
 
