@@ -39,7 +39,6 @@ class TestTradingCourses:
             ".00_01", "Testing button [Create account] in block [Our courses]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
@@ -68,7 +67,6 @@ class TestTradingCourses:
             ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
@@ -93,7 +91,6 @@ class TestTradingCourses:
             ".00_99", "Pretest for US_11.01.05.01")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
