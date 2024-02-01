@@ -111,7 +111,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             print(f"{datetime.now()}   => Bug!!! The [Close all] button on the Trading platform page is not closed "
                   f"all chart tabs")
 
-    @allure.step(f'{datetime.now()}   Click Trade button on Most traded widget')
+    @allure.step('Click Trade button on Most traded widget')
     def element_click_v4(self, random_index):
         print(f"\n{datetime.now()}   2. Act_v4")
 
@@ -134,22 +134,30 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         element = item_list[random_index]
 
-        print(f"{datetime.now()}   MOST_TRADED scroll =>")
+        print(f"{datetime.now()}   Selected Trade button on Most traded widget is scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
-        print(f"{datetime.now()}   Trade button click for '{instrument}' trading instrument =>")
+        print(f"{datetime.now()}   Selected Trade button click for '{instrument}' trading instrument =>")
 
-        try:
-            ActionChains(self.driver) \
-                .move_to_element(element) \
-                .pause(0.5) \
-                .click() \
-                .perform()
-            print(f"{datetime.now()}   => Trade button clicked!")
-            return instrument  # возвращаем название торгового инструмента
-        except ElementClickInterceptedException:
-            return False
+        # try:
+        #     ActionChains(self.driver) \
+        #         .move_to_element(element) \
+        #         .pause(0.5) \
+        #         .click() \
+        #         .perform()
+        #     print(f"{datetime.now()}   => Trade button clicked!")
+        #     return instrument  # возвращаем название торгового инструмента
+        # except ElementClickInterceptedException:
+        #     return False
+        ActionChains(self.driver) \
+            .move_to_element(element) \
+            .pause(0.5) \
+            .move_to_element(element) \
+            .click() \
+            .perform()
+        print(f"{datetime.now()}   => Selected Trade button clicked!")
+        return instrument  # возвращаем название торгового инструмента
 
     def arrange_v3(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v3")
