@@ -39,6 +39,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     allure.dynamic.story(dynamic_story)
     allure.dynamic.title(
         f"TC_{us}{num_tc} | {desc_tc}. {bug_id}")
+
     del dynamic_story
     del dynamic_feature
     del dynamic_epic
