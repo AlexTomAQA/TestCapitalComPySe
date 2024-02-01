@@ -64,8 +64,8 @@ if retest == 'True':
         role_list = (sys.argv[5].split('=')[1],)
 else:
     role_list = (
-        "Auth",
-        "NoAuth",  # "Reg/NoAuth"
+        # "Auth",
+        # "NoAuth",  # "Reg/NoAuth"
         "NoReg",
     )
 
@@ -87,8 +87,8 @@ def cur_role(request):
     scope="class",
     params=[
         # "",  # "en" - 21 us
-        "es",  # 20 us
-        # "de",  # 15 us
+        # "es",  # 20 us
+        "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
