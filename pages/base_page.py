@@ -142,8 +142,9 @@ class BasePage:
         self.driver.get(self.link)
         # time.sleep(1)
         if self.link not in self.driver.current_url:
-            print(f"{datetime.now()}   Load page {self.driver.current_url}")
+            print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
             pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
+        print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
     @allure.step(f"{datetime.now()}   Start Accepting all cookies")
     @HandleExcElementsDecorator()
