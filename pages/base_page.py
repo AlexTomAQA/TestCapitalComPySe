@@ -139,6 +139,7 @@ class BasePage:
         """
         Navigates to a page given by the URL.
         """
+        print(f"{datetime.now()}   Current page URL = {self.driver.current_url}")
         self.driver.get(self.link)
         # time.sleep(1)
         if self.link not in self.driver.current_url:
