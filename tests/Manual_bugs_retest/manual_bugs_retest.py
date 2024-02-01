@@ -58,9 +58,9 @@ class TestManualBugs:
         error_trade_instrument_list = []
         for i in range(qty_pages):
             print("page:", i + 1)
-            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
             for j in range(len(most_traded_list)):
-                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
 
                 markets_page.go_to_element(most_traded_list[j])
                 most_traded_instrument_name = most_traded_list[j].text
@@ -68,7 +68,8 @@ class TestManualBugs:
                     markets_page.element_is_clickable(most_traded_list[j]).click()
                 except StaleElementReferenceException:
                     print("StaleElementReferenceException")
-                    most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+                    most_traded_list = markets_page.elements_are_located(
+                        markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
                 err_404 = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_INSTRUMENT_404, 1)
@@ -91,9 +92,10 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
         if len(most_trade_instrument_list) > 0:
-            assert False, (f"Bug#1. Expected Result: Content of the Block {most_trade_instrument_list} is displayed. \n"
+            assert False, (f"Bug#1. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
                            f"error_404: {error_trade_instrument_list}. \n"
+                           f"trade instrument: {len(most_trade_instrument_list)} {most_trade_instrument_list}\n"
                            f"qty_pages: {qty_pages}")
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -137,9 +139,9 @@ class TestManualBugs:
         error_trade_instrument_list = []
         for i in range(qty_pages):
             print("page:", i + 1)
-            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
             for j in range(len(most_traded_list)):
-                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
 
                 markets_page.go_to_element(most_traded_list[j])
                 most_traded_instrument_name = most_traded_list[j].text
@@ -147,7 +149,8 @@ class TestManualBugs:
                     markets_page.element_is_clickable(most_traded_list[j]).click()
                 except StaleElementReferenceException:
                     print("StaleElementReferenceException")
-                    most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
+                    most_traded_list = markets_page.elements_are_located(
+                        markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
                 err_404 = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_INSTRUMENT_404, 1)
@@ -211,6 +214,7 @@ class TestManualBugs:
             print("page:", i + 1)
             most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
             most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+            # проверяем, что ссылки для полей sell/buy существуют
             if len(most_traded_list) == len(most_traded_link_list):
                 assert False, (
                     "Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
