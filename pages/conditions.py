@@ -134,7 +134,7 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev country: {prev_country}")
         if cur_country != prev_country:
-            print(f'\n{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
+            print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
 
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
@@ -142,7 +142,7 @@ class Conditions(BasePage):
             del page_menu
 
             prev_country = cur_country
-        print(f"\n{datetime.now()}   => Current country: {cur_country}")
+        print(f"{datetime.now()}   => Current country: {cur_country}")
 
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
