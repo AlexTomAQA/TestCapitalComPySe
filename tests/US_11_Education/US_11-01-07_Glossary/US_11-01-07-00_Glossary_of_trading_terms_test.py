@@ -45,7 +45,6 @@ class TestGlossaryOfTradingTerms:
             ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "zh"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
 
@@ -76,8 +75,6 @@ class TestGlossaryOfTradingTerms:
     def test_99_glossary_item_pretest(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
-
-        print(f"\n\n{datetime.now()}   Работает obj {self} с именем TC_11.01.07_99")
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
