@@ -164,7 +164,7 @@ class BasePage:
         else:
             print(f"{datetime.now()}   => Button [Accept all cookies] is visible")
 
-        time.sleep(1)
+        time.sleep(0.5)
 
         print(f"{datetime.now()}   Is clickable Button [Accept all cookies] =>")
         button = self.driver.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)

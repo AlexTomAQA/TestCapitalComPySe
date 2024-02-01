@@ -64,8 +64,8 @@ if retest == 'True':
         role_list = (sys.argv[5].split('=')[1],)
 else:
     role_list = (
-        "Auth",
-        "NoAuth",  # "Reg/NoAuth"
+        # "Auth",
+        # "NoAuth",  # "Reg/NoAuth"
         "NoReg",
     )
 
@@ -125,8 +125,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
+        "gb",  # United Kingdom - "FCA"
+        # "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 

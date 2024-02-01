@@ -66,7 +66,7 @@ class TestSharesTradingItems:
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
-        page_conditions.arrange_0()
+        # page_conditions.arrange_0()
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -287,8 +287,9 @@ class TestSharesTradingItems:
         banner01_hor_tp = ['169', '223', '254', '379', '392', '430', '429']
 
         test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
-                                        banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
+        test_element.full_test_with_tpi(
+            d, cur_language, cur_country, cur_role, cur_item_link,
+            banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
 
     @allure.step("Start test of button in block [Vertical banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
