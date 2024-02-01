@@ -64,8 +64,8 @@ if retest == 'True':
         role_list = (sys.argv[5].split('=')[1],)
 else:
     role_list = (
-        # "Auth",
-        # "NoAuth",  # "Reg/NoAuth"
+        "Auth",
+        "NoAuth",  # "Reg/NoAuth"
         "NoReg",
     )
 
