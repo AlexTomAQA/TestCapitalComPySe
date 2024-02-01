@@ -40,6 +40,7 @@ class TestTradingCoursesItem:
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".01_02", "Testing button [Create a demo account] in block 'Build your skills ...'")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, [""])
 
@@ -73,6 +74,7 @@ class TestTradingCoursesItem:
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".01_03", "Testing button [Try demo] in block 'Learn first. Trade CFDs ...'")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, [""])
 
@@ -108,6 +110,7 @@ class TestTradingCoursesItem:
             "11.01.05", "Education > Menu Item [Trading courses]",
             ".01_04", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "el", "es", "fr", "it", "hu", "pl", "cn", "nl", "ro", "ru", "zh"])
 
