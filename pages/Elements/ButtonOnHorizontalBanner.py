@@ -16,8 +16,9 @@ from pages.Elements.testing_elements_locators import ButtonOnHorizontalBannerLoc
 
 class ButtonOnHorizontalBanner(BasePage):
 
-    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, link, banner00_hor_tpd,
-                           banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp):
+    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, link,
+                           banner00_hor_tpd, banner00_hor_tp,
+                           banner01_hor_tpd, banner01_hor_tp):
 
         self.arrange_(link)
         tpd = False
@@ -58,32 +59,47 @@ class ButtonOnHorizontalBanner(BasePage):
             self.link = cur_item_link
             self.open_page()
 
+        print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER is present? =>")
+        button_list = self.driver.find_elements(*ButtonOnHorizontalBannerLocators.BUTTON_ON_HOR_BANNER)
+        if len(button_list) == 0:
+            print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is not present on the page!")
+            del button_list
+            pytest.skip("Checking element is not present on this page")
+        print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is present on this page")
+
+        print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER scroll =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button_list[0]
+        )
+
         print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER is visible? =>")
         if self.element_is_visible(ButtonOnHorizontalBannerLocators.BUTTON_ON_HOR_BANNER):
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is visible on the page!")
             return True
         else:
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is not visible on the page!")
-            pytest.skip("Checking element is not present on this page")
+            pytest.skip("Checking element present on this page, but not visible")
 
     @allure.step("Click button [BUTTON_ON_HOR_BANNER]")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act")
-        print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER is present? =>")
+
+        # print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER is present? =>")
+        # button_list = self.driver.find_elements(*ButtonOnHorizontalBannerLocators.BUTTON_ON_HOR_BANNER)
+        # if len(button_list) == 0:
+        #     print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is not present on the page!")
+        #     del button_list
+        #     return False
+        # print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is present on the page")
+        #
+        # print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER scroll =>")
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     button_list[0]
+        # )
+
         button_list = self.driver.find_elements(*ButtonOnHorizontalBannerLocators.BUTTON_ON_HOR_BANNER)
-        if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is not present on the page!")
-            del button_list
-            return False
-        print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is present on the page!")
-
-        print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER scroll =>")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            button_list[0]
-        )
-
         self.element_is_clickable(button_list[0], 5)
 
         data_type = button_list[0].get_attribute("data-type")

@@ -21,7 +21,7 @@ from pages.Signup_login.signup_login_locators import (
 
 class SignupLogin(BasePage):
 
-    @allure.step("Check that form [Sign up] opened")
+    @allure.step(f'{datetime.now()}   Check that form [Sign up] opened')
     def check_popup_signup_form(self, timeout=1):
         """
         Check if Sign up form is popped up on the page
