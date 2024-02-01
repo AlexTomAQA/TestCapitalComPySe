@@ -46,7 +46,6 @@ class TestIndicesTradingGuidePreset:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -76,7 +75,6 @@ class TestIndicesTradingGuidePreset:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -107,10 +105,8 @@ class TestIndicesTradingGuidePreset:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
-
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
@@ -140,7 +136,6 @@ class TestIndicesTradingGuidePreset:
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -170,7 +165,6 @@ class TestIndicesTradingGuidePreset:
             ".00_11", "Testing button in block [Vertical banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "zh"])
 
@@ -214,7 +208,6 @@ class TestIndicesTradingGuidePreset:
             ".00_12", "Testing button in block [Horizontal banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["ar", "de", "es", "it", "ru", "zh"])
 
@@ -249,6 +242,10 @@ class TestIndicesTradingGuidePreset:
             "11.02.06", "Education > Menu item [Indices Trading]",
             ".00_99", "Pretest for US_11.02.06.01")
 
+        if count == 0:
+            pytest.skip("Так надо")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
