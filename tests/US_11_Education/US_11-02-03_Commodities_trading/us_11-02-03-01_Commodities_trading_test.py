@@ -246,7 +246,7 @@ class TestCommoditiesTrading:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     # @pytest.skip
-    @allure.step("Start test of button [Create account] in block [Open a trading account in less than 3 minutes]")
+    @allure.step("Start test of button in block [Horizontal banner]")
     @pytest.mark.test_09
     def test_09_block_hor_banner_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -257,7 +257,7 @@ class TestCommoditiesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.02.03", "Education > Menu item [Commodities trading]",
-            ".01_09", "Testing buttons [Create account] in block [Open a trading account in less than 3 minutes]")
+            ".01_09", "Testing button in block [Horizontal banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
