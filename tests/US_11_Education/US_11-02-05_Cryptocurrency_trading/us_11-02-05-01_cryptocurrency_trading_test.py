@@ -62,6 +62,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -86,6 +87,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -111,6 +113,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_03", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -135,6 +138,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_04", "Testing button [Sell] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -159,6 +163,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_05", "Testing button [Buy] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -183,6 +188,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_06", "Testing button [Get started] on Sticky bar")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -207,6 +213,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_07", "Testing button [Start trading] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "zn"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -234,6 +241,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_08", "Testing button on the block [Vertical banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -271,6 +279,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_09", "Testing button on the block [Horizontal banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "it", "pl", "ro", "ru", "zh"])
         Common().check_language_in_list_and_skip_if_not_present(cur_country, ["gb"])
@@ -305,6 +314,7 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".01_10", "Testing button [Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "pl", "ro", "ru", "zn"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
