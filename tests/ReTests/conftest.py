@@ -16,11 +16,11 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 lang_list = [
         # "en",
         # "ar",
-        # "de",
+        "de",
         # "el",
         # "es",
         # "fr",
-        "it",
+        # "it",
         # "hu",
         # "nl",
         # "pl",
@@ -41,10 +41,10 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "au",  # Australia - "ASIC"
-        "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "de",  # Germany - "CYSEC"
+        # "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
