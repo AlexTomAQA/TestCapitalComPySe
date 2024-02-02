@@ -14,9 +14,9 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        # "en",
+        "en",
         # "ar",
-        "de",
+        # "de",
         # "el",
         # "es",
         # "fr",
@@ -41,10 +41,10 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         # "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
