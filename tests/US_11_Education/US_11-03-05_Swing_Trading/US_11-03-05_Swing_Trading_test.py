@@ -118,7 +118,6 @@ class TestSwingTrading:
             ".00_03", "Testing button [Trade] in Most traded block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
 
@@ -126,10 +125,12 @@ class TestSwingTrading:
 
         test_element = ButtonTradeOnWidgetMostTraded(d, link)
         test_elements_list = test_element.arrange_v2_()
+
         for index, element in enumerate(test_elements_list):
             print(f"\n{datetime.now()}   Testing element #{index + 1}")
             if not test_element.element_click_v2(element):
                 pytest.fail("Testing element is not clicked")
+
             check_element = AssertClass(d, link, bid)
             match cur_role:
                 case "NoReg":
@@ -158,8 +159,10 @@ class TestSwingTrading:
 
         test_element = ButtonDownloadAppStore(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
+
         test_element = AssertClass(d, link, bid)
         test_element.assert_app_store(d, link)
 
@@ -182,6 +185,7 @@ class TestSwingTrading:
 
         test_element = ButtonGetItOnGooglePlay(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 
@@ -207,6 +211,7 @@ class TestSwingTrading:
 
         test_element = ButtonExploreWebPlatform(d, link)
         test_element.arrange_(link)
+
         if not test_element.element_click():
             pytest.fail("Testing element is not clicked")
 

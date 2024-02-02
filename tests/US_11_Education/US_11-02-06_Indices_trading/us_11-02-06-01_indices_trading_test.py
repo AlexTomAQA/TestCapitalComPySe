@@ -74,6 +74,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -99,6 +100,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -122,6 +124,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -147,6 +150,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru", "zh"])
 
@@ -171,6 +175,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -196,6 +201,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "zh"])
 
@@ -220,6 +226,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -247,6 +254,7 @@ class TestIndicesTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "ru"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -304,7 +312,6 @@ class TestIndicesTrading:
             ".01_11", "Testing button in block [Vertical banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "it", "ru", "zh"])
 
@@ -346,7 +353,6 @@ class TestIndicesTrading:
             ".01_12", "Testing button in block [Horizontal banner]")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "it", "ru", "zh"])
 

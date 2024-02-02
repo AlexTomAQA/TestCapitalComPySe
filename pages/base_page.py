@@ -617,3 +617,6 @@ class BasePage:
 #
 #         return inner_function
 #
+    def go_to_element(self, element):
+        self.driver.execute_script(
+            "return arguments[0].scrollIntoView({block: 'center'});", element)

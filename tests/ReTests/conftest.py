@@ -14,20 +14,20 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        "en",
-        "ar",
+        # "en",
+        # "ar",
         "de",
-        "el",
-        "es",
-        "fr",
-        "it",
-        "hu",
-        "nl",
-        "pl",
-        "ro",
-        "ru",
-        "zh",
-        "cn",
+        # "el",
+        # "es",
+        # "fr",
+        # "it",
+        # "hu",
+        # "nl",
+        # "pl",
+        # "ro",
+        # "ru",
+        # "zh",
+        # "cn",
     ]
 
 # ===========================================================
@@ -42,8 +42,8 @@ role_list = [
 # выбор необходимых лицензий для ретеста
 country_list = [
         # "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
-        "de",  # Germany - "CYSEC"
+        "au",  # Australia - "ASIC"
+        # "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 ]
 
@@ -68,7 +68,7 @@ list_rows = [835]
 retest_skipped_tests = False
 
 # ============================================================
-status_list = ['failed', 'passed']
+status_list = ['failed', 'passed', 'skipped']
 
 # ============================================================
 # получение корня проекта
@@ -115,14 +115,21 @@ def gs():
     if unique_test or retest_skipped_tests or no_new_column:
         # установка времени старта ретеста
         gs.update_range_values('V1', [start_retest_date])
+
+        # установка счетчика выполненых в фильтре таблицы ретестов
+        # formula = gs.get_cell_values('F2')
+        table_range = "V5:V1767"
+        formula = f"=SUBTOTAL(3;{table_range})"
+        gs.update_range_values('V2', [[formula]])
+
         # установка таймера выполнения ретестов
-        # # для запуска на Github
-        # gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+        # для запуска на Github
+        gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
         # для запуска на локальном компе
-        gs.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
+        # gs.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
         # установка счетчика пройденных тестов
-        gs.new_data_copy_past(1, 2, 1, 2,
-                              0, 1, 21, 22)
+        # gs.new_data_copy_past(1, 2, 1, 2,
+        #                       0, 1, 21, 22)
 
     else:
 
