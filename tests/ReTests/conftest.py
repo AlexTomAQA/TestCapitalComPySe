@@ -42,8 +42,8 @@ role_list = [
 # выбор необходимых лицензий для ретеста
 country_list = [
         # "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
         # "ae",  # United Arab Emirates - "SCB"
 ]
 
@@ -117,19 +117,18 @@ def gs():
         gs.update_range_values('V1', [start_retest_date])
 
         # установка счетчика выполненых в фильтре таблицы ретестов
+        gs.new_data_copy_past(1, 2, 1, 2,
+                              5, 6, 21, 22)
         # formula = gs.get_cell_values('F2')
-        table_range = "V5:V1767"
-        formula = f"=SUBTOTAL(3;{table_range})"
-        gs.update_range_values('V2', [[formula]])
+        # table_range = "V5:V1767"
+        # formula = f"=SUBTOTAL(3;{table_range})"
+        # gs.update_range_values('V2', [[formula]])
 
         # установка таймера выполнения ретестов
         # для запуска на Github
         gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
         # для запуска на локальном компе
         # gs.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
-        # установка счетчика пройденных тестов
-        # gs.new_data_copy_past(1, 2, 1, 2,
-        #                       0, 1, 21, 22)
 
     else:
 
