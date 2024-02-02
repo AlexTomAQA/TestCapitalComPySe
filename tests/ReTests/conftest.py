@@ -117,9 +117,9 @@ def gs():
         gs.update_range_values('V1', [start_retest_date])
 
         # установка счетчика выполненых в фильтре таблицы ретестов
-        formula = gs.get_cell_values('F2')
-        # table_range = "V5:V1767"
-        # formula = f"=SUBTOTAL(3;{table_range})"
+        # formula = gs.get_cell_values('F2')
+        table_range = "V5:V1767"
+        formula = f"=SUBTOTAL(3;{table_range})"
         gs.update_range_values('V2', [[formula]])
 
         # установка таймера выполнения ретестов
