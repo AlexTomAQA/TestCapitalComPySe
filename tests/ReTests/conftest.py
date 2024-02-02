@@ -15,7 +15,7 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 # выбор необходимых языков для ретеста
 lang_list = [
         # "en",
-        "ar",
+        # "ar",
         # "de",
         # "el",
         # "es",
@@ -24,7 +24,7 @@ lang_list = [
         # "hu",
         # "nl",
         # "pl",
-        # "ro",
+        "ro",
         # "ru",
         # "zh",
         # "cn",
