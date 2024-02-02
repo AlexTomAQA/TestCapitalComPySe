@@ -69,11 +69,6 @@ class TestCryptocurrencyTradingPretest:
 class TestCryptocurrencyTrading:
     page_conditions = None
 
-    def check_language(self, cur_language):
-        if cur_language not in ["ar", "el", "hu", "nl"]:
-            return
-        pytest.skip(f"This test is not for {cur_language} language")
-
     @allure.step("Test button [Start Trading] on the Main banner")
     @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
@@ -89,15 +84,17 @@ class TestCryptocurrencyTrading:
             ".00_01", "Testing button [Start Trading] on the Main banner")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
-        self.check_language(cur_language)
+        Common().check_language_in_list_and_skip_if_present(
+            cur_language, ["ar", "el", "hu", "nl"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_menu_link = page_menu.open_education_shares_trading_menu(d, cur_language, cur_country, main_page_link)
+        cur_menu_link = page_menu.open_education_cryptocurrency_trading_menu(
+            d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
