@@ -38,7 +38,7 @@ def pytest_generate_tests(metafunc):
     gs = GoogleSheet()
     values = gs.get_all_row_values()
     qty_of_bugs = gs.get_cell_values("A2")
-    del gs
+    # del gs
     end_row = start_row + int(qty_of_bugs[0][0])
 
     # формирование списка строк для одиночного ретеста
