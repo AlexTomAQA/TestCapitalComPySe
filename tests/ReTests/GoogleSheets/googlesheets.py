@@ -193,7 +193,8 @@ class GoogleSheet:
 
         return result
 
-    def new_data_copy_past(self, source_startRowIndex=5, source_endRowIndex=6,
+    def new_data_copy_past(self,
+                           source_startRowIndex=5, source_endRowIndex=6,
                            destination_startRowIndex=4, destination_endRowIndex=5,
                            source_startColumnIndex=0, source_endColumnIndex=17,
                            destination_startColumnIndex=0, destination_endColumnIndex=17):
@@ -223,8 +224,8 @@ class GoogleSheet:
                 }
             ]
         }
-
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=copy_request).execute()
+        return response
 
     def new_column_copy_past(self, source_column=22, destination_column=23):
         pass
@@ -255,6 +256,7 @@ class GoogleSheet:
         }
 
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=clear_request).execute()
+        return response
 
     def date_format_cell(self):
         sheet = self.service.spreadsheets()
@@ -284,3 +286,4 @@ class GoogleSheet:
         }
 
         response = sheet.batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=date_format_request).execute()
+        return response
