@@ -14,20 +14,20 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        "en",
-        "ar",
-        "de",
-        "el",
-        "es",
-        "fr",
-        "it",
-        "hu",
+        # "en",
+        # "ar",
+        # "de",
+        # "el",
+        # "es",
+        # "fr",
+        # "it",
+        # "hu",
         "nl",
-        "pl",
-        "ro",
-        "ru",
-        "zh",
-        "cn",
+        # "pl",
+        # "ro",
+        # "ru",
+        # "zh",
+        # "cn",
     ]
 
 # ===========================================================
@@ -41,17 +41,17 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
 # ретест без добавления нового столбца
 # ===========================================================
-no_new_column = True
-# no_new_column = False
+# no_new_column = True
+no_new_column = False
 
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
@@ -68,7 +68,7 @@ list_rows = [835]
 retest_skipped_tests = False
 
 # ============================================================
-status_list = ['failed', 'passed']
+status_list = ['failed', 'passed', 'skipped']
 
 # ============================================================
 # получение корня проекта
