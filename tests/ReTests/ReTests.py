@@ -4,7 +4,7 @@
 @Author  : Mike Taran
 """
 
-import os
+# import os
 import subprocess
 import re
 from datetime import datetime
@@ -106,7 +106,7 @@ class TestReTests:
 
 
 @allure.step("Pretest")
-def pretest(row_loc, number_of_row, gs):
+def pretest(row_loc, number_of_row, gs_param):
     global test_id, browser_name, us, path, num_test, lang, country, role, url
 
     print(f"\n{datetime.now()}   1. Run pretest =>")
@@ -126,7 +126,7 @@ def pretest(row_loc, number_of_row, gs):
         # num_bug = row_loc[12]
     except KeyError:
         print(f"\n{datetime.now()}   =>  Не корректные входные данные из таблицы WATC_BugsReport")
-        gs.update_range_values(f'V{number_of_row}', [["Error table data"]])
+        gs_param.update_range_values(f'V{number_of_row}', [["Error table data"]])
         pytest.skip()
 
     print(f"\n{datetime.now()}   => 1. Pretest finished")
