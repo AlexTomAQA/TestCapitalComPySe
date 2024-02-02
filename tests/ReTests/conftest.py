@@ -41,10 +41,10 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        # "gb",  # United Kingdom - "FCA"
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany - "CYSEC"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
