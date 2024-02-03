@@ -8,7 +8,11 @@ import time
 import allure
 # from memory_profiler import profile
 from datetime import datetime
+
+from selenium.webdriver import ActionChains
+
 from pages.base_page import BasePage
+from pages.Header.header_locators import HeaderElementLocators
 from pages.Signup_login.signup_login_locators import (
     SignupFormLocators,
     SignupPageLocators,
@@ -289,6 +293,13 @@ class SignupLogin(BasePage):
         #     return False
         elements[0].click()
         print(f"{datetime.now()}   => 'Signup' form closed")
+
+        # перемещаем указатель мышы на логотип CAPITAL
+        elements = self.driver.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
+        ActionChains(self.driver) \
+            .move_to_element(elements[0]) \
+            .perform()
+
         return True
 
     @allure.step("Close page [Sign up]")
