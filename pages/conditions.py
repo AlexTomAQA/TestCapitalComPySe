@@ -29,9 +29,9 @@ url_language = "?"
 url_country = "?"
 # host = CapitalComPageSrc.URL
 test_link = "?"
+prev_role = "?"
 prev_language = "?"
 prev_country = "?"
-prev_role = "?"
 
 
 class Conditions(BasePage):
@@ -58,9 +58,9 @@ class Conditions(BasePage):
         global url_country
         # global host
         global test_link
+        global prev_role
         global prev_language
         global prev_country
-        global prev_role
 
         print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
         if test_link == "?":
