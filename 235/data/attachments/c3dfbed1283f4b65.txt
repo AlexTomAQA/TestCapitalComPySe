@@ -1,0 +1,87 @@
+2024-02-03 07:51:21 ERROR Elements not present after 0.5 seconds on page: https://capital.com/zh/trade-facebook
+2024-02-03 07:51:21 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 299, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x563256a3ed93 <unknown>
+#1 0x563256722337 <unknown>
+#2 0x56325676dd60 <unknown>
+#3 0x56325676de51 <unknown>
+#4 0x5632567b1bc4 <unknown>
+#5 0x56325679046d <unknown>
+#6 0x5632567af12d <unknown>
+#7 0x5632567901e3 <unknown>
+#8 0x563256760135 <unknown>
+#9 0x56325676113e <unknown>
+#10 0x563256a02e4b <unknown>
+#11 0x563256a06dfa <unknown>
+#12 0x5632569ef6d5 <unknown>
+#13 0x563256a07a6f <unknown>
+#14 0x5632569d369f <unknown>
+#15 0x563256a2c098 <unknown>
+#16 0x563256a2c262 <unknown>
+#17 0x563256a3df34 <unknown>
+#18 0x7f4f42a94ac3 <unknown>
+
+2024-02-03 07:51:25 ERROR Elements not present after 0.5 seconds on page: https://capital.com/zh/trade-facebook
+2024-02-03 07:51:25 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/Elements/ButtonOnHorizontalBanner.py", line 109, in element_click
+    button_list[0].click()
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <a href="/trading/signup" class="button-main rounded-lg __cp_b __cp_bs ln-auto js-analyticsClick" data-type="b_hor_s1_429">...</a> is not clickable at point (800, 322). Other element would receive the click: <div class="grid gXs">...</div>
+  (Session info: chrome=121.0.6167.85)
+Stacktrace:
+#0 0x563256a3ed93 <unknown>
+#1 0x563256722337 <unknown>
+#2 0x563256774e2e <unknown>
+#3 0x563256772bd0 <unknown>
+#4 0x56325677044a <unknown>
+#5 0x56325676f226 <unknown>
+#6 0x5632567626b7 <unknown>
+#7 0x563256790442 <unknown>
+#8 0x563256762028 <unknown>
+#9 0x56325679060e <unknown>
+#10 0x5632567af12d <unknown>
+#11 0x5632567901e3 <unknown>
+#12 0x563256760135 <unknown>
+#13 0x56325676113e <unknown>
+#14 0x563256a02e4b <unknown>
+#15 0x563256a06dfa <unknown>
+#16 0x5632569ef6d5 <unknown>
+#17 0x563256a07a6f <unknown>
+#18 0x5632569d369f <unknown>
+#19 0x563256a2c098 <unknown>
+#20 0x563256a2c262 <unknown>
+#21 0x563256a3df34 <unknown>
+#22 0x7f4f42a94ac3 <unknown>
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 82, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 316, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.11/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message:
