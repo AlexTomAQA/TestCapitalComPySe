@@ -7,6 +7,7 @@ import allure
 # import os.path
 import pytest
 
+from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
@@ -159,4 +160,33 @@ class TestCryptocurrencyTrading:
             d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
+
+    @allure.step("Test button [Start trading] in the Content block")
+    @pytest.mark.test_04
+    def test_04_content_block_start_trading_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Start trading] in the Content block"
+        Language: All, except AR, EL, HU, NL.
+        License: All, except FCA (GB country)
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".00_04", "Testing button [Start trading] in the Content block")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_language_in_list_and_skip_if_present(cur_language, ["ar", "el", "hu", "nl"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, main_page_link)
+        cur_menu_link = page_menu.open_education_cryptocurrency_trading_menu(
+            d, cur_language, cur_country, main_page_link)
+
+        test_element = ContentStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
