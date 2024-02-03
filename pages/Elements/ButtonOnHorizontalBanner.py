@@ -16,7 +16,8 @@ from pages.Elements.testing_elements_locators import ButtonOnHorizontalBannerLoc
 
 class ButtonOnHorizontalBanner(BasePage):
 
-    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, link,
+    def full_test_with_tpi(self,
+                           d, cur_language, cur_country, cur_role, link,
                            banner00_hor_tpd, banner00_hor_tp,
                            banner01_hor_tpd, banner01_hor_tp):
 
