@@ -5,8 +5,10 @@
 """
 import random
 from datetime import datetime
+
 import pytest
 import allure
+from selenium.webdriver import ActionChains
 
 from pages.Capital.Trading_platform.trading_platform_locators import TradingInstruments
 from pages.Signup_login.signup_login import SignupLogin
@@ -19,15 +21,17 @@ from pages.Elements.AssertClass import AssertClass
 
 class ButtonTradeOnWidgetMostTraded(BasePage):
 
+    @allure.step(f'{datetime.now()}   Start Full test Trade button on Most Traded widget')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         # self.clear_chart_list()
         num_item = self.arrange_v4(cur_item_link)
         random_indexes = random.sample(range(0, num_item), 2)
+        print(f"\n{datetime.now()}   Random indexes = {random_indexes}")
         counter = 0
         for i, index in enumerate(random_indexes):
-            if counter:
-                self.clear_chart_list()
-                self.arrange_v4(cur_item_link)
+            # if counter:
+            #     self.clear_chart_list()
+            #     self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
             trade_instrument = self.element_click_v4(index)
@@ -45,14 +49,14 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
                     check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
-        self.clear_chart_list()
+        # self.clear_chart_list()
         num_item = self.arrange_v4(cur_item_link)
         random_indexes = random.sample(range(0, num_item), 2)
         counter = 0
         for i, index in enumerate(random_indexes):
-            if counter:
-                self.clear_chart_list()
-                self.arrange_v4(cur_item_link)
+            # if counter:
+            #     # self.clear_chart_list()
+            #     self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
             trade_instrument = self.element_click_v4(index)
@@ -76,13 +80,13 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   MOST_TRADED is visible? =>")
+        print(f"{datetime.now()}   MOST_TRADED is present? =>")
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         num_item = len(item_list)
         if num_item == 0:
-            print(f"{datetime.now()}   => MOST_TRADED is not visible on the page!")
+            print(f"{datetime.now()}   => MOST_TRADED is not present on this page")
             pytest.skip("Checking element is not on this page")
-        print(f"{datetime.now()}   => MOST_TRADED is visible on the page!")
+        print(f"{datetime.now()}   => MOST_TRADED widget is present on this page")
         print(f"{datetime.now()}   => Found {num_item} elements in block MOST_TRADED")
         # возвращаем количество элементов в Most Trade block
         return num_item
@@ -107,39 +111,53 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             print(f"{datetime.now()}   => Bug!!! The [Close all] button on the Trading platform page is not closed "
                   f"all chart tabs")
 
-    @allure.step("Click button MOST_TRADED")
+    @allure.step('Click Trade button on Most traded widget')
     def element_click_v4(self, random_index):
         print(f"\n{datetime.now()}   2. Act_v4")
 
-        # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
-        # (кнопки меняют состояние каждые ~2.5 секунды)
-        print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
-        self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
-                                    'classList.remove("js-mostTraded");')
-
-        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
-        trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
-        element = item_list[random_index]
-        instrument = trade_instrument_list[random_index]
-        instrument = instrument.get_attribute('title')
-        print(f"{datetime.now()}   MOST_TRADED scroll =>")
+        # # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
+        # # (кнопки меняют состояние каждые ~2.5 секунды)
+        # print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
+        # self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
+        #                            'classList.remove("js-mostTraded");')
 
         # Checking if [SignUP for is popped up on the page]
         check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
+        del check_popup
         #
 
+        trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
+        instrument = trade_instrument_list[random_index]
+        instrument = instrument.get_attribute('title')
+
+        item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
+        element = item_list[random_index]
+
+        print(f"{datetime.now()}   Selected Trade button on Most traded widget is scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
-        print(f"{datetime.now()}   MOST_TRADED click for '{instrument}' trading instrument =>")
-        try:
-            element.click()
-            print(f"{datetime.now()}   => MOST_TRADED clicked!")
-            # возвращаем название торгового инструмента
-            return instrument
-        except ElementClickInterceptedException:
-            return False
+        print(f"{datetime.now()}   Selected Trade button click for '{instrument}' trading instrument =>")
+
+        # try:
+        #     ActionChains(self.driver) \
+        #         .move_to_element(element) \
+        #         .pause(0.5) \
+        #         .click() \
+        #         .perform()
+        #     print(f"{datetime.now()}   => Trade button clicked!")
+        #     return instrument  # возвращаем название торгового инструмента
+        # except ElementClickInterceptedException:
+        #     return False
+        ActionChains(self.driver) \
+            .move_to_element(element) \
+            .pause(0.5) \
+            .move_to_element(element) \
+            .click() \
+            .perform()
+        print(f"{datetime.now()}   => Selected Trade button clicked!")
+        return instrument  # возвращаем название торгового инструмента
 
     def arrange_v3(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v3")

@@ -15,6 +15,7 @@ from selenium.common.exceptions import ElementClickInterceptedException, NoSuchE
 
 class BlockStepTrading(BasePage):
 
+    @allure.step(f"{datetime.now()}   Start full test for Step trading block")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
         self.arrange_(d, cur_item_link)
@@ -24,14 +25,13 @@ class BlockStepTrading(BasePage):
         match cur_role:
             case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, cur_item_link)
-            case "NoAuth":
-                test_element.assert_login(d, cur_language, cur_item_link)
+            # case "NoAuth":
+            #     test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
-
         self.element_click()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
@@ -48,13 +48,14 @@ class BlockStepTrading(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   BUTTON_CREATE_YOUR_ACCOUNT is located on the page? =>")
-        button_list = self.elements_are_located(BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT, timeout=10)
+        button_list = self.elements_are_located(BlockStepTradingLocators.BUT_CREATE_YOUR_ACCOUNT, 10)
 
         if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is not located on the page after 10 sec")
+            print(f"{datetime.now()}   => BUTTON_CREATE_YOUR_ACCOUNT is not located on this page after 10 sec")
+            print(f"{datetime.now()}   => Current URL = {d.current_url}")
             pytest.fail("Bug! Checking element (Button create your account) is not in DOM after 10 sec")
 
-    @allure.step("Click '1. Create your account' button in 'Three first steps' section")
+    @allure.step(f"{datetime.now()}   Click '1. Create your account' button in 'Three first steps' section")
     def element_click(self):
         """Method"""
         print(f"\n{datetime.now()}   2. Act_v0")

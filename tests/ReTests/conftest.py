@@ -14,20 +14,20 @@ from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        "en",
-        "ar",
-        "de",
-        "el",
-        "es",
-        "fr",
-        "it",
-        "hu",
-        "nl",
-        "pl",
-        "ro",
-        "ru",
+        # "en",
+        # "ar",
+        # "de",
+        # "el",
+        # "es",
+        # "fr",
+        # "it",
+        # "hu",
+        # "nl",
+        # "pl",
+        # "ro",
+        # "ru",
         "zh",
-        "cn",
+        # "cn",
     ]
 
 # ===========================================================
@@ -41,10 +41,10 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
-        # "au",  # Australia - "ASIC"
+        "gb",  # United Kingdom - "FCA"
+        "au",  # Australia - "ASIC"
         "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
@@ -68,13 +68,16 @@ list_rows = [835]
 retest_skipped_tests = False
 
 # ============================================================
-status_list = ['failed', 'passed']
+status_list = ['failed', 'passed', 'skipped']
 
 # ============================================================
 # получение корня проекта
 host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for macOS & Linux debugging
 # host = "\\".join(os.getcwd().split('\\')) + '\\'  # for Windows debugging
 # ============================================================
+
+# ========= variables for this module ========
+one_time_copy_paste = False
 
 
 def time_concat(time1, time2):
@@ -88,7 +91,6 @@ def time_concat(time1, time2):
 
     # Преобразование результата обратно в строку
     result_time_str = result_time_obj.strftime("%H:%M:%S")
-
     return result_time_str
 
 
@@ -100,78 +102,86 @@ def gs():
     print(f"\n{datetime.now()}   *** start fixture gs = ... ***\n")
     """Start execution program"""
 
-    gs = GoogleSheet()
+    global one_time_copy_paste
+
+    g_sheet = GoogleSheet()
     # получение длины таблицы
-    values = gs.get_all_row_values()
+    values = g_sheet.get_all_row_values()
     rows_qty = len(values)
-    execution_time_1 = gs.get_row_values(4)[0][21]
+    execution_time_1 = g_sheet.get_row_values(4)[0][21]
     del values
 
     # старт ретеста
     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
     gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
-    gs.update_range_values('B1', [gs_out])
+    g_sheet.update_range_values('B1', [gs_out])
 
     if unique_test or retest_skipped_tests or no_new_column:
         # установка времени старта ретеста
-        gs.update_range_values('V1', [start_retest_date])
+        g_sheet.update_range_values('V1', [start_retest_date])
+
         # установка таймера выполнения ретестов
-        # # для запуска на Github
-        # gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+        # для запуска на Github
+        g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
         # для запуска на локальном компе
-        gs.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
-        # установка счетчика пройденных тестов
-        gs.new_data_copy_past(1, 2, 1, 2,
-                              0, 1, 21, 22)
+        # g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
 
     else:
+        # пройти надо 1 раз
+        if not one_time_copy_paste:
+            # # добавление нового столбца для результатов ретеста
+            g_sheet.add_new_column_after_()
+            #
+            # # копирование данных столбца
+            g_sheet.new_data_copy_past(
+                0, rows_qty, 0, rows_qty,
+                21, 22, 22, 23)
+            #
+            # # очистка полей
+            g_sheet.clear_values(4, rows_qty, 21, 22)
+            #
+            # # замена значения Status на дату ретеста
+            g_sheet.update_range_values('W3', [["=W2"]])
+            g_sheet.date_format_cell()
 
-        # # добавление нового столбца для результатов ретеста
-        gs.add_new_column_after_()
-        #
-        # # копирование данных столбца
-        gs.new_data_copy_past(0, rows_qty, 0, rows_qty,
-                              21, 22, 22, 23)
-        #
-        # # очистка полей
-        gs.clear_values(4, rows_qty, 21, 22)
-        #
-        # # замена значения Status на дату ретеста
-        gs.update_range_values('W3', [["=W2"]])
-        gs.date_format_cell()
+            # установка времени старта ретеста
+            g_sheet.update_range_values('V1', [start_retest_date])
 
-        # установка времени старта ретеста
-        gs.update_range_values('V1', [start_retest_date])
+            # установка таймера выполнения ретестов
+            # # для запуска на Github
+            g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+            # для запуска на локальном компе
+            # g_sheet.update_range_values('V4', [["=NOW()-V1"]])
 
-        # установка таймера выполнения ретестов
-        # # для запуска на Github
-        gs.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+            one_time_copy_paste = True
 
-        # для запуска на локальном компе
-        # gs.update_range_values('V4', [["=NOW()-V1"]])
+    # установка счетчика выполненых в фильтре таблицы ретестов
+    g_sheet.new_data_copy_past(
+        1, 2, 1, 2,
+        5, 6, 21, 22)
 
-        # установка счетчика пройденных тестов
-        gs.new_data_copy_past(1, 2, 1, 2,
-                              0, 1, 21, 22)
+    gs_out = ['Bugs Report']
+    g_sheet.update_range_values('B1', [gs_out])
 
-    yield gs
+    yield g_sheet
 
     # окончание ретеста
 
     gs_out = ['Bugs Report']
-    gs.update_range_values('B1', [gs_out])
+    g_sheet.update_range_values('B1', [gs_out])
 
     if unique_test or retest_skipped_tests or no_new_column:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-        gs.update_range_values('V2', [end_retest_date])
-        execution_time_2 = gs.get_row_values(4)[0][21]
+        g_sheet.update_range_values('V2', [end_retest_date])
+        execution_time_2 = g_sheet.get_row_values(4)[0][21]
         # установка полного времени тестирования
         execution_time = time_concat(execution_time_1, execution_time_2)
-        gs.update_range_values('V4', [[execution_time]])
+        g_sheet.update_range_values('V4', [[execution_time]])
 
     else:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-        gs.update_range_values('V2', [end_retest_date])
-        gs.update_range_values('V4', [["=V2 - V1"]])
+        g_sheet.update_range_values('V2', [end_retest_date])
+        g_sheet.update_range_values('V4', [["=V2 - V1"]])
 
+    del g_sheet
     print(f"\n{datetime.now()}   *** end fixture gs = teardown ***\n")

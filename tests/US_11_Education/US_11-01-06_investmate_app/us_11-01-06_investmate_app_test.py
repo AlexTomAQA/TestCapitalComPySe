@@ -56,7 +56,6 @@ class TestInvestmateApp:
             ".00_01", "Testing QR code in Investmate block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'investmate')
@@ -80,7 +79,6 @@ class TestInvestmateApp:
             ".00_02", "Testing QR code in Easy learning block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'easy_learning')
@@ -103,7 +101,6 @@ class TestInvestmateApp:
             ".00_03", "Testing button [Explore Web Platform] in block 'capital.com'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ButtonExploreWebPlatform(d, menu_link)
@@ -138,7 +135,6 @@ class TestInvestmateApp:
             ".00_04", "Testing QR code in Capital block")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = QRCodeDecode(d, menu_link, 'capital')
@@ -162,12 +158,10 @@ class TestInvestmateApp:
             ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
         if cur_language in ['', 'pl', 'cn']:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-
         test_element = ButtonCreateAccountOnCounterBlock(d, menu_link)
         test_element.arrange_(menu_link)
 

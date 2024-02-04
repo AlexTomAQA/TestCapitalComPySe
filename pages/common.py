@@ -6,51 +6,61 @@
 import sys
 from datetime import datetime
 from random import randint
+
+import allure
 import pytest
 from conf import QTY_LINKS
 
 
 class Common:
 
-	def skip_if_eng_lang_and_fca_license(self, cur_language, cur_country):
+	@staticmethod
+	def skip_if_eng_lang_and_fca_license(cur_language, cur_country):
 		if cur_country == "gb" and cur_language == "":
 			pytest.skip("Current menu item is not present in Education menu for current parameters")
 
-
-	def check_language_in_list_and_skip_if_present(self, cur_language, list_languages):
+	@staticmethod
+	def check_language_in_list_and_skip_if_present(cur_language, list_languages):
 		if cur_language in list_languages:
 			pytest.skip(f"This test is not for '{cur_language}' language")
 		return
 
-	def check_language_in_list_and_skip_if_not_present(self, cur_language, list_languages):
+	@staticmethod
+	def check_language_in_list_and_skip_if_not_present(cur_language, list_languages):
 		if cur_language not in list_languages:
 			pytest.skip(f"This test is not for '{cur_language}' language")
 		return
 
-	def check_country_in_list_and_skip_if_present(self, cur_country, list_countries):
+	@staticmethod
+	def check_country_in_list_and_skip_if_present(cur_country, list_countries):
 		if cur_country in list_countries:
 			pytest.skip(f"This test is not for '{cur_country}' country")
 		return
 
-	def check_country_in_list_and_skip_if_not_present(self, cur_country, list_countries):
+	@staticmethod
+	def check_country_in_list_and_skip_if_not_present(cur_country, list_countries):
 		if cur_country not in list_countries:
 			pytest.skip(f"This test is not for '{cur_country}' country")
 		return
 
-	def skip_test_for_language(self, cur_language) -> None:
+	@staticmethod
+	def skip_test_for_language(cur_language) -> None:
 		pytest.skip(f"This test-case is not for {cur_language} language")
 
-	def skip_test_for_country(self, cur_country):
+	@staticmethod
+	def skip_test_for_country(cur_country):
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
-	def creating_file_of_hrefs(self, title_us, list_items, file_name, first_index=1):
+	@staticmethod
+	@allure.step(f'{datetime.now()}   Start Creating file of href method')
+	def creating_file_of_hrefs(title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
 
 		print(f"{datetime.now()}")
 		print(f"{datetime.now()}   {title_us} include {len(list_items) - first_index} child items for random select")
 
-		count_in = len(list_items) - first_index  # иссключаем первую (родительскую) страницу, если first_index = 1
+		count_in = len(list_items) - first_index  # исключаем первую (родительскую) страницу, если first_index = 1
 		count_out = 0
 		url_prev = ""
 		if count_in > 0:
@@ -84,8 +94,8 @@ class Common:
 		else:
 			print(f"{datetime.now()}   The test coverage = 0 %")
 
-
-	def generate_cur_item_link_parameter(self, file_name):
+	@staticmethod
+	def generate_cur_item_link_parameter(file_name):
 
 		list_item_link = list()
 		try:

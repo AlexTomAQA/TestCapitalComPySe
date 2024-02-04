@@ -139,11 +139,15 @@ class BasePage:
         """
         Navigates to a page given by the URL.
         """
+        print(f"{datetime.now()}   Current page URL = {self.driver.current_url}")
         self.driver.get(self.link)
         # time.sleep(1)
-        print(f"{datetime.now()}   Load page {self.link}")
+        if self.link not in self.driver.current_url:
+            print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
+            pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
+        print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
-    @allure.step("Start Accepting all cookies")
+    @allure.step(f"{datetime.now()}   Start Accepting all cookies")
     @HandleExcElementsDecorator()
     def button_accept_all_cookies_click(self):
         time_out = 30
@@ -155,17 +159,19 @@ class BasePage:
         button = self.element_is_visible(OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not visible after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             assert False, f"Button [Accept all cookies] is not visible after {time_out} sec."
         else:
             print(f"{datetime.now()}   => Button [Accept all cookies] is visible")
 
-        time.sleep(1)
+        time.sleep(0.5)
 
         print(f"{datetime.now()}   Is clickable Button [Accept all cookies] =>")
         button = self.driver.find_element(*OnTrustLocators.BUTTON_ACCEPT_ALL_COOKIE)
         button = self.element_is_clickable(button, time_out)
         if not button:
             print(f"{datetime.now()}   => Button [Accept all cookies] is not clickable after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             assert False, f"Button [Accept all cookies] is not clickable after {time_out} sec."
         else:
             print(f"{datetime.now()}   => Button [Accept all cookies] is clickable")
@@ -177,7 +183,7 @@ class BasePage:
         print(f"{datetime.now()}   => Accepted All Cookies")
         time.sleep(0.5)
 
-    @allure.step("Reject all cookies")
+    @allure.step(f"{datetime.now()}   Reject all cookies")
     @HandleExcElementsDecorator()
     def button_reject_all_cookies_click(self):
         print(f"\n"
@@ -611,3 +617,6 @@ class BasePage:
 #
 #         return inner_function
 #
+    def go_to_element(self, element):
+        self.driver.execute_script(
+            "return arguments[0].scrollIntoView({block: 'center'});", element)

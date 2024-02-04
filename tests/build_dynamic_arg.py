@@ -11,7 +11,7 @@ from datetime import datetime
 count = 1
 
 
-@allure.step("Start Building dynamic arguments for allure report generation")
+@allure.step(f"{datetime.now()}   Start Building dynamic arguments for allure report generation")
 def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                          us, desc_us, num_tc, desc_tc):
     """
@@ -39,6 +39,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     allure.dynamic.story(dynamic_story)
     allure.dynamic.title(
         f"TC_{us}{num_tc} | {desc_tc}. {bug_id}")
+
     del dynamic_story
     del dynamic_feature
     del dynamic_epic
@@ -47,7 +48,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     return bug_id
 
 
-def build_dynamic_arg_v3(obj, d, worker_id, cur_language, cur_country, cur_role,
+def build_dynamic_arg_v3(d, worker_id, cur_language, cur_country, cur_role,
                          us, desc_feature, num_tc, desc_story):
     """
     function for dynamic bild names pf epic, feature and story

@@ -82,31 +82,10 @@ jobs:
         if: always()
         run: python3 tests/hwinfo.py
 
-      - name: 6. Check code for errors by flake8 and format code with black
-        if: always()
-        continue-on-error: true
-        uses: ricardochaves/python-lint@v1.4.0
-        with:
-          python-root-list: ""
-          use-pylint: false
-          use-pycodestyle: false
-          use-flake8: true
-          use-black: false
-          use-mypy: false
-          use-isort: false
-          extra-pylint-options: ""
-          extra-pycodestyle-options: ""
-          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
-          extra-black-options: ". -S"
-          extra-mypy-options: ""
-          extra-isort-options: ""
-
       - name: 8. Run WATC_ReTest
         if: always()
         continue-on-error: true
-#        run: poetry run pytest -vv tests/ReTests/ReTests.py
-#        run: poetry run pytest -v tests/ReTests/ReTests.py
-        run: poetry run pytest -vs -n auto tests/ReTests/ReTests.py
+        run: poetry run pytest -v -n auto tests/ReTests/ReTests.py
 
       - name: 9. Upload artifact "allure-results"
         if: always()

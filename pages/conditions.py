@@ -29,17 +29,28 @@ url_language = "?"
 url_country = "?"
 # host = CapitalComPageSrc.URL
 test_link = "?"
+prev_role = "?"
 prev_language = "?"
 prev_country = "?"
-prev_role = "?"
 
 
 class Conditions(BasePage):
     """This class used as a base class for other page classes that represent specific pages on a website"""
+
     debug = False
 
-    @allure.step("Set preconditions")
-    def preconditions(self, d, host, end_point, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @allure.step(f"{datetime.now()}   Set preconditions")
+    def preconditions(
+        self,
+        d,
+        host,
+        end_point,
+        cur_language,
+        cur_country,
+        cur_role,
+        cur_login,
+        cur_password,
+    ):
         """
         Method Preconditions
         """
@@ -47,9 +58,9 @@ class Conditions(BasePage):
         global url_country
         # global host
         global test_link
+        global prev_role
         global prev_language
         global prev_country
-        global prev_role
 
         print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
         if test_link == "?":
@@ -72,8 +83,7 @@ class Conditions(BasePage):
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Prev. Role: {prev_role}")
         if cur_role != prev_role:
-            print(f"\n{datetime.now()}   "
-                  f'Run preconditions: set "{cur_role}" Role =>')
+            print(f"\n{datetime.now()}   Run preconditions: set {cur_role} Role =>")
 
             test_link = host
             self.link = test_link
@@ -109,8 +119,7 @@ class Conditions(BasePage):
         if language_cur == "":
             language_cur = "en"
         if cur_language != prev_language:
-            print(f"\n{datetime.now()}   "
-                  f'Run preconditions: set "{language_cur}" language =>')
+            print(f"\n{datetime.now()}   Run preconditions: set {language_cur} language =>")
 
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
@@ -125,8 +134,7 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev country: {prev_country}")
         if cur_country != prev_country:
-            print(f"\n{datetime.now()}   "
-                  f'Run preconditions: set "{cur_country}" country =>')
+            print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
 
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
@@ -134,41 +142,18 @@ class Conditions(BasePage):
             del page_menu
 
             prev_country = cur_country
-        print(f"\n{datetime.now()}   => Current country: {cur_country}")
+        print(f"{datetime.now()}   => Current country: {cur_country}")
 
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
         return test_link
 
-    # регистрация пользователя
-    # @allure.step("Registration")
-    # def to_do_registration(self, d, login, password):
-    #     """Register user on the login page.
-    #
-    #     Args:
-    #         d: web_driver
-    #         login: username user
-    #         password: password user
-    #     """
-    #     assert login != "", "Регистрация невозможна. Не указан e-mail"
-    #     assert password != "", "Регистрация невозможна. Не указан пароль"
-    #     # нажать в хедере на кнопку "Log in"
-    #     # page = HeaderElement(d, test_link)
-    #     # page.open_page()
-    #     page = Header(d, test_link)
-    #     page.header_button_login_click()
-    #     # проверить, открылась ли форма "Log in"
-    #     # перейти на форму "Signup", нажав кнопку "SignUp"
-    #     # проверить, открылась ли форма "SignUp"
-    #     # ввести логин, вести пароль, нажать подтвердить
-
     # авторизация пользователя
-    @allure.step("Start Authorisation")
+    @allure.step(f"{datetime.now()}   Start Authorisation")
     # @profile(precision=3)
     def to_do_authorisation(self, d, link, login, password):
         """Authorisation"""
-        print(f"\n"
-              f"{datetime.now()}   Start Autorization")
+        print(f"\n" f"{datetime.now()}   Start Autorization")
         # Setup wait for later
 
         assert login != "", "Авторизация невозможна. Не указан e-mail"
@@ -182,13 +167,13 @@ class Conditions(BasePage):
 
         # User's name is passed to the text element on the login page
         if not header.send_keys(login, *LoginFormLocators.LOGIN_INPUT_EMAIL):
-            pytest.fail(f"{datetime.now()}   => \"login\" is not inputted")
+            pytest.fail(f'{datetime.now()}   => "login" is not inputted')
 
         # Password is passed to the text element on the login page
         if not header.send_keys(password, *LoginFormLocators.LOGIN_INPUT_PASSWORD):
-            pytest.fail(f"{datetime.now()}   => \"password\" is not inputted")
+            pytest.fail(f'{datetime.now()}   => "password" is not inputted')
 
-        print(f"{datetime.now()}   => \"login\" and \"password\" are inputted")
+        print(f'{datetime.now()}   => "login" and "password" are inputted')
 
         print(f"{datetime.now()}   Click [Continue] button on [Login] form =>")
         header.click_button(*LoginFormLocators.LOGIN_CONTINUE)
@@ -196,7 +181,7 @@ class Conditions(BasePage):
         del header
 
         # Wait for the new tab to finish loading content
-        timeout = 60
+        timeout = 30
         print(f"{datetime.now()}   Set timeout = {timeout}")
         wait = WebDriverWait(d, timeout)
         wait.until(EC.title_is("Trading Platform | Capital.com"))
@@ -212,16 +197,15 @@ class Conditions(BasePage):
         del top_bar
         d.back()
 
-    @allure.step('Start DeAuthorisation')
+    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
     def to_do_de_authorisation(self, d, link):
         """DeAuthorisation"""
-        print(f"\n"
-              f"{datetime.now()}   Start DeAuthorisation")
+        print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
 
         assert Header(d, link).header_button_my_account_click(), "Button 'My account' missing"
         assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
 
-    @allure.step('Start Checking that Main Page is opened')
+    @allure.step("Start Checking that Main Page is opened")
     def arrange_0(self):
         """
         Checking Main Page is opened

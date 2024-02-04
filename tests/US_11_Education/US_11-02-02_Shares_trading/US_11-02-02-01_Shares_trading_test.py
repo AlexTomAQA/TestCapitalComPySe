@@ -3,7 +3,7 @@
 @Time    : 2023/11/03 00:40
 @Author  : Mike Taran
 """
-from datetime import datetime
+# from datetime import datetime
 
 import allure
 import pytest
@@ -63,10 +63,11 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_01", "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
-        page_conditions.arrange_0()
+        # page_conditions.arrange_0()
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -74,7 +75,6 @@ class TestSharesTradingItems:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try demo] on Main banner")
-    # @pytest.mark.skip(reason="Skipped for debugging")
     @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password,
@@ -88,6 +88,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -112,6 +113,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_03", "Testing button [Sell] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in ["ar", "zh", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -139,6 +141,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_04", "Testing button [Buy] in content block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in ["ar", "zh", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -166,6 +169,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_05", "Testing button [Start trading] in article")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -190,6 +194,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_06", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
 
@@ -215,6 +220,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_07", "Testing button [Get started] on Sticky bar")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in ["ar", "zh", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -242,6 +248,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_08", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
 
         page_conditions = Conditions(d, "")
@@ -270,6 +277,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_09", "Testing button in block [Horizontal banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in ["", "ar", "cn"]:
             Common().skip_test_for_language(cur_language)
@@ -288,8 +296,9 @@ class TestSharesTradingItems:
         banner01_hor_tp = ['169', '223', '254', '379', '392', '430', '429']
 
         test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
-                                        banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
+        test_element.full_test_with_tpi(
+            d, cur_language, cur_country, cur_role, cur_item_link,
+            banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
 
     @allure.step("Start test of button in block [Vertical banner]")
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -310,6 +319,7 @@ class TestSharesTradingItems:
             "11.02.02", "Education > Menu item [Shares trading]",
             ".01_10", "Testing button in block [Vertical banner]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         if cur_language in ["", "ar", "cn"]:
             Common().skip_test_for_language(cur_language)

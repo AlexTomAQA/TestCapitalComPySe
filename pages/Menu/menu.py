@@ -6,9 +6,9 @@
 import logging
 # import re
 import time
+from datetime import datetime
 
 import allure
-from datetime import datetime
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
@@ -60,7 +60,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step('Select "Education" menu, "CFD trading guide" submenu')
+    @allure.step(f'{datetime.now()}   Select "Education" menu, "CFD trading guide" submenu')
     def open_education_cfd_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Education" menu, "CFD trading guide" submenu =>')
@@ -124,6 +124,17 @@ class MenuSection(BasePage):
         cur_menu_link = self.sub_menu_indices_trading_move_focus_click(d, cur_language)
         return cur_menu_link
 
+    def open_education_cryptocurrency_trading_menu(self, d, cur_language, cur_country, link):
+
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+        self.menu_education_move_focus(d, cur_language, cur_country)
+        cur_menu_link = self.sub_menu_cryptocurrency_trading_move_focus_click(d, cur_language)
+        return cur_menu_link
+
     @allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
     def menu_language_and_country_move_focus(self, test_language):
         d = self.driver
@@ -147,7 +158,7 @@ class MenuSection(BasePage):
         #
 
         # menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
-        time.sleep(1)
+        time.sleep(0.5)
         ActionChains(d) \
             .move_to_element(d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)) \
             .pause(0.5) \
@@ -725,7 +736,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'CFD trading guide' hyperlink.")
+    @allure.step(f"{datetime.now()}   Click 'CFD trading guide' hyperlink.")
     def sub_menu_cfd_trading_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -810,80 +821,56 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Set language")
+    @allure.step(f"{datetime.now()}   Set language")
     def set_language(self, cur_language):
-        d = self.driver
 
         if cur_language == "":
             cur_language = "en"
         css_loc_lang = 'header a[data-type="nav_lang_' + cur_language + '"]'
-        language_str_list = d.find_elements(By.CSS_SELECTOR, css_loc_lang)
+        language_str_list = self.driver.find_elements(By.CSS_SELECTOR, css_loc_lang)
         if len(language_str_list) == 0:
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             pytest.fail(f"For test language '{cur_language}' problem № 2 with set language")
 
-        ActionChains(d) \
+        print(f"{datetime.now()}   Move focus on {cur_language} item and click =>")
+        ActionChains(self.driver) \
             .move_to_element(language_str_list[0]) \
             .pause(0.5) \
             .click() \
             .perform()
 
-        return d.current_url
+        print(f"{datetime.now()}   => Focus moved on {cur_language} item and clicked")
+        print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
+        return self.driver.current_url
 
-    @allure.step(f"{datetime.now()}.   Start Set country")
+    @allure.step(f"{datetime.now()}   Start Set country")
     def set_country(self, cur_country):
-        d = self.driver
 
-        elements = d.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
+        elements = self.driver.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
             pytest.fail(f"For test country '{cur_country}' problem № 1 with set country")
 
-        ActionChains(d) \
+        ActionChains(self.driver) \
             .move_to_element(elements[0]) \
             .pause(0.5) \
             .click() \
             .perform()
 
-        # elements[0].click()
-
-        # self.send_keys(cur_country, *MenuLanguageAndCountry.COUNTRIES_SEARCH_INPUT)
-        # time.sleep(0.5)
-
-        # countries_list = d.find_elements(*MenuLanguageAndCountry.COUNTRIES_LIST)
-        # if len(countries_list) == 0:
-        #     print(f"For test country '{cur_country}' problem № 2 with set country")
-        #
-        # ActionChains(d) \
-        #     .move_to_element(countries_list[0]) \
-        #     .pause(0.5) \
-        #     .click(countries_list[0]) \
-        #     .perform()
-
         css_sel_country = 'a[data-country="' + cur_country + '"]'
-        country_str_list = d.find_elements(By.CSS_SELECTOR, css_sel_country)
+        country_str_list = self.driver.find_elements(By.CSS_SELECTOR, css_sel_country)
         if len(country_str_list) == 0:
             # time.sleep(10)
             pytest.fail(f"Test country '{cur_country}' not present in country list")
 
-        ActionChains(d) \
+        ActionChains(self.driver) \
             .move_to_element(country_str_list[0]) \
             .pause(0.5) \
             .click(country_str_list[0]) \
             .perform()
 
-# -----------------------
-#         time_out = 3
-#         country_str_list = self.element_is_visible(["By.CSS_Selector", css_sel_country], time_out)
-#         if not country_str_list:
-#             print(f"{datetime.now()}   => Country item is not visible after {time_out} sec.")
-#             assert False, f"Country item in drop down country list is not visible after {time_out} sec."
-#         else:
-#             print(f"{datetime.now()}   => Country item in drop down country list is visible")
-#
-#         country_str_list.click()
-#         time.sleep(0.5)
-# ------------------------
-
-        return d.current_url
+        print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
+        return self.driver.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'ETF trading' hyperlink.")
     def sub_menu_etf_trading_move_focus_click(self, d, test_language):

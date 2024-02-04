@@ -45,7 +45,7 @@ def check_cur_href(cur_item_link, list_href):
 class TestCFDTradingGuide:
     page_conditions = None
 
-    @allure.step("Start test of button [Start trading] on Main banner")
+    @allure.step(f"{datetime.now()}   Start test of button [Start trading] on Main banner")
     @pytest.mark.test_01
     def test_01_main_banner_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -60,6 +60,7 @@ class TestCFDTradingGuide:
             us, "Education > Menu item [CFD trading guide]",
             tc, "Testing button [Start Trading] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -70,7 +71,7 @@ class TestCFDTradingGuide:
         test_element = MainBannerStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of button [Try demo] on Main banner")
+    @allure.step(f"{datetime.now()}   Start test of button [Try demo] on Main banner")
     @pytest.mark.test_02
     def test_02_main_banner_try_demo_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -83,6 +84,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".01_02", "Testing button [Try demo] on Main banner")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -93,7 +95,7 @@ class TestCFDTradingGuide:
         test_element = MainBannerTryDemo(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of buttons [Trade] in Most traded block")
+    @allure.step(f"{datetime.now()}   Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
     def test_03_most_traded_trade_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -106,6 +108,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".01_03", "Testing button [Trade] in Most traded block")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -117,7 +120,7 @@ class TestCFDTradingGuide:
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of button [Create your account] in block [Steps trading]")
+    @allure.step(f"{datetime.now()}   Start test of button [Create your account] in block [Steps trading]")
     @pytest.mark.test_04
     def test_04_block_steps_trading_button_create_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -130,6 +133,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".01_04", "Testing button [Create your account] in block [Steps trading]")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
 
@@ -188,7 +192,7 @@ class TestCFDTradingGuide:
     #     test_element = BuyButtonTable(d, cur_item_link)
     #     test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link, cur_type_fi, cur_tab)
     #
-    @allure.step("Start test of button [Start trading] in article")
+    @allure.step(f"{datetime.now()}   Start test of button [Start trading] in article")
     @pytest.mark.test_07
     def test_07_start_trading_in_article_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
@@ -201,6 +205,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".01_07", "Testing button [Start trading] in article")
 
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "zh"])
 
