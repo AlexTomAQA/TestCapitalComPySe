@@ -5,7 +5,7 @@ import pytest
 from selenium.common import StaleElementReferenceException
 
 # from pages.Elements.AssertClass import AssertClass
-from tests.ReTestsManual.pages.markets.markets import MarketsSection, WaysToTradeSection
+from tests.ReTestsManual.pages.menu_section.menu_section import MarketsSection, WaysToTradeSection
 from tests.ReTestsManual.pages.menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
@@ -232,7 +232,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
     @pytest.mark.test_04
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_04(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -292,3 +292,86 @@ class TestManualBugs:
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#05:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+    @pytest.mark.test_05
+    @pytest.mark.skip(reason="Skipped for debugging")
+    def test_05(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Page "Discover the benefits of going Pro with capital.com"  is opened after clicking the [I am eligible] button
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        3. Click the [I am eligible] button
+        4. Click the "Back" button
+        5. Hover over the [Ways to trade] menu section
+        6. Click the [Professional] menu item
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".05", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        menu_section = WaysToTradeSection(d, link)
+        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        d.back()
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
+        assert len(apply_btn) == 0, ('Bug#05. '
+                                     'Expected result: "Professional" page is opened'
+                                     '\n'
+                                     'Actual result: Page "Discover the benefits of going Pro with capital.com" '
+                                     'is opened ')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
+                 'the block "Discover the benefits')
+    @pytest.mark.test_06
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_06(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The trading platform page is opened after clicking button [Apply] in the block "Discover the benefits..."
+        on the "Professional" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        3. Click the [I am eligible] button
+        steps
+        1. Click the [Professional] menu item
+        2. Go to block "Discover the benefits..."
+        3. Click the button [Apply]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".06", 'The trading platform page is opened after clicking button [Apply] '
+                   'in the block "Discover the benefits')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        menu_section = WaysToTradeSection(d, link)
+        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        d.back()
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
+        assert len(apply_btn) == 0, ('Bug#06. '
+                                     'Expected result: "The Sign Up/Login form is opened'
+                                     '\n'
+                                     'Actual result: The trading platform page is opened')
