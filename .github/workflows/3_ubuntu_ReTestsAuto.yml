@@ -82,7 +82,7 @@ jobs:
         if: always()
         run: python3 tests/hwinfo.py
 
-      - name: 8. Run WATC_ReTest
+      - name: 8. Run ReTestsAuto
         if: always()
         continue-on-error: true
         run: poetry run pytest -v -n auto tests/ReTestsAuto/ReTestsAuto.py
