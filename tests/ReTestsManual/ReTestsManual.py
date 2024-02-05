@@ -5,9 +5,11 @@ import pytest
 from selenium.common import StaleElementReferenceException
 
 from pages.Elements.AssertClass import AssertClass
+from tests.ReTestsManual.pages.menu.menu import MainMenu
+from tests.ReTestsManual.pages.menu_section.menu_section import MenuSections
+
 # from pages.Elements.AssertClass import AssertClass
-from tests.ReTestsManual.pages.menu_section.menu_section import MarketsSection, WaysToTradeSection
-from tests.ReTestsManual.pages.menu.menu import MenuSection
+
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -45,11 +47,11 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
 
         # определение количества страниц
-        markets_page = MarketsSection(d)
+        markets_page = MenuSections(d)
         # pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
         # qty_pages = int(pagination[-2].text)
         qty_pages = 1
@@ -127,11 +129,11 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
 
         # определение количества страниц
-        markets_page = MarketsSection(d)
+        markets_page = MenuSections(d)
         pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         qty_pages = int(pagination[-2].text)
         # qty_pages = 1
@@ -201,11 +203,11 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
 
         # определение количества страниц
-        markets_page = MarketsSection(d)
+        markets_page = MenuSections(d)
         # pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         # qty_pages = int(pagination[-2].text)
         qty_pages = 1
@@ -255,11 +257,11 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         menu.open_markets_indices_sub_menu(d, cur_language, cur_country, link)
 
         # определение количества страниц
-        markets_page = MarketsSection(d)
+        markets_page = MenuSections(d)
         # pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         # qty_pages = int(pagination[-2].text)
         qty_pages = 1
@@ -321,9 +323,9 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-        menu_section = WaysToTradeSection(d, link)
+        menu_section = MenuSections(d, link)
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         d.back()
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -365,9 +367,9 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-        menu_section = WaysToTradeSection(d, link)
+        menu_section = MenuSections(d, link)
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
@@ -411,9 +413,9 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-        menu_section = WaysToTradeSection(d, link)
+        menu_section = MenuSections(d, link)
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
@@ -432,7 +434,7 @@ class TestManualBugs:
     @allure.step('Bug#08:  Sidebar "My account" is not displayed when clicking on the [My account] button '
                  ' in the Header ')
     @pytest.mark.test_08
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_08(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -454,7 +456,7 @@ class TestManualBugs:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
+        menu = MainMenu(d, link)
 
         menu_login = menu.elements_are_present(*menu.MENU_LOGIN)
         if len(menu_login) > 0:
@@ -467,3 +469,34 @@ class TestManualBugs:
                                                          'Expected result: Sidebar "My account" is displayed'
                                                          '\n'
                                                          'Actual result: The trading platform page is opened')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#09:  Bread crumbs are not displayed in the "Professional" page')
+    @pytest.mark.test_09
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_09(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Bread crumbs are not displayed in the "Professional" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".09", 'Bread crumbs are not displayed in the "Professional" page')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        bred_crumbs = menu.elements_are_located(sub_menu.BREADCRUMBS)
+        if not bred_crumbs:
+            assert False, ('Bug#09. Expected Result: Bread crumbs are displayed'
+                           '\n'
+                           'Actual Result: Bread crumbs are  not displayed')

@@ -11,7 +11,7 @@ from selenium.webdriver import ActionChains
 from pages.base_page import BasePage
 
 
-class MenuSection(BasePage):
+class MainMenu(BasePage):
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
@@ -27,9 +27,6 @@ class MenuSection(BasePage):
     # account
     MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
     MENU_LOGIN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
-
-
-
 
     @allure.step('Select "Way_to_trade" menu, "Professional" submenu')
     def open_waytotrade_professional_sub_menu(self, d, cur_language, cur_country, link):
