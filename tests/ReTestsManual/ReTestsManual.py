@@ -4,7 +4,7 @@ import allure
 import pytest
 from selenium.common import StaleElementReferenceException
 
-from pages.Elements.AssertClass import AssertClass
+# from pages.Elements.AssertClass import AssertClass
 from tests.ReTestsManual.pages.markets.markets import MarketsSection, WaysToTradeSection
 from tests.ReTestsManual.pages.menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -12,16 +12,16 @@ from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
 
-# @pytest.mark.Bugs_26012024_CCW
+# @pytest.mark.Bugs_26012024_CCW_WEB
 class TestManualBugs:
     page_conditions = None
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
-    @allure.step("Bud#1: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
+    @allure.step("Bug#01: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
     @pytest.mark.test_01
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -36,7 +36,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW", "Capital.com FCA",
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
                    " page after clicking")
 
@@ -59,9 +59,9 @@ class TestManualBugs:
         error_trade_instrument_list = []
         for i in range(qty_pages):
             print("page:", i + 1)
-            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             for j in range(len(most_traded_list)):
-                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
 
                 markets_page.go_to_element(most_traded_list[j])
                 most_traded_instrument_name = most_traded_list[j].text
@@ -70,16 +70,16 @@ class TestManualBugs:
                 except StaleElementReferenceException:
                     print("StaleElementReferenceException")
                     most_traded_list = markets_page.elements_are_located(
-                        markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+                        markets_page.MARKETS_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
-                err_404 = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_INSTRUMENT_404, 1)
+                err_404 = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_404, 1)
                 if err_404:
                     error_trade_instrument_list.append(most_traded_instrument_name + ":404")
                     d.back()
                 else:
                     content_list = markets_page.elements_are_located(
-                        markets_page.MARKETS_FOREX_MOST_TRADE_INSTRUMENT_CONTENT, 1)
+                        markets_page.MARKETS_MOST_TRADE_INSTRUMENT_CONTENT, 1)
                     if content_list:
                         d.back()
                     else:
@@ -88,12 +88,12 @@ class TestManualBugs:
             print("trade instrument: ", len(most_trade_instrument_list), most_trade_instrument_list)
             print("error_404: ", error_trade_instrument_list)
 
-            pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
+            pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
         if len(most_trade_instrument_list) > 0:
-            assert False, (f"Bug#1. Expected Result: Content of the Block is displayed. \n"
+            assert False, (f"Bug#01. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
                            f"error_404: {error_trade_instrument_list}. \n"
                            f"trade instrument: {len(most_trade_instrument_list)} {most_trade_instrument_list}\n"
@@ -102,9 +102,9 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
-    @allure.step("Bud#1: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
-    @pytest.mark.test_01
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
+    @pytest.mark.test_48
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -113,13 +113,13 @@ class TestManualBugs:
         (Floating bug, also open another tab in parallel with another licence(Try all three roles) )
             1. Hover over the [Markets] menu section
             2. Click the [Forex] menu item
-            3. Scroll down to the 'Forex Market" widget
+            3. Scroll down to the "Forex Market" widget
             4. Click the "USD/JPY"  trading instrument
         """
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW", "Capital.com FCA",
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
 
         page_conditions = Conditions(d, "")
@@ -131,7 +131,7 @@ class TestManualBugs:
 
         # определение количества страниц
         markets_page = MarketsSection(d)
-        pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
+        pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         qty_pages = int(pagination[-2].text)
         # qty_pages = 1
         print("qty_pages=", qty_pages)
@@ -140,9 +140,9 @@ class TestManualBugs:
         error_trade_instrument_list = []
         for i in range(qty_pages):
             print("page:", i + 1)
-            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             for j in range(len(most_traded_list)):
-                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
 
                 markets_page.go_to_element(most_traded_list[j])
                 most_traded_instrument_name = most_traded_list[j].text
@@ -151,10 +151,10 @@ class TestManualBugs:
                 except StaleElementReferenceException:
                     print("StaleElementReferenceException")
                     most_traded_list = markets_page.elements_are_located(
-                        markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+                        markets_page.MARKETS_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
-                err_404 = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_INSTRUMENT_404, 1)
+                err_404 = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_404, 1)
                 if err_404:
                     error_trade_instrument_list.append(most_traded_instrument_name + ":404")
                     print("error_404: ", error_trade_instrument_list)
@@ -168,7 +168,7 @@ class TestManualBugs:
                 else:
                     d.back()
 
-            pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
+            pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
@@ -177,9 +177,9 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
-    @allure.step('Bud#2:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
-    @pytest.mark.test_01
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @allure.step('Bug#02:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
+    @pytest.mark.test_02
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_02(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -193,7 +193,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW", "Capital.com FCA",
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable')
 
         page_conditions = Conditions(d, "")
@@ -205,7 +205,7 @@ class TestManualBugs:
 
         # определение количества страниц
         markets_page = MarketsSection(d)
-        # pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
+        # pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         # qty_pages = int(pagination[-2].text)
         qty_pages = 1
         print("qty_pages=", qty_pages)
@@ -213,16 +213,82 @@ class TestManualBugs:
         # перебор страниц
         for i in range(qty_pages):
             print("page:", i + 1)
-            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LIST)
-            most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_FOREX_MOST_TRADE_LINK_LIST)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LIST)
+            most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             # проверяем, что ссылки для полей sell/buy существуют
             if len(most_traded_list) == len(most_traded_link_list):
                 assert False, (
-                    "Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
+                    "Bug#02. Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
                     "Transition to the trading platform / authorized.\n"
                     "Actual Result: Page of the corresponding trading instrument is opened ")
 
-            pagination = markets_page.elements_are_located(markets_page.MARKETS_LIST_PAGINATION)
+            pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
+            if i != qty_pages - 1:
+                pagination[-1].click()
+            time.sleep(1)
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+    @pytest.mark.test_04
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_04(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Block "Key Stats" is not displayed to the right of the Block "Trading Condition" after clicking any
+        trading instrument in the Widget "Indices Markets""Buy"
+        1. Hover over the [Markets] menu section
+        2. Click the [Indices] menu item
+        3. Scroll down to the Widget "Indices Markets"
+        4. Click any trading instrument
+        5. Scroll to Block "Trading Condition"
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        menu.open_markets_indices_sub_menu(d, cur_language, cur_country, link)
+
+        # определение количества страниц
+        markets_page = MarketsSection(d)
+        # pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
+        # qty_pages = int(pagination[-2].text)
+        qty_pages = 1
+        print("qty_pages=", qty_pages)
+
+        # перебор страниц
+        for i in range(qty_pages):
+            print("page:", i + 1)
+            most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
+            for j in range(len(most_traded_list)):
+                most_traded_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
+
+                markets_page.go_to_element(most_traded_list[j])
+                try:
+                    markets_page.element_is_clickable(most_traded_list[j]).click()
+                except StaleElementReferenceException:
+                    print("StaleElementReferenceException")
+                    most_traded_list = markets_page.elements_are_located(
+                        markets_page.MARKETS_MOST_TRADE_LINK_LIST)
+                    markets_page.element_is_clickable(most_traded_list[j]).click()
+
+                key_stat_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS,
+                                                                  1)
+                assert len(key_stat_list) == 2, ('Bug#04. '
+                                                 'Expected result: Block "Key Stats" is displayed to the right of '
+                                                 'the Block "Trading Condition"'
+                                                 '\n'
+                                                 'Actual result: Block "Key Stats" is not displayed ')
+                d.back()
+            pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
