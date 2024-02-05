@@ -216,7 +216,9 @@ class MenuSection(BasePage):
             menu[0]
         )
 
-        if not self.element_is_visible(ed_menu_locator, 5):
+        element = self.element_is_visible(ed_menu_locator, 5)
+        print(f"{datetime.now()}   element = {element}")
+        if not element:
             print(f"{datetime.now()}   => Education menu not visible")
             pytest.fail("Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
@@ -229,7 +231,8 @@ class MenuSection(BasePage):
             .perform()
 
         del menu
-        print(f"{datetime.now()}   => Education menu focus moved")
+        del element
+        print(f"{datetime.now()}   => Focus moved to Education menu")
 
     @allure.step(f"{datetime.now()}.   Focus move to 'learning hub' menu item and click (US_11.01.01).")
     def sub_menu_learning_hub_move_focus_click(self, d, test_language, test_country):
