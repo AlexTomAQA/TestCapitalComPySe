@@ -11,7 +11,7 @@ from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
 from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
 from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-from pages.Elements.ButtonSellInIndexTable import SellButtonIndexTable
+from pages.Elements.ButtonSellInIndicesTable import SellButtonIndicesTable
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
 from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
@@ -266,13 +266,12 @@ class TestIndicesTrading:
         test_element = BuyButtonContentBlock(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of button [Sell] in 'CFDs table' table")
+    @allure.step("Start test of button [Sell] in Indices table - 'CFDs table' ")
     @pytest.mark.test_09
-    def test_09_cfds_table_block_button_sell(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link,
-             cur_tab):
+    def test_09_indices_cfds_table_block_button_sell(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link, cur_tab):
         """
-        Check: Button [Sell] in 'CFDs table' table in {cur _tab} tab
+        Check: Button [Sell] in Indices table - 'CFDs table' in {cur _tab} tab
         Language: EN, RU, ZH. License: All.
         """
         test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
@@ -289,7 +288,7 @@ class TestIndicesTrading:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = SellButtonIndexTable(d, cur_item_link, bid)
+        test_element = SellButtonIndicesTable(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link, cur_tab)
 
     @allure.step("Start test of button in block [Vertical banner]")
@@ -371,5 +370,3 @@ class TestIndicesTrading:
         test_element = ButtonOnHorizontalBanner(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link,
                                         banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
-
-
