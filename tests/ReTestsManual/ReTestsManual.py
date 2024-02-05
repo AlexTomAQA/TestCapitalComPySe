@@ -336,11 +336,11 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoAuth", "NoReg"])
     @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @pytest.mark.test_06
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_06(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -379,3 +379,49 @@ class TestManualBugs:
                 test_element.assert_login(d, cur_language, cur_item_link)
             # case "Auth":
             #     test_element.assert_trading_platform_v4(d, cur_item_link)
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step('Bug#07:  The trading platform page is not opened after clicking button [Apply] in '
+                 'the block "Discover the benefits')
+    @pytest.mark.test_07
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_07(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The trading platform page is not opened after clicking button [Apply] in the block "Discover the benefits..."
+        on the "Professional" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        3. Click the [I am eligible] button
+        steps
+        1. Click the [Professional] menu item
+        2. Go to block "Discover the benefits..."
+        3. Click the button [Apply]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".07", 'The trading platform page is not opened after clicking button [Apply] '
+                   'in the block "Discover the benefits')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        menu_section = WaysToTradeSection(d, link)
+        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
+
+        test_element = AssertClass(d, cur_item_link)
+        match cur_role:
+            # case "NoReg":
+            #     test_element.assert_signup(d, cur_language, cur_item_link)
+            # case "NoAuth":
+            #     test_element.assert_login(d, cur_language, cur_item_link)
+            case "Auth":
+                test_element.assert_trading_platform_v4(d, cur_item_link)
