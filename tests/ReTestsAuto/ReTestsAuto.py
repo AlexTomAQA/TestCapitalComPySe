@@ -12,11 +12,11 @@ from datetime import datetime
 import allure
 import pytest
 
-from tests.ReTests.conftest import (
+from tests.ReTestsAuto.conftest import (
     lang_list, country_list, role_list, list_rows, status_list, unique_test, retest_skipped_tests, no_new_column, host
 )
-from tests.ReTests.retest_data import us_data
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
+from tests.ReTestsAuto.retest_data import us_data
+from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 
 test_id = None
 browser_name = None
@@ -77,8 +77,8 @@ def pytest_generate_tests(metafunc):
 
 class TestReTests:
 
-    @allure.step("Start TestCase from ReTests")
-    @allure.epic("ReTests")
+    @allure.step("Start TestCase from ReTestsAuto")
+    @allure.epic("ReTestsAuto")
     def test_retests(self, gs, number_of_row, values):
 
         print(f"\n\n\n{datetime.now()}   0. Get Values row =>")

@@ -1,5 +1,5 @@
 from datetime import datetime
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
+from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 
 
 def check_gs_table(bid, bug_n):

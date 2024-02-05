@@ -14,7 +14,7 @@ from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
 from pages.base_page import BasePage
 from pages.Signup_login.signup_login import SignupLogin
-from tests.ReTests.ReTest_table_fill import retest_table_fill
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class AssertClass(BasePage):

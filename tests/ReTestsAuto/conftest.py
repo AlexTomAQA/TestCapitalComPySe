@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
-# from tests.ReTests.ReTests import unique_test, retest_skipped_tests, no_new_column
+from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
+# from tests.ReTestsAuto.ReTestsAuto import unique_test, retest_skipped_tests, no_new_column
 
 # ===========================================================
 # выбор необходимых языков для ретеста

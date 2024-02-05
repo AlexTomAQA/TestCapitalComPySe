@@ -4,8 +4,8 @@ import allure
 import pytest
 from selenium.common import StaleElementReferenceException
 
-from tests.Manual_bugs_retest.pages.markets.markets import MarketsSection
-from tests.Manual_bugs_retest.pages.menu.menu import MenuSection
+from tests.ReTestsManual.pages.markets.markets import MarketsSection
+from tests.ReTestsManual.pages.menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
