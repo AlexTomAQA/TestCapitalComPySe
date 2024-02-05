@@ -211,6 +211,11 @@ class MenuSection(BasePage):
             pytest.skip(f"[Education] menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present")
 
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
         if not self.element_is_visible(ed_menu_locator, 5):
             print(f"{datetime.now()}   => Education menu not visible")
             pytest.fail("Education menu not visible")
