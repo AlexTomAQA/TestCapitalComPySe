@@ -8,7 +8,7 @@ from datetime import datetime
 from pages.base_page import BasePage
 from pages.AppStore.app_store_locators import AppStoreLocators
 from test_data.app_store_data import data, data_investmate
-from tests.ReTests.ReTest_table_fill import retest_table_fill
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class AppStore(BasePage):

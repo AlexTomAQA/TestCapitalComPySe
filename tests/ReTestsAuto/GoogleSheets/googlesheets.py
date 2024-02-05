@@ -40,8 +40,8 @@ class GoogleSheet:
     def __init__(self):
         self.creds = None
 
-        if os.path.exists("./tests/ReTests/token.json"):
-            self.creds = Credentials.from_authorized_user_file("./tests/ReTests/token.json", self.SCOPES)
+        if os.path.exists("./tests/ReTestsAuto/token.json"):
+            self.creds = Credentials.from_authorized_user_file("./tests/ReTestsAuto/token.json", self.SCOPES)
 
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
@@ -49,10 +49,10 @@ class GoogleSheet:
             else:
                 print('flow')
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    "./tests/ReTests/credentials.json", self.SCOPES
+                    "./tests/ReTestsAuto/credentials.json", self.SCOPES
                 )
                 self.creds = flow.run_local_server(port=0)
-            with open("./tests/ReTests/token.json", "w") as token:
+            with open("./tests/ReTestsAuto/token.json", "w") as token:
                 token.write(self.creds.to_json())
 
         try:

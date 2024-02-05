@@ -17,7 +17,7 @@ from pages.Capital.Trading_platform.trading_platform_locators \
 from pages.Capital.Trading_platform.trading_platform_locators \
     import TopBarLocators
 from test_data.trading_platform_data import data
-from tests.ReTests.ReTest_table_fill import retest_table_fill
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class TradingPlatform(BasePage):
