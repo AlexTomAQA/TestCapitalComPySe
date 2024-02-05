@@ -10,11 +10,35 @@ from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
 
+
+# markets
 MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
-SUB_MENU_MARKETS_FOREX = (By.CSS_SELECTOR, '[data-type="nav_id690"')
+SUB_MENU_MARKETS_FOREX = (By.CSS_SELECTOR, '[data-type="nav_id690"]')
+SUB_MENU_MARKETS_INDICES = (By.CSS_SELECTOR, '[data-type="nav_id693"]')
+SUB_MENU_MARKETS_SHARES = (By.CSS_SELECTOR, '[data-type="nav_id694"]')
+SUB_MENU_MARKETS_COMMODITIES = (By.CSS_SELECTOR, '[data-type="nav_id701"]')
+SUB_MENU_MARKETS_ESG = (By.CSS_SELECTOR, '[data-type="nav_id738"]')
+# ways to trade
+MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
+SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
 
 
 class MenuSection(BasePage):
+
+    @allure.step('Select "Way_to_trade" menu, "Professional" submenu')
+    def open_waytotrade_professional_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "Professional" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, MENU_WAYS_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
 
     @allure.step('Select "Markets" menu, "Forex" submenu')
     def open_markets_forex_sub_menu(self, d, cur_language, cur_country, link):
@@ -27,6 +51,66 @@ class MenuSection(BasePage):
 
         self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
         self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_FOREX)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "Indices" submenu')
+    def open_markets_indices_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Indices" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_INDICES)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "Shares" submenu')
+    def open_markets_shares_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Shares" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_SHARES)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "Commodities" submenu')
+    def open_markets_commodities_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Commodities" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_COMMODITIES)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "ESG" submenu')
+    def open_markets_esg_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "ESG" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_ESG)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
