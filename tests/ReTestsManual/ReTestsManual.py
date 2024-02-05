@@ -24,7 +24,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step("Bug#01: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
     @pytest.mark.test_01
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -107,7 +107,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
     @pytest.mark.test_48
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -182,7 +182,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#02:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
     @pytest.mark.test_02
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_02(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -235,7 +235,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
     @pytest.mark.test_04
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_04(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -301,7 +301,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#05:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
     @pytest.mark.test_05
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_05(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -342,7 +342,7 @@ class TestManualBugs:
     @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @pytest.mark.test_06
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_06(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -388,7 +388,7 @@ class TestManualBugs:
     @allure.step('Bug#07:  The trading platform page is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @pytest.mark.test_07
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_07(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -434,7 +434,7 @@ class TestManualBugs:
     @allure.step('Bug#08:  Sidebar "My account" is not displayed when clicking on the [My account] button '
                  ' in the Header ')
     @pytest.mark.test_08
-    @pytest.mark.skip(reason="Skipped for debugging")
+    # @pytest.mark.skip(reason="Skipped for debugging")
     def test_08(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -500,3 +500,36 @@ class TestManualBugs:
             assert False, ('Bug#09. Expected Result: Bread crumbs are displayed'
                            '\n'
                            'Actual Result: Bread crumbs are  not displayed')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#10:  Link "Apply here" is not clickable in the "No Capital.com account yet?"')
+    @pytest.mark.test_10
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_10(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Link "Apply here" is not clickable in the "No Capital.com account yet?" in the block "Apply
+        now" in the menu item "Professional"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        link1 = d.current_url
+        apply_here = sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
+        apply_here.click()
+        link2 = d.current_url
+        assert link2 != link1, ('Bug#10. Expected Result: Link "Apply here" is clickable'
+                                '\n'
+                                'Actual Result: Link "Apply here" is not clickable')

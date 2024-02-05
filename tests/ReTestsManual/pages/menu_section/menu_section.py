@@ -24,4 +24,5 @@ class MenuSections(BasePage):
     # way_to_trade
     WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN = (By.CSS_SELECTOR, '[data-type="eligibility_block_btn1"]')
     WAYSTOTRADE_PROFESSIONAL_APPLY_BTN = (By.CSS_SELECTOR, '[data-type="background_banner_block_btn1_custom"]')
+    WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN = (By.CSS_SELECTOR, 'button[data-type="apply_now_block_btn1"]')
 
