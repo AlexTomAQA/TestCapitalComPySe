@@ -64,8 +64,8 @@ if retest == 'True':
         role_list = (sys.argv[5].split('=')[1],)
 else:
     role_list = (
-        # "Auth",
-        # "NoAuth",  # "Reg/NoAuth"
+        "Auth",
+        "NoAuth",  # "Reg/NoAuth"
         "NoReg",
     )
 
@@ -88,7 +88,7 @@ def cur_role(request):
     params=[
         # "",  # "en" - 21 us
         # "es",  # 20 us
-        # "de",  # 15 us
+        "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
@@ -99,7 +99,7 @@ def cur_role(request):
         # "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
@@ -126,9 +126,9 @@ def cur_language(request):
     scope="class",
     params=[
         "gb",  # United Kingdom - "FCA"
-        "de",  # Germany - "CYSEC"
-        "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "de",  # Germany - "CYSEC"
+        # "au",  # Australia - "ASIC"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
