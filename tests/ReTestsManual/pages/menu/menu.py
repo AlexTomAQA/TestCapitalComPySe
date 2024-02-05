@@ -1,4 +1,4 @@
-import logging
+# import logging
 # import re
 import time
 
@@ -11,19 +11,25 @@ from selenium.webdriver import ActionChains
 from pages.base_page import BasePage
 
 
-# markets
-MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
-SUB_MENU_MARKETS_FOREX = (By.CSS_SELECTOR, '[data-type="nav_id690"]')
-SUB_MENU_MARKETS_INDICES = (By.CSS_SELECTOR, '[data-type="nav_id693"]')
-SUB_MENU_MARKETS_SHARES = (By.CSS_SELECTOR, '[data-type="nav_id694"]')
-SUB_MENU_MARKETS_COMMODITIES = (By.CSS_SELECTOR, '[data-type="nav_id701"]')
-SUB_MENU_MARKETS_ESG = (By.CSS_SELECTOR, '[data-type="nav_id738"]')
-# ways to trade
-MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
-SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
-
-
 class MenuSection(BasePage):
+
+    # markets
+    MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
+    SUB_MENU_MARKETS_FOREX = (By.CSS_SELECTOR, '[data-type="nav_id690"]')
+    SUB_MENU_MARKETS_INDICES = (By.CSS_SELECTOR, '[data-type="nav_id693"]')
+    SUB_MENU_MARKETS_SHARES = (By.CSS_SELECTOR, '[data-type="nav_id694"]')
+    SUB_MENU_MARKETS_COMMODITIES = (By.CSS_SELECTOR, '[data-type="nav_id701"]')
+    SUB_MENU_MARKETS_ESG = (By.CSS_SELECTOR, '[data-type="nav_id738"]')
+    # ways to trade
+    MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
+    SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
+
+    # account
+    MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
+    MENU_LOGIN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+
+
+
 
     @allure.step('Select "Way_to_trade" menu, "Professional" submenu')
     def open_waytotrade_professional_sub_menu(self, d, cur_language, cur_country, link):
@@ -34,8 +40,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_WAYS_TO_TRADE)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
+        self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -49,8 +55,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_FOREX)
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_FOREX)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -64,8 +70,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_INDICES)
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_INDICES)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -79,8 +85,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_SHARES)
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_SHARES)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -94,8 +100,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_COMMODITIES)
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_COMMODITIES)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -109,8 +115,8 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.main_menu_move_focus(d, cur_language, MENU_MARKETS)
-        self.sub_menu_move_focus_click(d, cur_language, SUB_MENU_MARKETS_ESG)
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_ESG)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url

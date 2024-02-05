@@ -386,7 +386,7 @@ class TestManualBugs:
     @allure.step('Bug#07:  The trading platform page is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @pytest.mark.test_07
-    # @pytest.mark.skip(reason="Skipped for debugging")
+    @pytest.mark.skip(reason="Skipped for debugging")
     def test_07(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
@@ -425,3 +425,45 @@ class TestManualBugs:
             #     test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step('Bug#08:  Sidebar "My account" is not displayed when clicking on the [My account] button '
+                 ' in the Header ')
+    @pytest.mark.test_08
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_08(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Sidebar "My account" is not displayed when clicking on the [My account] button  in the Header
+        1. Navigate to Capital.com
+        2. Selected the FCA license
+        3. Selected EN language
+
+        1. Click Button [My account]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
+                   'in the Header')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+
+        menu_login = menu.elements_are_present(*menu.MENU_LOGIN)
+        if len(menu_login) > 0:
+            assert False, 'Bug#08. Interruption of authorization'
+
+        account_btn = menu.element_is_visible(menu.MENU_ACCOUNT)
+        account_btn_link = account_btn.get_attribute("href")
+
+        assert account_btn_link != "/trading/platform", ('Bug#08. '
+                                                         'Expected result: Sidebar "My account" is displayed'
+                                                         '\n'
+                                                         'Actual result: The trading platform page is opened')
