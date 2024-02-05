@@ -4,6 +4,7 @@ import allure
 import pytest
 from selenium.common import StaleElementReferenceException
 
+from pages.Elements.AssertClass import AssertClass
 # from pages.Elements.AssertClass import AssertClass
 from tests.ReTestsManual.pages.menu_section.menu_section import MarketsSection, WaysToTradeSection
 from tests.ReTestsManual.pages.menu.menu import MenuSection
@@ -365,13 +366,16 @@ class TestManualBugs:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
-        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         menu_section = WaysToTradeSection(d, link)
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
-        d.back()
-        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-        apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
-        assert len(apply_btn) == 0, ('Bug#06. '
-                                     'Expected result: "The Sign Up/Login form is opened'
-                                     '\n'
-                                     'Actual result: The trading platform page is opened')
+        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
+
+        test_element = AssertClass(d, cur_item_link)
+        match cur_role:
+            case "NoReg":
+                test_element.assert_signup(d, cur_language, cur_item_link)
+            case "NoAuth":
+                test_element.assert_login(d, cur_language, cur_item_link)
+            # case "Auth":
+            #     test_element.assert_trading_platform_v4(d, cur_item_link)
