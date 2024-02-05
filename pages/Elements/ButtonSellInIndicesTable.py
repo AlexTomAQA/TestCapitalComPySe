@@ -36,7 +36,7 @@ class SellButtonIndicesTable(BasePage):
         self.element_click(d, cur_item_link, cur_language, cur_role, cur_tab)
 
     def arrange_(self, d, cur_item_link, cur_tab):
-        print(f"\n{datetime.now()}   1. Arrange for Indicies finance instrument and \"{cur_tab}\" tab")
+        print(f"\n{datetime.now()}   1. Arrange for Indices finance instrument and \"{cur_tab}\" tab")
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
@@ -133,7 +133,7 @@ class SellButtonIndicesTable(BasePage):
 
         # Вытаскиваем линку из кнопки
         button_link = button.get_attribute('href')
-        # Берём ID итема, на который кликаем для сравнения с открытым ID на платформе
+        # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
         trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
         print(f"{datetime.now()}   BUTTON_TRADING_SELL with item {trade_instrument} click =>")
