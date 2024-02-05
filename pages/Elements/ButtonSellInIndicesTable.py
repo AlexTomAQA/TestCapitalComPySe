@@ -10,14 +10,14 @@ import allure
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
-from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException
 from pages.Elements.AssertClass import AssertClass
 # from selenium.webdriver.common.action_chains import ActionChains
 
 COUNT_OF_RUNS = 2
 
 
-class SellButtonIndexTable(BasePage):
+class SellButtonIndicesTable(BasePage):
     def __init__(self, browser, link, bid):
         self.button_show_all_locator = None
         self.button_show_all = None
