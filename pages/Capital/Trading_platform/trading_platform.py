@@ -92,9 +92,7 @@ class TradingPlatform(BasePage):
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v4) =>")
         platform_url = data["PLATFORM_URL/"]
         cur_url = self.driver.current_url
-        # if self.wait_for_target_url(platform_url, 15):
-        if self.wait_for_target_url(platform_url, 10):
-
+        if self.wait_for_target_url(platform_url, 15):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if tpd:
