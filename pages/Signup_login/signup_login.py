@@ -288,13 +288,10 @@ class SignupLogin(BasePage):
             return False
 
         elements = self.driver.find_elements(*SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM)
-        # if len(elements) == 0:
-        #     print(f"{datetime.now()}   => 'Sign up' form is not opened")
-        #     return False
         elements[0].click()
         print(f"{datetime.now()}   => 'Signup' form closed")
 
-        # перемещаем указатель мышы на логотип CAPITAL
+        # перемещаем указатель мыши на логотип CAPITAL
         elements = self.driver.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
         ActionChains(self.driver) \
             .move_to_element(elements[0]) \
