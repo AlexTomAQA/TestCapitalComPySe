@@ -35,7 +35,7 @@ from pages.Menu.menu_locators import (
     MenuUS11TrendTrading,
     MenuUS11WhatIsMargin,
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
-    MenuUS11SharesTrading
+    MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP
 )
 # from src.src import CapitalComPageSrc
 
@@ -43,6 +43,54 @@ logger = logging.getLogger()
 
 
 class MenuSection(BasePage):
+
+    @allure.step('Select "Learn to trade" menu, "Risk-management guide')
+    def open_learn_to_trade_risk_management_guide_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Education" menu, "Risk-management guide" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_risk_management_guide_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Learn to trade" menu, "Technical analysis" submenu')
+    def open_learn_to_trade_technical_analysis_guide_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Education" menu, "Technical analysis" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_technical_analysis_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Learn to trade" menu, "Help" submenu')
+    def open_learn_to_trade_help_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Help" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_help_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
 
     @allure.step('Select "Education" menu, "Spread betting guide" submenu')
     def open_education_spread_betting_guide_menu(self, d, cur_language, cur_country, link):
@@ -166,6 +214,73 @@ class MenuSection(BasePage):
         # del menu
 
         print(f"\n\n{datetime.now()}   => Focus is moved on Language and Country menu ")
+
+    @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
+    def menu_learn_to_trade_move_focus(self, d, test_language, test_country):
+        ed_menu_locator = None
+        if test_language == "" and test_country == "gb":
+            ed_menu_locator = MenuUS11Education.SUB_MENU_EN_GB_LEARN_TO_TRADE
+        else:
+            match test_language:
+                case "":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_EN_LEARN_TO_TRADE
+                case "ar":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_AR_LEARN_TO_TRADE
+                case "de":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_DE_LEARN_TO_TRADE
+                case "el":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_EL_LEARN_TO_TRADE
+                case "es":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_ES_LEARN_TO_TRADE
+                case "fr":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_FR_LEARN_TO_TRADE
+                case "it":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_IT_LEARN_TO_TRADE
+                case "hu":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_HU_LEARN_TO_TRADE
+                case "nl":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_NL_LEARN_TO_TRADE
+                case "pl":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_PL_LEARN_TO_TRADE
+                case "ro":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_RO_LEARN_TO_TRADE
+                case "ru":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_RU_LEARN_TO_TRADE
+                case "zh":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_ZH_LEARN_TO_TRADE
+                case "cn":
+                    ed_menu_locator = MenuUS11Education.SUB_MENU_CN_LEARN_TO_TRADE
+
+        time.sleep(0.5)
+        menu = d.find_elements(*ed_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => Education menu not present")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            pytest.skip(f"[Education] menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => Education menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(ed_menu_locator, 5)
+        print(f"{datetime.now()}   element = {element}")
+        if not element:
+            print(f"{datetime.now()}   => Education menu not visible")
+            pytest.fail("Education menu not visible")
+        print(f"{datetime.now()}   => Education menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*ed_menu_locator)  # not Glossary
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        del menu
+        del element
+        print(f"{datetime.now()}   => Focus moved to Education menu")
 
     @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
     def menu_education_move_focus(self, d, test_language, test_country):
@@ -1228,3 +1343,64 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Risk-management guide' menu item.")
+    def sub_menu_risk_management_guide_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS11RiskManagement.SUB_MENU_EN_RISK_MANAGEMENT)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => Risk-management guide menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Risk-management guide' menu item.")
+    def sub_menu_technical_analysis_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS11TechnicalAnalysis.SUB_MENU_EN_TECHNICAL_ANALYSIS)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => Risk-management guide menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Help' menu item.")
+    def sub_menu_help_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS11HELP.SUB_MENU_EN_HELP)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Learn to trade->Help\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => Help menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
