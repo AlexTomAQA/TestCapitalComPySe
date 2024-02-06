@@ -100,8 +100,7 @@ class ButtonOnVerticalBanner(BasePage):
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER NOT CLICKED")
             pytest.fail("Button on Vertical banner not clicked")
-            # print(f"{datetime.now()}   'Sign up' form or page is auto opened")
-            #
+
             # page_ = SignupLogin(self.driver)
             # if page_.close_signup_form():
             #     pass
