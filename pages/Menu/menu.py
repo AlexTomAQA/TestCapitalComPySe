@@ -1120,10 +1120,16 @@ class MenuSection(BasePage):
     def sub_menu_indices_trading_move_focus_click(self, d, test_language):
         logger.info(f"Click 'Indices Trading' hyperlink in submenu")
         match test_language:
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_AR_INDICES_TRADING)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_DE_INDICES_TRADING)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_ES_INDICES_TRADING)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_IT_INDICES_TRADING)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_CN_INDICES_TRADING)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_ZH_INDICES_TRADING)
             case "ru":
