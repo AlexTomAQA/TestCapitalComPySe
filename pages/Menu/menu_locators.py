@@ -17,7 +17,9 @@ class MenuUS11Education:
     SUB_MENU_DA_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/da/learn-to-trade']")
     SUB_MENU_DE_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/learn-to-trade']")
     SUB_MENU_EL_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/el/learn-to-trade']")
-    SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, "#header a[href='/en-gb/learn']")
+    # SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, "#header a[href='/en-gb/learn']")
+    SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
+
     SUB_MENU_EN_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/learn-to-trade']")
     SUB_MENU_ES_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/learn-to-trade']")
     SUB_MENU_ET_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/et/learn-to-trade']")
@@ -880,3 +882,15 @@ class MenuUS11SharesTrading:
     SUB_MENU_RU_SHARES_TRADING = (By.CSS_SELECTOR,
                                   ".cc-header a[href='https://capital.com/ru/torgovlya-aktsiyami-cfd']")
     SUB_MENU_ZH_SHARES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/trade-stocks']")
+
+
+class MenuUS11RiskManagement:
+    SUB_MENU_EN_RISK_MANAGEMENT = (By.CSS_SELECTOR, '[data-type="nav_id720"]')
+
+
+class MenuUS11TechnicalAnalysis:
+    SUB_MENU_EN_TECHNICAL_ANALYSIS = (By.CSS_SELECTOR, '[data-type="nav_id705"]')
+
+
+class MenuUS11HELP:
+    SUB_MENU_EN_HELP = (By.CSS_SELECTOR, '[data-type="nav_id779"]')

@@ -55,6 +55,7 @@ class ButtonOnVerticalBannerLocators:
 class BlockStepTradingLocators:
     BUT_CREATE_YOUR_ACCOUNT = (By.CSS_SELECTOR, "section.regSteps i.regSteps__item.js_signup")
     BUT_CREATE_YOUR_ACCOUNT_DE = (By.CSS_SELECTOR, "#cc_ab42 div.js_signup")
+    BUT_CREATE_YOUR_ACCOUNT_EN = (By.CSS_SELECTOR, '[data-type="banner_with_steps"]')
 
 
 class ButtonInBannerLocators:
