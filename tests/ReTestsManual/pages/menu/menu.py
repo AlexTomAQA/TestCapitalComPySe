@@ -13,6 +13,9 @@ from pages.base_page import BasePage
 
 class MainMenu(BasePage):
 
+    MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
+    SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
+
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
     SUB_MENU_MARKETS_FOREX = (By.CSS_SELECTOR, '[data-type="nav_id690"]')
@@ -23,10 +26,26 @@ class MainMenu(BasePage):
     # ways to trade
     MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
     SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
-
+    # trading platform
+    MENU_TRADING_PLATFORM = (By.CSS_SELECTOR, '[data-type="nav_id688"]')
     # account
     MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
     MENU_LOGIN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+
+    @allure.step('Select "Trading platform" menu')
+    def open_trading_platform_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Trading platform" menu  =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_TRADING_PLATFORM)
+        self.sub_menu_move_focus_click(d, cur_language, self.MENU_TRADING_PLATFORM)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
 
     @allure.step('Select "Way_to_trade" menu, "Professional" submenu')
     def open_waytotrade_professional_sub_menu(self, d, cur_language, cur_country, link):
@@ -157,3 +176,14 @@ class MainMenu(BasePage):
             .perform()
 
         return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Focus move to menu item and click sub-menu.")
+    def open_menu_sub_menu(self, d, test_language, menu_elem, sub_menu_elem):
+        print(f"{datetime.now()}.   Focus move to menu item and click sub-menu.")
+        ActionChains(d) \
+            .move_to_element(menu_elem) \
+            .pause(0.5) \
+            .move_to_element(sub_menu_elem) \
+            .pause(0.5) \
+            .click() \
+            .perform()

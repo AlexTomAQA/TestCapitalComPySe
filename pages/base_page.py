@@ -303,7 +303,7 @@ class BasePage:
         )
 
     def element_is_present_and_visible(self, locator, timeout=5):
-        self.go_to_element(self.element_is_present(*locator))
+        self.go_to_element(self.element_is_presented(locator))
         return Wait(self.driver, timeout).until(EC.visibility_of_element_located(locator),
                                                 message=f"Can't see element by locator {locator}")
 
@@ -628,3 +628,7 @@ class BasePage:
     def go_to_element(self, element):
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
+
+    def element_is_presented(self, locator, timeout=10):
+        return Wait(self.driver, timeout).until(EC.presence_of_element_located(locator),
+                                                message=f"Element not present by locator {locator}")

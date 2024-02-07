@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 import allure
 import pytest
@@ -374,13 +375,19 @@ class TestManualBugs:
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
         test_element = AssertClass(d, cur_item_link)
-        match cur_role:
-            case "NoReg":
-                test_element.assert_signup(d, cur_language, cur_item_link)
-            case "NoAuth":
-                test_element.assert_login(d, cur_language, cur_item_link)
-            # case "Auth":
-            #     test_element.assert_trading_platform_v4(d, cur_item_link)
+        try:
+            match cur_role:
+                case "NoReg":
+                    test_element.assert_signup(d, cur_language, cur_item_link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, cur_item_link)
+                # case "Auth":
+                #     test_element.assert_trading_platform_v4(d, cur_item_link)
+        except AssertionError:
+            print(f"\n{datetime.now()}   Bug#06")
+            assert False, ('Bug#06. Expected result: The Sign Up/Login form is opened'
+                           '\n'
+                           'Actual result: The trading platform page is opened')
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -420,13 +427,19 @@ class TestManualBugs:
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
         test_element = AssertClass(d, cur_item_link)
-        match cur_role:
-            # case "NoReg":
-            #     test_element.assert_signup(d, cur_language, cur_item_link)
-            # case "NoAuth":
-            #     test_element.assert_login(d, cur_language, cur_item_link)
-            case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
+        try:
+            match cur_role:
+                # case "NoReg":
+                #     test_element.assert_signup(d, cur_language, cur_item_link)
+                # case "NoAuth":
+                #     test_element.assert_login(d, cur_language, cur_item_link)
+                case "Auth":
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
+        except AssertionError:
+            print(f"\n{datetime.now()}   Bug#07")
+            assert False, ('Bug#07. Expected result: The trading platform page is opened'
+                           '\n'
+                           'Actual result: The trading platform page is not opened')
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -533,3 +546,167 @@ class TestManualBugs:
         assert link2 != link1, ('Bug#10. Expected Result: Link "Apply here" is clickable'
                                 '\n'
                                 'Actual Result: Link "Apply here" is not clickable')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoAuth"])
+    @allure.step('Bug#11:  Transition to the trading platform after clicking the [Apply here] link in '
+                 'the "Apply now" Block')
+    @pytest.mark.test_11
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_11(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Transition to the trading platform after clicking the [Apply here] link in the "Apply now" Block
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional] menu item
+        3. Click the [I am eligible] button
+        4. Scroll down to "Apply now" Block
+        5. Click the [Apply here] link next to the text "Existing client?"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".11", 'Transition to the trading platform after clicking the [Apply here] link in '
+                   'the "Apply now" Block')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+
+        apply_here = sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN)
+        apply_here.click()
+        cur_item_link = d.current_url
+        test_element = AssertClass(d, cur_item_link)
+        try:
+            match cur_role:
+                case "NoReg":
+                    test_element.assert_signup(d, cur_language, cur_item_link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, cur_item_link)
+                case "Auth":
+                    test_element.assert_trading_platform_v4(d, cur_item_link)
+        except AssertionError:
+            print(f"\n{datetime.now()}   Bug#11")
+            assert False, ('Bug#11. Expected result: Login form is opened'
+                           '\n'
+                           'Actual result: Transition to the trading platform')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#12:  The button [Open an account] is not named according to block "We’re here to help"')
+    @pytest.mark.test_12
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_12(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The button [Open an account] is not named according to block "We’re here to help" on
+        the "Trading platforms" page
+        1. Click the "Trading platforms" menu section
+        2. Scroll down to block "We’re here to help"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".12", 'The button [Open an account] is not named according to block "We’re here to help"')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_trading_platform_menu(d, cur_language, cur_country, link)
+
+        sub_menu = MenuSections(d, link)
+        support_button = sub_menu.element_is_present_and_visible(sub_menu.TRADING_PLATFORM_SUPPORT_BTN).text
+        print(f"\n{datetime.now()}   Bug#12. The button [Open an account] is not named according to block "
+              f"'We’re here to help'")
+        assert support_button != "Open an account", ('Bug#12. Expected result: The button [Open an account] is named '
+                                                     'according to block "We’re here to help"'
+                                                     '\n'
+                                                     'Actual result: The button [Open an account] is not named '
+                                                     'according to block "We’re here to help"')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
+        '"Capital.com" after clicking the [I am eligible] button')
+    @pytest.mark.test_13
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_13(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Transition not to the top of the page in the page "Discover the benefits of going Pro with "Capital.com"
+        after clicking the [I am eligible] button
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional] menu item
+        3. Click the [I am eligible] button
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".13", 'Transition not to the top of the page in the page "Discover the benefits of '
+                   'going Pro with "Capital.com" after clicking the [I am eligible] button')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+
+        scroll_y = d.execute_script("return window.scrollY;")
+        assert scroll_y == 0, ('Bug#13. Expected result: Transition to the top of the page'
+                               '\n'
+                               'Actual result: Transition not to the top of the page ')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#14:  Bread crumbs are not displayed')
+    @pytest.mark.test_14
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_14(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Bread crumbs are not displayed in the "Professional" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".14", 'Bread crumbs are not displayed in the "Professional" page')
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu_list = menu.elements_are_located(menu.MENU_LIST)
+        sub_menu_list = menu.elements_are_present(menu.SUB_MENU_LIST)
+        for i, menu_elem in enumerate(menu_list):
+            print(menu_elem.text)
+
+
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        bred_crumbs = menu.elements_are_located(sub_menu.BREADCRUMBS)
+        if not bred_crumbs:
+            assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
+                           '\n'
+                           'Actual Result: Bread crumbs are  not displayed')
+
+# .menuGroup_dropdown__75ey5>div>a
+# .menuGroup_item__jQrol
+
