@@ -99,7 +99,8 @@ class ButtonOnHorizontalBanner(BasePage):
         print(f"\n{datetime.now()}   data_id = {data_id}")
 
         try:
-            button_list[0].click()
+            self.driver.execute_script("arguments[0].click();", web_element)
+            # button_list[0].click()
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER NOT CLICKED")
