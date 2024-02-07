@@ -40,25 +40,12 @@ class SellButtonContentBlock(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK is located on the page? =>")
-        button_list = self.elements_are_located(ButtonsOnPageLocators.BUTTON_TRADING_SELL, timeout=10)
-
-        if not button_list:
-            print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is not located on the page!")
-            pytest.skip("ARRANGE: Checking element (BUTTON_SELL_IN_CONTENT_BLOCK) is not on this page")
-
-        print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is located on the page!")
-
-    @allure.step("Click button [Sell] in content block")
-    def element_click(self, cur_role):
-        print(f"\n{datetime.now()}   2. Act_v0")
         button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_TRADING_SELL)
-
         print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>")
         if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is not present on the page!")
+            print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is not present on the page")
             del button_list
-            return False
+            pytest.skip("The testing element not present on this page")
         print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!")
 
         print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>")
@@ -66,10 +53,38 @@ class SellButtonContentBlock(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
+        print(f"{datetime.now()}   => 'Sell' button in Content block scrolled")
+
+        # print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK is located on the page? =>")
+        # button_list = self.elements_are_located(ButtonsOnPageLocators.BUTTON_TRADING_SELL, timeout=10)
+        #
+        # if not button_list:
+        #     print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is not located on the page!")
+        #     pytest.skip("ARRANGE: Checking element (BUTTON_SELL_IN_CONTENT_BLOCK) is not on this page")
+        #
+        # print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is located on the page!")
+
+    @allure.step("Click button [Sell] in content block")
+    def element_click(self, cur_role):
+        print(f"\n{datetime.now()}   2. Act_v0")
+        button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_TRADING_SELL)
+
+        # print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>")
+        # if len(button_list) == 0:
+        #     print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is not present on the page!")
+        #     del button_list
+        #     return False
+        # print(f"{datetime.now()}   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!")
+        #
+        # print(f"{datetime.now()}   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>")
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     button_list[0]
+        # )
 
         # Вытаскиваем линку из кнопки
         button_link = button_list[0].get_attribute('href')
-        # Берём ID итема, на который кликаем для сравнения с открытым ID на платформе
+        # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
         trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
         # trade_instrument = self.element_is_visible(ButtonsOnPageLocators.TRADING_INSTRUMENT).text
 
@@ -94,4 +109,5 @@ class SellButtonContentBlock(BasePage):
             del page_
 
         del button_list
+        print(f"{datetime.now()}   => return trade_instrument = {trade_instrument}")
         return trade_instrument
