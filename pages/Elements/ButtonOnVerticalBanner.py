@@ -95,7 +95,8 @@ class ButtonOnVerticalBanner(BasePage):
         print(f"\n{datetime.now()}   data_id = {data_id}")
 
         try:
-            web_element.click()
+            self.driver.execute_script("arguments[0].click();", web_element)
+            # web_element.click()
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER NOT CLICKED")
