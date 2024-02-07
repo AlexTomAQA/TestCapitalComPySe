@@ -24,9 +24,9 @@ class AssertClass(BasePage):
     page_google_play = None
     platform_url = ""
 
-    def __init__(self, *args):
-        super().__init__(*args)
-        # self.is_captcha()
+    # def __init__(self, *args):
+    #     super().__init__(*args)
+    #     self.is_captcha()
 
     @allure.step(f'{datetime.now()}   Checking that "Signup" opened')
     def assert_signup(self, d, cur_language, cur_link):
@@ -34,10 +34,10 @@ class AssertClass(BasePage):
 
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_signup_login = SignupLogin(d, cur_link)
-        if self.page_signup_login.should_be_new_signup_form(cur_language):
-            self.page_signup_login.close_new_signup_form()
-        elif self.page_signup_login.should_be_signup_form(cur_language):
+        if self.page_signup_login.should_be_signup_form(cur_language):
             self.page_signup_login.close_signup_form()
+        elif self.page_signup_login.should_be_new_signup_form(cur_language):
+            self.page_signup_login.close_new_signup_form()
         elif self.page_signup_login.should_be_signup_page(cur_language):
             self.page_signup_login.close_signup_page()
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
@@ -56,11 +56,11 @@ class AssertClass(BasePage):
         """Method Assert Login form or page"""
         print(f"\n{datetime.now()}   3. Assert_Login_v0")
         self.page_signup_login = SignupLogin(d, cur_link)
-        if self.page_signup_login.should_be_new_login_form():
-            self.page_signup_login.close_new_login_form()
-            del self.page_signup_login
-        elif self.page_signup_login.should_be_login_form():
+        if self.page_signup_login.should_be_login_form():
             self.page_signup_login.close_login_form()
+            del self.page_signup_login
+        elif self.page_signup_login.should_be_new_login_form():
+            self.page_signup_login.close_new_login_form()
             del self.page_signup_login
         elif self.page_signup_login.should_be_login_page():
             self.page_signup_login.close_login_page()
