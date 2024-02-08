@@ -26,6 +26,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step("Bug#01: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
+    @pytest.mark.severity("minor")
     @pytest.mark.test_01
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
@@ -109,6 +110,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
+    @pytest.mark.severity("minor")
     @pytest.mark.test_48
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
@@ -184,6 +186,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#02:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
+    @pytest.mark.severity("major")
     @pytest.mark.test_02
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_02(
@@ -237,6 +240,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_04
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_04(
@@ -303,6 +307,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#05:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_05
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_05(
@@ -344,6 +349,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoAuth", "NoReg"])
     @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
+    @pytest.mark.severity("major")
     @pytest.mark.test_06
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_06(
@@ -396,6 +402,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#07:  The trading platform page is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
+    @pytest.mark.severity("major")
     @pytest.mark.test_07
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_07(
@@ -448,6 +455,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#08:  Sidebar "My account" is not displayed when clicking on the [My account] button '
                  ' in the Header ')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_08
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_08(
@@ -489,6 +497,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#09:  Bread crumbs are not displayed in the "Professional" page')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_09
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_09(
@@ -520,6 +529,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#10:  Link "Apply here" is not clickable in the "No Capital.com account yet?"')
+    @pytest.mark.severity("critical")
     @pytest.mark.test_10
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_10(
@@ -554,6 +564,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoAuth"])
     @allure.step('Bug#11:  Transition to the trading platform after clicking the [Apply here] link in '
                  'the "Apply now" Block')
+    @pytest.mark.severity("major")
     @pytest.mark.test_11
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_11(
@@ -603,6 +614,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#12:  The button [Open an account] is not named according to block "We’re here to help"')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_12
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_12(
@@ -641,6 +653,7 @@ class TestManualBugs:
     @allure.step(
         'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
         '"Capital.com" after clicking the [I am eligible] button')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_13
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_13(
@@ -676,6 +689,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_14
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_14(
@@ -732,6 +746,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
                  'in the Dropdown [Languages]')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_15
     @pytest.mark.skip(reason="Non-functional bug")
     def test_15(
@@ -756,6 +771,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
                  'in the Dropdown [Languages]')
+    @pytest.mark.severity("minor")
     @pytest.mark.test_16
     @pytest.mark.skip(reason="Non-functional bug")
     def test_16(
@@ -777,23 +793,86 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
-    @allure.step('Bug#17:  Bread crumbs are not displayed in the "Margin-calls" page')
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
+                 'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
+    @pytest.mark.severity("critical")
     @pytest.mark.test_17
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_17(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        Bread crumbs are not displayed in the "Margin-calls" page
-        1. Hover over the [Ways to trade] menu section
-        2. Click the [Margin Calls] menu tittle
+        After the transition from the website capital.com into the trading platform and back is displayed
+        [Log in] and [Sign up] buttons instead of the [My account] buttons when clicking the [Capital.com]
+        Logo on the trading platform
+        1. Click the [Log in] button
+        2. Enter valid value in the Email and password fields
+        3. Click the Capital.com [Logo]
         """
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
+            ".17", 'After the transition from the website capital.com into the trading platform and '
+                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
         #
-        # page_conditions = Conditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), ('Bug#17.'
+                                                                    'Expected result: [My account] button is displayed'
+                                                                    '\n'
+                                                                    'Actual result: [Log in] and [Sign up] buttons '
+                                                                    'are displayed')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step('Bug#18:  After the transition from the website capital.com into the trading platform and back is '
+                 'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
+    @pytest.mark.severity("critical")
+    @pytest.mark.test_18
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_18(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        After the transition from the website capital.com into the trading platform and back is displayed
+        [Log in] and [Sign up] buttons instead of the [My account] buttons when clicking the [Capital.com]
+        Logo on the trading platform
+        1. Click the [Log in] button
+        2. Enter valid value in the Email and password fields
+        3. Click the Capital.com [Logo]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".17", 'After the transition from the website capital.com into the trading platform and '
+                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
+        #
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        cur_item_link = menu.open_markets_shares_sub_menu(self, d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        for i in range(5):
+            sub_menu.element_is_present_and_visible(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN)
+            sub_menu.element_is_clickable(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN).click()
+            test_element = AssertClass(d, cur_item_link)
+            try:
+                match cur_role:
+                    case "NoReg":
+                        test_element.assert_signup(d, cur_language, cur_item_link)
+                    case "NoAuth":
+                        test_element.assert_login(d, cur_language, cur_item_link)
+                    case "Auth":
+                        test_element.assert_trading_platform_v4(d, cur_item_link)
+            except AssertionError:
+                print(f"\n{datetime.now()}   Bug#11")
+                assert False, ('Bug#11. Expected result: Login form is opened'
+                               '\n'
+                               'Actual result: Transition to the trading platform')

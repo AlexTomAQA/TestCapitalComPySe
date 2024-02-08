@@ -15,6 +15,9 @@ class MainMenu(BasePage):
 
     SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
     MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
+    HEADER_LOGIN_BTN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+    HEADER_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="btn_header"]')
+    HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
