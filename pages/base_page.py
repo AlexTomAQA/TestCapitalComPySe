@@ -514,7 +514,7 @@ class BasePage:
 
     @HandleExcElementsDecorator()
     def is_captcha(self):
-        if self.elements_are_present(*Captcha.CAPTCHA_IFRAME):
+        if self.elements_are_visible(Captcha.CAPTCHA_IFRAME):
             pytest.fail("Captcha on the page")
 
     # def flatten(self, mylist):
@@ -632,3 +632,7 @@ class BasePage:
     def element_is_presented(self, locator, timeout=10):
         return Wait(self.driver, timeout).until(EC.presence_of_element_located(locator),
                                                 message=f"Element not present by locator {locator}")
+
+    def elements_are_visible(self, locator, timeout=5):
+        return Wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator),
+                                                message=f"Can't see element by locator {locator}")

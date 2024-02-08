@@ -18,6 +18,8 @@ class MainMenu(BasePage):
     HEADER_LOGIN_BTN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
     HEADER_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="btn_header"]')
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
+    TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
+    TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')

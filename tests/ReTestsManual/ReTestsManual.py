@@ -8,13 +8,15 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
+from pages.conditions import Conditions
+
 from tests.ReTestsManual.pages.menu.menu import MainMenu
 from tests.ReTestsManual.pages.menu_section.menu_section import MenuSections
-
+from tests.ReTestsManual.pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-from pages.conditions import Conditions
+
 from src.src import CapitalComPageSrc
 
 
@@ -47,9 +49,9 @@ class TestManualBugs:
             ".01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
                    " page after clicking")
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
@@ -130,9 +132,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
@@ -205,9 +207,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
@@ -260,9 +262,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_markets_indices_sub_menu(d, cur_language, cur_country, link)
@@ -306,7 +308,8 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
-    @allure.step('Bug#05:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+    @allure.step('Bug#05:  Page "Discover the benefits of going Pro with capital.com" '
+                 'is opened')
     @pytest.mark.severity("minor")
     @pytest.mark.test_05
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -372,9 +375,9 @@ class TestManualBugs:
             ".06", 'The trading platform page is opened after clicking button [Apply] '
                    'in the block "Discover the benefits')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -425,9 +428,9 @@ class TestManualBugs:
             ".07", 'The trading platform page is not opened after clicking button [Apply] '
                    'in the block "Discover the benefits')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -475,9 +478,9 @@ class TestManualBugs:
             ".08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
                    'in the Header')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
 
@@ -512,9 +515,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".09", 'Bread crumbs are not displayed in the "Professional" page')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -543,9 +546,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -583,9 +586,9 @@ class TestManualBugs:
             ".11", 'Transition to the trading platform after clicking the [Apply here] link in '
                    'the "Apply now" Block')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -630,9 +633,9 @@ class TestManualBugs:
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".12", 'The button [Open an account] is not named according to block "We’re here to help"')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_trading_platform_menu(d, cur_language, cur_country, link)
@@ -671,9 +674,9 @@ class TestManualBugs:
             ".13", 'Transition not to the top of the page in the page "Discover the benefits of '
                    'going Pro with "Capital.com" after clicking the [I am eligible] button')
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
@@ -704,17 +707,14 @@ class TestManualBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
-        #
-        # page_conditions = Conditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        d.get('https://capital.com/en-gb')
-        link = d.current_url
-        link_list = []
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         menu_list = menu.elements_are_located(menu.MENU_LIST)
-
+        link_list = []
         for i in range(len(menu_list)):
 
             sub_menu_locator = (
@@ -816,9 +816,9 @@ class TestManualBugs:
             ".17", 'After the transition from the website capital.com into the trading platform and '
                    'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
         #
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
         assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), ('Bug#17.'
@@ -852,16 +852,18 @@ class TestManualBugs:
             ".17", 'After the transition from the website capital.com into the trading platform and '
                    'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
         #
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
 
         menu = MainMenu(d, link)
-        cur_item_link = menu.open_markets_shares_sub_menu(self, d, cur_language, cur_country, link)
+        cur_item_link = menu.open_markets_shares_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
         for i in range(5):
             sub_menu.element_is_present_and_visible(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN)
             sub_menu.element_is_clickable(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN).click()
+            time.sleep(3)
             test_element = AssertClass(d, cur_item_link)
             try:
                 match cur_role:
@@ -873,6 +875,7 @@ class TestManualBugs:
                         test_element.assert_trading_platform_v4(d, cur_item_link)
             except AssertionError:
                 print(f"\n{datetime.now()}   Bug#11")
-                assert False, ('Bug#11. Expected result: Login form is opened'
+                assert False, ('Bug#11. Expected result: Transition to the trading platform'
                                '\n'
-                               'Actual result: Transition to the trading platform')
+                               'Actual result: Sign up form is opened')
+            # d.back()

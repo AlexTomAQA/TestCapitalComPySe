@@ -1,5 +1,6 @@
 class CapitalComPageSrc:
     URL = "https://capital.com"
+    URL_NEW = 'https://capital.com/en-gb'
 
 
 class Markets:
