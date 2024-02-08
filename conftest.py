@@ -168,7 +168,8 @@ def cur_country(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "aqa.tomelo.an@gmail.com",
+        "test001.miketar+1@gmail.com"
+        # "aqa.tomelo.an@gmail.com",
     ],
 )
 def cur_login(request):
@@ -180,12 +181,13 @@ def cur_login(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "iT9Vgqi6d$fiZ*Z",
+        # "iT9Vgqi6d$fiZ*Z",
+        "Qwer1234-!@#$"
     ],
 )
 def cur_password(request):
     """Fixture"""
-    print(f"Current login - {request.param}")
+    print(f"Current password - {request.param}")
     return request.param
 
 
