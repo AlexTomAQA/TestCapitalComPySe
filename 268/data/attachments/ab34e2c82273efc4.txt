@@ -1,0 +1,32 @@
+2024-02-08 21:17:56 ERROR Elements not present after 0.5 seconds on page: https://capital.com/what-are-lots-in-forex
+2024-02-08 21:17:56 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 301, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55f82e422d93 <unknown>
+#1 0x55f82e106337 <unknown>
+#2 0x55f82e151d60 <unknown>
+#3 0x55f82e151e51 <unknown>
+#4 0x55f82e195bc4 <unknown>
+#5 0x55f82e17446d <unknown>
+#6 0x55f82e19312d <unknown>
+#7 0x55f82e1741e3 <unknown>
+#8 0x55f82e144135 <unknown>
+#9 0x55f82e14513e <unknown>
+#10 0x55f82e3e6e4b <unknown>
+#11 0x55f82e3eadfa <unknown>
+#12 0x55f82e3d36d5 <unknown>
+#13 0x55f82e3eba6f <unknown>
+#14 0x55f82e3b769f <unknown>
+#15 0x55f82e410098 <unknown>
+#16 0x55f82e410262 <unknown>
+#17 0x55f82e421f34 <unknown>
+#18 0x7ff51e294ac3 <unknown>
