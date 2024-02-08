@@ -750,3 +750,50 @@ class TestManualBugs:
             ".15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
                    'in the Dropdown [Languages]')
         #
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
+                 'in the Dropdown [Languages]')
+    @pytest.mark.test_16
+    @pytest.mark.skip(reason="Non-functional bug")
+    def test_16(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Format of the text content does not correspond to the Block size  "Why to bet on spread betting with
+        Capital.com? in the "Spread betting" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Spread betting] menu item
+        3. Scroll down to  Block"Why spread bet with Capital.com?"
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".16", 'Format of the text content does not correspond to the Block size '
+                   'in the Dropdown [Languages]')
+        #
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#17:  Bread crumbs are not displayed in the "Margin-calls" page')
+    @pytest.mark.test_17
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_17(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Bread crumbs are not displayed in the "Margin-calls" page
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Margin Calls] menu tittle
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
+        #
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
