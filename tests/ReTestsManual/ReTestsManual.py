@@ -675,7 +675,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
-    @allure.step('Bug#14:  Bread crumbs are not displayed')
+    @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
     @pytest.mark.test_14
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_14(
@@ -689,7 +689,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".14", 'Bread crumbs are not displayed in the "Professional" page')
+            ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
         #
         # page_conditions = Conditions(d, "")
         # link = page_conditions.preconditions(
@@ -727,3 +727,26 @@ class TestManualBugs:
                        'Actual Result: Bread crumbs are  not displayed \n'
                        f'No breadcrumbs: {len(link_list)} {link_list}')
 
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
+                 'in the Dropdown [Languages]')
+    @pytest.mark.test_15
+    @pytest.mark.skip(reason="Non-functional bug")
+    def test_15(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Scrollbar thumb blended into the dark background in the Scrollbar in the Dropdown [Languages] in the Main page
+        1. Hover over the  Dropdown[Country&Languages]
+        2. Click the arrow Dropdown [Country]
+        3. Choose any country
+        4. Click the arrow Dropdown [Languages]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
+                   'in the Dropdown [Languages]')
+        #
