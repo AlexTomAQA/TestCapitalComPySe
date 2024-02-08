@@ -4,6 +4,8 @@ from datetime import datetime
 import allure
 import pytest
 from selenium.common import StaleElementReferenceException
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
 from tests.ReTestsManual.pages.menu.menu import MainMenu
@@ -679,34 +681,49 @@ class TestManualBugs:
     def test_14(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        Bread crumbs are not displayed in the "Professional" page
+        Bread crumbs are not displayed in the "Margin-calls" page
         1. Hover over the [Ways to trade] menu section
-        2. Click the [Professional]menu item
+        2. Click the [Margin Calls] menu tittle
         """
+
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
             ".14", 'Bread crumbs are not displayed in the "Professional" page')
-
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        d.get('https://capital.com/en-gb')
+        link = d.current_url
+        link_list = []
 
         menu = MainMenu(d, link)
         menu_list = menu.elements_are_located(menu.MENU_LIST)
-        sub_menu_list = menu.elements_are_present(menu.SUB_MENU_LIST)
-        for i, menu_elem in enumerate(menu_list):
-            print(menu_elem.text)
 
+        for i in range(len(menu_list)):
 
-        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-        sub_menu = MenuSections(d, link)
-        bred_crumbs = menu.elements_are_located(sub_menu.BREADCRUMBS)
-        if not bred_crumbs:
-            assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
-                           '\n'
-                           'Actual Result: Bread crumbs are  not displayed')
+            sub_menu_locator = (
+                By.CSS_SELECTOR, f'.menuGroup_item__jQrol:nth-child({i + 1}) '
+                                 f'.menuGroup_dropdown__75ey5 div a')
 
-# .menuGroup_dropdown__75ey5>div>a
-# .menuGroup_item__jQrol
+            sub_menu_list = menu.elements_are_located(sub_menu_locator)
+
+            for j in range(len(sub_menu_list)):
+                menu_list = menu.elements_are_located(menu.MENU_LIST)
+                sub_menu_list = menu.elements_are_located(sub_menu_locator)
+                time.sleep(1)
+                menu.open_menu_sub_menu(d, cur_language, menu_list[i], sub_menu_list[j])
+                link = d.current_url
+                menu_section = MenuSections(d, link)
+                bred_crumbs = menu.elements_are_located(menu_section.BREADCRUMBS, 1)
+                if not bred_crumbs:
+                    link_list.append(link)
+                    print("No breadcrumbs:", link)
+                # time.sleep(1)
+
+        assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
+                       '\n'
+                       'Actual Result: Bread crumbs are  not displayed \n'
+                       f'No breadcrumbs: {len(link_list)} {link_list}')
 

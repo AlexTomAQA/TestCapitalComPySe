@@ -13,8 +13,8 @@ from pages.base_page import BasePage
 
 class MainMenu(BasePage):
 
-    MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
-    SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
+    SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
+    MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
@@ -177,13 +177,12 @@ class MainMenu(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Focus move to menu item and click sub-menu.")
     def open_menu_sub_menu(self, d, test_language, menu_elem, sub_menu_elem):
-        print(f"{datetime.now()}.   Focus move to menu item and click sub-menu.")
+        # print(f"{datetime.now()}.   Focus move to menu item and click sub-menu.")
         ActionChains(d) \
             .move_to_element(menu_elem) \
             .pause(0.5) \
             .move_to_element(sub_menu_elem) \
-            .pause(0.5) \
+            .pause(1) \
             .click() \
             .perform()
