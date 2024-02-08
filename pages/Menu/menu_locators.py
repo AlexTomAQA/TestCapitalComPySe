@@ -898,3 +898,8 @@ class MenuUS11TechnicalAnalysis:
 
 class MenuUS11HELP:
     SUB_MENU_EN_HELP = (By.CSS_SELECTOR, '[data-type="nav_id779"]')
+
+
+class MenuUS11LearnToTrade:
+    SUB_MENU_EN_LEARN_TOTRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
+
