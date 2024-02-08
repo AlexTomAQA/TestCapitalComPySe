@@ -1,0 +1,32 @@
+2024-02-08 04:49:17 ERROR Elements not present after 0.5 seconds on page: https://capital.com/trading/platform/charting/27045129890124996?popup=questionnaire-low-skilled
+2024-02-08 04:49:17 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 301, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x562999255d93 <unknown>
+#1 0x562998f39337 <unknown>
+#2 0x562998f84d60 <unknown>
+#3 0x562998f84e51 <unknown>
+#4 0x562998fc8bc4 <unknown>
+#5 0x562998fa746d <unknown>
+#6 0x562998fc612d <unknown>
+#7 0x562998fa71e3 <unknown>
+#8 0x562998f77135 <unknown>
+#9 0x562998f7813e <unknown>
+#10 0x562999219e4b <unknown>
+#11 0x56299921ddfa <unknown>
+#12 0x5629992066d5 <unknown>
+#13 0x56299921ea6f <unknown>
+#14 0x5629991ea69f <unknown>
+#15 0x562999243098 <unknown>
+#16 0x562999243262 <unknown>
+#17 0x562999254f34 <unknown>
+#18 0x7f9c5e694ac3 <unknown>
