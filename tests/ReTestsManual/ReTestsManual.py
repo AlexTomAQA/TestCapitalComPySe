@@ -881,3 +881,35 @@ class TestManualBugs:
                                '\n'
                                'Actual result: Sign up form is opened')
             # d.back()
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step('Bug#24:  Authorized user is logged out after changing the license to FCA(EN language)')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_24
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_24(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Authorized user is logged out after changing the license to FCA(EN language)
+        1. Click [Log In] button
+        2. Enter email and password
+        3. Return to the site
+        4. Change license to FCA
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".17", 'Authorized user is logged out after changing the license to FCA(EN language)')
+        #
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), (
+            'Bug#24. Expected result: User is autothorized'
+            '\n'
+            'Actual result: User is logged out')
