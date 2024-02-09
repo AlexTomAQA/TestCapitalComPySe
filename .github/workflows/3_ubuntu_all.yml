@@ -79,6 +79,26 @@ jobs:
 #          extra-mypy-options: ""
 #          extra-isort-options: ""
 #
+      - name: 8. Run US_11-00-00 (Мила П)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-02 (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-05 (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-05_Technical_analysis/US_11-00-05_Technical_analysis.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-06 (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-06_Help/US_11-00-06_Help.py
+        continue-on-error: true
+
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
@@ -230,7 +250,7 @@ jobs:
 
       - name: Run hwinfo.py
         if: always()
-        run: poetry run python3.11 tests/hwinfo.py
+        run: poetry run python3 tests/hwinfo.py
 
       - name: 9. Upload artifact "allure-results"
         if: always()

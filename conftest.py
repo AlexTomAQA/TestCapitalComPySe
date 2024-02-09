@@ -86,7 +86,7 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "",  # "en" - 21 us
+        "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
@@ -98,7 +98,7 @@ def cur_role(request):
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        "el",  # 5 us
+        # "el",  # 5 us
         # "hu",  # 5 us Magyar
     ],
 )
@@ -125,10 +125,10 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         # "de",  # Germany - "CYSEC"
         # "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -168,7 +168,8 @@ def cur_country(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "test001.miketar+1@gmail.com",
+        "test001.miketar+1@gmail.com"
+        # "aqa.tomelo.an@gmail.com",
     ],
 )
 def cur_login(request):
@@ -180,12 +181,13 @@ def cur_login(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "Qwer1234-!@#$",
+        # "iT9Vgqi6d$fiZ*Z",
+        "Qwer1234-!@#$"
     ],
 )
 def cur_password(request):
     """Fixture"""
-    print(f"Current login - {request.param}")
+    print(f"Current password - {request.param}")
     return request.param
 
 
