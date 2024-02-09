@@ -10,7 +10,7 @@ from src.src import CapitalComPageSrc
 
 
 @pytest.mark.us_11_00_01
-class EssentialsOfTrading:
+class TestEssentialsTrading:
     page_conditions = None
 
     @allure.step("Start test_11.00.01_02 button [1. Create your account] in block 'Ready to join a leading broker?'")
