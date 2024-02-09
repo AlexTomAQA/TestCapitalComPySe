@@ -93,8 +93,10 @@ class NewConditions(BasePage):
             match cur_role:
                 case "NoAuth":
                     self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
-                    self.set_new_country(d, cur_language, cur_country)
-                    self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
+                    menu = MainMenu(d, host)
+                    if menu.element_is_visible(menu.HEADER_LOGIN_BTN):
+                        self.set_new_country(d, cur_language, cur_country)
+                        self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
                 case "Auth":
                     self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
 

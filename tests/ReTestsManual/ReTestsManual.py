@@ -793,7 +793,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
     @allure.severity(allure.severity_level.CRITICAL)
@@ -821,6 +821,8 @@ class TestManualBugs:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
+        page_conditions.to_do_authorisation(d, link, cur_login, cur_password, cur_role)
+
         assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), ('Bug#17.'
                                                                     'Expected result: [My account] button is displayed'
                                                                     '\n'
