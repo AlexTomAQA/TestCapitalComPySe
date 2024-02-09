@@ -88,14 +88,16 @@ class NewLoginFormLocators:
     LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
     LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
     LOGIN_REF_SIGNUP = (By.XPATH, "//span[normalize-space()='Sign up']")
-    LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#l_overlay input[type='email']")
-    LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#l_overlay input[type='password']")
+    LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#email")
+    LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#password")
     LOGIN_CHECKBOX = (By.XPATH, "//label[@for='remember_me']")
-    LOGIN_CONTINUE = (By.CSS_SELECTOR, "#l_overlay button[type=submit]")
+    LOGIN_CONTINUE = (By.CSS_SELECTOR, 'button[type="submit"]')
     LOGIN_FORM = (By.CSS_SELECTOR, "#l_overlay > div > button")
     LOGIN_LOCATOR = (By.CSS_SELECTOR, "#l_overlay > div input[type=checkbox]")
     LOGIN_PASS_FORGOT = (By.XPATH, "//span[normalize-space()='Forgot password?']")
     BUTTON_CLOSE_ON_LOGIN_FORM = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ button [height='32']")
+    FACEBOOK_BTN = (By.CSS_SELECTOR, ".facebook_button__wMrB6")
+
 
 class TradingPlatformLoginFormLocators:
     LOGIN_FRAME = (By.CSS_SELECTOR, "#login > login-popup")
