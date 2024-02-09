@@ -28,7 +28,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step("Bug#01: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_01
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
@@ -112,7 +112,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_48
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
@@ -188,7 +188,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#02:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
-    @pytest.mark.severity("major")
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_02
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_02(
@@ -242,7 +242,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_04
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_04(
@@ -310,7 +310,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#05:  Page "Discover the benefits of going Pro with capital.com" '
                  'is opened')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_05
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_05(
@@ -352,7 +352,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoAuth", "NoReg"])
     @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
-    @pytest.mark.severity("major")
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_06
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_06(
@@ -405,7 +405,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#07:  The trading platform page is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
-    @pytest.mark.severity("major")
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_07
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_07(
@@ -458,7 +458,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#08:  Sidebar "My account" is not displayed when clicking on the [My account] button '
                  ' in the Header ')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_08
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_08(
@@ -500,7 +500,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#09:  Bread crumbs are not displayed in the "Professional" page')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_09
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_09(
@@ -532,7 +532,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#10:  Link "Apply here" is not clickable in the "No Capital.com account yet?"')
-    @pytest.mark.severity("critical")
+    @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_10
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_10(
@@ -567,7 +567,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoAuth"])
     @allure.step('Bug#11:  Transition to the trading platform after clicking the [Apply here] link in '
                  'the "Apply now" Block')
-    @pytest.mark.severity("major")
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_11
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_11(
@@ -617,7 +617,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#12:  The button [Open an account] is not named according to block "We’re here to help"')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_12
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_12(
@@ -656,7 +656,7 @@ class TestManualBugs:
     @allure.step(
         'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
         '"Capital.com" after clicking the [I am eligible] button')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_13
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_13(
@@ -692,7 +692,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_14
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_14(
@@ -746,7 +746,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
                  'in the Dropdown [Languages]')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_15
     @pytest.mark.skip(reason="Non-functional bug")
     def test_15(
@@ -771,7 +771,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
                  'in the Dropdown [Languages]')
-    @pytest.mark.severity("minor")
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_16
     @pytest.mark.skip(reason="Non-functional bug")
     def test_16(
@@ -796,7 +796,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
-    @pytest.mark.severity("critical")
+    @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_17
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_17(
@@ -832,7 +832,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#18:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
-    @pytest.mark.severity("critical")
+    @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_18
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_18(
