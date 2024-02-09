@@ -96,6 +96,8 @@ class NewLoginFormLocators:
     LOGIN_LOCATOR = (By.CSS_SELECTOR, "#l_overlay > div input[type=checkbox]")
     LOGIN_PASS_FORGOT = (By.XPATH, "//span[normalize-space()='Forgot password?']")
     BUTTON_CLOSE_ON_LOGIN_FORM = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ button [height='32']")
+    FACEBOOK_BTN = (By.CSS_SELECTOR, ".facebook_button__wMrB6")
+
 
 class TradingPlatformLoginFormLocators:
     LOGIN_FRAME = (By.CSS_SELECTOR, "#login > login-popup")

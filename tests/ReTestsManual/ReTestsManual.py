@@ -8,6 +8,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
+from pages.Signup_login.signup_login_locators import NewLoginFormLocators
 from pages.conditions import Conditions
 
 from tests.ReTestsManual.pages.menu.menu import MainMenu
@@ -913,3 +914,53 @@ class TestManualBugs:
             'Bug#24. Expected result: User is autothorized'
             '\n'
             'Actual result: User is logged out')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step('Bug#26:  The Facebook icon is not clickable in the Signup/Login form ')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_26
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_26(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The Facebook icon is not clickable in the Signup/Login form after reopening the Login/Signup form and
+        clicking the Facebook icon when selecting FCA license and EN language
+        1. Click the Button [Log in] on the Header
+        2. Click the Facebook icon
+        3. Close the Facebook modal window
+        4. Close the Login form
+        5. Click the [Login] or [Signup] button
+        6. Click the Facebook icon
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".17", 'The Facebook icon is not clickable in the Signup/Login form ')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_LOGIN_BTN).click()
+        menu.element_is_clickable(NewLoginFormLocators().FACEBOOK_BTN).click()
+        menu.element_is_clickable(NewLoginFormLocators().BUTTON_CLOSE_ON_LOGIN_FORM).click()
+        # number_of_tabs = len(d.window_handles)
+        new_tab = d.window_handles[1]
+        d.switch_to.window(new_tab)
+        d.close()
+        core_tab = d.window_handles[0]
+        d.switch_to.window(core_tab)
+
+        #
+        menu.element_is_clickable(menu.HEADER_LOGIN_BTN).click()
+        menu.element_is_clickable(NewLoginFormLocators().FACEBOOK_BTN).click()
+        number_of_tabs = len(d.window_handles)
+
+        assert number_of_tabs > 1, (
+            'Bug#26. The  Facebook icon is clickable and opens a pop up with login via Facebook '
+            '\n'
+            'Actual result: The Facebook icon is not clickable')
