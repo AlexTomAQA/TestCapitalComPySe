@@ -4,7 +4,7 @@ from datetime import datetime
 import allure
 import pytest
 from selenium.common import StaleElementReferenceException
-from selenium.webdriver import ActionChains
+# from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
@@ -383,7 +383,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         menu_section = MenuSections(d, link)
-        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        menu_section.element_is_present_and_visible(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
         test_element = AssertClass(d, cur_item_link)
@@ -436,7 +436,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         cur_item_link = menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         menu_section = MenuSections(d, link)
-        menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        menu_section.element_is_present_and_visible(menu_section.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         menu_section.element_is_clickable(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1).click()
 
         test_element = AssertClass(d, cur_item_link)
@@ -485,17 +485,17 @@ class TestManualBugs:
 
         menu = MainMenu(d, link)
 
-        menu_login = menu.elements_are_present(*menu.MENU_LOGIN)
-        if len(menu_login) > 0:
+        if menu.element_is_visible(menu.HEADER_LOGIN_BTN):
             assert False, 'Bug#08. Interruption of authorization'
 
         account_btn = menu.element_is_visible(menu.MENU_ACCOUNT)
         account_btn_link = account_btn.get_attribute("href")
 
-        assert account_btn_link != "/trading/platform", ('Bug#08. '
-                                                         'Expected result: Sidebar "My account" is displayed'
-                                                         '\n'
-                                                         'Actual result: The trading platform page is opened')
+        assert account_btn_link != "https://capital.com/trading/platform", \
+            ('Bug#08. '
+             'Expected result: Sidebar "My account" is displayed'
+             '\n'
+             'Actual result: The trading platform page is opened')
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -541,6 +541,12 @@ class TestManualBugs:
         """
         Link "Apply here" is not clickable in the "No Capital.com account yet?" in the block "Apply
         now" in the menu item "Professional"
+        1. Hover over the menu section "Ways to trade"
+        2. Click the menu item "Professional"
+        3. Click the [I am eligible] button
+        4. Scroll down to the block "Apply now"
+        5. Click the link "Apply here" in the "No Capital.com account yet?"
+
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -554,7 +560,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
-        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         link1 = d.current_url
         apply_here = sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
         apply_here.click()

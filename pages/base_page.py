@@ -634,5 +634,5 @@ class BasePage:
                                                 message=f"Element not present by locator {locator}")
 
     def elements_are_visible(self, locator, timeout=5):
-        return Wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator),
+        return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
                                                 message=f"Can't see element by locator {locator}")
