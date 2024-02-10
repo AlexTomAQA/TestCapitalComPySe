@@ -15,13 +15,13 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # выбор необходимых языков для ретеста
 lang_list = [
         # "en",
-        # "ar",
+        "ar",
         # "de",
         # "el",
         # "es",
         # "fr",
         # "it",
-        "hu",
+        # "hu",
         # "nl",
         # "pl",
         # "ro",
