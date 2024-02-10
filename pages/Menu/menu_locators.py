@@ -17,7 +17,9 @@ class MenuUS11Education:
     SUB_MENU_DA_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/da/learn-to-trade']")
     SUB_MENU_DE_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/learn-to-trade']")
     SUB_MENU_EL_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/el/learn-to-trade']")
-    SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, "#header a[href='/en-gb/learn']")
+    # SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, "#header a[href='/en-gb/learn']")
+    SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
+
     SUB_MENU_EN_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/learn-to-trade']")
     SUB_MENU_ES_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/learn-to-trade']")
     SUB_MENU_ET_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/et/learn-to-trade']")
@@ -807,9 +809,13 @@ class MenuUS11DayTrading:
 
 class MenuUS11IndicesTrading:
     SUB_MENU_ALL_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/trade-indices']")
+    SUB_MENU_AR_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/ar/trade-indices")
     SUB_MENU_DE_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/de/indizeshandel']")
-    SUB_MENU_IT_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/trading-su-indici']")
-    SUB_MENU_ZH_INDICES_TRADING = (By.CSS_SELECTOR, ".nav.cc-nav__wrap a[href='https://capital.com/zh/trade-indices']")
+    SUB_MENU_ES_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/es/trade-indices")
+    SUB_MENU_IT_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/it/trading-su-indici']")
+    SUB_MENU_CN_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/cn/trade-indices")
+    SUB_MENU_ZH_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/zh/trade-indices']")
+    SUB_MENU_RU_INDICES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href$='/ru/torgovlya-indeksami-cfd")
 
 
 class MenuUS11WhatIsMargin:
@@ -880,3 +886,20 @@ class MenuUS11SharesTrading:
     SUB_MENU_RU_SHARES_TRADING = (By.CSS_SELECTOR,
                                   ".cc-header a[href='https://capital.com/ru/torgovlya-aktsiyami-cfd']")
     SUB_MENU_ZH_SHARES_TRADING = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/trade-stocks']")
+
+
+class MenuUS11RiskManagement:
+    SUB_MENU_EN_RISK_MANAGEMENT = (By.CSS_SELECTOR, '[data-type="nav_id720"]')
+
+
+class MenuUS11TechnicalAnalysis:
+    SUB_MENU_EN_TECHNICAL_ANALYSIS = (By.CSS_SELECTOR, '[data-type="nav_id705"]')
+
+
+class MenuUS11HELP:
+    SUB_MENU_EN_HELP = (By.CSS_SELECTOR, '[data-type="nav_id779"]')
+
+
+class MenuUS11LearnToTrade:
+    SUB_MENU_EN_LEARN_TOTRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
+

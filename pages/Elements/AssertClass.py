@@ -14,7 +14,7 @@ from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
 from pages.base_page import BasePage
 from pages.Signup_login.signup_login import SignupLogin
-from tests.ReTests.ReTest_table_fill import retest_table_fill
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class AssertClass(BasePage):
@@ -24,9 +24,9 @@ class AssertClass(BasePage):
     page_google_play = None
     platform_url = ""
 
-    def __init__(self, *args):
-        super().__init__(*args)
-        # self.is_captcha()
+    # def __init__(self, *args):
+    #     super().__init__(*args)
+    #     self.is_captcha()
 
     @allure.step(f'{datetime.now()}   Checking that "Signup" opened')
     def assert_signup(self, d, cur_language, cur_link):
@@ -36,6 +36,8 @@ class AssertClass(BasePage):
         self.page_signup_login = SignupLogin(d, cur_link)
         if self.page_signup_login.should_be_signup_form(cur_language):
             self.page_signup_login.close_signup_form()
+        elif self.page_signup_login.should_be_new_signup_form(cur_language):
+            self.page_signup_login.close_new_signup_form()
         elif self.page_signup_login.should_be_signup_page(cur_language):
             self.page_signup_login.close_signup_page()
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
@@ -56,6 +58,9 @@ class AssertClass(BasePage):
         self.page_signup_login = SignupLogin(d, cur_link)
         if self.page_signup_login.should_be_login_form():
             self.page_signup_login.close_login_form()
+            del self.page_signup_login
+        elif self.page_signup_login.should_be_new_login_form():
+            self.page_signup_login.close_new_login_form()
             del self.page_signup_login
         elif self.page_signup_login.should_be_login_page():
             self.page_signup_login.close_login_page()

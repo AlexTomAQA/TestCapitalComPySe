@@ -17,7 +17,7 @@ from pages.Capital.Trading_platform.trading_platform_locators \
 from pages.Capital.Trading_platform.trading_platform_locators \
     import TopBarLocators
 from test_data.trading_platform_data import data
-from tests.ReTests.ReTest_table_fill import retest_table_fill
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class TradingPlatform(BasePage):
@@ -92,9 +92,7 @@ class TradingPlatform(BasePage):
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v4) =>")
         platform_url = data["PLATFORM_URL/"]
         cur_url = self.driver.current_url
-        # if self.wait_for_target_url(platform_url, 15):
-        if self.wait_for_target_url(platform_url, 10):
-
+        if self.wait_for_target_url(platform_url, 15):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if tpd:
@@ -109,7 +107,7 @@ class TradingPlatform(BasePage):
                 self.should_be_corresponding_trading_instrument(cur_url, trade_instrument)
 
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
-            self.open_page()
+            self.driver.back()
         else:
             if tpd:
                 print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")

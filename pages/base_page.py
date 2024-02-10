@@ -17,6 +17,8 @@ from selenium.common.exceptions import (
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.Capital.capital_locators import OnTrustLocators, Captcha
+
+
 # from src.src import (
 #     CapitalComPageSrc,
 # )
@@ -26,15 +28,15 @@ class HandleExcElementsDecorator(object):
     """A decorator that handles exceptions related to elements on a webpage."""
 
     def __init__(
-        self,
-        driver="self",
-        timeout=0.5,
-        title="title",
-        value="value",
-        property_atr="property",
-        method="a",
-        locator="b",
-        index=0,
+            self,
+            driver="self",
+            timeout=0.5,
+            title="title",
+            value="value",
+            property_atr="property",
+            method="a",
+            locator="b",
+            index=0,
     ):
         """Initializes the object.
 
@@ -300,6 +302,11 @@ class BasePage:
             EC.visibility_of_element_located(locator)
         )
 
+    def element_is_present_and_visible(self, locator, timeout=5):
+        self.go_to_element(self.element_is_presented(locator))
+        return Wait(self.driver, timeout).until(EC.visibility_of_element_located(locator),
+                                                message=f"Can't see element by locator {locator}")
+
     @HandleExcElementsDecorator()
     def element_is_clickable(self, loc_or_elem, timeout=1):
         """
@@ -314,7 +321,8 @@ class BasePage:
             False: not clickable
         """
         return Wait(self.driver, timeout).until(
-            EC.element_to_be_clickable(loc_or_elem)
+            EC.element_to_be_clickable(loc_or_elem),
+            message=f"Can't click element by locator {loc_or_elem}"
         )
 
     @HandleExcElementsDecorator()
@@ -374,7 +382,7 @@ class BasePage:
             link: link browser
         """
         assert (
-            link == self.driver.current_url
+                link == self.driver.current_url
         ), f"Expected link {link} not found in URL {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
@@ -392,7 +400,7 @@ class BasePage:
         assert el_title, f"Title element not found on page: {self.driver.current_url}"
         # Checks that the page title element meets the requirements
         assert (
-            el_title.text == title
+                el_title.text == title
         ), f"Expected title {title} but got {el_title.text} on page: {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
@@ -506,117 +514,125 @@ class BasePage:
 
     @HandleExcElementsDecorator()
     def is_captcha(self):
-        if self.elements_are_present(*Captcha.CAPTCHA_IFRAME):
+        if self.elements_are_visible(Captcha.CAPTCHA_IFRAME):
             pytest.fail("Captcha on the page")
 
-# def flatten(self, mylist):
-#     """
-#     Unpacks list of lists of elements into a single, flat list of elements
-#
-#     Args:
-#         mylist: the list of the lists of WebElements.
-#     Returns:
-#         list[selenium.webdriver.remote.webelement.WebElement]: the list of WebElements.
-#     """
-#     return [item for sublist in mylist for item in sublist]
-#
+    # def flatten(self, mylist):
+    #     """
+    #     Unpacks list of lists of elements into a single, flat list of elements
+    #
+    #     Args:
+    #         mylist: the list of the lists of WebElements.
+    #     Returns:
+    #         list[selenium.webdriver.remote.webelement.WebElement]: the list of WebElements.
+    #     """
+    #     return [item for sublist in mylist for item in sublist]
+    #
 
-# class HandleExcElementDecorator(object):
-#     """A decorator that handles exceptions related to element on a webpage."""
-#
-#     def __init__(
-#         self,
-#         browser="self",
-#         timeout=0.5,
-#         title="title",
-#         value="value",
-#         property_atr="property",
-#         method="a",
-#         locator="b",
-#         index=0,
-#     ):
-#         """Initializes the object.
-#
-#         Args:
-#             browser: WebDriver. Defaults to 'self'.
-#             timeout (optional): the time to wait for an element to be present on the
-#             page before throwing a TimeoutException. Defaults to 0.5.
-#             title (optional): the title of the page. Defaults to 'title'.
-#             value (optional): the value to send to the element. Defaults to 'value'.
-#             'property' (optional): the property of the element. Defaults to 'property'.
-#             method (optional): used for locating the element on the page. Defaults to 'a'.
-#             locator (optional): used with the specified method to find the element. Defaults to 'b'.
-#             index (optional): extract all elements of the list of individual lines of text starting from the
-#                 ith element. Defaults to 0.
-#         """
-#         self.driver = driver
-#         self.timeout = timeout
-#         self.title = title
-#         self.value = value
-#         self.property_atr = property_atr
-#         self.method = method
-#         self.locator = locator
-#         self.index = index
-#
-#     def __call__(self, func):
-#         """Define an inner function that wraps the original function or method.
-#
-#         Args:
-#             func (function): the original function or method to be decorated.
-#
-#         Raises:
-#             NoSuchElementException: if the element cannot be found on the page
-#             TimeoutException: when there is no match with at least one element even after wait time
-#             NoSuchAttributeException: if the attribute of the element is not found
-#             ElementNotInteractableException: if the element is not currently interactable
-#             InvalidElementStateException: if the element is in an invalid state
-#             StaleElementReferenceException: if the element is no longer attached to the DOM
-#             WebDriverException:  if an error occurs while initializing the WebDriver
-#         """
-#         decorator_self = self
-#
-#         def inner_function(*args, **kwargs):
-#             self.driver = args[0].browser
-#             try:
-#                 return func(*args, **kwargs)
-#             except NoSuchElementException as e:
-#                 logging.error(
-#                     # f"Could not find element on page: {decorator_self.driver.current_url}"
-#                     f"Could not find element on page: {self.driver.current_url}"
-#                 )
-#                 logging.exception(e.msg)
-#             # except TimeoutException as e:
-#             #     logging.error(
-#             #         f"Element not present after {decorator_self.timeout} seconds on page: "
-#             #         f"{decorator_self.driver.current_url}"
-#             #     )
-#             #     logging.exception(e.msg)
-#             except NoSuchAttributeException as e:
-#                 logging.error(
-#                     f"The attribute of element could not be found on page: {decorator_self.driver.current_url}"
-#                 )
-#                 logging.exception(e.msg)
-#             except ElementNotInteractableException as e:
-#                 logging.error(
-#                     f"The element is not currently interactable on page: {decorator_self.driver.current_url}"
-#                 )
-#                 logging.exception(e.msg)
-#             except InvalidElementStateException as e:
-#                 logging.error(
-#                     f"The element is in an invalid state on page: {decorator_self.driver.current_url}"
-#                 )
-#                 logging.exception(e.msg)
-#             except StaleElementReferenceException as e:
-#                 logging.error(
-#                     f"The element is no longer attached to the DOM on page: {decorator_self.driver.current_url}"
-#                 )
-#                 logging.exception(e.msg)
-#             except WebDriverException as e:
-#                 logging.error("Unable to initialize WebDriver")
-#                 logging.exception(e.msg)
-#
-#         return inner_function
-#
+    # class HandleExcElementDecorator(object):
+    #     """A decorator that handles exceptions related to element on a webpage."""
+    #
+    #     def __init__(
+    #         self,
+    #         browser="self",
+    #         timeout=0.5,
+    #         title="title",
+    #         value="value",
+    #         property_atr="property",
+    #         method="a",
+    #         locator="b",
+    #         index=0,
+    #     ):
+    #         """Initializes the object.
+    #
+    #         Args:
+    #             browser: WebDriver. Defaults to 'self'.
+    #             timeout (optional): the time to wait for an element to be present on the
+    #             page before throwing a TimeoutException. Defaults to 0.5.
+    #             title (optional): the title of the page. Defaults to 'title'.
+    #             value (optional): the value to send to the element. Defaults to 'value'.
+    #             'property' (optional): the property of the element. Defaults to 'property'.
+    #             method (optional): used for locating the element on the page. Defaults to 'a'.
+    #             locator (optional): used with the specified method to find the element. Defaults to 'b'.
+    #             index (optional): extract all elements of the list of individual lines of text starting from the
+    #                 ith element. Defaults to 0.
+    #         """
+    #         self.driver = driver
+    #         self.timeout = timeout
+    #         self.title = title
+    #         self.value = value
+    #         self.property_atr = property_atr
+    #         self.method = method
+    #         self.locator = locator
+    #         self.index = index
+    #
+    #     def __call__(self, func):
+    #         """Define an inner function that wraps the original function or method.
+    #
+    #         Args:
+    #             func (function): the original function or method to be decorated.
+    #
+    #         Raises:
+    #             NoSuchElementException: if the element cannot be found on the page
+    #             TimeoutException: when there is no match with at least one element even after wait time
+    #             NoSuchAttributeException: if the attribute of the element is not found
+    #             ElementNotInteractableException: if the element is not currently interactable
+    #             InvalidElementStateException: if the element is in an invalid state
+    #             StaleElementReferenceException: if the element is no longer attached to the DOM
+    #             WebDriverException:  if an error occurs while initializing the WebDriver
+    #         """
+    #         decorator_self = self
+    #
+    #         def inner_function(*args, **kwargs):
+    #             self.driver = args[0].browser
+    #             try:
+    #                 return func(*args, **kwargs)
+    #             except NoSuchElementException as e:
+    #                 logging.error(
+    #                     # f"Could not find element on page: {decorator_self.driver.current_url}"
+    #                     f"Could not find element on page: {self.driver.current_url}"
+    #                 )
+    #                 logging.exception(e.msg)
+    #             # except TimeoutException as e:
+    #             #     logging.error(
+    #             #         f"Element not present after {decorator_self.timeout} seconds on page: "
+    #             #         f"{decorator_self.driver.current_url}"
+    #             #     )
+    #             #     logging.exception(e.msg)
+    #             except NoSuchAttributeException as e:
+    #                 logging.error(
+    #                     f"The attribute of element could not be found on page: {decorator_self.driver.current_url}"
+    #                 )
+    #                 logging.exception(e.msg)
+    #             except ElementNotInteractableException as e:
+    #                 logging.error(
+    #                     f"The element is not currently interactable on page: {decorator_self.driver.current_url}"
+    #                 )
+    #                 logging.exception(e.msg)
+    #             except InvalidElementStateException as e:
+    #                 logging.error(
+    #                     f"The element is in an invalid state on page: {decorator_self.driver.current_url}"
+    #                 )
+    #                 logging.exception(e.msg)
+    #             except StaleElementReferenceException as e:
+    #                 logging.error(
+    #                     f"The element is no longer attached to the DOM on page: {decorator_self.driver.current_url}"
+    #                 )
+    #                 logging.exception(e.msg)
+    #             except WebDriverException as e:
+    #                 logging.error("Unable to initialize WebDriver")
+    #                 logging.exception(e.msg)
+    #
+    #         return inner_function
+    #
     def go_to_element(self, element):
         self.driver.execute_script(
-            "return arguments[0].scrollIntoView({block: 'center'});", element)
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
+
+    def element_is_presented(self, locator, timeout=10):
+        return Wait(self.driver, timeout).until(EC.presence_of_element_located(locator),
+                                                message=f"Element not present by locator {locator}")
+
+    def elements_are_visible(self, locator, timeout=5):
+        return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
+                                                message=f"Can't see element by locator {locator}")

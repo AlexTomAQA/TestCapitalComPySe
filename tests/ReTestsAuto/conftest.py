@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from tests.ReTests.GoogleSheets.googlesheets import GoogleSheet
-# from tests.ReTests.ReTests import unique_test, retest_skipped_tests, no_new_column
+from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
+# from tests.ReTestsAuto.ReTestsAuto import unique_test, retest_skipped_tests, no_new_column
 
 # ===========================================================
 # выбор необходимых языков для ретеста
@@ -18,10 +18,10 @@ lang_list = [
         # "ar",
         # "de",
         # "el",
-        "es",
+        # "es",
         # "fr",
         # "it",
-        # "hu",
+        "hu",
         # "nl",
         # "pl",
         # "ro",
@@ -43,8 +43,8 @@ role_list = [
 country_list = [
         "gb",  # United Kingdom - "FCA"
         "au",  # Australia - "ASIC"
-        # "de",  # Germany - "CYSEC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "de",  # Germany - "CYSEC"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================

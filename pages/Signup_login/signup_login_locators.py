@@ -1,6 +1,19 @@
 from selenium.webdriver.common.by import By
 
 
+class NewSignupFormLocators:
+    SIGNUP_FORM = (By.CSS_SELECTOR, '')
+    SIGNUP_LOCATOR = (By.CSS_SELECTOR, '')
+    BUTTON_CLOSE_ON_SIGNUP_FORM = (By.CSS_SELECTOR, '.modal_overlay__f_YlZ button.button_empty__Nmv1h')
+    SIGNUP_FRAME = (By.XPATH, "//span[normalize-space()='Sign up']")
+    SIGNUP_HEADER = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
+    SIGNUP_REF_LOGIN = (By.XPATH, "//span[normalize-space()='Login']")
+    SIGNUP_INPUT_EMAIL = (By.CSS_SELECTOR, '')
+    SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, '')
+    SIGNUP_SUBMIT_BTN = (By.CSS_SELECTOR, '')
+    SIGNUP_PRIVACY_POLICY = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
+
+
 class SignupFormLocators:
     SIGNUP_FORM = (By.CSS_SELECTOR, "#s_overlay > div > button")
     SIGNUP_LOCATOR = (By.CSS_SELECTOR, "#s_overlay .signup-form a.l_btn_signup")
@@ -69,6 +82,21 @@ class LoginFormLocators:
     LOGIN_LOCATOR = (By.CSS_SELECTOR, "#l_overlay > div input[type=checkbox]")
     LOGIN_PASS_FORGOT = (By.CSS_SELECTOR, "#l_overlay a.l_btn_forgot")
     BUTTON_CLOSE_ON_LOGIN_FORM = (By.CSS_SELECTOR, "#l_overlay > div > button")
+
+
+class NewLoginFormLocators:
+    LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_REF_SIGNUP = (By.XPATH, "//span[normalize-space()='Sign up']")
+    LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#email")
+    LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#password")
+    LOGIN_CHECKBOX = (By.XPATH, "//label[@for='remember_me']")
+    LOGIN_CONTINUE = (By.CSS_SELECTOR, 'button[type="submit"]')
+    LOGIN_FORM = (By.CSS_SELECTOR, "#l_overlay > div > button")
+    LOGIN_LOCATOR = (By.CSS_SELECTOR, "#l_overlay > div input[type=checkbox]")
+    LOGIN_PASS_FORGOT = (By.XPATH, "//span[normalize-space()='Forgot password?']")
+    BUTTON_CLOSE_ON_LOGIN_FORM = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ button [height='32']")
+    FACEBOOK_BTN = (By.CSS_SELECTOR, ".facebook_button__wMrB6")
 
 
 class TradingPlatformLoginFormLocators:

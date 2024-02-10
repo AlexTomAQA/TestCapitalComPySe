@@ -55,6 +55,7 @@ class ButtonOnVerticalBannerLocators:
 class BlockStepTradingLocators:
     BUT_CREATE_YOUR_ACCOUNT = (By.CSS_SELECTOR, "section.regSteps i.regSteps__item.js_signup")
     BUT_CREATE_YOUR_ACCOUNT_DE = (By.CSS_SELECTOR, "#cc_ab42 div.js_signup")
+    BUT_CREATE_YOUR_ACCOUNT_EN = (By.CSS_SELECTOR, '[data-type="banner_with_steps"]')
 
 
 class ButtonInBannerLocators:
@@ -142,7 +143,10 @@ class ButtonsOnPageLocators:
     BUTTON_TRADING_SELL_MOST_VOLATILE = (By.CSS_SELECTOR, ".tab-volatile > table > tbody > tr > td:nth-child(3) > a")
     BUTTON_TRADING_BUY_MOST_VOLATILE = (By.CSS_SELECTOR, ".tab-volatile > table > tbody > tr > td:nth-child(5) > a")
 
-    BUTTON_TRADING_SHOW_ALL = (By.CSS_SELECTOR, ".tab-mosttraded > p > .btnShowMore")
+    BUTTON_TRADING_SHOW_ALL_TAB_MOSTTRADED = (By.CSS_SELECTOR, ".tab-mosttraded > p > .btnShowMore > .js-showText")
+    BUTTON_TRADING_SHOW_ALL_TAB_RISERS = (By.CSS_SELECTOR, ".tab-risers > p > .btnShowMore > .js-showText")
+    BUTTON_TRADING_SHOW_ALL_TAB_FAILERS = (By.CSS_SELECTOR, ".tab-fallers > p > .btnShowMore > .js-showText")
+    BUTTON_TRADING_SHOW_ALL_TAB_VOLATILE = (By.CSS_SELECTOR, ".tab-volatile > p > .btnShowMore > .js-showText")
 
     BUTTON_ON_STICKY_BAR = (By.CSS_SELECTOR, "div.encStickyBar > div > a")
     BUTTON_SIGNUP_LOGIN = (By.CSS_SELECTOR, "a[href='/trading/signup'][class*='__cp_b'][class*='ln-auto']")
@@ -151,6 +155,8 @@ class ButtonsOnPageLocators:
 class MainBannerLocators:
     BUTTON_START_TRADING = (By.CSS_SELECTOR, "a.cc-banner__btn.btn.btn--darkText.js_signup")
     BUTTON_TRY_DEMO = (By.CSS_SELECTOR, "a.cc-banner__btn.btn.btn--emptyblack.js_signup.hideXs")
+    BUTTON_CREATE_ACCOUNT = (By.CSS_SELECTOR, '[data-type*="background_banner_block_btn1"]')
+    BUTTON_TRY_DEMO_ACCOUNT = (By.CSS_SELECTOR, '[data-type*="background_banner_block_btn2"]')
 
 
 class RightBannerLocators:
