@@ -117,6 +117,7 @@ class ButtonsOnPageLocators:
     TYPE_FI_INDICES = (By.CSS_SELECTOR, "")
 
     # Tabs
+    TABLE_CFDS = (By.CSS_SELECTOR, '.section.section__tabs')
     TAB_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, '[data-id="mosttraded"]')
     TAB_TRADING_ITEM_TOP_RISERS = (By.CSS_SELECTOR, '[data-id="risers"]')
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
