@@ -233,3 +233,6 @@ class TestCryptocurrencyTrading:
         test_element = ButtonOnVerticalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
                                         banner00_ver_tpd, banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
+
+
+
