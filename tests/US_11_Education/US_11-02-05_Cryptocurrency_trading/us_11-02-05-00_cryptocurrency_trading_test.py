@@ -7,6 +7,7 @@ import allure
 # import os.path
 import pytest
 
+from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
 from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
@@ -167,7 +168,7 @@ class TestCryptocurrencyTrading:
     def test_04_content_block_start_trading_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        Check: Button [Start trading] in the Content block"
+        Check: Button [Start trading] in the Content block
         Language: All, except AR, EL, HU, NL.
         License: All, except FCA (GB country)
         """
@@ -190,3 +191,45 @@ class TestCryptocurrencyTrading:
 
         test_element = ContentStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
+
+    @allure.step("Test button on the block [Vertical banner]")
+    @pytest.mark.test_05
+    def test_05_block_vertical_banner_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button on the block [Vertical banner]
+        Language: DE, ES, FR, PL, RO, RU, ZH. License: All,except FCA (GB country)
+        For "Authorized user" role:
+            The Trading platform (TP) or Demo trading platform (TPD) are opened depending on the banner:
+            TP if banner from the Live mode banners list / TPD if banner from the Demo mode banners list
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".00_05", "Testing button on the block [Vertical banner]")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["de", "es", "fr", "pl", "ro", "ru", "zh"])
+        Common().check_language_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, main_page_link)
+        cur_menu_link = page_menu.open_education_cryptocurrency_trading_menu(
+            d, cur_language, cur_country, main_page_link)
+
+        # банеры должны открываться в Demo mode for US_00
+        banner00_ver_tpd = ["221", "505", "389"]
+        # банеры должны открываться в Live mode for US_00
+        banner00_ver_tp = ["166", "196", "292", "377", "388", "425"]
+        # баннеры открываются в Demo mode for US_01
+        banner01_ver_tpd = []
+        # баннеры открываются в Live mode for US_01
+        banner01_ver_tp = []
+
+        test_element = ButtonOnVerticalBanner(d, cur_menu_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
+                                        banner00_ver_tpd, banner00_ver_tp, banner01_ver_tpd, banner01_ver_tp)
