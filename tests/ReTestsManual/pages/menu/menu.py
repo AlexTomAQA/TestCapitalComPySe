@@ -41,6 +41,10 @@ class MainMenu(BasePage):
     SUB_MENU_MARKETS_SHARES = (By.CSS_SELECTOR, '[data-type="nav_id694"]')
     SUB_MENU_MARKETS_COMMODITIES = (By.CSS_SELECTOR, '[data-type="nav_id701"]')
     SUB_MENU_MARKETS_ESG = (By.CSS_SELECTOR, '[data-type="nav_id738"]')
+    SUB_MENU_MARKETS_SORT = (By.CSS_SELECTOR, '.dropdown_wrap__NQ42r')
+    SUB_MENU_MARKETS_SORT_LIST = (By.CSS_SELECTOR, '.scroll_scroll__ueviH span')
+    SUB_MENU_MARKETS_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"] a')
+
     # ways to trade
     MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
     SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
@@ -151,6 +155,21 @@ class MainMenu(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
         self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_ESG)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu')
+    def open_markets_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.MENU_MARKETS)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url

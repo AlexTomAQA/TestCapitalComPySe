@@ -1003,7 +1003,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
-    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_34
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_34(
@@ -1055,5 +1055,53 @@ class TestManualBugs:
 
         assert filter_list2 != filter_list1, (
             'Bug#34. Displayed a filtered list of cookies according to the selected checkboxes '
+            '\n'
+            'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#40:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_40
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_40(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The "All markets" widget is displayed, but the arrangement of trading instruments with the filter applied is
+        not performed after selecting any item from the dropdown menu "Most traded" in the [Markets] menu section
+        1. Navigate to Capital.com
+        2. Click the menu section [Markets]
+        3. Scroll down to the "All Markets " Widget
+        4. Click  the Dropdown "Most traded"
+        5. Click on any item from this dropdown menu
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".40", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_markets_menu(d, cur_language, cur_country, link)
+        menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+        n = len(menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST))
+        menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+        t = ["0"]*n
+        for i in range(n):
+            menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+            elem = menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST)[i]
+            menu.element_is_clickable(elem).click()
+            t[i] = menu.elements_are_located(menu.SUB_MENU_MARKETS_LIST)[0].text
+        print(t)
+        rez = all(x == t[0] for x in t)
+
+        assert not rez, (
+            'Bug#40. Displayed a filtered list of cookies according to the selected checkboxes '
             '\n'
             'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')
