@@ -7,6 +7,7 @@ import allure
 # import os.path
 import pytest
 
+from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
 from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
@@ -239,6 +240,37 @@ class TestCryptocurrencyTrading:
         test_element = ButtonOnHorizontalBanner(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link,
                                         banner00_hor_tpd, banner00_hor_tp, banner01_hor_tpd, banner01_hor_tp)
+
+    @allure.step("Test button [1.Create & verify your account]"
+                 "in Block 'Still looking for a broker you can trust?'")
+    @pytest.mark.test_07
+    def test_07_still_looking_for_a_broker_you_can_trust_block_create_and_verify_your_account_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [1.Create & verify your account] in block 'Still looking for a broker you can trust?'
+        Language: All, except AR, EL, HU, NL.
+        License: All, except FCA (GB country)
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.02.05", "Education > Menu item [Cryptocurrency trading]",
+            ".00_07", "Testing button [1.Create & verify your account] in block "
+                      "'Still looking for a broker you can trust?'")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_language_in_list_and_skip_if_present(cur_language, ["ar", "el", "hu", "nl"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, main_page_link)
+        cur_menu_link = page_menu.open_education_cryptocurrency_trading_menu(
+            d, cur_language, cur_country, main_page_link)
+
+        test_element = BlockStepTrading(d, cur_menu_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
 
     @allure.step("Start pretest")
     def test_cryptocurrency_trading_item_pretest(
