@@ -3,6 +3,7 @@ from datetime import datetime
 
 import allure
 import pytest
+from allure_commons.types import AttachmentType
 from selenium.common import StaleElementReferenceException
 # from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -108,6 +109,11 @@ class TestManualBugs:
                            f"error_404: {error_trade_instrument_list}. \n"
                            f"trade instrument: {len(most_trade_instrument_list)} {most_trade_instrument_list}\n"
                            f"qty_pages: {qty_pages}")
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -184,6 +190,11 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
             print("Non one 404 error")
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -489,7 +500,8 @@ class TestManualBugs:
             assert False, 'Bug#08. Interruption of authorization'
 
         account_btn = menu.element_is_visible(menu.MENU_ACCOUNT)
-        account_btn_link = account_btn.get_attribute("href")
+        account_btn.click()
+        account_btn_link = d.current_url
 
         assert account_btn_link != "https://capital.com/trading/platform", \
             ('Bug#08. '
@@ -691,9 +703,15 @@ class TestManualBugs:
         sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
         scroll_y = d.execute_script("return window.scrollY;")
+
         assert scroll_y == 0, ('Bug#13. Expected result: Transition to the top of the page'
                                '\n'
                                'Actual result: Transition not to the top of the page ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -741,7 +759,7 @@ class TestManualBugs:
                 if not bred_crumbs:
                     link_list.append(link)
                     print("No breadcrumbs:", link)
-                # time.sleep(1)
+                time.sleep(1)
 
         assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
                        '\n'
@@ -835,6 +853,11 @@ class TestManualBugs:
                                                                     '\n'
                                                                     'Actual result: [Log in] and [Sign up] buttons '
                                                                     'are displayed')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -887,6 +910,11 @@ class TestManualBugs:
                 assert False, ('Bug#11. Expected result: Transition to the trading platform'
                                '\n'
                                'Actual result: Sign up form is opened')
+            allure.attach(
+                d.get_screenshot_as_png(),
+                name=f"Screenshot{datetime.now()}",
+                attachment_type=AttachmentType.PNG,
+            )
             # d.back()
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -944,7 +972,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".17", 'The Facebook icon is not clickable in the Signup/Login form ')
+            ".26", 'The Facebook icon is not clickable in the Signup/Login form ')
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
