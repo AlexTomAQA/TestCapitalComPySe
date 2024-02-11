@@ -998,3 +998,62 @@ class TestManualBugs:
             'Bug#26. The  Facebook icon is clickable and opens a pop up with login via Facebook '
             '\n'
             'Actual result: The Facebook icon is not clickable')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_34
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_34(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Filtered list of cookies is displayed according to the checked and unchecked checkboxes in the Drop-down menu
+        in the Modal window after clicking the[Clear Filters] and [Apply] buttons
+        1. Click the [Filters] button
+        2. Selected checkboxs on "Perfomances Cookie", "Functional Cookies" and "Targeting Cookies"
+        3. Click the [Apply] button
+        4. Click the [Filter] button
+        5. Selected a checkbox on "Perfomances Cookie"
+        6. Click the [Apply] button
+        7. Click the [Filters] button
+        8. Click the [Clear filters] button
+        9. Click the [Apply] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
+        menu.element_is_clickable(menu.STRICTLY_NECESSARY_COOKIES).click()
+        menu.element_is_present_and_visible(menu.COOKIES_DETAILS_1).click()
+        filter_list0 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+
+        menu.element_is_clickable(menu.COOKIE_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX2).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX3).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX4).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_APPLY).click()
+
+        filter_list1 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+        #
+        menu.element_is_clickable(menu.COOKIE_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_CLEAR_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_APPLY).click()
+        filter_list2 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+        print(filter_list0)
+        print(filter_list1)
+        print(filter_list2)
+
+        assert filter_list2 != filter_list1, (
+            'Bug#34. Displayed a filtered list of cookies according to the selected checkboxes '
+            '\n'
+            'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')

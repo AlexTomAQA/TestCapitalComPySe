@@ -20,6 +20,19 @@ class MainMenu(BasePage):
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
+    COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+
+    # cookies_setting
+    STRICTLY_NECESSARY_COOKIES = (By.CSS_SELECTOR, '[aria-controls="ot-desc-id-C0001"]')
+    COOKIES_DETAILS_1 = (By.CSS_SELECTOR, '[data-parent-id="C0001"]')
+    COOKIES_lIST_1 = (By.CSS_SELECTOR, ".ot-sdk-column ul[style='display: block;'] li.ot-host-item")
+    COOKIE_FILTER_CHBOX1 = (By.CSS_SELECTOR, "label[for='C0001-filter']")
+    COOKIE_FILTER_CHBOX2 = (By.CSS_SELECTOR, "label[for='C0002-filter']")
+    COOKIE_FILTER_CHBOX3 = (By.CSS_SELECTOR, "label[for='C0003-filter']")
+    COOKIE_FILTER_CHBOX4 = (By.CSS_SELECTOR, "label[for='C0004-filter']")
+    COOKIE_FILTER_APPLY = (By.CSS_SELECTOR, "#filter-apply-handler")
+    COOKIE_FILTER = (By.CSS_SELECTOR, "#filter-btn-handler")
+    COOKIE_CLEAR_FILTER = (By.CSS_SELECTOR, "#clear-filters-handler")
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
