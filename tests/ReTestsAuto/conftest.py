@@ -24,9 +24,9 @@ lang_list = [
         # "hu",
         # "it",
         # "nl",
-        # "pl",
+        "pl",
         # "ro",
-        "ru",
+        # "ru",
         # "zh",
     ]
 
