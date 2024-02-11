@@ -23,7 +23,7 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 count = 1
 
 
-@pytest.mark.us_11_02_05_pre
+@pytest.mark.us_11_02_05_00
 class TestCryptocurrencyTradingPretest:
     page_conditions = None
 
