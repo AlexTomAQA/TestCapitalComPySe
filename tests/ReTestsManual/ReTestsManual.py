@@ -1165,6 +1165,9 @@ class TestManualBugs:
         chart_5m.screenshot(chart_5m_image)
         size_chart5 = os.path.getsize(chart_1m_image)
         print(size_chart5)
+        os.remove(chart_15m_image)
+        os.remove(chart_5m_image)
+        os.remove(chart_1m_image)
 
         assert size_chart1 > 10000 or size_chart5 > 10000, (
             'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
