@@ -155,10 +155,10 @@ def gs():
 
             one_time_copy_paste = True
 
-    # установка счетчика выполненых в фильтре таблицы ретестов
-    g_sheet.new_data_copy_past(
-        1, 2, 1, 2,
-        5, 6, 21, 22)
+    # # установка счетчика выполненных в фильтре таблицы ретестов
+    # g_sheet.new_data_copy_past(
+    #     1, 2, 1, 2,
+    #     5, 6, 21, 22)
 
     gs_out = ['Bugs Report']
     g_sheet.update_range_values('B1', [gs_out])
