@@ -1,3 +1,4 @@
+import os
 import time
 from datetime import datetime
 
@@ -18,7 +19,7 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-
+import io
 from src.src import CapitalComPageSrc
 
 
@@ -1102,6 +1103,70 @@ class TestManualBugs:
         rez = all(x == t[0] for x in t)
 
         assert not rez, (
-            'Bug#40. Displayed a filtered list of cookies according to the selected checkboxes '
+            'Bug#40. The "All markets" widget is displayed, and the arrangement of trading instruments with '
+            'the filter applied is performed'
             '\n'
-            'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')
+            'Actual result: The "All markets" widget is displayed, but the arrangement of trading instruments with '
+            'the filter applied is not  performed')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#4m:  "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_4m
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_4m(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m and selected any trading
+        instrument in the "Our CFD Markets" Widget
+        1. Tap the Burger menu
+        2. Tap the [Ways to trade] arrow dropdown
+        3. Tap the [CFD trading] menu item
+        4. Scroll down to "Our CFD Markets" Widget
+        5. Tap the "Time steps" (1m/5m)
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_cfd_trading_sub_menu(d, cur_language, cur_country, link)
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_15M).click()
+        chart_15m_image = 'cart_15m.png'
+        chart_15m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_15m.screenshot(chart_15m_image)
+        size_chart15 = os.path.getsize(chart_15m_image)
+        print(size_chart15)
+
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_1M).click()
+        chart_1m_image = 'cart_1m.png'
+        chart_1m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_1m.screenshot(chart_1m_image)
+        size_chart1 = os.path.getsize(chart_1m_image)
+        print(size_chart1)
+
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_5M).click()
+        chart_5m_image = 'cart_5m.png'
+        chart_5m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_5m.screenshot(chart_5m_image)
+        size_chart5 = os.path.getsize(chart_1m_image)
+        print(size_chart5)
+
+        assert size_chart1 > 10000 or size_chart5 > 10000, (
+            'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
+            '\n'
+            'Actual result: "Line Chart" is not displayed corresponding to the  selected "Time steps"')
