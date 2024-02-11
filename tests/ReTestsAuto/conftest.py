@@ -16,8 +16,8 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 lang_list = [
         # "en",
         # "ar",
-        "cn",
-        # "de",
+        # "cn",
+        "de",
         # "el",
         # "es",
         # "fr",
@@ -177,11 +177,10 @@ def gs():
         # установка полного времени тестирования
         execution_time = time_concat(execution_time_1, execution_time_2)
         g_sheet.update_range_values('V4', [[execution_time]])
-
     else:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         g_sheet.update_range_values('V2', [end_retest_date])
         g_sheet.update_range_values('V4', [["=V2 - V1"]])
 
-    del g_sheet
+    # del g_sheet
     print(f"\n{datetime.now()}   *** end fixture gs = teardown ***\n")
