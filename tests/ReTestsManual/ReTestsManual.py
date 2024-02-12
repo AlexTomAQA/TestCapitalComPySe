@@ -6,6 +6,7 @@ import allure
 import pytest
 from allure_commons.types import AttachmentType
 from selenium.common import StaleElementReferenceException
+from selenium.webdriver import ActionChains
 # from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
@@ -1410,6 +1411,67 @@ class TestManualBugs:
             'Bug#61. There is no a  [Close] button for closing Validation message'
             '\n'
             'Actual result: There is no a  [Close] button for closing Validation message')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step("Bug#62: There is no transition to the corresponding page with a trading instrument when clicking on "
+                 "any of the trading instruments in the dropdown in the [Search]")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_62
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_62(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no transition to the corresponding page with a trading instrument when clicking on any of the trading
+        instruments in the dropdown in the [Search] input field in the "Forex Markets" widget(this bug is reproduced
+        in all markets: Shares, Indices, Commodities, Forex )( AJAX requests, checking synchronous operations)
+        1. Hover over [Markets] menu section
+        2. Click the [Forex] menu item
+        3. Scroll down to the "Forex Markets" widget
+        4. Click the [Search] input field
+        5. Enter any value for example "eur"
+        6. Click any item from dropdown list
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".62", "There is no transition to the corresponding page with a trading instrument when "
+                   "clicking on any of the trading instruments in the dropdown in the [Search]")
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
+
+        markets_page = MenuSections(d)
+
+        search = markets_page.element_is_present_and_visible(markets_page.MARKETS_MOST_TRADE_SEARCH)
+        search.send_keys("eur")
+        search_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
+        try:
+            ActionChains(d) \
+                .move_to_element(search_list[1]) \
+                .pause(0.5) \
+                .move_to_element(search_list[1]) \
+                .pause(1) \
+                .click() \
+                .perform()
+        except:
+            print()
+
+        assert markets_page.element_is_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_PAGE), (
+            f"Bug#62. Expected Result:  Page of the corresponding trading instrument is opened\n"
+            f"Actual Result: Items in the Dropdown list are not clickable \n")
+
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",
