@@ -10,7 +10,7 @@ from selenium.common import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
-from pages.Signup_login.signup_login_locators import NewLoginFormLocators
+from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSignupFormLocators
 from pages.conditions import Conditions
 
 from tests.ReTestsManual.pages.menu.menu import MainMenu
@@ -1148,7 +1148,7 @@ class TestManualBugs:
         time.sleep(1)
         chart_15m.screenshot(chart_15m_image)
         size_chart15 = os.path.getsize(chart_15m_image)
-        print(size_chart15)
+        print("size_chart15m:",size_chart15)
 
         menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_1M).click()
         chart_1m_image = 'cart_1m.png'
@@ -1156,7 +1156,7 @@ class TestManualBugs:
         time.sleep(1)
         chart_1m.screenshot(chart_1m_image)
         size_chart1 = os.path.getsize(chart_1m_image)
-        print(size_chart1)
+        print("size_chart1m", size_chart1)
 
         menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_5M).click()
         chart_5m_image = 'cart_5m.png'
@@ -1164,7 +1164,7 @@ class TestManualBugs:
         time.sleep(1)
         chart_5m.screenshot(chart_5m_image)
         size_chart5 = os.path.getsize(chart_1m_image)
-        print(size_chart5)
+        print("size_chart5m", size_chart5)
         os.remove(chart_15m_image)
         os.remove(chart_5m_image)
         os.remove(chart_1m_image)
@@ -1173,3 +1173,58 @@ class TestManualBugs:
             'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
             '\n'
             'Actual result: "Line Chart" is not displayed corresponding to the  selected "Time steps"')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#42: Validation error is not cleared in the Form [Sign up] when click button [Close]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_42
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_42(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Validation error is not cleared in the Form [Sign up] when click button [Close]
+        1. Click button [Sign up]
+        2. Enter invalid email or password on Input Field [Email address/Password]
+        3. Click button [Continue]
+        4. Click button [Close]
+        5. Click button [Sign up]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        email = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_EMAIL)
+        email.send_keys("test01@gmail.com")
+        password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
+        password.send_keys("Qwer123")
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), "Error message was Not displayed"
+        menu.element_is_clickable(signup_form.SIGNUP_FORM_CLOSE_BUTTON).click()
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        assert not menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
+            'Bug#42. Validation error is cleared'
+            '\n'
+            'Actual result: Validation error is not cleared')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
