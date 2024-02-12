@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class NewSignupFormLocators:
     SIGNUP_FORM = (By.CSS_SELECTOR, "//span[normalize-space()='Sign up']")
     SIGNUP_FORM_ERROR = (By.CSS_SELECTOR, '.alert_error__zY_kE')
+    SIGNUP_FORM_ERROR_CLOSE_BTN = (By.CSS_SELECTOR, '.alert_error__zY_kE button')
     SIGNUP_FORM_CLOSE_BUTTON = (By.CSS_SELECTOR, '.modal_overlay__f_YlZ button.button_empty__Nmv1h')
     SIGNUP_FRAME = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ")
     SIGNUP_HEADER = (By.XPATH, "//a[normalize-space()='Privacy Policy']")

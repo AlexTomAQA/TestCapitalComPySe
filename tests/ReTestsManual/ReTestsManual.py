@@ -1317,7 +1317,6 @@ class TestManualBugs:
         email.send_keys("test001.miketar+1@gmail.com")
         password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
         password.send_keys("qwer1234")
-        time.sleep(1)
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
         assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
@@ -1334,8 +1333,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @allure.step(
-        'Bug#60: User is registered when two required characters are not entered in '
-        'the "password" field in the Signup form')
+        'Bug#60: Validation message "Email or password is invalid" is displayed ')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_60
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -1350,9 +1348,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".60", 'User is registered when two required characters are not entered in '
-                   'the "password" field in the Signup form '
-                   'clicking the [Continue] button in the Signup form')
+            ".60", 'Validation message "Email or password is invalid" is displayed')
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1363,13 +1359,57 @@ class TestManualBugs:
         signup_form = NewSignupFormLocators()
         menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
-        time.sleep(1)
 
         assert not menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN), (
             'Bug#60. [Continue] button is inactive until valid values are entered in the email and password '
             'fields and validated'
             '\n'
             'Actual result: [Continue] button is active for sending POST request')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#61: There is no a  [Close] button for closing Validation message in the Signup/Login form'
+        'the "password" field in the Signup form')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_61
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_61(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no a  [Close] button for closing Validation message in the Signup/Login form after entering values
+        in the "email" and "password" fields and clicking the [Continue] button
+        1. Click the [Log in/Sign up] button
+        2. Enter valid value in the "email" field
+        3. Enter invalid value in the "password" field
+        4. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN), (
+            'Bug#61. There is no a  [Close] button for closing Validation message'
+            '\n'
+            'Actual result: There is no a  [Close] button for closing Validation message')
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",
