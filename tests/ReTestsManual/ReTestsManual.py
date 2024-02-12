@@ -673,7 +673,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
         'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
         '"Capital.com" after clicking the [I am eligible] button')
@@ -717,7 +717,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_14
@@ -770,7 +770,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -795,7 +795,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -820,7 +820,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
     @allure.severity(allure.severity_level.CRITICAL)
@@ -1003,7 +1003,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
         'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
@@ -1063,7 +1063,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
         'Bug#40:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
@@ -1113,7 +1113,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
         'Bug#4m:  "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
     @allure.severity(allure.severity_level.NORMAL)
@@ -1419,7 +1419,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step("Bug#62: There is no transition to the corresponding page with a trading instrument when clicking on "
                  "any of the trading instruments in the dropdown in the [Search]")
     @allure.severity(allure.severity_level.NORMAL)
