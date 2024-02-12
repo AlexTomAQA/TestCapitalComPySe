@@ -20,6 +20,19 @@ class MainMenu(BasePage):
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
+    COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+
+    # cookies_setting
+    STRICTLY_NECESSARY_COOKIES = (By.CSS_SELECTOR, '[aria-controls="ot-desc-id-C0001"]')
+    COOKIES_DETAILS_1 = (By.CSS_SELECTOR, '[data-parent-id="C0001"]')
+    COOKIES_lIST_1 = (By.CSS_SELECTOR, ".ot-sdk-column ul[style='display: block;'] li.ot-host-item")
+    COOKIE_FILTER_CHBOX1 = (By.CSS_SELECTOR, "label[for='C0001-filter']")
+    COOKIE_FILTER_CHBOX2 = (By.CSS_SELECTOR, "label[for='C0002-filter']")
+    COOKIE_FILTER_CHBOX3 = (By.CSS_SELECTOR, "label[for='C0003-filter']")
+    COOKIE_FILTER_CHBOX4 = (By.CSS_SELECTOR, "label[for='C0004-filter']")
+    COOKIE_FILTER_APPLY = (By.CSS_SELECTOR, "#filter-apply-handler")
+    COOKIE_FILTER = (By.CSS_SELECTOR, "#filter-btn-handler")
+    COOKIE_CLEAR_FILTER = (By.CSS_SELECTOR, "#clear-filters-handler")
 
     # markets
     MENU_MARKETS = (By.CSS_SELECTOR, '[data-type="nav_id689"]')
@@ -28,9 +41,19 @@ class MainMenu(BasePage):
     SUB_MENU_MARKETS_SHARES = (By.CSS_SELECTOR, '[data-type="nav_id694"]')
     SUB_MENU_MARKETS_COMMODITIES = (By.CSS_SELECTOR, '[data-type="nav_id701"]')
     SUB_MENU_MARKETS_ESG = (By.CSS_SELECTOR, '[data-type="nav_id738"]')
+    SUB_MENU_MARKETS_SORT = (By.CSS_SELECTOR, '.dropdown_wrap__NQ42r')
+    SUB_MENU_MARKETS_SORT_LIST = (By.CSS_SELECTOR, '.scroll_scroll__ueviH span')
+    SUB_MENU_MARKETS_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"] a')
+
     # ways to trade
     MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
     SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
+    SUB_MENU_WAYS_TO_TRADE_CFD_TRADING = (By.CSS_SELECTOR, '[data-type="nav_id734"]')
+    SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART = (By.CSS_SELECTOR, '.main_chart__prq68')
+    SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_1M = (By.CSS_SELECTOR, 'button[name="M1"]')
+    SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_5M = (By.CSS_SELECTOR, 'button[name="M5"]')
+    SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_15M = (By.CSS_SELECTOR, 'button[name="M15"]')
+
     # trading platform
     MENU_TRADING_PLATFORM = (By.CSS_SELECTOR, '[data-type="nav_id688"]')
     # account
@@ -63,6 +86,21 @@ class MainMenu(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
         self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Way_to_trade" menu, "CFD trading" submenu')
+    def open_waytotrade_cfd_trading_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "CFD trading submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -138,6 +176,21 @@ class MainMenu(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
         self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_MARKETS_ESG)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Markets" menu')
+    def open_markets_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_MARKETS)
+        self.sub_menu_move_focus_click(d, cur_language, self.MENU_MARKETS)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url

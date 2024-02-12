@@ -1,14 +1,17 @@
+import os
 import time
 from datetime import datetime
 
 import allure
 import pytest
+from allure_commons.types import AttachmentType
 from selenium.common import StaleElementReferenceException
+from selenium.webdriver import ActionChains
 # from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from pages.Elements.AssertClass import AssertClass
-from pages.Signup_login.signup_login_locators import NewLoginFormLocators
+from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSignupFormLocators
 from pages.conditions import Conditions
 
 from tests.ReTestsManual.pages.menu.menu import MainMenu
@@ -17,7 +20,7 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-
+import io
 from src.src import CapitalComPageSrc
 
 
@@ -108,6 +111,11 @@ class TestManualBugs:
                            f"error_404: {error_trade_instrument_list}. \n"
                            f"trade instrument: {len(most_trade_instrument_list)} {most_trade_instrument_list}\n"
                            f"qty_pages: {qty_pages}")
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -184,6 +192,11 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
             print("Non one 404 error")
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -489,7 +502,8 @@ class TestManualBugs:
             assert False, 'Bug#08. Interruption of authorization'
 
         account_btn = menu.element_is_visible(menu.MENU_ACCOUNT)
-        account_btn_link = account_btn.get_attribute("href")
+        account_btn.click()
+        account_btn_link = d.current_url
 
         assert account_btn_link != "https://capital.com/trading/platform", \
             ('Bug#08. '
@@ -659,7 +673,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
         'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
         '"Capital.com" after clicking the [I am eligible] button')
@@ -691,13 +705,19 @@ class TestManualBugs:
         sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
         scroll_y = d.execute_script("return window.scrollY;")
+
         assert scroll_y == 0, ('Bug#13. Expected result: Transition to the top of the page'
                                '\n'
                                'Actual result: Transition not to the top of the page ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_14
@@ -741,7 +761,7 @@ class TestManualBugs:
                 if not bred_crumbs:
                     link_list.append(link)
                     print("No breadcrumbs:", link)
-                # time.sleep(1)
+                time.sleep(1)
 
         assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
                        '\n'
@@ -750,7 +770,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -775,7 +795,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -800,7 +820,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
     @allure.severity(allure.severity_level.CRITICAL)
@@ -835,6 +855,11 @@ class TestManualBugs:
                                                                     '\n'
                                                                     'Actual result: [Log in] and [Sign up] buttons '
                                                                     'are displayed')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -887,6 +912,11 @@ class TestManualBugs:
                 assert False, ('Bug#11. Expected result: Transition to the trading platform'
                                '\n'
                                'Actual result: Sign up form is opened')
+            allure.attach(
+                d.get_screenshot_as_png(),
+                name=f"Screenshot{datetime.now()}",
+                attachment_type=AttachmentType.PNG,
+            )
             # d.back()
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -944,7 +974,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".17", 'The Facebook icon is not clickable in the Signup/Login form ')
+            ".26", 'The Facebook icon is not clickable in the Signup/Login form ')
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -970,3 +1000,480 @@ class TestManualBugs:
             'Bug#26. The  Facebook icon is clickable and opens a pop up with login via Facebook '
             '\n'
             'Actual result: The Facebook icon is not clickable')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step(
+        'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_34
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_34(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Filtered list of cookies is displayed according to the checked and unchecked checkboxes in the Drop-down menu
+        in the Modal window after clicking the[Clear Filters] and [Apply] buttons
+        1. Click the [Filters] button
+        2. Selected checkboxs on "Perfomances Cookie", "Functional Cookies" and "Targeting Cookies"
+        3. Click the [Apply] button
+        4. Click the [Filter] button
+        5. Selected a checkbox on "Perfomances Cookie"
+        6. Click the [Apply] button
+        7. Click the [Filters] button
+        8. Click the [Clear filters] button
+        9. Click the [Apply] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
+        menu.element_is_clickable(menu.STRICTLY_NECESSARY_COOKIES).click()
+        menu.element_is_present_and_visible(menu.COOKIES_DETAILS_1).click()
+        filter_list0 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+
+        menu.element_is_clickable(menu.COOKIE_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX2).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX3).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_CHBOX4).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_APPLY).click()
+
+        filter_list1 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+        #
+        menu.element_is_clickable(menu.COOKIE_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_CLEAR_FILTER).click()
+        menu.element_is_clickable(menu.COOKIE_FILTER_APPLY).click()
+        filter_list2 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
+        print(filter_list0)
+        print(filter_list1)
+        print(filter_list2)
+
+        assert filter_list2 != filter_list1, (
+            'Bug#34. Displayed a filtered list of cookies according to the selected checkboxes '
+            '\n'
+            'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step(
+        'Bug#40:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_40
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_40(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The "All markets" widget is displayed, but the arrangement of trading instruments with the filter applied is
+        not performed after selecting any item from the dropdown menu "Most traded" in the [Markets] menu section
+        1. Navigate to Capital.com
+        2. Click the menu section [Markets]
+        3. Scroll down to the "All Markets " Widget
+        4. Click  the Dropdown "Most traded"
+        5. Click on any item from this dropdown menu
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".40", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_markets_menu(d, cur_language, cur_country, link)
+        menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+        n = len(menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST))
+        menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+        t = ["0"] * n
+        for i in range(n):
+            menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
+            elem = menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST)[i]
+            menu.element_is_clickable(elem).click()
+            t[i] = menu.elements_are_located(menu.SUB_MENU_MARKETS_LIST)[0].text
+        print(t)
+        rez = all(x == t[0] for x in t)
+
+        assert not rez, (
+            'Bug#40. The "All markets" widget is displayed, and the arrangement of trading instruments with '
+            'the filter applied is performed'
+            '\n'
+            'Actual result: The "All markets" widget is displayed, but the arrangement of trading instruments with '
+            'the filter applied is not  performed')
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step(
+        'Bug#4m:  "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_4m
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_4m(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m and selected any trading
+        instrument in the "Our CFD Markets" Widget
+        1. Tap the Burger menu
+        2. Tap the [Ways to trade] arrow dropdown
+        3. Tap the [CFD trading] menu item
+        4. Scroll down to "Our CFD Markets" Widget
+        5. Tap the "Time steps" (1m/5m)
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_cfd_trading_sub_menu(d, cur_language, cur_country, link)
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_15M).click()
+        chart_15m_image = 'cart_15m.png'
+        chart_15m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_15m.screenshot(chart_15m_image)
+        size_chart15 = os.path.getsize(chart_15m_image)
+        print("size_chart15m:", size_chart15)
+
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_1M).click()
+        chart_1m_image = 'cart_1m.png'
+        chart_1m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_1m.screenshot(chart_1m_image)
+        size_chart1 = os.path.getsize(chart_1m_image)
+        print("size_chart1m", size_chart1)
+
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_5M).click()
+        chart_5m_image = 'cart_5m.png'
+        chart_5m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
+        time.sleep(1)
+        chart_5m.screenshot(chart_5m_image)
+        size_chart5 = os.path.getsize(chart_1m_image)
+        print("size_chart5m", size_chart5)
+        os.remove(chart_15m_image)
+        os.remove(chart_5m_image)
+        os.remove(chart_1m_image)
+
+        assert size_chart1 > 10000 or size_chart5 > 10000, (
+            'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
+            '\n'
+            'Actual result: "Line Chart" is not displayed corresponding to the  selected "Time steps"')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#42: Validation error is not cleared in the Form [Sign up] when click button [Close]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_42
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_42(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Validation error is not cleared in the Form [Sign up] when click button [Close]
+        1. Click button [Sign up]
+        2. Enter invalid email or password on Input Field [Email address/Password]
+        3. Click button [Continue]
+        4. Click button [Close]
+        5. Click button [Sign up]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        email = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_EMAIL)
+        email.send_keys("test01@gmail.com")
+        password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
+        password.send_keys("Qwer123")
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), "Error message was Not displayed"
+        menu.element_is_clickable(signup_form.SIGNUP_FORM_CLOSE_BUTTON).click()
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        assert not menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
+            'Bug#42. Validation error is cleared'
+            '\n'
+            'Actual result: Validation error is not cleared')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#44: Validation error is not cleared in the Form [Sign up] when click button [Close]')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_44
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_44(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Account registration was successful and the transition to the trading platform after clicking the [Continue] button in the Signup form
+        1. Click the Signup form
+        2. Enter the valid email in the Email address field
+        3. Enter an invalid value in the password field
+        4. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".44", 'Account registration was successful and the transition to the trading platform after '
+                   'clicking the [Continue] button in the Signup form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        email = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_EMAIL)
+        email.send_keys("test001.miketar+1@gmail.com")
+        password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
+        password.send_keys("Qwer1234")
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
+            'Bug#44. Validation error is cleared'
+            '\n'
+            'Actual result: Validation error is not cleared')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#59: User is registered when two required characters are not entered in '
+        'the "password" field in the Signup form')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_59
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_59(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        User is registered when two required characters are not entered in the "password" field in the Signup
+        form after clicking the [Continue] button
+        1. Click the [Sign up] button
+        2. Enter valid value in the "Email" field
+        3. Enter value in the "password" field without at least one special character at last one apper case letter
+        4. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".59", 'User is registered when two required characters are not entered in '
+                   'the "password" field in the Signup form '
+                   'clicking the [Continue] button in the Signup form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        email = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_EMAIL)
+        email.send_keys("test001.miketar+1@gmail.com")
+        password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
+        password.send_keys("qwer1234")
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
+            'Bug#59. Validation message "Email or password is invalid" is displayed'
+            '\n'
+            'Actual result: User is registered and transition to the trading platform')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#60: Validation message "Email or password is invalid" is displayed ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_60
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_60(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        [Continue] button is active for sending POST request in the Sign up/Log in form after clicking the[Sign up/Log in] buttons
+        1. Click the Signup/ Log in form
+        2. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".60", 'Validation message "Email or password is invalid" is displayed')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert not menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN), (
+            'Bug#60. [Continue] button is inactive until valid values are entered in the email and password '
+            'fields and validated'
+            '\n'
+            'Actual result: [Continue] button is active for sending POST request')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#61: There is no a  [Close] button for closing Validation message in the Signup/Login form'
+        'the "password" field in the Signup form')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_61
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_61(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no a  [Close] button for closing Validation message in the Signup/Login form after entering values
+        in the "email" and "password" fields and clicking the [Continue] button
+        1. Click the [Log in/Sign up] button
+        2. Enter valid value in the "email" field
+        3. Enter invalid value in the "password" field
+        4. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN), (
+            'Bug#61. There is no a  [Close] button for closing Validation message'
+            '\n'
+            'Actual result: There is no a  [Close] button for closing Validation message')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step("Bug#62: There is no transition to the corresponding page with a trading instrument when clicking on "
+                 "any of the trading instruments in the dropdown in the [Search]")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_62
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_62(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no transition to the corresponding page with a trading instrument when clicking on any of the trading
+        instruments in the dropdown in the [Search] input field in the "Forex Markets" widget(this bug is reproduced
+        in all markets: Shares, Indices, Commodities, Forex )( AJAX requests, checking synchronous operations)
+        1. Hover over [Markets] menu section
+        2. Click the [Forex] menu item
+        3. Scroll down to the "Forex Markets" widget
+        4. Click the [Search] input field
+        5. Enter any value for example "eur"
+        6. Click any item from dropdown list
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".62", "There is no transition to the corresponding page with a trading instrument when "
+                   "clicking on any of the trading instruments in the dropdown in the [Search]")
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
+
+        markets_page = MenuSections(d)
+
+        search = markets_page.element_is_present_and_visible(markets_page.MARKETS_MOST_TRADE_SEARCH)
+        search.send_keys("eur")
+        search_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
+        try:
+            ActionChains(d) \
+                .move_to_element(search_list[1]) \
+                .pause(0.5) \
+                .move_to_element(search_list[1]) \
+                .pause(1) \
+                .click() \
+                .perform()
+        except:
+            print()
+
+        assert markets_page.element_is_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_PAGE), (
+            f"Bug#62. Expected Result:  Page of the corresponding trading instrument is opened\n"
+            f"Actual Result: Items in the Dropdown list are not clickable \n")
+
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )

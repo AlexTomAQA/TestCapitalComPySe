@@ -22,11 +22,11 @@ lang_list = [
         # "es",
         # "fr",
         # "hu",
-        # "it",
+        "it",
         # "nl",
         # "pl",
         # "ro",
-        "ru",
+        # "ru",
         # "zh",
     ]
 
