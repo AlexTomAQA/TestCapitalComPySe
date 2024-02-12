@@ -614,7 +614,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
-        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
         apply_here = sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN)
         apply_here.click()
@@ -702,7 +702,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
-        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
         scroll_y = d.execute_script("return window.scrollY;")
 
@@ -1036,7 +1036,7 @@ class TestManualBugs:
         #
         menu = MainMenu(d, link)
         menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
-        menu.element_is_clickable(menu.STRICTLY_NECESSARY_COOKIES).click()
+        menu.element_is_present_and_visible(menu.STRICTLY_NECESSARY_COOKIES).click()
         menu.element_is_present_and_visible(menu.COOKIES_DETAILS_1).click()
         filter_list0 = len(menu.elements_are_located(menu.COOKIES_lIST_1))
 
@@ -1065,7 +1065,8 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
     @allure.step(
-        'Bug#40:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+        'Bug#40:  The "All markets" widget is displayed, but the arrangement of trading instruments with '
+        'the filter applied isnot performed after selecting any item from the dropdown menu "Most traded"')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_40
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -1084,24 +1085,38 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".40", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+            ".40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
+                   'with the filter applied is not performed after selecting any item from '
+                   'the dropdown menu "Most traded"')
+        with allure.step('step 1'):
+            print(f"\n{datetime.now()}   1. Navigate to Capital.com")
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
+        with allure.step('step 2'):
+            print(f"\n{datetime.now()}   2. Click the menu section [Markets]")
         menu = MainMenu(d, link)
         menu.open_markets_menu(d, cur_language, cur_country, link)
+        with allure.step('step 3'):
+            print(f"\n{datetime.now()}   3. Scroll down to the [All Markets] Widget")
         menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
         n = len(menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST))
         menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
         t = ["0"] * n
         for i in range(n):
+            with allure.step('step 4'):
+                print(f"\n{datetime.now()}   4. Click  the Dropdown [Most traded]")
             menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
             elem = menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST)[i]
             menu.element_is_clickable(elem).click()
+            with allure.step('step 5'):
+                print(f"\n{datetime.now()}   5. Click on any item from this dropdown menu")
+            time.sleep(1)
             t[i] = menu.elements_are_located(menu.SUB_MENU_MARKETS_LIST)[0].text
         print(t)
+        # проверка, что все элементы равны
         rez = all(x == t[0] for x in t)
 
         assert not rez, (
