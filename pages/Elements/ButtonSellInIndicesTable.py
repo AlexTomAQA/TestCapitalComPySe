@@ -6,7 +6,7 @@
 from datetime import datetime
 import random
 import pytest
-# import allure
+import allure
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
@@ -30,15 +30,13 @@ class SellButtonIndicesTable(BasePage):
         self.button_list = None
 
         self.item_locator = None
+        self.trade_instrument = None
         super().__init__(browser, link, bid)
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_tab):
-        item_list = self.arrange_(self, cur_item_link, cur_tab)
+        item_list = self.arrange_(d, cur_item_link, cur_tab)
         for i in item_list:
-            print(f"{datetime.now()}   Start Click button TAB {cur_tab} IN_TABLES in cycle 'for'")
-            self.element_click(self, i, cur_item_link, cur_language, cur_role, cur_tab)
-
-            # в цикле выполняеем ассерт (роль, браузер, д - веб драйвер)
+            self.element_click(i, cur_tab)
             test_element = AssertClass(self.driver, cur_item_link)
             match cur_role:
                 case "NoReg":
@@ -50,7 +48,7 @@ class SellButtonIndicesTable(BasePage):
                         self.driver, cur_item_link, False, True, self.trade_instrument)
             self.driver.get(cur_item_link)
 
-    def arrange_(self, cur_item_link, cur_tab):
+    def arrange_(self, d, cur_item_link, cur_tab):
         global COUNT_OF_RUNS
         print(f"\n{datetime.now()}   1. Arrange for Indices finance instrument and \"{cur_tab}\" tab")
 
@@ -58,9 +56,10 @@ class SellButtonIndicesTable(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   IS the CFDs TABLE visible on the page?")
+        print(f"{datetime.now()}   IS CFDs TABLE visible on the page? =>")
         if self.driver.find_element(*ButtonsOnPageLocators.TABLE_CFDS):
-            print(f"{datetime.now()}   CFDs TABLE is visible on the page!")
+            print(f"{datetime.now()}   => CFDs TABLE is visible on the page!\n")
+
             match cur_tab:
                 case 'most_traded':
                     self.tab_locator = ButtonsOnPageLocators.TAB_TRADING_ITEM_MOST_TRADED
@@ -83,96 +82,92 @@ class SellButtonIndicesTable(BasePage):
                     self.item_locator = ButtonsOnPageLocators.SPAN_TRADING_ITEM_MOST_VOLATILE
                     self.button_show_all_locator = ButtonsOnPageLocators.BUTTON_TRADING_SHOW_ALL_TAB_VOLATILE
 
-            print(f"{datetime.now()} => Start Click button TAB {cur_tab} IN_TABLES")
+            print(f"{datetime.now()}   IS TAB \"{cur_tab}\" visible on the page? =>")
+            if self.driver.find_element(*self.tab_locator):
+                print(f"{datetime.now()}   => TAB \"{cur_tab}\" is visible on the page!\n")
+
+                print(f"{datetime.now()}   Buttons [Sell] is visible and quantity buttons not zero? =>")
+                if self.driver.find_elements(*self.button_locator) != 0:
+                    print(f"{datetime.now()}   => Buttons [Sell] is visible and quantity buttons not zero!\n")
+
+                    print(f"{datetime.now()}   Start Click button TAB \"{cur_tab}\" =>")
+                    self.current_tab = self.driver.find_element(*self.tab_locator)
+                    self.driver.execute_script(
+                        'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                        self.current_tab
+                    )
+                    self.current_tab.click()
+                    print(f"{datetime.now()}   => End Click button TAB \"{cur_tab}\"\n")
+
+                    print(f"{datetime.now()}   Start Click button [Show all] on the TAB \"{cur_tab}\" =>")
+                    self.button_show_all = self.driver.find_element(*self.button_show_all_locator)
+                    self.driver.execute_script(
+                        'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                        self.button_show_all
+                    )
+                    self.button_show_all.click()
+                    print(f"{datetime.now()}   => End Click button [Show all] on the TAB \"{cur_tab}\"\n")
+
+                    print(f"{datetime.now()}   Start find two random buttons [Sell] on the TAB \"{cur_tab}\"=>")
+                    self.button_list = self.driver.find_elements(*self.button_locator)
+                    qty_buttons = len(self.button_list)
+                    count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
+                    item_list = random.sample(range(qty_buttons), count_of_runs)
+                    print(f"{datetime.now()}   => End find two random buttons [Sell] on the TAB \"{cur_tab}\"\n")
+
+                    return item_list
+
+                else:
+                    print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or quantity buttons zero!\n")
+                    pytest.skip("Checking element is not on this page")
+
+            else:
+                print(f"{datetime.now()}   => TAB \"{cur_tab}\" is NOT visible on the page!\n")
+                pytest.skip("Checking element is not on this page")
+
+        else:
+            print(f"{datetime.now()}   => CFDs TABLE is NOT visible on the page!\n")
+            pytest.skip("Checking element is not on this page")
+
+    @allure.step("Click button BUTTON_TRADING_SELL_IN_TABLES")
+    def element_click(self, i, cur_tab):
+        print(f"{datetime.now()}   2. Act for Indices finance instrument and \"{cur_tab}\" tab")
+
+        self.current_tab = self.driver.find_element(*self.tab_locator)
+        if self.current_tab.get_attribute("class") != "main__tab--item active":
+            print(f"{datetime.now()}   Start Click button TAB \"{cur_tab}\" in METHOD: element_click =>")
             self.current_tab = self.driver.find_element(*self.tab_locator)
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.current_tab
             )
             self.current_tab.click()
+            print(f"{datetime.now()}   => End Click button TAB \"{cur_tab}\" in METHOD: element_click\n")
 
-            print(f"{datetime.now()} => Start Click button [Show all] on the TAB {cur_tab} IN_TABLES")
+        self.button_show_all = self.driver.find_element(*self.button_show_all_locator)
+        if self.button_show_all.is_displayed():
+            print(f"{datetime.now()}   Start Click button [Show all] on the TAB \"{cur_tab}\" in METHOD: element_click =>")
             self.button_show_all = self.driver.find_element(*self.button_show_all_locator)
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.button_show_all
             )
             self.button_show_all.click()
+            print(f"{datetime.now()}   Start Click button [Show all] on the TAB \"{cur_tab}\" in METHOD: element_click =>")
 
-            print(f"{datetime.now()} Start find two random buttons [Sell] on the TAB {cur_tab} IN_TABLES => ")
-            self.button_list = self.driver.find_elements(*self.button_locator)
-            qty_buttons = len(self.button_list)
-            count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
-            item_list = random.sample(range(qty_buttons), count_of_runs)
-            return item_list
-
-        else:
-            print(f"{datetime.now()}   CFDs TABLE is not visible on the page! <=")
-            pytest.skip("Checking element is not on this page")
-
-    # @allure.step("Click button BUTTON_TRADING_SELL_IN_TABLES")
-    # def element_click(self, d, cur_item_link, cur_language, cur_role, cur_tab):
-    #     print(f"\n{datetime.now()}   2. Act_v0 for \"{cur_tab}\" tab")
-    #     print(f"{datetime.now()}   Start Click button BUTTON_TRADING_SELL_IN_TABLES =>")
-    #
-    #     button_list = self.driver.find_elements(*self.button_locator)
-    #     qty_buttons = len(button_list)
-    #     count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
-    #     item_list = random.sample(range(qty_buttons), count_of_runs)
-    #     for i in item_list:
-    #         print(f"{datetime.now()}   Start Click button TAB {cur_tab} IN_TABLES in cycle 'for'")
-    #         self.current_tab = self.driver.find_element(*self.tab_locator)
-    #         self.driver.execute_script(
-    #             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-    #             self.current_tab
-    #         )
-    #         self.current_tab.click()
-    #         self.click_button_2(i, cur_item_link, cur_language, cur_role)
-
-    def element_click(self, i, cur_item_link, cur_language, cur_role, cur_tab):
-        """
-            перед кликом найти элемент, подскролить в центр экрана
-        """
-
-        print(f"{datetime.now()} => Start Click button TAB {cur_tab} IN_TABLES")
-        self.current_tab = self.driver.find_element(*self.tab_locator)
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.current_tab
-        )
-        self.current_tab.click()
-
-        print(f"{datetime.now()} => Start Click button [Show all] on the TAB {cur_tab} IN_TABLES")
-        self.button_show_all = self.driver.find_element(*self.button_show_all_locator)
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.button_show_all
-        )
-        self.button_show_all.click()
-
-        print(f"{datetime.now()} Start click_button_2")
+        print(f"{datetime.now()}   Start click button [Sell] =>")
         self.button_list = self.driver.find_elements(*self.button_locator)
         button = self.button_list[i]
-
-        try:
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                button
-            )
-            print(f"{datetime.now()}   => BUTTON_TRADING_SELL_IN_TABLES is visible on the page!")
-        except NoSuchElementException:
-            print(f"{datetime.now()}   => BUTTON_TRADING_SELL_IN_TABLES is not visible on the page!")
-            pytest.fail("Problem. Checking element is not on this page now")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button
+        )
 
         # Вытаскиваем линку из кнопки
         button_link = button.get_attribute('href')
         # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
         self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
-        print(f"{datetime.now()}   BUTTON_TRADING_SELL with item {self.trade_instrument} click =>")
-
         button.click()
-        print(f"{datetime.now()}   => BUTTON_TRADING_SELL clicked!")
-
+        print(f"{datetime.now()}   => BUTTON_TRADING_SELL with item {self.trade_instrument} clicked!\n")
         # del button, self.button_list, self.button_show_all
-        # return True
