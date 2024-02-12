@@ -1003,7 +1003,8 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
-    @allure.step('Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
+    @allure.step(
+        'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_34
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -1093,7 +1094,7 @@ class TestManualBugs:
         menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
         n = len(menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST))
         menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
-        t = ["0"]*n
+        t = ["0"] * n
         for i in range(n):
             menu.element_is_present_and_visible(menu.SUB_MENU_MARKETS_SORT).click()
             elem = menu.elements_are_located(menu.SUB_MENU_MARKETS_SORT_LIST)[i]
@@ -1148,7 +1149,7 @@ class TestManualBugs:
         time.sleep(1)
         chart_15m.screenshot(chart_15m_image)
         size_chart15 = os.path.getsize(chart_15m_image)
-        print("size_chart15m:",size_chart15)
+        print("size_chart15m:", size_chart15)
 
         menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_1M).click()
         chart_1m_image = 'cart_1m.png'
@@ -1234,7 +1235,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @allure.step(
         'Bug#44: Validation error is not cleared in the Form [Sign up] when click button [Close]')
-    @allure.severity(allure.severity_level.NORMAL)
+    @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_44
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_44(
@@ -1277,3 +1278,100 @@ class TestManualBugs:
             attachment_type=AttachmentType.PNG,
         )
 
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#59: User is registered when two required characters are not entered in '
+        'the "password" field in the Signup form')
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.test_59
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_59(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        User is registered when two required characters are not entered in the "password" field in the Signup
+        form after clicking the [Continue] button
+        1. Click the [Sign up] button
+        2. Enter valid value in the "Email" field
+        3. Enter value in the "password" field without at least one special character at last one apper case letter
+        4. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".59", 'User is registered when two required characters are not entered in '
+                   'the "password" field in the Signup form '
+                   'clicking the [Continue] button in the Signup form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        email = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_EMAIL)
+        email.send_keys("test001.miketar+1@gmail.com")
+        password = menu.element_is_present_and_visible(signup_form.SIGNUP_INPUT_PASSWORD)
+        password.send_keys("qwer1234")
+        time.sleep(1)
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+
+        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
+            'Bug#59. Validation message "Email or password is invalid" is displayed'
+            '\n'
+            'Actual result: User is registered and transition to the trading platform')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @allure.step(
+        'Bug#60: User is registered when two required characters are not entered in '
+        'the "password" field in the Signup form')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_60
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_60(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        [Continue] button is active for sending POST request in the Sign up/Log in form after clicking the[Sign up/Log in] buttons
+        1. Click the Signup/ Log in form
+        2. Click the [Continue] button
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".60", 'User is registered when two required characters are not entered in '
+                   'the "password" field in the Signup form '
+                   'clicking the [Continue] button in the Signup form')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
+        signup_form = NewSignupFormLocators()
+        menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
+        menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
+        time.sleep(1)
+
+        assert not menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN), (
+            'Bug#60. [Continue] button is inactive until valid values are entered in the email and password '
+            'fields and validated'
+            '\n'
+            'Actual result: [Continue] button is active for sending POST request')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
