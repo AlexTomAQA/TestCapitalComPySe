@@ -1080,6 +1080,32 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#23:  [Play] element in the center of the video does not disappear after playing the video')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_23
+    @pytest.mark.skip(reason="Non-functional bug")
+    def test_23(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        [Play] element in the center of the video does not disappear after playing the video in the Block
+         "What are indices?" in the "What is indices trading" page
+        1. Hover over the [Markets] menu section
+        2. Click the [Indices] menu item
+        3. Scroll down to the Block "Why trade indices with Capital.com?"
+        4. Click the [Learn more about how to trade indices] link
+        5. Scroll down to Block "What are indices?"
+        6. Click the play video
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".23", '[Play] element in the center of the video does not disappear after playing the video')
+        #
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#24:  Authorized user is logged out after changing the license to FCA(EN language)')
     @allure.severity(allure.severity_level.CRITICAL)
