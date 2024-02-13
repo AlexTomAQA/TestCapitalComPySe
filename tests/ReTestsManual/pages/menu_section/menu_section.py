@@ -16,9 +16,12 @@ class MenuSections(BasePage):
     # markets
     MARKETS_PAGINATION_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_pagination"]')
     MARKETS_MOST_TRADE_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"]')
+    MARKETS_MOST_TRADE_SEARCH = (By.CSS_SELECTOR, '#marketlist_search')
+    MARKETS_MOST_TRADE_SEARCH_LIST = (By.CSS_SELECTOR, '.search_dropdown__GAZ2m div.result_item__rY8mQ')
     MARKETS_MOST_TRADE_LINK_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"] a')
     MARKETS_MOST_TRADE_INSTRUMENT_CONTENT = (By.CSS_SELECTOR, '.js-ckeContent h3')
     MARKETS_MOST_TRADE_INSTRUMENT_404 = (By.CSS_SELECTOR, 'section.blockMd .gLg h1')
+    MARKETS_MOST_TRADE_INSTRUMENT_PAGE = (By.CSS_SELECTOR, '[data-type="market"]')
     MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS = (By.CSS_SELECTOR, '.helpers_frameLoader__7Uhll .heading_h2__kkLcC')
     MARKETS_SHARES_BANNER_TRY_DEMO_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn2demo"]')
     MARKETS_SHARES_BANNER_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_signup"]')

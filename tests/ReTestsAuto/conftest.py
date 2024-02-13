@@ -14,20 +14,20 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        # "en",
         # "ar",
+        # "cn",
         # "de",
         # "el",
+        # "en",
         # "es",
         # "fr",
-        # "it",
-        "hu",
+        # "hu",
+        "it",
         # "nl",
         # "pl",
         # "ro",
         # "ru",
         # "zh",
-        # "cn",
     ]
 
 # ===========================================================
@@ -155,10 +155,10 @@ def gs():
 
             one_time_copy_paste = True
 
-    # установка счетчика выполненых в фильтре таблицы ретестов
-    g_sheet.new_data_copy_past(
-        1, 2, 1, 2,
-        5, 6, 21, 22)
+    # # установка счетчика выполненных в фильтре таблицы ретестов
+    # g_sheet.new_data_copy_past(
+    #     1, 2, 1, 2,
+    #     5, 6, 21, 22)
 
     gs_out = ['Bugs Report']
     g_sheet.update_range_values('B1', [gs_out])
@@ -177,11 +177,10 @@ def gs():
         # установка полного времени тестирования
         execution_time = time_concat(execution_time_1, execution_time_2)
         g_sheet.update_range_values('V4', [[execution_time]])
-
     else:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         g_sheet.update_range_values('V2', [end_retest_date])
         g_sheet.update_range_values('V4', [["=V2 - V1"]])
 
-    del g_sheet
+    # del g_sheet
     print(f"\n{datetime.now()}   *** end fixture gs = teardown ***\n")

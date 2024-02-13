@@ -1,4 +1,11 @@
 us_data = {
+    '11.00.00.00': 'tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py',
+    '11.00.01.00': 'tests/US_11_Education/US_11-00-01_Essentials_of_trading/US_11-00-01_Essentials_of_trading.py',
+    '11.00.02.00': 'tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py',
+    '11.00.03.00': '',
+    '11.00.04.00': '',
+    '11.00.05.00': 'tests/US_11_Education/US_11-00-05_Technical_analysis/US_11-00-05_Technical_analysis.py',
+    '11.00.06.00': 'tests/US_11_Education/US_11-00-06_Help/US_11-00-06_Help.py',
     '11.01.01.00': 'tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py',
     '11.01.02.00': 'tests/US_11_Education/US_11-01-02_Basics_of_trading/US_11-01-02_Basics_of_trading_test.py',
     '11.01.03.00': 'tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03-00_cfd_trading_guide_test.py',

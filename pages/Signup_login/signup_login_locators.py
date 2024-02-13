@@ -2,15 +2,16 @@ from selenium.webdriver.common.by import By
 
 
 class NewSignupFormLocators:
-    SIGNUP_FORM = (By.CSS_SELECTOR, '')
-    SIGNUP_LOCATOR = (By.CSS_SELECTOR, '')
-    BUTTON_CLOSE_ON_SIGNUP_FORM = (By.CSS_SELECTOR, '.modal_overlay__f_YlZ button.button_empty__Nmv1h')
-    SIGNUP_FRAME = (By.XPATH, "//span[normalize-space()='Sign up']")
+    SIGNUP_FORM = (By.CSS_SELECTOR, "//span[normalize-space()='Sign up']")
+    SIGNUP_FORM_ERROR = (By.CSS_SELECTOR, '.alert_error__zY_kE')
+    SIGNUP_FORM_ERROR_CLOSE_BTN = (By.CSS_SELECTOR, '.alert_error__zY_kE button')
+    SIGNUP_FORM_CLOSE_BUTTON = (By.CSS_SELECTOR, '.modal_overlay__f_YlZ button.button_empty__Nmv1h')
+    SIGNUP_FRAME = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ")
     SIGNUP_HEADER = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
     SIGNUP_REF_LOGIN = (By.XPATH, "//span[normalize-space()='Login']")
-    SIGNUP_INPUT_EMAIL = (By.CSS_SELECTOR, '')
-    SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, '')
-    SIGNUP_SUBMIT_BTN = (By.CSS_SELECTOR, '')
+    SIGNUP_INPUT_EMAIL = (By.CSS_SELECTOR, 'form #email')
+    SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, 'form #password')
+    SIGNUP_CONTINUE_BTN = (By.CSS_SELECTOR, "button[type='submit']")
     SIGNUP_PRIVACY_POLICY = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
 
 

@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/01/30 08:00
+@Time    : 2024/02/12 23:42
 @Author  : Artem Dashkov
 """
 from datetime import datetime
@@ -17,7 +17,7 @@ from pages.Elements.AssertClass import AssertClass
 COUNT_OF_RUNS = 2
 
 
-class SellButtonIndicesTable(BasePage):
+class BuyButtonIndicesTable(BasePage):
     def __init__(self, browser, link, bid):
         self.button_show_all_locator = None
         self.button_show_all = None
@@ -63,22 +63,22 @@ class SellButtonIndicesTable(BasePage):
             match cur_tab:
                 case 'most_traded':
                     self.tab_locator = ButtonsOnPageLocators.TAB_TRADING_ITEM_MOST_TRADED
-                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_SELL_MOST_TRADED
+                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_BUY_MOST_TRADED
                     self.item_locator = ButtonsOnPageLocators.SPAN_TRADING_ITEM_MOST_TRADED
                     self.button_show_all_locator = ButtonsOnPageLocators.BUTTON_TRADING_SHOW_ALL_TAB_MOSTTRADED
                 case 'top_risers':
                     self.tab_locator = ButtonsOnPageLocators.TAB_TRADING_ITEM_TOP_RISERS
-                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_SELL_TOP_RISERS
+                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_BUY_TOP_RISERS
                     self.item_locator = ButtonsOnPageLocators.SPAN_TRADING_ITEM_TOP_RISERS
                     self.button_show_all_locator = ButtonsOnPageLocators.BUTTON_TRADING_SHOW_ALL_TAB_RISERS
                 case 'top_fallers':
                     self.tab_locator = ButtonsOnPageLocators.TAB_TRADING_ITEM_TOP_FALLERS
-                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_SELL_TOP_FALLERS
+                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_BUY_TOP_FALLERS
                     self.item_locator = ButtonsOnPageLocators.SPAN_TRADING_ITEM_TOP_FALLERS
                     self.button_show_all_locator = ButtonsOnPageLocators.BUTTON_TRADING_SHOW_ALL_TAB_FAILERS
                 case 'most_volatile':
                     self.tab_locator = ButtonsOnPageLocators.TAB_TRADING_ITEM_MOST_VOLATILE
-                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_SELL_MOST_VOLATILE
+                    self.button_locator = ButtonsOnPageLocators.BUTTON_TRADING_BUY_MOST_VOLATILE
                     self.item_locator = ButtonsOnPageLocators.SPAN_TRADING_ITEM_MOST_VOLATILE
                     self.button_show_all_locator = ButtonsOnPageLocators.BUTTON_TRADING_SHOW_ALL_TAB_VOLATILE
 
@@ -86,9 +86,9 @@ class SellButtonIndicesTable(BasePage):
             if self.driver.find_element(*self.tab_locator):
                 print(f"{datetime.now()}   => TAB \"{cur_tab}\" is visible on the page!\n")
 
-                print(f"{datetime.now()}   Buttons [Sell] is visible and quantity buttons not zero? =>")
+                print(f"{datetime.now()}   Buttons [Buy] is visible and quantity buttons not zero? =>")
                 if self.driver.find_elements(*self.button_locator) != 0:
-                    print(f"{datetime.now()}   => Buttons [Sell] is visible and quantity buttons not zero!\n")
+                    print(f"{datetime.now()}   => Buttons [Buy] is visible and quantity buttons not zero!\n")
 
                     print(f"{datetime.now()}   Start Click button TAB \"{cur_tab}\" =>")
                     self.current_tab = self.driver.find_element(*self.tab_locator)
@@ -108,17 +108,17 @@ class SellButtonIndicesTable(BasePage):
                     self.button_show_all.click()
                     print(f"{datetime.now()}   => End Click button [Show all] on the TAB \"{cur_tab}\"\n")
 
-                    print(f"{datetime.now()}   Start find two random buttons [Sell] on the TAB \"{cur_tab}\"=>")
+                    print(f"{datetime.now()}   Start find two random buttons [Buy] on the TAB \"{cur_tab}\"=>")
                     self.button_list = self.driver.find_elements(*self.button_locator)
                     qty_buttons = len(self.button_list)
                     count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
                     item_list = random.sample(range(qty_buttons), count_of_runs)
-                    print(f"{datetime.now()}   => End find two random buttons [Sell] on the TAB \"{cur_tab}\"\n")
+                    print(f"{datetime.now()}   => End find two random buttons [Buy] on the TAB \"{cur_tab}\"\n")
 
                     return item_list
 
                 else:
-                    print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or quantity buttons zero!\n")
+                    print(f"{datetime.now()}   => Buttons [Buy] is NOT visible or quantity buttons zero!\n")
                     pytest.skip("Checking element is not on this page")
 
             else:
@@ -129,7 +129,7 @@ class SellButtonIndicesTable(BasePage):
             print(f"{datetime.now()}   => CFDs TABLE is NOT visible on the page!\n")
             pytest.skip("Checking element is not on this page")
 
-    @allure.step("Click button BUTTON_TRADING_SELL_IN_TABLES")
+    @allure.step("Click button BUTTON_TRADING_BUY_IN_TABLES")
     def element_click(self, i, cur_tab):
         print(f"{datetime.now()}   2. Act for Indices finance instrument and \"{cur_tab}\" tab")
 
@@ -155,7 +155,7 @@ class SellButtonIndicesTable(BasePage):
             self.button_show_all.click()
             print(f"{datetime.now()}   Start Click button [Show all] on the TAB \"{cur_tab}\" in METHOD: element_click =>")
 
-        print(f"{datetime.now()}   Start click button [Sell] =>")
+        print(f"{datetime.now()}   Start click button [Buy] =>")
         self.button_list = self.driver.find_elements(*self.button_locator)
         button = self.button_list[i]
         self.driver.execute_script(
@@ -169,5 +169,5 @@ class SellButtonIndicesTable(BasePage):
         self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
         button.click()
-        print(f"{datetime.now()}   => BUTTON_TRADING_SELL with item {self.trade_instrument} clicked!\n")
+        print(f"{datetime.now()}   => BUTTON_TRADING_BUY with item {self.trade_instrument} clicked!\n")
         # del button, self.button_list, self.button_show_all
