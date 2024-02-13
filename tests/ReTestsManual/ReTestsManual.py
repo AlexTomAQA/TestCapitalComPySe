@@ -5,7 +5,7 @@ from datetime import datetime
 import allure
 import pytest
 from allure_commons.types import AttachmentType
-from selenium.common import StaleElementReferenceException
+from selenium.common import StaleElementReferenceException, TimeoutException
 from selenium.webdriver import ActionChains
 # from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -883,7 +883,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".17", 'After the transition from the website capital.com into the trading platform and '
+            ".18", 'After the transition from the website capital.com into the trading platform and '
                    'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
         #
         page_conditions = NewConditions(d, "")
@@ -909,7 +909,7 @@ class TestManualBugs:
                         test_element.assert_trading_platform_v4(d, cur_item_link)
             except AssertionError:
                 print(f"\n{datetime.now()}   Bug#11")
-                assert False, ('Bug#11. Expected result: Transition to the trading platform'
+                assert False, ('Bug#18. Expected result: Transition to the trading platform'
                                '\n'
                                'Actual result: Sign up form is opened')
             allure.attach(
@@ -918,6 +918,124 @@ class TestManualBugs:
                 attachment_type=AttachmentType.PNG,
             )
             # d.back()
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#19:  On click the link [Learn more about us] is not scrolled to the corresponding '
+        'block "Learn more about us"  in the page "Client Funds"')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_19
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_19(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        On click the link [Learn more about us] is not scrolled to the corresponding block "Learn more about us"
+        in the page "Client Funds"
+        1. Navigate to capital.com
+        2. Select language EN
+        3. Hover over menu section [Why Capital.com?] in the "Header menu"
+        4. Click menu item [Client Funds]
+        5. Scroll to the block "Content"
+        6. Click link [Learn more about us]
+                """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
+                   'block "Learn more about us"  in the page "Client Funds"')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_way_capital_client_funds_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        content_list = sub_menu.elements_are_located(sub_menu.WHY_CAPITAL_CLIENT_FUNDS_CONTENTS_LIST)
+        content_list[5].click()
+        scroll_y = d.execute_script("return window.scrollY;")
+
+        assert scroll_y > 100, ('Bug#19. Expected result: The page "Client founds" block" is scrolled to '
+                                'the corresponding block "Learn more about us"'
+                                '\n'
+                                'Actual result: The page "Client founds" block" is not scrolled to'
+                                ' the corresponding block "Learn more about us"')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @allure.step('Bug#20:  Displays interruptions between transitions to other menu sections in the Header after'
+                 ' hovering over other menu section'
+                 'in the Dropdown [Languages]')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_20
+    @pytest.mark.skip(reason="Non-functional bug")
+    def test_20(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Displays interruptions between transitions to other menu sections in the Header
+        after hovering over other menu section
+        1. Click the [Markets] menu section
+        2. Hover over different menu sections
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".20", 'Displays interruptions between transitions to other menu sections in the Header '
+                   'after hovering over other menu section')
+        #
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#21: In the Footer on click link [Cookie settings] is not open modal window')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_21
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_21(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        In the Footer on click link [Cookie settings] is not open modal window
+        1. Navigate to capital.com
+        2. Select language EN
+        3. Scroll to the Footer
+        4. Click link [Cookie settings]
+
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".21", 'In the Footer on click link [Cookie settings] is not open modal window ')
+        #
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        d.get("https://capital.com/en-gb")
+        menu = MainMenu(d)
+        menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
+        try:
+            menu.elements_are_visible(menu.COOKIES_FRAME)
+        except TimeoutException:
+            assert False, (
+                'Bug#21. The modal window with cookie settings is opened '
+                '\n'
+                'Actual result: The modal window with cookie settings is not opened ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
