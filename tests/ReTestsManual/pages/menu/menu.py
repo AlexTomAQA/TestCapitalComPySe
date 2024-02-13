@@ -12,7 +12,7 @@ from pages.base_page import BasePage
 
 
 class MainMenu(BasePage):
-
+    # header
     SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
     MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
     HEADER_LOGIN_BTN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
@@ -20,9 +20,14 @@ class MainMenu(BasePage):
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
+    HEADER_SEARCH = (By.CSS_SELECTOR, '[data-type="nav_search"]')
+
+    # footer
     COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+    SCROLL_TO_TOP = (By.CSS_SELECTOR, '#scrollToTop')
 
     # cookies_setting
+    COOKIES_FRAME = (By.CSS_SELECTOR, '#onetrust-pc-sdk')
     STRICTLY_NECESSARY_COOKIES = (By.CSS_SELECTOR, '[aria-controls="ot-desc-id-C0001"]')
     COOKIES_DETAILS_1 = (By.CSS_SELECTOR, '[data-parent-id="C0001"]')
     COOKIES_lIST_1 = (By.CSS_SELECTOR, ".ot-sdk-column ul[style='display: block;'] li.ot-host-item")
@@ -60,6 +65,24 @@ class MainMenu(BasePage):
     MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
     MENU_LOGIN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
 
+    # Why Capital.com?
+    MENU_WHY_CAPITAL = (By.CSS_SELECTOR, '[data-type="nav_id687"]')
+    SUB_MENU_WHY_CAPITAL_CLIENT_FUNDS = (By.CSS_SELECTOR, '[data-type="nav_id706"]')
+
+    @allure.step('Select "Why Capital.com?" menu, "Client funds" submenu')
+    def open_way_capital_client_funds_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "Professional" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_WHY_CAPITAL)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WHY_CAPITAL_CLIENT_FUNDS)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
     @allure.step('Select "Trading platform" menu')
     def open_trading_platform_menu(self, d, cur_language, cur_country, link):
         print(f'\n{datetime.now()}   START Open "Trading platform" menu  =>')
