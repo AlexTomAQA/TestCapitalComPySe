@@ -91,19 +91,20 @@ class TradingPlatform(BasePage):
         """
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v4) =>")
         platform_url = data["PLATFORM_URL/"]
-        cur_url = self.driver.current_url
+        # cur_url = self.driver.current_url
         if self.wait_for_target_url(platform_url, 15):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if tpd:
                 self.should_be_platform_demo_mode(d, cur_link)
-                print(f"{datetime.now()}   => The page with {cur_url} url was opened in DEMO mode")
+                print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in DEMO mode")
             else:
                 self.should_be_platform_live_mode(d, cur_link)
-                print(f"{datetime.now()}   => The page with {cur_url} url was opened in lIVE mode")
+                print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
+
             if tpi:
-                print(f"{datetime.now()}   => Opened page with {cur_url} url for corresponding trading"
-                      f" instrument '{trade_instrument}'")
+                print(f"{datetime.now()}   => Check that opened page with {self.driver.current_url} url for "
+                      f"corresponding trading instrument '{trade_instrument}'")
                 self.should_be_corresponding_trading_instrument(cur_url, trade_instrument)
 
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
@@ -267,10 +268,11 @@ class TradingPlatform(BasePage):
         if "charting" not in cur_url or "spotlight" not in cur_url:
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '14', self.link)
-            assert False, ("Bug # 14. Trading platform was Not opened for corresponding trading instrument"
-                           " '{trade_instrument}'")
+            assert False, (f"Bug # 14. Trading platform was Not opened for corresponding trading instrument"
+                           f" '{trade_instrument}'")
         # ==============================
         print(f"{datetime.now()}   Trading Platform for '{trade_instrument}' trading instrument is opened")
+
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
         trade_instrument_name = trade_instrument.split(" ")[0]
