@@ -4,9 +4,10 @@
 @Author  : Alexander Tomelo
 """
 
-import allure
 from datetime import datetime
 
+import allure
+# from selenium import webdriver
 # import pytest
 
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
@@ -14,8 +15,8 @@ from pages.base_page import BasePage
 from test_data.trading_platform_data import data as tp_data
 from pages.Capital.Trading_platform.trading_platform_locators \
     import TradingPlatformSignupFormLocators as TPSignupFormLocators, TradingInstruments
-from pages.Capital.Trading_platform.trading_platform_locators \
-    import TopBarLocators
+from pages.Capital.Trading_platform.trading_platform_locators import TopBarLocators
+from pages.Capital.Trading_platform.trading_platform_locators import ChartingLocators
 from test_data.trading_platform_data import data
 from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
@@ -105,7 +106,7 @@ class TradingPlatform(BasePage):
             if tpi:
                 print(f"{datetime.now()}   => Check that opened page with {self.driver.current_url} url for "
                       f"corresponding trading instrument '{trade_instrument}'")
-                self.should_be_corresponding_trading_instrument(cur_url, trade_instrument)
+                self.should_be_corresponding_trading_instrument(cur_link, trade_instrument)
 
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
             self.driver.back()
@@ -259,40 +260,38 @@ class TradingPlatform(BasePage):
             assert False, "Problem! 'Login' page on the Trading Platform is not opened"
 
     @allure.step("Check the corresponding trading instrument")
-    def should_be_corresponding_trading_instrument(self, cur_url, trade_instrument):
+    def should_be_corresponding_trading_instrument(self, test_link, trade_instrument):
         """
         Check Trading platform is opened for corresponding trade instrument
         """
+
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
         # new bug re-test checking =====
-        if "charting" not in cur_url or "spotlight" not in cur_url:
+        cur_url = self.driver.current_url
+        if not self.element_is_present_and_visible(ChartingLocators.MENU_CHART, 5):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '14', self.link)
-            assert False, (f"Bug # 14. Trading platform was Not opened for corresponding trading instrument"
-                           f" '{trade_instrument}'")
-        # ==============================
-        print(f"{datetime.now()}   Trading Platform for '{trade_instrument}' trading instrument is opened")
+            assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
+
+        print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
-        trade_instrument_name = trade_instrument.split(" ")[0]
-        try:
-            if len(top_chart_trade_list) == 0:
-                # new bug re-test checking =====
-                print(f'\nBug: {self.bid}')
-                retest_table_fill(self.bid, '17', self.link)
-                # ==============================
-                assert False, (f"Bug # 17. Trading platform for '{trade_instrument}' trade instrument was opened, "
-                               f"but no one trade instrument on the Charts List")
-        except TypeError:
-            # new bug re-test checking =====
+        if len(top_chart_trade_list) == 0:
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '18', self.link)
-            # ==============================
-            assert False, (f"Bug # 18. Trading platform for '{trade_instrument}' trade instrument was opened, "
-                           f"but no one trade instrument on the Charts List =(empty list)=")
+            retest_table_fill(self.bid, '17', self.link)
+            assert False, (f"Bug # 17. Trading platform was opened, "
+                           f"but does no contain any trade instrument on the Charts List")
+
+        # new bug re-test checking =====
+        print(f'\nBug: {self.bid}')
+        retest_table_fill(self.bid, '18', self.link)
+        # ==============================
+        assert False, (f"Bug # 18. Trading platform for '{trade_instrument}' trade instrument was opened, "
+                       f"but no one trade instrument on the Charts List =(empty list)=")
 
         # проверяем, есть ли вкладка для запрашиваемого торгового инструмента
+        trade_instrument_name: str = trade_instrument.split(" ")[0]
         count = True
         for element in top_chart_trade_list:
             if trade_instrument_name in element.text:
