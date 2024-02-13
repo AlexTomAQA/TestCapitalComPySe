@@ -281,7 +281,7 @@ class TradingPlatform(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '17', self.link)
             assert False, (f"Bug # 17. Trading platform was opened, "
-                           f"but does no contain any trade instrument on the Charts List")
+                           f"but does no contain any trade instrument on the Top Charts List")
 
         # new bug re-test checking =====
         print(f'\nBug: {self.bid}')
@@ -291,7 +291,7 @@ class TradingPlatform(BasePage):
                        f"but no one trade instrument on the Charts List =(empty list)=")
 
         # проверяем, есть ли вкладка для запрашиваемого торгового инструмента
-        trade_instrument_name: str = trade_instrument.split(" ")[0]
+        trade_instrument_name = trade_instrument.split(" ")[0]
         count = True
         for element in top_chart_trade_list:
             if trade_instrument_name in element.text:
