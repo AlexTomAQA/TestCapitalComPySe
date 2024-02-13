@@ -7,6 +7,7 @@ from pages.common import Common
 from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
 from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
+from pages.Elements.ButtonBuyInIndicesTable import BuyButtonIndicesTable
 from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
 from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
 from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
@@ -289,6 +290,31 @@ class TestIndicesTrading:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = SellButtonIndicesTable(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link, cur_tab)
+
+    @allure.step("Start test of button [Buy] in Indices table - 'CFDs table' ")
+    @pytest.mark.test_10
+    def test_10_indices_cfds_table_block_button_buy(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link, cur_tab):
+        """
+        Check: Button [Buy] in Indices table - 'CFDs table' in {cur _tab} tab
+        Language: EN, RU, ZH. License: All.
+        """
+        test_title = ("11.02.06", "Education > Menu item [Indices Trading]",
+                      ".01_10", f"Testing 2 random buttons [Buy] in Indices table"
+                                f"and in {cur_tab} tab")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ru", "zh"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BuyButtonIndicesTable(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link, cur_tab)
 
     @allure.step("Start test of button in block [Vertical banner]")

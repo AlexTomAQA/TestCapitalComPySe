@@ -44,7 +44,7 @@ def check_country(cur_country):
         pytest.skip(f"This test is not for {cur_country} country")
 
 
-@pytest.mark.us_11_02_05_01
+@pytest.mark.us_11_02_05
 class TestCryptocurrencyTrading:
     page_conditions = None
 
