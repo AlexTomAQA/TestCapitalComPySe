@@ -12,7 +12,7 @@ from pages.base_page import BasePage
 
 
 class MainMenu(BasePage):
-
+    # header
     SUB_MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_dropdown__75ey5>div>a')
     MENU_LIST = (By.CSS_SELECTOR, '.menuGroup_item__jQrol')
     HEADER_LOGIN_BTN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
@@ -20,8 +20,11 @@ class MainMenu(BasePage):
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
-    COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
     HEADER_SEARCH = (By.CSS_SELECTOR, '[data-type="nav_search"]')
+
+    # footer
+    COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+    SCROLL_TO_TOP = (By.CSS_SELECTOR, '#scrollToTop')
 
     # cookies_setting
     COOKIES_FRAME = (By.CSS_SELECTOR, '#onetrust-pc-sdk')
