@@ -1039,6 +1039,47 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#22: In the Header the button [Search] is missing')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_22
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_22(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        In the Header the button [Search] is missing
+        1. Navigate to capital.com
+        2. Select language EN
+        3. Scroll to the Header
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".22", 'In the Header the button [Search] is missing ')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+
+        menu = MainMenu(d)
+
+        menu.element_is_present(*menu.HEADER_SEARCH)
+
+        assert menu.element_is_present(*menu.HEADER_SEARCH), (
+            'Bug#22. In the Header the button [Search] is existing  '
+            '\n'
+            'Actual result: In the Header the button [Search] is missing ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @allure.step('Bug#24:  Authorized user is logged out after changing the license to FCA(EN language)')
     @allure.severity(allure.severity_level.CRITICAL)

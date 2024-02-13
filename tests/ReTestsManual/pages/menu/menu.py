@@ -21,6 +21,7 @@ class MainMenu(BasePage):
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
     COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+    HEADER_SEARCH = (By.CSS_SELECTOR, '[data-type="nav_search"]')
 
     # cookies_setting
     COOKIES_FRAME = (By.CSS_SELECTOR, '#onetrust-pc-sdk')
