@@ -65,8 +65,8 @@ if retest == 'True':
 else:
     role_list = (
         "Auth",
-        # "NoAuth",  # "Reg/NoAuth"
-        # "NoReg",
+        "NoAuth",  # "Reg/NoAuth"
+        "NoReg",
     )
 
 
