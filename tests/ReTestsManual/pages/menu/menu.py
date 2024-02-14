@@ -24,6 +24,7 @@ class MainMenu(BasePage):
 
     # footer
     COOKIE_SETTING = (By.CSS_SELECTOR, '#onetrust-pc-btn-handler-custom')
+    COOKIE_SETTING_TITLE = (By.CSS_SELECTOR, '#ot-pc-title')
     SCROLL_TO_TOP = (By.CSS_SELECTOR, '#scrollToTop')
 
     # cookies_setting

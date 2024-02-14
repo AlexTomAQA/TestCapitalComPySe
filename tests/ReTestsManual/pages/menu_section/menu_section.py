@@ -32,6 +32,7 @@ class MenuSections(BasePage):
     WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN = (By.CSS_SELECTOR, 'button[data-type="apply_now_block_btn1"]')
     WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN = (By.CSS_SELECTOR, '[data-type="apply_now_block_link2"]')
     WAYSTOTRADE_PROFESSIONAL_MAIN_BANNER = (By.CSS_SELECTOR, '[data-type="background_banner_block"]')
+    WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE = (By.CSS_SELECTOR, '.applyNow_applyNow__KQhnE h2')
 
     # trading platform
     TRADING_PLATFORM_SUPPORT_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_custom"]')

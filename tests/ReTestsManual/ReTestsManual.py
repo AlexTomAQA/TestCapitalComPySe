@@ -1230,6 +1230,93 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
+        'Bug#27: The modal window translated into the browser language, not in English, '
+        'opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.test_27
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_27(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The modal window translated into the browser language, not in English, opens after clicking
+        Link [Cookies Settings] in the footer and selecting FCA license
+        1. Scroll to the footer
+        2. Click  Link [Cookies Settings]
+        3. Pay attention to the language of the modal window that opens
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".27", 'The modal window translated into the browser language, not in English,'
+                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+
+        menu = MainMenu(d)
+        menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
+        title = menu.element_is_visible(menu.COOKIE_SETTING_TITLE).text
+
+        assert title == 'Privacy Preference Center', (
+            'Bug#27. Тhe modal window translated into English'
+            '\n'
+            'Actual result: Тhe modal window translated into browser language')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#28:  Block name "Apply now" is missing in the menu item "Professional" '
+        'in the menu section "Ways to trade"')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_28
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_28(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Block name "Apply now" is missing in the menu item "Professional" in the menu section "Ways to trade"
+        1. Hover over the menu section "Ways to trade"
+        2. Click menu item "Professional"
+        3. Scroll down to the block "Apply now"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".28", 'Block name "Apply now" is missing in the menu item "Professional" '
+                   'in the menu section "Ways to trade"')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
+
+        assert sub_menu.element_is_present(sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \
+            ('Bug#28. Expected result:  Block name "Apply now" is missing '
+             '\n'
+             'Actual result: Block name "Apply now" is displayed ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
         'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_34
