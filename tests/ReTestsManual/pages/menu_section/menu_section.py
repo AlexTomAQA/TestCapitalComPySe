@@ -36,6 +36,8 @@ class MenuSections(BasePage):
 
     # trading platform
     TRADING_PLATFORM_SUPPORT_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_custom"]')
+    TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BLOCK = (By.CSS_SELECTOR, '.primary_box__jvUGh')
+    TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN = (By.CSS_SELECTOR, '.primary_box__jvUGh a')
 
     # why capital.com?
     # client_funds

@@ -1317,6 +1317,48 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
+        'Bug#29: Button [Try now] is missing in the block " Why choose Capital.com? ')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_29
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_29(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Button [Try now] is missing in the block " Why choose Capital.com? Our numbers speak for
+        themselves" in menu item "Web platform"/"Mobile apps" in menu section "Trading platforms"
+        when choosing Eng for FCA license
+        1. Hover over the menu section "Trading platforms"
+        2. Click menu item "Web platform"/"Mobile apps"
+        3. Scroll page down to the block " Why choose Capital.com? Our numbers speak for themselves"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".29", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_trading_platform_web_platform_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BLOCK)
+
+        assert sub_menu.element_is_present(*sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN), \
+            ('Bug#29. Expected result:  Button [Try now] is displayed'
+             '\n'
+             'Actual result: Button [Try now] is missing')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
         'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_34
