@@ -33,7 +33,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             #     self.clear_chart_list()
             #     self.arrange_v4(cur_item_link)
 
-            print(f"\n{datetime.now()}   Testing Most traded random element #{i + 1}")
+            print(f"\n{datetime.now()}   Testing Most traded {i + 1} random element with {index} index")
             trade_instrument = self.element_click_v4(index)
             if not trade_instrument:
                 pytest.fail("Testing element is not clicked")
@@ -134,6 +134,8 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         #
 
         trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
+        if len(trade_instrument_list) == 0:
+            pytest.fail("Problem! List of instruments is empty.")
         instrument_item = trade_instrument_list[random_index]
         instrument_title = instrument_item.get_attribute('title')
 
