@@ -5,6 +5,7 @@ from pages.Elements.ButtonOpenAnAccountMainBanner import MainBannerOpenAnAccount
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
+from tests.ReTestsManual.pages.conditions_new import NewConditions
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -30,9 +31,9 @@ class TestLearnToTrade:
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         link = menu.open_learn_to_trade_menu(d, cur_language, cur_country, link)
