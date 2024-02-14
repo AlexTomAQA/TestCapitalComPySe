@@ -1,8 +1,7 @@
 import allure
 import pytest
 
-from pages.Elements.ButtonCreateAccountMainBanner import MainBannerCreateAccount
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
+from pages.Elements.ButtonOpenAnAccountMainBanner import MainBannerOpenAnAccount
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.Elements.BlockStepTrading import BlockStepTrading
@@ -26,7 +25,7 @@ class TestLearnToTrade:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.00", "Learn to trade",
-            "_01", "Testing button [Open an account] on Main banner")
+            ".00_01", "Testing button [Open an account] on Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -38,7 +37,7 @@ class TestLearnToTrade:
         menu = MenuSection(d, link)
         link = menu.open_learn_to_trade_menu(d, cur_language, cur_country, link)
 
-        test_element = MainBannerCreateAccount(d, link, bid)
+        test_element = MainBannerOpenAnAccount(d, link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start test_11.00.00_03 button [1. Create your account] in block 'Ready to join a leading broker?'")
