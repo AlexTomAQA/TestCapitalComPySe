@@ -1303,7 +1303,7 @@ class TestManualBugs:
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
 
-        assert sub_menu.element_is_present(sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \
+        assert sub_menu.element_is_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \
             ('Bug#28. Expected result:  Block name "Apply now" is missing '
              '\n'
              'Actual result: Block name "Apply now" is displayed ')
