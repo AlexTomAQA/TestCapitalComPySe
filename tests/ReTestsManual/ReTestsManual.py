@@ -1399,7 +1399,7 @@ class TestManualBugs:
         'Bug#31: Links [Learn to trade] in the blocks "Starting from the beginning?" and '
         '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll '
         'to the  corresponding block on the page')
-    @allure.severity(allure.severity_level.NORMAL)
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_31
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_31(
@@ -1445,6 +1445,51 @@ class TestManualBugs:
              'Actual result: The page doesn`t scroll to the block "Trading beginners" '
              '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
              '(from block "Looking to sharpen your strategies?")')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step(
+        'Bug#33: 429 status code (Too many requests) is displayed on the main page after sending several '
+        'identical requests')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_33
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_33(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        429 status code (Too many requests) is displayed on the main page after sending several identical requests
+        1. Click the [Sign up] button
+        2. Click the "Back" button
+        3. Click the [Sign up] button
+        4. Click the "Back" button
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".33", '429 status code (Too many requests) is displayed on the main page after sending '
+                   'several identical requests')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+        try:
+            for i in range(5):
+                sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_SIGNUP_BTN).click()
+                d.back()
+        except TimeoutException:
+            assert True, \
+                ('Bug#33. Expected result:  Main page is opened'
+                 '\n'
+                 'Actual result: 429 status code (Too many requests)')
+
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",

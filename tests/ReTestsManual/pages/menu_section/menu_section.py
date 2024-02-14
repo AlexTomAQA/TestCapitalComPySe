@@ -13,6 +13,9 @@ class MenuSections(BasePage):
 
     BREADCRUMBS = (By.CSS_SELECTOR, '[class*="breadcrumbs"]')
 
+    # main page
+    MAIN_PAGE_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="homepage_hero_banner_btn2_signup"]')
+
     # markets
     MARKETS_PAGINATION_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_pagination"]')
     MARKETS_MOST_TRADE_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"]')
