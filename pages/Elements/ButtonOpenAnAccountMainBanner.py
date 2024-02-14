@@ -28,17 +28,17 @@ class MainBannerOpenAnAccount(BasePage):
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
-    def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
-
-        self.arrange_(d, cur_item_link)
-        self.element_click()
-
-        test_element = AssertClass(d, cur_item_link, self.bid)
-        match cur_role:
-            case "NoReg" | "NoAuth":
-                test_element.assert_signup(d, cur_language, cur_item_link)
-            case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
+    # def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
+    #
+    #     self.arrange_(d, cur_item_link)
+    #     self.element_click()
+    #
+    #     test_element = AssertClass(d, cur_item_link, self.bid)
+    #     match cur_role:
+    #         case "NoReg" | "NoAuth":
+    #             test_element.assert_signup(d, cur_language, cur_item_link)
+    #         case "Auth":
+    #             test_element.assert_trading_platform_v4(d, cur_item_link)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
