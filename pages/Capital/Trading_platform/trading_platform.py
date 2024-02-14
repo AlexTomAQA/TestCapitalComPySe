@@ -111,6 +111,7 @@ class TradingPlatform(BasePage):
             do = True
             while do:
                 self.driver.back()
+                print(f"{datetime.now()}   => Driver.backed")
                 if self.driver.current_url == test_link:
                     do = False
 
