@@ -108,8 +108,8 @@ class TradingPlatform(BasePage):
                       f"corresponding trading instrument '{trade_instrument}'")
                 self.should_be_corresponding_trading_instrument(cur_url, trade_instrument)
 
-            assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
             self.driver.back()
+            assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
             if tpd:
                 print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")

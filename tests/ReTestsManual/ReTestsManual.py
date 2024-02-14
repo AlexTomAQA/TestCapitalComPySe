@@ -20,7 +20,7 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-import io
+# import io
 from src.src import CapitalComPageSrc
 
 
@@ -1482,7 +1482,8 @@ class TestManualBugs:
     def test_44(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        Account registration was successful and the transition to the trading platform after clicking the [Continue] button in the Signup form
+        Account registration was successful and the transition to the trading platform after clicking
+        the [Continue] button in the Signup form
         1. Click the Signup form
         2. Enter the valid email in the Email address field
         3. Enter an invalid value in the password field
@@ -1581,7 +1582,8 @@ class TestManualBugs:
     def test_60(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        [Continue] button is active for sending POST request in the Sign up/Log in form after clicking the[Sign up/Log in] buttons
+        [Continue] button is active for sending POST request in the Sign up/Log in form
+        after clicking the [Sign up / Log in] buttons
         1. Click the Signup/ Log in form
         2. Click the [Continue] button
         """
