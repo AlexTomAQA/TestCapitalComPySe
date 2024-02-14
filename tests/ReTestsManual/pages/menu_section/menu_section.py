@@ -35,3 +35,7 @@ class MenuSections(BasePage):
 
     # trading platform
     TRADING_PLATFORM_SUPPORT_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_custom"]')
+
+    # why capital.com?
+    # client_funds
+    WHY_CAPITAL_CLIENT_FUNDS_CONTENTS_LIST = (By.CSS_SELECTOR, '[data-type="content_nav_anchor"]')
