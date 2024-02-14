@@ -108,7 +108,12 @@ class TradingPlatform(BasePage):
                       f"corresponding trading instrument '{trade_instrument}'")
                 self.should_be_corresponding_trading_instrument(cur_url, trade_instrument)
 
-            self.driver.back()
+            do = True
+            while do:
+                self.driver.back()
+                if self.driver.current_url == test_link:
+                    do = False
+
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
             if tpd:
