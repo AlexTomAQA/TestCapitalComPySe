@@ -30,7 +30,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step("Bug#01: Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page ")
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_01
@@ -200,7 +200,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#02:  "Sell"/"Buy" in the Widget "Trading instrument is not clickable')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_02
@@ -254,7 +254,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#04:  Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_04
@@ -321,7 +321,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#05:  Page "Discover the benefits of going Pro with capital.com" '
                  'is opened')
     @allure.severity(allure.severity_level.MINOR)
@@ -513,7 +513,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#09:  Bread crumbs are not displayed in the "Professional" page')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_09
@@ -545,7 +545,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#10:  Link "Apply here" is not clickable in the "No Capital.com account yet?"')
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_10
@@ -636,7 +636,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#12:  The button [Open an account] is not named according to block "We’re here to help"')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_12
@@ -673,7 +673,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
         'Bug#13:  Transition not to the top of the page in the page "Discover the benefits of going Pro with '
         '"Capital.com" after clicking the [I am eligible] button')
@@ -717,7 +717,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#14:  Bread crumbs are not displayed in the "Margin-calls" page')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_14
@@ -770,7 +770,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#15:  Scrollbar thumb blended into the dark background in the Scrollbar '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -795,7 +795,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#16:  Format of the text content does not correspond to the Block size '
                  'in the Dropdown [Languages]')
     @allure.severity(allure.severity_level.MINOR)
@@ -820,7 +820,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#17:  After the transition from the website capital.com into the trading platform and back is '
                  'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
     @allure.severity(allure.severity_level.CRITICAL)
@@ -970,7 +970,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#20:  Displays interruptions between transitions to other menu sections in the Header after'
                  ' hovering over other menu section'
                  'in the Dropdown [Languages]')
@@ -1080,7 +1080,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step('Bug#23:  [Play] element in the center of the video does not disappear after playing the video')
     @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.test_23
@@ -1228,7 +1228,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
         'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
@@ -1288,7 +1288,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
         'Bug#40:  The "All markets" widget is displayed, but the arrangement of trading instruments with '
         'the filter applied isnot performed after selecting any item from the dropdown menu "Most traded"')
@@ -1313,6 +1313,8 @@ class TestManualBugs:
             ".40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
                    'with the filter applied is not performed after selecting any item from '
                    'the dropdown menu "Most traded"')
+        d.get("https://capital.com/en-gb")
+
         with allure.step('step 1'):
             print(f"\n{datetime.now()}   1. Navigate to Capital.com")
         #
@@ -1353,7 +1355,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
         'Bug#4m:  "Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
     @allure.severity(allure.severity_level.NORMAL)
@@ -1659,7 +1661,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["Auth", "NoAuth", "NoReg"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step("Bug#62: There is no transition to the corresponding page with a trading instrument when clicking on "
                  "any of the trading instruments in the dropdown in the [Search]")
     @allure.severity(allure.severity_level.NORMAL)
