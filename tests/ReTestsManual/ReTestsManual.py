@@ -1318,7 +1318,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
         'Bug#29: Button [Try now] is missing in the block " Why choose Capital.com? ')
-    @allure.severity(allure.severity_level.MINOR)
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_29
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_29(
@@ -1349,6 +1349,102 @@ class TestManualBugs:
             ('Bug#29. Expected result:  Button [Try now] is displayed'
              '\n'
              'Actual result: Button [Try now] is missing')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#30: Button [Try now] is missing in the block " Why choose Capital.com? ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_30
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_30(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no link to the FCA license in the footer of the site in the of the registration number 793714
+        1. Scroll down to the footer
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".30", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.element_is_present_and_visible(menu.FOOTER_RISK_WARNING_BLOCK)
+        link = menu.elements_are_present(*menu.FOOTER_RISK_WARNING_BLOCK_LINK)
+
+        assert len(link) > 1, \
+            ('Bug#30. Expected result:  Button [Try now] is displayed'
+             '\n'
+             'Actual result: Button [Try now] is missing')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#31: Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+        '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll '
+        'to the  corresponding block on the page')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_31
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_31(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Links [Learn to trade] in the blocks "Starting from the beginning?" and "Looking to sharpen your strategies?"
+        in the menu item [Learn to trade] don`t scroll to the  corresponding block on the page
+        1. Hover over and click the menu section [Learn to trade]
+        2. Scroll page down to the block "Starting from the beginning?" or "Looking to sharpen your strategies?"
+        3. Click Link [Learn to trade]
+
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+                   '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll to the '
+                   ' corresponding block on the page')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_learn_to_trade_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        link_list = sub_menu.elements_are_located(sub_menu.LEARN_TO_TRADE_BLOCK_LINK_LIST)
+        sub_menu.go_to_element(link_list[0])
+        scroll_0 = d.execute_script("return window.scrollY;")
+        link_list[0].click()
+        time.sleep(1)
+        scroll_1 = d.execute_script("return window.scrollY;")
+        sub_menu.go_to_element(link_list[1])
+        link_list[1].click()
+        time.sleep(1)
+        scroll_2 = d.execute_script("return window.scrollY;")
+
+        assert scroll_0 < scroll_1 < scroll_2, \
+            ('Bug#31. Expected result:  The page  scrolls to the block "Trading beginners" '
+             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+             '(from block "Looking to sharpen your strategies?")'
+             '\n'
+             'Actual result: The page doesn`t scroll to the block "Trading beginners" '
+             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+             '(from block "Looking to sharpen your strategies?")')
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",

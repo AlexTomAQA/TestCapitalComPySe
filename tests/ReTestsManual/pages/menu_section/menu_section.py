@@ -42,3 +42,6 @@ class MenuSections(BasePage):
     # why capital.com?
     # client_funds
     WHY_CAPITAL_CLIENT_FUNDS_CONTENTS_LIST = (By.CSS_SELECTOR, '[data-type="content_nav_anchor"]')
+
+    # learn to trade
+    LEARN_TO_TRADE_BLOCK_LINK_LIST = (By.CSS_SELECTOR, '[data-type="benefits_block"] .box_box__5Jmfa a')
