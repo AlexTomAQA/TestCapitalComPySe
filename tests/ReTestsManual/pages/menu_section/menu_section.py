@@ -15,6 +15,7 @@ class MenuSections(BasePage):
 
     # main page
     MAIN_PAGE_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="homepage_hero_banner_btn2_signup"]')
+    MAIN_PAGE_TRY_DEMO = (By.CSS_SELECTOR, '[data-type="homepage_hero_banner_btn1_demo"]')
     MAIN_PAGE_LEARNED_BLOCK_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
     MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn2_demo"]')
 

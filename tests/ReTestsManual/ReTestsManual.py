@@ -1913,6 +1913,52 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoAuth"])
+    @allure.step('Bug#55:  Sign Up form is opened instead Login form in the Block "Helping traders make better '
+                 'decisions" on the main page after clicking button [Try demo ]')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_55
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_55(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Sign Up form is opened instead Login form in the Block "Helping traders make better decisions" on the
+         main page after clicking button [Try demo ]
+        1. Scroll to the Block "Helping traders make better decisions" on the main page
+        2.  Click button [Try demo ]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
+                   ' decisions" on the main page after clicking button [Try demo ]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+
+        sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_TRY_DEMO).click()
+
+        test_element = AssertClass(d, link)
+        try:
+            match cur_role:
+                # case "NoReg":
+                #     test_element.assert_signup(d, cur_language, link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, link)
+                # case "Auth":
+                #     test_element.assert_trading_platform_v4(d, cur_item_link)
+        except AssertionError:
+            print(f"\n{datetime.now()}   Bug#55")
+            assert False, (
+                "Bug#55. Expected Result: Login form is opened.\n"
+                "Actual Result: Sign Up form is opened")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @allure.step(
         'Bug#59: User is registered when two required characters are not entered in '
