@@ -70,6 +70,7 @@ class MainMenu(BasePage):
     # Learn to trade
     MENU_LEARN_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
     MENU_LEARN_TO_TRADE_BLOCKS_LINK_LIST = (By.CSS_SELECTOR, '[data-type="benefits_block"] .box_box__5Jmfa a')
+    SUB_MENU_LEARN_TO_TRADING_STRATEGIES = (By.CSS_SELECTOR, '[data-type="nav_id697"]')
 
     # account
     MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
@@ -105,6 +106,21 @@ class MainMenu(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_LEARN_TO_TRADE)
         self.sub_menu_move_focus_click(d, cur_language, self.MENU_LEARN_TO_TRADE)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Learn to trade" menu "Trading strategies" sub-menu')
+    def open_learn_to_trade_trading_strategies_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Learn to trade" menu "Trading strategies" sub-menu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_LEARN_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_LEARN_TO_TRADING_STRATEGIES)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url

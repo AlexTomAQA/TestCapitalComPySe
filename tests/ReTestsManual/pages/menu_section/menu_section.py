@@ -60,3 +60,6 @@ class MenuSections(BasePage):
 
     # learn to trade
     LEARN_TO_TRADE_BLOCK_LINK_LIST = (By.CSS_SELECTOR, '[data-type="benefits_block"] .box_box__5Jmfa a')
+    LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_1 = (By.CSS_SELECTOR, "nav a[href='#what_is margin_trading']")
+    LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_LINK = (By.CSS_SELECTOR,
+                                                '[data-type="benefits_block_block_margin_trading_guide_btn"]')

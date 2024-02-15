@@ -1963,7 +1963,7 @@ class TestManualBugs:
     @allure.step(
         'Bug#57: The icon is missing in the item "Smart risk management" of the block "Why trade on 1X with.." '
         'on the "1X" page')
-    @allure.severity(allure.severity_level.NORMAL)
+    @allure.severity(allure.severity_level.TRIVIAL)
     @pytest.mark.test_57
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_57(
@@ -1997,6 +1997,53 @@ class TestManualBugs:
             'Bug#57. Expected Result: The icon is in the item'
             '\n'
             'Actual result: The icon is missing in the item')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#58: Anchor is not attached to the "What is margin trading?" title on the "What is a margin?" page')
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.test_58
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_58(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Anchor is not attached to the "What is margin trading?" title on the "What is a margin?" page
+        1. Hover over menu section [Learn to trade]
+        2. Click menu item [Trading Strategies]
+        3. Go to the block "Our most-read.."
+        4. Click link [Margin trading guide] in the Tile [Margin trading]
+        5. Click link [What is margin trading?] in block "Contents"
+
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".58", 'Anchor is not attached to the "What is margin trading?" title on '
+                   'the "What is a margin?" page')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_learn_to_trade_trading_strategies_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_LINK).click()
+        sub_menu.element_is_present_and_visible(sub_menu.LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_1).click()
+
+        scroll_0 = d.execute_script("return window.scrollY;")
+
+        assert scroll_0 > 60, \
+            ('Bug#58. Smooth transition to title "What is margin trading?"'
+             '\n'
+             'Actual result: No transition occurred  to title "What is margin trading?"')
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",
