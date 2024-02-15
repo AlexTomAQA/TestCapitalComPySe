@@ -1752,9 +1752,46 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#47:  The  button [Try demo] is missing in the block "Discover trading excellence with '
+                 'Capital.com" in menu item [Forex] in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_47
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_47(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Try demo] is missing in the block "Discover trading excellence with Capital.com" in menu item
+        [Forex] in menu section [Markets]
+        1. Click to Hover over [Markets] menu section
+        2. Click to menu item [Forex]
+        3. Scroll to the block "Discover trading excellence with Capital.com"
+        4. Pay attention to the buttons at the bottom of the block
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_LEARNED_BLOCK_SIGNUP_BTN)
+
+        #
+        assert sub_menu.element_is_present(*sub_menu.MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN), (
+            "Bug#47. Expected Result: Button [Try demo] is displayed.\n"
+            "Actual Result: Button [Try demo] is not displayed")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
-    @allure.severity(allure.severity_level.MINOR)
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_48
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
@@ -1831,6 +1868,48 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#49:  The  button [Create account ] is located instead button [Sign up] in the Block '
+                 '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_49
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_49(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Create account ] is located instead button [Sign up] in the Block "Indices trading" in the  menu
+        item [Indices]  in menu section [Markets]
+        1. Hover over [Markets] menu section
+        2. Click to menu item [Indices]
+        3. Scroll to the block "Indices trading"
+        4. Pay attention to the buttons at the block
+
+        also reproduced in the menu item [Commodities] in menu section [Markets]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
+                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_indices_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+
+        btn_create = sub_menu.element_is_present_and_visible(sub_menu.MARKETS_MAIN_BANNER_CREATE_ACCOUNT)
+        name_btn = btn_create.text
+        #
+        assert name_btn == "Sign up", (
+            "Bug#49. Expected Result: The  button [Sign up] is displayed.\n"
+            "Actual Result: The  button [Create account ] is displayed")
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])

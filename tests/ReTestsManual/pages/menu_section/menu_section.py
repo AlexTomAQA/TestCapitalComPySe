@@ -15,8 +15,11 @@ class MenuSections(BasePage):
 
     # main page
     MAIN_PAGE_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="homepage_hero_banner_btn2_signup"]')
+    MAIN_PAGE_LEARNED_BLOCK_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
+    MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn2_demo"]')
 
     # markets
+    MARKETS_MAIN_BANNER_CREATE_ACCOUNT = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_signup"]')
     MARKETS_PAGINATION_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_pagination"]')
     MARKETS_MOST_TRADE_LIST = (By.CSS_SELECTOR, '[data-type="markets_list_deep"]')
     MARKETS_MOST_TRADE_SEARCH = (By.CSS_SELECTOR, '#marketlist_search')
