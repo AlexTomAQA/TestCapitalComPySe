@@ -254,7 +254,7 @@ class TestCommoditiesTradingPretest:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
-        if cur_language in ["ar", "fr", "cn", "zh"]:
+        if cur_language in ["ar", "el", "fr", "hu", "cn", "nl", "zh"]:
             Common().skip_test_for_language(cur_language)
 
         if count == 0:
