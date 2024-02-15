@@ -33,7 +33,7 @@ jobs:
         if: always()
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11.7"
+          python-version: "3.12.1"
 
       - name: 3.1. Set up Homebrew
         id: set-up-homebrew
@@ -72,7 +72,7 @@ jobs:
       - name: 5. install dependencies
         if: always()
 #        run: poetry update
-        run: poetry install --sync
+        run: poetry install
 
       - name: Poetry Run Python3 hwinfo.py
         if: always()
@@ -85,7 +85,7 @@ jobs:
       - name: 8. Run ReTestManual
         if: always()
         continue-on-error: true
-        run: poetry run pytest -v -n auto tests/ReTestsAuto/ReTestsManual.py
+        run: poetry run pytest -v tests/ReTestsManual/ReTestsManual.py
 
       - name: 9. Upload artifact "allure-results"
         if: always()
