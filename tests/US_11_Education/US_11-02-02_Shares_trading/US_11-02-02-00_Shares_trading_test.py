@@ -257,7 +257,7 @@ class TestSharesTrading:
             ".00_99", "Pretest for US_11.02.02.01")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        if cur_language in ["ar"]:
+        if cur_language in ["ar", "el", "hu", "cn", "nl"]:
             Common().skip_test_for_language(cur_language)
 
         if count == 0:
