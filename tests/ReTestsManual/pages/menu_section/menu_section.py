@@ -26,6 +26,10 @@ class MenuSections(BasePage):
     MARKETS_MOST_TRADE_INSTRUMENT_404 = (By.CSS_SELECTOR, 'section.blockMd .gLg h1')
     MARKETS_MOST_TRADE_INSTRUMENT_PAGE = (By.CSS_SELECTOR, '[data-type="market"]')
     MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS = (By.CSS_SELECTOR, '.helpers_frameLoader__7Uhll .heading_h2__kkLcC')
+    MARKETS_DISCOVER_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img"]')
+    MARKETS_DISCOVER_BLOCK_CREATE_ACCOUNT_BTN = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_signup"]')
+    MARKETS_DISCOVER_BLOCK_TRY_DEMO_BTN = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_demo"]')
+    # shares
     MARKETS_SHARES_BANNER_TRY_DEMO_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn2demo"]')
     MARKETS_SHARES_BANNER_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_signup"]')
 

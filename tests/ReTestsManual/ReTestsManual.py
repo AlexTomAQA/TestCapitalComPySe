@@ -117,7 +117,6 @@ class TestManualBugs:
             attachment_type=AttachmentType.PNG,
         )
 
-
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
@@ -1714,6 +1713,45 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#45:  The  button [Try demo] is missing in the block "Discover trading excellence with '
+                 'Capital.com" in menu item [Forex] in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_45
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_45(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Try demo] is missing in the block "Discover trading excellence with Capital.com" in menu item
+        [Forex] in menu section [Markets]
+        1. Click to Hover over [Markets] menu section
+        2. Click to menu item [Forex]
+        3. Scroll to the block "Discover trading excellence with Capital.com"
+        4. Pay attention to the buttons at the bottom of the block
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.MARKETS_DISCOVER_BLOCK_CREATE_ACCOUNT_BTN)
+
+        #
+        assert sub_menu.element_is_present(*sub_menu.MARKETS_DISCOVER_BLOCK_TRY_DEMO_BTN), (
+            "Bug#45. Expected Result: Button [Try demo] is displayed.\n"
+            "Actual Result: Button [Try demo] is not displayed")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
     @allure.severity(allure.severity_level.MINOR)
@@ -1747,7 +1785,7 @@ class TestManualBugs:
         markets_page = MenuSections(d)
         pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         qty_pages = int(pagination[-2].text)
-        # qty_pages = 1
+        qty_pages = 2
         print("qty_pages=", qty_pages)
 
         # перебор страниц
@@ -1780,6 +1818,7 @@ class TestManualBugs:
                         f"error_404: {error_trade_instrument_list}. \n"
                         f"qty_pages: {qty_pages}")
                 else:
+                    time.sleep(1)
                     d.back()
 
             pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
