@@ -175,6 +175,8 @@ class BlockSignUpAndTradeSmartTodayLocators:
 
 class ContentBlockLocators:
     BUTTON_PRACTISE_FOR_FREE = (By.CSS_SELECTOR, "a[data-type='wdg_go_to_market_deeplink']")
+    BUTTON_OPEN_AN_ACCOUNT_CONTENT = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_signup"]')
+    BUTTON_TRY_DEMO_ACCOUNT_CONTENT = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_demo"]')
 
 
 class QRCodeLocators:
