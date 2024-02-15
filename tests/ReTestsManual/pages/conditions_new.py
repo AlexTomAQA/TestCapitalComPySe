@@ -60,9 +60,9 @@ class NewConditions(BasePage):
         global prev_country
 
         print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
-        if test_link == "?":
-            self.link = host
-            self.open_page()
+
+        self.link = host
+        self.open_page()
 
         print(f"\n{datetime.now()}   {d.get_window_size()}")
         print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")

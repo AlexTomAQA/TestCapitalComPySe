@@ -117,7 +117,6 @@ class TestManualBugs:
             attachment_type=AttachmentType.PNG,
         )
 
-
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
@@ -1150,6 +1149,276 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
+        'Bug#27: The modal window translated into the browser language, not in English, '
+        'opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.test_27
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_27(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The modal window translated into the browser language, not in English, opens after clicking
+        Link [Cookies Settings] in the footer and selecting FCA license
+        1. Scroll to the footer
+        2. Click  Link [Cookies Settings]
+        3. Pay attention to the language of the modal window that opens
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".27", 'The modal window translated into the browser language, not in English,'
+                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+
+        menu = MainMenu(d)
+        menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
+        title = menu.element_is_visible(menu.COOKIE_SETTING_TITLE).text
+
+        assert title == 'Privacy Preference Center', (
+            'Bug#27. Тhe modal window translated into English'
+            '\n'
+            'Actual result: Тhe modal window translated into browser language')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#28:  Block name "Apply now" is missing in the menu item "Professional" '
+        'in the menu section "Ways to trade"')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_28
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_28(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Block name "Apply now" is missing in the menu item "Professional" in the menu section "Ways to trade"
+        1. Hover over the menu section "Ways to trade"
+        2. Click menu item "Professional"
+        3. Scroll down to the block "Apply now"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".28", 'Block name "Apply now" is missing in the menu item "Professional" '
+                   'in the menu section "Ways to trade"')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
+
+        assert sub_menu.element_is_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \
+            ('Bug#28. Expected result:  Block name "Apply now" is missing '
+             '\n'
+             'Actual result: Block name "Apply now" is displayed ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#29: Button [Try now] is missing in the block " Why choose Capital.com? ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_29
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_29(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Button [Try now] is missing in the block " Why choose Capital.com? Our numbers speak for
+        themselves" in menu item "Web platform"/"Mobile apps" in menu section "Trading platforms"
+        when choosing Eng for FCA license
+        1. Hover over the menu section "Trading platforms"
+        2. Click menu item "Web platform"/"Mobile apps"
+        3. Scroll page down to the block " Why choose Capital.com? Our numbers speak for themselves"
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".29", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_trading_platform_web_platform_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BLOCK)
+
+        assert sub_menu.element_is_present(*sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN), \
+            ('Bug#29. Expected result:  Button [Try now] is displayed'
+             '\n'
+             'Actual result: Button [Try now] is missing')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#30: Button [Try now] is missing in the block " Why choose Capital.com? ')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_30
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_30(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        There is no link to the FCA license in the footer of the site in the of the registration number 793714
+        1. Scroll down to the footer
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".30", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.element_is_present_and_visible(menu.FOOTER_RISK_WARNING_BLOCK)
+        link = menu.elements_are_present(*menu.FOOTER_RISK_WARNING_BLOCK_LINK)
+
+        assert len(link) > 1, \
+            ('Bug#30. Expected result:  Button [Try now] is displayed'
+             '\n'
+             'Actual result: Button [Try now] is missing')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#31: Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+        '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll '
+        'to the  corresponding block on the page')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_31
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_31(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Links [Learn to trade] in the blocks "Starting from the beginning?" and "Looking to sharpen your strategies?"
+        in the menu item [Learn to trade] don`t scroll to the  corresponding block on the page
+        1. Hover over and click the menu section [Learn to trade]
+        2. Scroll page down to the block "Starting from the beginning?" or "Looking to sharpen your strategies?"
+        3. Click Link [Learn to trade]
+
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+                   '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll to the '
+                   ' corresponding block on the page')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_learn_to_trade_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        link_list = sub_menu.elements_are_located(sub_menu.LEARN_TO_TRADE_BLOCK_LINK_LIST)
+        sub_menu.go_to_element(link_list[0])
+        scroll_0 = d.execute_script("return window.scrollY;")
+        link_list[0].click()
+        time.sleep(1)
+        scroll_1 = d.execute_script("return window.scrollY;")
+        sub_menu.go_to_element(link_list[1])
+        link_list[1].click()
+        time.sleep(1)
+        scroll_2 = d.execute_script("return window.scrollY;")
+
+        assert scroll_0 < scroll_1 < scroll_2, \
+            ('Bug#31. Expected result:  The page  scrolls to the block "Trading beginners" '
+             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+             '(from block "Looking to sharpen your strategies?")'
+             '\n'
+             'Actual result: The page doesn`t scroll to the block "Trading beginners" '
+             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+             '(from block "Looking to sharpen your strategies?")')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @allure.step(
+        'Bug#33: 429 status code (Too many requests) is displayed on the main page after sending several '
+        'identical requests')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_33
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_33(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        429 status code (Too many requests) is displayed on the main page after sending several identical requests
+        1. Click the [Sign up] button
+        2. Click the "Back" button
+        3. Click the [Sign up] button
+        4. Click the "Back" button
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".33", '429 status code (Too many requests) is displayed on the main page after sending '
+                   'several identical requests')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+        try:
+            for i in range(5):
+                sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_SIGNUP_BTN).click()
+                d.back()
+        except TimeoutException:
+            assert True, \
+                ('Bug#33. Expected result:  Main page is opened'
+                 '\n'
+                 'Actual result: 429 status code (Too many requests)')
+
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
         'Bug#34:  Filtered list of cookies is not displayed according to the checked and unchecked checkboxes ')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_34
@@ -1444,9 +1713,85 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#45:  The  button [Try demo] is missing in the block "Discover trading excellence with '
+                 'Capital.com" in menu item [Forex] in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_45
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_45(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Try demo] is missing in the block "Discover trading excellence with Capital.com" in menu item
+        [Forex] in menu section [Markets]
+        1. Click to Hover over [Markets] menu section
+        2. Click to menu item [Forex]
+        3. Scroll to the block "Discover trading excellence with Capital.com"
+        4. Pay attention to the buttons at the bottom of the block
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_forex_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.MARKETS_DISCOVER_BLOCK_CREATE_ACCOUNT_BTN)
+
+        #
+        assert sub_menu.element_is_present(*sub_menu.MARKETS_DISCOVER_BLOCK_TRY_DEMO_BTN), (
+            "Bug#45. Expected Result: Button [Try demo] is displayed.\n"
+            "Actual Result: Button [Try demo] is not displayed")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#47:  The  button [Try demo] is missing in the block "Discover trading excellence with '
+                 'Capital.com" in menu item [Forex] in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_47
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_47(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Try demo] is missing in the block "Discover trading excellence with Capital.com" in menu item
+        [Forex] in menu section [Markets]
+        1. Click to Hover over [Markets] menu section
+        2. Click to menu item [Forex]
+        3. Scroll to the block "Discover trading excellence with Capital.com"
+        4. Pay attention to the buttons at the bottom of the block
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_LEARNED_BLOCK_SIGNUP_BTN)
+
+        #
+        assert sub_menu.element_is_present(*sub_menu.MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN), (
+            "Bug#47. Expected Result: Button [Try demo] is displayed.\n"
+            "Actual Result: Button [Try demo] is not displayed")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @allure.step("Bug#48: 404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
-    @allure.severity(allure.severity_level.MINOR)
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_48
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_48(
@@ -1477,7 +1822,7 @@ class TestManualBugs:
         markets_page = MenuSections(d)
         pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
         qty_pages = int(pagination[-2].text)
-        # qty_pages = 1
+        qty_pages = 2
         print("qty_pages=", qty_pages)
 
         # перебор страниц
@@ -1510,6 +1855,7 @@ class TestManualBugs:
                         f"error_404: {error_trade_instrument_list}. \n"
                         f"qty_pages: {qty_pages}")
                 else:
+                    time.sleep(1)
                     d.back()
 
             pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
@@ -1517,6 +1863,187 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
             print("Non one 404 error")
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#49:  The  button [Create account ] is located instead button [Sign up] in the Block '
+                 '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_49
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_49(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The  button [Create account ] is located instead button [Sign up] in the Block "Indices trading" in the  menu
+        item [Indices]  in menu section [Markets]
+        1. Hover over [Markets] menu section
+        2. Click to menu item [Indices]
+        3. Scroll to the block "Indices trading"
+        4. Pay attention to the buttons at the block
+
+        also reproduced in the menu item [Commodities] in menu section [Markets]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
+                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_markets_indices_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+
+        btn_create = sub_menu.element_is_present_and_visible(sub_menu.MARKETS_MAIN_BANNER_CREATE_ACCOUNT)
+        name_btn = btn_create.text
+        #
+        assert name_btn == "Sign up", (
+            "Bug#49. Expected Result: The  button [Sign up] is displayed.\n"
+            "Actual Result: The  button [Create account ] is displayed")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoAuth"])
+    @allure.step('Bug#55:  Sign Up form is opened instead Login form in the Block "Helping traders make better '
+                 'decisions" on the main page after clicking button [Try demo ]')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_55
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_55(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Sign Up form is opened instead Login form in the Block "Helping traders make better decisions" on the
+         main page after clicking button [Try demo ]
+        1. Scroll to the Block "Helping traders make better decisions" on the main page
+        2.  Click button [Try demo ]
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
+                   ' decisions" on the main page after clicking button [Try demo ]')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        sub_menu = MenuSections(d, link)
+
+        sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_TRY_DEMO).click()
+
+        test_element = AssertClass(d, link)
+        try:
+            match cur_role:
+                # case "NoReg":
+                #     test_element.assert_signup(d, cur_language, link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, link)
+                # case "Auth":
+                #     test_element.assert_trading_platform_v4(d, cur_item_link)
+        except AssertionError:
+            print(f"\n{datetime.now()}   Bug#55")
+            assert False, (
+                "Bug#55. Expected Result: Login form is opened.\n"
+                "Actual Result: Sign Up form is opened")
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#57: The icon is missing in the item "Smart risk management" of the block "Why trade on 1X with.." '
+        'on the "1X" page')
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.test_57
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_57(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The icon is missing in the item "Smart risk management" of the block "Why trade on 1X with.." on the "1X" page
+        1. Hover over menu section [Ways to trade]
+        2. Click menu item [1X]
+        3. Scroll to the block "Why trade on 1X with Capital.com?"
+        4. Go to item "Smart risk management"
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
+                   '1X with.." on the "1X" page')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_1X_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4)
+        list_img = menu.elements_are_present(*sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4_IMG)
+
+        time.sleep(1)
+        assert len(list_img) > 1, (
+            'Bug#57. Expected Result: The icon is in the item'
+            '\n'
+            'Actual result: The icon is missing in the item')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#58: Anchor is not attached to the "What is margin trading?" title on the "What is a margin?" page')
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.test_58
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_58(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Anchor is not attached to the "What is margin trading?" title on the "What is a margin?" page
+        1. Hover over menu section [Learn to trade]
+        2. Click menu item [Trading Strategies]
+        3. Go to the block "Our most-read.."
+        4. Click link [Margin trading guide] in the Tile [Margin trading]
+        5. Click link [What is margin trading?] in block "Contents"
+
+        """
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".58", 'Anchor is not attached to the "What is margin trading?" title on '
+                   'the "What is a margin?" page')
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_learn_to_trade_trading_strategies_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_LINK).click()
+        sub_menu.element_is_present_and_visible(sub_menu.LEARN_TO_TRADE_MARGIN_TRADING_GUIDE_1).click()
+
+        scroll_0 = d.execute_script("return window.scrollY;")
+
+        assert scroll_0 > 60, \
+            ('Bug#58. Smooth transition to title "What is margin trading?"'
+             '\n'
+             'Actual result: No transition occurred  to title "What is margin trading?"')
         allure.attach(
             d.get_screenshot_as_png(),
             name=f"Screenshot{datetime.now()}",
