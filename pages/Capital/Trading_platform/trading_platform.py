@@ -275,7 +275,9 @@ class TradingPlatform(BasePage):
         trade_instrument_name = trade_instrument.split(" ")[0]
 
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
-        if not self.elements_are_located(ChartingLocators.MENU_CHART, 5):
+        menu_chart = self.elements_are_located(ChartingLocators.MENU_CHART, 5)
+        if len(menu_chart) == 0:
+            print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '14', self.link)
             assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
