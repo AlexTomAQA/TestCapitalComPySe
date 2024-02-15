@@ -55,6 +55,7 @@ class MainMenu(BasePage):
 
     # ways to trade
     MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
+    SUB_MENU_WAYS_TO_TRADE_1X = (By.CSS_SELECTOR, '[data-type="nav_id733"]')
     SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
     SUB_MENU_WAYS_TO_TRADE_CFD_TRADING = (By.CSS_SELECTOR, '[data-type="nav_id734"]')
     SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART = (By.CSS_SELECTOR, '.main_chart__prq68')
@@ -164,6 +165,21 @@ class MainMenu(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
         self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Way_to_trade" menu, "1X" submenu')
+    def open_waytotrade_1X_sub_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "1X" =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_1X)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url

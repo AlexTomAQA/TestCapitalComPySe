@@ -1959,6 +1959,52 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step(
+        'Bug#57: The icon is missing in the item "Smart risk management" of the block "Why trade on 1X with.." '
+        'on the "1X" page')
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.test_57
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_57(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        The icon is missing in the item "Smart risk management" of the block "Why trade on 1X with.." on the "1X" page
+        1. Hover over menu section [Ways to trade]
+        2. Click menu item [1X]
+        3. Scroll to the block "Why trade on 1X with Capital.com?"
+        4. Go to item "Smart risk management"
+        """
+
+        build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            ".57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
+                   '1X with.." on the "1X" page')
+        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_1X_sub_menu(d, cur_language, cur_country, link)
+        sub_menu = MenuSections(d, link)
+        sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4)
+        list_img = menu.elements_are_present(*sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4_IMG)
+
+        time.sleep(1)
+        assert len(list_img) > 1, (
+            'Bug#57. Expected Result: The icon is in the item'
+            '\n'
+            'Actual result: The icon is missing in the item')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @allure.step(
         'Bug#59: User is registered when two required characters are not entered in '
