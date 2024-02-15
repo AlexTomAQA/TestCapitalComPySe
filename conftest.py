@@ -98,8 +98,8 @@ def cur_role(request):
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        "el",  # 5 us
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
