@@ -36,7 +36,7 @@ class NewConditions(BasePage):
 
     debug = False
 
-    @allure.step(f"{datetime.now()}   Set preconditions")
+    @allure.step(f"{datetime.now()}   Set New preconditions")
     def preconditions(
             self,
             d,
@@ -59,7 +59,7 @@ class NewConditions(BasePage):
         global prev_language
         global prev_country
 
-        print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
+        print(f"\n\n{datetime.now()}   START NEW PRECONDITIONS =>\n")
 
         self.link = host
         self.open_page()
@@ -151,15 +151,18 @@ class NewConditions(BasePage):
     def to_do_authorisation(self, d, link, login, password, cur_role):
         """Authorisation"""
         print(f"\n" f"{datetime.now()}   Start Autorization")
+
         # Setup wait for later
         menu = MainMenu(d, link)
         assert login != "", "Авторизация невозможна. Не указан e-mail"
         assert password != "", "Авторизация невозможна. Не указан пароль"
+
         # нажать в хедере на кнопку "Log in"
         try:
             menu.element_is_clickable(menu.MENU_LOGIN).click()
         except:
             pytest.fail("Bug! 'Login' button is not clicked")
+
         print(f"{datetime.now()}   => 'Login' form is opened")
 
         # User's name is passed to the text element on the login page
