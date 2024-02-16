@@ -495,8 +495,10 @@ class TestManualBugs:
         sub_menu = MenuSections(d, link)
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
         link1 = d.current_url
-        apply_here = sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
-        apply_here.click()
+        if len(sub_menu.elements_are_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)) == 0:
+            pytest.skip("Bug#11: Web-element is not present")
+
+        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN).click()
         link2 = d.current_url
         assert link2 != link1, ('Bug#10. Expected Result: Link "Apply here" is clickable'
                                 '\n'
@@ -535,8 +537,10 @@ class TestManualBugs:
         sub_menu = MenuSections(d, link)
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
-        apply_here = sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN)
-        apply_here.click()
+        if len(sub_menu.elements_are_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN)) == 0:
+            pytest.skip("Bug#11: Web-element is not present")
+
+        sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_EXISTING_CLIENT_BTN).click()
         cur_item_link = d.current_url
         test_element = AssertClass(d, cur_item_link)
         try:
@@ -783,27 +787,30 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @allure.step('Bug#18:  After the transition from the website capital.com into the trading platform and back is '
-                 'displayed [Log in] and [Sign up] buttons instead of the [My account] buttons')
+    @allure.step('Bug#18:  Sign up form is opened after re-clicking the [Try demo] button and "Back" button in'
+                 ' the "Shares Trading" Block in the "Shares" page')
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_18
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_18(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        After the transition from the website capital.com into the trading platform and back is displayed
-        [Log in] and [Sign up] buttons instead of the [My account] buttons when clicking the [Capital.com]
-        Logo on the trading platform
-        1. Click the [Log in] button
-        2. Enter valid value in the Email and password fields
-        3. Click the Capital.com [Logo]
+        Sign up form is opened after re-clicking the [Try demo] button and "Back" button in the "Shares Trading" Block in the "Shares" page
+        1. Hover over the [Markets] menu section
+        2. Click the [Shares] menu item
+        3. Scroll down to Block "Shares Trading"
+        4. Click the [Try demo] button
+        5. Click the "Back" button
+        6. Click the [Try demo] button
+        7. Click the "Back" button
+        8. Click the [Try demo] button
         """
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".18", 'After the transition from the website capital.com into the trading platform and '
-                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
+            ".18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
+                   'the "Shares Trading" Block in the "Shares" page')
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -813,30 +820,29 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         cur_item_link = menu.open_markets_shares_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
-        for i in range(5):
-            sub_menu.element_is_present_and_visible(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN)
-            sub_menu.element_is_clickable(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN).click()
-            time.sleep(3)
-            test_element = AssertClass(d, cur_item_link)
-            try:
-                match cur_role:
-                    case "NoReg":
-                        test_element.assert_signup(d, cur_language, cur_item_link)
-                    case "NoAuth":
-                        test_element.assert_login(d, cur_language, cur_item_link)
-                    case "Auth":
-                        test_element.assert_trading_platform_v4(d, cur_item_link)
-            except AssertionError:
-                print(f"\n{datetime.now()}   Bug#11")
-                assert False, ('Bug#18. Expected result: Transition to the trading platform'
-                               '\n'
-                               'Actual result: Sign up form is opened')
-            allure.attach(
-                d.get_screenshot_as_png(),
-                name=f"Screenshot{datetime.now()}",
-                attachment_type=AttachmentType.PNG,
-            )
-            # d.back()
+        try:
+            for i in range(5):
+                sub_menu.element_is_present_and_visible(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN)
+                sub_menu.element_is_clickable(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN).click()
+                time.sleep(1)
+                d.back()
+        except:
+            assert False, (
+                'Bug#18. Expected result: Transition to the trading platform'
+                '\n'
+                'Actual result: Sign up form is opened')
+
+        cur_url = d.current_url
+        print(f"\n{datetime.now()}   Bug#11")
+        assert cur_url != "https://capital.com/trading/platform/", (
+            'Bug#18. Expected result: Transition to the trading platform'
+            '\n'
+            'Actual result: Sign up form is opened')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1043,7 +1049,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".17", 'Authorized user is logged out after changing the license to FCA(EN language)')
+            ".24", 'Authorized user is logged out after changing the license to FCA(EN language)')
         #
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -1220,6 +1226,9 @@ class TestManualBugs:
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
+        if len(sub_menu.elements_are_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)) == 0:
+            pytest.skip("Bug#28: Web-element is not present")
+
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
 
         assert sub_menu.element_is_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \

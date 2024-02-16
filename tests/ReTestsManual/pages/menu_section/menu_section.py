@@ -50,7 +50,7 @@ class MenuSections(BasePage):
     WAYSTOTRADE_1X_WHY_BLOCK_4_IMG = (By.CSS_SELECTOR, '.box_bordered__K9Ia_:nth-child(4) img')
 
     # trading platform
-    TRADING_PLATFORM_SUPPORT_BTN = (By.CSS_SELECTOR, '[data-type="fullscreen_banner_block_btn1_custom"]')
+    TRADING_PLATFORM_SUPPORT_BTN = (By.CSS_SELECTOR, '[data-type="banner_in_body_block_btn1_custom"]')
     TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BLOCK = (By.CSS_SELECTOR, '.primary_box__jvUGh')
     TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN = (By.CSS_SELECTOR, '.primary_box__jvUGh a')
 
