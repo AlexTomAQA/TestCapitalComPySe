@@ -50,8 +50,7 @@ class MainBannerOpenAnAccount(BasePage):
         button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_OPEN_AN_ACCOUNT)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT is not present on the page!")
-            del button_list
-            pytest.skip("Checking element 'BUTTON_OPEN_AN_ACCOUNT on Main banner' is not on this page")
+            pytest.fail("Bug # ? Checking element 'BUTTON_OPEN_AN_ACCOUNT on Main banner' is not on this page")
 
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT scroll =>")
         self.driver.execute_script(
@@ -63,11 +62,11 @@ class MainBannerOpenAnAccount(BasePage):
             print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT is visible on the page!")
         else:
             print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT is not visible on the page!")
-            pytest.fail("Bug! Checking element 'BUTTON_OPEN_AN_ACCOUNT on Main banner' is present on this page, "
+            pytest.fail("Bug # ? Checking element 'BUTTON_OPEN_AN_ACCOUNT on Main banner' is present on this page, "
                         "but not visible")
 
     @allure.step("Click button [Open an account] on Main banner")
-    def element_click(self):
+    def element_click(self, test_language, test_country):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button [Open an account] =>")
         button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_OPEN_AN_ACCOUNT)
@@ -76,7 +75,7 @@ class MainBannerOpenAnAccount(BasePage):
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
             print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT is not clickable after {time_out} sec. Stop TC>")
-            pytest.fail(f"BUTTON_OPEN_AN_ACCOUNT is not clickable after {time_out} sec.")
+            pytest.fail(f"Bug # ? Checking element is not clickable after {time_out} sec.")
 
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT click =>")
         try:
