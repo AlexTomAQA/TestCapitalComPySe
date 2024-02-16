@@ -7,11 +7,11 @@ import time
 from datetime import datetime
 import pytest
 import allure
-from pages.Signup_login.signup_login import SignupLogin
+# from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.testing_elements_locators import BlockStepTradingLocators
 from pages.Elements.AssertClass import AssertClass
-from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
+# from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 
 
 class BlockStepTrading(BasePage):
@@ -19,7 +19,7 @@ class BlockStepTrading(BasePage):
     @allure.step(f"{datetime.now()}   Start full test for Step trading block")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
-        self.arrange_(d, cur_item_link,cur_language, cur_country)
+        self.arrange_(d, cur_item_link, cur_language, cur_country)
         self.element_click(cur_language, cur_country)
 
         test_element = AssertClass(d, cur_item_link, self.bid)
@@ -31,18 +31,18 @@ class BlockStepTrading(BasePage):
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
-    def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
-        self.arrange_(d, cur_item_link)
-        self.element_click()
+    # def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
+    #     self.arrange_(d, cur_item_link)
+    #     self.element_click()
+    #
+    #     test_element = AssertClass(d, cur_item_link, self.bid)
+    #     match cur_role:
+    #         case "NoReg" | "NoAuth":
+    #             test_element.assert_signup(d, cur_language, cur_item_link)
+    #         case "Auth":
+    #             test_element.assert_trading_platform_v4(d, cur_item_link)
 
-        test_element = AssertClass(d, cur_item_link, self.bid)
-        match cur_role:
-            case "NoReg" | "NoAuth":
-                test_element.assert_signup(d, cur_language, cur_item_link)
-            case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
-
-    def arrange_(self, d, cur_item_link,cur_language="", cur_country=""):
+    def arrange_(self, d, cur_item_link, cur_language="", cur_country=""):
         print(f"\n{datetime.now()}   1. Arrange_v0")
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
