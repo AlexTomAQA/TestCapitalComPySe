@@ -13,6 +13,7 @@ class NewSignupFormLocators:
     SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, 'form #password')
     SIGNUP_CONTINUE_BTN = (By.CSS_SELECTOR, "button[type='submit']")
     SIGNUP_PRIVACY_POLICY = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
+    BUTTON_CLOSE_ON_SIGNUP_FORM = (By.CSS_SELECTOR, "button.modal_close__m5UZc")
 
 
 class SignupFormLocators:
