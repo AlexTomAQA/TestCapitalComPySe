@@ -34,7 +34,7 @@ class ContentOpenAnAccount(BasePage):
         if len(button_list) == 0:
             print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT is not present on the page!")
             del button_list
-            pytest.skip("Checking element 'BUTTON_OPEN_AN_ACCOUNT_CONTENT' is not on this page")
+            pytest.fail("Bug #20 Checking element 'BUTTON_OPEN_AN_ACCOUNT_CONTENT' is not on this page")
 
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT_CONTENT scroll =>")
         self.driver.execute_script(
@@ -43,9 +43,9 @@ class ContentOpenAnAccount(BasePage):
 
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT_CONTENT is visible? =>")
         if self.element_is_visible(ContentBlockLocators.BUTTON_OPEN_AN_ACCOUNT_CONTENT):
-            print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT_CONTENT is visible on the page!")
+            print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT is visible on the page!")
         else:
-            print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT_CONTENT is not visible on the page!")
+            print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT is not visible on the page!")
             pytest.fail("Bug! Checking element 'BUTTON_OPEN_AN_ACCOUNT_CONTENT' is present on this page, "
                         "but not visible")
 
@@ -64,9 +64,9 @@ class ContentOpenAnAccount(BasePage):
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT_CONTENT click =>")
         try:
             button_list[0].click()
-            print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT_CONTENT clicked")
+            print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT clicked")
         except ElementClickInterceptedException:
-            print(f"{datetime.now()}   => BUTTON_OPEN_AN_ACCOUNT_CONTENT not clicked")
+            print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT not clicked")
             print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
             page_ = SignupLogin(self.driver)

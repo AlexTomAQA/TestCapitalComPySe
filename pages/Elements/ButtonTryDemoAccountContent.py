@@ -51,7 +51,7 @@ class ContentTryDemoAccount(BasePage):
             print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT is visible on the page!")
         else:
             print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT is not visible on the page!")
-            pytest.skip("Checking element is not on this page")
+            pytest.fail("Bug # 20 Checking element is not on this page")
 
     @allure.step("Click button [Try demo account] on the page")
     def element_click(self):
