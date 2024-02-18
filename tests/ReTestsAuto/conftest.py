@@ -108,6 +108,7 @@ def gs():
     # получение длины таблицы
     values = g_sheet.get_all_row_values()
     rows_qty = len(values)
+    print(f"\n{datetime.now()}   QTY of rows = {rows_qty}")
     execution_time_1 = g_sheet.get_row_values()[0][21]
     del values
 
