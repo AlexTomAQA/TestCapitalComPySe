@@ -108,7 +108,7 @@ def gs():
     # получение длины таблицы
     values = g_sheet.get_all_row_values()
     rows_qty = len(values)
-    execution_time_1 = g_sheet.get_row_values(4)[0][21]
+    execution_time_1 = g_sheet.get_row_values()[0][21]
     del values
 
     # старт ретеста
