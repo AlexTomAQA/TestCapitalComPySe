@@ -59,7 +59,7 @@ class TestLearnToTrade:
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         link = menu.open_learn_to_trade_menu(d, cur_language, cur_country, link)
