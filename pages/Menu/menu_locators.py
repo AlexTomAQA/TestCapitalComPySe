@@ -903,3 +903,6 @@ class MenuUS11HELP:
 class MenuUS11LearnToTrade:
     SUB_MENU_EN_LEARN_TOTRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
 
+
+class MenuUS11TradingStrategies:
+    SUB_MENU_EN_TRADING_STRATEGIES = (By.CSS_SELECTOR, '[data-type="nav_id697"]')
