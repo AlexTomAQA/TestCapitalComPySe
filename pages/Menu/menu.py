@@ -45,22 +45,6 @@ logger = logging.getLogger()
 
 class MenuSection(BasePage):
 
-    @allure.step('Select "Learn to trade" menu, "Trading Strategies')
-    def open_learn_to_trade_trading_strategies(self, d, cur_language, cur_country, link):
-
-        print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Trading Strategies" submenu =>')
-        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
-        print(f"\n{datetime.now()}   2. Link = {link}")
-        if not self.current_page_is(link):
-            self.link = link
-            self.open_page()
-
-        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
-        self.sub_menu_trading_strategies_guide_move_focus_click(d, cur_language)
-
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
-        return d.current_url
-
     @allure.step('Select "Learn to trade" menu, "Risk-management guide')
     def open_learn_to_trade_risk_management_guide_menu(self, d, cur_language, cur_country, link):
 
@@ -1464,7 +1448,7 @@ class MenuSection(BasePage):
         return d.current_url
 
     @allure.step('Select "Learn to trade" menu, "Trading Strategies(FCA license)')
-    def open_learn_to_trade_trading_strategies_fca_license(self, d, cur_language, cur_country, link):
+    def open_learn_to_trade_trading_strategies_for_fca_license(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Trading Strategies" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -1498,4 +1482,3 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
-
