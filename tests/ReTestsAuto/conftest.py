@@ -14,7 +14,7 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        # "ar",
+        "ar",
         # "cn",
         # "de",
         # "el",
@@ -22,7 +22,7 @@ lang_list = [
         # "es",
         # "fr",
         # "hu",
-        "it",
+        # "it",
         # "nl",
         # "pl",
         # "ro",
@@ -108,7 +108,8 @@ def gs():
     # получение длины таблицы
     values = g_sheet.get_all_row_values()
     rows_qty = len(values)
-    execution_time_1 = g_sheet.get_row_values(4)[0][21]
+    print(f"\n{datetime.now()}   QTY of rows = {rows_qty}")
+    execution_time_1 = g_sheet.get_row_values()[0][21]
     del values
 
     # старт ретеста

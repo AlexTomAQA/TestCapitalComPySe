@@ -13,6 +13,7 @@ class NewSignupFormLocators:
     SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, 'form #password')
     SIGNUP_CONTINUE_BTN = (By.CSS_SELECTOR, "button[type='submit']")
     SIGNUP_PRIVACY_POLICY = (By.XPATH, "//a[normalize-space()='Privacy Policy']")
+    BUTTON_CLOSE_ON_SIGNUP_FORM = (By.CSS_SELECTOR, "button.modal_close__m5UZc")
 
 
 class SignupFormLocators:
@@ -87,6 +88,7 @@ class LoginFormLocators:
 
 class NewLoginFormLocators:
     LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
+    # LOGIN_FRAME = (By.CSS_SELECTOR, "#login > login-popup")
     LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
     LOGIN_REF_SIGNUP = (By.XPATH, "//span[normalize-space()='Sign up']")
     LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#email")

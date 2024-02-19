@@ -93,7 +93,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step('Select "Learn to trade" menu')
+    @allure.step('Select and click "Learn to trade" menu')
     def open_learn_to_trade_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Learn to trade" menu =>')
@@ -232,49 +232,49 @@ class MenuSection(BasePage):
 
         print(f"\n\n{datetime.now()}   => Focus is moved on Language and Country menu ")
 
-    @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
+    @allure.step(f"{datetime.now()}.   Move focus to 'Learn to trade' menu section.")
     def menu_learn_to_trade_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
-        if test_language == "" and test_country == "gb":
+        if test_country == "gb" and test_language == "":
             ed_menu_locator = MenuUS11Education.SUB_MENU_EN_GB_LEARN_TO_TRADE
-        else:
-            match test_language:
-                case "":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_EN_LEARN_TO_TRADE
-                case "ar":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_AR_LEARN_TO_TRADE
-                case "de":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_DE_LEARN_TO_TRADE
-                case "el":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_EL_LEARN_TO_TRADE
-                case "es":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_ES_LEARN_TO_TRADE
-                case "fr":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_FR_LEARN_TO_TRADE
-                case "it":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_IT_LEARN_TO_TRADE
-                case "hu":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_HU_LEARN_TO_TRADE
-                case "nl":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_NL_LEARN_TO_TRADE
-                case "pl":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_PL_LEARN_TO_TRADE
-                case "ro":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_RO_LEARN_TO_TRADE
-                case "ru":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_RU_LEARN_TO_TRADE
-                case "zh":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_ZH_LEARN_TO_TRADE
-                case "cn":
-                    ed_menu_locator = MenuUS11Education.SUB_MENU_CN_LEARN_TO_TRADE
+        # else:
+        #     match test_language:
+        #         # case "":
+        #         #     ed_menu_locator = MenuUS11Education.SUB_MENU_EN_LEARN_TO_TRADE
+        #         case "ar":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_AR_LEARN_TO_TRADE
+        #         case "de":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_DE_LEARN_TO_TRADE
+        #         case "el":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_EL_LEARN_TO_TRADE
+        #         case "es":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_ES_LEARN_TO_TRADE
+        #         case "fr":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_FR_LEARN_TO_TRADE
+        #         case "it":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_IT_LEARN_TO_TRADE
+        #         case "hu":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_HU_LEARN_TO_TRADE
+        #         case "nl":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_NL_LEARN_TO_TRADE
+        #         case "pl":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_PL_LEARN_TO_TRADE
+        #         case "ro":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_RO_LEARN_TO_TRADE
+        #         case "ru":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_RU_LEARN_TO_TRADE
+        #         case "zh":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_ZH_LEARN_TO_TRADE
+        #         case "cn":
+        #             ed_menu_locator = MenuUS11Education.SUB_MENU_CN_LEARN_TO_TRADE
 
         time.sleep(0.5)
         menu = d.find_elements(*ed_menu_locator)
         if len(menu) == 0:
-            print(f"{datetime.now()}   => Education menu not present")
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            pytest.skip(f"[Education] menu not present for '{test_language}' language")
-        print(f"{datetime.now()}   => Education menu is present")
+            print(f"{datetime.now()}   => 'Learn to trade' menu not present")
+            # allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            pytest.fail(f"Bug # ? 'Learn to trade' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Learn to trade' menu is present")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -284,12 +284,12 @@ class MenuSection(BasePage):
         element = self.element_is_visible(ed_menu_locator, 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
-            print(f"{datetime.now()}   => Education menu not visible")
-            pytest.fail("Education menu not visible")
-        print(f"{datetime.now()}   => Education menu is visible")
+            print(f"{datetime.now()}   => 'Learn to trade' menu not visible")
+            pytest.fail("Bug # ? 'Learn to trade' menu not visible")
+        print(f"{datetime.now()}   => 'Learn to trade' menu is visible")
 
         time.sleep(0.5)
-        menu = d.find_elements(*ed_menu_locator)  # not Glossary
+        menu = d.find_elements(*ed_menu_locator)
         ActionChains(d) \
             .move_to_element(menu[0]) \
             .pause(0.5) \
@@ -297,7 +297,7 @@ class MenuSection(BasePage):
 
         del menu
         del element
-        print(f"{datetime.now()}   => Focus moved to Education menu")
+        print(f"{datetime.now()}   => Focus moved to 'Learn to trade' menu")
 
     @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
     def menu_education_move_focus(self, d, test_language, test_country):
@@ -1442,7 +1442,7 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => Learn to trade menu clicked")
+        print(f"\n\n{datetime.now()}   => 'Learn to trade' menu clicked")
 
         del sub_menu
         return d.current_url
@@ -1482,3 +1482,4 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
+

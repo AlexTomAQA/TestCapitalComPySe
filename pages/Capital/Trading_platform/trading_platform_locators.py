@@ -20,3 +20,7 @@ class TradingInstruments:
     CLOSE_ALL_BUTTON = (By.CSS_SELECTOR, ".visible .ghost")
     SELECTED_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".active.selected.state-item-button")
     LIST_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".state-item-button div")
+
+
+class ChartingLocators:
+    MENU_CHART = (By.CSS_SELECTOR, ".menu > .side-nav__item--active[data-qa='charts']")
