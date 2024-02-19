@@ -51,7 +51,7 @@ class MainBannerStartTrading(BasePage):
                     d, page_url
                 )
 
-    def arrange_(self, d, cur_item_link):
+    def arrange_(self, d, cur_item_link, always=False):
         print(f"\n{datetime.now()}   1. Arrange_v0")
 
         if not self.current_page_is(cur_item_link):
@@ -62,7 +62,11 @@ class MainBannerStartTrading(BasePage):
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_START_TRADING is not present on the page!")
             del button_list
-            pytest.skip("Checking element 'BUTTON_START_TRADING on the main banner' is not on this page")
+            msg = "Testing element 'BUTTON_START_TRADING on the main banner' is not on this page"
+            if always:
+                pytest.fail(f"Bug № ??? {msg}")
+            else:
+                pytest.skip(msg)
 
         print(f"{datetime.now()}   BUTTON_START_TRADING scroll =>")
         self.driver.execute_script(
@@ -74,7 +78,7 @@ class MainBannerStartTrading(BasePage):
             print(f"{datetime.now()}   => BUTTON_START_TRADING is visible on the page!")
         else:
             print(f"{datetime.now()}   => BUTTON_START_TRADING is not visible on the page!")
-            pytest.fail("Bug! Checking element 'BUTTON_START_TRADING on main banner' is present on this page, "
+            pytest.fail("Bug! Testing element 'BUTTON_START_TRADING on main banner' is present on this page, "
                         "but not visible")
 
     @allure.step("Click button [Start Trading] on Main banner")
