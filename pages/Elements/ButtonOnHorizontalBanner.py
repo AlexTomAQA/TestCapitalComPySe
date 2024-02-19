@@ -65,6 +65,7 @@ class ButtonOnHorizontalBanner(BasePage):
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is not present on the page!")
             del button_list
+
             pytest.skip("Checking element is not present on this page")
         print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER is present on this page")
 
