@@ -18,7 +18,7 @@ class MainBannerStartTrading(BasePage):
     @allure.step(f'{datetime.now()}   Start Full test for Start trading button of Main banner')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
-        self.arrange_(d, cur_item_link)
+        self.arrange_(d, cur_item_link, True)
         self.element_click()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
@@ -85,8 +85,8 @@ class MainBannerStartTrading(BasePage):
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button [Start Trading] =>")
-        button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
 
+        button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
         print(f"{datetime.now()}   BUTTON_START_TRADING is clickable? =>")
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
