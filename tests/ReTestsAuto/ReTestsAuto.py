@@ -18,6 +18,7 @@ from tests.ReTestsAuto.conftest import (
 from tests.ReTestsAuto.retest_data import us_data
 from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 
+start_row = 5
 test_id = None
 browser_name = None
 us = None
@@ -33,10 +34,14 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
+    global start_row
+    global country
+    global lang
+    global role
+
     list_number_rows = list()
-    start_row = 5
     gs = GoogleSheet()
-    values = gs.get_all_row_values()
+    values = gs.get_all_row_values(start_row)
     qty_of_bugs = gs.get_cell_values("A2")
     # del gs
     end_row = start_row + int(qty_of_bugs[0][0])
@@ -47,17 +52,18 @@ def pytest_generate_tests(metafunc):
         print(f"\n{datetime.now()}   Список номеров строк для выборочного ретеста = {list_number_rows}")
     else:
         for num_row in range(start_row, end_row):
-            val = values[num_row - 5]
-            count = val[6]
-            if count not in country_list:
+            val = values[num_row - start_row]
+            lang = val[5]
+            if lang not in lang_list:
                 continue
-            rol = val[8]
-            if rol not in role_list:
+            country = val[6]
+            if country not in country_list:
                 continue
-            lan = val[5]
-            if lan not in lang_list:
+            role = val[8]
+            if role not in role_list:
                 continue
-        # формирование списка skipped строк для ретеста
+
+            # формирование списка skipped строк для ретеста
             if retest_skipped_tests:
                 if len(val) == 22 and val[21] not in status_list:
                     list_number_rows.append(num_row)
@@ -70,7 +76,8 @@ def pytest_generate_tests(metafunc):
 
         print(f"\n{datetime.now()}   Список номеров строк = {len(list_number_rows)}:{list_number_rows}")
     if len(list_number_rows) == 0:
-        pytest.skip(f"Для country={country_list}:lang={lang_list}:role={role_list} не выбрано ни одной строки")
+        pytest.skip(f"Для country={country_list}:lang={lang_list}:role={role_list} нет ни одного бага в Bugs Report "
+                    f"Auto detect")
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
 
@@ -80,10 +87,11 @@ class TestReTests:
     @allure.step("Start TestCase from ReTestsAuto")
     @allure.epic("ReTestsAuto")
     def test_retests(self, gs, number_of_row, values):
+        global start_row
 
         print(f"\n\n\n{datetime.now()}   0. Get Values row =>")
-        print(f"{datetime.now()}   Row # = {number_of_row}")
-        row_values = values[number_of_row - 5]
+        print(f"{datetime.now()}   Row №  {number_of_row}")
+        row_values = values[number_of_row - start_row]
         # row_values = gs.get_row_values(number_of_row)
         if row_values:
             print(f"{datetime.now()}   Row Values = \n{row_values}")

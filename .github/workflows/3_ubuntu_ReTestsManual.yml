@@ -95,18 +95,18 @@ jobs:
           path: allure-results/
           retention-days: 7
 
-      - name: 10. Generate allure report
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-          gh_pages: gh-pages
-          allure_history: allure-history
-          ref: gh-pages
-          path: gh-pages
-          keep_reports: 80
+#      - name: 10. Generate allure report
+#        uses: simple-elf/allure-report-action@master
+#        if: always()
+#        id: allure-report
+#        with:
+#          allure_results: allure-results
+#          allure_report: allure-report
+#          gh_pages: gh-pages
+#          allure_history: allure-history
+#          ref: gh-pages
+#          path: gh-pages
+#          keep_reports: 80
 
 #      - name: 12. Upload artifact "allure-report"
 #        if: always()
@@ -116,18 +116,18 @@ jobs:
 #          path: allure-report/
 #          retention-days: 7
 #
-      - name: 13. Send telegram message on push
-        uses: appleboy/telegram-action@master
-        if: always()
-        with:
-          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
-#           to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-#           disable_web_page_preview: true
-          message: |
-            Message from GitHub CI Actions
-
-            ReTesting of the "Capital.com" web application according Bugs Report in the "Ubuntu/Chrome" environment is 
-            complete.
-
-            ReTests-results link: https://docs.google.com/spreadsheets/d/1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk/edit?usp=sharing
+#      - name: 13. Send telegram message on push
+#        uses: appleboy/telegram-action@master
+#        if: always()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
+##           to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+##           disable_web_page_preview: true
+#          message: |
+#            Message from GitHub CI Actions
+#
+#            ReTesting of the "Capital.com" web application according Bugs Report in the "Ubuntu/Chrome" environment is
+#            complete.
+#
+#            ReTests-results link: https://docs.google.com/spreadsheets/d/1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk/edit?usp=sharing
