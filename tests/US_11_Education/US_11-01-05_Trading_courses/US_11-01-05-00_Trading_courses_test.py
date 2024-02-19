@@ -79,7 +79,7 @@ class TestTradingCourses:
         link = page_menu.sub_menu_trading_courses_move_focus_click(d, cur_language)
 
         test_element = BlockStepTrading(d, link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
 
     @allure.step(f"{datetime.now()}   Start pretest")
     def test_99_trading_courses_item_pretest(
