@@ -119,4 +119,4 @@ class TestTradingCoursesItem:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
