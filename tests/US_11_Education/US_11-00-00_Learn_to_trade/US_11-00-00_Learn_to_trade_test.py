@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages.Elements.ButtonOpenAnAccountMainBanner import MainBannerOpenAnAccount
+from pages.Elements.MainBannerButtonOpenAnAccount import MainBannerOpenAnAccount
 from pages.Elements.ButtonTryDemoAccountMainBanner import MainBannerTryDemoAccount
 from pages.common import Common
 from pages.Menu.menu import MenuSection
@@ -92,4 +92,3 @@ class TestLearnToTrade:
 
         test_element = BlockStepTrading(d, link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
-
