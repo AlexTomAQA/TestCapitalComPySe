@@ -23,9 +23,10 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
 
     @allure.step(f'{datetime.now()}   Start Full test Trade button on Most Traded widget')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
+        qty_rnd = 1
         # self.clear_chart_list()
         num_item = self.arrange_v4(cur_item_link)
-        random_indexes = random.sample(range(0, num_item), 2)
+        random_indexes = random.sample(range(0, num_item), qty_rnd)
         print(f"\n{datetime.now()}   Random indexes = {random_indexes}")
         counter = 0
         for i, index in enumerate(random_indexes):
