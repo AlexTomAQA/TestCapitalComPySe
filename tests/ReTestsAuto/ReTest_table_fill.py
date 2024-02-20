@@ -8,7 +8,7 @@ def check_gs_table(bid, bug_n):
     gs_out = ["'=====> Bugs Report !!! Идет Retest Data Update <====="]
     gs.update_range_values('B1', [gs_out])
 
-    available = True
+    bug_present = False
     gs = GoogleSheet()
     values = gs.get_all_row_values()
     for index, row in enumerate(values):
@@ -17,16 +17,16 @@ def check_gs_table(bid, bug_n):
         else:
             if bid in row[0]:
                 if bug_n in row[-1]:
-                    available = False
-                    return available
+                    bug_present = True
+                    return bug_present
                 else:
                     bug_num = [["'" + bug_n]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
-                    print(f"\n{datetime.now()}   Bug: {bid} уже существует, "
-                          f"но тип бага изменился с {row[-1]} на {bug_n}")
-                    available = False
-                    return available
-    return available
+                    print(f"\n{datetime.now()}   Баг {bid} уже существует, "
+                          f"но у него изменился тип с {row[-1]} на {bug_n}")
+                    bug_present = True
+                    return bug_present
+    return bug_present
 
 
 def new_row_data(bid, bug_num, link):
@@ -76,9 +76,9 @@ def retest_table_fill(bid="", bug_n="", link=""):
     if bid != "":
         bug_num = "'" + bug_n
 
-        # проверка таблицы багов
-        available = check_gs_table(bid, bug_n)
-        if available:
+        # проверка таблицы багов на наличии в ней текущего
+        bug_present = check_gs_table(bid, bug_n)
+        if bug_present:
 
             # формирование данных для заполнения
             new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
@@ -89,10 +89,11 @@ def retest_table_fill(bid="", bug_n="", link=""):
             # заполнение таблицы
             fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
 
-            print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} добавлен в таблицу для ретеста")
+            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)")
 
         else:
-            print(f"\n{datetime.now()}   Bug: {bid}-{bug_n} уже существует")
+            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} обнаружен ранее и уже находится в 'Bugs Report Auto "
+                  f"detect'")
     else:
         print(f"\n{datetime.now()}  Для бага: Bid-{bug_n} необходимо использовать проверку на ретест!!!")
 
