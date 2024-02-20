@@ -16,14 +16,14 @@ def check_gs_table(bid, bug_n):
             break
         else:
             if bid in row[0]:
-                if bug_n in row[-1]:
+                if bug_n in row[-6]:
                     bug_present = True
                     return bug_present
                 else:
                     bug_num = [["'" + bug_n]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
-                          f"но у него изменился тип с {row[-1]} на {bug_n}")
+                          f"но у него изменился тип с {row[-6]} на {bug_n}")
                     bug_present = True
                     return bug_present
     return bug_present
@@ -78,7 +78,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
 
         # проверка таблицы багов на наличии в ней текущего
         bug_present = check_gs_table(bid, bug_n)
-        if bug_present:
+        if not bug_present:
 
             # формирование данных для заполнения
             new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)

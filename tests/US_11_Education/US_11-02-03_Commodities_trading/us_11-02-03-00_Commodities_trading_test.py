@@ -31,7 +31,7 @@ def cur_time():
 
 
 def check_language(cur_language):
-    if cur_language in ["hu", "nl", "el"]:
+    if cur_language in ["hu", "el"]:
         pytest.skip(f"This test is not for {cur_language} language")
 
 
@@ -183,7 +183,7 @@ class TestCommoditiesTradingPretest:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # банеры должны открываться в Demo mode for US_00
-        banner00_hor_tpd = ['103', '167', '252', '291', '197', '427']
+        banner00_hor_tpd = ['103', '167', '252', '291', '197', '427', '281']
         # банеры должны открываться в Live mode for US_00
         banner00_hor_tp = ['378', '390', '428', '220']
         # банеры должны открываться в Demo mode for US_01
@@ -229,7 +229,7 @@ class TestCommoditiesTradingPretest:
         # банеры должны открываться в Demo mode for US_00
         banner00_ver_tpd = ['505', '221', '389']
         # банеры должны открываться в Live mode for US_00
-        banner00_ver_tp = ['166', '196', '292', '377', '388', '425']
+        banner00_ver_tp = ['166', '196', '292', '377', '388', '425', "282"]
         # банеры должны открываться в Demo mode for US_01
         banner01_ver_tpd = []
         # банеры должны открываться в Live mode for US_01

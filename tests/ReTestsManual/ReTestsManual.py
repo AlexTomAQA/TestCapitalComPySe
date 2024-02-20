@@ -795,7 +795,8 @@ class TestManualBugs:
     def test_18(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        Sign up form is opened after re-clicking the [Try demo] button and "Back" button in the "Shares Trading" Block in the "Shares" page
+        Sign up form is opened after re-clicking the [Try demo] button and "Back" button in the "Shares Trading"
+        Block in the "Shares" page
         1. Hover over the [Markets] menu section
         2. Click the [Shares] menu item
         3. Scroll down to Block "Shares Trading"
@@ -818,7 +819,7 @@ class TestManualBugs:
         #
 
         menu = MainMenu(d, link)
-        cur_item_link = menu.open_markets_shares_sub_menu(d, cur_language, cur_country, link)
+        menu.open_markets_shares_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
         try:
             for i in range(5):
@@ -826,7 +827,7 @@ class TestManualBugs:
                 sub_menu.element_is_clickable(sub_menu.MARKETS_SHARES_BANNER_TRY_DEMO_BTN).click()
                 time.sleep(1)
                 d.back()
-        except:
+        except TimeoutException:
             assert False, (
                 'Bug#18. Expected result: Transition to the trading platform'
                 '\n'
@@ -946,7 +947,6 @@ class TestManualBugs:
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
-        d.get("https://capital.com/en-gb")
         menu = MainMenu(d)
         menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
         try:
@@ -985,7 +985,7 @@ class TestManualBugs:
             ".22", 'In the Header the button [Search] is missing ')
         #
         page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
+        page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
 
@@ -1084,7 +1084,7 @@ class TestManualBugs:
             ".25", 'In the Footer the arrow button [Up] is missing')
         #
         page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
+        page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
 
@@ -1177,7 +1177,7 @@ class TestManualBugs:
                    ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
         #
         page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
+        page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
 
@@ -1829,8 +1829,8 @@ class TestManualBugs:
 
         # определение количества страниц
         markets_page = MenuSections(d)
-        pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
-        qty_pages = int(pagination[-2].text)
+        # pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
+        # qty_pages = int(pagination[-2].text)
         qty_pages = 2
         print("qty_pages=", qty_pages)
 
@@ -2246,7 +2246,7 @@ class TestManualBugs:
                 .pause(1) \
                 .click() \
                 .perform()
-        except:
+        except TimeoutException:
             print()
 
         assert markets_page.element_is_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_PAGE), (
