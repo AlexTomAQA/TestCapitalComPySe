@@ -828,6 +828,7 @@ class MenuUS11InvestmateApp:
     SUB_MENU_ES_INVESTMATE_APP = (By.CSS_SELECTOR, ".cc-header a[href$='/investmate'][class*='cc-nav__link']")
     SUB_MENU_FR_INVESTMATE_APP = (By.CSS_SELECTOR, ".cc-header a[href$='/investmate'][class*='cc-nav__link']")
     SUB_MENU_IT_INVESTMATE_APP = (By.CSS_SELECTOR, ".cc-header a[href$='/investmate'][class*='cc-nav__link']")
+    SUB_MENU_NL_INVESTMATE_APP = (By.CSS_SELECTOR, ".cc-header a[href$='/investmate'][class*='cc-nav__link']")
 
 
 class MenuUS11TrendTrading:

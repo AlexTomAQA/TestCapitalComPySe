@@ -22,7 +22,7 @@ class USLink:
     user_story_menu_link = None
 
     def get_us_link(self, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        if cur_language not in ["", "de", "es", "fr", "it", "pl", "cn"]:
+        if cur_language not in ["", "de", "es", "fr", "it", "pl", "cn", "nl"]:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")
 
         page_conditions = Conditions(d, "")
