@@ -35,7 +35,8 @@ from pages.Menu.menu_locators import (
     MenuUS11TrendTrading,
     MenuUS11WhatIsMargin,
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
-    MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade
+    MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
+    MenuUS11TradingStrategies
 )
 # from src.src import CapitalComPageSrc
 
@@ -1445,3 +1446,40 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
+
+    @allure.step('Select "Learn to trade" menu, "Trading Strategies(FCA license)')
+    def open_learn_to_trade_trading_strategies_for_fca_license(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Trading Strategies" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_trading_strategies_fca_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Trading Strategies(FCA)' menu item.")
+    def sub_menu_trading_strategies_fca_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS11TradingStrategies.SUB_MENU_EN_TRADING_STRATEGIES)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Learn to trade->Trading Strategies\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => Trading Strategies menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
