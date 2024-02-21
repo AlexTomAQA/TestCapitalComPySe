@@ -25,7 +25,7 @@ jobs:
         if: always()
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11.7"
+          python-version: "3.12.1"
 
       - name: 3.1. Set up Homebrew
         id: set-up-homebrew
@@ -39,13 +39,13 @@ jobs:
 #        run: python3.11 -m pip install --upgrade pip
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3.11 install psutil
+        run: pip3 install psutil
       - name: For Run hwinfo.py first time
         if: always()
-        run: pip3.11 install speedtest
+        run: pip3 install speedtest
       - name: Run hwinfo.py first time
         if: always()
-        run: python3.11 tests/hwinfo.py
+        run: python3 tests/hwinfo.py
 
       - name: 4. Install Zbar for QReader
         if: always()
@@ -53,14 +53,7 @@ jobs:
 
       - name: 4. install Poetry
         if: always()
-        run: pip3.11 install poetry
-
-      - name: pwd
-        if: always()
-        run: pwd
-      - name: ls -la
-        if: always()
-        run: ls -la
+        run: pip3 install poetry
 
 #      - name: 4.1. python3.11 -m venv .venv
 #        if: always()
@@ -79,11 +72,11 @@ jobs:
 #
       - name: 5. install dependencies
         if: always()
-        run: poetry install --sync
+        run: poetry install
 
       - name: Run hwinfo.py
         if: always()
-        run: poetry run python3.11 tests/hwinfo.py
+        run: poetry run python3 tests/hwinfo.py
 
 #      - name: pwd
 #        run: pwd
@@ -93,6 +86,15 @@ jobs:
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
         run: poetry run pytest -vv -l --full-trace tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-05 (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-05_Trading_courses/US_11-01-05-00_Trading_courses_test.py
+        continue-on-error: true
+      - name: 8. Run US_11-01-05-01_test (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-05_Trading_courses/US_11-01-05-01_Trading_courses_test.py
         continue-on-error: true
 
       - name: 8. Run US_11.02.05.00 test (Сулейман/Саша Т/Дима)
@@ -106,7 +108,7 @@ jobs:
 
       - name: Run hwinfo.py
         if: always()
-        run: poetry run python3.11 tests/hwinfo.py
+        run: poetry run python3 tests/hwinfo.py
 
       - name: 9. Upload artifact "allure-results"
         if: always()
