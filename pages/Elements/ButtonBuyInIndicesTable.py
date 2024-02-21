@@ -57,7 +57,8 @@ class BuyButtonIndicesTable(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   IS CFDs TABLE visible on the page? =>")
-        if self.driver.find_element(*ButtonsOnPageLocators.TABLE_CFDS):
+        try:
+            self.driver.find_element(*ButtonsOnPageLocators.TABLE_CFDS)
             print(f"{datetime.now()}   => CFDs TABLE is visible on the page!\n")
 
             match cur_tab:
@@ -125,7 +126,7 @@ class BuyButtonIndicesTable(BasePage):
                 print(f"{datetime.now()}   => TAB \"{cur_tab}\" is NOT visible on the page!\n")
                 pytest.skip("Checking element is not on this page")
 
-        else:
+        except NoSuchElementException:
             print(f"{datetime.now()}   => CFDs TABLE is NOT visible on the page!\n")
             pytest.skip("Checking element is not on this page")
 
