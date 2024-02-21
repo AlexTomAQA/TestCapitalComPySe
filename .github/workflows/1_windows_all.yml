@@ -25,15 +25,15 @@ jobs:
         if: always()
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11.7"
+          python-version: "3.12.1"
 
       - name: 4. install Poetry
         if: always()
-        run: pip3.11 install poetry
+        run: pip3 install poetry
 
       - name: 5. install dependencies
         if: always()
-        run: poetry install --sync
+        run: poetry install
 
 #      - name: 6. Check code for errors by flake8 and format code with black
 #        if: always()
