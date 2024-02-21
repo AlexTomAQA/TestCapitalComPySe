@@ -13,7 +13,7 @@ from src.src import CapitalComPageSrc
 class TestEssentialsTrading:
     page_conditions = None
 
-    @allure.step("Start test_11.00.01_02 button [1. Create your account] in block 'Ready to join a leading broker?'")
+    @allure.step("Start test_11.00.01_05 button [1. Create your account] in block 'Ready to join a leading broker?'")
     @pytest.mark.test_05
     def test_05_create_your_account(
             self, worker_id, d, cur_role, cur_language, cur_country, cur_login, cur_password):
