@@ -39,16 +39,18 @@ class ContentBlockTryDemoAccountButton(BasePage):
             print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is not visible on the page!")
             pytest.fail("Bug # ? Checking element is not on this page")
 
-    @allure.step("Click button [Try demo account] on the page")
-    def element_click(self):
-        print(f"\n{datetime.now()}   2. Act_v0")
-
         button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK)
 
         print(f"{datetime.now()}   BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[0]
         )
+
+    @allure.step("Click button [Try demo account] on the page")
+    def element_click(self):
+        print(f"\n{datetime.now()}   2. Act_v0")
+
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK)
 
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
