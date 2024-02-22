@@ -21,10 +21,9 @@ class ContentBlockTryDemoAccountButton(BasePage):
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
             case "NoAuth":
-
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v3(d, cur_item_link, True)
+                test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -40,27 +39,19 @@ class ContentBlockTryDemoAccountButton(BasePage):
             print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is not visible on the page!")
             pytest.fail("Bug # ? Checking element is not on this page")
 
-    @allure.step("Click button [Try demo account] on the page")
-    def element_click(self):
-        print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is present? =>")
         button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK)
-        if len(button_list) == 0:
-            print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is not present on the page!")
-            del button_list
-            return False
-
-        print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is present on the page!")
 
         print(f"{datetime.now()}   BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK scroll =>")
-
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[0]
         )
 
-        self.element_is_clickable(button_list[0], 5)
+    @allure.step("Click button [Try demo account] on the page")
+    def element_click(self):
+        print(f"\n{datetime.now()}   2. Act_v0")
 
-        print(f"{datetime.now()}   BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is clickable? =>")
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK)
+
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
             print(f"{datetime.now()} => BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK is not clickable after {time_out} "
