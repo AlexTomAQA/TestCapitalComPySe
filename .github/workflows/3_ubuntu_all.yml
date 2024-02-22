@@ -94,10 +94,10 @@ jobs:
         run: poetry run pytest -v tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py
         continue-on-error: true
 
-#      - name: 8. Run US_11-00-03 (Касила)
-#        if: always()
-#        run: poetry run pytest -v
-#        continue-on-error: true
+      - name: 8. Run US_11-00-03 (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-03_Market_guides/US_11.00.03_Market_guides.py
+        continue-on-error: true
 
       - name: 8. Run US_11-00-04 (Дмитрий)
         if: always()
