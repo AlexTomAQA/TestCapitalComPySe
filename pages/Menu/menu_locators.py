@@ -911,3 +911,8 @@ class MenuUS11TradingStrategies:
 
 class MenuUS11EssentialsOfTrading:
     SUB_MENU_EN_ESSENTIALS_OF_TRADING = (By.CSS_SELECTOR, '[data-type="nav_id754"]')
+
+
+class MenuUS11MarketGuidesNew:
+    SUB_MENU_MARKET_GUIDES_NEW = (By.CSS_SELECTOR, '[data-type="nav_id700"]')
+
