@@ -10,10 +10,9 @@ from datetime import datetime
 
 import allure
 import pytest
-from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 
-from pages.base_page import BasePage
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
@@ -38,6 +37,8 @@ from pages.Menu.menu_locators import (
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew
 )
+from pages.base_page import BasePage
+
 # from src.src import CapitalComPageSrc
 
 logger = logging.getLogger()
@@ -1449,8 +1450,8 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step('Select "Learn to trade" menu, "Trading Strategies(FCA license)')
-    def open_learn_to_trade_trading_strategies_for_fca_license(self, d, cur_language, cur_country, link):
+    @allure.step('Select "Learn to trade" menu, sub menu "Trading Strategies(FCA license)')
+    def open_learn_to_trade_trading_strategies_new_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Trading Strategies" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -1460,16 +1461,17 @@ class MenuSection(BasePage):
             self.open_page()
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
-        self.sub_menu_trading_strategies_fca_move_focus_click(d, cur_language)
+        self.sub_menu_trading_strategies_new_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Trading Strategies(FCA)' menu item.")
-    def sub_menu_trading_strategies_fca_move_focus_click(self, d, test_language):
+    def sub_menu_trading_strategies_new_move_focus_click(self, d, test_language):
         sub_menu = list()
-        match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS11TradingStrategies.SUB_MENU_EN_TRADING_STRATEGIES)
+
+        if test_language == "":
+            sub_menu = d.find_elements(*MenuUS11TradingStrategies.SUB_MENU_EN_TRADING_STRATEGIES)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
@@ -1556,4 +1558,3 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
-
