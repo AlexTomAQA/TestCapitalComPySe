@@ -15,6 +15,11 @@ from conf import QTY_LINKS
 class Common:
 
 	@staticmethod
+	def save_current_screenshot(wd, name, type_of_file="PNG"):
+		print(f"{datetime.now()}   Save current screenshot into {type_of_file} file")
+		allure.attach(wd.get_screenshot_as_png(), name, allure.attachment_type.PNG)
+
+	@staticmethod
 	def skip_if_eng_lang_and_fca_license(cur_language, cur_country):
 		if cur_country == "gb" and cur_language == "":
 			pytest.skip("Current menu item is not present in Education menu for current parameters")

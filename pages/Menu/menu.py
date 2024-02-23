@@ -13,6 +13,7 @@ import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
+from pages.common import Common
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
@@ -300,7 +301,7 @@ class MenuSection(BasePage):
         del element
         print(f"{datetime.now()}   => Focus moved to 'Learn to trade' menu")
 
-    @allure.step(f"{datetime.now()}.   Click 'Education' menu section.")
+    @allure.step(f"{datetime.now()}.   Focus moved to 'Education' menu")
     def menu_education_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
         if test_language == "" and test_country == "gb":
@@ -340,8 +341,8 @@ class MenuSection(BasePage):
         menu = d.find_elements(*ed_menu_locator)
         if len(menu) == 0:
             print(f"{datetime.now()}   => Education menu not present")
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            pytest.skip(f"[Education] menu not present for '{test_language}' language")
+            Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail(f"Bug № ??? Education menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present")
 
         self.driver.execute_script(
@@ -353,19 +354,20 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
-            pytest.fail("Education menu not visible")
+            Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail("Problem. Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
 
         time.sleep(0.5)
-        menu = d.find_elements(*ed_menu_locator)  # not Glossary
+        menu = d.find_elements(*ed_menu_locator)
         ActionChains(d) \
             .move_to_element(menu[0]) \
             .pause(0.5) \
             .perform()
 
+        print(f"{datetime.now()}   => Focus moved to Education menu")
         del menu
         del element
-        print(f"{datetime.now()}   => Focus moved to Education menu")
 
     @allure.step(f"{datetime.now()}.   Focus move to 'learning hub' menu item and click (US_11.01.01).")
     def sub_menu_learning_hub_move_focus_click(self, d, test_language, test_country):
@@ -401,8 +403,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11LearningHub.SUB_MENU_CN_ITEM_LEARNING_HUB)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
-                        f"the page \"Education > Learning hub\" submenu doesn't exist on production")
+            Common().save_current_screenshot(d, "SavePNG")
+            pytest.fail(f"Bug # ??? For language '{test_language}' \"Education > Learning hub\" submenu doesn't exist")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1239,7 +1241,7 @@ class MenuSection(BasePage):
         sub_menu = list()
         match test_language:
             case "":
-                sub_menu = d.find_elements(*MenuUS11TradingPsychologyGuide.SUB_MENU_ALL_TRADING_PSYCHOLOGY_GUIDE)
+                sub_menu = d.find_elements(*MenuUS11TradingPsychologyGuide.SUB_MENU_EN_TRADING_PSYCHOLOGY_GUIDE)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11TradingPsychologyGuide.SUB_MENU_AR_TRADING_PSYCHOLOGY_GUIDE)
             case "de":
@@ -1275,8 +1277,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => Trading Psychology Guide menu click")
         else:
-            pytest.skip(f"For test language '{test_language}' "
-                        f"the page \"Education->Trading Psychology Guide\" doesn't exist on production")
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
+                        f"the submenu \"Education->Trading Psychology Guide\" doesn't exist")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Position Trading' hyperlink.")
