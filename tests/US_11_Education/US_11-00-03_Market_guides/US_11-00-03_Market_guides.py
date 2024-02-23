@@ -8,7 +8,7 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.ContentBlockOpenAnAccountButton import ContentBlockOpenAnAccountButton
 from pages.Elements.ContentBlockTryDemoAccountButton import ContentBlockTryDemoAccountButton
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 
 
 @pytest.mark.us_11_00_03

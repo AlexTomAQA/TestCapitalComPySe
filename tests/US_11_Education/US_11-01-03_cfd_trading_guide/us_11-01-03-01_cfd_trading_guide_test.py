@@ -11,17 +11,17 @@ import allure
 from datetime import datetime
 
 from pages.common import Common
-from pages.Elements.ButtonBuyInTable import BuyButtonTable
-from pages.Elements.ButtonSellInTable import SellButtonTable
+from pages.Elements.BuyInTableButton import BuyButtonTable
+from pages.Elements.TableSellButton import SellButtonTable
 from test_data.cfd_markets import cfd_markets_href
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
 
 
 def pytest_generate_tests(metafunc):
