@@ -1,0 +1,81 @@
+2024-02-23 13:31:38 ERROR Elements not present after 0.5 seconds on page: https://capital.com/
+2024-02-23 13:31:38 ERROR Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 517, in is_captcha
+    if self.elements_are_visible(Captcha.CAPTCHA_IFRAME):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 637, in elements_are_visible
+    return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
+
+2024-02-23 13:31:52 ERROR Elements not present after 0.5 seconds on page: https://capital.com/learn-trading-app
+2024-02-23 13:31:52 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 301, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x556fe28a9303 <unknown>
+#1 0x556fe258e2b7 <unknown>
+#2 0x556fe25d9cc0 <unknown>
+#3 0x556fe25d9db1 <unknown>
+#4 0x556fe261db44 <unknown>
+#5 0x556fe25fc3ad <unknown>
+#6 0x556fe261b07c <unknown>
+#7 0x556fe25fc123 <unknown>
+#8 0x556fe25cc095 <unknown>
+#9 0x556fe25cd09e <unknown>
+#10 0x556fe286d6ab <unknown>
+#11 0x556fe28714ba <unknown>
+#12 0x556fe2859f85 <unknown>
+#13 0x556fe287212f <unknown>
+#14 0x556fe283de6f <unknown>
+#15 0x556fe28965f8 <unknown>
+#16 0x556fe28967c2 <unknown>
+#17 0x556fe28a84a4 <unknown>
+#18 0x7fa06b694ac3 <unknown>
+
+2024-02-23 13:31:54 ERROR Elements not present after 0.5 seconds on page: https://capital.com/learn-trading-app
+2024-02-23 13:31:54 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 301, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x556fe28a9303 <unknown>
+#1 0x556fe258e2b7 <unknown>
+#2 0x556fe25d9cc0 <unknown>
+#3 0x556fe25d9db1 <unknown>
+#4 0x556fe261db44 <unknown>
+#5 0x556fe25fc3ad <unknown>
+#6 0x556fe261b07c <unknown>
+#7 0x556fe25fc123 <unknown>
+#8 0x556fe25cc095 <unknown>
+#9 0x556fe25cd09e <unknown>
+#10 0x556fe286d6ab <unknown>
+#11 0x556fe28714ba <unknown>
+#12 0x556fe2859f85 <unknown>
+#13 0x556fe287212f <unknown>
+#14 0x556fe283de6f <unknown>
+#15 0x556fe28965f8 <unknown>
+#16 0x556fe28967c2 <unknown>
+#17 0x556fe28a84a4 <unknown>
+#18 0x7fa06b694ac3 <unknown>
