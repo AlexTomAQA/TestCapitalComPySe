@@ -3,12 +3,12 @@ import allure
 from datetime import datetime
 
 from pages.common import Common
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonFreeDemoOnHorizontalBanner import ButtonFreeDemoOnHorizontalBanner
-from pages.Elements.ButtonInBanner import ButtonInBanner
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.HorizontalBannerFreeDemoButton import ButtonFreeDemoOnHorizontalBanner
+from pages.Elements.BannerButton import ButtonInBanner
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc

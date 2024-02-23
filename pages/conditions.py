@@ -16,7 +16,7 @@ from pages.base_page import BasePage
 from pages.Menu.menu import MenuSection
 from pages.captcha import Captcha
 from pages.Header.header import Header
-from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
+from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.My_account.my_account import MyAccount
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
 from pages.Signup_login.signup_login_locators import (

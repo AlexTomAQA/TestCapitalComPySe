@@ -14,7 +14,7 @@ from pages.conditions import Conditions
 # from pages.Elements.ButtonInBanner import ButtonInBanner
 # from pages.Elements.ButtonsUnderVideoBanner import ButtonUnderVideoBanner
 # from pages.Elements.ButtonOnVerOrHorBanner import ButtonOnVerOrHorBanner
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 # from pages.Elements.VideoBanner import VideoBanner
 # from pages.Elements.ButtonsUnderVideoBanner import ButtonsUnderVideoBanner
 # from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner

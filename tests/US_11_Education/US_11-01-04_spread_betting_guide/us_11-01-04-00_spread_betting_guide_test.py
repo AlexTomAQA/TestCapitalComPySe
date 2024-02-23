@@ -13,12 +13,12 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Elements.testing_elements_locators import SubPages
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonCreateAccountInContentBlock import ArticleCreateAccount
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.ContentBlockCreateAccountButton import ArticleCreateAccount
 
 count = 1
 cur_page_url = ""

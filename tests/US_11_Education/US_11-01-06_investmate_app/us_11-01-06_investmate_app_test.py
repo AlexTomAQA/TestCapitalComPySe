@@ -13,9 +13,9 @@ from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.QRcodeDecoder import QRCodeDecode
-from pages.Elements.ButtonExploreWebPlatform import ButtonExploreWebPlatform
+from pages.Elements.WebPlatformExploreButton import ButtonExploreWebPlatform
 from pages.Menu.menu import MenuSection
-from pages.Elements.ButtonOnCounterBlock import ButtonCreateAccountOnCounterBlock
+from pages.Elements.CounterBlockButton import ButtonCreateAccountOnCounterBlock
 
 
 class USLink:

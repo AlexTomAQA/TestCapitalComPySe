@@ -10,12 +10,12 @@ from datetime import datetime
 
 # from conf import QTY_LINKS
 # from pages.Elements.AssertClass import AssertClass
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.HorizontalBannerButton import ButtonOnHorizontalBanner
+from pages.Elements.VerticalBannerButton import ButtonOnVerticalBanner
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.common import Common
