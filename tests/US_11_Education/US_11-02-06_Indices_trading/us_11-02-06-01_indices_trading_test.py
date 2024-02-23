@@ -350,7 +350,7 @@ class TestIndicesTrading:
         # банеры должны открываться в Demo mode for US_01
         banner01_ver_tpd = ['168', '393']
         # банеры должны открываться в Live mode for US_01
-        banner01_ver_tp = ['198', '253', 'b_vert_v0_391', 'b_vert_v0_426']
+        banner01_ver_tp = ['198', '253', '391', '426']
 
         test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
         test_element.full_test_with_tpi(
