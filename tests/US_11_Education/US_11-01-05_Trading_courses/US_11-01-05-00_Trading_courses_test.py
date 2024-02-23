@@ -5,8 +5,8 @@ import pytest
 
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonCreateAccountBlockOurCourses import ButtonCreateAccountBlockOurCourses
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.OurCoursesBlockCreateAccountButton import ButtonCreateAccountBlockOurCourses
 from pages.Elements.testing_elements_locators import CoursesPage
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions

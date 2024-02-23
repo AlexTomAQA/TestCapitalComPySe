@@ -9,10 +9,10 @@ import allure
 
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Menu.menu import MenuSection

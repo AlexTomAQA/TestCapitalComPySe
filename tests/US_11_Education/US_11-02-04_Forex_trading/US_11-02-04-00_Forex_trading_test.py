@@ -11,12 +11,12 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Education.forex_trading_locators import ForexTradingItem
 from src.src import CapitalComPageSrc
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.ContentBlockSellButton import SellButtonContentBlock
+from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
 
 count = 1
 cur_page_url = ""

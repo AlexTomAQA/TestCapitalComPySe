@@ -54,6 +54,7 @@ class HeaderButtonLogin(BasePage):
         print(f"{datetime.now()}   => BUTTON_LOGIN is clickable")
 
         print(f"{datetime.now()}   BUTTON_LOGIN click =>")
+        button_list = self.driver.find_elements(*HeaderButtonLoginLocators.BUTTON_LOGIN)
         try:
             button_list[0].click()
             print(f"{datetime.now()}   => BUTTON_LOGIN is clicked!")
