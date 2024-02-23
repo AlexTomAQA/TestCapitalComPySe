@@ -342,7 +342,7 @@ class MenuSection(BasePage):
         if len(menu) == 0:
             print(f"{datetime.now()}   => Education menu not present")
             Common().save_current_screenshot(d, "scr_qr")
-            pytest.fail(f"Bug № ??? [Education] menu not present for '{test_language}' language")
+            pytest.fail(f"Bug № ??? Education menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present")
 
         self.driver.execute_script(
@@ -354,6 +354,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
+            Common().save_current_screenshot(d, "scr_qr")
             pytest.fail("Problem. Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
 
@@ -361,8 +362,8 @@ class MenuSection(BasePage):
         menu = d.find_elements(*ed_menu_locator)
         ActionChains(d) \
             .move_to_element(menu[0]) \
+            .pause(0.5) \
             .perform()
-#           .pause(0.5)
 
         print(f"{datetime.now()}   => Focus moved to Education menu")
         del menu
@@ -402,8 +403,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11LearningHub.SUB_MENU_CN_ITEM_LEARNING_HUB)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
-                        f"the page \"Education > Learning hub\" submenu doesn't exist on production")
+            Common().save_current_screenshot(d, "SavePNG")
+            pytest.fail(f"Bug # ??? For language '{test_language}' \"Education > Learning hub\" submenu doesn't exist")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
