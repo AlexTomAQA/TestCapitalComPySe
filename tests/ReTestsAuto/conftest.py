@@ -114,10 +114,8 @@ def gs():
     print(f"var имеет тип {type(var)}   и  значение {var}")
     var2 = var[0]
     print(f"var2 имеет тип {type(var2)}   и  значение {var2}")
-    var_int = cell_o1[[0]]
-    print(f"var_int имеет тип {type(var_int)}   и  значение {var_int}")
 
-    qty_job = int(var_int)  # Q-ty Job
+    qty_job = int(var2)  # Q-ty Job
     print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
     qty_job += 1
     gs_out = [str(qty_job)]
