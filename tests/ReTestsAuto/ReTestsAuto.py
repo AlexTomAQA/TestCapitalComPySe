@@ -213,7 +213,7 @@ def check_results(output, error):
         if selected == "0 selected":
             print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
             print(f"{datetime.now()}   => Текущий тест: skipped")
-            gs_out = ['0 TC selected']
+            gs_out = ['0 TCs selected']
             return gs_out
     else:
         print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
