@@ -25,8 +25,8 @@ lang_list = [
         # "it",
         # "nl",
         # "pl",
-        "ro",
-        # "ru",
+        # "ro",
+        "ru",
         # "zh",
     ]
 
@@ -43,8 +43,8 @@ role_list = [
 country_list = [
         "gb",  # United Kingdom - "FCA"
         "de",  # Germany - "CYSEC"
-        "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "au",  # Australia - "ASIC"
+        # "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
