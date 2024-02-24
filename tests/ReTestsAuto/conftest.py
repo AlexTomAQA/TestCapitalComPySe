@@ -16,11 +16,11 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 lang_list = [
         # "ar",
         # "cn",
-        # "de",
+        "de",
         # "el",
         # "en",
         # "es",
-        "fr",
+        # "fr",
         # "hu",
         # "it",
         # "nl",
@@ -43,8 +43,8 @@ role_list = [
 country_list = [
         "gb",  # United Kingdom - "FCA"
         "de",  # Germany - "CYSEC"
-        "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "au",  # Australia - "ASIC"
+        # "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
