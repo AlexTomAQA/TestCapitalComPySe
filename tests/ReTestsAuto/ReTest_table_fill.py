@@ -6,6 +6,8 @@ def check_gs_table(bid, bug_n):
     gs = GoogleSheet()
     print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
 
+    gs.wait_while_bugs_report_busy()
+
     # старт проверки
     gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
@@ -26,9 +28,12 @@ def check_gs_table(bid, bug_n):
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
                           f"но у него изменился тип с {row[-6]} на {bug_n}")
                 bug_present = True
-                return bug_present
+                break
             # else:
             #     break
+
+    gs_out = ["Bugs Report"]
+    gs.update_range_values('B1', [gs_out])
     return bug_present
 
 

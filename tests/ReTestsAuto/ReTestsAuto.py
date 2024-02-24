@@ -39,8 +39,14 @@ def pytest_generate_tests(metafunc):
     global lang
     global role
 
-    list_number_rows = list()
     gs = GoogleSheet()
+
+    gs.wait_while_bugs_report_busy()
+    gs_out = ["Busy"]
+    gs.update_range_values('B1', [gs_out])
+
+    list_number_rows = list()
+
     values = gs.get_all_row_values(start_row)
     qty_of_bugs = gs.get_cell_values("A2")
     # del gs
@@ -78,6 +84,10 @@ def pytest_generate_tests(metafunc):
     if len(list_number_rows) == 0:
         pytest.skip(f"Для country={country_list}:lang={lang_list}:role={role_list} нет ни одного бага в Bugs Report "
                     f"Auto detect")
+
+    gs_out = ["Bugs Report"]
+    gs.update_range_values('B1', [gs_out])
+
     metafunc.parametrize("number_of_row", list_number_rows, scope="class")
     metafunc.parametrize("values", [values], scope="class")
 
