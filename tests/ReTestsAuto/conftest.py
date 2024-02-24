@@ -50,8 +50,8 @@ country_list = [
 # ===========================================================
 # ретест без добавления нового столбца
 # ===========================================================
-no_new_column = True
-# no_new_column = False
+new_column = False  # без добавления нового столбца
+# new_column = True  # с добавлением нового столбца
 
 # ============================================================
 # для проверки одного или нескольких тестов ввести номера строк
@@ -126,14 +126,14 @@ def gs():
     # получение длины таблицы
     values = g_sheet.get_all_row_values()
     rows_qty = len(values)
-    print(f"\n{datetime.now()}   QTY of rows = {rows_qty}")
-    execution_time_1 = g_sheet.get_row_values(4)[0][21]
     del values
+    print(f"\n{datetime.now()}   QTY of rows = {rows_qty}")
+    # execution_time_1 = g_sheet.get_row_values(4)[0][21]
 
     # старт ретеста
     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
 
-    if unique_test or retest_skipped_tests or no_new_column:
+    if unique_test or retest_skipped_tests or not new_column:
         # установка времени старта ретеста
         g_sheet.update_range_values('V1', [start_retest_date])
 
@@ -200,13 +200,13 @@ def gs():
     gs_out = ['Bugs Report']
     g_sheet.update_range_values('B1', [gs_out])
 
-    if unique_test or retest_skipped_tests or no_new_column:
+    if unique_test or retest_skipped_tests or not new_column:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         g_sheet.update_range_values('V2', [end_retest_date])
-        execution_time_2 = g_sheet.get_row_values(4)[0][21]
-        # установка полного времени тестирования
-        execution_time = time_concat(execution_time_1, execution_time_2)
-        g_sheet.update_range_values('V4', [[execution_time]])
+        # execution_time_2 = g_sheet.get_row_values(4)[0][21]
+        # # установка полного времени тестирования
+        # execution_time = time_concat(execution_time_1, execution_time_2)
+        # g_sheet.update_range_values('V4', [[execution_time]])
     else:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         g_sheet.update_range_values('V2', [end_retest_date])
