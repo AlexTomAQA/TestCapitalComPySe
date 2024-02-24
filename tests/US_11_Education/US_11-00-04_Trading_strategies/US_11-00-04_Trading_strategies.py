@@ -16,7 +16,7 @@ from pages.Elements.MainBannerTryDemoAccountButton import MainBannerTryDemoAccou
 
 
 @pytest.mark.us_11_00_04
-class TradingStrategies:
+class TestTradingStrategies:
     page_conditions = None
 
     @allure.step('Test button [Create account] on Main banner')
