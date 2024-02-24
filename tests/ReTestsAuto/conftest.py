@@ -16,10 +16,10 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 lang_list = [
         # "ar",
         # "cn",
-        "de",
+        # "de",
         # "el",
         # "en",
-        # "es",
+        "es",
         # "fr",
         # "hu",
         # "it",
@@ -78,6 +78,8 @@ host = "\\".join(os.getcwd().split('\\')[:-2]) + '\\'  # for macOS & Linux debug
 
 # ========= variables for this module ========
 one_time_copy_paste = False
+first_runer = False
+last_runer = False
 
 
 def time_concat(time1, time2):
@@ -103,6 +105,8 @@ def gs():
     """Start execution program"""
 
     global one_time_copy_paste
+    global first_runer
+    global last_runer
 
     g_sheet = GoogleSheet()
     g_sheet.wait_while_bugs_report_busy()
@@ -119,6 +123,12 @@ def gs():
     print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
 
     qty_job += 1
+    if qty_job == 1:
+        first_runer = True
+    else:
+        first_runer = False
+
+    # first_runer = if qty_job == 1: False
 
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
@@ -135,13 +145,13 @@ def gs():
 
     if unique_test or retest_skipped_tests or not new_column:
         # установка времени старта ретеста
-        g_sheet.update_range_values('V1', [start_retest_date])
-
-        # установка таймера выполнения ретестов
-        # для запуска на Github
-        g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
-        # для запуска на локальном компе
-        # g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
+        if first_runer:
+            g_sheet.update_range_values('V1', [start_retest_date])
+            # установка таймера выполнения ретестов
+            # для запуска на Github
+            g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(3;0;0)"]])
+            # для запуска на локальном компе
+            # g_sheet.update_range_values('V4', [["=NOW()-V1-TIME(1;0;0)"]])
 
     else:
         # пройти надо 1 раз
@@ -193,24 +203,27 @@ def gs():
     print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
 
     qty_job -= 1
+    if qty_job == 0:
+        last_runer = True
+    else:
+        last_runer = False
 
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
 
-    gs_out = ['Bugs Report']
-    g_sheet.update_range_values('B1', [gs_out])
-
-    if unique_test or retest_skipped_tests or not new_column:
-        end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-        g_sheet.update_range_values('V2', [end_retest_date])
-        # execution_time_2 = g_sheet.get_row_values(4)[0][21]
-        # # установка полного времени тестирования
-        # execution_time = time_concat(execution_time_1, execution_time_2)
-        # g_sheet.update_range_values('V4', [[execution_time]])
-    else:
+    if last_runer:
         end_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         g_sheet.update_range_values('V2', [end_retest_date])
         g_sheet.update_range_values('V4', [["=V2 - V1"]])
+
+    gs_out = ['Bugs Report']
+    g_sheet.update_range_values('B1', [gs_out])
+
+    # if unique_test or retest_skipped_tests or not new_column:
+    # execution_time_2 = g_sheet.get_row_values(4)[0][21]
+    # # установка полного времени тестирования
+    # execution_time = time_concat(execution_time_1, execution_time_2)
+    # g_sheet.update_range_values('V4', [[execution_time]])
 
     # del g_sheet
     print(f"\n{datetime.now()}   *** end fixture gs = teardown ***\n")
