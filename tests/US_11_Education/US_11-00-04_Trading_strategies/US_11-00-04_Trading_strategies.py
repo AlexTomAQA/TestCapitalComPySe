@@ -12,9 +12,8 @@ from pages.Menu.menu import MenuSection
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.MainBannerButtonOpenAnAccount import MainBannerOpenAnAccount
-from pages.Elements.ButtonTryDemoAccountMainBanner import MainBannerTryDemoAccount
 from pages.Elements.BlockStepTrading import BlockStepTrading
-
+from pages.Elements.MainBannerTryDemoAccountButton import MainBannerTryDemoAccount
 
 @pytest.mark.us_11_00_04
 class TestTradingStrategies:
@@ -35,7 +34,7 @@ class TestTradingStrategies:
             ".00_01", "Testing button [Create account] on the Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country,
@@ -59,7 +58,7 @@ class TestTradingStrategies:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.04", "Learn to trade > Menu item [Trading Strategies]",
-            ".00.02", "Testing button [Try demo account] on the Main banner")
+            ".00_02", "Testing button [Try demo account] on the Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])

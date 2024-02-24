@@ -2,10 +2,10 @@ import allure
 import pytest
 
 from pages.Elements.MainBannerButtonOpenAnAccount import MainBannerOpenAnAccount
-from pages.Elements.ButtonTryDemoAccountMainBanner import MainBannerTryDemoAccount
+from pages.Elements.MainBannerTryDemoAccountButton import MainBannerTryDemoAccount
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from src.src import CapitalComPageSrc

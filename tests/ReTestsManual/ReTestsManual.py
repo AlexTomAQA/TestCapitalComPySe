@@ -47,9 +47,9 @@ class TestManualBugs:
             5. Scroll down to ""USD/CHF"" Block"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "MN", "Capital.com FCA",
             ".01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
                    " page after clicking")
 

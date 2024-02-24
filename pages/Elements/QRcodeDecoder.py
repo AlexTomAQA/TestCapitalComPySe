@@ -84,8 +84,8 @@ class QRCodeDecode(BasePage):
             print(f"{datetime.now()}   QR_CODE_TITLE link: {qr_title_link}")
 
             # Checking if [SignUP for is popped up on the page]
-            check_popup = SignupLogin(self.driver, self.link)
-            check_popup.check_popup_signup_form()
+            # check_popup = SignupLogin(self.driver, self.link)
+            # check_popup.check_popup_signup_form()
 
             # Start encoding QR-code image
             qr_img = self.element_is_visible(self.locator, 10)
@@ -96,7 +96,7 @@ class QRCodeDecode(BasePage):
 
             # Open QR-code image link
             self.link = qr_img_link
-            self.open_page()
+            self.driver.get(self.link)
         else:
             pytest.fail("QR_CODE_LINK_TITLE IS NOT DEFINED")
         #

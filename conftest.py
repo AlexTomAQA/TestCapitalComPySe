@@ -98,8 +98,8 @@ def cur_role(request):
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        "el",  # 5 us
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
@@ -126,9 +126,9 @@ def cur_language(request):
     scope="class",
     params=[
         "gb",  # United Kingdom - "FCA"
-        # "de",  # Germany  - "CYSEC"
-        # "au",  # Australia - "ASIC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "de",  # Germany  - "CYSEC"
+        "au",  # Australia - "ASIC"
+        "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"

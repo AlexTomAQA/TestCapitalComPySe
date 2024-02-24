@@ -10,7 +10,7 @@ from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
 from pages.Education.Glossary_locators import (

@@ -6,23 +6,23 @@
 import pytest
 import allure
 
-from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
+from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
+from pages.Elements.HorizontalBannerButton import ButtonOnHorizontalBanner
+from pages.Elements.VerticalBannerButton import ButtonOnVerticalBanner
+from pages.Elements.ContentBlockSellButton import SellButtonContentBlock
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 # from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
 # from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
 # from pages.Elements.ButtonsSellBuyInContentBlock import ButtonsSellBuyInContentBlock
-from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
+from pages.Elements.StickyBarGetStartedButton import GetStartedOnStickyBar
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
 # from pages.Elements.ButtonCreateAccountBlockOpenAccountIn3min import ButtonCreateAccountInBlockOpenAccountIn3min
 # from pages.Elements.ButtonSignupLoginOnPage import PageSignUpLogin
 # from pages.Elements.AssertClass import AssertClass

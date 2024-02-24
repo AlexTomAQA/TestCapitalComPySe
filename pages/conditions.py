@@ -16,7 +16,8 @@ from pages.base_page import BasePage
 from pages.Menu.menu import MenuSection
 from pages.captcha import Captcha
 from pages.Header.header import Header
-from pages.Elements.HeaderButtonLogin import HeaderButtonLogin
+from pages.Signup_login.signup_login import SignupLogin
+from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.My_account.my_account import MyAccount
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
 from pages.Signup_login.signup_login_locators import (
@@ -159,26 +160,31 @@ class Conditions(BasePage):
         assert login != "", "Авторизация невозможна. Не указан e-mail"
         assert password != "", "Авторизация невозможна. Не указан пароль"
         # нажать в хедере на кнопку "Log in"
-        header = HeaderButtonLogin(d, link)
-        if not header.element_click():
-            del header
+        if not HeaderButtonLogin(d, link).element_click():
             pytest.fail("Bug! 'Login' button is not clicked")
-        print(f"{datetime.now()}   => 'Login' form is opened")
+
+        if SignupLogin(d, link).should_be_login_form():
+            print(f"{datetime.now()}   => 'Login' form is opened")
+        elif SignupLogin(d, link).should_be_login_page():
+            print(f"{datetime.now()}   => 'Login' page is opened")
+        elif SignupLogin(d, link).should_be_trading_platform_login_form():
+            print(f"{datetime.now()}   => 'Login' form is opened on Trading platform")
+        else:
+            pytest.fail("Problem with Authorisation")
 
         # User's name is passed to the text element on the login page
-        if not header.send_keys(login, *LoginFormLocators.LOGIN_INPUT_EMAIL):
+        if not self.send_keys(login, *LoginFormLocators.LOGIN_INPUT_EMAIL):
             pytest.fail(f'{datetime.now()}   => "login" is not inputted')
 
         # Password is passed to the text element on the login page
-        if not header.send_keys(password, *LoginFormLocators.LOGIN_INPUT_PASSWORD):
+        if not self.send_keys(password, *LoginFormLocators.LOGIN_INPUT_PASSWORD):
             pytest.fail(f'{datetime.now()}   => "password" is not inputted')
 
         print(f'{datetime.now()}   => "login" and "password" are inputted')
 
         print(f"{datetime.now()}   Click [Continue] button on [Login] form =>")
-        header.click_button(*LoginFormLocators.LOGIN_CONTINUE)
+        self.click_button(*LoginFormLocators.LOGIN_CONTINUE)
         print(f"{datetime.now()}   => [Continue] button on [Login] form is clicked")
-        del header
 
         # Wait for the new tab to finish loading content
         timeout = 30

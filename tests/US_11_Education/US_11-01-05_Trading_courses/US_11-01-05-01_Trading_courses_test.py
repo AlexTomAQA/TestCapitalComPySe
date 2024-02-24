@@ -4,9 +4,9 @@ import allure
 import pytest
 
 from pages.common import Common
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonCreateDemoAccBlockBuildYourSkills import BuildYourSkillsButtonCreateDemoAccount
-from pages.Elements.ButtonTryDemoBlockLearnFirstTradeCFD import BlockLearnFistTradeCFDTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.BuildYourSkillsBlockCreateDemoAccButton import BuildYourSkillsButtonCreateDemoAccount
+from pages.Elements.LearnFirstTradeCFDBlockTryDemoButton import BlockLearnFistTradeCFDTryDemo
 from pages.Elements.AssertClass import AssertClass
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions

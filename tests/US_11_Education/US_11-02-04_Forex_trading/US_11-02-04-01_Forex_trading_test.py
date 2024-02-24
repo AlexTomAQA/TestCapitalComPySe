@@ -17,14 +17,14 @@ import pytest
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.ContentBlockSellButton import SellButtonContentBlock
+from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.StickyBarGetStartedButton import GetStartedOnStickyBar
 from src.src import CapitalComPageSrc
 
 

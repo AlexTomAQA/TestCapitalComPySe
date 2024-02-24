@@ -37,26 +37,21 @@ class ContentBlockOpenAnAccountButton(BasePage):
             print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK is not visible on the page!")
             pytest.fail("Bug # ? Checking element is not on this page")
 
-    @allure.step("Click button [Open an account] on the page content")
-    def element_click(self):
-        print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   Start Click button [Open an account] =>")
         button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK)
-        if len(button_list) == 0:
-            print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK is not present on the page!")
-            del button_list
-            return False
-
-        print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK is present on the page!")
 
         print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK scroll =>")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[0]
         )
-        self.element_is_clickable(button_list[0], 5)
 
-        print(f"{datetime.now()}   BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK is clickable? =>")
+    @allure.step("Click button [Open an account] on the page content")
+    def element_click(self):
+        print(f"\n{datetime.now()}   2. Act_v0")
+        print(f"{datetime.now()}   Start Click button [Open an account] =>")
+
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK)
+
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
             print(f"{datetime.now()} => BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK is not clickable after {time_out} "
