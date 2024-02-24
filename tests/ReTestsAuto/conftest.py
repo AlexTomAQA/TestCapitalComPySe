@@ -18,7 +18,7 @@ lang_list = [
         # "cn",
         # "de",
         # "el",
-        # "en",
+        "en",
         # "es",
         # "fr",
         # "hu",
@@ -27,7 +27,7 @@ lang_list = [
         # "pl",
         # "ro",
         # "ru",
-        "zh",
+        # "zh",
     ]
 
 # ===========================================================
@@ -42,9 +42,9 @@ role_list = [
 # выбор необходимых лицензий для ретеста
 country_list = [
         "gb",  # United Kingdom - "FCA"
-        "au",  # Australia - "ASIC"
         "de",  # Germany - "CYSEC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "au",  # Australia - "ASIC"
+        # "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
