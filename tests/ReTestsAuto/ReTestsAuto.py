@@ -13,7 +13,7 @@ import allure
 import pytest
 
 from tests.ReTestsAuto.conftest import (
-    lang_list, country_list, role_list, list_rows, status_list, unique_test, retest_skipped_tests, no_new_column, host
+    lang_list, country_list, role_list, list_rows, status_list, unique_test, retest_skipped_tests, new_column, host
 )
 from tests.ReTestsAuto.retest_data import us_data
 from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
@@ -73,7 +73,7 @@ def pytest_generate_tests(metafunc):
             if retest_skipped_tests:
                 if len(val) == 22 and val[21] not in status_list:
                     list_number_rows.append(num_row)
-            elif no_new_column:
+            elif not new_column:
                 if len(val) == 21:    # проверка того, что данные в таблицу внесены, но еще не проверялись
                     # формирование списка строк для ретеста
                     list_number_rows.append(num_row)
