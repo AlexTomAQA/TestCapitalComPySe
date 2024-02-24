@@ -176,7 +176,7 @@ class TestIndicesTradingGuidePreset:
         # банеры должны открываться в Demo mode for US_00
         banner00_ver_tpd = []
         # банеры должны открываться в Live mode for US_00
-        banner00_ver_tp = ['166', '196', 'b_vert_v0_425']
+        banner00_ver_tp = ['166', '196', '425']
         # банеры должны открываться в Demo mode for US_01
         banner01_ver_tpd = []
         # банеры должны открываться в Live mode for US_01

@@ -5,6 +5,7 @@
 """
 
 import os.path
+import time
 from datetime import datetime
 
 import allure
@@ -33,10 +34,10 @@ class GoogleSheet:
     SHEET_ID = '540090404'
     service = None
 
-    # def __new__(cls, *args, **kwargs):
-    #     if cls.__instance is None:
-    #         cls.__instance = super().__new__(cls)
-    #     return cls.__instance
+    def __new__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
 
     def __init__(self):
         self.creds = None
@@ -60,6 +61,11 @@ class GoogleSheet:
             self.service = googleapiclient.discovery.build("sheets", "v4", credentials=self.creds)
         except HttpError as err:
             print(err)
+
+    def wait_while_bugs_report_busy(self):
+        while self.get_cell_values("B1") == "Busy":
+            print(f"\n{datetime.now()}   One moment please, Bugs Report table is Busy")
+            time.sleep(0.5)
 
     def get_all_row_values(self, start_row=5):
         range_name = f"{self.SHEET_NAME}!A{start_row}:V"
@@ -85,8 +91,8 @@ class GoogleSheet:
         values = result.get("values", [])
         return values
 
-    @allure.step("Get row values from ... row")
     def get_row_values(self, end_row=5):
+        allure.step(f"Get row values from {end_row} row")
         print(f"\n{datetime.now()}   1. get_row_values from {end_row} row =>")
         range_name = f"{self.SHEET_NAME}!A{end_row}:V{end_row}"
         # Call the Sheets API
