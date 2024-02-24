@@ -6,10 +6,11 @@ def check_gs_table(bid, bug_n):
     gs = GoogleSheet()
     print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
 
-    # старт проверки
+    gs.wait_while_bugs_report_busy()
     gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
 
+    # старт проверки
     bug_present = False
     gs = GoogleSheet()
     print(f'\n gs = GoogleSheet() - создаем объект gs # 3: {gs}')
@@ -26,9 +27,12 @@ def check_gs_table(bid, bug_n):
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
                           f"но у него изменился тип с {row[-6]} на {bug_n}")
                 bug_present = True
-                return bug_present
+                break
             # else:
             #     break
+
+    gs_out = ["Bugs Report"]
+    gs.update_range_values('B1', [gs_out])
     return bug_present
 
 
@@ -79,6 +83,7 @@ def retest_table_fill(bid="", bug_n="", link=""):
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
     gs = GoogleSheet()
     print(f'\n gs = GoogleSheet() - создаем объект gs # 1: {gs}')
+
     if bid != "":
         bug_num = "'" + bug_n
 
@@ -88,22 +93,24 @@ def retest_table_fill(bid="", bug_n="", link=""):
             # формирование данных для заполнения
             new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
 
+            gs.wait_while_bugs_report_busy()
+            gs_out = ["Busy"]
+            gs.update_range_values('B1', [gs_out])
+
             # добавление новой строки с копипастом формул и форматов
             add_new_row_with_format()
-
             # заполнение таблицы
             fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
 
-            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)")
+            gs_out = ['Bugs Report']
+            gs.update_range_values('B1', [gs_out])
 
+            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)")
         else:
             print(f"\n{datetime.now()}   Баг {bid}-{bug_n} обнаружен ранее и уже находится в 'Bugs Report Auto "
                   f"detect'")
     else:
         print(f"\n{datetime.now()}  Для бага: Bid-{bug_n} необходимо использовать проверку на ретест!!!")
-
-    gs_out = ['Bugs Report']
-    gs.update_range_values('B1', [gs_out])
 
 
 # # ========= не удалять ======================

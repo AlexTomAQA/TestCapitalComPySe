@@ -5,6 +5,7 @@
 """
 
 import os.path
+import time
 from datetime import datetime
 
 import allure
@@ -59,6 +60,11 @@ class GoogleSheet:
             self.service = googleapiclient.discovery.build("sheets", "v4", credentials=self.creds)
         except HttpError as err:
             print(err)
+
+    def wait_while_bugs_report_busy(self):
+        while self.get_cell_values("B1") == "Busy":
+            print(f"\n{datetime.now()}   One moment please, Bugs Report table is Busy")
+            time.sleep(0.5)
 
     def get_all_row_values(self, start_row=5):
         range_name = f"{self.SHEET_NAME}!A{start_row}:V"
