@@ -7,7 +7,7 @@ def check_gs_table(bid, bug_n):
     print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
 
     # старт проверки
-    gs_out = ["'=====> Bugs Report !!! Идет Retest Data Update <====="]
+    gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
 
     bug_present = False
