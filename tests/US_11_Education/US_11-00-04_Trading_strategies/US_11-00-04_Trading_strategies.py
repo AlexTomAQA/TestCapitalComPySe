@@ -12,7 +12,7 @@ from pages.Menu.menu import MenuSection
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.MainBannerButtonOpenAnAccount import MainBannerOpenAnAccount
-from pages.Elements.ButtonTryDemoAccountMainBanner import MainBannerTryDemoAccount
+from pages.Elements.MainBannerTryDemoAccountButton import MainBannerTryDemoAccount
 
 
 @pytest.mark.us_11_00_04
