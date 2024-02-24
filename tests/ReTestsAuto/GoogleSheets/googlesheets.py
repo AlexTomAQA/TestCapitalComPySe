@@ -27,9 +27,9 @@ class GoogleSheet:
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
     # The ID and range of a spreadsheet.
-    # SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
+    SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
     # SPREADSHEET_ID = "1XyKqXEib1-2ZlpEXnr85--XhHZSPOODWkQJe5XW0YbA"     # copy for debugging
-    SPREADSHEET_ID = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"     # manual tests
+    # SPREADSHEET_ID = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"     # manual tests
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
