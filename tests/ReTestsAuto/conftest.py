@@ -105,6 +105,14 @@ def gs():
     global one_time_copy_paste
 
     g_sheet = GoogleSheet()
+    g_sheet.wait_while_bugs_report_busy()
+    gs_out = ["Busy"]
+    g_sheet.update_range_values('B1', [gs_out])
+    qty_job = int(g_sheet.get_cell_values("O1"))  # Q-ty Job
+    qty_job += 1
+    gs_out = [str(qty_job)]
+    g_sheet.update_range_values('O1', [gs_out])
+
     # получение длины таблицы
     values = g_sheet.get_all_row_values()
     rows_qty = len(values)
@@ -114,8 +122,6 @@ def gs():
 
     # старт ретеста
     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-    gs_out = ["Busy"]
-    g_sheet.update_range_values('B1', [gs_out])
 
     if unique_test or retest_skipped_tests or no_new_column:
         # установка времени старта ретеста
@@ -160,6 +166,11 @@ def gs():
     # g_sheet.new_data_copy_past(
     #     1, 2, 1, 2,
     #     5, 6, 21, 22)
+
+    qty_job = int(g_sheet.get_cell_values("O1"))  # Q-ty Job
+    qty_job -= 1
+    gs_out = [str(qty_job)]
+    g_sheet.update_range_values('O1', [gs_out])
 
     gs_out = ['Bugs Report']
     g_sheet.update_range_values('B1', [gs_out])
