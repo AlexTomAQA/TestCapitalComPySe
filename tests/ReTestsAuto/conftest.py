@@ -110,7 +110,14 @@ def gs():
     g_sheet.update_range_values('B1', [gs_out])
     cell_o1 = g_sheet.get_cell_values("O1")
     print(f"cell_o1 имеет тип {type(cell_o1)}   и  значение {cell_o1}")
-    qty_job = int(cell_o1[[0]])  # Q-ty Job
+    var = cell_o1[0]
+    print(f"var имеет тип {type(var)}   и  значение {var}")
+    var2 = var[0]
+    print(f"var2 имеет тип {type(var2)}   и  значение {var2}")
+    var_int = cell_o1[[0]]
+    print(f"var_int имеет тип {type(var_int)}   и  значение {var_int}")
+
+    qty_job = int(var_int)  # Q-ty Job
     print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
     qty_job += 1
     gs_out = [str(qty_job)]
