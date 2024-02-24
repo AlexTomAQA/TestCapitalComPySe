@@ -110,7 +110,8 @@ def gs():
     g_sheet.update_range_values('B1', [gs_out])
     cell_o1 = g_sheet.get_cell_values("O1")
     print(f"cell_o1 имеет тип {type(cell_o1)}   и  значение {cell_o1}")
-    qty_job = int(cell_o1[0])  # Q-ty Job
+    qty_job = int(cell_o1[[0]])  # Q-ty Job
+    print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
     qty_job += 1
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
@@ -177,7 +178,8 @@ def gs():
     # окончание ретеста
     cell_o1 = g_sheet.get_cell_values("O1")
     print(f"cell_o1 имеет тип {type(cell_o1)}   и  значение {cell_o1}")
-    qty_job = int(cell_o1[0])  # Q-ty Job
+    qty_job = int(cell_o1[[0]])  # Q-ty Job
+    print(f"qty_job имеет тип {type(qty_job)}   и  значение {qty_job}")
     qty_job -= 1
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
