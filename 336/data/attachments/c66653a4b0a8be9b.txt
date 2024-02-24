@@ -1,0 +1,48 @@
+2024-02-24 02:43:56 ERROR Elements not present after 0.5 seconds on page: https://capital.com/en-gb
+2024-02-24 02:43:56 ERROR Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 517, in is_captcha
+    if self.elements_are_visible(Captcha.CAPTCHA_IFRAME):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 637, in elements_are_visible
+    return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
+
+2024-02-24 02:44:17 ERROR Elements not present after 0.5 seconds on page: https://capital.com/en-gb/learn/risk-management
+2024-02-24 02:44:17 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 301, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55db73b26303 <unknown>
+#1 0x55db7380b2b7 <unknown>
+#2 0x55db73856cc0 <unknown>
+#3 0x55db73856db1 <unknown>
+#4 0x55db7389ab44 <unknown>
+#5 0x55db738793ad <unknown>
+#6 0x55db7389807c <unknown>
+#7 0x55db73879123 <unknown>
+#8 0x55db73849095 <unknown>
+#9 0x55db7384a09e <unknown>
+#10 0x55db73aea6ab <unknown>
+#11 0x55db73aee4ba <unknown>
+#12 0x55db73ad6f85 <unknown>
+#13 0x55db73aef12f <unknown>
+#14 0x55db73abae6f <unknown>
+#15 0x55db73b135f8 <unknown>
+#16 0x55db73b137c2 <unknown>
+#17 0x55db73b254a4 <unknown>
+#18 0x7f9a63094ac3 <unknown>
