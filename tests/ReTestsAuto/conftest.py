@@ -114,7 +114,7 @@ def gs():
 
     # старт ретеста
     start_retest_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
-    gs_out = ["'=====> Bugs Report !!! Идет Retest <====="]
+    gs_out = ["Busy"]
     g_sheet.update_range_values('B1', [gs_out])
 
     if unique_test or retest_skipped_tests or no_new_column:
