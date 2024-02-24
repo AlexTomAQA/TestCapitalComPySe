@@ -16,10 +16,10 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 lang_list = [
         # "ar",
         # "cn",
-        "de",
+        # "de",
         # "el",
         # "en",
-        # "es",
+        "es",
         # "fr",
         # "hu",
         # "it",
