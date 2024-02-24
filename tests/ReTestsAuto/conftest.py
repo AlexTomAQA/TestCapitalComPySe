@@ -108,7 +108,7 @@ def gs():
     g_sheet.wait_while_bugs_report_busy()
     gs_out = ["Busy"]
     g_sheet.update_range_values('B1', [gs_out])
-    qty_job = int(g_sheet.get_cell_values("O1"))  # Q-ty Job
+    qty_job = int(g_sheet.get_cell_values("O1")[0][0])  # Q-ty Job
     qty_job += 1
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
@@ -167,7 +167,7 @@ def gs():
     #     1, 2, 1, 2,
     #     5, 6, 21, 22)
 
-    qty_job = int(g_sheet.get_cell_values("O1"))  # Q-ty Job
+    qty_job = int(g_sheet.get_cell_values("O1")[0][0])  # Q-ty Job
     qty_job -= 1
     gs_out = [str(qty_job)]
     g_sheet.update_range_values('O1', [gs_out])
