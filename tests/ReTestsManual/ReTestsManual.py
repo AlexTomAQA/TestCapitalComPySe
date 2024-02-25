@@ -49,9 +49,11 @@ class TestManualBugs:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "MN", "Capital.com FCA",
-            ".01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
-                   " page after clicking")
+            "FCA.Bugs", "Capital.com FCA",
+            "_01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
+                   " page after clicking", True, True)
+
+        print(bid)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
