@@ -71,6 +71,7 @@ def fill_gs_table(value_1, value_2, bug_num):
     gs.update_range_values('A5', value_1)
     gs.update_range_values('I5', value_2)
     gs.update_range_values('P5', [[bug_num]])
+    gs.update_range_values('V5', [["failed"]])
 
 
 def retest_table_fill(bid="", bug_n="", link=""):

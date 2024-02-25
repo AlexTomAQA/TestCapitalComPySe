@@ -13,6 +13,7 @@ from selenium.webdriver.common.by import By
 from pages.Elements.AssertClass import AssertClass
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSignupFormLocators
 from pages.conditions import Conditions
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 from tests.ReTestsManual.pages.menu.menu import MainMenu
 from tests.ReTestsManual.pages.menu_section.menu_section import MenuSections
@@ -36,7 +37,7 @@ class TestManualBugs:
     @pytest.mark.test_01
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
-            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country, cur_os):
         """
         Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page after clicking
         the ""USD/CHF"" trading instrument in the  ""Forex Markets"" Widget"
@@ -49,7 +50,7 @@ class TestManualBugs:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "FCA.Bugs", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             "_01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
                    " page after clicking", True, True)
 
@@ -108,6 +109,10 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
         if len(most_trade_instrument_list) > 0:
+            # проверка бага для ретеста
+            print(f'\nBug: {bid}')
+            retest_table_fill(bid, '01')
+            #
             assert False, (f"Bug#01. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
                            f"error_404: {error_trade_instrument_list}. \n"
