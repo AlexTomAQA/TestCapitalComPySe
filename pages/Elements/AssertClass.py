@@ -70,6 +70,8 @@ class AssertClass(BasePage):
             del self.page_signup_login
         elif self.page_signup_login.should_be_signup_form(cur_language):
             del self.page_signup_login
+        elif self.page_signup_login.should_be_new_signup_form(cur_language):
+            del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.bid, '05', self.link)
             assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
