@@ -87,9 +87,11 @@ class LoginFormLocators:
 
 
 class NewLoginFormLocators:
-    LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_FRAME = (By.XPATH, "//strong//span[contains(text(), 'Login')]")
+    # LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
     # LOGIN_FRAME = (By.CSS_SELECTOR, "#login > login-popup")
-    LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_HEADER = (By.XPATH, "//strong//span[contains(text(), 'Login')]")
+    # LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
     LOGIN_REF_SIGNUP = (By.XPATH, "//span[normalize-space()='Sign up']")
     LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#email")
     LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#password")
