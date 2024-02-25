@@ -11,10 +11,10 @@ from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
-from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoMainPage
+from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
 
 
-@pytest.mark.us_00_00_100
+@pytest.mark.us_00_00
 class TestMainPage:
     page_conditions = None
 
@@ -39,5 +39,5 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = MainBannerTryDemoMainPage(d, main_page_link, bid)
+        test_element = MainBannerTryDemoButtonMainPage(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)

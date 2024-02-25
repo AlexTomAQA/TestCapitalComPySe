@@ -14,7 +14,7 @@ from pages.Signup_login.signup_login import SignupLogin
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class MainBannerTryDemoMainPage(BasePage):
+class MainBannerTryDemoButtonMainPage(BasePage):
 
     @allure.step(f'{datetime.now()}   Start Full test for Try demo button of Main banner')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
@@ -41,7 +41,7 @@ class MainBannerTryDemoMainPage(BasePage):
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not present on this page")
             del button_list
-            pytest.skip("Testing element 'BUTTON_TRY_DEMO on the main banner' is not present on this page")
+            pytest.fail("Testing element 'BUTTON_TRY_DEMO on the main banner' is not present on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is present on this page")
 
