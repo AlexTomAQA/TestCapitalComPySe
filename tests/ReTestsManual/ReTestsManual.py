@@ -239,8 +239,7 @@ class TestManualBugs:
                         markets_page.MARKETS_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
-                key_stat_list = markets_page.elements_are_present(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS,
-                                                                  1)
+                key_stat_list = markets_page.elements_are_present(*markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS)
                 if not len(key_stat_list) == 2:
                     retest_table_fill(bid, '04', "", True)
                     assert False, ('Bug#04. '
