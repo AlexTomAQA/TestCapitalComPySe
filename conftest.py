@@ -33,7 +33,7 @@ def pytest_addoption(parser):
                      help="Choose browser: '--browser_name=Chrome' or '--browser_name=Edge'")
 
     parser.addoption('--lang', action='store', default=False,
-                     help="Choose language: '--lang='' for 'en'")
+                     help="Choose language: '--lang='en' for 'en'")
 
     parser.addoption('--country', action='store', default=False,
                      help="Choose License: '--country=ae'")
@@ -49,9 +49,13 @@ def pytest_addoption(parser):
 
 
 """
-пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
+пример командной строки для автотестов: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
     --tpi_link=https://capital.com/fr/trading-amazon --os=U22 -m test_02 --no-summary -v
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+#########  
+пример командной строки для тестов:--browser_name=Chrome --lang='en' --country=ae --role=Auth --os=U22 
+-m test_02 --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+!!! порядок расположение аргументов не имеет значения
 """
 
 role_list = list()
