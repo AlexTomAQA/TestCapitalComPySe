@@ -42,7 +42,7 @@ class TestEssentialsTrading:
                         (d, cur_item_link, bid))
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test_11.00.03_03 button [Create a risk free demo account] in Unleveraged trading block")
+    @allure.step("Start test_11.00.03_02 button [Create a risk free demo account] in Unleveraged trading block")
     @pytest.mark.test_02
     def test_02_create_a_risk_free_demo_account_unleveraged_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -69,7 +69,7 @@ class TestEssentialsTrading:
                         (d, cur_item_link, bid))
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test_11.00.03_02 button [Create a live account]")
+    @allure.step("Start test_11.00.03_03 button [Create a live account]")
     @pytest.mark.test_03
     def test_03_create_a_live_account_how_to_get_started_with_trading_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -97,7 +97,7 @@ class TestEssentialsTrading:
                         (d, cur_item_link, bid))
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test_11.00.03_03 button [Create a risk free demo account] in How to get started trading block")
+    @allure.step("Start test_11.00.03_04 button [Create a risk free demo account] in How to get started trading block")
     @pytest.mark.test_04
     def test_04_create_a_risk_free_demo_account_how_to_get_started_trading_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
