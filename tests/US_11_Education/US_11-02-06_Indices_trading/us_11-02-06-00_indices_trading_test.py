@@ -45,6 +45,7 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
@@ -74,6 +75,7 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
@@ -104,10 +106,10 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -135,6 +137,7 @@ class TestIndicesTradingGuidePreset:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "it", "cn", "ru", "zh"])
@@ -164,6 +167,7 @@ class TestIndicesTradingGuidePreset:
             "11.02.06", "Education > Menu item [Indices Trading]",
             ".00_11", "Testing button in block [Vertical banner]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "zh"])
@@ -207,6 +211,7 @@ class TestIndicesTradingGuidePreset:
             "11.02.06", "Education > Menu item [Indices Trading]",
             ".00_12", "Testing button in block [Horizontal banner]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["ar", "de", "es", "it", "ru", "zh"])
@@ -245,6 +250,7 @@ class TestIndicesTradingGuidePreset:
         if count == 0:
             pytest.skip("Так надо")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
