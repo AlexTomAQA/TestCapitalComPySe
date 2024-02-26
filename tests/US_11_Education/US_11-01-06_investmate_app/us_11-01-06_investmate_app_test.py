@@ -55,6 +55,7 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_01", "Testing QR code in Investmate block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -78,6 +79,7 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_02", "Testing QR code in Easy learning block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -100,6 +102,7 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_03", "Testing button [Explore Web Platform] in block 'capital.com'")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -134,6 +137,7 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_04", "Testing QR code in Capital block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -157,6 +161,7 @@ class TestInvestmateApp:
             "11.01.06", "Education > Menu item [Investmate app]",
             ".00_05", "Testing button [Create account] in block \"Why choose Capital?\"")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language in ['', 'pl', 'cn']:
             pytest.skip(f"This test is not for {'en' if cur_language == '' else cur_language} language")
