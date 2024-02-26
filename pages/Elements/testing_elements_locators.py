@@ -61,7 +61,7 @@ class BlockStepTradingLocators:
 class ButtonInBannerLocators:
     # BUTTON_IN_BANNER = (By.CSS_SELECTOR, ".grid .detail__aside .inBanner > a")
     BUTTON_IN_BANNER = (By.XPATH, "//div[not(contains(@class, 'hidden'))]/div/a[contains(@data-type, 'b_vert') "
-                        "and (@href='/trading/signup')]")
+                                  "and (@href='/trading/signup')]")
     BUTTON_IN_BANNER_DEMO = (By.CSS_SELECTOR, ".grid.detail__aside.inBanner > a[data - demomode = 'true']")
 
 
@@ -179,6 +179,14 @@ class ContentBlockLocators:
     BUTTON_PRACTISE_FOR_FREE = (By.CSS_SELECTOR, "a[data-type='wdg_go_to_market_deeplink']")
     BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_signup"]')
     BUTTON_TRY_DEMO_ACCOUNT_CONTENT_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_demo"]')
+    BUTTON_CREATE_A_LIVE_ACCOUNT_UNLEVERAGED_TRADING_BLOCK = \
+        (By.CSS_SELECTOR, 'div > p:nth-child(8) > a[data-type="plain_button"]')
+    BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_UNLEVERAGED_TRADING_BLOCK = \
+        (By.CSS_SELECTOR, 'div > p:nth-child(8) > [data-type="plain_button_demo"]')
+    BUTTON_CREATE_A_LIVE_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
+        (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button"]')
+    BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
+        (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
 
 
 class QRCodeLocators:
