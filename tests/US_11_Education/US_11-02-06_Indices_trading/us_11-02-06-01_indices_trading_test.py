@@ -4,18 +4,18 @@ import pytest
 import allure
 
 from pages.common import Common
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
-from pages.Elements.ButtonBuyInIndicesTable import BuyButtonIndicesTable
-from pages.Elements.ButtonGetStartedOnStickyBar import GetStartedOnStickyBar
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-from pages.Elements.ButtonSellInIndicesTable import SellButtonIndicesTable
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
+from pages.Elements.IndicesTableBuyButton import BuyButtonIndicesTable
+from pages.Elements.StickyBarGetStartedButton import GetStartedOnStickyBar
+from pages.Elements.VerticalBannerButton import ButtonOnVerticalBanner
+from pages.Elements.HorizontalBannerButton import ButtonOnHorizontalBanner
+from pages.Elements.ContentBlockSellButton import SellButtonContentBlock
+from pages.Elements.IndicesTableSellButton import SellButtonIndicesTable
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -350,7 +350,7 @@ class TestIndicesTrading:
         # банеры должны открываться в Demo mode for US_01
         banner01_ver_tpd = ['168', '393']
         # банеры должны открываться в Live mode for US_01
-        banner01_ver_tp = ['198', '253', 'b_vert_v0_391', 'b_vert_v0_426']
+        banner01_ver_tp = ['198', '253', '391', '426']
 
         test_element = ButtonOnVerticalBanner(d, cur_item_link, bid)
         test_element.full_test_with_tpi(

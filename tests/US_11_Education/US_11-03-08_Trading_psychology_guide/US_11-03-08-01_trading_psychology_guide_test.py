@@ -7,12 +7,12 @@ import pytest
 import allure
 
 from pages.common import Common
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonPractiseForFreeInContentBlock import ButtonPractiseForFreeInContentBlock
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.ContentBlockPractiseForFreeButton import ButtonPractiseForFreeInContentBlock
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4

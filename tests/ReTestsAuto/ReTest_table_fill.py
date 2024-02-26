@@ -4,28 +4,35 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 
 def check_gs_table(bid, bug_n):
     gs = GoogleSheet()
-    # старт проверки
-    gs_out = ["'=====> Bugs Report !!! Идет Retest Data Update <====="]
+    print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
+
+    gs.wait_while_bugs_report_busy()
+    gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
 
+    # старт проверки
     bug_present = False
     gs = GoogleSheet()
+    print(f'\n gs = GoogleSheet() - создаем объект gs # 3: {gs}')
+
     values = gs.get_all_row_values()
     for index, row in enumerate(values):
-        if not row:
-            break
-        else:
+        if row:
             if bid in row[0]:
                 if bug_n in row[-6]:
-                    bug_present = True
-                    return bug_present
+                    pass
                 else:
                     bug_num = [["'" + bug_n]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
                           f"но у него изменился тип с {row[-6]} на {bug_n}")
-                    bug_present = True
-                    return bug_present
+                bug_present = True
+                break
+            # else:
+            #     break
+
+    gs_out = ["Bugs Report"]
+    gs.update_range_values('B1', [gs_out])
     return bug_present
 
 
@@ -46,6 +53,7 @@ def new_row_data(bid, bug_num, link):
 
 def add_new_row_with_format():
     gs = GoogleSheet()
+    print(f'\n gs = GoogleSheet() - создаем объект gs # 4: {gs}')
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
     # добавление новой 4-й строки
@@ -59,6 +67,7 @@ def add_new_row_with_format():
 
 def fill_gs_table(value_1, value_2, bug_num):
     gs = GoogleSheet()
+    print(f'\n gs = GoogleSheet() - создаем объект gs # 5: {gs}')
     gs.update_range_values('A5', value_1)
     gs.update_range_values('I5', value_2)
     gs.update_range_values('P5', [[bug_num]])
@@ -73,32 +82,35 @@ def retest_table_fill(bid="", bug_n="", link=""):
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
     gs = GoogleSheet()
+    print(f'\n gs = GoogleSheet() - создаем объект gs # 1: {gs}')
+
     if bid != "":
         bug_num = "'" + bug_n
 
         # проверка таблицы багов на наличии в ней текущего
         bug_present = check_gs_table(bid, bug_n)
         if not bug_present:
-
             # формирование данных для заполнения
             new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
 
+            gs.wait_while_bugs_report_busy()
+            gs_out = ["Busy"]
+            gs.update_range_values('B1', [gs_out])
+
             # добавление новой строки с копипастом формул и форматов
             add_new_row_with_format()
-
             # заполнение таблицы
             fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
 
-            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)")
+            gs_out = ['Bugs Report']
+            gs.update_range_values('B1', [gs_out])
 
+            print(f"\n{datetime.now()}   Баг {bid}-{bug_n} добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)")
         else:
             print(f"\n{datetime.now()}   Баг {bid}-{bug_n} обнаружен ранее и уже находится в 'Bugs Report Auto "
                   f"detect'")
     else:
         print(f"\n{datetime.now()}  Для бага: Bid-{bug_n} необходимо использовать проверку на ретест!!!")
-
-    gs_out = ['Bugs Report']
-    gs.update_range_values('B1', [gs_out])
 
 
 # # ========= не удалять ======================

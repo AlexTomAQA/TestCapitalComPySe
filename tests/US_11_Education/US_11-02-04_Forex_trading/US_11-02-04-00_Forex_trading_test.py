@@ -11,12 +11,12 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Education.forex_trading_locators import ForexTradingItem
 from src.src import CapitalComPageSrc
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
-from pages.Elements.ButtonSellInContentBlock import SellButtonContentBlock
-from pages.Elements.ButtonBuyInContentBlock import BuyButtonContentBlock
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
+from pages.Elements.ContentBlockSellButton import SellButtonContentBlock
+from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.StepTradingBlock import BlockStepTrading
 
 count = 1
 cur_page_url = ""
@@ -44,6 +44,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -73,6 +74,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -102,6 +104,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_04", "Testing button [Sell] in content block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -134,6 +137,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_05", "Testing button [Buy] in content block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -165,6 +169,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_06", "Testing button [Trade] in Most traded block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country in ["gb"]:
             Common().skip_test_for_country(cur_country)
@@ -196,6 +201,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_07", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "es", "fr", "it", "cn", "ru", "zh"])
@@ -222,6 +228,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_99", "Pretest for US_11.02.04.01")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "cn", "zh"])

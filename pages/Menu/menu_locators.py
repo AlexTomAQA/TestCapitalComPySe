@@ -841,7 +841,8 @@ class MenuUS11TrendTrading:
 
 
 class MenuUS11TradingPsychologyGuide:
-    SUB_MENU_ALL_TRADING_PSYCHOLOGY_GUIDE = (By.CSS_SELECTOR, ".cc-header a[href$='/trading-psychology-guide']")
+    SUB_MENU_EN_TRADING_PSYCHOLOGY_GUIDE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__dropdown a[href$='/trading-psychology-guide']")
     SUB_MENU_AR_TRADING_PSYCHOLOGY_GUIDE = (By.CSS_SELECTOR, ".cc-header a[href$='/ar']")
     SUB_MENU_DE_TRADING_PSYCHOLOGY_GUIDE = (By.CSS_SELECTOR, ".cc-header a[href$='/de']")
     SUB_MENU_EL_TRADING_PSYCHOLOGY_GUIDE = (By.CSS_SELECTOR, ".cc-header a[href$='/el']")

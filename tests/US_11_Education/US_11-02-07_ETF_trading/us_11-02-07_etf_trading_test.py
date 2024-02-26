@@ -9,10 +9,10 @@ import allure
 
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Menu.menu import MenuSection
@@ -45,6 +45,7 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
@@ -72,6 +73,7 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 
@@ -99,6 +101,7 @@ class TestETFTrading:
             "11.02.07", "Education > Menu item [ETF trading]",
             ".00_03", "Testing button [Trade] in Most traded widget")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_country(cur_country, ["gb"])
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
@@ -128,6 +131,7 @@ class TestETFTrading:
             ".00_05",
             "Testing button [1. Create & verify your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language, ["", "ar", "de", "es", "it", "ru", "cn"])
 

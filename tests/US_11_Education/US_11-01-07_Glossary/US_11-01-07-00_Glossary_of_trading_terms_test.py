@@ -10,7 +10,7 @@ from pages.common import Common
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
 from pages.Education.Glossary_locators import (
@@ -44,6 +44,7 @@ class TestGlossaryOfTradingTerms:
             "11.01.07", "Education > Menu item [Glossary of trading terms]",
             ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "zh"]:
             pytest.skip(f"This test-case is not for {cur_language} language")
@@ -81,6 +82,7 @@ class TestGlossaryOfTradingTerms:
             "11.01.07", "Education > Menu item [Glossary of trading terms]",
             ".00_99", "Pretest for US_11.01.07.01")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if count == 0:

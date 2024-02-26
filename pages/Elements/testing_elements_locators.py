@@ -158,6 +158,7 @@ class MainBannerLocators:
     BUTTON_TRY_DEMO = (By.CSS_SELECTOR, "a.cc-banner__btn.btn.btn--emptyblack.js_signup.hideXs")
     BUTTON_OPEN_AN_ACCOUNT = (By.CSS_SELECTOR, '[data-type*="background_banner_block_btn1"]')
     BUTTON_TRY_DEMO_ACCOUNT = (By.CSS_SELECTOR, '[data-type*="background_banner_block_btn2"]')
+    BUTTON_TRY_DEMO_MAIN_PAGE = (By.CSS_SELECTOR, '[data-type*="homepage_hero_banner_btn1_demo"]')
 
 
 class RightBannerLocators:

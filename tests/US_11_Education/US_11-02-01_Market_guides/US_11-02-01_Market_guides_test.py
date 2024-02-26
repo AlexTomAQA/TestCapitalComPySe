@@ -3,7 +3,7 @@ import pytest
 
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -27,6 +27,7 @@ class TestMarketGuides:
             "11.02.01", "Education > Menu Item [Market guides]",
             ".00_01", "Testing button [Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")

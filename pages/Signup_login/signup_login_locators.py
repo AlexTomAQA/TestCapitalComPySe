@@ -76,8 +76,8 @@ class LoginFormLocators:
     LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay:not(.hidden) > div.form-container-small")
     LOGIN_HEADER = (By.CSS_SELECTOR, "#l_overlay div.form-container-small-header")
     LOGIN_REF_SIGNUP = (By.CSS_SELECTOR, "#l_overlay a.l_btn_signup")
-    LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#l_overlay input[type='email']")
-    LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#l_overlay input[type='password']")
+    LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#l_overlay input.field__control[type='email']")
+    LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#l_overlay input.field__control[type='password']")
     LOGIN_CHECKBOX = (By.CSS_SELECTOR, "#l_overlay .checkbox")
     LOGIN_CONTINUE = (By.CSS_SELECTOR, "#l_overlay button[type=submit]")
     LOGIN_FORM = (By.CSS_SELECTOR, "#l_overlay > div > button")
@@ -87,9 +87,11 @@ class LoginFormLocators:
 
 
 class NewLoginFormLocators:
-    LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_FRAME = (By.XPATH, "//strong//span[contains(text(), 'Login')]")
+    # LOGIN_FRAME = (By.XPATH, "//span[normalize-space()='Login']")
     # LOGIN_FRAME = (By.CSS_SELECTOR, "#login > login-popup")
-    LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
+    LOGIN_HEADER = (By.XPATH, "//strong//span[contains(text(), 'Login')]")
+    # LOGIN_HEADER = (By.XPATH, "//span[normalize-space()='Login']")
     LOGIN_REF_SIGNUP = (By.XPATH, "//span[normalize-space()='Sign up']")
     LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#email")
     LOGIN_INPUT_PASSWORD = (By.CSS_SELECTOR, "#password")

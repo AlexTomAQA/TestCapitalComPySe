@@ -2,14 +2,14 @@ import allure
 import pytest
 from datetime import datetime
 from pages.Education.Trading_strategies_guide_locators import TradingStrategiesContentList
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from src.src import CapitalComPageSrc
 
 count = 1
@@ -37,6 +37,7 @@ class TestTradingStrategiesGuides:
             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -64,6 +65,7 @@ class TestTradingStrategiesGuides:
             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -91,8 +93,8 @@ class TestTradingStrategiesGuides:
             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
             ".00_03", "Testing button [Trade] in Most traded block")
 
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
@@ -119,6 +121,7 @@ class TestTradingStrategiesGuides:
             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
             ".00_04", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "cn", "ru", "zh"])
 
@@ -144,6 +147,7 @@ class TestTradingStrategiesGuides:
             "11.03.01", "Education > Menu item [Trading Strategies Guides]",
             ".00_99", "Pretest for US_11.03.01.01")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 

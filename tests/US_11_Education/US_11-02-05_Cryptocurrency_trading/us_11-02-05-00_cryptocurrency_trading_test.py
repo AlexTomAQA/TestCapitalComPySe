@@ -7,13 +7,13 @@ import allure
 # import os.path
 import pytest
 
-from pages.Elements.BlockStepTrading import BlockStepTrading
-from pages.Elements.ButtonOnHorizontalBanner import ButtonOnHorizontalBanner
-from pages.Elements.ButtonOnVerticalBanner import ButtonOnVerticalBanner
-from pages.Elements.ButtonStartTradingInContent import ContentStartTrading
-from pages.Elements.ButtonStartTradingMainBanner import MainBannerStartTrading
-from pages.Elements.ButtonTradeOnWidgetMostTraded import ButtonTradeOnWidgetMostTraded
-from pages.Elements.ButtonTryDemoMainBanner import MainBannerTryDemo
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.HorizontalBannerButton import ButtonOnHorizontalBanner
+from pages.Elements.VerticalBannerButton import ButtonOnVerticalBanner
+from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
+from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
+from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Elements.testing_elements_locators import SubPages
 from pages.Menu.menu import MenuSection
 from pages.common import Common
@@ -52,10 +52,10 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_01", "Testing button [Start Trading] on the Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_present(
             cur_language, ["ar", "el", "hu", "nl"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -82,10 +82,10 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_02", "Testing button [Try demo] on the Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_present(
             cur_language, ["ar", "el", "hu", "nl"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -112,10 +112,10 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_03", "Testing button [Trade] on widget Most traded")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(
             cur_language, ["ar", "el", "hu", "nl"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -142,9 +142,9 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_04", "Testing button [Start trading] in the Content block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_present(cur_language, ["ar", "el", "hu", "nl"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -173,10 +173,10 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_05", "Testing button on the block [Vertical banner]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "fr", "pl", "ro", "ru", "zh"])
-        Common().check_language_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -215,10 +215,10 @@ class TestCryptocurrencyTrading:
             "11.02.05", "Education > Menu item [Cryptocurrency trading]",
             ".00_06", "Testing button on the block [Horizontal banner]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["de", "es", "fr", "it", "pl", "ro", "ru", "zh"])
-        Common().check_language_in_list_and_skip_if_present(cur_language, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -257,9 +257,9 @@ class TestCryptocurrencyTrading:
             ".00_07", "Testing button [1.Create & verify your account] in block "
                       "'Still looking for a broker you can trust?'")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_present(cur_language, ["ar", "el", "hu", "nl"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -285,6 +285,7 @@ class TestCryptocurrencyTrading:
         if count == 0:
             pytest.skip("Так надо")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         check_language(cur_language)
         check_country(cur_country)
