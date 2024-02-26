@@ -27,9 +27,10 @@ class GoogleSheet:
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
     # The ID and range of a spreadsheet.
-    SPREADSHEET_ID = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"
+
+    SPREADSHEET_ID1 = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"     # auto tests
     # SPREADSHEET_ID = "1XyKqXEib1-2ZlpEXnr85--XhHZSPOODWkQJe5XW0YbA"     # copy for debugging
-    # SPREADSHEET_ID = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"     # manual tests
+    SPREADSHEET_ID2 = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"     # manual tests
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
@@ -39,8 +40,10 @@ class GoogleSheet:
             cls.__instance = super().__new__(cls)
         return cls.__instance
 
-    def __init__(self):
+    def __init__(self, spreadsheet_id=None):
         self.creds = None
+        self.manual = False
+        self.SPREADSHEET_ID = spreadsheet_id or self.SPREADSHEET_ID1
 
         if os.path.exists("./tests/ReTestsAuto/token.json"):
             self.creds = Credentials.from_authorized_user_file("./tests/ReTestsAuto/token.json", self.SCOPES)

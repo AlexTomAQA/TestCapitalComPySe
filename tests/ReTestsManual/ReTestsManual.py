@@ -25,7 +25,7 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from src.src import CapitalComPageSrc
 
 
-# @pytest.mark.Bugs_26012024_CCW_WEB
+# @pytest.mark.FCABugs
 class TestManualBugs:
     page_conditions = None
 
@@ -53,8 +53,6 @@ class TestManualBugs:
             "FCABugs", "Capital.com FCA",
             "_01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
                    " page after clicking", True, True)
-
-        print(bid)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -111,7 +109,7 @@ class TestManualBugs:
         if len(most_trade_instrument_list) > 0:
             # проверка бага для ретеста
             print(f'\nBug: {bid}')
-            retest_table_fill(bid, '01')
+            retest_table_fill(bid, '01', "", True)
             #
             assert False, (f"Bug#01. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
@@ -123,6 +121,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
+        retest_table_fill(bid, '00', "", True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -142,10 +141,10 @@ class TestManualBugs:
         4. Click the  button [numeric values] in column "Sell"/"Buy"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable')
+            "FCABugs", "Capital.com FCA",
+            "_02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -168,6 +167,7 @@ class TestManualBugs:
             most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             # проверяем, что ссылки для полей sell/buy существуют
             if len(most_traded_list) == len(most_traded_link_list):
+                retest_table_fill(bid, '02', "", True)
                 assert False, (
                     "Bug#02. Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
                     "Transition to the trading platform / authorized.\n"
@@ -177,6 +177,12 @@ class TestManualBugs:
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+        retest_table_fill(bid, '00', "", True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -197,10 +203,11 @@ class TestManualBugs:
         5. Scroll to Block "Trading Condition"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+            "FCABugs", "Capital.com FCA",
+            "_04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"',
+            True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -232,18 +239,26 @@ class TestManualBugs:
                         markets_page.MARKETS_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
-                key_stat_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS,
+                key_stat_list = markets_page.elements_are_present(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS,
                                                                   1)
-                assert len(key_stat_list) == 2, ('Bug#04. '
-                                                 'Expected result: Block "Key Stats" is displayed to the right of '
-                                                 'the Block "Trading Condition"'
-                                                 '\n'
-                                                 'Actual result: Block "Key Stats" is not displayed ')
+                if not len(key_stat_list) == 2:
+                    retest_table_fill(bid, '04', "", True)
+                    assert False, ('Bug#04. '
+                                   'Expected result: Block "Key Stats" is displayed to the right of '
+                                   'the Block "Trading Condition"'
+                                   '\n'
+                                   'Actual result: Block "Key Stats" is not displayed ')
                 d.back()
             pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+        retest_table_fill(bid, '00', "", True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -265,10 +280,11 @@ class TestManualBugs:
         6. Click the [Professional] menu item
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".05", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+            "FCABugs", "Capital.com FCA",
+            "_05", 'Page "Discover the benefits of going Pro with capital.com" is opened',
+            True, True)
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -281,11 +297,20 @@ class TestManualBugs:
         d.back()
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
-        assert len(apply_btn) == 0, ('Bug#05. '
-                                     'Expected result: "Professional" page is opened'
-                                     '\n'
-                                     'Actual result: Page "Discover the benefits of going Pro with capital.com" '
-                                     'is opened ')
+
+        if not len(apply_btn) == 0:
+            retest_table_fill(bid, '05', "", True)
+            assert False, ('Bug#05. '
+                           'Expected result: "Professional" page is opened'
+                           '\n'
+                           'Actual result: Page "Discover the benefits of going Pro with capital.com" '
+                           'is opened ')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+        retest_table_fill(bid, '00', "", True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -309,11 +334,11 @@ class TestManualBugs:
         3. Click the button [Apply]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".06", 'The trading platform page is opened after clicking button [Apply] '
-                   'in the block "Discover the benefits')
+            "FCABugs", "Capital.com FCA",
+            "_06", 'The trading platform page is opened after clicking button [Apply] '
+                   'in the block "Discover the benefits', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -335,10 +360,17 @@ class TestManualBugs:
                 # case "Auth":
                 #     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
+            retest_table_fill(bid, '06', "", True)
             print(f"\n{datetime.now()}   Bug#06")
             assert False, ('Bug#06. Expected result: The Sign Up/Login form is opened'
                            '\n'
                            'Actual result: The trading platform page is opened')
+        allure.attach(
+            d.get_screenshot_as_png(),
+            name=f"Screenshot{datetime.now()}",
+            attachment_type=AttachmentType.PNG,
+        )
+        retest_table_fill(bid, '00', "", True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -364,7 +396,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".07", 'The trading platform page is not opened after clicking button [Apply] '
                    'in the block "Discover the benefits')
 
@@ -414,7 +446,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
                    'in the Header')
 
@@ -453,7 +485,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".09", 'Bread crumbs are not displayed in the "Professional" page')
 
         page_conditions = NewConditions(d, "")
@@ -490,7 +522,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"')
 
         page_conditions = NewConditions(d, "")
@@ -531,7 +563,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".11", 'Transition to the trading platform after clicking the [Apply here] link in '
                    'the "Apply now" Block')
 
@@ -581,7 +613,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".12", 'The button [Open an account] is not named according to block "We’re here to help"')
 
         page_conditions = NewConditions(d, "")
@@ -621,7 +653,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".13", 'Transition not to the top of the page in the page "Discover the benefits of '
                    'going Pro with "Capital.com" after clicking the [I am eligible] button')
 
@@ -662,7 +694,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
 
         page_conditions = NewConditions(d, "")
@@ -718,7 +750,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
                    'in the Dropdown [Languages]')
         #
@@ -743,7 +775,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".16", 'Format of the text content does not correspond to the Block size '
                    'in the Dropdown [Languages]')
         #
@@ -769,7 +801,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".17", 'After the transition from the website capital.com into the trading platform and '
                    'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
         #
@@ -816,7 +848,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
                    'the "Shares Trading" Block in the "Shares" page')
         #
@@ -875,7 +907,7 @@ class TestManualBugs:
                 """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
                    'block "Learn more about us"  in the page "Client Funds"')
 
@@ -921,7 +953,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".20", 'Displays interruptions between transitions to other menu sections in the Header '
                    'after hovering over other menu section')
         #
@@ -947,7 +979,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".21", 'In the Footer on click link [Cookie settings] is not open modal window ')
         #
         # page_conditions = NewConditions(d, "")
@@ -988,7 +1020,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".22", 'In the Header the button [Search] is missing ')
         #
         page_conditions = NewConditions(d, "")
@@ -1032,7 +1064,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".23", '[Play] element in the center of the video does not disappear after playing the video')
         #
 
@@ -1055,7 +1087,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".24", 'Authorized user is logged out after changing the license to FCA(EN language)')
         #
         page_conditions = Conditions(d, "")
@@ -1087,7 +1119,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".25", 'In the Footer the arrow button [Up] is missing')
         #
         page_conditions = NewConditions(d, "")
@@ -1130,7 +1162,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".26", 'The Facebook icon is not clickable in the Signup/Login form ')
         #
         page_conditions = NewConditions(d, "")
@@ -1179,7 +1211,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".27", 'The modal window translated into the browser language, not in English,'
                    ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
         #
@@ -1221,7 +1253,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".28", 'Block name "Apply now" is missing in the menu item "Professional" '
                    'in the menu section "Ways to trade"')
 
@@ -1268,7 +1300,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".29", 'Button [Try now] is missing in the block " Why choose Capital.com?')
 
         page_conditions = NewConditions(d, "")
@@ -1306,7 +1338,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".30", 'Button [Try now] is missing in the block " Why choose Capital.com?')
 
         page_conditions = NewConditions(d, "")
@@ -1349,7 +1381,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
                    '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll to the '
                    ' corresponding block on the page')
@@ -1406,7 +1438,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".33", '429 status code (Too many requests) is displayed on the main page after sending '
                    'several identical requests')
 
@@ -1457,7 +1489,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
         #
         page_conditions = NewConditions(d, "")
@@ -1514,7 +1546,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
                    'with the filter applied is not performed after selecting any item from '
                    'the dropdown menu "Most traded"')
@@ -1580,7 +1612,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
         #
         page_conditions = NewConditions(d, "")
@@ -1649,7 +1681,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]')
         #
         page_conditions = NewConditions(d, "")
@@ -1699,7 +1731,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".44", 'Account registration was successful and the transition to the trading platform after '
                    'clicking the [Continue] button in the Signup form')
         #
@@ -1748,7 +1780,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
                    'with Capital.com" in menu item [Forex] in menu section [Markets]')
 
@@ -1787,7 +1819,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
                    'with Capital.com" in menu item [Forex] in menu section [Markets]')
 
@@ -1824,7 +1856,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
 
         page_conditions = NewConditions(d, "")
@@ -1908,7 +1940,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
                    '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
 
@@ -1946,7 +1978,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
                    ' decisions" on the main page after clicking button [Try demo ]')
 
@@ -1994,7 +2026,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
                    '1X with.." on the "1X" page')
         #
@@ -2040,7 +2072,7 @@ class TestManualBugs:
         """
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".58", 'Anchor is not attached to the "What is margin trading?" title on '
                    'the "What is a margin?" page')
 
@@ -2088,7 +2120,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".59", 'User is registered when two required characters are not entered in '
                    'the "password" field in the Signup form '
                    'clicking the [Continue] button in the Signup form')
@@ -2136,7 +2168,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".60", 'Validation message "Email or password is invalid" is displayed')
         #
         page_conditions = NewConditions(d, "")
@@ -2182,7 +2214,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form')
         #
         page_conditions = NewConditions(d, "")
@@ -2229,7 +2261,7 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
+            "FCABugs", "Capital.com FCA",
             ".62", "There is no transition to the corresponding page with a trading instrument when "
                    "clicking on any of the trading instruments in the dropdown in the [Search]")
 

@@ -2,25 +2,34 @@ from datetime import datetime
 from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 
 
-def check_gs_table(bid, bug_n):
-    gs = GoogleSheet()
+def check_gs_table(bid, bug_n, manual=False):
+    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    gs = GoogleSheet(spreadsheet_id)
     print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
-
     gs.wait_while_bugs_report_busy()
     gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
 
     # старт проверки
     bug_present = False
-    gs = GoogleSheet()
     print(f'\n gs = GoogleSheet() - создаем объект gs # 3: {gs}')
+    # для таблицы мануальных багов
+    if manual:
+        start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        gs.update_range_values('V1', [start_update_date])
 
     values = gs.get_all_row_values()
     for index, row in enumerate(values):
         if row:
             if bid in row[0]:
                 if bug_n in row[-6]:
-                    pass
+                    if manual:      # для таблицы мануальных багов
+                        if bug_n == '00':
+                            gs.update_range_values(f'V{5 + index}', [['passed']])
+                        else:
+                            gs.update_range_values(f'V{5 + index}', [['failed']])
+                    else:
+                        pass
                 else:
                     bug_num = [["'" + bug_n]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
@@ -51,8 +60,9 @@ def new_row_data(bid, bug_num, link):
     return new_bug_data_1, new_bug_data_2
 
 
-def add_new_row_with_format():
-    gs = GoogleSheet()
+def add_new_row_with_format(manual=False):
+    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    gs = GoogleSheet(spreadsheet_id)
     print(f'\n gs = GoogleSheet() - создаем объект gs # 4: {gs}')
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
@@ -65,16 +75,24 @@ def add_new_row_with_format():
     gs.update_range_values('U5', [start_update_date])
 
 
-def fill_gs_table(value_1, value_2, bug_num):
-    gs = GoogleSheet()
+def fill_gs_table(value_1, value_2, bug_num, manual=False):
+    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    gs = GoogleSheet(spreadsheet_id)
     print(f'\n gs = GoogleSheet() - создаем объект gs # 5: {gs}')
     gs.update_range_values('A5', value_1)
     gs.update_range_values('I5', value_2)
     gs.update_range_values('P5', [[bug_num]])
-    gs.update_range_values('V5', [["failed"]])
+    if manual:
+        if manual:  # для таблицы мануальных багов
+            if bug_num == "'00":
+                gs.update_range_values('V5', [['passed']])
+            else:
+                gs.update_range_values('V5', [['failed']])
+        finish_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        gs.update_range_values('V2', [finish_date])
 
 
-def retest_table_fill(bid="", bug_n="", link=""):
+def retest_table_fill(bid="", bug_n="", link="", manual=False):
     # ========= не удалять ======================
     # bid = "Bid:11.02.02.01_07-en.de.Auth"
     # bug_n = "05"
@@ -82,14 +100,15 @@ def retest_table_fill(bid="", bug_n="", link=""):
     # ===========================================
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
-    gs = GoogleSheet()
+    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    gs = GoogleSheet(spreadsheet_id)
     print(f'\n gs = GoogleSheet() - создаем объект gs # 1: {gs}')
 
     if bid != "":
         bug_num = "'" + bug_n
 
         # проверка таблицы багов на наличии в ней текущего
-        bug_present = check_gs_table(bid, bug_n)
+        bug_present = check_gs_table(bid, bug_n, manual)
         if not bug_present:
             # формирование данных для заполнения
             new_bug_data_1, new_bug_data_2 = new_row_data(bid, bug_num, link)
@@ -99,9 +118,9 @@ def retest_table_fill(bid="", bug_n="", link=""):
             gs.update_range_values('B1', [gs_out])
 
             # добавление новой строки с копипастом формул и форматов
-            add_new_row_with_format()
+            add_new_row_with_format(manual)
             # заполнение таблицы
-            fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num)
+            fill_gs_table(new_bug_data_1, new_bug_data_2, bug_num, manual)
 
             gs_out = ['Bugs Report']
             gs.update_range_values('B1', [gs_out])

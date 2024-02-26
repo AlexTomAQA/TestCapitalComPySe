@@ -45,7 +45,8 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     dynamic_feature = f"Language: {cur_language}"
     dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
     if manual:
-        bug_id = f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}-M{"N" if new_layout else "O"}"
+        bug_id = (f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}"
+                  f"-M{"N" if new_layout else "O"}")
     else:
         bug_id = f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}"
 
