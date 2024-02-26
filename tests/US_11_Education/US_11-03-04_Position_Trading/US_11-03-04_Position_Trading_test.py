@@ -53,6 +53,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -85,6 +86,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -117,6 +119,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_03", "Testing button [Trade] in Most traded block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         if cur_country == 'gb':
             pytest.skip("This test is not supported on UK location")
@@ -153,6 +156,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_04", "Test button [Download on the App Store] in Block \"Sign up and trade smart today!\"")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -179,6 +183,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_05", "Test button [Get it on Google Play] in Block \"Sign up and trade smart today!\"")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -205,6 +210,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_06", "Testing button [Explore Web Platform] in Block \"Sign up and trade smart today!\"")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -237,6 +243,7 @@ class TestPositionTrading:
             "11.03.04", "Education > Menu item [Position Trading]",
             ".00_07", "Testing button [1. Create & verify your account] in Block 'Steps trading'")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         menu_link = self.us_link.get_us_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
