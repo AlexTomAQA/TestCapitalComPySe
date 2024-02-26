@@ -26,6 +26,7 @@ class TestBasicsOfTrading:
             "11.01.02", "Education > Menu Item [The basics of trading]",
             ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
