@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 720}
+
+2024-02-26 05:03:27.483992   worker_id = master
+
+2024-02-26 05:03:27.484014   0. Allure grouping v4
+
+
+2024-02-26 05:03:27.484277   START PRECONDITIONS =>
+
+
+2024-02-26 05:03:27.484298   {'width': 1280, 'height': 720}
+
+2024-02-26 05:03:27.489130   Set windows position at (0, 0) =>
+
+2024-02-26 05:03:27.593328   Set resolution 1280 * 720 =>
+
+2024-02-26 05:03:27.708849   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-26 05:03:28.768609   Капчи нет. Идем дальше
+
+2024-02-26 05:03:28.768702   Prev. Role: Auth
+
+2024-02-26 05:03:28.768716   Current role: Auth
+
+2024-02-26 05:03:29.819528   Капчи нет. Идем дальше
+
+2024-02-26 05:03:29.819616   Prev language: it
+
+2024-02-26 05:03:29.819629   => Current language: it
+
+2024-02-26 05:03:30.839763   Капчи нет. Идем дальше
+
+2024-02-26 05:03:30.839862   Prev country: ae
+2024-02-26 05:03:30.839877   => Current country: ae
+
+2024-02-26 05:03:30.839889   => THE END PRECONDITIONS
+
+2024-02-26 05:03:30.840085   1. Arrange_v4
+2024-02-26 05:03:30.852081   Current page URL = https://capital.com/trading/platform/
+2024-02-26 05:03:36.381724   => Loaded page https://capital.com/it/negozia-oro
+2024-02-26 05:03:36.434010   MOST_TRADED is present? =>
+2024-02-26 05:03:36.479447   => MOST_TRADED widget is present on this page
+2024-02-26 05:03:36.479485   => Found 5 elements in block MOST_TRADED
+2024-02-26 05:03:36.479496   Most traded widget is scroll =>
+2024-02-26 05:03:36.519619   => Most traded widget is scrolled into screen center
+
+2024-02-26 05:03:36.519692   Random indexes = [2]
+
+2024-02-26 05:03:36.519713   Testing Most traded 1 random element with 2 index
+
+2024-02-26 05:03:36.519903   2. Act_v4
+2024-02-26 05:03:36.520026   Start Checking that form [Sign up] popped up on the page =>
+2024-02-26 05:03:38.100827   '[Sign up]' form was not popped up
+2024-02-26 05:03:38.145817   Selected Trade button on Most traded widget is scroll =>
+2024-02-26 05:03:38.160348   Selected Trade button click for 'US Natural Gas Spot' trading instrument =>
+2024-02-26 05:03:40.872071   => Selected Trade button clicked!
+
+2024-02-26 05:03:40.872344   3. Assert_v4
+2024-02-26 05:03:40.872454   Checking that the trading platform page has opened (v4) =>
+2024-02-26 05:03:40.936440   => Current page title: Trading Platform | Capital.com
+2024-02-26 05:03:40.936648   Checking that the Trading platform LOGO is present on the page =>
+2024-02-26 05:03:46.361942   Checking that the Trading platform opened in LIVE mode =>
+
+Bug: Bid:11.02.03.01_06-it.ae.Auth
+
+2024-02-26 05:04:02.746069   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1e983a05c0>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1e983a05c0>
+
+2024-02-26 05:04:03.055736   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-26 05:04:03.206711   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1e983a05c0>
+
+2024-02-26 05:04:03.590284   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-26 05:04:03.748348   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-26 05:04:03.748411   Баг Bid:11.02.03.01_06-it.ae.Auth уже существует, но у него изменился тип с Bug # 17. Trading platform for '{trade_instrument}' trade instrument was opened but no one trade instrument on the Charts List на 12
+
+2024-02-26 05:04:03.748558   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-26 05:04:03.910648   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-26 05:04:03.912141   Баг Bid:11.02.03.01_06-it.ae.Auth-12 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
