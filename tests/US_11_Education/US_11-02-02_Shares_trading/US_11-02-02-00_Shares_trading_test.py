@@ -267,7 +267,6 @@ class TestSharesTrading:
         if cur_language in ["ar", "el", "hu", "cn", "nl"]:
             Common().skip_test_for_language(cur_language)
 
-
         if count == 0:
             pytest.skip("The list of Share Trading links is already created")
 
