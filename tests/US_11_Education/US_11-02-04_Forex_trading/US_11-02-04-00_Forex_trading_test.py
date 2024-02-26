@@ -228,6 +228,7 @@ class TestForexTradingMainPage:
             "11.02.04", "Education > Menu item [Forex trading]",
             ".00_99", "Pretest for US_11.02.04.01")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "it", "cn", "zh"])
