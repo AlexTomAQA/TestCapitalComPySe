@@ -3,17 +3,17 @@
 @Time    : 2024/02/22 23:44 GMT+3
 @Author  : Dmitry Mudrik
 """
-import pytest
 import allure
-
-from tests.build_dynamic_arg import build_dynamic_arg_v4
-from pages.common import Common
-from pages.Menu.menu import MenuSection
-from tests.ReTestsManual.pages.conditions_new import NewConditions
-from src.src import CapitalComPageSrc
+import pytest
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.MainBannerButtonOpenAnAccount import MainBannerOpenAnAccount
-from pages.Elements.BlockStepTrading import BlockStepTrading
 from pages.Elements.MainBannerTryDemoAccountButton import MainBannerTryDemoAccount
+from pages.Menu.menu import MenuSection
+from pages.common import Common
+from src.src import CapitalComPageSrc
+from tests.ReTestsManual.pages.conditions_new import NewConditions
+from tests.build_dynamic_arg import build_dynamic_arg_v4
+
 
 @pytest.mark.us_11_00_04
 class TestTradingStrategies:
