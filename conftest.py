@@ -84,7 +84,7 @@ def cur_role(request):
     """Fixture"""
     # проверка аргументов командной строки
     cur_role = request.param
-    print(f"\n\n\nCurrent test role - {cur_role}")
+    print(f"Current test role - {cur_role}\n")
     return cur_role
 
 
