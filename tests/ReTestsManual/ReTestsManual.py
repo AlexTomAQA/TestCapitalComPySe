@@ -109,7 +109,7 @@ class TestManualBugs:
         if len(most_trade_instrument_list) > 0:
             # проверка бага для ретеста
             print(f'\nBug: {bid}')
-            retest_table_fill(bid, '01', "", True)
+            retest_table_fill(d, bid, '01', "", True, True)
             #
             assert False, (f"Bug#01. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
@@ -121,7 +121,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
-        retest_table_fill(bid, '00', "", True)
+        retest_table_fill(d, bid, '00', "", True, True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -167,7 +167,7 @@ class TestManualBugs:
             most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             # проверяем, что ссылки для полей sell/buy существуют
             if len(most_traded_list) == len(most_traded_link_list):
-                retest_table_fill(bid, '02', "", True)
+                retest_table_fill(d, bid, '02', "", True, True)
                 assert False, (
                     "Bug#02. Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
                     "Transition to the trading platform / authorized.\n"
@@ -182,7 +182,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
-        retest_table_fill(bid, '00', "", True)
+        retest_table_fill(d, bid, '00', "", True, True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -241,7 +241,7 @@ class TestManualBugs:
 
                 key_stat_list = markets_page.elements_are_present(*markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS)
                 if not len(key_stat_list) == 2:
-                    retest_table_fill(bid, '04', "", True)
+                    retest_table_fill(d, bid, '04', "", True, True)
                     assert False, ('Bug#04. '
                                    'Expected result: Block "Key Stats" is displayed to the right of '
                                    'the Block "Trading Condition"'
@@ -257,7 +257,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
-        retest_table_fill(bid, '00', "", True)
+        retest_table_fill(d, bid, '00', "", True, True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -298,7 +298,7 @@ class TestManualBugs:
         apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
 
         if not len(apply_btn) == 0:
-            retest_table_fill(bid, '05', "", True)
+            retest_table_fill(d, bid, '05', "", True, True)
             assert False, ('Bug#05. '
                            'Expected result: "Professional" page is opened'
                            '\n'
@@ -309,7 +309,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
-        retest_table_fill(bid, '00', "", True)
+        retest_table_fill(d, bid, '00', "", True, True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -359,7 +359,7 @@ class TestManualBugs:
                 # case "Auth":
                 #     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
-            retest_table_fill(bid, '06', "", True)
+            retest_table_fill(d, bid, '06', "", True, True)
             print(f"\n{datetime.now()}   Bug#06")
             assert False, ('Bug#06. Expected result: The Sign Up/Login form is opened'
                            '\n'
@@ -369,7 +369,7 @@ class TestManualBugs:
             name=f"Screenshot{datetime.now()}",
             attachment_type=AttachmentType.PNG,
         )
-        retest_table_fill(bid, '00', "", True)
+        retest_table_fill(d, bid, '00', "", True, True)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])

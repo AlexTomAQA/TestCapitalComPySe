@@ -69,7 +69,6 @@ for item in input_list:
         role_list = (match.group(1),)
         break
 else:
-    print(f"В командной строке: Значение '{search_value}' не найдено.")
     role_list = (
         "Auth",
         "NoAuth",  # "Reg/NoAuth"
