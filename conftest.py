@@ -88,7 +88,7 @@ def cur_role(request):
     params=[
         # "",  # "en" - 21 us
         # "es",  # 20 us
-        "de",  # 15 us
+        # "de",  # 15 us
         # "it",  # 15 us
         # "hu",  # 5 us Magyar
         # "ru",  # 15 us
@@ -99,7 +99,7 @@ def cur_role(request):
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        # "el",  # 5 us
+        "el",  # 5 us
     ],
 )
 def cur_language(request):
