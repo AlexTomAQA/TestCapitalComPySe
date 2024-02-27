@@ -13,6 +13,7 @@ from selenium.webdriver.common.by import By
 from pages.Elements.AssertClass import AssertClass
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSignupFormLocators
 from pages.conditions import Conditions
+from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 from tests.ReTestsManual.pages.menu.menu import MainMenu
 from tests.ReTestsManual.pages.menu_section.menu_section import MenuSections
@@ -24,7 +25,16 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 from src.src import CapitalComPageSrc
 
 
-# @pytest.mark.Bugs_26012024_CCW_WEB
+def if_retest_passed(d, bid):
+    allure.attach(
+        d.get_screenshot_as_png(),
+        name=f"Screenshot{datetime.now()}",
+        attachment_type=AttachmentType.PNG,
+    )
+    retest_table_fill(d, bid, '00', "", True, True)
+
+
+# @pytest.mark.FCABugs
 class TestManualBugs:
     page_conditions = None
 
@@ -36,7 +46,7 @@ class TestManualBugs:
     @pytest.mark.test_01
     # @pytest.mark.skip(reason="Skipped for debugging")
     def test_01(
-            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country, cur_os):
         """
         Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"" page after clicking
         the ""USD/CHF"" trading instrument in the  ""Forex Markets"" Widget"
@@ -47,11 +57,11 @@ class TestManualBugs:
             5. Scroll down to ""USD/CHF"" Block"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
-                   " page after clicking")
+            "FCABugs", "Capital.com FCA",
+            "_01", "Content of the Block ""USD/CHF"" is not loaded in the ""US Dollar / Swiss Franc"""
+                   " page after clicking", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -106,16 +116,17 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
         if len(most_trade_instrument_list) > 0:
+            # проверка бага для ретеста
+            print(f'\nBug: {bid}')
+            retest_table_fill(d, bid, '01', "", True, True)
+            #
             assert False, (f"Bug#01. Expected Result: Content of the Block is displayed. \n"
                            f"Actual Result: Content of the Block is not displayed. \n"
                            f"error_404: {error_trade_instrument_list}. \n"
                            f"trade instrument: {len(most_trade_instrument_list)} {most_trade_instrument_list}\n"
                            f"qty_pages: {qty_pages}")
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -135,10 +146,10 @@ class TestManualBugs:
         4. Click the  button [numeric values] in column "Sell"/"Buy"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable')
+            "FCABugs", "Capital.com FCA",
+            "_02", 'Sell"/"Buy" in the Widget "Trading instrument is not clickable', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -161,6 +172,7 @@ class TestManualBugs:
             most_traded_link_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_LINK_LIST)
             # проверяем, что ссылки для полей sell/buy существуют
             if len(most_traded_list) == len(most_traded_link_list):
+                retest_table_fill(d, bid, '02', "", True, True)
                 assert False, (
                     "Bug#02. Expected Result: Sign up form is opened/ unregistered Login form is opened/ unauthorized "
                     "Transition to the trading platform / authorized.\n"
@@ -170,6 +182,8 @@ class TestManualBugs:
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
+
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -190,10 +204,11 @@ class TestManualBugs:
         5. Scroll to Block "Trading Condition"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+            "FCABugs", "Capital.com FCA",
+            "_04", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"',
+            True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -225,18 +240,21 @@ class TestManualBugs:
                         markets_page.MARKETS_MOST_TRADE_LINK_LIST)
                     markets_page.element_is_clickable(most_traded_list[j]).click()
 
-                key_stat_list = markets_page.elements_are_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS,
-                                                                  1)
-                assert len(key_stat_list) == 2, ('Bug#04. '
-                                                 'Expected result: Block "Key Stats" is displayed to the right of '
-                                                 'the Block "Trading Condition"'
-                                                 '\n'
-                                                 'Actual result: Block "Key Stats" is not displayed ')
+                key_stat_list = markets_page.elements_are_present(*markets_page.MARKETS_MOST_TRADE_INSTRUMENT_KEY_STATS)
+                if not len(key_stat_list) == 2:
+                    retest_table_fill(d, bid, '04', "", True, True)
+                    assert False, ('Bug#04. '
+                                   'Expected result: Block "Key Stats" is displayed to the right of '
+                                   'the Block "Trading Condition"'
+                                   '\n'
+                                   'Actual result: Block "Key Stats" is not displayed ')
                 d.back()
             pagination = markets_page.elements_are_located(markets_page.MARKETS_PAGINATION_LIST)
             if i != qty_pages - 1:
                 pagination[-1].click()
             time.sleep(1)
+
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -258,10 +276,11 @@ class TestManualBugs:
         6. Click the [Professional] menu item
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".05", 'Block "Key Stats" is not displayed to the right of the Block "Trading Condition"')
+            "FCABugs", "Capital.com FCA",
+            "_05", 'Page "Discover the benefits of going Pro with capital.com" is opened',
+            True, True)
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -274,16 +293,20 @@ class TestManualBugs:
         d.back()
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
         apply_btn = menu_section.elements_are_located(menu_section.WAYSTOTRADE_PROFESSIONAL_APPLY_BTN, 1)
-        assert len(apply_btn) == 0, ('Bug#05. '
-                                     'Expected result: "Professional" page is opened'
-                                     '\n'
-                                     'Actual result: Page "Discover the benefits of going Pro with capital.com" '
-                                     'is opened ')
+
+        if not len(apply_btn) == 0:
+            retest_table_fill(d, bid, '05', "", True, True)
+            assert False, ('Bug#05. '
+                           'Expected result: "Professional" page is opened'
+                           '\n'
+                           'Actual result: Page "Discover the benefits of going Pro with capital.com" '
+                           'is opened ')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoAuth", "NoReg"])
-    @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
+    @allure.step('Bug#06:  The Sign Up/Login form is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_06
@@ -291,7 +314,7 @@ class TestManualBugs:
     def test_06(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        The trading platform page is opened after clicking button [Apply] in the block "Discover the benefits..."
+        The Sign Up/Login form is not opened after clicking button [Apply] in the block "Discover the benefits..."
         on the "Professional" page
         1. Hover over the [Ways to trade] menu section
         2. Click the [Professional]menu item
@@ -302,11 +325,11 @@ class TestManualBugs:
         3. Click the button [Apply]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".06", 'The trading platform page is opened after clicking button [Apply] '
-                   'in the block "Discover the benefits')
+            "FCABugs", "Capital.com FCA",
+            "_06", 'The Sign Up/Login form is not opened after clicking button [Apply] '
+                   'in the block "Discover the benefits', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -328,10 +351,12 @@ class TestManualBugs:
                 # case "Auth":
                 #     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
+            retest_table_fill(d, bid, '06', "", True, True)
             print(f"\n{datetime.now()}   Bug#06")
             assert False, ('Bug#06. Expected result: The Sign Up/Login form is opened'
                            '\n'
                            'Actual result: The trading platform page is opened')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -355,11 +380,11 @@ class TestManualBugs:
         3. Click the button [Apply]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".07", 'The trading platform page is not opened after clicking button [Apply] '
-                   'in the block "Discover the benefits')
+            "FCABugs", "Capital.com FCA",
+            "_07", 'The trading platform page is not opened after clicking button [Apply] '
+                   'in the block "Discover the benefits', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -382,9 +407,11 @@ class TestManualBugs:
                     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
             print(f"\n{datetime.now()}   Bug#07")
+            retest_table_fill(d, bid, '07', "", True, True)
             assert False, ('Bug#07. Expected result: The trading platform page is opened'
                            '\n'
                            'Actual result: The trading platform page is not opened')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -405,11 +432,11 @@ class TestManualBugs:
         1. Click Button [My account]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
-                   'in the Header')
+            "FCABugs", "Capital.com FCA",
+            "_08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
+                   'in the Header', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -423,12 +450,14 @@ class TestManualBugs:
         account_btn = menu.element_is_visible(menu.MENU_ACCOUNT)
         account_btn.click()
         account_btn_link = d.current_url
-
-        assert account_btn_link != "https://capital.com/trading/platform", \
-            ('Bug#08. '
-             'Expected result: Sidebar "My account" is displayed'
-             '\n'
-             'Actual result: The trading platform page is opened')
+        if account_btn_link == "https://capital.com/trading/platform":
+            retest_table_fill(d, bid, '08', "", True, True)
+            assert False, \
+                ('Bug#08. '
+                 'Expected result: Sidebar "My account" is displayed'
+                 '\n'
+                 'Actual result: The trading platform page is opened')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -444,10 +473,10 @@ class TestManualBugs:
         1. Hover over the [Ways to trade] menu section
         2. Click the [Professional]menu item
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".09", 'Bread crumbs are not displayed in the "Professional" page')
+            "FCABugs", "Capital.com FCA",
+            "_09", 'Bread crumbs are not displayed in the "Professional" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -458,9 +487,11 @@ class TestManualBugs:
         sub_menu = MenuSections(d, link)
         bred_crumbs = menu.elements_are_located(sub_menu.BREADCRUMBS)
         if not bred_crumbs:
+            retest_table_fill(d, bid, '09', "", True, True)
             assert False, ('Bug#09. Expected Result: Bread crumbs are displayed'
                            '\n'
                            'Actual Result: Bread crumbs are  not displayed')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -481,10 +512,10 @@ class TestManualBugs:
         5. Click the link "Apply here" in the "No Capital.com account yet?"
 
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"')
+            "FCABugs", "Capital.com FCA",
+            "_10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -500,9 +531,12 @@ class TestManualBugs:
 
         sub_menu.element_is_clickable(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN).click()
         link2 = d.current_url
-        assert link2 != link1, ('Bug#10. Expected Result: Link "Apply here" is clickable'
-                                '\n'
-                                'Actual Result: Link "Apply here" is not clickable')
+        if link2 == link1:
+            retest_table_fill(d, bid, '10', "", True, True)
+            assert False, ('Bug#10. Expected Result: Link "Apply here" is clickable'
+                           '\n'
+                           'Actual Result: Link "Apply here" is not clickable')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -522,11 +556,11 @@ class TestManualBugs:
         4. Scroll down to "Apply now" Block
         5. Click the [Apply here] link next to the text "Existing client?"
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".11", 'Transition to the trading platform after clicking the [Apply here] link in '
-                   'the "Apply now" Block')
+            "FCABugs", "Capital.com FCA",
+            "_11", 'Transition to the trading platform after clicking the [Apply here] link in '
+                   'the "Apply now" Block', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -553,9 +587,11 @@ class TestManualBugs:
                     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
             print(f"\n{datetime.now()}   Bug#11")
+            retest_table_fill(d, bid, '11', "", True, True)
             assert False, ('Bug#11. Expected result: Login form is opened'
                            '\n'
                            'Actual result: Transition to the trading platform')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -572,10 +608,10 @@ class TestManualBugs:
         1. Click the "Trading platforms" menu section
         2. Scroll down to block "We’re here to help"
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".12", 'The button [Open an account] is not named according to block "We’re here to help"')
+            "FCABugs", "Capital.com FCA",
+            "_12", 'The button [Open an account] is not named according to block "We’re here to help"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -588,11 +624,16 @@ class TestManualBugs:
         support_button = sub_menu.element_is_present_and_visible(sub_menu.TRADING_PLATFORM_SUPPORT_BTN).text
         print(f"\n{datetime.now()}   Bug#12. The button [Open an account] is not named according to block "
               f"'We’re here to help'")
-        assert support_button != "Open an account", ('Bug#12. Expected result: The button [Open an account] is named '
-                                                     'according to block "We’re here to help"'
-                                                     '\n'
-                                                     'Actual result: The button [Open an account] is not named '
-                                                     'according to block "We’re here to help"')
+        if support_button == "Open an account":
+            retest_table_fill(d, bid, '12', "", True, True)
+            assert support_button != "Open an account", (
+                'Bug#12. Expected result: The button [Open an account] is named '
+                'according to block "We’re here to help"'
+                '\n'
+                'Actual result: The button [Open an account] is not named '
+                'according to block "We’re here to help"')
+
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -612,11 +653,11 @@ class TestManualBugs:
         2. Click the [Professional] menu item
         3. Click the [I am eligible] button
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".13", 'Transition not to the top of the page in the page "Discover the benefits of '
-                   'going Pro with "Capital.com" after clicking the [I am eligible] button')
+            "FCABugs", "Capital.com FCA",
+            "_13", 'Transition not to the top of the page in the page "Discover the benefits of '
+                   'going Pro with "Capital.com" after clicking the [I am eligible] button', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -628,15 +669,12 @@ class TestManualBugs:
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_ELIGIBLE_BTN).click()
 
         scroll_y = d.execute_script("return window.scrollY;")
-
-        assert scroll_y == 0, ('Bug#13. Expected result: Transition to the top of the page'
-                               '\n'
-                               'Actual result: Transition not to the top of the page ')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if scroll_y != 0:
+            retest_table_fill(d, bid, '13', "", True, True)
+            assert False, ('Bug#13. Expected result: Transition to the top of the page'
+                           '\n'
+                           'Actual result: Transition not to the top of the page ')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -653,10 +691,10 @@ class TestManualBugs:
         2. Click the [Margin Calls] menu tittle
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
+            "FCABugs", "Capital.com FCA",
+            "_14", 'Bread crumbs are not displayed in the "Margin-calls" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -685,11 +723,13 @@ class TestManualBugs:
                     link_list.append(link)
                     print("No breadcrumbs:", link)
                 time.sleep(1)
-
-        assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
-                       '\n'
-                       'Actual Result: Bread crumbs are  not displayed \n'
-                       f'No breadcrumbs: {len(link_list)} {link_list}')
+        if len(link_list) > 0:
+            retest_table_fill(d, bid, '14', "", True, True)
+            assert False, ('Bug#14. Expected Result: Bread crumbs are displayed'
+                           '\n'
+                           'Actual Result: Bread crumbs are  not displayed \n'
+                           f'No breadcrumbs: {len(link_list)} {link_list}')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -711,9 +751,9 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
-                   'in the Dropdown [Languages]')
+            "FCABugs", "Capital.com FCA",
+            "_15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
+                   'in the Dropdown [Languages]', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -736,9 +776,9 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".16", 'Format of the text content does not correspond to the Block size '
-                   'in the Dropdown [Languages]')
+            "FCABugs", "Capital.com FCA",
+            "_16", 'Format of the text content does not correspond to the Block size '
+                   'in the Dropdown [Languages]', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -760,11 +800,11 @@ class TestManualBugs:
         3. Click the Capital.com [Logo]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".17", 'After the transition from the website capital.com into the trading platform and '
-                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
+            "FCABugs", "Capital.com FCA",
+            "_17", 'After the transition from the website capital.com into the trading platform and '
+                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -772,17 +812,14 @@ class TestManualBugs:
 
         menu = MainMenu(d, link)
         page_conditions.to_do_authorisation(d, link, cur_login, cur_password, cur_role)
-
-        assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), ('Bug#17.'
-                                                                    'Expected result: [My account] button is displayed'
-                                                                    '\n'
-                                                                    'Actual result: [Log in] and [Sign up] buttons '
-                                                                    'are displayed')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if menu.element_is_visible(menu.HEADER_LOGIN_BTN):
+            retest_table_fill(d, bid, '17', "", True, True)
+            assert False, ('Bug#17.'
+                           'Expected result: [My account] button is displayed'
+                           '\n'
+                           'Actual result: [Log in] and [Sign up] buttons '
+                           'are displayed')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -807,11 +844,11 @@ class TestManualBugs:
         8. Click the [Try demo] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
-                   'the "Shares Trading" Block in the "Shares" page')
+            "FCABugs", "Capital.com FCA",
+            "_18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
+                   'the "Shares Trading" Block in the "Shares" page', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -828,6 +865,7 @@ class TestManualBugs:
                 time.sleep(1)
                 d.back()
         except TimeoutException:
+            retest_table_fill(d, bid, '18', "", True, True)
             assert False, (
                 'Bug#18. Expected result: Transition to the trading platform'
                 '\n'
@@ -835,15 +873,13 @@ class TestManualBugs:
 
         cur_url = d.current_url
         print(f"\n{datetime.now()}   Bug#11")
-        assert cur_url != "https://capital.com/trading/platform/", (
-            'Bug#18. Expected result: Transition to the trading platform'
-            '\n'
-            'Actual result: Sign up form is opened')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if cur_url == "https://capital.com/trading/platform/":
+            retest_table_fill(d, bid, '18', "", True, True)
+            assert False, (
+                'Bug#18. Expected result: Transition to the trading platform'
+                '\n'
+                'Actual result: Sign up form is opened')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -866,11 +902,11 @@ class TestManualBugs:
         5. Scroll to the block "Content"
         6. Click link [Learn more about us]
                 """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
-                   'block "Learn more about us"  in the page "Client Funds"')
+            "FCABugs", "Capital.com FCA",
+            "_19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
+                   'block "Learn more about us"  in the page "Client Funds"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -882,17 +918,14 @@ class TestManualBugs:
         content_list = sub_menu.elements_are_located(sub_menu.WHY_CAPITAL_CLIENT_FUNDS_CONTENTS_LIST)
         content_list[5].click()
         scroll_y = d.execute_script("return window.scrollY;")
-
-        assert scroll_y > 100, ('Bug#19. Expected result: The page "Client founds" block" is scrolled to '
-                                'the corresponding block "Learn more about us"'
-                                '\n'
-                                'Actual result: The page "Client founds" block" is not scrolled to'
-                                ' the corresponding block "Learn more about us"')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if scroll_y < 100:
+            retest_table_fill(d, bid, '19', "", True, True)
+            assert scroll_y > 100, ('Bug#19. Expected result: The page "Client founds" block" is scrolled to '
+                                    'the corresponding block "Learn more about us"'
+                                    '\n'
+                                    'Actual result: The page "Client founds" block" is not scrolled to'
+                                    ' the corresponding block "Learn more about us"')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -914,9 +947,9 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".20", 'Displays interruptions between transitions to other menu sections in the Header '
-                   'after hovering over other menu section')
+            "FCABugs", "Capital.com FCA",
+            "_20", 'Displays interruptions between transitions to other menu sections in the Header '
+                   'after hovering over other menu section', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -935,13 +968,11 @@ class TestManualBugs:
         2. Select language EN
         3. Scroll to the Footer
         4. Click link [Cookie settings]
-
         """
-
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".21", 'In the Footer on click link [Cookie settings] is not open modal window ')
+            "FCABugs", "Capital.com FCA",
+            "_21", 'In the Footer on click link [Cookie settings] is not open modal window ', True, True)
         #
         # page_conditions = NewConditions(d, "")
         # link = page_conditions.preconditions(
@@ -952,15 +983,12 @@ class TestManualBugs:
         try:
             menu.elements_are_visible(menu.COOKIES_FRAME)
         except TimeoutException:
+            retest_table_fill(d, bid, '21', "", True, True)
             assert False, (
                 'Bug#21. The modal window with cookie settings is opened '
                 '\n'
                 'Actual result: The modal window with cookie settings is not opened ')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -979,29 +1007,25 @@ class TestManualBugs:
         3. Scroll to the Header
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".22", 'In the Header the button [Search] is missing ')
+            "FCABugs", "Capital.com FCA",
+            "_22", 'In the Header the button [Search] is missing ', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
-
         menu = MainMenu(d)
-
         menu.element_is_present(*menu.HEADER_SEARCH)
 
-        assert menu.element_is_present(*menu.HEADER_SEARCH), (
-            'Bug#22. In the Header the button [Search] is existing  '
-            '\n'
-            'Actual result: In the Header the button [Search] is missing ')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if len(menu.elements_are_present(*menu.HEADER_SEARCH)) == 0:
+            retest_table_fill(d, bid, '19', "", True, True)
+            assert False, (
+                'Bug#22. In the Header the button [Search] is existing  '
+                '\n'
+                'Actual result: In the Header the button [Search] is missing ')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1025,8 +1049,8 @@ class TestManualBugs:
 
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".23", '[Play] element in the center of the video does not disappear after playing the video')
+            "FCABugs", "Capital.com FCA",
+            "_23", '[Play] element in the center of the video does not disappear after playing the video', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -1046,20 +1070,25 @@ class TestManualBugs:
         4. Change license to FCA
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".24", 'Authorized user is logged out after changing the license to FCA(EN language)')
+            "FCABugs", "Capital.com FCA",
+            "_24", 'Authorized user is logged out after changing the license to FCA(EN language)', True, True)
         #
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
         menu = MainMenu(d, link)
-        assert not menu.element_is_visible(menu.HEADER_LOGIN_BTN), (
-            'Bug#24. Expected result: User is autothorized'
-            '\n'
-            'Actual result: User is logged out')
+        try:
+            menu.element_is_visible(menu.HEADER_LOGIN_BTN)
+        except TimeoutException:
+            retest_table_fill(d, bid, '24', "", True, True)
+            assert False, (
+                'Bug#24. Expected result: User is autothorized'
+                '\n'
+                'Actual result: User is logged out')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1078,10 +1107,10 @@ class TestManualBugs:
         3. Scroll to the Footer
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".25", 'In the Footer the arrow button [Up] is missing')
+            "FCABugs", "Capital.com FCA",
+            "_25", 'In the Footer the arrow button [Up] is missing', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
@@ -1090,20 +1119,17 @@ class TestManualBugs:
 
         menu = MainMenu(d)
         menu.element_is_present_and_visible(menu.COOKIE_SETTING)
-
-        assert menu.element_is_present(*menu.SCROLL_TO_TOP), (
-            'Bug#25. In the Footer the arrow button [Up] is existing '
-            '\n'
-            'Actual result: In the Footer the arrow button [Up] is missing')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if len(menu.elements_are_present(*menu.SCROLL_TO_TOP)) == 0:
+            retest_table_fill(d, bid, '25', "", True, True)
+            assert menu.element_is_present(*menu.SCROLL_TO_TOP), (
+                'Bug#25. In the Footer the arrow button [Up] is existing '
+                '\n'
+                'Actual result: In the Footer the arrow button [Up] is missing')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @pytest.mark.parametrize('cur_role', ["NoAuth"])
     @allure.step('Bug#26:  The Facebook icon is not clickable in the Signup/Login form ')
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_26
@@ -1121,10 +1147,10 @@ class TestManualBugs:
         6. Click the Facebook icon
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".26", 'The Facebook icon is not clickable in the Signup/Login form ')
+            "FCABugs", "Capital.com FCA",
+            "_26", 'The Facebook icon is not clickable in the Signup/Login form ', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1145,11 +1171,13 @@ class TestManualBugs:
         menu.element_is_clickable(menu.HEADER_LOGIN_BTN).click()
         menu.element_is_clickable(NewLoginFormLocators().FACEBOOK_BTN).click()
         number_of_tabs = len(d.window_handles)
-
-        assert number_of_tabs > 1, (
-            'Bug#26. The  Facebook icon is clickable and opens a pop up with login via Facebook '
-            '\n'
-            'Actual result: The Facebook icon is not clickable')
+        if number_of_tabs < 2:
+            retest_table_fill(d, bid, '26', "", True, True)
+            assert number_of_tabs > 1, (
+                'Bug#26. The  Facebook icon is clickable and opens a pop up with login via Facebook '
+                '\n'
+                'Actual result: The Facebook icon is not clickable')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1170,11 +1198,11 @@ class TestManualBugs:
         3. Pay attention to the language of the modal window that opens
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".27", 'The modal window translated into the browser language, not in English,'
-                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+            "FCABugs", "Capital.com FCA",
+            "_27", 'The modal window translated into the browser language, not in English,'
+                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
@@ -1185,15 +1213,13 @@ class TestManualBugs:
         menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
         title = menu.element_is_visible(menu.COOKIE_SETTING_TITLE).text
 
-        assert title == 'Privacy Preference Center', (
-            'Bug#27. Тhe modal window translated into English'
-            '\n'
-            'Actual result: Тhe modal window translated into browser language')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if title != 'Privacy Preference Center':
+            retest_table_fill(d, bid, '27', "", True, True)
+            assert title == 'Privacy Preference Center', (
+                'Bug#27. Тhe modal window translated into English'
+                '\n'
+                'Actual result: Тhe modal window translated into browser language')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1212,11 +1238,11 @@ class TestManualBugs:
         2. Click menu item "Professional"
         3. Scroll down to the block "Apply now"
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".28", 'Block name "Apply now" is missing in the menu item "Professional" '
-                   'in the menu section "Ways to trade"')
+            "FCABugs", "Capital.com FCA",
+            "_28", 'Block name "Apply now" is missing in the menu item "Professional" '
+                   'in the menu section "Ways to trade"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1231,15 +1257,13 @@ class TestManualBugs:
 
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_PROFESSIONAL_NO_CAPITAL_YET_APPLY_BTN)
 
-        assert sub_menu.element_is_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE), \
-            ('Bug#28. Expected result:  Block name "Apply now" is missing '
-             '\n'
-             'Actual result: Block name "Apply now" is displayed ')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if len(sub_menu.elements_are_present(*sub_menu.WAYSTOTRADE_PROFESSIONAL_APPLY_NOW_TITLE)) == 0:
+            retest_table_fill(d, bid, '28', "", True, True)
+            assert False, \
+                ('Bug#28. Expected result:  Block name "Apply now" is displayed '
+                 '\n'
+                 'Actual result: Block name "Apply now" is missing ')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1259,10 +1283,10 @@ class TestManualBugs:
         2. Click menu item "Web platform"/"Mobile apps"
         3. Scroll page down to the block " Why choose Capital.com? Our numbers speak for themselves"
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".29", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+            "FCABugs", "Capital.com FCA",
+            "_29", 'Button [Try now] is missing in the block " Why choose Capital.com?', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1273,15 +1297,13 @@ class TestManualBugs:
         sub_menu = MenuSections(d, link)
         sub_menu.element_is_present_and_visible(sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BLOCK)
 
-        assert sub_menu.element_is_present(*sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN), \
-            ('Bug#29. Expected result:  Button [Try now] is displayed'
-             '\n'
-             'Actual result: Button [Try now] is missing')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if len(sub_menu.elements_are_present(*sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN)) == 0:
+            retest_table_fill(d, bid, '29', "", True, True)
+            assert sub_menu.element_is_present(*sub_menu.TRADING_PLATFORM_WEB_PLATFORM_WHY_CAPITAL_BTN), \
+                ('Bug#29. Expected result:  Button [Try now] is displayed'
+                 '\n'
+                 'Actual result: Button [Try now] is missing')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1297,10 +1319,10 @@ class TestManualBugs:
         There is no link to the FCA license in the footer of the site in the of the registration number 793714
         1. Scroll down to the footer
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".30", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+            "FCABugs", "Capital.com FCA",
+            "_30", 'Button [Try now] is missing in the block " Why choose Capital.com?', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1310,15 +1332,13 @@ class TestManualBugs:
         menu.element_is_present_and_visible(menu.FOOTER_RISK_WARNING_BLOCK)
         link = menu.elements_are_present(*menu.FOOTER_RISK_WARNING_BLOCK_LINK)
 
-        assert len(link) > 1, \
-            ('Bug#30. Expected result:  Button [Try now] is displayed'
-             '\n'
-             'Actual result: Button [Try now] is missing')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if len(link) < 2:
+            retest_table_fill(d, bid, '30', "", True, True)
+            assert len(link) > 1, \
+                ('Bug#30. Expected result:  Button [Try now] is displayed'
+                 '\n'
+                 'Actual result: Button [Try now] is missing')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1340,12 +1360,12 @@ class TestManualBugs:
         3. Click Link [Learn to trade]
 
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+            "FCABugs", "Capital.com FCA",
+            "_31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
                    '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll to the '
-                   ' corresponding block on the page')
+                   ' corresponding block on the page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1365,19 +1385,17 @@ class TestManualBugs:
         time.sleep(1)
         scroll_2 = d.execute_script("return window.scrollY;")
 
-        assert scroll_0 < scroll_1 < scroll_2, \
-            ('Bug#31. Expected result:  The page  scrolls to the block "Trading beginners" '
-             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
-             '(from block "Looking to sharpen your strategies?")'
-             '\n'
-             'Actual result: The page doesn`t scroll to the block "Trading beginners" '
-             '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
-             '(from block "Looking to sharpen your strategies?")')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if not scroll_0 < scroll_1 < scroll_2:
+            retest_table_fill(d, bid, '31', "", True, True)
+            assert False, \
+                ('Bug#31. Expected result:  The page  scrolls to the block "Trading beginners" '
+                 '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+                 '(from block "Looking to sharpen your strategies?")'
+                 '\n'
+                 'Actual result: The page doesn`t scroll to the block "Trading beginners" '
+                 '(from  block "Starting from the beginning?") or to the block "Experienced traders" '
+                 '(from block "Looking to sharpen your strategies?")')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1397,11 +1415,11 @@ class TestManualBugs:
         3. Click the [Sign up] button
         4. Click the "Back" button
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".33", '429 status code (Too many requests) is displayed on the main page after sending '
-                   'several identical requests')
+            "FCABugs", "Capital.com FCA",
+            "_33", '429 status code (Too many requests) is displayed on the main page after sending '
+                   'several identical requests', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1413,16 +1431,13 @@ class TestManualBugs:
                 sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_SIGNUP_BTN).click()
                 d.back()
         except TimeoutException:
+            retest_table_fill(d, bid, '33', "", True, True)
             assert True, \
                 ('Bug#33. Expected result:  Main page is opened'
                  '\n'
                  'Actual result: 429 status code (Too many requests)')
 
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1448,10 +1463,10 @@ class TestManualBugs:
         9. Click the [Apply] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+            "FCABugs", "Capital.com FCA",
+            "_34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1479,10 +1494,14 @@ class TestManualBugs:
         print(filter_list1)
         print(filter_list2)
 
-        assert filter_list2 != filter_list1, (
-            'Bug#34. Displayed a filtered list of cookies according to the selected checkboxes '
-            '\n'
-            'Actual result: Filtered list of cookies is displayed according to the checked and unchecked checkboxes')
+        if filter_list2 == filter_list1:
+            retest_table_fill(d, bid, '34', "", True, True)
+            assert False, (
+                'Bug#34. Displayed a filtered list of cookies according to the selected checkboxes '
+                '\n'
+                'Actual result: Filtered list of cookies is displayed according to the checked '
+                'and unchecked checkboxes')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1505,13 +1524,13 @@ class TestManualBugs:
         5. Click on any item from this dropdown menu
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
+            "FCABugs", "Capital.com FCA",
+            "_40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
                    'with the filter applied is not performed after selecting any item from '
-                   'the dropdown menu "Most traded"')
-        d.get("https://capital.com/en-gb")
+                   'the dropdown menu "Most traded"', True, True)
+        # d.get("https://capital.com/en-gb")
 
         with allure.step('step 1'):
             print(f"\n{datetime.now()}   1. Navigate to Capital.com")
@@ -1544,12 +1563,15 @@ class TestManualBugs:
         # проверка, что все элементы равны
         rez = all(x == t[0] for x in t)
 
-        assert not rez, (
-            'Bug#40. The "All markets" widget is displayed, and the arrangement of trading instruments with '
-            'the filter applied is performed'
-            '\n'
-            'Actual result: The "All markets" widget is displayed, but the arrangement of trading instruments with '
-            'the filter applied is not  performed')
+        if rez:
+            retest_table_fill(d, bid, '40', "", True, True)
+            assert False, (
+                'Bug#40. The "All markets" widget is displayed, and the arrangement of trading instruments with '
+                'the filter applied is performed'
+                '\n'
+                'Actual result: The "All markets" widget is displayed, but the arrangement of trading instruments with '
+                'the filter applied is not  performed')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1571,10 +1593,10 @@ class TestManualBugs:
         5. Tap the "Time steps" (1m/5m)
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+            "FCABugs", "Capital.com FCA",
+            "_4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1611,15 +1633,13 @@ class TestManualBugs:
         os.remove(chart_5m_image)
         os.remove(chart_1m_image)
 
-        assert size_chart1 > 10000 or size_chart5 > 10000, (
-            'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
-            '\n'
-            'Actual result: "Line Chart" is not displayed corresponding to the  selected "Time steps"')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if not size_chart1 > 10000 or size_chart5 > 10000:
+            retest_table_fill(d, bid, '4m', "", True, True)
+            assert False, (
+                'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
+                '\n'
+                'Actual result: "Line Chart" is not displayed corresponding to the  selected "Time steps"')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1640,10 +1660,10 @@ class TestManualBugs:
         5. Click button [Sign up]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]')
+            "FCABugs", "Capital.com FCA",
+            "_42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1661,15 +1681,16 @@ class TestManualBugs:
         assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), "Error message was Not displayed"
         menu.element_is_clickable(signup_form.SIGNUP_FORM_CLOSE_BUTTON).click()
         menu.element_is_clickable(menu.HEADER_SIGNUP_BTN).click()
-        assert not menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
-            'Bug#42. Validation error is cleared'
-            '\n'
-            'Actual result: Validation error is not cleared')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+
+        try:
+            menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR)
+            retest_table_fill(d, bid, '42', "", True, True)
+            assert False, (
+                'Bug#42. Validation error is cleared'
+                '\n'
+                'Actual result: Validation error is not cleared')
+        except TimeoutException:
+            if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1690,11 +1711,11 @@ class TestManualBugs:
         4. Click the [Continue] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".44", 'Account registration was successful and the transition to the trading platform after '
-                   'clicking the [Continue] button in the Signup form')
+            "FCABugs", "Capital.com FCA",
+            "_44", 'Account registration was successful and the transition to the trading platform after '
+                   'clicking the [Continue] button in the Signup form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1710,15 +1731,15 @@ class TestManualBugs:
         password.send_keys("Qwer1234")
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
-        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
-            'Bug#44. Validation error is cleared'
-            '\n'
-            'Actual result: Validation error is not cleared')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        try:
+            menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR)
+        except TimeoutException:
+            retest_table_fill(d, bid, '44', "", True, True)
+            assert False, (
+                'Bug#44. Validation error is cleared'
+                '\n'
+                'Actual result: Validation error is not cleared')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1739,11 +1760,11 @@ class TestManualBugs:
         4. Pay attention to the buttons at the bottom of the block
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
-                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+            "FCABugs", "Capital.com FCA",
+            "_45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1755,9 +1776,12 @@ class TestManualBugs:
         sub_menu.element_is_present_and_visible(sub_menu.MARKETS_DISCOVER_BLOCK_CREATE_ACCOUNT_BTN)
 
         #
-        assert sub_menu.element_is_present(*sub_menu.MARKETS_DISCOVER_BLOCK_TRY_DEMO_BTN), (
-            "Bug#45. Expected Result: Button [Try demo] is displayed.\n"
-            "Actual Result: Button [Try demo] is not displayed")
+        if len(sub_menu.elements_are_present(*sub_menu.MARKETS_DISCOVER_BLOCK_TRY_DEMO_BTN)) == 0:
+            retest_table_fill(d, bid, '45', "", True, True)
+            assert False, (
+                "Bug#45. Expected Result: Button [Try demo] is displayed.\n"
+                "Actual Result: Button [Try demo] is not displayed")
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1778,11 +1802,11 @@ class TestManualBugs:
         4. Pay attention to the buttons at the bottom of the block
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
-                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+            "FCABugs", "Capital.com FCA",
+            "_47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1792,9 +1816,12 @@ class TestManualBugs:
         sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_LEARNED_BLOCK_SIGNUP_BTN)
 
         #
-        assert sub_menu.element_is_present(*sub_menu.MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN), (
-            "Bug#47. Expected Result: Button [Try demo] is displayed.\n"
-            "Actual Result: Button [Try demo] is not displayed")
+        if len(sub_menu.elements_are_present(*sub_menu.MAIN_PAGE_LEARNED_BLOCK_DEMO_BTN)) == 0:
+            retest_table_fill(d, bid, '47', "", True, True)
+            assert False, (
+                "Bug#47. Expected Result: Button [Try demo] is displayed.\n"
+                "Actual Result: Button [Try demo] is not displayed")
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1815,10 +1842,10 @@ class TestManualBugs:
             4. Click the "USD/JPY"  trading instrument
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
+            "FCABugs", "Capital.com FCA",
+            "_48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1856,6 +1883,7 @@ class TestManualBugs:
                 if err_404:
                     error_trade_instrument_list.append(most_traded_instrument_name + ":404")
                     print("error_404: ", error_trade_instrument_list)
+                    retest_table_fill(d, bid, '48', "", True, True)
                     assert False, (
                         f"Bug#48. Expected Result: Page of the corresponding trading instrument"
                         f"{error_trade_instrument_list} is opened. \n"
@@ -1872,11 +1900,7 @@ class TestManualBugs:
                 pagination[-1].click()
             time.sleep(1)
             print("Non one 404 error")
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1899,11 +1923,11 @@ class TestManualBugs:
         also reproduced in the menu item [Commodities] in menu section [Markets]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
-                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+            "FCABugs", "Capital.com FCA",
+            "_49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
+                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1916,9 +1940,12 @@ class TestManualBugs:
         btn_create = sub_menu.element_is_present_and_visible(sub_menu.MARKETS_MAIN_BANNER_CREATE_ACCOUNT)
         name_btn = btn_create.text
         #
-        assert name_btn == "Sign up", (
-            "Bug#49. Expected Result: The  button [Sign up] is displayed.\n"
-            "Actual Result: The  button [Create account ] is displayed")
+        if not name_btn == "Sign up":
+            retest_table_fill(d, bid, '49', "", True, True)
+            assert False, (
+                "Bug#49. Expected Result: The  button [Sign up] is displayed.\n"
+                "Actual Result: The  button [Create account ] is displayed")
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1937,11 +1964,11 @@ class TestManualBugs:
         2.  Click button [Try demo ]
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
-                   ' decisions" on the main page after clicking button [Try demo ]')
+            "FCABugs", "Capital.com FCA",
+            "_55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
+                   ' decisions" on the main page after clicking button [Try demo ]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1962,9 +1989,11 @@ class TestManualBugs:
                 #     test_element.assert_trading_platform_v4(d, cur_item_link)
         except AssertionError:
             print(f"\n{datetime.now()}   Bug#55")
+            retest_table_fill(d, bid, '55', "", True, True)
             assert False, (
                 "Bug#55. Expected Result: Login form is opened.\n"
                 "Actual Result: Sign Up form is opened")
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -1985,11 +2014,11 @@ class TestManualBugs:
         4. Go to item "Smart risk management"
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
-                   '1X with.." on the "1X" page')
+            "FCABugs", "Capital.com FCA",
+            "_57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
+                   '1X with.." on the "1X" page', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2002,15 +2031,13 @@ class TestManualBugs:
         list_img = menu.elements_are_present(*sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4_IMG)
 
         time.sleep(1)
-        assert len(list_img) > 1, (
-            'Bug#57. Expected Result: The icon is in the item'
-            '\n'
-            'Actual result: The icon is missing in the item')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if not len(list_img) > 1:
+            retest_table_fill(d, bid, '57', "", True, True)
+            assert False, (
+                'Bug#57. Expected Result: The icon is in the item'
+                '\n'
+                'Actual result: The icon is missing in the item')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -2031,11 +2058,11 @@ class TestManualBugs:
         5. Click link [What is margin trading?] in block "Contents"
 
         """
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".58", 'Anchor is not attached to the "What is margin trading?" title on '
-                   'the "What is a margin?" page')
+            "FCABugs", "Capital.com FCA",
+            "_58", 'Anchor is not attached to the "What is margin trading?" title on '
+                   'the "What is a margin?" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2049,15 +2076,13 @@ class TestManualBugs:
 
         scroll_0 = d.execute_script("return window.scrollY;")
 
-        assert scroll_0 > 60, \
-            ('Bug#58. Smooth transition to title "What is margin trading?"'
-             '\n'
-             'Actual result: No transition occurred  to title "What is margin trading?"')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if not scroll_0 > 60:
+            retest_table_fill(d, bid, '58', "", True, True)
+            assert False, \
+                ('Bug#58. Smooth transition to title "What is margin trading?"'
+                 '\n'
+                 'Actual result: No transition occurred  to title "What is margin trading?"')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -2079,12 +2104,12 @@ class TestManualBugs:
         4. Click the [Continue] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".59", 'User is registered when two required characters are not entered in '
+            "FCABugs", "Capital.com FCA",
+            "_59", 'User is registered when two required characters are not entered in '
                    'the "password" field in the Signup form '
-                   'clicking the [Continue] button in the Signup form')
+                   'clicking the [Continue] button in the Signup form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2100,15 +2125,15 @@ class TestManualBugs:
         password.send_keys("qwer1234")
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
-        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR), (
-            'Bug#59. Validation message "Email or password is invalid" is displayed'
-            '\n'
-            'Actual result: User is registered and transition to the trading platform')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        try:
+            menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR)
+        except TimeoutException:
+            retest_table_fill(d, bid, '59', "", True, True)
+            assert False, (
+                'Bug#59. Validation message "Email or password is invalid" is displayed'
+                '\n'
+                'Actual result: User is registered and transition to the trading platform')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -2127,10 +2152,10 @@ class TestManualBugs:
         2. Click the [Continue] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".60", 'Validation message "Email or password is invalid" is displayed')
+            "FCABugs", "Capital.com FCA",
+            "_60", 'Validation message "Email or password is invalid" is displayed', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2142,16 +2167,16 @@ class TestManualBugs:
         menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
-        assert not menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN), (
-            'Bug#60. [Continue] button is inactive until valid values are entered in the email and password '
-            'fields and validated'
-            '\n'
-            'Actual result: [Continue] button is active for sending POST request')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        try:
+            menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN)
+            retest_table_fill(d, bid, '60', "", True, True)
+            assert False, (
+                'Bug#60. [Continue] button is inactive until valid values are entered in the email and password '
+                'fields and validated'
+                '\n'
+                'Actual result: [Continue] button is active for sending POST request')
+        except TimeoutException:
+            if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -2173,10 +2198,10 @@ class TestManualBugs:
         4. Click the [Continue] button
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form')
+            "FCABugs", "Capital.com FCA",
+            "_61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2188,15 +2213,15 @@ class TestManualBugs:
         menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
-        assert menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN), (
-            'Bug#61. There is no a  [Close] button for closing Validation message'
-            '\n'
-            'Actual result: There is no a  [Close] button for closing Validation message')
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        try:
+            menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN)
+        except TimeoutException:
+            retest_table_fill(d, bid, '61', "", True, True)
+            assert False, (
+                'Bug#61. There is no a  [Close] button for closing Validation message'
+                '\n'
+                'Actual result: There is no a  [Close] button for closing Validation message')
+        if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
@@ -2220,11 +2245,11 @@ class TestManualBugs:
         6. Click any item from dropdown list
         """
 
-        build_dynamic_arg_v4(
+        bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "Bugs_26012024_CCW_WEB", "Capital.com FCA",
-            ".62", "There is no transition to the corresponding page with a trading instrument when "
-                   "clicking on any of the trading instruments in the dropdown in the [Search]")
+            "FCABugs", "Capital.com FCA",
+            "_62", "There is no transition to the corresponding page with a trading instrument when "
+                   "clicking on any of the trading instruments in the dropdown in the [Search]", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2249,12 +2274,12 @@ class TestManualBugs:
         except TimeoutException:
             print()
 
-        assert markets_page.element_is_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_PAGE), (
-            f"Bug#62. Expected Result:  Page of the corresponding trading instrument is opened\n"
-            f"Actual Result: Items in the Dropdown list are not clickable \n")
+        retest_table_fill(d, bid, '62', "", True, True)
+        try:
+            markets_page.element_is_located(markets_page.MARKETS_MOST_TRADE_INSTRUMENT_PAGE)
+        except TimeoutException:
+            assert False, (
+                f"Bug#62. Expected Result:  Page of the corresponding trading instrument is opened\n"
+                f"Actual Result: Items in the Dropdown list are not clickable \n")
 
-        allure.attach(
-            d.get_screenshot_as_png(),
-            name=f"Screenshot{datetime.now()}",
-            attachment_type=AttachmentType.PNG,
-        )
+        if_retest_passed(d, bid)

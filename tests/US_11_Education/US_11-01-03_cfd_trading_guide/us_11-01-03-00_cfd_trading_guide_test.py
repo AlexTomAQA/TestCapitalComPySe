@@ -41,6 +41,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_01", "Testing button [Start Trading] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -70,6 +71,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_02", "Testing button [Try demo] on Main banner")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -99,10 +101,10 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_03", "Testing button [Trade] in Most traded block")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -129,6 +131,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_04", "Testing button [Create your account] in block [Steps trading]")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
@@ -154,6 +157,7 @@ class TestCFDTradingGuide:
             "11.01.03", "Education > Menu item [CFD trading guide]",
             ".00_99", "Pretest for US_11.01.03.01")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "de", "es", "fr", "nl", "pl", "ro", "ru", "zh"])
