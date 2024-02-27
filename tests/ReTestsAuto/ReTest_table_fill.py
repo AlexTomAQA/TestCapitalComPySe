@@ -120,6 +120,17 @@ def retest_table_fill(d="", bid="", bug_n="", link="", manual=False, new_layout=
     # bug_n = "05"
     # link = 'https://capital.com/pl/handlovac-amd'
     # ===========================================
+    """
+    Метод для заполнения таблицы багов для авто и мануал ретеста
+    Args:
+        d - веб-драйвер
+        bid - bug-ID
+        bug_n - номер бага
+        link - trade instrument
+        manual - для мануальных багов
+        new_layout - для нового дизайна веб-страницыы
+
+    """
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
     spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
