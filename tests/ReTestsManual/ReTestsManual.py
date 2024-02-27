@@ -306,7 +306,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoAuth", "NoReg"])
-    @allure.step('Bug#06:  The trading platform page is opened after clicking button [Apply] in '
+    @allure.step('Bug#06:  The Sign Up/Login form is not opened after clicking button [Apply] in '
                  'the block "Discover the benefits')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_06
@@ -314,7 +314,7 @@ class TestManualBugs:
     def test_06(
             self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
         """
-        The trading platform page is opened after clicking button [Apply] in the block "Discover the benefits..."
+        The Sign Up/Login form is not opened after clicking button [Apply] in the block "Discover the benefits..."
         on the "Professional" page
         1. Hover over the [Ways to trade] menu section
         2. Click the [Professional]menu item
@@ -328,7 +328,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            "_06", 'The trading platform page is opened after clicking button [Apply] '
+            "_06", 'The Sign Up/Login form is not opened after clicking button [Apply] '
                    'in the block "Discover the benefits', True, True)
 
         page_conditions = NewConditions(d, "")
