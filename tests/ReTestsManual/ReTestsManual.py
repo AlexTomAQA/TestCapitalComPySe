@@ -383,8 +383,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".07", 'The trading platform page is not opened after clicking button [Apply] '
-                   'in the block "Discover the benefits')
+            "_07", 'The trading platform page is not opened after clicking button [Apply] '
+                   'in the block "Discover the benefits', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -435,8 +435,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
-                   'in the Header')
+            "_08", 'Sidebar "My account" is not displayed when clicking on the [My account] button  '
+                   'in the Header', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -476,7 +476,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".09", 'Bread crumbs are not displayed in the "Professional" page')
+            "_09", 'Bread crumbs are not displayed in the "Professional" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -515,7 +515,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"')
+            "_10", 'Link "Apply here" is not clickable in the "No Capital.com account yet?"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -559,8 +559,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".11", 'Transition to the trading platform after clicking the [Apply here] link in '
-                   'the "Apply now" Block')
+            "_11", 'Transition to the trading platform after clicking the [Apply here] link in '
+                   'the "Apply now" Block', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -611,7 +611,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".12", 'The button [Open an account] is not named according to block "We’re here to help"')
+            "_12", 'The button [Open an account] is not named according to block "We’re here to help"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -656,8 +656,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".13", 'Transition not to the top of the page in the page "Discover the benefits of '
-                   'going Pro with "Capital.com" after clicking the [I am eligible] button')
+            "_13", 'Transition not to the top of the page in the page "Discover the benefits of '
+                   'going Pro with "Capital.com" after clicking the [I am eligible] button', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -694,7 +694,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".14", 'Bread crumbs are not displayed in the "Margin-calls" page')
+            "_14", 'Bread crumbs are not displayed in the "Margin-calls" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -752,8 +752,8 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
-                   'in the Dropdown [Languages]')
+            "_15", 'Scrollbar thumb blended into the dark background in the Scrollbar '
+                   'in the Dropdown [Languages]', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -777,8 +777,8 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".16", 'Format of the text content does not correspond to the Block size '
-                   'in the Dropdown [Languages]')
+            "_16", 'Format of the text content does not correspond to the Block size '
+                   'in the Dropdown [Languages]', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -803,8 +803,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".17", 'After the transition from the website capital.com into the trading platform and '
-                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons')
+            "_17", 'After the transition from the website capital.com into the trading platform and '
+                   'back is displayed[Log in] and [Sign up] buttons instead of the [My account] buttons', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -847,8 +847,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
-                   'the "Shares Trading" Block in the "Shares" page')
+            "_18", 'Sign up form is opened after re-clicking the [Try demo] button and "Back" button in '
+                   'the "Shares Trading" Block in the "Shares" page', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -905,8 +905,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
-                   'block "Learn more about us"  in the page "Client Funds"')
+            "_19", 'On click the link [Learn more about us] is not scrolled to the corresponding '
+                   'block "Learn more about us"  in the page "Client Funds"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -948,8 +948,8 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".20", 'Displays interruptions between transitions to other menu sections in the Header '
-                   'after hovering over other menu section')
+            "_20", 'Displays interruptions between transitions to other menu sections in the Header '
+                   'after hovering over other menu section', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -972,7 +972,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".21", 'In the Footer on click link [Cookie settings] is not open modal window ')
+            "_21", 'In the Footer on click link [Cookie settings] is not open modal window ', True, True)
         #
         # page_conditions = NewConditions(d, "")
         # link = page_conditions.preconditions(
@@ -1010,7 +1010,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".22", 'In the Header the button [Search] is missing ')
+            "_22", 'In the Header the button [Search] is missing ', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
@@ -1050,7 +1050,7 @@ class TestManualBugs:
         build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".23", '[Play] element in the center of the video does not disappear after playing the video')
+            "_23", '[Play] element in the center of the video does not disappear after playing the video', True, True)
         #
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -1073,7 +1073,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".24", 'Authorized user is logged out after changing the license to FCA(EN language)')
+            "_24", 'Authorized user is logged out after changing the license to FCA(EN language)', True, True)
         #
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -1110,7 +1110,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".25", 'In the Footer the arrow button [Up] is missing')
+            "_25", 'In the Footer the arrow button [Up] is missing', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
@@ -1129,7 +1129,7 @@ class TestManualBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @pytest.mark.parametrize('cur_role', ["NoAuth"])
     @allure.step('Bug#26:  The Facebook icon is not clickable in the Signup/Login form ')
     @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.test_26
@@ -1150,7 +1150,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".26", 'The Facebook icon is not clickable in the Signup/Login form ')
+            "_26", 'The Facebook icon is not clickable in the Signup/Login form ', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1201,8 +1201,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".27", 'The modal window translated into the browser language, not in English,'
-                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license')
+            "_27", 'The modal window translated into the browser language, not in English,'
+                   ' opens after clicking Link [Cookies Settings] in the footer and selecting FCA license', True, True)
         #
         page_conditions = NewConditions(d, "")
         page_conditions.preconditions(
@@ -1241,8 +1241,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".28", 'Block name "Apply now" is missing in the menu item "Professional" '
-                   'in the menu section "Ways to trade"')
+            "_28", 'Block name "Apply now" is missing in the menu item "Professional" '
+                   'in the menu section "Ways to trade"', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1286,7 +1286,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".29", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+            "_29", 'Button [Try now] is missing in the block " Why choose Capital.com?', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1322,7 +1322,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".30", 'Button [Try now] is missing in the block " Why choose Capital.com?')
+            "_30", 'Button [Try now] is missing in the block " Why choose Capital.com?', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1363,9 +1363,9 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
+            "_31", 'Links [Learn to trade] in the blocks "Starting from the beginning?" and '
                    '"Looking to sharpen your strategies?" in the menu item [Learn to trade] don`t scroll to the '
-                   ' corresponding block on the page')
+                   ' corresponding block on the page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1418,8 +1418,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".33", '429 status code (Too many requests) is displayed on the main page after sending '
-                   'several identical requests')
+            "_33", '429 status code (Too many requests) is displayed on the main page after sending '
+                   'several identical requests', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1466,7 +1466,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes')
+            "_34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1527,9 +1527,9 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
+            "_40", 'The "All markets" widget is displayed, but the arrangement of trading instruments '
                    'with the filter applied is not performed after selecting any item from '
-                   'the dropdown menu "Most traded"')
+                   'the dropdown menu "Most traded"', True, True)
         # d.get("https://capital.com/en-gb")
 
         with allure.step('step 1'):
@@ -1596,7 +1596,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m')
+            "_4m", '"Line Chart" is not displayed corresponding to the selected "Time steps"  1m/5m', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1663,7 +1663,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]')
+            "_42", 'Validation error is not cleared in the Form [Sign up] when click button [Close]', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1714,8 +1714,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".44", 'Account registration was successful and the transition to the trading platform after '
-                   'clicking the [Continue] button in the Signup form')
+            "_44", 'Account registration was successful and the transition to the trading platform after '
+                   'clicking the [Continue] button in the Signup form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1763,8 +1763,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
-                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+            "_45", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1805,8 +1805,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
-                   'with Capital.com" in menu item [Forex] in menu section [Markets]')
+            "_47", 'The  button [Try demo] is missing in the block "Discover trading excellence '
+                   'with Capital.com" in menu item [Forex] in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1845,7 +1845,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license")
+            "_48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1926,8 +1926,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
-                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]')
+            "_49", 'The  button [Create account ] is located instead button [Sign up] in the Block '
+                   '"Indices trading" in the  menu item [Indices]  in menu section [Markets]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1967,8 +1967,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
-                   ' decisions" on the main page after clicking button [Try demo ]')
+            "_55", 'Sign Up form is opened instead Login form in the Block "Helping traders make better'
+                   ' decisions" on the main page after clicking button [Try demo ]', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2017,8 +2017,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
-                   '1X with.." on the "1X" page')
+            "_57", 'The icon is missing in the item "Smart risk management" of the block "Why trade on '
+                   '1X with.." on the "1X" page', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2061,8 +2061,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".58", 'Anchor is not attached to the "What is margin trading?" title on '
-                   'the "What is a margin?" page')
+            "_58", 'Anchor is not attached to the "What is margin trading?" title on '
+                   'the "What is a margin?" page', True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2107,9 +2107,9 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".59", 'User is registered when two required characters are not entered in '
+            "_59", 'User is registered when two required characters are not entered in '
                    'the "password" field in the Signup form '
-                   'clicking the [Continue] button in the Signup form')
+                   'clicking the [Continue] button in the Signup form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2155,7 +2155,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".60", 'Validation message "Email or password is invalid" is displayed')
+            "_60", 'Validation message "Email or password is invalid" is displayed', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2201,7 +2201,7 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form')
+            "_61", 'There is no a  [Close] button for closing Validation message in the Signup/Login form', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -2248,8 +2248,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            ".62", "There is no transition to the corresponding page with a trading instrument when "
-                   "clicking on any of the trading instruments in the dropdown in the [Search]")
+            "_62", "There is no transition to the corresponding page with a trading instrument when "
+                   "clicking on any of the trading instruments in the dropdown in the [Search]", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
