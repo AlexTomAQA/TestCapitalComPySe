@@ -114,7 +114,7 @@ def fill_gs_table(value_1, value_2, bug_num, manual=False, new_layout=False):
         gs.update_range_values('V2', [finish_date])
 
 
-def retest_table_fill(d, bid="", bug_n="", link="", manual=False, new_layout=False):
+def retest_table_fill(d="", bid="", bug_n="", link="", manual=False, new_layout=False):
     # ========= не удалять ======================
     # bid = "Bid:11.02.02.01_07-en.de.Auth"
     # bug_n = "05"

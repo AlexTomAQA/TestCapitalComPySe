@@ -79,7 +79,7 @@ class AssertClass(BasePage):
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '06', self.link)
+            retest_table_fill(self.driver, self.bid, '06', self.link)
             assert False, "Bug # 06. Opened a 'Sign up' page instead of a 'Login'"
             # pytest.fail("Bug # 06. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):

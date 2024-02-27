@@ -188,7 +188,7 @@ class TradingPlatform(BasePage):
 
     @allure.step("Check that form [Sign Up] is opened on the Trading Platform page")
     # @profile(precision=3)
-    def should_be_signup_form_on_the_trading_platform(self):
+    def should_be_signup_form_on_the_trading_platform(self, d):
         """
         Check there are an elements to on 'Sign up' page on the Trading Platform
         """
@@ -257,7 +257,7 @@ class TradingPlatform(BasePage):
 
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '13', self.link)
+            retest_table_fill(self.driver, self.bid, '13', self.link)
             # ==============================
             assert False, "Bug # 13. 'Sign up' form opened on the Trading Platform instead of 'Login' form"
         else:
@@ -279,7 +279,7 @@ class TradingPlatform(BasePage):
         if len(menu_chart) == 0:
             print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '14', self.link)
+            retest_table_fill(self.driver, self.bid, '14', self.link)
             assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
 
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
@@ -288,7 +288,7 @@ class TradingPlatform(BasePage):
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
         if len(top_chart_trade_list) == 0:
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '15', self.link)
+            retest_table_fill(self.driver, self.bid, '15', self.link)
             assert False, (f"Bug # 15. Trading platform was opened, "
                            f"but does no contain any trade instrument on the Top Charts List")
 
@@ -302,7 +302,7 @@ class TradingPlatform(BasePage):
         if not present:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '16', self.link)
+            retest_table_fill(self.driver, self.bid, '16', self.link)
             assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is Not on the Top Charts List"
 
         # проверяем, что запрашиваемый торговый инструмент выбран
@@ -310,7 +310,7 @@ class TradingPlatform(BasePage):
         if trade_instrument_name not in selected_trade_instrument:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '17', self.link)
+            retest_table_fill(self.driver, self.bid, '17', self.link)
             # ==============================
             assert False, f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, but Not selected"
         print(f"{datetime.now()}   Trade instrument '{trade_instrument}' is on the Top Charts List and selected")
