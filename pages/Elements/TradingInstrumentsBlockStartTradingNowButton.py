@@ -13,7 +13,7 @@ from pages.Elements.testing_elements_locators import TradeIndicesBlockLocators
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class TradeIndicesBlockStartTradingNow(BasePage):
+class TradingInstrumentsBlockStartTradingNow(BasePage):
 
     @allure.step(f'{datetime.now()}   Start Full test for Start trading now button of Block Trade Indices')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
