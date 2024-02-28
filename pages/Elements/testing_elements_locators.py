@@ -202,3 +202,14 @@ class QRCodeLocators:
 
 class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
+
+
+class DropMenuOnPageLocator:
+    DROP_MENU_ON_PAGE = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
+
+
+class ItemDropMenuOnPageLocators:
+    ITEM_DROP_MENU_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
+    ITEM_DROP_MENU_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
+    ITEM_DROP_MENU_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
+    ITEM_DROP_MENU_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
