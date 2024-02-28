@@ -13,6 +13,7 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
+from pages.Elements.BlockWhyChooseTryDemoButton import BlockWhyChooseTryDemoButton
 
 
 @pytest.mark.us_00_00
@@ -65,4 +66,28 @@ class TestMainPage:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MainBannerSignUpButtonMainPage(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try demo] on Block 'Why choose Capital.com'")
+    @pytest.mark.test_103
+    def test_103_main_banner_try_demo_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try Demo] on Block 'Why choose Capital.com?' Main Page
+        Language: EN. License: FCA.
+        """
+        test_title = ("00.00", "Main Page",
+                      "_103", "Testing button [Try Demo] on Block 'Why choose Capital.com?' Main Page")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+
+        page_conditions = NewConditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BlockWhyChooseTryDemoButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)

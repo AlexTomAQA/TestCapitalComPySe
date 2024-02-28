@@ -1,0 +1,181 @@
+name: 3. Ubuntu, Eng/FCA All US for new layout
+on:
+#  push:
+  workflow_dispatch:
+  
+#permissions:
+#  contents: write
+
+#  schedule:
+#    - cron: '00 13 * * *'
+#    - cron: '10 06 * * *'
+
+jobs:
+  tests:
+    name: I. Building environment and testing the capital.com website
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Check out this repo, master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: 2.1. Install Python
+        if: always()
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12.1"
+
+      - name: 3.1. Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      
+      - name: 3.3. Install neofetch
+        if: always()
+        run: brew install neofetch
+
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: pip3 install psutil
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: pip3 install speedtest
+      - name: Run hwinfo.py first time
+        if: always()
+        run: python3 tests/hwinfo.py
+
+      - name: 4. install Zbar for QReader
+        if: always()
+        run: sudo apt-get install libzbar0
+
+      - name: 4. install Poetry
+        if: always()
+        run: pip3 install poetry
+
+      - name: 5. install dependencies
+        if: always()
+#        run: poetry install --sync
+        run: poetry install
+
+      - name: Run hwinfo.py
+        if: always()
+        run: poetry run python3 tests/hwinfo.py
+
+#      - name: 6. Check code for errors by flake8 and format code with black
+#        if: always()
+#        uses: ricardochaves/python-lint@v1.4.0
+#        with:
+#          python-root-list: ""
+#          use-pylint: false
+#          use-pycodestyle: false
+#          use-flake8: true
+#          use-black: false
+#          use-mypy: false
+#          use-isort: false
+#          extra-pylint-options: ""
+#          extra-pycodestyle-options: ""
+#          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
+#          extra-black-options: ". -S"
+#          extra-mypy-options: ""
+#          extra-isort-options: ""
+#
+      - name: 8. Run US_00-00 (Артем)
+        if: always()
+        run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
+        continue-on-error: true
+
+#      - name: 8. Run US_00-01 (Саша)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-02 (Дима)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-03 (Касила)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-04 (Мила)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-05 (Иван)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-06 (?)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+#      - name: 8. Run US_00-07 (Мария)
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+
+      - name: Run hwinfo.py
+        if: always()
+        run: poetry run python3 tests/hwinfo.py
+
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 1
+
+  generate_and_deploy_report:
+    name: II. Generate & Deploy Allure report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [ tests ]
+
+    steps:
+      - name: 1. Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: 2. Download Artifacts
+        uses: actions/download-artifact@v3
+        id: download
+        if: always()
+        continue-on-error: true
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: 3. Generate allure report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
+          gh_pages: gh-pages
+          allure_history: allure-history
+          ref: gh-pages
+          path: gh-pages
+          keep_reports: 100
+
+      - name: 4. Deploy allure_report to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          personal_token: ${{ secrets.GITHUB_TOKEN }}
+#          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          publish_dir: ./allure-history
+          commit_message: ${{ github.event.head_commit.message }}

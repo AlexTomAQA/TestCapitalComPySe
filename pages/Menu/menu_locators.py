@@ -917,3 +917,12 @@ class MenuUS11EssentialsOfTrading:
 class MenuUS11MarketGuidesNew:
     SUB_MENU_MARKET_GUIDES_NEW = (By.CSS_SELECTOR, '[data-type="nav_id700"]')
 
+
+class MenuUS01MarketsButton:
+    MENU_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id3']")
+    SUB_MENU_SHARES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id9']")
+    SUB_MENU_FOREX_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id57']")
+    SUB_MENU_INDICES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id8']")
+    SUB_MENU_COMMODITIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id4']")
+    SUB_MENU_CRYPTOCURRENCIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id65']")
+    SUB_MENU_ESG_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id461']")

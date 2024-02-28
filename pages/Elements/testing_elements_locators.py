@@ -187,6 +187,7 @@ class ContentBlockLocators:
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button"]')
     BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
+    BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
 
 
 class QRCodeLocators:
@@ -201,3 +202,14 @@ class QRCodeLocators:
 
 class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
+
+
+class DropMenuOnPageLocator:
+    DROP_MENU_ON_PAGE = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
+
+
+class ItemDropMenuOnPageLocators:
+    ITEM_DROP_MENU_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
+    ITEM_DROP_MENU_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
+    ITEM_DROP_MENU_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
+    ITEM_DROP_MENU_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
