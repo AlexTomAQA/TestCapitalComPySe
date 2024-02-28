@@ -20,48 +20,54 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from allure_commons.types import AttachmentType
 
 import conf
-
-# test_browser = ""
+import re
+import platform
 
 
 def pytest_addoption(parser):
     # проверка аргументов командной строки
-    parser.addoption('--retest', action='store', default='False',
+    parser.addoption('--retest', action='store', default=False,
                      help="Re-Testing: '--retest=True'")
 
-    parser.addoption('--browser_name', action='store', default='Chrome',
+    parser.addoption('--browser_name', action='store', default=False,
                      help="Choose browser: '--browser_name=Chrome' or '--browser_name=Edge'")
 
-    parser.addoption('--lang', action='store', default='',
-                     help="Choose language: '--lang='' for 'en'")
+    parser.addoption('--lang', action='store', default=False,
+                     help="Choose language: '--lang='en' for 'en'")
 
-    parser.addoption('--country', action='store', default='gb',
+    parser.addoption('--country', action='store', default=False,
                      help="Choose License: '--country=ae'")
 
-    parser.addoption('--role', action='store', default='NoReg',
+    parser.addoption('--role', action='store', default=False,
                      help="Choose Role: --role=NoAuth'")
 
-    parser.addoption('--tpi_link', action='store', default='',
+    parser.addoption('--tpi_link', action='store', default=False,
                      help="cur_item_link: '--tpi_link=https://capital.com/fr/trading-amazon'")
+
+    parser.addoption('--os', action='store', default=False,
+                     help="os: '--os=U22'")
 
 
 """
-пример командной строки: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
-    --tpi_link=https://capital.com/fr/trading-amazon -m test_02 --no-summary -v
+пример командной строки для автотестов: --retest=True --browser_name=Chrome --lang='' --country=ae --role=Auth
+    --tpi_link=https://capital.com/fr/trading-amazon --os=U22 -m test_02 --no-summary -v
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+#########  
+пример командной строки для тестов:--browser_name=Chrome --lang='en' --country=ae --role=Auth --os=U22 
+-m test_02 --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+!!! порядок расположение аргументов не имеет значения
 """
 
 role_list = list()
+input_list = sys.argv
+search_value = "--role"
+pattern = re.compile(f'{search_value}=(\\S+)')
 
-try:
-    # проверка аргументов командной строки
-    retest = sys.argv[1].split('=')[1]
-except IndexError:
-    retest = False
-
-if retest == 'True':
-    if sys.argv[5].split('=')[0] == "--role":
-        role_list = (sys.argv[5].split('=')[1],)
+for item in input_list:
+    match = pattern.search(item)
+    if match:
+        role_list = (match.group(1),)
+        break
 else:
     role_list = (
         "Auth",
@@ -78,7 +84,7 @@ def cur_role(request):
     """Fixture"""
     # проверка аргументов командной строки
     cur_role = request.param
-    print(f"\n\n\nCurrent test role - {cur_role}")
+    print(f"Current test role - {cur_role}\n")
     return cur_role
 
 
@@ -90,34 +96,29 @@ def cur_role(request):
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
-        # "hu",  # 5 us Magyar
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
-        # "pl",  # 10 us
+        "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        "el",  # 5 us
+        # "el",  # 5 us
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
     """Fixture"""
-    # retest_for_lang = None
     # проверка аргументов командной строки
-    # retest = request.config.getoption("retest")
-    try:
-        # проверка аргументов командной строки
-        retest_for_lang = sys.argv[1].split('=')[1]
-    except IndexError:
-        retest_for_lang = False
-
-    if retest_for_lang:
-        language = request.config.getoption("lang")
+    if request.config.getoption("lang"):
+        if request.config.getoption("lang") == "en":
+            language = ""
+        else:
+            language = request.config.getoption("lang")
     else:
         language = request.param
-    print(f"Current test language - {language}")
+    print(f"Current test language - {"en" if language == "" else language}")
     return language
 
 
@@ -127,8 +128,8 @@ def cur_language(request):
     params=[
         # "gb",  # United Kingdom - "FCA"
         "de",  # Germany  - "CYSEC"
-        "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "au",  # Australia - "ASIC"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -150,14 +151,7 @@ def cur_language(request):
 def cur_country(request):
     """Fixture"""
     # проверка аргументов командной строки
-    # retest = request.config.getoption("retest")
-    try:
-        # проверка аргументов командной строки
-        retest_for_country = sys.argv[1].split('=')[1]
-    except IndexError:
-        retest_for_country = False
-
-    if retest_for_country:
+    if request.config.getoption("country"):
         country = request.config.getoption("country")
     else:
         country = request.param
@@ -192,6 +186,31 @@ def cur_password(request):
 
 
 @pytest.fixture(
+    scope="session",
+    params=[
+        # 'W22',
+        # 'W10',
+        # 'W11',
+        # 'M14',
+        'U22',
+
+    ],
+)
+def cur_os(request):
+    """Fixture"""
+    # проверка аргументов командной строки
+    if request.config.getoption("os"):
+        test_os = request.config.getoption("os")
+    else:
+        test_os = request.param
+    # os_info = platform.system()
+    # os_version = platform.version()
+    platform_v = platform.platform()
+    print(f"Current OS - {platform_v}")
+    return test_os
+
+
+@pytest.fixture(
     # scope="module",
     scope="session",
     params=[
@@ -207,18 +226,11 @@ def d(request):
     """WebDriver Initialization"""
     print(f'\n{datetime.now()}   *** autouse fixture {request.param} ***\n')
 
-    test_browser = request.param
     # проверка аргументов командной строки
-    # retest = request.config.getoption("retest")
-
-    try:
-        # проверка аргументов командной строки
-        retest_for_br = sys.argv[1].split('=')[1]
-    except IndexError:
-        retest_for_br = False
-
-    if retest_for_br:
+    if request.config.getoption("browser_name"):
         test_browser = request.config.getoption("browser_name")
+    else:
+        test_browser = request.param
 
     d = None
     if test_browser == "Chrome":
@@ -234,10 +246,9 @@ def d(request):
     else:
         print(f'Please pass the correct browser name: {test_browser}')
         raise Exception('driver is not found')
-
+    print(f'Current browser name: {d.capabilities['browserName']}')
     # Установка максимального тайм-аута загрузки страницы
     d.set_page_load_timeout(60)
-
     yield d
 
     d.quit()

@@ -45,7 +45,7 @@ class AssertClass(BasePage):
         else:
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '04', self.link)
+            retest_table_fill(d, self.bid, '04', self.link)
             assert False, "Bug # 04. Unknown situation instead 'Sign Up' form opened"
             # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
         # time.sleep(2)
@@ -73,25 +73,25 @@ class AssertClass(BasePage):
         elif self.page_signup_login.should_be_new_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '05', self.link)
+            retest_table_fill(d, self.bid, '05', self.link)
             assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '06', self.link)
+            retest_table_fill(self.driver, self.bid, '06', self.link)
             assert False, "Bug # 06. Opened a 'Sign up' page instead of a 'Login'"
             # pytest.fail("Bug # 06. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '07', self.link)
+            retest_table_fill(d, self.bid, '07', self.link)
             assert False, "Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'"
             # pytest.fail("Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
         else:
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.bid, '08', self.link)
+            retest_table_fill(d, self.bid, '08', self.link)
             assert False, "Bug # 08. Unknown situation instead 'Login' form opened"
             # pytest.fail("Bug # 08. Unknown situation instead 'Login' form opened", False)
 

@@ -138,7 +138,7 @@ def pretest(row_loc, number_of_row, gs_param):
         us = row_loc[3]
         path = us_data.us_data[us]
         num_test = row_loc[4]
-        lang = '' if row_loc[5] == 'en' else row_loc[5]
+        lang = row_loc[5]
         role = row_loc[8]
         url = row_loc[9]
         # num_bug = row_loc[12]
