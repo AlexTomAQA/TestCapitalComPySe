@@ -18,6 +18,10 @@ class MainMenu(BasePage):
     HEADER_LOGIN_BTN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
     HEADER_SIGNUP_BTN = (By.CSS_SELECTOR, '[data-type="btn_header"]')
     HEADER_ACCOUNT_BTN = (By.CSS_SELECTOR, '.accountBtns_btnsPlace___6pn2 a')
+    HEADER_ACCOUNT_BTN_OLD = (By.CSS_SELECTOR, '#wg_userarea')
+
+    HEADER_LOGO = (By.CSS_SELECTOR, 'header .helpers_hideXs__vzgPk.logo_link__wVTFX')
+    TP_LOGO = (By.CSS_SELECTOR, 'logo')
     TP_USER_MENU = (By.CSS_SELECTOR, 'em.arrow-down')
     TP_LOGOUT = (By.CSS_SELECTOR, '[data-qa="logout"]')
     HEADER_SEARCH = (By.CSS_SELECTOR, '[data-type="nav_search"]')

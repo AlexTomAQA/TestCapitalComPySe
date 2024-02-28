@@ -297,6 +297,7 @@ class BasePage:
 
         Returns:
             selenium.webdriver.remote.webelement.WebElement: it is located and visible
+            None if not
         """
         return Wait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator)
