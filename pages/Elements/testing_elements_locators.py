@@ -213,3 +213,10 @@ class ItemDropMenuOnPageLocators:
     ITEM_DROP_MENU_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
     ITEM_DROP_MENU_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
     ITEM_DROP_MENU_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
+
+
+class TradeCFDLocators:
+    ADD_TO_FAVORITE_BUTTON = (By.CSS_SELECTOR, "[data-type='add_fav']")
+    LONG_POSITION = (By.CSS_SELECTOR, "tr:nth-child(2) > td:nth-child(1) > div")
+    SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
+    GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
