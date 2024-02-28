@@ -925,3 +925,4 @@ class MenuUS01MarketsButton:
     SUB_MENU_COMMODITIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id4']")
     SUB_MENU_CRYPTOCURRENCIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id65']")
     SUB_MENU_ESG_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id461']")
+    SUB_MENU_EN_GB_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id689']")
