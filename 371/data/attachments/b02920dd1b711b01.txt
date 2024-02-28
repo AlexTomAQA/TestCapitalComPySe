@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 720}
+
+2024-02-28 12:28:26.609558   worker_id = master
+
+2024-02-28 12:28:26.609576   0. Allure grouping v4
+
+
+2024-02-28 12:28:26.609776   START PRECONDITIONS =>
+
+
+2024-02-28 12:28:26.609793   {'width': 1280, 'height': 720}
+
+2024-02-28 12:28:26.611055   Set windows position at (0, 0) =>
+
+2024-02-28 12:28:26.713265   Set resolution 1280 * 720 =>
+
+2024-02-28 12:28:26.815619   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-28 12:28:27.856289   Капчи нет. Идем дальше
+
+2024-02-28 12:28:27.856380   Prev. Role: Auth
+
+2024-02-28 12:28:27.856393   Current role: Auth
+
+2024-02-28 12:28:28.895923   Капчи нет. Идем дальше
+
+2024-02-28 12:28:28.896017   Prev language: pl
+
+2024-02-28 12:28:28.896031   => Current language: pl
+
+2024-02-28 12:28:29.937159   Капчи нет. Идем дальше
+
+2024-02-28 12:28:29.937250   Prev country: de
+2024-02-28 12:28:29.937264   => Current country: de
+
+2024-02-28 12:28:29.937274   => THE END PRECONDITIONS
+
+2024-02-28 12:28:29.937307   1. Arrange_v0
+2024-02-28 12:28:29.940189   Current page URL = https://capital.com/trading/platform/
+2024-02-28 12:28:30.971166   => Loaded page https://capital.com/pl/handlovac-stellar
+2024-02-28 12:28:30.973733   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-02-28 12:28:30.986388   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-02-28 12:28:30.986589   Start Checking that form [Sign up] popped up on the page =>
+2024-02-28 12:28:32.511774   '[Sign up]' form was not popped up
+
+2024-02-28 12:28:32.511965   2. Act_v0
+2024-02-28 12:28:32.517025   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-02-28 12:28:32.517048   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-02-28 12:28:32.517058   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-02-28 12:28:32.520519   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-02-28 12:28:32.524238   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-02-28 12:28:32.553437   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-02-28 12:28:32.773661   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-02-28 12:28:32.773996   3. Assert_v4
+2024-02-28 12:28:32.774159   Checking that the trading platform page has opened (v4) =>
+2024-02-28 12:28:33.291673   => Current page title: Trading Platform | Capital.com
+2024-02-28 12:28:33.291816   Checking that the Trading platform LOGO is present on the page =>
+2024-02-28 12:28:33.839272   Checking that the Trading platform opened in LIVE mode =>
+2024-02-28 12:28:33.850436   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-02-28 12:28:33.853207   => Check that opened page with https://capital.com/trading/platform/ url for corresponding trading instrument '27236401963685060'
+2024-02-28 12:28:34.874682   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.05.01_05-pl.de.Auth
+
+2024-02-28 12:28:34.874735   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f58795b8da0>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f58795b8da0>
+
+2024-02-28 12:28:35.186199   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-28 12:28:35.362276   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f58795b8da0>
+
+2024-02-28 12:28:35.605970   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-28 12:28:35.790146   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-28 12:28:35.790224   Баг Bid:11.02.05.01_05-pl.de.Auth уже существует, но у него изменился тип с  на 14
+
+2024-02-28 12:28:35.790376   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-28 12:28:36.005133   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-28 12:28:36.006358   Баг Bid:11.02.05.01_05-pl.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
