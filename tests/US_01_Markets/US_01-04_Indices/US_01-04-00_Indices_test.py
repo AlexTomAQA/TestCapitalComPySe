@@ -1,16 +1,13 @@
 import allure
 import pytest
 from datetime import datetime
-from pages.Education.Trading_strategies_guide_locators import TradingStrategiesContentList
-from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
-from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
-from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
-from pages.Elements.TradeIndicesBlockStartTradingNowButton import TradeIndicesBlockStartTradingNow
+
+from pages.Elements.TradingInstrumentsBlockStartTradingNowButton import  \
+    TradingInstrumentsBlockStartTradingNow
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
-from pages.Elements.StepTradingBlock import BlockStepTrading
 from src.src import CapitalComPageSrc
 
 count = 1
@@ -48,5 +45,5 @@ class TestIndices:
         page_menu.menu_markets_move_focus(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_indices_move_focus_click(d, cur_language)
 
-        test_element = TradeIndicesBlockStartTradingNow(d, cur_page_url, bid)
+        test_element = TradingInstrumentsBlockStartTradingNow(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
