@@ -1,0 +1,15 @@
+2024-02-28 16:05:28 ERROR Elements not present after 0.5 seconds on page: https://capital.com/
+2024-02-28 16:05:28 ERROR Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 517, in is_captcha
+    if self.elements_are_visible(Captcha.CAPTCHA_IFRAME):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 637, in elements_are_visible
+    return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't see element by locator ('css selector', "iframe[title='reCAPTCHA']")
