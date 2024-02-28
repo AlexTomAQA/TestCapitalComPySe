@@ -79,6 +79,11 @@ jobs:
 #          extra-mypy-options: ""
 #          extra-isort-options: ""
 #
+      - name: 8. Run US_00-00 (Артем)
+        if: always()
+        run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
+        continue-on-error: true
+
       - name: 8. Run US_11-00-00 (Мила П)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
