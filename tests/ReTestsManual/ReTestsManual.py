@@ -812,7 +812,12 @@ class TestManualBugs:
 
         menu = MainMenu(d, link)
         page_conditions.to_do_authorisation(d, link, cur_login, cur_password, cur_role)
-        if menu.element_is_visible(menu.HEADER_LOGIN_BTN):
+        menu.element_is_clickable(menu.MENU_ACCOUNT).click()
+        menu.element_is_present_and_visible(menu.TP_LOGO).click()
+        new_tab = d.window_handles[1]
+        d.switch_to.window(new_tab)
+
+        if not menu.element_is_visible(menu.HEADER_ACCOUNT_BTN_OLD):
             retest_table_fill(d, bid, '17', "", True, True)
             assert False, ('Bug#17.'
                            'Expected result: [My account] button is displayed'
@@ -974,9 +979,9 @@ class TestManualBugs:
             "FCABugs", "Capital.com FCA",
             "_21", 'In the Footer on click link [Cookie settings] is not open modal window ', True, True)
         #
-        # page_conditions = NewConditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
         menu = MainMenu(d)
         menu.element_is_present_and_visible(menu.COOKIE_SETTING).click()
@@ -1309,7 +1314,7 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
-        'Bug#30: Button [Try now] is missing in the block " Why choose Capital.com? ')
+        'Bug#30: There is no link to the FCA license in the footer of the site in the of the registration number 793714')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_30
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -1335,9 +1340,9 @@ class TestManualBugs:
         if len(link) < 2:
             retest_table_fill(d, bid, '30', "", True, True)
             assert len(link) > 1, \
-                ('Bug#30. Expected result:  Button [Try now] is displayed'
+                ('Bug#30. Expected result:  Link to the license is displayed'
                  '\n'
-                 'Actual result: Button [Try now] is missing')
+                 'Actual result: Link to the license is not displayed')
         if_retest_passed(d, bid)
 
     @pytest.mark.parametrize('cur_language', [''])
@@ -1429,6 +1434,7 @@ class TestManualBugs:
         try:
             for i in range(5):
                 sub_menu.element_is_present_and_visible(sub_menu.MAIN_PAGE_SIGNUP_BTN).click()
+                print(i, "back")
                 d.back()
         except TimeoutException:
             retest_table_fill(d, bid, '33', "", True, True)
@@ -1605,8 +1611,8 @@ class TestManualBugs:
         #
         menu = MainMenu(d, link)
         menu.open_waytotrade_cfd_trading_sub_menu(d, cur_language, cur_country, link)
-        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
         time.sleep(1)
+        menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
         menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART_15M).click()
         chart_15m_image = 'cart_15m.png'
         chart_15m = menu.element_is_present_and_visible(menu.SUB_MENU_WAYS_TO_TRADE_CFD_TRADING_CHART)
@@ -1634,7 +1640,7 @@ class TestManualBugs:
         os.remove(chart_5m_image)
         os.remove(chart_1m_image)
 
-        if not size_chart1 > 10000 or size_chart5 > 10000:
+        if not (size_chart1 > 10000 or size_chart5 > 10000):
             retest_table_fill(d, bid, '4m', "", True, True)
             assert False, (
                 'Bug#4m. "Line Chart" is displayed and refreshed corresponding to the  selected "Time steps"'
@@ -2029,6 +2035,7 @@ class TestManualBugs:
         menu = MainMenu(d, link)
         menu.open_waytotrade_1X_sub_menu(d, cur_language, cur_country, link)
         sub_menu = MenuSections(d, link)
+        time.sleep(1)
         sub_menu.element_is_present_and_visible(sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4)
         list_img = menu.elements_are_present(*sub_menu.WAYSTOTRADE_1X_WHY_BLOCK_4_IMG)
 
@@ -2215,9 +2222,7 @@ class TestManualBugs:
         menu.element_is_present_and_visible(signup_form.SIGNUP_FRAME)
         menu.element_is_clickable(signup_form.SIGNUP_CONTINUE_BTN).click()
 
-        try:
-            menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN)
-        except TimeoutException:
+        if not menu.element_is_visible(signup_form.SIGNUP_FORM_ERROR_CLOSE_BTN):
             retest_table_fill(d, bid, '61', "", True, True)
             assert False, (
                 'Bug#61. There is no a  [Close] button for closing Validation message'
@@ -2284,4 +2289,41 @@ class TestManualBugs:
                 f"Bug#62. Expected Result:  Page of the corresponding trading instrument is opened\n"
                 f"Actual Result: Items in the Dropdown list are not clickable \n")
 
+        if_retest_passed(d, bid)
+
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @allure.step('Bug#65: The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"')
+    @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.test_65
+    # @pytest.mark.skip(reason="Skipped for debugging")
+    def test_65(
+            self, worker_id, d, cur_login, cur_password, cur_role, cur_language, cur_country):
+        """
+        Page "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "FCABugs", "Capital.com FCA",
+            "_65", 'The footer is missing on click menu item [Professional] of the menu section [Ways to trade]',
+            True, True)
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MainMenu(d, link)
+        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
+
+        if not menu.element_is_visible(menu.FOOTER_RISK_WARNING_BLOCK):
+            retest_table_fill(d, bid, '05', "", True, True)
+            assert False, ('Bug#65. '
+                           'Expected result: The footer is displayed '
+                           '\n'
+                           'Actual result: The footer is missing" '
+                           'is opened ')
         if_retest_passed(d, bid)
