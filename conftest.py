@@ -54,7 +54,7 @@ def pytest_addoption(parser):
     tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 #########  
 пример командной строки для тестов:--browser_name=Chrome --lang='en' --country=ae --role=Auth --os=U22 
--m test_02 --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+-m test_02 --no-summary -vs tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
 !!! порядок расположение аргументов не имеет значения
 """
 
