@@ -170,7 +170,7 @@ class AssertClass(BasePage):
     def assert_signup_form_on_the_trading_platform(self, d):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading = TradingPlatform(d, self.link, self.bid)
-        self.page_trading.should_be_signup_form_on_the_trading_platform()
+        self.page_trading.should_be_signup_form_on_the_trading_platform(d)
 
     @allure.step('Checking that "Login" form on the Trading Platform page opened')
     def assert_login_form_on_the_trading_platform(self, d):
