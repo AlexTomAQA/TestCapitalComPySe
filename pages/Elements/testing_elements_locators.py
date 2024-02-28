@@ -201,3 +201,7 @@ class QRCodeLocators:
 
 class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
+
+
+class TradeIndicesBlockLocators:
+    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".button-main.rounded-lg.js_signup")
