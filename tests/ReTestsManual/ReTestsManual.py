@@ -1466,7 +1466,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            "_34", 'Filtered list of cookies is not displayed according to the checked and unchecked checkboxes', True, True)
+            "_34", 'Filtered list of cookies is not displayed according to the checked and unchecked '
+                   'checkboxes', True, True)
         #
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -1845,7 +1846,8 @@ class TestManualBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "FCABugs", "Capital.com FCA",
-            "_48", "404 status code is displayed on the [USD/JPY-Rate] page and switching to an ASIC license", True, True)
+            "_48", "404 status code is displayed on the [USD/JPY-Rate] page and switching "
+                   "to an ASIC license", True, True)
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
