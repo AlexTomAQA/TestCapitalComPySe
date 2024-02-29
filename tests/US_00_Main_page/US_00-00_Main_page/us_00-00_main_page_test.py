@@ -77,7 +77,7 @@ class TestMainPage:
         Language: EN. License: FCA.
         """
         test_title = ("00.00", "Main Page",
-                      "_103", "Testing button [Try Demo] on Block 'Why choose Capital.com?' Main Page")
+                      "_103", "Testing button [Try Demo] of Block 'Why choose Capital.com?' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)

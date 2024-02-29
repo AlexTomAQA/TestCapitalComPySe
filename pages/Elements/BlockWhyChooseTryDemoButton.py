@@ -8,6 +8,7 @@ import pytest
 import allure
 
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ContentBlockLocators
 from pages.Signup_login.signup_login import SignupLogin
@@ -19,7 +20,7 @@ class BlockWhyChooseTryDemoButton(BasePage):
     @allure.step(f"{datetime.now()}   Start Full test for [Try demo] button on Block 'Why choose Capital.com?'")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
-        self.element_click()
+        self.element_click(d)
 
         test_element = AssertClass(d, cur_item_link, self.bid)
         match cur_role:
@@ -55,11 +56,12 @@ class BlockWhyChooseTryDemoButton(BasePage):
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is visible on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not visible on this page")
+            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not visible on this page")
             pytest.fail("Bug! Testing element BUTTON_TRY_DEMO on Block 'Why choose Capital.com?'"
                         "is present on this page, but not visible")
 
     @allure.step("Click button [Try demo] on Block 'Why choose Capital.com?'")
-    def element_click(self):
+    def element_click(self, d):
         print(f"\n{datetime.now()}   2. Act_v0")
 
         button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE)
@@ -67,6 +69,7 @@ class BlockWhyChooseTryDemoButton(BasePage):
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not clickable after {time_out} sec. Stop TC>")
+            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not clickable")
             pytest.fail(f"BUTTON_TRY_DEMO is not clickable after {time_out} sec.")
 
         try:
