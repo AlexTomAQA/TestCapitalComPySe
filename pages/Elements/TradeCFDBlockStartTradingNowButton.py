@@ -27,9 +27,9 @@
 #             case "Auth":
 #                 test_element.assert_trading_platform_v4(d, cur_item_link)
 #
-#     @allure.step(
-#         f"{datetime.now()}   Start Full test for Start trading now button of Trade CFD Block"
-#     )
+#     # @allure.step(
+#     #     f"{datetime.now()}   Start Full test for Start trading now button of Trade CFD Block"
+#     # )
 #     # def full_test(self, d, cur_language, cur_country, cur_role, page_url):
 #     #
 #     #     self.arrange_(d, page_url)
@@ -52,12 +52,12 @@
 #             self.link = cur_item_link
 #             self.open_page()
 #
-#         button = self.driver.find_element(*BlockTradeCFD.START_TRADING_NOW_BUTTON)
-#         if not button:
+#         button_list = self.driver.find_elements(*BlockTradeCFD.START_TRADING_NOW_BUTTON)
+#         if len(button_list) == 0:
 #             print(
 #                 f"{datetime.now()}   => BUTTON_START_TRADING_NOW is not present on the page!"
 #             )
-#             del button
+#             del button_list
 #             msg = "Testing element 'BUTTON_START_TRADING_NOW in the Trade CFD Block' is not on this page"
 #             if always:
 #                 pytest.fail(f"Bug № ??? {msg}")
@@ -67,7 +67,7 @@
 #         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW scroll =>")
 #         self.driver.execute_script(
 #             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-#             button,
+#             button_list[0],
 #         )
 #
 #         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW is visible? =>")
@@ -87,10 +87,10 @@
 #         print(f"\n{datetime.now()}   2. Act_v0")
 #         print(f"{datetime.now()}   Start Click button [Start Trading Now] =>")
 #
-#         button = self.driver.find_elements(*BlockTradeCFD.START_TRADING_NOW_BUTTON)
+#         button_list = self.driver.find_elements(*BlockTradeCFD.START_TRADING_NOW_BUTTON)
 #         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW is clickable? =>")
 #         time_out = 3
-#         if not self.element_is_clickable(button, time_out):
+#         if not self.element_is_clickable(button_list[0], time_out):
 #             print(
 #                 f"{datetime.now()}   => BUTTON_START_TRADING_NOW is not clickable after {time_out} sec. Stop TC>"
 #             )
@@ -100,7 +100,7 @@
 #
 #         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW click =>")
 #         try:
-#             button.click()
+#             button_list[0].click()
 #             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW clicked")
 #         except ElementClickInterceptedException:
 #             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW not clicked")
@@ -119,7 +119,7 @@
 #                 page_.close_login_page()
 #
 #             del page_
-#             button.click()
+#             button_list[0].click()
 #
-#         del button
+#         del button_list
 #         return True
