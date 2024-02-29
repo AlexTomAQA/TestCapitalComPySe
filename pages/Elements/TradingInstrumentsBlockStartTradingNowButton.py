@@ -9,13 +9,13 @@ import allure
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
-from pages.Elements.testing_elements_locators import TradeIndicesBlockLocators
+from pages.Elements.testing_elements_locators import TradingInstrumentsBlockLocators
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
 class TradingInstrumentsBlockStartTradingNow(BasePage):
 
-    @allure.step(f'{datetime.now()}   Start Full test for Start trading now button of Block Trade Indices')
+    @allure.step(f'{datetime.now()}   Start Full test for Start trading now button of Block Trading Instruments')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
         self.arrange_(d, cur_item_link, True)
@@ -30,27 +30,6 @@ class TradingInstrumentsBlockStartTradingNow(BasePage):
             case "Auth":
                 test_element.assert_trading_platform_v4(d, cur_item_link)
 
-    # def full_test(self, d, cur_language, cur_country, cur_role, page_url):
-    #
-    #     self.arrange_(d, page_url)
-    #
-    #     self.element_click()
-    #
-    #     test_element = AssertClass(d, page_url)
-    #     match cur_role:
-    #         case "NoReg":
-    #             test_element.assert_signup(
-    #                 d, cur_language, page_url
-    #             )
-    #         case "NoAuth":
-    #             test_element.assert_login(
-    #                 d, cur_language, page_url
-    #             )
-    #         case "Auth":
-    #             test_element.assert_trading_platform_v4(
-    #                 d, page_url
-    #             )
-
     def arrange_(self, d, cur_item_link, always=False):
         print(f"\n{datetime.now()}   1. Arrange_v0")
 
@@ -58,11 +37,11 @@ class TradingInstrumentsBlockStartTradingNow(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.driver.find_elements(*TradeIndicesBlockLocators.BUTTON_START_TRADING_NOW)
+        button_list = self.driver.find_elements(*TradingInstrumentsBlockLocators.BUTTON_START_TRADING_NOW)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW is not present on the page!")
             del button_list
-            msg = "Testing element 'BUTTON_START_TRADING_NOW on the main banner' is not on this page"
+            msg = "Testing element 'BUTTON_START_TRADING_NOW on the Block Trading Instruments' is not on this page"
             if always:
                 pytest.fail(f"Bug № ??? {msg}")
             else:
@@ -74,19 +53,19 @@ class TradingInstrumentsBlockStartTradingNow(BasePage):
         )
 
         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW is visible? =>")
-        if self.element_is_visible(TradeIndicesBlockLocators.BUTTON_START_TRADING_NOW):
+        if self.element_is_visible(TradingInstrumentsBlockLocators.BUTTON_START_TRADING_NOW):
             print(f"{datetime.now()}   => BUTTON_START_TRADING is visible on the page!")
         else:
             print(f"{datetime.now()}   => BUTTON_START_TRADING is not visible on the page!")
-            pytest.fail("Bug! Testing element 'BUTTON_START_TRADING on Block Trade Indices' is present on this page, "
+            pytest.fail("Bug! Testing element 'BUTTON_START_TRADING on Block Trading Instruments' present on this page,"
                         "but not visible")
 
-    @allure.step("Click button [Start Trading Now] on Block Trade Indices")
+    @allure.step("Click button [Start Trading Now] on Block Trading Instruments")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button [Start Trading Now] =>")
 
-        button_list = self.driver.find_elements(*TradeIndicesBlockLocators.BUTTON_START_TRADING_NOW)
+        button_list = self.driver.find_elements(*TradingInstrumentsBlockLocators.BUTTON_START_TRADING_NOW)
         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW is clickable? =>")
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
