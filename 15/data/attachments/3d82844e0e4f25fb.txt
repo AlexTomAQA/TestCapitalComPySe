@@ -1,0 +1,86 @@
+
+
+
+Current tab - most_traded
+{'width': 1280, 'height': 720}
+
+2024-02-29 19:23:30.091659   worker_id = master
+
+2024-02-29 19:23:30.091676   0. Allure grouping v4
+
+
+2024-02-29 19:23:30.091912   START PRECONDITIONS =>
+
+
+2024-02-29 19:23:30.091931   {'width': 1280, 'height': 720}
+
+2024-02-29 19:23:30.093249   Set windows position at (0, 0) =>
+
+2024-02-29 19:23:30.195535   Set resolution 1280 * 720 =>
+
+2024-02-29 19:23:30.297949   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 19:23:31.329873   Капчи нет. Идем дальше
+
+2024-02-29 19:23:31.329964   Prev. Role: Auth
+
+2024-02-29 19:23:31.329977   Current role: Auth
+
+2024-02-29 19:23:32.364513   Капчи нет. Идем дальше
+
+2024-02-29 19:23:32.364615   Prev language: zh
+
+2024-02-29 19:23:32.364627   => Current language: zh
+
+2024-02-29 19:23:33.396679   Капчи нет. Идем дальше
+
+2024-02-29 19:23:33.396768   Prev country: au
+2024-02-29 19:23:33.396780   => Current country: au
+
+2024-02-29 19:23:33.396789   => THE END PRECONDITIONS
+
+2024-02-29 19:23:33.396823   1. Arrange for Indices finance instrument and "most_traded" tab
+2024-02-29 19:23:33.399695   Current page URL = https://capital.com/trading/platform/charting/38856569148754?side=sell&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754
+2024-02-29 19:23:34.570617   => Loaded page https://capital.com/zh/trade-dax
+2024-02-29 19:23:34.573436   IS CFDs TABLE visible on the page? =>
+2024-02-29 19:23:34.579504   => CFDs TABLE is visible on the page!
+
+2024-02-29 19:23:34.579552   IS TAB "most_traded" visible on the page? =>
+2024-02-29 19:23:34.589610   => TAB "most_traded" is visible on the page!
+
+2024-02-29 19:23:34.589652   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-02-29 19:23:34.618860   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-02-29 19:23:34.618903   Start Click button TAB "most_traded" =>
+2024-02-29 19:23:34.705592   => End Click button TAB "most_traded"
+
+2024-02-29 19:23:34.705633   Start Click button [Show all] on the TAB "most_traded" =>
+2024-02-29 19:23:34.789755   => End Click button [Show all] on the TAB "most_traded"
+
+2024-02-29 19:23:34.789810   Start find two random buttons [Buy] on the TAB "most_traded"=>
+2024-02-29 19:23:34.799299   => End find two random buttons [Buy] on the TAB "most_traded"
+
+2024-02-29 19:23:34.799553   2. Act for Indices finance instrument and "most_traded" tab
+2024-02-29 19:23:34.839335   Start click button [Buy] =>
+2024-02-29 19:23:34.895274   => BUTTON_TRADING_BUY with item 233693465629892 clicked!
+
+
+2024-02-29 19:23:34.895532   3. Assert_v4
+2024-02-29 19:23:34.895642   Checking that the trading platform page has opened (v4) =>
+2024-02-29 19:23:35.410904   => Current page title: Trading Platform | Capital.com
+2024-02-29 19:23:35.411049   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 19:23:36.969516   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 19:23:36.983488   => The page with https://capital.com/trading/platform/charting/233693465629892?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754,233693465629892 url was opened in lIVE mode
+2024-02-29 19:23:36.986105   => Check that opened page with https://capital.com/trading/platform/charting/233693465629892?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754,233693465629892 url
+with corresponding trading instrument '233693465629892' select
+2024-02-29 19:23:36.990909   => Trading Instrument is the '233693465629892'
+2024-02-29 19:23:36.990938   => Trading Instrument Name is the '233693465629892'
+2024-02-29 19:23:37.244046   => Trading Platform opened in Chart mode
+
+Bug: 
+
+2024-02-29 19:23:37.502416   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb4821b8a40>
+
+2024-02-29 19:23:37.505299  Для бага: Bid-16 необходимо использовать проверку на ретест!!!

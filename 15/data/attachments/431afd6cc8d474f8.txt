@@ -1,0 +1,84 @@
+
+
+
+Current tab - most_traded
+{'width': 1280, 'height': 720}
+
+2024-02-29 19:23:00.262429   worker_id = master
+
+2024-02-29 19:23:00.262443   0. Allure grouping v4
+
+
+2024-02-29 19:23:00.262633   START PRECONDITIONS =>
+
+
+2024-02-29 19:23:00.262648   {'width': 1280, 'height': 720}
+
+2024-02-29 19:23:00.263866   Set windows position at (0, 0) =>
+
+2024-02-29 19:23:00.368630   Set resolution 1280 * 720 =>
+
+2024-02-29 19:23:00.471267   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 19:23:01.510500   Капчи нет. Идем дальше
+
+2024-02-29 19:23:01.510595   Prev. Role: Auth
+
+2024-02-29 19:23:01.510608   Current role: Auth
+
+2024-02-29 19:23:02.540025   Капчи нет. Идем дальше
+
+2024-02-29 19:23:02.540126   Prev language: zh
+
+2024-02-29 19:23:02.540139   => Current language: zh
+
+2024-02-29 19:23:03.571814   Капчи нет. Идем дальше
+
+2024-02-29 19:23:03.571929   Prev country: au
+2024-02-29 19:23:03.571943   => Current country: au
+
+2024-02-29 19:23:03.571952   => THE END PRECONDITIONS
+
+2024-02-29 19:23:03.571984   1. Arrange for Indices finance instrument and "most_traded" tab
+2024-02-29 19:23:03.574607   IS CFDs TABLE visible on the page? =>
+2024-02-29 19:23:03.582010   => CFDs TABLE is visible on the page!
+
+2024-02-29 19:23:03.582038   IS TAB "most_traded" visible on the page? =>
+2024-02-29 19:23:03.588976   => TAB "most_traded" is visible on the page!
+
+2024-02-29 19:23:03.588999   Buttons [Sell] is visible and quantity buttons not zero? =>
+2024-02-29 19:23:03.597292   => Buttons [Sell] is visible and quantity buttons not zero!
+
+2024-02-29 19:23:03.597314   Start Click button TAB "most_traded" =>
+2024-02-29 19:23:03.636929   => End Click button TAB "most_traded"
+
+2024-02-29 19:23:03.636965   Start Click button [Show all] on the TAB "most_traded" =>
+2024-02-29 19:23:03.684671   => End Click button [Show all] on the TAB "most_traded"
+
+2024-02-29 19:23:03.684737   Start find two random buttons [Sell] on the TAB "most_traded"=>
+2024-02-29 19:23:03.695978   => End find two random buttons [Sell] on the TAB "most_traded"
+
+2024-02-29 19:23:03.696174   2. Act for Indices finance instrument and "most_traded" tab
+2024-02-29 19:23:03.719212   Start click button [Sell] =>
+2024-02-29 19:23:03.762212   => BUTTON_TRADING_SELL with item 2276324076967250 clicked!
+
+
+2024-02-29 19:23:03.762468   3. Assert_v4
+2024-02-29 19:23:03.762580   Checking that the trading platform page has opened (v4) =>
+2024-02-29 19:23:04.273525   => Current page title: Trading Platform | Capital.com
+2024-02-29 19:23:04.273666   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 19:23:06.044469   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 19:23:06.058105   => The page with https://capital.com/trading/platform/charting/2276324076967250?side=sell&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250 url was opened in lIVE mode
+2024-02-29 19:23:06.060716   => Check that opened page with https://capital.com/trading/platform/charting/2276324076967250?side=sell&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250 url
+with corresponding trading instrument '2276324076967250' select
+2024-02-29 19:23:06.063276   => Trading Instrument is the '2276324076967250'
+2024-02-29 19:23:06.063293   => Trading Instrument Name is the '2276324076967250'
+2024-02-29 19:23:06.373036   => Trading Platform opened in Chart mode
+
+Bug: 
+
+2024-02-29 19:23:06.603301   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb4821b8a40>
+
+2024-02-29 19:23:06.606075  Для бага: Bid-16 необходимо использовать проверку на ретест!!!
