@@ -1,0 +1,107 @@
+{'width': 1280, 'height': 720}
+
+2024-02-29 20:28:44.553301   worker_id = master
+
+2024-02-29 20:28:44.553322   0. Allure grouping v4
+
+
+2024-02-29 20:28:44.553585   START PRECONDITIONS =>
+
+
+2024-02-29 20:28:44.553602   {'width': 1280, 'height': 720}
+
+2024-02-29 20:28:44.556471   Set windows position at (0, 0) =>
+
+2024-02-29 20:28:44.658684   Set resolution 1280 * 720 =>
+
+2024-02-29 20:28:44.761019   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 20:28:45.796701   Капчи нет. Идем дальше
+
+2024-02-29 20:28:45.796793   Prev. Role: Auth
+
+2024-02-29 20:28:45.796806   Current role: Auth
+
+2024-02-29 20:28:46.829185   Капчи нет. Идем дальше
+
+2024-02-29 20:28:46.829278   Prev language: zh
+
+2024-02-29 20:28:46.829291   => Current language: zh
+
+2024-02-29 20:28:47.857926   Капчи нет. Идем дальше
+
+2024-02-29 20:28:47.858015   Prev country: ae
+2024-02-29 20:28:47.858028   => Current country: ae
+
+2024-02-29 20:28:47.858037   => THE END PRECONDITIONS
+
+2024-02-29 20:28:47.858209   1. Cur URL = https://capital.com/zh/trade-currency
+
+2024-02-29 20:28:47.860758   2. Link = https://capital.com/zh
+2024-02-29 20:28:47.863117   Current page URL = https://capital.com/zh/trade-currency
+2024-02-29 20:28:48.878307   => Loaded page https://capital.com/zh
+2024-02-29 20:28:49.390407   => Education menu is present
+2024-02-29 20:28:49.406532   element = <selenium.webdriver.remote.webelement.WebElement (session="7a159394c3fdbf7afdc8f479c239c70b", element="f.8B074800EFB7374671187FC9CE368B3A.d.CB2BDAFA0FE7B4C952FD6991EBFB0474.e.798")>
+2024-02-29 20:28:49.406567   => Education menu is visible
+2024-02-29 20:28:50.671171   => Focus moved to Education menu
+
+
+2024-02-29 20:28:52.484587   => Forex trading sub-menu clicked
+
+2024-02-29 20:28:52.490545   3. Cur URL = https://capital.com/zh/trade-currency
+
+2024-02-29 20:28:52.496675   1. Arrange_v4
+2024-02-29 20:28:52.499163   MOST_TRADED is present? =>
+2024-02-29 20:28:52.508522   => MOST_TRADED widget is present on this page
+2024-02-29 20:28:52.508546   => Found 5 elements in block MOST_TRADED
+2024-02-29 20:28:52.508556   Most traded widget is scroll =>
+2024-02-29 20:28:52.511691   => Most traded widget is scrolled into screen center
+
+2024-02-29 20:28:52.511733   Random indexes = [4]
+
+2024-02-29 20:28:52.511747   Testing Most traded 1 random element with 4 index
+
+2024-02-29 20:28:52.511862   2. Act_v4
+2024-02-29 20:28:52.511954   Start Checking that form [Sign up] popped up on the page =>
+2024-02-29 20:28:54.048310   '[Sign up]' form was not popped up
+2024-02-29 20:28:54.066278   Selected Trade button on Most traded widget is scroll =>
+2024-02-29 20:28:54.070490   Selected Trade button click for 'Australian Dollar / US Dollar' trading instrument =>
+2024-02-29 20:28:56.387403   => Selected Trade button clicked!
+
+2024-02-29 20:28:56.387743   3. Assert_v4
+2024-02-29 20:28:56.387919   Checking that the trading platform page has opened (v4) =>
+2024-02-29 20:28:56.402729   => Current page title: Trading Platform | Capital.com
+2024-02-29 20:28:56.402956   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 20:28:58.077895   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 20:28:58.097360   => The page with https://capital.com/trading/platform/charting/1496662958757060?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754,233693465629892,390880678663506,36597416351058,21182778791108,1496662958757060 url was opened in lIVE mode
+2024-02-29 20:28:58.100939   => Check that opened page with https://capital.com/trading/platform/charting/1496662958757060?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754,233693465629892,390880678663506,36597416351058,21182778791108,1496662958757060 url
+with corresponding trading instrument 'Australian Dollar / US Dollar' select
+2024-02-29 20:28:58.104011   => Trading Instrument is the 'Australian Dollar / US Dollar'
+2024-02-29 20:28:58.104042   => Trading Instrument Name is the 'Australian'
+2024-02-29 20:28:58.338852   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.02.04.00_06-zh.ae.Auth
+
+2024-02-29 20:28:58.509660   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f322e582420>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f322e582420>
+
+2024-02-29 20:28:59.237353   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 20:28:59.504778   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f322e582420>
+
+2024-02-29 20:29:00.671616   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 20:29:00.908388   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 20:29:00.908456   Баг Bid:11.02.04.00_06-zh.ae.Auth уже существует, но у него изменился тип с  на 16
+
+2024-02-29 20:29:00.908605   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 20:29:01.159588   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 20:29:01.160689   Баг Bid:11.02.04.00_06-zh.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
