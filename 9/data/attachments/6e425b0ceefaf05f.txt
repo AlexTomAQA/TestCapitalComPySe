@@ -1,0 +1,91 @@
+{'width': 1280, 'height': 720}
+
+2024-02-29 05:35:49.301703   worker_id = master
+
+2024-02-29 05:35:49.301719   0. Allure grouping v4
+
+
+2024-02-29 05:35:49.301918   START PRECONDITIONS =>
+
+
+2024-02-29 05:35:49.301934   {'width': 1280, 'height': 720}
+
+2024-02-29 05:35:49.303191   Set windows position at (0, 0) =>
+
+2024-02-29 05:35:49.405301   Set resolution 1280 * 720 =>
+
+2024-02-29 05:35:49.507559   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 05:35:50.536698   Капчи нет. Идем дальше
+
+2024-02-29 05:35:50.536780   Prev. Role: Auth
+
+2024-02-29 05:35:50.536793   Current role: Auth
+
+2024-02-29 05:35:51.562462   Капчи нет. Идем дальше
+
+2024-02-29 05:35:51.562547   Prev language: de
+
+2024-02-29 05:35:51.562560   => Current language: de
+
+2024-02-29 05:35:52.589730   Капчи нет. Идем дальше
+
+2024-02-29 05:35:52.589829   Prev country: au
+2024-02-29 05:35:52.589851   => Current country: au
+
+2024-02-29 05:35:52.589866   => THE END PRECONDITIONS
+
+2024-02-29 05:35:52.590118   1. Arrange_v4
+2024-02-29 05:35:52.593118   Current page URL = https://capital.com/trading/platform/
+2024-02-29 05:35:53.615931   => Loaded page https://capital.com/de/gbpjpy-handel
+2024-02-29 05:35:53.618217   MOST_TRADED is present? =>
+2024-02-29 05:35:53.629888   => MOST_TRADED widget is present on this page
+2024-02-29 05:35:53.629915   => Found 5 elements in block MOST_TRADED
+2024-02-29 05:35:53.629925   Most traded widget is scroll =>
+2024-02-29 05:35:53.633379   => Most traded widget is scrolled into screen center
+
+2024-02-29 05:35:53.633423   Random indexes = [3]
+
+2024-02-29 05:35:53.633438   Testing Most traded 1 random element with 3 index
+
+2024-02-29 05:35:53.633594   2. Act_v4
+2024-02-29 05:35:53.633701   Start Checking that form [Sign up] popped up on the page =>
+2024-02-29 05:35:55.163999   '[Sign up]' form was not popped up
+2024-02-29 05:35:55.184854   Selected Trade button on Most traded widget is scroll =>
+2024-02-29 05:35:55.188010   Selected Trade button click for 'Australian Dollar / US Dollar' trading instrument =>
+2024-02-29 05:35:56.567156   => Selected Trade button clicked!
+
+2024-02-29 05:35:56.567500   3. Assert_v4
+2024-02-29 05:35:56.567664   Checking that the trading platform page has opened (v4) =>
+2024-02-29 05:35:56.582197   => Current page title: Trading Platform | Capital.com
+2024-02-29 05:35:56.582387   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 05:35:58.207219   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 05:35:58.381075   => The page with https://capital.com/trading/platform/charting/23381802046660?side=buy&ids=427748677997764,123763777643545,426090820621508,27041281599427780,7091880064013508,426696411010244,93810675766468,93810675691588,16150730595456196,422839530378436,1496662958757060,23381802046660 url was opened in lIVE mode
+2024-02-29 05:35:58.384182   => Check that opened page with https://capital.com/trading/platform/charting/23381802046660?side=buy&ids=427748677997764,123763777643545,426090820621508,27041281599427780,7091880064013508,426696411010244,93810675766468,93810675691588,16150730595456196,422839530378436,1496662958757060,23381802046660 url for corresponding trading instrument 'Australian Dollar / US Dollar'
+2024-02-29 05:35:58.392135   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.02.04.01_06-de.au.Auth
+
+2024-02-29 05:35:58.502047   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fac0d8631d0>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fac0d8631d0>
+
+2024-02-29 05:35:58.817187   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:35:58.978362   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fac0d8631d0>
+
+2024-02-29 05:35:59.277736   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:35:59.447172   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 05:35:59.447248   Баг Bid:11.02.04.01_06-de.au.Auth уже существует, но у него изменился тип с  на 16
+
+2024-02-29 05:35:59.447426   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:35:59.623108   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 05:35:59.624280   Баг Bid:11.02.04.01_06-de.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
