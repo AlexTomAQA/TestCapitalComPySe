@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 720}
+
+2024-02-29 05:50:13.110318   worker_id = master
+
+2024-02-29 05:50:13.110336   0. Allure grouping v4
+
+
+2024-02-29 05:50:13.110567   START PRECONDITIONS =>
+
+
+2024-02-29 05:50:13.110599   {'width': 1280, 'height': 720}
+
+2024-02-29 05:50:13.113008   Set windows position at (0, 0) =>
+
+2024-02-29 05:50:13.216630   Set resolution 1280 * 720 =>
+
+2024-02-29 05:50:13.318752   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 05:50:14.343396   Капчи нет. Идем дальше
+
+2024-02-29 05:50:14.343481   Prev. Role: Auth
+
+2024-02-29 05:50:14.343494   Current role: Auth
+
+2024-02-29 05:50:15.364989   Капчи нет. Идем дальше
+
+2024-02-29 05:50:15.365080   Prev language: de
+
+2024-02-29 05:50:15.365093   => Current language: de
+
+2024-02-29 05:50:16.386078   Капчи нет. Идем дальше
+
+2024-02-29 05:50:16.386168   Prev country: au
+2024-02-29 05:50:16.386181   => Current country: au
+
+2024-02-29 05:50:16.386190   => THE END PRECONDITIONS
+
+2024-02-29 05:50:16.386224   1. Arrange_v0
+2024-02-29 05:50:16.388860   Current page URL = https://capital.com/trading/platform/
+2024-02-29 05:50:19.215399   => Loaded page https://capital.com/de/trade-neo
+2024-02-29 05:50:19.218015   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-02-29 05:50:19.229462   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-02-29 05:50:19.229685   Start Checking that form [Sign up] popped up on the page =>
+2024-02-29 05:50:20.770582   '[Sign up]' form was not popped up
+
+2024-02-29 05:50:20.770814   2. Act_v0
+2024-02-29 05:50:20.776794   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-02-29 05:50:20.776821   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-02-29 05:50:20.776833   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-02-29 05:50:20.780059   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-02-29 05:50:20.783713   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-02-29 05:50:20.810263   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-02-29 05:50:21.288400   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-02-29 05:50:21.288749   3. Assert_v4
+2024-02-29 05:50:21.288937   Checking that the trading platform page has opened (v4) =>
+2024-02-29 05:50:21.296652   => Current page title: Trading Platform | Capital.com
+2024-02-29 05:50:21.296779   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 05:50:22.102030   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 05:50:22.113135   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-02-29 05:50:22.115722   => Check that opened page with https://capital.com/trading/platform/ url for corresponding trading instrument '15854807348761796'
+2024-02-29 05:50:23.136049   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.05.01_05-de.au.Auth
+
+2024-02-29 05:50:23.136099   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff4e8e688f0>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff4e8e688f0>
+
+2024-02-29 05:50:23.412028   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:50:23.585119   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff4e8e688f0>
+
+2024-02-29 05:50:23.826898   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:50:23.984562   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 05:50:23.984624   Баг Bid:11.02.05.01_05-de.au.Auth уже существует, но у него изменился тип с  на 14
+
+2024-02-29 05:50:23.984793   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 05:50:24.169739   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 05:50:24.170895   Баг Bid:11.02.05.01_05-de.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
