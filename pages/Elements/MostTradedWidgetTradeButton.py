@@ -40,7 +40,6 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
                 pytest.fail("Testing element is not clicked")
 
             check_element = AssertClass(d, cur_item_link, self.bid)
-            counter += 1
             match cur_role:
                 case "NoReg":
                     check_element.assert_signup(d, cur_language, cur_item_link)
@@ -48,6 +47,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
                     check_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+            counter += 1
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         # self.clear_chart_list()

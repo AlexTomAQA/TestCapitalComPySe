@@ -104,8 +104,8 @@ class TradingPlatform(BasePage):
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
-                print(f"{datetime.now()}   => Check that opened page with {self.driver.current_url} url for "
-                      f"corresponding trading instrument '{trade_instrument}'")
+                print(f"{datetime.now()}   => Check that opened page with {self.driver.current_url} url with "
+                      f"corresponding trading instrument '{trade_instrument}' select")
                 self.should_be_corresponding_trading_instrument(test_link, trade_instrument)
 
             do = True
@@ -272,7 +272,9 @@ class TradingPlatform(BasePage):
         """
 
         # cur_url = self.driver.current_url
+        print(f"{datetime.now()}   Trade Instrument is the {trade_instrument}")
         trade_instrument_name = trade_instrument.split(" ")[0]
+        print(f"{datetime.now()}   Trade Instrument Name is the {trade_instrument_name}")
 
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
@@ -281,7 +283,6 @@ class TradingPlatform(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '14', self.link)
             assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
-
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
@@ -291,6 +292,7 @@ class TradingPlatform(BasePage):
             retest_table_fill(self.driver, self.bid, '15', self.link)
             assert False, (f"Bug # 15. Trading platform was opened, "
                            f"but does no contain any trade instrument on the Top Charts List")
+        print(f"{datetime.now()}   => Trading Platform opened in Chart mode, but Top Charts List is enpty")
 
         # проверяем, есть ли вкладка для запрашиваемого торгового инструмента
         present = False
@@ -304,13 +306,27 @@ class TradingPlatform(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '16', self.link)
             assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is Not on the Top Charts List"
+        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is on the Top Charts List")
 
-        # проверяем, что запрашиваемый торговый инструмент выбран
-        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENTS).text
-        if trade_instrument_name not in selected_trade_instrument:
+        # проверяем, что запрашиваемый торговый инструмент отображен в списке инструментов
+        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENTS)
+        if not selected_trade_instrument:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '17', self.link)
             # ==============================
-            assert False, f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, but Not selected"
-        print(f"{datetime.now()}   Trade instrument '{trade_instrument}' is on the Top Charts List and selected")
+            assert False, (f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, "
+                           f"but not visible and not selected")
+        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is on the Top Charts List and visible")
+
+        # проверяем, что запрашиваемый торговый инструмент выбран
+        selected_trade_instrument_mame = selected_trade_instrument.text
+        if trade_instrument_name not in selected_trade_instrument_mame:
+            # new bug re-test checking =====
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '18', self.link)
+            # ==============================
+            assert False, (f"Bug # 18. Trade instrument '{trade_instrument}' is on the Top Charts List, "
+                           f"visible, but Not selected")
+        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is on the Top Charts List, "
+              f"visible and selected")
