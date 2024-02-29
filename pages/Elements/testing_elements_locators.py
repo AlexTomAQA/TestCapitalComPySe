@@ -214,5 +214,5 @@ class ItemDropMenuOnPageLocators:
     ITEM_DROP_MENU_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
 
 
-class TradeIndicesBlockLocators:
-    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".button-main.rounded-lg.js_signup")
+class TradingInstrumentsBlockLocators:
+    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, "div.banner.banner--mid > div > a[href^='https'']")
