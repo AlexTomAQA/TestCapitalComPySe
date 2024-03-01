@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/02/27 19:30
+@Time    : 2024/02/29 23:46
 @Author  : Artem Dashkov
 """
 from datetime import datetime
@@ -15,9 +15,9 @@ from pages.Signup_login.signup_login import SignupLogin
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class BlockWhyChooseTryDemoButton(BasePage):
+class BlockWhyChooseSignUpButton(BasePage):
 
-    @allure.step(f"{datetime.now()}   Start Full test for [Try demo] button in Block 'Why choose Capital.com?'")
+    @allure.step(f"{datetime.now()}   Start Full test for [Sign Up] button in Block 'Why choose Capital.com?'")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
         self.element_click(d)
@@ -27,9 +27,9 @@ class BlockWhyChooseTryDemoButton(BasePage):
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
             case "NoAuth":
-                test_element.assert_login(d, cur_language, cur_item_link)
+                test_element.assert_signup(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link, True)
+                test_element.assert_trading_platform_v4(d, cur_item_link)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -38,45 +38,45 @@ class BlockWhyChooseTryDemoButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE)
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_SIGN_UP_BLOCK_WHY_CHOOSE)
         if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not present on this page")
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP is not present on this page")
             del button_list
-            pytest.fail("Testing element BUTTON_TRY_DEMO in Block 'Why choose Capital.com?' is not present on this page")
+            pytest.fail("Testing element BUTTON_SIGN_UP in Block 'Why choose Capital.com?' is not present on this page")
         else:
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO is present on this page")
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP is present on this page")
 
-        print(f"{datetime.now()}   BUTTON_TRY_DEMO scroll =>")
+        print(f"{datetime.now()}   BUTTON_SIGN_UP scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[0]
         )
 
-        print(f"{datetime.now()}   BUTTON_TRY_DEMO is visible? =>")
-        if self.element_is_visible(ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE):
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO is visible on this page")
+        print(f"{datetime.now()}   BUTTON_SIGN_UP is visible? =>")
+        if self.element_is_visible(ContentBlockLocators.BUTTON_SIGN_UP_BLOCK_WHY_CHOOSE):
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP is visible on this page")
         else:
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not visible on this page")
-            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not visible on this page")
-            pytest.fail("Bug! Testing element BUTTON_TRY_DEMO in Block 'Why choose Capital.com?'"
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP is not visible on this page")
+            Common().save_current_screenshot(d, "Screenshot: BUTTON_SIGN_UP is not visible on this page")
+            pytest.fail("Bug! Testing element BUTTON_SIGN_UP in Block 'Why choose Capital.com?'"
                         "is present on this page, but not visible")
 
-    @allure.step("Click button [Try demo] on Block 'Why choose Capital.com?'")
+    @allure.step("Click button [Sign Up] in Block 'Why choose Capital.com?'")
     def element_click(self, d):
         print(f"\n{datetime.now()}   2. Act_v0")
 
-        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE)
-        print(f"{datetime.now()}   BUTTON_TRY_DEMO is clickable? =>")
+        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_SIGN_UP_BLOCK_WHY_CHOOSE)
+        print(f"{datetime.now()}   BUTTON_SIGN_UP is clickable? =>")
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not clickable after {time_out} sec. Stop TC>")
-            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not clickable")
-            pytest.fail(f"BUTTON_TRY_DEMO is not clickable after {time_out} sec.")
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP is not clickable after {time_out} sec. Stop TC>")
+            Common().save_current_screenshot(d, "Screenshot: BUTTON_SIGN_UP is not clickable")
+            pytest.fail(f"BUTTON_SIGN_UP is not clickable after {time_out} sec.")
 
         try:
             self.driver.execute_script("arguments[0].click();", button_list[0])
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO clicked!")
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP clicked!")
         except ElementClickInterceptedException:
-            print(f"{datetime.now()}   => BUTTON_TRY_DEMO NOT CLICKED")
+            print(f"{datetime.now()}   => BUTTON_SIGN_UP NOT CLICKED")
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
             page_ = SignupLogin(self.driver)
