@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 720}
+
+2024-02-29 18:24:35.029423   worker_id = master
+
+2024-02-29 18:24:35.029440   0. Allure grouping v4
+
+
+2024-02-29 18:24:35.029647   START PRECONDITIONS =>
+
+
+2024-02-29 18:24:35.029663   {'width': 1280, 'height': 720}
+
+2024-02-29 18:24:35.031336   Set windows position at (0, 0) =>
+
+2024-02-29 18:24:35.137015   Set resolution 1280 * 720 =>
+
+2024-02-29 18:24:35.239327   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-02-29 18:24:36.282504   Капчи нет. Идем дальше
+
+2024-02-29 18:24:36.282597   Prev. Role: Auth
+
+2024-02-29 18:24:36.282610   Current role: Auth
+
+2024-02-29 18:24:37.319084   Капчи нет. Идем дальше
+
+2024-02-29 18:24:37.319180   Prev language: zh
+
+2024-02-29 18:24:37.319193   => Current language: zh
+
+2024-02-29 18:24:38.352475   Капчи нет. Идем дальше
+
+2024-02-29 18:24:38.352569   Prev country: au
+2024-02-29 18:24:38.352582   => Current country: au
+
+2024-02-29 18:24:38.352591   => THE END PRECONDITIONS
+
+2024-02-29 18:24:38.352776   1. Arrange_v4
+2024-02-29 18:24:38.355442   MOST_TRADED is present? =>
+2024-02-29 18:24:38.363637   => MOST_TRADED widget is present on this page
+2024-02-29 18:24:38.363665   => Found 5 elements in block MOST_TRADED
+2024-02-29 18:24:38.363676   Most traded widget is scroll =>
+2024-02-29 18:24:38.367427   => Most traded widget is scrolled into screen center
+
+2024-02-29 18:24:38.367473   Random indexes = [2]
+
+2024-02-29 18:24:38.367488   Testing Most traded 1 random element with 2 index
+
+2024-02-29 18:24:38.367641   2. Act_v4
+2024-02-29 18:24:38.367733   Start Checking that form [Sign up] popped up on the page =>
+2024-02-29 18:24:39.915711   '[Sign up]' form was not popped up
+2024-02-29 18:24:39.937579   Selected Trade button on Most traded widget is scroll =>
+2024-02-29 18:24:39.940868   Selected Trade button click for 'US Crude Oil Spot' trading instrument =>
+2024-02-29 18:24:42.028068   => Selected Trade button clicked!
+
+2024-02-29 18:24:42.028416   3. Assert_v4
+2024-02-29 18:24:42.028591   Checking that the trading platform page has opened (v4) =>
+2024-02-29 18:24:42.041024   => Current page title: Trading Platform | Capital.com
+2024-02-29 18:24:42.041254   Checking that the Trading platform LOGO is present on the page =>
+2024-02-29 18:24:43.722425   Checking that the Trading platform opened in LIVE mode =>
+2024-02-29 18:24:43.774872   => The page with https://capital.com/trading/platform/charting/427748677997764?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220 url was opened in lIVE mode
+2024-02-29 18:24:43.780744   => Check that opened page with https://capital.com/trading/platform/charting/427748677997764?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220 url
+with corresponding trading instrument 'US Crude Oil Spot' select
+2024-02-29 18:24:43.785672   => Trading Instrument is the 'US Crude Oil Spot'
+2024-02-29 18:24:43.785698   => Trading Instrument Name is the 'US'
+2024-02-29 18:24:43.925139   => Trading Platform opened in Chart mode
+2024-02-29 18:24:44.196725   => Trade instrument 'US Crude Oil Spot' is present in the Top Charts List
+2024-02-29 18:24:44.196789   => Trade instrument 'US Crude Oil Spot' is present in the Top Charts List
+2024-02-29 18:24:44.211157   => Trade instrument 'US Crude Oil Spot' is on the Top Charts List and visible
+2024-02-29 18:24:44.218212   => Trade instrument 'US Crude Oil Spot' is present in the Top Charts List, visible, but not selected
+
+Bug: Bid:11.01.03.01_03-zh.au.Auth
+
+2024-02-29 18:24:44.218258   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f675983e0c0>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f675983e0c0>
+
+2024-02-29 18:24:44.840284   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 18:24:45.235479   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f675983e0c0>
+
+2024-02-29 18:24:45.702605   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 18:24:46.055559   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 18:24:46.055634   Баг Bid:11.01.03.01_03-zh.au.Auth уже существует, но у него изменился тип с Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, but not visible and not selected на 18
+
+2024-02-29 18:24:46.055796   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-02-29 18:24:46.384523   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-02-29 18:24:46.385994   Баг Bid:11.01.03.01_03-zh.au.Auth-18 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
