@@ -378,33 +378,33 @@ class MenuSection(BasePage):
         else:
             match test_language:
                 case "":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_EN_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_EN_MARKETS
                 case "ar":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_AR_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_AR_MARKETS
                 case "de":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_DE_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_DE_MARKETS
                 case "el":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_EL_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_EL_MARKETS
                 case "es":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_ES_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_ES_MARKETS
                 case "fr":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_FR_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_FR_MARKETS
                 case "it":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_IT_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_IT_MARKETS
                 case "hu":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_HU_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_HU_MARKETS
                 case "nl":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_NL_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_NL_MARKETS
                 case "pl":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_PL_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_PL_MARKETS
                 case "ro":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_RO_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_RO_MARKETS
                 case "ru":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_RU_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_RU_MARKETS
                 case "zh":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_ZH_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_ZH_MARKETS
                 case "cn":
-                    markets_menu_locator = MenuUS01Markets.SUB_MENU_CN_MARKETS
+                    markets_menu_locator = MenuUS01Markets.MENU_CN_MARKETS
 
         time.sleep(0.5)
         menu = d.find_elements(*markets_menu_locator)
@@ -1663,7 +1663,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_CN_INDICES)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"For test language '{test_language}' "
                         f"the page \"Markets->Indices\" doesn't exist on production")
 
         ActionChains(d) \
