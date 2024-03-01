@@ -13,22 +13,17 @@ from src.src import CapitalComPageSrc
 count = 1
 
 
-@pytest.fixture()
-def cur_time():
-    return str(datetime.now())
-
-
-@pytest.mark.us_01_04_00
+@pytest.mark.us_01_04
 class TestIndices:
     page_conditions = None
 
-    @allure.step("Start test_001 of button [Start Trading Now] on Block 'Trade Indices CFDs'")
+    @allure.step("Start test of button [Start Trading Now] on Block 'Trade Indices CFDs'")
     @pytest.mark.test_001
     def test_001_block_trade_indices_cfds_start_trading_now_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading Now]
-        Language: All. License: All(except CFA).
+        Language: All. License: All,except FCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
