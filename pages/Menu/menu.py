@@ -37,7 +37,7 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
-    MenuUS01MarketsButton, MenuUS01Markets 
+    MenuUS01Markets,
     MenuUS01Indices, MenuUS0103MarketsForex
 )
 from pages.base_page import BasePage
@@ -375,7 +375,7 @@ class MenuSection(BasePage):
     def move_focus_to_markets_menu(self, d, test_language, test_country):
         markets_menu_locator = None
         if test_language == "" and test_country == "gb":
-            markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_EN_GB_MARKETS_BUTTON   # новая верстка, FCA
+            markets_menu_locator = MenuUS01Markets.MENU_EN_GB_MARKETS   # новая верстка, FCA
         else:
             match test_language:
                 case "":
@@ -1124,60 +1124,30 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_EN_TRADING_STRATEGIES_GUIDE)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_AR_TRADING_STRATEGIES_GUIDE)
-            case "bg":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_BG_TRADING_STRATEGIES_GUIDE)
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_CN_TRADING_STRATEGIES_GUIDE)
-            case "cs":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_CS_TRADING_STRATEGIES_GUIDE)
-            case "da":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_DA_TRADING_STRATEGIES_GUIDE)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_DE_TRADING_STRATEGIES_GUIDE)
             case "el":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_EL_TRADING_STRATEGIES_GUIDE)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ES_TRADING_STRATEGIES_GUIDE)
-            case "et":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ET_TRADING_STRATEGIES_GUIDE)
-            case "fi":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_FI_TRADING_STRATEGIES_GUIDE)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_FR_TRADING_STRATEGIES_GUIDE)
-            case "hr":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_HR_TRADING_STRATEGIES_GUIDE)
             case "hu":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_HU_TRADING_STRATEGIES_GUIDE)
-            case "id":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ID_TRADING_STRATEGIES_GUIDE)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_IT_TRADING_STRATEGIES_GUIDE)
-            case "lt":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_LT_TRADING_STRATEGIES_GUIDE)
-            case "lv":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_LV_TRADING_STRATEGIES_GUIDE)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_NL_TRADING_STRATEGIES_GUIDE)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_PL_TRADING_STRATEGIES_GUIDE)
-            case "pt":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_PT_TRADING_STRATEGIES_GUIDE)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_RO_TRADING_STRATEGIES_GUIDE)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_RU_TRADING_STRATEGIES_GUIDE)
-            case "sk":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SK_TRADING_STRATEGIES_GUIDE)
-            case "sl":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SL_TRADING_STRATEGIES_GUIDE)
-            case "sv":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SV_TRADING_STRATEGIES_GUIDE)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ZH_TRADING_STRATEGIES_GUIDE)
-            case "th":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_TH_TRADING_STRATEGIES_GUIDE)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_VI_TRADING_STRATEGIES_GUIDE)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
@@ -1506,7 +1476,7 @@ class MenuSection(BasePage):
     def sub_menu_learn_to_trade_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TOTRADE)
+            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TO_TRADE)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
@@ -1641,7 +1611,7 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.menu_markets_move_focus(d, cur_language, cur_country)
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
         self.sub_menu_forex_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
@@ -1693,7 +1663,6 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
-
 
     @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
     def sub_menu_indices_move_focus_click(self, d, test_language):
