@@ -188,6 +188,7 @@ class ContentBlockLocators:
     BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
     BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
+    BUTTON_SIGN_UP_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
 
 
 class QRCodeLocators:
