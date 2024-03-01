@@ -223,4 +223,4 @@ class TradeCFDLocators:
 
 
 class TradingInstrumentsBlockLocators:
-    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".banner .button-main.js_signup")
+    TTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".banner .button-main.js_signup")
