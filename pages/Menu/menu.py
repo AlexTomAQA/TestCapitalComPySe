@@ -36,7 +36,8 @@ from pages.Menu.menu_locators import (
     MenuUS11WhatIsMargin,
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
-    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew
+    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
+    MenuUS01MarketsButton, MenuUS01Indices, MenuUS01Markets
 )
 from pages.base_page import BasePage
 
@@ -366,6 +367,74 @@ class MenuSection(BasePage):
             .perform()
 
         print(f"{datetime.now()}   => Focus moved to Education menu")
+        del menu
+        del element
+
+    @allure.step(f"{datetime.now()}.   Focus moved to 'Markets' menu")
+    def move_focus_to_markets_menu(self, d, test_language, test_country):
+        markets_menu_locator = None
+        if test_language == "" and test_country == "gb":
+            markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_EN_GB_MARKETS_BUTTON   # новая верстка, FCA
+        else:
+            match test_language:
+                case "":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_EN_MARKETS
+                case "ar":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_AR_MARKETS
+                case "de":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_DE_MARKETS
+                case "el":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_EL_MARKETS
+                case "es":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_ES_MARKETS
+                case "fr":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_FR_MARKETS
+                case "it":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_IT_MARKETS
+                case "hu":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_HU_MARKETS
+                case "nl":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_NL_MARKETS
+                case "pl":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_PL_MARKETS
+                case "ro":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_RO_MARKETS
+                case "ru":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_RU_MARKETS
+                case "zh":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_ZH_MARKETS
+                case "cn":
+                    markets_menu_locator = MenuUS01Markets.SUB_MENU_CN_MARKETS
+
+        time.sleep(0.5)
+        menu = d.find_elements(*markets_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => Markets menu not present")
+            Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail(f"Bug № ??? Markets menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => Markets menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(markets_menu_locator, 5)
+        print(f"{datetime.now()}   element = {element}")
+        if not element:
+            print(f"{datetime.now()}   => Markets menu not visible")
+            Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail("Problem. Markets menu not visible")
+        print(f"{datetime.now()}   => Markets menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*markets_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to Markets menu")
         del menu
         del element
 
@@ -1557,6 +1626,52 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
+    def sub_menu_indices_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EN_INDICES)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_AR_INDICES)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_DE_INDICES)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EL_INDICES)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ES_INDICES)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_FR_INDICES)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_IT_INDICES)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_HU_INDICES)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_NL_INDICES)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_PL_INDICES)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RO_INDICES)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RU_INDICES)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ZH_INDICES)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_CN_INDICES)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Markets->Indices\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Indices' submenu clicked")
 
         del sub_menu
         return d.current_url

@@ -221,3 +221,7 @@ class TradeCFDLocators:
     LONG_POSITION = (By.CSS_SELECTOR, "tr:nth-child(2) > td:nth-child(1) > div")
     SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
+
+
+class TradingInstrumentsBlockLocators:
+    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".banner .button-main.js_signup")

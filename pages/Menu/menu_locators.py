@@ -948,6 +948,67 @@ class MenuUS01Markets:
     MENU_MARKETS_CN_BUTTON = (By.CSS_SELECTOR,
                               ".cc-header a[href='https://capital.com/cn/derivative-financial-instruments']")
 
+class MenuUS01Markets:
+    SUB_MENU_EN_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='financial'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_AR_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ar/alaswaq'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_DE_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/de/alle-maerkte'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_EL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/el/paragoga'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_ES_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/es/instrumentos'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_FR_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/fr/instruments'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_IT_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/it/derivati'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_HU_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/hu/derivativ'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_NL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/nl/derivaat'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick']")
+    SUB_MENU_PL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/pl/pochodne'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_RO_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ro/instrumente'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_RU_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ru/proizvodnyye'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_ZH_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/zh/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_CN_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/cn/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+
+
+    class MenuUS01Indices:
+    SUB_MENU_EN_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='major-world-indices']")
+    SUB_MENU_AR_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/ar/alasear-almubashirat-lilmuashirat-alealamiat-alrayiysia']")
+    SUB_MENU_DE_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/de/welt-indizes']")
+    SUB_MENU_EL_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/el/kirioi-pagkosmioi-deiktes']")
+    SUB_MENU_ES_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/es/principales-indices-mundiales']")
+    SUB_MENU_FR_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/fr/indices-principaux']")
+    SUB_MENU_IT_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/it/indici-in-tempo-reale']")
+    SUB_MENU_HU_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/hu/fobb-globalis-indexek']")
+    SUB_MENU_NL_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='nl/grootste-indexen-wereldwijd']")
+    SUB_MENU_PL_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='pl/glownych-indeksow-swiatowych']")
+    SUB_MENU_RO_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/ro/principalii-indicatori-mondiali-']")
+    SUB_MENU_RU_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/ru/mirovyye-fondovyye-indeksy']")
+    SUB_MENU_ZH_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/zh/major-world-indices']")
+    SUB_MENU_CN_INDICES = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href$='/cn/major-world-indices']")
+
 
 class MenuUS0104Commodities:
     SUB_MENU_EN_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
