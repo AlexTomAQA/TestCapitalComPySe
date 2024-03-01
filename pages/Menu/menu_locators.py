@@ -917,8 +917,11 @@ class MenuUS11EssentialsOfTrading:
 class MenuUS11MarketGuidesNew:
     SUB_MENU_MARKET_GUIDES_NEW = (By.CSS_SELECTOR, '[data-type="nav_id700"]')
 
+# ".menu_menu__3Lgen a[href="/en-gb/learn"]"
+
 
 class MenuUS01Markets:
+    MENU_EN_GB_MARKETS = (By.CSS_SELECTOR, "#header a[href='/en-gb/markets']")
     MENU_MARKETS_EN_BUTTON = (By.CSS_SELECTOR,
                               ".cc-header a[href='https://capital.com/derivative-financial-instruments']")
     MENU_MARKETS_AR_BUTTON = (By.CSS_SELECTOR,
