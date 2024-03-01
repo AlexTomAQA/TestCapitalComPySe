@@ -745,10 +745,10 @@ class MenuUS11ETFTrading:
 class MenuUS11TradingStrategiesGuide:
     SUB_MENU_EN_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,
                                             "div .grid > a[href='https://capital.com/trading-strategies-guide']")
-    SUB_MENU_AR_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,    # Нет такой страницы
+    SUB_MENU_AR_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,  # Нет такой страницы
                                             "div .grid > a[href='https://capital.com/ar/trading-strategies-guide']")
-    SUB_MENU_BG_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,    # Нет такой страницы
-                                            "div .grid > a[href='https://capital.com/bg/trading-strategies-guide']")
+    # SUB_MENU_BG_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,  # Нет такой страницы
+    #                                         "div .grid > a[href='https://capital.com/bg/trading-strategies-guide']")
     SUB_MENU_CS_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,
                                             "div .grid > a[href='https://capital.com/cs/trading-strategies-guide']")
     SUB_MENU_DA_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,
@@ -759,9 +759,9 @@ class MenuUS11TradingStrategiesGuide:
                                             "div .grid > a[href='https://capital.com/et/trading-strategies-guide']")
     SUB_MENU_EL_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,
                                             "div .grid > a[href='https://capital.com/el/trading-strategies-guide']")
-    SUB_MENU_ES_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,    # Нет такой страницы
+    SUB_MENU_ES_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,  # Нет такой страницы
                                             "div .cc-nav__wrap a[href='https://capital.com/es/guia-de-estrategias']")
-    SUB_MENU_FR_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,    # Нет такой страницы
+    SUB_MENU_FR_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,  # Нет такой страницы
                                             "div .grid > a[href='https://capital.com/fr/trading-strategies-guide']")
     SUB_MENU_HR_TRADING_STRATEGIES_GUIDE = (By.CSS_SELECTOR,
                                             "div .grid > a[href='https://capital.com/hr/trading-strategies-guide']")
@@ -958,6 +958,54 @@ class MenuUS01Indices:
                            ".cc-nav__dropdown a[href$='/zh/major-world-indices']")
     SUB_MENU_CN_INDICES = (By.CSS_SELECTOR,
                            ".cc-nav__dropdown a[href$='/cn/major-world-indices']")
+
+
+class MenuUS0103MarketsForex:
+    SUB_MENU_EN_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-currency-prices']")
+    SUB_MENU_AR_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ar/asear-alfurks-alan']")
+    SUB_MENU_DE_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/waehrungskurse']")
+    SUB_MENU_EL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/el/alla-ergaleia']")
+    SUB_MENU_ES_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/en-vivo-moneda-precios']")
+    SUB_MENU_FR_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/fr/autres-instruments']")
+    SUB_MENU_IT_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/forex-in-tempo-reale']")
+    SUB_MENU_HU_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/hu/elo-valutaarfolyamok']")
+    SUB_MENU_NL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/nl/andere-instrumenten']")
+    SUB_MENU_PL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/pl/aktualne-ceny-waluty']")
+    SUB_MENU_RU_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ru/forex']")
+    SUB_MENU_CN_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/cn/live-currency-prices']")
+    SUB_MENU_RO_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ro/alte-instrumente']")
+    SUB_MENU_ZH_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/live-currency-prices']")
+
+
+class MenuUS0104Commodities:
+    SUB_MENU_EN_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/live-commodity-prices']")
+    SUB_MENU_AR_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/ar/mukhatat-asear-alsilae']")
+    SUB_MENU_DE_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/de/rohstoffpreise']")
+    SUB_MENU_EL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/el/zontanes-times-emporevmaton']")
+    SUB_MENU_ES_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/es/en-vivo-mercancia-precios']")
+    SUB_MENU_FR_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                ".cc-header a[href='https://capital.com/fr/prix-des-matieres-premieres-en-direct']")
+    SUB_MENU_IT_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                ".cc-header a[href='https://capital.com/it/prezzi-delle-materie-prime-in-tempo-reale']")
+    SUB_MENU_HU_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/hu/elo-arupiaci-arak']")
+    SUB_MENU_NL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/nl/live-grondstoffen-prijzen']")
+    SUB_MENU_PL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/pl/aktualne-cen-towarow']")
+    SUB_MENU_RO_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/ro/live-marfuri-preturi']")
+    SUB_MENU_RU_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/ru/tseny-na-syryo']")
+    SUB_MENU_ZH_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/zh/live-commodity-prices']")
+    SUB_MENU_CH_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
+                                      ".cc-header a[href='https://capital.com/cn/live-commodity-prices']")
 
 
 class MenuUS01Markets:
