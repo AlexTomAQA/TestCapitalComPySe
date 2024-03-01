@@ -1,0 +1,32 @@
+2024-03-01 04:51:17 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ru/cfd-treiding-na-primerax
+2024-03-01 04:51:17 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 302, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x562eb3f72e93 <unknown>
+#1 0x562eb3c6ace6 <unknown>
+#2 0x562eb3cb5e48 <unknown>
+#3 0x562eb3cb5f01 <unknown>
+#4 0x562eb3cf93f4 <unknown>
+#5 0x562eb3cd7edd <unknown>
+#6 0x562eb3cf6899 <unknown>
+#7 0x562eb3cd7c53 <unknown>
+#8 0x562eb3ca8db3 <unknown>
+#9 0x562eb3ca977e <unknown>
+#10 0x562eb3f387cb <unknown>
+#11 0x562eb3f3c7e5 <unknown>
+#12 0x562eb3f260e1 <unknown>
+#13 0x562eb3f3d372 <unknown>
+#14 0x562eb3f0a1bf <unknown>
+#15 0x562eb3f61488 <unknown>
+#16 0x562eb3f61683 <unknown>
+#17 0x562eb3f72044 <unknown>
+#18 0x7fd20f494ac3 <unknown>

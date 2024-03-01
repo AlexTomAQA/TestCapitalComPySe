@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 720}
+
+2024-03-01 06:15:26.855655   worker_id = master
+
+2024-03-01 06:15:26.855672   0. Allure grouping v4
+
+
+2024-03-01 06:15:26.855872   START PRECONDITIONS =>
+
+
+2024-03-01 06:15:26.855888   {'width': 1280, 'height': 720}
+
+2024-03-01 06:15:26.857128   Set windows position at (0, 0) =>
+
+2024-03-01 06:15:26.959134   Set resolution 1280 * 720 =>
+
+2024-03-01 06:15:27.061327   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-03-01 06:15:28.084505   Капчи нет. Идем дальше
+
+2024-03-01 06:15:28.084590   Prev. Role: Auth
+
+2024-03-01 06:15:28.084603   Current role: Auth
+
+2024-03-01 06:15:29.107898   Капчи нет. Идем дальше
+
+2024-03-01 06:15:29.107985   Prev language: ru
+
+2024-03-01 06:15:29.107999   => Current language: ru
+
+2024-03-01 06:15:30.134506   Капчи нет. Идем дальше
+
+2024-03-01 06:15:30.134592   Prev country: au
+2024-03-01 06:15:30.134605   => Current country: au
+
+2024-03-01 06:15:30.134614   => THE END PRECONDITIONS
+
+2024-03-01 06:15:30.134648   1. Arrange
+2024-03-01 06:15:30.137428   Current page URL = https://capital.com/trading/platform/charting/389596483442002?side=buy&ids=426090820621508,16150730595456196,22855552501634244,21178483823812,15839732013552836,6810413677172050,427748677997764,2604592722433220,123763777688772,305243519000335556,27342779713672388,21680337780298948,1679716659553719492,145998823326404,2276324076967250,53373558609234,71150428247378,38856569148754,233693465629892,390880678663506,36597416351058,21182778791108,1496662958757060,5983666832495812,56959856301394,323003015517522,160082021078354,9099248993850706,74865574958418,70682276812114,508931114652423506,27045129890124996,23381802046660,3644116541985988,422839530378436
+2024-03-01 06:15:31.460144   => Loaded page https://capital.com/ru/cac-40-cfd
+2024-03-01 06:15:31.463255   BUTTON_ON_VER_BANNER is present? =>
+2024-03-01 06:15:31.490724   => BUTTON_ON_VER_BANNER is present on the page!
+2024-03-01 06:15:31.490763   BUTTON_ON_VER_BANNER scroll =>
+2024-03-01 06:15:31.493990   BUTTON_ON_VER_BANNER is visible? =>
+2024-03-01 06:15:31.528827   => BUTTON_ON_VER_BANNER is visible on the page!
+2024-03-01 06:15:31.529025   Start Checking that form [Sign up] popped up on the page =>
+2024-03-01 06:15:33.043451   '[Sign up]' form was not popped up
+
+2024-03-01 06:15:33.043633   2. Act
+
+2024-03-01 06:15:33.061837   => Button on Vertical banner clickable
+
+2024-03-01 06:15:33.065933   data_id = 393
+2024-03-01 06:15:34.262920   => BUTTON_ON_VER_BANNER clicked!
+2024-03-01 06:15:34.263037   For Vertical banner [type-id=393] Trading platform should be open in Demo Mode =>
+
+2024-03-01 06:15:34.263293   3. Assert_v4
+2024-03-01 06:15:34.263468   Checking that the trading platform page has opened (v4) =>
+2024-03-01 06:15:49.387917   => Loaded page https://capital.com/ with not https://capital.com/trading/platform/ url
+
+Bug: Bid:11.02.06.01_11-ru.au.Auth
+
+2024-03-01 06:15:49.390544   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f49ea704860>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f49ea704860>
+
+2024-03-01 06:15:50.016003   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-01 06:15:50.382456   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f49ea704860>
+
+2024-03-01 06:15:50.875694   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-01 06:15:51.217271   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-01 06:15:51.217342   Баг Bid:11.02.06.01_11-ru.au.Auth уже существует, но у него изменился тип с Bug # 12. Trading platform is opened in not LIVE mode на 09
+
+2024-03-01 06:15:51.217507   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-01 06:15:51.570057   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-01 06:15:51.571866   Баг Bid:11.02.06.01_11-ru.au.Auth-09 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
