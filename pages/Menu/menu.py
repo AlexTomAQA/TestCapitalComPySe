@@ -37,7 +37,8 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
-    MenuUS01MarketsButton, MenuUS01Indices, MenuUS01Markets
+    MenuUS01MarketsButton, MenuUS01Markets 
+    MenuUS01Indices, MenuUS0103MarketsForex
 )
 from pages.base_page import BasePage
 
@@ -1626,9 +1627,73 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
+               
+        del sub_menu
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "Forex" submenu')
+    def open_forex_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Forex" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_markets_move_focus(d, cur_language, cur_country)
+        self.sub_menu_forex_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Forex' submenu.")
+    def sub_menu_forex_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_EN_FOREX)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_AR_FOREX)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_DE_FOREX)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_CN_FOREX)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_ES_FOREX)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_FR_FOREX)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_IT_FOREX)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_NL_FOREX)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_PL_FOREX)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_RO_FOREX)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_RU_FOREX)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_ZH_FOREX)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_EL_FOREX)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_HU_FOREX)
+
+        if len(sub_menu) == 0:
+            pytest.skip(f"For test language '{test_language}' "
+                        f"the page \"Menu > Forex\" doesn't exist on production")
+        
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Forex' sub-menu clicked")
 
         del sub_menu
         return d.current_url
+
 
     @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
     def sub_menu_indices_move_focus_click(self, d, test_language):

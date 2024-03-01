@@ -1009,7 +1009,24 @@ class MenuUS01Markets:
     SUB_MENU_CN_INDICES = (By.CSS_SELECTOR,
                            ".cc-nav__dropdown a[href$='/cn/major-world-indices']")
 
+    
+class MenuUS0103MarketsForex:
+    SUB_MENU_EN_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-currency-prices']")
+    SUB_MENU_AR_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ar/asear-alfurks-alan']")
+    SUB_MENU_DE_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/waehrungskurse']")
+    SUB_MENU_EL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/el/alla-ergaleia']")
+    SUB_MENU_ES_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/en-vivo-moneda-precios']")
+    SUB_MENU_FR_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/fr/autres-instruments']")
+    SUB_MENU_IT_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/forex-in-tempo-reale']")
+    SUB_MENU_HU_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/hu/elo-valutaarfolyamok']")
+    SUB_MENU_NL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/nl/andere-instrumenten']")
+    SUB_MENU_PL_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/pl/aktualne-ceny-waluty']")
+    SUB_MENU_RU_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ru/forex']")
+    SUB_MENU_CN_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/cn/live-currency-prices']")
+    SUB_MENU_RO_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ro/alte-instrumente']")
+    SUB_MENU_ZH_FOREX = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/live-currency-prices']")
 
+    
 class MenuUS0104Commodities:
     SUB_MENU_EN_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
                                       ".cc-header a[href='https://capital.com/live-commodity-prices']")
