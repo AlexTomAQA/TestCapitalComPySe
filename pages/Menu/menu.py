@@ -37,7 +37,7 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
-    MenuUS01MarketsButton, MenuUS01Markets 
+    MenuUS01Markets,
     MenuUS01Indices, MenuUS0103MarketsForex
 )
 from pages.base_page import BasePage
@@ -375,7 +375,7 @@ class MenuSection(BasePage):
     def move_focus_to_markets_menu(self, d, test_language, test_country):
         markets_menu_locator = None
         if test_language == "" and test_country == "gb":
-            markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_EN_GB_MARKETS_BUTTON   # новая верстка, FCA
+            markets_menu_locator = MenuUS01Markets.SUB_MENU_EN_GB_MARKETS_BUTTON   # новая верстка, FCA
         else:
             match test_language:
                 case "":
@@ -1506,7 +1506,7 @@ class MenuSection(BasePage):
     def sub_menu_learn_to_trade_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TOTRADE)
+            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TO_TRADE)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "

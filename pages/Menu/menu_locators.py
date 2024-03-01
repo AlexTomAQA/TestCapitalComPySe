@@ -903,7 +903,7 @@ class MenuUS11HELP:
 
 
 class MenuUS11LearnToTrade:
-    SUB_MENU_EN_LEARN_TOTRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
+    SUB_MENU_EN_LEARN_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
 
 
 class MenuUS11TradingStrategies:
@@ -948,7 +948,7 @@ class MenuUS01Markets:
     MENU_MARKETS_CN_BUTTON = (By.CSS_SELECTOR,
                               ".cc-header a[href='https://capital.com/cn/derivative-financial-instruments']")
 
-class MenuUS01Markets:
+# class MenuUS01Markets:
     SUB_MENU_EN_MARKETS = \
         (By.CSS_SELECTOR, "a[href*='financial'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
     SUB_MENU_AR_MARKETS = \
@@ -979,7 +979,7 @@ class MenuUS01Markets:
         (By.CSS_SELECTOR, "a[href*='/cn/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
 
 
-    class MenuUS01Indices:
+class MenuUS01Indices:
     SUB_MENU_EN_INDICES = (By.CSS_SELECTOR,
                            ".cc-nav__dropdown a[href$='major-world-indices']")
     SUB_MENU_AR_INDICES = (By.CSS_SELECTOR,
@@ -1038,10 +1038,10 @@ class MenuUS0104Commodities:
                                       ".cc-header a[href='https://capital.com/el/zontanes-times-emporevmaton']")
     SUB_MENU_ES_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
                                       ".cc-header a[href='https://capital.com/es/en-vivo-mercancia-precios']")
-    SUB_MENU_FR_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                ".cc-header a[href='https://capital.com/fr/prix-des-matieres-premieres-en-direct']")
-    SUB_MENU_IT_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                ".cc-header a[href='https://capital.com/it/prezzi-delle-materie-prime-in-tempo-reale']")
+    SUB_MENU_FR_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/fr/prix-des-matieres-premieres-en-direct']")
+    SUB_MENU_IT_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/prezzi-delle-materie-prime-in-tempo-reale']")
     SUB_MENU_HU_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
                                       ".cc-header a[href='https://capital.com/hu/elo-arupiaci-arak']")
     SUB_MENU_NL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
