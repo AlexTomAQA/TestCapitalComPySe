@@ -1611,7 +1611,7 @@ class MenuSection(BasePage):
             self.link = link
             self.open_page()
 
-        self.menu_markets_move_focus(d, cur_language, cur_country)
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
         self.sub_menu_forex_move_focus_click(d, cur_language)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
