@@ -36,8 +36,8 @@ from pages.Menu.menu_locators import (
     MenuUS11WhatIsMargin,
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
-    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew, MenuUS01Markets,
-    MenuUS01MarketsButton
+    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
+    MenuUS01MarketsButton, MenuUS01Indices
 )
 from pages.base_page import BasePage
 
@@ -378,33 +378,33 @@ class MenuSection(BasePage):
         else:
             match test_language:
                 case "":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_EN_INDICES
                 case "ar":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_AR_INDICES
                 case "de":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_DE_INDICES
                 case "el":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_EL_INDICES
                 case "es":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_ES_INDICES
                 case "fr":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_FR_INDICES
                 case "it":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_IT_INDICES
                 case "hu":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_HU_INDICES
                 case "nl":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_NL_INDICES
                 case "pl":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_PL_INDICES
                 case "ro":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_RO_INDICES
                 case "ru":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_RU_INDICES
                 case "zh":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_ZH_INDICES
                 case "cn":
-                    markets_menu_locator = MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON
+                    markets_menu_locator = MenuUS01Indices.SUB_MENU_CN_INDICES
 
         time.sleep(0.5)
         menu = d.find_elements(*markets_menu_locator)
@@ -1634,33 +1634,33 @@ class MenuSection(BasePage):
     def sub_menu_indices_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+            case "": sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EN_INDICES)
             case "ar":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_AR_INDICES)
             case "de":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_DE_INDICES)
             case "el":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EL_INDICES)
             case "es":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ES_INDICES)
             case "fr":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_FR_INDICES)
             case "it":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_IT_INDICES)
             case "hu":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_HU_INDICES)
             case "nl":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_NL_INDICES)
             case "pl":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_PL_INDICES)
             case "ro":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RO_INDICES)
             case "ru":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RU_INDICES)
             case "zh":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ZH_INDICES)
             case "cn":
-                sub_menu = d.find_elements(*MenuUS01MarketsButton.SUB_MENU_INDICES_BUTTON)
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_CN_INDICES)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
