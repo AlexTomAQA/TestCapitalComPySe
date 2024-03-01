@@ -952,34 +952,34 @@ class MenuUS01Markets:
                               ".cc-header a[href='https://capital.com/cn/derivative-financial-instruments']")
 
 # class MenuUS01Markets:
-    SUB_MENU_EN_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='financial'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_AR_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/ar/alaswaq'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_DE_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/de/alle-maerkte'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_EL_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/el/paragoga'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_ES_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/es/instrumentos'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_FR_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/fr/instruments'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_IT_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/it/derivati'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_HU_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/hu/derivativ'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_NL_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/nl/derivaat'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick']")
-    SUB_MENU_PL_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/pl/pochodne'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_RO_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/ro/instrumente'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_RU_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/ru/proizvodnyye'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_ZH_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/zh/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
-    SUB_MENU_CN_MARKETS = \
-        (By.CSS_SELECTOR, "a[href*='/cn/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_EN_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='financial'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_AR_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/ar/alaswaq'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_DE_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/de/alle-maerkte'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_EL_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/el/paragoga'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_ES_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/es/instrumentos'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_FR_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/fr/instruments'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_IT_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/it/derivati'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_HU_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/hu/derivativ'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_NL_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/nl/derivaat'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick']")
+#     SUB_MENU_PL_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/pl/pochodne'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_RO_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/ro/instrumente'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_RU_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/ru/proizvodnyye'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_ZH_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/zh/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+#     SUB_MENU_CN_MARKETS = \
+#         (By.CSS_SELECTOR, "a[href*='/cn/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
 
 
 class MenuUS01Indices:
@@ -1059,3 +1059,13 @@ class MenuUS0104Commodities:
                                       ".cc-header a[href='https://capital.com/zh/live-commodity-prices']")
     SUB_MENU_CH_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
                                       ".cc-header a[href='https://capital.com/cn/live-commodity-prices']")
+
+# class MenuUS01MarketsButton:
+#     MENU_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id3']")
+#     SUB_MENU_SHARES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id9']")
+#     SUB_MENU_FOREX_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id57']")
+#     SUB_MENU_INDICES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id8']")
+#     SUB_MENU_COMMODITIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id4']")
+#     SUB_MENU_CRYPTOCURRENCIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id65']")
+#     SUB_MENU_ESG_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id461']")
+#     SUB_MENU_EN_GB_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id689']")

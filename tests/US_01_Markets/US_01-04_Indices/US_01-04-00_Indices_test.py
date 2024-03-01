@@ -1,13 +1,12 @@
 import allure
 import pytest
 
-from pages.Elements.TradingInstrumentCFDBlockStartTradingNowButton import \
-    TradingInstrumentCFDBlockStartTradingNow
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
+from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStartTradingNowButton
 
 count = 1
 
@@ -26,10 +25,11 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04.00", "Market > Menu item [Trading Strategies Guides]",
+            "01.04", "Market > Menu item [Trading Strategies Guides]",
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Indices CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -39,5 +39,5 @@ class TestIndices:
         page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_indices_move_focus_click(d, cur_language)
 
-        test_element = TradingInstrumentCFDBlockStartTradingNow(d, cur_page_url, bid)
+        test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
