@@ -917,6 +917,7 @@ class MenuUS11EssentialsOfTrading:
 class MenuUS11MarketGuidesNew:
     SUB_MENU_MARKET_GUIDES_NEW = (By.CSS_SELECTOR, '[data-type="nav_id700"]')
 
+
 class MenuUS01MarketsButton:
     MENU_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id3']")
     SUB_MENU_SHARES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id9']")
@@ -957,3 +958,34 @@ class MenuUS01Indices:
                            ".cc-nav__dropdown a[href$='/zh/major-world-indices']")
     SUB_MENU_CN_INDICES = (By.CSS_SELECTOR,
                            ".cc-nav__dropdown a[href$='/cn/major-world-indices']")
+
+
+class MenuUS01Markets:
+    SUB_MENU_EN_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='financial'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_AR_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ar/alaswaq'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_DE_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/de/alle-maerkte'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_EL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/el/paragoga'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_ES_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/es/instrumentos'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_FR_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/fr/instruments'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_IT_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/it/derivati'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_HU_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/hu/derivativ'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_NL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/nl/derivaat'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick']")
+    SUB_MENU_PL_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/pl/pochodne'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_RO_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ro/instrumente'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_RU_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/ru/proizvodnyye'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_ZH_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/zh/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
+    SUB_MENU_CN_MARKETS = \
+        (By.CSS_SELECTOR, "a[href*='/cn/derivative'].cc-nav__link.cc-nav__link--lvl1.js-analyticsClick")
