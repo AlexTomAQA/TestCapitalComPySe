@@ -1,9 +1,8 @@
 import allure
 import pytest
-from datetime import datetime
 
-from pages.Elements.TradingInstrumentsBlockStartTradingNowButton import  \
-    TradingInstrumentsBlockStartTradingNow
+from pages.Elements.TradingInstrumentCFDBlockStartTradingNowButton import \
+    TradingInstrumentCFDBlockStartTradingNow
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
@@ -37,8 +36,8 @@ class TestIndices:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_markets_move_focus(d, cur_language, cur_country)
+        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_indices_move_focus_click(d, cur_language)
 
-        test_element = TradingInstrumentsBlockStartTradingNow(d, cur_page_url, bid)
+        test_element = TradingInstrumentCFDBlockStartTradingNow(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
