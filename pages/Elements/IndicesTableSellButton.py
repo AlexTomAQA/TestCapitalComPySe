@@ -13,7 +13,7 @@ from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import NoSuchElementException
 from pages.Elements.AssertClass import AssertClass
 # from selenium.webdriver.common.action_chains import ActionChains
-
+from pages.common import Common
 COUNT_OF_RUNS = 2
 
 
@@ -56,6 +56,9 @@ class SellButtonIndicesTable(BasePage):
             self.link = cur_item_link
             self.open_page()
 
+        Common().save_current_screenshot(
+            d, "SCREENSHOT: 1. Arrange for Indices finance instrument")  # need remove string after catch bug
+
         print(f"{datetime.now()}   IS CFDs TABLE visible on the page? =>")
         try:
             self.driver.find_element(*ButtonsOnPageLocators.TABLE_CFDS)
@@ -87,9 +90,15 @@ class SellButtonIndicesTable(BasePage):
             if self.driver.find_element(*self.tab_locator):
                 print(f"{datetime.now()}   => TAB \"{cur_tab}\" is visible on the page!\n")
 
+                Common().save_current_screenshot(
+                    d, "SCREENSHOT: TAB is visible on the page!") # need remove string after catch bug
+
                 print(f"{datetime.now()}   Buttons [Sell] is visible and quantity buttons not zero? =>")
                 if self.driver.find_elements(*self.button_locator) != 0:
                     print(f"{datetime.now()}   => Buttons [Sell] is visible and quantity buttons not zero!\n")
+
+                    Common().save_current_screenshot(
+                        d, "SCREENSHOT: Buttons [Sell] is visible and quantity buttons not zero!")  # need remove string after catch bug
 
                     print(f"{datetime.now()}   Start Click button TAB \"{cur_tab}\" =>")
                     self.current_tab = self.driver.find_element(*self.tab_locator)
@@ -97,6 +106,9 @@ class SellButtonIndicesTable(BasePage):
                         'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                         self.current_tab
                     )
+                    Common().save_current_screenshot(
+                        d, "SCREENSHOT: After navigate on TAB")  # need remove string after catch bug
+
                     self.current_tab.click()
                     print(f"{datetime.now()}   => End Click button TAB \"{cur_tab}\"\n")
 
