@@ -15,6 +15,7 @@ from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButton
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
 from pages.Elements.BlockWhyChooseTryDemoButton import BlockWhyChooseTryDemoButton
 from pages.Elements.BlockWhyChooseSignUpButton import BlockWhyChooseSignUpButton
+from pages.Elements.BlockForLearnerTradersTryDemoButton import BlockForLearnerTradersTryDemoButton
 
 
 @pytest.mark.us_00_00
@@ -115,4 +116,28 @@ class TestMainPage:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BlockWhyChooseSignUpButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try demo] in Block 'For learner traders'")
+    @pytest.mark.test_107
+    def test_107_block_for_learner_traders_try_demo_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try Demo] in Block 'For learner traders' Main Page
+        Language: EN. License: FCA.
+        """
+        test_title = ("00.00", "Main Page",
+                      "_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+
+        page_conditions = NewConditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BlockForLearnerTradersTryDemoButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
