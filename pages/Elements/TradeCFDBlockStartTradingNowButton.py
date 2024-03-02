@@ -15,7 +15,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 
 class TradeCFDBlockStartTradingNowButton(BasePage):
 
-    @allure.step(f'{datetime.now()}   Start Full test for Start trading now button of Block Trading Instruments')
+    @allure.step(f'{datetime.now()}   Start Full test for "Start trading now" button of Block "Trading Instruments"')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
         self.arrange_(d, cur_item_link, True)
