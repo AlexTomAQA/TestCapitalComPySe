@@ -30,8 +30,8 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00.00", "Main Page",
-                      "_101", "Testing button [Try Demo] in Block 'Helping traders make better decisions' Main Page")
+        test_title = ("00", "Main Page",
+                      ".00_101", "Testing button [Try Demo] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
@@ -54,8 +54,8 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00.00", "Main Page",
-                      "_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
+        test_title = ("00", "Main Page",
+                      ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
@@ -78,8 +78,8 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'Why choose Capital.com?' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00.00", "Main Page",
-                      "_103", "Testing button [Try Demo] in Block 'Why choose Capital.com?' Main Page")
+        test_title = ("00", "Main Page",
+                      ".00_103", "Testing button [Try Demo] in Block 'Why choose Capital.com?' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
@@ -102,8 +102,8 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Why choose Capital.com' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00.00", "Main Page",
-                      "_104", "Testing button [Sign Up] in Block 'Why choose Capital.com' Main Page")
+        test_title = ("00", "Main Page",
+                      ".00_104", "Testing button [Sign Up] in Block 'Why choose Capital.com' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
@@ -126,8 +126,8 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'For learner traders' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00.00", "Main Page",
-                      "_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page")
+        test_title = ("00", "Main Page",
+                      ".00_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role, *test_title)
