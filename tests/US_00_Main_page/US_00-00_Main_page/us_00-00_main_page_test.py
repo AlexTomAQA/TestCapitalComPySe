@@ -13,9 +13,9 @@ from tests.ReTestsManual.pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
-from pages.Elements.BlockWhyChooseTryDemoButton import BlockWhyChooseTryDemoButton
-from pages.Elements.BlockWhyChooseSignUpButton import BlockWhyChooseSignUpButton
-from pages.Elements.BlockForLearnerTradersTryDemoButton import BlockForLearnerTradersTryDemoButton
+from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
+from pages.Elements.WhyChooseBlockSignUpButton import WhyChooseBlockSignUpButton
+from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTradersBlockTryDemoButton
 
 
 @pytest.mark.us_00_00
@@ -91,7 +91,7 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BlockWhyChooseTryDemoButton(d, main_page_link, bid)
+        test_element = WhyChooseBlockTryDemoButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Sign Up] in Block 'Why choose Capital.com'")
@@ -115,7 +115,7 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BlockWhyChooseSignUpButton(d, main_page_link, bid)
+        test_element = WhyChooseBlockSignUpButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Try demo] in Block 'For learner traders'")
@@ -139,5 +139,5 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BlockForLearnerTradersTryDemoButton(d, main_page_link, bid)
+        test_element = ForLearnerTradersBlockTryDemoButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)

@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/03/02 11:30
+@Time    : 2024/02/27 19:30
 @Author  : Artem Dashkov
 """
 from datetime import datetime
@@ -15,9 +15,9 @@ from pages.Signup_login.signup_login import SignupLogin
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class BlockForLearnerTradersTryDemoButton(BasePage):
+class WhyChooseBlockTryDemoButton(BasePage):
 
-    @allure.step(f"{datetime.now()}   Start Full test for [Try demo] button in Block 'For learner traders'")
+    @allure.step(f"{datetime.now()}   Start Full test for [Try demo] button in Block 'Why choose Capital.com?'")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
         self.element_click(d)
@@ -38,11 +38,11 @@ class BlockForLearnerTradersTryDemoButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_FOR_LEARNER_TRADERS)
+        button_list = self.driver.find_elements(*ContentBlockLocators.WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not present on this page")
             del button_list
-            pytest.fail("Testing element BUTTON_TRY_DEMO in Block 'For learner traders' is not present on this page")
+            pytest.fail("Testing element BUTTON_TRY_DEMO in Block 'Why choose Capital.com?' is not present on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is present on this page")
 
@@ -52,24 +52,22 @@ class BlockForLearnerTradersTryDemoButton(BasePage):
         )
 
         print(f"{datetime.now()}   BUTTON_TRY_DEMO is visible? =>")
-        if self.element_is_visible(ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_FOR_LEARNER_TRADERS):
+        if self.element_is_visible(ContentBlockLocators.WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON):
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is visible on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not visible on this page")
-            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not visible on this page")
-            pytest.fail("Bug! Testing element BUTTON_TRY_DEMO in Block 'For learner traders'"
+            pytest.fail("Bug! Testing element BUTTON_TRY_DEMO in Block 'Why choose Capital.com?'"
                         "is present on this page, but not visible")
 
-    @allure.step("Click button [Try demo] on Block 'For learner traders'")
+    @allure.step("Click button [Try demo] on Block 'Why choose Capital.com?'")
     def element_click(self, d):
         print(f"\n{datetime.now()}   2. Act_v0")
 
-        button_list = self.driver.find_elements(*ContentBlockLocators.BUTTON_TRY_DEMO_BLOCK_FOR_LEARNER_TRADERS)
+        button_list = self.driver.find_elements(*ContentBlockLocators.WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON)
         print(f"{datetime.now()}   BUTTON_TRY_DEMO is clickable? =>")
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
             print(f"{datetime.now()}   => BUTTON_TRY_DEMO is not clickable after {time_out} sec. Stop TC>")
-            Common().save_current_screenshot(d, "Screenshot: BUTTON_TRY_DEMO is not clickable")
             pytest.fail(f"BUTTON_TRY_DEMO is not clickable after {time_out} sec.")
 
         try:
