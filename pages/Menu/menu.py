@@ -38,7 +38,7 @@ from pages.Menu.menu_locators import (
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
-    MenuUS01Indices, MenuUS0103MarketsForex
+    MenuUS01Indices, MenuUS0103MarketsForex, MenuUS0104Commodities
 )
 from pages.base_page import BasePage
 
@@ -1591,4 +1591,50 @@ class MenuSection(BasePage):
         print(f"\n\n{datetime.now()}   => 'Indices' submenu clicked")
 
         del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}. Move focus to 'Commodities' submenu and click.")
+    def sub_menu_commodities_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_EN_COMMODITIES_BUTTON)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_AR_COMMODITIES_BUTTON)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_DE_COMMODITIES_BUTTON)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_EL_COMMODITIES_BUTTON)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_ES_COMMODITIES_BUTTON)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_FR_COMMODITIES_BUTTON)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_IT_COMMODITIES_BUTTON)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_HU_COMMODITIES_BUTTON)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_NL_COMMODITIES_BUTTON)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_PL_COMMODITIES_BUTTON)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_RO_COMMODITIES_BUTTON)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_RU_COMMODITIES_BUTTON)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_ZH_COMMODITIES_BUTTON)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_CN_COMMODITIES_BUTTON)
+
+        if len(sub_menu) == 0:
+            pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        del sub_menu
+
         return d.current_url

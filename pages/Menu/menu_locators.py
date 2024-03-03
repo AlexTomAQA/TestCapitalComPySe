@@ -923,33 +923,33 @@ class MenuUS11MarketGuidesNew:
 class MenuUS01Markets:
     MENU_EN_GB_MARKETS = (By.CSS_SELECTOR, "#header a[href='/en-gb/markets']")
     MENU_MARKETS_EN_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/derivative-financial-instruments']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/derivative-financial-instruments']")
     MENU_MARKETS_AR_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/ar/alaswaq']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/ar/alaswaq']")
     MENU_MARKETS_DE_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/de/alle-maerkte']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/de/alle-maerkte']")
     MENU_MARKETS_EL_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/el/paragoga-xrimatopistotika-mesa']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/el/paragoga-xrimatopistotika-mesa']")
     MENU_MARKETS_ES_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/es/instrumentos-financieros-derivados']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/es/instrumentos-financieros-derivados']")
     MENU_MARKETS_FR_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/fr/instruments-financiers-derives']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/fr/instruments-financiers-derives']")
     MENU_MARKETS_IT_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/it/derivati']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/it/derivati']")
     MENU_MARKETS_HU_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/hu/derivativ-penzugyi-eszkozok']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/hu/derivativ-penzugyi-eszkozok']")
     MENU_MARKETS_NL_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/nl/derivaat-financieel-instrument']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/nl/derivaat-financieel-instrument']")
     MENU_MARKETS_PL_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/pl/pochodne-instrumenty-finansowe']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/pl/pochodne-instrumenty-finansowe']")
     MENU_MARKETS_RO_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/ro/instrumente-financiare-derivate']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/ro/instrumente-financiare-derivate']")
     MENU_MARKETS_RU_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/ru/proizvodnyye-finansovyye-instrumenty']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/ru/proizvodnyye-finansovyye-instrumenty']")
     MENU_MARKETS_ZH_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/zh/derivative-financial-instruments']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/zh/derivative-financial-instruments']")
     MENU_MARKETS_CN_BUTTON = (By.CSS_SELECTOR,
-                              ".cc-header a[href='https://capital.com/cn/derivative-financial-instruments']")
+                ".cc-header .cc-nav__item > a[href='https://capital.com/cn/derivative-financial-instruments']")
 
 # class MenuUS01Markets:
 #     SUB_MENU_EN_MARKETS = \
@@ -1031,34 +1031,34 @@ class MenuUS0103MarketsForex:
 
     
 class MenuUS0104Commodities:
-    SUB_MENU_EN_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/live-commodity-prices']")
-    SUB_MENU_AR_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/ar/mukhatat-asear-alsilae']")
-    SUB_MENU_DE_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/de/rohstoffpreise']")
-    SUB_MENU_EL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/el/zontanes-times-emporevmaton']")
-    SUB_MENU_ES_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/es/en-vivo-mercancia-precios']")
+    SUB_MENU_EN_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-commodity-prices']")
+    SUB_MENU_AR_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ar/mukhatat-asear-alsilae']")
+    SUB_MENU_DE_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/rohstoffpreise']")
+    SUB_MENU_EL_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/el/zontanes-times-emporevmaton']")
+    SUB_MENU_ES_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/en-vivo-mercancia-precios']")
     SUB_MENU_FR_COMMODITIES_BUTTON = \
         (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/fr/prix-des-matieres-premieres-en-direct']")
     SUB_MENU_IT_COMMODITIES_BUTTON = \
         (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/prezzi-delle-materie-prime-in-tempo-reale']")
-    SUB_MENU_HU_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/hu/elo-arupiaci-arak']")
-    SUB_MENU_NL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/nl/live-grondstoffen-prijzen']")
-    SUB_MENU_PL_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/pl/aktualne-cen-towarow']")
-    SUB_MENU_RO_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/ro/live-marfuri-preturi']")
-    SUB_MENU_RU_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/ru/tseny-na-syryo']")
-    SUB_MENU_ZH_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/zh/live-commodity-prices']")
-    SUB_MENU_CH_COMMODITIES_BUTTON = (By.CSS_SELECTOR,
-                                      ".cc-header a[href='https://capital.com/cn/live-commodity-prices']")
+    SUB_MENU_HU_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/hu/elo-arupiaci-arak']")
+    SUB_MENU_NL_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/nl/live-grondstoffen-prijzen']")
+    SUB_MENU_PL_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/pl/aktualne-cen-towarow']")
+    SUB_MENU_RO_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ro/live-marfuri-preturi']")
+    SUB_MENU_RU_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ru/tseny-na-syryo']")
+    SUB_MENU_ZH_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/live-commodity-prices']")
+    SUB_MENU_CN_COMMODITIES_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/cn/live-commodity-prices']")
 
 # class MenuUS01MarketsButton:
 #     MENU_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id3']")
