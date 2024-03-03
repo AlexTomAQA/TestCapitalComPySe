@@ -1593,7 +1593,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}. Move focus to 'Commodities' menu item and click.")
+    @allure.step(f"{datetime.now()}. Move focus to 'Commodities' submenu and click.")
     def sub_menu_commodities_move_focus_click(self, d, test_language):
         sub_menu = None
         match test_language:
@@ -1627,7 +1627,6 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_CN_COMMODITIES_BUTTON)
 
         if len(sub_menu) == 0:
-            Common().save_current_screenshot(d, "SavePNG")
             pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
 
         ActionChains(d) \
