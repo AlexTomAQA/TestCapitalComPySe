@@ -8,7 +8,7 @@ import pytest
 import allure
 
 from pages.base_page import BasePage
-from pages.common import Common
+# from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ContentBlockLocators
 from pages.Signup_login.signup_login import SignupLogin
