@@ -187,7 +187,12 @@ class ContentBlockLocators:
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button"]')
     BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
-    BUTTON_TRY_DEMO_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
+
+    WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
+    WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
+
+    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR,'[data-type="learn_traders_block"] .l_btn_signup_demo')
+    FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
 
 class QRCodeLocators:
@@ -204,15 +209,15 @@ class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
 
 
-class DropMenuOnPageLocator:
-    DROP_MENU_ON_PAGE = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
+class FieldDropdownMarketsLocator:
+    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
 
 
-class ItemDropMenuOnPageLocators:
-    ITEM_DROP_MENU_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
-    ITEM_DROP_MENU_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
-    ITEM_DROP_MENU_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
-    ITEM_DROP_MENU_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
+class ItemSortDropdownLocators:
+    ITEM_DROPDOWN_SORT_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
+    ITEM_DROPDOWN_SORT_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
+    ITEM_DROPDOWN_SORT_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
+    ITEM_DROPDOWN_SORT_MOST_VOLATILE = (By.CSS_SELECTOR, 'li[data-sort="volatile"]')
 
 
 class TradeCFDLocators:
@@ -220,3 +225,7 @@ class TradeCFDLocators:
     LONG_POSITION = (By.CSS_SELECTOR, "tr:nth-child(2) > td:nth-child(1) > div")
     SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
+
+
+class TradingInstrumentsBlockLocators:
+    BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".banner .button-main.js_signup")

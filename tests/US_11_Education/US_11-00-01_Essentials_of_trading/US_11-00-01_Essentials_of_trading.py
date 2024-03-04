@@ -3,7 +3,7 @@ import pytest
 
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from pages.Elements.BlockStepTrading import BlockStepTrading
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.ContentBlockCreateALiveAccountButton import ContentBlockCreateAliveAccountButton
 from pages.Elements.ContentBlockCreateARiskFreeDemoAccountButton import ContentBlockCreateARiskFreeDemoAccountButton
 from tests.build_dynamic_arg import build_dynamic_arg_v4

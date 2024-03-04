@@ -36,7 +36,9 @@ from pages.Menu.menu_locators import (
     MenuUS11WhatIsMargin,
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
-    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew
+    MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
+    MenuUS01Markets,
+    MenuUS01Indices, MenuUS0103MarketsForex, MenuUS0104Commodities
 )
 from pages.base_page import BasePage
 
@@ -369,6 +371,74 @@ class MenuSection(BasePage):
         del menu
         del element
 
+    @allure.step(f"{datetime.now()}.   Focus moved to 'Markets' menu")
+    def move_focus_to_markets_menu(self, d, test_language, test_country):
+        markets_menu_locator = None
+        if test_language == "" and test_country == "gb":
+            markets_menu_locator = MenuUS01Markets.MENU_EN_GB_MARKETS   # новая верстка, FCA
+        else:
+            match test_language:
+                case "":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_EN_BUTTON
+                case "ar":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_AR_BUTTON
+                case "de":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_DE_BUTTON
+                case "el":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_EL_BUTTON
+                case "es":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_ES_BUTTON
+                case "fr":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_FR_BUTTON
+                case "it":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_IT_BUTTON
+                case "hu":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_HU_BUTTON
+                case "nl":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_NL_BUTTON
+                case "pl":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_PL_BUTTON
+                case "ro":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RO_BUTTON
+                case "ru":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
+                case "zh":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
+                case "cn":
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_CN_BUTTON
+
+        time.sleep(0.5)
+        menu = d.find_elements(*markets_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'Markets' menu not present")
+            # Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail(f"Bug № ??? 'Markets' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Markets' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(markets_menu_locator, 5)
+        print(f"{datetime.now()}   element = {element}")
+        if not element:
+            print(f"{datetime.now()}   => 'Markets' menu not visible")
+            # Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail("Problem. 'Markets' menu not visible")
+        print(f"{datetime.now()}   => 'Markets' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*markets_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Markets' menu")
+        del menu
+        del element
+
     @allure.step(f"{datetime.now()}.   Focus move to 'learning hub' menu item and click (US_11.01.01).")
     def sub_menu_learning_hub_move_focus_click(self, d, test_language, test_country):
         sub_menu = None
@@ -413,7 +483,6 @@ class MenuSection(BasePage):
             .perform()
 
         del sub_menu
-
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Focus move to 'Basics_of_trading' menu item and click (US_11.01.02).")
@@ -450,7 +519,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*Menu1101.SUB_MENU_CN_ITEM_BASICS_OF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education > Menu item [The basics of trading]\" "
                         f"doesn't exist on production")
 
@@ -663,65 +732,31 @@ class MenuSection(BasePage):
         match test_language:
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_AR_COMMODITIES_TRADING)
-            # case "bg":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_BG_COMMODITIES_TRADING)
-            # case "cs":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_CS_COMMODITIES_TRADING)
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_CN_COMMODITIES_TRADING)
-            # case "da":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_DA_COMMODITIES_TRADING)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_DE_COMMODITIES_TRADING)
-            # case "el":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_EL_COMMODITIES_TRADING)
             case "":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_EN_COMMODITIES_TRADING)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_ES_COMMODITIES_TRADING)
-            # case "et":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_ET_COMMODITIES_TRADING)
-            # case "fi":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_FI_COMMODITIES_TRADING)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_FR_COMMODITIES_TRADING)
-            # case "hr":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_HR_COMMODITIES_TRADING)
-            # case "hu":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_HU_COMMODITIES_TRADING)
-            # case "id":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_ID_COMMODITIES_TRADING)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_IT_COMMODITIES_TRADING)
-            # case "lt":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_LT_COMMODITIES_TRADING)
-            # case "lv":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_LV_COMMODITIES_TRADING)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_NL_COMMODITIES_TRADING)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_PL_COMMODITIES_TRADING)
-            # case "pt":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_PT_COMMODITIES_TRADING)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_RO_COMMODITIES_TRADING)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_RU_COMMODITIES_TRADING)
-            # case "sk":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_SK_COMMODITIES_TRADING)
-            # case "sl":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_SL_COMMODITIES_TRADING)
-            # case "sv":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_SV_COMMODITIES_TRADING)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_ZH_COMMODITIES_TRADING)
-            # case "th":
-            # sub_menu = d.find_element(*MenuUS11CommoditiesTrading.SUB_MENU_TH_COMMODITIES_TRADING)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_VI_COMMODITIES_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education > Commodities Trading\" doesn't exist on production")
 
         ActionChains(d) \
@@ -744,55 +779,31 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_RU_ITEM_MARKET_GUIDES)
             case "bg":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_BG_ITEM_MARKET_GUIDES)
-            case "cs":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_CS_ITEM_MARKET_GUIDES)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_FR_ITEM_MARKET_GUIDES)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_AR_ITEM_MARKET_GUIDES)
-            case "et":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_ET_ITEM_MARKET_GUIDES)
-            case "da":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_DA_ITEM_MARKET_GUIDES)
             case "el":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_EL_ITEM_MARKET_GUIDES)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_ES_ITEM_MARKET_GUIDES)
-            case "hr":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_HR_ITEM_MARKET_GUIDES)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_IT_ITEM_MARKET_GUIDES)
-            case "lv":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_LV_ITEM_MARKET_GUIDES)
             case "hu":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_HU_ITEM_MARKET_GUIDES)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_NL_ITEM_MARKET_GUIDES)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_PL_ITEM_MARKET_GUIDES)
-            case "pt":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_PT_ITEM_MARKET_GUIDES)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_RO_ITEM_MARKET_GUIDES)
-            case "sk":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_SK_ITEM_MARKET_GUIDES)
-            case "sl":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_SL_ITEM_MARKET_GUIDES)
-            case "fi":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_FI_ITEM_MARKET_GUIDES)
-            case "sv":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_SV_ITEM_MARKET_GUIDES)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_VI_ITEM_MARKET_GUIDES)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_ZH_ITEM_MARKET_GUIDES)
-            case "lt":
-                sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_LT_ITEM_MARKET_GUIDES)
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_CN_ITEM_MARKET_GUIDES)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education | Menu title [Market Guides]\" doesn't exist on production")
 
         ActionChains(d) \
@@ -828,45 +839,6 @@ class MenuSection(BasePage):
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_CN_CRYPTOCURRENCY_TRADING)
 
-            # case "ar": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_AR_CRYPTOCURRENCY_TRADING)
-            # case "bg": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_BG_CRYPTOCURRENCY_TRADING)
-            # case "cs": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_CS_CRYPTOCURRENCY_TRADING)
-            # case "da": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_DA_CRYPTOCURRENCY_TRADING)
-            # case "el": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_EL_CRYPTOCURRENCY_TRADING)
-            # case "et": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_ET_CRYPTOCURRENCY_TRADING)
-            # case "fi": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_FI_CRYPTOCURRENCY_TRADING)
-            # case "hr": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_HR_CRYPTOCURRENCY_TRADING)
-            # case "hu": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_HU_CRYPTOCURRENCY_TRADING)
-            # case "id": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_ID_CRYPTOCURRENCY_TRADING)
-            # case "lt": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_LT_CRYPTOCURRENCY_TRADING)
-            # case "lv": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_LV_CRYPTOCURRENCY_TRADING)
-            # case "nl": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_NL_CRYPTOCURRENCY_TRADING)
-            # case "pt": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_PT_CRYPTOCURRENCY_TRADING)
-            # case "sk": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_SK_CRYPTOCURRENCY_TRADING)
-            # case "sl": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_SL_CRYPTOCURRENCY_TRADING)
-            # case "sv": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_SV_CRYPTOCURRENCY_TRADING)
-            # case "th": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_TH_CRYPTOCURRENCY_TRADING)
-            # case "vi": \
-            # sub_menu = d.find_elements(*MenuUS11CryptocurrencyTrading.SUB_MENU_VI_CRYPTOCURRENCY_TRADING)
-
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
                         f"the page \"Education -> Cryptocurrency trading\" doesn't exist on production")
@@ -883,13 +855,6 @@ class MenuSection(BasePage):
     def sub_menu_cfd_trading_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            # case "ar":  sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_AR_CFD_TRADING_GUIDE)
-            case "bg":
-                sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_BG_CFD_TRADING_GUIDE)
-            # case "cn": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_CN_CFD_TRADING_GUIDE)
-            case "cs":
-                sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_CS_CFD_TRADING_GUIDE)
-            # case "da": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_DA_CFD_TRADING_GUIDE)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_DE_CFD_TRADING_GUIDE)
             # case "el": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_EL_CFD_TRADING_GUIDE)
@@ -897,38 +862,23 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_EN_CFD_TRADING_GUIDE)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_ES_CFD_TRADING_GUIDE)
-            # case "et": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_ET_CFD_TRADING_GUIDE)
-            # case "fi": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_FI_CFD_TRADING_GUIDE)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_FR_CFD_TRADING_GUIDE)
-            # case "hr": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_HR_CFD_TRADING_GUIDE)
-            # case "hu": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_HU_CFD_TRADING_GUIDE)
-            # case "id": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_ID_CFD_TRADING_GUIDE)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_IT_CFD_TRADING_GUIDE)
-            # case "lt": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_LT_CFD_TRADING_GUIDE)
-            # case "lv": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_LV_CFD_TRADING_GUIDE)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_NL_CFD_TRADING_GUIDE)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_PL_CFD_TRADING_GUIDE)
-            # case "pt": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_PT_CFD_TRADING_GUIDE)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_RO_CFD_TRADING_GUIDE)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_RU_CFD_TRADING_GUIDE)
-            # case "sk": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_SK_CFD_TRADING_GUIDE)
-            # case "sl": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_SL_CFD_TRADING_GUIDE)
-            case "sv":
-                sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_SV_CFD_TRADING_GUIDE)
-            # case "th": sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_TH_CFD_TRADING_GUIDE)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_VI_CFD_TRADING_GUIDE)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_ZH_CFD_TRADING_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->CFD trading guide\" doesn't exist on production")
 
         ActionChains(d) \
@@ -951,7 +901,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11SpreadBettingGuide.SUB_MENU_CN_SPREAD_BETTING_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education > Spread betting guide\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1035,7 +985,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11ETFTrading.SUB_MENU_RU_ETF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->ETF trading\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1054,63 +1004,33 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_EN_TRADING_STRATEGIES_GUIDE)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_AR_TRADING_STRATEGIES_GUIDE)
-            case "bg":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_BG_TRADING_STRATEGIES_GUIDE)
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_CN_TRADING_STRATEGIES_GUIDE)
-            case "cs":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_CS_TRADING_STRATEGIES_GUIDE)
-            case "da":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_DA_TRADING_STRATEGIES_GUIDE)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_DE_TRADING_STRATEGIES_GUIDE)
             case "el":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_EL_TRADING_STRATEGIES_GUIDE)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ES_TRADING_STRATEGIES_GUIDE)
-            case "et":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ET_TRADING_STRATEGIES_GUIDE)
-            case "fi":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_FI_TRADING_STRATEGIES_GUIDE)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_FR_TRADING_STRATEGIES_GUIDE)
-            case "hr":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_HR_TRADING_STRATEGIES_GUIDE)
             case "hu":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_HU_TRADING_STRATEGIES_GUIDE)
-            case "id":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ID_TRADING_STRATEGIES_GUIDE)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_IT_TRADING_STRATEGIES_GUIDE)
-            case "lt":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_LT_TRADING_STRATEGIES_GUIDE)
-            case "lv":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_LV_TRADING_STRATEGIES_GUIDE)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_NL_TRADING_STRATEGIES_GUIDE)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_PL_TRADING_STRATEGIES_GUIDE)
-            case "pt":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_PT_TRADING_STRATEGIES_GUIDE)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_RO_TRADING_STRATEGIES_GUIDE)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_RU_TRADING_STRATEGIES_GUIDE)
-            case "sk":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SK_TRADING_STRATEGIES_GUIDE)
-            case "sl":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SL_TRADING_STRATEGIES_GUIDE)
-            case "sv":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_SV_TRADING_STRATEGIES_GUIDE)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ZH_TRADING_STRATEGIES_GUIDE)
-            case "th":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_TH_TRADING_STRATEGIES_GUIDE)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_VI_TRADING_STRATEGIES_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Trading Strategies Guide\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1138,6 +1058,7 @@ class MenuSection(BasePage):
 
     @allure.step(f"{datetime.now()}.   Click 'Indices Trading' hyperlink.")
     def sub_menu_indices_trading_move_focus_click(self, d, test_language):
+        sub_menu = None
         logger.info(f"Click 'Indices Trading' hyperlink in submenu")
         match test_language:
             case "ar":
@@ -1154,8 +1075,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_ZH_INDICES_TRADING)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_RU_INDICES_TRADING)
-            case _:
-                sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_ALL_INDICES_TRADING)
+            # case _:
+            #     sub_menu = d.find_elements(*MenuUS11IndicesTrading.SUB_MENU_ALL_INDICES_TRADING)
 
         if len(sub_menu) > 0:
             logger.info(f"The menu item is found")
@@ -1168,13 +1089,16 @@ class MenuSection(BasePage):
         else:
             logger.warning(f"For test language '{test_language}' "
                            f"the page \"Education->Indices Trading\" doesn't exist on production")
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Indices Trading\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Investmate app' hyperlink.")
     def sub_menu_investmate_app_move_focus_click(self, d, test_language):
+        sub_menu = None
         match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_DE_INVESTMATE_APP)
             case "es":
@@ -1185,8 +1109,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_IT_INVESTMATE_APP)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_NL_INVESTMATE_APP)
-            case _:
-                sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
+            # case _:
+            #     sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
 
         if len(sub_menu) > 0:
             ActionChains(d) \
@@ -1196,7 +1120,7 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Investmate App' menu click")
         else:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Investmate app\" doesn't exist on production")
         return d.current_url
 
@@ -1205,10 +1129,9 @@ class MenuSection(BasePage):
         sub_menu = list()
         match test_language:
             case "": sub_menu = d.find_elements(*MenuUS11TrendTrading.SUB_MENU_EN_ITEM_TREND_TRADING)
-            # case "de": sub_menu = d.find_elements(*MenuUS11TrendTrading.SUB_MENU_DE_ITEM_TREND_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Trend Trading\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1232,7 +1155,7 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'What is a margin?' menu click")
         else:
-            pytest.fail(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->What is a margin?\" doesn't exist on production")
         return d.current_url
 
@@ -1292,7 +1215,7 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Position Trading' menu click")
         else:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Position Trading\" doesn't exist on production")
         return d.current_url
 
@@ -1307,7 +1230,7 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Swing Trading' menu click")
         else:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Swing Trading\" doesn't exist on production")
         return d.current_url
 
@@ -1323,7 +1246,7 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Scalp Trading' menu click")
         else:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education->Scalp Trading\" doesn't exist on production")
         return d.current_url
 
@@ -1359,7 +1282,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11SharesTrading.SUB_MENU_ZH_SHARES_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Education > Shared Trading\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1379,7 +1302,7 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11RiskManagement.SUB_MENU_EN_RISK_MANAGEMENT)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1399,7 +1322,7 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11TechnicalAnalysis.SUB_MENU_EN_TECHNICAL_ANALYSIS)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1419,7 +1342,7 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11HELP.SUB_MENU_EN_HELP)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Help\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1436,10 +1359,10 @@ class MenuSection(BasePage):
     def sub_menu_learn_to_trade_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TOTRADE)
+            case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TO_TRADE)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1476,7 +1399,7 @@ class MenuSection(BasePage):
             sub_menu = d.find_elements(*MenuUS11TradingStrategies.SUB_MENU_EN_TRADING_STRATEGIES)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Trading Strategies\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1512,7 +1435,7 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11EssentialsOfTrading.SUB_MENU_EN_ESSENTIALS_OF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Essentials of trading\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1548,7 +1471,7 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11MarketGuidesNew.SUB_MENU_MARKET_GUIDES_NEW)
 
         if len(sub_menu) == 0:
-            pytest.skip(f"For test language '{test_language}' "
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
                         f"the page \"Learn to trade->Market Guides\" doesn't exist on production")
 
         ActionChains(d) \
@@ -1557,6 +1480,161 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
+               
+        del sub_menu
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "Forex" submenu')
+    def open_forex_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Forex" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_forex_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Forex' submenu.")
+    def sub_menu_forex_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_EN_FOREX)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_AR_FOREX)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_DE_FOREX)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_CN_FOREX)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_ES_FOREX)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_FR_FOREX)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_IT_FOREX)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_NL_FOREX)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_PL_FOREX)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_RO_FOREX)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_RU_FOREX)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_ZH_FOREX)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_EL_FOREX)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_HU_FOREX)
+
+        if len(sub_menu) == 0:
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
+                        f"the page \"Menu > Forex\" doesn't exist on production")
+        
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Forex' sub-menu clicked")
 
         del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
+    def sub_menu_indices_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EN_INDICES)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_AR_INDICES)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_DE_INDICES)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EL_INDICES)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ES_INDICES)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_FR_INDICES)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_IT_INDICES)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_HU_INDICES)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_NL_INDICES)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_PL_INDICES)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RO_INDICES)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_RU_INDICES)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_ZH_INDICES)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_CN_INDICES)
+
+        if len(sub_menu) == 0:
+            pytest.fail(f"Bug # ??? For test language '{test_language}' "
+                        f"the page \"Markets->Indices\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Indices' submenu clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step(f"{datetime.now()}. Move focus to 'Commodities' submenu and click.")
+    def sub_menu_commodities_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_EN_COMMODITIES_BUTTON)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_AR_COMMODITIES_BUTTON)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_DE_COMMODITIES_BUTTON)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_EL_COMMODITIES_BUTTON)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_ES_COMMODITIES_BUTTON)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_FR_COMMODITIES_BUTTON)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_IT_COMMODITIES_BUTTON)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_HU_COMMODITIES_BUTTON)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_NL_COMMODITIES_BUTTON)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_PL_COMMODITIES_BUTTON)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_RO_COMMODITIES_BUTTON)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_RU_COMMODITIES_BUTTON)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_ZH_COMMODITIES_BUTTON)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_CN_COMMODITIES_BUTTON)
+
+        if len(sub_menu) == 0:
+            pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        del sub_menu
+
         return d.current_url
