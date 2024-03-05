@@ -980,7 +980,7 @@ class TestManualBugs:
             "_21", 'In the Footer on click link [Cookie settings] is not open modal window ', True, True)
         #
         page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
+        page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         #
         menu = MainMenu(d)
@@ -1314,7 +1314,8 @@ class TestManualBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @allure.step(
-        'Bug#30: There is no link to the FCA license in the footer of the site in the of the registration number 793714')
+        'Bug#30: There is no link to the FCA license in the footer of the site '
+        'in the of the registration number 793714')
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.test_30
     # @pytest.mark.skip(reason="Skipped for debugging")
@@ -2320,7 +2321,7 @@ class TestManualBugs:
         menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
 
         if not menu.element_is_visible(menu.FOOTER_RISK_WARNING_BLOCK):
-            retest_table_fill(d, bid, '05', "", True, True)
+            retest_table_fill(d, bid, '65', "", True, True)
             assert False, ('Bug#65. '
                            'Expected result: The footer is displayed '
                            '\n'

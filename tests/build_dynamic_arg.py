@@ -56,6 +56,18 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                          us, desc_us, num_tc, desc_tc, manual=False, new_layout=False):
     """
     function for dynamic bild names pf epic, feature and story
+    Args:
+        d - Web-driver
+        worker_id - # потока при многопоточном тестировании
+        cur_language - язык
+        cur_country - страна/лицензия
+        cur_role - роль
+        us - номер US
+        desc_us - описание US
+        num_tc - номер ТК
+        desc_tc - описание ТК
+        manual - для ретестов мануальных тестировщиков
+        new_layout - новый вариант layouts для FCA/En (пока использование не обязательное)
     """
     global count
 
