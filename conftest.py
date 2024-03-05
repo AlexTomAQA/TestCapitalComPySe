@@ -93,9 +93,9 @@ def cur_role(request):
     scope="class",
     params=[
         # "",  # "en" - 21 us
-        "es",  # 20 us
+        # "es",  # 20 us
         # "de",  # 15 us
-        # "it",  # 15 us
+        "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
@@ -128,8 +128,8 @@ def cur_language(request):
     params=[
         # "ae",  # United Arab Emirates - "SCB"
         # "au",  # Australia - "ASIC"
-        "de",  # Germany  - "CYSEC"
-        # "gb",  # United Kingdom - "FCA"
+        # "de",  # Germany  - "CYSEC"
+        "gb",  # United Kingdom - "FCA"
         #
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
