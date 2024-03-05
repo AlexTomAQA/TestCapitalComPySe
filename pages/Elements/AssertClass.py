@@ -70,11 +70,15 @@ class AssertClass(BasePage):
             del self.page_signup_login
         elif self.page_signup_login.should_be_signup_form(cur_language):
             del self.page_signup_login
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(d, self.bid, '05', self.link)
+            assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
+            # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_new_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '05', self.link)
-            assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
+            assert False, "Bug # 05. Opened a new 'Sign up' form instead of a 'Login'"
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
