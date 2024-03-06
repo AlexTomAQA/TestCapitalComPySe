@@ -26,7 +26,7 @@ class TestCommodities:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.05", "Market > Menu item [Commodities]",
+            "01.05", "Markets > Menu item [Commodities]",
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Commodities CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
