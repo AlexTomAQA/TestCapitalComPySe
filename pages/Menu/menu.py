@@ -1109,10 +1109,14 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_IT_INVESTMATE_APP)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_NL_INVESTMATE_APP)
-            # case _:
-            #     sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_PL_INVESTMATE_APP)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_CN_INVESTMATE_APP)
+            case _:
+                sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
 
-        if len(sub_menu) > 0:
+        if sub_menu and len(sub_menu) > 0:
             ActionChains(d) \
                 .move_to_element(sub_menu[0]) \
                 .pause(0.5) \
