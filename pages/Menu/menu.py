@@ -352,11 +352,11 @@ class MenuSection(BasePage):
             menu[0]
         )
 
-        element = self.element_is_visible(ed_menu_locator, 5)
+        element = d.element_is_visible(ed_menu_locator, 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
-            Common().save_current_screenshot(d, "scr_qr")
+            # Common().save_current_screenshot(d, "scr_qr")
             pytest.fail("Problem. Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
 
@@ -420,7 +420,7 @@ class MenuSection(BasePage):
             menu[0]
         )
 
-        element = self.element_is_visible(markets_menu_locator, 5)
+        element = self.driver.element_is_visible(markets_menu_locator, 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => 'Markets' menu not visible")
