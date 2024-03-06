@@ -1633,6 +1633,7 @@ class MenuSection(BasePage):
             .move_to_element(sub_menu[0]) \
             .pause(0.5) \
             .click() \
+            .pause(0.5) \
             .perform()
 
         del sub_menu
