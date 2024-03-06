@@ -352,7 +352,7 @@ class MenuSection(BasePage):
             menu[0]
         )
 
-        element = d.element_is_visible(ed_menu_locator, 5)
+        element = self.element_is_visible(ed_menu_locator, 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
@@ -420,7 +420,7 @@ class MenuSection(BasePage):
             menu[0]
         )
 
-        element = self.driver.element_is_visible(markets_menu_locator, 5)
+        element = self.element_is_visible(markets_menu_locator, 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => 'Markets' menu not visible")
