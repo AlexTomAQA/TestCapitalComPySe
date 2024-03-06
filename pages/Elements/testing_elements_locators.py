@@ -76,6 +76,12 @@ class ButtonTradeOnWidgetMostTradedLocators:
     # MOST_TRADED_5 = (By.CSS_SELECTOR, "div:nth-child(5) > div.mostTraded__market > a")
 
 
+class ButtonSellOnTableTradingInstrumentsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "a[data-side='sell'][data-platform='spotlight']")  # List
+    TABLE_TRADING_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments a[data-side='sell']")
+    TABLE_TRADING_INSTRUMENTS_NAME_LIST = (By.CSS_SELECTOR, "div.table-instruments p.table__info.stringEllipsed")
+
+
 class BlockOurCoursesLocators:
     BUTTON_CREATE_ACCOUNT = (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup']")
 
