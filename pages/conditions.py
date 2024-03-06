@@ -82,9 +82,9 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Prev. Role: {prev_role}")
+        print(f"\n{datetime.now()}   Prev. role: {prev_role}")
         if cur_role != prev_role:
-            print(f"\n{datetime.now()}   Run preconditions: set {cur_role} Role =>")
+            print(f"{datetime.now()}   Run set Role {cur_role} =>")
 
             test_link = host
             self.link = test_link
@@ -109,7 +109,7 @@ class Conditions(BasePage):
             prev_language = "?"
             prev_country = "?"
 
-        print(f"\n{datetime.now()}   Current role: {cur_role}")
+        print(f"\n{datetime.now()}   => Current role: {cur_role}")
 
         # устанавливаем Язык, если не соответствует предыдущему
         Captcha(d).fail_test_if_captcha_present_v2()

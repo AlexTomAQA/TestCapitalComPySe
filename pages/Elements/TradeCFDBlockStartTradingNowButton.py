@@ -41,7 +41,7 @@ class TradeCFDBlockStartTradingNowButton(BasePage):
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW is not present on the page!")
             del button_list
-            msg = "Testing element 'BUTTON_START_TRADING_NOW on the Block Trading Instruments' is not on this page"
+            msg = "Testing element 'BUTTON_START_TRADING_NOW on the Block Trading Instruments' is not on the DOM"
             if always:
                 pytest.fail(f"Bug № ??? {msg}")
             else:
@@ -73,25 +73,29 @@ class TradeCFDBlockStartTradingNowButton(BasePage):
             pytest.fail(f"BUTTON_START_TRADING_NOW is not clickable after {time_out} sec.")
 
         print(f"{datetime.now()}   BUTTON_START_TRADING_NOW click =>")
+        flag_not_clicked = False
         try:
             button_list[0].click()
             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW clicked")
         except ElementClickInterceptedException:
+            flag_not_clicked = True
+
+            # print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
+            # page_ = SignupLogin(self.driver)
+            # if page_.close_signup_form():
+            #     pass
+            # elif page_.close_login_form():
+            #     pass
+            # elif page_.close_signup_page():
+            #     pass
+            # else:
+            #     page_.close_login_page()
+            # del page_
+            # button_list[0].click()
+
+        if flag_not_clicked:
             print(f"{datetime.now()}   => BUTTON_START_TRADING_NOW not clicked")
-            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
-
-            page_ = SignupLogin(self.driver)
-            if page_.close_signup_form():
-                pass
-            elif page_.close_login_form():
-                pass
-            elif page_.close_signup_page():
-                pass
-            else:
-                page_.close_login_page()
-
-            del page_
-            button_list[0].click()
+            pytest.fail(f"Bug # ??? BUTTON_START_TRADING_NOW is not clicked")
 
         del button_list
         return True
