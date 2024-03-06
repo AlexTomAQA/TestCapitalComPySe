@@ -106,10 +106,23 @@ class Conditions(BasePage):
                     self.to_do_authorisation(d, host, cur_login, cur_password)
 
             prev_role = cur_role
-            prev_language = "?"
             prev_country = "?"
+            prev_language = "?"
 
         print(f"\n{datetime.now()}   => Current role: {cur_role}")
+
+        # устанавливаем Страну, если не соответствует предыдущей
+        Captcha(d).fail_test_if_captcha_present_v2()
+        print(f"\n{datetime.now()}   Prev country: {prev_country}")
+        if cur_country != prev_country:
+            print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
+            page_menu = MenuSection(d, host)
+            page_menu.menu_language_and_country_move_focus(cur_language)
+            page_menu.set_country(cur_country)
+            del page_menu
+            prev_country = cur_country
+            prev_language = "?"
+        print(f"{datetime.now()}   => Current country: {cur_country}")
 
         # устанавливаем Язык, если не соответствует предыдущему
         Captcha(d).fail_test_if_captcha_present_v2()
@@ -125,26 +138,11 @@ class Conditions(BasePage):
             page_menu = MenuSection(d, host)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
-            test_link = self.driver.current_url
             del page_menu
             prev_language = cur_language
-
         print(f"\n{datetime.now()}   => Current language: {language_cur}")
 
-        # устанавливаем Страну, если не соответствует предыдущей
-        Captcha(d).fail_test_if_captcha_present_v2()
-        print(f"\n{datetime.now()}   Prev country: {prev_country}")
-        if cur_country != prev_country:
-            print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
-
-            page_menu = MenuSection(d, host)
-            page_menu.menu_language_and_country_move_focus(cur_language)
-            page_menu.set_country(cur_country)
-            del page_menu
-
-            prev_country = cur_country
-        print(f"{datetime.now()}   => Current country: {cur_country}")
-
+        test_link = self.driver.current_url
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
         return test_link
