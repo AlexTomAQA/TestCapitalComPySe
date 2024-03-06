@@ -210,15 +210,15 @@ class MenuSection(BasePage):
         # menu = list()
         menu = d.find_elements(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)  # not Glossary
         if len(menu) == 0:
-            print(f"\n{datetime.now()}   => Language and Country menu not present")
+            print(f"{datetime.now()}   => Language and Country menu not present")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
             pytest.skip(f"For '{test_language}' language menu [Language & Country] not present")
-        print(f"\n{datetime.now()}   => Language and Country menu is present")
+        print(f"{datetime.now()}   => Language and Country menu is present")
 
         if not self.element_is_visible(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
-            print(f"\n{datetime.now()}   => Language and Country menu not visible")
+            print(f"{datetime.now()}   => Language and Country menu not visible")
             pytest.fail("Language and Country menu not visible")
-        print(f"\n{datetime.now()}   => Language and Country menu is visible")
+        print(f"{datetime.now()}   => Language and Country menu is visible")
 
         # if not self.element_is_clickable(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
         #     print(f"\n\n{datetime.now()}   => Language and Country menu not clickable")
@@ -234,7 +234,7 @@ class MenuSection(BasePage):
             .perform()
         # del menu
 
-        print(f"\n\n{datetime.now()}   => Focus is moved on Language and Country menu ")
+        print(f"{datetime.now()}   => Focus is moved on Language and Country menu ")
 
     @allure.step(f"{datetime.now()}.   Move focus to 'Learn to trade' menu section.")
     def menu_learn_to_trade_move_focus(self, d, test_language, test_country):
@@ -342,21 +342,20 @@ class MenuSection(BasePage):
         time.sleep(0.5)
         menu = d.find_elements(*ed_menu_locator)
         if len(menu) == 0:
-            print(f"{datetime.now()}   => Education menu not present")
-            Common().save_current_screenshot(d, "scr_qr")
-            pytest.fail(f"Bug № ??? Education menu not present for '{test_language}' language")
-        print(f"{datetime.now()}   => Education menu is present")
+            print(f"{datetime.now()}   => Education menu not present in DOM")
+            # Common().save_current_screenshot(d, "scr_qr")
+            pytest.fail(f"Bug № ??? Education menu not present in DOM for '{test_language}' language")
+        print(f"{datetime.now()}   => Education menu is present in DOM")
 
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            menu[0]
-        )
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     menu[0]
+        # )
 
-        element = self.element_is_visible(ed_menu_locator, 5)
+        element = self.element_visibility_of(menu[0], 5)
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
-            # Common().save_current_screenshot(d, "scr_qr")
             pytest.fail("Problem. Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
 
