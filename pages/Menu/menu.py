@@ -210,15 +210,15 @@ class MenuSection(BasePage):
         # menu = list()
         menu = d.find_elements(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)  # not Glossary
         if len(menu) == 0:
-            print(f"\n\n{datetime.now()}   => Language and Country menu not present")
+            print(f"\n{datetime.now()}   => Language and Country menu not present")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
             pytest.skip(f"For '{test_language}' language menu [Language & Country] not present")
-        print(f"\n\n{datetime.now()}   => Language and Country menu is present")
+        print(f"\n{datetime.now()}   => Language and Country menu is present")
 
         if not self.element_is_visible(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
-            print(f"\n\n{datetime.now()}   => Language and Country menu not visible")
+            print(f"\n{datetime.now()}   => Language and Country menu not visible")
             pytest.fail("Language and Country menu not visible")
-        print(f"\n\n{datetime.now()}   => Language and Country menu is visible")
+        print(f"\n{datetime.now()}   => Language and Country menu is visible")
 
         # if not self.element_is_clickable(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
         #     print(f"\n\n{datetime.now()}   => Language and Country menu not clickable")
