@@ -127,9 +127,9 @@ def cur_language(request):
     scope="class",
     params=[
         # "ae",  # United Arab Emirates - "SCB"
-        "au",  # Australia - "ASIC"
+        # "au",  # Australia - "ASIC"
         # "de",  # Germany  - "CYSEC"
-        # "gb",  # United Kingdom - "FCA"
+        "gb",  # United Kingdom - "FCA"
         #
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
