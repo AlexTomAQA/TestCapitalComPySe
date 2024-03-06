@@ -97,7 +97,7 @@ def cur_role(request):
         # "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
-        # "cn",  # 13 us Education to trade present, financial glossary not present
+        "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
         # "pl",  # 10 us
@@ -105,7 +105,7 @@ def cur_role(request):
         # "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
