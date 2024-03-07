@@ -145,12 +145,16 @@ class TestMainPage:
         Check: Button [Sell] in Block 'Our markets' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_105",
-                      f"Testing button [Sell] in Block 'Our markets' {market} market, {instrument} instrument")
+        # test_title = ("00", "Main Page",
+        #               ".00_105",
+        #               f"Testing button [Sell] in Block 'Our markets' {market} market, {instrument} instrument")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_105", f"Testing button [Sell] in Block 'Our markets' '{market}' market, '{instrument}' instrument",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -170,11 +174,15 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'For learner traders' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_107", "Testing button [Try Demo] in Block 'For learner traders' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])

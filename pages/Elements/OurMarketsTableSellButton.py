@@ -88,16 +88,16 @@ class SellButtonOurMarketsTable(BasePage):
                 if self.instruments_list != 0:
                     print(f"{datetime.now()}   => Instruments is visible and quantity buttons not zero!\n")
                     match instrument:
-                        case 'first':
+                        case 'First':
                             self.current_instrument = self.instruments_list[0]
                             self.driver.execute_script(
                                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                                 self.current_instrument
                             )
                             self.current_instrument.click()
-                        case 'last':
+                        case 'Last':
                             pass
-                        case 'middle':
+                        case 'Middle':
                             pass
 
                 else:
