@@ -101,9 +101,9 @@ def cur_role(request):
         # "zh",  # 12 us
         # "fr",  # 11 us
         # "pl",  # 10 us
-        # "ro",  # 10 us
+        "ro",  # 10 us
         # "ar",  # 8 us
-        "nl",  # 8 us
+        # "nl",  # 8 us
         # "el",  # 5 us
         # "hu",  # 5 us Magyar
     ],
