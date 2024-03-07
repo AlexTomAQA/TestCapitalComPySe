@@ -76,6 +76,12 @@ class ButtonTradeOnWidgetMostTradedLocators:
     # MOST_TRADED_5 = (By.CSS_SELECTOR, "div:nth-child(5) > div.mostTraded__market > a")
 
 
+class ButtonSellOnTableTradingInstrumentsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "a[data-side='sell'][data-platform='spotlight']")  # List
+    TABLE_TRADING_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments a[data-side='sell']")
+    TABLE_TRADING_INSTRUMENTS_NAME_LIST = (By.CSS_SELECTOR, "div.table-instruments p.table__info.stringEllipsed")
+
+
 class BlockOurCoursesLocators:
     BUTTON_CREATE_ACCOUNT = (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup']")
 
@@ -223,11 +229,23 @@ class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
 
 
+class TableTradingInstrumentsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".trlink.js-trlink td.buy.text-right.js-marketBtn > a")
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")
+
+
 class FieldDropdownMarketsLocator:
-    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
+    FIELD_DROPDOWN_MARKETS = (By.CLASS_NAME, 'div.fieldDropdown.js-fieldDropdown-markets')
+    FIELD_DROPDOWN_LIST = (By.CSS_SELECTOR, '.js-fieldDropdown-markets.opened')
+    FIELD_DROPDOWN_MOST_TRADED = (By.CSS_SELECTOR, 'input[placeholder="Most traded"]')
+    FIELD_DROPDOWN_TOP_RISERS = (By.CSS_SELECTOR, 'input[placeholder="Top risers"]')
+    FIELD_DROPDOWN_TOP_FALLERS = (By.CSS_SELECTOR, 'input[placeholder="Top fallers"]')
+    FIELD_DROPDOWN_MOST_VOLATILE = (By.CSS_SELECTOR, 'input[placeholder="Most volatile"]')
 
 
 class ItemSortDropdownLocators:
+    ALL_ITEM_DROPDOWN_SORT = (By.CSS_SELECTOR, 'li.sort')
     ITEM_DROPDOWN_SORT_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
     ITEM_DROPDOWN_SORT_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
     ITEM_DROPDOWN_SORT_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')

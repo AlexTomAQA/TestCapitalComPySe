@@ -14,20 +14,20 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        # "ar",
-        # "cn",
-        # "de",
-        # "el",
-        # "en",
+        "ar",
+        "cn",
+        "de",
+        "el",
+        "en",
         "es",
-        # "fr",
-        # "hu",
-        # "it",
-        # "nl",
-        # "pl",
-        # "ro",
-        # "ru",
-        # "zh",
+        "fr",
+        "hu",
+        "it",
+        "nl",
+        "pl",
+        "ro",
+        "ru",
+        "zh",
     ]
 
 # ===========================================================
@@ -41,8 +41,8 @@ role_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        # "gb",  # United Kingdom - "FCA"
-        # "de",  # Germany - "CYSEC"
+        "gb",  # United Kingdom - "FCA"
+        "de",  # Germany - "CYSEC"
         "au",  # Australia - "ASIC"
         "ae",  # United Arab Emirates - "SCB"
 ]
@@ -60,7 +60,7 @@ new_column = False  # без добавления нового столбца
 # unique_test = True
 unique_test = False
 # ============================================================
-list_rows = [835]
+list_rows = [114]
 
 # ============================================================
 # повторный проход только Skipped-tests
@@ -68,7 +68,7 @@ list_rows = [835]
 retest_skipped_tests = False
 
 # ============================================================
-status_list = ['failed', 'passed', 'skipped']
+status_list = ['failed', 'passed']
 
 # ============================================================
 # получение корня проекта

@@ -33,11 +33,15 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_101", "Testing button [Try Demo] in Block 'Helping traders make better decisions' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_101", "Testing button [Try Demo] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_101", "Testing button [Try Demo] in Block 'Helping traders make better decisions' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -57,11 +61,15 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -81,11 +89,15 @@ class TestMainPage:
         Check: Button [Try Demo] in Block 'Why choose Capital.com?' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_103", "Testing button [Try Demo] in Block 'Why choose Capital.com?' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_103", "Testing button [Try Demo] in Block 'Why choose Capital.com?' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_103", "Testing button [Try Demo] in Block 'Why choose Capital.com?' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -105,11 +117,15 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Why choose Capital.com' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_104", "Testing button [Sign Up] in Block 'Why choose Capital.com' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_104", "Testing button [Sign Up] in Block 'Why choose Capital.com' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_104", "Testing button [Sign Up] in Block 'Why choose Capital.com' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -178,11 +194,15 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'For learner traders' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00", "Main Page",
-                      ".00_108", "Testing button [Sign Up] in Block 'For learner traders' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_108", "Testing button [Sign Up] in Block 'For learner traders' Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_108", "Testing button [Sign Up] in Block 'For learner traders' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
@@ -202,13 +222,16 @@ class TestMainPage:
         Check: Button [1. Create your account] in Block 'Ready to join a leading broker?' Main Page
         Language: EN. License: FCA.
         """
-        test_title = ("00",
-                      "Main Page",
-                      ".00_109",
-                      "Testing button [1. Create your account] in Block 'Ready to join a leading broker?' Main Page")
+        # test_title = ("00", "Main Page",
+        #               ".00_109", "Testing button [1. Create your account] in Block 'Ready to join a leading broker?' "
+        #                          "Main Page")
 
         bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role, *test_title)
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_109", "Testing button [1. Create your account] in Block 'Ready to join a leading broker?' Main Page",
+            False, True
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])

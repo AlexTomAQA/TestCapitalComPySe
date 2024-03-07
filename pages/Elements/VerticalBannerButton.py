@@ -54,6 +54,7 @@ class ButtonOnVerticalBanner(BasePage):
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
+            print(f"\n{datetime.now()}   Open page: {cur_item_link}")
             self.open_page()
 
         print(f"{datetime.now()}   BUTTON_ON_VER_BANNER is present? =>")
@@ -95,8 +96,8 @@ class ButtonOnVerticalBanner(BasePage):
         print(f"\n{datetime.now()}   data_id = {data_id}")
 
         try:
-            self.driver.execute_script("arguments[0].click();", web_element)
-            # web_element.click()
+            # self.driver.execute_script("arguments[0].click();", web_element)
+            web_element.click()
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER NOT CLICKED")

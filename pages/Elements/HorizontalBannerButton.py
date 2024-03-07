@@ -55,9 +55,9 @@ class ButtonOnHorizontalBanner(BasePage):
 
     def arrange_(self, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange")
-
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
+            print(f"\n{datetime.now()}   Open page: {cur_item_link}")
             self.open_page()
 
         print(f"{datetime.now()}   BUTTON_ON_HOR_BANNER is present? =>")
@@ -93,15 +93,15 @@ class ButtonOnHorizontalBanner(BasePage):
         if not web_element:
             print(f"\n{datetime.now()}   => Button on Horizontal banner not clickable after {time_out} sec.")
             pytest.fail(f"Button on Horizontal banner not clickable after {time_out} sec.")
-        print(f"\n{datetime.now()}   => Button on Horizontal banner clickable")
+        print(f"\n{datetime.now()}   => Button on Horizontal banner is clickable")
 
         data_type = button_list[0].get_attribute("data-type")
         data_id = data_type.split('_')[-1]
         print(f"\n{datetime.now()}   data_id = {data_id}")
 
         try:
-            self.driver.execute_script("arguments[0].click();", web_element)
-            # button_list[0].click()
+            # self.driver.execute_script("arguments[0].click();", web_element)
+            web_element.click()
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => BUTTON_ON_HOR_BANNER NOT CLICKED")
