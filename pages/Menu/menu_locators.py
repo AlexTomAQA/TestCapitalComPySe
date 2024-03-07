@@ -10,23 +10,36 @@ class MenuLanguageAndCountry:
 
 
 class MenuUS11Education:
-    SUB_MENU_AR_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ar/learn-to-trade']")
-    SUB_MENU_CN_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/cn/learn-to-trade']")
-    SUB_MENU_DE_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/de/learn-to-trade']")
+    SUB_MENU_AR_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/ar/learn-to-trade']")
+    SUB_MENU_CN_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/cn/learn-to-trade']")
+    SUB_MENU_DE_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/de/learn-to-trade']")
     SUB_MENU_EL_LEARN_TO_TRADE = \
         (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/el/learn-to-trade']")
-    SUB_MENU_EN_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/learn-to-trade']")
-    SUB_MENU_ES_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/es/learn-to-trade']")
-    SUB_MENU_ET_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/et/learn-to-trade']")
-    SUB_MENU_FR_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/fr/learn-to-trade']")
-    SUB_MENU_HU_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/hu/learn-to-trade']")
-    SUB_MENU_IT_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/it/learn-to-trade']")
+    SUB_MENU_EN_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/learn-to-trade']")
+    SUB_MENU_ES_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/es/learn-to-trade']")
+    SUB_MENU_ET_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/et/learn-to-trade']")
+    SUB_MENU_FR_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/fr/learn-to-trade']")
+    SUB_MENU_HU_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/hu/learn-to-trade']")
+    SUB_MENU_IT_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/it/learn-to-trade']")
     SUB_MENU_NL_LEARN_TO_TRADE = \
         (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/nl/learn-to-trade']")
-    SUB_MENU_PL_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/pl/learn-to-trade']")
-    SUB_MENU_RO_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ro/learn-to-trade']")
-    SUB_MENU_RU_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/ru/learn-to-trade']")
-    SUB_MENU_ZH_LEARN_TO_TRADE = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/zh/learn-to-trade']")
+    SUB_MENU_PL_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/pl/learn-to-trade']")
+    SUB_MENU_RO_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/ro/learn-to-trade']")
+    SUB_MENU_RU_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/ru/learn-to-trade']")
+    SUB_MENU_ZH_LEARN_TO_TRADE = \
+        (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/zh/learn-to-trade']")
 
     # SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, "#header a[href='/en-gb/learn']")
     SUB_MENU_EN_GB_LEARN_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id698"]')
