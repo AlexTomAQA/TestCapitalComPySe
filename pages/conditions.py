@@ -70,14 +70,14 @@ class Conditions(BasePage):
         # if url == "":
         #     self.link = host
         #     self.open_page()
-        print(f"\n{datetime.now()}   {d.get_window_size()}")
+        print(f"\n{datetime.now()}   => Windows size - {d.get_window_size()}")
         # print(f"\n{datetime.now()}   Set windows position at (320, 180) =>")
         # d.set_window_position(320, 180)
-        print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
+        print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
-        print(f"\n{datetime.now()}   Set resolution 1280 * 720 =>")
+        print(f"{datetime.now()}   Set resolution 1280 * 720 =>")
         d.set_window_size(1280, 720)
-        print(f"\n{datetime.now()}   => Resolution seted {d.get_window_size()}")
+        print(f"{datetime.now()}   => Windows size is set to {d.get_window_size()}")
 
         Captcha(d).fail_test_if_captcha_present_v2()
 
@@ -92,7 +92,7 @@ class Conditions(BasePage):
             self.link = test_link
             self.open_page()
             if conf.DEBUG:
-                print(f"\n{datetime.now()} Debug:   test_link = {test_link}")
+                print(f"{datetime.now()} Debug:   test_link = {test_link}")
             d.delete_all_cookies()
             print(f"\n{datetime.now()}   => All cookies are deleted")
             # print(d.get_cookies(), "")
@@ -113,7 +113,7 @@ class Conditions(BasePage):
             del page_menu
             prev_country = cur_country
             # prev_language = "?"
-        print(f"{datetime.now()}   => Current country is '{cur_country}'")
+        print(f"{datetime.now()}   => Country set to '{cur_country}'")
 
         # устанавливаем Язык, если не соответствует предыдущему
         # Captcha(d).fail_test_if_captcha_present_v2()
@@ -124,14 +124,14 @@ class Conditions(BasePage):
         if language_cur == "":
             language_cur = "en"
         if cur_language != prev_language:
-            print(f"\n{datetime.now()}   Set '{language_cur}' language =>")
+            print(f"{datetime.now()}   Set '{language_cur}' language =>")
             # page_menu = MenuSection(d, host)
             page_menu = MenuSection(d, self.driver.current_url)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
             del page_menu
             prev_language = cur_language
-        print(f"\n{datetime.now()}   => Current language is '{language_cur}'")
+        print(f"{datetime.now()}   => Language is set to '{language_cur}'")
 
         # Продолжаем настройки в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   => Prev. role - '{prev_role}'")
@@ -147,7 +147,7 @@ class Conditions(BasePage):
                     # self.to_do_authorisation(d, host, cur_login, cur_password)
 
             prev_role = cur_role
-        print(f"\n{datetime.now()}   => Current role is '{cur_role}'")
+        print(f"{datetime.now()}   => The '{cur_role}' role is set")
 
         test_link = self.driver.current_url
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
@@ -159,7 +159,7 @@ class Conditions(BasePage):
     # @profile(precision=3)
     def to_do_authorisation(self, d, link, login, password):
         """Authorisation"""
-        print(f"\n" f"{datetime.now()}   Start Autorization")
+        print(f"" f"{datetime.now()}   Start Autorization")
         # Setup wait for later
 
         assert login != "", "Авторизация невозможна. Не указан e-mail"
@@ -211,7 +211,7 @@ class Conditions(BasePage):
     @allure.step(f"{datetime.now()}   Start DeAuthorisation")
     def to_do_de_authorisation(self, d, link):
         """DeAuthorisation"""
-        print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+        print(f"{datetime.now()}   Start DeAuthorisation")
 
         assert Header(d, link).header_button_my_account_click(), "Button 'My account' missing"
         assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
@@ -222,7 +222,7 @@ class Conditions(BasePage):
         Checking Main Page is opened
         """
         base_link = CapitalComPageSrc.URL
-        print(f"\n{datetime.now()}   0. Arrange_0")
+        print(f"{datetime.now()}   0. Arrange_0")
         if not self.current_page_is(base_link):
             self.link = base_link
             self.open_page()
