@@ -29,10 +29,10 @@ flag_cookies = False
 url_language = "?"
 url_country = "?"
 # host = CapitalComPageSrc.URL
-test_link = "?"
-prev_role = "?"
-prev_language = "?"
 prev_country = "?"
+prev_language = "?"
+prev_role = "?"
+test_link = "?"
 
 
 class Conditions(BasePage):
@@ -82,9 +82,11 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Prev. role: {prev_role}")
+        print(f"\n{datetime.now()}   Работа с куками")
         if cur_role != prev_role:
-            print(f"{datetime.now()}   Run set Role {cur_role} =>")
+            print(f"{datetime.now()}   => Prev. role - '{prev_role}'")
+            print(f"{datetime.now()}   => Current testing role - '{cur_role}'")
+            print(f"{datetime.now()}   All cookies must be delete =>")
 
             test_link = host
             self.link = test_link
@@ -95,52 +97,57 @@ class Conditions(BasePage):
             print(f"\n{datetime.now()}   => All cookies are deleted")
             # print(d.get_cookies(), "")
             self.open_page()
-
             self.button_accept_all_cookies_click()
-
-            match cur_role:
-                case "NoAuth":
-                    self.to_do_authorisation(d, host, cur_login, cur_password)
-                    self.to_do_de_authorisation(d, host)
-                case "Auth":
-                    self.to_do_authorisation(d, host, cur_login, cur_password)
-
-            prev_role = cur_role
             prev_country = "?"
             prev_language = "?"
 
-        print(f"\n{datetime.now()}   => Current role: {cur_role}")
-
         # устанавливаем Страну, если не соответствует предыдущей
-        Captcha(d).fail_test_if_captcha_present_v2()
-        print(f"\n{datetime.now()}   Prev country: {prev_country}")
+        # Captcha(d).fail_test_if_captcha_present_v2()
+        print(f"\n{datetime.now()}   => Prev. country - '{prev_country}'")
         if cur_country != prev_country:
-            print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
-            page_menu = MenuSection(d, host)
+            print(f"{datetime.now()}   Set '{cur_country}' country =>")
+            # page_menu = MenuSection(d, host)
+            page_menu = MenuSection(d, self.driver.current_url)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_country(cur_country)
             del page_menu
             prev_country = cur_country
-            prev_language = "?"
-        print(f"{datetime.now()}   => Current country: {cur_country}")
+            # prev_language = "?"
+        print(f"{datetime.now()}   => Current country is '{cur_country}'")
 
         # устанавливаем Язык, если не соответствует предыдущему
-        Captcha(d).fail_test_if_captcha_present_v2()
+        # Captcha(d).fail_test_if_captcha_present_v2()
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
-        print(f"\n{datetime.now()}   Prev language: {language_prev}")
+        print(f"\n{datetime.now()}   => Prev. language - '{language_prev}'")
         if language_cur == "":
             language_cur = "en"
         if cur_language != prev_language:
-            print(f"\n{datetime.now()}   Run preconditions: set {language_cur} language =>")
-
-            page_menu = MenuSection(d, host)
+            print(f"\n{datetime.now()}   Set '{language_cur}' language =>")
+            # page_menu = MenuSection(d, host)
+            page_menu = MenuSection(d, self.driver.current_url)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
             del page_menu
             prev_language = cur_language
-        print(f"\n{datetime.now()}   => Current language: {language_cur}")
+        print(f"\n{datetime.now()}   => Current language is '{language_cur}'")
+
+        # Продолжаем настройки в соответствии с параметром "Роль"
+        print(f"\n{datetime.now()}   => Prev. role - '{prev_role}'")
+        if cur_role != prev_role:
+            match cur_role:
+                case "NoAuth":
+                    self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_de_authorisation(d, self.driver.current_url)
+                    # self.to_do_authorisation(d, host, cur_login, cur_password)
+                    # self.to_do_de_authorisation(d, host)
+                case "Auth":
+                    self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
+                    # self.to_do_authorisation(d, host, cur_login, cur_password)
+
+            prev_role = cur_role
+        print(f"\n{datetime.now()}   => Current role is '{cur_role}'")
 
         test_link = self.driver.current_url
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
