@@ -1,0 +1,65 @@
+{'width': 1280, 'height': 720}
+
+2024-03-07 15:51:10.040443   worker_id = master
+
+2024-03-07 15:51:10.040463   0. Allure grouping v4
+
+
+2024-03-07 15:51:10.040670   START PRECONDITIONS =>
+
+
+2024-03-07 15:51:10.040686   => Windows size - {'width': 1280, 'height': 720}
+2024-03-07 15:51:10.041966   Set windows position at (0, 0) =>
+2024-03-07 15:51:10.144614   Set resolution 1280 * 720 =>
+2024-03-07 15:51:10.247405   => Windows size is set to {'width': 1280, 'height': 720}
+
+2024-03-07 15:51:11.299342   Капчи нет. Идем дальше
+
+2024-03-07 15:51:11.299437   Работа с куками
+
+2024-03-07 15:51:11.299450   => Prev. country - 'de'
+2024-03-07 15:51:11.299460   => Country set to 'de'
+
+2024-03-07 15:51:11.299469   => Prev. language - 'ro'
+2024-03-07 15:51:11.299478   => Language is set to 'ro'
+
+2024-03-07 15:51:11.299487   => Prev. role - 'NoAuth'
+2024-03-07 15:51:11.299495   => The 'NoAuth' role is set
+
+2024-03-07 15:51:11.305502   => THE END PRECONDITIONS
+
+2024-03-07 15:51:11.305570   1. Arrange_v0
+2024-03-07 15:51:11.308395   Current page URL = https://capital.com/ro/trade-litecoin
+2024-03-07 15:51:12.223587   => Loaded page https://capital.com/ro/trade-bitcoin
+2024-03-07 15:51:12.256247   BUTTON_START_TRADING scroll =>
+2024-03-07 15:51:12.260030   BUTTON_START_TRADING is visible? =>
+2024-03-07 15:51:12.299126   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-07 15:51:12.299323   2. Act_v0
+2024-03-07 15:51:12.299339   Start Click button [Start Trading] =>
+2024-03-07 15:51:12.307552   BUTTON_START_TRADING is clickable? =>
+2024-03-07 15:51:12.322761   BUTTON_START_TRADING click =>
+2024-03-07 15:51:12.423017   => BUTTON_START_TRADING clicked
+
+2024-03-07 15:51:12.423315   3. Assert_Login_v0
+2024-03-07 15:51:12.423428   Check that 'Login' form is opened
+2024-03-07 15:51:15.508809   'Login' form not opened
+2024-03-07 15:51:15.509002   Check that new 'Login' form is opened
+2024-03-07 15:51:18.573510   => New 'Login' form not opened
+2024-03-07 15:51:18.576541   'Login' page not opened
+2024-03-07 15:51:21.693015   'Login' form on trading platform not opened
+2024-03-07 15:51:21.693210   Start step Check that [Sign up] form is opened
+2024-03-07 15:51:21.710887   'Sign up' form opened
+2024-03-07 15:51:21.710927   Assert SIGNUP_HEADER =>
+2024-03-07 15:51:21.729034   Assert SIGNUP_REF_LOGIN =>
+2024-03-07 15:51:21.743717   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-07 15:51:21.758725   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-07 15:51:21.758768   => 'Signup' form is checked
+
+Bug: 
+
+2024-03-07 15:51:21.758839   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f3847e99910>
+
+2024-03-07 15:51:21.761933  Для бага: Bid-05 необходимо использовать проверку на ретест!!!

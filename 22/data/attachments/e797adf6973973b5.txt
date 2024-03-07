@@ -1,0 +1,84 @@
+{'width': 1280, 'height': 720}
+
+2024-03-07 15:37:01.826504   worker_id = master
+
+2024-03-07 15:37:01.826521   0. Allure grouping v4
+
+
+2024-03-07 15:37:01.826723   START PRECONDITIONS =>
+
+
+2024-03-07 15:37:01.826738   => Windows size - {'width': 1280, 'height': 720}
+2024-03-07 15:37:01.828033   Set windows position at (0, 0) =>
+2024-03-07 15:37:01.930540   Set resolution 1280 * 720 =>
+2024-03-07 15:37:02.033095   => Windows size is set to {'width': 1280, 'height': 720}
+
+2024-03-07 15:37:03.068722   Капчи нет. Идем дальше
+
+2024-03-07 15:37:03.068812   Работа с куками
+
+2024-03-07 15:37:03.068825   => Prev. country - 'de'
+2024-03-07 15:37:03.068835   => Country set to 'de'
+
+2024-03-07 15:37:03.068844   => Prev. language - 'ro'
+2024-03-07 15:37:03.068853   => Language is set to 'ro'
+
+2024-03-07 15:37:03.068861   => Prev. role - 'NoAuth'
+2024-03-07 15:37:03.068869   => The 'NoAuth' role is set
+
+2024-03-07 15:37:03.071859   => THE END PRECONDITIONS
+
+2024-03-07 15:37:03.071930   1. Arrange_v0
+2024-03-07 15:37:03.083830   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-07 15:37:03.083874   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-07 15:37:03.083884   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-07 15:37:03.099102   => 'Sell' button in Content block scrolled
+2024-03-07 15:37:03.099384   Start Checking that form [Sign up] popped up on the page =>
+2024-03-07 15:37:03.129973   'Sign up' form opened
+2024-03-07 15:37:03.130157   Start step Close [Sign up] form =>
+2024-03-07 15:37:03.199214   => 'Signup' form closed
+
+2024-03-07 15:37:03.485794   2. Act_v0
+2024-03-07 15:37:03.535453   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-07 15:37:03.535502   => return trade_instrument = 426627691533508
+
+2024-03-07 15:37:03.535749   3. Assert_Login_v0
+2024-03-07 15:37:03.535871   Check that 'Login' form is opened
+2024-03-07 15:37:06.633920   'Login' form not opened
+2024-03-07 15:37:06.634117   Check that new 'Login' form is opened
+2024-03-07 15:37:09.737733   => New 'Login' form not opened
+2024-03-07 15:37:09.740859   'Login' page not opened
+2024-03-07 15:37:12.794747   'Login' form on trading platform not opened
+2024-03-07 15:37:12.794946   Start step Check that [Sign up] form is opened
+2024-03-07 15:37:12.807798   'Sign up' form opened
+2024-03-07 15:37:12.807835   Assert SIGNUP_HEADER =>
+2024-03-07 15:37:12.819678   Assert SIGNUP_REF_LOGIN =>
+2024-03-07 15:37:12.831763   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-07 15:37:12.843810   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-07 15:37:12.843851   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_03-ro.de.NoAuth
+
+2024-03-07 15:37:12.843918   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+2024-03-07 15:37:13.405935   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:37:13.769988   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+2024-03-07 15:37:14.346643   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:37:14.702168   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-07 15:37:14.702241   Баг Bid:11.02.03.01_03-ro.de.NoAuth уже существует, но у него изменился тип с de на 05
+
+2024-03-07 15:37:14.702402   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:37:15.057455   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-07 15:37:15.058683   Баг Bid:11.02.03.01_03-ro.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

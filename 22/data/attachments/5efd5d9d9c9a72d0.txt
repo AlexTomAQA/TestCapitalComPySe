@@ -1,0 +1,83 @@
+{'width': 1280, 'height': 720}
+
+2024-03-07 15:38:17.844563   worker_id = master
+
+2024-03-07 15:38:17.844582   0. Allure grouping v4
+
+
+2024-03-07 15:38:17.844794   START PRECONDITIONS =>
+
+
+2024-03-07 15:38:17.844810   => Windows size - {'width': 1280, 'height': 720}
+2024-03-07 15:38:17.846123   Set windows position at (0, 0) =>
+2024-03-07 15:38:17.948669   Set resolution 1280 * 720 =>
+2024-03-07 15:38:18.051279   => Windows size is set to {'width': 1280, 'height': 720}
+
+2024-03-07 15:38:19.089092   Капчи нет. Идем дальше
+
+2024-03-07 15:38:19.089185   Работа с куками
+
+2024-03-07 15:38:19.089198   => Prev. country - 'de'
+2024-03-07 15:38:19.089207   => Country set to 'de'
+
+2024-03-07 15:38:19.089216   => Prev. language - 'ro'
+2024-03-07 15:38:19.089225   => Language is set to 'ro'
+
+2024-03-07 15:38:19.089234   => Prev. role - 'NoAuth'
+2024-03-07 15:38:19.089242   => The 'NoAuth' role is set
+
+2024-03-07 15:38:19.092377   => THE END PRECONDITIONS
+
+2024-03-07 15:38:19.092620   1. Arrange_v0
+2024-03-07 15:38:19.095383   Current page URL = https://capital.com/ro/trade-palladium
+2024-03-07 15:38:20.344496   => Loaded page https://capital.com/ro/tranzactionati-cafea
+2024-03-07 15:38:20.358570   BUTTON_START_TRADING scroll =>
+2024-03-07 15:38:20.362349   BUTTON_START_TRADING is visible? =>
+2024-03-07 15:38:20.413271   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-07 15:38:20.413464   2. Act_v0
+2024-03-07 15:38:20.413480   Start Click button [Start Trading] =>
+2024-03-07 15:38:20.420726   BUTTON_START_TRADING is clickable? =>
+2024-03-07 15:38:20.433417   BUTTON_START_TRADING click =>
+2024-03-07 15:38:20.510011   => BUTTON_START_TRADING clicked
+
+2024-03-07 15:38:20.510256   3. Assert_Login_v0
+2024-03-07 15:38:20.510341   Check that 'Login' form is opened
+2024-03-07 15:38:23.590371   'Login' form not opened
+2024-03-07 15:38:23.590559   Check that new 'Login' form is opened
+2024-03-07 15:38:26.691773   => New 'Login' form not opened
+2024-03-07 15:38:26.694808   'Login' page not opened
+2024-03-07 15:38:29.777437   'Login' form on trading platform not opened
+2024-03-07 15:38:29.777639   Start step Check that [Sign up] form is opened
+2024-03-07 15:38:29.790021   'Sign up' form opened
+2024-03-07 15:38:29.790056   Assert SIGNUP_HEADER =>
+2024-03-07 15:38:29.805801   Assert SIGNUP_REF_LOGIN =>
+2024-03-07 15:38:29.817634   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-07 15:38:29.828918   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-07 15:38:29.828952   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_01-ro.de.NoAuth
+
+2024-03-07 15:38:29.829015   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+ gs = GoogleSheet() - создаем объект gs # 2: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+2024-03-07 15:38:30.300566   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:38:30.650092   => 4. One row check results into Google Sheet Bugs Report fixed
+
+ gs = GoogleSheet() - создаем объект gs # 3: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f304fd74f80>
+
+2024-03-07 15:38:31.072867   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:38:31.259998   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-07 15:38:31.260080   Баг Bid:11.02.03.01_01-ro.de.NoAuth уже существует, но у него изменился тип с NoAuth на 05
+
+2024-03-07 15:38:31.260247   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-07 15:38:31.456051   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-07 15:38:31.457455   Баг Bid:11.02.03.01_01-ro.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
