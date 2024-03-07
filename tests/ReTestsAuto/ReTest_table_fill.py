@@ -6,14 +6,12 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 def check_gs_table(bid, bug_n, manual=False):
     spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
-    print(f'\n gs = GoogleSheet() - создаем объект gs # 2: {gs}')
     gs.wait_while_bugs_report_busy()
     gs_out = ["Busy"]
     gs.update_range_values('B1', [gs_out])
 
     # старт проверки
     bug_present = False
-    print(f'\n gs = GoogleSheet() - создаем объект gs # 3: {gs}')
     # для таблицы мануальных багов
     if manual:
         start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
@@ -52,7 +50,10 @@ def check_gs_table(bid, bug_n, manual=False):
 
 
 def new_row_data(d, bid, bug_num, link, manual=False):
-    # bid = "Bid:11.01.01.00_01-de.ae.NoReg"
+    # bid = "Bid:11.01.01.00_01-de.ae.NoReg" or
+    # bid = "Bid:11.01.01.01_02-ru.au.NoAuth" or
+    # bid = "Bid:01.05.00_01-nl.au.NoReg" or
+    # bid = "Bid:01.05.01_04-nl.cn.Auth"
     us = bid.split(':')[1].split('-')[0].split('_')[0]
     tc = '_' + bid.split(':')[1].split('-')[0].split('_')[1]
     lng = bid.split(':')[1].split('-')[1].split('.')[0]
@@ -80,7 +81,6 @@ def new_row_data(d, bid, bug_num, link, manual=False):
 def add_new_row_with_format(manual=False):
     spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
-    print(f'\n gs = GoogleSheet() - создаем объект gs # 4: {gs}')
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
     # добавление новой 4-й строки
@@ -95,7 +95,6 @@ def add_new_row_with_format(manual=False):
 def fill_gs_table(value_1, value_2, bug_num, manual=False, new_layout=False):
     spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
-    print(f'\n gs = GoogleSheet() - создаем объект gs # 5: {gs}')
     gs.update_range_values('A5', value_1)
     gs.update_range_values('I5', value_2)
     gs.update_range_values('P5', [[bug_num]])
@@ -128,7 +127,7 @@ def retest_table_fill(d="", bid="", bug_n="", link="", manual=False, new_layout=
         bug_n - номер бага
         link - trade instrument
         manual - для мануальных багов
-        new_layout - для нового дизайна веб-страницыы
+        new_layout - для нового дизайна веб-страницы
 
     """
 
