@@ -84,6 +84,7 @@ class SellButtonOurMarketsTable(BasePage):
 
                 print(f"{datetime.now()}   Instruments is visible and quantity not zero? =>")
                 self.instruments_locator = ButtonsOnPageLocators.INSTRUMENTS_OUR_MARKETS
+                time.sleep(1)
                 self.instruments_list = self.driver.find_elements(*self.instruments_locator)
                 len_instruments_list = len(self.instruments_list)
                 if len_instruments_list != 0:
