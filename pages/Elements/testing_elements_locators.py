@@ -76,6 +76,12 @@ class ButtonTradeOnWidgetMostTradedLocators:
     # MOST_TRADED_5 = (By.CSS_SELECTOR, "div:nth-child(5) > div.mostTraded__market > a")
 
 
+class ButtonSellOnTableTradingInstrumentsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "a[data-side='sell'][data-platform='spotlight']")  # List
+    TABLE_TRADING_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments a[data-side='sell']")
+    TABLE_TRADING_INSTRUMENTS_NAME_LIST = (By.CSS_SELECTOR, "div.table-instruments p.table__info.stringEllipsed")
+
+
 class BlockOurCoursesLocators:
     BUTTON_CREATE_ACCOUNT = (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup']")
 
@@ -116,12 +122,26 @@ class ButtonsOnPageLocators:
     TYPE_FI_CRYPTOCURRENCY = (By.CSS_SELECTOR, "")
     TYPE_FI_INDICES = (By.CSS_SELECTOR, "")
 
-    # Tabs
+    # Tabs of CFDs TABLE
     TABLE_CFDS = (By.CSS_SELECTOR, '.section.section__tabs')
     TAB_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, '[data-id="mosttraded"]')
     TAB_TRADING_ITEM_TOP_RISERS = (By.CSS_SELECTOR, '[data-id="risers"]')
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
+
+    # Elements of Our markets block
+    OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
+
+    MOST_TRADED_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_mosttraded"]')
+    COMMODITIES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_COM"]')
+    INDICES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_IND"]')
+    SHARES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_SHARE"]')
+    FOREX_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_CURRENCY"]')
+    ETFS_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_etfs"]')
+
+    BUTTON_OUR_MARKETS_SELL = (By.CSS_SELECTOR, "[data-type='wdg_markets_sell_btn']")
+    INSTRUMENTS_OUR_MARKETS = (By.CSS_SELECTOR, ".card_box__mDLWS.js-analyticsClick")
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
@@ -191,7 +211,7 @@ class ContentBlockLocators:
     WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
 
-    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR,'[data-type="learn_traders_block"] .l_btn_signup_demo')
+    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
 
@@ -209,11 +229,23 @@ class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
 
 
+class TableTradingInstrumentsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".trlink.js-trlink td.buy.text-right.js-marketBtn > a")
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")
+
+
 class FieldDropdownMarketsLocator:
-    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR, 'div.js-fieldDropdown-markets')
+    FIELD_DROPDOWN_MARKETS = (By.CLASS_NAME, 'div.fieldDropdown.js-fieldDropdown-markets')
+    FIELD_DROPDOWN_LIST = (By.CSS_SELECTOR, '.js-fieldDropdown-markets.opened')
+    FIELD_DROPDOWN_MOST_TRADED = (By.CSS_SELECTOR, 'input[placeholder="Most traded"]')
+    FIELD_DROPDOWN_TOP_RISERS = (By.CSS_SELECTOR, 'input[placeholder="Top risers"]')
+    FIELD_DROPDOWN_TOP_FALLERS = (By.CSS_SELECTOR, 'input[placeholder="Top fallers"]')
+    FIELD_DROPDOWN_MOST_VOLATILE = (By.CSS_SELECTOR, 'input[placeholder="Most volatile"]')
 
 
 class ItemSortDropdownLocators:
+    ALL_ITEM_DROPDOWN_SORT = (By.CSS_SELECTOR, 'li.sort')
     ITEM_DROPDOWN_SORT_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
     ITEM_DROPDOWN_SORT_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
     ITEM_DROPDOWN_SORT_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')

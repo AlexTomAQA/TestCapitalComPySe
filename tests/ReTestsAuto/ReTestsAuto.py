@@ -199,27 +199,30 @@ def check_results(output, error):
 
     if error:
         print(f"{datetime.now()}   Ошибка: \n{error.decode('utf-8')}")
-        gs_out = ['Stdout error']
-        print(f"{datetime.now()}   => Текущий тест: skipped")
-        return gs_out
-    else:
-        test_results = output.decode('utf-8')
-        print(f"{datetime.now()}   test_results: \n{test_results}")
+    #     gs_out = ['Stdout error']
+    #     print(f"{datetime.now()}   => Текущий тест: skipped")
+    #     return gs_out
+    # else:
+    #     test_results = output.decode('utf-8')
+    #     print(f"{datetime.now()}   test_results: \n{test_results}")
+
+    test_results = output.decode('utf-8')
+    print(f"{datetime.now()}   test_results: \n{test_results}")
 
     # Проверка на выбор хотя бы одного теста
     failed_match_selected = re.search(r"(\d+ selected)", test_results)
     if failed_match_selected:
         selected = failed_match_selected.group(1)
         if selected == "0 selected":
-            print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
+            print(f"{datetime.now()}   => Для текущего теста выбрано 0 ТС")
             print(f"{datetime.now()}   => Текущий тест: skipped")
             gs_out = ['0 TCs selected']
-            return gs_out
+            # return gs_out
     else:
         print(f"{datetime.now()}   => Для текущего теста не выбрано ни одного ТС")
         print(f"{datetime.now()}   => Текущий тест: skipped")
         gs_out = ['No one TC selected']
-        return gs_out
+        # return gs_out
 
     # Проверка на Failed
     failed_match = re.search(r"(\d+ failed)", test_results)
