@@ -10,7 +10,7 @@ from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import NoSuchElementException
-
+import time
 
 class SellButtonOurMarketsTable(BasePage):
     def __init__(self, browser, link, bid):
@@ -72,7 +72,7 @@ class SellButtonOurMarketsTable(BasePage):
             if self.driver.find_element(*self.market_locator):
                 print(f"{datetime.now()}   => MARKET '{market}' is visible on the page!\n")
 
-                print(f"{datetime.now()}   Start Click button MARKET '{market}' =>")
+                print(f"{datetime.now()}   Start Click button '{market}' MARKET =>")
                 self.current_market = self.driver.find_element(*self.market_locator)
                 self.driver.execute_script(
                     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -80,12 +80,13 @@ class SellButtonOurMarketsTable(BasePage):
                 )
 
                 self.current_market.click()
-                print(f"{datetime.now()}   => End Click button MARKET '{market}'\n")
+                print(f"{datetime.now()}   => End Click button '{market}' MARKET\n")
 
                 print(f"{datetime.now()}   Instruments is visible and quantity not zero? =>")
                 self.instruments_locator = ButtonsOnPageLocators.INSTRUMENTS_OUR_MARKETS
                 self.instruments_list = self.driver.find_elements(*self.instruments_locator)
-                if self.instruments_list != 0:
+                len_instruments_list = len(self.instruments_list)
+                if len_instruments_list != 0:
                     print(f"{datetime.now()}   => Instruments is visible and quantity buttons not zero!\n")
                     match instrument:
                         case 'First':
@@ -95,8 +96,26 @@ class SellButtonOurMarketsTable(BasePage):
                                 self.current_instrument
                             )
                             self.current_instrument.click()
+
                         case 'Last':
-                            pass
+                            arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
+                            arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
+                            status_arrow_right = arrow_right_button.get_attribute("disabled")
+                            count = 0
+                            while status_arrow_right == None and count != 20:
+                                arrow_right_button.click()
+                                time.sleep(1)
+                                status_arrow_right = arrow_right_button.get_attribute("disabled")
+                                count += 1
+
+                            self.instruments_list = self.driver.find_elements(*self.instruments_locator)
+                            self.current_instrument = self.instruments_list[len_instruments_list-1]
+                            self.driver.execute_script(
+                                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                                self.current_instrument
+                            )
+                            self.current_instrument.click()
+
                         case 'Middle':
                             pass
 
