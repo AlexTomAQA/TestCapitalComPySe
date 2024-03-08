@@ -126,8 +126,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "gb",  # United Kingdom - "FCA"
-        # "de",  # Germany  - "CYSEC"
+        # "gb",  # United Kingdom - "FCA"
+        "de",  # Germany  - "CYSEC"
         # "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
         #
@@ -214,9 +214,9 @@ def cur_os(request):
     # scope="module",
     scope="session",
     params=[
-        "Chrome",
+        # "Chrome",
         # "Edge",
-        # "Firefox",
+        "Firefox",
         # "Safari",
     ],
     autouse=True,
@@ -332,8 +332,8 @@ def init_remote_driver_firefox():
     # безголовый режим браузера задается переменной headless
     if conf.HEADLESS:
         firefox_options.add_argument("--headless")  # ?похоже, не работает на MacOS
-
-    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+    ser = FirefoxService(GeckoDriverManager().install())
+    driver = webdriver.Firefox(service=ser, options=firefox_options)
 
     print(driver.get_window_size())
     driver.implicitly_wait(5)

@@ -27,7 +27,7 @@ def market(request):
     scope="function",
     params=[
         "First",
-        # "Last",
+        "Last",
         # "Middle"
     ],
 )

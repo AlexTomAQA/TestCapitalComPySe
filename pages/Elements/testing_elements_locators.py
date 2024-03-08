@@ -142,6 +142,9 @@ class ButtonsOnPageLocators:
     BUTTON_OUR_MARKETS_SELL = (By.CSS_SELECTOR, "[data-type='wdg_markets_sell_btn']")
     INSTRUMENTS_OUR_MARKETS = (By.CSS_SELECTOR, ".card_box__mDLWS.js-analyticsClick")
 
+    BUTTON_ARROW_RIGHT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--next")
+    BUTTON_ARROW_LEFT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--prev")
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
