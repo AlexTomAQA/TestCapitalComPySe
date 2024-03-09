@@ -87,11 +87,18 @@ class SellButtonOurMarketsTable(BasePage):
                 time.sleep(1)
                 self.instruments_list = self.driver.find_elements(*self.instruments_locator)
                 len_instruments_list = len(self.instruments_list)
+
                 if len_instruments_list != 0:
                     print(f"{datetime.now()}   => Instruments is visible and quantity buttons not zero!\n")
+
+                    print(f"{datetime.now()}   Start Find and Click button '{instrument}' instrument=>")
+                    arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
+                    arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
+                    count = 0
                     match instrument:
                         case 'First':
-                            self.current_instrument = self.instruments_list[0]
+                            index_instrument = 0
+                            self.current_instrument = self.instruments_list[index_instrument]
                             self.driver.execute_script(
                                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                                 self.current_instrument
@@ -99,18 +106,15 @@ class SellButtonOurMarketsTable(BasePage):
                             self.current_instrument.click()
 
                         case 'Last':
-                            arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
-                            arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
-                            status_arrow_right = arrow_right_button.get_attribute("disabled")
-                            count = 0
-                            while status_arrow_right == None and count != 20:
+                            index_instrument = len_instruments_list-1
+                            self.current_instrument = self.instruments_list[index_instrument]
+                            status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                            while status_current_instrument == None and count < 20:
                                 arrow_right_button.click()
                                 time.sleep(1)
-                                status_arrow_right = arrow_right_button.get_attribute("disabled")
+                                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
                                 count += 1
 
-                            self.instruments_list = self.driver.find_elements(*self.instruments_locator)
-                            self.current_instrument = self.instruments_list[len_instruments_list-1]
                             self.driver.execute_script(
                                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                                 self.current_instrument
@@ -118,8 +122,21 @@ class SellButtonOurMarketsTable(BasePage):
                             self.current_instrument.click()
 
                         case 'Middle':
-                            pass
+                            index_instrument = len_instruments_list//2 + 1
+                            self.current_instrument = self.instruments_list[index_instrument]
+                            status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                            while status_current_instrument == None and count < 20:
+                                arrow_right_button.click()
+                                time.sleep(1)
+                                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                                count += 1
 
+                            self.driver.execute_script(
+                                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                                self.current_instrument
+                            )
+                            self.current_instrument.click()
+                    print(f"{datetime.now()}   => End Click button '{instrument}' instrument=>\n")
                 else:
                     print(f"{datetime.now()}   => Instruments is NOT visible or quantity Instruments zero!\n")
                     pytest.fail("Checking element is not on this page")
