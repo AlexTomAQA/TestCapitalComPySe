@@ -24,7 +24,7 @@ class TestForex:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.03", "Markets > Menu item [Forex]",
-            ".00_03", "Testing button [Buy]")
+            ".00_003", "Testing button [Buy]")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
