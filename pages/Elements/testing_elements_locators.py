@@ -122,12 +122,29 @@ class ButtonsOnPageLocators:
     TYPE_FI_CRYPTOCURRENCY = (By.CSS_SELECTOR, "")
     TYPE_FI_INDICES = (By.CSS_SELECTOR, "")
 
-    # Tabs
+    # Tabs of CFDs TABLE
     TABLE_CFDS = (By.CSS_SELECTOR, '.section.section__tabs')
     TAB_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, '[data-id="mosttraded"]')
     TAB_TRADING_ITEM_TOP_RISERS = (By.CSS_SELECTOR, '[data-id="risers"]')
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
+
+    # Elements of Our markets block
+    OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
+
+    MOST_TRADED_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_mosttraded"]')
+    COMMODITIES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_COM"]')
+    INDICES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_IND"]')
+    SHARES_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_SHARE"]')
+    FOREX_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_CURRENCY"]')
+    ETFS_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_etfs"]')
+
+    BUTTON_OUR_MARKETS_SELL = (By.CSS_SELECTOR, "[data-type='wdg_markets_sell_btn']")
+    INSTRUMENTS_OUR_MARKETS = (By.CSS_SELECTOR, ".card_box__mDLWS.js-analyticsClick")
+
+    BUTTON_ARROW_RIGHT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--next")
+    BUTTON_ARROW_LEFT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--prev")
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
@@ -197,7 +214,7 @@ class ContentBlockLocators:
     WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
 
-    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR,'[data-type="learn_traders_block"] .l_btn_signup_demo')
+    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
 

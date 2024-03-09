@@ -1042,3 +1042,23 @@ class MenuUS0104Commodities:
 #     SUB_MENU_CRYPTOCURRENCIES_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id65']")
 #     SUB_MENU_ESG_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id461']")
 #     SUB_MENU_EN_GB_MARKETS_BUTTON = (By.CSS_SELECTOR, "[data-type='nav_id689']")
+
+# class MenuUS0102MarketsShares:
+#     SUB_MENU_EN_SHARES = (By.CSS_SELECTOR,
+#                            ".cc-nav__dropdown a[href$='major-world-indices']")
+
+class MenuUS0102MarketsShares:
+    SUB_MENU_EN_SHARES = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-currency-prices']")
+    SUB_MENU_AR_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/asear-alashum-fi-alwaqt-alfielii']")
+    SUB_MENU_DE_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/aktienkurse-realtime']")
+    SUB_MENU_EL_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/zontanes-times-metoxon']")
+    SUB_MENU_ES_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/en-vivo-acciones-precios']")
+    SUB_MENU_FR_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/prix-des-actions-en-direct']")
+    SUB_MENU_IT_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/prezzi-delle-azioni-in-tempo-reale']")
+    SUB_MENU_HU_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/elo-reszvenyarak']")
+    SUB_MENU_NL_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/live-aandelen-koersen']")
+    SUB_MENU_PL_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/aktualne-ceny-akcji']")
+    SUB_MENU_RO_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/live-actiuni-preturi']")
+    SUB_MENU_RU_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/kotirovki-aktsiy']")
+    SUB_MENU_ZH_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-share-prices']")
+    SUB_MENU_CN_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-share-prices']")
