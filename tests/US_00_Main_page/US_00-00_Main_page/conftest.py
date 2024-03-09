@@ -28,7 +28,7 @@ def market(request):
     params=[
         "First",
         "Last",
-        # "Middle"
+        "Middle"
     ],
 )
 def instrument(request):

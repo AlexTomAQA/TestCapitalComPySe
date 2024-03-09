@@ -140,7 +140,7 @@ class ButtonsOnPageLocators:
     ETFS_MARKET = (By.CSS_SELECTOR, '[data-type="wdg_markets_tab_etfs"]')
 
     BUTTON_OUR_MARKETS_SELL = (By.CSS_SELECTOR, "[data-type='wdg_markets_sell_btn']")
-    INSTRUMENTS_OUR_MARKETS = (By.CSS_SELECTOR, ".card_box__mDLWS.js-analyticsClick")
+    INSTRUMENTS_OUR_MARKETS = (By.CSS_SELECTOR, "#splide01-list .splide__slide")
 
     BUTTON_ARROW_RIGHT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--next")
     BUTTON_ARROW_LEFT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--prev")
