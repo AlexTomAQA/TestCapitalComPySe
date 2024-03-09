@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages.Elements.TableTradingInstrumentsSellButton import ButtonSellOnTableTradingInstruments
+from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
@@ -67,5 +67,5 @@ class TestIndices:
         page_menu = MenuSection(d, link)
         page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
         cur_page_url = page_menu.sub_menu_indices_move_focus_click(d, cur_language)
-        test_element = ButtonSellOnTableTradingInstruments(d, cur_page_url, bid)
+        test_element = TableTradingInstrumentsSellButton(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)

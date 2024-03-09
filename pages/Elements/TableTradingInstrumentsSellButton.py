@@ -16,23 +16,19 @@ from pages.Elements.testing_elements_locators import ButtonSellOnTableTradingIns
 from pages.Elements.AssertClass import AssertClass
 
 
-class ButtonSellOnTableTradingInstruments(BasePage):
+class TableTradingInstrumentsSellButton(BasePage):
 
     @allure.step(f'{datetime.now()}   Start Full test [Sell] button on Table Widget Trading Instruments')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
-        qty_rnd = 1
-        # self.clear_chart_list()
-        num_item = self.arrange_v4(cur_item_link)
+        qty_rnd = 2  # Тестируем два случайных инструмента
+        num_item = self.arrange_(cur_item_link)
         random_indexes = random.sample(range(0, num_item), qty_rnd)
         print(f"\n{datetime.now()}   Random indexes = {random_indexes}")
-        counter = 0
+
         for i, index in enumerate(random_indexes):
-            # if counter:
-            #     self.clear_chart_list()
-            #     self.arrange_v4(cur_item_link)
 
             print(f"\n{datetime.now()}   Testing Table Widget Trading Instruments {i + 1} random element with {index} index")
-            trade_instrument = self.element_click_v4(index)
+            trade_instrument = self.element_click(index)
             if not trade_instrument:
                 pytest.fail("Testing element is not clicked")
 
@@ -44,10 +40,9 @@ class ButtonSellOnTableTradingInstruments(BasePage):
                     check_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
-            counter += 1
 
-    def arrange_v4(self, cur_item_link):
-        print(f"\n{datetime.now()}   1. Arrange_v4")
+    def arrange_(self, cur_item_link):
+        print(f"\n{datetime.now()}   1. Arrange_v0")
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
@@ -71,11 +66,9 @@ class ButtonSellOnTableTradingInstruments(BasePage):
         return num_item
 
     @allure.step('Click Sell button on Table Widget Trading Instruments')
-    def element_click_v4(self, random_index):
-        print(f"\n{datetime.now()}   2. Act_v4")
+    def element_click(self, random_index):
+        print(f"\n{datetime.now()}   2. Act_v0")
 
-        # # (кнопки меняют состояние каждые ~2.5 секунды)
-        # Checking if [SignUP for is popped up on the page]
         check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
         del check_popup
@@ -96,7 +89,6 @@ class ButtonSellOnTableTradingInstruments(BasePage):
         print(f"{datetime.now()}   Selected Sell button click for '{instrument_title}' trading instrument =>")
 
         ActionChains(self.driver) \
-            .move_to_element(element) \
             .pause(0.5) \
             .move_to_element(element) \
             .perform()
