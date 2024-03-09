@@ -1,0 +1,83 @@
+
+
+
+Current market - Indices
+
+
+
+Current instrument - First
+{'width': 1280, 'height': 720}
+
+2024-03-09 09:05:30.076912   worker_id = master
+
+2024-03-09 09:05:30.076930   0. Allure grouping v4
+
+
+2024-03-09 09:05:30.077137   START NEW PRECONDITIONS =>
+
+2024-03-09 09:05:30.077153   Current page URL = https://capital.com/trading/platform/
+2024-03-09 09:05:30.422590   => Loaded page https://capital.com/en-gb
+
+2024-03-09 09:05:30.452151   {'width': 1280, 'height': 720}
+
+2024-03-09 09:05:30.454014   Set windows position at (0, 0) =>
+
+2024-03-09 09:05:30.607951   Set resolution 1280 * 720 =>
+
+2024-03-09 09:05:30.711098   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-03-09 09:05:31.762895   Капчи нет. Идем дальше
+
+2024-03-09 09:05:31.763010   Prev. Role: Auth
+
+2024-03-09 09:05:31.763029   Current role: Auth
+
+2024-03-09 09:05:31.763043   => Current language: ?
+
+2024-03-09 09:05:32.828441   Капчи нет. Идем дальше
+2024-03-09 09:05:32.828537   => Current country: gb
+
+2024-03-09 09:05:32.828550   => THE END PRECONDITIONS
+
+2024-03-09 09:05:32.828587   1. Arrange for Our Markets block: 'Indices' market, 'First' instrument
+2024-03-09 09:05:32.831366   IS Our markets block visible on the page? =>
+2024-03-09 09:05:32.836177   => Our markets block is visible on the page!
+
+2024-03-09 09:05:32.836206   IS MARKET 'Indices' visible on the page? =>
+2024-03-09 09:05:32.843444   => MARKET 'Indices' is visible on the page!
+
+2024-03-09 09:05:32.843466   Start Click button 'Indices' MARKET =>
+2024-03-09 09:05:32.912060   => End Click button 'Indices' MARKET
+
+2024-03-09 09:05:32.912108   Instruments is visible and quantity not zero? =>
+2024-03-09 09:05:33.922370   => Instruments is visible and quantity buttons not zero!
+
+2024-03-09 09:05:33.922411   Start Find and Click button 'First' instrument=>
+2024-03-09 09:05:33.972796   => End Click button 'First' instrument=>
+
+2024-03-09 09:05:33.973014   2. Act for 'Indices' Market and 'First' Instrument
+2024-03-09 09:05:33.973030   IS button [Sell] for 'Indices' Market visible on the page? =>
+2024-03-09 09:05:33.978733   => Button [Sell] for 'Indices' Market is visible on the page!
+
+2024-03-09 09:05:33.978760   Start click button [Sell] =>
+2024-03-09 09:05:34.307012   => End Click button [Sell]
+
+2024-03-09 09:05:34.307444   3. Assert_v4
+2024-03-09 09:05:34.307635   Checking that the trading platform page has opened (v4) =>
+2024-03-09 09:05:34.321321   => Current page title: Trading Platform | Capital.com
+2024-03-09 09:05:34.321552   Checking that the Trading platform LOGO is present on the page =>
+2024-03-09 09:05:35.948389   Checking that the Trading platform opened in LIVE mode =>
+2024-03-09 09:05:36.029282   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-09 09:05:36.032155   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument 'UK 100' select
+2024-03-09 09:05:36.034760   => Trading Instrument is the 'UK 100'
+2024-03-09 09:05:36.034777   => Trading Instrument Name is the 'UK'
+2024-03-09 09:05:37.079001   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-09 09:05:37.079052   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb7af3c85c0>
+
+2024-03-09 09:05:37.081781  Для бага: Bid-14 необходимо использовать проверку на ретест!!!

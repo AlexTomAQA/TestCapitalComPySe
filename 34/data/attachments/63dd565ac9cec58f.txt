@@ -1,0 +1,83 @@
+
+
+
+Current market - ETFs
+
+
+
+Current instrument - Middle
+{'width': 1280, 'height': 720}
+
+2024-03-09 09:06:42.555327   worker_id = master
+
+2024-03-09 09:06:42.555346   0. Allure grouping v4
+
+
+2024-03-09 09:06:42.555556   START NEW PRECONDITIONS =>
+
+2024-03-09 09:06:42.555572   Current page URL = https://capital.com/trading/platform/
+2024-03-09 09:06:43.344004   => Loaded page https://capital.com/en-gb
+
+2024-03-09 09:06:43.348333   {'width': 1280, 'height': 720}
+
+2024-03-09 09:06:43.351215   Set windows position at (0, 0) =>
+
+2024-03-09 09:06:43.504109   Set resolution 1280 * 720 =>
+
+2024-03-09 09:06:43.663827   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-03-09 09:06:44.692853   Капчи нет. Идем дальше
+
+2024-03-09 09:06:44.692941   Prev. Role: Auth
+
+2024-03-09 09:06:44.692955   Current role: Auth
+
+2024-03-09 09:06:44.692964   => Current language: ?
+
+2024-03-09 09:06:45.747459   Капчи нет. Идем дальше
+2024-03-09 09:06:45.747545   => Current country: gb
+
+2024-03-09 09:06:45.747558   => THE END PRECONDITIONS
+
+2024-03-09 09:06:45.747592   1. Arrange for Our Markets block: 'ETFs' market, 'Middle' instrument
+2024-03-09 09:06:45.750304   IS Our markets block visible on the page? =>
+2024-03-09 09:06:45.755065   => Our markets block is visible on the page!
+
+2024-03-09 09:06:45.755087   IS MARKET 'ETFs' visible on the page? =>
+2024-03-09 09:06:45.759779   => MARKET 'ETFs' is visible on the page!
+
+2024-03-09 09:06:45.759801   Start Click button 'ETFs' MARKET =>
+2024-03-09 09:06:45.840496   => End Click button 'ETFs' MARKET
+
+2024-03-09 09:06:45.840552   Instruments is visible and quantity not zero? =>
+2024-03-09 09:06:46.848400   => Instruments is visible and quantity buttons not zero!
+
+2024-03-09 09:06:46.848439   Start Find and Click button 'Middle' instrument=>
+2024-03-09 09:06:46.909144   => End Click button 'Middle' instrument=>
+
+2024-03-09 09:06:46.909355   2. Act for 'ETFs' Market and 'Middle' Instrument
+2024-03-09 09:06:46.909371   IS button [Sell] for 'ETFs' Market visible on the page? =>
+2024-03-09 09:06:46.915642   => Button [Sell] for 'ETFs' Market is visible on the page!
+
+2024-03-09 09:06:46.915667   Start click button [Sell] =>
+2024-03-09 09:06:47.218305   => End Click button [Sell]
+
+2024-03-09 09:06:47.218666   3. Assert_v4
+2024-03-09 09:06:47.218846   Checking that the trading platform page has opened (v4) =>
+2024-03-09 09:06:47.230595   => Current page title: Trading Platform | Capital.com
+2024-03-09 09:06:47.230787   Checking that the Trading platform LOGO is present on the page =>
+2024-03-09 09:06:48.172976   Checking that the Trading platform opened in LIVE mode =>
+2024-03-09 09:06:48.185069   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-09 09:06:48.187634   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument 'iShares 20+ Year Treasury Bond ETF' select
+2024-03-09 09:06:48.190183   => Trading Instrument is the 'iShares 20+ Year Treasury Bond ETF'
+2024-03-09 09:06:48.190200   => Trading Instrument Name is the 'iShares'
+2024-03-09 09:06:49.224323   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-09 09:06:49.224371   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb7af3c85c0>
+
+2024-03-09 09:06:49.227356  Для бага: Bid-14 необходимо использовать проверку на ретест!!!

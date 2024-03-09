@@ -1,0 +1,83 @@
+
+
+
+Current market - Commodities
+
+
+
+Current instrument - Middle
+{'width': 1280, 'height': 720}
+
+2024-03-09 09:05:23.675893   worker_id = master
+
+2024-03-09 09:05:23.675910   0. Allure grouping v4
+
+
+2024-03-09 09:05:23.676117   START NEW PRECONDITIONS =>
+
+2024-03-09 09:05:23.676133   Current page URL = https://capital.com/trading/platform/
+2024-03-09 09:05:24.019423   => Loaded page https://capital.com/en-gb
+
+2024-03-09 09:05:24.053354   {'width': 1280, 'height': 720}
+
+2024-03-09 09:05:24.055185   Set windows position at (0, 0) =>
+
+2024-03-09 09:05:24.196385   Set resolution 1280 * 720 =>
+
+2024-03-09 09:05:24.307364   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-03-09 09:05:25.313291   Капчи нет. Идем дальше
+
+2024-03-09 09:05:25.313379   Prev. Role: Auth
+
+2024-03-09 09:05:25.313391   Current role: Auth
+
+2024-03-09 09:05:25.313401   => Current language: ?
+
+2024-03-09 09:05:26.336684   Капчи нет. Идем дальше
+2024-03-09 09:05:26.336782   => Current country: gb
+
+2024-03-09 09:05:26.336795   => THE END PRECONDITIONS
+
+2024-03-09 09:05:26.336833   1. Arrange for Our Markets block: 'Commodities' market, 'Middle' instrument
+2024-03-09 09:05:26.339478   IS Our markets block visible on the page? =>
+2024-03-09 09:05:26.344248   => Our markets block is visible on the page!
+
+2024-03-09 09:05:26.344270   IS MARKET 'Commodities' visible on the page? =>
+2024-03-09 09:05:26.348819   => MARKET 'Commodities' is visible on the page!
+
+2024-03-09 09:05:26.348841   Start Click button 'Commodities' MARKET =>
+2024-03-09 09:05:26.418840   => End Click button 'Commodities' MARKET
+
+2024-03-09 09:05:26.418887   Instruments is visible and quantity not zero? =>
+2024-03-09 09:05:27.425349   => Instruments is visible and quantity buttons not zero!
+
+2024-03-09 09:05:27.425389   Start Find and Click button 'Middle' instrument=>
+2024-03-09 09:05:27.490550   => End Click button 'Middle' instrument=>
+
+2024-03-09 09:05:27.490829   2. Act for 'Commodities' Market and 'Middle' Instrument
+2024-03-09 09:05:27.490853   IS button [Sell] for 'Commodities' Market visible on the page? =>
+2024-03-09 09:05:27.497653   => Button [Sell] for 'Commodities' Market is visible on the page!
+
+2024-03-09 09:05:27.497684   Start click button [Sell] =>
+2024-03-09 09:05:27.820739   => End Click button [Sell]
+
+2024-03-09 09:05:27.821106   3. Assert_v4
+2024-03-09 09:05:27.821270   Checking that the trading platform page has opened (v4) =>
+2024-03-09 09:05:27.835665   => Current page title: Trading Platform | Capital.com
+2024-03-09 09:05:27.835865   Checking that the Trading platform LOGO is present on the page =>
+2024-03-09 09:05:28.753157   Checking that the Trading platform opened in LIVE mode =>
+2024-03-09 09:05:28.764140   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-09 09:05:28.766758   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument 'Gold' select
+2024-03-09 09:05:28.769274   => Trading Instrument is the 'Gold'
+2024-03-09 09:05:28.769291   => Trading Instrument Name is the 'Gold'
+2024-03-09 09:05:29.815473   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-09 09:05:29.815525   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb7af3c85c0>
+
+2024-03-09 09:05:29.818314  Для бага: Bid-14 необходимо использовать проверку на ретест!!!

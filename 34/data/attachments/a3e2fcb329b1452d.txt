@@ -1,0 +1,83 @@
+
+
+
+Current market - Forex
+
+
+
+Current instrument - First
+{'width': 1280, 'height': 720}
+
+2024-03-09 09:06:10.240804   worker_id = master
+
+2024-03-09 09:06:10.240822   0. Allure grouping v4
+
+
+2024-03-09 09:06:10.241028   START NEW PRECONDITIONS =>
+
+2024-03-09 09:06:10.241045   Current page URL = https://capital.com/trading/platform/
+2024-03-09 09:06:10.574449   => Loaded page https://capital.com/en-gb
+
+2024-03-09 09:06:10.604971   {'width': 1280, 'height': 720}
+
+2024-03-09 09:06:10.609737   Set windows position at (0, 0) =>
+
+2024-03-09 09:06:10.772572   Set resolution 1280 * 720 =>
+
+2024-03-09 09:06:10.888174   => Resolution seted {'width': 1280, 'height': 720}
+
+2024-03-09 09:06:11.907752   Капчи нет. Идем дальше
+
+2024-03-09 09:06:11.907843   Prev. Role: Auth
+
+2024-03-09 09:06:11.907857   Current role: Auth
+
+2024-03-09 09:06:11.907866   => Current language: ?
+
+2024-03-09 09:06:12.921023   Капчи нет. Идем дальше
+2024-03-09 09:06:12.921117   => Current country: gb
+
+2024-03-09 09:06:12.921130   => THE END PRECONDITIONS
+
+2024-03-09 09:06:12.921165   1. Arrange for Our Markets block: 'Forex' market, 'First' instrument
+2024-03-09 09:06:12.923825   IS Our markets block visible on the page? =>
+2024-03-09 09:06:12.928549   => Our markets block is visible on the page!
+
+2024-03-09 09:06:12.928574   IS MARKET 'Forex' visible on the page? =>
+2024-03-09 09:06:12.935840   => MARKET 'Forex' is visible on the page!
+
+2024-03-09 09:06:12.935867   Start Click button 'Forex' MARKET =>
+2024-03-09 09:06:13.017912   => End Click button 'Forex' MARKET
+
+2024-03-09 09:06:13.017956   Instruments is visible and quantity not zero? =>
+2024-03-09 09:06:14.025606   => Instruments is visible and quantity buttons not zero!
+
+2024-03-09 09:06:14.025646   Start Find and Click button 'First' instrument=>
+2024-03-09 09:06:14.075651   => End Click button 'First' instrument=>
+
+2024-03-09 09:06:14.075941   2. Act for 'Forex' Market and 'First' Instrument
+2024-03-09 09:06:14.075961   IS button [Sell] for 'Forex' Market visible on the page? =>
+2024-03-09 09:06:14.085568   => Button [Sell] for 'Forex' Market is visible on the page!
+
+2024-03-09 09:06:14.085597   Start click button [Sell] =>
+2024-03-09 09:06:14.389981   => End Click button [Sell]
+
+2024-03-09 09:06:14.390344   3. Assert_v4
+2024-03-09 09:06:14.390514   Checking that the trading platform page has opened (v4) =>
+2024-03-09 09:06:14.405364   => Current page title: Trading Platform | Capital.com
+2024-03-09 09:06:14.405555   Checking that the Trading platform LOGO is present on the page =>
+2024-03-09 09:06:15.263396   Checking that the Trading platform opened in LIVE mode =>
+2024-03-09 09:06:15.275249   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-09 09:06:15.278039   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument 'EUR/GBP' select
+2024-03-09 09:06:15.281649   => Trading Instrument is the 'EUR/GBP'
+2024-03-09 09:06:15.281666   => Trading Instrument Name is the 'EUR/GBP'
+2024-03-09 09:06:16.324185   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-09 09:06:16.324232   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb7af3c85c0>
+
+2024-03-09 09:06:16.327192  Для бага: Bid-14 необходимо использовать проверку на ретест!!!
