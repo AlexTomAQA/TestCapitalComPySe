@@ -126,11 +126,11 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "gb",  # United Kingdom - "FCA"
-        "de",  # Germany  - "CYSEC"
-        # "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
-        #
+        # "au",  # Australia - "ASIC"
+        "de",  # Germany  - "CYSEC"
+#         "gb",
+      
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
         # "fr",  # France - "CYSEC"
@@ -214,9 +214,9 @@ def cur_os(request):
     # scope="module",
     scope="session",
     params=[
-        # "Chrome",
+        "Chrome",
         # "Edge",
-        "Firefox",
+        # "Firefox",
         # "Safari",
     ],
     autouse=True,
