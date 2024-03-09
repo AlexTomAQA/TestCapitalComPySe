@@ -38,7 +38,7 @@ from pages.Menu.menu_locators import (
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
-    MenuUS01Indices, MenuUS0103MarketsForex, MenuUS0104Commodities
+    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities
 )
 from pages.base_page import BasePage
 
@@ -1642,3 +1642,52 @@ class MenuSection(BasePage):
         del sub_menu
 
         return d.current_url
+
+    @allure.step(f"{datetime.now()}. Click submenu 'Shares'.")
+    def sub_menu_shares_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_EN_SHARES)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_AR_SHARES)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_DE_SHARES)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_EL_SHARES)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_ES_SHARES)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_FR_SHARES)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_IT_SHARES)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_HU_SHARES)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_NL_SHARES)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_PL_SHARES)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_RO_SHARES)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_RU_SHARES)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_ZH_SHARES)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_CN_SHARES)
+
+        if len(sub_menu) == 0:
+            pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Shares\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .pause(0.5) \
+            .perform()
+
+        del sub_menu
+        return d.current_url
+
+
+
