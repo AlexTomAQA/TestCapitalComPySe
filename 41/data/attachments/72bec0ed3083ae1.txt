@@ -1,0 +1,80 @@
+{'width': 1280, 'height': 720}
+
+2024-03-10 12:10:41.820601   worker_id = master
+
+2024-03-10 12:10:41.820619   0. Allure grouping v4
+
+
+2024-03-10 12:10:41.820817   START PRECONDITIONS =>
+
+
+2024-03-10 12:10:41.820833   => Windows size - {'width': 1280, 'height': 720}
+2024-03-10 12:10:41.822143   Set windows position at (0, 0) =>
+2024-03-10 12:10:41.924175   Set resolution 1280 * 720 =>
+2024-03-10 12:10:42.026607   => Windows size is set to {'width': 1280, 'height': 720}
+
+2024-03-10 12:10:43.056062   Капчи нет. Идем дальше
+
+2024-03-10 12:10:43.056153   Работа с куками
+
+2024-03-10 12:10:43.056167   => Prev. country - 'au'
+2024-03-10 12:10:43.056176   => Country set to 'au'
+
+2024-03-10 12:10:43.056185   => Prev. language - 'ru'
+2024-03-10 12:10:43.056194   => Language is set to 'ru'
+
+2024-03-10 12:10:43.056203   => Prev. role - 'Auth'
+2024-03-10 12:10:43.056211   => The 'Auth' role is set
+
+2024-03-10 12:10:43.059071   => THE END PRECONDITIONS
+
+2024-03-10 12:10:43.059124   1. Arrange_v0
+2024-03-10 12:10:43.061784   Current page URL = https://capital.com/trading/platform/
+2024-03-10 12:10:44.318174   => Loaded page https://capital.com/ru/ftse-mib-italy-40-cfd
+2024-03-10 12:10:44.320684   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-03-10 12:10:44.331818   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-03-10 12:10:44.332000   Start Checking that form [Sign up] popped up on the page =>
+2024-03-10 12:10:45.883016   '[Sign up]' form was not popped up
+
+2024-03-10 12:10:45.883203   2. Act_v0
+2024-03-10 12:10:45.888257   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-03-10 12:10:45.888279   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-03-10 12:10:45.888289   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-03-10 12:10:45.901651   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-03-10 12:10:45.920036   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-03-10 12:10:45.931666   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-03-10 12:10:46.191873   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-03-10 12:10:46.192201   3. Assert_v4
+2024-03-10 12:10:46.192373   Checking that the trading platform page has opened (v4) =>
+2024-03-10 12:10:46.709064   => Current page title: Trading Platform | Capital.com
+2024-03-10 12:10:46.709209   Checking that the Trading platform LOGO is present on the page =>
+2024-03-10 12:10:48.304252   Checking that the Trading platform opened in LIVE mode =>
+2024-03-10 12:10:48.448349   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-10 12:10:48.453896   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument '10500838556456274' select
+2024-03-10 12:10:48.456608   => Trading Instrument is the '10500838556456274'
+2024-03-10 12:10:48.456624   => Trading Instrument Name is the '10500838556456274'
+2024-03-10 12:10:49.504928   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.06.01_08-ru.au.Auth
+
+2024-03-10 12:10:49.504977   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f18e5be08f0>
+
+2024-03-10 12:10:49.844121   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-10 12:10:50.064893   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-10 12:10:50.750459   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-10 12:10:50.980371   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-10 12:10:50.980443   Баг Bid:11.02.06.01_08-ru.au.Auth уже существует, но у него изменился тип с  на 14
+
+2024-03-10 12:10:50.980602   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-10 12:10:51.207906   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-10 12:10:51.209746   Баг Bid:11.02.06.01_08-ru.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
