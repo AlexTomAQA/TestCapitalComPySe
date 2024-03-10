@@ -12,6 +12,7 @@ import allure
 
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
 from pages.base_page import BasePage
+from pages.common import Common
 from test_data.trading_platform_data import data as tp_data
 from pages.Capital.Trading_platform.trading_platform_locators \
     import TradingPlatformSignupFormLocators as TPSignupFormLocators, TradingInstruments
@@ -96,11 +97,12 @@ class TradingPlatform(BasePage):
         if self.wait_for_target_url(platform_url, 15):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
+            print(f"{datetime.now()}   tpd = {tpd}")
             if tpd:
-                self.should_be_platform_demo_mode(d, cur_url)
+                self.should_be_platform_demo_mode(d, test_link)
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in DEMO mode")
             else:
-                self.should_be_platform_live_mode(d, cur_url)
+                self.should_be_platform_live_mode(d, test_link)
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
@@ -108,29 +110,36 @@ class TradingPlatform(BasePage):
                       f"with corresponding trading instrument '{trade_instrument}' select")
                 self.should_be_corresponding_trading_instrument(test_link, trade_instrument)
 
-            do = True
-            while do:
-                self.driver.back()
-                print(f"{datetime.now()}   => Driver.backed")
-                if self.driver.current_url == test_link:
-                    do = False
-
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
             if tpd:
                 print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
                 # проверка бага для ретеста
+
+                # Common().browser_back_to_link(self.driver, test_link)
+
                 print(f'\nBug: {self.bid}')
                 retest_table_fill(d, self.bid, '09', self.link)
-                assert False, (f"Bug # 9. Loaded page with {cur_url} url, but expected the Trading platform in"
-                               f"Demo mode(timeout=15c)")
+
+                # assert False, (f"Bug # 9. Loaded page with {cur_url} url, but expected the Trading platform in"
+                #                f"Demo mode(timeout=15c)")
+                msg = (f"Bug # 9. Loaded page with {cur_url} url, "
+                       f"but expected the Trading platform in Demo mode (timeout=15c)")
+                Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
             else:
                 print(f"{datetime.now()}   => Loaded page {cur_url} with not {platform_url} url")
                 # проверка бага для ретеста
+
+                # Common().browser_back_to_link(self.driver, test_link)
+
                 print(f'\nBug: {self.bid}')
                 retest_table_fill(d, self.bid, '10', self.link)
-                assert False, (f"Bug # 10. Loaded page with {cur_url} url, but expected the Trading platform in"
-                               f"Live mode(timeout=15c)")
+
+                # assert False, (f"Bug # 10. Loaded page with {cur_url} url, but expected the Trading platform in"
+                #                f"Live mode(timeout=15c)")
+                msg = (f"Bug # 10. Loaded page with {cur_url} url, "
+                       f"but expected the Trading platform in Live mode (timeout=15c)")
+                Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
     @allure.step("Checking that the trading platform page has opened with selected item and operation")
     def should_be_trading_platform_with_sel_item_and_operation(self, sel_item, sel_operation, demo=False):
@@ -173,7 +182,9 @@ class TradingPlatform(BasePage):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '11', self.link)
-            assert False, "Bug # 11. Trading platform is opened in not DEMO mode"
+            # assert False, "Bug # 11. Trading platform is opened in not DEMO mode"
+            msg = "Bug # 11. Trading platform is opened in not DEMO mode"
+            Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
     @allure.step("Check if the trading platform opened in LIVE mode")
     def should_be_platform_live_mode(self, d, test_link):
@@ -184,7 +195,9 @@ class TradingPlatform(BasePage):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '12', self.link)
-            assert False, "Bug # 12. Trading platform is opened in not LIVE mode"
+            # assert False, "Bug # 12. Trading platform is opened in not LIVE mode"
+            msg = "Bug # 12. Trading platform is opened in not LIVE mode"
+            Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
     @allure.step("Check that form [Sign Up] is opened on the Trading Platform page")
     # @profile(precision=3)
@@ -282,7 +295,10 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '14', self.link)
-            assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
+            # assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
+            msg = "Bug # 14. Trading platform was opened, but not Chart mode"
+            Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
@@ -291,8 +307,11 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => Trading Platform opened in Chart mode, but Top Charts List is empty")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '15', self.link)
-            assert False, (f"Bug # 15. Trading platform was opened, "
-                           f"but does no contain any trade instrument in the Top Charts List")
+            # assert False, (f"Bug # 15. Trading platform was opened, "
+            #                f"but does no contain any trade instrument in the Top Charts List")
+            msg = ("Bug # 15. Trading platform was opened, "
+                   "but does no contain any trade instrument in the Top Charts List")
+            Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         # проверяем, есть ли вкладка запрашиваемого торгового инструмента
         present = False
@@ -305,7 +324,9 @@ class TradingPlatform(BasePage):
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '16', self.link)
-            assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
+            # assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
+            msg = f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
+            Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
 
         # проверяем, что запрашиваемый торговый инструмент отображен (видим) в списке инструментов
