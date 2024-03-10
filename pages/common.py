@@ -131,3 +131,14 @@ class Common:
 				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
 		return list_item_link
+
+	@staticmethod
+	def browser_back_to_link_and_test_fail(driver, test_link, msg):
+		do = True
+		while do:
+			driver.back()
+			print(f"{datetime.now()}   => Driver.backed")
+			if driver.current_url == test_link:
+				do = False
+
+		assert False, msg
