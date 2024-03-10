@@ -27,7 +27,7 @@ class TestForex:
             ".00_003", "Testing button [Buy]")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-#        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
 
