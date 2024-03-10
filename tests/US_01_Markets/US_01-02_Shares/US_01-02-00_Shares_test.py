@@ -16,6 +16,7 @@ from pages.Elements.StepTradingBlock import BlockStepTrading
 
 count = 1
 
+
 @pytest.mark.us_01_02
 class TestShares:
     page_conditions = None
@@ -30,7 +31,7 @@ class TestShares:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04","Markets > Menu item [Shares]",
+            "01.04", "Markets > Menu item [Shares]",
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Share CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
@@ -76,4 +77,3 @@ class TestShares:
 
         test_element = BlockStepTrading(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
-
