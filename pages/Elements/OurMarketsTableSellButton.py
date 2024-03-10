@@ -55,6 +55,7 @@ class SellButtonOurMarketsTable(BasePage):
         if len(block_our_market) == 0:
             print(f"{datetime.now()}   => Our markets block is NOT present on this page\n")
             pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   => Our markets block present on the page!\n")
 
         print(f"{datetime.now()}   IS Our markets block visible on this page? =>")
         if not self.element_is_visible(ButtonsOnPageLocators.OUR_MARKETS_BLOCK, 5):
@@ -81,6 +82,7 @@ class SellButtonOurMarketsTable(BasePage):
         if len(market_list) == 0:
             print(f"{datetime.now()}   => MARKET '{market}' is NOT present on this page\n")
             pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   => MARKET '{market}' present on the page!\n")
 
         print(f"{datetime.now()}   IS MARKET '{market}' visible on the page? =>")
         if not self.element_is_visible(self.market_locator, 5):
