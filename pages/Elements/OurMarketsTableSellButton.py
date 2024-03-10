@@ -50,107 +50,120 @@ class SellButtonOurMarketsTable(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   IS Our markets block visible on the page? =>")
-        if self.driver.find_elements(*ButtonsOnPageLocators.OUR_MARKETS_BLOCK) != []:
-            print(f"{datetime.now()}   => Our markets block is visible on the page!\n")
+        print(f"{datetime.now()}   IS Our markets block present on this page? =>")
+        block_our_market = self.driver.find_elements(*ButtonsOnPageLocators.OUR_MARKETS_BLOCK)
+        if len(block_our_market) == 0:
+            print(f"{datetime.now()}   => Our markets block is NOT present on this page\n")
+            pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   => Our markets block present on the page!\n")
 
-            match market:
-                case 'Most_traded':
-                    self.market_locator = ButtonsOnPageLocators.MOST_TRADED_MARKET
-                case 'Commodities':
-                    self.market_locator = ButtonsOnPageLocators.COMMODITIES_MARKET
-                case 'Indices':
-                    self.market_locator = ButtonsOnPageLocators.INDICES_MARKET
-                case 'Shares':
-                    self.market_locator = ButtonsOnPageLocators.SHARES_MARKET
-                case 'Forex':
-                    self.market_locator = ButtonsOnPageLocators.FOREX_MARKET
-                case 'ETFs':
-                    self.market_locator = ButtonsOnPageLocators.ETFS_MARKET
+        print(f"{datetime.now()}   IS Our markets block visible on this page? =>")
+        if not self.element_is_visible(ButtonsOnPageLocators.OUR_MARKETS_BLOCK, 5):
+            print(f"{datetime.now()}   => Our markets block is NOT visible on the page!\n")
+            pytest.fail("Checking element is present in DOM this page, but not visible")
+        print(f"{datetime.now()}   => Our markets block is visible on the page!\n")
 
-            print(f"{datetime.now()}   IS MARKET '{market}' visible on the page? =>")
-            if self.driver.find_elements(*self.market_locator) != []:
-                print(f"{datetime.now()}   => MARKET '{market}' is visible on the page!\n")
+        match market:
+            case 'Most_traded':
+                self.market_locator = ButtonsOnPageLocators.MOST_TRADED_MARKET
+            case 'Commodities':
+                self.market_locator = ButtonsOnPageLocators.COMMODITIES_MARKET
+            case 'Indices':
+                self.market_locator = ButtonsOnPageLocators.INDICES_MARKET
+            case 'Shares':
+                self.market_locator = ButtonsOnPageLocators.SHARES_MARKET
+            case 'Forex':
+                self.market_locator = ButtonsOnPageLocators.FOREX_MARKET
+            case 'ETFs':
+                self.market_locator = ButtonsOnPageLocators.ETFS_MARKET
 
-                print(f"{datetime.now()}   Start Click button '{market}' MARKET =>")
-                self.current_market = self.driver.find_element(*self.market_locator)
+        print(f"{datetime.now()}   IS MARKET '{market}' present on this page? =>")
+        market_list = self.driver.find_elements(*self.market_locator)
+        if len(market_list) == 0:
+            print(f"{datetime.now()}   => MARKET '{market}' is NOT present on this page\n")
+            pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   => MARKET '{market}' present on the page!\n")
+
+        print(f"{datetime.now()}   IS MARKET '{market}' visible on the page? =>")
+        if not self.element_is_visible(self.market_locator, 5):
+            print(f"{datetime.now()}   => MARKET '{market}' is NOT visible on the page!\n")
+            pytest.fail("Checking element is present in DOM this page, but not visible")
+        print(f"{datetime.now()}   => MARKET '{market}' is visible on the page!\n")
+
+        print(f"{datetime.now()}   Start Click button '{market}' MARKET =>")
+        self.current_market = self.driver.find_element(*self.market_locator)
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.current_market
+        )
+
+        try:
+            self.current_market.click()
+            print(f"{datetime.now()}   => End Click button '{market}' MARKET\n")
+        except ElementNotInteractableException:
+            print(f"{datetime.now()}   => Button '{market}' MARKET it's NOT clickable\n")
+            pytest.fail("Checking element is not clickable")
+
+        print(f"{datetime.now()}   Is Instruments present? =>")
+        self.instruments_locator = ButtonsOnPageLocators.INSTRUMENTS_OUR_MARKETS
+        self.instruments_list = self.driver.find_elements(*self.instruments_locator)
+        if len(self.instruments_list) == 0:
+            print(f"{datetime.now()}   => Instruments is NOT present on this page\n")
+            pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   => Instruments is present on this page!\n")
+
+        print(f"{datetime.now()}   Is Instruments visible? =>")
+        if not self.element_is_visible(self.instruments_locator, 5):
+            print(f"{datetime.now()}   => Instruments is NOT visible on the page!\n")
+            pytest.fail("Checking element is present in DOM this page, but not visible")
+        print(f"{datetime.now()}   => Instruments is visible on the page!\n")
+
+        print(f"{datetime.now()}   Start Find and Click button '{instrument}' instrument=>")
+        arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
+        arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
+        count = 0
+        match instrument:
+            case 'First':
+                index_instrument = 0
+                self.current_instrument = self.instruments_list[index_instrument]
                 self.driver.execute_script(
                     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                    self.current_market
+                    self.current_instrument
                 )
+                self.current_instrument.click()
 
-                try:
-                    self.current_market.click()
-                    print(f"{datetime.now()}   => End Click button '{market}' MARKET\n")
-                except ElementNotInteractableException:
-                    print(f"{datetime.now()}   => Button '{market}' MARKET it's NOT clickable\n")
-                    pytest.fail("Checking element is not on this page")
+            case 'Last':
+                index_instrument = len(self.instruments_list)-1
+                self.current_instrument = self.instruments_list[index_instrument]
+                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                while not status_current_instrument and count < 20:
+                    arrow_right_button.click()
+                    time.sleep(1)
+                    status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                    count += 1
 
-                print(f"{datetime.now()}   Instruments is visible and quantity not zero? =>")
-                self.instruments_locator = ButtonsOnPageLocators.INSTRUMENTS_OUR_MARKETS
-                time.sleep(1)
-                self.instruments_list = self.driver.find_elements(*self.instruments_locator)
-                len_instruments_list = len(self.instruments_list)
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    self.current_instrument
+                )
+                self.current_instrument.click()
 
-                if len_instruments_list != 0:
-                    print(f"{datetime.now()}   => Instruments is visible and quantity buttons not zero!\n")
+            case 'Middle':
+                index_instrument = len(self.instruments_list)//2 + 1
+                self.current_instrument = self.instruments_list[index_instrument]
+                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                while not status_current_instrument and count < 20:
+                    arrow_right_button.click()
+                    time.sleep(1)
+                    status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
+                    count += 1
 
-                    print(f"{datetime.now()}   Start Find and Click button '{instrument}' instrument=>")
-                    arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
-                    arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
-                    count = 0
-                    match instrument:
-                        case 'First':
-                            index_instrument = 0
-                            self.current_instrument = self.instruments_list[index_instrument]
-                            self.driver.execute_script(
-                                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                                self.current_instrument
-                            )
-                            self.current_instrument.click()
-
-                        case 'Last':
-                            index_instrument = len_instruments_list-1
-                            self.current_instrument = self.instruments_list[index_instrument]
-                            status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                            while status_current_instrument == None and count < 20:
-                                arrow_right_button.click()
-                                time.sleep(1)
-                                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                                count += 1
-
-                            self.driver.execute_script(
-                                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                                self.current_instrument
-                            )
-                            self.current_instrument.click()
-
-                        case 'Middle':
-                            index_instrument = len_instruments_list//2 + 1
-                            self.current_instrument = self.instruments_list[index_instrument]
-                            status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                            while status_current_instrument == None and count < 20:
-                                arrow_right_button.click()
-                                time.sleep(1)
-                                status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                                count += 1
-
-                            self.driver.execute_script(
-                                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                                self.current_instrument
-                            )
-                            self.current_instrument.click()
-                    print(f"{datetime.now()}   => End Click button '{instrument}' instrument=>\n")
-                else:
-                    print(f"{datetime.now()}   => Instruments is NOT visible or quantity Instruments zero!\n")
-                    pytest.fail("Checking element is not on this page")
-
-            else:
-                print(f"{datetime.now()}   => MARKET '{market}' is NOT visible on the page!\n")
-                pytest.fail("Checking element is not on this page")
-        else:
-            print(f"{datetime.now()}   => Our markets block is NOT visible on the page!\n")
-            pytest.fail("Checking element is not on this page")
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    self.current_instrument
+                )
+                self.current_instrument.click()
+        print(f"{datetime.now()}   => End Click button '{instrument}' instrument=>\n")
 
     @allure.step("Click button BUTTON_TRADING_SELL_IN_TABLES")
     def element_click(self, d, market, instrument):
