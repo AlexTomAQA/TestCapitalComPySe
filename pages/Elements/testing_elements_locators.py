@@ -239,7 +239,8 @@ class TableTradingInstrumentsLocators:
 
 
 class FieldDropdownMarketsLocator:
-    FIELD_DROPDOWN_MARKETS = (By.CLASS_NAME, 'div.fieldDropdown.js-fieldDropdown-markets')
+    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR,
+                              'div.row > div > div.tabs.tabs--type1-sm.js-tabs-markets > div > div:nth-child(2) > div')
     FIELD_DROPDOWN_LIST = (By.CSS_SELECTOR, '.js-fieldDropdown-markets.opened')
     FIELD_DROPDOWN_MOST_TRADED = (By.CSS_SELECTOR, 'input[placeholder="Most traded"]')
     FIELD_DROPDOWN_TOP_RISERS = (By.CSS_SELECTOR, 'input[placeholder="Top risers"]')
