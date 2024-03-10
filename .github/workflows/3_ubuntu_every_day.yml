@@ -79,7 +79,7 @@ jobs:
 #          extra-mypy-options: ""
 #          extra-isort-options: ""
 #
-      - name: 8. Run US_00-00 (Артем)
+      - name: 8. Run US_00-00 | Main Page of Capital.com FCA (Артем)
         if: always()
         run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
         continue-on-error: true
@@ -94,17 +94,17 @@ jobs:
 #        run: poetry run pytest -v
 #        continue-on-error: true
 #
-#      - name: 8. Run US_01-02 ()
-#        if: always()
-#        run: poetry run pytest -v
-#        continue-on-error: true
-#
-      - name: 8. Run US_01-03 (Касила)
+      - name: 8. Run US_01-02-00 | Menu [Markets] > Menu item [Shares] Not FCA (Дима)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-00_Shares_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-03-00 | Menu [Markets] > Menu item [Forex] Not FCA (Касила)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-03_Forex/US_01-03.py
         continue-on-error: true
 
-      - name: 8. Run US_01-04-00 (Мила)
+      - name: 8. Run US_01-04-00 | Menu [Markets] > Menu item [Indices] Not FCA (Мила)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-00_Indices_test.py
         continue-on-error: true
@@ -113,7 +113,7 @@ jobs:
 #        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py
 #        continue-on-error: true
 
-      - name: 8. Run US_01-05-00 (Иван)
+      - name: 8. Run US_01-05-00 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-00_Commodities_test.py
         continue-on-error: true
@@ -128,37 +128,37 @@ jobs:
 #        run: poetry run pytest -v
 #        continue-on-error: true
 
-      - name: 8. Run US_11-00-00 (Мила П)
+      - name: 8. Run US_11-00-00 | Menu [Learn to trade] FCA (Мила П)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-01 (Касила)
+      - name: 8. Run US_11-00-01 | Learn to trade > Menu item [Essentials of trading] FCA (Касила)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-01_Essentials_of_trading/US_11-00-01_Essentials_of_trading.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-02 (Миша)
+      - name: 8. Run US_11-00-02 | Learn to trade > Menu item [Risk-management guide] FCA (Миша)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-03 (Касила)
+      - name: 8. Run US_11-00-03 | Learn to trade > Menu item [Market guides] FCA (Касила)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-03_Market_guides/US_11-00-03_Market_guides.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-04 (Дмитрий)
+      - name: 8. Run US_11-00-04 | Learn to trade > Menu item [Trading Strategies] FCA (Дмитрий)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-04_Trading_strategies/US_11-00-04_Trading_strategies.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-05 (Миша)
+      - name: 8. Run US_11-00-05 | Learn to trade > Menu item [Technical analysis] FCA (Миша)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-05_Technical_analysis/US_11-00-05_Technical_analysis.py
         continue-on-error: true
 
-      - name: 8. Run US_11-00-06 (Миша)
+      - name: 8. Run US_11-00-06 | Learn to trade > Menu item [Help] FCA (Миша)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-06_Help/US_11-00-06_Help.py
         continue-on-error: true
