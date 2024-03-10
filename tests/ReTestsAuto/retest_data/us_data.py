@@ -11,7 +11,7 @@ us_data = {
     '01.03.01': '',
     '01.04.00': 'tests/US_01_Markets/US_01-04_Indices/US_01-04-00_Indices_test.py',
     '01.04.01': 'tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py',
-    '01.05.00': '',
+    '01.05.00': 'tests/US_01_Markets/US_01-05_Commodities/US_01-05-00_Commodities_test.py',
     '01.05.01': '',
     '01.06.00': '',
     '01.06.01': '',
