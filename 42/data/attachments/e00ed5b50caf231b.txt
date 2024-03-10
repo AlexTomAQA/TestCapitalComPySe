@@ -1,0 +1,45 @@
+2024-03-10 11:58:12 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ru/torgovlya-us-prirodny-gas-cfd
+2024-03-10 11:58:12 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 302, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x56042468bec3 <unknown>
+#1 0x560424383ce6 <unknown>
+#2 0x5604243cee48 <unknown>
+#3 0x5604243cef01 <unknown>
+#4 0x5604244123f4 <unknown>
+#5 0x5604243f0edd <unknown>
+#6 0x56042440f899 <unknown>
+#7 0x5604243f0c53 <unknown>
+#8 0x5604243c1db3 <unknown>
+#9 0x5604243c277e <unknown>
+#10 0x5604246517fb <unknown>
+#11 0x560424655815 <unknown>
+#12 0x56042463f111 <unknown>
+#13 0x5604246563a2 <unknown>
+#14 0x5604246231ef <unknown>
+#15 0x56042467a4b8 <unknown>
+#16 0x56042467a6b3 <unknown>
+#17 0x56042468b074 <unknown>
+#18 0x7f9184494ac3 <unknown>
+
+2024-03-10 11:58:28 ERROR Elements not present after 0.5 seconds on page: https://capital.com/
+2024-03-10 11:58:28 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 84, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 530, in wait_for_target_url
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message:
