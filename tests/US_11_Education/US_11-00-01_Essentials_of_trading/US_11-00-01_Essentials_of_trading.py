@@ -28,7 +28,9 @@ class TestEssentialsTrading:
             "11.00.01", "Learn to trade > Menu item [Essentials of trading]",
             ".00_01", "Testing button [Create a live account]")
 
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
+#        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
         page_conditions = NewConditions(d, "")
