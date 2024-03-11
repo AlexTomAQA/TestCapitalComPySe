@@ -15,9 +15,9 @@ from src.src import CapitalComPageSrc
 class TestEssentialsTrading:
     page_conditions = None
 
-    @allure.step("Start test_11.00.01_01 button [Create a live account] in Unleveraged trading block")
-    @pytest.mark.test_01
-    def test_01_create_a_live_account_unleveraged_block(
+    @allure.step("Start test_11.00.01_101 button [Create a live account] in Unleveraged trading block")
+    @pytest.mark.test_101
+    def test_101_create_a_live_account_unleveraged_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [Create a live account] in Unleveraged trading block
@@ -26,11 +26,10 @@ class TestEssentialsTrading:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.01", "Learn to trade > Menu item [Essentials of trading]",
-            ".00_01", "Testing button [Create a live account]")
+            ".00_101", "Testing button [Create a live account]")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
-#        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
         page_conditions = NewConditions(d, "")
