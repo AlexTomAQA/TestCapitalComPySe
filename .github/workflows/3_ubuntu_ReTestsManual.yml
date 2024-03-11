@@ -71,8 +71,8 @@ jobs:
 
       - name: 5. install dependencies
         if: always()
-#        run: poetry update
-        run: poetry install
+        run: poetry update
+        # run: poetry install
 
       - name: Poetry Run Python3 hwinfo.py
         if: always()
