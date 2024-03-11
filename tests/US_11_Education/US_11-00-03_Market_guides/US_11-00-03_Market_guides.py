@@ -16,12 +16,12 @@ class TestMarketGuidesNew:
     page_conditions = None
 
     @allure.step("Start test_11.00.03_101 button [Open an account] in block 'Market guides'")
-    @pytest.mark.test_01
+    @pytest.mark.test_101
     def test_101_open_an_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [Open an account] in block 'Market guides'
-        Language: En. License: FCA.
+        Language: All. License: FCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -48,13 +48,13 @@ class TestMarketGuidesNew:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check button [Try demo account] in block 'Market guides'
-        Language: En. License: FCA.
+        Language: All. License: FCA.
         """
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.03", "Learn to trade > Menu item [Market guides]",
-            ".00_02", "Testing button [Try demo account] in block 'Market guides'")
+            ".00_102", "Testing button [Try demo account] in block 'Market guides'")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
@@ -76,13 +76,13 @@ class TestMarketGuidesNew:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [1. Create your account] in block 'Ready to join a leading broker?'
-        Language: En. License: FCA.
+        Language: All. License: FCA.
         """
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.03", "Learn to trade > Menu item [Market guides]",
-            ".00_03", "Testing button [1. Create your account] in block 'Ready to join a leading broker?'")
+            ".00_103", "Testing button [1. Create your account] in block 'Ready to join a leading broker?'")
 
         Common().check_language_in_list_and_skip_if_not_present(
             cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
