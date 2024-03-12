@@ -145,11 +145,11 @@ class TableTradingInstrumentsBuyButton(BasePage):
             print(f"{datetime.now()} => item_sort_list not present on the FIELD_DROPDOWN_MARKETS!")
             pytest.fail("Bug # ? Checking element is not on this page")
 
-        del field_dropdown
-        del item_sort_list
+#        del field_dropdown
+#        del item_sort_list
 
     @allure.step("Click button Buy")
-    def element_click(self, d,  i, cur_sort):
+    def element_click(self, i, cur_sort):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
         print(f"{datetime.now()}   Start click button [Buy] =>")
@@ -184,3 +184,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
                 page_.close_login_page()
 
             button.click()
+            del page_
+
+        del button
+        return True
