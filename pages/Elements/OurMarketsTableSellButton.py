@@ -137,7 +137,7 @@ class SellButtonOurMarketsTable(BasePage):
                 index_instrument = len(self.instruments_list)-1
                 self.current_instrument = self.instruments_list[index_instrument]
                 status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                while not status_current_instrument and count < 20:
+                while status_current_instrument and count < 20:
                     arrow_right_button.click()
                     time.sleep(1)
                     status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
@@ -155,7 +155,7 @@ class SellButtonOurMarketsTable(BasePage):
                 print(index_instrument)
                 self.current_instrument = self.instruments_list[index_instrument]
                 status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                while not status_current_instrument and count < 20:
+                while status_current_instrument and count < 20:
                     arrow_right_button.click()
                     time.sleep(1)
                     status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
