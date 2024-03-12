@@ -28,8 +28,6 @@ class TestMarketGuidesNew:
             "11.00.03", "Learn to trade > Menu item [Market guides]",
             ".00_101", "Testing button [Open an account] in block 'Market guides'")
 
-        Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
         page_conditions = NewConditions(d, "")
@@ -56,8 +54,6 @@ class TestMarketGuidesNew:
             "11.00.03", "Learn to trade > Menu item [Market guides]",
             ".00_102", "Testing button [Try demo account] in block 'Market guides'")
 
-        Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
         page_conditions = NewConditions(d, "")
@@ -84,8 +80,6 @@ class TestMarketGuidesNew:
             "11.00.03", "Learn to trade > Menu item [Market guides]",
             ".00_103", "Testing button [1. Create your account] in block 'Ready to join a leading broker?'")
 
-        Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
         page_conditions = NewConditions(d, "")
