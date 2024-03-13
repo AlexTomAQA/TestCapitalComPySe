@@ -10,6 +10,7 @@ from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import ElementNotInteractableException
+import random
 import time
 
 
@@ -54,14 +55,14 @@ class SellButtonOurMarketsTable(BasePage):
         block_our_market = self.driver.find_elements(*ButtonsOnPageLocators.OUR_MARKETS_BLOCK)
         if len(block_our_market) == 0:
             print(f"{datetime.now()}   => Our markets block is NOT present on this page\n")
-            pytest.fail("Checking element is not on this page")
-        print(f"{datetime.now()}   => Our markets block present on the page!\n")
+            pytest.fail("Our markets block is NOT present on this page")
+        print(f"{datetime.now()}   => Our markets block present on this page!\n")
 
         print(f"{datetime.now()}   IS Our markets block visible on this page? =>")
         if not self.element_is_visible(ButtonsOnPageLocators.OUR_MARKETS_BLOCK, 5):
-            print(f"{datetime.now()}   => Our markets block is NOT visible on the page!\n")
-            pytest.fail("Checking element is present in DOM this page, but not visible")
-        print(f"{datetime.now()}   => Our markets block is visible on the page!\n")
+            print(f"{datetime.now()}   => Our markets block is NOT visible on this page!\n")
+            pytest.fail("Our markets block is NOT visible on this page!")
+        print(f"{datetime.now()}   => Our markets block is visible on this page!\n")
 
         match market:
             case 'Most_traded':
@@ -81,14 +82,14 @@ class SellButtonOurMarketsTable(BasePage):
         market_list = self.driver.find_elements(*self.market_locator)
         if len(market_list) == 0:
             print(f"{datetime.now()}   => MARKET '{market}' is NOT present on this page\n")
-            pytest.fail("Checking element is not on this page")
-        print(f"{datetime.now()}   => MARKET '{market}' present on the page!\n")
+            pytest.fail(f"MARKET '{market}' is NOT present on this page")
+        print(f"{datetime.now()}   => MARKET '{market}' present on this page!\n")
 
-        print(f"{datetime.now()}   IS MARKET '{market}' visible on the page? =>")
+        print(f"{datetime.now()}   IS MARKET '{market}' visible on this page? =>")
         if not self.element_is_visible(self.market_locator, 5):
-            print(f"{datetime.now()}   => MARKET '{market}' is NOT visible on the page!\n")
-            pytest.fail("Checking element is present in DOM this page, but not visible")
-        print(f"{datetime.now()}   => MARKET '{market}' is visible on the page!\n")
+            print(f"{datetime.now()}   => MARKET '{market}' is NOT visible on this page!\n")
+            pytest.fail(f"MARKET '{market}' is NOT visible on this page!")
+        print(f"{datetime.now()}   => MARKET '{market}' is visible on this page!\n")
 
         print(f"{datetime.now()}   Start Click button '{market}' MARKET =>")
         self.current_market = self.driver.find_element(*self.market_locator)
@@ -101,7 +102,7 @@ class SellButtonOurMarketsTable(BasePage):
             self.current_market.click()
             print(f"{datetime.now()}   => End Click button '{market}' MARKET\n")
         except ElementNotInteractableException:
-            print(f"{datetime.now()}   => Button '{market}' MARKET it's NOT clickable\n")
+            print(f"{datetime.now()}   => Button '{market}' MARKET is NOT clicked\n")
             pytest.fail("Checking element is not clickable")
 
         print(f"{datetime.now()}   Is Instruments present? =>")
@@ -109,16 +110,16 @@ class SellButtonOurMarketsTable(BasePage):
         self.instruments_list = self.driver.find_elements(*self.instruments_locator)
         if len(self.instruments_list) == 0:
             print(f"{datetime.now()}   => Instruments is NOT present on this page\n")
-            pytest.fail("Checking element is not on this page")
+            pytest.fail("Instruments is NOT present on this page")
         print(f"{datetime.now()}   => Instruments is present on this page!\n")
 
         print(f"{datetime.now()}   Is Instruments visible? =>")
         if not self.element_is_visible(self.instruments_locator, 5):
-            print(f"{datetime.now()}   => Instruments is NOT visible on the page!\n")
-            pytest.fail("Checking element is present in DOM this page, but not visible")
-        print(f"{datetime.now()}   => Instruments is visible on the page!\n")
+            print(f"{datetime.now()}   => Instruments is NOT visible on this page!\n")
+            pytest.fail("Instruments is NOT visible on this page!")
+        print(f"{datetime.now()}   => Instruments is visible on this page!\n")
 
-        print(f"{datetime.now()}   Start Find and Click button '{instrument}' instrument=>")
+        print(f"{datetime.now()}   => Start Find and Click button '{instrument}' instrument=>")
         arrow_right_button_locator = ButtonsOnPageLocators.BUTTON_ARROW_RIGHT
         arrow_right_button = self.driver.find_element(*arrow_right_button_locator)
         count = 0
@@ -136,7 +137,7 @@ class SellButtonOurMarketsTable(BasePage):
                 index_instrument = len(self.instruments_list)-1
                 self.current_instrument = self.instruments_list[index_instrument]
                 status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                while not status_current_instrument and count < 20:
+                while status_current_instrument and count < 20:
                     arrow_right_button.click()
                     time.sleep(1)
                     status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
@@ -149,10 +150,12 @@ class SellButtonOurMarketsTable(BasePage):
                 self.current_instrument.click()
 
             case 'Middle':
-                index_instrument = len(self.instruments_list)//2 + 1
+                index_instrument = random.randint(2, len(self.instruments_list)-1)
+                print('=====================================')
+                print(index_instrument)
                 self.current_instrument = self.instruments_list[index_instrument]
                 status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
-                while not status_current_instrument and count < 20:
+                while status_current_instrument and count < 20:
                     arrow_right_button.click()
                     time.sleep(1)
                     status_current_instrument = self.current_instrument.get_attribute("aria-hidden")
@@ -169,22 +172,37 @@ class SellButtonOurMarketsTable(BasePage):
     def element_click(self, d, market, instrument):
         print(f"{datetime.now()}   2. Act for '{market}' Market and '{instrument}' Instrument")
 
-        print(f"{datetime.now()}   IS button [Sell] for '{market}' Market visible on the page? =>")
+        print(f"{datetime.now()}   IS button [Sell] for '{market}' Market and '{instrument}' Instrument"
+              f"present on this page? =>")
         self.button_locator = ButtonsOnPageLocators.BUTTON_OUR_MARKETS_SELL
-        if self.driver.find_element(*self.button_locator):
-            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market is visible on the page!\n")
 
-            print(f"{datetime.now()}   Start click button [Sell] =>")
-            self.button = self.driver.find_element(*self.button_locator)
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                self.button
-            )
+        if len(self.driver.find_elements(*self.button_locator)) == 0:
+            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+                  f"NOT present on this page!\n")
+            pytest.fail("Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+                        "NOT present on this page!")
+        print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+              f"present on this page!\n")
 
-            self.trade_instrument = self.current_instrument.text.split('\n')[0]
+        print(f"{datetime.now()}   IS button [Sell] for '{market}' Market and '{instrument}' Instrument "
+              f"visible on this page? =>")
+        if not self.element_is_visible(self.button_locator, 5):
+            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+                  f"NOT visible on this page!\n")
+            pytest.fail("Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+                        "NOT visible on this page!")
+        print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+              f"visible on this page!\n")
 
-            self.button.click()
-            print(f"{datetime.now()}   => End Click button [Sell]")
-        else:
-            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market is NOT visible on the page!\n")
-            pytest.fail("Checking element is not on this page")
+        print(f"{datetime.now()}   Start click button [Sell] =>")
+        self.button = self.driver.find_element(*self.button_locator)
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.button
+        )
+
+        self.trade_instrument = self.current_instrument.text.split('\n')[0]
+
+        self.button.click()
+        print(f"{datetime.now()}   => End Click button [Sell]")
+
