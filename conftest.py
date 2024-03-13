@@ -94,13 +94,13 @@ def cur_role(request):
     params=[
         # "",  # "en" - 21 us
         # "es",  # 20 us
-        # "de",  # 15 us
+        "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
-        "pl",  # 10 us
+        # "pl",  # 10 us
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
