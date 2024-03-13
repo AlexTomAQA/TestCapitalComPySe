@@ -12,6 +12,7 @@ from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTraders
 from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersBlockSignUpButton
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
+from pages.Elements.OurMarketsTableBuyButton import BuyButtonOurMarketsTable
 from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
@@ -164,6 +165,35 @@ class TestMainPage:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = SellButtonOurMarketsTable(d, main_page_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link, market, instrument)
+
+    @allure.step("Start test of button [Buy] in Block 'Our markets'")
+    @pytest.mark.test_106
+    def test_106_our_markets_block_buy_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, market, instrument):
+        """
+        Check: Button [Buy] in Block 'Our markets' Main Page
+        Language: EN. License: FCA.
+        """
+        # test_title = ("00", "Main Page",
+        #               ".00_106",
+        #               f"Testing button [Buy] in Block 'Our markets' {market} market, {instrument} instrument")
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_106", f"Testing button [Buy] in Block 'Our markets' '{market}' market, '{instrument}' instrument",
+            False, True
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+
+        page_conditions = NewConditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BuyButtonOurMarketsTable(d, main_page_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link, market, instrument)
 
     @allure.step("Start test of button [Try demo] in Block 'For learner traders'")
