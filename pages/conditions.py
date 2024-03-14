@@ -75,8 +75,8 @@ class Conditions(BasePage):
         # d.set_window_position(320, 180)
         print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
-        print(f"{datetime.now()}   Set resolution 1280 * 720 =>")
-        d.set_window_size(1280, 720)
+        print(f"{datetime.now()}   Set resolution 1280 * 800 =>")
+        d.set_window_size(1280, 800)
         print(f"{datetime.now()}   => Windows size is set to {d.get_window_size()}")
 
         Captcha(d).fail_test_if_captcha_present_v2()
