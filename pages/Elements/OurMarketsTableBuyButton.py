@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/03/03 11:00
+@Time    : 2024/03/13 13:40
 @Author  : Artem Dashkov
 """
 from datetime import datetime
@@ -14,7 +14,7 @@ import random
 import time
 
 
-class SellButtonOurMarketsTable(BasePage):
+class BuyButtonOurMarketsTable(BasePage):
     def __init__(self, browser, link, bid):
         self.instruments_locator = None
         self.instruments_list = None
@@ -166,33 +166,33 @@ class SellButtonOurMarketsTable(BasePage):
                 self.current_instrument.click()
         print(f"{datetime.now()}   => End Click button '{instrument}' instrument=>\n")
 
-    @allure.step("Click button BUTTON_TRADING_SELL_IN_TABLES")
+    @allure.step("Click button BUTTON_TRADING_BUY_IN_TABLES")
     def element_click(self, d, market, instrument):
         print(f"{datetime.now()}   2. Act for '{market}' Market and '{instrument}' Instrument")
 
-        print(f"{datetime.now()}   IS button [Sell] for '{market}' Market and '{instrument}' Instrument"
+        print(f"{datetime.now()}   IS button [Buy] for '{market}' Market and '{instrument}' Instrument"
               f"present on this page? =>")
-        self.button_locator = ButtonsOnPageLocators.BUTTON_OUR_MARKETS_SELL
+        self.button_locator = ButtonsOnPageLocators.BUTTON_OUR_MARKETS_BUY
 
         if len(self.driver.find_elements(*self.button_locator)) == 0:
-            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+            print(f"{datetime.now()}   => Button [Buy] for '{market}' Market and '{instrument}' Instrument "
                   f"NOT present on this page!\n")
-            pytest.fail("Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+            pytest.fail("Button [Buy] for '{market}' Market and '{instrument}' Instrument "
                         "NOT present on this page!")
-        print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+        print(f"{datetime.now()}   => Button [Buy] for '{market}' Market and '{instrument}' Instrument "
               f"present on this page!\n")
 
-        print(f"{datetime.now()}   IS button [Sell] for '{market}' Market and '{instrument}' Instrument "
+        print(f"{datetime.now()}   IS button [Buy] for '{market}' Market and '{instrument}' Instrument "
               f"visible on this page? =>")
         if not self.element_is_visible(self.button_locator, 5):
-            print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+            print(f"{datetime.now()}   => Button [Buy] for '{market}' Market and '{instrument}' Instrument "
                   f"NOT visible on this page!\n")
-            pytest.fail("Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+            pytest.fail("Button [Buy] for '{market}' Market and '{instrument}' Instrument "
                         "NOT visible on this page!")
-        print(f"{datetime.now()}   => Button [Sell] for '{market}' Market and '{instrument}' Instrument "
+        print(f"{datetime.now()}   => Button [Buy] for '{market}' Market and '{instrument}' Instrument "
               f"visible on this page!\n")
 
-        print(f"{datetime.now()}   Start click button [Sell] =>")
+        print(f"{datetime.now()}   Start click button [Buy] =>")
         self.button = self.driver.find_element(*self.button_locator)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -202,5 +202,5 @@ class SellButtonOurMarketsTable(BasePage):
         self.trade_instrument = self.current_instrument.text.split('\n')[0]
 
         self.button.click()
-        print(f"{datetime.now()}   => End Click button [Sell]")
+        print(f"{datetime.now()}   => End Click button [Buy]")
 
