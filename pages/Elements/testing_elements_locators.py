@@ -234,13 +234,12 @@ class CounterBanner:
 
 class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")
-    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".trlink.js-trlink td.buy.text-right.js-marketBtn > a")
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")
 
 
 class FieldDropdownMarketsLocator:
-    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR,
-                              'div.row > div > div.tabs.tabs--type1-sm.js-tabs-markets > div > div:nth-child(2) > div')
+    FIELD_DROPDOWN_MARKETS = (By.CSS_SELECTOR, '.fieldDropdown.js-fieldDropdown-markets')
     FIELD_DROPDOWN_LIST = (By.CSS_SELECTOR, '.js-fieldDropdown-markets.opened')
     FIELD_DROPDOWN_MOST_TRADED = (By.CSS_SELECTOR, 'input[placeholder="Most traded"]')
     FIELD_DROPDOWN_TOP_RISERS = (By.CSS_SELECTOR, 'input[placeholder="Top risers"]')
@@ -249,7 +248,7 @@ class FieldDropdownMarketsLocator:
 
 
 class ItemSortDropdownLocators:
-    ALL_ITEM_DROPDOWN_SORT = (By.CSS_SELECTOR, 'li.sort')
+    ALL_ITEM_DROPDOWN_SORT = (By.CSS_SELECTOR, 'ul.fieldDropdown__list')
     ITEM_DROPDOWN_SORT_MOST_TRADED = (By.CSS_SELECTOR, 'li[data-sort="most"]')
     ITEM_DROPDOWN_SORT_TOP_RISERS = (By.CSS_SELECTOR, 'li[data-sort="risers"]')
     ITEM_DROPDOWN_SORT_TOP_FALLERS = (By.CSS_SELECTOR, 'li[data-sort="fallers"]')
