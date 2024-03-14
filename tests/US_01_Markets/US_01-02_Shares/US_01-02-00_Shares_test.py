@@ -3,16 +3,17 @@
 @Time    : 2024/03/03 23:12 GMT+3
 @Author  : Dmitry Mudrik
 """
-import pytest
 import allure
+import pytest
 
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
+from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStartTradingNowButton
+from pages.Menu.menu import MenuSection
 from pages.common import Common
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from pages.Menu.menu import MenuSection
-from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStartTradingNowButton
-from pages.Elements.StepTradingBlock import BlockStepTrading
+from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 count = 1
 
@@ -23,7 +24,7 @@ class TestShares:
 
     @allure.step("Start test button [Start Trading Now] in Block 'Trade Share CFDs'")
     @pytest.mark.test_001
-    def test_001_block_trade_share_CFDs_start_trading_now_button(
+    def test_001_block_trade_share_cfds_start_trading_now_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading Now]
@@ -36,7 +37,34 @@ class TestShares:
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
-        # Common().check_language_in_list_and_skip_if_not_present(cur_language, [])пше
+        # Common().check_language_in_list_and_skip_if_not_present(cur_language, [])
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, link)
+        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
+        cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+
+        test_element = TableTradingInstrumentsSellButton(d, cur_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
+
+    @allure.step("Test button [Sell] 'numeric values' in Widget 'Trading instrument'")
+    @pytest.mark.test_002
+    def test_002_sell_widget_trading_instrument(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Sell]'numeric values' in Widget 'Trading instrument'
+        Language: All. License: All,except FCA (GB country)
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.04", "Markets > Menu item [Shares]",
+            ".00_002", "Testing button [Sell] 'numeric values' in Widget 'Trading instrument'")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
