@@ -7,7 +7,6 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.testing_elements_locators import (TableTradingInstrumentsLocators, FieldDropdownMarketsLocator,
                                                       ItemSortDropdownLocators)
 from pages.Elements.AssertClass import AssertClass
-from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver import ActionChains
 
 COUNT_OF_RUNS = 2
@@ -31,8 +30,13 @@ class TableTradingInstrumentsBuyButton(BasePage):
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_sort):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   Item_list = {item_list}")
+
+        check_popup = SignupLogin(d, cur_item_link, cur_sort)
+        check_popup.check_popup_signup_form()
+        del check_popup
+
         for i, value in enumerate(item_list):
-            self.element_click(d, value, cur_sort)
+            self.element_click(self.driver, value, cur_sort)
             test_element = AssertClass(self.driver, cur_item_link)
             match cur_role:
                 case "NoReg":
@@ -67,35 +71,16 @@ class TableTradingInstrumentsBuyButton(BasePage):
 
         print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!")
 
-        print(f"{datetime.now()}   Start scroll click FIELD_DROPDOWN_SORT =>")
-
-        try:
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                field_dropdown_list[0]
-            )
-            (ActionChains(self.driver).
-             move_to_element(field_dropdown_list[0]).
-             pause(0.5).
-             click(field_dropdown_list[0]).
-             perform())
-        except ElementClickInterceptedException:
-            check_popup = SignupLogin(self.driver, self.link)
-            check_popup.check_popup_signup_form()
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                field_dropdown_list[0]
-            )
-            (ActionChains(self.driver).
-             move_to_element(field_dropdown_list[0]).
-             pause(0.5).
-             click(field_dropdown_list[0]).
-             perform())
-            del check_popup
+        print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            field_dropdown_list[0]
+        )
+        field_dropdown_list[0].click()
 
         match cur_sort:
             case 'most_traded':
-                self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED   # элемент списка
+                self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED   # элемент в списке
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_TRADED  # элемент сортировки
 
             case 'top_risers':
@@ -114,27 +99,26 @@ class TableTradingInstrumentsBuyButton(BasePage):
         self.item = TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT  # трейдинговый инструмент
 
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
+
         item_sort_list = self.element_is_visible(ItemSortDropdownLocators.ALL_ITEM_DROPDOWN_SORT)
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            item_sort_list
+        )
+
         if not item_sort_list:
-            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" not visible in item_sort_list?")
-            pytest.fail(f"Bug ? item_sort_list is not visible")
+            pytest.fail("Bug ? item_sort_list is not visible")
         print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
         print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in item_sort_list? =>")
         if not self.driver.find_element(*self.item_sort):
-            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" not present in item_sort_list?")
-            pytest.fail(f"Bug ? cur_sort \"{cur_sort}\" is no present in item_sort_list")
+            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in item_sort_list!")
+            pytest.fail(f"Bug ? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
         print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in item_sort_list!")
         print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
 
         self.current_sort = self.driver.find_element(*self.item_sort)
-        try:
-            self.current_sort.click()
-        except ElementClickInterceptedException:
-            check_popup = SignupLogin(self.driver, self.link)
-            check_popup.check_popup_signup_form()
-            self.current_sort.click()
-            del check_popup
+        self.current_sort.click()
 
         print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"\n")
 
@@ -172,26 +156,5 @@ class TableTradingInstrumentsBuyButton(BasePage):
         # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
         self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
-        try:
-            button.click()
-            print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked!\n")
-
-        except ElementClickInterceptedException:
-            print(
-                f"{datetime.now()}   => BUTTON_BUY not clicked")
-            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
-
-            page_ = SignupLogin(self.driver)
-            if page_.close_signup_form():
-                pass
-            elif page_.close_login_form():
-                pass
-            elif page_.close_signup_page():
-                pass
-            else:
-                page_.close_login_page()
-
-            button.click()
-            del page_
-
-        return True
+        button.click()
+        print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked!\n")
