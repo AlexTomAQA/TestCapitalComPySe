@@ -2,7 +2,9 @@ from selenium.webdriver.common.by import By
 
 
 class OnTrustLocators:
-	BUTTON_ACCEPT_ALL_COOKIE = (By.CSS_SELECTOR, "#onetrust-button-group > #onetrust-accept-btn-handler")
+	# BUTTON_ACCEPT_ALL_COOKIE = (By.CSS_SELECTOR, "#onetrust-button-group > #onetrust-accept-btn-handler")
+	BUTTON_ACCEPT_ALL_COOKIE = (By.CSS_SELECTOR, "#onetrust-button-group #onetrust-accept-btn-handler")
+
 	BUTTON_REJECT_ALL_COOKIE = (By.CSS_SELECTOR, "#onetrust-button-group > #onetrust-reject-all-handler")
 
 

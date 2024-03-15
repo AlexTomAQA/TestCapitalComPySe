@@ -65,7 +65,8 @@ class Conditions(BasePage):
 
         print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
         if test_link == "?":
-            self.link = host
+            test_link = host
+            self.link = test_link
             self.open_page()
         # if url == "":
         #     self.link = host
@@ -88,9 +89,10 @@ class Conditions(BasePage):
             print(f"{datetime.now()}   => Current testing role - '{cur_role}'")
             print(f"{datetime.now()}   All cookies must be delete =>")
 
-            test_link = host
-            self.link = test_link
-            self.open_page()
+            if test_link != host:
+                test_link = host
+                self.link = test_link
+                self.open_page()
             if conf.DEBUG:
                 print(f"{datetime.now()} Debug:   test_link = {test_link}")
             d.delete_all_cookies()
