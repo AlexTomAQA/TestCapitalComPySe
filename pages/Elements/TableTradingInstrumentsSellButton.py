@@ -35,19 +35,16 @@ class TableTradingInstrumentsSellButton(BasePage):
         super().__init__(browser, link, bid)
 
     @allure.step(f'{datetime.now()}   Start Full test [Sell] button on Table Widget Trading Instruments')
-    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, sorting):
-        qty_rnd = 2  # Тестируем два случайных инструмента
-        num_item_list = self.arrange_(d, cur_item_link, sorting)
-        # random_indexes = random.sample(range(0, num_item_list), qty_rnd)
-        # print(f"\n{datetime.now()}   Random indexes = {random_indexes}")
+    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_sort):
+        num_item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   num_item_list = {num_item_list}")
 
-        check_popup = SignupLogin(d, cur_item_link, sorting)  # 15.03.24
+        check_popup = SignupLogin(d, cur_item_link, cur_sort)
         check_popup.check_popup_signup_form()
         del check_popup
 
         for i, index in enumerate(num_item_list):
-            trade_instrument = self.element_click(self.driver, index, sorting)
+            trade_instrument = self.element_click(self.driver, index, cur_sort)
             if not trade_instrument:
                 pytest.fail("Testing element is not clicked")
 
@@ -61,19 +58,19 @@ class TableTradingInstrumentsSellButton(BasePage):
                     check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
             self.driver.get(cur_item_link)
 
-    def arrange_(self, d, cur_item_link, sorting):
-        print(f"\n{datetime.now()}   1. Arrange for TABLE_TRADING_INSTRUMENTS and '{sorting}' sorting")
+    def arrange_(self, d, cur_item_link, cur_sort):
+        print(f"\n{datetime.now()}   1. Arrange for TABLE_TRADING_INSTRUMENTS and '{cur_sort}' cur_sort")
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   TABLE_TRADING_INSTRUMENTS and sorting present on this page? =>")
+        print(f"{datetime.now()}   TABLE_TRADING_INSTRUMENTS and cur_sort present on this page? =>")
         dropdown_list = self.driver.find_elements(*ItemSortDropdownLocators.ALL_ITEM_DROPDOWN_SORT)
         if len(dropdown_list) == 0:
-            print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS and sorting is NOT present on this page\n")
-            pytest.fail(f" Bug ? Checking sorting element is not on this page")
-        print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS and sorting present on the page!\n")
+            print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS and cur_sort is NOT present on this page\n")
+            pytest.fail(f" Bug ? Checking cur_sort element is not on this page")
+        print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS and cur_sort present on the page!\n")
 
         print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
         self.driver.execute_script(
@@ -82,7 +79,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         )
         dropdown_list[0].click()
 
-        match sorting:
+        match cur_sort:
             case 'Most traded':
                 self.sorting_locator = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED
             case 'Top risers':
@@ -92,34 +89,34 @@ class TableTradingInstrumentsSellButton(BasePage):
             case 'Most volatile':
                 self.sorting_locator = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_VOLATILE
 
-        instruments_list = self.driver.find_elements(
+        self.instruments_list = self.driver.find_elements(
             *ButtonSellOnTableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS_LIST)
-        instruments_name_list = self.driver.find_elements(
+        self.instruments_name_list = self.driver.find_elements(
             *ButtonSellOnTableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS_NAME_LIST)
 
-        print(f"{datetime.now()}   => Found {sorting} elements in TABLE_TRADING_INSTRUMENTS")
+        print(f"{datetime.now()}   => Found {cur_sort} elements in TABLE_TRADING_INSTRUMENTS")
         if not self.driver.find_element(*self.sorting_locator):
-            print(f"{datetime.now()}   => sorting \"{sorting}\" is not present in dropdown_list!")
-            pytest.fail(f"Bug ? sorting \"{sorting}\" is not present in dropdown_list!")
-        print(f"{datetime.now()}   => sorting \"{sorting}\" is present in dropdown_list!")
-        print(f"{datetime.now()}   Start click sorting \"{sorting}\" =>")
+            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in dropdown_list!")
+            pytest.fail(f"Bug ? cur_sort \"{cur_sort}\" is not present in dropdown_list!")
+        print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in dropdown_list!")
+        print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
 
         self.current_sorting = self.driver.find_element(*self.sorting_locator)
         self.current_sorting.click()
 
-        print(f"{datetime.now()}   => End Click sorting \"{sorting}\"\n")
+        print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"\n")
 
         print(f"{datetime.now()}   Buttons [Sell] is visible? =>")
 
         if self.driver.find_elements(*self.instruments_list) != 0:
             print(f"{datetime.now()}   => Buttons [Sell] is visible!\n")
-            print(f"{datetime.now()}   Start find two random buttons [Sell] on sorting \"{sorting}\"=>")
+            print(f"{datetime.now()}   Start find two random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
             self.instruments_name_list = self.driver.find_elements(*self.instruments_list)
             qty_rnd = len(self.instruments_name_list)
             count = COUNT if qty_rnd >= COUNT else qty_rnd
             item_list = random.sample(range(qty_rnd), count)
-            print(f"{datetime.now()}   => End find two random buttons [Sell] on the sorting "
-                  f"\"{sorting}\"\n")
+            print(f"{datetime.now()}   => End find two random buttons [Sell] on the cur_sort "
+                  f"\"{cur_sort}\"\n")
 
             return item_list
         else:
@@ -127,8 +124,8 @@ class TableTradingInstrumentsSellButton(BasePage):
             pytest.fail("Bug ? element is not on this page")
 
     @allure.step('Click Sell button on Table Widget Trading Instruments')
-    def element_click(self, index, sorting):
-        print(f"\n{datetime.now()}   2. Act for trading instrument and \"{sorting}\" sorting")
+    def element_click(self, index, cur_sort):
+        print(f"\n{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
         self.instruments_name_list = self.driver.find_elements(*self.instruments_list)
