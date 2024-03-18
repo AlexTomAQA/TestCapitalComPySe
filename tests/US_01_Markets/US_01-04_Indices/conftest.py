@@ -15,7 +15,7 @@ import pytest
         "Most volatile"
     ],
 )
-def sorting(request):
+def cur_sort(request):
     """Fixture"""
     print(f"\n\n\nCurrent sorting - {request.param}")
     return request.param
