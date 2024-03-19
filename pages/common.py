@@ -11,8 +11,11 @@ import allure
 import pytest
 from conf import QTY_LINKS
 
+# flag_of_bug = False
+
 
 class Common:
+	flag_of_bug = False
 
 	@staticmethod
 	def save_current_screenshot(wd, name, type_of_file="PNG"):
@@ -133,7 +136,20 @@ class Common:
 		return list_item_link
 
 	@staticmethod
+	def browser_back_to_link_and_test_pass(driver, test_link, msg):
+		do = True
+		while do:
+			driver.back()
+			print(f"{datetime.now()}   => Driver.backed")
+			if driver.current_url == test_link:
+				do = False
+
+		assert True, msg
+
+	@staticmethod
 	def browser_back_to_link_and_test_fail(driver, test_link, msg):
+		Common().save_current_screenshot(driver, str(datetime.now()))
+
 		do = True
 		while do:
 			driver.back()
