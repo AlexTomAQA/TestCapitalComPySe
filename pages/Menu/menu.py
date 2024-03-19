@@ -1550,6 +1550,22 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
+    @allure.step('Select "Markets" menu, "Indices" submenu')
+    def open_indices_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Indices" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_indices_move_focus_click(d, cur_language)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
     @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
     def sub_menu_indices_move_focus_click(self, d, test_language):
         sub_menu = list()

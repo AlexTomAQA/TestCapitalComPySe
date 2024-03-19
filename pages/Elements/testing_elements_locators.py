@@ -77,8 +77,8 @@ class ButtonTradeOnWidgetMostTradedLocators:
 
 
 class ButtonSellOnTableTradingInstrumentsLocators:
-    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "a[data-side='sell'][data-platform='spotlight']")  # List
-    TABLE_TRADING_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments a[data-side='sell']")
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.table-instruments table.table tbody")  # List
+    TABLE_TRADING_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments a[data-side='sell']")  # Items
     TABLE_TRADING_INSTRUMENTS_NAME_LIST = (By.CSS_SELECTOR, "div.table-instruments p.table__info.stringEllipsed")
 
 
@@ -234,9 +234,9 @@ class CounterBanner:
 
 
 class TableTradingInstrumentsLocators:
-    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")
-    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")
+    TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")  # название инструментов
 
 
 class FieldDropdownMarketsLocator:
