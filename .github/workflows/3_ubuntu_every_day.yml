@@ -117,6 +117,10 @@ jobs:
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-00_Commodities_test.py
         continue-on-error: true
+      - name: 8. Run US_01-05-01 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v
+        continue-on-error: true
 
 #      - name: 8. Run US_01-06 ()
 #        if: always()
