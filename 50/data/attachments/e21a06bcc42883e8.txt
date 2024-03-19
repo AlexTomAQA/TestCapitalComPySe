@@ -1,0 +1,86 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 16:49:02.623551   worker_id = master
+
+2024-03-19 16:49:02.623568   0. Allure grouping v4
+
+
+2024-03-19 16:49:02.623778   START PRECONDITIONS =>
+
+
+2024-03-19 16:49:02.623793   => flag_of_bug - False
+
+2024-03-19 16:49:02.623805   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 16:49:02.625154   Set windows position at (0, 0) =>
+2024-03-19 16:49:02.727416   Set resolution 1280 * 800 =>
+2024-03-19 16:49:02.829855   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 16:49:03.869728   Капчи нет. Идем дальше
+
+2024-03-19 16:49:03.869817   Работа с куками
+
+2024-03-19 16:49:03.869831   => Prev. country - 'au'
+2024-03-19 16:49:03.869841   => Country set to 'au'
+
+2024-03-19 16:49:03.869851   => Prev. language - 'pl'
+2024-03-19 16:49:03.869860   => Language is set to 'pl'
+
+2024-03-19 16:49:03.869869   => Prev. role - 'Auth'
+2024-03-19 16:49:03.869878   => The 'Auth' role is set
+
+2024-03-19 16:49:03.872811   => THE END PRECONDITIONS
+
+2024-03-19 16:49:03.873028   1. Arrange_v4
+2024-03-19 16:49:03.875746   MOST_TRADED is present? =>
+2024-03-19 16:49:03.884804   => MOST_TRADED widget is present on this page
+2024-03-19 16:49:03.884846   => Found 5 elements in block MOST_TRADED
+2024-03-19 16:49:03.884866   Most traded widget is scroll =>
+2024-03-19 16:49:03.888326   => Most traded widget is scrolled into screen center
+
+2024-03-19 16:49:03.888371   Random indexes = [3]
+
+2024-03-19 16:49:03.888387   Testing Most traded 1 random element with 3 index
+
+2024-03-19 16:49:03.888532   2. Act_v4
+2024-03-19 16:49:03.888625   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 16:49:05.430138   '[Sign up]' form was not popped up
+2024-03-19 16:49:05.448860   Selected Trade button on Most traded widget is scroll =>
+2024-03-19 16:49:05.452095   Selected Trade button click for 'Ripple to US Dollar' trading instrument =>
+2024-03-19 16:49:07.476614   => Selected Trade button clicked!
+
+2024-03-19 16:49:07.476926   3. Assert_v4
+2024-03-19 16:49:07.477076   Checking that the trading platform page has opened (v4) =>
+2024-03-19 16:49:07.482922   Checking way # 1 => 
+2024-03-19 16:49:07.485704   => Current page title: Trading Platform | Capital.com
+2024-03-19 16:49:07.485870   Checking that the Trading platform LOGO is present on the page =>
+2024-03-19 16:49:09.196053   => Trading platform LOGO is present on the page
+2024-03-19 16:49:09.196157   tpd = False
+2024-03-19 16:49:09.196366   Checking that the Trading platform opened in LIVE mode =>
+2024-03-19 16:49:09.208687   => The page with https://capital.com/trading/platform/charting/27342779713672388?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764 url was opened in lIVE mode
+2024-03-19 16:49:09.211426   => Check that opened page with https://capital.com/trading/platform/charting/27342779713672388?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764 url
+with corresponding trading instrument 'Ripple to US Dollar' select
+2024-03-19 16:49:09.214034   => Trading Instrument is the 'Ripple to US Dollar'
+2024-03-19 16:49:09.214052   => Trading Instrument Name is the 'Ripple'
+2024-03-19 16:49:09.449922   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.01.03.01_03-pl.au.Auth
+
+2024-03-19 16:49:09.548140   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x73f9d3e9b3e0>
+
+2024-03-19 16:49:09.960457   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 16:49:10.175611   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 16:49:11.085150   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 16:49:11.302120   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 16:49:11.302196   Баг Bid:11.01.03.01_03-pl.au.Auth уже существует, но у него изменился тип с 12 на 16
+
+2024-03-19 16:49:11.302362   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 16:49:11.506130   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 16:49:11.507407   Баг Bid:11.01.03.01_03-pl.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
