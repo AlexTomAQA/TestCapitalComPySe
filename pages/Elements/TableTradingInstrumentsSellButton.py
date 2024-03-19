@@ -43,8 +43,8 @@ class TableTradingInstrumentsSellButton(BasePage):
         check_popup.check_popup_signup_form()
         del check_popup
 
-        for i, index in enumerate(num_item_list):
-            trade_instrument = self.element_click(self.driver, index, cur_sort)
+        for i, volume in enumerate(num_item_list):
+            trade_instrument = self.element_click(d, volume, cur_sort)
             if not trade_instrument:
                 pytest.fail("Testing element is not clicked")
 
@@ -124,13 +124,13 @@ class TableTradingInstrumentsSellButton(BasePage):
             pytest.fail("Bug ? element is not on this page")
 
     @allure.step('Click Sell button on Table Widget Trading Instruments')
-    def element_click(self, index, cur_sort):
+    def element_click(self, wd, index, cur_sort):
         print(f"\n{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-        self.instruments_name_list = self.driver.find_elements(*self.instruments_list)
+        self.instruments_name_list = wd.find_elements(*self.instruments_list)
         button = self.instruments_name_list[index]
-        self.driver.execute_script(
+        wd.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
@@ -140,4 +140,3 @@ class TableTradingInstrumentsSellButton(BasePage):
 
         button.click()
         print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked!\n")
-
