@@ -48,7 +48,6 @@ class AssertClass(BasePage):
             retest_table_fill(d, self.bid, '04', self.link)
             assert False, "Bug # 04. Unknown situation instead 'Sign Up' form opened"
             # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
-        # time.sleep(2)
         del self.page_signup_login
 
     @allure.step(f'{datetime.now()}   Checking that "Login" form or page opened')
