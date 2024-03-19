@@ -44,9 +44,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         del check_popup
 
         for i, volume in enumerate(num_item_list):
-            trade_instrument = self.element_click(d, volume, cur_sort)
-            if not trade_instrument:
-                pytest.fail("Testing element is not clicked")
+            self.element_click(d, volume, cur_sort)
 
             check_element = AssertClass(self.driver, cur_item_link, self.bid)
             match cur_role:
@@ -55,7 +53,7 @@ class TableTradingInstrumentsSellButton(BasePage):
                 case "NoAuth":
                     check_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+                    check_element.assert_trading_platform_v4(d, cur_item_link, False, True, self.trade_instrument)
             self.driver.get(cur_item_link)
 
     def arrange_(self, d, cur_item_link, cur_sort):
