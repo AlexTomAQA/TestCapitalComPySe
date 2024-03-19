@@ -4,10 +4,10 @@ import pytest
 @pytest.fixture(
     scope="function",
     params=[
-        "most_traded",
-        "top_risers",
-        "top_fallers",
-        "most_volatile"
+        "Most traded",
+        "Top risers",
+        "Top fallers",
+        "Most volatile"
     ],
 )
 def cur_sort(request):
