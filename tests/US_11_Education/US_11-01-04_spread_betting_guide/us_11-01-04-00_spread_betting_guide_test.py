@@ -21,7 +21,7 @@ from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
 from pages.Elements.ContentBlockCreateAccountButton import ArticleCreateAccount
 
 count = 1
-cur_page_url = ""
+cur_page_url = "?"
 
 
 @pytest.mark.us_11_01_04_00
@@ -36,6 +36,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [Start Trading] on Main banner
         Language: EN, ES, CN. License: FCA.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -50,11 +52,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = MainBannerStartTrading(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = MainBannerStartTrading(d, cur_page_url, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Try demo] on Main banner")
     @pytest.mark.test_02
@@ -64,6 +69,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [Try demo] on Main banner
         Language: EN, ES, CN. License: FCA.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -78,11 +85,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = MainBannerTryDemo(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = MainBannerTryDemo(d, cur_page_url, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of buttons [Trade] in Most traded block")
     @pytest.mark.test_03
@@ -92,6 +102,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [Trade] in Most traded block
         Language: All. License: All.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -106,11 +118,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = ButtonTradeOnWidgetMostTraded(d, cur_page_url, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Create your account] in block [Steps trading]")
     @pytest.mark.test_04
@@ -120,6 +135,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [1. Create your account] in block [Steps trading]
         Language: EN, ES, CN. License: FCA.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -134,11 +151,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = BlockStepTrading(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = BlockStepTrading(d, cur_page_url, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Start trading] in article")
     @pytest.mark.test_05
@@ -148,6 +168,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [Start trading] in article
         Language: EN, ES, CN. License: FCA.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -162,11 +184,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = ContentStartTrading(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = ContentStartTrading(d, cur_page_url, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start test of button [Create account] in article")
     @pytest.mark.test_06
@@ -176,6 +201,8 @@ class TestSpreadBettingGuidePretest:
         Check: Button [Create account] in article
         Language: EN, ES, CN. License: FCA.
         """
+        global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.04", "Education > Menu item [Spread betting guide]",
@@ -190,11 +217,14 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
-        test_element = ArticleCreateAccount(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = ArticleCreateAccount(d, cur_page_url, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_page_url)
 
     @allure.step("Start pretest")
     def test_99_spread_betting_guide_pretest(
@@ -219,8 +249,11 @@ class TestSpreadBettingGuidePretest:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_spread_betting_guide_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link)
+            cur_page_url = page_menu.open_education_spread_betting_guide_menu(
+                d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
         file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
