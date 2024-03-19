@@ -1,0 +1,97 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 18:34:47.960564   worker_id = master
+
+2024-03-19 18:34:47.960582   0. Allure grouping v4
+
+
+2024-03-19 18:34:47.960787   START PRECONDITIONS =>
+
+
+2024-03-19 18:34:47.960803   => flag_of_bug - False
+
+2024-03-19 18:34:47.960814   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 18:34:47.962338   Set windows position at (0, 0) =>
+2024-03-19 18:34:48.065057   Set resolution 1280 * 800 =>
+2024-03-19 18:34:48.167400   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 18:34:49.216019   Капчи нет. Идем дальше
+
+2024-03-19 18:34:49.216107   Работа с куками
+
+2024-03-19 18:34:49.216120   => Prev. country - 'de'
+2024-03-19 18:34:49.216130   => Country set to 'de'
+
+2024-03-19 18:34:49.216139   => Prev. language - 'de'
+2024-03-19 18:34:49.216149   => Language is set to 'de'
+
+2024-03-19 18:34:49.216158   => Prev. role - 'Auth'
+2024-03-19 18:34:49.216171   => The 'Auth' role is set
+
+2024-03-19 18:34:49.218776   => THE END PRECONDITIONS
+
+2024-03-19 18:34:49.218829   1. Cur URL = https://capital.com/de/aktienhandel
+
+2024-03-19 18:34:49.221290   2. Link = https://capital.com/de/aktienhandel
+2024-03-19 18:34:49.730071   => Education menu is present in DOM
+2024-03-19 18:34:49.736832   element = <selenium.webdriver.remote.webelement.WebElement (session="bfe8fa4de5e91a6c80ba5d8cbf0663ad", element="f.E39F14FD9ED537BC4E2D565EE030DBC5.d.7C819F91C51F731FA6F6E42A09DDE3CA.e.595")>
+2024-03-19 18:34:49.736858   => Education menu is visible
+2024-03-19 18:34:51.013739   => Focus moved to Education menu
+
+
+2024-03-19 18:34:51.783815   => Shares trading sub-menu clicked
+
+2024-03-19 18:34:51.786773   1. Arrange_v4
+2024-03-19 18:34:51.789227   MOST_TRADED is present? =>
+2024-03-19 18:34:51.797551   => MOST_TRADED widget is present on this page
+2024-03-19 18:34:51.797573   => Found 5 elements in block MOST_TRADED
+2024-03-19 18:34:51.797583   Most traded widget is scroll =>
+2024-03-19 18:34:51.800690   => Most traded widget is scrolled into screen center
+
+2024-03-19 18:34:51.800733   Random indexes = [3]
+
+2024-03-19 18:34:51.800747   Testing Most traded 1 random element with 3 index
+
+2024-03-19 18:34:51.800855   2. Act_v4
+2024-03-19 18:34:51.800947   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 18:34:53.321186   '[Sign up]' form was not popped up
+2024-03-19 18:34:53.339573   Selected Trade button on Most traded widget is scroll =>
+2024-03-19 18:34:53.343012   Selected Trade button click for 'Coinbase Global Inc' trading instrument =>
+2024-03-19 18:34:54.760921   => Selected Trade button clicked!
+
+2024-03-19 18:34:54.761263   3. Assert_v4
+2024-03-19 18:34:54.761437   Checking that the trading platform page has opened (v4) =>
+2024-03-19 18:34:54.769735   Checking way # 1 => 
+2024-03-19 18:34:54.773584   => Current page title: Trading Platform | Capital.com
+2024-03-19 18:34:54.773763   Checking that the Trading platform LOGO is present on the page =>
+2024-03-19 18:34:56.691863   => Trading platform LOGO is present on the page
+2024-03-19 18:34:56.691974   tpd = False
+2024-03-19 18:34:56.692196   Checking that the Trading platform opened in LIVE mode =>
+2024-03-19 18:34:56.710042   => The page with https://capital.com/trading/platform/charting/3644116541985988?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764,21659404109698244,5983666832495812,56659208610841,93810675713350,6003982027805892,7090561509053636,7093817094264004,7094972440466628,453949400050390212,93810675684676,53068615951385,305243519000335556,7092970985706692,27041281599427780,7090488494609604,3644116541985988 url was opened in lIVE mode
+2024-03-19 18:34:56.718133   => Check that opened page with https://capital.com/trading/platform/charting/3644116541985988?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764,21659404109698244,5983666832495812,56659208610841,93810675713350,6003982027805892,7090561509053636,7093817094264004,7094972440466628,453949400050390212,93810675684676,53068615951385,305243519000335556,7092970985706692,27041281599427780,7090488494609604,3644116541985988 url
+with corresponding trading instrument 'Coinbase Global Inc' select
+2024-03-19 18:34:56.721570   => Trading Instrument is the 'Coinbase Global Inc'
+2024-03-19 18:34:56.721590   => Trading Instrument Name is the 'Coinbase'
+2024-03-19 18:34:56.948321   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.02.02.00_06-de.de.Auth
+
+2024-03-19 18:34:56.991611   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7087796dec00>
+
+2024-03-19 18:34:57.649358   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 18:34:57.882613   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 18:34:59.295979   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 18:34:59.562642   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 18:34:59.562719   Баг Bid:11.02.02.00_06-de.de.Auth уже существует, но у него изменился тип с  на 16
+
+2024-03-19 18:34:59.562889   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 18:35:00.614546   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 18:35:00.616460   Баг Bid:11.02.02.00_06-de.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

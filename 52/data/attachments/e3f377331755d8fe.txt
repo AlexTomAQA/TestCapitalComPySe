@@ -1,0 +1,111 @@
+
+
+
+Current sort - most_traded
+{'width': 1280, 'height': 800}
+
+2024-03-19 17:57:12.137423   worker_id = master
+
+2024-03-19 17:57:12.137440   0. Allure grouping v4
+
+
+2024-03-19 17:57:12.137653   START PRECONDITIONS =>
+
+
+2024-03-19 17:57:12.137668   => flag_of_bug - True
+2024-03-19 17:57:12.137680   Current page URL = https://capital.com/de/waehrungskurse
+2024-03-19 17:57:12.897679   => Loaded page https://capital.com/
+
+2024-03-19 17:57:12.917993   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 17:57:12.919948   Set windows position at (0, 0) =>
+2024-03-19 17:57:13.022249   Set resolution 1280 * 800 =>
+2024-03-19 17:57:13.124832   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 17:57:14.150471   Капчи нет. Идем дальше
+
+2024-03-19 17:57:14.150566   Работа с куками
+
+2024-03-19 17:57:14.150580   => Prev. country - 'de'
+2024-03-19 17:57:14.150589   => Country set to 'de'
+
+2024-03-19 17:57:14.150598   => Prev. language - 'de'
+2024-03-19 17:57:14.150608   Set 'de' language =>
+2024-03-19 17:57:14.161142   => Language and Country menu is present
+2024-03-19 17:57:14.174277   => Language and Country menu is visible
+2024-03-19 17:57:15.456587   => Focus is moved on Language and Country menu 
+2024-03-19 17:57:15.462473   Move focus on de item and click =>
+2024-03-19 17:57:17.093328   => Focus moved on de item and clicked
+2024-03-19 17:57:17.093373   => Cur url = https://capital.com/de
+2024-03-19 17:57:17.140753   => Language is set to 'de'
+
+2024-03-19 17:57:17.140803   => Prev. role - 'NoAuth'
+2024-03-19 17:57:17.140823   => The 'NoAuth' role is set
+
+2024-03-19 17:57:17.143517   => THE END PRECONDITIONS
+
+2024-03-19 17:57:17.143729   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-19 17:57:17.143745   1. Cur URL = https://capital.com/de
+
+2024-03-19 17:57:17.146220   2. Link = https://capital.com/de
+2024-03-19 17:57:17.658431   => 'Markets' menu is present
+2024-03-19 17:57:17.678538   element = <selenium.webdriver.remote.webelement.WebElement (session="5466e930c4650155f122ba2651e4c4c2", element="f.1F70E60101270C657F347826C349BF00.d.748E1CCD51865DCFBA19302A227F5782.e.2368")>
+2024-03-19 17:57:17.678587   => 'Markets' menu is visible
+2024-03-19 17:57:18.955673   => Focus moved to 'Markets' menu
+
+
+2024-03-19 17:57:20.395294   => 'Forex' sub-menu clicked
+
+2024-03-19 17:57:20.416873   3. Cur URL = https://capital.com/de/waehrungskurse
+
+2024-03-19 17:57:20.422434   1. Arrange for Trading instrument and "most_traded" cur_sort
+2024-03-19 17:57:20.424869   IS TABLE_TRADING_INSTRUMENTS  present on the page? =>
+2024-03-19 17:57:20.432861   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-19 17:57:20.432885   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-19 17:57:20.440550   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-19 17:57:20.440583   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-19 17:57:20.541468   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-19 17:57:20.588489   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-19 17:57:20.588531   Is cur_sort "most_traded" present in item_sort_list? =>
+2024-03-19 17:57:20.596385   => cur_sort "most_traded" is present in item_sort_list!
+2024-03-19 17:57:20.596415   Start click cur_sort "most_traded" =>
+2024-03-19 17:57:21.272853   => End Click cur_sort "most_traded"
+
+2024-03-19 17:57:21.272906   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-19 17:57:21.300055   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-19 17:57:21.300096   Start find two random buttons [Buy] on cur_sort "most_traded"=>
+2024-03-19 17:57:21.306889   => End find two random buttons [Buy] on the cur_sort "most_traded"
+
+
+2024-03-19 17:57:21.306930   Item_list = [5, 4]
+2024-03-19 17:57:21.307106   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 17:57:22.850629   '[Sign up]' form was not popped up
+2024-03-19 17:57:22.850849   2. Act for trading instrument and "most_traded" cur_sort
+2024-03-19 17:57:22.850865   Start click button [Buy] =>
+2024-03-19 17:57:23.022025   =>   BUTTON_BUY with item 123763777643545 clicked!
+
+
+2024-03-19 17:57:23.022349   3. Assert_Login_v0
+2024-03-19 17:57:23.022467   Check that 'Login' form is opened
+2024-03-19 17:57:26.100541   'Login' form not opened
+2024-03-19 17:57:26.100740   Check that new 'Login' form is opened
+2024-03-19 17:57:29.208699   => New 'Login' form not opened
+2024-03-19 17:57:29.211499   'Login' page not opened
+2024-03-19 17:57:32.289173   'Login' form on trading platform not opened
+2024-03-19 17:57:32.289385   Start step Check that [Sign up] form is opened
+2024-03-19 17:57:35.374438   'Sign up' form not opened
+2024-03-19 17:57:35.374649   Start step Check that new [Sign up] form is opened
+2024-03-19 17:57:38.464558   => new 'Sign up' form not opened
+2024-03-19 17:57:38.464758   Start method Check that [Sign up] page opened =>
+2024-03-19 17:57:39.469249   'Sign up' page not opened
+2024-03-19 17:57:39.469507   Check that [Sign up] form on trading platform opened =>
+2024-03-19 17:57:42.555350   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-19 17:57:42.555447   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f8c1a3cc9b0>
+
+2024-03-19 17:57:42.558242  Для бага: Bid-08 необходимо использовать проверку на ретест!!!

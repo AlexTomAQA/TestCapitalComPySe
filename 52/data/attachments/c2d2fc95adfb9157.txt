@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 19:52:44.181403   worker_id = master
+
+2024-03-19 19:52:44.181422   0. Allure grouping v4
+
+
+2024-03-19 19:52:44.181632   START PRECONDITIONS =>
+
+
+2024-03-19 19:52:44.181648   => flag_of_bug - True
+2024-03-19 19:52:44.181660   Current page URL = https://capital.com/trading/platform/
+2024-03-19 19:52:45.123209   => Loaded page https://capital.com/
+
+2024-03-19 19:52:45.128137   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 19:52:45.129472   Set windows position at (0, 0) =>
+2024-03-19 19:52:45.231506   Set resolution 1280 * 800 =>
+2024-03-19 19:52:45.333748   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 19:52:46.380836   Капчи нет. Идем дальше
+
+2024-03-19 19:52:46.380921   Работа с куками
+
+2024-03-19 19:52:46.380934   => Prev. country - 'de'
+2024-03-19 19:52:46.380944   => Country set to 'de'
+
+2024-03-19 19:52:46.380953   => Prev. language - 'de'
+2024-03-19 19:52:46.380962   Set 'de' language =>
+2024-03-19 19:52:46.388592   => Language and Country menu is present
+2024-03-19 19:52:46.401113   => Language and Country menu is visible
+2024-03-19 19:52:47.678607   => Focus is moved on Language and Country menu 
+2024-03-19 19:52:47.684323   Move focus on de item and click =>
+2024-03-19 19:52:49.303268   => Focus moved on de item and clicked
+2024-03-19 19:52:49.303314   => Cur url = https://capital.com/de
+2024-03-19 19:52:49.340004   => Language is set to 'de'
+
+2024-03-19 19:52:49.340028   => Prev. role - 'Auth'
+2024-03-19 19:52:49.340039   => The 'Auth' role is set
+
+2024-03-19 19:52:49.344684   => THE END PRECONDITIONS
+
+2024-03-19 19:52:49.344742   1. Arrange_v0
+2024-03-19 19:52:49.347153   Current page URL = https://capital.com/de
+2024-03-19 19:52:50.630998   => Loaded page https://capital.com/de/trade-ibex
+2024-03-19 19:52:50.634979   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-03-19 19:52:50.646512   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-03-19 19:52:50.646683   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 19:52:52.197538   '[Sign up]' form was not popped up
+
+2024-03-19 19:52:52.197722   2. Act_v0
+2024-03-19 19:52:52.202761   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-03-19 19:52:52.202784   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-03-19 19:52:52.202794   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-03-19 19:52:52.206589   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-03-19 19:52:52.229201   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-03-19 19:52:52.245502   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-03-19 19:52:52.685922   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-03-19 19:52:52.686249   3. Assert_v4
+2024-03-19 19:52:52.686418   Checking that the trading platform page has opened (v4) =>
+2024-03-19 19:52:53.198658   Checking way # 1 => 
+2024-03-19 19:52:53.201675   => Current page title: Trading Platform | Capital.com
+2024-03-19 19:52:53.201795   Checking that the Trading platform LOGO is present on the page =>
+2024-03-19 19:52:54.171630   => Trading platform LOGO is present on the page
+2024-03-19 19:52:54.171712   tpd = False
+2024-03-19 19:52:54.171861   Checking that the Trading platform opened in LIVE mode =>
+2024-03-19 19:52:54.186122   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-19 19:52:54.188841   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument '1387370618105648466' select
+2024-03-19 19:52:54.191480   => Trading Instrument is the '1387370618105648466'
+2024-03-19 19:52:54.191497   => Trading Instrument Name is the '1387370618105648466'
+2024-03-19 19:52:55.244917   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.06.01_08-de.de.Auth
+
+2024-03-19 19:52:55.244966   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7a4fd3d15760>
+
+2024-03-19 19:52:55.559495   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 19:52:56.852349   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 19:52:57.986781   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 19:52:58.223636   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 19:52:58.224830   Баг Bid:11.02.06.01_08-de.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
