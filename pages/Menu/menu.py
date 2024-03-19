@@ -13,7 +13,7 @@ import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
-from pages.common import Common
+from pages.base_page import BasePage
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
@@ -40,14 +40,25 @@ from pages.Menu.menu_locators import (
     MenuUS01Markets,
     MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities
 )
-from pages.base_page import BasePage
-
-# from src.src import CapitalComPageSrc
+from pages.common import Common
+# from pages.common import bug_11_01_03_00
 
 logger = logging.getLogger()
 
 
 class MenuSection(BasePage):
+    """
+    MenuSection class - класс работы с меню в хедере
+    Аргументы при создании объекта:
+        wd - driver
+        main_page_link - страница, на которой расположено меню
+        flag_set_menu - признак того, что нужное меню выбрано (установлено), необязательный аргумент. По умолчанию =
+        False
+    """
+    def __init__(self, wd, main_page_link, flag_set_menu=False):
+        self.flag_set_menu = flag_set_menu
+        super().__init__(wd, main_page_link)
+    # bug_11_01_03_00
 
     @allure.step('Select "Learn to trade" menu, "Risk-management guide')
     def open_learn_to_trade_risk_management_guide_menu(self, d, cur_language, cur_country, link):
@@ -131,6 +142,7 @@ class MenuSection(BasePage):
 
     @allure.step(f'{datetime.now()}   Select "Education" menu, "CFD trading guide" submenu')
     def open_education_cfd_trading_menu(self, d, cur_language, cur_country, link):
+        # self.bug_flag = bug_11_01_03_00
 
         print(f'\n{datetime.now()}   START Open "Education" menu, "CFD trading guide" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -1704,6 +1716,3 @@ class MenuSection(BasePage):
 
         del sub_menu
         return d.current_url
-
-
-
