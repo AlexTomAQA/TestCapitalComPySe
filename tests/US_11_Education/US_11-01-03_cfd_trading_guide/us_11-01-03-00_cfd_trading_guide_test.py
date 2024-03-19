@@ -9,6 +9,7 @@ import pytest
 import allure
 
 from pages.common import Common
+# from pages.common import flag_of_bug
 from pages.Menu.menu import MenuSection
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
@@ -20,7 +21,7 @@ from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTr
 from pages.Elements.StepTradingBlock import BlockStepTrading
 
 count = 1
-cur_page_url = ""
+cur_page_url = "?"
 
 
 @pytest.mark.us_11_01_03_00
@@ -36,6 +37,7 @@ class TestCFDTradingGuide:
         Language: All. License: All.
         """
         global cur_page_url
+
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.01.03", "Education > Menu item [CFD trading guide]",
@@ -50,8 +52,10 @@ class TestCFDTradingGuide:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link, )
+            cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         test_element = MainBannerStartTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -80,8 +84,10 @@ class TestCFDTradingGuide:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link, )
+            cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         test_element = MainBannerTryDemo(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -110,8 +116,10 @@ class TestCFDTradingGuide:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link, )
+            cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -140,8 +148,10 @@ class TestCFDTradingGuide:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link, )
+            cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         test_element = BlockStepTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -169,8 +179,10 @@ class TestCFDTradingGuide:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+        if d.current_url != cur_page_url or Common.flag_of_bug:
+            page_menu = MenuSection(d, main_page_link, )
+            cur_page_url = page_menu.open_education_cfd_trading_menu(d, cur_language, cur_country, main_page_link)
+            Common.flag_of_bug = False
 
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
         file_name = "tests/US_11_Education/US_11-01-03_cfd_trading_guide/list_of_href.txt"
