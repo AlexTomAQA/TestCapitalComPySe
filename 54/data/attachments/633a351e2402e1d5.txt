@@ -1,0 +1,32 @@
+2024-03-19 21:22:10 ERROR Elements not present after 0.5 seconds on page: https://capital.com/de/fibonacci-retracement
+2024-03-19 21:22:10 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 303, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x614426769f33 <unknown>
+#1 0x614426461ce6 <unknown>
+#2 0x6144264ace48 <unknown>
+#3 0x6144264acf01 <unknown>
+#4 0x6144264f03f4 <unknown>
+#5 0x6144264ceedd <unknown>
+#6 0x6144264ed899 <unknown>
+#7 0x6144264cec53 <unknown>
+#8 0x61442649fdb3 <unknown>
+#9 0x6144264a077e <unknown>
+#10 0x61442672f86b <unknown>
+#11 0x614426733885 <unknown>
+#12 0x61442671d181 <unknown>
+#13 0x614426734412 <unknown>
+#14 0x61442670125f <unknown>
+#15 0x614426758528 <unknown>
+#16 0x614426758723 <unknown>
+#17 0x6144267690e4 <unknown>
+#18 0x76b4c6c94ac3 <unknown>

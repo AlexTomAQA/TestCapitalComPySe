@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 21:05:42.962753   worker_id = master
+
+2024-03-19 21:05:42.962771   0. Allure grouping v4
+
+
+2024-03-19 21:05:42.962977   START PRECONDITIONS =>
+
+
+2024-03-19 21:05:42.962993   => flag_of_bug - True
+2024-03-19 21:05:42.963005   Current page URL = https://capital.com/de/trade-hangseng
+2024-03-19 21:05:43.713763   => Loaded page https://capital.com/
+
+2024-03-19 21:05:43.716438   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 21:05:43.717752   Set windows position at (0, 0) =>
+2024-03-19 21:05:43.820065   Set resolution 1280 * 800 =>
+2024-03-19 21:05:43.922501   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 21:05:44.974385   Капчи нет. Идем дальше
+
+2024-03-19 21:05:44.974477   Работа с куками
+
+2024-03-19 21:05:44.974492   => Prev. country - 'ae'
+2024-03-19 21:05:44.974502   => Country set to 'ae'
+
+2024-03-19 21:05:44.974511   => Prev. language - 'de'
+2024-03-19 21:05:44.974522   Set 'de' language =>
+2024-03-19 21:05:44.982554   => Language and Country menu is present
+2024-03-19 21:05:44.993483   => Language and Country menu is visible
+2024-03-19 21:05:46.263074   => Focus is moved on Language and Country menu 
+2024-03-19 21:05:46.269581   Move focus on de item and click =>
+2024-03-19 21:05:47.797564   => Focus moved on de item and clicked
+2024-03-19 21:05:47.797628   => Cur url = https://capital.com/de
+2024-03-19 21:05:47.841552   => Language is set to 'de'
+
+2024-03-19 21:05:47.841580   => Prev. role - 'NoAuth'
+2024-03-19 21:05:47.841590   => The 'NoAuth' role is set
+
+2024-03-19 21:05:47.846871   => THE END PRECONDITIONS
+
+2024-03-19 21:05:47.846936   1. Arrange_v0
+2024-03-19 21:05:47.849375   Current page URL = https://capital.com/de
+2024-03-19 21:05:49.052741   => Loaded page https://capital.com/de/trade-hangseng
+2024-03-19 21:05:49.068576   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-19 21:05:49.068625   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-19 21:05:49.068639   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-19 21:05:49.072041   => 'Sell' button in Content block scrolled
+2024-03-19 21:05:49.072215   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 21:05:50.586167   '[Sign up]' form was not popped up
+
+2024-03-19 21:05:50.586358   2. Act_v0
+2024-03-19 21:05:50.622803   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-19 21:05:50.622835   => return trade_instrument = 145998823326404
+
+2024-03-19 21:05:50.623027   3. Assert_Login_v0
+2024-03-19 21:05:50.623109   Check that 'Login' form is opened
+2024-03-19 21:05:53.680791   'Login' form not opened
+2024-03-19 21:05:53.680975   Check that new 'Login' form is opened
+2024-03-19 21:05:56.755402   => New 'Login' form not opened
+2024-03-19 21:05:56.758232   'Login' page not opened
+2024-03-19 21:05:59.822059   'Login' form on trading platform not opened
+2024-03-19 21:05:59.822253   Start step Check that [Sign up] form is opened
+2024-03-19 21:05:59.834209   'Sign up' form opened
+2024-03-19 21:05:59.834260   Assert SIGNUP_HEADER =>
+2024-03-19 21:05:59.849622   Assert SIGNUP_REF_LOGIN =>
+2024-03-19 21:05:59.862025   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-19 21:05:59.873129   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-19 21:05:59.873160   => 'Signup' form is checked
+
+Bug: Bid:11.02.06.01_07-de.ae.NoAuth
+
+2024-03-19 21:05:59.873226   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x71790b40f590>
+
+2024-03-19 21:06:00.210366   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 21:06:00.443811   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 21:06:01.420710   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 21:06:01.607937   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 21:06:01.609347   Баг Bid:11.02.06.01_07-de.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
