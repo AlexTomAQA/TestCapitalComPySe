@@ -54,7 +54,7 @@ class TestShares:
     @allure.step("Test button [Sell] 'numeric values' in Widget 'Trading instrument'")
     @pytest.mark.test_002
     def test_002_sell_widget_trading_instrument(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_sort):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Sell]'numeric values' in Widget 'Trading instrument'
         Language: All. License: All,except FCA (GB country)
@@ -76,7 +76,7 @@ class TestShares:
         cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
 
         test_element = TableTradingInstrumentsSellButton(d, cur_page_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link, cur_sort)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
 
     @allure.step("Test button [Buy] 'numeric values' in Widget 'Trading instrument'")
     @pytest.mark.test_003
