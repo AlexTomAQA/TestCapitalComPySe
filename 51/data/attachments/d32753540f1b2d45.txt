@@ -1,0 +1,91 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 17:53:34.928301   worker_id = master
+
+2024-03-19 17:53:34.928318   0. Allure grouping v4
+
+
+2024-03-19 17:53:34.928517   START PRECONDITIONS =>
+
+
+2024-03-19 17:53:34.928533   => flag_of_bug - False
+
+2024-03-19 17:53:34.928543   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 17:53:34.931438   Set windows position at (0, 0) =>
+2024-03-19 17:53:35.033820   Set resolution 1280 * 800 =>
+2024-03-19 17:53:35.136614   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 17:53:36.154842   Капчи нет. Идем дальше
+
+2024-03-19 17:53:36.154930   Работа с куками
+
+2024-03-19 17:53:36.154944   => Prev. country - 'ae'
+2024-03-19 17:53:36.154954   => Country set to 'ae'
+
+2024-03-19 17:53:36.154963   => Prev. language - 'pl'
+2024-03-19 17:53:36.154973   => Language is set to 'pl'
+
+2024-03-19 17:53:36.154982   => Prev. role - 'Auth'
+2024-03-19 17:53:36.154991   => The 'Auth' role is set
+
+2024-03-19 17:53:36.157839   => THE END PRECONDITIONS
+
+2024-03-19 17:53:36.157901   1. Cur URL = https://capital.com/pl/trade-stocks
+
+2024-03-19 17:53:36.160468   2. Link = https://capital.com/pl/trade-stocks
+2024-03-19 17:53:36.669298   => Education menu is present in DOM
+2024-03-19 17:53:36.675751   element = <selenium.webdriver.remote.webelement.WebElement (session="4abc0e1b65bf0551e3b1543f96a84692", element="f.2AC2E531BA5D5FACC3954FD847A01430.d.911246B2BEC5D910846BEAA5A96E199E.e.569")>
+2024-03-19 17:53:36.675782   => Education menu is visible
+2024-03-19 17:53:37.947110   => Focus moved to Education menu
+
+
+2024-03-19 17:53:38.718516   => Shares trading sub-menu clicked
+
+2024-03-19 17:53:38.721437   1. Arrange_v4
+2024-03-19 17:53:38.723948   MOST_TRADED is present? =>
+2024-03-19 17:53:38.732075   => MOST_TRADED widget is present on this page
+2024-03-19 17:53:38.732098   => Found 5 elements in block MOST_TRADED
+2024-03-19 17:53:38.732109   Most traded widget is scroll =>
+2024-03-19 17:53:38.735262   => Most traded widget is scrolled into screen center
+
+2024-03-19 17:53:38.735306   Random indexes = [1]
+
+2024-03-19 17:53:38.735321   Testing Most traded 1 random element with 1 index
+
+2024-03-19 17:53:38.735453   2. Act_v4
+2024-03-19 17:53:38.735547   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 17:53:40.289952   '[Sign up]' form was not popped up
+2024-03-19 17:53:40.308688   Selected Trade button on Most traded widget is scroll =>
+2024-03-19 17:53:40.313228   Selected Trade button click for 'NVIDIA Corp' trading instrument =>
+2024-03-19 17:53:42.325709   => Selected Trade button clicked!
+
+2024-03-19 17:53:42.325959   3. Assert_v4
+2024-03-19 17:53:42.326067   Checking that the trading platform page has opened (v4) =>
+2024-03-19 17:53:42.332647   Checking way # 1 => 
+2024-03-19 17:53:42.335327   => Current page title: Trading Platform | Capital.com
+2024-03-19 17:53:42.335454   Checking that the Trading platform LOGO is present on the page =>
+2024-03-19 17:53:43.913595   => Trading platform LOGO is present on the page
+2024-03-19 17:53:43.913696   tpd = False
+2024-03-19 17:53:43.913852   Checking that the Trading platform opened in LIVE mode =>
+2024-03-19 17:53:43.934915   => The page with https://capital.com/trading/platform/charting/16150730595456196?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764,21659404109698244,5983666832495812,56659208610841,93810675713350,6003982027805892,7090561509053636,7093817094264004,7094972440466628,453949400050390212 url was opened in lIVE mode
+2024-03-19 17:53:43.938206   => Check that opened page with https://capital.com/trading/platform/charting/16150730595456196?side=buy&ids=2604592722433220,374675767075865,93810675766468,15839732013552836,27045129890124996,426090820621508,27342779713672388,16150730595456196,14659243072378052,22855552501634244,422839530378436,427748677997764,21659404109698244,5983666832495812,56659208610841,93810675713350,6003982027805892,7090561509053636,7093817094264004,7094972440466628,453949400050390212 url
+with corresponding trading instrument 'NVIDIA Corp' select
+2024-03-19 17:53:43.940906   => Trading Instrument is the 'NVIDIA Corp'
+2024-03-19 17:53:43.940924   => Trading Instrument Name is the 'NVIDIA'
+2024-03-19 17:53:44.280360   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.02.02.00_06-pl.ae.Auth
+
+2024-03-19 17:53:44.521431   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7a91118a0e90>
+
+2024-03-19 17:53:44.988576   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 17:53:45.204075   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 17:53:46.209864   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 17:53:46.463922   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 17:53:46.465285   Баг Bid:11.02.02.00_06-pl.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
