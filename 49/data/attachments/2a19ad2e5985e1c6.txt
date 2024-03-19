@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-19 17:06:49.615863   worker_id = master
+
+2024-03-19 17:06:49.615881   0. Allure grouping v4
+
+
+2024-03-19 17:06:49.616131   START PRECONDITIONS =>
+
+
+2024-03-19 17:06:49.616147   => flag_of_bug - True
+2024-03-19 17:06:49.616160   Current page URL = https://capital.com/pl/handel-litecoin
+2024-03-19 17:06:50.688500   => Loaded page https://capital.com/
+
+2024-03-19 17:06:50.694513   => Windows size - {'width': 1280, 'height': 800}
+2024-03-19 17:06:50.695916   Set windows position at (0, 0) =>
+2024-03-19 17:06:50.800722   Set resolution 1280 * 800 =>
+2024-03-19 17:06:50.903071   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-19 17:06:51.917451   Капчи нет. Идем дальше
+
+2024-03-19 17:06:51.917551   Работа с куками
+
+2024-03-19 17:06:51.917565   => Prev. country - 'de'
+2024-03-19 17:06:51.917576   => Country set to 'de'
+
+2024-03-19 17:06:51.917585   => Prev. language - 'pl'
+2024-03-19 17:06:51.917594   Set 'pl' language =>
+2024-03-19 17:06:51.926228   => Language and Country menu is present
+2024-03-19 17:06:51.936989   => Language and Country menu is visible
+2024-03-19 17:06:53.209780   => Focus is moved on Language and Country menu 
+2024-03-19 17:06:53.215798   Move focus on pl item and click =>
+2024-03-19 17:06:54.729674   => Focus moved on pl item and clicked
+2024-03-19 17:06:54.729727   => Cur url = https://capital.com/pl
+2024-03-19 17:06:54.745581   => Language is set to 'pl'
+
+2024-03-19 17:06:54.745614   => Prev. role - 'NoAuth'
+2024-03-19 17:06:54.745625   => The 'NoAuth' role is set
+
+2024-03-19 17:06:54.748205   => THE END PRECONDITIONS
+
+2024-03-19 17:06:54.748282   1. Arrange_v0
+2024-03-19 17:06:54.750786   Current page URL = https://capital.com/pl
+2024-03-19 17:06:55.536029   => Loaded page https://capital.com/pl/handel-litecoin
+2024-03-19 17:06:55.551659   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-19 17:06:55.551700   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-19 17:06:55.551709   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-19 17:06:55.556225   => 'Sell' button in Content block scrolled
+2024-03-19 17:06:55.556447   Start Checking that form [Sign up] popped up on the page =>
+2024-03-19 17:06:57.168681   '[Sign up]' form was not popped up
+
+2024-03-19 17:06:57.168885   2. Act_v0
+2024-03-19 17:06:57.215116   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-19 17:06:57.215158   => return trade_instrument = 13863591790859460
+
+2024-03-19 17:06:57.215388   3. Assert_Login_v0
+2024-03-19 17:06:57.215485   Check that 'Login' form is opened
+2024-03-19 17:07:00.262094   'Login' form not opened
+2024-03-19 17:07:00.262299   Check that new 'Login' form is opened
+2024-03-19 17:07:03.371863   => New 'Login' form not opened
+2024-03-19 17:07:03.378007   'Login' page not opened
+2024-03-19 17:07:06.447419   'Login' form on trading platform not opened
+2024-03-19 17:07:06.447636   Start step Check that [Sign up] form is opened
+2024-03-19 17:07:06.466786   'Sign up' form opened
+2024-03-19 17:07:06.466827   Assert SIGNUP_HEADER =>
+2024-03-19 17:07:06.482389   Assert SIGNUP_REF_LOGIN =>
+2024-03-19 17:07:06.497438   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-19 17:07:06.510836   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-19 17:07:06.510878   => 'Signup' form is checked
+
+Bug: Bid:11.02.05.01_04-pl.de.NoAuth
+
+2024-03-19 17:07:06.510956   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7a2e50fb5070>
+
+2024-03-19 17:07:06.862973   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 17:07:07.064679   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 17:07:08.109139   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-19 17:07:08.300654   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-19 17:07:08.301766   Баг Bid:11.02.05.01_04-pl.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
