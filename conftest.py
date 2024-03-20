@@ -104,7 +104,7 @@ def cur_role(request):
         # "ro",  # 10 us
         # "ar",  # 8 us
         # "nl",  # 8 us
-        # "el",  # 5 us
+        "el",  # 5 us
         # "hu",  # 5 us Magyar
     ],
 )
@@ -127,9 +127,9 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",
-        # "de",  # Germany  - "CYSEC"
+        "de",  # Germany  - "CYSEC"
         "au",  # Australia - "ASIC"
-        # "ae",  # United Arab Emirates - "SCB"
+        "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"

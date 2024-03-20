@@ -146,6 +146,10 @@ class ButtonsOnPageLocators:
     BUTTON_ARROW_RIGHT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--next")
     BUTTON_ARROW_LEFT = (By.CSS_SELECTOR, ".splide__arrow.splide__arrow--prev")
 
+    # Elements of Widget 'Trading calculator'
+    TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
+    BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")

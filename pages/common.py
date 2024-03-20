@@ -123,7 +123,7 @@ class Common:
 			else:
 				for line in file:
 					list_item_link.append(line[:-1])
-					# print(f"{datetime.now()}   {line[:-1]}")
+					print(f"{datetime.now()}   {line[:-1]}")
 				file.close()
 
 			qty = len(list_item_link)

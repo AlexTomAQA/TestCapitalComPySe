@@ -33,7 +33,7 @@ class TestShares:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Markets > Menu item [Shares]",
+            "01.02", "Markets > Menu item [Shares]",
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Share CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
@@ -61,7 +61,7 @@ class TestShares:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Markets > Menu item [Shares]",
+            "01.02", "Markets > Menu item [Shares]",
             ".00_002", "Testing button [Sell] 'numeric values' in Widget 'Trading instrument'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
@@ -88,7 +88,7 @@ class TestShares:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Markets > Menu item [Shares]",
+            "01.02", "Markets > Menu item [Shares]",
             ".00_003", "Testing button [Buy] 'numeric values' in Widget 'Trading instrument'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)

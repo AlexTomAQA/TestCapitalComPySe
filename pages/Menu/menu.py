@@ -550,26 +550,14 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_EN_GLOSSARY)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_AR_GLOSSARY)
-            case "id":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_ID_GLOSSARY)
-            case "bg":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_BG_GLOSSARY)
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_CN_GLOSSARY)
-            case "cs":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_CS_GLOSSARY)
-            case "da":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_DA_GLOSSARY)
             case "de":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_DE_GLOSSARY)
             case "el":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_EL_GLOSSARY)
             case "es":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_ES_GLOSSARY)
-            case "et":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_ET_GLOSSARY)
-            case "fi":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_FI_GLOSSARY)
             case "fr":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_FR_GLOSSARY)
             case "hr":
@@ -578,30 +566,14 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_HU_GLOSSARY)
             case "it":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_IT_GLOSSARY)
-            case "lt":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_LT_GLOSSARY)
-            case "lv":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_LV_GLOSSARY)
             case "nl":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_NL_GLOSSARY)
             case "pl":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_PL_GLOSSARY)
-            case "pt":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_PT_GLOSSARY)
             case "ro":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_RO_GLOSSARY)
             case "ru":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_RU_GLOSSARY)
-            case "sk":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_SK_GLOSSARY)
-            case "sl":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_SL_GLOSSARY)
-            case "sv":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_SV_GLOSSARY)
-            case "th":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_TH_GLOSSARY)
-            case "vi":
-                sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_VI_GLOSSARY)
             case "zh":
                 sub_menu = d.find_elements(*MenuUS11Glossary.SUB_MENU_ZH_GLOSSARY)
 
@@ -1660,12 +1632,9 @@ class MenuSection(BasePage):
         if len(sub_menu) == 0:
             pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
 
-        ActionChains(d) \
-            .move_to_element(sub_menu[0]) \
-            .pause(0.5) \
-            .click() \
-            .pause(0.5) \
-            .perform()
+        print(f"{datetime.now()}   => 'Markets > Commodities' submenu is present")
+
+        ActionChains(d).move_to_element(sub_menu[0]).pause(0.5).click().pause(0.5).perform()
 
         del sub_menu
 
