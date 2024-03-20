@@ -92,6 +92,7 @@ class CoursesPage:
 
 class SubPages:
     SUB_PAGES_LIST = (By.CSS_SELECTOR, "div.side-nav__wrap > div.side-nav > a")
+    SUB_PAGES_MARKETS_FOREX_LIST = (By.CSS_SELECTOR, "tr.trlink.js-trlink > td > p > a")
 
 
 class BlockBuildYourSkills:
@@ -270,3 +271,7 @@ class TradeCFDLocators:
 
 class TradingInstrumentsBlockLocators:
     BUTTON_START_TRADING_NOW = (By.CSS_SELECTOR, ".banner .button-main.js_signup")
+
+
+class PageTradingInstrumentMarketsLocators:
+    BUTTON_VIEW_DETAILED_CHART =(By.CSS_SELECTOR, "a[data-type='detailed_chart']")
