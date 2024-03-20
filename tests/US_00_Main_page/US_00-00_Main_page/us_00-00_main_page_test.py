@@ -15,11 +15,13 @@ from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButt
 from pages.Elements.OurMarketsTableBuyButton import BuyButtonOurMarketsTable
 from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
 from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
 from pages.Elements.WhyChooseBlockSignUpButton import WhyChooseBlockSignUpButton
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.conditions import Conditions
 
 
 @pytest.mark.us_00_00
@@ -279,4 +281,36 @@ class TestMainPage:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BlockStepTrading(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")
+    @pytest.mark.test_015
+    def test_015_create_your_account_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Start Trading] in Widget 'Trading calculator' Main Page
+        Language: EN. License: FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_015", "Testing button [Start Trading] in Widget 'Trading calculator' Main Page",
+            False, True
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['ar', 'de', 'el', 'es', 'fr', 'it', 'hu', 'pl', 'cn', 'ro', 'ru', 'zh']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'au', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradingCalculatorStartTradingButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
