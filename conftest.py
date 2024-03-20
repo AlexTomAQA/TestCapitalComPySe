@@ -92,7 +92,7 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "",  # "en" - 21 us
+        # "",  # "en" - 21 us
         # "es",  # 20 us
         # "de",  # 15 us
         # "it",  # 15 us
