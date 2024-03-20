@@ -44,7 +44,7 @@ class SignupLogin(BasePage):
         Check there are an elements to on Sign up form
         """
         print(f"{datetime.now()}   Start step Check that new [Sign up] form is opened")
-        if self.element_is_visible(NewSignupFormLocators.SIGNUP_FRAME, 3):
+        if self.element_is_visible(NewSignupFormLocators.SIGNUP_FRAME, 2):
             print(f"{datetime.now()}   new 'Sign up' form opened")
 
             print(f"{datetime.now()}   Assert SIGNUP_HEADER =>")
@@ -72,7 +72,7 @@ class SignupLogin(BasePage):
         Check there are an elements to on Sign up form
         """
         print(f"{datetime.now()}   Start step Check that [Sign up] form is opened")
-        if self.element_is_visible(SignupFormLocators.SIGNUP_FRAME, 3):
+        if self.element_is_visible(SignupFormLocators.SIGNUP_FRAME, 2):
             print(f"{datetime.now()}   'Sign up' form opened")
 
             print(f"{datetime.now()}   Assert SIGNUP_HEADER =>")
@@ -83,18 +83,6 @@ class SignupLogin(BasePage):
             assert self.element_is_visible(SignupFormLocators.SIGNUP_REF_LOGIN), \
                 f"{datetime.now()}   Problem with 'Login' reference"
 
-            # print(f"{datetime.now()}   SIGNUP_INPUT_EMAIL =>")
-            # assert self.element_is_visible(SignupFormLocators.SIGNUP_INPUT_EMAIL), \
-            #     f"{datetime.now()}   Problem with 'E-mail' field"
-            #
-            # print(f"{datetime.now()}   SIGNUP_INPUT_PASSWORD =>")
-            # assert self.element_is_visible(SignupFormLocators.SIGNUP_INPUT_PASSWORD), \
-            #     f"{datetime.now()}   Problem with 'Password' field"
-            #
-            # print(f"{datetime.now()}   SIGNUP_SUBMIT_BTN =>")
-            # assert self.element_is_visible(SignupFormLocators.SIGNUP_SUBMIT_BTN), \
-            #     f"{datetime.now()}   Problem with 'Continue' button"
-            #
             print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>")
             if not self.element_is_visible(SignupFormLocators.SIGNUP_PRIVACY_POLICY_ALL_2):
 
@@ -132,18 +120,6 @@ class SignupLogin(BasePage):
             assert self.element_is_visible(SignupPageLocators.REF_LOGIN), \
                 f"{datetime.now()}   Problem with 'Login' reference"
 
-            # print(f"{datetime.now()}   INPUT_EMAIL =>")
-            # assert self.element_is_visible(SignupPageLocators.INPUT_EMAIL), \
-            #     f"{datetime.now()}   Problem with 'E-mail' field"
-            #
-            # print(f"{datetime.now()}   INPUT_PASS =>")
-            # assert self.element_is_visible(SignupPageLocators.INPUT_PASS), \
-            #     f"{datetime.now()}   Problem with 'Password' field"
-            #
-            # print(f"{datetime.now()}   BUTTON_CONTINUE =>")
-            # assert self.element_is_visible(SignupPageLocators.BUTTON_CONTINUE), \
-            #     f"{datetime.now()}   Problem with 'Continue' button"
-            #
             print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>")
             if not self.element_is_visible(SignupPageLocators.SIGNUP_PRIVACY_POLICY_ALL_1):
 
@@ -166,7 +142,7 @@ class SignupLogin(BasePage):
         Check there are an elements to on Sign up form
         """
         print(f"{datetime.now()}   Check that [Sign up] form on trading platform opened =>")
-        if self.element_is_visible(TradingPlatformSignupFormLocators.SIGNUP_FRAME, 3):
+        if self.element_is_visible(TradingPlatformSignupFormLocators.SIGNUP_FRAME, 2):
             print(f"{datetime.now()}   => 'Sign up' form on trading platform page opened")
 
             print(f"{datetime.now()}   Assert SIGNUP_HEADER =>")
@@ -177,10 +153,6 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>")
             if not self.element_is_visible(TradingPlatformSignupFormLocators.SIGNUP_PRIVACY_POLICY_ALL_1):
                 assert False, f"Надо уточнять локатор для {cur_language} языка"
-                # print(f"{datetime.now()}   SIGNUP_PRIVACY_POLICY_ALL_2 =>")
-                # if not self.element_is_visible(TradingPlatformSignupFormLocators.SIGNUP_PRIVACY_POLICY_ALL_2):
-                #     assert False, \
-                #         f"{datetime.now()}   Problem with 'Privacy policy' reference on '{cur_language}' language!"
             print(f"{datetime.now()}   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK")
 
             print(f"{datetime.now()}   Assert SIGNUP_REF_LOGIN =>")
@@ -196,13 +168,12 @@ class SignupLogin(BasePage):
             return False
 
     @allure.step("Check that form [Login] is opened")
-    # @profile(precision=3)
     def should_be_login_form(self):
         """
         Check there are an elements to on Login form
         """
         print(f"{datetime.now()}   Check that 'Login' form is opened")
-        if self.element_is_visible(LoginFormLocators.LOGIN_FRAME, 3):
+        if self.element_is_visible(LoginFormLocators.LOGIN_FRAME, 2):
             print(f"{datetime.now()}   'Login' form opened")
 
             # print(f"{datetime.now()}   LOGIN_HEADER =>")
@@ -247,7 +218,7 @@ class SignupLogin(BasePage):
         Check there are an elements to on Login form
         """
         print(f"{datetime.now()}   Check that new 'Login' form is opened")
-        if self.element_is_visible(NewLoginFormLocators.LOGIN_FRAME, 3):
+        if self.element_is_visible(NewLoginFormLocators.LOGIN_FRAME, 2):
             print(f"{datetime.now()}   => New 'Login' form opened")
             print(f"{datetime.now()}   Assert LOGIN_REF_SIGNUP =>")
             assert self.element_is_visible(NewLoginFormLocators.LOGIN_REF_SIGNUP), \
@@ -271,7 +242,7 @@ class SignupLogin(BasePage):
         """
         Check there are an elements to on Login form on trading platform
         """
-        if self.element_is_visible(TradingPlatformLoginFormLocators.LOGIN_FRAME, 3):
+        if self.element_is_visible(TradingPlatformLoginFormLocators.LOGIN_FRAME, 2):
             print(f"{datetime.now()}   'Login' form on trading platform opened")
 
             print(f"{datetime.now()}   Assert LOGIN_EMAIL_FILD =>")
@@ -310,18 +281,6 @@ class SignupLogin(BasePage):
             assert self.element_is_visible(LoginPageLocators.REF_SIGNUP), \
                 f"{datetime.now()}   Problem with 'Sign up' reference"
 
-            # print(f"{datetime.now()}   LOGIN_EMAIL =>")
-            # assert self.element_is_visible(LoginPageLocators.INPUT_EMAIL), \
-            #     f"{datetime.now()}   Problem with 'E-mail' field"
-            #
-            # print(f"{datetime.now()}   LOGIN_PASS =>")
-            # assert self.element_is_visible(LoginPageLocators.INPUT_PASS), \
-            #     f"{datetime.now()}   Problem with 'Password' field"
-            #
-            # print(f"{datetime.now()}   LOGIN_CONTINUE =>")
-            # assert self.element_is_visible(LoginPageLocators.BUTTON_CONTINUE), \
-            #     f"{datetime.now()}   Problem with 'Continue' button"
-            #
             print(f"{datetime.now()}   Assert LOGIN_PASS_FORGOT =>")
             assert self.element_is_visible(LoginPageLocators.LOGIN_PASS_FORGOT), \
                 f"{datetime.now()}   Problem with 'Forgot password' reference"
@@ -337,7 +296,7 @@ class SignupLogin(BasePage):
     def close_signup_form(self):
         """Method Close [Sign up] form"""
         print(f"{datetime.now()}   Start step Close [Sign up] form =>")
-        if not self.element_is_clickable(SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM, 3):
+        if not self.element_is_clickable(SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM, 2):
             print(f"{datetime.now()}   => Close button on 'Sign up' form is not clickable")
             return False
 
@@ -358,7 +317,7 @@ class SignupLogin(BasePage):
     def close_new_signup_form(self):
         """Method Close new [Sign up] form"""
         print(f"{datetime.now()}   Start step Close new [Sign up] form =>")
-        if not self.element_is_clickable(NewSignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM, 3):
+        if not self.element_is_clickable(NewSignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM, 2):
             print(f"{datetime.now()}   => Close button on new 'Sign up' form is not clickable")
             return False
 
@@ -403,8 +362,8 @@ class SignupLogin(BasePage):
 
     @allure.step("Close form [Login]")
     def close_login_form(self):
-        if not self.element_is_clickable(LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM, 3):
-            print(f"{datetime.now()}   => 'Close' button on 'Login' form not clickable after 3 sec.")
+        if not self.element_is_clickable(LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM, 2):
+            print(f"{datetime.now()}   => 'Close' button on 'Login' form not clickable after 2 sec.")
             return False
         print(f"{datetime.now()}   Click 'Close' button on 'Login' form =>")
         self.driver.find_element(*LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()
@@ -413,8 +372,8 @@ class SignupLogin(BasePage):
 
     @allure.step("Close new [Login] form")
     def close_new_login_form(self):
-        if not self.element_is_clickable(NewLoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM, 3):
-            print(f"{datetime.now()}   => 'Close' button on new 'Login' form not clickable after 3 sec.")
+        if not self.element_is_clickable(NewLoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM, 2):
+            print(f"{datetime.now()}   => 'Close' button on new 'Login' form not clickable after 2 sec.")
             return False
         print(f"{datetime.now()}   Click 'Close' button on new 'Login' form =>")
         self.driver.find_element(*NewLoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()

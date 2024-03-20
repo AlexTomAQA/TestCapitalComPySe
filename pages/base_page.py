@@ -16,8 +16,9 @@ from selenium.common.exceptions import (
 )
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.Capital.capital_locators import OnTrustLocators, Captcha
 
+from pages.Capital.capital_locators import OnTrustLocators, Captcha
+from pages.common import Common
 
 # from src.src import (
 #     CapitalComPageSrc,
@@ -435,7 +436,9 @@ class BasePage:
         print(f"{datetime.now()}   => Current page title: {el_title}")
         # Checks that the page title meets the requirements
         if title not in el_title:
-            pytest.fail(f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}")
+            Common.flag_of_bug = True
+            msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"
+            assert False, msg
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):

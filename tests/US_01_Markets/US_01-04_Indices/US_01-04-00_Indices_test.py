@@ -26,7 +26,7 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Market > Menu item [Indices]",
+            "01.04", "Markets > Menu item [Indices]",
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Indices CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
@@ -53,7 +53,7 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Market > Menu item [Indices]",
+            "01.04", "Markets > Menu item [Indices]",
             ".00_002", "Testing button [Sell] on table Widget 'Trading instrument'")
 
         Common().check_country_in_list_and_skip_if_present(cur_country,["gb"])
@@ -78,7 +78,7 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Market > Menu item [Indices]",
+            "01.04", "Markets > Menu item [Indices]",
             ".00_003", "Testing button [Buy] on table Widget 'Trading instrument'")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -103,7 +103,7 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.0", "Markets > Menu item [Indices]",
+            "01.04", "Markets > Menu item [Indices]",
             ".00_004", "Testing button [Create & verify your account] in block 'Steps trading'")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])

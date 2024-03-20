@@ -11,6 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import conf
+# from pages.common import flag_of_bug
+from pages.common import Common
 from src.src import CapitalComPageSrc
 from pages.base_page import BasePage
 from pages.Menu.menu import MenuSection
@@ -19,7 +21,8 @@ from pages.Header.header import Header
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.My_account.my_account import MyAccount
-from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+# from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import (
     # SignupFormLocators,
     LoginFormLocators,
@@ -28,7 +31,6 @@ from pages.Signup_login.signup_login_locators import (
 flag_cookies = False
 url_language = "?"
 url_country = "?"
-# host = CapitalComPageSrc.URL
 prev_country = "?"
 prev_language = "?"
 prev_role = "?"
@@ -57,14 +59,15 @@ class Conditions(BasePage):
         """
         global url_language
         global url_country
-        # global host
         global test_link
         global prev_role
         global prev_language
         global prev_country
+        # global flag_of_bug
 
         print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
-        if test_link == "?":
+        print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        if test_link == "?" or Common.flag_of_bug:
             test_link = host
             self.link = test_link
             self.open_page()
@@ -125,7 +128,7 @@ class Conditions(BasePage):
         print(f"\n{datetime.now()}   => Prev. language - '{language_prev}'")
         if language_cur == "":
             language_cur = "en"
-        if cur_language != prev_language:
+        if cur_language != prev_language or Common.flag_of_bug:
             print(f"{datetime.now()}   Set '{language_cur}' language =>")
             # page_menu = MenuSection(d, host)
             page_menu = MenuSection(d, self.driver.current_url)
@@ -201,13 +204,13 @@ class Conditions(BasePage):
         print(f"{datetime.now()}   -> Page with 'Trading Platform | Capital.com' title opened")
 
         platform_url = "https://capital.com/trading/platform/"
-        top_bar = TopBar(d, platform_url)
+        trading_platform = TradingPlatform(d, platform_url)
 
-        if top_bar.trading_platform_logo_is_present():
+        # if top_bar.trading_platform_logo_is_present():
+        if trading_platform.should_be_platform_logo():
             print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
         else:
             print(f'{datetime.now()}   -> "Capital.com" logo mission')
-        del top_bar
         d.back()
 
     @allure.step(f"{datetime.now()}   Start DeAuthorisation")
