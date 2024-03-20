@@ -108,10 +108,10 @@ jobs:
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-00_Indices_test.py
         continue-on-error: true
-#      - name: 8. Run US_01-04-01 (Мила)
-#        if: always()
-#        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py
-#        continue-on-error: true
+      - name: 8. Run US_01-04-01 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py
+        continue-on-error: true
 
       - name: 8. Run US_01-05-00 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
         if: always()
