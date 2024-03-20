@@ -1683,5 +1683,7 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .perform()
 
+        print(f"{datetime.now()}   => Focus moved to 'Shares' submenu and clicked")
+
         del sub_menu
         return d.current_url
