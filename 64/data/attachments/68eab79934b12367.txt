@@ -1,0 +1,57 @@
+2024-03-20 17:41:30 ERROR The elements are no longer attached to the DOM on page: https://capital.com/hu
+2024-03-20 17:41:30 ERROR stale element reference: stale element not found
+  (Session info: chrome=122.0.6261.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 343, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 364, in _predicate
+    element = visibility_of(target)(driver)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 173, in _predicate
+    return _element_if_visible(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 179, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 252, in is_displayed
+    return self.parent.execute_script(f"/* isDisplayed */return ({isDisplayed_js}).apply(null, arguments);", self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 407, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=122.0.6261.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+#0 0x55b589db4f33 <unknown>
+#1 0x55b589aacce6 <unknown>
+#2 0x55b589abcc25 <unknown>
+#3 0x55b589ab2a18 <unknown>
+#4 0x55b589ab2b41 <unknown>
+#5 0x55b589ab0e11 <unknown>
+#6 0x55b589ab4112 <unknown>
+#7 0x55b589b398a8 <unknown>
+#8 0x55b589b19eb2 <unknown>
+#9 0x55b589b38899 <unknown>
+#10 0x55b589b19c53 <unknown>
+#11 0x55b589aeadb3 <unknown>
+#12 0x55b589aeb77e <unknown>
+#13 0x55b589d7a86b <unknown>
+#14 0x55b589d7e885 <unknown>
+#15 0x55b589d68181 <unknown>
+#16 0x55b589d7f412 <unknown>
+#17 0x55b589d4c25f <unknown>
+#18 0x55b589da3528 <unknown>
+#19 0x55b589da3723 <unknown>
+#20 0x55b589db40e4 <unknown>
+#21 0x7fd37a294ac3 <unknown>
