@@ -103,7 +103,7 @@ class TestIndices:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.0", "Markets > Menu item [Indices]",
+            "01.04", "Markets > Menu item [Indices]",
             ".00_004", "Testing button [Create & verify your account] in block 'Steps trading'")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
