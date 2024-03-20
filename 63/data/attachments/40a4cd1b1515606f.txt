@@ -1,0 +1,131 @@
+Current country of trading - au
+{'width': 1280, 'height': 800}
+
+2024-03-20 13:12:41.692093   worker_id = master
+
+2024-03-20 13:12:41.692111   0. Allure grouping v4
+
+
+2024-03-20 13:12:41.692307   START PRECONDITIONS =>
+
+
+2024-03-20 13:12:41.692323   => flag_of_bug - True
+2024-03-20 13:12:41.692335   Current page URL = https://capital.com/ar/asear-alfurks-alan
+2024-03-20 13:12:42.850729   => Loaded page https://capital.com/
+
+2024-03-20 13:12:42.856745   => Windows size - {'width': 1280, 'height': 800}
+2024-03-20 13:12:42.858599   Set windows position at (0, 0) =>
+2024-03-20 13:12:42.964048   Set resolution 1280 * 800 =>
+2024-03-20 13:12:43.066275   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-20 13:12:44.096344   Капчи нет. Идем дальше
+
+2024-03-20 13:12:44.096445   Работа с куками
+
+2024-03-20 13:12:44.096463   => Prev. country - 'de'
+2024-03-20 13:12:44.096480   Set 'au' country =>
+2024-03-20 13:12:44.109113   => Language and Country menu is present
+2024-03-20 13:12:44.123623   => Language and Country menu is visible
+2024-03-20 13:12:45.404885   => Focus is moved on Language and Country menu 
+2024-03-20 13:12:47.957954   => Cur url = https://capital.com/?country=au
+2024-03-20 13:12:47.964635   => Country set to 'au'
+
+2024-03-20 13:12:47.964662   => Prev. language - 'ar'
+2024-03-20 13:12:47.964675   Set 'ar' language =>
+2024-03-20 13:12:47.975111   => Language and Country menu is present
+2024-03-20 13:12:47.988602   => Language and Country menu is visible
+2024-03-20 13:12:49.272126   => Focus is moved on Language and Country menu 
+2024-03-20 13:12:49.280686   Move focus on ar item and click =>
+2024-03-20 13:12:50.830145   => Focus moved on ar item and clicked
+2024-03-20 13:12:50.830195   => Cur url = https://capital.com/ar
+2024-03-20 13:12:50.839250   => Language is set to 'ar'
+
+2024-03-20 13:12:50.839280   => Prev. role - 'NoAuth'
+2024-03-20 13:12:50.839297   => The 'NoAuth' role is set
+
+2024-03-20 13:12:50.843450   => THE END PRECONDITIONS
+
+2024-03-20 13:12:50.843715   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-20 13:12:50.843737   1. Cur URL = https://capital.com/ar
+
+2024-03-20 13:12:50.862479   2. Link = https://capital.com/ar
+2024-03-20 13:12:51.377628   => 'Markets' menu is present
+2024-03-20 13:12:51.395665   element = <selenium.webdriver.remote.webelement.WebElement (session="e25f2619c20e57e2706ad31a2a32be09", element="f.4AF4FDA033C3CBA13C413F25B1D1778F.d.727A8E44F16C232C05E1A69874B5DAF1.e.3784")>
+2024-03-20 13:12:51.395698   => 'Markets' menu is visible
+2024-03-20 13:12:52.669959   => Focus moved to 'Markets' menu
+
+
+2024-03-20 13:12:54.110819   => 'Forex' sub-menu clicked
+
+2024-03-20 13:12:54.115559   3. Cur URL = https://capital.com/ar/asear-alfurks-alan
+
+2024-03-20 13:12:54.123060   1. Arrange_v0
+2024-03-20 13:12:54.133500   BUTTON_START_TRADING_NOW scroll =>
+2024-03-20 13:12:54.137046   BUTTON_START_TRADING_NOW is visible? =>
+2024-03-20 13:12:54.179647   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-20 13:12:54.179835   2. Act_v0
+2024-03-20 13:12:54.179851   Start Click button [Start Trading Now] =>
+2024-03-20 13:12:54.185550   BUTTON_START_TRADING_NOW is clickable? =>
+2024-03-20 13:12:54.198505   BUTTON_START_TRADING_NOW click =>
+2024-03-20 13:12:54.241108   => BUTTON_START_TRADING_NOW clicked
+
+2024-03-20 13:12:54.241408   3. Assert_Login_v0
+2024-03-20 13:12:54.241523   Check that 'Login' form is opened
+2024-03-20 13:12:57.293147   'Login' form not opened
+2024-03-20 13:12:57.293327   Check that new 'Login' form is opened
+2024-03-20 13:13:00.374932   => New 'Login' form not opened
+2024-03-20 13:13:00.377716   'Login' page not opened
+2024-03-20 13:13:03.440323   'Login' form on trading platform not opened
+2024-03-20 13:13:03.440526   Start step Check that [Sign up] form is opened
+2024-03-20 13:13:03.458206   'Sign up' form opened
+2024-03-20 13:13:03.458229   Assert SIGNUP_HEADER =>
+2024-03-20 13:13:03.474348   Assert SIGNUP_REF_LOGIN =>
+2024-03-20 13:13:03.490424   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-20 13:13:03.503594   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-20 13:13:03.503620   => 'Signup' form is checked
+
+Bug: Bid:01.03.00_001-ar.au.NoAuth
+
+2024-03-20 13:13:03.503691   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fd0e2e06ea0>
+
+2024-03-20 13:13:04.070276   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:04.409129   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:05.308853   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:05.467903   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:06.181697   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:06.562854   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:06.565613   Добавление новой строки =>
+
+2024-03-20 13:13:07.311589   => Новая строка добавлена
+
+2024-03-20 13:13:08.382814   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:08.549836   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:08.552782   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-20 13:13:09.004242   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:09.004491   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-20 13:13:09.339879   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:09.340073   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:09.504181   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:09.504385   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 13:13:09.825463   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 13:13:09.825542   Баг Bid:01.03.00_001-ar.au.NoAuth-05 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

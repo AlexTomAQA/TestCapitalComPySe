@@ -1,0 +1,101 @@
+Current country of trading - au
+{'width': 1280, 'height': 800}
+
+2024-03-20 14:40:02.869887   worker_id = master
+
+2024-03-20 14:40:02.869901   0. Allure grouping v4
+
+
+2024-03-20 14:40:02.870088   START PRECONDITIONS =>
+
+
+2024-03-20 14:40:02.870103   => flag_of_bug - True
+2024-03-20 14:40:02.870116   Current page URL = https://capital.com/ar/trade-forex
+2024-03-20 14:40:03.568126   => Loaded page https://capital.com/
+
+2024-03-20 14:40:03.572281   => Windows size - {'width': 1280, 'height': 800}
+2024-03-20 14:40:03.573575   Set windows position at (0, 0) =>
+2024-03-20 14:40:03.679458   Set resolution 1280 * 800 =>
+2024-03-20 14:40:03.781787   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-20 14:40:04.827344   Капчи нет. Идем дальше
+
+2024-03-20 14:40:04.827430   Работа с куками
+
+2024-03-20 14:40:04.827444   => Prev. country - 'de'
+2024-03-20 14:40:04.827454   Set 'au' country =>
+2024-03-20 14:40:04.834924   => Language and Country menu is present
+2024-03-20 14:40:04.848221   => Language and Country menu is visible
+2024-03-20 14:40:06.128482   => Focus is moved on Language and Country menu 
+2024-03-20 14:40:08.734212   => Cur url = https://capital.com/?country=au
+2024-03-20 14:40:08.741959   => Country set to 'au'
+
+2024-03-20 14:40:08.741984   => Prev. language - 'ar'
+2024-03-20 14:40:08.741995   Set 'ar' language =>
+2024-03-20 14:40:08.782765   => Language and Country menu is present
+2024-03-20 14:40:08.796985   => Language and Country menu is visible
+2024-03-20 14:40:10.080145   => Focus is moved on Language and Country menu 
+2024-03-20 14:40:10.086178   Move focus on ar item and click =>
+2024-03-20 14:40:12.254685   => Focus moved on ar item and clicked
+2024-03-20 14:40:12.254735   => Cur url = https://capital.com/ar
+2024-03-20 14:40:12.266151   => Language is set to 'ar'
+
+2024-03-20 14:40:12.266176   => Prev. role - 'NoAuth'
+2024-03-20 14:40:12.266187   => The 'NoAuth' role is set
+
+2024-03-20 14:40:12.268750   => THE END PRECONDITIONS
+
+2024-03-20 14:40:12.268944   1. Cur URL = https://capital.com/ar
+
+2024-03-20 14:40:12.271390   2. Link = https://capital.com/ar
+2024-03-20 14:40:12.784255   => Education menu is present in DOM
+2024-03-20 14:40:12.797367   element = <selenium.webdriver.remote.webelement.WebElement (session="60da393683e4617c45ecbcc435b68d0f", element="f.DC7A3613006A86F08258B074158125D2.d.94EF0AA7A8745583264225E3240B0DB7.e.1929")>
+2024-03-20 14:40:12.797403   => Education menu is visible
+2024-03-20 14:40:14.077019   => Focus moved to Education menu
+
+
+2024-03-20 14:40:15.809170   => Forex trading sub-menu clicked
+
+2024-03-20 14:40:15.818555   3. Cur URL = https://capital.com/ar/trade-forex
+
+2024-03-20 14:40:15.826639   1. Arrange_v0
+2024-03-20 14:40:15.836853   BUTTON_START_TRADING scroll =>
+2024-03-20 14:40:15.840057   BUTTON_START_TRADING is visible? =>
+2024-03-20 14:40:15.871188   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-20 14:40:15.871360   2. Act_v0
+2024-03-20 14:40:15.871375   Start Click button [Start Trading] =>
+2024-03-20 14:40:15.877708   BUTTON_START_TRADING is clickable? =>
+2024-03-20 14:40:15.888806   BUTTON_START_TRADING click =>
+2024-03-20 14:40:15.928934   => BUTTON_START_TRADING clicked
+
+2024-03-20 14:40:15.929241   3. Assert_Login_v0
+2024-03-20 14:40:15.929353   Check that 'Login' form is opened
+2024-03-20 14:40:19.020740   'Login' form not opened
+2024-03-20 14:40:19.020921   Check that new 'Login' form is opened
+2024-03-20 14:40:22.107440   => New 'Login' form not opened
+2024-03-20 14:40:22.110315   'Login' page not opened
+2024-03-20 14:40:25.194112   'Login' form on trading platform not opened
+2024-03-20 14:40:25.194314   Start step Check that [Sign up] form is opened
+2024-03-20 14:40:25.209330   'Sign up' form opened
+2024-03-20 14:40:25.209361   Assert SIGNUP_HEADER =>
+2024-03-20 14:40:25.225181   Assert SIGNUP_REF_LOGIN =>
+2024-03-20 14:40:25.239305   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-20 14:40:25.253202   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-20 14:40:25.253238   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.00_01-ar.au.NoAuth
+
+2024-03-20 14:40:25.253301   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f84636de7b0>
+
+2024-03-20 14:40:25.728480   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 14:40:26.075607   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 14:40:26.996816   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 14:40:27.155844   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 14:40:27.156958   Баг Bid:11.02.04.00_01-ar.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

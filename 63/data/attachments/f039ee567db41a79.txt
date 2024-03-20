@@ -1,0 +1,32 @@
+2024-03-20 13:53:55 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ar/cotton-no-2-spot-commodity
+2024-03-20 13:53:55 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 303, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x56245de28f33 <unknown>
+#1 0x56245db20ce6 <unknown>
+#2 0x56245db6be48 <unknown>
+#3 0x56245db6bf01 <unknown>
+#4 0x56245dbaf3f4 <unknown>
+#5 0x56245db8dedd <unknown>
+#6 0x56245dbac899 <unknown>
+#7 0x56245db8dc53 <unknown>
+#8 0x56245db5edb3 <unknown>
+#9 0x56245db5f77e <unknown>
+#10 0x56245ddee86b <unknown>
+#11 0x56245ddf2885 <unknown>
+#12 0x56245dddc181 <unknown>
+#13 0x56245ddf3412 <unknown>
+#14 0x56245ddc025f <unknown>
+#15 0x56245de17528 <unknown>
+#16 0x56245de17723 <unknown>
+#17 0x56245de280e4 <unknown>
+#18 0x7f3b13494ac3 <unknown>
