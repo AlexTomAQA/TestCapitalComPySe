@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-03-20 07:26:10.627434   worker_id = master
+
+2024-03-20 07:26:10.627451   0. Allure grouping v4
+
+
+2024-03-20 07:26:10.627653   START PRECONDITIONS =>
+
+
+2024-03-20 07:26:10.627669   => flag_of_bug - True
+2024-03-20 07:26:10.627681   Current page URL = https://capital.com/trade-usdcad
+2024-03-20 07:26:11.387190   => Loaded page https://capital.com/
+
+2024-03-20 07:26:11.389937   => Windows size - {'width': 1280, 'height': 800}
+2024-03-20 07:26:11.391424   Set windows position at (0, 0) =>
+2024-03-20 07:26:11.493725   Set resolution 1280 * 800 =>
+2024-03-20 07:26:11.596551   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-20 07:26:12.643130   Капчи нет. Идем дальше
+
+2024-03-20 07:26:12.643224   Работа с куками
+
+2024-03-20 07:26:12.643238   => Prev. country - 'au'
+2024-03-20 07:26:12.643247   => Country set to 'au'
+
+2024-03-20 07:26:12.643257   => Prev. language - 'en'
+2024-03-20 07:26:12.643267   Set 'en' language =>
+2024-03-20 07:26:12.651106   => Language and Country menu is present
+2024-03-20 07:26:12.661453   => Language and Country menu is visible
+2024-03-20 07:26:13.933919   => Focus is moved on Language and Country menu 
+2024-03-20 07:26:13.939910   Move focus on en item and click =>
+2024-03-20 07:26:15.377405   => Focus moved on en item and clicked
+2024-03-20 07:26:15.377450   => Cur url = https://capital.com/
+2024-03-20 07:26:15.417726   => Language is set to 'en'
+
+2024-03-20 07:26:15.417766   => Prev. role - 'NoAuth'
+2024-03-20 07:26:15.417777   => The 'NoAuth' role is set
+
+2024-03-20 07:26:15.420214   => THE END PRECONDITIONS
+
+2024-03-20 07:26:15.420417   1. Arrange_v3
+2024-03-20 07:26:15.422721   Current page URL = https://capital.com/
+2024-03-20 07:26:16.158649   => Loaded page https://capital.com/trade-usdcad
+2024-03-20 07:26:16.161174   Is visible BUTTON_START_TRADING_IN_ARTICLE? =>
+2024-03-20 07:26:16.161188   => BUTTON_START_TRADING_IN_ARTICLE =>
+
+2024-03-20 07:26:16.173309   2. Act_v3
+2024-03-20 07:26:16.173349   Start Click button BUTTON_START_TRADING_IN_ARTICLE =>
+2024-03-20 07:26:16.252624   => BUTTON_START_TRADING_IN_ARTICLE is clicked
+
+2024-03-20 07:26:16.252858   3. Assert_Login_v0
+2024-03-20 07:26:16.252942   Check that 'Login' form is opened
+2024-03-20 07:26:19.349432   'Login' form not opened
+2024-03-20 07:26:19.349615   Check that new 'Login' form is opened
+2024-03-20 07:26:22.374077   => New 'Login' form not opened
+2024-03-20 07:26:22.377009   'Login' page not opened
+2024-03-20 07:26:25.452172   'Login' form on trading platform not opened
+2024-03-20 07:26:25.452370   Start step Check that [Sign up] form is opened
+2024-03-20 07:26:25.464641   'Sign up' form opened
+2024-03-20 07:26:25.464681   Assert SIGNUP_HEADER =>
+2024-03-20 07:26:25.475896   Assert SIGNUP_REF_LOGIN =>
+2024-03-20 07:26:25.487316   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-20 07:26:25.498492   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-20 07:26:25.498530   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_03-en.au.NoAuth
+
+2024-03-20 07:26:25.498594   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7748052b6810>
+
+2024-03-20 07:26:25.806575   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 07:26:26.003879   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 07:26:27.194095   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 07:26:27.406664   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 07:26:27.407811   Баг Bid:11.02.04.01_03-en.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

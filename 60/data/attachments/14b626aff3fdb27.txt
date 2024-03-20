@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-20 07:38:06.925189   worker_id = master
+
+2024-03-20 07:38:06.925206   0. Allure grouping v4
+
+
+2024-03-20 07:38:06.925425   START PRECONDITIONS =>
+
+
+2024-03-20 07:38:06.925441   => flag_of_bug - True
+2024-03-20 07:38:06.925454   Current page URL = https://capital.com/trade-neo
+2024-03-20 07:38:07.717500   => Loaded page https://capital.com/
+
+2024-03-20 07:38:07.741745   => Windows size - {'width': 1280, 'height': 800}
+2024-03-20 07:38:07.743204   Set windows position at (0, 0) =>
+2024-03-20 07:38:07.845494   Set resolution 1280 * 800 =>
+2024-03-20 07:38:07.947862   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-20 07:38:08.980492   Капчи нет. Идем дальше
+
+2024-03-20 07:38:08.980587   Работа с куками
+
+2024-03-20 07:38:08.980601   => Prev. country - 'au'
+2024-03-20 07:38:08.980611   => Country set to 'au'
+
+2024-03-20 07:38:08.980620   => Prev. language - 'en'
+2024-03-20 07:38:08.980630   Set 'en' language =>
+2024-03-20 07:38:08.988245   => Language and Country menu is present
+2024-03-20 07:38:08.998681   => Language and Country menu is visible
+2024-03-20 07:38:10.272251   => Focus is moved on Language and Country menu 
+2024-03-20 07:38:10.278027   Move focus on en item and click =>
+2024-03-20 07:38:11.695282   => Focus moved on en item and clicked
+2024-03-20 07:38:11.695332   => Cur url = https://capital.com/
+2024-03-20 07:38:11.731342   => Language is set to 'en'
+
+2024-03-20 07:38:11.731383   => Prev. role - 'NoAuth'
+2024-03-20 07:38:11.731394   => The 'NoAuth' role is set
+
+2024-03-20 07:38:11.734535   => THE END PRECONDITIONS
+
+2024-03-20 07:38:11.734613   1. Arrange_v0
+2024-03-20 07:38:11.739185   Current page URL = https://capital.com/
+2024-03-20 07:38:12.575343   => Loaded page https://capital.com/trade-neo
+2024-03-20 07:38:12.589291   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-20 07:38:12.589324   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-20 07:38:12.589335   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-20 07:38:12.592478   => 'Sell' button in Content block scrolled
+2024-03-20 07:38:12.592652   Start Checking that form [Sign up] popped up on the page =>
+2024-03-20 07:38:14.115539   '[Sign up]' form was not popped up
+
+2024-03-20 07:38:14.115740   2. Act_v0
+2024-03-20 07:38:14.160038   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-20 07:38:14.160080   => return trade_instrument = 15854807348761796
+
+2024-03-20 07:38:14.160311   3. Assert_Login_v0
+2024-03-20 07:38:14.160395   Check that 'Login' form is opened
+2024-03-20 07:38:17.248732   'Login' form not opened
+2024-03-20 07:38:17.248940   Check that new 'Login' form is opened
+2024-03-20 07:38:20.293651   => New 'Login' form not opened
+2024-03-20 07:38:20.296380   'Login' page not opened
+2024-03-20 07:38:23.409314   'Login' form on trading platform not opened
+2024-03-20 07:38:23.409521   Start step Check that [Sign up] form is opened
+2024-03-20 07:38:23.423230   'Sign up' form opened
+2024-03-20 07:38:23.423260   Assert SIGNUP_HEADER =>
+2024-03-20 07:38:23.440685   Assert SIGNUP_REF_LOGIN =>
+2024-03-20 07:38:23.457828   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-20 07:38:23.473262   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-20 07:38:23.473294   => 'Signup' form is checked
+
+Bug: Bid:11.02.05.01_04-en.au.NoAuth
+
+2024-03-20 07:38:23.473361   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7a2e92fddb80>
+
+2024-03-20 07:38:23.765520   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 07:38:23.955486   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 07:38:25.134532   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-20 07:38:25.337105   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-20 07:38:25.338613   Баг Bid:11.02.05.01_04-en.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
