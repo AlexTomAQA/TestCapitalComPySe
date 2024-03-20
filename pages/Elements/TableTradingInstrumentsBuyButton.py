@@ -79,19 +79,19 @@ class TableTradingInstrumentsBuyButton(BasePage):
         field_dropdown_list[0].click()
 
         match cur_sort:
-            case 'most_traded':
+            case 'Most traded':
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED   # элемент в списке
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_TRADED  # элемент сортировки
 
-            case 'top_risers':
+            case 'Top risers':
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_TOP_RISERS
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_TOP_RISERS
 
-            case 'top_fallers':
+            case 'Top fallers':
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_TOP_FALLERS
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_TOP_FALLERS
 
-            case 'most_volatile':
+            case 'Most volatile':
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_VOLATILE
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_VOLATILE
 
