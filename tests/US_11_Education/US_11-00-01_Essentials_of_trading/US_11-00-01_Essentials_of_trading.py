@@ -130,7 +130,7 @@ class TestEssentialsTrading:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "11.00.01", "Essentials of trading",
+            "11.00.01", "Learn to trade > Menu item [Essentials of trading]",
             ".00_105", "Testing button [1. Create your account] in block 'Ready to join a leading broker?'")
 
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
