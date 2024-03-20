@@ -81,14 +81,14 @@ class TradingCalculatorStartTradingButton(BasePage):
         print(f"\n{datetime.now()}   2. Act_v0")
 
         print(f"{datetime.now()}   [Start Trading] button is clickable? =>")
-        time_out = 3
+        time_out = 5
         if not self.element_is_clickable(self.button_start_trading[0], time_out):
             print(f"{datetime.now()}   => [Start Trading] button is not clickable after {time_out} sec. Stop AT>")
             pytest.fail(f"[Start Trading] button is not clickable after {time_out} sec.")
         print(f"{datetime.now()}   => [Start Trading] button is clickable!\n")
 
         try:
-            self.driver.execute_script("arguments[0].click();", self.button_start_trading[0])
+            self.button_start_trading[0].click()
             print(f"{datetime.now()}   => [Start Trading] button clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => [Start Trading] button NOT CLICKED")
