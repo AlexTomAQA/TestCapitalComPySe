@@ -275,3 +275,7 @@ class TradingInstrumentsBlockLocators:
 
 class PageTradingInstrumentMarketsLocators:
     BUTTON_VIEW_DETAILED_CHART =(By.CSS_SELECTOR, "a[data-type='detailed_chart']")
+    TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div.toolInfo")
+    TOOLTIP_SHORT_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div >div.cc-tooltip")
+    BUTTON_GO_TO_PLATFORM = (By.CSS_SELECTOR,
+                             "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
