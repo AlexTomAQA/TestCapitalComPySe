@@ -93,6 +93,7 @@ class CoursesPage:
 class SubPages:
     SUB_PAGES_LIST = (By.CSS_SELECTOR, "div.side-nav__wrap > div.side-nav > a")
     SUB_PAGES_MARKETS_FOREX_LIST = (By.CSS_SELECTOR, "tr.trlink.js-trlink > td > p > a")
+    SUB_PAGES_MARKETS_TABLE_INSTRUMENTS_LIST = (By.CSS_SELECTOR, "div.table-instruments  td > p > a")
 
 
 class BlockBuildYourSkills:
