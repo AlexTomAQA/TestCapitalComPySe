@@ -244,6 +244,7 @@ class TableTradingInstrumentsLocators:
     BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")  # название инструментов
     ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
+    BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, " ")
 
 
 class FieldDropdownMarketsLocator:
