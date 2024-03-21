@@ -1,6 +1,8 @@
 import pytest
 import allure
 
+from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentViewDetailedChartButton
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDAddToFavouriteButton import TradeCFDAddToFavoriteButton
 from pages.Menu.menu import MenuSection
 from pages.common import Common
@@ -44,9 +46,50 @@ class TestCommodities:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        # page_menu = MenuSection(d, link)
-        # page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        # cur_page_url = page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
-
         test_element = TradeCFDAddToFavoriteButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [View Detailed Chart] on trading instrument page'")
+    @pytest.mark.test_002
+    def test_002_page_trading_instrument_view_detailed_chart_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [View Detailed Chart] on trading instrument page
+        Language: All. License: All (except FCA).
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.05", "Markets > Menu item [Commodities]",
+            ".01_002", "Testing button [View Detailed Chart] on trading instrument page")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = PageInstrumentViewDetailedChartButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [1. Create & verify your account] in Step trading block")
+    @pytest.mark.test_011
+    def test_011_block_step_trading_create_verify_your_account(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [1. Create & verify account]
+        Language: All. License: All, except FCA. Role: All.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.05", "Markets > Menu item [Commodities]",
+            ".01_011", "Testing button [1. Create your account] in Step trading block")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BlockStepTrading(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
