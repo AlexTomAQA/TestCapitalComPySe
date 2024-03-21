@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-21 13:18:40.532701   worker_id = master
+
+2024-03-21 13:18:40.532718   0. Allure grouping v4
+
+
+2024-03-21 13:18:40.532912   START PRECONDITIONS =>
+
+
+2024-03-21 13:18:40.532928   => flag_of_bug - True
+2024-03-21 13:18:40.532940   Current page URL = https://capital.com/ru/togrovlya-amazon-amzn-cfd
+2024-03-21 13:18:41.342208   => Loaded page https://capital.com/
+
+2024-03-21 13:18:41.344658   => Windows size - {'width': 1280, 'height': 800}
+2024-03-21 13:18:41.345896   Set windows position at (0, 0) =>
+2024-03-21 13:18:41.448017   Set resolution 1280 * 800 =>
+2024-03-21 13:18:41.550587   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-21 13:18:42.575572   Капчи нет. Идем дальше
+
+2024-03-21 13:18:42.575676   Работа с куками
+
+2024-03-21 13:18:42.575698   => Prev. country - 'au'
+2024-03-21 13:18:42.575726   => Country set to 'au'
+
+2024-03-21 13:18:42.575743   => Prev. language - 'ru'
+2024-03-21 13:18:42.575754   Set 'ru' language =>
+2024-03-21 13:18:42.583624   => Language and Country menu is present
+2024-03-21 13:18:42.596083   => Language and Country menu is visible
+2024-03-21 13:18:43.873175   => Focus is moved on Language and Country menu 
+2024-03-21 13:18:43.879023   Move focus on ru item and click =>
+2024-03-21 13:18:45.666195   => Focus moved on ru item and clicked
+2024-03-21 13:18:45.666245   => Cur url = https://capital.com/ru
+2024-03-21 13:18:45.706489   => Language is set to 'ru'
+
+2024-03-21 13:18:45.706526   => Prev. role - 'Auth'
+2024-03-21 13:18:45.706537   => The 'Auth' role is set
+
+2024-03-21 13:18:45.709043   => THE END PRECONDITIONS
+
+2024-03-21 13:18:45.709096   1. Arrange_v0
+2024-03-21 13:18:45.711535   Current page URL = https://capital.com/ru
+2024-03-21 13:18:46.716874   => Loaded page https://capital.com/ru/togrovlya-amazon-amzn-cfd
+2024-03-21 13:18:46.732190   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-21 13:18:46.732219   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-21 13:18:46.732229   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-21 13:18:46.735490   => 'Sell' button in Content block scrolled
+2024-03-21 13:18:46.735675   Start Checking that form [Sign up] popped up on the page =>
+2024-03-21 13:18:48.271531   '[Sign up]' form was not popped up
+
+2024-03-21 13:18:48.271718   2. Act_v0
+2024-03-21 13:18:48.507653   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-21 13:18:48.507717   => return trade_instrument = 1361805280629956
+
+2024-03-21 13:18:48.508026   3. Assert_v4
+2024-03-21 13:18:48.508226   Checking that the trading platform page has opened (v4) =>
+2024-03-21 13:18:49.020233   Checking way # 1 => 
+2024-03-21 13:18:49.022946   => Current page title: Trading Platform | Capital.com
+2024-03-21 13:18:49.023071   Checking that the Trading platform LOGO is present on the page =>
+2024-03-21 13:18:49.821377   => Trading platform LOGO is present on the page
+2024-03-21 13:18:49.821456   tpd = False
+2024-03-21 13:18:49.821601   Checking that the Trading platform opened in LIVE mode =>
+2024-03-21 13:18:49.844561   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-21 13:18:49.847859   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument '1361805280629956' select
+2024-03-21 13:18:49.852390   => Trading Instrument is the '1361805280629956'
+2024-03-21 13:18:49.852417   => Trading Instrument Name is the '1361805280629956'
+2024-03-21 13:18:50.854236   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_03-ru.au.Auth
+
+2024-03-21 13:18:50.854283   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fddd87c5df0>
+
+2024-03-21 13:18:51.166860   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-21 13:18:51.359025   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-21 13:18:52.396118   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-21 13:18:52.565037   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-21 13:18:52.566555   Баг Bid:11.02.02.01_03-ru.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
