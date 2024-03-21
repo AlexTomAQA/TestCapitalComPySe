@@ -129,6 +129,8 @@ def cur_language(request):
         # "gb",
         "de",  # Germany  - "CYSEC"
         # "au",  # Australia - "ASIC"
+        # "de",  # Germany  - "CYSEC"
+        "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"

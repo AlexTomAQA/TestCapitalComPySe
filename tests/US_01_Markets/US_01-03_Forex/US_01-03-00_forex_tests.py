@@ -146,6 +146,6 @@ class TestForex:
         file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.text"
         list_items = d.find_elements(*SubPages.SUB_PAGES_MARKETS_FOREX_LIST)
 
-        Common().creating_file_of_hrefs("Forex trading instrument", list_items, file_name)
+        Common().creating_file_of_hrefs("Forex trading instrument", list_items, file_name, 1)
 
         count -= 1
