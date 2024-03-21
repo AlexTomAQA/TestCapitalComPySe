@@ -268,6 +268,7 @@ class TradeCFDLocators:
     LONG_POSITION = (By.CSS_SELECTOR, "tr:nth-child(2) > td:nth-child(1) > div")
     SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
+    BUY_BUTTON = (By.CSS_SELECTOR, "[data-type='market_buy']")
 
 
 class TradingInstrumentsBlockLocators:
@@ -276,3 +277,7 @@ class TradingInstrumentsBlockLocators:
 
 class PageTradingInstrumentMarketsLocators:
     BUTTON_VIEW_DETAILED_CHART =(By.CSS_SELECTOR, "a[data-type='detailed_chart']")
+    TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div.toolInfo")
+    TOOLTIP_SHORT_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div >div.cc-tooltip")
+    BUTTON_GO_TO_PLATFORM = (By.CSS_SELECTOR,
+                             "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")

@@ -5,10 +5,11 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
+from selenium.webdriver import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class PageInstrumentViewDetailedChartButton(BasePage):
+class PageInstrumentShortPositionGoToPlatformButton(BasePage):
     @allure.step(f"{datetime.now()}   Start test for ViewDetailedChartButton of the trading instrument page")
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
@@ -35,39 +36,61 @@ class PageInstrumentViewDetailedChartButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_VIEW_DETAILED_CHART)
-        print(f"{datetime.now()}   Is button BUTTON_VIEW_DETAILED_CHART present on the page? =>")
-        if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_VIEW_DETAILED_CHART is not present on the page")
-            return False
-        print(f"{datetime.now()}   => BUTTON_VIEW_DETAILED_CHART is present on the page")
+        print(f"{datetime.now()} Is TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE present on the page? =>")
+        toolinfo = self.driver.find_element(PageTradingInstrumentMarketsLocators.TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
+        if len(toolinfo) == 0:
+            print(f"{datetime.now()}   => TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
+            pytest.fail("Bug ? TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
 
-        print(f"{datetime.now()}   BUTTON_VIEW_DETAILED_CHART scroll =>")
+        ActionChains(d) \
+            .move_to_element(toolinfo[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   Is TOOLTIP_SHORT_POSITION_FEE open?  =>")
+        tooltip = self.element_is_visible(PageTradingInstrumentMarketsLocators.TOOLTIP_SHORT_POSITION_FEE)
+        if tooltip == 0:
+            print(f"{datetime.now()}   => TOOLTIP_SHORT_POSITION_FEE is not open")
+            pytest.fail("TOOLTIP_SHORT_POSITION_FEE is not open")
+
+        ActionChains(d) \
+            .move_to_element(tooltip) \
+            .pause(0.5) \
+            .perform()
+
+        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
+        print(f"{datetime.now()}   Is button BUTTON_GO_TO_PLATFORM present on the page? =>")
+        if len(button_list) == 0:
+            print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is not present on the page")
+            return False
+        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is present on the page")
+
+        print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
-        print(f"{datetime.now()}   => BUTTON_VIEW_DETAILED_CHART scrolled")
+        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM scrolled")
 
-    @allure.step("Click button [View Detailed Chart] on the page content")
+    @allure.step("Click button [Go to platform] on the page content")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   Start Click button [View Detailed Chart] =>")
+        print(f"{datetime.now()}   Start Click button [Go to platform] =>")
 
-        button_list = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_VIEW_DETAILED_CHART)
+        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
 
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
-            print(f"{datetime.now()} => BUTTON_VIEW_DETAILED_CHART is not clickable after {time_out} sec. Stop TC>")
-            pytest.fail(f"BUTTON_VIEW_DETAILED_CHART is not clickable after {time_out} sec.")
+            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM is not clickable after {time_out} sec. Stop TC>")
+            pytest.fail(f"BUTTON_GO_TO_PLATFORM is not clickable after {time_out} sec.")
 
-        print(f"{datetime.now()}   BUTTON_VIEW_DETAILED_CHART is clickable =>")
+        print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM is clickable =>")
 
         try:
             button_list[0].click()
-            print(f"{datetime.now()} => BUTTON_VIEW_DETAILED_CHART clicked")
+            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM clicked")
         except ElementClickInterceptedException:
-            print(f"{datetime.now()} => BUTTON_VIEW_DETAILED_CHART not clicked")
+            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM not clicked")
             print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
             page_ = SignupLogin(self.driver)
