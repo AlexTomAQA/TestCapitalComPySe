@@ -82,6 +82,8 @@ class TradingCalculatorStartTradingButton(BasePage):
 
         print(f"{datetime.now()}   [Start Trading] button is clickable? =>")
         time_out = 5
+        self.button_start_trading = self.driver.find_elements(
+            *ButtonsOnPageLocators.BUTTON_START_TRADING_IN_TRADING_CALCULATOR)
         if not self.element_is_clickable(self.button_start_trading[0], time_out):
             print(f"{datetime.now()}   => [Start Trading] button is not clickable after {time_out} sec. Stop AT>")
             pytest.fail(f"[Start Trading] button is not clickable after {time_out} sec.")

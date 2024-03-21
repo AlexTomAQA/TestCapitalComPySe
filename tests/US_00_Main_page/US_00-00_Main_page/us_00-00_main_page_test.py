@@ -296,7 +296,7 @@ class TestMainPage:
             d, worker_id, cur_language, cur_country, cur_role,
             "00", "Main Page",
             ".00_015", "Testing button [Start Trading] in Widget 'Trading calculator' Main Page",
-            False, True
+            False, False
         )
 
         Common().check_language_in_list_and_skip_if_not_present(
