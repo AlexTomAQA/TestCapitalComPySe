@@ -32,7 +32,6 @@ def check_cur_href(cur_item_link, list_href):
 
 @pytest.mark.us_01_04_01
 class TestIndicesItemPage:
-
     page_conditions = None
 
     @allure.step("Start test of button [View Detailed Chart] on trading instrument page'")
