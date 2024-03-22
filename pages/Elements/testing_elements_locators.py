@@ -282,3 +282,9 @@ class PageTradingInstrumentMarketsLocators:
     TOOLTIP_SHORT_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div >div.cc-tooltip")
     BUTTON_GO_TO_PLATFORM = (By.CSS_SELECTOR,
                              "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
+    TOOLINFO_LONG_POSITION_OVERNIGHT_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(2) > td:nth-child(1) > div.toolInfo")
+    TOOLTIP_LONG_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(2) > td:nth-child(1) > div >div.cc-tooltip")
+    BUTTON_GO_TO_PLATFORM_LG = (By.CSS_SELECTOR,
+                                "tbody > tr:nth-child(2) > td:nth-child(1) > div > div > a[href='trading/platform']")
+
+
