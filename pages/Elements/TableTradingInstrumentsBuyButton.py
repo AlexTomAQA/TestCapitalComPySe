@@ -8,6 +8,7 @@ from pages.Elements.testing_elements_locators import (TableTradingInstrumentsLoc
                                                       ItemSortDropdownLocators)
 from pages.Elements.AssertClass import AssertClass
 from selenium.webdriver import ActionChains
+from selenium.common.exceptions import ElementClickInterceptedException
 
 COUNT_OF_RUNS = 2
 
@@ -45,7 +46,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(
-                        self.driver, cur_item_link, False,  True, self.trade_instrument)
+                        self.driver, cur_item_link, False, True, self.trade_instrument)
             self.driver.get(cur_item_link)
 
     def arrange_(self, d, cur_item_link, cur_sort):
@@ -56,7 +57,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   IS TABLE_TRADING_INSTRUMENTS  present on the page? =>")
+        print(f"{datetime.now()}   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>")
         table_list = self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)
         if len(table_list) == 0:
             print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is NOT present on the page!\n")
@@ -64,23 +65,40 @@ class TableTradingInstrumentsBuyButton(BasePage):
 
         print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is present on the page!")
 
-        print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>")
+        print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the table? =>")
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         if len(field_dropdown_list) == 0:
-            pytest.fail("Bug # ? FIELD_DROPDOWN_SORT is not present in Live table!")
+            pytest.fail("Bug # ? FIELD_DROPDOWN_SORT is not present in the table!")
 
-        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!")
+        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the table!")
 
         print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            field_dropdown_list[0]
-        )
-        field_dropdown_list[0].click()
+
+        try:
+            ActionChains(d) \
+                .scroll_to_element(field_dropdown_list[0]) \
+                .pause(0.5) \
+                .click(field_dropdown_list[0]) \
+                .perform()
+        except ElementClickInterceptedException:
+            check_popup = SignupLogin(self.driver, self.link)
+            check_popup.check_popup_signup_form()
+            ActionChains(self.driver) \
+                .scroll_to_element(field_dropdown_list[0]) \
+                .pause(0.5) \
+                .click(field_dropdown_list[0]) \
+                .perform()
+            del check_popup
+
+        #        self.driver.execute_script(
+        #            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #            field_dropdown_list[0]
+        #        )
+        #        field_dropdown_list[0].click()
 
         match cur_sort:
             case 'Most traded':
-                self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED   # элемент в списке
+                self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_TRADED  # элемент в списке
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_TRADED  # элемент сортировки
 
             case 'Top risers':
@@ -101,19 +119,37 @@ class TableTradingInstrumentsBuyButton(BasePage):
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
 
         item_sort_list = self.element_is_visible(ItemSortDropdownLocators.ALL_ITEM_DROPDOWN_SORT)
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            item_sort_list
-        )
 
+        try:
+            ActionChains(d) \
+                .scroll_to_element(item_sort_list) \
+                .pause(0.5) \
+                .perform()
+        except ElementClickInterceptedException:
+            check_popup = SignupLogin(self.driver, self.link)
+            check_popup.check_popup_signup_form()
+            ActionChains(d) \
+                .scroll_to_element(item_sort_list) \
+                .pause(0.5) \
+                .perform()
+            del check_popup
         if not item_sort_list:
+            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not visible in item_sort_list?")
             pytest.fail("Bug ? item_sort_list is not visible")
+
+        #        self.driver.execute_script(
+        #            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #            item_sort_list
+        #        )
+
+        #        if not item_sort_list:
+        #            pytest.fail("Bug ? item_sort_list is not visible")
         print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
         print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in item_sort_list? =>")
         if not self.driver.find_element(*self.item_sort):
             print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in item_sort_list!")
-            pytest.fail(f"Bug ? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
+            pytest.fail("Bug ? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
         print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in item_sort_list!")
         print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
 
@@ -156,5 +192,9 @@ class TableTradingInstrumentsBuyButton(BasePage):
         # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
         self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
-        button.click()
+        ActionChains(d) \
+            .click(button) \
+            .pause(0.5) \
+            .perform()
+        #        button.click()
         print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked!\n")
