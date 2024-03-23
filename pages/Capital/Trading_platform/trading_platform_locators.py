@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class MenuSideBar:
+    MENU_CHARTS = (By.CSS_SELECTOR, '[data-qa="charts"]')
+
+
 class TradingPlatformSignupFormLocators:
     SIGNUP_FRAME = (By.CSS_SELECTOR, "signup-popup")
     LOGIN_FRAME = (By.CSS_SELECTOR, "login-popup")
@@ -19,6 +23,7 @@ class TopBarLocators:
 
 class TradingInstruments:
     CLOSE_ALL_BUTTON = (By.CSS_SELECTOR, ".visible .ghost")
+    BUTTON_CLOSE_ALL = (By.CSS_SELECTOR, ".spotlight > div > button")
     SELECTED_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".active.selected.state-item-button")
     LIST_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".state-item-button div")
 
