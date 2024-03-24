@@ -12,6 +12,7 @@ from datetime import datetime
 from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Header.header_locators import HeaderElementLocators
 from pages.Signup_login.signup_login_locators import (
     SignupFormLocators,
@@ -305,15 +306,10 @@ class SignupLogin(BasePage):
         print(f"{datetime.now()}   => 'Signup' form closed")
 
         # перемещаем указатель мыши на логотип CAPITAL
-        elements = self.driver.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
-        ActionChains(self.driver) \
-            .move_to_element(elements[0]) \
-            .perform()
-
+        Common().move_pointer_to_capital_com_label(self.driver)
         return True
 
-    allure.step("Close form [Sign up]")
-
+    @allure.step("Close form [Sign up]")
     def close_new_signup_form(self):
         """Method Close new [Sign up] form"""
         print(f"{datetime.now()}   Start step Close new [Sign up] form =>")
@@ -367,6 +363,7 @@ class SignupLogin(BasePage):
             return False
         print(f"{datetime.now()}   Click 'Close' button on 'Login' form =>")
         self.driver.find_element(*LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()
+        Common().move_pointer_to_capital_com_label(self.driver)
         print(f"{datetime.now()}   => 'Login' form closed")
         return True
 

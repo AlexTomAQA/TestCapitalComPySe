@@ -55,8 +55,11 @@ class MainBannerStartTrading(BasePage):
         print(f"\n{datetime.now()}   1. Arrange_v0")
 
         if not self.current_page_is(cur_item_link):
+            print(f"{datetime.now()}   => current_url != cur_item_link")
             self.link = cur_item_link
             self.open_page()
+        else:
+            print(f"{datetime.now()}   => current_url == cur_item_link")
 
         button_list = self.driver.find_elements(*MainBannerLocators.BUTTON_START_TRADING)
         if len(button_list) == 0:
