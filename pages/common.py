@@ -177,3 +177,8 @@ class Common:
 		ActionChains(wd) \
 			.move_to_element(elements[0]) \
 			.perform()
+
+	@staticmethod
+	def pytest_fail(msg):
+		Common.flag_of_bug = True
+		pytest.fail(msg)

@@ -12,11 +12,12 @@ import allure
 
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Elements.testing_elements_locators import ButtonSellOnTableTradingInstrumentsLocators, \
     ItemSortDropdownLocators, TableTradingInstrumentsLocators, FieldDropdownMarketsLocator
 from pages.Elements.AssertClass import AssertClass
 
-COUNT_OF_RUNS = 2
+COUNT_OF_RUNS = 1
 
 
 class TableTradingInstrumentsSellButton(BasePage):
@@ -39,7 +40,8 @@ class TableTradingInstrumentsSellButton(BasePage):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   item_list = {item_list}")
 
-        check_popup = SignupLogin(d, cur_item_link, cur_sort)
+        # ??? check_popup = SignupLogin(d, cur_item_link, cur_sort)
+        check_popup = SignupLogin(d, cur_item_link)
         check_popup.check_popup_signup_form()
         del check_popup
 
@@ -68,14 +70,14 @@ class TableTradingInstrumentsSellButton(BasePage):
         table_list = self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)
         if len(table_list) == 0:
             print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is NOT present on this page\n")
-            pytest.fail(f" Bug ? Checking element is not on this page")
+            Common().pytest_fail("Bug # ??? Testing element is not on this page")
 
         print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is present on the page!")
 
         print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>")
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         if len(field_dropdown_list) == 0:
-            pytest.fail("Bug # ? FIELD_DROPDOWN_SORT is not present in Live table!")
+            Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in Live table")
 
         print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!")
 
@@ -115,13 +117,13 @@ class TableTradingInstrumentsSellButton(BasePage):
         )
 
         if not item_sort_list:
-            pytest.fail("Bug ? item_sort_list is not visible")
+            Common().pytest_fail("Bug # ??? item_sort_list is not visible")
         print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
         print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in item_sort_list? =>")
         if not self.driver.find_element(*self.item_sort):
             print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in item_sort_list!")
-            pytest.fail(f"Bug ? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
+            Common().pytest_fail(f"Bug # ??? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
         print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in item_sort_list!")
         print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
 
@@ -144,14 +146,14 @@ class TableTradingInstrumentsSellButton(BasePage):
             return item_list
         else:
             print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!\n")
-            pytest.fail("Bug ? element is not on this page")
+            Common().pytest_fail("Bug # ??? element is not on this page")
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-        self.sell_list = self.driver.find_elements(*self.sell_locator)
+        self.sell_list = wd.find_elements(*self.sell_locator)
         button = self.sell_list[value]
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -165,4 +167,3 @@ class TableTradingInstrumentsSellButton(BasePage):
 
         button.click()
         print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked!\n")
-

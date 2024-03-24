@@ -1,8 +1,11 @@
 from datetime import datetime
 import random
+
 import pytest
 import allure
+
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.testing_elements_locators import (TableTradingInstrumentsLocators, FieldDropdownMarketsLocator,
                                                       ItemSortDropdownLocators)
@@ -10,7 +13,7 @@ from pages.Elements.AssertClass import AssertClass
 from selenium.webdriver import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException
 
-COUNT_OF_RUNS = 2
+COUNT_OF_RUNS = 1
 
 
 class TableTradingInstrumentsBuyButton(BasePage):
@@ -32,7 +35,8 @@ class TableTradingInstrumentsBuyButton(BasePage):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   Item_list = {item_list}")
 
-        check_popup = SignupLogin(d, cur_item_link, cur_sort)
+        # ??? check_popup = SignupLogin(d, cur_item_link, cur_sort)
+        check_popup = SignupLogin(d, cur_item_link)
         check_popup.check_popup_signup_form()
         del check_popup
 
@@ -61,14 +65,14 @@ class TableTradingInstrumentsBuyButton(BasePage):
         table_list = self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)
         if len(table_list) == 0:
             print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is NOT present on the page!\n")
-            pytest.fail(f" Bug ? Checking element is not on this page")
+            Common().pytest_fail("Bug # ??? TABLE_TRADING_INSTRUMENTS is not on this page")
 
         print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is present on the page!")
 
         print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the table? =>")
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         if len(field_dropdown_list) == 0:
-            pytest.fail("Bug # ? FIELD_DROPDOWN_SORT is not present in the table!")
+            Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in the table!")
 
         print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the table!")
 
@@ -133,9 +137,10 @@ class TableTradingInstrumentsBuyButton(BasePage):
                 .pause(0.5) \
                 .perform()
             del check_popup
+
         if not item_sort_list:
             print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not visible in item_sort_list?")
-            pytest.fail("Bug ? item_sort_list is not visible")
+            Common().pytest_fail("Bug # ??? item_sort_list is not visible")
 
         #        self.driver.execute_script(
         #            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -149,7 +154,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
         print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in item_sort_list? =>")
         if not self.driver.find_element(*self.item_sort):
             print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in item_sort_list!")
-            pytest.fail("Bug ? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
+            Common().pytest_fail("Bug # ??? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
         print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in item_sort_list!")
         print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
 
@@ -173,7 +178,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
             return item_list
         else:
             print(f"{datetime.now()}   => Buttons [Buy] is NOT visible or quantity buttons zero!\n")
-            pytest.fail("Bug ? element is not on this page")
+            Common().pytest_fail("Bug # ??? element is not on this page")
 
     @allure.step("Click button Buy")
     def element_click(self, d, value, cur_sort):
