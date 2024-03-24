@@ -1,0 +1,80 @@
+{'width': 1280, 'height': 800}
+
+2024-03-24 06:48:57.479575   worker_id = master
+
+2024-03-24 06:48:57.479592   0. Allure grouping v4
+
+
+2024-03-24 06:48:57.479793   START PRECONDITIONS =>
+
+
+2024-03-24 06:48:57.479808   => flag_of_bug - False
+
+2024-03-24 06:48:57.479820   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 06:48:57.481101   Set windows position at (0, 0) =>
+2024-03-24 06:48:57.583403   Set resolution 1280 * 800 =>
+2024-03-24 06:48:57.685977   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 06:48:58.718734   Капчи нет. Идем дальше
+
+2024-03-24 06:48:58.718823   Работа с куками
+
+2024-03-24 06:48:58.718836   => Prev. country - 'de'
+2024-03-24 06:48:58.718846   => Country set to 'de'
+
+2024-03-24 06:48:58.718855   => Prev. language - 'pl'
+2024-03-24 06:48:58.718864   => Language is set to 'pl'
+
+2024-03-24 06:48:58.718873   => Prev. role - 'Auth'
+2024-03-24 06:48:58.718882   => The 'Auth' role is set
+
+2024-03-24 06:48:58.721608   => THE END PRECONDITIONS
+
+2024-03-24 06:48:58.721666   1. Arrange_v0
+2024-03-24 06:48:58.721681   current_page = https://capital.com/trading/platform/charting/305243519000335556?side=buy&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556
+2024-03-24 06:48:58.724184   link = https://capital.com/pl/handel-litecoin
+2024-03-24 06:48:58.726682   Current page URL = https://capital.com/trading/platform/charting/305243519000335556?side=buy&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556
+2024-03-24 06:48:58.729233   self.link = https://capital.com/pl/handel-litecoin
+2024-03-24 06:48:58.729246   link = https://capital.com/pl/handel-litecoin
+2024-03-24 06:49:00.769125   => Loaded page https://capital.com/pl/handel-litecoin
+2024-03-24 06:49:00.781402   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-24 06:49:00.781437   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-24 06:49:00.781449   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-24 06:49:00.784647   => 'Sell' button in Content block scrolled
+2024-03-24 06:49:00.784876   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 06:49:02.309887   '[Sign up]' form was not popped up
+
+2024-03-24 06:49:02.310081   2. Act_v0
+2024-03-24 06:49:02.579612   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-24 06:49:02.579670   => return trade_instrument = 13863591790859460
+
+2024-03-24 06:49:02.579978   3. Assert_v4
+2024-03-24 06:49:02.580159   Checking that the trading platform page has opened (v4) =>
+2024-03-24 06:49:03.096894   Checking way # 1 => 
+2024-03-24 06:49:03.099727   => Current page title: Trading Platform | Capital.com
+2024-03-24 06:49:03.099883   Checking that the Trading platform LOGO is present on the page =>
+2024-03-24 06:49:03.559783   => Trading platform LOGO is present on the page
+2024-03-24 06:49:03.559864   tpd = False
+2024-03-24 06:49:03.560011   Checking that the Trading platform opened in LIVE mode =>
+2024-03-24 06:49:03.570841   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-24 06:49:03.573322   => Check that opened page with https://capital.com/trading/platform/ url
+with corresponding trading instrument '13863591790859460' select
+2024-03-24 06:49:03.576018   => Trading Instrument is the '13863591790859460'
+2024-03-24 06:49:03.576035   => Trading Instrument Name is the '13863591790859460'
+2024-03-24 06:49:04.596049   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.05.01_04-pl.de.Auth
+
+2024-03-24 06:49:04.596106   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff26f2dcd40>
+
+2024-03-24 06:49:04.972231   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 06:49:05.306270   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 06:49:06.204467   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 06:49:06.525060   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 06:49:06.526312   Баг Bid:11.02.05.01_04-pl.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,76 @@
+{'width': 1280, 'height': 800}
+
+2024-03-24 06:50:23.505979   worker_id = master
+
+2024-03-24 06:50:23.505995   0. Allure grouping v4
+
+
+2024-03-24 06:50:23.506199   START PRECONDITIONS =>
+
+
+2024-03-24 06:50:23.506216   => flag_of_bug - False
+
+2024-03-24 06:50:23.506227   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 06:50:23.507646   Set windows position at (0, 0) =>
+2024-03-24 06:50:23.609970   Set resolution 1280 * 800 =>
+2024-03-24 06:50:23.712461   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 06:50:24.745442   Капчи нет. Идем дальше
+
+2024-03-24 06:50:24.745534   Работа с куками
+
+2024-03-24 06:50:24.745549   => Prev. country - 'de'
+2024-03-24 06:50:24.745560   => Country set to 'de'
+
+2024-03-24 06:50:24.745598   => Prev. language - 'pl'
+2024-03-24 06:50:24.745614   => Language is set to 'pl'
+
+2024-03-24 06:50:24.745623   => Prev. role - 'NoAuth'
+2024-03-24 06:50:24.745632   => The 'NoAuth' role is set
+
+2024-03-24 06:50:24.748590   => THE END PRECONDITIONS
+
+2024-03-24 06:50:24.748660   1. Arrange_v0
+2024-03-24 06:50:24.748674   current_page = https://capital.com/pl/handel-litecoin
+2024-03-24 06:50:24.751375   link = https://capital.com/pl/handel-litecoin
+2024-03-24 06:50:24.761875   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-24 06:50:24.761911   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-24 06:50:24.761921   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-24 06:50:24.775567   => 'Sell' button in Content block scrolled
+2024-03-24 06:50:24.775846   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 06:50:26.328664   '[Sign up]' form was not popped up
+
+2024-03-24 06:50:26.328862   2. Act_v0
+2024-03-24 06:50:26.390363   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-24 06:50:26.390417   => return trade_instrument = 13863591790859460
+
+2024-03-24 06:50:26.390676   3. Assert_Login_v0
+2024-03-24 06:50:26.390802   Check that 'Login' form is opened
+2024-03-24 06:50:29.479718   'Login' form not opened
+2024-03-24 06:50:29.479970   Check that new 'Login' form is opened
+2024-03-24 06:50:32.567044   => New 'Login' form not opened
+2024-03-24 06:50:32.569739   'Login' page not opened
+2024-03-24 06:50:35.640369   'Login' form on trading platform not opened
+2024-03-24 06:50:35.640559   Start step Check that [Sign up] form is opened
+2024-03-24 06:50:35.651530   'Sign up' form opened
+2024-03-24 06:50:35.651561   Assert SIGNUP_HEADER =>
+2024-03-24 06:50:35.662475   Assert SIGNUP_REF_LOGIN =>
+2024-03-24 06:50:35.673290   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-24 06:50:35.685529   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-24 06:50:35.685587   => 'Signup' form is checked
+
+Bug: Bid:11.02.05.01_04-pl.de.NoAuth
+
+2024-03-24 06:50:35.685658   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff26f2dcd40>
+
+2024-03-24 06:50:35.957759   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 06:50:36.111180   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 06:50:36.864686   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 06:50:37.182215   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 06:50:37.183339   Баг Bid:11.02.05.01_04-pl.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
