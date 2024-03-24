@@ -163,7 +163,7 @@ class Common:
 		assert False, msg
 
 	@staticmethod
-	def assert_true_false(condition, msg):
+	def assert_true_false(condition=False, msg=""):
 		if condition:
 			Common.flag_of_bug = False
 			assert True, msg

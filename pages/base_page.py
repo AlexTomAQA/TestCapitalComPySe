@@ -437,13 +437,13 @@ class BasePage:
         Args:
             title: expected page's title
         """
+        print(f"{datetime.now()}   Checking that the Trading platform page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => Current page title: {el_title}")
         # Checks that the page title meets the requirements
         if title not in el_title:
-            Common.flag_of_bug = True
             msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"
-            assert False, msg
+            Common().assert_true_false(False, msg)
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):
