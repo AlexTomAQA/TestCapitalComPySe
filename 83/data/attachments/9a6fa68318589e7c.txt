@@ -1,0 +1,94 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-24 20:13:33.946911   worker_id = master
+
+2024-03-24 20:13:33.946928   0. Allure grouping v4
+
+
+2024-03-24 20:13:33.947126   START PRECONDITIONS =>
+
+
+2024-03-24 20:13:33.947142   => flag_of_bug - False
+
+2024-03-24 20:13:33.947153   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 20:13:33.948406   Set windows position at (0, 0) =>
+2024-03-24 20:13:34.050728   Set resolution 1280 * 800 =>
+2024-03-24 20:13:34.153396   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 20:13:35.189592   Капчи нет. Идем дальше
+
+2024-03-24 20:13:35.189684   Работа с куками
+
+2024-03-24 20:13:35.189698   => Prev. country - 'de'
+2024-03-24 20:13:35.189708   => Country set to 'de'
+
+2024-03-24 20:13:35.189717   => Prev. language - 'ro'
+2024-03-24 20:13:35.189727   => Language is set to 'ro'
+
+2024-03-24 20:13:35.189735   => Prev. role - 'NoAuth'
+2024-03-24 20:13:35.189744   => The 'NoAuth' role is set
+
+2024-03-24 20:13:35.192485   => THE END PRECONDITIONS
+2024-03-24 20:13:35.698936   => 'Markets' menu is present
+2024-03-24 20:13:35.718440   element = <selenium.webdriver.remote.webelement.WebElement (session="3544da5b73e499af8d621b63f7cc7af4", element="f.1FADB9ECB75E016914EC11074A294C1C.d.F6C6541F0FFE332B480E8342BC39FF60.e.2336")>
+2024-03-24 20:13:35.718486   => 'Markets' menu is visible
+2024-03-24 20:13:36.982156   => Focus moved to 'Markets' menu
+2024-03-24 20:13:36.987945   => 'Markets > Commodities' submenu is present
+
+2024-03-24 20:13:38.255384   1. Arrange for Trading instrument and "Most traded" cur_sort
+2024-03-24 20:13:38.255426   current_page = https://capital.com/ro/live-marfuri-preturi
+2024-03-24 20:13:38.258117   link = https://capital.com/ro/live-marfuri-preturi
+2024-03-24 20:13:38.260621   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-24 20:13:38.266105   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-24 20:13:38.266130   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-24 20:13:38.270810   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-24 20:13:38.270833   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-24 20:13:39.041649   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-24 20:13:39.586008   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-24 20:13:39.586054   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-24 20:13:39.594353   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-24 20:13:39.594381   Start click cur_sort "Most traded" =>
+2024-03-24 20:13:40.436899   => End Click cur_sort "Most traded"
+
+2024-03-24 20:13:40.436957   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-24 20:13:40.451752   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-24 20:13:40.451791   Start find two random buttons [Buy] on cur_sort "Most traded"=>
+2024-03-24 20:13:40.457753   => End find two random buttons [Buy] on the cur_sort "Most traded"
+
+
+2024-03-24 20:13:40.457786   Item_list = [13]
+2024-03-24 20:13:40.457982   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 20:13:42.002707   '[Sign up]' form was not popped up
+2024-03-24 20:13:42.002918   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-24 20:13:42.002935   Start click button [Buy] =>
+2024-03-24 20:13:42.897929   =>   BUTTON_BUY with item 357105055839112 clicked!
+
+
+2024-03-24 20:13:42.898161   3. Assert_Login_v0
+2024-03-24 20:13:42.898241   Check that 'Login' form is opened
+2024-03-24 20:13:45.971625   'Login' form not opened
+2024-03-24 20:13:45.971816   Check that new 'Login' form is opened
+2024-03-24 20:13:49.063358   => New 'Login' form not opened
+2024-03-24 20:13:49.066339   'Login' page not opened
+2024-03-24 20:13:52.148700   'Login' form on trading platform not opened
+2024-03-24 20:13:52.148904   Start step Check that [Sign up] form is opened
+2024-03-24 20:13:55.224388   'Sign up' form not opened
+2024-03-24 20:13:55.224580   Start step Check that new [Sign up] form is opened
+2024-03-24 20:13:58.306284   => new 'Sign up' form not opened
+2024-03-24 20:13:58.306492   Start method Check that [Sign up] page opened =>
+2024-03-24 20:13:59.310394   'Sign up' page not opened
+2024-03-24 20:13:59.310605   Check that [Sign up] form on trading platform opened =>
+2024-03-24 20:14:02.384548   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-24 20:14:02.384657   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f3316401af0>
+
+2024-03-24 20:14:02.387610  Для бага: Bid-08 необходимо использовать проверку на ретест!!!
