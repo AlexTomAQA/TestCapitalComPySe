@@ -15,8 +15,11 @@ from pages.base_page import BasePage
 from pages.common import Common
 # from pages.common import flag_of_bug
 from test_data.trading_platform_data import data as tp_data
-from pages.Capital.Trading_platform.trading_platform_locators \
-    import TradingPlatformSignupFormLocators as TPSignupFormLocators, TradingInstruments
+from pages.Capital.Trading_platform.trading_platform_locators import (
+    TradingPlatformSignupFormLocators as TPSignupFormLocators,
+    TradingInstruments,
+    MenuSideBar
+)
 from pages.Capital.Trading_platform.trading_platform_locators import TopBarLocators
 from pages.Capital.Trading_platform.trading_platform_locators import ChartingLocators
 from test_data.trading_platform_data import data
@@ -24,6 +27,19 @@ from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class TradingPlatform(BasePage):
+
+    @allure.step("Select Chart menu")
+    def select_menu_charts(self):
+        element = self.element_is_visible(MenuSideBar.MENU_CHARTS, 3)
+        element.click()
+        print(f"{datetime.now()}   => Charts menu of Trading platform is opened")
+
+    @allure.step("Button 'Close all' click")
+    def button_close_all_ti_click(self):
+        element = self.element_is_visible(TradingInstruments.BUTTON_CLOSE_ALL, 3)
+        element.click()
+        print(f"{datetime.now()}   => Button Close all Trading instruments clicked")
+
     @allure.step("Checking that the trading platform page has opened")
     def should_be_trading_platform_page(self, d, link):
         """Check if the page is open"""

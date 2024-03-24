@@ -9,6 +9,7 @@ from datetime import datetime
 
 import allure
 
+from pages.common import Common
 from pages.AppStore.app_store import AppStore
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
@@ -46,9 +47,11 @@ class AssertClass(BasePage):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '04', self.link)
-            assert False, "Bug # 04. Unknown situation instead 'Sign Up' form opened"
+            Common().assert_true_false(False, "Bug # 04. Unknown situation instead 'Sign Up' form opened")
             # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
-        del self.page_signup_login
+
+        Common().assert_true_false(True, "")
+        # del self.page_signup_login
 
     @allure.step(f'{datetime.now()}   Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):
@@ -71,32 +74,39 @@ class AssertClass(BasePage):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '05', self.link)
-            assert False, "Bug # 05. Opened a 'Sign up' form instead of a 'Login'"
+            Common().assert_true_false(False,
+                                       "Bug # 05. Opened a 'Sign up' form instead of a 'Login'")
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_new_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '05', self.link)
-            assert False, "Bug # 05. Opened a new 'Sign up' form instead of a 'Login'"
+            Common().assert_true_false(False,
+                                       "Bug # 05. Opened a new 'Sign up' form instead of a 'Login'")
             # pytest.fail("Bug # 05. Opened a 'Sign up' form instead of a 'Login'", False)
         elif self.page_signup_login.should_be_signup_page(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '06', self.link)
-            assert False, "Bug # 06. Opened a 'Sign up' page instead of a 'Login'"
+            Common().assert_true_false(False,
+                                       "Bug # 06. Opened a 'Sign up' page instead of a 'Login'")
             # pytest.fail("Bug # 06. Opened a 'Sign up' page instead of a 'Login'", False)
         elif self.page_signup_login.should_be_trading_platform_signup_form(cur_language):
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '07', self.link)
-            assert False, "Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'"
+            Common().assert_true_false(False,
+                                       "Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'")
             # pytest.fail("Bug # 07. Opened a 'Sign up' form on trading platform instead of a 'Login'", False)
         else:
             del self.page_signup_login
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '08', self.link)
-            assert False, "Bug # 08. Unknown situation instead 'Login' form opened"
+            Common().assert_true_false(False,
+                                       "Bug # 08. Unknown situation instead 'Login' form opened")
             # pytest.fail("Bug # 08. Unknown situation instead 'Login' form opened", False)
+
+        Common().assert_true_false(True, "")
 
     @allure.step('Checking that "Trading platform" page opened')
     def assert_trading_platform(self, d):

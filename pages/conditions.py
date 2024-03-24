@@ -211,7 +211,15 @@ class Conditions(BasePage):
             print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
         else:
             print(f'{datetime.now()}   -> "Capital.com" logo mission')
+
+        # self.clear_charts_list(d)
         d.back()
+
+    @allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
+    def clear_charts_list(self, wd):
+        ti_page = TradingPlatform(wd)
+        ti_page.select_menu_charts()
+        ti_page.button_close_all_ti_click()
 
     @allure.step(f"{datetime.now()}   Start DeAuthorisation")
     def to_do_de_authorisation(self, d, link):
