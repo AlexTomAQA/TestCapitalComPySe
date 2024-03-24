@@ -1,0 +1,85 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-24 13:51:24.346195   worker_id = master
+
+2024-03-24 13:51:24.346212   0. Allure grouping v4
+
+
+2024-03-24 13:51:24.346420   START PRECONDITIONS =>
+
+
+2024-03-24 13:51:24.346437   => flag_of_bug - False
+
+2024-03-24 13:51:24.346449   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 13:51:24.347824   Set windows position at (0, 0) =>
+2024-03-24 13:51:24.450025   Set resolution 1280 * 800 =>
+2024-03-24 13:51:24.552406   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 13:51:25.586217   Капчи нет. Идем дальше
+
+2024-03-24 13:51:25.586302   Работа с куками
+
+2024-03-24 13:51:25.586316   => Prev. country - 'de'
+2024-03-24 13:51:25.586327   => Country set to 'de'
+
+2024-03-24 13:51:25.586336   => Prev. language - 'nl'
+2024-03-24 13:51:25.586347   => Language is set to 'nl'
+
+2024-03-24 13:51:25.586356   => Prev. role - 'Auth'
+2024-03-24 13:51:25.586365   => The 'Auth' role is set
+
+2024-03-24 13:51:25.588923   => THE END PRECONDITIONS
+2024-03-24 13:51:26.094962   => 'Markets' menu is present
+2024-03-24 13:51:26.111727   element = <selenium.webdriver.remote.webelement.WebElement (session="5b254b12f61bccef1b4d307994322a2c", element="f.323E02995D29F8769EDDBE6BEF070F7B.d.08F4A67927300193F93070C5346209DC.e.511")>
+2024-03-24 13:51:26.111764   => 'Markets' menu is visible
+2024-03-24 13:51:27.374525   => Focus moved to 'Markets' menu
+2024-03-24 13:51:28.910062   => Focus moved to 'Shares' submenu and clicked
+
+2024-03-24 13:51:28.914580   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-24 13:51:28.914619   current_page = https://capital.com/nl/live-aandelen-koersen
+2024-03-24 13:51:28.917646   link = https://capital.com/nl/live-aandelen-koersen
+2024-03-24 13:51:28.941110   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-24 13:51:28.950678   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-24 13:51:28.950705   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-24 13:51:28.958829   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-24 13:51:28.958863   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-24 13:51:29.089372   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-24 13:51:29.139198   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-24 13:51:29.139237   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-24 13:51:29.168628   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-24 13:51:29.168663   Start click cur_sort "Most traded" =>
+2024-03-24 13:51:29.949222   => End Click cur_sort "Most traded"
+
+2024-03-24 13:51:29.949274   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-24 13:51:29.978752   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-24 13:51:29.978786   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-24 13:51:29.984688   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-24 13:51:29.984717   item_list = [8]
+2024-03-24 13:51:29.984879   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 13:51:31.524332   '[Sign up]' form was not popped up
+2024-03-24 13:51:31.524534   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-24 13:51:31.524550   Start click button [Sell] =>
+2024-03-24 13:51:32.720987   =>   BUTTON_SELL with item 21621659937100996 clicked!
+
+
+2024-03-24 13:51:32.721257   3. Assert_v4
+2024-03-24 13:51:32.721383   Checking that the trading platform page has opened (v4) =>
+2024-03-24 13:51:32.728626   Checking way # 1 => 
+2024-03-24 13:51:32.731403   => Current page title: Trading Platform | Capital.com
+2024-03-24 13:51:32.731552   Checking that the Trading platform LOGO is present on the page =>
+2024-03-24 13:51:33.690144   => Trading platform LOGO is present on the page
+2024-03-24 13:51:33.690250   tpd = False
+2024-03-24 13:51:33.690441   Checking that the Trading platform opened in LIVE mode =>
+2024-03-24 13:51:33.935385   => The page with https://capital.com/trading/platform/charting/21621659937100996?side=sell&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556,426696411010244,15839732013552836,427748677997764,554050868420,14659243072378052,23381801971780,253454610158788,374675767088654,1679716659553719492,7096896585815236,21659404109698244,21621659937100996 url was opened in lIVE mode
+2024-03-24 13:51:33.956078   => Check that opened page with https://capital.com/trading/platform/charting/21621659937100996?side=sell&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556,426696411010244,15839732013552836,427748677997764,554050868420,14659243072378052,23381801971780,253454610158788,374675767088654,1679716659553719492,7096896585815236,21659404109698244,21621659937100996 url
+with corresponding trading instrument '21621659937100996' select
+2024-03-24 13:51:33.960337   => Trading Instrument is the '21621659937100996'
+2024-03-24 13:51:33.960364   => Trading Instrument Name is the '21621659937100996'
+2024-03-24 13:51:33.975481   => Trading Platform opened in Chart mode

@@ -1,0 +1,91 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-24 13:52:42.716931   worker_id = master
+
+2024-03-24 13:52:42.716948   0. Allure grouping v4
+
+
+2024-03-24 13:52:42.717152   START PRECONDITIONS =>
+
+
+2024-03-24 13:52:42.717167   => flag_of_bug - True
+2024-03-24 13:52:42.717181   Current page URL = https://capital.com/nl/live-aandelen-koersen
+2024-03-24 13:52:42.720101   self.link = https://capital.com
+2024-03-24 13:52:42.720114   link = https://capital.com
+2024-03-24 13:52:44.471617   => Loaded page https://capital.com/
+
+2024-03-24 13:52:44.476018   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 13:52:44.477440   Set windows position at (0, 0) =>
+2024-03-24 13:52:44.579668   Set resolution 1280 * 800 =>
+2024-03-24 13:52:44.682159   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 13:52:45.710308   Капчи нет. Идем дальше
+
+2024-03-24 13:52:45.710398   Работа с куками
+
+2024-03-24 13:52:45.710412   => Prev. country - 'de'
+2024-03-24 13:52:45.710421   => Country set to 'de'
+
+2024-03-24 13:52:45.710430   => Prev. language - 'nl'
+2024-03-24 13:52:45.710440   Set 'nl' language =>
+2024-03-24 13:52:45.722012   => Language and Country menu is present
+2024-03-24 13:52:45.735206   => Language and Country menu is visible
+2024-03-24 13:52:47.007486   => Focus is moved on Language and Country menu 
+2024-03-24 13:52:47.015820   Move focus on nl item and click =>
+2024-03-24 13:52:48.618354   => Focus moved on nl item and clicked
+2024-03-24 13:52:48.618401   => Cur url = https://capital.com/nl
+2024-03-24 13:52:48.664979   => Language is set to 'nl'
+
+2024-03-24 13:52:48.665008   => Prev. role - 'NoAuth'
+2024-03-24 13:52:48.665019   => The 'NoAuth' role is set
+
+2024-03-24 13:52:48.668564   => THE END PRECONDITIONS
+2024-03-24 13:52:49.180169   => 'Markets' menu is present
+2024-03-24 13:52:49.200236   element = <selenium.webdriver.remote.webelement.WebElement (session="5b254b12f61bccef1b4d307994322a2c", element="f.323E02995D29F8769EDDBE6BEF070F7B.d.E61733132CEB0848489F86193E477602.e.1276")>
+2024-03-24 13:52:49.200281   => 'Markets' menu is visible
+2024-03-24 13:52:50.471793   => Focus moved to 'Markets' menu
+2024-03-24 13:52:52.471153   => Focus moved to 'Shares' submenu and clicked
+
+2024-03-24 13:52:52.476788   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-24 13:52:52.476819   current_page = https://capital.com/nl/live-aandelen-koersen
+2024-03-24 13:52:52.480968   link = https://capital.com/nl/live-aandelen-koersen
+2024-03-24 13:52:52.498208   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-24 13:52:52.506503   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-24 13:52:52.506530   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-24 13:52:52.515740   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-24 13:52:52.515772   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-24 13:52:52.606995   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-24 13:52:52.649704   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-24 13:52:52.649742   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-24 13:52:52.672674   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-24 13:52:52.672724   Start click cur_sort "Most traded" =>
+2024-03-24 13:52:53.350461   => End Click cur_sort "Most traded"
+
+2024-03-24 13:52:53.350517   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-24 13:52:53.375937   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-24 13:52:53.376028   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-24 13:52:53.382640   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-24 13:52:53.382668   item_list = [17]
+2024-03-24 13:52:53.382834   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 13:52:54.915634   '[Sign up]' form was not popped up
+2024-03-24 13:52:54.915857   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-24 13:52:54.915874   Start click button [Sell] =>
+2024-03-24 13:52:55.080473   =>   BUTTON_SELL with item 14677440848736774 clicked!
+
+
+2024-03-24 13:52:55.080785   3. Assert_Login_v0
+2024-03-24 13:52:55.080901   Check that 'Login' form is opened
+2024-03-24 13:52:55.251728   'Login' form opened
+2024-03-24 13:52:55.251764   Assert LOGIN_REF_SIGNUP =>
+2024-03-24 13:52:55.269058   Assert LOGIN_CHECKBOX =>
+2024-03-24 13:52:55.285493   Assert LOGIN_PASS_FORGOT =>
+2024-03-24 13:52:55.300558   => 'Login' form is checked
+2024-03-24 13:52:55.327368   Click 'Close' button on 'Login' form =>
+2024-03-24 13:52:55.654531   => 'Login' form closed

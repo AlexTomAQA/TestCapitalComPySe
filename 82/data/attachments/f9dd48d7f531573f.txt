@@ -1,0 +1,97 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-24 14:10:24.060196   worker_id = master
+
+2024-03-24 14:10:24.060213   0. Allure grouping v4
+
+
+2024-03-24 14:10:24.060407   START PRECONDITIONS =>
+
+
+2024-03-24 14:10:24.060423   => flag_of_bug - False
+
+2024-03-24 14:10:24.060433   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 14:10:24.061737   Set windows position at (0, 0) =>
+2024-03-24 14:10:24.163951   Set resolution 1280 * 800 =>
+2024-03-24 14:10:24.266274   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 14:10:25.299313   Капчи нет. Идем дальше
+
+2024-03-24 14:10:25.299397   Работа с куками
+
+2024-03-24 14:10:25.299411   => Prev. country - 'de'
+2024-03-24 14:10:25.299421   => Country set to 'de'
+
+2024-03-24 14:10:25.299430   => Prev. language - 'nl'
+2024-03-24 14:10:25.299438   => Language is set to 'nl'
+
+2024-03-24 14:10:25.299447   => Prev. role - 'Auth'
+2024-03-24 14:10:25.299456   => The 'Auth' role is set
+
+2024-03-24 14:10:25.302200   => THE END PRECONDITIONS
+
+2024-03-24 14:10:25.302385   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-24 14:10:25.302401   1. Cur URL = https://capital.com/nl/andere-instrumenten
+
+2024-03-24 14:10:25.304975   2. Link = https://capital.com/nl/andere-instrumenten
+2024-03-24 14:10:25.304990   current_page = https://capital.com/nl/andere-instrumenten
+2024-03-24 14:10:25.307480   link = https://capital.com/nl/andere-instrumenten
+2024-03-24 14:10:25.816304   => 'Markets' menu is present
+2024-03-24 14:10:25.833509   element = <selenium.webdriver.remote.webelement.WebElement (session="1ba936543cce2947ba80e50c8bc387ec", element="f.1FB264786696BEB7CA4E000FABF8EC19.d.31A5695D28202FE17945199E51D2BFE6.e.514")>
+2024-03-24 14:10:25.833553   => 'Markets' menu is visible
+2024-03-24 14:10:27.097257   => Focus moved to 'Markets' menu
+
+
+2024-03-24 14:10:27.866650   => 'Forex' sub-menu clicked
+
+2024-03-24 14:10:27.869592   3. Cur URL = https://capital.com/nl/andere-instrumenten
+
+2024-03-24 14:10:27.875062   1. Arrange for Trading instrument and "Most traded" cur_sort
+2024-03-24 14:10:27.875088   current_page = https://capital.com/nl/andere-instrumenten
+2024-03-24 14:10:27.877638   link = https://capital.com/nl/andere-instrumenten
+2024-03-24 14:10:27.880161   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-24 14:10:27.885417   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-24 14:10:27.885440   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-24 14:10:27.890306   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-24 14:10:27.890328   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-24 14:10:28.671662   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-24 14:10:29.215313   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-24 14:10:29.215353   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-24 14:10:29.224257   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-24 14:10:29.224284   Start click cur_sort "Most traded" =>
+2024-03-24 14:10:30.253696   => End Click cur_sort "Most traded"
+
+2024-03-24 14:10:30.253745   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-24 14:10:30.282869   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-24 14:10:30.282904   Start find two random buttons [Buy] on cur_sort "Most traded"=>
+2024-03-24 14:10:30.289295   => End find two random buttons [Buy] on the cur_sort "Most traded"
+
+
+2024-03-24 14:10:30.289324   Item_list = [1]
+2024-03-24 14:10:30.289482   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 14:10:31.845273   '[Sign up]' form was not popped up
+2024-03-24 14:10:31.845468   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-24 14:10:31.845484   Start click button [Buy] =>
+2024-03-24 14:10:33.370905   =>   BUTTON_BUY with item 374675767075865 clicked!
+
+
+2024-03-24 14:10:33.371208   3. Assert_v4
+2024-03-24 14:10:33.371341   Checking that the trading platform page has opened (v4) =>
+2024-03-24 14:10:33.377198   Checking way # 1 => 
+2024-03-24 14:10:33.381079   => Current page title: Trading Platform | Capital.com
+2024-03-24 14:10:33.381231   Checking that the Trading platform LOGO is present on the page =>
+2024-03-24 14:10:34.548180   => Trading platform LOGO is present on the page
+2024-03-24 14:10:34.548300   tpd = False
+2024-03-24 14:10:34.548525   Checking that the Trading platform opened in LIVE mode =>
+2024-03-24 14:10:34.788623   => The page with https://capital.com/trading/platform/charting/374675767075865?side=buy&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556,426696411010244,15839732013552836,427748677997764,554050868420,14659243072378052,23381801971780,253454610158788,374675767088654,1679716659553719492,7096896585815236,21659404109698244,21621659937100996,25985050357018692,374675767075865 url was opened in lIVE mode
+2024-03-24 14:10:34.892843   => Check that opened page with https://capital.com/trading/platform/charting/374675767075865?side=buy&ids=3644116541985988,22855552501634244,7090488494609604,7096810686469316,23381802001433,23381802018436,93810675721241,93810675766468,123763777688772,249335736521924,16150730595456196,18425409712196,21182778791108,10384900209333444,2604592722433220,123763777606980,93810675684676,15989072321336658,7091871474078916,7092687517865156,357105055839112,27342779713672388,27045129890124996,20337752478405828,422839530378436,374675767046662,426090820621508,23381802046660,53068615951385,5983666832495812,508931114652423506,305243519000335556,426696411010244,15839732013552836,427748677997764,554050868420,14659243072378052,23381801971780,253454610158788,374675767088654,1679716659553719492,7096896585815236,21659404109698244,21621659937100996,25985050357018692,374675767075865 url
+with corresponding trading instrument '374675767075865' select
+2024-03-24 14:10:34.913595   => Trading Instrument is the '374675767075865'
+2024-03-24 14:10:34.913617   => Trading Instrument Name is the '374675767075865'
+2024-03-24 14:10:34.921684   => Trading Platform opened in Chart mode
