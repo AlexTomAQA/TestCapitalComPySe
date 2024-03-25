@@ -72,6 +72,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_risk_management_guide_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -88,6 +89,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_technical_analysis_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -104,6 +106,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_help_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -120,6 +123,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_learn_to_trade_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -136,6 +140,7 @@ class MenuSection(BasePage):
 
         self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_spread_betting_guide_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -153,6 +158,7 @@ class MenuSection(BasePage):
 
         self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_cfd_trading_guide_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -168,6 +174,7 @@ class MenuSection(BasePage):
 
         self.menu_education_move_focus(d, cur_language, cur_country)
         self.sub_menu_forex_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -181,6 +188,7 @@ class MenuSection(BasePage):
             self.open_page()
         self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_shares_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
     def open_education_commodities_trading_menu(self, d, cur_language, cur_country, link):
@@ -192,6 +200,7 @@ class MenuSection(BasePage):
             self.open_page()
         self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_commodities_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
     def open_education_indices_trading_menu(self, d, cur_language, cur_country, link):
@@ -203,6 +212,7 @@ class MenuSection(BasePage):
             self.open_page()
         self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
     def open_education_cryptocurrency_trading_menu(self, d, cur_language, cur_country, link):
@@ -214,6 +224,7 @@ class MenuSection(BasePage):
             self.open_page()
         self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_cryptocurrency_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
     @allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
@@ -253,36 +264,6 @@ class MenuSection(BasePage):
         ed_menu_locator = None
         if test_country == "gb" and test_language == "":
             ed_menu_locator = MenuUS11Education.SUB_MENU_EN_GB_LEARN_TO_TRADE
-        # else:
-        #     match test_language:
-        #         # case "":
-        #         #     ed_menu_locator = MenuUS11Education.SUB_MENU_EN_LEARN_TO_TRADE
-        #         case "ar":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_AR_LEARN_TO_TRADE
-        #         case "de":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_DE_LEARN_TO_TRADE
-        #         case "el":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_EL_LEARN_TO_TRADE
-        #         case "es":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_ES_LEARN_TO_TRADE
-        #         case "fr":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_FR_LEARN_TO_TRADE
-        #         case "it":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_IT_LEARN_TO_TRADE
-        #         case "hu":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_HU_LEARN_TO_TRADE
-        #         case "nl":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_NL_LEARN_TO_TRADE
-        #         case "pl":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_PL_LEARN_TO_TRADE
-        #         case "ro":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_RO_LEARN_TO_TRADE
-        #         case "ru":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_RU_LEARN_TO_TRADE
-        #         case "zh":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_ZH_LEARN_TO_TRADE
-        #         case "cn":
-        #             ed_menu_locator = MenuUS11Education.SUB_MENU_CN_LEARN_TO_TRADE
 
         time.sleep(0.5)
         menu = d.find_elements(*ed_menu_locator)
