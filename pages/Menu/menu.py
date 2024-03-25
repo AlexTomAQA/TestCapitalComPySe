@@ -240,12 +240,12 @@ class MenuSection(BasePage):
 
         if not self.element_is_visible(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
             print(f"{datetime.now()}   => Language and Country menu not visible")
-            pytest.fail("Language and Country menu not visible")
+            Common().pytest_fail("Language and Country menu not visible")
         print(f"{datetime.now()}   => Language and Country menu is visible")
 
         # if not self.element_is_clickable(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
         #     print(f"\n\n{datetime.now()}   => Language and Country menu not clickable")
-        #     pytest.fail("Language and Country menu not clickable")
+        #     Common().pytest_fail("Language and Country menu not clickable")
         # print(f"\n\n{datetime.now()}   => Language and Country menu is clickable")
         #
 
@@ -270,7 +270,7 @@ class MenuSection(BasePage):
         if len(menu) == 0:
             print(f"{datetime.now()}   => 'Learn to trade' menu not present")
             # allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            pytest.fail(f"Bug # ? 'Learn to trade' menu not present for '{test_language}' language")
+            Common().pytest_fail(f"Bug # ? 'Learn to trade' menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => 'Learn to trade' menu is present")
 
         self.driver.execute_script(
@@ -282,7 +282,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => 'Learn to trade' menu not visible")
-            pytest.fail("Bug # ? 'Learn to trade' menu not visible")
+            Common().pytest_fail("Bug # ? 'Learn to trade' menu not visible")
         print(f"{datetime.now()}   => 'Learn to trade' menu is visible")
 
         time.sleep(0.5)
@@ -337,7 +337,7 @@ class MenuSection(BasePage):
         if len(menu) == 0:
             print(f"{datetime.now()}   => Education menu not present in DOM")
             # Common().save_current_screenshot(d, "scr_qr")
-            pytest.fail(f"Bug № ??? Education menu not present in DOM for '{test_language}' language")
+            Common().pytest_fail(f"Bug № ??? Education menu not present in DOM for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present in DOM")
 
         # self.driver.execute_script(
@@ -349,7 +349,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
-            pytest.fail("Problem. Education menu not visible")
+            Common().pytest_fail("Problem. Education menu not visible")
         print(f"{datetime.now()}   => Education menu is visible")
 
         time.sleep(0.5)
@@ -404,7 +404,7 @@ class MenuSection(BasePage):
         if len(menu) == 0:
             print(f"{datetime.now()}   => 'Markets' menu not present")
             # Common().save_current_screenshot(d, "scr_qr")
-            pytest.fail(f"Bug № ??? 'Markets' menu not present for '{test_language}' language")
+            Common().pytest_fail(f"Bug № ??? 'Markets' menu not present for '{test_language}' language")
         print(f"{datetime.now()}   => 'Markets' menu is present")
 
         self.driver.execute_script(
@@ -417,7 +417,7 @@ class MenuSection(BasePage):
         if not element:
             print(f"{datetime.now()}   => 'Markets' menu not visible")
             # Common().save_current_screenshot(d, "scr_qr")
-            pytest.fail("Problem. 'Markets' menu not visible")
+            Common().pytest_fail("Problem. 'Markets' menu not visible")
         print(f"{datetime.now()}   => 'Markets' menu is visible")
 
         time.sleep(0.5)
@@ -466,7 +466,8 @@ class MenuSection(BasePage):
 
         if len(sub_menu) == 0:
             Common().save_current_screenshot(d, "SavePNG")
-            pytest.fail(f"Bug # ??? For language '{test_language}' \"Education > Learning hub\" submenu doesn't exist")
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Education > Learning hub\" submenu doesn't exist")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -511,9 +512,9 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*Menu1101.SUB_MENU_CN_ITEM_BASICS_OF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education > Menu item [The basics of trading]\" "
-                        f"doesn't exist on production")
+            Common().pytest_fail(
+                f"Bug # ??? For test language '{test_language}' "
+                f"the page \"Education > Menu item [The basics of trading]\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -720,8 +721,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11CommoditiesTrading.SUB_MENU_ZH_COMMODITIES_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education > Commodities Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education > Commodities Trading\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -767,8 +768,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11MarketGuides.SUB_MENU_CN_ITEM_MARKET_GUIDES)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education | Menu title [Market Guides]\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education | Menu title [Market Guides]\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -842,8 +843,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11CFDTradingGuide.SUB_MENU_ZH_CFD_TRADING_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->CFD trading guide\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->CFD trading guide\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -865,8 +866,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11SpreadBettingGuide.SUB_MENU_CN_SPREAD_BETTING_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education > Spread betting guide\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education > Spread betting guide\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -887,7 +888,7 @@ class MenuSection(BasePage):
         language_str_list = self.driver.find_elements(By.CSS_SELECTOR, css_loc_lang)
         if len(language_str_list) == 0:
             print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
-            pytest.fail(f"For test language '{cur_language}' problem № 2 with set language")
+            Common().pytest_fail(f"For test language '{cur_language}' problem № 2 with set language")
 
         print(f"{datetime.now()}   Move focus on {cur_language} item and click =>")
         ActionChains(self.driver) \
@@ -906,7 +907,7 @@ class MenuSection(BasePage):
         elements = self.driver.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
             print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
-            pytest.fail(f"For test country '{cur_country}' problem № 1 with set country")
+            Common().pytest_fail(f"For test country '{cur_country}' problem № 1 with set country")
 
         ActionChains(self.driver) \
             .move_to_element(elements[0]) \
@@ -918,7 +919,7 @@ class MenuSection(BasePage):
         country_str_list = self.driver.find_elements(By.CSS_SELECTOR, css_sel_country)
         if len(country_str_list) == 0:
             # time.sleep(10)
-            pytest.fail(f"Test country '{cur_country}' not present in country list")
+            Common().pytest_fail(f"Test country '{cur_country}' not present in country list")
 
         ActionChains(self.driver) \
             .move_to_element(country_str_list[0]) \
@@ -949,8 +950,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11ETFTrading.SUB_MENU_RU_ETF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->ETF trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->ETF trading\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -994,8 +995,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11TradingStrategiesGuide.SUB_MENU_ZH_TRADING_STRATEGIES_GUIDE)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Trading Strategies Guide\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Trading Strategies Guide\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1053,8 +1054,8 @@ class MenuSection(BasePage):
         else:
             logger.warning(f"For test language '{test_language}' "
                            f"the page \"Education->Indices Trading\" doesn't exist on production")
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Indices Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Indices Trading\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Investmate app' hyperlink.")
@@ -1088,8 +1089,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Investmate App' menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Investmate app\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Investmate app\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Trend Trading' menu item.")
@@ -1099,8 +1100,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11TrendTrading.SUB_MENU_EN_ITEM_TREND_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Trend Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Trend Trading\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1123,8 +1124,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'What is a margin?' menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->What is a margin?\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->What is a margin?\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Trading Psychology Guide' hyperlink.")
@@ -1168,8 +1169,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => Trading Psychology Guide menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the submenu \"Education->Trading Psychology Guide\" doesn't exist")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the submenu \"Education->Trading Psychology Guide\" doesn't exist")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Position Trading' hyperlink.")
@@ -1183,8 +1184,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Position Trading' menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Position Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Position Trading\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Swing Trading' hyperlink.")
@@ -1198,8 +1199,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Swing Trading' menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Swing Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Swing Trading\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Scalp Trading' hyperlink.")
@@ -1214,8 +1215,8 @@ class MenuSection(BasePage):
                 .perform()
             print(f"\n\n{datetime.now()}   => 'Scalp Trading' menu click")
         else:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education->Scalp Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education->Scalp Trading\" doesn't exist on production")
         return d.current_url
 
     @allure.step(f"{datetime.now()}.   Click 'Shares trading' submenu.")
@@ -1250,8 +1251,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11SharesTrading.SUB_MENU_ZH_SHARES_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Education > Shared Trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Education > Shared Trading\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1270,8 +1271,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11RiskManagement.SUB_MENU_EN_RISK_MANAGEMENT)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1290,8 +1291,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11TechnicalAnalysis.SUB_MENU_EN_TECHNICAL_ANALYSIS)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Risk-management guide\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1310,8 +1311,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11HELP.SUB_MENU_EN_HELP)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Help\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Help\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1330,8 +1331,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11LearnToTrade.SUB_MENU_EN_LEARN_TO_TRADE)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1367,8 +1368,8 @@ class MenuSection(BasePage):
             sub_menu = d.find_elements(*MenuUS11TradingStrategies.SUB_MENU_EN_TRADING_STRATEGIES)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Trading Strategies\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Trading Strategies\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1403,8 +1404,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11EssentialsOfTrading.SUB_MENU_EN_ESSENTIALS_OF_TRADING)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Essentials of trading\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Essentials of trading\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1439,8 +1440,8 @@ class MenuSection(BasePage):
             case "": sub_menu = d.find_elements(*MenuUS11MarketGuidesNew.SUB_MENU_MARKET_GUIDES_NEW)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Learn to trade->Market Guides\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Learn to trade->Market Guides\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1502,8 +1503,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS0103MarketsForex.SUB_MENU_HU_FOREX)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Menu > Forex\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Menu > Forex\" doesn't exist on production")
         
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1564,8 +1565,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_CN_INDICES)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For test language '{test_language}' "
-                        f"the page \"Markets->Indices\" doesn't exist on production")
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Markets->Indices\" doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
@@ -1611,7 +1612,8 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS0104Commodities.SUB_MENU_CN_COMMODITIES_BUTTON)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Markets > Commodities\" submenu doesn't exist")
 
         print(f"{datetime.now()}   => 'Markets > Commodities' submenu is present")
 
@@ -1655,7 +1657,7 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS0102MarketsShares.SUB_MENU_CN_SHARES)
 
         if len(sub_menu) == 0:
-            pytest.fail(f"Bug # ??? For language '{test_language}' \"Markets > Shares\" submenu doesn't exist")
+            Common().pytest_fail(f"Bug # ??? For language '{test_language}' \"Markets > Shares\" submenu doesn't exist")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
