@@ -92,16 +92,17 @@ class Conditions(BasePage):
             print(f"{datetime.now()}   => Current testing role - '{cur_role}'")
             print(f"{datetime.now()}   All cookies must be delete =>")
 
+            # if test_link != host:
+            #     test_link = host
+            #     self.link = test_link
+            #     self.open_page()
+            d.delete_all_cookies()
+            print(f"\n{datetime.now()}   => All cookies are deleted")
             if test_link != host:
                 test_link = host
                 self.link = test_link
-                self.open_page()
-            if conf.DEBUG:
-                print(f"{datetime.now()} Debug:   test_link = {test_link}")
-            d.delete_all_cookies()
-            print(f"\n{datetime.now()}   => All cookies are deleted")
-            # print(d.get_cookies(), "")
             self.open_page()
+            # self.open_page()
             self.button_accept_all_cookies_click()
             prev_country = "?"
             prev_language = "?"
