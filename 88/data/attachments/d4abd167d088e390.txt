@@ -1,0 +1,72 @@
+{'width': 1280, 'height': 800}
+
+2024-03-25 21:18:17.639704   worker_id = master
+
+2024-03-25 21:18:17.639721   0. Allure grouping v4
+
+
+2024-03-25 21:18:17.639922   START PRECONDITIONS =>
+
+
+2024-03-25 21:18:17.639937   => flag_of_bug - False
+
+2024-03-25 21:18:17.639948   => Windows size - {'width': 1280, 'height': 800}
+2024-03-25 21:18:17.641269   Set windows position at (0, 0) =>
+2024-03-25 21:18:17.743336   Set resolution 1280 * 800 =>
+2024-03-25 21:18:17.845863   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-25 21:18:18.853456   Капчи нет. Идем дальше
+
+2024-03-25 21:18:18.853546   Работа с куками
+
+2024-03-25 21:18:18.853560   => Prev. country - 'de'
+2024-03-25 21:18:18.853570   => Country set to 'de'
+
+2024-03-25 21:18:18.853579   => Prev. language - 'it'
+2024-03-25 21:18:18.853589   => Language is set to 'it'
+
+2024-03-25 21:18:18.853598   => Prev. role - 'NoAuth'
+2024-03-25 21:18:18.853607   => The 'NoAuth' role is set
+
+2024-03-25 21:18:18.856292   => THE END PRECONDITIONS
+
+2024-03-25 21:18:18.856345   1. Arrange_v0
+2024-03-25 21:18:18.856359   current_page = https://capital.com/it/trade-stellar
+2024-03-25 21:18:18.858863   link = https://capital.com/it/trade-ripple
+2024-03-25 21:18:18.861317   => current_url != cur_item_link
+2024-03-25 21:18:18.861338   Current page URL = https://capital.com/it/trade-stellar
+2024-03-25 21:18:18.866869   self.link = https://capital.com/it/trade-ripple
+2024-03-25 21:18:18.866883   link = https://capital.com/it/trade-ripple
+2024-03-25 21:18:20.865381   => Loaded page https://capital.com/it/trade-ripple
+2024-03-25 21:18:20.877880   BUTTON_START_TRADING scroll =>
+2024-03-25 21:18:20.884114   BUTTON_START_TRADING is visible? =>
+2024-03-25 21:18:20.902242   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-25 21:18:20.902461   2. Act_v0
+2024-03-25 21:18:20.902485   Start Click button [Start Trading] =>
+2024-03-25 21:18:20.926437   BUTTON_START_TRADING is clickable? =>
+2024-03-25 21:18:20.939917   BUTTON_START_TRADING click =>
+2024-03-25 21:18:20.977321   => BUTTON_START_TRADING clicked
+
+2024-03-25 21:18:20.977545   3. Assert_Login_v0
+2024-03-25 21:18:20.977630   Check that 'Login' form is opened
+2024-03-25 21:18:24.009416   'Login' form not opened
+2024-03-25 21:18:24.009598   Check that new 'Login' form is opened
+2024-03-25 21:18:27.134327   => New 'Login' form not opened
+2024-03-25 21:18:27.137093   'Login' page not opened
+2024-03-25 21:18:30.234941   'Login' form on trading platform not opened
+2024-03-25 21:18:30.235145   Start step Check that [Sign up] form is opened
+2024-03-25 21:18:30.249546   'Sign up' form opened
+2024-03-25 21:18:30.249569   Assert SIGNUP_HEADER =>
+2024-03-25 21:18:30.260621   Assert SIGNUP_REF_LOGIN =>
+2024-03-25 21:18:30.273677   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-25 21:18:30.287818   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-25 21:18:30.287845   => 'Signup' form is checked
+
+Bug: 
+
+2024-03-25 21:18:30.287908   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb2103fdfa0>
+
+2024-03-25 21:18:30.290604  Для бага: Bid-05 необходимо использовать проверку на ретест!!!
