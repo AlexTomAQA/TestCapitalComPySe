@@ -1,0 +1,130 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-25 11:24:36.396101   worker_id = master
+
+2024-03-25 11:24:36.396118   0. Allure grouping v4
+
+
+2024-03-25 11:24:36.396320   START PRECONDITIONS =>
+
+
+2024-03-25 11:24:36.396336   => flag_of_bug - False
+
+2024-03-25 11:24:36.396348   => Windows size - {'width': 1280, 'height': 800}
+2024-03-25 11:24:36.397652   Set windows position at (0, 0) =>
+2024-03-25 11:24:36.499727   Set resolution 1280 * 800 =>
+2024-03-25 11:24:36.601824   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-25 11:24:37.629083   Капчи нет. Идем дальше
+
+2024-03-25 11:24:37.629171   Работа с куками
+
+2024-03-25 11:24:37.629184   => Prev. country - 'ae'
+2024-03-25 11:24:37.629194   => Country set to 'ae'
+
+2024-03-25 11:24:37.629203   => Prev. language - 'cn'
+2024-03-25 11:24:37.629213   => Language is set to 'cn'
+
+2024-03-25 11:24:37.629222   => Prev. role - 'Auth'
+2024-03-25 11:24:37.629230   => The 'Auth' role is set
+
+2024-03-25 11:24:37.631865   => THE END PRECONDITIONS
+2024-03-25 11:24:38.137940   => 'Markets' menu is present
+2024-03-25 11:24:38.154097   element = <selenium.webdriver.remote.webelement.WebElement (session="e53bb4e71c5f0110261a799c12cc462d", element="f.EB5CF95E8A5E2BAAAB66C6BF47A5D5FC.d.9064C5D0E7F07FC3C0BD022105498AF0.e.22003")>
+2024-03-25 11:24:38.154130   => 'Markets' menu is visible
+2024-03-25 11:24:39.417202   => Focus moved to 'Markets' menu
+2024-03-25 11:24:41.321529   => Focus moved to 'Shares' submenu and clicked
+
+2024-03-25 11:24:41.395629   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-25 11:24:41.395680   current_page = https://capital.com/cn/live-share-prices
+2024-03-25 11:24:41.398416   link = https://capital.com/cn/live-share-prices
+2024-03-25 11:24:41.400928   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-25 11:24:41.408870   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-25 11:24:41.408893   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-25 11:24:41.415856   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-25 11:24:41.415878   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-25 11:24:41.503310   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-25 11:24:41.522943   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-25 11:24:41.522978   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-25 11:24:41.545170   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-25 11:24:41.545224   Start click cur_sort "Most traded" =>
+2024-03-25 11:24:42.479330   => End Click cur_sort "Most traded"
+
+2024-03-25 11:24:42.479374   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-25 11:24:42.533128   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-25 11:24:42.533171   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-25 11:24:42.539582   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-25 11:24:42.539612   item_list = [9]
+2024-03-25 11:24:42.539772   Start Checking that form [Sign up] popped up on the page =>
+2024-03-25 11:24:44.074935   '[Sign up]' form was not popped up
+2024-03-25 11:24:44.075129   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-25 11:24:44.075145   Start click button [Sell] =>
+2024-03-25 11:24:44.487729   =>   BUTTON_SELL with item 1361805280629956 clicked!
+
+
+2024-03-25 11:24:44.488068   3. Assert_v4
+2024-03-25 11:24:44.488247   Checking that the trading platform page has opened (v4) =>
+2024-03-25 11:24:44.496832   Checking way # 1 => 
+2024-03-25 11:24:44.496964   Checking that the Trading platform page has valid title =>
+2024-03-25 11:24:44.499903   => Current page title: Trading Platform | Capital.com
+2024-03-25 11:24:44.500038   Checking that the Trading platform LOGO is present on the page =>
+2024-03-25 11:24:46.114665   => Trading platform LOGO is present on the page
+2024-03-25 11:24:46.114753   tpd = False
+2024-03-25 11:24:46.114902   Checking that the Trading platform opened in LIVE mode =>
+2024-03-25 11:24:46.129110   => The page with https://capital.com/trading/platform/charting/1361805280629956?side=sell&ids=15839732013552836,1361805280629956 url was opened in lIVE mode
+2024-03-25 11:24:46.131662   Check that opened page with https://capital.com/trading/platform/charting/1361805280629956?side=sell&ids=15839732013552836,1361805280629956 url
+with selected corresponding trading instrument '1361805280629956' =>
+2024-03-25 11:24:46.134237   => trade_instrument = '1361805280629956'
+2024-03-25 11:24:46.134254   => trade_instrument_name = '1361805280629956'
+2024-03-25 11:24:46.141647   => Trading Platform opened in Chart mode
+
+Bug: Bid:01.02.00_002-cn.ae.Auth
+
+2024-03-25 11:24:46.163613   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6c88152360>
+
+2024-03-25 11:24:46.537514   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:46.742670   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:47.908035   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:49.130949   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:50.254676   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:50.485540   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:50.488235   Добавление новой строки =>
+
+2024-03-25 11:24:51.784794   => Новая строка добавлена
+
+2024-03-25 11:24:53.359510   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:53.575897   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:53.578538   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-25 11:24:53.907142   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:53.907363   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-25 11:24:54.278248   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:54.278451   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:54.481283   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:54.481492   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:24:54.681351   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:24:54.681421   Баг Bid:01.02.00_002-cn.ae.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

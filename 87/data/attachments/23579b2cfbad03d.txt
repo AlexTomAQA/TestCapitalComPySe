@@ -1,0 +1,126 @@
+Current country of trading - au
+{'width': 1280, 'height': 800}
+
+2024-03-25 11:32:32.719177   worker_id = master
+
+2024-03-25 11:32:32.719191   0. Allure grouping v4
+
+
+2024-03-25 11:32:32.719381   START PRECONDITIONS =>
+
+
+2024-03-25 11:32:32.719397   => flag_of_bug - False
+
+2024-03-25 11:32:32.719408   => Windows size - {'width': 1280, 'height': 800}
+2024-03-25 11:32:32.720716   Set windows position at (0, 0) =>
+2024-03-25 11:32:32.822696   Set resolution 1280 * 800 =>
+2024-03-25 11:32:32.924851   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-25 11:32:33.950671   Капчи нет. Идем дальше
+
+2024-03-25 11:32:33.950759   Работа с куками
+
+2024-03-25 11:32:33.950773   => Prev. country - 'de'
+2024-03-25 11:32:33.950783   Set 'au' country =>
+2024-03-25 11:32:33.958403   => Language and Country menu is present
+2024-03-25 11:32:33.969010   => Language and Country menu is visible
+2024-03-25 11:32:35.244726   => Focus is moved on Language and Country menu 
+2024-03-25 11:32:37.769989   => Cur url = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:37.810625   => Country set to 'au'
+
+2024-03-25 11:32:37.810659   => Prev. language - 'cn'
+2024-03-25 11:32:37.810674   => Language is set to 'cn'
+
+2024-03-25 11:32:37.810691   => Prev. role - 'NoAuth'
+2024-03-25 11:32:37.810705   => The 'NoAuth' role is set
+
+2024-03-25 11:32:37.813372   => THE END PRECONDITIONS
+
+2024-03-25 11:32:37.813578   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-25 11:32:37.813594   1. Cur URL = https://capital.com/cn/live-currency-prices?country=au
+
+2024-03-25 11:32:37.816082   2. Link = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:37.816098   current_page = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:37.818507   link = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:38.328599   => 'Markets' menu is present
+2024-03-25 11:32:38.344034   element = <selenium.webdriver.remote.webelement.WebElement (session="39aecc76cc88870dd4020e1017b5f19a", element="f.B9A41AC01E37F79253A3F69720AA93B6.d.BFEABF1702A2B6B9BD108CCAFEF5D783.e.3550")>
+2024-03-25 11:32:38.344068   => 'Markets' menu is visible
+2024-03-25 11:32:39.608540   => Focus moved to 'Markets' menu
+
+
+2024-03-25 11:32:40.378584   => 'Forex' sub-menu clicked
+
+2024-03-25 11:32:40.381417   3. Cur URL = https://capital.com/cn/live-currency-prices?country=au
+
+2024-03-25 11:32:40.386440   1. Arrange_v0
+2024-03-25 11:32:40.386461   current_page = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:40.388920   link = https://capital.com/cn/live-currency-prices?country=au
+2024-03-25 11:32:40.399674   BUTTON_START_TRADING_NOW scroll =>
+2024-03-25 11:32:40.402846   BUTTON_START_TRADING_NOW is visible? =>
+2024-03-25 11:32:40.431186   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-25 11:32:40.431366   2. Act_v0
+2024-03-25 11:32:40.431381   Start Click button [Start Trading Now] =>
+2024-03-25 11:32:40.436344   BUTTON_START_TRADING_NOW is clickable? =>
+2024-03-25 11:32:40.447010   BUTTON_START_TRADING_NOW click =>
+2024-03-25 11:32:40.472114   => BUTTON_START_TRADING_NOW clicked
+
+2024-03-25 11:32:40.472336   3. Assert_Login_v0
+2024-03-25 11:32:40.472420   Check that 'Login' form is opened
+2024-03-25 11:32:43.554082   'Login' form not opened
+2024-03-25 11:32:43.554266   Check that new 'Login' form is opened
+2024-03-25 11:32:46.628241   => New 'Login' form not opened
+2024-03-25 11:32:46.631074   'Login' page not opened
+2024-03-25 11:32:49.693725   'Login' form on trading platform not opened
+2024-03-25 11:32:49.693917   Start step Check that [Sign up] form is opened
+2024-03-25 11:32:49.711673   'Sign up' form opened
+2024-03-25 11:32:49.711696   Assert SIGNUP_HEADER =>
+2024-03-25 11:32:49.726162   Assert SIGNUP_REF_LOGIN =>
+2024-03-25 11:32:49.739147   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-25 11:32:49.752535   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-25 11:32:49.752558   => 'Signup' form is checked
+
+Bug: Bid:01.03.00_001-cn.au.NoAuth
+
+2024-03-25 11:32:49.752617   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f38bf16c260>
+
+2024-03-25 11:32:50.311409   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:50.518023   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:51.631835   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:51.839671   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:52.831272   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:53.219800   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:53.222554   Добавление новой строки =>
+
+2024-03-25 11:32:54.667003   => Новая строка добавлена
+
+2024-03-25 11:32:56.707153   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:56.912062   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:56.914784   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-25 11:32:57.247706   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:57.247918   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-25 11:32:57.902942   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:57.903155   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:58.940374   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:58.940667   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-25 11:32:59.141668   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-25 11:32:59.141740   Баг Bid:01.03.00_001-cn.au.NoAuth-05 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
