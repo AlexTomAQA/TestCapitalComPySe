@@ -1,0 +1,86 @@
+Current country of trading - ae
+{'width': 1280, 'height': 800}
+
+2024-03-24 23:07:44.400007   worker_id = master
+
+2024-03-24 23:07:44.400021   0. Allure grouping v4
+
+
+2024-03-24 23:07:44.400212   START PRECONDITIONS =>
+
+
+2024-03-24 23:07:44.400227   => flag_of_bug - False
+
+2024-03-24 23:07:44.400238   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 23:07:44.401603   Set windows position at (0, 0) =>
+2024-03-24 23:07:44.505510   Set resolution 1280 * 800 =>
+2024-03-24 23:07:44.608001   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 23:07:45.646043   Капчи нет. Идем дальше
+
+2024-03-24 23:07:45.646137   Работа с куками
+
+2024-03-24 23:07:45.646152   => Prev. country - 'au'
+2024-03-24 23:07:45.646162   Set 'ae' country =>
+2024-03-24 23:07:45.654532   => Language and Country menu is present
+2024-03-24 23:07:45.666194   => Language and Country menu is visible
+2024-03-24 23:07:46.940440   => Focus is moved on Language and Country menu 
+2024-03-24 23:07:49.830525   => Cur url = https://capital.com/ro/piata-CFD?country=ae
+2024-03-24 23:07:49.859870   => Country set to 'ae'
+
+2024-03-24 23:07:49.859908   => Prev. language - 'ro'
+2024-03-24 23:07:49.859919   => Language is set to 'ro'
+
+2024-03-24 23:07:49.859928   => Prev. role - 'NoAuth'
+2024-03-24 23:07:49.859937   => The 'NoAuth' role is set
+
+2024-03-24 23:07:49.862635   => THE END PRECONDITIONS
+
+2024-03-24 23:07:49.862876   1. Arrange_v0
+2024-03-24 23:07:49.862897   current_page = https://capital.com/ro/piata-CFD?country=ae
+2024-03-24 23:07:49.865393   link = https://capital.com/ro/piata-CFD
+2024-03-24 23:07:49.867799   => current_url != cur_item_link
+2024-03-24 23:07:49.867821   Current page URL = https://capital.com/ro/piata-CFD?country=ae
+2024-03-24 23:07:49.871664   self.link = https://capital.com/ro/piata-CFD
+2024-03-24 23:07:49.871678   link = https://capital.com/ro/piata-CFD
+2024-03-24 23:07:51.802207   => Loaded page https://capital.com/ro/piata-CFD
+2024-03-24 23:07:51.814733   BUTTON_START_TRADING scroll =>
+2024-03-24 23:07:51.820456   BUTTON_START_TRADING is visible? =>
+2024-03-24 23:07:51.835912   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-24 23:07:51.836081   2. Act_v0
+2024-03-24 23:07:51.836096   Start Click button [Start Trading] =>
+2024-03-24 23:07:51.840990   BUTTON_START_TRADING is clickable? =>
+2024-03-24 23:07:51.851426   BUTTON_START_TRADING click =>
+2024-03-24 23:07:51.884771   => BUTTON_START_TRADING clicked
+
+2024-03-24 23:07:51.885072   3. Assert_Login_v0
+2024-03-24 23:07:51.885190   Check that 'Login' form is opened
+2024-03-24 23:07:54.962488   'Login' form not opened
+2024-03-24 23:07:54.962712   Check that new 'Login' form is opened
+2024-03-24 23:07:58.064629   => New 'Login' form not opened
+2024-03-24 23:07:58.067563   'Login' page not opened
+2024-03-24 23:08:01.149385   'Login' form on trading platform not opened
+2024-03-24 23:08:01.149591   Start step Check that [Sign up] form is opened
+2024-03-24 23:08:01.166263   'Sign up' form opened
+2024-03-24 23:08:01.166303   Assert SIGNUP_HEADER =>
+2024-03-24 23:08:01.179812   Assert SIGNUP_REF_LOGIN =>
+2024-03-24 23:08:01.194315   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-24 23:08:01.208820   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-24 23:08:01.208856   => 'Signup' form is checked
+
+Bug: Bid:11.01.03.01_01-ro.ae.NoAuth
+
+2024-03-24 23:08:01.208924   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6370702d50>
+
+2024-03-24 23:08:01.687305   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 23:08:02.091354   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 23:08:03.441345   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 23:08:03.848296   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 23:08:03.849490   Баг Bid:11.01.03.01_01-ro.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

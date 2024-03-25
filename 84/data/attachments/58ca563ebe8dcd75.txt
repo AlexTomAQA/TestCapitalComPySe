@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-03-24 23:35:46.238428   worker_id = master
+
+2024-03-24 23:35:46.238445   0. Allure grouping v4
+
+
+2024-03-24 23:35:46.238656   START PRECONDITIONS =>
+
+
+2024-03-24 23:35:46.238702   => flag_of_bug - True
+2024-03-24 23:35:46.238718   Current page URL = https://capital.com/trading/platform/
+2024-03-24 23:35:46.241476   self.link = https://capital.com
+2024-03-24 23:35:46.241490   link = https://capital.com
+2024-03-24 23:35:48.075375   => Loaded page https://capital.com/
+
+2024-03-24 23:35:48.079574   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 23:35:48.081048   Set windows position at (0, 0) =>
+2024-03-24 23:35:48.183363   Set resolution 1280 * 800 =>
+2024-03-24 23:35:48.287345   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 23:35:49.341628   Капчи нет. Идем дальше
+
+2024-03-24 23:35:49.341724   Работа с куками
+
+2024-03-24 23:35:49.341739   => Prev. country - 'au'
+2024-03-24 23:35:49.341749   => Country set to 'au'
+
+2024-03-24 23:35:49.341758   => Prev. language - 'ro'
+2024-03-24 23:35:49.341768   Set 'ro' language =>
+2024-03-24 23:35:49.355109   => Language and Country menu is present
+2024-03-24 23:35:49.372406   => Language and Country menu is visible
+2024-03-24 23:35:50.654967   => Focus is moved on Language and Country menu 
+2024-03-24 23:35:50.663843   Move focus on ro item and click =>
+2024-03-24 23:35:52.306005   => Focus moved on ro item and clicked
+2024-03-24 23:35:52.306051   => Cur url = https://capital.com/ro
+2024-03-24 23:35:52.348067   => Language is set to 'ro'
+
+2024-03-24 23:35:52.348104   => Prev. role - 'Auth'
+2024-03-24 23:35:52.348120   => The 'Auth' role is set
+
+2024-03-24 23:35:52.366022   => THE END PRECONDITIONS
+
+2024-03-24 23:35:52.366121   1. Arrange_v0
+2024-03-24 23:35:52.366137   current_page = https://capital.com/ro
+2024-03-24 23:35:52.373681   link = https://capital.com/ro/tranzactionati-facebook
+2024-03-24 23:35:52.380998   Current page URL = https://capital.com/ro
+2024-03-24 23:35:52.383773   self.link = https://capital.com/ro/tranzactionati-facebook
+2024-03-24 23:35:52.383792   link = https://capital.com/ro/tranzactionati-facebook
+2024-03-24 23:35:54.757008   => Loaded page https://capital.com/ro/tranzactionati-facebook
+2024-03-24 23:35:54.760489   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-03-24 23:35:54.769285   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-03-24 23:35:54.769508   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 23:35:56.306627   '[Sign up]' form was not popped up
+
+2024-03-24 23:35:56.306849   2. Act_v0
+2024-03-24 23:35:56.312440   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-03-24 23:35:56.312470   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-03-24 23:35:56.312485   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-03-24 23:35:56.315857   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-03-24 23:35:56.338939   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-03-24 23:35:56.353457   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-03-24 23:35:56.552996   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-03-24 23:35:56.553374   3. Assert_v4
+2024-03-24 23:35:56.553577   Checking that the trading platform page has opened (v4) =>
+2024-03-24 23:35:57.066831   Checking way # 1 => 
+2024-03-24 23:35:57.067080   Checking that the Trading platform page has valid title =>
+2024-03-24 23:35:57.069645   => Current page title: Trading Platform | Capital.com
+2024-03-24 23:35:57.069773   Checking that the Trading platform LOGO is present on the page =>
+2024-03-24 23:35:58.639226   => Trading platform LOGO is present on the page
+2024-03-24 23:35:58.639317   tpd = False
+2024-03-24 23:35:58.639471   Checking that the Trading platform opened in LIVE mode =>
+2024-03-24 23:35:58.650701   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+2024-03-24 23:35:58.653230   Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '1657857463492' =>
+2024-03-24 23:35:58.655775   => trade_instrument = '1657857463492'
+2024-03-24 23:35:58.655805   => trade_instrument_name = '1657857463492'
+2024-03-24 23:35:59.699983   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_04-ro.au.Auth
+
+2024-03-24 23:35:59.700033   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f7f568210d0>
+
+2024-03-24 23:36:00.031609   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 23:36:00.300959   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 23:36:01.556498   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 23:36:01.952364   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 23:36:01.953645   Баг Bid:11.02.02.01_04-ro.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

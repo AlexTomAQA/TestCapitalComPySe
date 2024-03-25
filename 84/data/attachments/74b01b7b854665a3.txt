@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-24 22:59:08.926999   worker_id = master
+
+2024-03-24 22:59:08.927019   0. Allure grouping v4
+
+
+2024-03-24 22:59:08.927295   START PRECONDITIONS =>
+
+
+2024-03-24 22:59:08.927312   => flag_of_bug - False
+
+2024-03-24 22:59:08.927324   => Windows size - {'width': 1280, 'height': 800}
+2024-03-24 22:59:08.928667   Set windows position at (0, 0) =>
+2024-03-24 22:59:09.030893   Set resolution 1280 * 800 =>
+2024-03-24 22:59:09.133200   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-24 22:59:10.173289   Капчи нет. Идем дальше
+
+2024-03-24 22:59:10.173375   Работа с куками
+
+2024-03-24 22:59:10.173389   => Prev. country - 'au'
+2024-03-24 22:59:10.173398   => Country set to 'au'
+
+2024-03-24 22:59:10.173407   => Prev. language - 'ro'
+2024-03-24 22:59:10.173417   => Language is set to 'ro'
+
+2024-03-24 22:59:10.173426   => Prev. role - 'Auth'
+2024-03-24 22:59:10.173435   => The 'Auth' role is set
+
+2024-03-24 22:59:10.175989   => THE END PRECONDITIONS
+
+2024-03-24 22:59:10.178722   1. Arrange_v4
+2024-03-24 22:59:10.178745   current_page = https://capital.com/ro/what-is-cfd-trading
+2024-03-24 22:59:10.181201   link = https://capital.com/ro/what-is-cfd-trading
+2024-03-24 22:59:10.183623   MOST_TRADED is present? =>
+2024-03-24 22:59:10.191904   => MOST_TRADED widget is present on this page
+2024-03-24 22:59:10.191926   => Found 5 elements in block MOST_TRADED
+2024-03-24 22:59:10.191937   Most traded widget is scroll =>
+2024-03-24 22:59:10.195075   => Most traded widget is scrolled into screen center
+
+2024-03-24 22:59:10.195119   Random indexes = [0]
+
+2024-03-24 22:59:10.195134   Testing Most traded 1 random element with 0 index
+
+2024-03-24 22:59:10.195258   2. Act_v4
+2024-03-24 22:59:10.195351   Start Checking that form [Sign up] popped up on the page =>
+2024-03-24 22:59:11.734151   '[Sign up]' form was not popped up
+2024-03-24 22:59:11.742882   instrument_item = <selenium.webdriver.remote.webelement.WebElement (session="21015be2cffa02d08aee6a63d57ed07c", element="f.2FB1C394730C5DEA3F673EB7250467B9.d.2A1A44F35D9D721E488348C6886922B0.e.560")>
+2024-03-24 22:59:11.747579   instrument_title = US Tech 100
+2024-03-24 22:59:11.752811   Selected Trade button on Most traded widget is scroll =>
+2024-03-24 22:59:11.756224   Selected Trade button click for 'US Tech 100' trading instrument =>
+2024-03-24 22:59:13.743687   => Selected Trade button clicked!
+
+2024-03-24 22:59:13.744004   3. Assert_v4
+2024-03-24 22:59:13.744158   Checking that the trading platform page has opened (v4) =>
+2024-03-24 22:59:13.750223   Checking way # 1 => 
+2024-03-24 22:59:13.750347   Checking that the Trading platform page has valid title =>
+2024-03-24 22:59:13.752995   => Current page title: Trading Platform | Capital.com
+2024-03-24 22:59:13.753117   Checking that the Trading platform LOGO is present on the page =>
+2024-03-24 22:59:14.854783   => Trading platform LOGO is present on the page
+2024-03-24 22:59:14.854898   tpd = False
+2024-03-24 22:59:14.855126   Checking that the Trading platform opened in LIVE mode =>
+
+Bug: Bid:11.01.03.00_03-ro.au.Auth
+
+2024-03-24 22:59:30.232698   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7efe81896bd0>
+
+2024-03-24 22:59:30.707358   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 22:59:32.511522   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 22:59:34.795356   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 22:59:35.319393   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 22:59:35.319476   Баг Bid:11.01.03.00_03-ro.au.Auth уже существует, но у него изменился тип с 16 на 12
+
+2024-03-24 22:59:35.319662   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-24 22:59:35.725276   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-24 22:59:35.726463   Баг Bid:11.01.03.00_03-ro.au.Auth-12 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
