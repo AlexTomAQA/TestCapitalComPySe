@@ -1,0 +1,99 @@
+{'width': 1280, 'height': 800}
+
+2024-03-26 07:45:03.014614   worker_id = master
+
+2024-03-26 07:45:03.014631   0. Allure grouping v4
+
+
+2024-03-26 07:45:03.014839   START PRECONDITIONS =>
+
+
+2024-03-26 07:45:03.014855   => flag_of_bug - True
+2024-03-26 07:45:03.014868   Current page URL = https://capital.com/fr/quest-ce-que-le-trading-de-cfd
+2024-03-26 07:45:03.017720   self.link = https://capital.com
+2024-03-26 07:45:03.017734   link = https://capital.com
+2024-03-26 07:45:04.746993   => Loaded page https://capital.com/
+
+2024-03-26 07:45:04.751160   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 07:45:04.752455   Set windows position at (0, 0) =>
+2024-03-26 07:45:04.854420   Set resolution 1280 * 800 =>
+2024-03-26 07:45:04.956467   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 07:45:05.983294   Капчи нет. Идем дальше
+
+2024-03-26 07:45:05.983409   Работа с куками
+
+2024-03-26 07:45:05.983433   => Prev. country - 'au'
+2024-03-26 07:45:05.983450   => Country set to 'au'
+
+2024-03-26 07:45:05.983466   => Prev. language - 'fr'
+2024-03-26 07:45:05.983481   Set 'fr' language =>
+2024-03-26 07:45:05.993794   => Language and Country menu is present
+2024-03-26 07:45:06.006665   => Language and Country menu is visible
+2024-03-26 07:45:07.283414   => Focus is moved on Language and Country menu 
+2024-03-26 07:45:07.291806   Move focus on fr item and click =>
+2024-03-26 07:45:08.851586   => Focus moved on fr item and clicked
+2024-03-26 07:45:08.851633   => Cur url = https://capital.com/fr
+2024-03-26 07:45:08.875916   => Language is set to 'fr'
+
+2024-03-26 07:45:08.875942   => Prev. role - 'NoAuth'
+2024-03-26 07:45:08.875952   => The 'NoAuth' role is set
+
+2024-03-26 07:45:08.878311   => THE END PRECONDITIONS
+
+2024-03-26 07:45:08.883629   START Open "Education" menu, "CFD trading guide" submenu =>
+
+2024-03-26 07:45:08.883650   1. Cur URL = https://capital.com/fr
+
+2024-03-26 07:45:08.886129   2. Link = https://capital.com/fr
+2024-03-26 07:45:08.886145   current_page = https://capital.com/fr
+2024-03-26 07:45:08.888478   link = https://capital.com/fr
+2024-03-26 07:45:09.399402   => Education menu is present in DOM
+2024-03-26 07:45:09.405851   element = <selenium.webdriver.remote.webelement.WebElement (session="17b8e3fa00599083a54fff2b581563da", element="f.8CC458D7AC4209A5B25FF71D3E538399.d.7861A7DA230A5A3999F5A59BDD990043.e.1426")>
+2024-03-26 07:45:09.405880   => Education menu is visible
+2024-03-26 07:45:10.681717   => Focus moved to Education menu
+
+2024-03-26 07:45:13.163714   3. Cur URL = https://capital.com/fr/quest-ce-que-le-trading-de-cfd
+
+2024-03-26 07:45:13.168987   1. Arrange_v0
+2024-03-26 07:45:13.169009   current_page = https://capital.com/fr/quest-ce-que-le-trading-de-cfd
+2024-03-26 07:45:13.171406   link = https://capital.com/fr/quest-ce-que-le-trading-de-cfd
+2024-03-26 07:45:13.182267   => BUTTON_TRY_DEMO is present on this page
+2024-03-26 07:45:13.182290   BUTTON_TRY_DEMO scroll =>
+2024-03-26 07:45:13.185455   BUTTON_TRY_DEMO is visible? =>
+2024-03-26 07:45:13.199365   => BUTTON_TRY_DEMO is visible on this page
+
+2024-03-26 07:45:13.199548   2. Act_v0
+2024-03-26 07:45:13.204882   BUTTON_TRY_DEMO is clickable? =>
+2024-03-26 07:45:13.228004   => BUTTON_TRY_DEMO clicked!
+
+2024-03-26 07:45:13.228216   3. Assert_Login_v0
+2024-03-26 07:45:13.228302   Check that 'Login' form is opened
+2024-03-26 07:45:16.311172   'Login' form not opened
+2024-03-26 07:45:16.311351   Check that new 'Login' form is opened
+2024-03-26 07:45:19.376558   => New 'Login' form not opened
+2024-03-26 07:45:19.379275   'Login' page not opened
+2024-03-26 07:45:22.436061   'Login' form on trading platform not opened
+2024-03-26 07:45:22.436253   Start step Check that [Sign up] form is opened
+2024-03-26 07:45:22.447714   'Sign up' form opened
+2024-03-26 07:45:22.447739   Assert SIGNUP_HEADER =>
+2024-03-26 07:45:22.458621   Assert SIGNUP_REF_LOGIN =>
+2024-03-26 07:45:22.469333   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-26 07:45:22.480475   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-26 07:45:22.480498   => 'Signup' form is checked
+
+Bug: Bid:11.01.03.00_02-fr.au.NoAuth
+
+2024-03-26 07:45:22.480566   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6b33c33b90>
+
+2024-03-26 07:45:22.788717   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 07:45:22.949555   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 07:45:23.851202   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 07:45:24.021854   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 07:45:24.023105   Баг Bid:11.01.03.00_02-fr.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
