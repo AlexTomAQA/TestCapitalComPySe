@@ -38,16 +38,16 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             print(f"\n{datetime.now()}   Testing Most traded {i + 1} random element with {index} index")
             trade_instrument = self.element_click_v4(index)
             if not trade_instrument:
-                Common().pytest_fail("Testing element is not clicked")
+                Common().pytest_fail("Bug # ??? Testing element is not clicked")
 
-            check_element = AssertClass(d, cur_item_link, self.bid)
+            test_element = AssertClass(d, cur_item_link, self.bid)
             match cur_role:
                 case "NoReg":
-                    check_element.assert_signup(d, cur_language, cur_item_link)
+                    test_element.assert_signup(d, cur_language, cur_item_link)
                 case "NoAuth":
-                    check_element.assert_login(d, cur_language, cur_item_link)
+                    test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+                    test_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
             counter += 1
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
@@ -133,9 +133,9 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         if len(trade_instrument_list) == 0:
             Common().pytest_fail("Problem! List of instruments is empty.")
         instrument_item = trade_instrument_list[random_index]
-        print(f"{datetime.now()}   instrument_item = {instrument_item}")
+        # print(f"{datetime.now()}   instrument_item = {instrument_item}")
         instrument_title = instrument_item.get_attribute('title')
-        print(f"{datetime.now()}   instrument_title = {instrument_title}")
+        print(f"{datetime.now()}   instrument_title = '{instrument_title}'")
 
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         element = item_list[random_index]
