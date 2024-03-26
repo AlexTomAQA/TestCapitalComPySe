@@ -131,6 +131,21 @@ class ButtonsOnPageLocators:
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
 
+    # Elements of 'Trading instrument' widget
+    TRADING_INSTRUMENT_WIDGET = (By.CSS_SELECTOR, '[data-wrap="homePage"]')
+
+    MOST_TRADED_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_mosttraded"]')
+    COMMODITIES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_COM"]')
+    INDICES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_IND"]')
+    CRYPTOCURRENCIES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_CRYPTO"]')
+    SHARES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_SHARE"]')
+    FOREX_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_FOREX"]')
+    ETFS_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_etfs"]')
+
+    MEATBALLS_MENU_BUTTON = (By.CSS_SELECTOR, '.cc-boxXs.tabsDrop__btn.js-tabsDrop__btn')
+
+    TRADE_BUTTON_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets__btn.js-wMarkets__tradeBtn.showLg')
+
     # Elements of Our markets block
     OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
 

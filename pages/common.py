@@ -47,6 +47,12 @@ class Common:
 		return
 
 	@staticmethod
+	def check_market_in_list_and_skip_if_present(cur_market, list_markets):
+		if cur_market in list_markets:
+			pytest.skip(f"This test is not for '{cur_market}' market")
+		return
+
+	@staticmethod
 	def check_country_in_list_and_skip_if_not_present(cur_country, list_countries):
 		if cur_country not in list_countries:
 			pytest.skip(f"This test is not for '{cur_country}' country")
