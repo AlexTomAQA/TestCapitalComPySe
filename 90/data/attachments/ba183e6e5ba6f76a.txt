@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-26 11:14:38.098740   worker_id = master
+
+2024-03-26 11:14:38.098763   0. Allure grouping v4
+
+
+2024-03-26 11:14:38.099082   START PRECONDITIONS =>
+
+
+2024-03-26 11:14:38.099102   => flag_of_bug - False
+
+2024-03-26 11:14:38.099115   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 11:14:38.103322   Set windows position at (0, 0) =>
+2024-03-26 11:14:38.207438   Set resolution 1280 * 800 =>
+2024-03-26 11:14:38.310492   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 11:14:39.348626   Капчи нет. Идем дальше
+
+2024-03-26 11:14:39.348705   Работа с куками
+
+2024-03-26 11:14:39.348718   => Prev. country - 'ae'
+2024-03-26 11:14:39.348728   => Country set to 'ae'
+
+2024-03-26 11:14:39.348737   => Prev. language - 'de'
+2024-03-26 11:14:39.348747   => Language is set to 'de'
+
+2024-03-26 11:14:39.348756   => Prev. role - 'Auth'
+2024-03-26 11:14:39.348765   => The 'Auth' role is set
+
+2024-03-26 11:14:39.351451   => THE END PRECONDITIONS
+
+2024-03-26 11:14:39.351639   1. Arrange_v4
+2024-03-26 11:14:39.351656   current_page = https://capital.com/de/cfd-handel-einfach-erklaert
+2024-03-26 11:14:39.354183   link = https://capital.com/de/cfd-handel-einfach-erklaert
+2024-03-26 11:14:39.356671   MOST_TRADED is present? =>
+2024-03-26 11:14:39.364613   => MOST_TRADED widget is present on this page
+2024-03-26 11:14:39.364634   => Found 5 elements in block MOST_TRADED
+2024-03-26 11:14:39.364645   Most traded widget is scroll =>
+2024-03-26 11:14:39.369384   => Most traded widget is scrolled into screen center
+
+2024-03-26 11:14:39.369428   Random indexes = [4]
+
+2024-03-26 11:14:39.369447   Testing Most traded 1 random element with 4 index
+
+2024-03-26 11:14:39.369597   2. Act_v4
+2024-03-26 11:14:39.369696   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 11:14:40.912297   '[Sign up]' form was not popped up
+2024-03-26 11:14:40.920675   instrument_item = <selenium.webdriver.remote.webelement.WebElement (session="e09b5f4a2b12d36673f6f67fd7c39320", element="f.6A58A5211DB886C25B1C2F66D457384A.d.E350727480119C035536FFB949D39376.e.489")>
+2024-03-26 11:14:40.925440   instrument_title = Ethereum to US Dollar
+2024-03-26 11:14:40.930895   Selected Trade button on Most traded widget is scroll =>
+2024-03-26 11:14:40.934247   Selected Trade button click for 'Ethereum to US Dollar' trading instrument =>
+2024-03-26 11:14:42.923598   => Selected Trade button clicked!
+
+2024-03-26 11:14:42.923859   3. Assert_v4
+2024-03-26 11:14:42.923972   Checking that the trading platform page has opened (v4) =>
+2024-03-26 11:14:42.930739   Checking way # 1 => 
+2024-03-26 11:14:42.930869   Checking that the Trading platform page has valid title =>
+2024-03-26 11:14:42.933489   => Current page title: Trading Platform | Capital.com
+2024-03-26 11:14:42.933627   Checking that the Trading platform LOGO is present on the page =>
+2024-03-26 11:14:44.494180   => Trading platform LOGO is present on the page
+2024-03-26 11:14:44.494272   tpd = False
+2024-03-26 11:14:44.494457   Checking that the Trading platform opened in LIVE mode =>
+2024-03-26 11:14:44.507916   => The page with https://capital.com/trading/platform/charting/5983666832495812?side=buy&ids=65213121270162457,66319749658747929,3400518881858756,10384900209333444,68501459901129753,69627905268818969,21765481211974852,1496662958757060,374675767116953,55001351247374,335673169101977,93810675766468,253454610113561,55001351226694,457749024515097,93810675708048,55001351234585,10500838556456274,12241936693896217,1526559147980517520,21680337780298948,389605073441988,7090561509053636,7094972440466628,3578605405754706,7092687517865156,7089977393501380,7091880064013508,27045129890124996,5983666832495812 url was opened in lIVE mode
+2024-03-26 11:14:44.510815   Check that opened page with https://capital.com/trading/platform/charting/5983666832495812?side=buy&ids=65213121270162457,66319749658747929,3400518881858756,10384900209333444,68501459901129753,69627905268818969,21765481211974852,1496662958757060,374675767116953,55001351247374,335673169101977,93810675766468,253454610113561,55001351226694,457749024515097,93810675708048,55001351234585,10500838556456274,12241936693896217,1526559147980517520,21680337780298948,389605073441988,7090561509053636,7094972440466628,3578605405754706,7092687517865156,7089977393501380,7091880064013508,27045129890124996,5983666832495812 url
+with selected corresponding trading instrument 'Ethereum to US Dollar' =>
+2024-03-26 11:14:44.513508   => trade_instrument = 'Ethereum to US Dollar'
+2024-03-26 11:14:44.513526   => trade_instrument_name = 'Ethereum'
+2024-03-26 11:14:44.748174   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.01.03.01_03-de.ae.Auth
+
+2024-03-26 11:14:44.985240   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f3141e976b0>
+
+2024-03-26 11:14:45.569292   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 11:14:45.893061   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 11:14:46.477384   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 11:14:46.736900   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 11:14:46.738192   Баг Bid:11.01.03.01_03-de.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

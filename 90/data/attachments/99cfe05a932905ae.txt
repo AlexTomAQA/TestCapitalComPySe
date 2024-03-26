@@ -1,0 +1,102 @@
+{'width': 1280, 'height': 800}
+
+2024-03-26 12:46:28.462585   worker_id = master
+
+2024-03-26 12:46:28.462602   0. Allure grouping v4
+
+
+2024-03-26 12:46:28.462807   START PRECONDITIONS =>
+
+
+2024-03-26 12:46:28.462822   => flag_of_bug - True
+2024-03-26 12:46:28.462834   Current page URL = https://capital.com/trading/signup
+2024-03-26 12:46:28.466072   self.link = https://capital.com
+2024-03-26 12:46:28.466086   link = https://capital.com
+2024-03-26 12:46:30.692272   => Loaded page https://capital.com/
+
+2024-03-26 12:46:30.695944   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 12:46:30.697472   Set windows position at (0, 0) =>
+2024-03-26 12:46:30.799796   Set resolution 1280 * 800 =>
+2024-03-26 12:46:30.902319   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 12:46:31.943170   Капчи нет. Идем дальше
+
+2024-03-26 12:46:31.943262   Работа с куками
+
+2024-03-26 12:46:31.943276   => Prev. country - 'ae'
+2024-03-26 12:46:31.943286   => Country set to 'ae'
+
+2024-03-26 12:46:31.943295   => Prev. language - 'de'
+2024-03-26 12:46:31.943305   Set 'de' language =>
+2024-03-26 12:46:31.956541   => Language and Country menu is present
+2024-03-26 12:46:31.971617   => Language and Country menu is visible
+2024-03-26 12:46:33.258988   => Focus is moved on Language and Country menu 
+2024-03-26 12:46:33.272443   Move focus on de item and click =>
+2024-03-26 12:46:35.167506   => Focus moved on de item and clicked
+2024-03-26 12:46:35.167557   => Cur url = https://capital.com/de
+2024-03-26 12:46:35.281232   => Language is set to 'de'
+
+2024-03-26 12:46:35.281263   => Prev. role - 'NoAuth'
+2024-03-26 12:46:35.281274   => The 'NoAuth' role is set
+
+2024-03-26 12:46:35.283805   => THE END PRECONDITIONS
+
+2024-03-26 12:46:35.283869   1. Arrange
+2024-03-26 12:46:35.283883   current_page = https://capital.com/de
+2024-03-26 12:46:35.286448   link = https://capital.com/de/trade-cac
+
+2024-03-26 12:46:35.292155   Open page: https://capital.com/de/trade-cac
+2024-03-26 12:46:35.292178   Current page URL = https://capital.com/de
+2024-03-26 12:46:35.294936   self.link = https://capital.com/de/trade-cac
+2024-03-26 12:46:35.294950   link = https://capital.com/de/trade-cac
+2024-03-26 12:46:37.602048   => Loaded page https://capital.com/de/trade-cac
+2024-03-26 12:46:37.609676   BUTTON_ON_HOR_BANNER is present? =>
+2024-03-26 12:46:37.618280   => BUTTON_ON_HOR_BANNER is present on this page
+2024-03-26 12:46:37.618307   BUTTON_ON_HOR_BANNER scroll =>
+2024-03-26 12:46:37.637681   BUTTON_ON_HOR_BANNER is visible? =>
+2024-03-26 12:46:37.686712   => BUTTON_ON_HOR_BANNER is visible on the page!
+2024-03-26 12:46:37.686902   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 12:46:39.197133   '[Sign up]' form was not popped up
+
+2024-03-26 12:46:39.197313   2. Act
+
+2024-03-26 12:46:39.219818   => Button on Horizontal banner is clickable
+
+2024-03-26 12:46:39.224968   data_id = 169
+2024-03-26 12:46:40.018990   => BUTTON_ON_HOR_BANNER clicked!
+
+2024-03-26 12:46:40.019322   3. Assert_Login_v0
+2024-03-26 12:46:40.019504   Check that 'Login' form is opened
+2024-03-26 12:46:46.882107   'Login' form not opened
+2024-03-26 12:46:46.882304   Check that new 'Login' form is opened
+2024-03-26 12:46:49.985666   => New 'Login' form not opened
+2024-03-26 12:46:49.989671   'Login' page not opened
+2024-03-26 12:46:53.099746   'Login' form on trading platform not opened
+2024-03-26 12:46:53.099949   Start step Check that [Sign up] form is opened
+2024-03-26 12:46:56.210455   'Sign up' form not opened
+2024-03-26 12:46:56.210643   Start step Check that new [Sign up] form is opened
+2024-03-26 12:46:59.333651   => new 'Sign up' form not opened
+2024-03-26 12:46:59.333843   Start method Check that [Sign up] page opened =>
+2024-03-26 12:47:00.338713   'Sign up' page opened
+2024-03-26 12:47:00.338753   Assert SIGNUP_SIGNUP_FRAME =>
+2024-03-26 12:47:00.347377   Assert SIGNUP_REF_LOGIN =>
+2024-03-26 12:47:00.363599   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-03-26 12:47:01.915458   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-26 12:47:01.930552   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-26 12:47:01.930595   => 'Signup' page is checked
+
+Bug: Bid:11.02.06.01_12-de.ae.NoAuth
+
+2024-03-26 12:47:02.930852   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f574d3f1b20>
+
+2024-03-26 12:47:03.468320   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 12:47:03.724324   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 12:47:04.333467   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 12:47:04.597493   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 12:47:04.599150   Баг Bid:11.02.06.01_12-de.ae.NoAuth-06 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

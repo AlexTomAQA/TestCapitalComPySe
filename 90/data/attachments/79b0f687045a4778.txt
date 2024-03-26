@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-03-26 12:03:56.219346   worker_id = master
+
+2024-03-26 12:03:56.219363   0. Allure grouping v4
+
+
+2024-03-26 12:03:56.219569   START PRECONDITIONS =>
+
+
+2024-03-26 12:03:56.219586   => flag_of_bug - False
+
+2024-03-26 12:03:56.219597   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 12:03:56.221086   Set windows position at (0, 0) =>
+2024-03-26 12:03:56.323341   Set resolution 1280 * 800 =>
+2024-03-26 12:03:56.430522   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 12:03:57.454576   Капчи нет. Идем дальше
+
+2024-03-26 12:03:57.454670   Работа с куками
+
+2024-03-26 12:03:57.454684   => Prev. country - 'ae'
+2024-03-26 12:03:57.454694   => Country set to 'ae'
+
+2024-03-26 12:03:57.454703   => Prev. language - 'de'
+2024-03-26 12:03:57.454712   => Language is set to 'de'
+
+2024-03-26 12:03:57.454721   => Prev. role - 'Auth'
+2024-03-26 12:03:57.454730   => The 'Auth' role is set
+
+2024-03-26 12:03:57.457580   => THE END PRECONDITIONS
+
+2024-03-26 12:03:57.457790   1. Arrange_v4
+2024-03-26 12:03:57.457808   current_page = https://capital.com/de/trade-copper
+2024-03-26 12:03:57.460558   link = https://capital.com/de/trade-copper
+2024-03-26 12:03:57.463159   MOST_TRADED is present? =>
+2024-03-26 12:03:57.471229   => MOST_TRADED widget is present on this page
+2024-03-26 12:03:57.471252   => Found 5 elements in block MOST_TRADED
+2024-03-26 12:03:57.471262   Most traded widget is scroll =>
+2024-03-26 12:03:57.474934   => Most traded widget is scrolled into screen center
+
+2024-03-26 12:03:57.474973   Random indexes = [3]
+
+2024-03-26 12:03:57.474988   Testing Most traded 1 random element with 3 index
+
+2024-03-26 12:03:57.475126   2. Act_v4
+2024-03-26 12:03:57.475220   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 12:03:59.022031   '[Sign up]' form was not popped up
+2024-03-26 12:03:59.031540   instrument_item = <selenium.webdriver.remote.webelement.WebElement (session="70ebd2ab80733cdb050bbdc7bf45c4b0", element="f.43D067F1F556BC3D7705BEC8758575D4.d.FB961EFBCF9A16D2CBBF1BF87D65BEA4.e.8698")>
+2024-03-26 12:03:59.036681   instrument_title = US Cocoa Spot
+2024-03-26 12:03:59.042559   Selected Trade button on Most traded widget is scroll =>
+2024-03-26 12:03:59.046284   Selected Trade button click for 'US Cocoa Spot' trading instrument =>
+2024-03-26 12:04:00.346670   => Selected Trade button clicked!
+
+2024-03-26 12:04:00.347014   3. Assert_v4
+2024-03-26 12:04:00.347200   Checking that the trading platform page has opened (v4) =>
+2024-03-26 12:04:00.372344   Checking way # 1 => 
+2024-03-26 12:04:00.372602   Checking that the Trading platform page has valid title =>
+2024-03-26 12:04:00.378551   => Current page title: Trading Platform | Capital.com
+2024-03-26 12:04:00.378786   Checking that the Trading platform LOGO is present on the page =>
+2024-03-26 12:04:01.404427   => Trading platform LOGO is present on the page
+2024-03-26 12:04:01.404508   tpd = False
+2024-03-26 12:04:01.404718   Checking that the Trading platform opened in LIVE mode =>
+2024-03-26 12:04:01.688440   => The page with https://capital.com/trading/platform/charting/7090488494609604?side=buy&ids=65213121270162457,66319749658747929,3400518881858756,10384900209333444,68501459901129753,69627905268818969,21765481211974852,1496662958757060,374675767116953,55001351247374,335673169101977,93810675766468,253454610113561,55001351226694,457749024515097,93810675708048,55001351234585,10500838556456274,12241936693896217,1526559147980517520,21680337780298948,389605073441988,7090561509053636,7094972440466628,3578605405754706,7092687517865156,7089977393501380,7091880064013508,27045129890124996,5983666832495812,3644116541985988,21182778791108,427748677997764,7090488494609604 url was opened in lIVE mode
+2024-03-26 12:04:01.717645   Check that opened page with https://capital.com/trading/platform/charting/7090488494609604?side=buy&ids=65213121270162457,66319749658747929,3400518881858756,10384900209333444,68501459901129753,69627905268818969,21765481211974852,1496662958757060,374675767116953,55001351247374,335673169101977,93810675766468,253454610113561,55001351226694,457749024515097,93810675708048,55001351234585,10500838556456274,12241936693896217,1526559147980517520,21680337780298948,389605073441988,7090561509053636,7094972440466628,3578605405754706,7092687517865156,7089977393501380,7091880064013508,27045129890124996,5983666832495812,3644116541985988,21182778791108,427748677997764,7090488494609604 url
+with selected corresponding trading instrument 'US Cocoa Spot' =>
+2024-03-26 12:04:01.757956   => trade_instrument = 'US Cocoa Spot'
+2024-03-26 12:04:01.757980   => trade_instrument_name = 'US'
+2024-03-26 12:04:01.876394   => Trading Platform opened in Chart mode
+
+Bug: Bid:11.02.03.01_06-de.ae.Auth
+
+2024-03-26 12:04:02.184897   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fec6a3f6150>
+
+2024-03-26 12:04:02.507128   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 12:04:02.771096   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 12:04:03.512003   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 12:04:03.709629   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 12:04:03.711138   Баг Bid:11.02.03.01_06-de.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

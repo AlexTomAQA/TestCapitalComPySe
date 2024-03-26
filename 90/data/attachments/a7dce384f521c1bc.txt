@@ -1,0 +1,92 @@
+Current test role - NoReg
+
+{'width': 1280, 'height': 800}
+
+2024-03-26 13:01:56.144032   worker_id = master
+
+2024-03-26 13:01:56.144055   0. Allure grouping v4
+
+
+2024-03-26 13:01:56.144256   START PRECONDITIONS =>
+
+
+2024-03-26 13:01:56.144271   => flag_of_bug - False
+
+2024-03-26 13:01:56.144282   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 13:01:56.145588   Set windows position at (0, 0) =>
+2024-03-26 13:01:56.247810   Set resolution 1280 * 800 =>
+2024-03-26 13:01:56.350189   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 13:01:57.378709   Капчи нет. Идем дальше
+
+2024-03-26 13:01:57.378802   Работа с куками
+2024-03-26 13:01:57.378816   => Prev. role - 'Auth'
+2024-03-26 13:01:57.378825   => Current testing role - 'NoReg'
+2024-03-26 13:01:57.378834   All cookies must be delete =>
+
+2024-03-26 13:01:57.439707   => All cookies are deleted
+2024-03-26 13:01:57.439745   Current page URL = https://capital.com/de/swingtrading
+2024-03-26 13:01:57.442480   self.link = https://capital.com
+2024-03-26 13:01:57.442494   link = https://capital.com
+2024-03-26 13:01:58.965869   => Loaded page https://capital.com/
+
+2024-03-26 13:01:58.974296   Step 'Click button [Accept all cookies]'
+2024-03-26 13:01:58.974320   Is Visible Button [Accept all cookies]? =>
+2024-03-26 13:01:58.991419   => Button [Accept all cookies] is visible
+2024-03-26 13:01:59.491556   Is clickable Button [Accept all cookies] =>
+2024-03-26 13:01:59.509052   => Button [Accept all cookies] is clickable
+2024-03-26 13:01:59.509088   Click Button [Accept all cookies] =>
+2024-03-26 13:01:59.655900   => Button [Accept all cookies] is clicked
+2024-03-26 13:01:59.655946   => Accepted All Cookies
+
+2024-03-26 13:02:00.156133   => Prev. country - '?'
+2024-03-26 13:02:00.156187   Set 'ae' country =>
+2024-03-26 13:02:00.170446   => Language and Country menu is present
+2024-03-26 13:02:00.183824   => Language and Country menu is visible
+2024-03-26 13:02:01.455721   => Focus is moved on Language and Country menu 
+2024-03-26 13:02:04.013894   => Cur url = https://capital.com/?country=ae
+2024-03-26 13:02:04.049499   => Country set to 'ae'
+
+2024-03-26 13:02:04.049530   => Prev. language - '?'
+2024-03-26 13:02:04.049541   Set 'de' language =>
+2024-03-26 13:02:04.060327   => Language and Country menu is present
+2024-03-26 13:02:04.072347   => Language and Country menu is visible
+2024-03-26 13:02:05.338218   => Focus is moved on Language and Country menu 
+2024-03-26 13:02:05.347101   Move focus on de item and click =>
+2024-03-26 13:02:07.012902   => Focus moved on de item and clicked
+2024-03-26 13:02:07.012948   => Cur url = https://capital.com/de
+2024-03-26 13:02:07.040088   => Language is set to 'de'
+
+2024-03-26 13:02:07.040124   => Prev. role - 'Auth'
+2024-03-26 13:02:07.040135   => The 'NoReg' role is set
+
+2024-03-26 13:02:07.042613   => THE END PRECONDITIONS
+
+2024-03-26 13:02:07.042827   1. Arrange_v0
+2024-03-26 13:02:07.042845   current_page = https://capital.com/de
+2024-03-26 13:02:07.045271   link = https://capital.com/de/swingtrading
+2024-03-26 13:02:07.047637   => current_url != cur_item_link
+2024-03-26 13:02:07.047658   Current page URL = https://capital.com/de
+2024-03-26 13:02:07.050067   self.link = https://capital.com/de/swingtrading
+2024-03-26 13:02:07.050081   link = https://capital.com/de/swingtrading
+2024-03-26 13:02:08.864909   => Loaded page https://capital.com/de/swingtrading
+2024-03-26 13:02:08.877919   BUTTON_START_TRADING scroll =>
+2024-03-26 13:02:08.881515   BUTTON_START_TRADING is visible? =>
+2024-03-26 13:02:08.895493   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-26 13:02:08.895664   2. Act_v0
+2024-03-26 13:02:08.895679   Start Click button [Start Trading] =>
+2024-03-26 13:02:08.900624   BUTTON_START_TRADING is clickable? =>
+2024-03-26 13:02:08.911798   BUTTON_START_TRADING click =>
+2024-03-26 13:02:08.944217   => BUTTON_START_TRADING clicked
+
+2024-03-26 13:02:08.944456   3. Assert_v0
+2024-03-26 13:02:08.944549   Start step Check that [Sign up] form is opened
+2024-03-26 13:02:09.125011   'Sign up' form opened
+2024-03-26 13:02:09.125053   Assert SIGNUP_HEADER =>
+2024-03-26 13:02:09.142280   Assert SIGNUP_REF_LOGIN =>
+2024-03-26 13:02:09.157802   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-26 13:02:09.175868   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-26 13:02:09.175909   => 'Signup' form is checked
+2024-03-26 13:02:09.176147   Start step Close [Sign up] form =>
+2024-03-26 13:02:09.262804   => 'Signup' form closed

@@ -1,0 +1,124 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-26 10:35:37.977098   worker_id = master
+
+2024-03-26 10:35:37.977115   0. Allure grouping v4
+
+
+2024-03-26 10:35:37.977323   START PRECONDITIONS =>
+
+
+2024-03-26 10:35:37.977338   => flag_of_bug - False
+
+2024-03-26 10:35:37.977350   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 10:35:37.978704   Set windows position at (0, 0) =>
+2024-03-26 10:35:38.081242   Set resolution 1280 * 800 =>
+2024-03-26 10:35:38.184080   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 10:35:39.222584   Капчи нет. Идем дальше
+
+2024-03-26 10:35:39.222673   Работа с куками
+
+2024-03-26 10:35:39.222687   => Prev. country - 'ae'
+2024-03-26 10:35:39.222697   => Country set to 'ae'
+
+2024-03-26 10:35:39.222706   => Prev. language - 'de'
+2024-03-26 10:35:39.222715   => Language is set to 'de'
+
+2024-03-26 10:35:39.222724   => Prev. role - 'NoReg'
+2024-03-26 10:35:39.222733   => The 'NoReg' role is set
+
+2024-03-26 10:35:39.225610   => THE END PRECONDITIONS
+2024-03-26 10:35:39.732069   => 'Markets' menu is present
+2024-03-26 10:35:39.748720   element = <selenium.webdriver.remote.webelement.WebElement (session="1752e1d01d8dbfbe34f783e66cfa4bdb", element="f.BEAD89396EBCCD3D730304DB2F3A461F.d.4F2E8D7521AB280C0FCE37047578DEB6.e.6094")>
+2024-03-26 10:35:39.748761   => 'Markets' menu is visible
+2024-03-26 10:35:41.012464   => Focus moved to 'Markets' menu
+2024-03-26 10:35:42.538274   => Focus moved to 'Shares' submenu and clicked
+
+2024-03-26 10:35:42.542481   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-26 10:35:42.542514   current_page = https://capital.com/de/aktienkurse-realtime
+2024-03-26 10:35:42.546014   link = https://capital.com/de/aktienkurse-realtime
+2024-03-26 10:35:42.566516   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-26 10:35:42.577138   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-26 10:35:42.577182   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-26 10:35:42.586126   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-26 10:35:42.586170   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-26 10:35:42.681504   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-26 10:35:42.730236   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-26 10:35:42.730281   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-26 10:35:42.740874   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-26 10:35:42.740912   Start click cur_sort "Most traded" =>
+2024-03-26 10:35:43.430222   => End Click cur_sort "Most traded"
+
+2024-03-26 10:35:43.430272   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-26 10:35:43.460286   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-26 10:35:43.460329   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-26 10:35:43.467239   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-26 10:35:43.467275   item_list = [2]
+2024-03-26 10:35:43.467455   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 10:35:45.018191   '[Sign up]' form was not popped up
+2024-03-26 10:35:45.018404   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-26 10:35:45.018421   Start click button [Sell] =>
+2024-03-26 10:35:45.161309   =>   BUTTON_SELL with item 3644116541985988 clicked!
+
+
+2024-03-26 10:35:45.161622   3. Assert_v0
+2024-03-26 10:35:45.161782   Start step Check that [Sign up] form is opened
+2024-03-26 10:35:48.242953   'Sign up' form not opened
+2024-03-26 10:35:48.243152   Start step Check that new [Sign up] form is opened
+2024-03-26 10:35:51.304383   => new 'Sign up' form not opened
+2024-03-26 10:35:51.304585   Start method Check that [Sign up] page opened =>
+2024-03-26 10:35:52.308321   'Sign up' page not opened
+2024-03-26 10:35:52.308532   Check that [Sign up] form on trading platform opened =>
+2024-03-26 10:35:55.396885   'Sign up' form on trading platform page not opened
+
+Bug: Bid:01.02.00_002-de.ae.NoReg
+
+2024-03-26 10:35:55.396989   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f104b647e60>
+
+2024-03-26 10:36:02.832563   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:03.551481   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:11.802928   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:12.512872   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:14.404893   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:14.970397   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:14.973435   Добавление новой строки =>
+
+2024-03-26 10:36:24.059253   => Новая строка добавлена
+
+2024-03-26 10:36:26.174940   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:26.645614   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:26.648677   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-26 10:36:27.175672   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:27.175910   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-26 10:36:27.740836   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:27.741056   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:28.364129   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:28.364419   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 10:36:43.254213   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 10:36:43.254284   Баг Bid:01.02.00_002-de.ae.NoReg-04 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
