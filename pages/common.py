@@ -178,6 +178,7 @@ class Common:
 		ActionChains(wd) \
 			.move_to_element(elements[0]) \
 			.perform()
+		print(f"{datetime.now()}   => Focus moved to 'capital*com' logo")
 
 	@staticmethod
 	def pytest_fail(msg):

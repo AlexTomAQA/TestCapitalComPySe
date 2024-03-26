@@ -340,13 +340,7 @@ class MenuSection(BasePage):
             Common().pytest_fail(f"Bug № ??? Education menu not present in DOM for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present in DOM")
 
-        # self.driver.execute_script(
-        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-        #     menu[0]
-        # )
-
         element = self.element_visibility_of(menu[0], 5)
-        print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
             Common().pytest_fail("Problem. Education menu not visible")
@@ -595,14 +589,6 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_ZH_FOREX_TRADING)  # одна страница
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_CN_FOREX_TRADING)  # одна страница
-            # case "hu":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_HU_FOREX_TRADING)
-            # case "nl":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_NL_FOREX_TRADING)
-            # case "pl":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_PL_FOREX_TRADING)
-            # case "ro":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_RO_FOREX_TRADING)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
@@ -613,7 +599,7 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => Forex trading sub-menu clicked")
+        print(f"{datetime.now()}   => Focus moved to Forex trading sub-menu and clicked")
 
         del sub_menu
         return d.current_url
