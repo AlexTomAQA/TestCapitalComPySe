@@ -814,6 +814,8 @@ class MenuSection(BasePage):
             .click() \
             .perform()
 
+        print(f"{datetime.now()}   => Cryptocurrency trading submenu focus moved and clicked")
+
         return d.current_url
 
     @allure.step(f"{datetime.now()}   Click 'CFD trading guide' hyperlink.")
@@ -851,6 +853,8 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
+
+        print(f"{datetime.now()}   => CFD trading guide submenu focus moved and clicked")
 
         return d.current_url
 
