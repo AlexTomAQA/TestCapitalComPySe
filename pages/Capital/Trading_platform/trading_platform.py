@@ -115,7 +115,7 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   Checking way # 1 => ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
-            print(f"{datetime.now()}   tpd = {tpd}")
+            print(f"\n{datetime.now()}   tpd = {tpd}")
             if tpd:
                 self.should_be_platform_demo_mode(d, test_link)
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in DEMO mode")
@@ -124,7 +124,7 @@ class TradingPlatform(BasePage):
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
-                print(f"{datetime.now()}   Check that opened page with {self.driver.current_url} url\n"
+                print(f"\n{datetime.now()}   Check that opened page with {self.driver.current_url} url\n"
                       f"with selected corresponding trading instrument '{trade_instrument}' =>")
                 self.should_be_corresponding_trading_instrument(test_link, trade_instrument)
 
@@ -169,13 +169,13 @@ class TradingPlatform(BasePage):
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
         """Check if the app title"""
-        print(f"{datetime.now()}   Checking that the Trading platform LOGO is present on the page =>")
+        print(f"\n{datetime.now()}   Checking that the Trading platform LOGO is present on the page =>")
         # assert self.element_is_visible(TopBarLocators.LOGO, 30), \
         if not self.element_is_visible(TopBarLocators.LOGO, 15):
             msg = "Trading platform LOGO is not present on the page"
             Common().assert_true_false(False, msg)
 
-        print(f"{datetime.now()}   => Trading platform LOGO is present on the page")
+        print(f"{datetime.now()}   => Trading platform 'capital*com' logo is present on the current page")
 
     @allure.step("Check if the trading platform opened in DEMO mode")
     def should_be_platform_demo_mode(self, d, test_link):
@@ -289,23 +289,24 @@ class TradingPlatform(BasePage):
         """
 
         # cur_url = self.driver.current_url
-        print(f"{datetime.now()}   => trade_instrument = '{trade_instrument}'")
-        trade_instrument_name = trade_instrument.split(" ")[0]
-        print(f"{datetime.now()}   => trade_instrument_name = '{trade_instrument_name}'")
+        print(f"\n{datetime.now()}   trade_instrument = '{trade_instrument}'")
+        # trade_instrument_name = trade_instrument.split(" ")[0]
+        # print(f"{datetime.now()}   => trade_instrument_name = '{trade_instrument_name}'")
 
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
+        print(f"\n{datetime.now()}   Check that Trading Platform is opened in Chart mode")
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
         if len(menu_chart) == 0:
             print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '14', self.link)
-            msg = "Bug # 14. Trading platform was opened, but not Chart mode"
+            msg = "Bug # 14. Trading platform opened, but not Chart mode"
             Common().assert_true_false(False, msg)
-            # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
-
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
+        print(f"\n{datetime.now()}   "
+              f"Check that Top Charts List of Trading Platform not empty =>")
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
         if len(top_chart_trade_list) == 0:
             print(f"{datetime.now()}   => Trading Platform opened in Chart mode, but Top Charts List is empty")
@@ -317,9 +318,13 @@ class TradingPlatform(BasePage):
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         # проверяем, есть ли в списке вкладка запрашиваемого торгового инструмента
+        print(f"\n{datetime.now()}   Check that Top Charts List contain selected Trade instrument =>")
+        print(f"\n{datetime.now()}   Top Charts List contain following Trade instruments:")
         present = False
         for element in top_chart_trade_list:
+            print(f"'{element.text}'", ", ", "")
             if trade_instrument in element.text:
+                print("")
                 print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
                 present = True
                 break
