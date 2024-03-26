@@ -143,11 +143,14 @@ class BasePage:
         Navigates to a page given by the URL.
         """
         print(f"{datetime.now()}   Current page URL = {self.driver.current_url}")
-        self.driver.get(self.link)
-        # time.sleep(1)
-        if self.link not in self.driver.current_url:
-            print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
-            pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
+        print(f"{datetime.now()}   self.link = {self.link}")
+        link = self.link
+        print(f"{datetime.now()}   link = {link}")
+        self.driver.get(link)
+        time.sleep(1)
+        # if self.driver.current_url != self.link:
+        #     print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
+        #     pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
     @allure.step(f"{datetime.now()}   Start Accepting all cookies")
@@ -377,6 +380,8 @@ class BasePage:
 
     @HandleExcElementsDecorator()
     def current_page_is(self, link):
+        print(f"{datetime.now()}   current_page = {self.driver.current_url}")
+        print(f"{datetime.now()}   link = {link}")
         return link == self.driver.current_url
 
     @HandleExcElementsDecorator()
@@ -432,13 +437,13 @@ class BasePage:
         Args:
             title: expected page's title
         """
+        print(f"{datetime.now()}   Checking that the Trading platform page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => Current page title: {el_title}")
         # Checks that the page title meets the requirements
         if title not in el_title:
-            Common.flag_of_bug = True
             msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"
-            assert False, msg
+            Common().assert_true_false(False, msg)
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):

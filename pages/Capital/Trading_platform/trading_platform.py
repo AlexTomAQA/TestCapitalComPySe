@@ -15,8 +15,11 @@ from pages.base_page import BasePage
 from pages.common import Common
 # from pages.common import flag_of_bug
 from test_data.trading_platform_data import data as tp_data
-from pages.Capital.Trading_platform.trading_platform_locators \
-    import TradingPlatformSignupFormLocators as TPSignupFormLocators, TradingInstruments
+from pages.Capital.Trading_platform.trading_platform_locators import (
+    TradingPlatformSignupFormLocators as TPSignupFormLocators,
+    TradingInstruments,
+    MenuSideBar
+)
 from pages.Capital.Trading_platform.trading_platform_locators import TopBarLocators
 from pages.Capital.Trading_platform.trading_platform_locators import ChartingLocators
 from test_data.trading_platform_data import data
@@ -24,6 +27,19 @@ from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
 
 
 class TradingPlatform(BasePage):
+
+    @allure.step("Select Chart menu")
+    def select_menu_charts(self):
+        element = self.element_is_visible(MenuSideBar.MENU_CHARTS, 3)
+        element.click()
+        print(f"{datetime.now()}   => Charts menu of Trading platform is opened")
+
+    @allure.step("Button 'Close all' click")
+    def button_close_all_ti_click(self):
+        element = self.element_is_visible(TradingInstruments.BUTTON_CLOSE_ALL, 3)
+        element.click()
+        print(f"{datetime.now()}   => Button Close all Trading instruments clicked")
+
     @allure.step("Checking that the trading platform page has opened")
     def should_be_trading_platform_page(self, d, link):
         """Check if the page is open"""
@@ -108,8 +124,8 @@ class TradingPlatform(BasePage):
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
-                print(f"{datetime.now()}   => Check that opened page with {self.driver.current_url} url\n"
-                      f"with corresponding trading instrument '{trade_instrument}' select")
+                print(f"{datetime.now()}   Check that opened page with {self.driver.current_url} url\n"
+                      f"with selected corresponding trading instrument '{trade_instrument}' =>")
                 self.should_be_corresponding_trading_instrument(test_link, trade_instrument)
 
             # assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
@@ -156,9 +172,8 @@ class TradingPlatform(BasePage):
         print(f"{datetime.now()}   Checking that the Trading platform LOGO is present on the page =>")
         # assert self.element_is_visible(TopBarLocators.LOGO, 30), \
         if not self.element_is_visible(TopBarLocators.LOGO, 15):
-            Common.flag_of_bug = True
             msg = "Trading platform LOGO is not present on the page"
-            assert False, msg
+            Common().assert_true_false(False, msg)
 
         print(f"{datetime.now()}   => Trading platform LOGO is present on the page")
 
@@ -167,30 +182,25 @@ class TradingPlatform(BasePage):
         """Check that Trading platform opened in Demo mode"""
 
         print(f"{datetime.now()}   Checking that the Trading platform opened in DEMO mode =>")
-        # if not self.element_is_visible(TopBarLocators.MODE_DEMO, 30):
         if not self.element_is_visible(TopBarLocators.MODE_DEMO, 15):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '11', self.link)
-            # assert False, "Bug # 11. Trading platform is opened in not DEMO mode"
-            Common.flag_of_bug = True
             msg = "Bug # 11. Trading platform is opened in not DEMO mode"
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
     @allure.step("Check if the trading platform opened in LIVE mode")
     def should_be_platform_live_mode(self, d, test_link):
         """Check that Trading platform opened in Live mode"""
+
         print(f"{datetime.now()}   Checking that the Trading platform opened in LIVE mode =>")
-        # if not self.element_is_visible(TopBarLocators.MODE_LIVE, 30):
         if not self.element_is_visible(TopBarLocators.MODE_LIVE, 15):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '12', self.link)
-            # assert False, "Bug # 12. Trading platform is opened in not LIVE mode"
-            Common.flag_of_bug = True
             msg = "Bug # 12. Trading platform is opened in not LIVE mode"
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
     @allure.step("Check that form [Sign Up] is opened on the Trading Platform page")
@@ -279,9 +289,9 @@ class TradingPlatform(BasePage):
         """
 
         # cur_url = self.driver.current_url
-        print(f"{datetime.now()}   => Trading Instrument is the '{trade_instrument}'")
+        print(f"{datetime.now()}   => trade_instrument = '{trade_instrument}'")
         trade_instrument_name = trade_instrument.split(" ")[0]
-        print(f"{datetime.now()}   => Trading Instrument Name is the '{trade_instrument_name}'")
+        print(f"{datetime.now()}   => trade_instrument_name = '{trade_instrument_name}'")
 
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
@@ -289,10 +299,8 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '14', self.link)
-            # assert False, f"Bug # 14. Trading platform was opened, but not Chart mode"
-            Common.flag_of_bug = True
             msg = "Bug # 14. Trading platform was opened, but not Chart mode"
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
@@ -303,61 +311,52 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => Trading Platform opened in Chart mode, but Top Charts List is empty")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '15', self.link)
-            # assert False, (f"Bug # 15. Trading platform was opened, "
-            #                f"but does no contain any trade instrument in the Top Charts List")
-            Common.flag_of_bug = True
             msg = ("Bug # 15. Trading platform was opened, "
                    "but does no contain any trade instrument in the Top Charts List")
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
-        # проверяем, есть ли вкладка запрашиваемого торгового инструмента
+        # проверяем, есть ли в списке вкладка запрашиваемого торгового инструмента
         present = False
         for element in top_chart_trade_list:
-            if trade_instrument_name in element.text:
+            if trade_instrument in element.text:
                 print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
                 present = True
                 break
+
         if not present:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '16', self.link)
-            # assert False, f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
-            Common.flag_of_bug = True
             msg = f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
 
-        # проверяем, что запрашиваемый торговый инструмент отображен (видим) в списке инструментов
-        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENTS)
+        # проверяем, что запрашиваемый торговый инструмент отображен (виден) в списке инструментов
+        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENT)
         if not selected_trade_instrument:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '17', self.link)
-            # assert False, (f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, "
-            #                f"but not visible and not selected")
-            Common.flag_of_bug = True
             msg = (f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, "
                    f"but not visible and not selected")
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is on the Top Charts List and visible")
 
         # проверяем, что запрашиваемый торговый инструмент выбран
-        selected_trade_instrument_mame = selected_trade_instrument.text
-        if trade_instrument_name not in selected_trade_instrument_mame:
+        if trade_instrument not in selected_trade_instrument.text:
             # new bug re-test checking =====
             print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts "
                   f"List, visible, but not selected")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '18', self.link)
-            # assert False, (f"Bug # 18. Trade instrument '{trade_instrument}' is on the Top Charts List, "
-            #                f"visible, but Not selected")
-            Common.flag_of_bug = True
             msg = (f"Bug # 18. Trade instrument '{trade_instrument}' is on the Top Charts List, visible, "
                    f"but Not selected")
-            assert False, msg
+            Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List, "
               f"visible and selected")

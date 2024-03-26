@@ -9,9 +9,10 @@ from random import randint
 
 import allure
 import pytest
-from conf import QTY_LINKS
+from selenium.webdriver import ActionChains
 
-# flag_of_bug = False
+from conf import QTY_LINKS
+from pages.Header.header_locators import HeaderElementLocators
 
 
 class Common:
@@ -81,7 +82,8 @@ class Common:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(first_index, count_in - 1)
+						# k = randint(first_index, count_in - 1)
+						k = randint(first_index, count_in)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
@@ -150,6 +152,7 @@ class Common:
 			if driver.current_url == test_link:
 				do = False
 
+		Common.flag_of_bug = False
 		assert True, msg
 
 	@staticmethod
@@ -163,4 +166,26 @@ class Common:
 			if driver.current_url == test_link:
 				do = False
 
+		Common.flag_of_bug = True
 		assert False, msg
+
+	@staticmethod
+	def assert_true_false(condition=False, msg=""):
+		if condition:
+			Common.flag_of_bug = False
+			assert True, msg
+		else:
+			Common.flag_of_bug = True
+			assert False, msg
+
+	@staticmethod
+	def move_pointer_to_capital_com_label(wd):
+		elements = wd.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
+		ActionChains(wd) \
+			.move_to_element(elements[0]) \
+			.perform()
+
+	@staticmethod
+	def pytest_fail(msg):
+		Common.flag_of_bug = True
+		pytest.fail(msg)

@@ -259,7 +259,7 @@ class TableTradingInstrumentsLocators:
     BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")  # название инструментов
     ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
-    BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, " ")
+    BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.sell.text-right.js-marketBtn > a")
 
 
 class FieldDropdownMarketsLocator:
@@ -285,6 +285,7 @@ class TradeCFDLocators:
     SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
     BUY_BUTTON = (By.CSS_SELECTOR, "[data-type='market_buy']")
+    SELL_BUTTON = (By.CSS_SELECTOR, "div.sharesName__price > a[data-type='market_sell']")
 
 
 class TradingInstrumentsBlockLocators:
@@ -297,3 +298,9 @@ class PageTradingInstrumentMarketsLocators:
     TOOLTIP_SHORT_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div >div.cc-tooltip")
     BUTTON_GO_TO_PLATFORM = (By.CSS_SELECTOR,
                              "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
+    TOOLINFO_LONG_POSITION_OVERNIGHT_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(2) > td:nth-child(1) > div.toolInfo")
+    TOOLTIP_LONG_POSITION_FEE = (By.CSS_SELECTOR, "tbody > tr:nth-child(2) > td:nth-child(1) > div >div.cc-tooltip")
+    BUTTON_GO_TO_PLATFORM_LG = (By.CSS_SELECTOR,
+                                "tbody > tr:nth-child(2) > td:nth-child(1) > div > div > a[href='trading/platform']")
+
+

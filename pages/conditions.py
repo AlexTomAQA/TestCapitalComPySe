@@ -92,16 +92,17 @@ class Conditions(BasePage):
             print(f"{datetime.now()}   => Current testing role - '{cur_role}'")
             print(f"{datetime.now()}   All cookies must be delete =>")
 
+            # if test_link != host:
+            #     test_link = host
+            #     self.link = test_link
+            #     self.open_page()
+            d.delete_all_cookies()
+            print(f"\n{datetime.now()}   => All cookies are deleted")
             if test_link != host:
                 test_link = host
                 self.link = test_link
-                self.open_page()
-            if conf.DEBUG:
-                print(f"{datetime.now()} Debug:   test_link = {test_link}")
-            d.delete_all_cookies()
-            print(f"\n{datetime.now()}   => All cookies are deleted")
-            # print(d.get_cookies(), "")
             self.open_page()
+            # self.open_page()
             self.button_accept_all_cookies_click()
             prev_country = "?"
             prev_language = "?"
@@ -211,7 +212,15 @@ class Conditions(BasePage):
             print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
         else:
             print(f'{datetime.now()}   -> "Capital.com" logo mission')
+
+        # self.clear_charts_list(d)
         d.back()
+
+    @allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
+    def clear_charts_list(self, wd):
+        ti_page = TradingPlatform(wd)
+        ti_page.select_menu_charts()
+        ti_page.button_close_all_ti_click()
 
     @allure.step(f"{datetime.now()}   Start DeAuthorisation")
     def to_do_de_authorisation(self, d, link):

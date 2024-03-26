@@ -10,6 +10,7 @@ from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TableTradingInstrumentsBuyButton import TableTradingInstrumentsBuyButton
 from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
 from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStartTradingNowButton
+from pages.Elements.testing_elements_locators import SubPages
 from pages.Menu.menu import MenuSection
 from pages.common import Common
 from pages.conditions import Conditions
@@ -133,3 +134,36 @@ class TestShares:
 
         test_element = BlockStepTrading(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
+
+    @allure.step("Start pretest")
+    def test_099_shares_trading_instrument_pretest(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+
+        global count
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.02", "Markets > Menu item [Shares]",
+            ".00_099", "Pretest for US_01.02_01")
+
+        if count == 0:
+            pytest.skip("Links of hrefs already created")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country,["gb"])
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+
+        page_conditions = Conditions(d,"")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, link)
+        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
+        page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+
+        # Записываем ссылки в файл
+        file_name = "tests/US_01_Markets/US_01-02_Shares/list_of_href.txt"
+        list_items = d.find_elements(*SubPages.SUB_PAGES_MARKETS_TABLE_INSTRUMENTS_LIST)
+
+        Common().creating_file_of_hrefs("Shares trading instrument", list_items, file_name)
+
+        count -= 1
