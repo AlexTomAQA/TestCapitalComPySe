@@ -318,13 +318,14 @@ class TradingPlatform(BasePage):
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         # проверяем, есть ли в списке вкладка запрашиваемого торгового инструмента
-        print(f"\n{datetime.now()}   Check that Top Charts List contain selected Trade instrument =>")
-        print(f"\n{datetime.now()}   Top Charts List contain following Trade instruments:")
+        print(f"\n{datetime.now()}   Check that Top Charts List contain selected trade instrument =>")
+        print(f"\n{datetime.now()}   Top Charts List contain {len(top_chart_trade_list)} trade instruments")
+        print(f"\n{datetime.now()}   Top Charts List contain following trade instruments:")
         present = False
         for element in top_chart_trade_list:
-            print(f"'{element.text}'", ", ", "")
+            # print(f"'{element.text}'", " ", "")
+            print(f"'{element.text}'")
             if trade_instrument in element.text:
-                print("")
                 print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
                 present = True
                 break

@@ -925,34 +925,48 @@ class MenuUS11MarketGuidesNew:
 
 class MenuUS01Markets:
     MENU_EN_GB_MARKETS = (By.CSS_SELECTOR, "#header a[href='/en-gb/markets']")
-    MENU_MARKETS_EN_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/derivative-financial-instruments']")
-    MENU_MARKETS_AR_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/ar/alaswaq']")
-    MENU_MARKETS_DE_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/de/alle-maerkte']")
-    MENU_MARKETS_EL_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/el/paragoga-xrimatopistotika-mesa']")
-    MENU_MARKETS_ES_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/es/instrumentos-financieros-derivados']")
-    MENU_MARKETS_FR_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/fr/instruments-financiers-derives']")
-    MENU_MARKETS_IT_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/it/derivati']")
-    MENU_MARKETS_HU_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/hu/derivativ-penzugyi-eszkozok']")
-    MENU_MARKETS_NL_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/nl/derivaat-financieel-instrument']")
-    MENU_MARKETS_PL_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/pl/pochodne-instrumenty-finansowe']")
-    MENU_MARKETS_RO_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/ro/instrumente-financiare-derivate']")
-    MENU_MARKETS_RU_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/ru/proizvodnyye-finansovyye-instrumenty']")
-    MENU_MARKETS_ZH_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/zh/derivative-financial-instruments']")
-    MENU_MARKETS_CN_BUTTON = (By.CSS_SELECTOR,
-                ".cc-header .cc-nav__item > a[href='https://capital.com/cn/derivative-financial-instruments']")
+    MENU_MARKETS_EN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/derivative-financial-instruments']")
+    MENU_MARKETS_AR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ar/alaswaq']")
+    MENU_MARKETS_DE_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/de/alle-maerkte']")
+    MENU_MARKETS_EL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/el/paragoga-xrimatopistotika-mesa']")
+    MENU_MARKETS_ES_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/es/instrumentos-financieros-derivados']")
+    MENU_MARKETS_FR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/fr/instruments-financiers-derives']")
+    MENU_MARKETS_IT_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/it/derivati']")
+    MENU_MARKETS_HU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/hu/derivativ-penzugyi-eszkozok']")
+    MENU_MARKETS_NL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/nl/derivaat-financieel-instrument']")
+    MENU_MARKETS_PL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/pl/pochodne-instrumenty-finansowe']")
+    MENU_MARKETS_RO_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ro/instrumente-financiare-derivate']")
+    MENU_MARKETS_RU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ru/proizvodnyye-finansovyye-instrumenty']")
+    MENU_MARKETS_ZH_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/zh/derivative-financial-instruments']")
+    MENU_MARKETS_CN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/cn/derivative-financial-instruments']")
 
 
 class MenuUS01Indices:

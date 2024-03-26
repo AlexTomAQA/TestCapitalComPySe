@@ -389,7 +389,7 @@ class MenuSection(BasePage):
                 case "ru":
                     markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
                 case "zh":
-                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_ZH_BUTTON
                 case "cn":
                     markets_menu_locator = MenuUS01Markets.MENU_MARKETS_CN_BUTTON
 
