@@ -76,7 +76,8 @@ class Common:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						k = randint(first_index, count_in - 1)
+						# k = randint(first_index, count_in - 1)
+						k = randint(first_index, count_in)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
