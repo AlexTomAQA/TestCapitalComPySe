@@ -102,7 +102,7 @@ def cur_role(request):
         # "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
-        # "ar",  # 8 us
+        "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
         # "hu",  # 5 us Magyar
@@ -127,9 +127,9 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",
-        # "de",  # Germany  - "CYSEC"
+        "de",  # Germany  - "CYSEC"
         # "au",  # Australia - "ASIC"
-        "ae",  # United Arab Emirates - "SCB"
+        # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -163,6 +163,7 @@ def cur_country(request):
     scope="class",
     params=[
         "test001.miketar+1@gmail.com"
+        # "aqa.tomelo.an@gmail.com",
     ],
 )
 def cur_login(request):
@@ -174,6 +175,7 @@ def cur_login(request):
 @pytest.fixture(
     scope="class",
     params=[
+        # "iT9Vgqi6d$fiZ*Z",
         "Qwer1234-!@#$"
     ],
 )
