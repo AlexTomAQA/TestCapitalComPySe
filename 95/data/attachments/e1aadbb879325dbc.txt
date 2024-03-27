@@ -1,0 +1,87 @@
+
+
+
+Current sort - Top risers
+{'width': 1280, 'height': 800}
+
+2024-03-27 16:22:52.548980   worker_id = master
+
+2024-03-27 16:22:52.548999   0. Allure grouping v4
+
+
+2024-03-27 16:22:52.549268   START PRECONDITIONS =>
+
+
+2024-03-27 16:22:52.549284   => flag_of_bug - False
+
+2024-03-27 16:22:52.549296   => Windows size - {'width': 1280, 'height': 800}
+2024-03-27 16:22:52.550655   Set windows position at (0, 0) =>
+2024-03-27 16:22:52.652784   Set resolution 1280 * 800 =>
+2024-03-27 16:22:52.755250   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-27 16:22:53.782958   Капчи нет. Идем дальше
+
+2024-03-27 16:22:53.783051   Работа с куками
+
+2024-03-27 16:22:53.783065   => Prev. country - 'de'
+2024-03-27 16:22:53.783075   => Country set to 'de'
+
+2024-03-27 16:22:53.783084   => Prev. language - 'ar'
+2024-03-27 16:22:53.783093   => Language is set to 'ar'
+
+2024-03-27 16:22:53.783102   => Prev. role - 'NoReg'
+2024-03-27 16:22:53.783111   => The 'NoReg' role is set
+
+2024-03-27 16:22:53.785728   => THE END PRECONDITIONS
+2024-03-27 16:22:54.294348   => 'Markets' menu is present
+2024-03-27 16:22:54.311245   => 'Markets' menu is visible
+2024-03-27 16:22:55.580744   => Focus moved to 'Markets' menu
+2024-03-27 16:22:55.589122   => 'Markets > Commodities' submenu is present
+
+2024-03-27 16:22:56.854954   1. Arrange for Trading instrument and "Top risers" cur_sort
+2024-03-27 16:22:56.854997   current_page = https://capital.com/ar/mukhatat-asear-alsilae
+2024-03-27 16:22:56.857612   link = https://capital.com/ar/mukhatat-asear-alsilae
+2024-03-27 16:22:56.860149   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-27 16:22:56.868318   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-27 16:22:56.868340   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-27 16:22:56.875189   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-27 16:22:56.875210   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-27 16:22:57.669137   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-27 16:22:58.198888   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-27 16:22:58.198922   Is cur_sort "Top risers" present in item_sort_list? =>
+2024-03-27 16:22:58.207207   => cur_sort "Top risers" is present in item_sort_list!
+2024-03-27 16:22:58.207231   Start click cur_sort "Top risers" =>
+2024-03-27 16:22:59.130606   => End Click cur_sort "Top risers"
+
+2024-03-27 16:22:59.130654   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-27 16:22:59.156410   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-27 16:22:59.156448   Start find two random buttons [Buy] on cur_sort "Top risers"=>
+2024-03-27 16:22:59.162882   => End find two random buttons [Buy] on the cur_sort "Top risers"
+
+
+2024-03-27 16:22:59.162914   Item_list = [12]
+2024-03-27 16:22:59.163112   Start Checking that form [Sign up] popped up on the page =>
+2024-03-27 16:23:00.702812   '[Sign up]' form was not popped up
+2024-03-27 16:23:00.703018   2. Act for trading instrument and "Top risers" cur_sort
+2024-03-27 16:23:00.703034   Start click button [Buy] =>
+2024-03-27 16:23:01.608545   =>   BUTTON_BUY with item 3578605405754706 clicked!
+
+
+2024-03-27 16:23:01.608772   3. Assert_v0
+2024-03-27 16:23:01.608861   Start step Check that [Sign up] form is opened
+2024-03-27 16:23:04.665169   'Sign up' form not opened
+2024-03-27 16:23:04.665360   Start step Check that new [Sign up] form is opened
+2024-03-27 16:23:07.727413   => new 'Sign up' form not opened
+2024-03-27 16:23:07.727602   Start method Check that [Sign up] page opened =>
+2024-03-27 16:23:08.731238   'Sign up' page not opened
+2024-03-27 16:23:08.731434   Check that [Sign up] form on trading platform opened =>
+2024-03-27 16:23:11.775747   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-27 16:23:11.775827   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fec3f0b30b0>
+
+2024-03-27 16:23:11.778830  Для бага: Bid-04 необходимо использовать проверку на ретест!!!

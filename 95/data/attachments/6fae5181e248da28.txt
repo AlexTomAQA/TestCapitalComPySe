@@ -1,0 +1,100 @@
+
+
+
+Current sort - Most volatile
+{'width': 1280, 'height': 800}
+
+2024-03-27 15:27:41.545491   worker_id = master
+
+2024-03-27 15:27:41.545510   0. Allure grouping v4
+
+
+2024-03-27 15:27:41.545789   START PRECONDITIONS =>
+
+
+2024-03-27 15:27:41.545805   => flag_of_bug - False
+
+2024-03-27 15:27:41.545818   => Windows size - {'width': 1280, 'height': 800}
+2024-03-27 15:27:41.547290   Set windows position at (0, 0) =>
+2024-03-27 15:27:41.649700   Set resolution 1280 * 800 =>
+2024-03-27 15:27:41.751928   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-27 15:27:42.787195   Капчи нет. Идем дальше
+
+2024-03-27 15:27:42.787286   Работа с куками
+
+2024-03-27 15:27:42.787299   => Prev. country - 'de'
+2024-03-27 15:27:42.787309   => Country set to 'de'
+
+2024-03-27 15:27:42.787318   => Prev. language - 'ar'
+2024-03-27 15:27:42.787328   => Language is set to 'ar'
+
+2024-03-27 15:27:42.787337   => Prev. role - 'NoReg'
+2024-03-27 15:27:42.787345   => The 'NoReg' role is set
+
+2024-03-27 15:27:42.790060   => THE END PRECONDITIONS
+
+2024-03-27 15:27:42.790243   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-27 15:27:42.790258   1. Cur URL = https://capital.com/ar/asear-alfurks-alan
+
+2024-03-27 15:27:42.792761   2. Link = https://capital.com/ar/asear-alfurks-alan
+2024-03-27 15:27:42.792777   current_page = https://capital.com/ar/asear-alfurks-alan
+2024-03-27 15:27:42.795333   link = https://capital.com/ar/asear-alfurks-alan
+2024-03-27 15:27:43.304223   => 'Markets' menu is present
+2024-03-27 15:27:43.320473   => 'Markets' menu is visible
+2024-03-27 15:27:44.596158   => Focus moved to 'Markets' menu
+
+
+2024-03-27 15:27:45.362686   => 'Forex' sub-menu clicked
+2024-03-27 15:27:45.629233   => Focus moved to 'capital*com' logo
+
+2024-03-27 15:27:45.629271   3. Cur URL = https://capital.com/ar/asear-alfurks-alan
+
+2024-03-27 15:27:45.634844   1. Arrange for Trading instrument and "Most volatile" cur_sort
+2024-03-27 15:27:45.634866   current_page = https://capital.com/ar/asear-alfurks-alan
+2024-03-27 15:27:45.637421   link = https://capital.com/ar/asear-alfurks-alan
+2024-03-27 15:27:45.639913   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-27 15:27:45.645404   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-27 15:27:45.645425   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-27 15:27:45.649966   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-27 15:27:45.649988   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-27 15:27:46.433832   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-27 15:27:46.964854   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-27 15:27:46.964897   Is cur_sort "Most volatile" present in item_sort_list? =>
+2024-03-27 15:27:46.973125   => cur_sort "Most volatile" is present in item_sort_list!
+2024-03-27 15:27:46.973152   Start click cur_sort "Most volatile" =>
+2024-03-27 15:27:47.640966   => End Click cur_sort "Most volatile"
+
+2024-03-27 15:27:47.641015   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-27 15:27:47.668358   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-27 15:27:47.668401   Start find two random buttons [Buy] on cur_sort "Most volatile"=>
+2024-03-27 15:27:47.674578   => End find two random buttons [Buy] on the cur_sort "Most volatile"
+
+
+2024-03-27 15:27:47.674615   Item_list = [1]
+2024-03-27 15:27:47.674784   Start Checking that form [Sign up] popped up on the page =>
+2024-03-27 15:27:49.210133   '[Sign up]' form was not popped up
+2024-03-27 15:27:49.210363   2. Act for trading instrument and "Most volatile" cur_sort
+2024-03-27 15:27:49.210379   Start click button [Buy] =>
+2024-03-27 15:27:50.074507   =>   BUTTON_BUY with item 93810675762329 clicked!
+
+
+2024-03-27 15:27:50.074738   3. Assert_v0
+2024-03-27 15:27:50.074828   Start step Check that [Sign up] form is opened
+2024-03-27 15:27:53.152489   'Sign up' form not opened
+2024-03-27 15:27:53.152680   Start step Check that new [Sign up] form is opened
+2024-03-27 15:27:56.218001   => new 'Sign up' form not opened
+2024-03-27 15:27:56.218194   Start method Check that [Sign up] page opened =>
+2024-03-27 15:27:57.221639   'Sign up' page not opened
+2024-03-27 15:27:57.221834   Check that [Sign up] form on trading platform opened =>
+2024-03-27 15:28:00.288745   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-27 15:28:00.288830   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f910e3a5820>
+
+2024-03-27 15:28:00.291558  Для бага: Bid-04 необходимо использовать проверку на ретест!!!
