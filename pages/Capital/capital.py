@@ -1,5 +1,8 @@
 import time
 import allure
+import pytest
+
+from selenium.webdriver import ActionChains
 
 from datetime import datetime
 from pages.base_page import BasePage
@@ -27,7 +30,7 @@ from pages.Signup_login.signup_login_locators import (
     # SignupFormLocators,
     LoginFormLocators,
 )
-
+from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 
 class Capital(BasePage):
 
@@ -481,3 +484,31 @@ class Capital(BasePage):
             self.element_is_clickable(list_buttons[0], 15)
             list_buttons[0].click()
         return bool(qty)
+
+    @allure.step(f"{datetime.now()}.   Click 'Meatballs menu' button of Widget 'Trading Instrument'.")
+    def meatballs_menu_move_focus(self):
+        d = self.driver
+        meatballs_menu = d.find_elements(*ButtonsOnPageLocators.MEATBALLS_MENU_BUTTON)
+        if len(meatballs_menu) == 0:
+            print(f"{datetime.now()}   => 'Meatballs menu' button not present")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            pytest.skip(f"'Meatballs menu' button not present")
+        print(f"{datetime.now()}   => 'Meatballs menu' button is present")
+
+        if not self.element_is_visible(ButtonsOnPageLocators.MEATBALLS_MENU_BUTTON, 5):
+            print(f"{datetime.now()}   => 'Meatballs menu' button not visible")
+            pytest.fail("'Meatballs menu' button not visible")
+        print(f"{datetime.now()}   => 'Meatballs menu' button is visible")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            meatballs_menu[0]
+        )
+
+        time.sleep(0.5)
+        ActionChains(d) \
+            .move_to_element(d.find_element(*ButtonsOnPageLocators.MEATBALLS_MENU_BUTTON)) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus is moved on 'Meatballs menu' button")

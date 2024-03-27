@@ -333,7 +333,7 @@ class BasePage:
     @HandleExcElementsDecorator()
     def element_is_clickable(self, loc_or_elem, timeout=1):
         """
-        Check that an element is present on the DOM of a page and visible.
+        Check that an element is present on the DOM of a page and enabled such that you can click it..
         Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
 
         Args:
@@ -437,9 +437,9 @@ class BasePage:
         Args:
             title: expected page's title
         """
-        print(f"{datetime.now()}   Checking that the Trading platform page has valid title =>")
+        print(f"\n{datetime.now()}   Checking that the Trading platform page has valid title =>")
         el_title = self.driver.title
-        print(f"{datetime.now()}   => Current page title: {el_title}")
+        print(f"{datetime.now()}   => The title of current page is '{el_title}'")
         # Checks that the page title meets the requirements
         if title not in el_title:
             msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"

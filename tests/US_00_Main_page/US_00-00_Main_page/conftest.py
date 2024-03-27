@@ -12,12 +12,13 @@ import pytest
         "Most_traded",
         "Commodities",
         "Indices",
+        "Cryptocurrencies",
         "Shares",
         "Forex",
         "ETFs"
     ],
 )
-def market(request):
+def cur_market(request):
     """Fixture"""
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param

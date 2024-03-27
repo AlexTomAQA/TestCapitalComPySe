@@ -340,13 +340,7 @@ class MenuSection(BasePage):
             Common().pytest_fail(f"Bug № ??? Education menu not present in DOM for '{test_language}' language")
         print(f"{datetime.now()}   => Education menu is present in DOM")
 
-        # self.driver.execute_script(
-        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-        #     menu[0]
-        # )
-
         element = self.element_visibility_of(menu[0], 5)
-        print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => Education menu not visible")
             Common().pytest_fail("Problem. Education menu not visible")
@@ -395,7 +389,7 @@ class MenuSection(BasePage):
                 case "ru":
                     markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
                 case "zh":
-                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_RU_BUTTON
+                    markets_menu_locator = MenuUS01Markets.MENU_MARKETS_ZH_BUTTON
                 case "cn":
                     markets_menu_locator = MenuUS01Markets.MENU_MARKETS_CN_BUTTON
 
@@ -413,7 +407,6 @@ class MenuSection(BasePage):
         )
 
         element = self.element_is_visible(markets_menu_locator, 5)
-        print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => 'Markets' menu not visible")
             # Common().save_current_screenshot(d, "scr_qr")
@@ -595,14 +588,6 @@ class MenuSection(BasePage):
                 sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_ZH_FOREX_TRADING)  # одна страница
             case "cn":
                 sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_CN_FOREX_TRADING)  # одна страница
-            # case "hu":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_HU_FOREX_TRADING)
-            # case "nl":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_NL_FOREX_TRADING)
-            # case "pl":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_PL_FOREX_TRADING)
-            # case "ro":
-            #     sub_menu = d.find_elements(*MenuUS11ForexTrading.SUB_MENU_RO_FOREX_TRADING)
 
         if len(sub_menu) == 0:
             pytest.skip(f"For test language '{test_language}' "
@@ -613,7 +598,7 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => Forex trading sub-menu clicked")
+        print(f"{datetime.now()}   => Focus moved to Forex trading sub-menu and clicked")
 
         del sub_menu
         return d.current_url
@@ -1360,6 +1345,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_trading_strategies_new_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -1397,6 +1383,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_essentials_of_of_trading_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -1433,6 +1420,7 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_market_guides_new_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -1469,6 +1457,7 @@ class MenuSection(BasePage):
 
         self.move_focus_to_markets_menu(d, cur_language, cur_country)
         self.sub_menu_forex_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -1532,6 +1521,7 @@ class MenuSection(BasePage):
 
         self.move_focus_to_markets_menu(d, cur_language, cur_country)
         self.sub_menu_indices_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
@@ -1627,6 +1617,22 @@ class MenuSection(BasePage):
 
         return d.current_url
 
+    @allure.step('Select "Markets" menu, "Shares" submenu click')
+    def open_shares_market_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Indices" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_shares_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
     @allure.step(f"{datetime.now()}. Click submenu 'Shares'.")
     def sub_menu_shares_move_focus_click(self, d, test_language):
         sub_menu = None
@@ -1673,4 +1679,3 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Focus moved to 'Shares' submenu and clicked")
 
         del sub_menu
-        return d.current_url
