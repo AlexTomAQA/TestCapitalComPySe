@@ -256,10 +256,11 @@ class CounterBanner:
 
 class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
-    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")  # название инструментов
-    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.sell.text-right.js-marketBtn > a")
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
+
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed > a")  # название инструментов
+    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
 
 
 class FieldDropdownMarketsLocator:
