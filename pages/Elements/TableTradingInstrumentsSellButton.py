@@ -38,7 +38,7 @@ class TableTradingInstrumentsSellButton(BasePage):
     @allure.step(f'{datetime.now()}   Start Full test [Sell] button on Table Widget Trading Instruments')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_sort):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
-        print(f"\n{datetime.now()}   item_list = {item_list}")
+        print(f"\n{datetime.now()}   List of random items = {item_list}")
 
         # ??? check_popup = SignupLogin(d, cur_item_link, cur_sort)
         check_popup = SignupLogin(d, cur_item_link)
@@ -130,18 +130,18 @@ class TableTradingInstrumentsSellButton(BasePage):
         self.current_sort = self.driver.find_element(*self.item_sort)
         self.current_sort.click()
 
-        print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"\n")
+        print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"")
 
-        print(f"{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
+        print(f"\n{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
         if self.driver.find_elements(*self.sell_locator) != 0:
             print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
-            print(f"{datetime.now()}   Start find two random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
+            print(f"{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
             self.sell_list = self.driver.find_elements(*self.sell_locator)
             qty_buttons = len(self.sell_list)
             count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
             item_list = random.sample(range(qty_buttons), count_of_runs)
-            print(f"{datetime.now()}   => End find two random buttons [Sell] on the cur_sort "
-                  f"\"{cur_sort}\"\n")
+            print(f"{datetime.now()}   => End find {count_of_runs} random buttons [Sell] on the cur_sort "
+                  f"\"{cur_sort}\"")
 
             return item_list
         else:
@@ -160,10 +160,9 @@ class TableTradingInstrumentsSellButton(BasePage):
             button
         )
 
-        # Вытаскиваем линк из кнопки
-        button_link = button.get_attribute('data-href')
-        # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
-        self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
+        item_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
+        item = item_list[value]
+        self.trade_instrument = item.text
 
         button.click()
         print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked!\n")
