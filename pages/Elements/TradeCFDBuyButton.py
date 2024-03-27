@@ -65,9 +65,10 @@ class TradeCFDBuyButton(BasePage):
         print(f"{datetime.now()}   => BUTTON_BUY scrolled")
 
         # Вытаскиваем линку из кнопки
-        button_link = button_list[0].get_attribute('href')
+        # button_link = button_list[0].get_attribute('href')
         # Берём ID итема, на который кликаем для сравнения с открытым ID на платформе
-        trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
+        # trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
+        trade_instrument = self.driver.find_element(*TradeCFDLocators.ITEM_NAME).text.split(' Spot')[0]
 
         print(f"{datetime.now()}   BUTTON_BUY is clickable? =>")
         if not self.element_is_clickable(button_list[0], 5):

@@ -271,6 +271,7 @@ class TradeCFDLocators:
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
     BUY_BUTTON = (By.CSS_SELECTOR, "[data-type='market_buy']")
     SELL_BUTTON = (By.CSS_SELECTOR, "div.sharesName__price > a[data-type='market_sell']")
+    ITEM_NAME = (By.CSS_SELECTOR, ".cc-breadcrumbs span")
 
 
 class TradingInstrumentsBlockLocators:
