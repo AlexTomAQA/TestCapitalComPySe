@@ -333,7 +333,7 @@ class BasePage:
     @HandleExcElementsDecorator()
     def element_is_clickable(self, loc_or_elem, timeout=1):
         """
-        Check that an element is present on the DOM of a page and visible.
+        Check that an element is present on the DOM of a page and enabled such that you can click it..
         Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
 
         Args:
