@@ -1,0 +1,93 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-27 21:22:09.887580   worker_id = master
+
+2024-03-27 21:22:09.887595   0. Allure grouping v4
+
+
+2024-03-27 21:22:09.887791   START PRECONDITIONS =>
+
+
+2024-03-27 21:22:09.887807   => flag_of_bug - False
+
+2024-03-27 21:22:09.887819   => Windows size - {'width': 1280, 'height': 800}
+2024-03-27 21:22:09.889131   Set windows position at (0, 0) =>
+2024-03-27 21:22:09.991180   Set resolution 1280 * 800 =>
+2024-03-27 21:22:10.093677   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-27 21:22:11.102258   Капчи нет. Идем дальше
+
+2024-03-27 21:22:11.102351   Работа с куками
+
+2024-03-27 21:22:11.102365   => Prev. country - 'de'
+2024-03-27 21:22:11.102375   => Country set to 'de'
+
+2024-03-27 21:22:11.102384   => Prev. language - 'hu'
+2024-03-27 21:22:11.102394   => Language is set to 'hu'
+
+2024-03-27 21:22:11.102403   => Prev. role - 'NoReg'
+2024-03-27 21:22:11.102411   => The 'NoReg' role is set
+
+2024-03-27 21:22:11.105295   => THE END PRECONDITIONS
+
+2024-03-27 21:22:11.105510   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-27 21:22:11.105526   1. Cur URL = https://capital.com/hu/elo-valutaarfolyamok?country=de
+
+2024-03-27 21:22:11.108167   2. Link = https://capital.com/hu/elo-valutaarfolyamok?country=de
+2024-03-27 21:22:11.108183   current_page = https://capital.com/hu/elo-valutaarfolyamok?country=de
+2024-03-27 21:22:11.110761   link = https://capital.com/hu/elo-valutaarfolyamok?country=de
+2024-03-27 21:22:11.620413   => 'Markets' menu is present
+2024-03-27 21:22:11.639527   => 'Markets' menu is visible
+2024-03-27 21:22:12.915166   => Focus moved to 'Markets' menu
+
+
+2024-03-27 21:22:13.683861   => 'Forex' sub-menu clicked
+2024-03-27 21:22:13.965580   => Focus moved to 'capital*com' logo
+
+2024-03-27 21:22:13.965630   3. Cur URL = https://capital.com/hu/elo-valutaarfolyamok?country=de
+
+2024-03-27 21:22:13.971581   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-27 21:22:13.971603   current_page = https://capital.com/hu/elo-valutaarfolyamok?country=de
+2024-03-27 21:22:13.974318   link = https://capital.com/hu/elo-valutaarfolyamok?country=de
+2024-03-27 21:22:13.976914   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-27 21:22:13.985721   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-27 21:22:13.985747   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-27 21:22:13.992825   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-27 21:22:13.992847   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-27 21:22:14.081755   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-27 21:22:14.104924   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-27 21:22:14.104963   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-27 21:22:14.112676   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-27 21:22:14.112709   Start click cur_sort "Most traded" =>
+2024-03-27 21:22:14.837367   => End Click cur_sort "Most traded"
+
+2024-03-27 21:22:14.837406   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-27 21:22:14.850399   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-27 21:22:14.850433   Start find 1 random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-27 21:22:14.870312   => End find 1 random buttons [Sell] on the cur_sort "Most traded"
+
+2024-03-27 21:22:14.870349   List of random items = [10]
+2024-03-27 21:22:14.870520   Start Checking that form [Sign up] popped up on the page =>
+2024-03-27 21:22:16.407111   '[Sign up]' form was not popped up
+2024-03-27 21:22:16.407319   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-27 21:22:16.407335   Start click button [Sell] =>
+2024-03-27 21:22:16.769765   =>   BUTTON_SELL with item US Dollar / Mexican Peso clicked!
+
+
+2024-03-27 21:22:16.769999   3. Assert_v0
+2024-03-27 21:22:16.770114   Start step Check that [Sign up] form is opened
+2024-03-27 21:22:17.387884   'Sign up' form opened
+2024-03-27 21:22:17.387927   Assert SIGNUP_HEADER =>
+2024-03-27 21:22:17.403497   Assert SIGNUP_REF_LOGIN =>
+2024-03-27 21:22:17.416445   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-27 21:22:17.432522   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-27 21:22:17.432569   => 'Signup' form is checked
+2024-03-27 21:22:17.432760   Start step Close [Sign up] form =>
+2024-03-27 21:22:17.509333   => 'Signup' form closed
+2024-03-27 21:22:17.781089   => Focus moved to 'capital*com' logo

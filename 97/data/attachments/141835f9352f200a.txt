@@ -1,0 +1,87 @@
+
+
+
+Current sort - Most volatile
+{'width': 1280, 'height': 800}
+
+2024-03-27 22:06:41.636236   worker_id = master
+
+2024-03-27 22:06:41.636254   0. Allure grouping v4
+
+
+2024-03-27 22:06:41.636452   START PRECONDITIONS =>
+
+
+2024-03-27 22:06:41.636468   => flag_of_bug - False
+
+2024-03-27 22:06:41.636479   => Windows size - {'width': 1280, 'height': 800}
+2024-03-27 22:06:41.637956   Set windows position at (0, 0) =>
+2024-03-27 22:06:41.742856   Set resolution 1280 * 800 =>
+2024-03-27 22:06:41.844977   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-27 22:06:42.881458   Капчи нет. Идем дальше
+
+2024-03-27 22:06:42.881539   Работа с куками
+
+2024-03-27 22:06:42.881552   => Prev. country - 'au'
+2024-03-27 22:06:42.881562   => Country set to 'au'
+
+2024-03-27 22:06:42.881571   => Prev. language - 'hu'
+2024-03-27 22:06:42.881580   => Language is set to 'hu'
+
+2024-03-27 22:06:42.881589   => Prev. role - 'NoReg'
+2024-03-27 22:06:42.881598   => The 'NoReg' role is set
+
+2024-03-27 22:06:42.884187   => THE END PRECONDITIONS
+2024-03-27 22:06:43.389814   => 'Markets' menu is present
+2024-03-27 22:06:43.403714   => 'Markets' menu is visible
+2024-03-27 22:06:44.665758   => Focus moved to 'Markets' menu
+2024-03-27 22:06:44.671527   => 'Markets > Commodities' submenu is present
+
+2024-03-27 22:06:45.934590   1. Arrange for Trading instrument and "Most volatile" cur_sort
+2024-03-27 22:06:45.934632   current_page = https://capital.com/hu/elo-arupiaci-arak
+2024-03-27 22:06:45.937167   link = https://capital.com/hu/elo-arupiaci-arak
+2024-03-27 22:06:45.939713   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-27 22:06:45.944838   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-27 22:06:45.944860   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-27 22:06:45.949409   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-27 22:06:45.949430   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-27 22:06:46.731542   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-27 22:06:47.259881   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-27 22:06:47.259924   Is cur_sort "Most volatile" present in item_sort_list? =>
+2024-03-27 22:06:47.268105   => cur_sort "Most volatile" is present in item_sort_list!
+2024-03-27 22:06:47.268154   Start click cur_sort "Most volatile" =>
+2024-03-27 22:06:48.007559   => End Click cur_sort "Most volatile"
+
+2024-03-27 22:06:48.007609   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-27 22:06:48.057769   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-27 22:06:48.057805   Start find two random buttons [Buy] on cur_sort "Most volatile"=>
+2024-03-27 22:06:48.064016   => End find two random buttons [Buy] on the cur_sort "Most volatile"
+
+
+2024-03-27 22:06:48.064043   Item_list = [13]
+2024-03-27 22:06:48.064240   Start Checking that form [Sign up] popped up on the page =>
+2024-03-27 22:06:49.590132   '[Sign up]' form was not popped up
+2024-03-27 22:06:49.590329   2. Act for trading instrument and "Most volatile" cur_sort
+2024-03-27 22:06:49.590345   Start click button [Buy] =>
+2024-03-27 22:06:50.486454   =>   BUTTON_BUY with item 7096810686469316 clicked!
+
+
+2024-03-27 22:06:50.486710   3. Assert_v0
+2024-03-27 22:06:50.486796   Start step Check that [Sign up] form is opened
+2024-03-27 22:06:53.538253   'Sign up' form not opened
+2024-03-27 22:06:53.538435   Start step Check that new [Sign up] form is opened
+2024-03-27 22:06:56.595942   => new 'Sign up' form not opened
+2024-03-27 22:06:56.596155   Start method Check that [Sign up] page opened =>
+2024-03-27 22:06:57.600609   'Sign up' page not opened
+2024-03-27 22:06:57.600814   Check that [Sign up] form on trading platform opened =>
+2024-03-27 22:07:00.639801   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-27 22:07:00.639887   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f72ebfdfb00>
+
+2024-03-27 22:07:00.642742  Для бага: Bid-04 необходимо использовать проверку на ретест!!!
