@@ -1,0 +1,135 @@
+{'width': 1280, 'height': 800}
+
+2024-03-26 23:35:43.303013   worker_id = master
+
+2024-03-26 23:35:43.303029   0. Allure grouping v4
+
+
+2024-03-26 23:35:43.303232   START PRECONDITIONS =>
+
+
+2024-03-26 23:35:43.303248   => flag_of_bug - False
+
+2024-03-26 23:35:43.303259   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 23:35:43.304566   Set windows position at (0, 0) =>
+2024-03-26 23:35:43.407557   Set resolution 1280 * 800 =>
+2024-03-26 23:35:43.509848   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 23:35:44.543682   Капчи нет. Идем дальше
+
+2024-03-26 23:35:44.543768   Работа с куками
+
+2024-03-26 23:35:44.543782   => Prev. country - 'au'
+2024-03-26 23:35:44.543792   => Country set to 'au'
+
+2024-03-26 23:35:44.543801   => Prev. language - 'zh'
+2024-03-26 23:35:44.543811   => Language is set to 'zh'
+
+2024-03-26 23:35:44.543820   => Prev. role - 'Auth'
+2024-03-26 23:35:44.543829   => The 'Auth' role is set
+
+2024-03-26 23:35:44.546482   => THE END PRECONDITIONS
+
+2024-03-26 23:35:44.546676   1. Arrange_v4
+2024-03-26 23:35:44.546693   current_page = https://capital.com/zh/trade-amazon
+2024-03-26 23:35:44.549646   link = https://capital.com/zh/trade-amazon
+2024-03-26 23:35:44.552319   MOST_TRADED is present? =>
+2024-03-26 23:35:44.561252   => MOST_TRADED widget is present on this page
+2024-03-26 23:35:44.561277   => Found 5 elements in block MOST_TRADED
+2024-03-26 23:35:44.561288   Most traded widget is scroll =>
+2024-03-26 23:35:44.565381   => Most traded widget is scrolled into screen center
+
+2024-03-26 23:35:44.565440   Random indexes = [1]
+
+2024-03-26 23:35:44.565458   Testing Most traded 1 random element with 1 index
+
+2024-03-26 23:35:44.565600   2. Act_v4
+2024-03-26 23:35:44.565695   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 23:35:46.103488   '[Sign up]' form was not popped up
+2024-03-26 23:35:46.117135   instrument_title = 'NVIDIA Corp'
+2024-03-26 23:35:46.122288   Selected Trade button on Most traded widget is scroll =>
+2024-03-26 23:35:46.125824   Selected Trade button click for 'NVIDIA Corp' trading instrument =>
+2024-03-26 23:35:48.130852   => Selected Trade button clicked!
+
+2024-03-26 23:35:48.131102   3. Assert_v4
+2024-03-26 23:35:48.131210   Checking that the trading platform page has opened (v4) =>
+2024-03-26 23:35:48.136856   Checking way # 1 => 
+
+2024-03-26 23:35:48.136970   Checking that the Trading platform page has valid title =>
+2024-03-26 23:35:48.140994   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-26 23:35:48.141125   Checking that the Trading platform LOGO is present on the page =>
+2024-03-26 23:35:49.375989   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-26 23:35:49.376097   tpd = False
+2024-03-26 23:35:49.376326   Checking that the Trading platform opened in LIVE mode =>
+2024-03-26 23:35:49.408045   => The page with https://capital.com/trading/platform/charting/16150730595456196?side=buy&ids=21182778791108,427748677997764,1361805280629956,65125138865103897,66372809684722713,3400518881858756,14659243072378052,68501455606162457,67498426123723801,12741694793536708,93810675766468,55001351226052,55001351299154,253454610154649,55001351234585,356898897437721,123763777708114,250461017944395,508931114652423506,6810413677172050,15989072321336658,389605073441988,322264281208004,1679716659553719492,145998823326404,7096810686469316,7091880064013508,7091871474078916,27041281599427780,7090488494609604,3315714839748,7096862226076868,426627691533508,7092687517865156,5983666832495812,2604592722433220,16150730595456196 url was opened in lIVE mode
+
+2024-03-26 23:35:49.410689   Check that opened page with https://capital.com/trading/platform/charting/16150730595456196?side=buy&ids=21182778791108,427748677997764,1361805280629956,65125138865103897,66372809684722713,3400518881858756,14659243072378052,68501455606162457,67498426123723801,12741694793536708,93810675766468,55001351226052,55001351299154,253454610154649,55001351234585,356898897437721,123763777708114,250461017944395,508931114652423506,6810413677172050,15989072321336658,389605073441988,322264281208004,1679716659553719492,145998823326404,7096810686469316,7091880064013508,7091871474078916,27041281599427780,7090488494609604,3315714839748,7096862226076868,426627691533508,7092687517865156,5983666832495812,2604592722433220,16150730595456196 url
+with selected corresponding trading instrument 'NVIDIA Corp' =>
+
+2024-03-26 23:35:49.413879   trade_instrument = 'NVIDIA Corp'
+
+2024-03-26 23:35:49.413896   Check that Trading Platform is opened in Chart mode
+2024-03-26 23:35:49.514023   => Trading Platform opened in Chart mode
+
+2024-03-26 23:35:49.514059   Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-26 23:35:49.525771   Check that Top Charts List contain selected trade instrument =>
+
+2024-03-26 23:35:49.525813   Top Charts List contain 37 trade instruments
+
+2024-03-26 23:35:49.525831   Top Charts List contain following trade instruments:
+'Volatility Index'
+'Silver'
+'Advanced Micro Devices Inc (Extended Hours)'
+'Crude Oil'
+'Amazon.com Inc (Extended Hours)'
+'Shin-Etsu Chemical Co., Ltd.'
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:11.02.02.01_06-zh.au.Auth
+
+2024-03-26 23:35:50.273662   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6f29c4e3f0>
+
+2024-03-26 23:35:50.735170   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 23:35:51.016079   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 23:35:51.749143   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 23:35:51.941190   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 23:35:51.942487   Баг Bid:11.02.02.01_06-zh.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

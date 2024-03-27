@@ -1,0 +1,94 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-26 22:54:46.911734   worker_id = master
+
+2024-03-26 22:54:46.911749   0. Allure grouping v4
+
+
+2024-03-26 22:54:46.911956   START PRECONDITIONS =>
+
+
+2024-03-26 22:54:46.911971   => flag_of_bug - False
+
+2024-03-26 22:54:46.911983   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 22:54:46.913260   Set windows position at (0, 0) =>
+2024-03-26 22:54:47.015470   Set resolution 1280 * 800 =>
+2024-03-26 22:54:47.117832   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 22:54:48.146656   Капчи нет. Идем дальше
+
+2024-03-26 22:54:48.146742   Работа с куками
+
+2024-03-26 22:54:48.146756   => Prev. country - 'au'
+2024-03-26 22:54:48.146765   => Country set to 'au'
+
+2024-03-26 22:54:48.146775   => Prev. language - 'zh'
+2024-03-26 22:54:48.146784   => Language is set to 'zh'
+
+2024-03-26 22:54:48.146793   => Prev. role - 'NoReg'
+2024-03-26 22:54:48.146802   => The 'NoReg' role is set
+
+2024-03-26 22:54:48.149464   => THE END PRECONDITIONS
+
+2024-03-26 22:54:48.149652   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-26 22:54:48.149668   1. Cur URL = https://capital.com/zh/live-currency-prices
+
+2024-03-26 22:54:48.152157   2. Link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:54:48.152173   current_page = https://capital.com/zh/live-currency-prices
+2024-03-26 22:54:48.154675   link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:54:48.663621   => 'Markets' menu is present
+2024-03-26 22:54:48.680187   element = <selenium.webdriver.remote.webelement.WebElement (session="08628fdb82adcc1bf3c908bd96b08a0f", element="f.1EC97361B045FD68566B3424CF08A323.d.E9C71A2A06E3401FD332D0365FD9C25F.e.4274")>
+2024-03-26 22:54:48.680226   => 'Markets' menu is visible
+2024-03-26 22:54:49.943818   => Focus moved to 'Markets' menu
+
+
+2024-03-26 22:54:50.724453   => 'Forex' sub-menu clicked
+
+2024-03-26 22:54:50.727305   3. Cur URL = https://capital.com/zh/live-currency-prices
+
+2024-03-26 22:54:50.732567   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-26 22:54:50.732588   current_page = https://capital.com/zh/live-currency-prices
+2024-03-26 22:54:50.735130   link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:54:50.737723   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-26 22:54:50.745895   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-26 22:54:50.745922   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-26 22:54:50.753231   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-26 22:54:50.753254   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-26 22:54:50.840196   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-26 22:54:50.860281   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-26 22:54:50.860321   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-26 22:54:50.867845   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-26 22:54:50.867876   Start click cur_sort "Most traded" =>
+2024-03-26 22:54:53.782463   => End Click cur_sort "Most traded"
+
+2024-03-26 22:54:53.782510   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-26 22:54:53.809951   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-26 22:54:53.809987   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-26 22:54:53.816785   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-26 22:54:53.816815   item_list = [18]
+2024-03-26 22:54:53.816983   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 22:54:55.362364   '[Sign up]' form was not popped up
+2024-03-26 22:54:55.362568   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-26 22:54:55.362584   Start click button [Sell] =>
+2024-03-26 22:54:55.496707   =>   BUTTON_SELL with item 93810675684676 clicked!
+
+
+2024-03-26 22:54:55.496936   3. Assert_v0
+2024-03-26 22:54:55.497026   Start step Check that [Sign up] form is opened
+2024-03-26 22:54:55.796495   'Sign up' form opened
+2024-03-26 22:54:55.796552   Assert SIGNUP_HEADER =>
+2024-03-26 22:54:55.809899   Assert SIGNUP_REF_LOGIN =>
+2024-03-26 22:54:55.822279   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-26 22:54:55.833906   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-26 22:54:55.833937   => 'Signup' form is checked
+2024-03-26 22:54:55.834101   Start step Close [Sign up] form =>
+2024-03-26 22:54:55.914810   => 'Signup' form closed
+2024-03-26 22:54:56.188403   => Focus moved to 'capital*com' logo

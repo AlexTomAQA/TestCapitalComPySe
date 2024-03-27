@@ -1,0 +1,167 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-26 22:49:16.120747   worker_id = master
+
+2024-03-26 22:49:16.120765   0. Allure grouping v4
+
+
+2024-03-26 22:49:16.120975   START PRECONDITIONS =>
+
+
+2024-03-26 22:49:16.120991   => flag_of_bug - False
+
+2024-03-26 22:49:16.121002   => Windows size - {'width': 1280, 'height': 800}
+2024-03-26 22:49:16.122321   Set windows position at (0, 0) =>
+2024-03-26 22:49:16.224619   Set resolution 1280 * 800 =>
+2024-03-26 22:49:16.327219   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-26 22:49:17.372256   Капчи нет. Идем дальше
+
+2024-03-26 22:49:17.372342   Работа с куками
+
+2024-03-26 22:49:17.372356   => Prev. country - 'au'
+2024-03-26 22:49:17.372366   => Country set to 'au'
+
+2024-03-26 22:49:17.372376   => Prev. language - 'zh'
+2024-03-26 22:49:17.372386   => Language is set to 'zh'
+
+2024-03-26 22:49:17.372395   => Prev. role - 'Auth'
+2024-03-26 22:49:17.372404   => The 'Auth' role is set
+
+2024-03-26 22:49:17.375029   => THE END PRECONDITIONS
+
+2024-03-26 22:49:17.375228   START Open "Markets" menu, "Forex" submenu =>
+
+2024-03-26 22:49:17.375244   1. Cur URL = https://capital.com/zh/live-currency-prices
+
+2024-03-26 22:49:17.377661   2. Link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:49:17.377677   current_page = https://capital.com/zh/live-currency-prices
+2024-03-26 22:49:17.380043   link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:49:17.889074   => 'Markets' menu is present
+2024-03-26 22:49:17.908125   element = <selenium.webdriver.remote.webelement.WebElement (session="08628fdb82adcc1bf3c908bd96b08a0f", element="f.1EC97361B045FD68566B3424CF08A323.d.F64B8E69063856A5AC98A6C2B47F65DA.e.409")>
+2024-03-26 22:49:17.908169   => 'Markets' menu is visible
+2024-03-26 22:49:19.185612   => Focus moved to 'Markets' menu
+
+
+2024-03-26 22:49:19.955914   => 'Forex' sub-menu clicked
+
+2024-03-26 22:49:19.959733   3. Cur URL = https://capital.com/zh/live-currency-prices
+
+2024-03-26 22:49:19.965727   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-26 22:49:19.965751   current_page = https://capital.com/zh/live-currency-prices
+2024-03-26 22:49:19.969014   link = https://capital.com/zh/live-currency-prices
+2024-03-26 22:49:19.971479   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-26 22:49:19.979466   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-26 22:49:19.979489   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-26 22:49:19.988555   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-26 22:49:19.988586   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-26 22:49:20.083894   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-26 22:49:20.105026   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-26 22:49:20.105065   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-26 22:49:20.112531   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-26 22:49:20.112560   Start click cur_sort "Most traded" =>
+2024-03-26 22:49:22.464280   => End Click cur_sort "Most traded"
+
+2024-03-26 22:49:22.464331   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-26 22:49:22.494811   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-26 22:49:22.494852   Start find two random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-26 22:49:22.500854   => End find two random buttons [Sell] on the cur_sort "Most traded"
+
+
+2024-03-26 22:49:22.500895   item_list = [5]
+2024-03-26 22:49:22.501066   Start Checking that form [Sign up] popped up on the page =>
+2024-03-26 22:49:24.055865   '[Sign up]' form was not popped up
+2024-03-26 22:49:24.056076   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-26 22:49:24.056092   Start click button [Sell] =>
+2024-03-26 22:49:25.235935   =>   BUTTON_SELL with item 123763777643545 clicked!
+
+
+2024-03-26 22:49:25.236282   3. Assert_v4
+2024-03-26 22:49:25.236422   Checking that the trading platform page has opened (v4) =>
+2024-03-26 22:49:25.242293   Checking way # 1 => 
+
+2024-03-26 22:49:25.242476   Checking that the Trading platform page has valid title =>
+2024-03-26 22:49:25.245235   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-26 22:49:25.245398   Checking that the Trading platform LOGO is present on the page =>
+2024-03-26 22:49:26.849804   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-26 22:49:26.849903   tpd = False
+2024-03-26 22:49:26.850114   Checking that the Trading platform opened in LIVE mode =>
+2024-03-26 22:49:26.862801   => The page with https://capital.com/trading/platform/charting/93810675766468?side=sell&ids=21182778791108,427748677997764,1361805280629956,65125138865103897,66372809684722713,3400518881858756,14659243072378052,68501455606162457,67498426123723801,12741694793536708,93810675766468 url was opened in lIVE mode
+
+2024-03-26 22:49:26.865884   Check that opened page with https://capital.com/trading/platform/charting/93810675766468?side=sell&ids=21182778791108,427748677997764,1361805280629956,65125138865103897,66372809684722713,3400518881858756,14659243072378052,68501455606162457,67498426123723801,12741694793536708,93810675766468 url
+with selected corresponding trading instrument '123763777643545' =>
+
+2024-03-26 22:49:26.869055   trade_instrument = '123763777643545'
+
+2024-03-26 22:49:26.869079   Check that Trading Platform is opened in Chart mode
+2024-03-26 22:49:27.401535   => Trading Platform opened in Chart mode
+
+2024-03-26 22:49:27.401583   Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-26 22:49:27.414292   Check that Top Charts List contain selected trade instrument =>
+
+2024-03-26 22:49:27.414321   Top Charts List contain 11 trade instruments
+
+2024-03-26 22:49:27.414332   Top Charts List contain following trade instruments:
+'Advanced Micro Devices Inc (Extended Hours)'
+'Crude Oil'
+'Amazon.com Inc (Extended Hours)'
+'Shin-Etsu Chemical Co., Ltd.'
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:01.03.00_002-zh.au.Auth
+
+2024-03-26 22:49:27.676124   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fa7dc90b560>
+
+2024-03-26 22:49:28.147705   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:28.430682   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:29.122253   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:29.304443   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:29.878165   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:30.065789   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:30.068531   Добавление новой строки =>
+
+2024-03-26 22:49:30.812608   => Новая строка добавлена
+
+2024-03-26 22:49:31.761435   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:31.964930   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:31.967697   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-26 22:49:32.247420   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:32.247674   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-26 22:49:32.511117   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:32.511365   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:32.693486   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:32.693706   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-26 22:49:32.885536   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-26 22:49:32.885634   Баг Bid:01.03.00_002-zh.au.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
