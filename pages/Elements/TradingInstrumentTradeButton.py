@@ -4,14 +4,17 @@
 @Author  : Artem Dashkov
 """
 from datetime import datetime
+import random
+
 import allure
 import pytest
+
 from pages.Capital.capital import Capital
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import ElementNotInteractableException
-import random
 # from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -113,6 +116,13 @@ class TradingInstrumentTradeButton(BasePage):
             self.current_market
         )
 
+        print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
+        if not self.element_is_clickable(self.current_market, 5):
+            print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
+            msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")
+
         try:
             self.current_market.click()
             print(f"{datetime.now()}   => End Click Tab '{cur_market}' MARKET\n")
@@ -152,6 +162,7 @@ class TradingInstrumentTradeButton(BasePage):
 
         print(f"{datetime.now()}   Start Click button TAB '{cur_market}' in METHOD: element_click =>")
         self.current_market = self.driver.find_element(*self.market_locator)
+
         if self.current_market.get_attribute("class") != "active js-analyticsClick":
             print(f"{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
             if not self.element_is_visible(self.market_locator, 5):
@@ -161,18 +172,30 @@ class TradingInstrumentTradeButton(BasePage):
                     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                     self.driver.find_element(*self.market_locator)
                 )
-            if not self.element_is_visible(self.market_locator, 5):
-                print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible on this page!\n")
-                pytest.fail(f"MARKET '{cur_market}' is NOT visible on this page!")
-            print(f"{datetime.now()}   => MARKET '{cur_market}' is visible on this page!\n")
+        # else:
+        #     print(f"{datetime.now()}   Check that MARKET '{cur_market}' is visible on this page =>")
+        #     Common().pytest_fail("Bug # ???   Warning")
 
-            # Start click Tab current market
-            print(f"{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
-            self.current_market = self.driver.find_element(*self.market_locator)
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                self.current_market
-            )
+        print(f"{datetime.now()}   Check that MARKET '{cur_market}' is visible on this page =>")
+        if not self.element_is_visible(self.market_locator, 5):
+            print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible on this page!")
+            Common().pytest_fail(f"Bug # ???   MARKET '{cur_market}' is NOT visible on this page!")
+        print(f"{datetime.now()}   => MARKET '{cur_market}' is visible on this page!")
+
+        # Tab current market scroll
+        print(f"{datetime.now()}   Tab '{cur_market}' MARKET is scroll =>")
+        self.current_market = self.driver.find_element(*self.market_locator)
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.current_market
+        )
+        print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is scrolled")
+
+        print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
+        if not self.element_is_clickable(self.current_market, 5):
+            print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
+            Common().pytest_fail(f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable")
+        print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")
 
         try:
             self.current_market.click()
