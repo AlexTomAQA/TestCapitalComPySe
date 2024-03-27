@@ -9,14 +9,15 @@ from datetime import datetime
 import pytest
 import allure
 from selenium.webdriver import ActionChains
-
-from pages.Capital.Trading_platform.trading_platform_locators import TradingInstruments
-from pages.Signup_login.signup_login import SignupLogin
-from pages.base_page import BasePage
-from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
 from selenium.common.exceptions import ElementClickInterceptedException
+
+from pages.base_page import BasePage
+from pages.common import Common
+from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
 from test_data.trading_platform_data import data
 from pages.Elements.AssertClass import AssertClass
+from pages.Capital.Trading_platform.trading_platform_locators import TradingInstruments
+from pages.Signup_login.signup_login import SignupLogin
 
 
 class ButtonTradeOnWidgetMostTraded(BasePage):
@@ -37,16 +38,16 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             print(f"\n{datetime.now()}   Testing Most traded {i + 1} random element with {index} index")
             trade_instrument = self.element_click_v4(index)
             if not trade_instrument:
-                pytest.fail("Testing element is not clicked")
+                Common().pytest_fail("Bug # ??? Testing element is not clicked")
 
-            check_element = AssertClass(d, cur_item_link, self.bid)
+            test_element = AssertClass(d, cur_item_link, self.bid)
             match cur_role:
                 case "NoReg":
-                    check_element.assert_signup(d, cur_language, cur_item_link)
+                    test_element.assert_signup(d, cur_language, cur_item_link)
                 case "NoAuth":
-                    check_element.assert_login(d, cur_language, cur_item_link)
+                    test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
-                    check_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+                    test_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
             counter += 1
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
@@ -86,7 +87,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
         num_item = len(item_list)
         if num_item == 0:
             print(f"{datetime.now()}   => MOST_TRADED is not present on this page")
-            pytest.skip("Checking element is not on this page")
+            Common().pytest_fail("Bug # ??? Checking element is not on this page")
         print(f"{datetime.now()}   => MOST_TRADED widget is present on this page")
         print(f"{datetime.now()}   => Found {num_item} elements in block MOST_TRADED")
 
@@ -122,12 +123,6 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
     def element_click_v4(self, random_index):
         print(f"\n{datetime.now()}   2. Act_v4")
 
-        # # Удаляем класс js-mostTraded у Most traded блока, чтобы избежать рандомных фейлов
-        # # (кнопки меняют состояние каждые ~2.5 секунды)
-        # print(f"{datetime.now()}   MOST_TRADED delete js-mostTraded class =>")
-        # self.driver.execute_script('document.getElementsByClassName("js-mostTraded")[0].'
-        #                            'classList.remove("js-mostTraded");')
-
         # Checking if [SignUP for is popped up on the page]
         check_popup = SignupLogin(self.driver, self.link)
         check_popup.check_popup_signup_form()
@@ -136,9 +131,11 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
 
         trade_instrument_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_NAME_LIST)
         if len(trade_instrument_list) == 0:
-            pytest.fail("Problem! List of instruments is empty.")
+            Common().pytest_fail("Problem! List of instruments is empty.")
         instrument_item = trade_instrument_list[random_index]
+        # print(f"{datetime.now()}   instrument_item = {instrument_item}")
         instrument_title = instrument_item.get_attribute('title')
+        print(f"{datetime.now()}   instrument_title = '{instrument_title}'")
 
         item_list = self.driver.find_elements(*ButtonTradeOnWidgetMostTradedLocators.MOST_TRADED_LIST)
         element = item_list[random_index]
@@ -148,16 +145,7 @@ class ButtonTradeOnWidgetMostTraded(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
         print(f"{datetime.now()}   Selected Trade button click for '{instrument_title}' trading instrument =>")
-        # try:
-        #     ActionChains(self.driver) \
-        #         .move_to_element(element) \
-        #         .pause(0.5) \
-        #         .click() \
-        #         .perform()
-        #     print(f"{datetime.now()}   => Trade button clicked!")
-        #     return instrument  # возвращаем название торгового инструмента
-        # except ElementClickInterceptedException:
-        #     return False
+
         ActionChains(self.driver) \
             .move_to_element(element) \
             .pause(0.5) \

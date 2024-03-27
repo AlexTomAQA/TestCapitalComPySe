@@ -131,6 +131,21 @@ class ButtonsOnPageLocators:
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
 
+    # Elements of 'Trading instrument' widget
+    TRADING_INSTRUMENT_WIDGET = (By.CSS_SELECTOR, '[data-wrap="homePage"]')
+
+    MOST_TRADED_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_mosttraded"]')
+    COMMODITIES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_COM"]')
+    INDICES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_IND"]')
+    CRYPTOCURRENCIES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_CRYPTO"]')
+    SHARES_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_SHARE"]')
+    FOREX_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_FOREX"]')
+    ETFS_MARKET_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '[data-type="wdg_market_tab_etfs"]')
+
+    MEATBALLS_MENU_BUTTON = (By.CSS_SELECTOR, '.cc-boxXs.tabsDrop__btn.js-tabsDrop__btn')
+
+    TRADE_BUTTON_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets__btn.js-wMarkets__tradeBtn.showLg')
+
     # Elements of Our markets block
     OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
 
@@ -241,10 +256,11 @@ class CounterBanner:
 
 class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
-    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >b")  # название инструментов
-    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.sell.text-right.js-marketBtn > a")
+    BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "td.buy.text-right.js-marketBtn > a")  # список инструментов
+
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed > a")  # название инструментов
+    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "tr.trlink.js-trlink .stringEllipsed >a") #ссылка
 
 
 class FieldDropdownMarketsLocator:
@@ -270,6 +286,8 @@ class TradeCFDLocators:
     SHORT_POSITION = (By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(1) > div")
     GO_TO_PLATFORM_BUTTON = (By.CSS_SELECTOR, "[href='trading/platform']")
     BUY_BUTTON = (By.CSS_SELECTOR, "[data-type='market_buy']")
+    SELL_BUTTON = (By.CSS_SELECTOR, "div.sharesName__price > a[data-type='market_sell']")
+    ITEM_NAME = (By.CSS_SELECTOR, ".cc-breadcrumbs span")
 
 
 class TradingInstrumentsBlockLocators:

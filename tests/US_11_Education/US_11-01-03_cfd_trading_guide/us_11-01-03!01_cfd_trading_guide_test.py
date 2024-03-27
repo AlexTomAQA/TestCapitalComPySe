@@ -66,6 +66,7 @@ class TestCFDTradingGuide:
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
+            # d, cur_item_link, "", cur_language, cur_country, cur_role, cur_login, cur_password)
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MainBannerStartTrading(d, cur_item_link, bid)
@@ -90,6 +91,7 @@ class TestCFDTradingGuide:
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
+            # d, cur_item_link, "", cur_language, cur_country, cur_role, cur_login, cur_password)
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MainBannerTryDemo(d, cur_item_link, bid)
@@ -115,6 +117,7 @@ class TestCFDTradingGuide:
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
+            # d, cur_item_link, "", cur_language, cur_country, cur_role, cur_login, cur_password)
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
@@ -139,9 +142,34 @@ class TestCFDTradingGuide:
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
+            # d, cur_item_link, "", cur_language, cur_country, cur_role, cur_login, cur_password)
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step(f"{datetime.now()}   Start test of button [Start trading] in article")
+    @pytest.mark.test_07
+    def test_07_start_trading_in_article_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Start trading] in article
+        Language: All. License: All.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "11.01.03", "Education > Menu item [CFD trading guide]",
+            ".01_07", "Testing button [Start trading] in article")
+
+        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language, ["de", "zh"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = ContentStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     # @allure.step('Start test "Click 2 from 5 random [Sell] buttons in "CFDs tables" for {type_fi} and {tab}')
@@ -192,26 +220,3 @@ class TestCFDTradingGuide:
     #     test_element = BuyButtonTable(d, cur_item_link)
     #     test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link, cur_type_fi, cur_tab)
     #
-    @allure.step(f"{datetime.now()}   Start test of button [Start trading] in article")
-    @pytest.mark.test_07
-    def test_07_start_trading_in_article_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
-        """
-        Check: Button [Start trading] in article
-        Language: All. License: All.
-        """
-        bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "11.01.03", "Education > Menu item [CFD trading guide]",
-            ".01_07", "Testing button [Start trading] in article")
-
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_language_in_list_and_skip_if_not_present(
-            cur_language, ["de", "zh"])
-
-        page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        test_element = ContentStartTrading(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)

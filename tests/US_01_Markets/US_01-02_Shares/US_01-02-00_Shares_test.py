@@ -46,8 +46,7 @@ class TestShares:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
@@ -73,8 +72,7 @@ class TestShares:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         test_element = TableTradingInstrumentsSellButton(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link, cur_sort)
@@ -100,8 +98,7 @@ class TestShares:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         test_element = TableTradingInstrumentsBuyButton(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link, cur_sort)
@@ -129,8 +126,7 @@ class TestShares:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_link = page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         test_element = BlockStepTrading(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
@@ -157,8 +153,7 @@ class TestShares:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        page_menu.sub_menu_shares_move_focus_click(d, cur_language)
+        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         # Записываем ссылки в файл
         file_name = "tests/US_01_Markets/US_01-02_Shares/list_of_href.txt"

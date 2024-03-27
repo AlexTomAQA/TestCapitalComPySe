@@ -9,12 +9,11 @@ from pages.Elements.testing_elements_locators import TradeCFDLocators
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class TradeCFDBuyButton(BasePage):
+class TradeCFDSellButton(BasePage):
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
 
-        # Checking if [SignUP for is popped up on the page]
         page_signup_login = SignupLogin(d, cur_item_link)
         page_signup_login.check_popup_signup_form()
 
@@ -36,52 +35,49 @@ class TradeCFDBuyButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        print(f"{datetime.now()}   BUTTON_BUY is located on the page? =>")
-        button_list = self.elements_are_located(TradeCFDLocators.BUY_BUTTON)
+        print(f"{datetime.now()}   BUTTON_SELL is located on the page? =>")
+        button_list = self.elements_are_located(TradeCFDLocators.SELL_BUTTON)
 
         if not button_list:
-            print(f"{datetime.now()}   => BUTTON_BUY is not located on the page!")
-            pytest.skip("ARRANGE: Checking element (BUTTON_BUY) is not on this page")
+            print(f"{datetime.now()}   => BUTTON_SELL is not located on the page!")
+            pytest.skip("Checking element (BUTTON_SELL) is not on this page")
 
-        print(f"{datetime.now()}   => BUTTON_BUY is located on the page!")
+        print(f"{datetime.now()}   => BUTTON_SELL is located on the page!")
 
-    @allure.step("Click button [Add to favourite]")
+    @allure.step("Click button [Sell]")
     def element_click(self, cur_role):
         print(f"\n{datetime.now()}   2. Act_v0")
-        button_list = self.driver.find_elements(*TradeCFDLocators.BUY_BUTTON)
+        button_list = self.driver.find_elements(*TradeCFDLocators.SELL_BUTTON)
 
-        print(f"{datetime.now()}   BUTTON_BUY is present? =>")
+        print(f"{datetime.now()}   BUTTON_SELL is present? =>")
         if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_BUY is not present on the page")
+            print(f"{datetime.now()}   => BUTTON_SELL is not present on the page")
             del button_list
             return False
-        print(f"{datetime.now()}   => BUTTON_BUY is present on the page")
+        print(f"{datetime.now()}   => BUTTON_SELL is present on the page")
 
-        print(f"{datetime.now()}   BUTTON_BUY scroll =>")
+        print(f"{datetime.now()}   BUTTON_SELL scroll =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_list[0]
         )
-        print(f"{datetime.now()}   => BUTTON_BUY scrolled")
+        print(f"{datetime.now()}   => BUTTON_SELL scrolled")
 
-        # Вытаскиваем линку из кнопки
-        # button_link = button_list[0].get_attribute('href')
-        # Берём ID итема, на который кликаем для сравнения с открытым ID на платформе
-        # trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
-        trade_instrument = self.driver.find_element(*TradeCFDLocators.ITEM_NAME).text.split(' Spot')[0]
+        button_link = button_list[0].get_attribute('href')
+        trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
 
-        print(f"{datetime.now()}   BUTTON_BUY is clickable? =>")
+        print(f"{datetime.now()}   BUTTON_SELL is clickable? =>")
         if not self.element_is_clickable(button_list[0], 5):
-            print(f"{datetime.now()}   => BUTTON_BUY is not clickable more then 5 sec.")
-            pytest.fail("BUTTON_BUY is not clickable more then 5 sec.")
+            print(f"{datetime.now()}   => BUTTON_SELL is not clickable more then 5 sec.")
+            pytest.fail("BUTTON_SELL is not clickable more then 5 sec.")
         try:
-            print(f"{datetime.now()}   BUTTON_BUY CLICK =>")
+            print(f"{datetime.now()}   BUTTON_SELL CLICK =>")
             button_list[0].click()
-            # self.driver.execute_script("arguments[0].click();", button_list[0])
-            print(f"{datetime.now()}   => BUTTON_BUY clicked!")
+
+            print(f"{datetime.now()}   => BUTTON_SELL clicked!")
 
         except ElementClickInterceptedException:
-            print(f"{datetime.now()}   => BUTTON_BUY NOT CLICKED")
+            print(f"{datetime.now()}   => BUTTON_SELL NOT CLICKED")
 
             print(f"{datetime.now()}   'Sign up' form or page is auto opened")
 
@@ -91,7 +87,6 @@ class TradeCFDBuyButton(BasePage):
             else:
                 page_.close_signup_page()
 
-            # button_list[0].click()
             self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 

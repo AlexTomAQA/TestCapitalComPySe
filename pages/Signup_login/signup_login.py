@@ -12,6 +12,7 @@ from datetime import datetime
 from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
+from pages.common import Common
 from pages.Header.header_locators import HeaderElementLocators
 from pages.Signup_login.signup_login_locators import (
     SignupFormLocators,
@@ -76,20 +77,25 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   'Sign up' form opened")
 
             print(f"{datetime.now()}   Assert SIGNUP_HEADER =>")
-            assert self.element_is_visible(SignupFormLocators.SIGNUP_HEADER), \
+            Common().assert_true_false(
+                self.element_is_visible(SignupFormLocators.SIGNUP_HEADER),
                 f"{datetime.now()}   The layout of the 'SignUp' form has changed"
+            )
 
             print(f"{datetime.now()}   Assert SIGNUP_REF_LOGIN =>")
-            assert self.element_is_visible(SignupFormLocators.SIGNUP_REF_LOGIN), \
-                f"{datetime.now()}   Problem with 'Login' reference"
+            Common().assert_true_false(
+                self.element_is_visible(SignupFormLocators.SIGNUP_REF_LOGIN),
+                f"{datetime.now()})   Problem with 'Login' reference")
 
             print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>")
             if not self.element_is_visible(SignupFormLocators.SIGNUP_PRIVACY_POLICY_ALL_2):
 
                 print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>")
                 if not self.element_is_visible(SignupFormLocators.SIGNUP_PRIVACY_POLICY_ALL_1):
-                    assert False, \
+                    Common().assert_true_false(
+                        False,
                         f"{datetime.now()}   Problem with 'Privacy policy' reference on '{cur_language}' language!"
+                    )
 
             print(f"{datetime.now()}   => SIGNUP_PRIVACY_POLICY_ALL")
 
@@ -298,22 +304,17 @@ class SignupLogin(BasePage):
         print(f"{datetime.now()}   Start step Close [Sign up] form =>")
         if not self.element_is_clickable(SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM, 2):
             print(f"{datetime.now()}   => Close button on 'Sign up' form is not clickable")
-            return False
+            Common().assert_true_false(False, "Close button on 'Sign up' form is not clickable")
 
         elements = self.driver.find_elements(*SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_FORM)
         elements[0].click()
         print(f"{datetime.now()}   => 'Signup' form closed")
 
         # перемещаем указатель мыши на логотип CAPITAL
-        elements = self.driver.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
-        ActionChains(self.driver) \
-            .move_to_element(elements[0]) \
-            .perform()
-
+        Common().move_pointer_to_capital_com_label(self.driver)
         return True
 
-    allure.step("Close form [Sign up]")
-
+    @allure.step("Close form [Sign up]")
     def close_new_signup_form(self):
         """Method Close new [Sign up] form"""
         print(f"{datetime.now()}   Start step Close new [Sign up] form =>")
@@ -367,6 +368,7 @@ class SignupLogin(BasePage):
             return False
         print(f"{datetime.now()}   Click 'Close' button on 'Login' form =>")
         self.driver.find_element(*LoginFormLocators.BUTTON_CLOSE_ON_LOGIN_FORM).click()
+        Common().move_pointer_to_capital_com_label(self.driver)
         print(f"{datetime.now()}   => 'Login' form closed")
         return True
 
