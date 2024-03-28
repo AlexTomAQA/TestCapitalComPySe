@@ -7,14 +7,15 @@
 import random
 from datetime import datetime
 
-import pytest
+# import pytest
 import allure
 
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.common import Common
-from pages.Elements.testing_elements_locators import ButtonSellOnTableTradingInstrumentsLocators, \
+from pages.Elements.testing_elements_locators import (
     ItemSortDropdownLocators, TableTradingInstrumentsLocators, FieldDropdownMarketsLocator
+)
 from pages.Elements.AssertClass import AssertClass
 
 COUNT_OF_RUNS = 1
@@ -106,8 +107,8 @@ class TableTradingInstrumentsSellButton(BasePage):
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_VOLATILE
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_VOLATILE
 
-        self.sell_locator = TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT
-        self.item = TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT
+        # self.sell_locator = TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT
+        # self.item = TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT
 
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
 
@@ -134,10 +135,10 @@ class TableTradingInstrumentsSellButton(BasePage):
         print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"")
 
         print(f"\n{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
-        if self.driver.find_elements(*self.sell_locator) != 0:
+        if self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT) != 0:
             print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
             print(f"{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
-            self.sell_list = self.driver.find_elements(*self.sell_locator)
+            self.sell_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
             qty_buttons = len(self.sell_list)
             count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
             item_list = random.sample(range(qty_buttons), count_of_runs)
@@ -154,8 +155,10 @@ class TableTradingInstrumentsSellButton(BasePage):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-        self.sell_list = wd.find_elements(*self.sell_locator)
+        self.sell_list = wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
         button = self.sell_list[value]
+        id_instrument = button.get_attribute("data-iid")
+        print(f"{datetime.now()}   =>   BUTTON_SELL on item with ID = {id_instrument}")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
@@ -165,5 +168,9 @@ class TableTradingInstrumentsSellButton(BasePage):
         item = item_list[value]
         self.trade_instrument = item.text
 
+        time_out = 5
+        if not self.element_is_clickable(button, time_out):
+            print(f"{datetime.now()}   => BUTTON_SELL not clickable after {time_out} sec.")
+            Common().pytest_fail(f"Bug # ??? Sell button not clickable after {time_out} sec.")
         button.click()
-        print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked!\n")
+        print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked")
