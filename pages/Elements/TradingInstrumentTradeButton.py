@@ -110,21 +110,23 @@ class TradingInstrumentTradeButton(BasePage):
 
         # Start click Tab current market
         print(f"{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
-        self.current_market = self.driver.find_element(*self.market_locator)
+        # self.current_market = self.driver.find_element(*self.market_locator)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.current_market
+            self.driver.find_element(*self.market_locator) # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
         )
 
         print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
-        if not self.element_is_clickable(self.current_market, 5):
+        if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 5):
+            # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
             msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")
 
         try:
-            self.current_market.click()
+            self.driver.find_element(*self.market_locator).click()
+            # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
             print(f"{datetime.now()}   => End Click Tab '{cur_market}' MARKET\n")
         except ElementNotInteractableException:
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clicked\n")
