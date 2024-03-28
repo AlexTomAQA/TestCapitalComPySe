@@ -1,0 +1,100 @@
+
+
+
+Current sorting - Most volatile
+{'width': 1280, 'height': 800}
+
+2024-03-28 01:50:43.981123   worker_id = master
+
+2024-03-28 01:50:43.981142   0. Allure grouping v4
+
+
+2024-03-28 01:50:43.981426   START PRECONDITIONS =>
+
+
+2024-03-28 01:50:43.981442   => flag_of_bug - False
+
+2024-03-28 01:50:43.981455   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 01:50:43.982827   Set windows position at (0, 0) =>
+2024-03-28 01:50:44.085175   Set resolution 1280 * 800 =>
+2024-03-28 01:50:44.187517   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 01:50:45.230591   Капчи нет. Идем дальше
+
+2024-03-28 01:50:45.230680   Работа с куками
+
+2024-03-28 01:50:45.230693   => Prev. country - 'de'
+2024-03-28 01:50:45.230703   => Country set to 'de'
+
+2024-03-28 01:50:45.230712   => Prev. language - 'pl'
+2024-03-28 01:50:45.230722   => Language is set to 'pl'
+
+2024-03-28 01:50:45.230731   => Prev. role - 'NoReg'
+2024-03-28 01:50:45.230739   => The 'NoReg' role is set
+
+2024-03-28 01:50:45.233436   => THE END PRECONDITIONS
+
+2024-03-28 01:50:45.233626   START Open "Markets" menu, "Indices" submenu =>
+
+2024-03-28 01:50:45.233641   1. Cur URL = https://capital.com/pl/glownych-indeksow-swiatowych
+
+2024-03-28 01:50:45.236082   2. Link = https://capital.com/pl/glownych-indeksow-swiatowych
+2024-03-28 01:50:45.236097   current_page = https://capital.com/pl/glownych-indeksow-swiatowych
+2024-03-28 01:50:45.238490   link = https://capital.com/pl/glownych-indeksow-swiatowych
+2024-03-28 01:50:45.747132   => 'Markets' menu is present
+2024-03-28 01:50:45.761185   => 'Markets' menu is visible
+2024-03-28 01:50:47.026185   => Focus moved to 'Markets' menu
+
+
+2024-03-28 01:50:48.410777   => 'Indices' submenu clicked
+2024-03-28 01:50:48.726399   => Focus moved to 'capital*com' logo
+
+2024-03-28 01:50:48.726441   3. Cur URL = https://capital.com/pl/glownych-indeksow-swiatowych
+
+2024-03-28 01:50:48.731660   1. Arrange for Trading instrument and "Most volatile" cur_sort
+2024-03-28 01:50:48.731683   current_page = https://capital.com/pl/glownych-indeksow-swiatowych
+2024-03-28 01:50:48.734088   link = https://capital.com/pl/glownych-indeksow-swiatowych
+2024-03-28 01:50:48.736402   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-28 01:50:48.742166   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-28 01:50:48.742197   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-28 01:50:48.747157   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-28 01:50:48.747179   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-28 01:50:49.530883   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-28 01:50:50.062943   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-28 01:50:50.062989   Is cur_sort "Most volatile" present in item_sort_list? =>
+2024-03-28 01:50:50.071612   => cur_sort "Most volatile" is present in item_sort_list!
+2024-03-28 01:50:50.071644   Start click cur_sort "Most volatile" =>
+2024-03-28 01:50:50.688701   => End Click cur_sort "Most volatile"
+
+2024-03-28 01:50:50.688752   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-28 01:50:50.703218   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-28 01:50:50.703258   Start find two random buttons [Buy] on cur_sort "Most volatile"=>
+2024-03-28 01:50:50.709400   => End find two random buttons [Buy] on the cur_sort "Most volatile"
+
+
+2024-03-28 01:50:50.709443   Item_list = [1]
+2024-03-28 01:50:50.709680   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 01:50:52.274552   '[Sign up]' form was not popped up
+2024-03-28 01:50:52.274765   2. Act for trading instrument and "Most volatile" cur_sort
+2024-03-28 01:50:52.274782   Start click button [Buy] =>
+2024-03-28 01:50:53.147881   =>   BUTTON_BUY with item 3534607760839876 clicked!
+
+
+2024-03-28 01:50:53.148121   3. Assert_v0
+2024-03-28 01:50:53.148207   Start step Check that [Sign up] form is opened
+2024-03-28 01:50:56.232053   'Sign up' form not opened
+2024-03-28 01:50:56.232255   Start step Check that new [Sign up] form is opened
+2024-03-28 01:50:59.292474   => new 'Sign up' form not opened
+2024-03-28 01:50:59.292687   Start method Check that [Sign up] page opened =>
+2024-03-28 01:51:00.296310   'Sign up' page not opened
+2024-03-28 01:51:00.296517   Check that [Sign up] form on trading platform opened =>
+2024-03-28 01:51:03.382850   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-28 01:51:03.382935   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f3eb99d9bb0>
+
+2024-03-28 01:51:03.385649  Для бага: Bid-04 необходимо использовать проверку на ретест!!!

@@ -1,0 +1,89 @@
+{'width': 1280, 'height': 800}
+
+2024-03-28 02:44:28.359193   worker_id = master
+
+2024-03-28 02:44:28.359210   0. Allure grouping v4
+
+
+2024-03-28 02:44:28.359408   START PRECONDITIONS =>
+
+
+2024-03-28 02:44:28.359424   => flag_of_bug - False
+
+2024-03-28 02:44:28.359436   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 02:44:28.360757   Set windows position at (0, 0) =>
+2024-03-28 02:44:28.463240   Set resolution 1280 * 800 =>
+2024-03-28 02:44:28.568564   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 02:44:29.612136   Капчи нет. Идем дальше
+
+2024-03-28 02:44:29.612228   Работа с куками
+
+2024-03-28 02:44:29.612241   => Prev. country - 'de'
+2024-03-28 02:44:29.612251   => Country set to 'de'
+
+2024-03-28 02:44:29.612260   => Prev. language - 'pl'
+2024-03-28 02:44:29.612270   => Language is set to 'pl'
+
+2024-03-28 02:44:29.612279   => Prev. role - 'Auth'
+2024-03-28 02:44:29.612288   => The 'Auth' role is set
+
+2024-03-28 02:44:29.615004   => THE END PRECONDITIONS
+
+2024-03-28 02:44:29.615065   1. Arrange_v0
+2024-03-28 02:44:29.615080   current_page = https://capital.com/pl/ropa-naftowa-brent
+2024-03-28 02:44:29.617582   link = https://capital.com/pl/ropa-naftowa-brent
+2024-03-28 02:44:29.627550   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-28 02:44:29.627582   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-28 02:44:29.627592   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-28 02:44:29.639985   => 'Sell' button in Content block scrolled
+2024-03-28 02:44:29.640239   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 02:44:31.191253   '[Sign up]' form was not popped up
+
+2024-03-28 02:44:31.191455   2. Act_v0
+2024-03-28 02:44:31.474610   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-28 02:44:31.474654   => return trade_instrument = 422839530378436
+
+2024-03-28 02:44:31.474938   3. Assert_v4
+2024-03-28 02:44:31.475086   Checking that the trading platform page has opened (v4) =>
+2024-03-28 02:44:31.993583   Checking way # 1 => 
+
+2024-03-28 02:44:31.993810   Checking that the Trading platform page has valid title =>
+2024-03-28 02:44:31.997093   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-28 02:44:31.997286   Checking that the Trading platform LOGO is present on the page =>
+2024-03-28 02:44:33.061571   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-28 02:44:33.061655   tpd = False
+2024-03-28 02:44:33.061810   Checking that the Trading platform opened in LIVE mode =>
+2024-03-28 02:44:33.074067   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+
+2024-03-28 02:44:33.076769   Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '422839530378436' =>
+
+2024-03-28 02:44:33.079739   trade_instrument = '422839530378436'
+
+2024-03-28 02:44:33.079756   Check that Trading Platform is opened in Chart mode
+2024-03-28 02:44:34.104810   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.03.01_03-pl.de.Auth
+
+2024-03-28 02:44:34.104894   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb02e2d9850>
+
+2024-03-28 02:44:34.703276   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 02:44:34.981143   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 02:44:35.577223   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 02:44:35.891189   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 02:44:35.891268   Баг Bid:11.02.03.01_03-pl.de.Auth уже существует, но у него изменился тип с  на 14
+
+2024-03-28 02:44:35.891455   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 02:44:36.182976   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 02:44:36.184377   Баг Bid:11.02.03.01_03-pl.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
