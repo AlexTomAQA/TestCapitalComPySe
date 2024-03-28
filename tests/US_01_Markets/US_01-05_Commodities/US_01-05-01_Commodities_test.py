@@ -9,7 +9,7 @@ from pages.Elements.TradeCFDAddToFavouriteButton import TradeCFDAddToFavoriteBut
 from pages.Elements.TradeCFDBuyButton import TradeCFDBuyButton
 from pages.Elements.TradeCFDSellButton import TradeCFDSellButton
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
-from pages.Menu.menu import MenuSection
+# from pages.Menu.menu import MenuSection
 from pages.common import Common
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
