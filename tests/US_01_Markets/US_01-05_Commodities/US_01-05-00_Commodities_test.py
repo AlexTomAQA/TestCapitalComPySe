@@ -145,7 +145,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, main_page_link)
 
         # Записываем ссылки в файл
         file_name = "tests/US_01_Markets/US_01-05_Commodities/list_of_href.txt"
