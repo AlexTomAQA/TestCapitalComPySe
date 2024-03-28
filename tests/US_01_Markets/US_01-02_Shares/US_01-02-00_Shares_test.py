@@ -133,11 +133,11 @@ class TestShares:
 
     @allure.step("Start pretest")
     def test_099_shares_trading_instrument_pretest(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+            self, d, worker_id, cur_language, cur_country, cur_role, cur_login, cur_password):
 
         global count
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.02", "Markets > Menu item [Shares]",
             ".00_099", "Pretest for US_01.02_01")
