@@ -1,0 +1,132 @@
+{'width': 1280, 'height': 800}
+
+2024-03-28 19:11:04.118870   worker_id = master
+
+2024-03-28 19:11:04.118888   0. Allure grouping v4
+
+
+2024-03-28 19:11:04.119123   START PRECONDITIONS =>
+
+
+2024-03-28 19:11:04.119142   => flag_of_bug - False
+
+2024-03-28 19:11:04.119153   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 19:11:04.120432   Set windows position at (0, 0) =>
+2024-03-28 19:11:04.222598   Set resolution 1280 * 800 =>
+2024-03-28 19:11:04.324808   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 19:11:05.362232   Капчи нет. Идем дальше
+
+2024-03-28 19:11:05.362314   Работа с куками
+
+2024-03-28 19:11:05.362327   => Prev. country - 'au'
+2024-03-28 19:11:05.362337   => Country set to 'au'
+
+2024-03-28 19:11:05.362347   => Prev. language - 'el'
+2024-03-28 19:11:05.362356   => Language is set to 'el'
+
+2024-03-28 19:11:05.362364   => Prev. role - 'Auth'
+2024-03-28 19:11:05.362373   => The 'Auth' role is set
+
+2024-03-28 19:11:05.365079   => THE END PRECONDITIONS
+
+2024-03-28 19:11:05.365135   1. Arrange_v0
+2024-03-28 19:11:05.365149   current_page = https://capital.com/el/eur-chf-isotimia
+2024-03-28 19:11:05.368940   link = https://capital.com/el/eur-chf-isotimia
+2024-03-28 19:11:05.371588   BUTTON_BUY is located on the page? =>
+2024-03-28 19:11:05.379505   => BUTTON_BUY is located on the page!
+2024-03-28 19:11:05.379660   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 19:11:06.908055   '[Sign up]' form was not popped up
+
+2024-03-28 19:11:06.908238   2. Act_v0
+2024-03-28 19:11:06.913294   BUTTON_BUY is present? =>
+2024-03-28 19:11:06.913317   => BUTTON_BUY is present on the page
+2024-03-28 19:11:06.913327   BUTTON_BUY scroll =>
+2024-03-28 19:11:06.916738   => BUTTON_BUY scrolled
+2024-03-28 19:11:06.951371   BUTTON_BUY is clickable? =>
+2024-03-28 19:11:06.964046   BUTTON_BUY CLICK =>
+2024-03-28 19:11:07.238283   => BUTTON_BUY clicked!
+
+2024-03-28 19:11:07.238628   3. Assert_v4
+2024-03-28 19:11:07.238816   Checking that the trading platform page has opened (v4) =>
+2024-03-28 19:11:07.256065   Checking way # 1 => 
+
+2024-03-28 19:11:07.256243   1. Checking that the Trading platform page has valid title =>
+2024-03-28 19:11:07.258930   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-28 19:11:07.259079   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-28 19:11:08.997740   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-28 19:11:08.997825   tpd = False
+2024-03-28 19:11:08.997974   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-28 19:11:09.010106   => The page with https://capital.com/trading/platform/charting/93810675692038?side=buy&ids=22734159545980100,374675767046212,123763777635654,253454610084744,6003982027805892,93810675708048,55001351299154,250461017908249,284833641219225,93810675692038 url was opened in lIVE mode
+
+2024-03-28 19:11:09.012828   4. Check that opened page with https://capital.com/trading/platform/charting/93810675692038?side=buy&ids=22734159545980100,374675767046212,123763777635654,253454610084744,6003982027805892,93810675708048,55001351299154,250461017908249,284833641219225,93810675692038 url
+with selected corresponding trading instrument 'Euro / Swiss Franc' =>
+
+2024-03-28 19:11:09.015401   trade_instrument = 'Euro / Swiss Franc'
+
+2024-03-28 19:11:09.015419   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-28 19:11:09.024149   => Trading Platform opened in Chart mode
+
+2024-03-28 19:11:09.024175   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-28 19:11:09.036122   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-28 19:11:09.036154   Top Charts List contain 10 trade instruments
+
+2024-03-28 19:11:09.036165   Top Charts List contain following trade instruments:
+'Tilray Inc (Extended Hours)'
+'USD/CAD'
+'GBP/HUF'
+'NZD/CNH'
+'EUR/USD_W'
+'EUR/GBP'
+'CHF/ZAR'
+''
+''
+''
+
+Bug: Bid:01.03.01_005-el.au.Auth
+
+2024-03-28 19:11:09.254257   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb189190bf0>
+
+2024-03-28 19:11:09.619024   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:09.820250   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:10.847097   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:11.037855   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:11.972991   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:12.180205   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:12.184313   Добавление новой строки =>
+
+2024-03-28 19:11:13.239859   => Новая строка добавлена
+
+2024-03-28 19:11:14.641708   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:14.838277   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:14.840894   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-28 19:11:15.150524   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:15.150737   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-28 19:11:15.358834   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:15.359118   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:15.663207   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:15.663455   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 19:11:15.854266   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 19:11:15.854335   Баг Bid:01.03.01_005-el.au.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
