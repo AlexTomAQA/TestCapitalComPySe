@@ -1636,9 +1636,9 @@ class MenuSection(BasePage):
 
     @allure.step('Select "Markets" menu, "Shares" submenu click')
     def open_shares_market_menu(self, d, cur_language, cur_country, link):
-        print(f'\n{datetime.now()}   START Open "Markets" menu, "Indices" submenu =>')
-        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
-        print(f"\n{datetime.now()}   2. Link = {link}")
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Shares" submenu =>')
+        print(f"{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"{datetime.now()}   2. Link = {link}")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
@@ -1647,7 +1647,7 @@ class MenuSection(BasePage):
         self.sub_menu_shares_move_focus_click(d, cur_language)
         Common().move_pointer_to_capital_com_label(d)
 
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
     @allure.step(f"{datetime.now()}. Click submenu 'Shares'.")
