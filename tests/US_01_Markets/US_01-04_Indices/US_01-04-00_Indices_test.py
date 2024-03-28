@@ -40,11 +40,10 @@ class TestIndices:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_url = page_menu.sub_menu_indices_move_focus_click(d, cur_language)
+        cur_item_link = page_menu.open_indices_markets_menu(d, cur_language, cur_country, link)
 
-        test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_url, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
+        test_element = TradeCFDBlockStartTradingNowButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Sell] on table Widget 'Trading instrument'")
     @pytest.mark.test_002
