@@ -40,8 +40,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_url = page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -67,8 +66,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_url = page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         test_element = TableTradingInstrumentsSellButton(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_sort)
@@ -94,8 +92,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_url = page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         test_element = TableTradingInstrumentsBuyButton(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_sort)
@@ -121,8 +118,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        cur_page_url = page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         test_element = BlockStepTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
@@ -149,9 +145,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.move_focus_to_markets_menu(d, cur_language, cur_country)
-        page_menu.sub_menu_commodities_move_focus_click(d, cur_language)
-        del page_menu
+        cur_page_url = page_menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         # Записываем ссылки в файл
         file_name = "tests/US_01_Markets/US_01-05_Commodities/list_of_href.txt"

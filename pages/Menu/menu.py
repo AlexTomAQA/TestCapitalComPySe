@@ -1526,6 +1526,23 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
+    @allure.step('Select "Markets" menu, "Commodities" submenu')
+    def open_commodities_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Commodities" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_commodities_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
     @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
     def sub_menu_indices_move_focus_click(self, d, test_language):
         sub_menu = list()
