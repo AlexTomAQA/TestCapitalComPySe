@@ -1,0 +1,196 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-28 09:22:49.688038   worker_id = master
+
+2024-03-28 09:22:49.688055   0. Allure grouping v4
+
+
+2024-03-28 09:22:49.688265   START PRECONDITIONS =>
+
+
+2024-03-28 09:22:49.688282   => flag_of_bug - False
+
+2024-03-28 09:22:49.688294   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 09:22:49.689553   Set windows position at (0, 0) =>
+2024-03-28 09:22:49.791898   Set resolution 1280 * 800 =>
+2024-03-28 09:22:49.894207   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 09:22:50.927004   Капчи нет. Идем дальше
+
+2024-03-28 09:22:50.927094   Работа с куками
+
+2024-03-28 09:22:50.927109   => Prev. country - 'ae'
+2024-03-28 09:22:50.927119   => Country set to 'ae'
+
+2024-03-28 09:22:50.927128   => Prev. language - 'pl'
+2024-03-28 09:22:50.927138   => Language is set to 'pl'
+
+2024-03-28 09:22:50.927147   => Prev. role - 'Auth'
+2024-03-28 09:22:50.927156   => The 'Auth' role is set
+
+2024-03-28 09:22:50.929827   => THE END PRECONDITIONS
+
+2024-03-28 09:22:50.930015   START Open "Markets" menu, "Indices" submenu =>
+
+2024-03-28 09:22:50.930031   1. Cur URL = https://capital.com/pl/aktualne-ceny-akcji
+
+2024-03-28 09:22:50.932553   2. Link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 09:22:50.932570   current_page = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 09:22:50.935052   link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 09:22:51.446404   => 'Markets' menu is present
+2024-03-28 09:22:51.495525   => 'Markets' menu is visible
+2024-03-28 09:22:52.759100   => Focus moved to 'Markets' menu
+2024-03-28 09:22:54.449003   => Focus moved to 'Shares' submenu and clicked
+2024-03-28 09:22:54.742711   => Focus moved to 'capital*com' logo
+
+2024-03-28 09:22:54.742749   3. Cur URL = https://capital.com/pl/aktualne-ceny-akcji
+
+2024-03-28 09:22:54.747978   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-28 09:22:54.748001   current_page = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 09:22:54.750407   link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 09:22:54.752732   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-28 09:22:54.760592   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-28 09:22:54.760614   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-28 09:22:54.769059   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-28 09:22:54.769089   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-28 09:22:54.863063   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-28 09:22:54.885740   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-28 09:22:54.885780   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-28 09:22:54.895504   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-28 09:22:54.895554   Start click cur_sort "Most traded" =>
+2024-03-28 09:22:55.789988   => End Click cur_sort "Most traded"
+
+2024-03-28 09:22:55.790040   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-28 09:22:55.820583   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-28 09:22:55.820635   Start find 1 random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-28 09:22:55.827829   => End find 1 random buttons [Sell] on the cur_sort "Most traded"
+
+2024-03-28 09:22:55.827866   List of random items = [1]
+2024-03-28 09:22:55.828042   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 09:22:57.362988   '[Sign up]' form was not popped up
+2024-03-28 09:22:57.363196   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-28 09:22:57.363212   Start click button [Sell] =>
+2024-03-28 09:22:57.376068   =>   BUTTON_SELL on item with ID = 16150730595456196
+2024-03-28 09:22:58.524630   =>   BUTTON_SELL with item NVIDIA Corp clicked
+
+2024-03-28 09:22:58.524966   3. Assert_v4
+2024-03-28 09:22:58.525129   Checking that the trading platform page has opened (v4) =>
+2024-03-28 09:22:58.531635   Checking way # 1 => 
+
+2024-03-28 09:22:58.531800   1. Checking that the Trading platform page has valid title =>
+2024-03-28 09:22:58.534616   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-28 09:22:58.534775   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-28 09:23:00.223799   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-28 09:23:00.223888   tpd = False
+2024-03-28 09:23:00.224055   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-28 09:23:00.240120   => The page with https://capital.com/trading/platform/charting/16150730595456196?side=sell&ids=21182778791108,93810675766468,15839732013552836,3534607760839876,6015105993037138,10500838556456274,27045129890124996,7091880064013508,422839530378436,7094972440466628,426090820621508,357105055839112,20337752478405828,554050868420,234213156672708,67517667577209881,352702714369362,14976525191435460,68501455606162457,65213121270162457,374675767046662,55001351275673,53068615992473,1496662958757060,374675767067974,55001351226694,457749024515097,77073188213956,12241936693896217,6810413677172050,389605073441988,7096849341174980,7096862226076868,7096896585815236,7089977393501380,453949400050390212,27041281599427780,2604592722433220,27342779713672388,16150730595456196,7090488494609604,427748677997764,5983666832495812 url was opened in lIVE mode
+
+2024-03-28 09:23:00.245515   4. Check that opened page with https://capital.com/trading/platform/charting/16150730595456196?side=sell&ids=21182778791108,93810675766468,15839732013552836,3534607760839876,6015105993037138,10500838556456274,27045129890124996,7091880064013508,422839530378436,7094972440466628,426090820621508,357105055839112,20337752478405828,554050868420,234213156672708,67517667577209881,352702714369362,14976525191435460,68501455606162457,65213121270162457,374675767046662,55001351275673,53068615992473,1496662958757060,374675767067974,55001351226694,457749024515097,77073188213956,12241936693896217,6810413677172050,389605073441988,7096849341174980,7096862226076868,7096896585815236,7089977393501380,453949400050390212,27041281599427780,2604592722433220,27342779713672388,16150730595456196,7090488494609604,427748677997764,5983666832495812 url
+with selected corresponding trading instrument 'NVIDIA Corp' =>
+
+2024-03-28 09:23:00.248206   trade_instrument = 'NVIDIA Corp'
+
+2024-03-28 09:23:00.248224   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-28 09:23:00.258934   => Trading Platform opened in Chart mode
+
+2024-03-28 09:23:00.258964   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-28 09:23:00.271387   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-28 09:23:00.271426   Top Charts List contain 43 trade instruments
+
+2024-03-28 09:23:00.271447   Top Charts List contain following trade instruments:
+'US Tech 100'
+'Gold'
+'Brent Oil'
+'Natural Gas'
+'Volatility Index'
+'Silver'
+'Advanced Micro Devices Inc (Extended Hours)'
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:01.02.00_002-pl.ae.Auth
+
+2024-03-28 09:23:01.235333   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f045d364e30>
+
+2024-03-28 09:23:05.514949   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:05.879392   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:07.776944   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:08.688935   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:10.042140   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:10.350471   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:10.353751   Добавление новой строки =>
+
+2024-03-28 09:23:12.048410   => Новая строка добавлена
+
+2024-03-28 09:23:14.518516   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:14.980757   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:14.983535   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-28 09:23:15.410833   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:15.411053   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-28 09:23:15.709369   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:15.709631   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:15.997729   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:15.997948   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 09:23:16.303006   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 09:23:16.303105   Баг Bid:01.02.00_002-pl.ae.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

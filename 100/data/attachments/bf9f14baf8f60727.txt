@@ -1,0 +1,94 @@
+{'width': 1280, 'height': 800}
+
+2024-03-28 10:24:22.160902   worker_id = master
+
+2024-03-28 10:24:22.160924   0. Allure grouping v4
+
+
+2024-03-28 10:24:22.161139   START PRECONDITIONS =>
+
+
+2024-03-28 10:24:22.161155   => flag_of_bug - True
+2024-03-28 10:24:22.161168   Current page URL = https://capital.com/pl/handlowac-amazon
+2024-03-28 10:24:22.164295   self.link = https://capital.com
+2024-03-28 10:24:22.164308   link = https://capital.com
+2024-03-28 10:24:23.942808   => Loaded page https://capital.com/
+
+2024-03-28 10:24:23.948882   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 10:24:23.950377   Set windows position at (0, 0) =>
+2024-03-28 10:24:24.052823   Set resolution 1280 * 800 =>
+2024-03-28 10:24:24.155472   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 10:24:25.196171   Капчи нет. Идем дальше
+
+2024-03-28 10:24:25.196265   Работа с куками
+
+2024-03-28 10:24:25.196280   => Prev. country - 'ae'
+2024-03-28 10:24:25.196290   => Country set to 'ae'
+
+2024-03-28 10:24:25.196299   => Prev. language - 'pl'
+2024-03-28 10:24:25.196309   Set 'pl' language =>
+2024-03-28 10:24:25.204555   => Language and Country menu is present
+2024-03-28 10:24:25.216362   => Language and Country menu is visible
+2024-03-28 10:24:26.496711   => Focus is moved on Language and Country menu 
+2024-03-28 10:24:26.503048   Move focus on pl item and click =>
+2024-03-28 10:24:28.076673   => Focus moved on pl item and clicked
+2024-03-28 10:24:28.076730   => Cur url = https://capital.com/pl
+2024-03-28 10:24:28.148837   => Language is set to 'pl'
+
+2024-03-28 10:24:28.148866   => Prev. role - 'NoAuth'
+2024-03-28 10:24:28.148876   => The 'NoAuth' role is set
+
+2024-03-28 10:24:28.151384   => THE END PRECONDITIONS
+
+2024-03-28 10:24:28.151446   1. Arrange_v0
+2024-03-28 10:24:28.151461   current_page = https://capital.com/pl
+2024-03-28 10:24:28.153862   link = https://capital.com/pl/handlowac-amazon
+2024-03-28 10:24:28.156332   Current page URL = https://capital.com/pl
+2024-03-28 10:24:28.170973   self.link = https://capital.com/pl/handlowac-amazon
+2024-03-28 10:24:28.170993   link = https://capital.com/pl/handlowac-amazon
+2024-03-28 10:24:30.454039   => Loaded page https://capital.com/pl/handlowac-amazon
+2024-03-28 10:24:30.458412   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-03-28 10:24:30.470854   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-03-28 10:24:30.471048   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 10:24:32.008128   '[Sign up]' form was not popped up
+
+2024-03-28 10:24:32.008327   2. Act_v0
+2024-03-28 10:24:32.013880   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-03-28 10:24:32.013903   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-03-28 10:24:32.013913   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-03-28 10:24:32.028456   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-03-28 10:24:32.048853   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-03-28 10:24:32.064892   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-03-28 10:24:32.076657   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-03-28 10:24:32.076927   3. Assert_Login_v0
+2024-03-28 10:24:32.077032   Check that 'Login' form is opened
+2024-03-28 10:24:35.134677   'Login' form not opened
+2024-03-28 10:24:35.134872   Check that new 'Login' form is opened
+2024-03-28 10:24:38.224257   => New 'Login' form not opened
+2024-03-28 10:24:38.227625   'Login' page not opened
+2024-03-28 10:24:41.302861   'Login' form on trading platform not opened
+2024-03-28 10:24:41.303067   Start step Check that [Sign up] form is opened
+2024-03-28 10:24:41.315766   'Sign up' form opened
+2024-03-28 10:24:41.315796   Assert SIGNUP_HEADER =>
+2024-03-28 10:24:41.327210   Assert SIGNUP_REF_LOGIN =>
+2024-03-28 10:24:41.338650   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-28 10:24:41.350344   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-28 10:24:41.350373   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_04-pl.ae.NoAuth
+
+2024-03-28 10:24:41.350441   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1f38f922d0>
+
+2024-03-28 10:24:41.765084   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 10:24:42.095812   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 10:24:43.859809   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 10:24:44.113900   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 10:24:44.115589   Баг Bid:11.02.02.01_04-pl.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
