@@ -124,7 +124,7 @@ class TradingPlatform(BasePage):
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
-                print(f"\n{datetime.now()}   Check that opened page with {self.driver.current_url} url\n"
+                print(f"\n{datetime.now()}   4. Check that opened page with {self.driver.current_url} url\n"
                       f"with selected corresponding trading instrument '{trade_instrument}' =>")
                 self.should_be_corresponding_trading_instrument(test_link, trade_instrument)
 
@@ -169,7 +169,7 @@ class TradingPlatform(BasePage):
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
         """Check if the app title"""
-        print(f"\n{datetime.now()}   Checking that the Trading platform LOGO is present on the page =>")
+        print(f"\n{datetime.now()}   2. Checking that the Trading platform LOGO is present on the page =>")
         # assert self.element_is_visible(TopBarLocators.LOGO, 30), \
         if not self.element_is_visible(TopBarLocators.LOGO, 15):
             msg = "Trading platform LOGO is not present on the page"
@@ -181,7 +181,7 @@ class TradingPlatform(BasePage):
     def should_be_platform_demo_mode(self, d, test_link):
         """Check that Trading platform opened in Demo mode"""
 
-        print(f"{datetime.now()}   Checking that the Trading platform opened in DEMO mode =>")
+        print(f"{datetime.now()}   3.1. Checking that the Trading platform opened in DEMO mode =>")
         if not self.element_is_visible(TopBarLocators.MODE_DEMO, 15):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
@@ -194,7 +194,7 @@ class TradingPlatform(BasePage):
     def should_be_platform_live_mode(self, d, test_link):
         """Check that Trading platform opened in Live mode"""
 
-        print(f"{datetime.now()}   Checking that the Trading platform opened in LIVE mode =>")
+        print(f"{datetime.now()}   3.2. Checking that the Trading platform opened in LIVE mode =>")
         if not self.element_is_visible(TopBarLocators.MODE_LIVE, 15):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
@@ -294,7 +294,8 @@ class TradingPlatform(BasePage):
         # print(f"{datetime.now()}   => trade_instrument_name = '{trade_instrument_name}'")
 
         # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
-        print(f"\n{datetime.now()}   Check that Trading Platform is opened in Chart mode")
+        print(f"\n{datetime.now()}   "
+              f"4.1. Check that Trading Platform is opened in Chart mode")
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
         if len(menu_chart) == 0:
             print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
@@ -306,8 +307,8 @@ class TradingPlatform(BasePage):
 
         # определяем, какие вкладки открыты и избегаем ошибки пустого списка
         print(f"\n{datetime.now()}   "
-              f"Check that Top Charts List of Trading Platform not empty =>")
-        top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 3)
+              f"4.2. Check that Top Charts List of Trading Platform not empty =>")
+        top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 5)
         if len(top_chart_trade_list) == 0:
             print(f"{datetime.now()}   => Trading Platform opened in Chart mode, but Top Charts List is empty")
             print(f'\nBug: {self.bid}')
@@ -318,7 +319,8 @@ class TradingPlatform(BasePage):
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         # проверяем, есть ли в списке вкладка запрашиваемого торгового инструмента
-        print(f"\n{datetime.now()}   Check that Top Charts List contain selected trade instrument =>")
+        print(f"\n{datetime.now()}   "
+              f"4.3. Check that Top Charts List contain selected trade instrument =>")
         print(f"\n{datetime.now()}   Top Charts List contain {len(top_chart_trade_list)} trade instruments")
         print(f"\n{datetime.now()}   Top Charts List contain following trade instruments:")
         present = False
@@ -339,7 +341,9 @@ class TradingPlatform(BasePage):
 
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
 
-        # проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
+        # 4.4. проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
+        print(f"{datetime.now()}   "
+              f"4.4. Check that the Top Charts List contain selected and visible Trade instrument =>")
         selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENT)
         if not selected_trade_instrument:
             # new bug re-test checking =====
@@ -349,10 +353,12 @@ class TradingPlatform(BasePage):
                    f"but not visible and not selected")
             Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
-        print(f"{datetime.now()}   => The Top Charts List contain selected and visible Trade instrument"
-              f"visible")
+        print(f"{datetime.now()}   => The Top Charts List contain selected and visible Trade instrument")
 
         # проверяем, что запрашиваемый торговый инструмент выбран
+        print(f"{datetime.now()}   "
+              f"4.5. Check that Trade instrument '{trade_instrument}' is present in the Top Charts List, "
+              f"visible and selected =>")
         if trade_instrument not in selected_trade_instrument.text:
             # new bug re-test checking =====
             print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts "

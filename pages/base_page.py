@@ -437,7 +437,7 @@ class BasePage:
         Args:
             title: expected page's title
         """
-        print(f"\n{datetime.now()}   Checking that the Trading platform page has valid title =>")
+        print(f"\n{datetime.now()}   1. Checking that the Trading platform page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => The title of current page is '{el_title}'")
         # Checks that the page title meets the requirements

@@ -55,7 +55,8 @@ class TableTradingInstrumentsSellButton(BasePage):
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(
-                        self.driver, cur_item_link, False, True, self.trade_instrument)
+                        self.driver, cur_item_link, False, True, self.trade_instrument
+                    )
             self.driver.get(cur_item_link)
 
     def arrange_(self, d, cur_item_link, cur_sort):
