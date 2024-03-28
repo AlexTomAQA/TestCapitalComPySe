@@ -336,21 +336,21 @@ class TradingPlatform(BasePage):
             retest_table_fill(self.driver, self.bid, '16', self.link)
             msg = f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
             Common().assert_true_false(False, msg)
-            # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
 
-        # проверяем, что запрашиваемый торговый инструмент отображен (виден) в списке инструментов
+        # проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
         selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENT)
         if not selected_trade_instrument:
             # new bug re-test checking =====
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '17', self.link)
-            msg = (f"Bug # 17. Trade instrument '{trade_instrument}' is on the Top Charts List, "
+            msg = (f"Bug # 17. SeTrade instrument '{trade_instrument}' is the Top Charts List, "
                    f"but not visible and not selected")
             Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
-        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is on the Top Charts List and visible")
+        print(f"{datetime.now()}   => The Top Charts List contain selected and visible Trade instrument"
+              f"visible")
 
         # проверяем, что запрашиваемый торговый инструмент выбран
         if trade_instrument not in selected_trade_instrument.text:
