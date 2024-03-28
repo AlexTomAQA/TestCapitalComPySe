@@ -1,0 +1,98 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-28 05:44:31.528146   worker_id = master
+
+2024-03-28 05:44:31.528179   0. Allure grouping v4
+
+
+2024-03-28 05:44:31.528435   START PRECONDITIONS =>
+
+
+2024-03-28 05:44:31.528452   => flag_of_bug - False
+
+2024-03-28 05:44:31.528464   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 05:44:31.529934   Set windows position at (0, 0) =>
+2024-03-28 05:44:31.634724   Set resolution 1280 * 800 =>
+2024-03-28 05:44:31.736800   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 05:44:32.765421   Капчи нет. Идем дальше
+
+2024-03-28 05:44:32.765500   Работа с куками
+
+2024-03-28 05:44:32.765514   => Prev. country - 'au'
+2024-03-28 05:44:32.765524   => Country set to 'au'
+
+2024-03-28 05:44:32.765533   => Prev. language - 'pl'
+2024-03-28 05:44:32.765543   => Language is set to 'pl'
+
+2024-03-28 05:44:32.765551   => Prev. role - 'NoReg'
+2024-03-28 05:44:32.765560   => The 'NoReg' role is set
+
+2024-03-28 05:44:32.768197   => THE END PRECONDITIONS
+
+2024-03-28 05:44:32.768382   START Open "Markets" menu, "Commodities" submenu =>
+
+2024-03-28 05:44:32.768398   1. Cur URL = https://capital.com/pl/aktualne-cen-towarow
+
+2024-03-28 05:44:32.770784   2. Link = https://capital.com/pl/aktualne-cen-towarow
+2024-03-28 05:44:32.770799   current_page = https://capital.com/pl/aktualne-cen-towarow
+2024-03-28 05:44:32.773242   link = https://capital.com/pl/aktualne-cen-towarow
+2024-03-28 05:44:33.281223   => 'Markets' menu is present
+2024-03-28 05:44:33.296640   => 'Markets' menu is visible
+2024-03-28 05:44:34.562408   => Focus moved to 'Markets' menu
+2024-03-28 05:44:34.568220   => 'Markets > Commodities' submenu is present
+2024-03-28 05:44:36.110138   => Focus moved to 'capital*com' logo
+
+2024-03-28 05:44:36.110185   3. Cur URL = https://capital.com/pl/aktualne-cen-towarow
+
+2024-03-28 05:44:36.115971   1. Arrange for Trading instrument and "Most traded" cur_sort
+2024-03-28 05:44:36.115999   current_page = https://capital.com/pl/aktualne-cen-towarow
+2024-03-28 05:44:36.118487   link = https://capital.com/pl/aktualne-cen-towarow
+2024-03-28 05:44:36.121050   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-03-28 05:44:36.128874   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-28 05:44:36.128911   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-03-28 05:44:36.133701   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-28 05:44:36.133725   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-28 05:44:36.912722   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-28 05:44:37.444252   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-28 05:44:37.444290   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-28 05:44:37.452467   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-28 05:44:37.452491   Start click cur_sort "Most traded" =>
+2024-03-28 05:44:38.090719   => End Click cur_sort "Most traded"
+
+2024-03-28 05:44:38.090765   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-03-28 05:44:38.105221   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-03-28 05:44:38.105255   Start find two random buttons [Buy] on cur_sort "Most traded"=>
+2024-03-28 05:44:38.111376   => End find two random buttons [Buy] on the cur_sort "Most traded"
+
+
+2024-03-28 05:44:38.111409   Item_list = [15]
+2024-03-28 05:44:38.111624   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 05:44:39.641886   '[Sign up]' form was not popped up
+2024-03-28 05:44:39.642096   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-28 05:44:39.642112   Start click button [Buy] =>
+2024-03-28 05:44:40.540737   =>   BUTTON_BUY with item 357105055839112 clicked!
+
+
+2024-03-28 05:44:40.540991   3. Assert_v0
+2024-03-28 05:44:40.541089   Start step Check that [Sign up] form is opened
+2024-03-28 05:44:43.593696   'Sign up' form not opened
+2024-03-28 05:44:43.593881   Start step Check that new [Sign up] form is opened
+2024-03-28 05:44:46.652164   => new 'Sign up' form not opened
+2024-03-28 05:44:46.652374   Start method Check that [Sign up] page opened =>
+2024-03-28 05:44:47.655927   'Sign up' page not opened
+2024-03-28 05:44:47.656127   Check that [Sign up] form on trading platform opened =>
+2024-03-28 05:44:50.713851   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-28 05:44:50.713941   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f4ee3a7b9b0>
+
+2024-03-28 05:44:50.716847  Для бага: Bid-04 необходимо использовать проверку на ретест!!!

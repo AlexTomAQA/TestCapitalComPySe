@@ -1,0 +1,166 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-03-28 05:14:59.343243   worker_id = master
+
+2024-03-28 05:14:59.343260   0. Allure grouping v4
+
+
+2024-03-28 05:14:59.343470   START PRECONDITIONS =>
+
+
+2024-03-28 05:14:59.343486   => flag_of_bug - False
+
+2024-03-28 05:14:59.343498   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 05:14:59.344791   Set windows position at (0, 0) =>
+2024-03-28 05:14:59.449572   Set resolution 1280 * 800 =>
+2024-03-28 05:14:59.551782   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 05:15:00.578515   Капчи нет. Идем дальше
+
+2024-03-28 05:15:00.578602   Работа с куками
+
+2024-03-28 05:15:00.578616   => Prev. country - 'au'
+2024-03-28 05:15:00.578626   => Country set to 'au'
+
+2024-03-28 05:15:00.578636   => Prev. language - 'pl'
+2024-03-28 05:15:00.578646   => Language is set to 'pl'
+
+2024-03-28 05:15:00.578655   => Prev. role - 'Auth'
+2024-03-28 05:15:00.578664   => The 'Auth' role is set
+
+2024-03-28 05:15:00.581393   => THE END PRECONDITIONS
+
+2024-03-28 05:15:00.581585   START Open "Markets" menu, "Indices" submenu =>
+
+2024-03-28 05:15:00.581601   1. Cur URL = https://capital.com/pl/aktualne-ceny-akcji
+
+2024-03-28 05:15:00.584151   2. Link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 05:15:00.584168   current_page = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 05:15:00.586636   link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 05:15:01.095064   => 'Markets' menu is present
+2024-03-28 05:15:01.112746   => 'Markets' menu is visible
+2024-03-28 05:15:02.376031   => Focus moved to 'Markets' menu
+2024-03-28 05:15:04.080584   => Focus moved to 'Shares' submenu and clicked
+2024-03-28 05:15:04.352708   => Focus moved to 'capital*com' logo
+
+2024-03-28 05:15:04.352754   3. Cur URL = https://capital.com/pl/aktualne-ceny-akcji
+
+2024-03-28 05:15:04.358013   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-03-28 05:15:04.358037   current_page = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 05:15:04.360514   link = https://capital.com/pl/aktualne-ceny-akcji
+2024-03-28 05:15:04.363300   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-28 05:15:04.371565   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-28 05:15:04.371598   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-28 05:15:04.379135   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!
+2024-03-28 05:15:04.379165   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-28 05:15:04.478162   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-28 05:15:04.502095   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-28 05:15:04.502137   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-03-28 05:15:04.511091   => cur_sort "Most traded" is present in item_sort_list!
+2024-03-28 05:15:04.511126   Start click cur_sort "Most traded" =>
+2024-03-28 05:15:05.299585   => End Click cur_sort "Most traded"
+
+2024-03-28 05:15:05.299634   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-28 05:15:05.318878   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-28 05:15:05.318923   Start find 1 random buttons [Sell] on cur_sort "Most traded"=>
+2024-03-28 05:15:05.325030   => End find 1 random buttons [Sell] on the cur_sort "Most traded"
+
+2024-03-28 05:15:05.325055   List of random items = [3]
+2024-03-28 05:15:05.325218   Start Checking that form [Sign up] popped up on the page =>
+2024-03-28 05:15:06.859852   '[Sign up]' form was not popped up
+2024-03-28 05:15:06.860057   2. Act for trading instrument and "Most traded" cur_sort
+2024-03-28 05:15:06.860073   Start click button [Sell] =>
+2024-03-28 05:15:08.023559   =>   BUTTON_SELL with item Reddit Inc clicked!
+
+
+2024-03-28 05:15:08.023898   3. Assert_v4
+2024-03-28 05:15:08.024050   Checking that the trading platform page has opened (v4) =>
+2024-03-28 05:15:08.031058   Checking way # 1 => 
+
+2024-03-28 05:15:08.031183   1. Checking that the Trading platform page has valid title =>
+2024-03-28 05:15:08.034310   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-28 05:15:08.034460   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-28 05:15:09.859301   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-28 05:15:09.859422   tpd = False
+2024-03-28 05:15:09.859633   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-28 05:15:09.878092   => The page with https://capital.com/trading/platform/charting/20337752478405828?side=sell&ids=21182778791108,93810675766468,15839732013552836,3534607760839876,6015105993037138,10500838556456274,27045129890124996,7091880064013508,422839530378436,7094972440466628,426090820621508,357105055839112,20337752478405828 url was opened in lIVE mode
+
+2024-03-28 05:15:09.883391   4. Check that opened page with https://capital.com/trading/platform/charting/20337752478405828?side=sell&ids=21182778791108,93810675766468,15839732013552836,3534607760839876,6015105993037138,10500838556456274,27045129890124996,7091880064013508,422839530378436,7094972440466628,426090820621508,357105055839112,20337752478405828 url
+with selected corresponding trading instrument 'Reddit Inc' =>
+
+2024-03-28 05:15:09.893573   trade_instrument = 'Reddit Inc'
+
+2024-03-28 05:15:09.893599   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-28 05:15:09.917083   => Trading Platform opened in Chart mode
+
+2024-03-28 05:15:09.917126   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-28 05:15:09.925820   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-28 05:15:09.925845   Top Charts List contain 13 trade instruments
+
+2024-03-28 05:15:09.925856   Top Charts List contain following trade instruments:
+'US Tech 100'
+'Gold'
+'Brent Oil'
+'Natural Gas'
+'Advanced Micro Devices Inc (Extended Hours)'
+'EUR/USD'
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:01.02.00_002-pl.au.Auth
+
+2024-03-28 05:15:10.205086   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f4346361580>
+
+2024-03-28 05:15:13.499235   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:13.942217   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:14.741787   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:15.628267   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:16.320759   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:16.603421   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:16.606034   Добавление новой строки =>
+
+2024-03-28 05:15:17.424680   => Новая строка добавлена
+
+2024-03-28 05:15:18.914299   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:19.196041   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:19.198607   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-28 05:15:19.507157   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:19.507382   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-28 05:15:19.865343   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:19.865584   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:20.159460   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:20.159680   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:15:20.358413   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:15:20.358488   Баг Bid:01.02.00_002-pl.au.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

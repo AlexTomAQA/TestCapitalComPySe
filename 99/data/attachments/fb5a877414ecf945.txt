@@ -1,0 +1,80 @@
+{'width': 1280, 'height': 800}
+
+2024-03-28 05:52:22.118031   worker_id = master
+
+2024-03-28 05:52:22.118045   0. Allure grouping v4
+
+
+2024-03-28 05:52:22.118235   START PRECONDITIONS =>
+
+
+2024-03-28 05:52:22.118250   => flag_of_bug - False
+
+2024-03-28 05:52:22.118262   => Windows size - {'width': 1280, 'height': 800}
+2024-03-28 05:52:22.119575   Set windows position at (0, 0) =>
+2024-03-28 05:52:22.221444   Set resolution 1280 * 800 =>
+2024-03-28 05:52:22.323608   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-28 05:52:23.347727   Капчи нет. Идем дальше
+
+2024-03-28 05:52:23.347820   Работа с куками
+
+2024-03-28 05:52:23.347834   => Prev. country - 'au'
+2024-03-28 05:52:23.347844   => Country set to 'au'
+
+2024-03-28 05:52:23.347853   => Prev. language - 'pl'
+2024-03-28 05:52:23.347862   => Language is set to 'pl'
+
+2024-03-28 05:52:23.347871   => Prev. role - 'NoAuth'
+2024-03-28 05:52:23.347880   => The 'NoAuth' role is set
+
+2024-03-28 05:52:23.350822   => THE END PRECONDITIONS
+
+2024-03-28 05:52:23.351053   1. Arrange_v0
+2024-03-28 05:52:23.351073   current_page = https://capital.com/pl/jak-jandlowac-cfd
+2024-03-28 05:52:23.353792   link = https://capital.com/pl/objasnienie-handlu-CFD
+2024-03-28 05:52:23.356559   => current_url != cur_item_link
+2024-03-28 05:52:23.356581   Current page URL = https://capital.com/pl/jak-jandlowac-cfd
+2024-03-28 05:52:23.359278   self.link = https://capital.com/pl/objasnienie-handlu-CFD
+2024-03-28 05:52:23.359292   link = https://capital.com/pl/objasnienie-handlu-CFD
+2024-03-28 05:52:25.135108   => Loaded page https://capital.com/pl/objasnienie-handlu-CFD
+2024-03-28 05:52:25.147674   BUTTON_START_TRADING scroll =>
+2024-03-28 05:52:25.150863   BUTTON_START_TRADING is visible? =>
+2024-03-28 05:52:25.165424   => BUTTON_START_TRADING is visible on the page!
+
+2024-03-28 05:52:25.165590   2. Act_v0
+2024-03-28 05:52:25.165605   Start Click button [Start Trading] =>
+2024-03-28 05:52:25.171046   BUTTON_START_TRADING is clickable? =>
+2024-03-28 05:52:25.183583   BUTTON_START_TRADING click =>
+2024-03-28 05:52:25.216964   => BUTTON_START_TRADING clicked
+
+2024-03-28 05:52:25.217199   3. Assert_Login_v0
+2024-03-28 05:52:25.217282   Check that 'Login' form is opened
+2024-03-28 05:52:28.280137   'Login' form not opened
+2024-03-28 05:52:28.280327   Check that new 'Login' form is opened
+2024-03-28 05:52:31.351533   => New 'Login' form not opened
+2024-03-28 05:52:31.355359   'Login' page not opened
+2024-03-28 05:52:34.417898   'Login' form on trading platform not opened
+2024-03-28 05:52:34.418085   Start step Check that [Sign up] form is opened
+2024-03-28 05:52:34.429527   'Sign up' form opened
+2024-03-28 05:52:34.429550   Assert SIGNUP_HEADER =>
+2024-03-28 05:52:34.440624   Assert SIGNUP_REF_LOGIN =>
+2024-03-28 05:52:34.451228   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-03-28 05:52:34.461732   => SIGNUP_PRIVACY_POLICY_ALL
+2024-03-28 05:52:34.461754   => 'Signup' form is checked
+
+Bug: Bid:11.01.03.01_01-pl.au.NoAuth
+
+2024-03-28 05:52:34.461811   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fc94c26ba70>
+
+2024-03-28 05:52:34.863853   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:52:35.057684   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:52:35.635351   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-28 05:52:35.915210   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-28 05:52:35.916466   Баг Bid:11.01.03.01_01-pl.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
