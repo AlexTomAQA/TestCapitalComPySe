@@ -1,0 +1,103 @@
+
+
+
+Current market - Commodities
+
+
+
+Current instrument - Last
+{'width': 1280, 'height': 800}
+
+2024-03-29 18:46:46.803615   worker_id = master
+
+2024-03-29 18:46:46.803632   0. Allure grouping v4
+
+
+2024-03-29 18:46:46.803830   START NEW PRECONDITIONS =>
+
+2024-03-29 18:46:46.803846   Current page URL = https://capital.com/trading/platform/
+2024-03-29 18:46:46.806622   self.link = https://capital.com/en-gb
+2024-03-29 18:46:46.806635   link = https://capital.com/en-gb
+2024-03-29 18:46:48.138468   => Loaded page https://capital.com/en-gb
+
+2024-03-29 18:46:48.142807   {'width': 1280, 'height': 800}
+
+2024-03-29 18:46:48.144226   Set windows position at (0, 0) =>
+
+2024-03-29 18:46:48.246656   Set resolution 1280 * 800 =>
+
+2024-03-29 18:46:48.349203   => Resolution seted {'width': 1280, 'height': 800}
+
+2024-03-29 18:46:49.374382   Капчи нет. Идем дальше
+
+2024-03-29 18:46:49.374498   Prev. Role: NoAuth
+
+2024-03-29 18:46:49.374525   Current role: NoAuth
+
+2024-03-29 18:46:49.374542   => Current language: ?
+
+2024-03-29 18:46:50.472566   Капчи нет. Идем дальше
+2024-03-29 18:46:50.472658   => Current country: gb
+
+2024-03-29 18:46:50.472672   => THE END PRECONDITIONS
+
+2024-03-29 18:46:50.472706   1. Arrange for Our Markets block: 'Commodities' market, 'Last' instrument
+2024-03-29 18:46:50.472719   current_page = https://capital.com/en-gb
+2024-03-29 18:46:50.475500   link = https://capital.com/en-gb
+2024-03-29 18:46:50.478304   IS Our markets block present on this page? =>
+2024-03-29 18:46:50.483328   => Our markets block present on this page!
+
+2024-03-29 18:46:50.483351   IS Our markets block visible on this page? =>
+2024-03-29 18:46:50.494551   => Our markets block is visible on this page!
+
+2024-03-29 18:46:50.494583   IS MARKET 'Commodities' present on this page? =>
+2024-03-29 18:46:50.499469   => MARKET 'Commodities' present on this page!
+
+2024-03-29 18:46:50.499493   IS MARKET 'Commodities' visible on this page? =>
+2024-03-29 18:46:50.510893   => MARKET 'Commodities' is visible on this page!
+
+2024-03-29 18:46:50.510919   Start Click button 'Commodities' MARKET =>
+2024-03-29 18:46:50.584810   => End Click button 'Commodities' MARKET
+
+2024-03-29 18:46:50.584869   Is Instruments present? =>
+2024-03-29 18:46:50.605361   => Instruments is present on this page!
+
+2024-03-29 18:46:50.605418   Is Instruments visible? =>
+2024-03-29 18:46:50.617253   => Instruments is visible on this page!
+
+2024-03-29 18:46:50.617279   => Start Find and Click button 'Last' instrument=>
+2024-03-29 18:46:53.778127   => End Click button 'Last' instrument=>
+
+2024-03-29 18:46:53.778391   2. Act for 'Commodities' Market and 'Last' Instrument
+2024-03-29 18:46:53.778421   IS button [Sell] for 'Commodities' Market and 'Last' Instrumentpresent on this page? =>
+2024-03-29 18:46:53.784786   => Button [Sell] for 'Commodities' Market and 'Last' Instrument present on this page!
+
+2024-03-29 18:46:53.784816   IS button [Sell] for 'Commodities' Market and 'Last' Instrument visible on this page? =>
+2024-03-29 18:46:53.798623   => Button [Sell] for 'Commodities' Market and 'Last' Instrument visible on this page!
+
+2024-03-29 18:46:53.798661   Start click button [Sell] =>
+2024-03-29 18:46:54.100981   => End Click button [Sell]
+
+2024-03-29 18:46:54.101308   3. Assert_Login_v0
+2024-03-29 18:46:54.101451   Check that 'Login' form is opened
+2024-03-29 18:46:57.210372   'Login' form not opened
+2024-03-29 18:46:57.210607   Check that new 'Login' form is opened
+2024-03-29 18:47:00.308758   => New 'Login' form not opened
+2024-03-29 18:47:00.311668   'Login' page not opened
+2024-03-29 18:47:03.377733   'Login' form on trading platform not opened
+2024-03-29 18:47:03.377950   Start step Check that [Sign up] form is opened
+2024-03-29 18:47:06.445052   'Sign up' form not opened
+2024-03-29 18:47:06.445260   Start step Check that new [Sign up] form is opened
+2024-03-29 18:47:09.514890   => new 'Sign up' form not opened
+2024-03-29 18:47:09.515081   Start method Check that [Sign up] page opened =>
+2024-03-29 18:47:10.519908   'Sign up' page not opened
+2024-03-29 18:47:10.520181   Check that [Sign up] form on trading platform opened =>
+2024-03-29 18:47:13.593490   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-03-29 18:47:13.593573   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe5542197f0>
+
+2024-03-29 18:47:13.596382  Для бага: Bid-08 необходимо использовать проверку на ретест!!!
