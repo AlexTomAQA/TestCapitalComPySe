@@ -15,7 +15,6 @@ from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import ElementNotInteractableException
-# from selenium.webdriver.common.action_chains import ActionChains
 
 
 class TradingInstrumentTradeButton(BasePage):
@@ -33,7 +32,6 @@ class TradingInstrumentTradeButton(BasePage):
 
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_market):
         item_list = self.arrange_(d, cur_item_link, cur_market)
-        # self.element_click(d,  cur_market)
         for i in item_list:
             self.element_click(d, i, cur_market)
             test_element = AssertClass(self.driver, cur_item_link)
@@ -110,15 +108,13 @@ class TradingInstrumentTradeButton(BasePage):
 
         # Start click Tab current market
         print(f"{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
-        # self.current_market = self.driver.find_element(*self.market_locator)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*self.market_locator) # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
+            self.driver.find_element(*self.market_locator)
         )
 
         print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
         if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 5):
-            # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
             msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
             Common().pytest_fail(msg)
@@ -126,7 +122,6 @@ class TradingInstrumentTradeButton(BasePage):
 
         try:
             self.driver.find_element(*self.market_locator).click()
-            # 28/03: replaced self.current_market on self.driver.find_element(*self.market_locator)
             print(f"{datetime.now()}   => End Click Tab '{cur_market}' MARKET\n")
         except ElementNotInteractableException:
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clicked\n")
@@ -174,9 +169,6 @@ class TradingInstrumentTradeButton(BasePage):
                     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                     self.driver.find_element(*self.market_locator)
                 )
-        # else:
-        #     print(f"{datetime.now()}   Check that MARKET '{cur_market}' is visible on this page =>")
-        #     Common().pytest_fail("Bug # ???   Warning")
 
         print(f"{datetime.now()}   Check that MARKET '{cur_market}' is visible on this page =>")
         if not self.element_is_visible(self.market_locator, 5):

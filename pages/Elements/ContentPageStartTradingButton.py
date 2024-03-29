@@ -74,11 +74,21 @@ class ContentStartTrading(BasePage):
 
         print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE =>")
         buttons = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE)
+        # if not buttons:
+        #     print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE2 =>")
+        #     buttons = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE2)
+        #     if not buttons:
+        #         pytest.skip("Checking element is not on this page")
+        # start of added code
         if not buttons:
             print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE2 =>")
             buttons = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE2)
-            if not buttons:
-                pytest.skip("Checking element is not on this page")
+        if not buttons:
+            print(f"{datetime.now()}   => BUTTON_START_TRADING_IN_ARTICLE3 =>")
+            buttons = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE3)
+        if not buttons:
+            pytest.skip("Checking element is not on this page")
+        # start of added code
         return len(buttons)
 
     @allure.step("Click button BUTTON_START_TRADING_IN_ARTICLE")
@@ -106,6 +116,8 @@ class ContentStartTrading(BasePage):
             button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE)
         elif self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE2):
             button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE2)
+        elif self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE3):
+            button_list = self.driver.find_elements(*ButtonsOnPageLocators.BUTTON_START_TRADING_IN_ARTICLE3)
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button_list[int(i)]

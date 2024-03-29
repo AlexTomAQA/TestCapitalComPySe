@@ -111,6 +111,7 @@ class BlockLearnFirstTradeCFD:
 class ButtonsOnPageLocators:
     BUTTON_START_TRADING_IN_ARTICLE = (By.CSS_SELECTOR, "ul > li:nth-child(1) > a.js_signup")
     BUTTON_START_TRADING_IN_ARTICLE2 = (By.CSS_SELECTOR, ".hidden-xs.no-wrap.ready-starting__btn > a")
+    BUTTON_START_TRADING_IN_ARTICLE3 = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
     BUTTON_TRADING_SELL = (By.CSS_SELECTOR, "a.button-main.sell.ln-auto.js_signup")
     BUTTON_TRADING_BUY = (By.CSS_SELECTOR, "a.button-main.buy.ln-auto.js_signup")
     BUTTON_CREATE_ACCOUNT = (By.CSS_SELECTOR, "a[data-type='wdg_go_to_market_deeplink']")
