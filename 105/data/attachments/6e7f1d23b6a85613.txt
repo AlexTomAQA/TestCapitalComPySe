@@ -1,0 +1,109 @@
+
+
+
+Current market - Forex
+
+
+
+Current instrument - Middle
+{'width': 1280, 'height': 800}
+
+2024-03-29 15:22:42.308866   worker_id = master
+
+2024-03-29 15:22:42.308883   0. Allure grouping v4
+
+
+2024-03-29 15:22:42.309084   START NEW PRECONDITIONS =>
+
+2024-03-29 15:22:42.309107   Current page URL = https://capital.com/trading/platform/
+2024-03-29 15:22:42.312009   self.link = https://capital.com/en-gb
+2024-03-29 15:22:42.312023   link = https://capital.com/en-gb
+2024-03-29 15:22:43.508410   => Loaded page https://capital.com/en-gb
+
+2024-03-29 15:22:43.514877   {'width': 1280, 'height': 800}
+
+2024-03-29 15:22:43.516190   Set windows position at (0, 0) =>
+
+2024-03-29 15:22:43.618414   Set resolution 1280 * 800 =>
+
+2024-03-29 15:22:43.720608   => Resolution seted {'width': 1280, 'height': 800}
+
+2024-03-29 15:22:44.873320   Капчи нет. Идем дальше
+
+2024-03-29 15:22:44.873413   Prev. Role: Auth
+
+2024-03-29 15:22:44.873427   Current role: Auth
+
+2024-03-29 15:22:44.873436   => Current language: ?
+
+2024-03-29 15:22:45.893517   Капчи нет. Идем дальше
+2024-03-29 15:22:45.893606   => Current country: gb
+
+2024-03-29 15:22:45.893619   => THE END PRECONDITIONS
+
+2024-03-29 15:22:45.893653   1. Arrange for Our Markets block: 'Forex' market, 'Middle' instrument
+2024-03-29 15:22:45.893666   current_page = https://capital.com/en-gb
+2024-03-29 15:22:45.896505   link = https://capital.com/en-gb
+2024-03-29 15:22:45.899003   IS Our markets block present on this page? =>
+2024-03-29 15:22:45.903787   => Our markets block present on this page!
+
+2024-03-29 15:22:45.903809   IS Our markets block visible on this page? =>
+2024-03-29 15:22:45.914744   => Our markets block is visible on this page!
+
+2024-03-29 15:22:45.914767   IS MARKET 'Forex' present on this page? =>
+2024-03-29 15:22:45.919483   => MARKET 'Forex' present on this page!
+
+2024-03-29 15:22:45.919510   IS MARKET 'Forex' visible on this page? =>
+2024-03-29 15:22:45.930507   => MARKET 'Forex' is visible on this page!
+
+2024-03-29 15:22:45.930529   Start Click button 'Forex' MARKET =>
+2024-03-29 15:22:46.006794   => End Click button 'Forex' MARKET
+
+2024-03-29 15:22:46.006850   Is Instruments present? =>
+2024-03-29 15:22:46.030163   => Instruments is present on this page!
+
+2024-03-29 15:22:46.030214   Is Instruments visible? =>
+2024-03-29 15:22:46.041441   => Instruments is visible on this page!
+
+2024-03-29 15:22:46.041466   => Start Find and Click button 'Middle' instrument=>
+2024-03-29 15:22:47.133550   => End Click button 'Middle' instrument=>
+
+2024-03-29 15:22:47.133824   2. Act for 'Forex' Market and 'Middle' Instrument
+2024-03-29 15:22:47.133845   IS button [Sell] for 'Forex' Market and 'Middle' Instrumentpresent on this page? =>
+2024-03-29 15:22:47.139972   => Button [Sell] for 'Forex' Market and 'Middle' Instrument present on this page!
+
+2024-03-29 15:22:47.139996   IS button [Sell] for 'Forex' Market and 'Middle' Instrument visible on this page? =>
+2024-03-29 15:22:47.152923   => Button [Sell] for 'Forex' Market and 'Middle' Instrument visible on this page!
+
+2024-03-29 15:22:47.152947   Start click button [Sell] =>
+2024-03-29 15:22:47.424279   => End Click button [Sell]
+
+2024-03-29 15:22:47.424631   3. Assert_v4
+2024-03-29 15:22:47.424806   Checking that the trading platform page has opened (v4) =>
+2024-03-29 15:22:47.435039   Checking way # 1 => 
+
+2024-03-29 15:22:47.435235   1. Checking that the Trading platform page has valid title =>
+2024-03-29 15:22:47.438456   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 15:22:47.438630   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 15:22:49.120806   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 15:22:49.120917   tpd = False
+2024-03-29 15:22:49.121087   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 15:22:49.235342   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+
+2024-03-29 15:22:49.255539   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument 'AUD/USD' =>
+
+2024-03-29 15:22:49.258394   trade_instrument = 'AUD/USD'
+
+2024-03-29 15:22:49.258410   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 15:22:50.292546   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-29 15:22:50.292590   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fee757885c0>
+
+2024-03-29 15:22:50.295459  Для бага: Bid-14 необходимо использовать проверку на ретест!!!

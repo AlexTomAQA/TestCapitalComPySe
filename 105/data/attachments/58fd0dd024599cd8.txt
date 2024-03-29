@@ -1,0 +1,109 @@
+
+
+
+Current market - Commodities
+
+
+
+Current instrument - Middle
+{'width': 1280, 'height': 800}
+
+2024-03-29 15:23:58.906283   worker_id = master
+
+2024-03-29 15:23:58.906301   0. Allure grouping v4
+
+
+2024-03-29 15:23:58.906507   START NEW PRECONDITIONS =>
+
+2024-03-29 15:23:58.906523   Current page URL = https://capital.com/trading/platform/
+2024-03-29 15:23:58.909391   self.link = https://capital.com/en-gb
+2024-03-29 15:23:58.909404   link = https://capital.com/en-gb
+2024-03-29 15:24:00.098901   => Loaded page https://capital.com/en-gb
+
+2024-03-29 15:24:00.103334   {'width': 1280, 'height': 800}
+
+2024-03-29 15:24:00.104674   Set windows position at (0, 0) =>
+
+2024-03-29 15:24:00.212065   Set resolution 1280 * 800 =>
+
+2024-03-29 15:24:00.318269   => Resolution seted {'width': 1280, 'height': 800}
+
+2024-03-29 15:24:01.468959   Капчи нет. Идем дальше
+
+2024-03-29 15:24:01.469053   Prev. Role: Auth
+
+2024-03-29 15:24:01.469066   Current role: Auth
+
+2024-03-29 15:24:01.469076   => Current language: ?
+
+2024-03-29 15:24:02.491361   Капчи нет. Идем дальше
+2024-03-29 15:24:02.491453   => Current country: gb
+
+2024-03-29 15:24:02.491467   => THE END PRECONDITIONS
+
+2024-03-29 15:24:02.491502   1. Arrange for Our Markets block: 'Commodities' market, 'Middle' instrument
+2024-03-29 15:24:02.491516   current_page = https://capital.com/en-gb
+2024-03-29 15:24:02.494340   link = https://capital.com/en-gb
+2024-03-29 15:24:02.496834   IS Our markets block present on this page? =>
+2024-03-29 15:24:02.501899   => Our markets block present on this page!
+
+2024-03-29 15:24:02.501921   IS Our markets block visible on this page? =>
+2024-03-29 15:24:02.512661   => Our markets block is visible on this page!
+
+2024-03-29 15:24:02.512684   IS MARKET 'Commodities' present on this page? =>
+2024-03-29 15:24:02.517416   => MARKET 'Commodities' present on this page!
+
+2024-03-29 15:24:02.517440   IS MARKET 'Commodities' visible on this page? =>
+2024-03-29 15:24:02.527965   => MARKET 'Commodities' is visible on this page!
+
+2024-03-29 15:24:02.527987   Start Click button 'Commodities' MARKET =>
+2024-03-29 15:24:02.596278   => End Click button 'Commodities' MARKET
+
+2024-03-29 15:24:02.596334   Is Instruments present? =>
+2024-03-29 15:24:02.613716   => Instruments is present on this page!
+
+2024-03-29 15:24:02.613756   Is Instruments visible? =>
+2024-03-29 15:24:02.626054   => Instruments is visible on this page!
+
+2024-03-29 15:24:02.626082   => Start Find and Click button 'Middle' instrument=>
+2024-03-29 15:24:05.772181   => End Click button 'Middle' instrument=>
+
+2024-03-29 15:24:05.772422   2. Act for 'Commodities' Market and 'Middle' Instrument
+2024-03-29 15:24:05.772439   IS button [Buy] for 'Commodities' Market and 'Middle' Instrumentpresent on this page? =>
+2024-03-29 15:24:05.780468   => Button [Buy] for 'Commodities' Market and 'Middle' Instrument present on this page!
+
+2024-03-29 15:24:05.780497   IS button [Buy] for 'Commodities' Market and 'Middle' Instrument visible on this page? =>
+2024-03-29 15:24:05.792317   => Button [Buy] for 'Commodities' Market and 'Middle' Instrument visible on this page!
+
+2024-03-29 15:24:05.792341   Start click button [Buy] =>
+2024-03-29 15:24:06.059610   => End Click button [Buy]
+
+2024-03-29 15:24:06.059945   3. Assert_v4
+2024-03-29 15:24:06.060094   Checking that the trading platform page has opened (v4) =>
+2024-03-29 15:24:06.067964   Checking way # 1 => 
+
+2024-03-29 15:24:06.068123   1. Checking that the Trading platform page has valid title =>
+2024-03-29 15:24:06.071569   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 15:24:06.071745   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 15:24:07.780009   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 15:24:07.780137   tpd = False
+2024-03-29 15:24:07.780389   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 15:24:07.934877   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+
+2024-03-29 15:24:07.937805   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument 'Brent Oil' =>
+
+2024-03-29 15:24:07.945406   trade_instrument = 'Brent Oil'
+
+2024-03-29 15:24:07.945423   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 15:24:08.976885   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-03-29 15:24:08.976929   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fee757885c0>
+
+2024-03-29 15:24:08.979685  Для бага: Bid-14 необходимо использовать проверку на ретест!!!
