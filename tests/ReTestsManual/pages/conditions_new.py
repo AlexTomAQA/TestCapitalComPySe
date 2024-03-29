@@ -37,7 +37,7 @@ class NewConditions(BasePage):
 
     debug = False
 
-    @allure.step(f"{datetime.now()}   Set New preconditions")
+    @allure.step("   Set New preconditions")
     def preconditions(
             self,
             d,
