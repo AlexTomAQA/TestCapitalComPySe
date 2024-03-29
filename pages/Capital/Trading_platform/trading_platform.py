@@ -168,14 +168,12 @@ class TradingPlatform(BasePage):
     @allure.step("Check if the Logo element is present on the page")
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
-        """Check if the app title"""
         print(f"\n{datetime.now()}   2. Checking that the Trading platform LOGO is present on the page =>")
-        # assert self.element_is_visible(TopBarLocators.LOGO, 30), \
         if not self.element_is_visible(TopBarLocators.LOGO, 15):
-            msg = "Trading platform LOGO is not present on the page"
+            msg = "'capital*com' logo is not present on the current page"
+            print(f"{datetime.now()}   => {msg}")
             Common().assert_true_false(False, msg)
-
-        print(f"{datetime.now()}   => Trading platform 'capital*com' logo is present on the current page")
+        print(f"{datetime.now()}   => 'capital*com' logo is present on the current page")
 
     @allure.step("Check if the trading platform opened in DEMO mode")
     def should_be_platform_demo_mode(self, d, test_link):
