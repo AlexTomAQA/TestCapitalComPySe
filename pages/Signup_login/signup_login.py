@@ -67,6 +67,15 @@ class SignupLogin(BasePage):
             print(f"{datetime.now()}   => new 'Sign up' form not opened")
             return False
 
+    @allure.step('Check that "Sign up Temporale" form opened')
+    def should_be_signup_pause_form(self, cur_language):
+        """
+        Check there are an elements to on Sign up form
+        """
+        print(f"{datetime.now()}   Start step Check that [Sign up] form is opened")
+        if self.element_is_visible(SignupFormLocators.SIGNUP_PAUSE_FORM, 3):
+            print(f"{datetime.now()}   'Sign up PAUSE' form opened")
+
     @allure.step('Check that "Sign up" form opened')
     def should_be_signup_form(self, cur_language):
         """
@@ -297,6 +306,22 @@ class SignupLogin(BasePage):
         else:
             print(f"{datetime.now()}   'Login' page not opened")
             return False
+
+    @allure.step("Close [Sign up PAUSE] form")
+    def close_signup_pause_form(self):
+        """Method Close [Sign up] form"""
+        print(f"{datetime.now()}   Start step Close [Sign up Pause] form =>")
+        if not self.element_is_clickable(SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_PAUSE_FORM, 3):
+            print(f"{datetime.now()}   => Close button on 'Sign up Pause' form is not clickable")
+            Common().assert_true_false(False, "Close button on 'Sign up' form is not clickable")
+
+        elements = self.driver.find_elements(*SignupFormLocators.BUTTON_CLOSE_ON_SIGNUP_PAUSE_FORM)
+        elements[0].click()
+        print(f"{datetime.now()}   => 'Signup Pause' form closed")
+
+        # перемещаем указатель мыши на логотип CAPITAL
+        Common().move_pointer_to_capital_com_label(self.driver)
+        return True
 
     @allure.step("Close form [Sign up]")
     def close_signup_form(self):

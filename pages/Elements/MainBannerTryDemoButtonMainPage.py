@@ -16,19 +16,31 @@ from selenium.common.exceptions import ElementClickInterceptedException
 
 class MainBannerTryDemoButtonMainPage(BasePage):
 
-    @allure.step(f'{datetime.now()}   Start Full test for Try demo button of Main banner')
+    @allure.step('Start Full test for Try demo button of Main banner')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
         self.element_click()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
-        match cur_role:
-            case "NoReg":
-                test_element.assert_signup(d, cur_language, cur_item_link)
-            case "NoAuth":
-                test_element.assert_login(d, cur_language, cur_item_link)
-            case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link, True)
+
+        if not (cur_language == "" and cur_country == "gb"):
+            # старая верстка
+            match cur_role:
+                case "NoReg":
+                    test_element.assert_signup(d, cur_language, cur_item_link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, cur_item_link)
+                case "Auth":
+                    test_element.assert_trading_platform_v4(d, cur_item_link, True)
+        else:
+            # новая верстка
+            match cur_role:
+                case "NoReg":
+                    test_element.assert_signup_new(d, cur_language, cur_item_link)
+                case "NoAuth":
+                    test_element.assert_login(d, cur_language, cur_item_link)
+                case "Auth":
+                    test_element.assert_trading_platform_v4(d, cur_item_link, True)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
