@@ -29,7 +29,7 @@ class AssertClass(BasePage):
     #     super().__init__(*args)
     #     self.is_captcha()
 
-    @allure.step(f'{datetime.now()}   Checking that "Signup" opened')
+    @allure.step('Checking that "Signup" opened (old layout)')
     def assert_signup(self, d, cur_language, cur_link):
         """Method Assert Signup"""
 
@@ -52,6 +52,22 @@ class AssertClass(BasePage):
 
         Common().assert_true_false(True, "")
         # del self.page_signup_login
+
+    @allure.step('Checking that "Signup Pause" opened (new layout)')
+    def assert_signup_new(self, d, cur_language, cur_link):
+        """Method Assert Signup New"""
+
+        print(f"\n{datetime.now()}   3. Assert_SignUp_Pause_v0")
+        self.page_signup_login = SignupLogin(d, cur_link)
+        if self.page_signup_login.should_be_signup_pause_form(cur_language):
+            self.page_signup_login.close_signup_pause_form()
+        else:
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(d, self.bid, '04', self.link)
+            Common().assert_true_false(False, "Bug # 04. Unknown situation instead 'Sign Up' form opened")
+            # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
+
+        Common().assert_true_false(True, "")
 
     @allure.step(f'{datetime.now()}   Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):

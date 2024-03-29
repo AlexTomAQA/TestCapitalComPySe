@@ -17,7 +17,8 @@ from pages.Menu.menu import MenuSection
 from pages.captcha import Captcha
 from pages.Header.header import Header
 from pages.My_account.my_account import MyAccount
-from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+# from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators
 from tests.ReTestsManual.pages.menu.menu import MainMenu
 
@@ -67,8 +68,8 @@ class NewConditions(BasePage):
         print(f"\n{datetime.now()}   {d.get_window_size()}")
         print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
-        print(f"\n{datetime.now()}   Set resolution 1280 * 720 =>")
-        d.set_window_size(1280, 720)
+        print(f"\n{datetime.now()}   Set resolution 1280 * 800 =>")
+        d.set_window_size(1280, 800)
         print(f"\n{datetime.now()}   => Resolution seted {d.get_window_size()}")
 
         Captcha(d).fail_test_if_captcha_present_v2()
@@ -81,11 +82,8 @@ class NewConditions(BasePage):
             test_link = host
             self.link = test_link
             self.open_page()
-            if conf.DEBUG:
-                print(f"\n{datetime.now()} Debug:   test_link = {test_link}")
             d.delete_all_cookies()
             print(f"\n{datetime.now()}   => All cookies are deleted")
-            # print(d.get_cookies(), "")
             self.open_page()
 
             self.button_accept_all_cookies_click()
@@ -188,23 +186,35 @@ class NewConditions(BasePage):
         print(f"{datetime.now()}   Set timeout = {timeout}")
         wait = WebDriverWait(d, timeout)
         wait.until(EC.title_is("Trading Platform | Capital.com"))
-        print(f"{datetime.now()}   -> Page with 'Trading Platform | Capital.com' title opened")
+        print(f"{datetime.now()}   => Page with 'Trading Platform | Capital.com' title opened")
 
         platform_url = "https://capital.com/trading/platform/"
-        top_bar = TopBar(d, platform_url)
+        trading_platform = TradingPlatform(d, platform_url)
 
-        if top_bar.trading_platform_logo_is_present():
+        # if top_bar.trading_platform_logo_is_present():
+        if trading_platform.should_be_platform_logo():
             print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
         else:
             print(f'{datetime.now()}   -> "Capital.com" logo mission')
-        del top_bar
-        if cur_role == "NoAuth":
-            print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
-            menu.element_is_clickable(menu.TP_USER_MENU).click()
-            menu.element_is_clickable(menu.TP_LOGOUT).click()
-        else:
-            d.back()
-        del menu
+
+        # self.clear_charts_list(d)
+        d.back()
+
+        # platform_url = "https://capital.com/trading/platform/"
+        # top_bar = TopBar(d, platform_url)
+        #
+        # if top_bar.trading_platform_logo_is_present():
+        #     print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
+        # else:
+        #     print(f'{datetime.now()}   -> "Capital.com" logo mission')
+        # del top_bar
+        # if cur_role == "NoAuth":
+        #     print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+        #     menu.element_is_clickable(menu.TP_USER_MENU).click()
+        #     menu.element_is_clickable(menu.TP_LOGOUT).click()
+        # else:
+        #     d.back()
+        # del menu
 
     def set_new_country(self, d, cur_language, cur_country):
         host = 'https://capital.com/'
