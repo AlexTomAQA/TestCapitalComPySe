@@ -1,0 +1,135 @@
+
+
+
+Current sorting - Most volatile
+{'width': 1280, 'height': 800}
+
+2024-03-29 16:15:04.021826   worker_id = master
+
+2024-03-29 16:15:04.021855   0. Allure grouping v4
+
+
+2024-03-29 16:15:04.022281   START PRECONDITIONS =>
+
+
+2024-03-29 16:15:04.022306   => flag_of_bug - False
+
+2024-03-29 16:15:04.022318   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 16:15:04.023850   Set windows position at (0, 0) =>
+2024-03-29 16:15:04.126388   Set resolution 1280 * 800 =>
+2024-03-29 16:15:04.228681   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 16:15:05.251588   Капчи нет. Идем дальше
+
+2024-03-29 16:15:05.251679   Работа с куками
+
+2024-03-29 16:15:05.251693   => Prev. country - 'au'
+2024-03-29 16:15:05.251703   => Country set to 'au'
+
+2024-03-29 16:15:05.251712   => Prev. language - 'en'
+2024-03-29 16:15:05.251722   => Language is set to 'en'
+
+2024-03-29 16:15:05.251730   => Prev. role - 'NoReg'
+2024-03-29 16:15:05.251739   => The 'NoReg' role is set
+
+2024-03-29 16:15:05.254423   => THE END PRECONDITIONS
+
+2024-03-29 16:15:05.254613   START Open "Markets" menu, "Indices" submenu =>
+
+2024-03-29 16:15:05.254628   1. Cur URL = https://capital.com/major-world-indices
+
+2024-03-29 16:15:05.257291   2. Link = https://capital.com/major-world-indices
+2024-03-29 16:15:05.257307   current_page = https://capital.com/major-world-indices
+2024-03-29 16:15:05.259692   link = https://capital.com/major-world-indices
+2024-03-29 16:15:05.768115   => 'Markets' menu is present
+2024-03-29 16:15:05.782263   => 'Markets' menu is visible
+2024-03-29 16:15:07.047426   => Focus moved to 'Markets' menu
+
+
+2024-03-29 16:15:08.487886   => 'Indices' submenu clicked
+2024-03-29 16:15:08.773205   => Focus moved to 'capital*com' logo
+
+2024-03-29 16:15:08.773247   3. Cur URL = https://capital.com/major-world-indices
+
+2024-03-29 16:15:08.778731   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most volatile' cur_sort
+2024-03-29 16:15:08.778756   current_page = https://capital.com/major-world-indices
+2024-03-29 16:15:08.781166   link = https://capital.com/major-world-indices
+2024-03-29 16:15:08.783550   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-03-29 16:15:08.788839   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-03-29 16:15:08.788861   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-03-29 16:15:08.793455   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-03-29 16:15:08.793477   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-03-29 16:15:08.874424   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-03-29 16:15:08.891963   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-03-29 16:15:08.891996   Is cur_sort "Most volatile" present in item_sort_list? =>
+2024-03-29 16:15:08.899615   => cur_sort "Most volatile" is present in item_sort_list!
+2024-03-29 16:15:08.899648   Start click cur_sort "Most volatile" =>
+2024-03-29 16:15:13.283950   => End Click cur_sort "Most volatile"
+
+2024-03-29 16:15:13.283996   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-03-29 16:15:13.309270   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-03-29 16:15:13.309308   Start find 1 random buttons [Sell] on cur_sort "Most volatile"=>
+2024-03-29 16:15:13.316613   => End find 1 random buttons [Sell] on the cur_sort "Most volatile"
+
+2024-03-29 16:15:13.316641   List of random items = [11]
+2024-03-29 16:15:13.316809   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 16:15:14.848034   '[Sign up]' form was not popped up
+2024-03-29 16:15:14.848241   2. Act for trading instrument and "Most volatile" cur_sort
+2024-03-29 16:15:14.848257   Start click button [Sell] =>
+2024-03-29 16:15:14.858350   =>   BUTTON_SELL on item with ID = 21812064427192838
+2024-03-29 16:15:15.019789   =>   BUTTON_SELL with item Switzerland 20 clicked
+
+2024-03-29 16:15:15.020124   3. Assert_v0
+2024-03-29 16:15:15.020253   Start step Check that [Sign up] form is opened
+2024-03-29 16:15:18.099580   'Sign up' form not opened
+2024-03-29 16:15:18.099814   Start step Check that new [Sign up] form is opened
+2024-03-29 16:15:21.164540   => new 'Sign up' form not opened
+2024-03-29 16:15:21.164731   Start method Check that [Sign up] page opened =>
+2024-03-29 16:15:22.193892   'Sign up' page not opened
+2024-03-29 16:15:22.194142   Check that [Sign up] form on trading platform opened =>
+2024-03-29 16:15:25.286182   'Sign up' form on trading platform page not opened
+
+Bug: Bid:01.04.00_002-en.au.NoReg
+
+2024-03-29 16:15:25.286274   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f88a8f50230>
+
+2024-03-29 16:15:25.764775   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:26.102463   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:27.564739   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:27.904795   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:29.108926   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:29.300052   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:29.302775   Добавление новой строки =>
+
+2024-03-29 16:15:30.826184   => Новая строка добавлена
+
+2024-03-29 16:15:32.884258   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:33.081328   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:33.084248   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-29 16:15:33.516587   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:33.516801   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-29 16:15:33.852404   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:33.852664   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:34.195079   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:34.195341   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:15:34.523411   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:15:34.523498   Баг Bid:01.04.00_002-en.au.NoReg-04 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

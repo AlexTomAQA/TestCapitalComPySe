@@ -1,0 +1,107 @@
+{'width': 1280, 'height': 800}
+
+2024-03-29 16:57:27.230632   worker_id = master
+
+2024-03-29 16:57:27.230651   0. Allure grouping v4
+
+
+2024-03-29 16:57:27.230917   START PRECONDITIONS =>
+
+
+2024-03-29 16:57:27.230934   => flag_of_bug - False
+
+2024-03-29 16:57:27.230946   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 16:57:27.232296   Set windows position at (0, 0) =>
+2024-03-29 16:57:27.334471   Set resolution 1280 * 800 =>
+2024-03-29 16:57:27.437031   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 16:57:28.476431   Капчи нет. Идем дальше
+
+2024-03-29 16:57:28.476525   Работа с куками
+
+2024-03-29 16:57:28.476539   => Prev. country - 'au'
+2024-03-29 16:57:28.476549   => Country set to 'au'
+
+2024-03-29 16:57:28.476558   => Prev. language - 'en'
+2024-03-29 16:57:28.476568   => Language is set to 'en'
+
+2024-03-29 16:57:28.476577   => Prev. role - 'Auth'
+2024-03-29 16:57:28.476585   => The 'Auth' role is set
+
+2024-03-29 16:57:28.479701   => THE END PRECONDITIONS
+
+2024-03-29 16:57:28.479762   1. Cur URL = https://capital.com/trade-stocks
+
+2024-03-29 16:57:28.482203   2. Link = https://capital.com/trade-stocks
+2024-03-29 16:57:28.482220   current_page = https://capital.com/trade-stocks
+2024-03-29 16:57:28.484656   link = https://capital.com/trade-stocks
+2024-03-29 16:57:28.993931   => Education menu is present in DOM
+2024-03-29 16:57:29.001639   => Education menu is visible
+2024-03-29 16:57:30.265432   => Focus moved to Education menu
+
+
+2024-03-29 16:57:31.042521   => Shares trading sub-menu clicked
+2024-03-29 16:57:31.321308   => Focus moved to 'capital*com' logo
+
+2024-03-29 16:57:31.321530   1. Arrange_v4
+2024-03-29 16:57:31.321549   current_page = https://capital.com/trade-stocks
+2024-03-29 16:57:31.324498   link = https://capital.com/trade-stocks
+2024-03-29 16:57:31.327084   MOST_TRADED is present? =>
+2024-03-29 16:57:31.335416   => MOST_TRADED widget is present on this page
+2024-03-29 16:57:31.335439   => Found 5 elements in block MOST_TRADED
+2024-03-29 16:57:31.335450   Most traded widget is scroll =>
+2024-03-29 16:57:31.341944   => Most traded widget is scrolled into screen center
+
+2024-03-29 16:57:31.342423   Random indexes = [0]
+
+2024-03-29 16:57:31.342458   Testing Most traded 1 random element with 0 index
+
+2024-03-29 16:57:31.342667   2. Act_v4
+2024-03-29 16:57:31.342804   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 16:57:32.864214   '[Sign up]' form was not popped up
+2024-03-29 16:57:32.879211   instrument_title = 'Tesla Inc'
+2024-03-29 16:57:32.884427   Selected Trade button on Most traded widget is scroll =>
+2024-03-29 16:57:32.887867   Selected Trade button click for 'Tesla Inc' trading instrument =>
+2024-03-29 16:57:34.846460   => Selected Trade button clicked!
+
+2024-03-29 16:57:34.846784   3. Assert_v4
+2024-03-29 16:57:34.846946   Checking that the trading platform page has opened (v4) =>
+2024-03-29 16:57:34.856194   Checking way # 1 => 
+
+2024-03-29 16:57:34.856382   1. Checking that the Trading platform page has valid title =>
+2024-03-29 16:57:34.859166   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 16:57:34.859307   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 16:57:36.466274   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 16:57:36.466384   tpd = False
+2024-03-29 16:57:36.466581   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 16:57:36.539267   => The page with https://capital.com/trading/platform/charting/22855552501634244?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244 url was opened in lIVE mode
+
+2024-03-29 16:57:36.543171   4. Check that opened page with https://capital.com/trading/platform/charting/22855552501634244?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244 url
+with selected corresponding trading instrument 'Tesla Inc' =>
+
+2024-03-29 16:57:36.546581   trade_instrument = 'Tesla Inc'
+
+2024-03-29 16:57:36.546600   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 16:57:36.556962   => Trading Platform opened in Chart mode
+
+2024-03-29 16:57:36.557000   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-29 16:57:36.565581   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-29 16:57:36.565666   Top Charts List contain 7 trade instruments
+
+2024-03-29 16:57:36.565686   Top Charts List contain following trade instruments:
+'Gold'
+'Brent Oil'
+'Tesla Inc (Extended Hours)'
+2024-03-29 16:57:36.700258   => Trade instrument 'Tesla Inc' is present in the Top Charts List
+2024-03-29 16:57:36.700300   => Trade instrument 'Tesla Inc' is present in the Top Charts List
+2024-03-29 16:57:36.700313   4.4. Check that the Top Charts List contain selected and visible Trade instrument =>
+2024-03-29 16:57:36.719598   => The Top Charts List contain selected and visible Trade instrument
+2024-03-29 16:57:36.719641   4.5. Check that Trade instrument 'Tesla Inc' is present in the Top Charts List, visible and selected =>
+2024-03-29 16:57:36.734689   => Trade instrument 'Tesla Inc' is present in the Top Charts List, visible and selected
+2024-03-29 16:57:36.743242   => Driver.backed
+2024-03-29 16:57:37.079708   => Driver.backed
+2024-03-29 16:57:38.533608   => Driver.backed

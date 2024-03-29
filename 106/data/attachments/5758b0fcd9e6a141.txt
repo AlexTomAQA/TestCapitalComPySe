@@ -1,0 +1,115 @@
+{'width': 1280, 'height': 800}
+
+2024-03-29 17:58:56.516071   worker_id = master
+
+2024-03-29 17:58:56.516090   0. Allure grouping v4
+
+
+2024-03-29 17:58:56.516361   START PRECONDITIONS =>
+
+
+2024-03-29 17:58:56.516377   => flag_of_bug - False
+
+2024-03-29 17:58:56.516390   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 17:58:56.517691   Set windows position at (0, 0) =>
+2024-03-29 17:58:56.619704   Set resolution 1280 * 800 =>
+2024-03-29 17:58:56.722137   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 17:58:57.768521   Капчи нет. Идем дальше
+
+2024-03-29 17:58:57.768603   Работа с куками
+
+2024-03-29 17:58:57.768616   => Prev. country - 'au'
+2024-03-29 17:58:57.768626   => Country set to 'au'
+
+2024-03-29 17:58:57.768635   => Prev. language - 'en'
+2024-03-29 17:58:57.768645   => Language is set to 'en'
+
+2024-03-29 17:58:57.768654   => Prev. role - 'Auth'
+2024-03-29 17:58:57.768663   => The 'Auth' role is set
+
+2024-03-29 17:58:57.771290   => THE END PRECONDITIONS
+
+2024-03-29 17:58:57.771483   1. Arrange_v4
+2024-03-29 17:58:57.771501   current_page = https://capital.com/day-trading
+2024-03-29 17:58:57.773992   link = https://capital.com/day-trading
+2024-03-29 17:58:57.776400   MOST_TRADED is present? =>
+2024-03-29 17:58:57.784193   => MOST_TRADED widget is present on this page
+2024-03-29 17:58:57.784216   => Found 5 elements in block MOST_TRADED
+2024-03-29 17:58:57.784226   Most traded widget is scroll =>
+2024-03-29 17:58:57.787410   => Most traded widget is scrolled into screen center
+
+2024-03-29 17:58:57.787454   Random indexes = [3]
+
+2024-03-29 17:58:57.787469   Testing Most traded 1 random element with 3 index
+
+2024-03-29 17:58:57.787577   2. Act_v4
+2024-03-29 17:58:57.787667   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 17:58:59.323942   '[Sign up]' form was not popped up
+2024-03-29 17:58:59.337389   instrument_title = 'Ripple to US Dollar'
+2024-03-29 17:58:59.345033   Selected Trade button on Most traded widget is scroll =>
+2024-03-29 17:58:59.348402   Selected Trade button click for 'Ripple to US Dollar' trading instrument =>
+2024-03-29 17:59:01.286169   => Selected Trade button clicked!
+
+2024-03-29 17:59:01.286493   3. Assert_v4
+2024-03-29 17:59:01.286664   Checking that the trading platform page has opened (v4) =>
+2024-03-29 17:59:01.297856   Checking way # 1 => 
+
+2024-03-29 17:59:01.298110   1. Checking that the Trading platform page has valid title =>
+2024-03-29 17:59:01.302095   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 17:59:01.302261   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 17:59:02.863964   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 17:59:02.864047   tpd = False
+2024-03-29 17:59:02.864193   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 17:59:02.875184   => The page with https://capital.com/trading/platform/charting/27342779713672388?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244,3644116541985988,25985050357018692,427748677997764,27041281599427780,123763777688772,1496662958757060,2306899949212868,20337752478405828,5983666832495812,27342779713672388 url was opened in lIVE mode
+
+2024-03-29 17:59:02.878542   4. Check that opened page with https://capital.com/trading/platform/charting/27342779713672388?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244,3644116541985988,25985050357018692,427748677997764,27041281599427780,123763777688772,1496662958757060,2306899949212868,20337752478405828,5983666832495812,27342779713672388 url
+with selected corresponding trading instrument 'Ripple to US Dollar' =>
+
+2024-03-29 17:59:02.881122   trade_instrument = 'Ripple to US Dollar'
+
+2024-03-29 17:59:02.881139   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 17:59:02.888690   => Trading Platform opened in Chart mode
+
+2024-03-29 17:59:02.888718   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-29 17:59:02.897912   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-29 17:59:02.897937   Top Charts List contain 17 trade instruments
+
+2024-03-29 17:59:02.897971   Top Charts List contain following trade instruments:
+'Gold'
+'Brent Oil'
+'Tesla Inc (Extended Hours)'
+'Silver'
+'Live Cattle'
+'Cotton'
+'Coffee US'
+'Iron ORE Spot'
+''
+''
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:11.03.02.00_03-en.au.Auth
+
+2024-03-29 17:59:03.235948   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7efd57dcffe0>
+
+2024-03-29 17:59:03.695778   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 17:59:03.915831   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 17:59:05.354690   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 17:59:05.675779   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 17:59:05.677166   Баг Bid:11.03.02.00_03-en.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,127 @@
+{'width': 1280, 'height': 800}
+
+2024-03-29 16:26:31.026262   worker_id = master
+
+2024-03-29 16:26:31.026280   0. Allure grouping v4
+
+
+2024-03-29 16:26:31.026486   START PRECONDITIONS =>
+
+
+2024-03-29 16:26:31.026502   => flag_of_bug - False
+
+2024-03-29 16:26:31.026514   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 16:26:31.027855   Set windows position at (0, 0) =>
+2024-03-29 16:26:31.130065   Set resolution 1280 * 800 =>
+2024-03-29 16:26:31.232823   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 16:26:32.265200   Капчи нет. Идем дальше
+
+2024-03-29 16:26:32.265293   Работа с куками
+
+2024-03-29 16:26:32.265308   => Prev. country - 'au'
+2024-03-29 16:26:32.265317   => Country set to 'au'
+
+2024-03-29 16:26:32.265327   => Prev. language - 'en'
+2024-03-29 16:26:32.265336   => Language is set to 'en'
+
+2024-03-29 16:26:32.265344   => Prev. role - 'Auth'
+2024-03-29 16:26:32.265353   => The 'Auth' role is set
+
+2024-03-29 16:26:32.268273   => THE END PRECONDITIONS
+
+2024-03-29 16:26:32.268375   1. Arrange_v0
+2024-03-29 16:26:32.268391   current_page = https://capital.com/us-coffee-arabica-spot-commodity
+2024-03-29 16:26:32.271328   link = https://capital.com/us-coffee-arabica-spot-commodity
+2024-03-29 16:26:32.274974   BUTTON_BUY is located on the page? =>
+2024-03-29 16:26:32.283043   => BUTTON_BUY is located on the page!
+2024-03-29 16:26:32.283223   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 16:26:33.817195   '[Sign up]' form was not popped up
+
+2024-03-29 16:26:33.817388   2. Act_v0
+2024-03-29 16:26:33.822769   BUTTON_BUY is present? =>
+2024-03-29 16:26:33.822794   => BUTTON_BUY is present on the page
+2024-03-29 16:26:33.822804   BUTTON_BUY scroll =>
+2024-03-29 16:26:33.826379   => BUTTON_BUY scrolled
+2024-03-29 16:26:33.869158   BUTTON_BUY is clickable? =>
+2024-03-29 16:26:33.880896   BUTTON_BUY CLICK =>
+2024-03-29 16:26:34.121724   => BUTTON_BUY clicked!
+
+2024-03-29 16:26:34.122137   3. Assert_v4
+2024-03-29 16:26:34.122313   Checking that the trading platform page has opened (v4) =>
+2024-03-29 16:26:34.131970   Checking way # 1 => 
+
+2024-03-29 16:26:34.132182   1. Checking that the Trading platform page has valid title =>
+2024-03-29 16:26:34.135680   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 16:26:34.135857   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 16:26:35.197839   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 16:26:35.197929   tpd = False
+2024-03-29 16:26:35.198148   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 16:26:35.222467   => The page with https://capital.com/trading/platform/charting/7092687517865156?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156 url was opened in lIVE mode
+
+2024-03-29 16:26:35.314914   4. Check that opened page with https://capital.com/trading/platform/charting/7092687517865156?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156 url
+with selected corresponding trading instrument 'US Coffee Arabica' =>
+
+2024-03-29 16:26:35.329378   trade_instrument = 'US Coffee Arabica'
+
+2024-03-29 16:26:35.329407   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 16:26:35.515860   => Trading Platform opened in Chart mode
+
+2024-03-29 16:26:35.515914   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-29 16:26:35.537769   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-29 16:26:35.537809   Top Charts List contain 5 trade instruments
+
+2024-03-29 16:26:35.537820   Top Charts List contain following trade instruments:
+'Gold'
+'Brent Oil'
+'Live Cattle'
+'Cotton'
+'Coffee US'
+
+Bug: Bid:01.05.01_005-en.au.Auth
+
+2024-03-29 16:26:35.601807   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f76f98c5dc0>
+
+2024-03-29 16:26:36.116162   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:36.466839   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:37.900897   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:38.093213   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:39.383044   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:39.580853   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:39.583467   Добавление новой строки =>
+
+2024-03-29 16:26:41.056884   => Новая строка добавлена
+
+2024-03-29 16:26:43.489043   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:43.680631   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:43.683431   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-03-29 16:26:44.111005   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:44.111229   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-03-29 16:26:44.285892   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:44.286144   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:44.618982   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:44.619200   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 16:26:44.916112   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 16:26:44.916196   Баг Bid:01.05.01_005-en.au.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

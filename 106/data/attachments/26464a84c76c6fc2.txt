@@ -1,0 +1,112 @@
+{'width': 1280, 'height': 800}
+
+2024-03-29 17:42:14.173698   worker_id = master
+
+2024-03-29 17:42:14.173717   0. Allure grouping v4
+
+
+2024-03-29 17:42:14.174038   START PRECONDITIONS =>
+
+
+2024-03-29 17:42:14.174059   => flag_of_bug - False
+
+2024-03-29 17:42:14.174072   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 17:42:14.175751   Set windows position at (0, 0) =>
+2024-03-29 17:42:14.278991   Set resolution 1280 * 800 =>
+2024-03-29 17:42:14.386262   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 17:42:15.436344   Капчи нет. Идем дальше
+
+2024-03-29 17:42:15.436432   Работа с куками
+
+2024-03-29 17:42:15.436447   => Prev. country - 'au'
+2024-03-29 17:42:15.436457   => Country set to 'au'
+
+2024-03-29 17:42:15.436467   => Prev. language - 'en'
+2024-03-29 17:42:15.436476   => Language is set to 'en'
+
+2024-03-29 17:42:15.436485   => Prev. role - 'Auth'
+2024-03-29 17:42:15.436494   => The 'Auth' role is set
+
+2024-03-29 17:42:15.439107   => THE END PRECONDITIONS
+
+2024-03-29 17:42:15.439304   1. Arrange_v4
+2024-03-29 17:42:15.439321   current_page = https://capital.com/trade-neo
+2024-03-29 17:42:15.441743   link = https://capital.com/trade-neo
+2024-03-29 17:42:15.444077   MOST_TRADED is present? =>
+2024-03-29 17:42:15.453277   => MOST_TRADED widget is present on this page
+2024-03-29 17:42:15.453301   => Found 5 elements in block MOST_TRADED
+2024-03-29 17:42:15.453311   Most traded widget is scroll =>
+2024-03-29 17:42:15.456407   => Most traded widget is scrolled into screen center
+
+2024-03-29 17:42:15.456446   Random indexes = [4]
+
+2024-03-29 17:42:15.456460   Testing Most traded 1 random element with 4 index
+
+2024-03-29 17:42:15.456576   2. Act_v4
+2024-03-29 17:42:15.456669   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 17:42:17.003943   '[Sign up]' form was not popped up
+2024-03-29 17:42:17.017437   instrument_title = 'Bitcoin Cash to US Dollar'
+2024-03-29 17:42:17.023334   Selected Trade button on Most traded widget is scroll =>
+2024-03-29 17:42:17.026882   Selected Trade button click for 'Bitcoin Cash to US Dollar' trading instrument =>
+2024-03-29 17:42:18.284228   => Selected Trade button clicked!
+
+2024-03-29 17:42:18.284570   3. Assert_v4
+2024-03-29 17:42:18.284720   Checking that the trading platform page has opened (v4) =>
+2024-03-29 17:42:18.292209   Checking way # 1 => 
+
+2024-03-29 17:42:18.292328   1. Checking that the Trading platform page has valid title =>
+2024-03-29 17:42:18.294918   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 17:42:18.295038   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 17:42:20.013383   => Trading platform 'capital*com' logo is present on the current page
+
+2024-03-29 17:42:20.013470   tpd = False
+2024-03-29 17:42:20.013621   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 17:42:20.027603   => The page with https://capital.com/trading/platform/charting/2306899949212868?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244,3644116541985988,25985050357018692,427748677997764,27041281599427780,123763777688772,1496662958757060,2306899949212868 url was opened in lIVE mode
+
+2024-03-29 17:42:20.030793   4. Check that opened page with https://capital.com/trading/platform/charting/2306899949212868?side=buy&ids=27045129890124996,7092970985706692,422839530378436,7090561509053636,7092687517865156,357105055839112,22855552501634244,3644116541985988,25985050357018692,427748677997764,27041281599427780,123763777688772,1496662958757060,2306899949212868 url
+with selected corresponding trading instrument 'Bitcoin Cash to US Dollar' =>
+
+2024-03-29 17:42:20.033406   trade_instrument = 'Bitcoin Cash to US Dollar'
+
+2024-03-29 17:42:20.033422   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 17:42:20.040748   => Trading Platform opened in Chart mode
+
+2024-03-29 17:42:20.040769   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-29 17:42:20.048469   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-29 17:42:20.048491   Top Charts List contain 14 trade instruments
+
+2024-03-29 17:42:20.048502   Top Charts List contain following trade instruments:
+'Gold'
+'Brent Oil'
+'Tesla Inc (Extended Hours)'
+'Silver'
+'Live Cattle'
+'Cotton'
+'Coffee US'
+'Iron ORE Spot'
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:11.02.05.01_03-en.au.Auth
+
+2024-03-29 17:42:20.300707   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f4de649ade0>
+
+2024-03-29 17:42:20.767751   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 17:42:21.090257   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 17:42:22.419464   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 17:42:22.598333   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 17:42:22.599879   Баг Bid:11.02.05.01_03-en.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
