@@ -54,8 +54,8 @@ class AssertClass(BasePage):
         # del self.page_signup_login
 
     @allure.step('Checking that "Signup Pause" opened (new layout)')
-    def assert_signup_new(self, d, cur_language, cur_link):
-        """Method Assert Signup New"""
+    def assert_signup_pause(self, d, cur_language, cur_link):
+        """Method Assert Signup Pause"""
 
         print(f"\n{datetime.now()}   3. Assert_SignUp_Pause_v0")
         self.page_signup_login = SignupLogin(d, cur_link)
@@ -65,11 +65,10 @@ class AssertClass(BasePage):
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '04', self.link)
             Common().assert_true_false(False, "Bug # 04. Unknown situation instead 'Sign Up' form opened")
-            # pytest.fail("Bug # 04. Unknown situation instead 'Sign Up' form opened")
 
         Common().assert_true_false(True, "")
 
-    @allure.step(f'{datetime.now()}   Checking that "Login" form or page opened')
+    @allure.step('Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):
         """Method Assert Login form or page"""
         print(f"\n{datetime.now()}   3. Assert_Login_v0")
@@ -147,7 +146,7 @@ class AssertClass(BasePage):
         self.page_trading = TradingPlatform(d, cur_link)
         self.page_trading.should_be_trading_platform_page_v3(demo)
 
-    @allure.step(f'{datetime.now()}   Checking that "Trading platform" page opened - ver 4')
+    @allure.step('Checking that "Trading platform" page opened - ver 4')
     def assert_trading_platform_v4(self, d, cur_link, tpd=False, tpi=False, trade_instrument=""):
         """
         Check if the trading platform page for the corresponding trade instrument is opened
@@ -163,12 +162,6 @@ class AssertClass(BasePage):
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
 
-    # @allure.step('Checking that "Trading platform" page opened with corresponding trading instrument - ver 5')
-    # def assert_trading_platform_with_selected_item_and_operation(self, cur_link, sel_item, sel_operation):
-    #     print(f"\n{datetime.now()}   3. Assert_v5")
-    #     self.page_trading = TradingPlatform(self.driver, cur_link)
-    #     self.page_trading.should_be_trading_platform_with_sel_item_and_operation(sel_item, sel_operation)
-    #
     @allure.step('Checking that "Trading platform" page opened in demo mode')
     def assert_trading_platform_demo(self, d):
         print(f"\n{datetime.now()}   3. Assert_v0")

@@ -279,7 +279,6 @@ class MenuSection(BasePage):
         )
 
         element = self.element_is_visible(ed_menu_locator, 5)
-        print(f"{datetime.now()}   element = {element}")
         if not element:
             print(f"{datetime.now()}   => 'Learn to trade' menu not visible")
             Common().pytest_fail("Bug # ? 'Learn to trade' menu not visible")
@@ -296,7 +295,7 @@ class MenuSection(BasePage):
         del element
         print(f"{datetime.now()}   => Focus moved to 'Learn to trade' menu")
 
-    @allure.step(f"{datetime.now()}.   Focus moved to 'Education' menu")
+    @allure.step("   Focus moved to 'Education' menu")
     def menu_education_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
         if test_language == "" and test_country == "gb":
@@ -1403,7 +1402,7 @@ class MenuSection(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()} => 'Essentials of trading' menu clicked")
+        print(f"{datetime.now()} => 'Essentials of trading' menu clicked")
 
         del sub_menu
         return d.current_url
