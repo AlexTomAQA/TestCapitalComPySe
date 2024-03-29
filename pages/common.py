@@ -181,6 +181,9 @@ class Common:
 	@staticmethod
 	def move_pointer_to_capital_com_label(wd):
 		elements = wd.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM)
+		if len(elements) == 0:
+			elements = wd.find_elements(*HeaderElementLocators.MAIN_LOGO_NEW_CAPITAL_COM)
+
 		ActionChains(wd) \
 			.move_to_element(elements[0]) \
 			.perform()
