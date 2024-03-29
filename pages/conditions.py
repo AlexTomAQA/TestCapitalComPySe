@@ -146,11 +146,8 @@ class Conditions(BasePage):
                 case "NoAuth":
                     self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
                     self.to_do_de_authorisation(d, self.driver.current_url)
-                    # self.to_do_authorisation(d, host, cur_login, cur_password)
-                    # self.to_do_de_authorisation(d, host)
                 case "Auth":
                     self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
-                    # self.to_do_authorisation(d, host, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
@@ -197,21 +194,20 @@ class Conditions(BasePage):
         self.click_button(*LoginFormLocators.LOGIN_CONTINUE)
         print(f"{datetime.now()}   => [Continue] button on [Login] form is clicked")
 
+        print(f"\n{datetime.now()}   1. Checking that the Page opened with 'Trading Platform | Capital.com' title")
         # Wait for the new tab to finish loading content
         timeout = 30
         print(f"{datetime.now()}   Set timeout = {timeout}")
+        print(f"{datetime.now()}   Wait Trading platform page with 'Trading Platform | Capital.com' title open =>")
         wait = WebDriverWait(d, timeout)
         wait.until(EC.title_is("Trading Platform | Capital.com"))
-        print(f"{datetime.now()}   -> Page with 'Trading Platform | Capital.com' title opened")
+        print(f"{datetime.now()}   => Trading platform page with 'Trading Platform | Capital.com' title opened")
 
         platform_url = "https://capital.com/trading/platform/"
         trading_platform = TradingPlatform(d, platform_url)
 
         # if top_bar.trading_platform_logo_is_present():
-        if trading_platform.should_be_platform_logo():
-            print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
-        else:
-            print(f'{datetime.now()}   -> "Capital.com" logo mission')
+        trading_platform.should_be_platform_logo()
 
         # self.clear_charts_list(d)
         d.back()

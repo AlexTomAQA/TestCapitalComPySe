@@ -53,18 +53,25 @@ class TradingInstrumentTradeButton(BasePage):
             self.open_page()
 
         # Check presenting and visible 'Trading instrument' widget
-        print(f"{datetime.now()}   IS 'Trading instrument' widget present on this page? =>")
+        print(f"\n{datetime.now()}   IS 'Trading instrument' widget present on this page? =>")
         widget_trading_instrument = self.driver.find_elements(*ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET)
         if len(widget_trading_instrument) == 0:
-            print(f"{datetime.now()}   => 'Trading instrument' widget is NOT present on this page\n")
-            pytest.fail("'Trading instrument' widget is NOT present on this page")
-        print(f"{datetime.now()}   => 'Trading instrument' widget present on this page!\n")
+            msg = "'Trading instrument' widget is NOT present on this page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => 'Trading instrument' widget present on this page!")
 
-        print(f"{datetime.now()}   IS 'Trading instrument' widget visible on this page? =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            widget_trading_instrument[0]
+        )
+
+        print(f"\n{datetime.now()}   IS 'Trading instrument' widget visible on this page? =>")
         if not self.element_is_visible(ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET, 5):
-            print(f"{datetime.now()}   => 'Trading instrument' widget is NOT visible on this page!\n")
-            pytest.fail("'Trading instrument' widget is NOT visible on this page!")
-        print(f"{datetime.now()}   => 'Trading instrument' widget is visible on this page!\n")
+            msg = "'Trading instrument' widget is NOT visible on this page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => 'Trading instrument' widget is visible on this page!")
 
         # create self.market_locator for current market
         match cur_market:
@@ -84,14 +91,15 @@ class TradingInstrumentTradeButton(BasePage):
                 self.market_locator = ButtonsOnPageLocators.ETFS_MARKET_TRADING_INSTRUMENT
 
         # Check presenting and visible current market Tab
-        print(f"{datetime.now()}   IS MARKET '{cur_market}' present on this page? =>")
+        print(f"\n{datetime.now()}   IS MARKET '{cur_market}' present on this page? =>")
         market_list = self.driver.find_elements(*self.market_locator)
         if len(market_list) == 0:
-            print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT present on this page\n")
-            pytest.fail(f"MARKET '{cur_market}' is NOT present on this page")
-        print(f"{datetime.now()}   => MARKET '{cur_market}' present on this page!\n")
+            msg = f"MARKET '{cur_market}' is NOT present on this page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => MARKET '{cur_market}' present on this page!")
 
-        print(f"{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
+        print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
         if not self.element_is_visible(self.market_locator, 5):
             print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible right now on page, "
                   f"but need to check in 'Meatballs menu'!")
@@ -101,54 +109,60 @@ class TradingInstrumentTradeButton(BasePage):
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.driver.find_element(*self.market_locator)
             )
-        if not self.element_is_visible(self.market_locator, 5):
-            print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible on this page!\n")
-            pytest.fail(f"MARKET '{cur_market}' is NOT visible on this page!")
-        print(f"{datetime.now()}   => MARKET '{cur_market}' is visible on this page!\n")
 
-        # Start click Tab current market
-        print(f"{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             self.driver.find_element(*self.market_locator)
         )
 
-        print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
-        if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 5):
-            print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
-            msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
+        if not self.element_is_visible(self.market_locator, 5):
+            msg = "MARKET '{cur_market}' is NOT visible on this page"
+            print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")
+        print(f"{datetime.now()}   => MARKET '{cur_market}' is visible on this page!")
 
-        try:
-            self.driver.find_element(*self.market_locator).click()
-            print(f"{datetime.now()}   => End Click Tab '{cur_market}' MARKET\n")
-        except ElementNotInteractableException:
-            print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clicked\n")
-            pytest.fail("Checking element is not clicked")
+        if cur_market != "Most_traded":
+            # Start click Tab current market
+            print(f"\n{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
+            print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
+            if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 5):
+                msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
+                print(f"{datetime.now()}   => {msg}")
+                Common().pytest_fail(msg)
+            print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")
+
+            try:
+                self.driver.find_element(*self.market_locator).click()
+                print(f"{datetime.now()}   => End Click Tab '{cur_market}' MARKET")
+            except ElementNotInteractableException:
+                msg = "Tab '{cur_market}' MARKET is NOT clicked"
+                print(f"{datetime.now()}   => {msg}")
+                Common().pytest_fail(msg)
 
         # Check presenting and visible Instruments in 'Trading instrument' widget
-        print(f"{datetime.now()}   Is Instruments present? =>")
+        print(f"\n{datetime.now()}   Is Instruments present? =>")
         self.instruments_locator = ButtonsOnPageLocators.TRADE_BUTTON_TRADING_INSTRUMENT
         instruments_list = self.driver.find_elements(*self.instruments_locator)
         if len(instruments_list) == 0:
-            print(f"{datetime.now()}   => Instruments is NOT present on this page\n")
-            pytest.fail("Instruments is NOT present on this page")
-        print(f"{datetime.now()}   => Instruments is present on this page!\n")
+            msg = "Instruments is NOT present on this page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => Instruments is present on this page")
 
-        print(f"{datetime.now()}   Is Instruments visible? =>")
+        print(f"\n{datetime.now()}   Is Instruments visible? =>")
         if not self.element_is_visible(self.instruments_locator, 5):
-            print(f"{datetime.now()}   => Instruments is NOT visible on this page!\n")
-            pytest.fail("Instruments is NOT visible on this page!")
-        print(f"{datetime.now()}   => Instruments is visible on this page!\n")
+            msg = "Instruments is NOT visible on this page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => Instruments is visible on this page")
 
         # Start find random buttons [Trade]
-        print(f"{datetime.now()}   Start find random buttons [Trade] on the TAB '{cur_market}'=>")
+        print(f"\n{datetime.now()}   Start find random buttons [Trade] on the TAB '{cur_market}'=>")
         qty_buttons = len(instruments_list)
         count_of_runs = qty_buttons if self.qty_random_buttons >= qty_buttons else self.qty_random_buttons
         self.item_list = random.sample(range(qty_buttons), count_of_runs)
         print(f"{datetime.now()}   => End find '{count_of_runs}' random buttons [Trade] "
-              f"from list {self.item_list} on the TAB '{cur_market}'\n")
+              f"from list {self.item_list} on the TAB '{cur_market}'")
 
         return self.item_list
 
