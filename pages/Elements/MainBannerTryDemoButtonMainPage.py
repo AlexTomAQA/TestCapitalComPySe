@@ -22,21 +22,20 @@ class MainBannerTryDemoButtonMainPage(BasePage):
         self.element_click()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
-
-        if not (cur_language == "" and cur_country == "gb"):
-            # старая верстка
+        if cur_language == "" and cur_country == "gb":
+            # новая верстка
             match cur_role:
                 case "NoReg":
-                    test_element.assert_signup(d, cur_language, cur_item_link)
+                    test_element.assert_signup_pause(d, cur_language, cur_item_link)
                 case "NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(d, cur_item_link, True)
         else:
-            # новая верстка
+            # старая верстка
             match cur_role:
                 case "NoReg":
-                    test_element.assert_signup_new(d, cur_language, cur_item_link)
+                    test_element.assert_signup(d, cur_language, cur_item_link)
                 case "NoAuth":
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
