@@ -5,14 +5,17 @@
 """
 
 from datetime import datetime
+
 import pytest
 import allure
-from pages.Signup_login.signup_login import SignupLogin
-from pages.base_page import BasePage
-from pages.Elements.AssertClass import AssertClass
-from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
 from selenium.webdriver import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException
+
+from pages.Signup_login.signup_login import SignupLogin
+from pages.base_page import BasePage
+from pages.common import Common
+from pages.Elements.AssertClass import AssertClass
+from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
 
 
 class PageInstrumentLongPositionGoToPlatformButton(BasePage):
@@ -47,7 +50,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
         toolinfo = self.driver.find_element(PageTradingInstrumentMarketsLocators.TOOLINFO_LONG_POSITION_OVERNIGHT_FEE)
         if len(toolinfo) == 0:
             print(f"{datetime.now()}   => TOOLINFO_LONG_POSITION_OVERNIGHT_FEE is not present on the page")
-            pytest.fail("Bug ? TOOLINFO_LONG_POSITION_OVERNIGHT_FEE is not present on the page")
+            Common().pytest_fail("Bug # ???   TOOLINFO_LONG_POSITION_OVERNIGHT_FEE is not present on the page")
 
         ActionChains(d) \
             .move_to_element(toolinfo[0]) \
@@ -58,7 +61,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
         tooltip = self.element_is_visible(PageTradingInstrumentMarketsLocators.TOOLTIP_LONG_POSITION_FEE)
         if tooltip == 0:
             print(f"{datetime.now()}   => TOOLTIP_LONG_POSITION_FEE is not open")
-            pytest.fail("TOOLTIP_LONG_POSITION_FEE is not open")
+            Common().pytest_fail("Bug # ???   TOOLTIP_LONG_POSITION_FEE is not open")
 
         ActionChains(d) \
             .move_to_element(tooltip) \
@@ -69,7 +72,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
         print(f"{datetime.now()}   Is button BUTTON_GO_TO_PLATFORM_LG present on the page? =>")
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM_LG is not present on the page")
-            return False
+            Common().pytest_fail("Bug # ???   BUTTON_GO_TO_PLATFORM_LG is not present on the page")
         print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM_LG is present on the page")
 
         print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM_LG scroll =>")
@@ -88,30 +91,12 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
 
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
-            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM_LG is not clickable after {time_out} sec. Stop TC>")
-            pytest.fail(f"BUTTON_GO_TO_PLATFORM_LG is not clickable after {time_out} sec.")
-
+            print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM_LG is not clickable after {time_out} sec. Stop TC>")
+            Common().pytest_fail(f"Bug # ???   BUTTON_GO_TO_PLATFORM_LG is not clickable after {time_out} sec.")
         print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM_LG is clickable =>")
 
-        try:
-            button_list[0].click()
-            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM_LG clicked")
-        except ElementClickInterceptedException:
-            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM_LG not clicked")
-            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
-
-            page_ = SignupLogin(self.driver)
-            if page_.close_signup_form():
-                pass
-            elif page_.close_login_form():
-                pass
-            elif page_.close_signup_page():
-                pass
-            else:
-                page_.close_login_page()
-
-            button_list[0].click()
-            del page_
+        button_list[0].click()
+        print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM_LG clicked")
 
         del button_list
         return True

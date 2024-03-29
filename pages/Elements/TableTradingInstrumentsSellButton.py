@@ -7,7 +7,6 @@
 import random
 from datetime import datetime
 
-# import pytest
 import allure
 
 from pages.Signup_login.signup_login import SignupLogin
@@ -80,8 +79,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         if len(field_dropdown_list) == 0:
             Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in Live table")
-
-        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the Live prices table!")
+        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the table!")
 
         print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
         self.driver.execute_script(
@@ -119,6 +117,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         )
 
         if not item_sort_list:
+            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not visible in item_sort_list?")
             Common().pytest_fail("Bug # ??? item_sort_list is not visible")
         print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
@@ -144,7 +143,6 @@ class TableTradingInstrumentsSellButton(BasePage):
             item_list = random.sample(range(qty_buttons), count_of_runs)
             print(f"{datetime.now()}   => End find {count_of_runs} random buttons [Sell] on the cur_sort "
                   f"\"{cur_sort}\"")
-
             return item_list
         else:
             print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!\n")
