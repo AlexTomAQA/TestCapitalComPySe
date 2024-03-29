@@ -1061,8 +1061,10 @@ class MenuUS0104Commodities:
 #     SUB_MENU_EN_SHARES = (By.CSS_SELECTOR,
 #                            ".cc-nav__dropdown a[href$='major-world-indices']")
 
+
 class MenuUS0102MarketsShares:
-    SUB_MENU_EN_SHARES = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-currency-prices']")
+    # SUB_MENU_EN_SHARES = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-currency-prices']")
+    SUB_MENU_EN_SHARES = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/live-share-prices']")
     SUB_MENU_AR_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/asear-alashum-fi-alwaqt-alfielii']")
     SUB_MENU_DE_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/aktienkurse-realtime']")
     SUB_MENU_EL_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/zontanes-times-metoxon']")
