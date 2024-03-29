@@ -35,7 +35,7 @@ class TableTradingInstrumentsSellButton(BasePage):
 
         super().__init__(browser, link, bid)
 
-    @allure.step(f'{datetime.now()}   Start Full test [Sell] button on Table Widget Trading Instruments')
+    @allure.step('Start Full test [Sell] button on Table Widget Trading Instruments')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_sort):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   List of random items = {item_list}")
