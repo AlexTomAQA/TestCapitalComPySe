@@ -1,0 +1,74 @@
+2024-03-30 06:22:35 ERROR Elements not present after 0.5 seconds on page: https://capital.com/cfds-vs-forex
+2024-03-30 06:22:35 ERROR Can't click element by locator ('css selector', '#s_overlay button.s_cancel')
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/Elements/MainBannerStartTradingButton.py", line 101, in element_click
+    button_list[0].click()
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <a href="https://capital.com/trading/signup" class="cc-banner__btn btn btn--darkText js_signup js-analyticsClick" data-type="top_banner_btn">...</a> is not clickable at point (196, 357). Other element would receive the click: <div class="onetrust-pc-dark-filter ot-fade-in" style="z-index:2147483645;"></div>
+  (Session info: chrome=123.0.6312.58)
+Stacktrace:
+#0 0x562944c648a3 <unknown>
+#1 0x56294495a8c6 <unknown>
+#2 0x5629449ac233 <unknown>
+#3 0x5629449aa14e <unknown>
+#4 0x5629449a7b27 <unknown>
+#5 0x5629449a6ed3 <unknown>
+#6 0x56294499a507 <unknown>
+#7 0x5629449c75a2 <unknown>
+#8 0x562944999e98 <unknown>
+#9 0x5629449c776e <unknown>
+#10 0x5629449e5c19 <unknown>
+#11 0x5629449c7343 <unknown>
+#12 0x562944998593 <unknown>
+#13 0x562944998f5e <unknown>
+#14 0x562944c2888b <unknown>
+#15 0x562944c2c7e5 <unknown>
+#16 0x562944c165b1 <unknown>
+#17 0x562944c2d372 <unknown>
+#18 0x562944bfb8bf <unknown>
+#19 0x562944c53768 <unknown>
+#20 0x562944c5393b <unknown>
+#21 0x562944c639f4 <unknown>
+#22 0x7fca6d894ac3 <unknown>
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 346, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator ('css selector', '#s_overlay button.s_cancel')
+Stacktrace:
+#0 0x562944c648a3 <unknown>
+#1 0x56294495a8c6 <unknown>
+#2 0x5629449a5618 <unknown>
+#3 0x5629449a56d1 <unknown>
+#4 0x5629449e8744 <unknown>
+#5 0x5629449c75cd <unknown>
+#6 0x5629449e5c19 <unknown>
+#7 0x5629449c7343 <unknown>
+#8 0x562944998593 <unknown>
+#9 0x562944998f5e <unknown>
+#10 0x562944c2888b <unknown>
+#11 0x562944c2c7e5 <unknown>
+#12 0x562944c165b1 <unknown>
+#13 0x562944c2d372 <unknown>
+#14 0x562944bfb8bf <unknown>
+#15 0x562944c53768 <unknown>
+#16 0x562944c5393b <unknown>
+#17 0x562944c639f4 <unknown>
+#18 0x7fca6d894ac3 <unknown>
