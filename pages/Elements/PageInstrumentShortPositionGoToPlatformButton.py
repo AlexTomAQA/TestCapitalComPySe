@@ -37,7 +37,7 @@ class PageInstrumentShortPositionGoToPlatformButton(BasePage):
             self.open_page()
 
         print(f"{datetime.now()} Is TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE present on the page? =>")
-        toolinfo = self.driver.find_element(PageTradingInstrumentMarketsLocators.TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
+        toolinfo = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
         if len(toolinfo) == 0:
             print(f"{datetime.now()}   => TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
             pytest.fail("Bug ? TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
