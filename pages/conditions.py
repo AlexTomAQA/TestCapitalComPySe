@@ -65,7 +65,7 @@ class Conditions(BasePage):
         global prev_country
         # global flag_of_bug
 
-        print(f"\n\n{datetime.now()}   START PRECONDITIONS =>\n")
+        print(f"\n{datetime.now()}   START PRECONDITIONS =>")
         print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
         if test_link == "?" or Common.flag_of_bug:
             test_link = host
@@ -88,16 +88,16 @@ class Conditions(BasePage):
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Работа с куками")
         if cur_role != prev_role:
-            print(f"{datetime.now()}   => Prev. role - '{prev_role}'")
-            print(f"{datetime.now()}   => Current testing role - '{cur_role}'")
-            print(f"{datetime.now()}   All cookies must be delete =>")
+            print(f"{datetime.now()}   Prev. role - '{prev_role}'")
+            print(f"{datetime.now()}   Current testing role - '{cur_role}'")
+            print(f"\n{datetime.now()}   All cookies must be delete =>")
 
             # if test_link != host:
             #     test_link = host
             #     self.link = test_link
             #     self.open_page()
             d.delete_all_cookies()
-            print(f"\n{datetime.now()}   => All cookies are deleted")
+            print(f"{datetime.now()}   => All cookies are deleted")
             if test_link != host:
                 test_link = host
                 self.link = test_link
@@ -109,7 +109,8 @@ class Conditions(BasePage):
 
         # устанавливаем Страну, если не соответствует предыдущей
         # Captcha(d).fail_test_if_captcha_present_v2()
-        print(f"\n{datetime.now()}   => Prev. country - '{prev_country}'")
+        print(f"\n{datetime.now()}   Prev. country - '{prev_country}'")
+        print(f"{datetime.now()}   Cur. country - '{cur_country}'")
         if cur_country != prev_country:
             print(f"{datetime.now()}   Set '{cur_country}' country =>")
             # page_menu = MenuSection(d, host)
@@ -126,9 +127,10 @@ class Conditions(BasePage):
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
-        print(f"\n{datetime.now()}   => Prev. language - '{language_prev}'")
+        print(f"\n{datetime.now()}   Prev. language - '{language_prev}'")
         if language_cur == "":
             language_cur = "en"
+        print(f"{datetime.now()}   Cur. language - '{language_cur}'")
         if cur_language != prev_language or Common.flag_of_bug:
             print(f"{datetime.now()}   Set '{language_cur}' language =>")
             # page_menu = MenuSection(d, host)
@@ -140,14 +142,15 @@ class Conditions(BasePage):
         print(f"{datetime.now()}   => Language is set to '{language_cur}'")
 
         # Продолжаем настройки в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   => Prev. role - '{prev_role}'")
+        print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
+        print(f"{datetime.now()}   Cur. role - '{cur_role}'")
         if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
-                    self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
-                    self.to_do_de_authorisation(d, self.driver.current_url)
+                    self.to_do_authorisation(d, host, cur_login, cur_password)
+                    self.to_do_de_authorisation(d, host)
                 case "Auth":
-                    self.to_do_authorisation(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_authorisation(d, host, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
@@ -210,7 +213,7 @@ class Conditions(BasePage):
         trading_platform.should_be_platform_logo()
 
         # self.clear_charts_list(d)
-        d.back()
+        Common().browser_back_to_link(d, link)
 
     @allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
     def clear_charts_list(self, wd):
