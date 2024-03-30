@@ -19,7 +19,7 @@ from selenium.common.exceptions import ElementNotInteractableException
 
 class TradingInstrumentTradeButton(BasePage):
     def __init__(self, browser, link, bid):
-        self.qty_random_buttons = 2
+        self.qty_random_buttons = 1
         self.instruments_locator = None
         self.item_list = None
 
@@ -99,6 +99,11 @@ class TradingInstrumentTradeButton(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => MARKET '{cur_market}' present on this page!")
 
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            market_list[0]
+        )
+
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
         if not self.element_is_visible(self.market_locator, 5):
             print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible right now on page, "
@@ -109,11 +114,6 @@ class TradingInstrumentTradeButton(BasePage):
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.driver.find_element(*self.market_locator)
             )
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*self.market_locator)
-        )
 
         if not self.element_is_visible(self.market_locator, 5):
             msg = "MARKET '{cur_market}' is NOT visible on this page"
