@@ -1,0 +1,104 @@
+{'width': 1280, 'height': 800}
+
+2024-03-29 23:13:32.055248   worker_id = master
+
+2024-03-29 23:13:32.055265   0. Allure grouping v4
+
+
+2024-03-29 23:13:32.055457   START PRECONDITIONS =>
+
+
+2024-03-29 23:13:32.055473   => flag_of_bug - False
+
+2024-03-29 23:13:32.055484   => Windows size - {'width': 1280, 'height': 800}
+2024-03-29 23:13:32.056804   Set windows position at (0, 0) =>
+2024-03-29 23:13:32.158654   Set resolution 1280 * 800 =>
+2024-03-29 23:13:32.260659   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-29 23:13:33.284082   Капчи нет. Идем дальше
+
+2024-03-29 23:13:33.284164   Работа с куками
+
+2024-03-29 23:13:33.284177   => Prev. country - 'ae'
+2024-03-29 23:13:33.284187   => Country set to 'ae'
+
+2024-03-29 23:13:33.284196   => Prev. language - 'en'
+2024-03-29 23:13:33.284206   => Language is set to 'en'
+
+2024-03-29 23:13:33.284215   => Prev. role - 'Auth'
+2024-03-29 23:13:33.284224   => The 'Auth' role is set
+
+2024-03-29 23:13:33.287078   => THE END PRECONDITIONS
+
+2024-03-29 23:13:33.287129   1. Arrange_v0
+2024-03-29 23:13:33.287143   current_page = https://capital.com/nzd-usd-rate
+2024-03-29 23:13:33.289682   link = https://capital.com/nzd-usd-rate
+2024-03-29 23:13:33.292327   BUTTON_BUY is located on the page? =>
+2024-03-29 23:13:33.299789   => BUTTON_BUY is located on the page!
+2024-03-29 23:13:33.299968   Start Checking that form [Sign up] popped up on the page =>
+2024-03-29 23:13:34.827190   '[Sign up]' form was not popped up
+
+2024-03-29 23:13:34.827378   2. Act_v0
+2024-03-29 23:13:34.832471   BUTTON_BUY is present? =>
+2024-03-29 23:13:34.832493   => BUTTON_BUY is present on the page
+2024-03-29 23:13:34.832503   BUTTON_BUY scroll =>
+2024-03-29 23:13:34.835767   => BUTTON_BUY scrolled
+2024-03-29 23:13:34.880119   BUTTON_BUY is clickable? =>
+2024-03-29 23:13:34.892858   BUTTON_BUY CLICK =>
+2024-03-29 23:13:35.153112   => BUTTON_BUY clicked!
+
+2024-03-29 23:13:35.153415   3. Assert_v4
+2024-03-29 23:13:35.153591   Checking that the trading platform page has opened (v4) =>
+2024-03-29 23:13:35.161368   Checking way # 1 => 
+
+2024-03-29 23:13:35.161539   1. Checking that the Trading platform page has valid title =>
+2024-03-29 23:13:35.165174   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-29 23:13:35.165350   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-29 23:13:37.166178   => 'capital*com' logo is present on the current page
+
+2024-03-29 23:13:37.166258   tpd = False
+2024-03-29 23:13:37.166401   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-29 23:13:37.188264   => The page with https://capital.com/trading/platform/charting/253454610158788?side=buy&ids=1361805280629956,23381802046660,457749024515097,55001351299154,93810675737547,235355617928217,123763777679691,123763777684633,23381801972230,253454610158788 url was opened in lIVE mode
+
+2024-03-29 23:13:37.191620   4. Check that opened page with https://capital.com/trading/platform/charting/253454610158788?side=buy&ids=1361805280629956,23381802046660,457749024515097,55001351299154,93810675737547,235355617928217,123763777679691,123763777684633,23381801972230,253454610158788 url
+with selected corresponding trading instrument 'New Zealand Dollar / US Dollar' =>
+
+2024-03-29 23:13:37.194416   trade_instrument = 'New Zealand Dollar / US Dollar'
+
+2024-03-29 23:13:37.194433   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-29 23:13:37.610469   => Trading Platform opened in Chart mode
+
+2024-03-29 23:13:37.610518   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-03-29 23:13:37.634476   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-03-29 23:13:37.634513   Top Charts List contain 10 trade instruments
+
+2024-03-29 23:13:37.634524   Top Charts List contain following trade instruments:
+'Amazon.com Inc (Extended Hours)'
+'AUD/USD'
+'ZAR/JPY'
+'CHF/ZAR'
+'EUR/NOK'
+'MXN/JPY'
+'GBP/SEK'
+''
+''
+''
+
+Bug: Bid:01.03.01_005-en.ae.Auth
+
+2024-03-29 23:13:37.749518   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f0de0681430>
+
+2024-03-29 23:13:38.330246   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 23:13:38.880707   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 23:13:40.140326   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-29 23:13:40.665307   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-29 23:13:40.667058   Баг Bid:01.03.01_005-en.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

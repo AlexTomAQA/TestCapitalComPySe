@@ -1,0 +1,83 @@
+{'width': 1280, 'height': 800}
+
+2024-03-30 00:24:33.925194   worker_id = master
+
+2024-03-30 00:24:33.925214   0. Allure grouping v4
+
+
+2024-03-30 00:24:33.925484   START PRECONDITIONS =>
+
+
+2024-03-30 00:24:33.925503   => flag_of_bug - False
+
+2024-03-30 00:24:33.925515   => Windows size - {'width': 1280, 'height': 800}
+2024-03-30 00:24:33.926873   Set windows position at (0, 0) =>
+2024-03-30 00:24:34.029157   Set resolution 1280 * 800 =>
+2024-03-30 00:24:34.131581   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-03-30 00:24:35.166180   Капчи нет. Идем дальше
+
+2024-03-30 00:24:35.166266   Работа с куками
+
+2024-03-30 00:24:35.166279   => Prev. country - 'ae'
+2024-03-30 00:24:35.166289   => Country set to 'ae'
+
+2024-03-30 00:24:35.166299   => Prev. language - 'en'
+2024-03-30 00:24:35.166308   => Language is set to 'en'
+
+2024-03-30 00:24:35.166317   => Prev. role - 'Auth'
+2024-03-30 00:24:35.166326   => The 'Auth' role is set
+
+2024-03-30 00:24:35.169004   => THE END PRECONDITIONS
+
+2024-03-30 00:24:35.169056   1. Arrange_v0
+2024-03-30 00:24:35.169070   current_page = https://capital.com/trade-silver
+2024-03-30 00:24:35.171583   link = https://capital.com/trade-silver
+2024-03-30 00:24:35.181517   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-03-30 00:24:35.181539   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-03-30 00:24:35.181548   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-03-30 00:24:35.196815   => 'Sell' button in Content block scrolled
+2024-03-30 00:24:35.197069   Start Checking that form [Sign up] popped up on the page =>
+2024-03-30 00:24:36.736294   '[Sign up]' form was not popped up
+
+2024-03-30 00:24:36.736481   2. Act_v0
+2024-03-30 00:24:36.995168   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-03-30 00:24:36.995216   => return trade_instrument = 27041281599427780
+
+2024-03-30 00:24:36.995519   3. Assert_v4
+2024-03-30 00:24:36.995693   Checking that the trading platform page has opened (v4) =>
+2024-03-30 00:24:37.509136   Checking way # 1 => 
+
+2024-03-30 00:24:37.509317   1. Checking that the Trading platform page has valid title =>
+2024-03-30 00:24:37.511784   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-03-30 00:24:37.511933   2. Checking that the Trading platform LOGO is present on the page =>
+2024-03-30 00:24:39.048694   => 'capital*com' logo is present on the current page
+
+2024-03-30 00:24:39.048777   tpd = False
+2024-03-30 00:24:39.048922   3.2. Checking that the Trading platform opened in LIVE mode =>
+2024-03-30 00:24:39.060329   => The page with https://capital.com/trading/platform/ url was opened in lIVE mode
+
+2024-03-30 00:24:39.062939   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '27041281599427780' =>
+
+2024-03-30 00:24:39.065591   trade_instrument = '27041281599427780'
+
+2024-03-30 00:24:39.065608   4.1. Check that Trading Platform is opened in Chart mode
+2024-03-30 00:24:40.098268   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.03.01_03-en.ae.Auth
+
+2024-03-30 00:24:40.098321   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f77209ce360>
+
+2024-03-30 00:24:40.652170   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-30 00:24:41.095965   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-30 00:24:42.100094   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-03-30 00:24:42.538005   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-03-30 00:24:42.539459   Баг Bid:11.02.03.01_03-en.ae.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
