@@ -170,6 +170,18 @@ class Common:
 		assert False, msg
 
 	@staticmethod
+	def browser_back_to_link(wd, test_link):
+		count = 5
+		do = True
+		while do:
+			wd.back()
+			print(f"{datetime.now()}   => Driver.back")
+			print(wd.current_url)
+			count -= 1
+			if wd.current_url == test_link or count == 0:
+				do = False
+
+	@staticmethod
 	def assert_true_false(condition=False, msg=""):
 		if condition:
 			Common.flag_of_bug = False
