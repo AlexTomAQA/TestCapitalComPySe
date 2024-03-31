@@ -15,7 +15,7 @@ class TestESG:
 
     @allure.step("Start test_01.07_004 button '1. Create & verify your account'")
     @pytest.mark.test_004
-    def test_01_create_verify_your_account(
+    def test_004_create_verify_your_account(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create & verify account]

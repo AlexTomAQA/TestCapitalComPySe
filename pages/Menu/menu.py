@@ -1695,3 +1695,45 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Focus moved to 'Shares' submenu and clicked")
 
         del sub_menu
+
+    def open_esg_markets_menu(self, d, cur_language, cur_country, link):
+        pass
+
+
+@allure.step('Select "Markets" menu, "ESG" submenu click')
+def open_esg_market_menu(self, d, cur_language, cur_country, link):
+    print(f'\n{datetime.now()}   START Open "Markets" menu, "ESG" submenu =>')
+    print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+    print(f"\n{datetime.now()}   2. Link = {link}")
+    if not self.current_page_is(link):
+        self.link = link
+        self.open_page()
+
+    self.move_focus_to_markets_menu(d, cur_language, cur_country)
+    self.sub_menu_esg_move_focus_click(d, cur_language)
+    Common().move_pointer_to_capital_com_label(d)
+
+    print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+    return d.current_url
+
+@allure.step(f"{datetime.now()}. Click submenu 'ESG'.")
+def sub_menu_esg_move_focus_click(self, d, test_language):
+    sub_menu = None
+
+    match test_language:
+        case "":
+            sub_menu = d.find_elements(*MenuUS0102MarketsESG.SUB_MENU_EN_ESG)
+
+    if len(sub_menu) == 0:
+        Common().pytest_fail(f"Bug # ??? For language '{test_language}' \"Markets > ESG\" submenu doesn't exist")
+
+    ActionChains(d) \
+        .move_to_element(sub_menu[0]) \
+        .pause(0.5) \
+        .click() \
+        .pause(0.5) \
+        .perform()
+
+    print(f"{datetime.now()}   => Focus moved to 'ESG' submenu and clicked")
+
+    del sub_menu
