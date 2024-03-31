@@ -227,8 +227,9 @@ class MenuSection(BasePage):
         Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
-    @allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
     def menu_language_and_country_move_focus(self, test_language):
+        allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
+
         d = self.driver
         # menu = list()
         menu = d.find_elements(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)  # not Glossary
@@ -867,8 +868,8 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}   Set language")
     def set_language(self, cur_language):
+        allure.step(f"{datetime.now()}   Set language")
 
         if cur_language == "":
             cur_language = "en"
@@ -889,8 +890,8 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
         return self.driver.current_url
 
-    @allure.step(f"{datetime.now()}   Start Set country")
     def set_country(self, cur_country):
+        allure.step(f"{datetime.now()}   Set country")
 
         elements = self.driver.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
