@@ -63,7 +63,7 @@ class TradingInstrumentTradeButton(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            widget_trading_instrument[0]
+            self.driver.find_elements(*ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET)[0]
         )
 
         print(f"\n{datetime.now()}   IS 'Trading instrument' widget visible on this page? =>")
