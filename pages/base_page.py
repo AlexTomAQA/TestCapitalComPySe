@@ -153,9 +153,10 @@ class BasePage:
         #     pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
-    @allure.step(f"{datetime.now()}   Start Accepting all cookies")
     @HandleExcElementsDecorator()
     def button_accept_all_cookies_click(self):
+        allure.step(f"{datetime.now()}   Start Accepting all cookies")
+
         time_out = 30
         print(f"\n{datetime.now()}   Step 'Click button [Accept all cookies]'")
 
@@ -429,7 +430,6 @@ class BasePage:
         ), f"Expected title {title} but got {el_title.text} on page: {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
-    @allure.step("Check that the page has the expected title - ver 2")
     def should_be_page_title_v2(self, title):
         """
         Check that the page has the expected title.
@@ -437,6 +437,8 @@ class BasePage:
         Args:
             title: expected page's title
         """
+        allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 2")
+
         print(f"\n{datetime.now()}   1. Checking that the Trading platform page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => The title of current page is '{el_title}'")
