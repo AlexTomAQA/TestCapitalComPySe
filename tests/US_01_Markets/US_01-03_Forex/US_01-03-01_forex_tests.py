@@ -97,7 +97,7 @@ class TestTradingInstrumentPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = PageInstrumentLongPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi_v2(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test_01.03.01_004 of button [Go to platform] short position on trading instrument page'")
     @pytest.mark.test_004
