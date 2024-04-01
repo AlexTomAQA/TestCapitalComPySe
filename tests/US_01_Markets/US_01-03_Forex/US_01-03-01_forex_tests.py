@@ -1,9 +1,9 @@
 import allure
 import pytest
 
+from pages.Elements.PageInstrumentNotificationButton import PageInstrumentNotificationButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
-from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
 from pages.common import Common
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -165,28 +165,49 @@ class TestTradingInstrumentPage:
         test_element = TradeCFDSellButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of button [Try demo] in Block 'Why choose Capital.com' on trading instrument page")
-    @pytest.mark.test_008
-    def test_008_page_trading_instrument_why_choose_block_try_demo_button(
+    @allure.step("Start test of button [Notification] on trading instrument page")
+    @pytest.mark.test_007
+    def test_007_page_instrument_notification_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
-        Check: Button [Try Demo] in Block 'Why choose Capital.com?' Main Page
+        Check: Button [Notification] on trading instrument page
         Language: All. License: All, except FCA.
         """
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.03", "Markets > Menu item [Forex]",
-            ".01_008", "Testing button [Try Demo] in Block 'Why choose Capital.com?' on trading instrument page")
-
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+            ".01_007", "Testing button [Notification] on trading instrument page")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = WhyChooseBlockTryDemoButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = PageInstrumentNotificationButton(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
+#    @allure.step("Start test of button [Try now] in Block 'Why choose Capital.com' on trading instrument page")
+#    @pytest.mark.test_008
+#    def test_008_page_trading_instrument_why_choose_block_try_demo_button(
+#            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+#        """
+#        Check: Button [Try now] in Block 'Why choose Capital.com?' on trading instrument page
+#        Language: All. License: All, except FCA.
+#        """
+
+#        bid = build_dynamic_arg_v4(
+#            d, worker_id, cur_language, cur_country, cur_role,
+#            "01.03", "Markets > Menu item [Forex]",
+#            ".01_008", "Testing button [Try now] in Block 'Why choose Capital.com?' on trading instrument page")
+
+#        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+#        page_conditions = Conditions(d, "")
+#        page_conditions.preconditions(
+#            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+#        test_element = WhyChooseBlockTryNowButton(d, cur_item_link, bid)
+#        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start Trading] in the 'Trading calculator' widget on trading instrument page ")
     @pytest.mark.test_009
@@ -210,6 +231,31 @@ class TestTradingInstrumentPage:
         test_element = TradingCalculatorStartTradingButton(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
+#    @allure.step("Start test of button [Trade now] in block [People Also Watch] Widget 'PromoMarket' on trading "
+#                 "instrument page")
+#    @pytest.mark.test_010
+#    def test_010_page_trading_instrument_block_people_also_watch_widget_promomarket(
+#            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+#        """
+#        Check: Button [Trade now] in block [People Also Watch] Widget 'PromoMarket' on trading instrument page
+#        Language: All. License: All, except FCA.
+#        """
+
+#        bid = build_dynamic_arg_v4(
+#            d, worker_id, cur_language, cur_country, cur_role,
+#            "01.03", "Markets > Menu item [Forex]",
+#            ".01_010", "Testing button [Trade now] in block [People Also Watch] "
+#                       "Widget 'PromoMarket' on trading instrument page")
+
+#        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+#        page_conditions = Conditions(d, "")
+#        page_conditions.preconditions(
+#            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+#        test_element = PromoMarketTradeNowButton(d, cur_item_link, bid)
+#        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
     @allure.step("Start test of button [1. Create & verify your account] in 'Step trading block' on trading instrument "
                  "page")
     @pytest.mark.test_011
@@ -232,4 +278,3 @@ class TestTradingInstrumentPage:
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
-
