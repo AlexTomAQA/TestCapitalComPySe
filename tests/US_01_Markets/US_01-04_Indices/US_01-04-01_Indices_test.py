@@ -102,7 +102,7 @@ class TestIndicesItemPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = PageInstrumentLongPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi_v2(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test button [Go to platform] on page instrument short position")
     @pytest.mark.test_004
