@@ -317,5 +317,7 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, "tbody > tr:nth-child(2) > td:nth-child(1) > div > div > a[href='trading/platform']")
     SHORT_POSITION_OVERNIGHT_FEE = \
         (By.CSS_SELECTOR, ".brick > table.table > tbody > tr:nth-child(3)")
+    SHORT_POSITION_BUTTON_GO_TO_PLATFORM = \
+        (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
 
 
