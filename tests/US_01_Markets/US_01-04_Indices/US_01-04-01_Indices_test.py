@@ -22,7 +22,7 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 def pytest_generate_tests(metafunc):
 
-    file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.text"
+    file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
