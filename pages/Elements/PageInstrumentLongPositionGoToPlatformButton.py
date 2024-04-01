@@ -109,7 +109,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>")
-        tool_info = self.driver.find_elements(PageTradingInstrumentMarketsLocators.LONG_POSITION_OVERNIGHT_FEE)
+        tool_info = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.LONG_POSITION_OVERNIGHT_FEE)
         if len(tool_info) == 0:
             msg = "LONG_POSITION_OVERNIGHT_FEE is not present on the page"
             print(f"{datetime.now()}   => {msg}")
@@ -146,7 +146,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
     def element_act_v2(self):
         print(f"\n{datetime.now()}   2. Act_v2")
         print(f"{datetime.now()}   LONG_POSITION_OVERNIGHT_FEE open =>")
-        tool_info = self.driver.find_elements(PageTradingInstrumentMarketsLocators.LONG_POSITION_OVERNIGHT_FEE)
+        tool_info = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.LONG_POSITION_OVERNIGHT_FEE)
         ActionChains(self.driver) \
             .move_to_element(tool_info[0]) \
             .pause(0.5) \
