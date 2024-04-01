@@ -17,7 +17,7 @@ from pages.Elements.TradeCFDSellButton import TradeCFDSellButton
 
 
 def pytest_generate_tests(metafunc):
-    file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.text"
+    file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
@@ -97,7 +97,7 @@ class TestTradingInstrumentPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = PageInstrumentLongPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi_v2(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test_01.03.01_004 of button [Go to platform] short position on trading instrument page'")
     @pytest.mark.test_004
