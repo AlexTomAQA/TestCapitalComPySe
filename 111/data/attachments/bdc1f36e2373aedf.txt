@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-04-01 07:43:06.063693   worker_id = master
+
+2024-04-01 07:43:06.063709   0. Allure grouping v4
+
+2024-04-01 07:43:06.063801   START PRECONDITIONS =>
+
+2024-04-01 07:43:06.063813   => flag_of_bug - True
+2024-04-01 07:43:06.063825   Current page URL = https://capital.com/trade-eurgbp
+2024-04-01 07:43:06.066923   self.link = https://capital.com/
+2024-04-01 07:43:06.066938   link = https://capital.com/
+2024-04-01 07:43:07.843748   => Loaded page https://capital.com/
+
+2024-04-01 07:43:07.848274   => Windows size - {'width': 1280, 'height': 800}
+2024-04-01 07:43:07.852582   Set windows position at (0, 0) =>
+2024-04-01 07:43:07.954952   Set resolution 1280 * 800 =>
+2024-04-01 07:43:08.057755   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-01 07:43:09.103691   Капчи нет. Идем дальше
+
+2024-04-01 07:43:09.103779   Работа с куками
+
+2024-04-01 07:43:09.103792   Prev. country - 'ae'
+2024-04-01 07:43:09.103802   Cur. country - 'ae'
+2024-04-01 07:43:09.103812   => Country set to 'ae'
+
+2024-04-01 07:43:09.103821   Prev. language - 'en'
+2024-04-01 07:43:09.103830   Cur. language - 'en'
+2024-04-01 07:43:09.103839   => Language is set to 'en'
+
+2024-04-01 07:43:09.103848   Prev. role - 'NoAuth'
+2024-04-01 07:43:09.103856   Cur. role - 'NoAuth'
+2024-04-01 07:43:09.103865   => The 'NoAuth' role is set
+
+2024-04-01 07:43:09.106497   => THE END PRECONDITIONS
+
+2024-04-01 07:43:09.106525   1. Arrange_v0
+2024-04-01 07:43:09.106537   current_page = https://capital.com/
+2024-04-01 07:43:09.108943   link = https://capital.com/trade-eurgbp
+2024-04-01 07:43:09.111326   Current page URL = https://capital.com/
+2024-04-01 07:43:09.113621   self.link = https://capital.com/trade-eurgbp
+2024-04-01 07:43:09.113636   link = https://capital.com/trade-eurgbp
+2024-04-01 07:43:10.880448   => Loaded page https://capital.com/trade-eurgbp
+2024-04-01 07:43:10.899240   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-01 07:43:10.899287   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-01 07:43:10.899301   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-01 07:43:10.906668   => 'Sell' button in Content block scrolled
+2024-04-01 07:43:10.906859   Start Checking that form [Sign up] popped up on the page =>
+2024-04-01 07:43:12.443618   '[Sign up]' form was not popped up
+
+2024-04-01 07:43:12.443814   2. Act_v0
+2024-04-01 07:43:12.475983   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-01 07:43:12.476033   => return trade_instrument = 93810675708048
+
+2024-04-01 07:43:12.476245   3. Assert_Login_v0
+2024-04-01 07:43:12.476328   Check that 'Login' form is opened
+2024-04-01 07:43:15.529262   'Login' form not opened
+2024-04-01 07:43:15.529442   Check that new 'Login' form is opened
+2024-04-01 07:43:18.642356   => New 'Login' form not opened
+2024-04-01 07:43:18.645313   'Login' page not opened
+2024-04-01 07:43:21.726561   'Login' form on trading platform not opened
+2024-04-01 07:43:21.726755   Start step Check that [Sign up] form is opened
+2024-04-01 07:43:21.737584   'Sign up' form opened
+2024-04-01 07:43:21.737611   Assert SIGNUP_HEADER =>
+2024-04-01 07:43:21.747106   Assert SIGNUP_REF_LOGIN =>
+2024-04-01 07:43:21.757154   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-01 07:43:21.767354   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-01 07:43:21.767390   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_04-en.ae.NoAuth
+
+2024-04-01 07:43:21.767453   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fa3a76d9070>
+
+2024-04-01 07:43:22.091497   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-01 07:43:22.447727   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-01 07:43:23.773687   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-01 07:43:23.968072   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-01 07:43:23.969532   Баг Bid:11.02.04.01_04-en.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

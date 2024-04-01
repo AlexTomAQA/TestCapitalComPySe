@@ -1,0 +1,92 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-04-01 06:11:07.815834   worker_id = master
+
+2024-04-01 06:11:07.815847   0. Allure grouping v4
+
+2024-04-01 06:11:07.815937   START PRECONDITIONS =>
+
+2024-04-01 06:11:07.815949   => flag_of_bug - True
+2024-04-01 06:11:07.815961   Current page URL = https://capital.com/live-share-prices
+2024-04-01 06:11:07.818959   self.link = https://capital.com/
+2024-04-01 06:11:07.818973   link = https://capital.com/
+2024-04-01 06:11:09.620201   => Loaded page https://capital.com/
+
+2024-04-01 06:11:09.627217   => Windows size - {'width': 1280, 'height': 800}
+2024-04-01 06:11:09.628715   Set windows position at (0, 0) =>
+2024-04-01 06:11:09.731155   Set resolution 1280 * 800 =>
+2024-04-01 06:11:09.833685   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-01 06:11:10.868831   Капчи нет. Идем дальше
+
+2024-04-01 06:11:10.868923   Работа с куками
+
+2024-04-01 06:11:10.868937   Prev. country - 'ae'
+2024-04-01 06:11:10.868946   Cur. country - 'ae'
+2024-04-01 06:11:10.868955   => Country set to 'ae'
+
+2024-04-01 06:11:10.868964   Prev. language - 'en'
+2024-04-01 06:11:10.868973   Cur. language - 'en'
+2024-04-01 06:11:10.868982   => Language is set to 'en'
+
+2024-04-01 06:11:10.868990   Prev. role - 'NoAuth'
+2024-04-01 06:11:10.868999   Cur. role - 'NoAuth'
+2024-04-01 06:11:10.869008   => The 'NoAuth' role is set
+
+2024-04-01 06:11:10.871821   => THE END PRECONDITIONS
+
+2024-04-01 06:11:10.872004   START Open "Markets" menu, "Shares" submenu =>
+2024-04-01 06:11:10.872020   1. Cur URL = https://capital.com/
+2024-04-01 06:11:10.874505   2. Link = https://capital.com/
+2024-04-01 06:11:10.874521   current_page = https://capital.com/
+2024-04-01 06:11:10.876881   link = https://capital.com/
+2024-04-01 06:11:11.388731   => 'Markets' menu is present
+2024-04-01 06:11:11.406172   => 'Markets' menu is visible
+2024-04-01 06:11:12.672089   => Focus moved to 'Markets' menu
+2024-04-01 06:11:14.166590   => Focus moved to 'Shares' submenu and clicked
+2024-04-01 06:11:14.488168   => Focus moved to 'capital*com' logo
+2024-04-01 06:11:14.488217   3. Cur URL = https://capital.com/live-share-prices
+
+2024-04-01 06:11:14.493949   1. Arrange for TABLE_TRADING_INSTRUMENTS and 'Most traded' cur_sort
+2024-04-01 06:11:14.493978   current_page = https://capital.com/live-share-prices
+2024-04-01 06:11:14.496479   link = https://capital.com/live-share-prices
+2024-04-01 06:11:14.499062   TABLE_TRADING_INSTRUMENTS present on this page? =>
+2024-04-01 06:11:14.508105   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-04-01 06:11:14.508137   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>
+2024-04-01 06:11:14.515573   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-04-01 06:11:14.515602   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-04-01 06:11:14.622136   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-04-01 06:11:14.675611   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-04-01 06:11:14.675652   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-04-01 06:11:14.683839   => cur_sort "Most traded" is present in item_sort_list!
+2024-04-01 06:11:14.683870   Start click cur_sort "Most traded" =>
+2024-04-01 06:11:15.367204   => End Click cur_sort "Most traded"
+
+2024-04-01 06:11:15.367256   Buttons [Sell] is visible and sum buttons no zero? =>
+2024-04-01 06:11:15.421590   => Buttons [Sell] is visible and sum buttons no zero!
+
+2024-04-01 06:11:15.421633   Start find 1 random buttons [Sell] on cur_sort "Most traded"=>
+2024-04-01 06:11:15.428006   => End find 1 random buttons [Sell] on the cur_sort "Most traded"
+
+2024-04-01 06:11:15.428044   List of random items = [17]
+2024-04-01 06:11:15.428218   Start Checking that form [Sign up] popped up on the page =>
+2024-04-01 06:11:16.985803   '[Sign up]' form was not popped up
+2024-04-01 06:11:16.986051   2. Act for trading instrument and "Most traded" cur_sort
+2024-04-01 06:11:16.986070   Start click button [Sell] =>
+2024-04-01 06:11:16.997278   =>   BUTTON_SELL on item with ID = 248828930380996
+2024-04-01 06:11:17.165431   =>   BUTTON_SELL with item NIO Inc - ADR clicked
+
+2024-04-01 06:11:17.165768   3. Assert_Login_v0
+2024-04-01 06:11:17.165876   Check that 'Login' form is opened
+2024-04-01 06:11:17.553130   'Login' form opened
+2024-04-01 06:11:17.553186   Assert LOGIN_REF_SIGNUP =>
+2024-04-01 06:11:17.567759   Assert LOGIN_CHECKBOX =>
+2024-04-01 06:11:17.581517   Assert LOGIN_PASS_FORGOT =>
+2024-04-01 06:11:17.597220   => 'Login' form is checked
+2024-04-01 06:11:17.618743   Click 'Close' button on 'Login' form =>
+2024-04-01 06:11:17.954808   => Focus moved to 'capital*com' logo
+2024-04-01 06:11:17.954850   => 'Login' form closed
