@@ -1,0 +1,90 @@
+
+
+
+Current sort - Most traded
+{'width': 1280, 'height': 800}
+
+2024-04-01 14:43:20.212950   worker_id = master
+
+2024-04-01 14:43:20.212968   0. Allure grouping v4
+
+2024-04-01 14:43:20.213094   START PRECONDITIONS =>
+
+2024-04-01 14:43:20.213106   => flag_of_bug - False
+
+2024-04-01 14:43:20.213118   => Windows size - {'width': 1280, 'height': 800}
+2024-04-01 14:43:20.214583   Set windows position at (0, 0) =>
+2024-04-01 14:43:20.316684   Set resolution 1280 * 800 =>
+2024-04-01 14:43:20.418662   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-01 14:43:21.449139   Капчи нет. Идем дальше
+
+2024-04-01 14:43:21.449228   Работа с куками
+
+2024-04-01 14:43:21.449242   Prev. country - 'de'
+2024-04-01 14:43:21.449251   Cur. country - 'de'
+2024-04-01 14:43:21.449260   => Country set to 'de'
+
+2024-04-01 14:43:21.449269   Prev. language - 'nl'
+2024-04-01 14:43:21.449278   Cur. language - 'nl'
+2024-04-01 14:43:21.449286   => Language is set to 'nl'
+
+2024-04-01 14:43:21.449295   Prev. role - 'NoReg'
+2024-04-01 14:43:21.449304   Cur. role - 'NoReg'
+2024-04-01 14:43:21.449313   => The 'NoReg' role is set
+
+2024-04-01 14:43:21.452064   => THE END PRECONDITIONS
+
+2024-04-01 14:43:21.452236   START Open "Markets" menu, "Shares" submenu =>
+2024-04-01 14:43:21.452252   1. Cur URL = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:21.454792   2. Link = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:21.454808   current_page = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:21.457474   link = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:21.966326   => 'Markets' menu is present
+2024-04-01 14:43:21.978994   => 'Markets' menu is visible
+2024-04-01 14:43:23.242387   => Focus moved to 'Markets' menu
+2024-04-01 14:43:24.645119   => Focus moved to 'Shares' submenu and clicked
+2024-04-01 14:43:24.908801   => Focus moved to 'capital*com' logo
+2024-04-01 14:43:24.908842   3. Cur URL = https://capital.com/nl/live-aandelen-koersen
+
+2024-04-01 14:43:24.914432   1. Arrange for Trading instrument and "Most traded" cur_sort
+2024-04-01 14:43:24.914455   current_page = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:24.917060   link = https://capital.com/nl/live-aandelen-koersen
+2024-04-01 14:43:24.919608   IS TABLE_TRADING_INSTRUMENTS  present on the  page? =>
+2024-04-01 14:43:24.925001   => TABLE_TRADING_INSTRUMENTS is present on the page!
+2024-04-01 14:43:24.925023   IS FIELD_DROPDOWN_SORT present in the table? =>
+2024-04-01 14:43:24.929584   =>  FIELD_DROPDOWN_SORT is present in the table!
+2024-04-01 14:43:24.929606   Start scroll and click FIELD_DROPDOWN_SORT =>
+2024-04-01 14:43:25.024321   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>
+2024-04-01 14:43:25.053292   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!
+2024-04-01 14:43:25.053333   Is cur_sort "Most traded" present in item_sort_list? =>
+2024-04-01 14:43:25.070481   => cur_sort "Most traded" is present in item_sort_list!
+2024-04-01 14:43:25.070513   Start click cur_sort "Most traded" =>
+2024-04-01 14:43:25.751809   => End Click cur_sort "Most traded"
+
+2024-04-01 14:43:25.751854   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-04-01 14:43:25.804562   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-04-01 14:43:25.804601   Start find two random buttons [Buy] on cur_sort "Most traded"=>
+2024-04-01 14:43:25.810114   => End find 1 random buttons [Buy] on the cur_sort "Most traded"
+
+
+2024-04-01 14:43:25.810140   Item_list = [5]
+2024-04-01 14:43:25.810303   Start Checking that form [Sign up] popped up on the page =>
+2024-04-01 14:43:27.359225   '[Sign up]' form was not popped up
+2024-04-01 14:43:27.359431   2. Act for trading instrument and "Most traded" cur_sort
+2024-04-01 14:43:27.359447   Start click button [Buy] =>
+2024-04-01 14:43:27.369651   =>   BUTTON_BUY on item with ID = 21182778791108
+2024-04-01 14:43:27.533060   =>   BUTTON_BUY with item Advanced Micro Devices Inc clicked
+
+2024-04-01 14:43:27.533360   3. Assert_v0
+2024-04-01 14:43:27.533483   Start step Check that [Sign up] form is opened
+2024-04-01 14:43:27.765337   'Sign up' form opened
+2024-04-01 14:43:27.765376   Assert SIGNUP_HEADER =>
+2024-04-01 14:43:27.776048   Assert SIGNUP_REF_LOGIN =>
+2024-04-01 14:43:27.786463   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-01 14:43:27.797633   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-01 14:43:27.797664   => 'Signup' form is checked
+2024-04-01 14:43:27.797831   Start step Close [Sign up] form =>
+2024-04-01 14:43:27.852651   => 'Signup' form closed
+2024-04-01 14:43:28.143984   => Focus moved to 'capital*com' logo
