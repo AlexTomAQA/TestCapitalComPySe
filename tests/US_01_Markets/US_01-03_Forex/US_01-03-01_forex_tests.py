@@ -17,7 +17,7 @@ from pages.Elements.TradeCFDSellButton import TradeCFDSellButton
 
 
 def pytest_generate_tests(metafunc):
-    file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.text"
+    file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 

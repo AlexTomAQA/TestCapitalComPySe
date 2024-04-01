@@ -143,7 +143,7 @@ class TestForex:
         page_menu = MenuSection(d, link)
         page_menu.open_forex_markets_menu(d, cur_language, cur_country, link)
 
-        file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.text"
+        file_name = "tests/US_01_Markets/US_01-03_Forex/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_MARKETS_FOREX_LIST)
 
         Common().creating_file_of_hrefs("Forex trading instrument", list_items, file_name, 1)
