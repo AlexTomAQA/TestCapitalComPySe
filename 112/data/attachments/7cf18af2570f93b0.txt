@@ -1,0 +1,73 @@
+{'width': 1280, 'height': 800}
+
+2024-04-01 12:07:44.912425   worker_id = master
+
+2024-04-01 12:07:44.912439   0. Allure grouping v4
+
+2024-04-01 12:07:44.912528   START PRECONDITIONS =>
+
+2024-04-01 12:07:44.912540   => flag_of_bug - False
+
+2024-04-01 12:07:44.912551   => Windows size - {'width': 1280, 'height': 800}
+2024-04-01 12:07:44.913849   Set windows position at (0, 0) =>
+2024-04-01 12:07:45.015811   Set resolution 1280 * 800 =>
+2024-04-01 12:07:45.117852   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-01 12:07:46.151193   Капчи нет. Идем дальше
+
+2024-04-01 12:07:46.151297   Работа с куками
+
+2024-04-01 12:07:46.151314   Prev. country - 'de'
+2024-04-01 12:07:46.151327   Cur. country - 'de'
+2024-04-01 12:07:46.151340   => Country set to 'de'
+
+2024-04-01 12:07:46.151353   Prev. language - 'en'
+2024-04-01 12:07:46.151365   Cur. language - 'en'
+2024-04-01 12:07:46.151378   => Language is set to 'en'
+
+2024-04-01 12:07:46.151390   Prev. role - 'NoAuth'
+2024-04-01 12:07:46.151402   Cur. role - 'NoAuth'
+2024-04-01 12:07:46.151415   => The 'NoAuth' role is set
+
+2024-04-01 12:07:46.154588   => THE END PRECONDITIONS
+
+2024-04-01 12:07:46.154618   1. Arrange_v0
+2024-04-01 12:07:46.154634   current_page = https://capital.com/trade-cardano
+2024-04-01 12:07:46.157542   link = https://capital.com/trade-neo
+2024-04-01 12:07:46.160239   => current_url != cur_item_link
+2024-04-01 12:07:46.160260   Current page URL = https://capital.com/trade-cardano
+2024-04-01 12:07:46.162759   self.link = https://capital.com/trade-neo
+2024-04-01 12:07:46.162773   link = https://capital.com/trade-neo
+2024-04-01 12:07:47.966879   => Loaded page https://capital.com/trade-neo
+2024-04-01 12:07:47.982297   BUTTON_START_TRADING scroll =>
+2024-04-01 12:07:47.985740   BUTTON_START_TRADING is visible? =>
+2024-04-01 12:07:48.017296   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-01 12:07:48.017467   2. Act_v0
+2024-04-01 12:07:48.017483   Start Click button [Start Trading] =>
+2024-04-01 12:07:48.027400   BUTTON_START_TRADING is clickable? =>
+2024-04-01 12:07:48.040260   BUTTON_START_TRADING click =>
+2024-04-01 12:07:48.079238   => BUTTON_START_TRADING clicked
+
+2024-04-01 12:07:48.079469   3. Assert_Login_v0
+2024-04-01 12:07:48.079553   Check that 'Login' form is opened
+2024-04-01 12:07:51.132245   'Login' form not opened
+2024-04-01 12:07:51.132435   Check that new 'Login' form is opened
+2024-04-01 12:07:54.199412   => New 'Login' form not opened
+2024-04-01 12:07:54.202152   'Login' page not opened
+2024-04-01 12:07:57.257273   'Login' form on trading platform not opened
+2024-04-01 12:07:57.257483   Start step Check that [Sign up] form is opened
+2024-04-01 12:07:57.267429   'Sign up' form opened
+2024-04-01 12:07:57.267454   Assert SIGNUP_HEADER =>
+2024-04-01 12:07:57.277397   Assert SIGNUP_REF_LOGIN =>
+2024-04-01 12:07:57.286970   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-01 12:07:57.297009   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-01 12:07:57.297033   => 'Signup' form is checked
+
+Bug: 
+
+2024-04-01 12:07:57.297095   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7ff5348ed910>
+
+2024-04-01 12:07:57.300085  Для бага: Bid-05 необходимо использовать проверку на ретест!!!

@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-04-01 11:46:02.594780   worker_id = master
+
+2024-04-01 11:46:02.594794   0. Allure grouping v4
+
+2024-04-01 11:46:02.594874   START PRECONDITIONS =>
+
+2024-04-01 11:46:02.594887   => flag_of_bug - False
+
+2024-04-01 11:46:02.594898   => Windows size - {'width': 1280, 'height': 800}
+2024-04-01 11:46:02.596167   Set windows position at (0, 0) =>
+2024-04-01 11:46:02.698342   Set resolution 1280 * 800 =>
+2024-04-01 11:46:02.800535   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-01 11:46:03.814955   Капчи нет. Идем дальше
+
+2024-04-01 11:46:03.815051   Работа с куками
+
+2024-04-01 11:46:03.815066   Prev. country - 'de'
+2024-04-01 11:46:03.815076   Cur. country - 'de'
+2024-04-01 11:46:03.815085   => Country set to 'de'
+
+2024-04-01 11:46:03.815094   Prev. language - 'en'
+2024-04-01 11:46:03.815103   Cur. language - 'en'
+2024-04-01 11:46:03.815112   => Language is set to 'en'
+
+2024-04-01 11:46:03.815121   Prev. role - 'NoAuth'
+2024-04-01 11:46:03.815129   Cur. role - 'NoAuth'
+2024-04-01 11:46:03.815138   => The 'NoAuth' role is set
+
+2024-04-01 11:46:03.817897   => THE END PRECONDITIONS
+
+2024-04-01 11:46:03.818085   1. Arrange_v0
+2024-04-01 11:46:03.818103   current_page = https://capital.com/trade-uscrude-oil
+2024-04-01 11:46:03.820670   link = https://capital.com/trade-silver
+2024-04-01 11:46:03.828769   => current_url != cur_item_link
+2024-04-01 11:46:03.828793   Current page URL = https://capital.com/trade-uscrude-oil
+2024-04-01 11:46:03.831364   self.link = https://capital.com/trade-silver
+2024-04-01 11:46:03.831378   link = https://capital.com/trade-silver
+2024-04-01 11:46:05.957432   => Loaded page https://capital.com/trade-silver
+2024-04-01 11:46:05.980720   BUTTON_START_TRADING scroll =>
+2024-04-01 11:46:05.984104   BUTTON_START_TRADING is visible? =>
+2024-04-01 11:46:06.010305   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-01 11:46:06.010482   2. Act_v0
+2024-04-01 11:46:06.010498   Start Click button [Start Trading] =>
+2024-04-01 11:46:06.015622   BUTTON_START_TRADING is clickable? =>
+2024-04-01 11:46:06.025999   BUTTON_START_TRADING click =>
+2024-04-01 11:46:06.085613   => BUTTON_START_TRADING clicked
+
+2024-04-01 11:46:06.085864   3. Assert_Login_v0
+2024-04-01 11:46:06.085952   Check that 'Login' form is opened
+2024-04-01 11:46:09.142176   'Login' form not opened
+2024-04-01 11:46:09.142363   Check that new 'Login' form is opened
+2024-04-01 11:46:12.219489   => New 'Login' form not opened
+2024-04-01 11:46:12.222274   'Login' page not opened
+2024-04-01 11:46:15.277735   'Login' form on trading platform not opened
+2024-04-01 11:46:15.277927   Start step Check that [Sign up] form is opened
+2024-04-01 11:46:15.287460   'Sign up' form opened
+2024-04-01 11:46:15.287483   Assert SIGNUP_HEADER =>
+2024-04-01 11:46:15.296648   Assert SIGNUP_REF_LOGIN =>
+2024-04-01 11:46:15.306121   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-01 11:46:15.315437   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-01 11:46:15.315460   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_01-en.de.NoAuth
+
+2024-04-01 11:46:15.315510   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f29372b0cb0>
+
+2024-04-01 11:46:15.601885   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-01 11:46:15.813052   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-01 11:46:16.671563   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-01 11:46:16.875485   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-01 11:46:16.876831   Баг Bid:11.02.03.01_01-en.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
