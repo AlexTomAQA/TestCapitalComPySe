@@ -319,5 +319,7 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, ".brick > table.table > tbody > tr:nth-child(3)")
     SHORT_POSITION_BUTTON_GO_TO_PLATFORM = \
         (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
+    BUTTON_NOTIFICATION = \
+        (By.CSS_SELECTOR, "a[data-type='market_alerts']")
 
 
