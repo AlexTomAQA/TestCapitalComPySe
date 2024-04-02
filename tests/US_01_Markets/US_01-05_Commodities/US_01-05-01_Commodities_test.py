@@ -2,6 +2,7 @@ import pytest
 import allure
 
 from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInstrumentLongPositionGoToPlatformButton
+from pages.Elements.PageInstrumentNotificationButton import PageInstrumentNotificationButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
 from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentViewDetailedChartButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
@@ -164,6 +165,27 @@ class TestCommodities:
         test_element = TradeCFDSellButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
+    @allure.step("Start test of button [Notification] on trading instrument page")
+    @pytest.mark.test_007
+    def test_007_page_instrument_notification_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Notification] on trading instrument page
+        Language: All. License: All, except FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.05", "Markets > Menu item [Commodities]",
+            ".01_007", "Testing button [Notification] on trading instrument page")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = PageInstrumentNotificationButton(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
     @allure.step("Start test of button [Start Trading] in the 'Trading calculator' widget on trading instrument page ")
     @pytest.mark.test_009
     def test_009_page_trading_instrument_widget_trading_calculator_start_trading_button(
@@ -175,7 +197,8 @@ class TestCommodities:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.05", "Markets > Menu item [Commodities]",
-            ".01_009", "Testing button [Start Trading] in the 'Trading calculator' widget on trading instrument page")
+            ".01_009", "Testing button [Start Trading] in the 'Trading calculator' "
+                       "widget on trading instrument page")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
