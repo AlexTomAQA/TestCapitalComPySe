@@ -6,6 +6,8 @@
 import sys
 import os
 from datetime import datetime
+import re
+import platform
 
 import pytest
 import allure
@@ -16,12 +18,9 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-# from selenium.webdriver.common.by import By
 from allure_commons.types import AttachmentType
 
 import conf
-import re
-import platform
 
 
 def pytest_addoption(parser):
@@ -127,8 +126,8 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",  # Great Britain - "FCA"
-        "de",  # Germany  - "CYSEC"
-        # "au",  # Australia - "ASIC"
+        # "de",  # Germany  - "CYSEC"
+        "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
 
         # "gr",  # Greece - "CYSEC"
@@ -209,6 +208,19 @@ def cur_os(request):
 
 
 @pytest.fixture(
+    scope="session",
+    params=[
+        True,
+        # False
+    ],
+)
+def cur_headless(request):
+    """Fixture"""
+    print(f"Current Headless - {request.param}")
+    return request.param
+
+
+@pytest.fixture(
     # scope="module",
     scope="session",
     params=[
@@ -233,6 +245,7 @@ def d(request):
     d = None
     if test_browser == "Chrome":
         d = init_remote_driver_chrome()
+        # d = init_remote_driver_chrome_v2(cur_headless)
     elif test_browser == "Edge":
         d = init_remote_driver_edge()
     elif test_browser == "Firefox":
@@ -291,6 +304,29 @@ def init_remote_driver_chrome():
     driver.implicitly_wait(1)
     driver.set_script_timeout(20000)
 
+    return driver
+
+
+def init_remote_driver_chrome_v2(headless):
+    chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.page_load_strategy = "normal"
+
+    chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
+
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    chrome_options.add_argument("--accept-lang=en")
+
+    # !!!
+    # безголовый режим задается переменной headless в самом начале текущего модуля
+    if headless:
+        chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
+
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+
+    print(driver.get_window_size())
+    driver.implicitly_wait(1)
+    driver.set_script_timeout(20000)
     return driver
 
 
