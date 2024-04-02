@@ -65,15 +65,16 @@ class Conditions(BasePage):
         global prev_country
 
         print(f"\n{datetime.now()}   START PRECONDITIONS =>")
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
+        print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_preconditions}")
         print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
-        if url_after_preconditions == "?" or Common.flag_of_bug:
-        # if url_after_preconditions == "?":
+        if url_after_preconditions == "?":
             url_after_preconditions = host
+
+        if Common.flag_of_bug:
             self.link = url_after_preconditions
             self.open_page()
-        # if url == "":
-        #     self.link = host
-        #     self.open_page()
+
         print(f"\n{datetime.now()}   => Windows size - {d.get_window_size()}")
         print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
@@ -165,6 +166,7 @@ class Conditions(BasePage):
 
         print(f"" f"{datetime.now()}   Start Autorization")
         # Setup wait for later
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
         assert login != "", "Авторизация невозможна. Не указан e-mail"
         assert password != "", "Авторизация невозможна. Не указан пароль"
@@ -212,6 +214,7 @@ class Conditions(BasePage):
 
         # self.clear_charts_list(d)
         Common().browser_back_to_link(d, link)
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
     # def clear_charts_list(self, wd):
     #     allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
@@ -220,14 +223,24 @@ class Conditions(BasePage):
     #     ti_page.select_menu_charts()
     #     ti_page.button_close_all_ti_click()
     #
+    @allure.step(f"{datetime.now()}   DeAuthorisation")
     def to_do_de_authorization(self, d, link):
         """DeAuthorisation"""
-        allure.step(f"{datetime.now()}   DeAuthorisation")
 
         print(f"{datetime.now()}   Start DeAuthorisation")
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
-        assert Header(d, link).header_button_my_account_click(), "Button 'My account' missing"
-        assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
+        if not Header(d, link).header_button_my_account_click():
+            msg = "Button 'My account' missing"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
+
+        if not MyAccount(d, link).my_account_button_logout_click():
+            msg = "Button 'Logout' missing"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
+
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
     def arrange_0(self):
         """
