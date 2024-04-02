@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-04-02 04:18:26.487235   worker_id = master
+
+2024-04-02 04:18:26.487249   0. Allure grouping v4
+
+2024-04-02 04:18:26.487341   START PRECONDITIONS =>
+
+2024-04-02 04:18:26.487353   => flag_of_bug - True
+2024-04-02 04:18:26.487365   Current page URL = https://capital.com/ro/tranzactionati-apple
+2024-04-02 04:18:26.490259   self.link = https://capital.com/
+2024-04-02 04:18:26.490273   link = https://capital.com/
+2024-04-02 04:18:28.252457   => Loaded page https://capital.com/
+
+2024-04-02 04:18:28.259906   => Windows size - {'width': 1280, 'height': 800}
+2024-04-02 04:18:28.261218   Set windows position at (0, 0) =>
+2024-04-02 04:18:28.363325   Set resolution 1280 * 800 =>
+2024-04-02 04:18:28.465542   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-02 04:18:29.498624   Капчи нет. Идем дальше
+
+2024-04-02 04:18:29.498747   Работа с куками
+
+2024-04-02 04:18:29.498766   Prev. country - 'au'
+2024-04-02 04:18:29.498777   Cur. country - 'au'
+2024-04-02 04:18:29.498786   => Country set to 'au'
+
+2024-04-02 04:18:29.498795   Prev. language - 'ro'
+2024-04-02 04:18:29.498804   Cur. language - 'ro'
+2024-04-02 04:18:29.498812   => Language is set to 'ro'
+
+2024-04-02 04:18:29.498821   Prev. role - 'NoAuth'
+2024-04-02 04:18:29.498830   Cur. role - 'NoAuth'
+2024-04-02 04:18:29.498838   => The 'NoAuth' role is set
+
+2024-04-02 04:18:29.501589   => THE END PRECONDITIONS
+
+2024-04-02 04:18:29.501764   1. Arrange_v0
+2024-04-02 04:18:29.501781   current_page = https://capital.com/
+2024-04-02 04:18:29.506205   link = https://capital.com/ro/tranzactionati-canopy-growth
+2024-04-02 04:18:29.508622   => current_url != cur_item_link
+2024-04-02 04:18:29.508644   Current page URL = https://capital.com/
+2024-04-02 04:18:29.510967   self.link = https://capital.com/ro/tranzactionati-canopy-growth
+2024-04-02 04:18:29.510981   link = https://capital.com/ro/tranzactionati-canopy-growth
+2024-04-02 04:18:31.488615   => Loaded page https://capital.com/ro/tranzactionati-canopy-growth
+2024-04-02 04:18:31.500616   BUTTON_START_TRADING scroll =>
+2024-04-02 04:18:31.505452   BUTTON_START_TRADING is visible? =>
+2024-04-02 04:18:31.526789   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-02 04:18:31.526952   2. Act_v0
+2024-04-02 04:18:31.526968   Start Click button [Start Trading] =>
+2024-04-02 04:18:31.531948   BUTTON_START_TRADING is clickable? =>
+2024-04-02 04:18:31.540891   BUTTON_START_TRADING click =>
+2024-04-02 04:18:31.572714   => BUTTON_START_TRADING clicked
+
+2024-04-02 04:18:31.572993   3. Assert_Login_v0
+2024-04-02 04:18:31.573103   Check that 'Login' form is opened
+2024-04-02 04:18:34.659656   'Login' form not opened
+2024-04-02 04:18:34.659843   Check that new 'Login' form is opened
+2024-04-02 04:18:37.725246   => New 'Login' form not opened
+2024-04-02 04:18:37.728090   'Login' page not opened
+2024-04-02 04:18:40.783366   'Login' form on trading platform not opened
+2024-04-02 04:18:40.783557   Start step Check that [Sign up] form is opened
+2024-04-02 04:18:40.793284   'Sign up' form opened
+2024-04-02 04:18:40.793307   Assert SIGNUP_HEADER =>
+2024-04-02 04:18:40.802302   Assert SIGNUP_REF_LOGIN =>
+2024-04-02 04:18:40.811633   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-02 04:18:40.820920   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-02 04:18:40.820942   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_01-ro.au.NoAuth
+
+2024-04-02 04:18:40.820997   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbf2a09cfe0>
+
+2024-04-02 04:18:41.287424   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:18:41.454068   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:18:42.368312   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:18:42.511341   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:18:42.512630   Баг Bid:11.02.02.01_01-ro.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

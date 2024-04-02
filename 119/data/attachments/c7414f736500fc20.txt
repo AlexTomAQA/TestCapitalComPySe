@@ -1,0 +1,82 @@
+{'width': 1280, 'height': 800}
+
+2024-04-02 04:14:51.773937   worker_id = master
+
+2024-04-02 04:14:51.773954   0. Allure grouping v4
+
+2024-04-02 04:14:51.774069   START PRECONDITIONS =>
+
+2024-04-02 04:14:51.774082   => flag_of_bug - False
+
+2024-04-02 04:14:51.774093   => Windows size - {'width': 1280, 'height': 800}
+2024-04-02 04:14:51.775419   Set windows position at (0, 0) =>
+2024-04-02 04:14:51.877511   Set resolution 1280 * 800 =>
+2024-04-02 04:14:51.983277   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-02 04:14:53.024495   Капчи нет. Идем дальше
+
+2024-04-02 04:14:53.024589   Работа с куками
+
+2024-04-02 04:14:53.024602   Prev. country - 'au'
+2024-04-02 04:14:53.024612   Cur. country - 'au'
+2024-04-02 04:14:53.024622   => Country set to 'au'
+
+2024-04-02 04:14:53.024630   Prev. language - 'ro'
+2024-04-02 04:14:53.024639   Cur. language - 'ro'
+2024-04-02 04:14:53.024648   => Language is set to 'ro'
+
+2024-04-02 04:14:53.024656   Prev. role - 'Auth'
+2024-04-02 04:14:53.024665   Cur. role - 'Auth'
+2024-04-02 04:14:53.024674   => The 'Auth' role is set
+
+2024-04-02 04:14:53.027423   => THE END PRECONDITIONS
+
+2024-04-02 04:14:53.027455   1. Arrange_v0
+2024-04-02 04:14:53.027468   current_page = https://capital.com/ro/tranzactionati-apple
+2024-04-02 04:14:53.030434   link = https://capital.com/ro/tranzactionati-apple
+2024-04-02 04:14:53.040857   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-02 04:14:53.040885   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-02 04:14:53.040895   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-02 04:14:53.050004   => 'Sell' button in Content block scrolled
+2024-04-02 04:14:53.050256   Start Checking that form [Sign up] popped up on the page =>
+2024-04-02 04:14:54.592731   '[Sign up]' form was not popped up
+
+2024-04-02 04:14:54.592919   2. Act_v0
+2024-04-02 04:14:54.805765   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-02 04:14:54.805822   => return trade_instrument = 1147941679092932
+
+2024-04-02 04:14:54.806131   3. Assert_v4
+2024-04-02 04:14:54.806283   Checking that the trading platform page has opened (v4) =>
+2024-04-02 04:14:55.323042   Checking way # 1 => 
+
+2024-04-02 04:14:55.323109   1. Checking that the Trading platform page has valid title =>
+2024-04-02 04:14:55.325491   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-02 04:14:55.325530   2. Checking that the LOGO is present on the page =>
+2024-04-02 04:14:55.907978   => 'capital*com' logo is present on the current page
+
+2024-04-02 04:14:55.908015   tpd = False
+
+2024-04-02 04:14:55.908027   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '1147941679092932' =>
+
+2024-04-02 04:14:55.912359   trade_instrument = '1147941679092932'
+
+2024-04-02 04:14:55.912377   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-02 04:14:56.987119   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_03-ro.au.Auth
+
+2024-04-02 04:14:56.987184   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbf2a09cfe0>
+
+2024-04-02 04:14:57.471430   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:14:57.662647   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:14:58.707093   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:14:58.940590   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:14:58.942095   Баг Bid:11.02.02.01_03-ro.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
