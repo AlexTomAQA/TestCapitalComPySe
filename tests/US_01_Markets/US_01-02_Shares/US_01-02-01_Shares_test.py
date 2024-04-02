@@ -126,17 +126,17 @@ class TestSharesItemPage:
     @allure.step("Start testing the [Buy] button on the trading instrument page")
     @pytest.mark.test_005
     def test_005_page_instrument_buy_button(
-            self, worker_id, d, cur_language,cur_country, cur_role, cur_login, cur_password, cur_item_link):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
         Check: Button [Buy] on trading instrument page
         Language: All. License: All,except FCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.02","Markets > Menu item [Shares]",
+            "01.02", "Markets > Menu item [Shares]",
             ".01_005", "Testing button [Buy] on trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country,"[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(

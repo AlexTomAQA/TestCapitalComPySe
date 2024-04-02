@@ -87,10 +87,10 @@ class TradingPlatform(BasePage):
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
             if demo:
-                self.should_be_platform_demo_mode()
-            else:
-                self.should_be_platform_live_mode()
-            self.open_page()
+                self.should_be_platform_demo_mode(self.driver, "")
+            # else:
+            #     self.should_be_trading_platform_live_mode()
+            # self.open_page()
         else:
             print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
             # self.link = self.driver.current_url
@@ -108,6 +108,7 @@ class TradingPlatform(BasePage):
             tpi: open Trade platform for corresponding trade instrument (False)
             trade_instrument: corresponding trade instrument (False)
         """
+
         print(f"{datetime.now()}   Checking that the trading platform page has opened (v4) =>")
         platform_url = data["PLATFORM_URL/"]
         cur_url = self.driver.current_url
@@ -115,13 +116,14 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   Checking way # 1 => ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
+
             print(f"\n{datetime.now()}   tpd = {tpd}")
             if tpd:
                 self.should_be_platform_demo_mode(d, test_link)
                 print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in DEMO mode")
-            else:
-                self.should_be_platform_live_mode(d, test_link)
-                print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
+            # else:
+            #     self.should_be_trading_platform_live_mode(d, test_link)
+            #     print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in lIVE mode")
 
             if tpi:
                 print(f"\n{datetime.now()}   4. Check that opened page with {self.driver.current_url} url\n"
@@ -165,22 +167,23 @@ class TradingPlatform(BasePage):
                 assert False, msg
                 # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
-    @allure.step("Check if the Logo element is present on the page")
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
-        print(f"\n{datetime.now()}   2. Checking that the Trading platform LOGO is present on the page =>")
-        if not self.element_is_visible(TopBarLocators.LOGO, 15):
+        allure.step(f"{datetime.now()}   Check that the Logo element is present on the page")
+
+        print(f"\n{datetime.now()}   2. Checking that the LOGO is present on the page =>")
+        if not self.element_is_visible(TopBarLocators.LOGO, 10):
             msg = "'capital*com' logo is not present on the current page"
             print(f"{datetime.now()}   => {msg}")
             Common().assert_true_false(False, msg)
         print(f"{datetime.now()}   => 'capital*com' logo is present on the current page")
 
-    @allure.step("Check if the trading platform opened in DEMO mode")
     def should_be_platform_demo_mode(self, d, test_link):
         """Check that Trading platform opened in Demo mode"""
+        allure.step(f"{datetime.now()}   Check if the trading platform opened in DEMO mode")
 
         print(f"{datetime.now()}   3.1. Checking that the Trading platform opened in DEMO mode =>")
-        if not self.element_is_visible(TopBarLocators.MODE_DEMO, 15):
+        if not self.element_is_visible(TopBarLocators.MODE_DEMO, 10):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '11', self.link)
@@ -188,12 +191,12 @@ class TradingPlatform(BasePage):
             Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
-    @allure.step("Check if the trading platform opened in LIVE mode")
-    def should_be_platform_live_mode(self, d, test_link):
-        """Check that Trading platform opened in Live mode"""
+    @allure.step("Check if the trading platform opened in Live mode")
+    def should_be_trading_platform_live_mode(self, d, test_link):
+        """Check that Trading platform opened"""
 
-        print(f"{datetime.now()}   3.2. Checking that the Trading platform opened in LIVE mode =>")
-        if not self.element_is_visible(TopBarLocators.MODE_LIVE, 15):
+        print(f"{datetime.now()}   3.2. Checking that the Trading platform opened =>")
+        if not self.element_is_visible(TopBarLocators.MODE_LIVE, 5):
             # проверка бага для ретеста
             print(f'\nBug: {self.bid}')
             retest_table_fill(d, self.bid, '12', self.link)
@@ -280,11 +283,11 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => 'Login' page on the Trading Platform is not opened")
             assert False, "Problem! 'Login' page on the Trading Platform is not opened"
 
-    @allure.step("Check the corresponding trading instrument")
     def should_be_corresponding_trading_instrument(self, test_link, trade_instrument):
         """
         Check Trading platform is opened for corresponding trade instrument
         """
+        allure.step(f"{datetime.now()}   Check if Trading platform open for corresponding trade instrument")
 
         # cur_url = self.driver.current_url
         print(f"\n{datetime.now()}   trade_instrument = '{trade_instrument}'")

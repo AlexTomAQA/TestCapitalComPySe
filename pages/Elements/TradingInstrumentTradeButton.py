@@ -63,11 +63,11 @@ class TradingInstrumentTradeButton(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            widget_trading_instrument[0]
+            self.driver.find_elements(*ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET)[0]
         )
 
         print(f"\n{datetime.now()}   IS 'Trading instrument' widget visible on this page? =>")
-        if not self.element_is_visible(ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET, 5):
+        if not self.element_is_visible(ButtonsOnPageLocators.TRADING_INSTRUMENT_WIDGET, 2):
             msg = "'Trading instrument' widget is NOT visible on this page"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
@@ -105,7 +105,7 @@ class TradingInstrumentTradeButton(BasePage):
         )
 
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
-        if not self.element_is_visible(self.market_locator, 5):
+        if not self.element_is_visible(self.market_locator, 2):
             print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible right now on page, "
                   f"but need to check in 'Meatballs menu'!")
             meatballs_menu = Capital(d, self.driver.current_url)
@@ -115,7 +115,7 @@ class TradingInstrumentTradeButton(BasePage):
                 self.driver.find_element(*self.market_locator)
             )
 
-        if not self.element_is_visible(self.market_locator, 5):
+        if not self.element_is_visible(self.market_locator, 2):
             msg = "MARKET '{cur_market}' is NOT visible on this page"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
@@ -125,7 +125,7 @@ class TradingInstrumentTradeButton(BasePage):
             # Start click Tab current market
             print(f"\n{datetime.now()}   Start Click Tab '{cur_market}' MARKET =>")
             print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
-            if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 5):
+            if not self.element_is_clickable(self.driver.find_element(*self.market_locator), 2):
                 msg = f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable"
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(msg)
@@ -150,7 +150,7 @@ class TradingInstrumentTradeButton(BasePage):
         print(f"{datetime.now()}   => Instruments is present on this page")
 
         print(f"\n{datetime.now()}   Is Instruments visible? =>")
-        if not self.element_is_visible(self.instruments_locator, 5):
+        if not self.element_is_visible(self.instruments_locator, 2):
             msg = "Instruments is NOT visible on this page"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
@@ -176,7 +176,7 @@ class TradingInstrumentTradeButton(BasePage):
 
         if self.current_market.get_attribute("class") != "active js-analyticsClick":
             print(f"{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
-            if not self.element_is_visible(self.market_locator, 5):
+            if not self.element_is_visible(self.market_locator, 2):
                 meatballs_menu = Capital(d, self.driver.current_url)
                 meatballs_menu.meatballs_menu_move_focus()
                 self.driver.execute_script(
@@ -185,7 +185,7 @@ class TradingInstrumentTradeButton(BasePage):
                 )
 
         print(f"{datetime.now()}   Check that MARKET '{cur_market}' is visible on this page =>")
-        if not self.element_is_visible(self.market_locator, 5):
+        if not self.element_is_visible(self.market_locator, 2):
             print(f"{datetime.now()}   => MARKET '{cur_market}' is NOT visible on this page!")
             Common().pytest_fail(f"Bug # ???   MARKET '{cur_market}' is NOT visible on this page!")
         print(f"{datetime.now()}   => MARKET '{cur_market}' is visible on this page!")
@@ -200,7 +200,7 @@ class TradingInstrumentTradeButton(BasePage):
         print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is scrolled")
 
         print(f"{datetime.now()}   Check that Tab '{cur_market}' MARKET is clickable =>")
-        if not self.element_is_clickable(self.current_market, 5):
+        if not self.element_is_clickable(self.current_market, 2):
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clickable")
             Common().pytest_fail(f"Bug # ???   Tab '{cur_market}' MARKET is NOT clickable")
         print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is clickable")

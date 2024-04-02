@@ -4,13 +4,15 @@
 @Author  : Suleyman Alirzaev
 """
 from datetime import datetime
+
 import pytest
 import allure
-from selenium.webdriver import ActionChains
-from pages.Signup_login.signup_login import SignupLogin
-from pages.base_page import BasePage
 from pages.Elements.testing_elements_locators import ButtonsOnPageLocators
 from selenium.common.exceptions import ElementClickInterceptedException
+
+from pages.Signup_login.signup_login import SignupLogin
+from pages.base_page import BasePage
+from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 
 

@@ -51,7 +51,6 @@ def build_dynamic_arg_new_v4(d, worker_id, cur_language, cur_country, cur_role,
     return bug_id
 
 
-@allure.step(f"{datetime.now()}   Start Building dynamic arguments for allure report generation")
 def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
                          us, desc_us, num_tc, desc_tc, manual=False, new_layout=False):
     """
@@ -71,6 +70,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     """
     global count
 
+    allure.step(f"{datetime.now()}   Start Building dynamic arguments for allure report generation")
     # tc = f"TC_{us}_{num_tc}"
     print(d.get_window_size())
     # print(f"\n{datetime.now()}   browser = {d.name}")
