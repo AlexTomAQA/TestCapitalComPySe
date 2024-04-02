@@ -42,6 +42,7 @@ class Conditions(BasePage):
 
     debug = False
 
+    @allure.step("Preconditions")
     def preconditions(
         self,
         d,
@@ -62,9 +63,6 @@ class Conditions(BasePage):
         global prev_role
         global prev_language
         global prev_country
-        # global flag_of_bug
-
-        allure.step(f"{datetime.now()}   Preconditions")
 
         print(f"\n{datetime.now()}   START PRECONDITIONS =>")
         print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
@@ -154,15 +152,16 @@ class Conditions(BasePage):
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
 
         url_after_preconditions = self.driver.current_url
+        print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions}")
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
         return url_after_preconditions
 
     # авторизация пользователя
     # @profile(precision=3)
+    @allure.step("Authorization")
     def to_do_authorization(self, d, link, login, password):
         """Authorisation"""
-        allure.step(f"{datetime.now()}   Authorization")
 
         print(f"" f"{datetime.now()}   Start Autorization")
         # Setup wait for later
