@@ -1,0 +1,91 @@
+{'width': 1280, 'height': 800}
+
+2024-04-02 14:07:34.170546   worker_id = master
+
+2024-04-02 14:07:34.170560   0. Allure grouping v4
+
+2024-04-02 14:07:34.170750   START PRECONDITIONS =>
+
+2024-04-02 14:07:34.170766   => Current URL - https://capital.com/
+
+2024-04-02 14:07:34.174952   => URL after prev. preconditions - https://capital.com/ru/aurora-cannabis-cfd
+
+2024-04-02 14:07:34.174965   => flag_of_bug - True
+2024-04-02 14:07:34.174977   Current page URL = https://capital.com/
+2024-04-02 14:07:34.177489   self.link = https://capital.com/ru/aurora-cannabis-cfd
+2024-04-02 14:07:34.177503   link = https://capital.com/ru/aurora-cannabis-cfd
+2024-04-02 14:07:36.014404   => Loaded page https://capital.com/ru/aurora-cannabis-cfd
+
+2024-04-02 14:07:36.018692   => Windows size - {'width': 1280, 'height': 800}
+2024-04-02 14:07:36.020034   Set windows position at (0, 0) =>
+2024-04-02 14:07:36.124837   Set resolution 1280 * 800 =>
+2024-04-02 14:07:36.226971   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-02 14:07:37.253049   Капчи нет. Идем дальше
+
+2024-04-02 14:07:37.253137   Работа с куками
+
+2024-04-02 14:07:37.253150   Prev. country - 'au'
+2024-04-02 14:07:37.253159   Cur. country - 'au'
+2024-04-02 14:07:37.253168   => Country set to 'au'
+
+2024-04-02 14:07:37.253178   Prev. language - 'ru'
+2024-04-02 14:07:37.253186   Cur. language - 'ru'
+2024-04-02 14:07:37.253195   => Language is set to 'ru'
+
+2024-04-02 14:07:37.253204   Prev. role - 'NoAuth'
+2024-04-02 14:07:37.253212   Cur. role - 'NoAuth'
+2024-04-02 14:07:37.253221   => The 'NoAuth' role is set
+
+2024-04-02 14:07:37.255888   => Current URL - https://capital.com/ru/aurora-cannabis-cfd
+
+2024-04-02 14:07:37.255909   => THE END PRECONDITIONS
+
+2024-04-02 14:07:37.256089   1. Arrange_v0
+2024-04-02 14:07:37.256106   current_page = https://capital.com/ru/aurora-cannabis-cfd
+2024-04-02 14:07:37.258581   link = https://capital.com/ru/google-cfd
+2024-04-02 14:07:37.261324   => current_url != cur_item_link
+2024-04-02 14:07:37.261346   Current page URL = https://capital.com/ru/aurora-cannabis-cfd
+2024-04-02 14:07:37.263751   self.link = https://capital.com/ru/google-cfd
+2024-04-02 14:07:37.263764   link = https://capital.com/ru/google-cfd
+2024-04-02 14:07:39.019293   => Loaded page https://capital.com/ru/google-cfd
+2024-04-02 14:07:39.035548   BUTTON_START_TRADING scroll =>
+2024-04-02 14:07:39.041989   BUTTON_START_TRADING is visible? =>
+2024-04-02 14:07:39.058888   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-02 14:07:39.059057   2. Act_v0
+2024-04-02 14:07:39.059073   Start Click button [Start Trading] =>
+2024-04-02 14:07:39.064839   BUTTON_START_TRADING is clickable? =>
+2024-04-02 14:07:39.077936   BUTTON_START_TRADING click =>
+2024-04-02 14:07:39.114676   => BUTTON_START_TRADING clicked
+
+2024-04-02 14:07:39.114898   3. Assert_Login_v0
+2024-04-02 14:07:39.114985   Check that 'Login' form is opened
+2024-04-02 14:07:42.196226   'Login' form not opened
+2024-04-02 14:07:42.196405   Check that new 'Login' form is opened
+2024-04-02 14:07:45.295723   => New 'Login' form not opened
+2024-04-02 14:07:45.298454   'Login' page not opened
+2024-04-02 14:07:48.385118   'Login' form on trading platform not opened
+2024-04-02 14:07:48.385307   Start step Check that [Sign up] form is opened
+2024-04-02 14:07:48.395572   'Sign up' form opened
+2024-04-02 14:07:48.395602   Assert SIGNUP_HEADER =>
+2024-04-02 14:07:48.408128   Assert SIGNUP_REF_LOGIN =>
+2024-04-02 14:07:48.420293   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-02 14:07:48.432353   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-02 14:07:48.432376   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_01-ru.au.NoAuth
+
+2024-04-02 14:07:48.432454   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f447b7f2360>
+
+2024-04-02 14:07:48.782680   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 14:07:49.073572   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 14:07:50.296696   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 14:07:51.013278   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 14:07:51.014645   Баг Bid:11.02.02.01_01-ru.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,123 @@
+{'width': 1280, 'height': 800}
+
+2024-04-02 12:57:43.881542   worker_id = master
+
+2024-04-02 12:57:43.881565   0. Allure grouping v4
+
+2024-04-02 12:57:43.881890   START PRECONDITIONS =>
+
+2024-04-02 12:57:43.881914   => Current URL - https://capital.com/ru/amazon-com-inc-cena-akcii
+
+2024-04-02 12:57:43.885159   => URL after prev. preconditions - https://capital.com/ru
+
+2024-04-02 12:57:43.885173   => flag_of_bug - False
+
+2024-04-02 12:57:43.885185   => Windows size - {'width': 1280, 'height': 800}
+2024-04-02 12:57:43.886473   Set windows position at (0, 0) =>
+2024-04-02 12:57:43.994759   Set resolution 1280 * 800 =>
+2024-04-02 12:57:44.097202   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-02 12:57:45.149443   Капчи нет. Идем дальше
+
+2024-04-02 12:57:45.149532   Работа с куками
+
+2024-04-02 12:57:45.149545   Prev. country - 'au'
+2024-04-02 12:57:45.149555   Cur. country - 'au'
+2024-04-02 12:57:45.149564   => Country set to 'au'
+
+2024-04-02 12:57:45.149573   Prev. language - 'ru'
+2024-04-02 12:57:45.149582   Cur. language - 'ru'
+2024-04-02 12:57:45.149591   => Language is set to 'ru'
+
+2024-04-02 12:57:45.149599   Prev. role - 'NoAuth'
+2024-04-02 12:57:45.149608   Cur. role - 'NoAuth'
+2024-04-02 12:57:45.149617   => The 'NoAuth' role is set
+
+2024-04-02 12:57:45.152245   => Current URL - https://capital.com/ru/amazon-com-inc-cena-akcii
+
+2024-04-02 12:57:45.152265   => THE END PRECONDITIONS
+
+2024-04-02 12:57:45.152486   1. Arrange_v2
+2024-04-02 12:57:45.152507   current_page = https://capital.com/ru/amazon-com-inc-cena-akcii
+2024-04-02 12:57:45.154929   link = https://capital.com/ru/amazon-com-inc-cena-akcii
+2024-04-02 12:57:45.157360   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-02 12:57:45.164973   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-02 12:57:45.164996   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-04-02 12:57:45.168098   => LONG_POSITION_OVERNIGHT_FEE scrolled
+2024-04-02 12:57:45.168229   Start Checking that form [Sign up] popped up on the page =>
+2024-04-02 12:57:46.696719   '[Sign up]' form was not popped up
+
+2024-04-02 12:57:46.696902   2. Act_v2
+2024-04-02 12:57:46.696918   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-04-02 12:57:47.473448   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-02 12:57:47.486404   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-04-02 12:57:47.486432   Move focus on to button [Go to platform] and click =>
+2024-04-02 12:57:48.267517   => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is clickable
+2024-04-02 12:57:48.782645 => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION clicked
+
+2024-04-02 12:57:48.782932   3. Assert_Login_v0
+2024-04-02 12:57:48.783048   Check that 'Login' form is opened
+2024-04-02 12:57:51.891396   'Login' form not opened
+2024-04-02 12:57:51.891583   Check that new 'Login' form is opened
+2024-04-02 12:57:55.004659   => New 'Login' form not opened
+2024-04-02 12:57:55.007390   'Login' page not opened
+2024-04-02 12:57:58.097727   'Login' form on trading platform not opened
+2024-04-02 12:57:58.097921   Start step Check that [Sign up] form is opened
+2024-04-02 12:58:01.185967   'Sign up' form not opened
+2024-04-02 12:58:01.186152   Start step Check that new [Sign up] form is opened
+2024-04-02 12:58:04.276867   => new 'Sign up' form not opened
+2024-04-02 12:58:04.277060   Start method Check that [Sign up] page opened =>
+2024-04-02 12:58:05.282246   'Sign up' page not opened
+2024-04-02 12:58:05.282485   Check that [Sign up] form on trading platform opened =>
+2024-04-02 12:58:05.297604   => 'Sign up' form on trading platform page opened
+2024-04-02 12:58:05.297631   Assert SIGNUP_HEADER =>
+2024-04-02 12:58:05.311036   => SIGNUP_HEADER is OK
+2024-04-02 12:58:05.311060   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-02 12:58:05.323198   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-02 12:58:05.323223   Assert SIGNUP_REF_LOGIN =>
+2024-04-02 12:58:05.335263   => SIGNUP_REF_LOGIN is OK
+2024-04-02 12:58:05.335288   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.02.01_003-ru.au.NoAuth
+
+2024-04-02 12:58:05.335346   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1bcf55d010>
+
+2024-04-02 12:58:05.899971   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:06.345320   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:07.480764   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:07.858402   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:08.872534   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:09.285632   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:09.288394   Добавление новой строки =>
+
+2024-04-02 12:58:11.190576   => Новая строка добавлена
+
+2024-04-02 12:58:13.096197   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:13.445212   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:13.448119   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-02 12:58:13.818897   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:13.819118   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-02 12:58:14.229961   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:14.230174   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:14.664997   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:14.665241   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 12:58:15.160138   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 12:58:15.160218   Баг Bid:01.02.01_003-ru.au.NoAuth-07 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
