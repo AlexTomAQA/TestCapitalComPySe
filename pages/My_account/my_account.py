@@ -4,14 +4,16 @@
 @Author  : Alexander Tomelo
 """
 import time
+from datetime import datetime
 
 import allure
-from datetime import datetime
-from pages.base_page import BasePage
 from selenium.common.exceptions import (
     ElementClickInterceptedException,
     ElementNotInteractableException
 )
+
+from pages.base_page import BasePage
+from pages.common import Common
 from pages.My_account.my_account_locators import MyAccountLocator
 
 
@@ -25,15 +27,24 @@ class MyAccount(BasePage):
         print(f"{datetime.now()}   BUTTON_LOGOUT is present? =>")
         button_list = self.driver.find_elements(*MyAccountLocator.LOGOUT)
         if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_LOGOUT is not present!")
-            return False
+            msg = "BUTTON_LOGOUT is not present"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
         print(f"{datetime.now()}   => BUTTON_LOGOUT is present")
-        print(f"{datetime.now()}   Is visible BUTTON_LOGOUT? =>")
-        assert self.element_is_visible(MyAccountLocator.LOGOUT), "BUTTON_LOGOUT is not visible"
+
+        print(f"{datetime.now()}   Is BUTTON_LOGOUT visible? =>")
+        if not self.element_is_visible(MyAccountLocator.LOGOUT):
+            msg = "BUTTON_LOGOUT is not visible"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
+        print(f"{datetime.now()}   => BUTTON_LOGOUT is visible")
+
         print(f"{datetime.now()}   BUTTON_LOGOUT is clickable? =>")
         if not self.element_is_clickable(button_list[0], 10):
-            print(f"{datetime.now()}   => BUTTON_LOGOUT is not clickable")
-            return False
+            msg = "BUTTON_LOGOUT is not clickable"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
+        print(f"{datetime.now()}   => BUTTON_LOGOUT is clickable")
 
         print(f"{datetime.now()}   BUTTON_LOGOUT click =>")
         try:
@@ -49,15 +60,13 @@ class MyAccount(BasePage):
 
         print(f"{datetime.now()}   => BUTTON_LOGOUT is clicked")
 
-        return True
-
-    @allure.step(f"{datetime.now()}.   Click 'Trading Platform' button")
+    @allure.step("Click 'Trading Platform' button")
     def click_button_trading_platform(self):
         button = self.driver.find_element(*MyAccountLocator.TRADING_PLATFORM)
         self.element_is_clickable(button, 5)
         button.click()
 
-    @allure.step(f"{datetime.now()}.   Click 'Close MyAccount panel'")
+    @allure.step("Click 'Close MyAccount panel'")
     def click_close_user_panel(self):
         button = self.driver.find_element(*MyAccountLocator.CLOSE)
         self.element_is_clickable(button, 5)
