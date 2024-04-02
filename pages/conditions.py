@@ -145,10 +145,10 @@ class Conditions(BasePage):
         if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
-                    self.to_do_authorization(d, host, cur_login, cur_password)
-                    self.to_do_de_authorization(d, host)
+                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_de_authorization(d, self.driver.current_url)
                 case "Auth":
-                    self.to_do_authorization(d, host, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
