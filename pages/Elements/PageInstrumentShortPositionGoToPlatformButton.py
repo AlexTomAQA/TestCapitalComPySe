@@ -1,12 +1,14 @@
 from datetime import datetime
-import pytest
+# import pytest
 import allure
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
 from selenium.webdriver import ActionChains
-from selenium.common.exceptions import ElementClickInterceptedException
+# from selenium.common.exceptions import ElementClickInterceptedException
+
+from pages.common import Common
 
 
 class PageInstrumentShortPositionGoToPlatformButton(BasePage):
@@ -37,74 +39,85 @@ class PageInstrumentShortPositionGoToPlatformButton(BasePage):
             self.open_page()
 
         print(f"{datetime.now()} Is TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE present on the page? =>")
-        toolinfo = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
+        toolinfo = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.
+                                             TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
         if len(toolinfo) == 0:
             print(f"{datetime.now()}   => TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
-            pytest.fail("Bug ? TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
+            Common.pytest_fail("Bug ? TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE is not present on the page")
 
-        ActionChains(d) \
+        print(f"{datetime.now()}   TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE  scroll =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            toolinfo[0]
+        )
+        print(f"{datetime.now()}   => TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE  scrolled")
+#        ActionChains(d) \
+#            .move_to_element(toolinfo[0]) \
+#            .pause(0.5) \
+#            .perform()
+
+#        print(f"{datetime.now()}   Is TOOLTIP_SHORT_POSITION_FEE open?  =>")
+#        tooltip = self.element_is_visible(PageTradingInstrumentMarketsLocators.TOOLTIP_SHORT_POSITION_FEE)
+#        if tooltip == 0:
+#            print(f"{datetime.now()}   => TOOLTIP_SHORT_POSITION_FEE is not open")
+#            pytest.fail("TOOLTIP_SHORT_POSITION_FEE is not open")
+
+#        ActionChains(d) \
+#            .move_to_element(tooltip) \
+#            .pause(0.5) \
+#            .perform()
+
+#        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
+#        print(f"{datetime.now()}   Is button BUTTON_GO_TO_PLATFORM present on the page? =>")
+#        if len(button_list) == 0:
+#            print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is not present on the page")
+#            return False
+#        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is present on the page")
+
+#        print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM scroll =>")
+#        self.driver.execute_script(
+#            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+#            button_list[0]
+#        )
+#        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM scrolled")
+
+    @allure.step("Hover over tooltip 'Short position overnight fee' --> "
+                 "Click button [Go to platform] on trading instrument page")
+    def element_click(self):
+        print(f"\n{datetime.now()}   2. Act_v0")
+        print(f"{datetime.now()}   Start Click button [Go to platform] =>")
+
+        toolinfo = self.driver.find_elements(
+            *PageTradingInstrumentMarketsLocators.TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE)
+
+        ActionChains(self.driver) \
             .move_to_element(toolinfo[0]) \
             .pause(0.5) \
             .perform()
 
         print(f"{datetime.now()}   Is TOOLTIP_SHORT_POSITION_FEE open?  =>")
-        tooltip = self.element_is_visible(PageTradingInstrumentMarketsLocators.TOOLTIP_SHORT_POSITION_FEE)
-        if tooltip == 0:
-            print(f"{datetime.now()}   => TOOLTIP_SHORT_POSITION_FEE is not open")
-            pytest.fail("TOOLTIP_SHORT_POSITION_FEE is not open")
+        button_go_to_platform = self.element_is_visible(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
 
-        ActionChains(d) \
-            .move_to_element(tooltip) \
+        if not button_go_to_platform:
+            print(f"{datetime.now()}   => TOOLTIP_SHORT_POSITION_FEE is not open")
+            Common.pytest_fail("Bug ? TOOLTIP_SHORT_POSITION_FEE is not open")
+        print(f"{datetime.now()}   => TOOLTIP_SHORT_POSITION_FEE is open")
+
+        print(f"{datetime.now()}   Move focus to button [Go to platform] and click on =>")
+
+        ActionChains(self.driver) \
+            .move_to_element(button_go_to_platform) \
             .pause(0.5) \
             .perform()
 
-        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
-        print(f"{datetime.now()}   Is button BUTTON_GO_TO_PLATFORM present on the page? =>")
-        if len(button_list) == 0:
-            print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is not present on the page")
-            return False
-        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is present on the page")
+#        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
 
-        print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM scroll =>")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            button_list[0]
-        )
-        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM scrolled")
-
-    @allure.step("Click button [Go to platform] on the page content")
-    def element_click(self):
-        print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   Start Click button [Go to platform] =>")
-
-        button_list = self.driver.find_elements(PageTradingInstrumentMarketsLocators.BUTTON_GO_TO_PLATFORM)
-
-        time_out = 3
-        if not self.element_is_clickable(button_list[0], time_out):
+        time_out = 5
+        if not self.element_is_clickable(button_go_to_platform, time_out):
             print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM is not clickable after {time_out} sec. Stop TC>")
-            pytest.fail(f"BUTTON_GO_TO_PLATFORM is not clickable after {time_out} sec.")
+            Common.pytest_fail(f"BUTTON_GO_TO_PLATFORM is not clickable after {time_out} sec.")
 
         print(f"{datetime.now()}   BUTTON_GO_TO_PLATFORM is clickable =>")
 
-        try:
-            button_list[0].click()
-            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM clicked")
-        except ElementClickInterceptedException:
-            print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM not clicked")
-            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
-
-            page_ = SignupLogin(self.driver)
-            if page_.close_signup_form():
-                pass
-            elif page_.close_login_form():
-                pass
-            elif page_.close_signup_page():
-                pass
-            else:
-                page_.close_login_page()
-
-            button_list[0].click()
-            del page_
-
-        del button_list
-        return True
+        button_go_to_platform.click()
+        print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM clicked")
