@@ -154,10 +154,11 @@ class AssertClass(BasePage):
             d: Webdriver
             cur_link: Link in the list of 3 random items and start page of the sidebar
             "Shares trading" is selected (Param)
-            tpd: open Trade platform in Demo mode (False)
+            tpd: open Trade platform in Demo mode (False), else open Trade platform
             tpi: open Trade platform for corresponding trade instrument (False)
             trade_instrument: corresponding trade instrument (False)
         """
+
         print(f"\n{datetime.now()}   3. Assert_v4")
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)

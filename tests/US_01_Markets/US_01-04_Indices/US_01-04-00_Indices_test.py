@@ -15,7 +15,7 @@ from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStart
 count = 1
 
 
-@pytest.mark.us_01_04
+@pytest.mark.us_01_04_00
 class TestIndices:
     page_conditions = None
 
@@ -142,7 +142,7 @@ class TestIndices:
         page_menu = MenuSection(d, link)
         page_menu.open_forex_markets_menu(d, cur_language, cur_country, link)
 
-        file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.text"
+        file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_MARKETS_TABLE_INSTRUMENTS_LIST)
 
         Common().creating_file_of_hrefs("Indices trading instrument", list_items, file_name)

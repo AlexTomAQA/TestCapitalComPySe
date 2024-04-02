@@ -10,7 +10,7 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-import conf
+# import conf
 # from pages.common import flag_of_bug
 from pages.common import Common
 from src.src import CapitalComPageSrc
@@ -34,7 +34,7 @@ url_country = "?"
 prev_country = "?"
 prev_language = "?"
 prev_role = "?"
-test_link = "?"
+url_after_preconditions = "?"
 
 
 class Conditions(BasePage):
@@ -42,7 +42,7 @@ class Conditions(BasePage):
 
     debug = False
 
-    @allure.step(f"{datetime.now()}   Set preconditions")
+    @allure.step("Preconditions")
     def preconditions(
         self,
         d,
@@ -59,24 +59,23 @@ class Conditions(BasePage):
         """
         global url_language
         global url_country
-        global test_link
+        global url_after_preconditions
         global prev_role
         global prev_language
         global prev_country
-        # global flag_of_bug
 
         print(f"\n{datetime.now()}   START PRECONDITIONS =>")
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
+        print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_preconditions}")
         print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
-        if test_link == "?" or Common.flag_of_bug:
-            test_link = host
-            self.link = test_link
+        if url_after_preconditions == "?":
+            url_after_preconditions = host
+
+        if Common.flag_of_bug:
+            self.link = url_after_preconditions
             self.open_page()
-        # if url == "":
-        #     self.link = host
-        #     self.open_page()
+
         print(f"\n{datetime.now()}   => Windows size - {d.get_window_size()}")
-        # print(f"\n{datetime.now()}   Set windows position at (320, 180) =>")
-        # d.set_window_position(320, 180)
         print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
         print(f"{datetime.now()}   Set resolution 1280 * 800 =>")
@@ -87,22 +86,17 @@ class Conditions(BasePage):
 
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Работа с куками")
+        # if cur_role != prev_role or Common.flag_of_bug:
         if cur_role != prev_role:
             print(f"{datetime.now()}   Prev. role - '{prev_role}'")
             print(f"{datetime.now()}   Current testing role - '{cur_role}'")
             print(f"\n{datetime.now()}   All cookies must be delete =>")
 
-            # if test_link != host:
-            #     test_link = host
-            #     self.link = test_link
-            #     self.open_page()
             d.delete_all_cookies()
             print(f"{datetime.now()}   => All cookies are deleted")
-            if test_link != host:
-                test_link = host
-                self.link = test_link
+            url_after_preconditions = host
+            self.link = url_after_preconditions
             self.open_page()
-            # self.open_page()
             self.button_accept_all_cookies_click()
             prev_country = "?"
             prev_language = "?"
@@ -111,6 +105,7 @@ class Conditions(BasePage):
         # Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev. country - '{prev_country}'")
         print(f"{datetime.now()}   Cur. country - '{cur_country}'")
+        # if cur_country != prev_country or Common.flag_of_bug:
         if cur_country != prev_country:
             print(f"{datetime.now()}   Set '{cur_country}' country =>")
             # page_menu = MenuSection(d, host)
@@ -131,7 +126,8 @@ class Conditions(BasePage):
         if language_cur == "":
             language_cur = "en"
         print(f"{datetime.now()}   Cur. language - '{language_cur}'")
-        if cur_language != prev_language or Common.flag_of_bug:
+        # if cur_language != prev_language or Common.flag_of_bug:
+        if cur_language != prev_language:
             print(f"{datetime.now()}   Set '{language_cur}' language =>")
             # page_menu = MenuSection(d, host)
             page_menu = MenuSection(d, self.driver.current_url)
@@ -144,29 +140,33 @@ class Conditions(BasePage):
         # Продолжаем настройки в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
         print(f"{datetime.now()}   Cur. role - '{cur_role}'")
+        # if cur_role != prev_role or Common.flag_of_bug:
         if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
-                    self.to_do_authorisation(d, host, cur_login, cur_password)
-                    self.to_do_de_authorisation(d, host)
+                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_de_authorization(d, self.driver.current_url)
                 case "Auth":
-                    self.to_do_authorisation(d, host, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
 
-        test_link = self.driver.current_url
+        url_after_preconditions = self.driver.current_url
+        print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions}")
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
-        return test_link
+        return url_after_preconditions
 
     # авторизация пользователя
-    @allure.step(f"{datetime.now()}   Start Authorisation")
     # @profile(precision=3)
-    def to_do_authorisation(self, d, link, login, password):
+    @allure.step("Authorization")
+    def to_do_authorization(self, d, link, login, password):
         """Authorisation"""
+
         print(f"" f"{datetime.now()}   Start Autorization")
         # Setup wait for later
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
         assert login != "", "Авторизация невозможна. Не указан e-mail"
         assert password != "", "Авторизация невозможна. Не указан пароль"
@@ -214,26 +214,40 @@ class Conditions(BasePage):
 
         # self.clear_charts_list(d)
         Common().browser_back_to_link(d, link)
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
-    @allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
-    def clear_charts_list(self, wd):
-        ti_page = TradingPlatform(wd)
-        ti_page.select_menu_charts()
-        ti_page.button_close_all_ti_click()
-
-    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
-    def to_do_de_authorisation(self, d, link):
+    # def clear_charts_list(self, wd):
+    #     allure.step(f"{datetime.now()}   Start Clear Chart list if trading instruments")
+    #
+    #     ti_page = TradingPlatform(wd)
+    #     ti_page.select_menu_charts()
+    #     ti_page.button_close_all_ti_click()
+    #
+    @allure.step(f"{datetime.now()}   DeAuthorisation")
+    def to_do_de_authorization(self, d, link):
         """DeAuthorisation"""
+
         print(f"{datetime.now()}   Start DeAuthorisation")
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
-        assert Header(d, link).header_button_my_account_click(), "Button 'My account' missing"
-        assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
+        if not Header(d, link).header_button_my_account_click():
+            msg = "Button 'My account' missing"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
 
-    @allure.step("Start Checking that Main Page is opened")
+        if not MyAccount(d, link).my_account_button_logout_click():
+            msg = "Button 'Logout' missing"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
+
+        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
+
     def arrange_0(self):
         """
         Checking Main Page is opened
         """
+        allure.step("Checking that Main Page is opened")
+
         base_link = CapitalComPageSrc.URL
         print(f"{datetime.now()}   0. Arrange_0")
         if not self.current_page_is(base_link):
