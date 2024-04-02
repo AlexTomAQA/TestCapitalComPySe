@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-02 04:48:01.217484   worker_id = master
+
+2024-04-02 04:48:01.217499   0. Allure grouping v4
+
+2024-04-02 04:48:01.217577   START PRECONDITIONS =>
+
+2024-04-02 04:48:01.217589   => flag_of_bug - False
+
+2024-04-02 04:48:01.217600   => Windows size - {'width': 1280, 'height': 800}
+2024-04-02 04:48:01.218896   Set windows position at (0, 0) =>
+2024-04-02 04:48:01.320867   Set resolution 1280 * 800 =>
+2024-04-02 04:48:01.422898   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-02 04:48:02.449899   Капчи нет. Идем дальше
+
+2024-04-02 04:48:02.449984   Работа с куками
+
+2024-04-02 04:48:02.449998   Prev. country - 'de'
+2024-04-02 04:48:02.450008   Cur. country - 'de'
+2024-04-02 04:48:02.450018   => Country set to 'de'
+
+2024-04-02 04:48:02.450027   Prev. language - 'ro'
+2024-04-02 04:48:02.450036   Cur. language - 'ro'
+2024-04-02 04:48:02.450044   => Language is set to 'ro'
+
+2024-04-02 04:48:02.450053   Prev. role - 'NoAuth'
+2024-04-02 04:48:02.450062   Cur. role - 'NoAuth'
+2024-04-02 04:48:02.450071   => The 'NoAuth' role is set
+
+2024-04-02 04:48:02.453104   => THE END PRECONDITIONS
+
+2024-04-02 04:48:02.453274   1. Arrange_v0
+2024-04-02 04:48:02.453301   current_page = https://capital.com/ro/piata-CFD
+2024-04-02 04:48:02.456506   link = https://capital.com/ro/cfd-vs-actiuni-trading
+2024-04-02 04:48:02.459047   => current_url != cur_item_link
+2024-04-02 04:48:02.459069   Current page URL = https://capital.com/ro/piata-CFD
+2024-04-02 04:48:02.461538   self.link = https://capital.com/ro/cfd-vs-actiuni-trading
+2024-04-02 04:48:02.461552   link = https://capital.com/ro/cfd-vs-actiuni-trading
+2024-04-02 04:48:04.354407   => Loaded page https://capital.com/ro/cfd-vs-actiuni-trading
+2024-04-02 04:48:04.366623   BUTTON_START_TRADING scroll =>
+2024-04-02 04:48:04.370880   BUTTON_START_TRADING is visible? =>
+2024-04-02 04:48:04.393717   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-02 04:48:04.393877   2. Act_v0
+2024-04-02 04:48:04.393893   Start Click button [Start Trading] =>
+2024-04-02 04:48:04.398818   BUTTON_START_TRADING is clickable? =>
+2024-04-02 04:48:04.407908   BUTTON_START_TRADING click =>
+2024-04-02 04:48:04.442527   => BUTTON_START_TRADING clicked
+
+2024-04-02 04:48:04.442737   3. Assert_Login_v0
+2024-04-02 04:48:04.442820   Check that 'Login' form is opened
+2024-04-02 04:48:07.488827   'Login' form not opened
+2024-04-02 04:48:07.489009   Check that new 'Login' form is opened
+2024-04-02 04:48:10.556415   => New 'Login' form not opened
+2024-04-02 04:48:10.559148   'Login' page not opened
+2024-04-02 04:48:13.610831   'Login' form on trading platform not opened
+2024-04-02 04:48:13.611025   Start step Check that [Sign up] form is opened
+2024-04-02 04:48:13.620794   'Sign up' form opened
+2024-04-02 04:48:13.620819   Assert SIGNUP_HEADER =>
+2024-04-02 04:48:13.630767   Assert SIGNUP_REF_LOGIN =>
+2024-04-02 04:48:13.640510   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-02 04:48:13.649916   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-02 04:48:13.649940   => 'Signup' form is checked
+
+Bug: Bid:11.01.03.01_01-ro.de.NoAuth
+
+2024-04-02 04:48:13.650000   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f250184ab40>
+
+2024-04-02 04:48:13.947028   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:48:14.109897   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:48:14.996369   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:48:15.149633   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:48:15.149712   Баг Bid:11.01.03.01_01-ro.de.NoAuth уже существует, но у него изменился тип с CFD trading guide / child на 05
+
+2024-04-02 04:48:15.149891   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-02 04:48:15.303563   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-02 04:48:15.305162   Баг Bid:11.01.03.01_01-ro.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
