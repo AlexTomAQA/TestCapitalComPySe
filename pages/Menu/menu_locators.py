@@ -1078,3 +1078,34 @@ class MenuUS0102MarketsShares:
     SUB_MENU_RU_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/kotirovki-aktsiy']")
     SUB_MENU_ZH_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-share-prices']")
     SUB_MENU_CN_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-share-prices']")
+
+
+class MenuUS0101AllMarkets:
+    SUB_MENU_EN_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/derivative-financial-instruments']")
+    SUB_MENU_AR_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/alaswaq']")
+    SUB_MENU_DE_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/alle-maerkte']")
+    SUB_MENU_EL_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/paragoga-xrimatopistotika-mesa']")
+    SUB_MENU_ES_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/instrumentos-financieros-derivados']")
+    SUB_MENU_FR_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/instruments-financiers-derives']")
+    SUB_MENU_IT_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/derivati']")
+    SUB_MENU_HU_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/derivativ-penzugyi-eszkozok']")
+    SUB_MENU_NL_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/derivaat-financieel-instrument']")
+    SUB_MENU_PL_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/pochodne-instrumenty-finansowe']")
+    SUB_MENU_RO_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/instrumente-financiare-derivate']")
+    SUB_MENU_RU_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/proizvodnyye-finansovyye-instrumenty']")
+    SUB_MENU_ZH_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/derivative-financial-instruments']")
+    SUB_MENU_CN_ALLMARKETS_BUTTON = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/derivative-financial-instruments']")
