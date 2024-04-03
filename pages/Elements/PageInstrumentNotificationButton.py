@@ -18,7 +18,7 @@ from pages.base_page import BasePage
 
 class PageInstrumentNotificationButton(BasePage):
 
-    @allure.step(f"{datetime.now()} Start testing for PageInstrumentNotificationButton of the trading instrument page")
+    @allure.step("Start testing for PageInstrumentNotificationButton of the trading instrument page")
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
 
