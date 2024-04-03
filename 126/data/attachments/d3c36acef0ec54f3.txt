@@ -1,0 +1,79 @@
+{'width': 1280, 'height': 800}
+
+2024-04-03 16:02:35.476332   worker_id = master
+
+2024-04-03 16:02:35.476347   0. Allure grouping v4
+
+2024-04-03 16:02:35.476535   START PRECONDITIONS =>
+
+2024-04-03 16:02:35.476550   => Current URL - https://capital.com/ru/torgovlya-bitcoin-gold-btg-cfd
+
+2024-04-03 16:02:35.479274   => URL after prev. preconditions - https://capital.com/ru/torgovlya-bitcoin-gold-btg-cfd
+
+2024-04-03 16:02:35.479287   => flag_of_bug - False
+
+2024-04-03 16:02:35.479299   => Windows size - {'width': 1280, 'height': 800}
+2024-04-03 16:02:35.480608   Set windows position at (0, 0) =>
+2024-04-03 16:02:35.582685   Set resolution 1280 * 800 =>
+2024-04-03 16:02:35.684737   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-03 16:02:36.711588   Капчи нет. Идем дальше
+
+2024-04-03 16:02:36.711673   Работа с куками
+
+2024-04-03 16:02:36.711686   Prev. country - 'ae'
+2024-04-03 16:02:36.711696   Cur. country - 'ae'
+2024-04-03 16:02:36.711705   => Country set to 'ae'
+
+2024-04-03 16:02:36.711714   Prev. language - 'ru'
+2024-04-03 16:02:36.711723   Cur. language - 'ru'
+2024-04-03 16:02:36.711731   => Language is set to 'ru'
+
+2024-04-03 16:02:36.711740   Prev. role - 'NoAuth'
+2024-04-03 16:02:36.711749   Cur. role - 'NoAuth'
+2024-04-03 16:02:36.711757   => The 'NoAuth' role is set
+
+2024-04-03 16:02:36.714702   => Current URL - https://capital.com/ru/torgovlya-bitcoin-gold-btg-cfd
+
+2024-04-03 16:02:36.714723   => THE END PRECONDITIONS
+
+2024-04-03 16:02:36.714764   1. Arrange_v0
+2024-04-03 16:02:36.714778   current_page = https://capital.com/ru/torgovlya-bitcoin-gold-btg-cfd
+2024-04-03 16:02:36.717580   link = https://capital.com/ru/torgovlya-litecoin-ltc-cfd
+2024-04-03 16:02:36.720349   => current_url != cur_item_link
+2024-04-03 16:02:36.720371   Current page URL = https://capital.com/ru/torgovlya-bitcoin-gold-btg-cfd
+2024-04-03 16:02:36.723137   self.link = https://capital.com/ru/torgovlya-litecoin-ltc-cfd
+2024-04-03 16:02:36.723151   link = https://capital.com/ru/torgovlya-litecoin-ltc-cfd
+2024-04-03 16:02:38.583522   => Loaded page https://capital.com/ru/torgovlya-litecoin-ltc-cfd
+2024-04-03 16:02:38.599050   BUTTON_START_TRADING scroll =>
+2024-04-03 16:02:38.602239   BUTTON_START_TRADING is visible? =>
+2024-04-03 16:02:38.627252   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-03 16:02:38.627445   2. Act_v0
+2024-04-03 16:02:38.627463   Start Click button [Start Trading] =>
+2024-04-03 16:02:38.632405   BUTTON_START_TRADING is clickable? =>
+2024-04-03 16:02:38.645625   BUTTON_START_TRADING click =>
+2024-04-03 16:02:38.681897   => BUTTON_START_TRADING clicked
+
+2024-04-03 16:02:38.682114   3. Assert_Login_v0
+2024-04-03 16:02:38.682197   Check that 'Login' form is opened
+2024-04-03 16:02:41.760110   'Login' form not opened
+2024-04-03 16:02:41.760297   Check that new 'Login' form is opened
+2024-04-03 16:02:44.859437   => New 'Login' form not opened
+2024-04-03 16:02:44.862151   'Login' page not opened
+2024-04-03 16:02:47.951261   'Login' form on trading platform not opened
+2024-04-03 16:02:47.951486   Start step Check that [Sign up] form is opened
+2024-04-03 16:02:47.964203   'Sign up' form opened
+2024-04-03 16:02:47.964225   Assert SIGNUP_HEADER =>
+2024-04-03 16:02:47.975709   Assert SIGNUP_REF_LOGIN =>
+2024-04-03 16:02:47.985012   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-03 16:02:47.996871   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-03 16:02:47.996894   => 'Signup' form is checked
+
+Bug: 
+
+2024-04-03 16:02:47.996946   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f10fea76ae0>
+
+2024-04-03 16:02:47.999666  Для бага: Bid-05 необходимо использовать проверку на ретест!!!
