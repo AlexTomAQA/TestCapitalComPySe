@@ -144,10 +144,10 @@ class Conditions(BasePage):
         if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
-                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_language, cur_login, cur_password)
                     self.to_do_de_authorization(d, self.driver.current_url)
                 case "Auth":
-                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_language, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
@@ -161,7 +161,7 @@ class Conditions(BasePage):
     # авторизация пользователя
     # @profile(precision=3)
     @allure.step("Authorization")
-    def to_do_authorization(self, d, link, login, password):
+    def to_do_authorization(self, d, link, cur_language, login, password):
         """Authorisation"""
 
         print(f"" f"{datetime.now()}   Start Autorization")
@@ -178,7 +178,7 @@ class Conditions(BasePage):
             print(f"{datetime.now()}   => 'Login' form is opened")
         elif SignupLogin(d, link).should_be_login_page():
             print(f"{datetime.now()}   => 'Login' page is opened")
-        elif SignupLogin(d, link).should_be_trading_platform_login_form():
+        elif SignupLogin(d, link).should_be_trading_platform_login_form(cur_language):
             print(f"{datetime.now()}   => 'Login' form is opened on Trading platform")
         else:
             msg = "Problem with Authorisation"
