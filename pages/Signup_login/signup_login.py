@@ -253,7 +253,7 @@ class SignupLogin(BasePage):
             return False
 
     @allure.step("Check that [Login] form on trading platform page opened")
-    def should_be_trading_platform_login_form(self):
+    def should_be_trading_platform_login_form(self, cur_language):
         """
         Check there are an elements to on Login form on trading platform
         """
