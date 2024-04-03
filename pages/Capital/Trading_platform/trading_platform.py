@@ -325,7 +325,7 @@ class TradingPlatform(BasePage):
         print(f"\n{datetime.now()}   Top Charts List contain {len(top_chart_trade_list)} trade instruments")
         print(f"\n{datetime.now()}   Top Charts List contain following trade instruments:")
         present = False
-        for element in top_chart_trade_list:
+        for element in self.driver.find_elements(*TradingInstruments.LIST_TRADE_INSTRUMENTS):
             # print(f"'{element.text}'", " ", "")
             print(f"'{element.text}'")
             if trade_instrument in element.text:
