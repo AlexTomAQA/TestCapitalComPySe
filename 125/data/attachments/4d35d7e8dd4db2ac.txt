@@ -1,0 +1,75 @@
+{'width': 1280, 'height': 800}
+
+2024-04-03 05:18:48.962684   worker_id = master
+
+2024-04-03 05:18:48.962704   0. Allure grouping v4
+
+2024-04-03 05:18:48.962951   START PRECONDITIONS =>
+
+2024-04-03 05:18:48.962966   => Current URL - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:18:48.966286   => URL after prev. preconditions - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:18:48.966300   => flag_of_bug - False
+
+2024-04-03 05:18:48.966312   => Windows size - {'width': 1280, 'height': 800}
+2024-04-03 05:18:48.967538   Set windows position at (0, 0) =>
+2024-04-03 05:18:49.069755   Set resolution 1280 * 800 =>
+2024-04-03 05:18:49.172058   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-03 05:18:50.204799   Капчи нет. Идем дальше
+
+2024-04-03 05:18:50.204888   Работа с куками
+
+2024-04-03 05:18:50.204901   Prev. country - 'ae'
+2024-04-03 05:18:50.204911   Cur. country - 'ae'
+2024-04-03 05:18:50.204920   => Country set to 'ae'
+
+2024-04-03 05:18:50.204929   Prev. language - 'ru'
+2024-04-03 05:18:50.204938   Cur. language - 'ru'
+2024-04-03 05:18:50.204947   => Language is set to 'ru'
+
+2024-04-03 05:18:50.204955   Prev. role - 'NoReg'
+2024-04-03 05:18:50.204964   Cur. role - 'NoReg'
+2024-04-03 05:18:50.204973   => The 'NoReg' role is set
+
+2024-04-03 05:18:50.207856   => Current URL - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:18:50.207889   => THE END PRECONDITIONS
+
+2024-04-03 05:18:50.208130   1. Arrange_v2
+2024-04-03 05:18:50.208154   current_page = https://capital.com/ru/usd-jpy-stavka
+2024-04-03 05:18:50.212735   link = https://capital.com/ru/usd-jpy-stavka
+2024-04-03 05:18:50.215155   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-03 05:18:50.222383   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-03 05:18:50.222406   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-04-03 05:18:50.227677   => LONG_POSITION_OVERNIGHT_FEE scrolled
+2024-04-03 05:18:50.227824   Start Checking that form [Sign up] popped up on the page =>
+2024-04-03 05:18:51.770439   '[Sign up]' form was not popped up
+
+2024-04-03 05:18:51.770624   2. Act_v2
+2024-04-03 05:18:51.770650   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-04-03 05:18:52.542792   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-03 05:18:52.555683   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-04-03 05:18:52.555708   Move focus on to button [Go to platform] and click =>
+2024-04-03 05:18:53.337236   => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is clickable
+2024-04-03 05:18:53.818942 => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION clicked
+
+2024-04-03 05:18:53.819241   3. Assert_v0
+2024-04-03 05:18:53.819376   Start step Check that [Sign up] form is opened
+2024-04-03 05:18:57.055774   'Sign up' form not opened
+2024-04-03 05:18:57.055954   Start step Check that new [Sign up] form is opened
+2024-04-03 05:19:00.125849   => new 'Sign up' form not opened
+2024-04-03 05:19:00.126034   Start method Check that [Sign up] page opened =>
+2024-04-03 05:19:01.129293   'Sign up' page not opened
+2024-04-03 05:19:01.129482   Check that [Sign up] form on trading platform opened =>
+2024-04-03 05:19:01.142482   => 'Sign up' form on trading platform page opened
+2024-04-03 05:19:01.142505   Assert SIGNUP_HEADER =>
+2024-04-03 05:19:01.154438   => SIGNUP_HEADER is OK
+2024-04-03 05:19:01.154460   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-03 05:19:01.166466   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-03 05:19:01.166488   Assert SIGNUP_REF_LOGIN =>
+2024-04-03 05:19:01.178307   => SIGNUP_REF_LOGIN is OK
+2024-04-03 05:19:01.178329   => 'Signup' form on trading platform page is checked
+2024-04-03 05:19:01.178457   Close [Sign up] form with trading platform page =>
+2024-04-03 05:19:01.864101   => [Sign up] form with trading platform page is closed

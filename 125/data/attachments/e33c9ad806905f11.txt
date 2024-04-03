@@ -1,0 +1,110 @@
+{'width': 1280, 'height': 800}
+
+2024-04-03 04:52:03.466580   worker_id = master
+
+2024-04-03 04:52:03.466594   0. Allure grouping v4
+
+2024-04-03 04:52:03.466774   START PRECONDITIONS =>
+
+2024-04-03 04:52:03.466790   => Current URL - https://capital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii
+
+2024-04-03 04:52:03.469181   => URL after prev. preconditions - https://capital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii
+
+2024-04-03 04:52:03.469229   => flag_of_bug - False
+
+2024-04-03 04:52:03.469246   => Windows size - {'width': 1280, 'height': 800}
+2024-04-03 04:52:03.470535   Set windows position at (0, 0) =>
+2024-04-03 04:52:03.575706   Set resolution 1280 * 800 =>
+2024-04-03 04:52:03.677884   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-03 04:52:04.729219   Капчи нет. Идем дальше
+
+2024-04-03 04:52:04.729311   Работа с куками
+
+2024-04-03 04:52:04.729325   Prev. country - 'ae'
+2024-04-03 04:52:04.729335   Cur. country - 'ae'
+2024-04-03 04:52:04.729344   => Country set to 'ae'
+
+2024-04-03 04:52:04.729353   Prev. language - 'ru'
+2024-04-03 04:52:04.729362   Cur. language - 'ru'
+2024-04-03 04:52:04.729371   => Language is set to 'ru'
+
+2024-04-03 04:52:04.729380   Prev. role - 'Auth'
+2024-04-03 04:52:04.729388   Cur. role - 'Auth'
+2024-04-03 04:52:04.729397   => The 'Auth' role is set
+
+2024-04-03 04:52:04.732076   => Current URL - https://capital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii
+
+2024-04-03 04:52:04.732097   => THE END PRECONDITIONS
+
+2024-04-03 04:52:04.732140   1. Arrange_v0
+2024-04-03 04:52:04.732155   current_page = https://capital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii
+2024-04-03 04:52:04.734630   link = https://capital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii
+2024-04-03 04:52:04.737018   BUTTON_SELL is located on the page? =>
+2024-04-03 04:52:04.744514   => BUTTON_SELL is located on the page!
+2024-04-03 04:52:04.744670   Start Checking that form [Sign up] popped up on the page =>
+2024-04-03 04:52:06.270353   '[Sign up]' form was not popped up
+
+2024-04-03 04:52:06.270549   2. Act_v0
+2024-04-03 04:52:06.276354   BUTTON_SELL is present? =>
+2024-04-03 04:52:06.276377   => BUTTON_SELL is present on the page
+2024-04-03 04:52:06.276386   BUTTON_SELL scroll =>
+2024-04-03 04:52:06.279542   => BUTTON_SELL scrolled
+2024-04-03 04:52:06.284249   BUTTON_SELL is clickable? =>
+2024-04-03 04:52:06.294057   BUTTON_SELL CLICK =>
+2024-04-03 04:52:06.510615   => BUTTON_SELL clicked!
+
+2024-04-03 04:52:06.510971   3. Assert_v4
+2024-04-03 04:52:06.511154   Checking that the trading platform page has opened (v4) =>
+2024-04-03 04:52:06.518655   Checking way # 1 => 
+
+2024-04-03 04:52:06.518703   1. Checking that the Trading platform page has valid title =>
+2024-04-03 04:52:06.521498   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-03 04:52:06.521544   2. Checking that the LOGO is present on the page =>
+2024-04-03 04:52:07.768466   => 'capital*com' logo is present on the current page
+
+2024-04-03 04:52:07.768514   tpd = False
+
+2024-04-03 04:52:07.768537   4. Check that opened page with https://capital.com/trading/platform/charting/21178483823812?side=sell&ids=69767822418420761,1361805280629956,67428628610196505,63012422977365017,15820980186338500,21621659937100996,67428057379546137,14976525191435460,1182876943078596,21182778791108,21178483823812 url
+with selected corresponding trading instrument 'apital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii' =>
+
+2024-04-03 04:52:07.796658   trade_instrument = 'apital.com/ru/amc-entertainment-holdings-cl-a-cena-akcii'
+
+2024-04-03 04:52:07.796672   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-03 04:52:07.861866   => Trading Platform opened in Chart mode
+
+2024-04-03 04:52:07.861907   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-03 04:52:07.867275   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-04-03 04:52:07.867303   Top Charts List contain 11 trade instruments
+
+2024-04-03 04:52:07.867314   Top Charts List contain following trade instruments:
+'AMC Entertainment Holdings Inc (Extended Hours)'
+'Mitsubishi Estate Co., Ltd.'
+'Amazon.com Inc (Extended Hours)'
+''
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:01.02.01_006-ru.ae.Auth
+
+2024-04-03 04:52:08.007237   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f0895a71a30>
+
+2024-04-03 04:52:08.522488   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 04:52:08.734915   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 04:52:09.820041   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 04:52:10.052380   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 04:52:10.054035   Баг Bid:01.02.01_006-ru.ae.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

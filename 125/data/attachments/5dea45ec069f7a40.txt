@@ -1,0 +1,143 @@
+{'width': 1280, 'height': 800}
+
+2024-04-03 05:00:13.477976   worker_id = master
+
+2024-04-03 05:00:13.477995   0. Allure grouping v4
+
+2024-04-03 05:00:13.478240   START PRECONDITIONS =>
+
+2024-04-03 05:00:13.478256   => Current URL - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:00:13.481435   => URL after prev. preconditions - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:00:13.481450   => flag_of_bug - False
+
+2024-04-03 05:00:13.481463   => Windows size - {'width': 1280, 'height': 800}
+2024-04-03 05:00:13.483062   Set windows position at (0, 0) =>
+2024-04-03 05:00:13.585137   Set resolution 1280 * 800 =>
+2024-04-03 05:00:13.689610   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-03 05:00:14.731891   Капчи нет. Идем дальше
+
+2024-04-03 05:00:14.731973   Работа с куками
+
+2024-04-03 05:00:14.731988   Prev. country - 'ae'
+2024-04-03 05:00:14.731998   Cur. country - 'ae'
+2024-04-03 05:00:14.732007   => Country set to 'ae'
+
+2024-04-03 05:00:14.732015   Prev. language - 'ru'
+2024-04-03 05:00:14.732024   Cur. language - 'ru'
+2024-04-03 05:00:14.732033   => Language is set to 'ru'
+
+2024-04-03 05:00:14.732042   Prev. role - 'Auth'
+2024-04-03 05:00:14.732050   Cur. role - 'Auth'
+2024-04-03 05:00:14.732059   => The 'Auth' role is set
+
+2024-04-03 05:00:14.734721   => Current URL - https://capital.com/ru/usd-jpy-stavka
+
+2024-04-03 05:00:14.734745   => THE END PRECONDITIONS
+
+2024-04-03 05:00:14.734795   1. Arrange_v0
+2024-04-03 05:00:14.734809   current_page = https://capital.com/ru/usd-jpy-stavka
+2024-04-03 05:00:14.738111   link = https://capital.com/ru/usd-jpy-stavka
+2024-04-03 05:00:14.740477   BUTTON_BUY is located on the page? =>
+2024-04-03 05:00:14.747901   => BUTTON_BUY is located on the page!
+2024-04-03 05:00:14.748056   Start Checking that form [Sign up] popped up on the page =>
+2024-04-03 05:00:16.275033   '[Sign up]' form was not popped up
+
+2024-04-03 05:00:16.275218   2. Act_v0
+2024-04-03 05:00:16.280131   BUTTON_BUY is present? =>
+2024-04-03 05:00:16.280152   => BUTTON_BUY is present on the page
+2024-04-03 05:00:16.280162   BUTTON_BUY scroll =>
+2024-04-03 05:00:16.283449   => BUTTON_BUY scrolled
+2024-04-03 05:00:16.315598   BUTTON_BUY is clickable? =>
+2024-04-03 05:00:16.326078   BUTTON_BUY CLICK =>
+2024-04-03 05:00:16.551151   => BUTTON_BUY clicked!
+
+2024-04-03 05:00:16.551473   3. Assert_v4
+2024-04-03 05:00:16.551649   Checking that the trading platform page has opened (v4) =>
+2024-04-03 05:00:16.561098   Checking way # 1 => 
+
+2024-04-03 05:00:16.561162   1. Checking that the Trading platform page has valid title =>
+2024-04-03 05:00:16.564570   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-03 05:00:16.564624   2. Checking that the LOGO is present on the page =>
+2024-04-03 05:00:22.094374   => 'capital*com' logo is present on the current page
+
+2024-04-03 05:00:22.094409   tpd = False
+
+2024-04-03 05:00:22.094423   4. Check that opened page with https://capital.com/trading/platform/charting/374675767075865?side=buy&ids=69767822418420761,1361805280629956,67428628610196505,63012422977365017,15820980186338500,21621659937100996,67428057379546137,14976525191435460,1182876943078596,21182778791108,21178483823812,123763777643545,93810675762329,53068615992473,143778325279051,374675767075865 url
+with selected corresponding trading instrument 'US Dollar / Japanese Yen' =>
+
+2024-04-03 05:00:22.097911   trade_instrument = 'US Dollar / Japanese Yen'
+
+2024-04-03 05:00:22.097933   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-03 05:00:22.384564   => Trading Platform opened in Chart mode
+
+2024-04-03 05:00:22.384612   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-03 05:00:22.434210   4.3. Check that Top Charts List contain selected trade instrument =>
+
+2024-04-03 05:00:22.434258   Top Charts List contain 16 trade instruments
+
+2024-04-03 05:00:22.434274   Top Charts List contain following trade instruments:
+'AMC Entertainment Holdings Inc (Extended Hours)'
+'Mitsubishi Estate Co., Ltd.'
+'Amazon.com Inc (Extended Hours)'
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+''
+
+Bug: Bid:01.03.01_005-ru.ae.Auth
+
+2024-04-03 05:00:22.840968   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f17aa09f680>
+
+2024-04-03 05:00:23.185685   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:23.569348   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:24.135895   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:24.359464   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:24.825796   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:25.055844   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:25.058245   Добавление новой строки =>
+
+2024-04-03 05:00:25.688099   => Новая строка добавлена
+
+2024-04-03 05:00:26.553436   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:26.761473   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:26.765380   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-03 05:00:27.034842   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:27.035032   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-03 05:00:27.234028   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:27.234244   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:27.393065   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:27.393310   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 05:00:27.621995   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 05:00:27.622069   Баг Bid:01.03.01_005-ru.ae.Auth-16 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
