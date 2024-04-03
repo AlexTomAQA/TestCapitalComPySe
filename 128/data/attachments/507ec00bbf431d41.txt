@@ -1,0 +1,94 @@
+{'width': 1280, 'height': 800}
+
+2024-04-03 20:02:06.430688   worker_id = master
+
+2024-04-03 20:02:06.430702   0. Allure grouping v4
+
+2024-04-03 20:02:06.430886   START PRECONDITIONS =>
+
+2024-04-03 20:02:06.430901   => Current URL - https://capital.com/es/trade-alibaba
+
+2024-04-03 20:02:06.433877   => URL after prev. preconditions - https://capital.com/es/trade-netflix
+
+2024-04-03 20:02:06.433890   => flag_of_bug - True
+2024-04-03 20:02:06.433903   Current page URL = https://capital.com/es/trade-alibaba
+2024-04-03 20:02:06.436574   self.link = https://capital.com/es/trade-netflix
+2024-04-03 20:02:06.436589   link = https://capital.com/es/trade-netflix
+2024-04-03 20:02:08.206047   => Loaded page https://capital.com/es/trade-netflix
+
+2024-04-03 20:02:08.210617   => Windows size - {'width': 1280, 'height': 800}
+2024-04-03 20:02:08.212098   Set windows position at (0, 0) =>
+2024-04-03 20:02:08.314516   Set resolution 1280 * 800 =>
+2024-04-03 20:02:08.421479   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-03 20:02:09.460073   Капчи нет. Идем дальше
+
+2024-04-03 20:02:09.460161   Работа с куками
+
+2024-04-03 20:02:09.460174   Prev. country - 'de'
+2024-04-03 20:02:09.460185   Cur. country - 'de'
+2024-04-03 20:02:09.460194   => Country set to 'de'
+
+2024-04-03 20:02:09.460203   Prev. language - 'es'
+2024-04-03 20:02:09.460212   Cur. language - 'es'
+2024-04-03 20:02:09.460220   => Language is set to 'es'
+
+2024-04-03 20:02:09.460229   Prev. role - 'NoAuth'
+2024-04-03 20:02:09.460238   Cur. role - 'NoAuth'
+2024-04-03 20:02:09.460247   => The 'NoAuth' role is set
+
+2024-04-03 20:02:09.463063   => Current URL - https://capital.com/es/trade-netflix
+
+2024-04-03 20:02:09.463084   => THE END PRECONDITIONS
+
+2024-04-03 20:02:09.463155   1. Arrange_v0
+2024-04-03 20:02:09.463173   current_page = https://capital.com/es/trade-netflix
+2024-04-03 20:02:09.465730   link = https://capital.com/es/trade-alibaba
+2024-04-03 20:02:09.468306   Current page URL = https://capital.com/es/trade-netflix
+2024-04-03 20:02:09.470785   self.link = https://capital.com/es/trade-alibaba
+2024-04-03 20:02:09.470798   link = https://capital.com/es/trade-alibaba
+2024-04-03 20:02:11.556643   => Loaded page https://capital.com/es/trade-alibaba
+2024-04-03 20:02:11.560978   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-03 20:02:11.572298   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-03 20:02:11.572474   Start Checking that form [Sign up] popped up on the page =>
+2024-04-03 20:02:13.109561   '[Sign up]' form was not popped up
+
+2024-04-03 20:02:13.109758   2. Act_v0
+2024-04-03 20:02:13.115241   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-03 20:02:13.115264   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-03 20:02:13.115274   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-03 20:02:13.128924   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-03 20:02:13.150514   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-03 20:02:13.160844   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-03 20:02:13.172634   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-03 20:02:13.172851   3. Assert_Login_v0
+2024-04-03 20:02:13.172933   Check that 'Login' form is opened
+2024-04-03 20:02:16.262990   'Login' form not opened
+2024-04-03 20:02:16.263216   Check that new 'Login' form is opened
+2024-04-03 20:02:19.345614   => New 'Login' form not opened
+2024-04-03 20:02:19.348500   'Login' page not opened
+2024-04-03 20:02:22.439300   'Login' form on trading platform not opened
+2024-04-03 20:02:22.439501   Start step Check that [Sign up] form is opened
+2024-04-03 20:02:22.450626   'Sign up' form opened
+2024-04-03 20:02:22.450662   Assert SIGNUP_HEADER =>
+2024-04-03 20:02:22.460485   Assert SIGNUP_REF_LOGIN =>
+2024-04-03 20:02:22.470956   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-03 20:02:22.481450   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-03 20:02:22.481492   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_04-es.de.NoAuth
+
+2024-04-03 20:02:22.481559   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f49428e0830>
+
+2024-04-03 20:02:22.880366   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 20:02:23.106931   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 20:02:24.549344   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-03 20:02:24.823818   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-03 20:02:24.825391   Баг Bid:11.02.02.01_04-es.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

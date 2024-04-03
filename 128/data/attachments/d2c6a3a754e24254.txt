@@ -1,0 +1,87 @@
+2024-04-03 19:17:04 ERROR Elements not present after 0.5 seconds on page: https://capital.com/es/soybean-meal-spot-materia-prima
+2024-04-03 19:17:04 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 307, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55b7ac5a88a3 <unknown>
+#1 0x55b7ac29e8c6 <unknown>
+#2 0x55b7ac2e9618 <unknown>
+#3 0x55b7ac2e96d1 <unknown>
+#4 0x55b7ac32c744 <unknown>
+#5 0x55b7ac30b5cd <unknown>
+#6 0x55b7ac329c19 <unknown>
+#7 0x55b7ac30b343 <unknown>
+#8 0x55b7ac2dc593 <unknown>
+#9 0x55b7ac2dcf5e <unknown>
+#10 0x55b7ac56c88b <unknown>
+#11 0x55b7ac5707e5 <unknown>
+#12 0x55b7ac55a5b1 <unknown>
+#13 0x55b7ac571372 <unknown>
+#14 0x55b7ac53f8bf <unknown>
+#15 0x55b7ac597768 <unknown>
+#16 0x55b7ac59793b <unknown>
+#17 0x55b7ac5a79f4 <unknown>
+#18 0x7f633c894ac3 <unknown>
+
+2024-04-03 19:17:07 ERROR Elements not present after 0.5 seconds on page: https://capital.com/es/soybean-meal-spot-materia-prima
+2024-04-03 19:17:07 ERROR Can't click element by locator ('css selector', '#s_overlay button.s_cancel')
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/Elements/PageInstrumentNotificationButton.py", line 68, in element_click
+    button_list[0].click()
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <a href="/es/soybean-meal-spot-materia-prima#" data-link="uu" data-iid="7096853636142276" data-side="buy" data-platform="spotlight" class="btn btn--empty btn--round btn--sm js_signup_new js-analyticsVisible js-analyticsClick" data-type="market_alerts">...</a> is not clickable at point (387, 16). Other element would receive the click: <span>...</span>
+  (Session info: chrome=123.0.6312.58)
+Stacktrace:
+#0 0x55b7ac5a88a3 <unknown>
+#1 0x55b7ac29e8c6 <unknown>
+#2 0x55b7ac2f0233 <unknown>
+#3 0x55b7ac2ee14e <unknown>
+#4 0x55b7ac2ebb27 <unknown>
+#5 0x55b7ac2eaed3 <unknown>
+#6 0x55b7ac2de507 <unknown>
+#7 0x55b7ac30b5a2 <unknown>
+#8 0x55b7ac2dde98 <unknown>
+#9 0x55b7ac30b76e <unknown>
+#10 0x55b7ac329c19 <unknown>
+#11 0x55b7ac30b343 <unknown>
+#12 0x55b7ac2dc593 <unknown>
+#13 0x55b7ac2dcf5e <unknown>
+#14 0x55b7ac56c88b <unknown>
+#15 0x55b7ac5707e5 <unknown>
+#16 0x55b7ac55a5b1 <unknown>
+#17 0x55b7ac571372 <unknown>
+#18 0x55b7ac53f8bf <unknown>
+#19 0x55b7ac597768 <unknown>
+#20 0x55b7ac59793b <unknown>
+#21 0x55b7ac5a79f4 <unknown>
+#22 0x7f633c894ac3 <unknown>
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 347, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator ('css selector', '#s_overlay button.s_cancel')
