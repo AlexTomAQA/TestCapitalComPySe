@@ -134,7 +134,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"")
 
         print(f"\n{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
-        if self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT) != 0:
+        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)) != 0:
             print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
             print(f"{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
             self.sell_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
@@ -145,7 +145,7 @@ class TableTradingInstrumentsSellButton(BasePage):
                   f"\"{cur_sort}\"")
             return item_list
         else:
-            print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!\n")
+            print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!")
             Common().pytest_fail("Bug # ??? element is not on this page")
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
@@ -166,9 +166,10 @@ class TableTradingInstrumentsSellButton(BasePage):
         item = item_list[value]
         self.trade_instrument = item.text
 
+        print(f"{datetime.now()}   Check that BUTTON_SELL with item {self.trade_instrument} clickable =>")
         time_out = 5
         if not self.element_is_clickable(button, time_out):
             print(f"{datetime.now()}   => BUTTON_SELL not clickable after {time_out} sec.")
             Common().pytest_fail(f"Bug # ??? Sell button not clickable after {time_out} sec.")
-        button.click()
+        wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_SELL with item {self.trade_instrument} clicked")
