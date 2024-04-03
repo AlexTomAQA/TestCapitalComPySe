@@ -181,7 +181,9 @@ class Conditions(BasePage):
         elif SignupLogin(d, link).should_be_trading_platform_login_form():
             print(f"{datetime.now()}   => 'Login' form is opened on Trading platform")
         else:
-            pytest.fail("Problem with Authorisation")
+            msg = "Problem with Authorisation"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
 
         # User's name is passed to the text element on the login page
         if not self.send_keys(login, *LoginFormLocators.LOGIN_INPUT_EMAIL):
