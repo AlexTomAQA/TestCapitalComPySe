@@ -132,6 +132,10 @@ class ButtonsOnPageLocators:
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
 
+    # Elements of 'Trade CFDs on Capital.com via TradingView' block
+    TRADE_CFDS_ON_CAPITAL_BLOCK = (By.CSS_SELECTOR, '.tradingView[data-type="tradingview"]')
+    EXPLORE_FEATURES_BUTTON = (By.CSS_SELECTOR, '.tradingView__btn[data-type="tradingview"]')
+
     # Elements of 'Trading instrument' widget
     TRADING_INSTRUMENT_WIDGET = (By.CSS_SELECTOR, '[data-wrap="homePage"]')
 

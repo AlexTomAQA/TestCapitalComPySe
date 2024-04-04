@@ -13,6 +13,7 @@ from pages.common import Common
 from pages.AppStore.app_store import AppStore
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
+from pages.TradingView.tradingview import TradingView
 from pages.base_page import BasePage
 from pages.Signup_login.signup_login import SignupLogin
 from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
@@ -23,6 +24,7 @@ class AssertClass(BasePage):
     page_trading = None
     page_app_store = None
     page_google_play = None
+    page_tradingview = None
     platform_url = ""
 
     # def __init__(self, *args):
@@ -200,3 +202,14 @@ class AssertClass(BasePage):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading = TradingPlatform(d, self.link, self.bid)
         self.page_trading.should_be_login_form_on_the_trading_platform()
+
+    @allure.step('Checking the Site TradingView is opened')
+    def assert_site_tradingview(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        self.page_tradingview = TradingView(d)
+        self.page_tradingview.should_be_tradingview_page(d)
+
+        tabs = self.driver.window_handles
+        if len(tabs) == 2:
+            self.driver.close()
+            self.driver.switch_to.window(tabs[0])
