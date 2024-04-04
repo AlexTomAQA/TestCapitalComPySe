@@ -161,14 +161,17 @@ class TableTradingInstrumentsSellButton(BasePage):
         button = sell_list[value]
         id_instrument = button.get_attribute("data-iid")
         print(f"{datetime.now()}   =>   BUTTON_SELL on item with ID = '{id_instrument}' is present")
+        print(f"{datetime.now()}   BUTTON_SELL on item with ID = '{id_instrument}' scroll into view =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button
         )
+        print(f"{datetime.now()}   => BUTTON_SELL on item with ID = '{id_instrument}' scrolled into view")
 
         print(f"{datetime.now()}   Check that BUTTON_SELL with item {self.trade_instrument} clickable =>")
         time_out = 5
-        button = self.element_is_clickable(button, time_out)
+        button = self.element_is_clickable(
+            wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[0], time_out)
         if not button:
             print(f"{datetime.now()}   => BUTTON_SELL not clickable after {time_out} sec.")
             Common().pytest_fail(f"Bug # ??? Sell button not clickable after {time_out} sec.")
