@@ -21,7 +21,7 @@ class SignupFormLocators:
     SIGNUP_LOCATOR = (By.CSS_SELECTOR, "#s_overlay .signup-form a.l_btn_signup")
     BUTTON_CLOSE_ON_SIGNUP_FORM = (By.CSS_SELECTOR, "#s_overlay button.s_cancel")
     BUTTON_CLOSE_ON_SIGNUP_PAUSE_FORM = (By.CSS_SELECTOR, ".modal_overlay__f_YlZ button > img")
-    SIGNUP_FRAME = (By.CSS_SELECTOR, "#s_overlay:not(.hidden) > div > div.signup-form")
+    SIGNUP_FRAME = (By.CSS_SELECTOR, "#l_overlay.overlay:not(.hidden) > .modal")
     SIGNUP_PAUSE_FORM = (By.CSS_SELECTOR, '.modal_overlay__f_YlZ img[src="/_next/static/media/timer.f7350ba0.svg"]')
     SIGNUP_HEADER = (By.CSS_SELECTOR, "#s_overlay div.signup-form > div.form-container-small-header.s-between > div")
     SIGNUP_REF_LOGIN = (By.CSS_SELECTOR, "div.signup-form a.l_btn_signup")
