@@ -10,6 +10,7 @@ import pytest
 from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInstrumentLongPositionGoToPlatformButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
 from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentViewDetailedChartButton
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDAddToFavouriteButton import TradeCFDAddToFavoriteButton
 from pages.Elements.TradeCFDBuyButton import TradeCFDBuyButton
 from pages.Elements.TradeCFDSellButton import TradeCFDSellButton
@@ -22,7 +23,7 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 def pytest_generate_tests(metafunc):
 
-    file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.text"
+    file_name = "tests/US_01_Markets/US_01-04_Indices/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
@@ -70,7 +71,7 @@ class TestIndicesItemPage:
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "01.04", "Markets > Menu item [Forex]",
+            "01.04", "Markets > Menu item [Indices]",
             ".01_002", "Testing button [View Detailed Chart] on trading instrument page")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
@@ -102,7 +103,7 @@ class TestIndicesItemPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = PageInstrumentLongPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi_v2(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test button [Go to platform] on page instrument short position")
     @pytest.mark.test_004
@@ -190,4 +191,26 @@ class TestIndicesItemPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = TradingCalculatorStartTradingButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [1. Create & verify your account] in Step trading block")
+    @pytest.mark.test_012
+    def test_012_block_step_trading_create_verify_your_account(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [1. Create & verify account]
+        Language: All. License: All,except FCA.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.04", "Markets > Menu item [Indices]",
+            ".01_012", "Testing button [1. Create your account] in Step trading block")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BlockStepTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)

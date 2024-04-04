@@ -38,7 +38,7 @@ from pages.Menu.menu_locators import (
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
-    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities
+    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets
 )
 from pages.common import Common
 # from pages.common import bug_11_01_03_00
@@ -179,6 +179,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
+    @allure.step('Select "Education" menu, "Shares trading" submenu')
     def open_education_shares_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -191,6 +192,7 @@ class MenuSection(BasePage):
         Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
+    @allure.step('Select "Education" menu, "Commodities trading" submenu')
     def open_education_commodities_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -203,6 +205,7 @@ class MenuSection(BasePage):
         Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
+    @allure.step('Select "Education" menu, "Indices trading" submenu')
     def open_education_indices_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -215,6 +218,7 @@ class MenuSection(BasePage):
         Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
+    @allure.step('Select "Education" menu, "Cryptocurrency trading" submenu')
     def open_education_cryptocurrency_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -227,8 +231,8 @@ class MenuSection(BasePage):
         Common().move_pointer_to_capital_com_label(d)
         return cur_menu_link
 
+    @allure.step("Open 'Language and Country' menu section.")
     def menu_language_and_country_move_focus(self, test_language):
-        allure.step(f"{datetime.now()}.   Click 'Language and Country' menu section.")
 
         d = self.driver
         # menu = list()
@@ -244,13 +248,6 @@ class MenuSection(BasePage):
             Common().pytest_fail("Language and Country menu not visible")
         print(f"{datetime.now()}   => Language and Country menu is visible")
 
-        # if not self.element_is_clickable(MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY, 5):
-        #     print(f"\n\n{datetime.now()}   => Language and Country menu not clickable")
-        #     Common().pytest_fail("Language and Country menu not clickable")
-        # print(f"\n\n{datetime.now()}   => Language and Country menu is clickable")
-        #
-
-        # menu = d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)    # not Glossary
         time.sleep(0.5)
         ActionChains(d) \
             .move_to_element(d.find_element(*MenuLanguageAndCountry.MENU_LANGUAGE_AND_COUNTRY)) \
@@ -260,7 +257,7 @@ class MenuSection(BasePage):
 
         print(f"{datetime.now()}   => Focus is moved on Language and Country menu ")
 
-    @allure.step(f"{datetime.now()}.   Move focus to 'Learn to trade' menu section.")
+    @allure.step("Move focus to 'Learn to trade' menu section")
     def menu_learn_to_trade_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
         if test_country == "gb" and test_language == "":
@@ -296,7 +293,7 @@ class MenuSection(BasePage):
         del element
         print(f"{datetime.now()}   => Focus moved to 'Learn to trade' menu")
 
-    @allure.step("   Focus moved to 'Education' menu")
+    @allure.step("Focus moved to 'Education' menu")
     def menu_education_move_focus(self, d, test_language, test_country):
         ed_menu_locator = None
         if test_language == "" and test_country == "gb":
@@ -357,7 +354,7 @@ class MenuSection(BasePage):
         del menu
         del element
 
-    @allure.step(f"{datetime.now()}.   Focus moved to 'Markets' menu")
+    @allure.step("Focus moved to 'Markets' menu")
     def move_focus_to_markets_menu(self, d, test_language, test_country):
         markets_menu_locator = None
         if test_language == "" and test_country == "gb":
@@ -424,7 +421,7 @@ class MenuSection(BasePage):
         del menu
         del element
 
-    @allure.step(f"{datetime.now()}.   Focus move to 'learning hub' menu item and click (US_11.01.01).")
+    @allure.step("Focus move to 'learning hub' menu item and click")
     def sub_menu_learning_hub_move_focus_click(self, d, test_language, test_country):
         sub_menu = None
         match test_language:
@@ -471,7 +468,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Focus move to 'Basics_of_trading' menu item and click (US_11.01.02).")
+    @allure.step("Focus move to 'Basics_of_trading' menu item and click")
     def sub_menu_basics_of_trading_move_focus_click(self, d, test_language, test_country):
         sub_menu = list()
         match test_language:
@@ -517,7 +514,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Focus move to 'Glossary' menu item and click (US_11.01.07).")
+    @allure.step("Focus move to 'Glossary' menu item and click")
     def sub_menu_glossary_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -566,7 +563,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Forex trading' submenu.")
+    @allure.step("Move focus to 'Forex trading' submenu and click")
     def sub_menu_forex_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -603,7 +600,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Trading courses hyperlink.")
+    @allure.step("Focus move to 'Trading courses' submenu and click")
     def sub_menu_trading_courses_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -676,7 +673,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Commodities trading' hyperlink.")
+    @allure.step("Focus move to 'Commodities trading' submenu and click")
     def sub_menu_commodities_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -717,7 +714,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Market guides hyperlink.")
+    @allure.step("Focus move to 'Market guides' submenu and click")
     def sub_menu_market_guides_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -764,7 +761,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Cryptocurrency trading' hyperlink.")
+    @allure.step("Focus move to 'Cryptocurrency trading' submenu and click")
     def sub_menu_cryptocurrency_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -803,7 +800,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}   Click 'CFD trading guide' hyperlink.")
+    @allure.step("Focus move to 'CFD trading guide' submenu and click")
     def sub_menu_cfd_trading_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -843,7 +840,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Spread betting guide' hyperlink.")
+    @allure.step("Focus move to 'Spread betting guide' submenu and click")
     def sub_menu_spread_betting_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -868,8 +865,8 @@ class MenuSection(BasePage):
 
         return d.current_url
 
+    @allure.step("Set language")
     def set_language(self, cur_language):
-        allure.step(f"{datetime.now()}   Set language")
 
         if cur_language == "":
             cur_language = "en"
@@ -890,8 +887,8 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
         return self.driver.current_url
 
+    @allure.step("Set country (licence)")
     def set_country(self, cur_country):
-        allure.step(f"{datetime.now()}   Set country")
 
         elements = self.driver.find_elements(*MenuLanguageAndCountry.DROP_DOWN_LIST_COUNTRY)
         if len(elements) == 0:
@@ -919,7 +916,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
         return self.driver.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'ETF trading' hyperlink.")
+    @allure.step("Focus move to 'ETF trading' submenu and click")
     def sub_menu_etf_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -950,7 +947,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Trading Strategies Guide' hyperlink.")
+    @allure.step("Focus move to 'Trading Strategies Guide' submenu and click")
     def sub_menu_trading_strategies_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -995,7 +992,7 @@ class MenuSection(BasePage):
 
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Day Trading' hyperlink.")
+    @allure.step("Focus move to 'Day Trading' submenu and click")
     def sub_menu_day_trading_move_focus_click(self, d, test_language):
         sub_menu = d.find_elements(*MenuUS11DayTrading.SUB_MENU_ALL_DAY_TRADING)
 
@@ -1010,7 +1007,7 @@ class MenuSection(BasePage):
                         f"the page \"Education->Day Trading\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Indices Trading' hyperlink.")
+    @allure.step("Focus move to 'Indices Trading' submenu and click")
     def sub_menu_indices_trading_move_focus_click(self, d, test_language):
         sub_menu = None
         logger.info(f"Click 'Indices Trading' hyperlink in submenu")
@@ -1047,9 +1044,8 @@ class MenuSection(BasePage):
                                  f"the page \"Education->Indices Trading\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Investmate app' hyperlink.")
+    @allure.step("Focus move to 'Investmate app' submenu and click")
     def sub_menu_investmate_app_move_focus_click(self, d, test_language):
-        sub_menu = None
         match test_language:
             case "":
                 sub_menu = d.find_elements(*MenuUS11InvestmateApp.SUB_MENU_ALL_INVESTMATE_APP)
@@ -1082,7 +1078,7 @@ class MenuSection(BasePage):
                                  f"the page \"Education->Investmate app\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Trend Trading' menu item.")
+    @allure.step("Focus move to 'Trend Trading' submenu item and click")
     def sub_menu_trend_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1102,7 +1098,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'What is a margin?' hyperlink.")
+    @allure.step("Focus move to 'What is a margin?' submenu item and click")
     def sub_menu_what_is_a_margin_move_focus_click(self, d, test_language):
         sub_menu = d.find_elements(*MenuUS11WhatIsMargin.SUB_MENU_ALL_WHAT_IS_A_MARGIN)
         if len(sub_menu) > 0:
@@ -1117,7 +1113,7 @@ class MenuSection(BasePage):
                                  f"the page \"Education->What is a margin?\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Trading Psychology Guide' hyperlink.")
+    @allure.step("Focus move to 'Trading Psychology Guide' submenu item and click")
     def sub_menu_trading_psychology_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1162,7 +1158,7 @@ class MenuSection(BasePage):
                                  f"the submenu \"Education->Trading Psychology Guide\" doesn't exist")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Position Trading' hyperlink.")
+    @allure.step("Focus move to 'Position Trading' submenu item and click")
     def sub_menu_position_trading_move_focus_click(self, d, test_language):
         sub_menu = d.find_elements(*MenuUS11PositionTrading.SUB_MENU_ALL_POSITION_TRADING)
         if len(sub_menu) > 0:
@@ -1177,7 +1173,7 @@ class MenuSection(BasePage):
                                  f"the page \"Education->Position Trading\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Swing Trading' hyperlink.")
+    @allure.step("Focus move to 'Swing Trading' submenu item and click")
     def sub_menu_swing_trading_move_focus_click(self, d, test_language):
         sub_menu = d.find_elements(*MenuUS11SwingTrading.SUB_MENU_ALL_SWING_TRADING)
         if len(sub_menu) > 0:
@@ -1192,7 +1188,7 @@ class MenuSection(BasePage):
                                  f"the page \"Education->Swing Trading\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Scalp Trading' hyperlink.")
+    @allure.step("Focus move to 'Scalp Trading' submenu item and click")
     def sub_menu_scalp_trading_move_focus_click(self, d, test_language):
         sub_menu = d.find_elements(*MenuUS11ScalpTrading.SUB_MENU_ALL_SCALP_TRADING)
 
@@ -1208,7 +1204,7 @@ class MenuSection(BasePage):
                                  f"the page \"Education->Scalp Trading\" doesn't exist on production")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Shares trading' submenu.")
+    @allure.step("Focus move to 'Shares trading' submenu item and click")
     def sub_menu_shares_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1253,7 +1249,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Risk-management guide' menu item.")
+    @allure.step("Focus move to 'Risk-management guide' submenu item and click")
     def sub_menu_risk_management_guide_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1273,7 +1269,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Risk-management guide' menu item.")
+    @allure.step("Focus move to 'Technical analysis' submenu item and click")
     def sub_menu_technical_analysis_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1293,7 +1289,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Help' menu item.")
+    @allure.step("Focus move to 'Help' submenu item and click")
     def sub_menu_help_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1313,7 +1309,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Learn to trade' menu")
+    @allure.step("Focus move to 'Learn to trade' menu and click")
     def sub_menu_learn_to_trade_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1350,7 +1346,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Trading Strategies(FCA)' menu item.")
+    @allure.step("Focus move to 'Trading Strategies(FCA)' submenu item and click")
     def sub_menu_trading_strategies_new_move_focus_click(self, d, test_language):
         sub_menu = list()
 
@@ -1371,7 +1367,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step('Select "Learn to trade" menu, "Essentials of trading"')
+    @allure.step('Select "Learn to trade" menu, "Essentials of trading" submenu')
     def open_learn_to_trade_essentials_of_trading_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Essentials of trading" submenu =>')
@@ -1388,7 +1384,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Essentials of trading' submenu")
+    @allure.step("Focus move to 'Essentials of trading' submenu item and click")
     def sub_menu_essentials_of_of_trading_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1408,7 +1404,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step('Select "Learn to trade" menu, "Market guides')
+    @allure.step('Select "Learn to trade" menu, "Market guides" submenu')
     def open_learn_to_trade_market_guides_new_menu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Market guides" submenu =>')
@@ -1425,7 +1421,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Market guides' menu item.")
+    @allure.step("Focus move to 'Market guides' submenu item and click")
     def sub_menu_market_guides_new_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1462,7 +1458,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Forex' submenu.")
+    @allure.step("Focus move to 'Forex' submenu item and click")
     def sub_menu_forex_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1543,7 +1539,7 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}.   Click 'Indices' submenu.")
+    @allure.step("Focus move to 'Indices' submenu item and click")
     def sub_menu_indices_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
@@ -1589,7 +1585,7 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step(f"{datetime.now()}. Move focus to 'Commodities' submenu and click.")
+    @allure.step("Focus move to 'Commodities' submenu and click.")
     def sub_menu_commodities_move_focus_click(self, d, test_language):
         sub_menu = None
         match test_language:
@@ -1650,7 +1646,7 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-    @allure.step(f"{datetime.now()}. Click submenu 'Shares'.")
+    @allure.step("Focus move to 'Shares' submenu item and click")
     def sub_menu_shares_move_focus_click(self, d, test_language):
         sub_menu = None
         match test_language:
@@ -1696,3 +1692,65 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Focus moved to 'Shares' submenu and clicked")
 
         del sub_menu
+
+    @allure.step('Select "Markets" menu, "All Markets" submenu')
+    def open_all_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "All Markets" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_all_markets_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus move to 'All Markets' submenu and click.")
+    def sub_menu_all_markets_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_EN_ALLMARKETS_BUTTON)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_AR_ALLMARKETS_BUTTON)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_DE_ALLMARKETS_BUTTON)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_EL_ALLMARKETS_BUTTON)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_ES_ALLMARKETS_BUTTON)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_FR_ALLMARKETS_BUTTON)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_IT_ALLMARKETS_BUTTON)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_HU_ALLMARKETS_BUTTON)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_NL_ALLMARKETS_BUTTON)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_PL_ALLMARKETS_BUTTON)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_RO_ALLMARKETS_BUTTON)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_RU_ALLMARKETS_BUTTON)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_ZH_ALLMARKETS_BUTTON)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_CN_ALLMARKETS_BUTTON)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Markets > All Markets\" submenu doesn't exist")
+
+        print(f"{datetime.now()}   => 'Markets > All Markets' submenu is present")
+
+        ActionChains(d).move_to_element(sub_menu[0]).pause(0.5).click().pause(0.5).perform()
+
+        del sub_menu
+
+        return d.current_url

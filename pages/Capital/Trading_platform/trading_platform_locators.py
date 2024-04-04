@@ -24,9 +24,9 @@ class TopBarLocators:
 class TradingInstruments:
     CLOSE_ALL_BUTTON = (By.CSS_SELECTOR, ".visible .ghost")
     BUTTON_CLOSE_ALL = (By.CSS_SELECTOR, ".spotlight > div > button")
-    LIST_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".tabs-holder segment .text")
-    # LIST_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".tabs-holder .state-item-button .name")
-    SELECTED_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "segment.selected .text")
+    LIST_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, ".tabs-holder segment > .content > .text")
+    OPEN_TICKET_TRADE_INSTRUMENTS = (By.CSS_SELECTOR, "instrument-chart-view .deal-ticket.opened > div > .title")
+    SELECTED_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "segment.has-border.selected .text")
     # SELECTED_TRADE_INSTRUMENT = (By.CSS_SELECTOR, ".tabs-holder .state-item-button.selected .name")
 
 

@@ -404,7 +404,7 @@ class TestMainPage:
 
     @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")
     @pytest.mark.test_015
-    def test_015_create_your_account_button(
+    def test_015_start_trading_button_in_trading_calculator(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Start Trading] in Widget 'Trading calculator' Main Page
