@@ -399,6 +399,24 @@ class BasePage:
         print(f"{datetime.now()}   => Cur page is {link}")
 
     @HandleExcElementsDecorator()
+    @allure.step("Check the current page has expected URL")
+    def check_current_page_is_v2(self, expected_url):
+        """
+        Check that the current page has the expected URL.
+
+        Args:
+            expected_url: expected page's URL
+        """
+        print(f"{datetime.now()}   Checking that the current page has URL: {expected_url} =>")
+        current_url = self.driver.current_url
+        print(f"{datetime.now()}   => The current page URL is {current_url}")
+        # Checks that the page URL meets the requirements
+        Common.assert_true_false(
+            current_url in expected_url,
+            f"{datetime.now()}   Expected page: {expected_url}. Actual page: {self.driver.current_url}"
+        )
+
+    @HandleExcElementsDecorator()
     @allure.step("Check, that the link provided is in the current URL of the browser")
     def should_be_link(self, link):
         """
@@ -430,6 +448,7 @@ class BasePage:
         ), f"Expected title {title} but got {el_title.text} on page: {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
+    @allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 2")
     def should_be_page_title_v2(self, title):
         """
         Check that the page has the expected title.
@@ -437,15 +456,33 @@ class BasePage:
         Args:
             title: expected page's title
         """
-        allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 2")
-
-        print(f"\n{datetime.now()}   1. Checking that the Trading platform page has valid title =>")
+        print(f"\n{datetime.now()}"
+              f"   1. Checking that the Trading platform (or TradingView site) page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => The title of current page is '{el_title}'")
         # Checks that the page title meets the requirements
         if title not in el_title:
             msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"
             Common().assert_true_false(False, msg)
+
+    @HandleExcElementsDecorator()
+    @allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 3")
+    def should_be_page_title_v3(self, expected_title):
+        """
+        Check that the page has the expected title.
+
+        Args:
+            expected_title: expected page's title
+        """
+        print(f"\n{datetime.now()}"
+              f"   1. Checking that the page has expected title =>")
+        current_title = self.driver.title
+        print(f"{datetime.now()}   => The title of current page is '{current_title}'")
+        # Check that the page title meets the requirements
+        Common().assert_true_false(
+            expected_title in current_title,
+            f"{datetime.now()}   Expected title '{expected_title}' but got '{current_title}' on page: {self.driver.current_url}"
+        )
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):

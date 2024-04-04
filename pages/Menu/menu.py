@@ -38,7 +38,7 @@ from pages.Menu.menu_locators import (
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
-    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities
+    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets
 )
 from pages.common import Common
 # from pages.common import bug_11_01_03_00
@@ -1692,3 +1692,65 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   => Focus moved to 'Shares' submenu and clicked")
 
         del sub_menu
+
+    @allure.step('Select "Markets" menu, "All Markets" submenu')
+    def open_all_markets_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "All Markets" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_all_markets_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus move to 'All Markets' submenu and click.")
+    def sub_menu_all_markets_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_EN_ALLMARKETS_BUTTON)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_AR_ALLMARKETS_BUTTON)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_DE_ALLMARKETS_BUTTON)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_EL_ALLMARKETS_BUTTON)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_ES_ALLMARKETS_BUTTON)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_FR_ALLMARKETS_BUTTON)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_IT_ALLMARKETS_BUTTON)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_HU_ALLMARKETS_BUTTON)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_NL_ALLMARKETS_BUTTON)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_PL_ALLMARKETS_BUTTON)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_RO_ALLMARKETS_BUTTON)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_RU_ALLMARKETS_BUTTON)
+            case "zh":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_ZH_ALLMARKETS_BUTTON)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0101AllMarkets.SUB_MENU_CN_ALLMARKETS_BUTTON)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Markets > All Markets\" submenu doesn't exist")
+
+        print(f"{datetime.now()}   => 'Markets > All Markets' submenu is present")
+
+        ActionChains(d).move_to_element(sub_menu[0]).pause(0.5).click().pause(0.5).perform()
+
+        del sub_menu
+
+        return d.current_url
