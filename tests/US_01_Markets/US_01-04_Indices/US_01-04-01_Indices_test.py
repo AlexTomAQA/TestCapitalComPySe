@@ -8,6 +8,7 @@ import allure
 import pytest
 
 from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInstrumentLongPositionGoToPlatformButton
+from pages.Elements.PageInstrumentNotificationButton import PageInstrumentNotificationButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
 from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentViewDetailedChartButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
@@ -169,6 +170,27 @@ class TestIndicesItemPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = TradeCFDSellButton(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [Notification] on trading instrument page")
+    @pytest.mark.test_008
+    def test_008_page_instrument_notification_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Notification] on trading instrument page
+        Language: All. License: All, except FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.04", "Markets > Menu item [Indices]",
+            ".01_008", "Testing button [Indices] on trading instrument page")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = PageInstrumentNotificationButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start Trading] in the 'Trading calculator' widget on trading instrument page ")
