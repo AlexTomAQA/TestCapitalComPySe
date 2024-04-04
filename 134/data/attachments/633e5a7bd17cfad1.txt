@@ -1,0 +1,83 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 20:33:08.591972   worker_id = master
+
+2024-04-04 20:33:08.591986   0. Allure grouping v4
+
+2024-04-04 20:33:08.592169   START PRECONDITIONS =>
+
+2024-04-04 20:33:08.592185   => Current URL - https://capital.com/fr/chf-nok-taux
+
+2024-04-04 20:33:08.595028   => URL after prev. preconditions - https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:33:08.595042   => flag_of_bug - True
+2024-04-04 20:33:08.595054   Current page URL = https://capital.com/fr/chf-nok-taux
+2024-04-04 20:33:08.597567   self.link = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:33:08.597586   link = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:33:10.224187   => Loaded page https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:33:10.230827   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 20:33:10.232161   Set windows position at (0, 0) =>
+2024-04-04 20:33:10.334372   Set resolution 1280 * 800 =>
+2024-04-04 20:33:10.436672   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 20:33:11.463732   Капчи нет. Идем дальше
+
+2024-04-04 20:33:11.463822   Работа с куками
+
+2024-04-04 20:33:11.463836   Prev. country - 'de'
+2024-04-04 20:33:11.463846   Cur. country - 'de'
+2024-04-04 20:33:11.463855   => Country set to 'de'
+
+2024-04-04 20:33:11.463864   Prev. language - 'fr'
+2024-04-04 20:33:11.463873   Cur. language - 'fr'
+2024-04-04 20:33:11.463881   => Language is set to 'fr'
+
+2024-04-04 20:33:11.463890   Prev. role - 'NoReg'
+2024-04-04 20:33:11.463899   Cur. role - 'NoReg'
+2024-04-04 20:33:11.463907   => The 'NoReg' role is set
+
+2024-04-04 20:33:11.466593   => Current URL - https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:33:11.466615   => THE END PRECONDITIONS
+
+2024-04-04 20:33:11.466800   1. Arrange_v2
+2024-04-04 20:33:11.466818   current_page = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:33:11.469220   link = https://capital.com/fr/chf-nok-taux
+2024-04-04 20:33:11.471730   Current page URL = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:33:11.474234   self.link = https://capital.com/fr/chf-nok-taux
+2024-04-04 20:33:11.474248   link = https://capital.com/fr/chf-nok-taux
+2024-04-04 20:33:13.149848   => Loaded page https://capital.com/fr/chf-nok-taux
+2024-04-04 20:33:13.154376   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-04 20:33:13.164397   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-04 20:33:13.164425   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-04-04 20:33:13.167654   => LONG_POSITION_OVERNIGHT_FEE scrolled
+2024-04-04 20:33:13.167818   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 20:33:14.699603   '[Sign up]' form was not popped up
+
+2024-04-04 20:33:14.699786   2. Act_v2
+2024-04-04 20:33:14.699801   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-04-04 20:33:15.476423   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-04 20:33:15.491374   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-04-04 20:33:15.491405   Move focus on to button [Go to platform] and click =>
+2024-04-04 20:33:16.272553   => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is clickable
+2024-04-04 20:33:16.949293 => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION clicked
+
+2024-04-04 20:33:16.949638   3. Assert_v0
+2024-04-04 20:33:16.949752   Start step Check that [Sign up] form is opened
+2024-04-04 20:33:20.072366   'Sign up' form not opened
+2024-04-04 20:33:20.072585   Start step Check that new [Sign up] form is opened
+2024-04-04 20:33:23.165567   => new 'Sign up' form not opened
+2024-04-04 20:33:23.165761   Start method Check that [Sign up] page opened =>
+2024-04-04 20:33:24.169421   'Sign up' page not opened
+2024-04-04 20:33:24.169663   Check that [Sign up] form on trading platform opened =>
+2024-04-04 20:33:24.183060   => 'Sign up' form on trading platform page opened
+2024-04-04 20:33:24.183086   Assert SIGNUP_HEADER =>
+2024-04-04 20:33:24.195163   => SIGNUP_HEADER is OK
+2024-04-04 20:33:24.195186   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-04 20:33:24.207354   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-04 20:33:24.207381   Assert SIGNUP_REF_LOGIN =>
+2024-04-04 20:33:24.219647   => SIGNUP_REF_LOGIN is OK
+2024-04-04 20:33:24.219669   => 'Signup' form on trading platform page is checked
+2024-04-04 20:33:24.219833   Close [Sign up] form with trading platform page =>
+2024-04-04 20:33:24.904409   => [Sign up] form with trading platform page is closed

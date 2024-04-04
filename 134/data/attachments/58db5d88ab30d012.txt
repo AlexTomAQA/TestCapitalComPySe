@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 21:01:11.040516   worker_id = master
+
+2024-04-04 21:01:11.040530   0. Allure grouping v4
+
+2024-04-04 21:01:11.040709   START PRECONDITIONS =>
+
+2024-04-04 21:01:11.040724   => Current URL - https://capital.com/fr/produit-de-base-platinum-spot
+
+2024-04-04 21:01:11.043816   => URL after prev. preconditions - https://capital.com/fr/produit-de-base-lead
+
+2024-04-04 21:01:11.043829   => flag_of_bug - True
+2024-04-04 21:01:11.043841   Current page URL = https://capital.com/fr/produit-de-base-platinum-spot
+2024-04-04 21:01:11.046447   self.link = https://capital.com/fr/produit-de-base-lead
+2024-04-04 21:01:11.046461   link = https://capital.com/fr/produit-de-base-lead
+2024-04-04 21:01:12.682966   => Loaded page https://capital.com/fr/produit-de-base-lead
+
+2024-04-04 21:01:12.687424   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 21:01:12.688779   Set windows position at (0, 0) =>
+2024-04-04 21:01:12.791120   Set resolution 1280 * 800 =>
+2024-04-04 21:01:12.893431   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 21:01:13.926015   Капчи нет. Идем дальше
+
+2024-04-04 21:01:13.926110   Работа с куками
+
+2024-04-04 21:01:13.926124   Prev. country - 'de'
+2024-04-04 21:01:13.926134   Cur. country - 'de'
+2024-04-04 21:01:13.926144   => Country set to 'de'
+
+2024-04-04 21:01:13.926152   Prev. language - 'fr'
+2024-04-04 21:01:13.926161   Cur. language - 'fr'
+2024-04-04 21:01:13.926170   => Language is set to 'fr'
+
+2024-04-04 21:01:13.926179   Prev. role - 'NoReg'
+2024-04-04 21:01:13.926187   Cur. role - 'NoReg'
+2024-04-04 21:01:13.926196   => The 'NoReg' role is set
+
+2024-04-04 21:01:13.928837   => Current URL - https://capital.com/fr/produit-de-base-lead
+
+2024-04-04 21:01:13.928858   => THE END PRECONDITIONS
+
+2024-04-04 21:01:13.929043   1. Arrange_v0
+2024-04-04 21:01:13.929060   current_page = https://capital.com/fr/produit-de-base-lead
+2024-04-04 21:01:13.931516   link = https://capital.com/fr/produit-de-base-platinum-spot
+2024-04-04 21:01:13.933975   Current page URL = https://capital.com/fr/produit-de-base-lead
+2024-04-04 21:01:13.936436   self.link = https://capital.com/fr/produit-de-base-platinum-spot
+2024-04-04 21:01:13.936450   link = https://capital.com/fr/produit-de-base-platinum-spot
+2024-04-04 21:01:15.546816   => Loaded page https://capital.com/fr/produit-de-base-platinum-spot
+2024-04-04 21:01:15.561529   Is button BUTTON_VIEW_DETAILED_CHART present on the page? =>
+2024-04-04 21:01:15.561560   => BUTTON_VIEW_DETAILED_CHART is present on the page
+2024-04-04 21:01:15.561570   BUTTON_VIEW_DETAILED_CHART scroll =>
+2024-04-04 21:01:15.564839   => BUTTON_VIEW_DETAILED_CHART scrolled
+2024-04-04 21:01:15.565006   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 21:01:17.096721   '[Sign up]' form was not popped up
+
+2024-04-04 21:01:17.096955   2. Act_v0
+2024-04-04 21:01:17.096977   Start Click button [View Detailed Chart] =>
+2024-04-04 21:01:17.112647   BUTTON_VIEW_DETAILED_CHART is clickable =>
+2024-04-04 21:01:17.146006 => BUTTON_VIEW_DETAILED_CHART clicked
+
+2024-04-04 21:01:17.146291   3. Assert_v0
+2024-04-04 21:01:17.146408   Start step Check that [Sign up] form is opened
+2024-04-04 21:01:20.203828   'Sign up' form not opened
+2024-04-04 21:01:20.204021   Start step Check that new [Sign up] form is opened
+2024-04-04 21:01:23.270756   => new 'Sign up' form not opened
+2024-04-04 21:01:23.270951   Start method Check that [Sign up] page opened =>
+2024-04-04 21:01:24.274677   'Sign up' page not opened
+2024-04-04 21:01:24.274899   Check that [Sign up] form on trading platform opened =>
+2024-04-04 21:01:27.343162   'Sign up' form on trading platform page not opened
+
+Bug: Bid:01.05.01_002-fr.de.NoReg
+
+2024-04-04 21:01:27.343242   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fcde3d50860>
+
+2024-04-04 21:01:27.660232   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 21:01:27.863479   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 21:01:29.238079   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 21:01:29.460072   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 21:01:29.462455   Баг Bid:01.05.01_002-fr.de.NoReg-04 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

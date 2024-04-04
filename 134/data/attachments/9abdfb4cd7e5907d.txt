@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 20:28:35.694397   worker_id = master
+
+2024-04-04 20:28:35.694416   0. Allure grouping v4
+
+2024-04-04 20:28:35.694671   START PRECONDITIONS =>
+
+2024-04-04 20:28:35.694687   => Current URL - https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:28:35.697305   => URL after prev. preconditions - https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:28:35.697319   => flag_of_bug - False
+
+2024-04-04 20:28:35.697331   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 20:28:35.698579   Set windows position at (0, 0) =>
+2024-04-04 20:28:35.800659   Set resolution 1280 * 800 =>
+2024-04-04 20:28:35.903308   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 20:28:36.959228   Капчи нет. Идем дальше
+
+2024-04-04 20:28:36.959322   Работа с куками
+
+2024-04-04 20:28:36.959336   Prev. country - 'de'
+2024-04-04 20:28:36.959346   Cur. country - 'de'
+2024-04-04 20:28:36.959355   => Country set to 'de'
+
+2024-04-04 20:28:36.959364   Prev. language - 'fr'
+2024-04-04 20:28:36.959373   Cur. language - 'fr'
+2024-04-04 20:28:36.959382   => Language is set to 'fr'
+
+2024-04-04 20:28:36.959391   Prev. role - 'Auth'
+2024-04-04 20:28:36.959399   Cur. role - 'Auth'
+2024-04-04 20:28:36.959408   => The 'Auth' role is set
+
+2024-04-04 20:28:36.962138   => Current URL - https://capital.com/fr/gbp-try-taux
+
+2024-04-04 20:28:36.962160   => THE END PRECONDITIONS
+
+2024-04-04 20:28:36.962203   1. Arrange_v0
+2024-04-04 20:28:36.962217   current_page = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:28:36.964675   link = https://capital.com/fr/gbp-try-taux
+2024-04-04 20:28:36.967127   BUTTON_BUY is located on the page? =>
+2024-04-04 20:28:36.975074   => BUTTON_BUY is located on the page!
+2024-04-04 20:28:36.975227   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 20:28:38.507474   '[Sign up]' form was not popped up
+
+2024-04-04 20:28:38.507669   2. Act_v0
+2024-04-04 20:28:38.512898   BUTTON_BUY is present? =>
+2024-04-04 20:28:38.512921   => BUTTON_BUY is present on the page
+2024-04-04 20:28:38.512931   BUTTON_BUY scroll =>
+2024-04-04 20:28:38.516311   => BUTTON_BUY scrolled
+2024-04-04 20:28:38.549062   BUTTON_BUY is clickable? =>
+2024-04-04 20:28:38.559984   BUTTON_BUY CLICK =>
+2024-04-04 20:28:38.809256   => BUTTON_BUY clicked!
+
+2024-04-04 20:28:38.809642   3. Assert_v4
+2024-04-04 20:28:38.809824   Checking that the trading platform page has opened (v4) =>
+2024-04-04 20:28:38.817785   Checking way # 1 => 
+
+2024-04-04 20:28:38.817940   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-04 20:28:38.821879   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-04 20:28:38.821970   2. Checking that the LOGO is present on the page =>
+2024-04-04 20:28:41.338687   => 'capital*com' logo is present on the current page
+
+2024-04-04 20:28:41.338726   tpd = False
+
+2024-04-04 20:28:41.338737   4. Check that opened page with https://capital.com/trading/platform/charting/123763777684633?side=buy&ids=15959415572223172,23381802046660,374675767075865,374675767088654,21680337780298948,3315714839748,427748677997764,7096896585815236,7094972440466628,7096810686469316,7091600891139268,426627691533508,27342779713672388,15839732013552836,2604592722433220,25985050357018692,22855552501634244,426090820621508,305243519000335556,1657857463492,68501459901129753,335686053926212,66372813979690009,67498430418691097,21765481211974852,3644116541985988,374675767046212,93810675721241,55001351226694,6003982027805892,23381802066002,374675767047819,123763777708114,93810675684676,6810413677172050,145998823326404,10500838556456274,3534607760839876,1526559147980517520,7091880064013508,7089977393501380,7090561509053636,7090488494609604,93810675766468,27045129890124996,16150730595456196,3400518881858756,3594075878020292,18425409712196,55001351250891,123763777684633 url
+with selected corresponding trading instrument 'British Pound / Turkish lira' =>
+
+2024-04-04 20:28:41.341703   trade_instrument = 'British Pound / Turkish lira'
+
+2024-04-04 20:28:41.341714   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-04 20:28:41.639132   => Trading Platform opened in Chart mode
+
+2024-04-04 20:28:41.639194   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-04 20:28:41.777030   4.3. Check that opened trade instrument info page =>
+2024-04-04 20:28:42.814280   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.03.01_005-fr.de.Auth
+
+2024-04-04 20:28:42.814332   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f60fc8af560>
+
+2024-04-04 20:28:43.144927   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 20:28:43.355623   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 20:28:44.477616   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 20:28:44.644227   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 20:28:44.645647   Баг Bid:01.03.01_005-fr.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

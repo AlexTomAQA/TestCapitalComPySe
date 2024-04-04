@@ -1,0 +1,93 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 21:17:48.484421   worker_id = master
+
+2024-04-04 21:17:48.484435   0. Allure grouping v4
+
+2024-04-04 21:17:48.484618   START PRECONDITIONS =>
+
+2024-04-04 21:17:48.484633   => Current URL - https://capital.com/fr/trading-cfd-actions
+
+2024-04-04 21:17:48.487574   => URL after prev. preconditions - https://capital.com/fr
+
+2024-04-04 21:17:48.487588   => flag_of_bug - True
+2024-04-04 21:17:48.487599   Current page URL = https://capital.com/fr/trading-cfd-actions
+2024-04-04 21:17:48.490701   self.link = https://capital.com/fr
+2024-04-04 21:17:48.490715   link = https://capital.com/fr
+2024-04-04 21:17:50.304710   => Loaded page https://capital.com/fr
+
+2024-04-04 21:17:50.309165   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 21:17:50.310521   Set windows position at (0, 0) =>
+2024-04-04 21:17:50.412741   Set resolution 1280 * 800 =>
+2024-04-04 21:17:50.515029   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 21:17:51.540977   Капчи нет. Идем дальше
+
+2024-04-04 21:17:51.541067   Работа с куками
+
+2024-04-04 21:17:51.541081   Prev. country - 'de'
+2024-04-04 21:17:51.541091   Cur. country - 'de'
+2024-04-04 21:17:51.541100   => Country set to 'de'
+
+2024-04-04 21:17:51.541109   Prev. language - 'fr'
+2024-04-04 21:17:51.541118   Cur. language - 'fr'
+2024-04-04 21:17:51.541127   => Language is set to 'fr'
+
+2024-04-04 21:17:51.541136   Prev. role - 'NoReg'
+2024-04-04 21:17:51.541144   Cur. role - 'NoReg'
+2024-04-04 21:17:51.541153   => The 'NoReg' role is set
+
+2024-04-04 21:17:51.544018   => Current URL - https://capital.com/fr
+
+2024-04-04 21:17:51.544041   => THE END PRECONDITIONS
+
+2024-04-04 21:17:51.544234   1. Arrange_v4
+2024-04-04 21:17:51.544251   current_page = https://capital.com/fr
+2024-04-04 21:17:51.546772   link = https://capital.com/fr/trading-cfd-actions
+2024-04-04 21:17:51.549183   Current page URL = https://capital.com/fr
+2024-04-04 21:17:51.551640   self.link = https://capital.com/fr/trading-cfd-actions
+2024-04-04 21:17:51.551654   link = https://capital.com/fr/trading-cfd-actions
+2024-04-04 21:17:53.199360   => Loaded page https://capital.com/fr/trading-cfd-actions
+2024-04-04 21:17:53.203681   MOST_TRADED is present? =>
+2024-04-04 21:17:53.211954   => MOST_TRADED widget is present on this page
+2024-04-04 21:17:53.211980   => Found 5 elements in block MOST_TRADED
+2024-04-04 21:17:53.211990   Most traded widget is scroll =>
+2024-04-04 21:17:53.216463   => Most traded widget is scrolled into screen center
+
+2024-04-04 21:17:53.216519   Random indexes = [0]
+
+2024-04-04 21:17:53.216545   Testing Most traded 1 random element with 0 index
+
+2024-04-04 21:17:53.216727   2. Act_v4
+2024-04-04 21:17:53.216878   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 21:17:54.754066   '[Sign up]' form was not popped up
+2024-04-04 21:17:54.766778   instrument_title = 'Gold Spot'
+2024-04-04 21:17:54.771772   Selected Trade button on Most traded widget is scroll =>
+2024-04-04 21:17:54.774955   Selected Trade button click for 'Gold Spot' trading instrument =>
+2024-04-04 21:17:55.825984   => Selected Trade button clicked!
+
+2024-04-04 21:17:55.826209   3. Assert_v0
+2024-04-04 21:17:55.826299   Start step Check that [Sign up] form is opened
+2024-04-04 21:17:58.868381   'Sign up' form not opened
+2024-04-04 21:17:58.868583   Start step Check that new [Sign up] form is opened
+2024-04-04 21:18:01.935529   => new 'Sign up' form not opened
+2024-04-04 21:18:01.935732   Start method Check that [Sign up] page opened =>
+2024-04-04 21:18:02.939514   'Sign up' page not opened
+2024-04-04 21:18:02.939721   Check that [Sign up] form on trading platform opened =>
+2024-04-04 21:18:06.007417   'Sign up' form on trading platform page not opened
+
+Bug: Bid:11.01.03.01_03-fr.de.NoReg
+
+2024-04-04 21:18:06.007505   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f28da9bd190>
+
+2024-04-04 21:18:06.816233   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 21:18:06.998280   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 21:18:08.267321   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 21:18:08.451798   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 21:18:08.453199   Баг Bid:11.01.03.01_03-fr.de.NoReg-04 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
