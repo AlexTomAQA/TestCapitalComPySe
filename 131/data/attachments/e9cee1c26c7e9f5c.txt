@@ -1,0 +1,32 @@
+2024-04-04 13:00:23 ERROR Elements not present after 0.5 seconds on page: https://capital.com/fr/quest-ce-que-le-trading-de-cfd
+2024-04-04 13:00:23 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 307, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x56115eff08a3 <unknown>
+#1 0x56115ece68c6 <unknown>
+#2 0x56115ed31618 <unknown>
+#3 0x56115ed316d1 <unknown>
+#4 0x56115ed74744 <unknown>
+#5 0x56115ed535cd <unknown>
+#6 0x56115ed71c19 <unknown>
+#7 0x56115ed53343 <unknown>
+#8 0x56115ed24593 <unknown>
+#9 0x56115ed24f5e <unknown>
+#10 0x56115efb488b <unknown>
+#11 0x56115efb87e5 <unknown>
+#12 0x56115efa25b1 <unknown>
+#13 0x56115efb9372 <unknown>
+#14 0x56115ef878bf <unknown>
+#15 0x56115efdf768 <unknown>
+#16 0x56115efdf93b <unknown>
+#17 0x56115efef9f4 <unknown>
+#18 0x7f8bb2494ac3 <unknown>

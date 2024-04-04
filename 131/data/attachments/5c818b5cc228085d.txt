@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 13:29:25.525041   worker_id = master
+
+2024-04-04 13:29:25.525056   0. Allure grouping v4
+
+2024-04-04 13:29:25.525257   START PRECONDITIONS =>
+
+2024-04-04 13:29:25.525273   => Current URL - https://capital.com/fr/trading-canopy-growth
+
+2024-04-04 13:29:25.528027   => URL after prev. preconditions - https://capital.com/fr/trading-canopy-growth
+
+2024-04-04 13:29:25.528041   => flag_of_bug - False
+
+2024-04-04 13:29:25.528053   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 13:29:25.529399   Set windows position at (0, 0) =>
+2024-04-04 13:29:25.631968   Set resolution 1280 * 800 =>
+2024-04-04 13:29:25.738269   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 13:29:26.792519   Капчи нет. Идем дальше
+
+2024-04-04 13:29:26.792615   Работа с куками
+
+2024-04-04 13:29:26.792629   Prev. country - 'de'
+2024-04-04 13:29:26.792639   Cur. country - 'de'
+2024-04-04 13:29:26.792648   => Country set to 'de'
+
+2024-04-04 13:29:26.792657   Prev. language - 'fr'
+2024-04-04 13:29:26.792666   Cur. language - 'fr'
+2024-04-04 13:29:26.792674   => Language is set to 'fr'
+
+2024-04-04 13:29:26.792683   Prev. role - 'Auth'
+2024-04-04 13:29:26.792691   Cur. role - 'Auth'
+2024-04-04 13:29:26.792705   => The 'Auth' role is set
+
+2024-04-04 13:29:26.795672   => Current URL - https://capital.com/fr/trading-canopy-growth
+
+2024-04-04 13:29:26.795695   => THE END PRECONDITIONS
+
+2024-04-04 13:29:26.795740   1. Arrange_v0
+2024-04-04 13:29:26.795754   current_page = https://capital.com/fr/trading-canopy-growth
+2024-04-04 13:29:26.798555   link = https://capital.com/fr/trading-canopy-growth
+2024-04-04 13:29:26.809445   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-04 13:29:26.809480   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-04 13:29:26.809490   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-04 13:29:26.825095   => 'Sell' button in Content block scrolled
+2024-04-04 13:29:26.825351   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 13:29:28.391807   '[Sign up]' form was not popped up
+
+2024-04-04 13:29:28.392015   2. Act_v0
+2024-04-04 13:29:28.682020   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-04 13:29:28.682078   => return trade_instrument = 25985050357018692
+
+2024-04-04 13:29:28.682396   3. Assert_v4
+2024-04-04 13:29:28.682631   Checking that the trading platform page has opened (v4) =>
+2024-04-04 13:29:29.221297   Checking way # 1 => 
+
+2024-04-04 13:29:29.221486   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-04 13:29:29.224223   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-04 13:29:29.224297   2. Checking that the LOGO is present on the page =>
+2024-04-04 13:29:30.097171   => 'capital*com' logo is present on the current page
+
+2024-04-04 13:29:30.097215   tpd = False
+
+2024-04-04 13:29:30.097227   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '25985050357018692' =>
+
+2024-04-04 13:29:30.103536   trade_instrument = '25985050357018692'
+
+2024-04-04 13:29:30.103548   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-04 13:29:31.127645   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_03-fr.de.Auth
+
+2024-04-04 13:29:31.127705   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f10778e4c20>
+
+2024-04-04 13:29:31.485312   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 13:29:31.740013   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 13:29:32.731580   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 13:29:32.950811   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 13:29:32.952443   Баг Bid:11.02.02.01_03-fr.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
