@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 16:22:52.574491   worker_id = master
+
+2024-04-04 16:22:52.574517   0. Allure grouping v4
+
+2024-04-04 16:22:52.574890   START PRECONDITIONS =>
+
+2024-04-04 16:22:52.574916   => Current URL - https://capital.com/fr/produit-de-base-aluminum-spot
+
+2024-04-04 16:22:52.583328   => URL after prev. preconditions - https://capital.com/fr/produit-de-base-aluminum-spot
+
+2024-04-04 16:22:52.583344   => flag_of_bug - False
+
+2024-04-04 16:22:52.583355   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 16:22:52.584792   Set windows position at (0, 0) =>
+2024-04-04 16:22:52.686962   Set resolution 1280 * 800 =>
+2024-04-04 16:22:52.789297   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 16:22:53.844924   Капчи нет. Идем дальше
+
+2024-04-04 16:22:53.845015   Работа с куками
+
+2024-04-04 16:22:53.845029   Prev. country - 'au'
+2024-04-04 16:22:53.845039   Cur. country - 'au'
+2024-04-04 16:22:53.845048   => Country set to 'au'
+
+2024-04-04 16:22:53.845057   Prev. language - 'fr'
+2024-04-04 16:22:53.845066   Cur. language - 'fr'
+2024-04-04 16:22:53.845075   => Language is set to 'fr'
+
+2024-04-04 16:22:53.845084   Prev. role - 'Auth'
+2024-04-04 16:22:53.845092   Cur. role - 'Auth'
+2024-04-04 16:22:53.845101   => The 'Auth' role is set
+
+2024-04-04 16:22:53.848621   => Current URL - https://capital.com/fr/produit-de-base-aluminum-spot
+
+2024-04-04 16:22:53.848653   => THE END PRECONDITIONS
+
+2024-04-04 16:22:53.848724   1. Arrange_v0
+2024-04-04 16:22:53.848745   current_page = https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:22:53.851932   link = https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:22:53.854369   BUTTON_BUY is located on the page? =>
+2024-04-04 16:22:53.862660   => BUTTON_BUY is located on the page!
+2024-04-04 16:22:53.862835   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 16:22:55.397762   '[Sign up]' form was not popped up
+
+2024-04-04 16:22:55.397997   2. Act_v0
+2024-04-04 16:22:55.405450   BUTTON_BUY is present? =>
+2024-04-04 16:22:55.405492   => BUTTON_BUY is present on the page
+2024-04-04 16:22:55.405511   BUTTON_BUY scroll =>
+2024-04-04 16:22:55.410554   => BUTTON_BUY scrolled
+2024-04-04 16:22:55.430535   BUTTON_BUY is clickable? =>
+2024-04-04 16:22:55.458528   BUTTON_BUY CLICK =>
+2024-04-04 16:22:56.010240   => BUTTON_BUY clicked!
+
+2024-04-04 16:22:56.010573   3. Assert_v4
+2024-04-04 16:22:56.010729   Checking that the trading platform page has opened (v4) =>
+2024-04-04 16:22:56.016085   Checking way # 1 => 
+
+2024-04-04 16:22:56.016195   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-04 16:22:56.018595   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-04 16:22:56.018658   2. Checking that the LOGO is present on the page =>
+2024-04-04 16:22:57.567509   => 'capital*com' logo is present on the current page
+
+2024-04-04 16:22:57.567550   tpd = False
+
+2024-04-04 16:22:57.567563   4. Check that opened page with https://capital.com/trading/platform/charting/7089977393501380?side=buy&ids=15959415572223172,23381802046660,374675767075865,374675767088654,21680337780298948,3315714839748,427748677997764,7096896585815236,7094972440466628,7096810686469316,7091600891139268,426627691533508,27342779713672388,15839732013552836,2604592722433220,25985050357018692,22855552501634244,426090820621508,305243519000335556,1657857463492,68501459901129753,335686053926212,66372813979690009,67498430418691097,21765481211974852,3644116541985988,374675767046212,93810675721241,55001351226694,6003982027805892,23381802066002,374675767047819,123763777708114,93810675684676,6810413677172050,145998823326404,10500838556456274,3534607760839876,1526559147980517520,7091880064013508,7089977393501380,7090561509053636,7090488494609604 url
+with selected corresponding trading instrument 'Aluminum' =>
+
+2024-04-04 16:22:57.570524   trade_instrument = 'Aluminum'
+
+2024-04-04 16:22:57.570536   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-04 16:22:57.685716   => Trading Platform opened in Chart mode
+
+2024-04-04 16:22:57.685767   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-04 16:22:57.693327   4.3. Check that opened trade instrument info page =>
+2024-04-04 16:22:58.720939   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.05.01_005-fr.au.Auth
+
+2024-04-04 16:22:58.720991   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbb2bb70800>
+
+2024-04-04 16:22:59.102529   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 16:22:59.315196   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 16:23:00.384184   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 16:23:00.721622   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 16:23:00.724185   Баг Bid:01.05.01_005-fr.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

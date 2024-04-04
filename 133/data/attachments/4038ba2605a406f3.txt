@@ -1,0 +1,130 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 17:44:53.354428   worker_id = master
+
+2024-04-04 17:44:53.354442   0. Allure grouping v4
+
+2024-04-04 17:44:53.354617   START PRECONDITIONS =>
+
+2024-04-04 17:44:53.354633   => Current URL - https://capital.com/fr/trade-forex
+
+2024-04-04 17:44:53.357764   => URL after prev. preconditions - https://capital.com/fr
+
+2024-04-04 17:44:53.357777   => flag_of_bug - True
+2024-04-04 17:44:53.357789   Current page URL = https://capital.com/fr/trade-forex
+2024-04-04 17:44:53.360433   self.link = https://capital.com/fr
+2024-04-04 17:44:53.360447   link = https://capital.com/fr
+2024-04-04 17:44:55.148450   => Loaded page https://capital.com/fr
+
+2024-04-04 17:44:55.153048   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 17:44:55.154503   Set windows position at (0, 0) =>
+2024-04-04 17:44:55.256818   Set resolution 1280 * 800 =>
+2024-04-04 17:44:55.359396   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 17:44:56.418116   Капчи нет. Идем дальше
+
+2024-04-04 17:44:56.418212   Работа с куками
+
+2024-04-04 17:44:56.418226   Prev. country - 'au'
+2024-04-04 17:44:56.418236   Cur. country - 'au'
+2024-04-04 17:44:56.418245   => Country set to 'au'
+
+2024-04-04 17:44:56.418254   Prev. language - 'fr'
+2024-04-04 17:44:56.418262   Cur. language - 'fr'
+2024-04-04 17:44:56.418271   => Language is set to 'fr'
+
+2024-04-04 17:44:56.418279   Prev. role - 'NoReg'
+2024-04-04 17:44:56.418288   Cur. role - 'NoReg'
+2024-04-04 17:44:56.418297   => The 'NoReg' role is set
+
+2024-04-04 17:44:56.421095   => Current URL - https://capital.com/fr
+
+2024-04-04 17:44:56.421119   => THE END PRECONDITIONS
+
+2024-04-04 17:44:56.421315   1. Cur URL = https://capital.com/fr
+
+2024-04-04 17:44:56.423834   2. Link = https://capital.com/fr
+2024-04-04 17:44:56.423851   current_page = https://capital.com/fr
+2024-04-04 17:44:56.426326   link = https://capital.com/fr
+2024-04-04 17:44:56.938869   => Education menu is present in DOM
+2024-04-04 17:44:56.948739   => Education menu is visible
+2024-04-04 17:44:58.230896   => Focus moved to Education menu
+2024-04-04 17:45:00.691442   => Focus moved to Forex trading sub-menu and clicked
+2024-04-04 17:45:00.995416   => Focus moved to 'capital*com' logo
+
+2024-04-04 17:45:00.995459   3. Cur URL = https://capital.com/fr/trade-forex
+
+2024-04-04 17:45:01.001129   1. Arrange_v4
+2024-04-04 17:45:01.001154   current_page = https://capital.com/fr/trade-forex
+2024-04-04 17:45:01.003600   link = https://capital.com/fr/trade-forex
+2024-04-04 17:45:01.006105   MOST_TRADED is present? =>
+2024-04-04 17:45:01.015496   => MOST_TRADED widget is present on this page
+2024-04-04 17:45:01.015534   => Found 5 elements in block MOST_TRADED
+2024-04-04 17:45:01.015546   Most traded widget is scroll =>
+2024-04-04 17:45:01.019016   => Most traded widget is scrolled into screen center
+
+2024-04-04 17:45:01.019060   Random indexes = [2]
+
+2024-04-04 17:45:01.019075   Testing Most traded 1 random element with 2 index
+
+2024-04-04 17:45:01.019227   2. Act_v4
+2024-04-04 17:45:01.019324   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 17:45:02.578904   '[Sign up]' form was not popped up
+2024-04-04 17:45:02.592286   instrument_title = 'Australian Dollar / US Dollar'
+2024-04-04 17:45:02.597972   Selected Trade button on Most traded widget is scroll =>
+2024-04-04 17:45:02.601510   Selected Trade button click for 'Australian Dollar / US Dollar' trading instrument =>
+2024-04-04 17:45:03.653814   => Selected Trade button clicked!
+
+2024-04-04 17:45:03.654053   3. Assert_v0
+2024-04-04 17:45:03.654145   Start step Check that [Sign up] form is opened
+2024-04-04 17:45:06.745338   'Sign up' form not opened
+2024-04-04 17:45:06.745537   Start step Check that new [Sign up] form is opened
+2024-04-04 17:45:09.825447   => new 'Sign up' form not opened
+2024-04-04 17:45:09.825644   Start method Check that [Sign up] page opened =>
+2024-04-04 17:45:10.829349   'Sign up' page not opened
+2024-04-04 17:45:10.829554   Check that [Sign up] form on trading platform opened =>
+2024-04-04 17:45:13.907695   'Sign up' form on trading platform page not opened
+
+Bug: Bid:11.02.04.00_06-fr.au.NoReg
+
+2024-04-04 17:45:13.907832   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbe3bac1130>
+
+2024-04-04 17:45:14.276317   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:15.465452   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:16.651252   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:16.876332   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:17.783789   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:18.011295   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:18.014316   Добавление новой строки =>
+
+2024-04-04 17:45:19.103949   => Новая строка добавлена
+
+2024-04-04 17:45:20.641450   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:20.861380   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:20.864429   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-04 17:45:21.196969   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:21.197190   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-04 17:45:21.534127   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:21.534344   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:21.746293   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:21.746543   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 17:45:22.144216   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 17:45:22.144292   Баг Bid:11.02.04.00_06-fr.au.NoReg-04 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

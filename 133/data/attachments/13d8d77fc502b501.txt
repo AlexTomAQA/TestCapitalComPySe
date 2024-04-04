@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 15:54:34.404419   worker_id = master
+
+2024-04-04 15:54:34.404437   0. Allure grouping v4
+
+2024-04-04 15:54:34.404689   START PRECONDITIONS =>
+
+2024-04-04 15:54:34.404705   => Current URL - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:54:34.407505   => URL after prev. preconditions - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:54:34.407518   => flag_of_bug - False
+
+2024-04-04 15:54:34.407530   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 15:54:34.409414   Set windows position at (0, 0) =>
+2024-04-04 15:54:34.513498   Set resolution 1280 * 800 =>
+2024-04-04 15:54:34.615964   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 15:54:35.667319   Капчи нет. Идем дальше
+
+2024-04-04 15:54:35.667410   Работа с куками
+
+2024-04-04 15:54:35.667424   Prev. country - 'au'
+2024-04-04 15:54:35.667434   Cur. country - 'au'
+2024-04-04 15:54:35.667443   => Country set to 'au'
+
+2024-04-04 15:54:35.667452   Prev. language - 'fr'
+2024-04-04 15:54:35.667460   Cur. language - 'fr'
+2024-04-04 15:54:35.667469   => Language is set to 'fr'
+
+2024-04-04 15:54:35.667478   Prev. role - 'NoAuth'
+2024-04-04 15:54:35.667487   Cur. role - 'NoAuth'
+2024-04-04 15:54:35.667495   => The 'NoAuth' role is set
+
+2024-04-04 15:54:35.670238   => Current URL - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:54:35.670260   => THE END PRECONDITIONS
+
+2024-04-04 15:54:35.670448   1. Arrange_v2
+2024-04-04 15:54:35.670466   current_page = https://capital.com/fr/eur-aud-taux
+2024-04-04 15:54:35.672964   link = https://capital.com/fr/eur-aud-taux
+2024-04-04 15:54:35.677979   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-04 15:54:35.685795   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-04 15:54:35.685821   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-04-04 15:54:35.689314   => LONG_POSITION_OVERNIGHT_FEE scrolled
+2024-04-04 15:54:35.689473   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 15:54:37.238951   '[Sign up]' form was not popped up
+
+2024-04-04 15:54:37.239140   2. Act_v2
+2024-04-04 15:54:37.239156   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-04-04 15:54:38.010748   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-04 15:54:38.024253   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-04-04 15:54:38.024289   Move focus on to button [Go to platform] and click =>
+2024-04-04 15:54:38.805156   => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is clickable
+2024-04-04 15:54:39.301843 => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION clicked
+
+2024-04-04 15:54:39.302177   3. Assert_Login_v0
+2024-04-04 15:54:39.302309   Check that 'Login' form is opened
+2024-04-04 15:54:42.397131   'Login' form not opened
+2024-04-04 15:54:42.397322   Check that new 'Login' form is opened
+2024-04-04 15:54:45.464691   => New 'Login' form not opened
+2024-04-04 15:54:45.467411   'Login' page not opened
+2024-04-04 15:54:48.567344   'Login' form on trading platform not opened
+2024-04-04 15:54:48.567536   Start step Check that [Sign up] form is opened
+2024-04-04 15:54:51.652715   'Sign up' form not opened
+2024-04-04 15:54:51.652908   Start step Check that new [Sign up] form is opened
+2024-04-04 15:54:54.740724   => new 'Sign up' form not opened
+2024-04-04 15:54:54.740921   Start method Check that [Sign up] page opened =>
+2024-04-04 15:54:55.744439   'Sign up' page not opened
+2024-04-04 15:54:55.744652   Check that [Sign up] form on trading platform opened =>
+2024-04-04 15:54:55.764504   => 'Sign up' form on trading platform page opened
+2024-04-04 15:54:55.764541   Assert SIGNUP_HEADER =>
+2024-04-04 15:54:55.779644   => SIGNUP_HEADER is OK
+2024-04-04 15:54:55.779680   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-04 15:54:55.791979   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-04 15:54:55.792011   Assert SIGNUP_REF_LOGIN =>
+2024-04-04 15:54:55.804282   => SIGNUP_REF_LOGIN is OK
+2024-04-04 15:54:55.804315   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.03.01_003-fr.au.NoAuth
+
+2024-04-04 15:54:55.804379   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f68a7c8d5e0>
+
+2024-04-04 15:54:56.388608   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 15:54:56.752728   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 15:54:57.834339   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 15:54:58.181418   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 15:54:58.183148   Баг Bid:01.03.01_003-fr.au.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

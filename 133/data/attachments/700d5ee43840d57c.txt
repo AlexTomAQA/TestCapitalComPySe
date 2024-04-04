@@ -1,0 +1,92 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 16:32:49.979699   worker_id = master
+
+2024-04-04 16:32:49.979712   0. Allure grouping v4
+
+2024-04-04 16:32:49.979921   START PRECONDITIONS =>
+
+2024-04-04 16:32:49.979939   => Current URL - https://capital.com/fr/produit-de-base-wheat-spot
+
+2024-04-04 16:32:49.982785   => URL after prev. preconditions - https://capital.com/fr/produit-de-base-wheat-spot
+
+2024-04-04 16:32:49.982799   => flag_of_bug - True
+2024-04-04 16:32:49.982810   Current page URL = https://capital.com/fr/produit-de-base-wheat-spot
+2024-04-04 16:32:49.985613   self.link = https://capital.com/fr/produit-de-base-wheat-spot
+2024-04-04 16:32:49.985627   link = https://capital.com/fr/produit-de-base-wheat-spot
+2024-04-04 16:32:51.641861   => Loaded page https://capital.com/fr/produit-de-base-wheat-spot
+
+2024-04-04 16:32:51.646307   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 16:32:51.647643   Set windows position at (0, 0) =>
+2024-04-04 16:32:51.749885   Set resolution 1280 * 800 =>
+2024-04-04 16:32:51.855513   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 16:32:52.888748   Капчи нет. Идем дальше
+
+2024-04-04 16:32:52.888837   Работа с куками
+
+2024-04-04 16:32:52.888850   Prev. country - 'au'
+2024-04-04 16:32:52.888860   Cur. country - 'au'
+2024-04-04 16:32:52.888869   => Country set to 'au'
+
+2024-04-04 16:32:52.888878   Prev. language - 'fr'
+2024-04-04 16:32:52.888886   Cur. language - 'fr'
+2024-04-04 16:32:52.888895   => Language is set to 'fr'
+
+2024-04-04 16:32:52.888904   Prev. role - 'NoReg'
+2024-04-04 16:32:52.888913   Cur. role - 'NoReg'
+2024-04-04 16:32:52.888921   => The 'NoReg' role is set
+
+2024-04-04 16:32:52.892624   => Current URL - https://capital.com/fr/produit-de-base-wheat-spot
+
+2024-04-04 16:32:52.892648   => THE END PRECONDITIONS
+
+2024-04-04 16:32:52.892837   1. Arrange_v0
+2024-04-04 16:32:52.892855   current_page = https://capital.com/fr/produit-de-base-wheat-spot
+2024-04-04 16:32:52.895456   link = https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:32:52.897881   Current page URL = https://capital.com/fr/produit-de-base-wheat-spot
+2024-04-04 16:32:52.900278   self.link = https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:32:52.900292   link = https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:32:54.505185   => Loaded page https://capital.com/fr/produit-de-base-aluminum-spot
+2024-04-04 16:32:54.509770   BUTTON_ADD_TO_FAVOURITE is located on the page? =>
+2024-04-04 16:32:54.520437   => BUTTON_ADD_TO_FAVOURITE is located on the page!
+2024-04-04 16:32:54.520613   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 16:32:56.050920   '[Sign up]' form was not popped up
+
+2024-04-04 16:32:56.051104   2. Act_v0
+2024-04-04 16:32:56.056444   BUTTON_ADD_TO_FAVOURITE is present? =>
+2024-04-04 16:32:56.056466   => BUTTON_ADD_TO_FAVOURITE is present on the page
+2024-04-04 16:32:56.056476   BUTTON_ADD_TO_FAVOURITE scroll =>
+2024-04-04 16:32:56.059629   => BUTTON_ADD_TO_FAVOURITE scrolled
+2024-04-04 16:32:56.076194   BUTTON_ADD_TO_FAVOURITE is clickable? =>
+2024-04-04 16:32:56.085633   BUTTON_ADD_TO_FAVOURITE CLICK =>
+2024-04-04 16:32:56.123459   => BUTTON_ADD_TO_FAVOURITE clicked!
+Trade instrument from element click is Aluminum
+Trade instrument from Full test is Aluminum
+Test element is <pages.Elements.AssertClass.AssertClass object at 0x7fbb2af44e90>
+
+2024-04-04 16:32:56.123726   3. Assert_v0
+2024-04-04 16:32:56.123840   Start step Check that [Sign up] form is opened
+2024-04-04 16:32:59.208018   'Sign up' form not opened
+2024-04-04 16:32:59.208210   Start step Check that new [Sign up] form is opened
+2024-04-04 16:33:02.277009   => new 'Sign up' form not opened
+2024-04-04 16:33:02.277197   Start method Check that [Sign up] page opened =>
+2024-04-04 16:33:03.280670   'Sign up' page not opened
+2024-04-04 16:33:03.280877   Check that [Sign up] form on trading platform opened =>
+2024-04-04 16:33:06.347357   'Sign up' form on trading platform page not opened
+
+Bug: Bid:01.05.01_001-fr.au.NoReg
+
+2024-04-04 16:33:06.347455   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbb2bb70800>
+
+2024-04-04 16:33:06.783852   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 16:33:07.154418   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 16:33:08.370501   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 16:33:08.584074   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 16:33:08.586068   Баг Bid:01.05.01_001-fr.au.NoReg-04 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

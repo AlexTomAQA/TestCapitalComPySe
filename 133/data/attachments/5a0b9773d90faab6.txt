@@ -1,0 +1,45 @@
+2024-04-04 15:34:30 ERROR Elements not present after 0.5 seconds on page: https://capital.com/fr/nikola-corporation-prix-d-une-action
+2024-04-04 15:34:30 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 307, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55e85b9ae8a3 <unknown>
+#1 0x55e85b6a48c6 <unknown>
+#2 0x55e85b6ef618 <unknown>
+#3 0x55e85b6ef6d1 <unknown>
+#4 0x55e85b732744 <unknown>
+#5 0x55e85b7115cd <unknown>
+#6 0x55e85b72fc19 <unknown>
+#7 0x55e85b711343 <unknown>
+#8 0x55e85b6e2593 <unknown>
+#9 0x55e85b6e2f5e <unknown>
+#10 0x55e85b97288b <unknown>
+#11 0x55e85b9767e5 <unknown>
+#12 0x55e85b9605b1 <unknown>
+#13 0x55e85b977372 <unknown>
+#14 0x55e85b9458bf <unknown>
+#15 0x55e85b99d768 <unknown>
+#16 0x55e85b99d93b <unknown>
+#17 0x55e85b9ad9f4 <unknown>
+#18 0x7f9d17294ac3 <unknown>
+
+2024-04-04 15:34:36 ERROR Elements not present after 0.5 seconds on page: https://capital.com/fr/nikola-corporation-prix-d-une-action
+2024-04-04 15:34:36 ERROR Can't click element by locator <selenium.webdriver.remote.webelement.WebElement (session="aaced77e1a3928a7c7873d41dcb70eb0", element="f.2E2D3A1AEAEC69DE054D0303BABCEC99.d.122543144563BCC63D6A73D66F8B530D.e.2191")>
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 347, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator <selenium.webdriver.remote.webelement.WebElement (session="aaced77e1a3928a7c7873d41dcb70eb0", element="f.2E2D3A1AEAEC69DE054D0303BABCEC99.d.122543144563BCC63D6A73D66F8B530D.e.2191")>

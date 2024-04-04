@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 15:56:50.251555   worker_id = master
+
+2024-04-04 15:56:50.251574   0. Allure grouping v4
+
+2024-04-04 15:56:50.251878   START PRECONDITIONS =>
+
+2024-04-04 15:56:50.251905   => Current URL - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:56:50.258079   => URL after prev. preconditions - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:56:50.258093   => flag_of_bug - False
+
+2024-04-04 15:56:50.258105   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 15:56:50.259843   Set windows position at (0, 0) =>
+2024-04-04 15:56:50.361935   Set resolution 1280 * 800 =>
+2024-04-04 15:56:50.464417   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 15:56:51.515272   Капчи нет. Идем дальше
+
+2024-04-04 15:56:51.515366   Работа с куками
+
+2024-04-04 15:56:51.515380   Prev. country - 'au'
+2024-04-04 15:56:51.515390   Cur. country - 'au'
+2024-04-04 15:56:51.515399   => Country set to 'au'
+
+2024-04-04 15:56:51.515409   Prev. language - 'fr'
+2024-04-04 15:56:51.515418   Cur. language - 'fr'
+2024-04-04 15:56:51.515426   => Language is set to 'fr'
+
+2024-04-04 15:56:51.515435   Prev. role - 'Auth'
+2024-04-04 15:56:51.515444   Cur. role - 'Auth'
+2024-04-04 15:56:51.515453   => The 'Auth' role is set
+
+2024-04-04 15:56:51.518393   => Current URL - https://capital.com/fr/eur-aud-taux
+
+2024-04-04 15:56:51.518419   => THE END PRECONDITIONS
+
+2024-04-04 15:56:51.518477   1. Arrange_v0
+2024-04-04 15:56:51.518492   current_page = https://capital.com/fr/eur-aud-taux
+2024-04-04 15:56:51.524579   link = https://capital.com/fr/eur-aud-taux
+2024-04-04 15:56:51.527148   BUTTON_BUY is located on the page? =>
+2024-04-04 15:56:51.534906   => BUTTON_BUY is located on the page!
+2024-04-04 15:56:51.535092   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 15:56:53.084887   '[Sign up]' form was not popped up
+
+2024-04-04 15:56:53.085085   2. Act_v0
+2024-04-04 15:56:53.093341   BUTTON_BUY is present? =>
+2024-04-04 15:56:53.093378   => BUTTON_BUY is present on the page
+2024-04-04 15:56:53.093389   BUTTON_BUY scroll =>
+2024-04-04 15:56:53.096772   => BUTTON_BUY scrolled
+2024-04-04 15:56:53.135025   BUTTON_BUY is clickable? =>
+2024-04-04 15:56:53.147558   BUTTON_BUY CLICK =>
+2024-04-04 15:56:53.434488   => BUTTON_BUY clicked!
+
+2024-04-04 15:56:53.434800   3. Assert_v4
+2024-04-04 15:56:53.434958   Checking that the trading platform page has opened (v4) =>
+2024-04-04 15:56:53.445406   Checking way # 1 => 
+
+2024-04-04 15:56:53.445635   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-04 15:56:53.449720   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-04 15:56:53.449826   2. Checking that the LOGO is present on the page =>
+2024-04-04 15:56:54.302743   => 'capital*com' logo is present on the current page
+
+2024-04-04 15:56:54.302795   tpd = False
+
+2024-04-04 15:56:54.302817   4. Check that opened page with https://capital.com/trading/platform/charting/93810675684676?side=buy&ids=15959415572223172,23381802046660,374675767075865,374675767088654,21680337780298948,3315714839748,427748677997764,7096896585815236,7094972440466628,7096810686469316,7091600891139268,426627691533508,27342779713672388,15839732013552836,2604592722433220,25985050357018692,22855552501634244,426090820621508,305243519000335556,1657857463492,68501459901129753,335686053926212,66372813979690009,67498430418691097,21765481211974852,3644116541985988,374675767046212,93810675721241,55001351226694,6003982027805892,23381802066002,374675767047819,123763777708114,93810675684676 url
+with selected corresponding trading instrument 'Euro / Australian Dollar' =>
+
+2024-04-04 15:56:54.305813   trade_instrument = 'Euro / Australian Dollar'
+
+2024-04-04 15:56:54.305825   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-04 15:56:54.644889   => Trading Platform opened in Chart mode
+
+2024-04-04 15:56:54.644943   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-04 15:56:54.823001   4.3. Check that opened trade instrument info page =>
+2024-04-04 15:56:55.850930   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.03.01_005-fr.au.Auth
+
+2024-04-04 15:56:55.850982   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f68a7c8d5e0>
+
+2024-04-04 15:56:56.156519   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 15:56:56.416383   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 15:56:58.115280   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 15:56:58.328957   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 15:56:58.330675   Баг Bid:01.03.01_005-fr.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
