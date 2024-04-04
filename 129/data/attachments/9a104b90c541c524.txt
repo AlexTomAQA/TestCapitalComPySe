@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 10:30:40.736744   worker_id = master
+
+2024-04-04 10:30:40.736759   0. Allure grouping v4
+
+2024-04-04 10:30:40.736932   START PRECONDITIONS =>
+
+2024-04-04 10:30:40.736947   => Current URL - https://capital.com/it/day-trading
+
+2024-04-04 10:30:40.739526   => URL after prev. preconditions - https://capital.com/trading/platform/
+
+2024-04-04 10:30:40.739541   => flag_of_bug - False
+
+2024-04-04 10:30:40.739552   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 10:30:40.740801   Set windows position at (0, 0) =>
+2024-04-04 10:30:40.843115   Set resolution 1280 * 800 =>
+2024-04-04 10:30:40.945338   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 10:30:41.991707   Капчи нет. Идем дальше
+
+2024-04-04 10:30:41.991794   Работа с куками
+
+2024-04-04 10:30:41.991808   Prev. country - 'de'
+2024-04-04 10:30:41.991818   Cur. country - 'de'
+2024-04-04 10:30:41.991827   => Country set to 'de'
+
+2024-04-04 10:30:41.991836   Prev. language - 'it'
+2024-04-04 10:30:41.991845   Cur. language - 'it'
+2024-04-04 10:30:41.991854   => Language is set to 'it'
+
+2024-04-04 10:30:41.991863   Prev. role - 'NoAuth'
+2024-04-04 10:30:41.991872   Cur. role - 'NoAuth'
+2024-04-04 10:30:41.991880   => The 'NoAuth' role is set
+
+2024-04-04 10:30:41.994677   => Current URL - https://capital.com/it/day-trading
+
+2024-04-04 10:30:41.994700   => THE END PRECONDITIONS
+
+2024-04-04 10:30:41.994884   1. Arrange_v0
+2024-04-04 10:30:41.994901   current_page = https://capital.com/it/day-trading
+2024-04-04 10:30:41.997690   link = https://capital.com/it/scalping
+2024-04-04 10:30:42.000380   => current_url != cur_item_link
+2024-04-04 10:30:42.000405   Current page URL = https://capital.com/it/day-trading
+2024-04-04 10:30:42.003096   self.link = https://capital.com/it/scalping
+2024-04-04 10:30:42.003110   link = https://capital.com/it/scalping
+2024-04-04 10:30:44.119329   => Loaded page https://capital.com/it/scalping
+2024-04-04 10:30:44.131912   BUTTON_START_TRADING scroll =>
+2024-04-04 10:30:44.135808   BUTTON_START_TRADING is visible? =>
+2024-04-04 10:30:44.148389   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-04 10:30:44.148547   2. Act_v0
+2024-04-04 10:30:44.148563   Start Click button [Start Trading] =>
+2024-04-04 10:30:44.153650   BUTTON_START_TRADING is clickable? =>
+2024-04-04 10:30:44.162981   BUTTON_START_TRADING click =>
+2024-04-04 10:30:44.196600   => BUTTON_START_TRADING clicked
+
+2024-04-04 10:30:44.196822   3. Assert_Login_v0
+2024-04-04 10:30:44.196904   Check that 'Login' form is opened
+2024-04-04 10:30:47.263475   'Login' form not opened
+2024-04-04 10:30:47.263653   Check that new 'Login' form is opened
+2024-04-04 10:30:50.329917   => New 'Login' form not opened
+2024-04-04 10:30:50.332642   'Login' page not opened
+2024-04-04 10:30:53.393263   'Login' form on trading platform not opened
+2024-04-04 10:30:53.393444   Start step Check that [Sign up] form is opened
+2024-04-04 10:30:53.403639   'Sign up' form opened
+2024-04-04 10:30:53.403663   Assert SIGNUP_HEADER =>
+2024-04-04 10:30:53.412768   Assert SIGNUP_REF_LOGIN =>
+2024-04-04 10:30:53.421937   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-04 10:30:53.431138   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-04 10:30:53.431160   => 'Signup' form is checked
+
+Bug: Bid:11.03.01.01_01-it.de.NoAuth
+
+2024-04-04 10:30:53.431212   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1bb54d9d30>
+
+2024-04-04 10:30:53.933571   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 10:30:54.285363   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 10:30:55.329052   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 10:30:55.549916   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 10:30:55.551277   Баг Bid:11.03.01.01_01-it.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

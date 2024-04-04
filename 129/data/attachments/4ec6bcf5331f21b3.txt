@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 09:48:26.765955   worker_id = master
+
+2024-04-04 09:48:26.765969   0. Allure grouping v4
+
+2024-04-04 09:48:26.766154   START PRECONDITIONS =>
+
+2024-04-04 09:48:26.766170   => Current URL - https://capital.com/trading/platform/
+
+2024-04-04 09:48:26.768909   => URL after prev. preconditions - https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+
+2024-04-04 09:48:26.768923   => flag_of_bug - True
+2024-04-04 09:48:26.768935   Current page URL = https://capital.com/trading/platform/
+2024-04-04 09:48:26.771453   self.link = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-04-04 09:48:26.771467   link = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-04-04 09:48:31.027244   => Loaded page https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+
+2024-04-04 09:48:31.031604   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 09:48:31.033019   Set windows position at (0, 0) =>
+2024-04-04 09:48:31.135344   Set resolution 1280 * 800 =>
+2024-04-04 09:48:31.238011   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 09:48:32.272273   Капчи нет. Идем дальше
+
+2024-04-04 09:48:32.272365   Работа с куками
+
+2024-04-04 09:48:32.272380   Prev. country - 'de'
+2024-04-04 09:48:32.272390   Cur. country - 'de'
+2024-04-04 09:48:32.272399   => Country set to 'de'
+
+2024-04-04 09:48:32.272408   Prev. language - 'it'
+2024-04-04 09:48:32.272417   Cur. language - 'it'
+2024-04-04 09:48:32.272426   => Language is set to 'it'
+
+2024-04-04 09:48:32.272435   Prev. role - 'Auth'
+2024-04-04 09:48:32.272443   Cur. role - 'Auth'
+2024-04-04 09:48:32.272452   => The 'Auth' role is set
+
+2024-04-04 09:48:32.275315   => Current URL - https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+
+2024-04-04 09:48:32.275338   => THE END PRECONDITIONS
+
+2024-04-04 09:48:32.275382   1. Arrange_v0
+2024-04-04 09:48:32.275396   current_page = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-04-04 09:48:32.278057   link = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-04-04 09:48:32.280646   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-04 09:48:32.288385   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-04 09:48:32.288543   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 09:48:33.821492   '[Sign up]' form was not popped up
+
+2024-04-04 09:48:33.821678   2. Act_v0
+2024-04-04 09:48:33.827090   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-04 09:48:33.827113   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-04 09:48:33.827123   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-04 09:48:33.830527   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-04 09:48:33.859699   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-04 09:48:33.871079   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-04 09:48:34.118938   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-04 09:48:34.119292   3. Assert_v4
+2024-04-04 09:48:34.119468   Checking that the trading platform page has opened (v4) =>
+2024-04-04 09:48:34.633016   Checking way # 1 => 
+
+2024-04-04 09:48:34.633101   1. Checking that the Trading platform page has valid title =>
+2024-04-04 09:48:34.636954   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-04 09:48:34.637008   2. Checking that the LOGO is present on the page =>
+2024-04-04 09:48:35.256328   => 'capital*com' logo is present on the current page
+
+2024-04-04 09:48:35.256366   tpd = False
+
+2024-04-04 09:48:35.256379   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '374675767075865' =>
+
+2024-04-04 09:48:35.259175   trade_instrument = '374675767075865'
+
+2024-04-04 09:48:35.259187   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-04 09:48:36.301122   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.04.01_05-it.de.Auth
+
+2024-04-04 09:48:36.301174   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6728de6a20>
+
+2024-04-04 09:48:36.805259   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 09:48:37.053228   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 09:48:38.105756   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 09:48:38.325481   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 09:48:38.326768   Баг Bid:11.02.04.01_05-it.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,98 @@
+{'width': 1280, 'height': 800}
+
+2024-04-04 08:20:37.350547   worker_id = master
+
+2024-04-04 08:20:37.350566   0. Allure grouping v4
+
+2024-04-04 08:20:37.350846   START PRECONDITIONS =>
+
+2024-04-04 08:20:37.350865   => Current URL - https://capital.com/trading/platform/
+
+2024-04-04 08:20:37.354416   => URL after prev. preconditions - https://capital.com/it/eur-jpy-tasso
+
+2024-04-04 08:20:37.354434   => flag_of_bug - True
+2024-04-04 08:20:37.354447   Current page URL = https://capital.com/trading/platform/
+2024-04-04 08:20:37.356899   self.link = https://capital.com/it/eur-jpy-tasso
+2024-04-04 08:20:37.356913   link = https://capital.com/it/eur-jpy-tasso
+2024-04-04 08:20:39.539129   => Loaded page https://capital.com/it/eur-jpy-tasso
+
+2024-04-04 08:20:39.546820   => Windows size - {'width': 1280, 'height': 800}
+2024-04-04 08:20:39.548295   Set windows position at (0, 0) =>
+2024-04-04 08:20:39.650656   Set resolution 1280 * 800 =>
+2024-04-04 08:20:39.753112   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-04 08:20:40.801485   Капчи нет. Идем дальше
+
+2024-04-04 08:20:40.801579   Работа с куками
+
+2024-04-04 08:20:40.801594   Prev. country - 'de'
+2024-04-04 08:20:40.801604   Cur. country - 'de'
+2024-04-04 08:20:40.801613   => Country set to 'de'
+
+2024-04-04 08:20:40.801623   Prev. language - 'it'
+2024-04-04 08:20:40.801632   Cur. language - 'it'
+2024-04-04 08:20:40.801641   => Language is set to 'it'
+
+2024-04-04 08:20:40.801650   Prev. role - 'NoAuth'
+2024-04-04 08:20:40.801659   Cur. role - 'NoAuth'
+2024-04-04 08:20:40.801668   => The 'NoAuth' role is set
+
+2024-04-04 08:20:40.804516   => Current URL - https://capital.com/it/eur-jpy-tasso
+
+2024-04-04 08:20:40.804541   => THE END PRECONDITIONS
+
+2024-04-04 08:20:40.804738   1. Arrange_v0
+2024-04-04 08:20:40.804756   current_page = https://capital.com/it/eur-jpy-tasso
+2024-04-04 08:20:40.807328   link = https://capital.com/it/eur-jpy-tasso
+2024-04-04 08:20:40.809953 Is TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-04 08:20:40.819912   TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-04 08:20:40.823953   => TOOLINFO_SHORT_POSITION_OVERNIGHT_FEE  scrolled
+2024-04-04 08:20:40.824125   Start Checking that form [Sign up] popped up on the page =>
+2024-04-04 08:20:42.374534   '[Sign up]' form was not popped up
+
+2024-04-04 08:20:42.374723   2. Act_v0
+2024-04-04 08:20:42.374739   Start Click button [Go to platform] =>
+2024-04-04 08:20:43.146694   Is TOOLTIP_SHORT_POSITION_FEE open?  =>
+2024-04-04 08:20:43.163927   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-04 08:20:43.163970   Move focus to button [Go to platform] and click on =>
+2024-04-04 08:20:43.940966   BUTTON_GO_TO_PLATFORM is clickable =>
+2024-04-04 08:20:44.449318 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-04 08:20:44.449631   3. Assert_Login_v0
+2024-04-04 08:20:44.449757   Check that 'Login' form is opened
+2024-04-04 08:20:47.639118   'Login' form not opened
+2024-04-04 08:20:47.639311   Check that new 'Login' form is opened
+2024-04-04 08:20:50.754843   => New 'Login' form not opened
+2024-04-04 08:20:50.757791   'Login' page not opened
+2024-04-04 08:20:53.855872   'Login' form on trading platform not opened
+2024-04-04 08:20:53.856068   Start step Check that [Sign up] form is opened
+2024-04-04 08:20:56.932985   'Sign up' form not opened
+2024-04-04 08:20:56.933191   Start step Check that new [Sign up] form is opened
+2024-04-04 08:21:00.026248   => new 'Sign up' form not opened
+2024-04-04 08:21:00.026530   Start method Check that [Sign up] page opened =>
+2024-04-04 08:21:01.029875   'Sign up' page not opened
+2024-04-04 08:21:01.030079   Check that [Sign up] form on trading platform opened =>
+2024-04-04 08:21:01.043823   => 'Sign up' form on trading platform page opened
+2024-04-04 08:21:01.043864   Assert SIGNUP_HEADER =>
+2024-04-04 08:21:01.056823   => SIGNUP_HEADER is OK
+2024-04-04 08:21:01.056863   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-04 08:21:01.069705   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-04 08:21:01.069745   Assert SIGNUP_REF_LOGIN =>
+2024-04-04 08:21:01.082645   => SIGNUP_REF_LOGIN is OK
+2024-04-04 08:21:01.082685   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.03.01_004-it.de.NoAuth
+
+2024-04-04 08:21:01.082752   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f13fe1a7590>
+
+2024-04-04 08:21:01.573013   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 08:21:01.959533   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 08:21:02.957432   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-04 08:21:03.181860   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-04 08:21:03.183338   Баг Bid:01.03.01_004-it.de.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
