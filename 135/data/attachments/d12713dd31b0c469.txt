@@ -1,0 +1,128 @@
+{'width': 1280, 'height': 800}
+
+2024-04-05 18:04:33.023604   worker_id = master
+
+2024-04-05 18:04:33.023628   0. Allure grouping v4
+
+2024-04-05 18:04:33.023955   START PRECONDITIONS =>
+
+2024-04-05 18:04:33.023981   => Current URL - https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-05 18:04:33.169054   => URL after prev. preconditions - https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-05 18:04:33.169079   => flag_of_bug - False
+
+2024-04-05 18:04:33.169098   => Windows size - {'width': 1280, 'height': 800}
+2024-04-05 18:04:33.171432   Set windows position at (0, 0) =>
+2024-04-05 18:04:33.276824   Set resolution 1280 * 800 =>
+2024-04-05 18:04:33.379165   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-05 18:04:34.389944   Капчи нет. Идем дальше
+
+2024-04-05 18:04:34.390028   Работа с куками
+
+2024-04-05 18:04:34.390042   Prev. country - 'de'
+2024-04-05 18:04:34.390052   Cur. country - 'de'
+2024-04-05 18:04:34.390061   => Country set to 'de'
+
+2024-04-05 18:04:34.390070   Prev. language - 'hu'
+2024-04-05 18:04:34.390078   Cur. language - 'hu'
+2024-04-05 18:04:34.390087   => Language is set to 'hu'
+
+2024-04-05 18:04:34.390096   Prev. role - 'Auth'
+2024-04-05 18:04:34.390105   Cur. role - 'Auth'
+2024-04-05 18:04:34.390113   => The 'Auth' role is set
+
+2024-04-05 18:04:34.392775   => Current URL - https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-05 18:04:34.392796   => THE END PRECONDITIONS
+
+2024-04-05 18:04:34.392839   1. Arrange_v0
+2024-04-05 18:04:34.392853   current_page = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-05 18:04:34.395388   link = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-05 18:04:34.397790   BUTTON_BUY is located on the page? =>
+2024-04-05 18:04:34.405661   => BUTTON_BUY is located on the page!
+2024-04-05 18:04:34.405818   Start Checking that form [Sign up] popped up on the page =>
+2024-04-05 18:04:35.955155   '[Sign up]' form was not popped up
+
+2024-04-05 18:04:35.955390   2. Act_v0
+2024-04-05 18:04:35.962683   BUTTON_BUY is present? =>
+2024-04-05 18:04:35.962707   => BUTTON_BUY is present on the page
+2024-04-05 18:04:35.962717   BUTTON_BUY scroll =>
+2024-04-05 18:04:35.965846   => BUTTON_BUY scrolled
+2024-04-05 18:04:36.005423   BUTTON_BUY is clickable? =>
+2024-04-05 18:04:36.018520   BUTTON_BUY CLICK =>
+2024-04-05 18:04:36.250475   => BUTTON_BUY clicked!
+
+2024-04-05 18:04:36.250825   3. Assert_v4
+2024-04-05 18:04:36.251010   Checking that the trading platform page has opened (v4) =>
+2024-04-05 18:04:36.259048   Checking way # 1 => 
+
+2024-04-05 18:04:36.259218   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-05 18:04:36.262728   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-05 18:04:36.262826   2. Checking that the LOGO is present on the page =>
+2024-04-05 18:04:37.853358   => 'capital*com' logo is present on the current page
+
+2024-04-05 18:04:37.853405   tpd = False
+
+2024-04-05 18:04:37.853417   4. Check that opened page with https://capital.com/trading/platform/charting/14659243072378052?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052 url
+with selected corresponding trading instrument 'Marathon Digital Holdings, Inc' =>
+
+2024-04-05 18:04:37.861602   trade_instrument = 'Marathon Digital Holdings, Inc'
+
+2024-04-05 18:04:37.861619   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-05 18:04:37.870194   => Trading Platform opened in Chart mode
+
+2024-04-05 18:04:37.870217   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-05 18:04:37.878314   4.3. Check that opened trade instrument info page =>
+
+2024-04-05 18:04:37.885939   4.4. Check that opened Info page of selected 'Marathon Digital Holdings, Inc' trade instrument =>
+2024-04-05 18:04:37.885962   Trading instrument - 'Marathon Digital Holdings, Inc'
+2024-04-05 18:04:37.885973   Title opened trading instrument info page - 'Tesla Inc (Extended Hours)'
+2024-04-05 18:04:37.900251   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:01.02.01_005-hu.de.Auth
+
+2024-04-05 18:04:37.900287   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f7dc778ac90>
+
+2024-04-05 18:04:38.191266   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:38.423987   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:39.416057   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:39.593206   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:40.523545   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:40.672482   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:40.675100   Добавление новой строки =>
+
+2024-04-05 18:04:41.807276   => Новая строка добавлена
+
+2024-04-05 18:04:43.415884   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:43.622172   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:43.624832   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-05 18:04:43.892457   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:43.892719   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-05 18:04:44.031778   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:44.031987   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:44.196945   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:44.197203   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:04:44.362541   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:04:44.362618   Баг Bid:01.02.01_005-hu.de.Auth-17 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)

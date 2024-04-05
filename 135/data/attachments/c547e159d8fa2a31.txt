@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-04-05 18:08:53.907720   worker_id = master
+
+2024-04-05 18:08:53.907739   0. Allure grouping v4
+
+2024-04-05 18:08:53.908000   START PRECONDITIONS =>
+
+2024-04-05 18:08:53.908016   => Current URL - https://capital.com/hu/netflix-reszvenyar
+
+2024-04-05 18:08:54.032428   => URL after prev. preconditions - https://capital.com/hu/netflix-reszvenyar
+
+2024-04-05 18:08:54.032448   => flag_of_bug - False
+
+2024-04-05 18:08:54.032460   => Windows size - {'width': 1280, 'height': 800}
+2024-04-05 18:08:54.033902   Set windows position at (0, 0) =>
+2024-04-05 18:08:54.136571   Set resolution 1280 * 800 =>
+2024-04-05 18:08:54.240509   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-05 18:08:55.288633   Капчи нет. Идем дальше
+
+2024-04-05 18:08:55.288727   Работа с куками
+
+2024-04-05 18:08:55.288741   Prev. country - 'de'
+2024-04-05 18:08:55.288751   Cur. country - 'de'
+2024-04-05 18:08:55.288760   => Country set to 'de'
+
+2024-04-05 18:08:55.288769   Prev. language - 'hu'
+2024-04-05 18:08:55.288778   Cur. language - 'hu'
+2024-04-05 18:08:55.288787   => Language is set to 'hu'
+
+2024-04-05 18:08:55.288795   Prev. role - 'Auth'
+2024-04-05 18:08:55.288804   Cur. role - 'Auth'
+2024-04-05 18:08:55.288813   => The 'Auth' role is set
+
+2024-04-05 18:08:55.291768   => Current URL - https://capital.com/hu/netflix-reszvenyar
+
+2024-04-05 18:08:55.291791   => THE END PRECONDITIONS
+
+2024-04-05 18:08:55.291831   1. Arrange_v0
+2024-04-05 18:08:55.291845   current_page = https://capital.com/hu/netflix-reszvenyar
+2024-04-05 18:08:55.294429   link = https://capital.com/hu/netflix-reszvenyar
+2024-04-05 18:08:55.296984   BUTTON_BUY is located on the page? =>
+2024-04-05 18:08:55.304773   => BUTTON_BUY is located on the page!
+2024-04-05 18:08:55.304935   Start Checking that form [Sign up] popped up on the page =>
+2024-04-05 18:08:56.840949   '[Sign up]' form was not popped up
+
+2024-04-05 18:08:56.841146   2. Act_v0
+2024-04-05 18:08:56.846473   BUTTON_BUY is present? =>
+2024-04-05 18:08:56.846496   => BUTTON_BUY is present on the page
+2024-04-05 18:08:56.846505   BUTTON_BUY scroll =>
+2024-04-05 18:08:56.849822   => BUTTON_BUY scrolled
+2024-04-05 18:08:56.869050   BUTTON_BUY is clickable? =>
+2024-04-05 18:08:56.893744   BUTTON_BUY CLICK =>
+2024-04-05 18:08:57.151793   => BUTTON_BUY clicked!
+
+2024-04-05 18:08:57.152155   3. Assert_v4
+2024-04-05 18:08:57.152340   Checking that the trading platform page has opened (v4) =>
+2024-04-05 18:08:57.159763   Checking way # 1 => 
+
+2024-04-05 18:08:57.159931   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-05 18:08:57.165698   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-05 18:08:57.165810   2. Checking that the LOGO is present on the page =>
+2024-04-05 18:08:58.956385   => 'capital*com' logo is present on the current page
+
+2024-04-05 18:08:58.956432   tpd = False
+
+2024-04-05 18:08:58.956444   4. Check that opened page with https://capital.com/trading/platform/charting/15871553426248900?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900 url
+with selected corresponding trading instrument 'Netflix Inc' =>
+
+2024-04-05 18:08:58.959386   trade_instrument = 'Netflix Inc'
+
+2024-04-05 18:08:58.959398   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-05 18:08:58.968038   => Trading Platform opened in Chart mode
+
+2024-04-05 18:08:58.968066   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-05 18:08:58.975467   4.3. Check that opened trade instrument info page =>
+
+2024-04-05 18:08:58.983092   4.4. Check that opened Info page of selected 'Netflix Inc' trade instrument =>
+2024-04-05 18:08:58.983121   Trading instrument - 'Netflix Inc'
+2024-04-05 18:08:58.983131   Title opened trading instrument info page - 'Tesla Inc (Extended Hours)'
+2024-04-05 18:08:59.001409   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:01.02.01_005-hu.de.Auth
+
+2024-04-05 18:08:59.001464   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f7dc778ac90>
+
+2024-04-05 18:08:59.290975   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:08:59.450388   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:09:00.448625   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-05 18:09:00.630933   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-05 18:09:00.632399   Баг Bid:01.02.01_005-hu.de.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
