@@ -9,6 +9,7 @@ import random
 
 # import pytest
 import allure
+from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
 from pages.common import Common
@@ -175,6 +176,14 @@ class TableTradingInstrumentsBuyButton(BasePage):
         if not button:
             print(f"{datetime.now()}   => BUTTON_BUY not clickable after {time_out} sec.")
             Common().pytest_fail(f"Bug # ??? Buy button not clickable after {time_out} sec.")
-        button.click()
+        print(f"{datetime.now()}   => BUTTON_BUY is clickable")
+
+        ActionChains(wd) \
+            .move_to_element(button) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        # button.click()
         # wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked")
