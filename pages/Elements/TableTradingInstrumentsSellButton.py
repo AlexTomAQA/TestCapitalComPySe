@@ -42,9 +42,9 @@ class TableTradingInstrumentsSellButton(BasePage):
         print(f"\n{datetime.now()}   List of random items = {item_list}")
 
         # ??? check_popup = SignupLogin(d, cur_item_link, cur_sort)
-        check_popup = SignupLogin(d, cur_item_link)
-        check_popup.check_popup_signup_form()
-        del check_popup
+        # check_popup = SignupLogin(d, cur_item_link)
+        # check_popup.check_popup_signup_form()
+        # del check_popup
 
         for i, value in enumerate(item_list):
             self.element_click(self.driver, value, cur_sort)

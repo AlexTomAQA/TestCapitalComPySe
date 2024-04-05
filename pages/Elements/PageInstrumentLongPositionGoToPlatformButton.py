@@ -16,9 +16,9 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
     def full_test_with_tpi_v2(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_v2(d, cur_item_link)
 
-        page_signup_login = SignupLogin(d, cur_item_link)
-        page_signup_login.check_popup_signup_form()
-
+        # page_signup_login = SignupLogin(d, cur_item_link)
+        # page_signup_login.check_popup_signup_form()
+        #
         self.element_act_v2()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
@@ -72,7 +72,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
             Common().pytest_fail(f"Bug # ???   {msg}")
         print(f"{datetime.now()}   => LONG_POSITION_OVERNIGHT_FEE opened")
 
-        print(f"{datetime.now()}   Move focus on to button [Go to platform] and click =>")
+        print(f"{datetime.now()}   Move focus to button [Go to platform] and click on=>")
         ActionChains(self.driver) \
             .move_to_element(button_go_to_platform) \
             .pause(0.5) \
@@ -83,7 +83,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
             msg = f"BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is not clickable after {time_out} sec."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # ???   {msg}")
-        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION is clickable")
+        print(f"{datetime.now()}   => BUTTON_GO_TO_PLATFORM is clickable")
 
         button_go_to_platform.click()
-        print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM_FROM_LONG_POSITION clicked")
+        print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM clicked")
