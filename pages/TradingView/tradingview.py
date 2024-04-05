@@ -15,9 +15,9 @@ class TradingView(BasePage):
     @allure.step("Checking that the TradingView site has opened")
     def should_be_tradingview_page(self, d):
         """Check if the page is open"""
-        print(f"{datetime.now()}   Checking that the TradingView page has opened")
-        if self.check_current_page_is_v2(data["SITE_URL"]):
-            print(f"{datetime.now()}   TradingView page has opened")
+        print(f"{datetime.now()}   Checking that the TradingView page has opened =>")
+        if self.current_page_url_contain_the(data["SITE_URL"]):
+            print(f"{datetime.now()}   => TradingView page has opened\n")
             self.should_be_page_title_v3(data["PAGE_TITLE"])
             self.should_be_tradingview_site_app_title(data["APP_TITLE"])
             return True
@@ -28,13 +28,15 @@ class TradingView(BasePage):
     @allure.step("Checking that the TradingView site has expected app title")
     def should_be_tradingview_site_app_title(self, expected_app_title):
         """Check the app on the page has expected app title"""
-        print(f"{datetime.now()}   Checking that the TradingView site has expected app title")
+        print(f"{datetime.now()}   Checking that the TradingView site has expected app title =>")
         current_app_title = self.get_text(0, *TradingViewSiteLocators.APP_TITLE)
-        print(f"{datetime.now()}   => The app title of current page is '{current_app_title}'")
+        print(f"{datetime.now()}   The app title of current page is '{current_app_title}'")
+        print(f"{datetime.now()}   The expected app title is '{expected_app_title}'")
 
         # Check that the app title of current page meets the requirements
         Common().assert_true_false(
-            expected_app_title in current_app_title,
+            current_app_title in expected_app_title,
             f"{datetime.now()}   Expected title '{expected_app_title}' "
             f"but got '{current_app_title}' on page: {self.driver.current_url}"
         )
+        print(f"{datetime.now()}   => The app title has expected title.\n")
