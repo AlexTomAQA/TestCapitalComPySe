@@ -77,7 +77,8 @@ class SignupPageLocators:
 class LoginFormLocators:
     # LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay:not(.hidden) > div.form-container-small")
     # LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay.overlay:not(.hidden) > .modal")
-    LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay.overlay:not(.hidden) > div> .form-container-small-content")
+    # LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay.overlay:not(.hidden) > div> .form-container-small-content")
+    LOGIN_FRAME = (By.CSS_SELECTOR, "#l_overlay.overlay:not(.hidden) > div")
     LOGIN_HEADER = (By.CSS_SELECTOR, "#l_overlay div.form-container-small-header")
     LOGIN_REF_SIGNUP = (By.CSS_SELECTOR, "#l_overlay a.l_btn_signup")
     LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#l_overlay input.field__control[type='email']")
