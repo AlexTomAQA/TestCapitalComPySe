@@ -7,6 +7,7 @@
 import random
 from datetime import datetime
 
+from selenium.webdriver import ActionChains
 import allure
 
 from pages.Signup_login.signup_login import SignupLogin
@@ -168,7 +169,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         )
         print(f"{datetime.now()}   => BUTTON_SELL on item with ID = '{id_instrument}' scrolled into view")
 
-        print(f"{datetime.now()}   Check that BUTTON_SELL with item {self.trade_instrument} clickable =>")
+        print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
         time_out = 5
         button = self.element_is_clickable(
             wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[0], time_out)
@@ -177,6 +178,12 @@ class TableTradingInstrumentsSellButton(BasePage):
             Common().pytest_fail(f"Bug # ??? Sell button not clickable after {time_out} sec.")
         print(f"{datetime.now()}   => BUTTON_SELL is clickable")
 
-        button.click()
+        ActionChains(wd) \
+            .move_to_element(button) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        # button.click()
         # wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
