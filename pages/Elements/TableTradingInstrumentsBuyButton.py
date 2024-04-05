@@ -152,24 +152,29 @@ class TableTradingInstrumentsBuyButton(BasePage):
     def element_click(self, wd, value, cur_sort):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
-        print(f"{datetime.now()}   Start click button [Buy] =>")
-        self.buy_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)
-        button = self.buy_list[value]
-        id_instrument = button.get_attribute("data-iid")
-        print(f"{datetime.now()}   =>   BUTTON_BUY on item with ID = {id_instrument}")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            button
-        )
-
         item_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         item = item_list[value]
         self.trade_instrument = item.text
 
+        print(f"{datetime.now()}   Start click button [Buy] =>")
+        buy_list = wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)
+        button = buy_list[value]
+        id_instrument = button.get_attribute("data-iid")
+        print(f"{datetime.now()}   =>   BUTTON_BUY on item with ID = {id_instrument}")
+        print(f"{datetime.now()}   BUTTON_BUY on item with ID = '{id_instrument}' scroll into view =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button
+        )
+        print(f"{datetime.now()}   => BUTTON_SELL on item with ID = '{id_instrument}' scrolled into view")
+
         print(f"{datetime.now()}   Check that BUTTON_BUY with item {self.trade_instrument} clickable =>")
         time_out = 5
-        if not self.element_is_clickable(button, time_out):
+        button = self.element_is_clickable(
+            wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[0], time_out)
+        if not button:
             print(f"{datetime.now()}   => BUTTON_BUY not clickable after {time_out} sec.")
             Common().pytest_fail(f"Bug # ??? Buy button not clickable after {time_out} sec.")
-        wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[value].click()
+        button.click()
+        # wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked")
