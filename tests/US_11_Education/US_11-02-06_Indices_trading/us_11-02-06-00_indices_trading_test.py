@@ -55,8 +55,7 @@ class TestIndicesTradingGuidePreset:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerStartTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -85,8 +84,7 @@ class TestIndicesTradingGuidePreset:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerTryDemo(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -116,8 +114,7 @@ class TestIndicesTradingGuidePreset:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -147,8 +144,7 @@ class TestIndicesTradingGuidePreset:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        cur_menu_link = page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         test_element = BlockStepTrading(d, cur_menu_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_menu_link)
@@ -259,8 +255,7 @@ class TestIndicesTradingGuidePreset:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_indices_trading_move_focus_click(d, cur_language)
+        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
