@@ -1,0 +1,91 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 12:02:02.676762   worker_id = master
+
+2024-04-06 12:02:02.676776   0. Allure grouping v4
+
+2024-04-06 12:02:02.676960   START PRECONDITIONS =>
+
+2024-04-06 12:02:02.676976   => Current URL - https://capital.com/trade-amazon
+
+2024-04-06 12:02:02.679831   => URL after prev. preconditions - https://capital.com/trade-microsoft
+
+2024-04-06 12:02:02.679845   => flag_of_bug - True
+2024-04-06 12:02:02.679857   Current page URL = https://capital.com/trade-amazon
+2024-04-06 12:02:02.682426   self.link = https://capital.com/trade-microsoft
+2024-04-06 12:02:02.682439   link = https://capital.com/trade-microsoft
+2024-04-06 12:02:04.499414   => Loaded page https://capital.com/trade-microsoft
+
+2024-04-06 12:02:04.522003   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 12:02:04.525834   Set windows position at (0, 0) =>
+2024-04-06 12:02:04.629148   Set resolution 1280 * 800 =>
+2024-04-06 12:02:04.731782   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 12:02:05.763371   Капчи нет. Идем дальше
+
+2024-04-06 12:02:05.763464   Работа с куками
+
+2024-04-06 12:02:05.763478   Prev. country - 'au'
+2024-04-06 12:02:05.763487   Cur. country - 'au'
+2024-04-06 12:02:05.763496   => Country set to 'au'
+
+2024-04-06 12:02:05.763505   Prev. language - 'en'
+2024-04-06 12:02:05.763514   Cur. language - 'en'
+2024-04-06 12:02:05.763522   => Language is set to 'en'
+
+2024-04-06 12:02:05.763531   Prev. role - 'NoAuth'
+2024-04-06 12:02:05.763540   Cur. role - 'NoAuth'
+2024-04-06 12:02:05.763548   => The 'NoAuth' role is set
+
+2024-04-06 12:02:05.766225   => Current URL - https://capital.com/trade-microsoft
+
+2024-04-06 12:02:05.766247   => THE END PRECONDITIONS
+
+2024-04-06 12:02:05.766289   1. Arrange_v0
+2024-04-06 12:02:05.766303   current_page = https://capital.com/trade-microsoft
+2024-04-06 12:02:05.768694   link = https://capital.com/trade-amazon
+2024-04-06 12:02:05.771153   Current page URL = https://capital.com/trade-microsoft
+2024-04-06 12:02:05.773588   self.link = https://capital.com/trade-amazon
+2024-04-06 12:02:05.773602   link = https://capital.com/trade-amazon
+2024-04-06 12:02:07.497809   => Loaded page https://capital.com/trade-amazon
+2024-04-06 12:02:07.512049   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 12:02:07.512081   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 12:02:07.512091   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 12:02:07.519357   => 'Sell' button in Content block scrolled
+2024-04-06 12:02:07.519539   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 12:02:09.053840   '[Sign up]' form was not popped up
+
+2024-04-06 12:02:09.054026   2. Act_v0
+2024-04-06 12:02:09.083984   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 12:02:09.084017   => return trade_instrument = 1361805280629956
+
+2024-04-06 12:02:09.084210   3. Assert_Login_v0
+2024-04-06 12:02:09.084293   Check that 'Login' form is opened
+2024-04-06 12:02:12.174965   'Login' form not opened
+2024-04-06 12:02:12.175152   Check that new 'Login' form is opened
+2024-04-06 12:02:15.262144   => New 'Login' form not opened
+2024-04-06 12:02:15.264946   'Login' page not opened
+2024-04-06 12:02:18.337560   'Login' form on trading platform not opened
+2024-04-06 12:02:18.337766   Start step Check that [Sign up] form is opened
+2024-04-06 12:02:18.347870   'Sign up' form opened
+2024-04-06 12:02:18.347894   Assert SIGNUP_HEADER =>
+2024-04-06 12:02:18.357435   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 12:02:18.366785   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 12:02:18.376014   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 12:02:18.376037   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_03-en.au.NoAuth
+
+2024-04-06 12:02:18.376099   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f73ac3d4080>
+
+2024-04-06 12:02:19.046749   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 12:02:19.297704   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 12:02:20.479430   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 12:02:20.987135   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 12:02:20.988445   Баг Bid:11.02.02.01_03-en.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

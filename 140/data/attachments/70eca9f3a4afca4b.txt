@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 11:58:54.244089   worker_id = master
+
+2024-04-06 11:58:54.244104   0. Allure grouping v4
+
+2024-04-06 11:58:54.244289   START PRECONDITIONS =>
+
+2024-04-06 11:58:54.244305   => Current URL - https://capital.com/trade-microsoft
+
+2024-04-06 11:58:54.246908   => URL after prev. preconditions - https://capital.com/trade-microsoft
+
+2024-04-06 11:58:54.246922   => flag_of_bug - False
+
+2024-04-06 11:58:54.246933   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 11:58:54.248264   Set windows position at (0, 0) =>
+2024-04-06 11:58:54.353108   Set resolution 1280 * 800 =>
+2024-04-06 11:58:54.458908   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 11:58:55.511337   Капчи нет. Идем дальше
+
+2024-04-06 11:58:55.511417   Работа с куками
+
+2024-04-06 11:58:55.511431   Prev. country - 'au'
+2024-04-06 11:58:55.511440   Cur. country - 'au'
+2024-04-06 11:58:55.511449   => Country set to 'au'
+
+2024-04-06 11:58:55.511458   Prev. language - 'en'
+2024-04-06 11:58:55.511467   Cur. language - 'en'
+2024-04-06 11:58:55.511475   => Language is set to 'en'
+
+2024-04-06 11:58:55.511484   Prev. role - 'Auth'
+2024-04-06 11:58:55.511492   Cur. role - 'Auth'
+2024-04-06 11:58:55.511501   => The 'Auth' role is set
+
+2024-04-06 11:58:55.514174   => Current URL - https://capital.com/trade-microsoft
+
+2024-04-06 11:58:55.514197   => THE END PRECONDITIONS
+
+2024-04-06 11:58:55.514241   1. Arrange_v0
+2024-04-06 11:58:55.514255   current_page = https://capital.com/trade-microsoft
+2024-04-06 11:58:55.516723   link = https://capital.com/trade-microsoft
+2024-04-06 11:58:55.526701   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 11:58:55.526724   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 11:58:55.526734   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 11:58:55.538942   => 'Sell' button in Content block scrolled
+2024-04-06 11:58:55.539198   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 11:58:57.084401   '[Sign up]' form was not popped up
+
+2024-04-06 11:58:57.084621   2. Act_v0
+2024-04-06 11:58:57.325894   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 11:58:57.325948   => return trade_instrument = 14972685490672836
+
+2024-04-06 11:58:57.326256   3. Assert_v4
+2024-04-06 11:58:57.326429   Checking that the trading platform page has opened (v4) =>
+2024-04-06 11:58:57.838421   Checking way # 1 => 
+
+2024-04-06 11:58:57.838655   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 11:58:57.842125   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 11:58:57.842239   2. Checking that the LOGO is present on the page =>
+2024-04-06 11:58:58.732810   => 'capital*com' logo is present on the current page
+
+2024-04-06 11:58:58.732848   tpd = False
+
+2024-04-06 11:58:58.732860   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '14972685490672836' =>
+
+2024-04-06 11:58:58.735497   trade_instrument = '14972685490672836'
+
+2024-04-06 11:58:58.735508   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 11:58:59.772942   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_03-en.au.Auth
+
+2024-04-06 11:58:59.772991   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f73ac3d4080>
+
+2024-04-06 11:59:00.333779   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 11:59:00.900546   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 11:59:02.112435   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 11:59:02.633194   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 11:59:02.634607   Баг Bid:11.02.02.01_03-en.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

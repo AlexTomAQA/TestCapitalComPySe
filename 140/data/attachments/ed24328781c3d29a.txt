@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 12:26:37.467723   worker_id = master
+
+2024-04-06 12:26:37.467737   0. Allure grouping v4
+
+2024-04-06 12:26:37.467913   START PRECONDITIONS =>
+
+2024-04-06 12:26:37.467928   => Current URL - https://capital.com/trade-euraud
+
+2024-04-06 12:26:37.470660   => URL after prev. preconditions - https://capital.com/trade-eurchf
+
+2024-04-06 12:26:37.470673   => flag_of_bug - True
+2024-04-06 12:26:37.470685   Current page URL = https://capital.com/trade-euraud
+2024-04-06 12:26:37.473172   self.link = https://capital.com/trade-eurchf
+2024-04-06 12:26:37.473185   link = https://capital.com/trade-eurchf
+2024-04-06 12:26:39.202873   => Loaded page https://capital.com/trade-eurchf
+
+2024-04-06 12:26:39.211138   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 12:26:39.212533   Set windows position at (0, 0) =>
+2024-04-06 12:26:39.314800   Set resolution 1280 * 800 =>
+2024-04-06 12:26:39.417449   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 12:26:40.445655   Капчи нет. Идем дальше
+
+2024-04-06 12:26:40.445741   Работа с куками
+
+2024-04-06 12:26:40.445754   Prev. country - 'au'
+2024-04-06 12:26:40.445764   Cur. country - 'au'
+2024-04-06 12:26:40.445773   => Country set to 'au'
+
+2024-04-06 12:26:40.445782   Prev. language - 'en'
+2024-04-06 12:26:40.445790   Cur. language - 'en'
+2024-04-06 12:26:40.445799   => Language is set to 'en'
+
+2024-04-06 12:26:40.445807   Prev. role - 'NoAuth'
+2024-04-06 12:26:40.445816   Cur. role - 'NoAuth'
+2024-04-06 12:26:40.445824   => The 'NoAuth' role is set
+
+2024-04-06 12:26:40.448448   => Current URL - https://capital.com/trade-eurchf
+
+2024-04-06 12:26:40.448487   => THE END PRECONDITIONS
+
+2024-04-06 12:26:40.448663   1. Arrange_v3
+2024-04-06 12:26:40.448679   current_page = https://capital.com/trade-eurchf
+2024-04-06 12:26:40.451124   link = https://capital.com/trade-euraud
+2024-04-06 12:26:40.453609   Current page URL = https://capital.com/trade-eurchf
+2024-04-06 12:26:40.456037   self.link = https://capital.com/trade-euraud
+2024-04-06 12:26:40.456051   link = https://capital.com/trade-euraud
+2024-04-06 12:26:42.052579   => Loaded page https://capital.com/trade-euraud
+2024-04-06 12:26:42.061269   Is visible BUTTON_START_TRADING_IN_ARTICLE? =>
+2024-04-06 12:26:42.061285   => BUTTON_START_TRADING_IN_ARTICLE =>
+
+2024-04-06 12:26:42.069595   2. Act_v3
+2024-04-06 12:26:42.069622   Start Click button BUTTON_START_TRADING_IN_ARTICLE =>
+2024-04-06 12:26:42.144271   => BUTTON_START_TRADING_IN_ARTICLE is clicked
+
+2024-04-06 12:26:42.144540   3. Assert_Login_v0
+2024-04-06 12:26:42.144627   Check that 'Login' form is opened
+2024-04-06 12:26:45.191372   'Login' form not opened
+2024-04-06 12:26:45.191556   Check that new 'Login' form is opened
+2024-04-06 12:26:48.276957   => New 'Login' form not opened
+2024-04-06 12:26:48.279749   'Login' page not opened
+2024-04-06 12:26:51.346819   'Login' form on trading platform not opened
+2024-04-06 12:26:51.347008   Start step Check that [Sign up] form is opened
+2024-04-06 12:26:51.357187   'Sign up' form opened
+2024-04-06 12:26:51.357213   Assert SIGNUP_HEADER =>
+2024-04-06 12:26:51.366692   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 12:26:51.376746   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 12:26:51.386281   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 12:26:51.386311   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_03-en.au.NoAuth
+
+2024-04-06 12:26:51.386389   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f48b3c066c0>
+
+2024-04-06 12:26:51.809313   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 12:26:52.115046   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 12:26:52.978534   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 12:26:53.253226   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 12:26:53.255171   Баг Bid:11.02.04.01_03-en.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
