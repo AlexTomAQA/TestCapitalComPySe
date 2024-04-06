@@ -1,0 +1,97 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 04:52:16.695310   worker_id = master
+
+2024-04-06 04:52:16.695325   0. Allure grouping v4
+
+2024-04-06 04:52:16.695506   START PRECONDITIONS =>
+
+2024-04-06 04:52:16.695522   => Current URL - https://capital.com/trading/platform/
+
+2024-04-06 04:52:16.698369   => URL after prev. preconditions - https://capital.com/fr/produit-de-base-iron-ore-spot
+
+2024-04-06 04:52:16.698382   => flag_of_bug - True
+2024-04-06 04:52:16.698394   Current page URL = https://capital.com/trading/platform/
+2024-04-06 04:52:16.700972   self.link = https://capital.com/fr/produit-de-base-iron-ore-spot
+2024-04-06 04:52:16.700986   link = https://capital.com/fr/produit-de-base-iron-ore-spot
+2024-04-06 04:52:18.433162   => Loaded page https://capital.com/fr/produit-de-base-iron-ore-spot
+
+2024-04-06 04:52:18.437394   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 04:52:18.438713   Set windows position at (0, 0) =>
+2024-04-06 04:52:18.540793   Set resolution 1280 * 800 =>
+2024-04-06 04:52:18.643171   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 04:52:19.669599   Капчи нет. Идем дальше
+
+2024-04-06 04:52:19.669692   Работа с куками
+
+2024-04-06 04:52:19.669706   Prev. country - 'de'
+2024-04-06 04:52:19.669716   Cur. country - 'de'
+2024-04-06 04:52:19.669725   => Country set to 'de'
+
+2024-04-06 04:52:19.669734   Prev. language - 'fr'
+2024-04-06 04:52:19.669743   Cur. language - 'fr'
+2024-04-06 04:52:19.669752   => Language is set to 'fr'
+
+2024-04-06 04:52:19.669761   Prev. role - 'NoAuth'
+2024-04-06 04:52:19.669769   Cur. role - 'NoAuth'
+2024-04-06 04:52:19.669778   => The 'NoAuth' role is set
+
+2024-04-06 04:52:19.672575   => Current URL - https://capital.com/fr/produit-de-base-iron-ore-spot
+
+2024-04-06 04:52:19.672597   => THE END PRECONDITIONS
+
+2024-04-06 04:52:19.672783   1. Arrange_v2
+2024-04-06 04:52:19.672809   current_page = https://capital.com/fr/produit-de-base-iron-ore-spot
+2024-04-06 04:52:19.675435   link = https://capital.com/fr/produit-de-base-iron-ore-spot
+2024-04-06 04:52:19.677902 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-06 04:52:19.685481   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-06 04:52:19.685504   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-06 04:52:19.689415   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-06 04:52:19.689551   2. Act_v2
+2024-04-06 04:52:19.689569   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-06 04:52:20.474816   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-06 04:52:20.488147   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-06 04:52:20.488175   Move focus to button [Go to platform] and click on =>
+2024-04-06 04:52:21.269157   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-06 04:52:21.761619 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-06 04:52:21.761943   3. Assert_Login_v0
+2024-04-06 04:52:21.762079   Check that 'Login' form is opened
+2024-04-06 04:52:24.946839   'Login' form not opened
+2024-04-06 04:52:24.947027   Check that new 'Login' form is opened
+2024-04-06 04:52:28.044034   => New 'Login' form not opened
+2024-04-06 04:52:28.046887   'Login' page not opened
+2024-04-06 04:52:31.115190   'Login' form on trading platform not opened
+2024-04-06 04:52:31.115462   Start step Check that [Sign up] form is opened
+2024-04-06 04:52:34.208019   'Sign up' form not opened
+2024-04-06 04:52:34.208218   Start step Check that new [Sign up] form is opened
+2024-04-06 04:52:37.283593   => new 'Sign up' form not opened
+2024-04-06 04:52:37.283794   Start method Check that [Sign up] page opened =>
+2024-04-06 04:52:38.287529   'Sign up' page not opened
+2024-04-06 04:52:38.287736   Check that [Sign up] form on trading platform opened =>
+2024-04-06 04:52:38.301245   => 'Sign up' form on trading platform page opened
+2024-04-06 04:52:38.301269   Assert SIGNUP_HEADER =>
+2024-04-06 04:52:38.320853   => SIGNUP_HEADER is OK
+2024-04-06 04:52:38.320893   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-06 04:52:38.333305   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-06 04:52:38.333331   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 04:52:38.346474   => SIGNUP_REF_LOGIN is OK
+2024-04-06 04:52:38.346499   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.05.01_004-fr.de.NoAuth
+
+2024-04-06 04:52:38.346566   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f9346394560>
+
+2024-04-06 04:52:38.659195   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 04:52:38.807781   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 04:52:39.821716   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 04:52:39.985376   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 04:52:39.987263   Баг Bid:01.05.01_004-fr.de.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,106 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 05:01:28.894696   worker_id = master
+
+2024-04-06 05:01:28.894710   0. Allure grouping v4
+
+2024-04-06 05:01:28.894894   START PRECONDITIONS =>
+
+2024-04-06 05:01:28.894910   => Current URL - https://capital.com/fr/comment-trader-cfd
+
+2024-04-06 05:01:28.897293   => URL after prev. preconditions - https://capital.com/fr/comment-trader-cfd
+
+2024-04-06 05:01:28.897307   => flag_of_bug - False
+
+2024-04-06 05:01:28.897319   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 05:01:28.898574   Set windows position at (0, 0) =>
+2024-04-06 05:01:29.000595   Set resolution 1280 * 800 =>
+2024-04-06 05:01:29.103600   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 05:01:30.133763   Капчи нет. Идем дальше
+
+2024-04-06 05:01:30.133847   Работа с куками
+
+2024-04-06 05:01:30.133862   Prev. country - 'de'
+2024-04-06 05:01:30.133872   Cur. country - 'de'
+2024-04-06 05:01:30.133881   => Country set to 'de'
+
+2024-04-06 05:01:30.133890   Prev. language - 'fr'
+2024-04-06 05:01:30.133898   Cur. language - 'fr'
+2024-04-06 05:01:30.133907   => Language is set to 'fr'
+
+2024-04-06 05:01:30.133916   Prev. role - 'Auth'
+2024-04-06 05:01:30.133924   Cur. role - 'Auth'
+2024-04-06 05:01:30.133933   => The 'Auth' role is set
+
+2024-04-06 05:01:30.136665   => Current URL - https://capital.com/fr/comment-trader-cfd
+
+2024-04-06 05:01:30.136689   => THE END PRECONDITIONS
+
+2024-04-06 05:01:30.136876   1. Arrange_v4
+2024-04-06 05:01:30.136894   current_page = https://capital.com/fr/comment-trader-cfd
+2024-04-06 05:01:30.139324   link = https://capital.com/fr/comment-trader-cfd
+2024-04-06 05:01:30.141651   MOST_TRADED is present? =>
+2024-04-06 05:01:30.149302   => MOST_TRADED widget is present on this page
+2024-04-06 05:01:30.149325   => Found 5 elements in block MOST_TRADED
+2024-04-06 05:01:30.149336   Most traded widget is scroll =>
+2024-04-06 05:01:30.152592   => Most traded widget is scrolled into screen center
+
+2024-04-06 05:01:30.152634   Random indexes = [3]
+
+2024-04-06 05:01:30.152650   Testing Most traded 1 random element with 3 index
+
+2024-04-06 05:01:30.152760   2. Act_v4
+2024-04-06 05:01:30.152857   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 05:01:31.687014   '[Sign up]' form was not popped up
+2024-04-06 05:01:31.699866   instrument_title = 'Ripple to US Dollar'
+2024-04-06 05:01:31.705106   Selected Trade button on Most traded widget is scroll =>
+2024-04-06 05:01:31.708210   Selected Trade button click for 'Ripple to US Dollar' trading instrument =>
+2024-04-06 05:01:33.629800   => Selected Trade button clicked!
+
+2024-04-06 05:01:33.630097   3. Assert_v4
+2024-04-06 05:01:33.630245   Checking that the trading platform page has opened (v4) =>
+2024-04-06 05:01:33.636612   Checking way # 1 => 
+
+2024-04-06 05:01:33.636741   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 05:01:33.639540   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 05:01:33.639611   2. Checking that the LOGO is present on the page =>
+2024-04-06 05:01:34.712938   => 'capital*com' logo is present on the current page
+
+2024-04-06 05:01:34.712976   tpd = False
+
+2024-04-06 05:01:34.712988   4. Check that opened page with https://capital.com/trading/platform/charting/27342779713672388?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388 url
+with selected corresponding trading instrument 'Ripple to US Dollar' =>
+
+2024-04-06 05:01:34.715583   trade_instrument = 'Ripple to US Dollar'
+
+2024-04-06 05:01:34.715596   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 05:01:35.202744   => Trading Platform opened in Chart mode
+
+2024-04-06 05:01:35.202801   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 05:01:35.231079   4.3. Check that opened trade instrument info page =>
+2024-04-06 05:01:36.288934   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:11.01.03.01_03-fr.de.Auth
+
+2024-04-06 05:01:36.288981   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f9dc94a5220>
+
+2024-04-06 05:01:36.701762   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 05:01:36.884727   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 05:01:37.872646   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 05:01:38.023862   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 05:01:38.023950   Баг Bid:11.01.03.01_03-fr.de.Auth уже существует, но у него изменился тип с 17 на 16
+
+2024-04-06 05:01:38.024152   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 05:01:38.310846   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 05:01:38.312013   Баг Bid:11.01.03.01_03-fr.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

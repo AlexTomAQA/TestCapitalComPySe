@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 04:11:56.619500   worker_id = master
+
+2024-04-06 04:11:56.619519   0. Allure grouping v4
+
+2024-04-06 04:11:56.619818   START PRECONDITIONS =>
+
+2024-04-06 04:11:56.619841   => Current URL - https://capital.com/fr/super-micro-computer-inc-prix-d-une-action
+
+2024-04-06 04:11:56.627622   => URL after prev. preconditions - https://capital.com/fr/super-micro-computer-inc-prix-d-une-action
+
+2024-04-06 04:11:56.627637   => flag_of_bug - False
+
+2024-04-06 04:11:56.627650   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 04:11:56.629014   Set windows position at (0, 0) =>
+2024-04-06 04:11:56.731647   Set resolution 1280 * 800 =>
+2024-04-06 04:11:56.833972   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 04:11:57.881991   Капчи нет. Идем дальше
+
+2024-04-06 04:11:57.882080   Работа с куками
+
+2024-04-06 04:11:57.882094   Prev. country - 'de'
+2024-04-06 04:11:57.882104   Cur. country - 'de'
+2024-04-06 04:11:57.882113   => Country set to 'de'
+
+2024-04-06 04:11:57.882122   Prev. language - 'fr'
+2024-04-06 04:11:57.882131   Cur. language - 'fr'
+2024-04-06 04:11:57.882140   => Language is set to 'fr'
+
+2024-04-06 04:11:57.882149   Prev. role - 'Auth'
+2024-04-06 04:11:57.882157   Cur. role - 'Auth'
+2024-04-06 04:11:57.882166   => The 'Auth' role is set
+
+2024-04-06 04:11:57.885035   => Current URL - https://capital.com/fr/super-micro-computer-inc-prix-d-une-action
+
+2024-04-06 04:11:57.885057   => THE END PRECONDITIONS
+
+2024-04-06 04:11:57.885100   1. Arrange_v0
+2024-04-06 04:11:57.885114   current_page = https://capital.com/fr/super-micro-computer-inc-prix-d-une-action
+2024-04-06 04:11:57.888236   link = https://capital.com/fr/super-micro-computer-inc-prix-d-une-action
+2024-04-06 04:11:57.890976   BUTTON_BUY is located on the page? =>
+2024-04-06 04:11:57.898586   => BUTTON_BUY is located on the page!
+2024-04-06 04:11:57.898743   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 04:11:59.426667   '[Sign up]' form was not popped up
+
+2024-04-06 04:11:59.426872   2. Act_v0
+2024-04-06 04:11:59.432037   BUTTON_BUY is present? =>
+2024-04-06 04:11:59.432059   => BUTTON_BUY is present on the page
+2024-04-06 04:11:59.432069   BUTTON_BUY scroll =>
+2024-04-06 04:11:59.435572   => BUTTON_BUY scrolled
+2024-04-06 04:11:59.468301   BUTTON_BUY is clickable? =>
+2024-04-06 04:11:59.477943   BUTTON_BUY CLICK =>
+2024-04-06 04:11:59.725692   => BUTTON_BUY clicked!
+
+2024-04-06 04:11:59.726067   3. Assert_v4
+2024-04-06 04:11:59.726271   Checking that the trading platform page has opened (v4) =>
+2024-04-06 04:11:59.733736   Checking way # 1 => 
+
+2024-04-06 04:11:59.733904   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 04:11:59.737919   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 04:11:59.738013   2. Checking that the LOGO is present on the page =>
+2024-04-06 04:12:01.427694   => 'capital*com' logo is present on the current page
+
+2024-04-06 04:12:01.427742   tpd = False
+
+2024-04-06 04:12:01.427755   4. Check that opened page with https://capital.com/trading/platform/charting/21621659937100996?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996 url
+with selected corresponding trading instrument 'Super Micro Computer, Inc.' =>
+
+2024-04-06 04:12:01.431589   trade_instrument = 'Super Micro Computer, Inc.'
+
+2024-04-06 04:12:01.431609   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 04:12:01.873109   => Trading Platform opened in Chart mode
+
+2024-04-06 04:12:01.873154   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 04:12:01.881805   4.3. Check that opened trade instrument info page =>
+2024-04-06 04:12:02.909024   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.02.01_005-fr.de.Auth
+
+2024-04-06 04:12:02.909075   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f850117f080>
+
+2024-04-06 04:12:03.295852   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 04:12:03.543190   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 04:12:04.731073   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 04:12:05.005597   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 04:12:05.007204   Баг Bid:01.02.01_005-fr.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
