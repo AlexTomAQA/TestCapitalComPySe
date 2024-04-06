@@ -216,6 +216,7 @@ class MenuSection(BasePage):
         self.menu_education_move_focus(d, cur_language, cur_country)
         cur_menu_link = self.sub_menu_indices_trading_move_focus_click(d, cur_language)
         Common().move_pointer_to_capital_com_label(d)
+        Common.flag_of_bug = False
         return cur_menu_link
 
     @allure.step('Select "Education" menu, "Cryptocurrency trading" submenu')
