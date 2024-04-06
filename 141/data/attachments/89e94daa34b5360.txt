@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 16:44:24.101980   worker_id = master
+
+2024-04-06 16:44:24.101994   0. Allure grouping v4
+
+2024-04-06 16:44:24.102173   START PRECONDITIONS =>
+
+2024-04-06 16:44:24.102189   => Current URL - https://capital.com/fear-and-greed-index
+
+2024-04-06 16:44:24.104797   => URL after prev. preconditions - https://capital.com/fear-and-greed-index
+
+2024-04-06 16:44:24.104810   => flag_of_bug - False
+
+2024-04-06 16:44:24.104822   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 16:44:24.106131   Set windows position at (0, 0) =>
+2024-04-06 16:44:24.207938   Set resolution 1280 * 800 =>
+2024-04-06 16:44:24.309833   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 16:44:25.339760   Капчи нет. Идем дальше
+
+2024-04-06 16:44:25.339845   Работа с куками
+
+2024-04-06 16:44:25.339859   Prev. country - 'ae'
+2024-04-06 16:44:25.339869   Cur. country - 'ae'
+2024-04-06 16:44:25.339877   => Country set to 'ae'
+
+2024-04-06 16:44:25.339886   Prev. language - 'en'
+2024-04-06 16:44:25.339895   Cur. language - 'en'
+2024-04-06 16:44:25.339904   => Language is set to 'en'
+
+2024-04-06 16:44:25.339912   Prev. role - 'NoAuth'
+2024-04-06 16:44:25.339921   Cur. role - 'NoAuth'
+2024-04-06 16:44:25.339929   => The 'NoAuth' role is set
+
+2024-04-06 16:44:25.342669   => Current URL - https://capital.com/fear-and-greed-index
+
+2024-04-06 16:44:25.342691   => THE END PRECONDITIONS
+
+2024-04-06 16:44:25.342865   1. Arrange_v0
+2024-04-06 16:44:25.342882   current_page = https://capital.com/fear-and-greed-index
+2024-04-06 16:44:25.345969   link = https://capital.com/herd-bias
+2024-04-06 16:44:25.348424   => current_url != cur_item_link
+2024-04-06 16:44:25.348444   Current page URL = https://capital.com/fear-and-greed-index
+2024-04-06 16:44:25.350890   self.link = https://capital.com/herd-bias
+2024-04-06 16:44:25.350903   link = https://capital.com/herd-bias
+2024-04-06 16:44:27.243149   => Loaded page https://capital.com/herd-bias
+2024-04-06 16:44:27.255585   BUTTON_START_TRADING scroll =>
+2024-04-06 16:44:27.258840   BUTTON_START_TRADING is visible? =>
+2024-04-06 16:44:27.271158   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-06 16:44:27.271310   2. Act_v0
+2024-04-06 16:44:27.271325   Start Click button [Start Trading] =>
+2024-04-06 16:44:27.276405   BUTTON_START_TRADING is clickable? =>
+2024-04-06 16:44:27.286143   BUTTON_START_TRADING click =>
+2024-04-06 16:44:27.318986   => BUTTON_START_TRADING clicked
+
+2024-04-06 16:44:27.319210   3. Assert_Login_v0
+2024-04-06 16:44:27.319293   Check that 'Login' form is opened
+2024-04-06 16:44:30.379894   'Login' form not opened
+2024-04-06 16:44:30.380075   Check that new 'Login' form is opened
+2024-04-06 16:44:33.454754   => New 'Login' form not opened
+2024-04-06 16:44:33.457923   'Login' page not opened
+2024-04-06 16:44:36.529516   'Login' form on trading platform not opened
+2024-04-06 16:44:36.529716   Start step Check that [Sign up] form is opened
+2024-04-06 16:44:36.539834   'Sign up' form opened
+2024-04-06 16:44:36.539857   Assert SIGNUP_HEADER =>
+2024-04-06 16:44:36.549361   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 16:44:36.558548   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 16:44:36.567980   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 16:44:36.568002   => 'Signup' form is checked
+
+Bug: Bid:11.03.08.01_01-en.ae.NoAuth
+
+2024-04-06 16:44:36.568051   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f954e913aa0>
+
+2024-04-06 16:44:36.910680   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 16:44:37.303571   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 16:44:38.318205   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 16:44:38.698427   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 16:44:38.699833   Баг Bid:11.03.08.01_01-en.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

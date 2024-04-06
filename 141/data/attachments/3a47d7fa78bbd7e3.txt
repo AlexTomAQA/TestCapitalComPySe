@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 15:42:47.753383   worker_id = master
+
+2024-04-06 15:42:47.753397   0. Allure grouping v4
+
+2024-04-06 15:42:47.753581   START PRECONDITIONS =>
+
+2024-04-06 15:42:47.753597   => Current URL - https://capital.com/trade-copper
+
+2024-04-06 15:42:47.756402   => URL after prev. preconditions - https://capital.com/
+
+2024-04-06 15:42:47.756416   => flag_of_bug - True
+2024-04-06 15:42:47.756428   Current page URL = https://capital.com/trade-copper
+2024-04-06 15:42:47.759042   self.link = https://capital.com/
+2024-04-06 15:42:47.759055   link = https://capital.com/
+2024-04-06 15:42:49.506262   => Loaded page https://capital.com/
+
+2024-04-06 15:42:49.511536   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 15:42:49.512869   Set windows position at (0, 0) =>
+2024-04-06 15:42:49.614677   Set resolution 1280 * 800 =>
+2024-04-06 15:42:49.716584   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 15:42:50.737731   Капчи нет. Идем дальше
+
+2024-04-06 15:42:50.737816   Работа с куками
+
+2024-04-06 15:42:50.737829   Prev. country - 'ae'
+2024-04-06 15:42:50.737839   Cur. country - 'ae'
+2024-04-06 15:42:50.737848   => Country set to 'ae'
+
+2024-04-06 15:42:50.737857   Prev. language - 'en'
+2024-04-06 15:42:50.737866   Cur. language - 'en'
+2024-04-06 15:42:50.737875   => Language is set to 'en'
+
+2024-04-06 15:42:50.737883   Prev. role - 'NoAuth'
+2024-04-06 15:42:50.737892   Cur. role - 'NoAuth'
+2024-04-06 15:42:50.737900   => The 'NoAuth' role is set
+
+2024-04-06 15:42:50.740495   => Current URL - https://capital.com/
+
+2024-04-06 15:42:50.740515   => THE END PRECONDITIONS
+
+2024-04-06 15:42:50.740700   1. Arrange_v3
+2024-04-06 15:42:50.740718   current_page = https://capital.com/
+2024-04-06 15:42:50.743177   link = https://capital.com/trade-copper
+2024-04-06 15:42:50.745490   Current page URL = https://capital.com/
+2024-04-06 15:42:50.747781   self.link = https://capital.com/trade-copper
+2024-04-06 15:42:50.747795   link = https://capital.com/trade-copper
+2024-04-06 15:42:52.432065   => Loaded page https://capital.com/trade-copper
+2024-04-06 15:42:52.436574   Is visible BUTTON_START_TRADING_IN_ARTICLE? =>
+2024-04-06 15:42:52.436589   => BUTTON_START_TRADING_IN_ARTICLE =>
+
+2024-04-06 15:42:52.447750   2. Act_v3
+2024-04-06 15:42:52.447774   Start Click button BUTTON_START_TRADING_IN_ARTICLE =>
+2024-04-06 15:42:52.505104   => BUTTON_START_TRADING_IN_ARTICLE is clicked
+
+2024-04-06 15:42:52.505424   3. Assert_Login_v0
+2024-04-06 15:42:52.505557   Check that 'Login' form is opened
+2024-04-06 15:42:55.585403   'Login' form not opened
+2024-04-06 15:42:55.585585   Check that new 'Login' form is opened
+2024-04-06 15:42:58.677816   => New 'Login' form not opened
+2024-04-06 15:42:58.680690   'Login' page not opened
+2024-04-06 15:43:01.740899   'Login' form on trading platform not opened
+2024-04-06 15:43:01.741117   Start step Check that [Sign up] form is opened
+2024-04-06 15:43:01.750841   'Sign up' form opened
+2024-04-06 15:43:01.750863   Assert SIGNUP_HEADER =>
+2024-04-06 15:43:01.760056   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 15:43:01.769421   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 15:43:01.778735   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 15:43:01.778757   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_05-en.ae.NoAuth
+
+2024-04-06 15:43:01.778804   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f7c66a01e20>
+
+2024-04-06 15:43:02.121595   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:43:02.330388   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:43:03.263662   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:43:03.646634   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:43:03.647872   Баг Bid:11.02.03.01_05-en.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
