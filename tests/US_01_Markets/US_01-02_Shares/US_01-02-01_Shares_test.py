@@ -13,6 +13,7 @@ from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentV
 from pages.Elements.TradeCFDAddToFavouriteButton import TradeCFDAddToFavoriteButton
 from pages.Elements.TradeCFDBuyButton import TradeCFDBuyButton
 from pages.Elements.TradeCFDSellButton import TradeCFDSellButton
+from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
 from pages.common import Common
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -189,3 +190,26 @@ class TestSharesItemPage:
 
         test_element = PageInstrumentNotificationButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start testing the [Start trading] button in the widget Trading calculator on the trading instrument page")
+    @pytest.mark.test_009
+    def test_009_page_trading_instrument_widget_trading_calculator_trading_instrument_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Start trading] in the widget Trading calculator on the trading instrument page
+        Language: All. License: All,except FCA.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.02", "Markets > Menu item [Shares]",
+            ".01_009", "Testing button [Start trading] in the widget Trading calculator "
+                       "on the trading instrument page")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country,"[gb]")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradingCalculatorStartTradingButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
