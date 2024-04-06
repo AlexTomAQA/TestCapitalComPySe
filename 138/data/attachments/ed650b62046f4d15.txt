@@ -1,0 +1,103 @@
+
+
+
+Current market - Most_traded
+
+
+
+Current instrument - First
+{'width': 1280, 'height': 800}
+
+2024-04-06 07:07:31.231154   worker_id = master
+
+2024-04-06 07:07:31.231168   0. Allure grouping v4
+
+
+2024-04-06 07:07:31.231351   START NEW PRECONDITIONS =>
+
+2024-04-06 07:07:31.231367   Current page URL = https://capital.com/trading/platform/
+2024-04-06 07:07:31.234141   self.link = https://capital.com/en-gb
+2024-04-06 07:07:31.234159   link = https://capital.com/en-gb
+2024-04-06 07:07:32.602386   => Loaded page https://capital.com/en-gb
+
+2024-04-06 07:07:32.608140   {'width': 1280, 'height': 800}
+
+2024-04-06 07:07:32.609458   Set windows position at (0, 0) =>
+
+2024-04-06 07:07:32.711616   Set resolution 1280 * 800 =>
+
+2024-04-06 07:07:32.813848   => Resolution seted {'width': 1280, 'height': 800}
+
+2024-04-06 07:07:33.853706   Капчи нет. Идем дальше
+
+2024-04-06 07:07:33.853796   Prev. Role: NoAuth
+
+2024-04-06 07:07:33.853810   Current role: NoAuth
+
+2024-04-06 07:07:33.853820   => Current language: ?
+
+2024-04-06 07:07:34.877380   Капчи нет. Идем дальше
+2024-04-06 07:07:34.877474   => Current country: gb
+
+2024-04-06 07:07:34.877487   => THE END PRECONDITIONS
+
+2024-04-06 07:07:34.877533   1. Arrange for Our Markets block: 'Most_traded' market, 'First' instrument
+2024-04-06 07:07:34.877547   current_page = https://capital.com/en-gb
+2024-04-06 07:07:34.880373   link = https://capital.com/en-gb
+2024-04-06 07:07:34.882908   IS Our markets block present on this page? =>
+2024-04-06 07:07:34.887809   => Our markets block present on this page!
+
+2024-04-06 07:07:34.887831   IS Our markets block visible on this page? =>
+2024-04-06 07:07:34.897254   => Our markets block is visible on this page!
+
+2024-04-06 07:07:34.897277   IS MARKET 'Most_traded' present on this page? =>
+2024-04-06 07:07:34.904847   => MARKET 'Most_traded' present on this page!
+
+2024-04-06 07:07:34.904870   IS MARKET 'Most_traded' visible on this page? =>
+2024-04-06 07:07:34.916750   => MARKET 'Most_traded' is visible on this page!
+
+2024-04-06 07:07:34.916772   Start Click button 'Most_traded' MARKET =>
+2024-04-06 07:07:34.979102   => End Click button 'Most_traded' MARKET
+
+2024-04-06 07:07:34.979139   Is Instruments present? =>
+2024-04-06 07:07:34.984598   => Instruments is present on this page!
+
+2024-04-06 07:07:34.984622   Is Instruments visible? =>
+2024-04-06 07:07:34.995105   => Instruments is visible on this page!
+
+2024-04-06 07:07:34.995130   => Start Find and Click button 'First' instrument=>
+2024-04-06 07:07:35.037545   => End Click button 'First' instrument=>
+
+2024-04-06 07:07:35.037756   2. Act for 'Most_traded' Market and 'First' Instrument
+2024-04-06 07:07:35.037773   IS button [Buy] for 'Most_traded' Market and 'First' Instrumentpresent on this page? =>
+2024-04-06 07:07:35.045752   => Button [Buy] for 'Most_traded' Market and 'First' Instrument present on this page!
+
+2024-04-06 07:07:35.045785   IS button [Buy] for 'Most_traded' Market and 'First' Instrument visible on this page? =>
+2024-04-06 07:07:35.058283   => Button [Buy] for 'Most_traded' Market and 'First' Instrument visible on this page!
+
+2024-04-06 07:07:35.058312   Start click button [Buy] =>
+2024-04-06 07:07:35.649823   => End Click button [Buy]
+
+2024-04-06 07:07:35.650193   3. Assert_Login_v0
+2024-04-06 07:07:35.650290   Check that 'Login' form is opened
+2024-04-06 07:07:38.710532   'Login' form not opened
+2024-04-06 07:07:38.710725   Check that new 'Login' form is opened
+2024-04-06 07:07:41.785546   => New 'Login' form not opened
+2024-04-06 07:07:41.789436   'Login' page not opened
+2024-04-06 07:07:44.842174   'Login' form on trading platform not opened
+2024-04-06 07:07:44.842375   Start step Check that [Sign up] form is opened
+2024-04-06 07:07:47.897774   'Sign up' form not opened
+2024-04-06 07:07:47.897974   Start step Check that new [Sign up] form is opened
+2024-04-06 07:07:50.958850   => new 'Sign up' form not opened
+2024-04-06 07:07:50.959057   Start method Check that [Sign up] page opened =>
+2024-04-06 07:07:51.962778   'Sign up' page not opened
+2024-04-06 07:07:51.962989   Check that [Sign up] form on trading platform opened =>
+2024-04-06 07:07:55.019184   'Sign up' form on trading platform page not opened
+
+Bug: 
+
+2024-04-06 07:07:55.019275   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f25d8c0ef90>
+
+2024-04-06 07:07:55.022258  Для бага: Bid-08 необходимо использовать проверку на ретест!!!

@@ -1,0 +1,107 @@
+
+
+
+Current market - ETFs
+
+
+
+Current instrument - First
+{'width': 1280, 'height': 800}
+
+2024-04-06 06:55:04.427740   worker_id = master
+
+2024-04-06 06:55:04.427754   0. Allure grouping v4
+
+
+2024-04-06 06:55:04.427939   START NEW PRECONDITIONS =>
+
+2024-04-06 06:55:04.427955   Current page URL = https://capital.com/trading/platform/
+2024-04-06 06:55:04.430815   self.link = https://capital.com/en-gb
+2024-04-06 06:55:04.430829   link = https://capital.com/en-gb
+2024-04-06 06:55:05.651454   => Loaded page https://capital.com/en-gb
+
+2024-04-06 06:55:05.658238   {'width': 1280, 'height': 800}
+
+2024-04-06 06:55:05.660226   Set windows position at (0, 0) =>
+
+2024-04-06 06:55:05.763087   Set resolution 1280 * 800 =>
+
+2024-04-06 06:55:05.868850   => Resolution seted {'width': 1280, 'height': 800}
+
+2024-04-06 06:55:06.898207   Капчи нет. Идем дальше
+
+2024-04-06 06:55:06.898324   Prev. Role: Auth
+
+2024-04-06 06:55:06.898344   Current role: Auth
+
+2024-04-06 06:55:06.898359   => Current language: ?
+
+2024-04-06 06:55:07.928699   Капчи нет. Идем дальше
+2024-04-06 06:55:07.928793   => Current country: gb
+
+2024-04-06 06:55:07.928806   => THE END PRECONDITIONS
+
+2024-04-06 06:55:07.928841   1. Arrange for Our Markets block: 'ETFs' market, 'First' instrument
+2024-04-06 06:55:07.928855   current_page = https://capital.com/en-gb
+2024-04-06 06:55:07.931658   link = https://capital.com/en-gb
+2024-04-06 06:55:07.934170   IS Our markets block present on this page? =>
+2024-04-06 06:55:07.938870   => Our markets block present on this page!
+
+2024-04-06 06:55:07.938892   IS Our markets block visible on this page? =>
+2024-04-06 06:55:07.948073   => Our markets block is visible on this page!
+
+2024-04-06 06:55:07.948098   IS MARKET 'ETFs' present on this page? =>
+2024-04-06 06:55:07.955571   => MARKET 'ETFs' present on this page!
+
+2024-04-06 06:55:07.955593   IS MARKET 'ETFs' visible on this page? =>
+2024-04-06 06:55:07.967151   => MARKET 'ETFs' is visible on this page!
+
+2024-04-06 06:55:07.967174   Start Click button 'ETFs' MARKET =>
+2024-04-06 06:55:08.038908   => End Click button 'ETFs' MARKET
+
+2024-04-06 06:55:08.038958   Is Instruments present? =>
+2024-04-06 06:55:08.058695   => Instruments is present on this page!
+
+2024-04-06 06:55:08.058735   Is Instruments visible? =>
+2024-04-06 06:55:08.070198   => Instruments is visible on this page!
+
+2024-04-06 06:55:08.070235   => Start Find and Click button 'First' instrument=>
+2024-04-06 06:55:08.110477   => End Click button 'First' instrument=>
+
+2024-04-06 06:55:08.110692   2. Act for 'ETFs' Market and 'First' Instrument
+2024-04-06 06:55:08.110708   IS button [Sell] for 'ETFs' Market and 'First' Instrumentpresent on this page? =>
+2024-04-06 06:55:08.120452   => Button [Sell] for 'ETFs' Market and 'First' Instrument present on this page!
+
+2024-04-06 06:55:08.120487   IS button [Sell] for 'ETFs' Market and 'First' Instrument visible on this page? =>
+2024-04-06 06:55:08.130692   => Button [Sell] for 'ETFs' Market and 'First' Instrument visible on this page!
+
+2024-04-06 06:55:08.130720   Start click button [Sell] =>
+2024-04-06 06:55:08.394230   => End Click button [Sell]
+
+2024-04-06 06:55:08.394584   3. Assert_v4
+2024-04-06 06:55:08.394771   Checking that the trading platform page has opened (v4) =>
+2024-04-06 06:55:08.404312   Checking way # 1 => 
+
+2024-04-06 06:55:08.404437   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 06:55:08.407124   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 06:55:08.407193   2. Checking that the LOGO is present on the page =>
+2024-04-06 06:55:09.399439   => 'capital*com' logo is present on the current page
+
+2024-04-06 06:55:09.399490   tpd = False
+
+2024-04-06 06:55:09.399510   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument 'Direxion Daily Semiconductor Bull 3X Shares (Extended Hours)' =>
+
+2024-04-06 06:55:09.403572   trade_instrument = 'Direxion Daily Semiconductor Bull 3X Shares (Extended Hours)'
+
+2024-04-06 06:55:09.403584   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 06:55:10.430423   => Trading Platform opened, but not Chart mode
+
+Bug: 
+
+2024-04-06 06:55:10.430477   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f25d8c0ef90>
+
+2024-04-06 06:55:10.433466  Для бага: Bid-14 необходимо использовать проверку на ретест!!!
