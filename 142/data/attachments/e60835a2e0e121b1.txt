@@ -1,0 +1,97 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 15:10:52.232887   worker_id = master
+
+2024-04-06 15:10:52.232901   0. Allure grouping v4
+
+2024-04-06 15:10:52.233081   START PRECONDITIONS =>
+
+2024-04-06 15:10:52.233096   => Current URL - https://capital.com/trading/platform/
+
+2024-04-06 15:10:52.235981   => URL after prev. preconditions - https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-06 15:10:52.235994   => flag_of_bug - True
+2024-04-06 15:10:52.236007   Current page URL = https://capital.com/trading/platform/
+2024-04-06 15:10:52.240012   self.link = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-06 15:10:52.240026   link = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-06 15:10:54.071379   => Loaded page https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-06 15:10:54.075617   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 15:10:54.076981   Set windows position at (0, 0) =>
+2024-04-06 15:10:54.179323   Set resolution 1280 * 800 =>
+2024-04-06 15:10:54.281853   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 15:10:55.310880   Капчи нет. Идем дальше
+
+2024-04-06 15:10:55.310963   Работа с куками
+
+2024-04-06 15:10:55.310977   Prev. country - 'au'
+2024-04-06 15:10:55.310986   Cur. country - 'au'
+2024-04-06 15:10:55.310995   => Country set to 'au'
+
+2024-04-06 15:10:55.311004   Prev. language - 'hu'
+2024-04-06 15:10:55.311013   Cur. language - 'hu'
+2024-04-06 15:10:55.311021   => Language is set to 'hu'
+
+2024-04-06 15:10:55.311030   Prev. role - 'NoAuth'
+2024-04-06 15:10:55.311039   Cur. role - 'NoAuth'
+2024-04-06 15:10:55.311047   => The 'NoAuth' role is set
+
+2024-04-06 15:10:55.313687   => Current URL - https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+
+2024-04-06 15:10:55.313707   => THE END PRECONDITIONS
+
+2024-04-06 15:10:55.313886   1. Arrange_v2
+2024-04-06 15:10:55.313903   current_page = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-06 15:10:55.316307   link = https://capital.com/hu/marathon-patent-group-inc-reszvenyar
+2024-04-06 15:10:55.318677 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-06 15:10:55.326094   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-06 15:10:55.326141   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-06 15:10:55.330725   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-06 15:10:55.330887   2. Act_v2
+2024-04-06 15:10:55.330909   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-06 15:10:56.116430   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-06 15:10:56.129296   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-06 15:10:56.129323   Move focus to button [Go to platform] and click on =>
+2024-04-06 15:10:56.938396   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-06 15:10:57.391665 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-06 15:10:57.391990   3. Assert_Login_v0
+2024-04-06 15:10:57.392117   Check that 'Login' form is opened
+2024-04-06 15:11:00.467745   'Login' form not opened
+2024-04-06 15:11:00.467928   Check that new 'Login' form is opened
+2024-04-06 15:11:03.577529   => New 'Login' form not opened
+2024-04-06 15:11:03.580286   'Login' page not opened
+2024-04-06 15:11:06.652617   'Login' form on trading platform not opened
+2024-04-06 15:11:06.652809   Start step Check that [Sign up] form is opened
+2024-04-06 15:11:09.714221   'Sign up' form not opened
+2024-04-06 15:11:09.714415   Start step Check that new [Sign up] form is opened
+2024-04-06 15:11:12.785884   => new 'Sign up' form not opened
+2024-04-06 15:11:12.786069   Start method Check that [Sign up] page opened =>
+2024-04-06 15:11:13.789421   'Sign up' page not opened
+2024-04-06 15:11:13.789657   Check that [Sign up] form on trading platform opened =>
+2024-04-06 15:11:13.804193   => 'Sign up' form on trading platform page opened
+2024-04-06 15:11:13.804217   Assert SIGNUP_HEADER =>
+2024-04-06 15:11:13.813644   => SIGNUP_HEADER is OK
+2024-04-06 15:11:13.813666   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-06 15:11:13.822719   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-06 15:11:13.822752   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 15:11:13.831763   => SIGNUP_REF_LOGIN is OK
+2024-04-06 15:11:13.831785   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.02.01_004-hu.au.NoAuth
+
+2024-04-06 15:11:13.831837   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f7e75527a70>
+
+2024-04-06 15:11:14.094785   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:11:14.252832   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:11:15.120663   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:11:15.293353   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:11:15.294770   Баг Bid:01.02.01_004-hu.au.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

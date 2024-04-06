@@ -1,0 +1,93 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 15:42:43.363637   worker_id = master
+
+2024-04-06 15:42:43.363660   0. Allure grouping v4
+
+2024-04-06 15:42:43.364162   START PRECONDITIONS =>
+
+2024-04-06 15:42:43.364188   => Current URL - https://capital.com/hu/cad-jpy-arfolyam
+
+2024-04-06 15:42:43.383501   => URL after prev. preconditions - https://capital.com/hu/cad-jpy-arfolyam
+
+2024-04-06 15:42:43.383519   => flag_of_bug - False
+
+2024-04-06 15:42:43.383531   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 15:42:43.395139   Set windows position at (0, 0) =>
+2024-04-06 15:42:43.501868   Set resolution 1280 * 800 =>
+2024-04-06 15:42:43.604334   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 15:42:44.647326   Капчи нет. Идем дальше
+
+2024-04-06 15:42:44.647409   Работа с куками
+
+2024-04-06 15:42:44.647422   Prev. country - 'au'
+2024-04-06 15:42:44.647432   Cur. country - 'au'
+2024-04-06 15:42:44.647441   => Country set to 'au'
+
+2024-04-06 15:42:44.647450   Prev. language - 'hu'
+2024-04-06 15:42:44.647459   Cur. language - 'hu'
+2024-04-06 15:42:44.647467   => Language is set to 'hu'
+
+2024-04-06 15:42:44.647476   Prev. role - 'NoAuth'
+2024-04-06 15:42:44.647485   Cur. role - 'NoAuth'
+2024-04-06 15:42:44.647494   => The 'NoAuth' role is set
+
+2024-04-06 15:42:44.650236   => Current URL - https://capital.com/hu/cad-jpy-arfolyam
+
+2024-04-06 15:42:44.650259   => THE END PRECONDITIONS
+
+2024-04-06 15:42:44.650435   1. Arrange_v2
+2024-04-06 15:42:44.650453   current_page = https://capital.com/hu/cad-jpy-arfolyam
+2024-04-06 15:42:44.652922   link = https://capital.com/hu/cad-jpy-arfolyam
+2024-04-06 15:42:44.655310   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-06 15:42:44.662545   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-06 15:42:44.662568   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-04-06 15:42:44.666770   => LONG_POSITION_OVERNIGHT_FEE scrolled
+
+2024-04-06 15:42:44.666921   2. Act_v2
+2024-04-06 15:42:44.666945   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-04-06 15:42:45.457176   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-06 15:42:45.470359   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-04-06 15:42:45.470387   Move focus to button [Go to platform] and click on=>
+2024-04-06 15:42:46.249456   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-06 15:42:46.717106 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-06 15:42:46.717420   3. Assert_Login_v0
+2024-04-06 15:42:46.717551   Check that 'Login' form is opened
+2024-04-06 15:42:49.867753   'Login' form not opened
+2024-04-06 15:42:49.867922   Check that new 'Login' form is opened
+2024-04-06 15:42:52.960200   => New 'Login' form not opened
+2024-04-06 15:42:52.963130   'Login' page not opened
+2024-04-06 15:42:56.029562   'Login' form on trading platform not opened
+2024-04-06 15:42:56.029743   Start step Check that [Sign up] form is opened
+2024-04-06 15:42:59.087799   'Sign up' form not opened
+2024-04-06 15:42:59.087985   Start step Check that new [Sign up] form is opened
+2024-04-06 15:43:02.168935   => new 'Sign up' form not opened
+2024-04-06 15:43:02.169120   Start method Check that [Sign up] page opened =>
+2024-04-06 15:43:03.172490   'Sign up' page not opened
+2024-04-06 15:43:03.172678   Check that [Sign up] form on trading platform opened =>
+2024-04-06 15:43:03.185605   => 'Sign up' form on trading platform page opened
+2024-04-06 15:43:03.185627   Assert SIGNUP_HEADER =>
+2024-04-06 15:43:03.197483   => SIGNUP_HEADER is OK
+2024-04-06 15:43:03.197507   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-06 15:43:03.213912   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-06 15:43:03.213946   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 15:43:03.226017   => SIGNUP_REF_LOGIN is OK
+2024-04-06 15:43:03.226041   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.04.01_003-hu.au.NoAuth
+
+2024-04-06 15:43:03.226119   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f84b1f3cdd0>
+
+2024-04-06 15:43:03.512536   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:43:03.737892   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:43:05.361377   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 15:43:05.538954   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 15:43:05.540721   Баг Bid:01.04.01_003-hu.au.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

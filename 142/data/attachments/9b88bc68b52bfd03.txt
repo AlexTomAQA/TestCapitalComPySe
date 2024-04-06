@@ -1,0 +1,97 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 16:00:26.779960   worker_id = master
+
+2024-04-06 16:00:26.779974   0. Allure grouping v4
+
+2024-04-06 16:00:26.780153   START PRECONDITIONS =>
+
+2024-04-06 16:00:26.780169   => Current URL - https://capital.com/trading/platform/
+
+2024-04-06 16:00:26.782937   => URL after prev. preconditions - https://capital.com/hu/us-natural-gas-spot-aru
+
+2024-04-06 16:00:26.782951   => flag_of_bug - True
+2024-04-06 16:00:26.782964   Current page URL = https://capital.com/trading/platform/
+2024-04-06 16:00:26.785307   self.link = https://capital.com/hu/us-natural-gas-spot-aru
+2024-04-06 16:00:26.785321   link = https://capital.com/hu/us-natural-gas-spot-aru
+2024-04-06 16:00:28.549474   => Loaded page https://capital.com/hu/us-natural-gas-spot-aru
+
+2024-04-06 16:00:28.555018   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 16:00:28.556372   Set windows position at (0, 0) =>
+2024-04-06 16:00:28.658572   Set resolution 1280 * 800 =>
+2024-04-06 16:00:28.761015   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 16:00:29.790729   Капчи нет. Идем дальше
+
+2024-04-06 16:00:29.790815   Работа с куками
+
+2024-04-06 16:00:29.790830   Prev. country - 'au'
+2024-04-06 16:00:29.790839   Cur. country - 'au'
+2024-04-06 16:00:29.790848   => Country set to 'au'
+
+2024-04-06 16:00:29.790857   Prev. language - 'hu'
+2024-04-06 16:00:29.790866   Cur. language - 'hu'
+2024-04-06 16:00:29.790875   => Language is set to 'hu'
+
+2024-04-06 16:00:29.790883   Prev. role - 'NoAuth'
+2024-04-06 16:00:29.790892   Cur. role - 'NoAuth'
+2024-04-06 16:00:29.790901   => The 'NoAuth' role is set
+
+2024-04-06 16:00:29.793641   => Current URL - https://capital.com/hu/us-natural-gas-spot-aru
+
+2024-04-06 16:00:29.793662   => THE END PRECONDITIONS
+
+2024-04-06 16:00:29.793835   1. Arrange_v2
+2024-04-06 16:00:29.793852   current_page = https://capital.com/hu/us-natural-gas-spot-aru
+2024-04-06 16:00:29.796290   link = https://capital.com/hu/us-natural-gas-spot-aru
+2024-04-06 16:00:29.798732 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-06 16:00:29.806201   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-06 16:00:29.806226   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-06 16:00:29.810877   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-06 16:00:29.811048   2. Act_v2
+2024-04-06 16:00:29.811068   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-06 16:00:30.597370   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-06 16:00:30.610298   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-06 16:00:30.610328   Move focus to button [Go to platform] and click on =>
+2024-04-06 16:00:31.398213   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-06 16:00:31.895918 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-06 16:00:31.896210   3. Assert_Login_v0
+2024-04-06 16:00:31.896306   Check that 'Login' form is opened
+2024-04-06 16:00:34.988484   'Login' form not opened
+2024-04-06 16:00:34.988666   Check that new 'Login' form is opened
+2024-04-06 16:00:38.054960   => New 'Login' form not opened
+2024-04-06 16:00:38.057955   'Login' page not opened
+2024-04-06 16:00:41.143034   'Login' form on trading platform not opened
+2024-04-06 16:00:41.143228   Start step Check that [Sign up] form is opened
+2024-04-06 16:00:44.233327   'Sign up' form not opened
+2024-04-06 16:00:44.233520   Start step Check that new [Sign up] form is opened
+2024-04-06 16:00:47.320396   => new 'Sign up' form not opened
+2024-04-06 16:00:47.320585   Start method Check that [Sign up] page opened =>
+2024-04-06 16:00:48.324091   'Sign up' page not opened
+2024-04-06 16:00:48.324293   Check that [Sign up] form on trading platform opened =>
+2024-04-06 16:00:48.337316   => 'Sign up' form on trading platform page opened
+2024-04-06 16:00:48.337342   Assert SIGNUP_HEADER =>
+2024-04-06 16:00:48.349664   => SIGNUP_HEADER is OK
+2024-04-06 16:00:48.349695   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-06 16:00:48.362315   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-06 16:00:48.362352   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 16:00:48.374697   => SIGNUP_REF_LOGIN is OK
+2024-04-06 16:00:48.374745   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.05.01_004-hu.au.NoAuth
+
+2024-04-06 16:00:48.374810   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f275ada7b60>
+
+2024-04-06 16:00:49.418492   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 16:00:49.588720   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 16:00:50.519013   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 16:00:50.675845   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 16:00:50.677299   Баг Bid:01.05.01_004-hu.au.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
