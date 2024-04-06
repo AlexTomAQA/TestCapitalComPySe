@@ -148,9 +148,6 @@ class BasePage:
         print(f"{datetime.now()}   link = {link}")
         self.driver.get(link)
         time.sleep(1)
-        # if self.driver.current_url != self.link:
-        #     print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
-        #     pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
     @HandleExcElementsDecorator()
