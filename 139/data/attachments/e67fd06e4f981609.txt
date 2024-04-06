@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 11:32:52.376068   worker_id = master
+
+2024-04-06 11:32:52.376083   0. Allure grouping v4
+
+2024-04-06 11:32:52.376274   START PRECONDITIONS =>
+
+2024-04-06 11:32:52.376290   => Current URL - https://capital.com/endowment-effect
+
+2024-04-06 11:32:52.379300   => URL after prev. preconditions - https://capital.com/endowment-effect
+
+2024-04-06 11:32:52.379313   => flag_of_bug - False
+
+2024-04-06 11:32:52.379325   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 11:32:52.380758   Set windows position at (0, 0) =>
+2024-04-06 11:32:52.483032   Set resolution 1280 * 800 =>
+2024-04-06 11:32:52.585179   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 11:32:53.612493   Капчи нет. Идем дальше
+
+2024-04-06 11:32:53.612584   Работа с куками
+
+2024-04-06 11:32:53.612598   Prev. country - 'de'
+2024-04-06 11:32:53.612607   Cur. country - 'de'
+2024-04-06 11:32:53.612616   => Country set to 'de'
+
+2024-04-06 11:32:53.612625   Prev. language - 'en'
+2024-04-06 11:32:53.612634   Cur. language - 'en'
+2024-04-06 11:32:53.612643   => Language is set to 'en'
+
+2024-04-06 11:32:53.612651   Prev. role - 'NoAuth'
+2024-04-06 11:32:53.612660   Cur. role - 'NoAuth'
+2024-04-06 11:32:53.612668   => The 'NoAuth' role is set
+
+2024-04-06 11:32:53.615691   => Current URL - https://capital.com/endowment-effect
+
+2024-04-06 11:32:53.615714   => THE END PRECONDITIONS
+
+2024-04-06 11:32:53.615902   1. Arrange_v0
+2024-04-06 11:32:53.615919   current_page = https://capital.com/endowment-effect
+2024-04-06 11:32:53.618788   link = https://capital.com/self-attribution-bias
+2024-04-06 11:32:53.621727   => current_url != cur_item_link
+2024-04-06 11:32:53.621754   Current page URL = https://capital.com/endowment-effect
+2024-04-06 11:32:53.624972   self.link = https://capital.com/self-attribution-bias
+2024-04-06 11:32:53.624989   link = https://capital.com/self-attribution-bias
+2024-04-06 11:32:55.529349   => Loaded page https://capital.com/self-attribution-bias
+2024-04-06 11:32:55.543787   BUTTON_START_TRADING scroll =>
+2024-04-06 11:32:55.550179   BUTTON_START_TRADING is visible? =>
+2024-04-06 11:32:55.563722   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-06 11:32:55.563892   2. Act_v0
+2024-04-06 11:32:55.563908   Start Click button [Start Trading] =>
+2024-04-06 11:32:55.569339   BUTTON_START_TRADING is clickable? =>
+2024-04-06 11:32:55.579598   BUTTON_START_TRADING click =>
+2024-04-06 11:32:55.624555   => BUTTON_START_TRADING clicked
+
+2024-04-06 11:32:55.624795   3. Assert_Login_v0
+2024-04-06 11:32:55.624886   Check that 'Login' form is opened
+2024-04-06 11:32:58.681215   'Login' form not opened
+2024-04-06 11:32:58.681402   Check that new 'Login' form is opened
+2024-04-06 11:33:01.754880   => New 'Login' form not opened
+2024-04-06 11:33:01.758219   'Login' page not opened
+2024-04-06 11:33:04.821180   'Login' form on trading platform not opened
+2024-04-06 11:33:04.821378   Start step Check that [Sign up] form is opened
+2024-04-06 11:33:04.831830   'Sign up' form opened
+2024-04-06 11:33:04.831852   Assert SIGNUP_HEADER =>
+2024-04-06 11:33:04.841674   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 11:33:04.851649   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 11:33:04.861283   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 11:33:04.861305   => 'Signup' form is checked
+
+Bug: Bid:11.03.08.01_01-en.de.NoAuth
+
+2024-04-06 11:33:04.861352   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f50e8ac4350>
+
+2024-04-06 11:33:05.257073   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 11:33:05.709026   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 11:33:06.731848   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 11:33:06.938631   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 11:33:06.940042   Баг Bid:11.03.08.01_01-en.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,32 @@
+2024-04-06 10:44:53 ERROR Elements not present after 0.5 seconds on page: https://capital.com/what-is-an-order-block-in-forex
+2024-04-06 10:44:53 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 307, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x56431436c873 <unknown>
+#1 0x5643140628c6 <unknown>
+#2 0x5643140ad618 <unknown>
+#3 0x5643140ad6d1 <unknown>
+#4 0x5643140f0744 <unknown>
+#5 0x5643140cf5cd <unknown>
+#6 0x5643140edc19 <unknown>
+#7 0x5643140cf343 <unknown>
+#8 0x5643140a0593 <unknown>
+#9 0x5643140a0f5e <unknown>
+#10 0x56431433085b <unknown>
+#11 0x5643143347b5 <unknown>
+#12 0x56431431e581 <unknown>
+#13 0x564314335342 <unknown>
+#14 0x56431430388f <unknown>
+#15 0x56431435b738 <unknown>
+#16 0x56431435b90b <unknown>
+#17 0x56431436b9c4 <unknown>
+#18 0x7fe26a494ac3 <unknown>
