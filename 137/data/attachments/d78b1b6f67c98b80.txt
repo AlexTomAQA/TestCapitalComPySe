@@ -1,0 +1,94 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 08:00:19.957315   worker_id = master
+
+2024-04-06 08:00:19.957332   0. Allure grouping v4
+
+2024-04-06 08:00:19.957570   START PRECONDITIONS =>
+
+2024-04-06 08:00:19.957589   => Current URL - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 08:00:19.960560   => URL after prev. preconditions - https://capital.com/de
+
+2024-04-06 08:00:19.960574   => flag_of_bug - True
+2024-04-06 08:00:19.960586   Current page URL = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 08:00:19.963117   self.link = https://capital.com/de
+2024-04-06 08:00:19.963131   link = https://capital.com/de
+2024-04-06 08:00:21.791036   => Loaded page https://capital.com/de
+
+2024-04-06 08:00:21.804904   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 08:00:21.806466   Set windows position at (0, 0) =>
+2024-04-06 08:00:21.911973   Set resolution 1280 * 800 =>
+2024-04-06 08:00:22.014365   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 08:00:23.042995   Капчи нет. Идем дальше
+
+2024-04-06 08:00:23.043085   Работа с куками
+
+2024-04-06 08:00:23.043099   Prev. country - 'de'
+2024-04-06 08:00:23.043111   Cur. country - 'de'
+2024-04-06 08:00:23.043122   => Country set to 'de'
+
+2024-04-06 08:00:23.043131   Prev. language - 'de'
+2024-04-06 08:00:23.043139   Cur. language - 'de'
+2024-04-06 08:00:23.043148   => Language is set to 'de'
+
+2024-04-06 08:00:23.043157   Prev. role - 'NoAuth'
+2024-04-06 08:00:23.043166   Cur. role - 'NoAuth'
+2024-04-06 08:00:23.043174   => The 'NoAuth' role is set
+
+2024-04-06 08:00:23.046155   => Current URL - https://capital.com/de
+
+2024-04-06 08:00:23.046178   => THE END PRECONDITIONS
+
+2024-04-06 08:00:23.046222   1. Arrange_v0
+2024-04-06 08:00:23.046236   current_page = https://capital.com/de
+2024-04-06 08:00:23.048838   link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 08:00:23.051306   Current page URL = https://capital.com/de
+2024-04-06 08:00:23.053832   self.link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 08:00:23.053846   link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 08:00:24.892877   => Loaded page https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 08:00:24.897345   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-06 08:00:24.905845   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-06 08:00:24.906012   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 08:00:26.443902   '[Sign up]' form was not popped up
+
+2024-04-06 08:00:26.444088   2. Act_v0
+2024-04-06 08:00:26.449635   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-06 08:00:26.449662   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-06 08:00:26.449672   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-06 08:00:26.453076   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-06 08:00:26.467920   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-06 08:00:26.504903   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-06 08:00:26.516218   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-06 08:00:26.516427   3. Assert_Login_v0
+2024-04-06 08:00:26.516508   Check that 'Login' form is opened
+2024-04-06 08:00:29.579642   'Login' form not opened
+2024-04-06 08:00:29.579823   Check that new 'Login' form is opened
+2024-04-06 08:00:32.664193   => New 'Login' form not opened
+2024-04-06 08:00:32.667220   'Login' page not opened
+2024-04-06 08:00:35.739615   'Login' form on trading platform not opened
+2024-04-06 08:00:35.739817   Start step Check that [Sign up] form is opened
+2024-04-06 08:00:35.750894   'Sign up' form opened
+2024-04-06 08:00:35.750923   Assert SIGNUP_HEADER =>
+2024-04-06 08:00:35.761058   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 08:00:35.772056   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 08:00:35.781774   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 08:00:35.781798   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_04-de.de.NoAuth
+
+2024-04-06 08:00:35.781858   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbd0ffe8440>
+
+2024-04-06 08:00:36.139991   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:00:36.350754   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:00:37.312068   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:00:37.529276   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:00:37.530970   Баг Bid:11.02.02.01_04-de.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 08:29:46.391017   worker_id = master
+
+2024-04-06 08:29:46.391031   0. Allure grouping v4
+
+2024-04-06 08:29:46.391212   START PRECONDITIONS =>
+
+2024-04-06 08:29:46.391228   => Current URL - https://capital.com/de/waehrungshandel
+
+2024-04-06 08:29:46.395030   => URL after prev. preconditions - https://capital.com/de
+
+2024-04-06 08:29:46.395050   => flag_of_bug - True
+2024-04-06 08:29:46.395063   Current page URL = https://capital.com/de/waehrungshandel
+2024-04-06 08:29:46.398640   self.link = https://capital.com/de
+2024-04-06 08:29:46.398655   link = https://capital.com/de
+2024-04-06 08:29:48.430654   => Loaded page https://capital.com/de
+
+2024-04-06 08:29:48.435099   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 08:29:48.438410   Set windows position at (0, 0) =>
+2024-04-06 08:29:48.540728   Set resolution 1280 * 800 =>
+2024-04-06 08:29:48.643090   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 08:29:49.673733   Капчи нет. Идем дальше
+
+2024-04-06 08:29:49.673815   Работа с куками
+
+2024-04-06 08:29:49.673828   Prev. country - 'de'
+2024-04-06 08:29:49.673838   Cur. country - 'de'
+2024-04-06 08:29:49.673847   => Country set to 'de'
+
+2024-04-06 08:29:49.673856   Prev. language - 'de'
+2024-04-06 08:29:49.673865   Cur. language - 'de'
+2024-04-06 08:29:49.673874   => Language is set to 'de'
+
+2024-04-06 08:29:49.673882   Prev. role - 'NoAuth'
+2024-04-06 08:29:49.673891   Cur. role - 'NoAuth'
+2024-04-06 08:29:49.673899   => The 'NoAuth' role is set
+
+2024-04-06 08:29:49.677312   => Current URL - https://capital.com/de
+
+2024-04-06 08:29:49.677334   => THE END PRECONDITIONS
+
+2024-04-06 08:29:49.677508   1. Cur URL = https://capital.com/de
+
+2024-04-06 08:29:49.680015   2. Link = https://capital.com/de
+2024-04-06 08:29:49.680030   current_page = https://capital.com/de
+2024-04-06 08:29:49.682447   link = https://capital.com/de
+2024-04-06 08:29:50.190988   => Education menu is present in DOM
+2024-04-06 08:29:50.196383   => Education menu is visible
+2024-04-06 08:29:51.470879   => Focus moved to Education menu
+2024-04-06 08:29:53.429689   => Focus moved to Forex trading sub-menu and clicked
+2024-04-06 08:29:53.709956   => Focus moved to 'capital*com' logo
+
+2024-04-06 08:29:53.709998   3. Cur URL = https://capital.com/de/waehrungshandel
+
+2024-04-06 08:29:53.715319   1. Arrange_v0
+2024-04-06 08:29:53.715342   current_page = https://capital.com/de/waehrungshandel
+2024-04-06 08:29:53.717785   link = https://capital.com/de/waehrungshandel
+2024-04-06 08:29:53.731913   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 08:29:53.731942   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 08:29:53.731952   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 08:29:53.735079   => 'Sell' button in Content block scrolled
+2024-04-06 08:29:53.735248   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 08:29:55.258306   '[Sign up]' form was not popped up
+
+2024-04-06 08:29:55.258491   2. Act_v0
+2024-04-06 08:29:55.290647   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 08:29:55.290678   => return trade_instrument = 123763777688772
+
+2024-04-06 08:29:55.290855   3. Assert_Login_v0
+2024-04-06 08:29:55.290935   Check that 'Login' form is opened
+2024-04-06 08:29:58.389160   'Login' form not opened
+2024-04-06 08:29:58.389344   Check that new 'Login' form is opened
+2024-04-06 08:30:01.469943   => New 'Login' form not opened
+2024-04-06 08:30:01.472983   'Login' page not opened
+2024-04-06 08:30:04.553878   'Login' form on trading platform not opened
+2024-04-06 08:30:04.554067   Start step Check that [Sign up] form is opened
+2024-04-06 08:30:04.563924   'Sign up' form opened
+2024-04-06 08:30:04.563946   Assert SIGNUP_HEADER =>
+2024-04-06 08:30:04.573720   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 08:30:04.583190   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 08:30:04.592504   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 08:30:04.592527   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.00_04-de.de.NoAuth
+
+2024-04-06 08:30:04.592580   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fa9f4346900>
+
+2024-04-06 08:30:05.055827   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:30:05.397374   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:30:06.434515   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:30:06.645658   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:30:06.647055   Баг Bid:11.02.04.00_04-de.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

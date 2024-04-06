@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 07:58:25.612458   worker_id = master
+
+2024-04-06 07:58:25.612471   0. Allure grouping v4
+
+2024-04-06 07:58:25.612651   START PRECONDITIONS =>
+
+2024-04-06 07:58:25.612667   => Current URL - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:25.615343   => URL after prev. preconditions - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:25.615356   => flag_of_bug - True
+2024-04-06 07:58:25.615368   Current page URL = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:25.617981   self.link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:25.617994   link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:27.534637   => Loaded page https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:27.538873   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 07:58:27.540268   Set windows position at (0, 0) =>
+2024-04-06 07:58:27.642670   Set resolution 1280 * 800 =>
+2024-04-06 07:58:27.745515   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 07:58:28.776729   Капчи нет. Идем дальше
+
+2024-04-06 07:58:28.776810   Работа с куками
+
+2024-04-06 07:58:28.776824   Prev. country - 'de'
+2024-04-06 07:58:28.776834   Cur. country - 'de'
+2024-04-06 07:58:28.776843   => Country set to 'de'
+
+2024-04-06 07:58:28.776852   Prev. language - 'de'
+2024-04-06 07:58:28.776861   Cur. language - 'de'
+2024-04-06 07:58:28.776870   => Language is set to 'de'
+
+2024-04-06 07:58:28.776878   Prev. role - 'Auth'
+2024-04-06 07:58:28.776887   Cur. role - 'Auth'
+2024-04-06 07:58:28.776896   => The 'Auth' role is set
+
+2024-04-06 07:58:28.779579   => Current URL - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:28.779601   => THE END PRECONDITIONS
+
+2024-04-06 07:58:28.779784   1. Arrange_v4
+2024-04-06 07:58:28.779802   current_page = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:28.782256   link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:28.784706   MOST_TRADED is present? =>
+2024-04-06 07:58:28.794540   => MOST_TRADED widget is present on this page
+2024-04-06 07:58:28.794573   => Found 5 elements in block MOST_TRADED
+2024-04-06 07:58:28.794584   Most traded widget is scroll =>
+2024-04-06 07:58:28.798047   => Most traded widget is scrolled into screen center
+
+2024-04-06 07:58:28.798091   Random indexes = [0]
+
+2024-04-06 07:58:28.798106   Testing Most traded 1 random element with 0 index
+
+2024-04-06 07:58:28.798241   2. Act_v4
+2024-04-06 07:58:28.798332   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 07:58:30.333505   '[Sign up]' form was not popped up
+2024-04-06 07:58:30.346641   instrument_title = 'Tesla Inc'
+2024-04-06 07:58:30.354948   Selected Trade button on Most traded widget is scroll =>
+2024-04-06 07:58:30.358366   Selected Trade button click for 'Tesla Inc' trading instrument =>
+2024-04-06 07:58:32.506745   => Selected Trade button clicked!
+
+2024-04-06 07:58:32.506990   3. Assert_v4
+2024-04-06 07:58:32.507100   Checking that the trading platform page has opened (v4) =>
+2024-04-06 07:58:32.515610   Checking way # 1 => 
+
+2024-04-06 07:58:32.515789   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 07:58:32.518462   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 07:58:32.518533   2. Checking that the LOGO is present on the page =>
+2024-04-06 07:58:34.210695   => 'capital*com' logo is present on the current page
+
+2024-04-06 07:58:34.210737   tpd = False
+
+2024-04-06 07:58:34.210757   4. Check that opened page with https://capital.com/trading/platform/charting/22855552501634244?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388,16150730595456196,27041281599427780,1657857463492,93810675762329,1496662958757060,23381801971780,93810675692038,7091880064013508,5983666832495812 url
+with selected corresponding trading instrument 'Tesla Inc' =>
+
+2024-04-06 07:58:34.215305   trade_instrument = 'Tesla Inc'
+
+2024-04-06 07:58:34.215318   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 07:58:34.493519   => Trading Platform opened in Chart mode
+
+2024-04-06 07:58:34.493554   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 07:58:34.502422   4.3. Check that opened trade instrument info page =>
+
+2024-04-06 07:58:34.917877   4.4. Check that opened Info page of selected 'Tesla Inc' trade instrument =>
+2024-04-06 07:58:34.917927   Trading instrument - 'Tesla Inc'
+2024-04-06 07:58:34.917944   Title opened trading instrument info page - 'Tesla Inc (Extended Hours)'
+2024-04-06 07:58:35.089482   => Open info page about selected 'Tesla Inc' TI
+2024-04-06 07:58:35.089525   4.5. Check that the Top Charts List contain selected Trade instrument =>
+2024-04-06 07:58:35.116274   => The Top Charts List contain selected and visible Trade instrument
+2024-04-06 07:58:35.116310   4.6. Check that the selected Trade instrument is visible in Top Charts List =>
+2024-04-06 07:58:35.116321   => The Top Charts List contain selected and visible 'Tesla Inc' Trade instrument
+2024-04-06 07:58:35.116330   => Trade instrument 'Tesla Inc' is present in the Top Charts List, visible and selected
+2024-04-06 07:58:35.196115   => Driver.backed
+2024-04-06 07:58:35.525416   => Driver.backed
+2024-04-06 07:58:37.221022   => Driver.backed

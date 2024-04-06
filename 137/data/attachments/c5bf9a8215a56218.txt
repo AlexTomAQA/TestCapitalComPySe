@@ -1,0 +1,104 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 08:32:16.409522   worker_id = master
+
+2024-04-06 08:32:16.409536   0. Allure grouping v4
+
+2024-04-06 08:32:16.409718   START PRECONDITIONS =>
+
+2024-04-06 08:32:16.409734   => Current URL - https://capital.com/trading/platform/
+
+2024-04-06 08:32:16.414022   => URL after prev. preconditions - https://capital.com/de/gbpjpy-handel
+
+2024-04-06 08:32:16.414037   => flag_of_bug - True
+2024-04-06 08:32:16.414049   Current page URL = https://capital.com/trading/platform/
+2024-04-06 08:32:16.416521   self.link = https://capital.com/de/gbpjpy-handel
+2024-04-06 08:32:16.416534   link = https://capital.com/de/gbpjpy-handel
+2024-04-06 08:32:18.536280   => Loaded page https://capital.com/de/gbpjpy-handel
+
+2024-04-06 08:32:18.540370   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 08:32:18.541681   Set windows position at (0, 0) =>
+2024-04-06 08:32:18.643967   Set resolution 1280 * 800 =>
+2024-04-06 08:32:18.746565   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 08:32:19.775974   Капчи нет. Идем дальше
+
+2024-04-06 08:32:19.776060   Работа с куками
+
+2024-04-06 08:32:19.776074   Prev. country - 'de'
+2024-04-06 08:32:19.776085   Cur. country - 'de'
+2024-04-06 08:32:19.776094   => Country set to 'de'
+
+2024-04-06 08:32:19.776103   Prev. language - 'de'
+2024-04-06 08:32:19.776112   Cur. language - 'de'
+2024-04-06 08:32:19.776121   => Language is set to 'de'
+
+2024-04-06 08:32:19.776130   Prev. role - 'Auth'
+2024-04-06 08:32:19.776138   Cur. role - 'Auth'
+2024-04-06 08:32:19.776147   => The 'Auth' role is set
+
+2024-04-06 08:32:19.778734   => Current URL - https://capital.com/de/gbpjpy-handel
+
+2024-04-06 08:32:19.778754   => THE END PRECONDITIONS
+
+2024-04-06 08:32:19.778934   1. Arrange_v4
+2024-04-06 08:32:19.778952   current_page = https://capital.com/de/gbpjpy-handel
+2024-04-06 08:32:19.781525   link = https://capital.com/de/gbpjpy-handel
+2024-04-06 08:32:19.783944   MOST_TRADED is present? =>
+2024-04-06 08:32:19.791779   => MOST_TRADED widget is present on this page
+2024-04-06 08:32:19.791801   => Found 5 elements in block MOST_TRADED
+2024-04-06 08:32:19.791812   Most traded widget is scroll =>
+2024-04-06 08:32:19.795214   => Most traded widget is scrolled into screen center
+
+2024-04-06 08:32:19.795254   Random indexes = [1]
+
+2024-04-06 08:32:19.795269   Testing Most traded 1 random element with 1 index
+
+2024-04-06 08:32:19.795381   2. Act_v4
+2024-04-06 08:32:19.795474   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 08:32:21.340388   '[Sign up]' form was not popped up
+2024-04-06 08:32:21.355049   instrument_title = 'US Dollar / Japanese Yen'
+2024-04-06 08:32:21.360173   Selected Trade button on Most traded widget is scroll =>
+2024-04-06 08:32:21.364627   Selected Trade button click for 'US Dollar / Japanese Yen' trading instrument =>
+2024-04-06 08:32:23.369968   => Selected Trade button clicked!
+
+2024-04-06 08:32:23.370227   3. Assert_v4
+2024-04-06 08:32:23.370338   Checking that the trading platform page has opened (v4) =>
+2024-04-06 08:32:23.375950   Checking way # 1 => 
+
+2024-04-06 08:32:23.376063   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 08:32:23.378707   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 08:32:23.378774   2. Checking that the LOGO is present on the page =>
+2024-04-06 08:32:24.898633   => 'capital*com' logo is present on the current page
+
+2024-04-06 08:32:24.898673   tpd = False
+
+2024-04-06 08:32:24.898687   4. Check that opened page with https://capital.com/trading/platform/charting/374675767075865?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388,16150730595456196,27041281599427780,1657857463492,93810675762329,1496662958757060,23381801971780,93810675692038,7091880064013508,5983666832495812,422839530378436,374675767075865 url
+with selected corresponding trading instrument 'US Dollar / Japanese Yen' =>
+
+2024-04-06 08:32:24.901431   trade_instrument = 'US Dollar / Japanese Yen'
+
+2024-04-06 08:32:24.901442   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 08:32:25.017265   => Trading Platform opened in Chart mode
+
+2024-04-06 08:32:25.017310   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 08:32:25.025674   4.3. Check that opened trade instrument info page =>
+2024-04-06 08:32:26.044003   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:11.02.04.01_06-de.de.Auth
+
+2024-04-06 08:32:26.044050   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f4ecf6eb350>
+
+2024-04-06 08:32:26.524879   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:32:26.874229   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:32:27.818874   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:32:28.147162   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:32:28.148444   Баг Bid:11.02.04.01_06-de.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

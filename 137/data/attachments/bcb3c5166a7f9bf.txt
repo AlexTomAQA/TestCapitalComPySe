@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 07:58:00.878665   worker_id = master
+
+2024-04-06 07:58:00.878679   0. Allure grouping v4
+
+2024-04-06 07:58:00.878880   START PRECONDITIONS =>
+
+2024-04-06 07:58:00.878898   => Current URL - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:00.884408   => URL after prev. preconditions - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:00.884422   => flag_of_bug - False
+
+2024-04-06 07:58:00.884433   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 07:58:00.885832   Set windows position at (0, 0) =>
+2024-04-06 07:58:00.990863   Set resolution 1280 * 800 =>
+2024-04-06 07:58:01.093439   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 07:58:02.117454   Капчи нет. Идем дальше
+
+2024-04-06 07:58:02.117534   Работа с куками
+
+2024-04-06 07:58:02.117547   Prev. country - 'de'
+2024-04-06 07:58:02.117558   Cur. country - 'de'
+2024-04-06 07:58:02.117567   => Country set to 'de'
+
+2024-04-06 07:58:02.117576   Prev. language - 'de'
+2024-04-06 07:58:02.117584   Cur. language - 'de'
+2024-04-06 07:58:02.117593   => Language is set to 'de'
+
+2024-04-06 07:58:02.117602   Prev. role - 'Auth'
+2024-04-06 07:58:02.117610   Cur. role - 'Auth'
+2024-04-06 07:58:02.117619   => The 'Auth' role is set
+
+2024-04-06 07:58:02.120501   => Current URL - https://capital.com/de/canopy-growth-aktie-handeln
+
+2024-04-06 07:58:02.120523   => THE END PRECONDITIONS
+
+2024-04-06 07:58:02.120566   1. Arrange_v0
+2024-04-06 07:58:02.120580   current_page = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:02.123059   link = https://capital.com/de/canopy-growth-aktie-handeln
+2024-04-06 07:58:02.133231   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 07:58:02.133253   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 07:58:02.133263   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 07:58:02.141183   => 'Sell' button in Content block scrolled
+2024-04-06 07:58:02.141346   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 07:58:03.684153   '[Sign up]' form was not popped up
+
+2024-04-06 07:58:03.684343   2. Act_v0
+2024-04-06 07:58:03.943710   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 07:58:03.943758   => return trade_instrument = 25985050357018692
+
+2024-04-06 07:58:03.944062   3. Assert_v4
+2024-04-06 07:58:03.944238   Checking that the trading platform page has opened (v4) =>
+2024-04-06 07:58:04.462125   Checking way # 1 => 
+
+2024-04-06 07:58:04.462305   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 07:58:04.465529   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 07:58:04.465612   2. Checking that the LOGO is present on the page =>
+2024-04-06 07:58:05.559518   => 'capital*com' logo is present on the current page
+
+2024-04-06 07:58:05.559604   tpd = False
+
+2024-04-06 07:58:05.559622   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '25985050357018692' =>
+
+2024-04-06 07:58:05.576222   trade_instrument = '25985050357018692'
+
+2024-04-06 07:58:05.576242   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 07:58:06.591696   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.02.01_03-de.de.Auth
+
+2024-04-06 07:58:06.591761   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fbd0ffe8440>
+
+2024-04-06 07:58:07.374730   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 07:58:07.746249   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 07:58:08.715460   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 07:58:09.042733   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 07:58:09.044204   Баг Bid:11.02.02.01_03-de.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

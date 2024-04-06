@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 08:24:00.141092   worker_id = master
+
+2024-04-06 08:24:00.141110   0. Allure grouping v4
+
+2024-04-06 08:24:00.141344   START PRECONDITIONS =>
+
+2024-04-06 08:24:00.141364   => Current URL - https://capital.com/de/trade-copper
+
+2024-04-06 08:24:00.145020   => URL after prev. preconditions - https://capital.com/de/trade-copper
+
+2024-04-06 08:24:00.145035   => flag_of_bug - False
+
+2024-04-06 08:24:00.145046   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 08:24:00.146381   Set windows position at (0, 0) =>
+2024-04-06 08:24:00.249205   Set resolution 1280 * 800 =>
+2024-04-06 08:24:00.358332   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 08:24:01.366708   Капчи нет. Идем дальше
+
+2024-04-06 08:24:01.366798   Работа с куками
+
+2024-04-06 08:24:01.366812   Prev. country - 'de'
+2024-04-06 08:24:01.366822   Cur. country - 'de'
+2024-04-06 08:24:01.366831   => Country set to 'de'
+
+2024-04-06 08:24:01.366840   Prev. language - 'de'
+2024-04-06 08:24:01.366849   Cur. language - 'de'
+2024-04-06 08:24:01.366857   => Language is set to 'de'
+
+2024-04-06 08:24:01.366866   Prev. role - 'Auth'
+2024-04-06 08:24:01.366874   Cur. role - 'Auth'
+2024-04-06 08:24:01.366883   => The 'Auth' role is set
+
+2024-04-06 08:24:01.369704   => Current URL - https://capital.com/de/trade-copper
+
+2024-04-06 08:24:01.369725   => THE END PRECONDITIONS
+
+2024-04-06 08:24:01.369899   1. Arrange_v4
+2024-04-06 08:24:01.369916   current_page = https://capital.com/de/trade-copper
+2024-04-06 08:24:01.372567   link = https://capital.com/de/trade-copper
+2024-04-06 08:24:01.375131   MOST_TRADED is present? =>
+2024-04-06 08:24:01.384754   => MOST_TRADED widget is present on this page
+2024-04-06 08:24:01.384776   => Found 5 elements in block MOST_TRADED
+2024-04-06 08:24:01.384787   Most traded widget is scroll =>
+2024-04-06 08:24:01.388271   => Most traded widget is scrolled into screen center
+
+2024-04-06 08:24:01.388309   Random indexes = [4]
+
+2024-04-06 08:24:01.388323   Testing Most traded 1 random element with 4 index
+
+2024-04-06 08:24:01.388436   2. Act_v4
+2024-04-06 08:24:01.388528   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 08:24:02.925942   '[Sign up]' form was not popped up
+2024-04-06 08:24:02.939604   instrument_title = 'Brent Crude Oil Spot'
+2024-04-06 08:24:02.944914   Selected Trade button on Most traded widget is scroll =>
+2024-04-06 08:24:02.948356   Selected Trade button click for 'Brent Crude Oil Spot' trading instrument =>
+2024-04-06 08:24:04.272121   => Selected Trade button clicked!
+
+2024-04-06 08:24:04.272400   3. Assert_v4
+2024-04-06 08:24:04.272578   Checking that the trading platform page has opened (v4) =>
+2024-04-06 08:24:04.282192   Checking way # 1 => 
+
+2024-04-06 08:24:04.282318   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 08:24:04.286817   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 08:24:04.286904   2. Checking that the LOGO is present on the page =>
+2024-04-06 08:24:06.011886   => 'capital*com' logo is present on the current page
+
+2024-04-06 08:24:06.011927   tpd = False
+
+2024-04-06 08:24:06.011940   4. Check that opened page with https://capital.com/trading/platform/charting/422839530378436?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388,16150730595456196,27041281599427780,1657857463492,93810675762329,1496662958757060,23381801971780,93810675692038,7091880064013508,5983666832495812,422839530378436 url
+with selected corresponding trading instrument 'Brent Crude Oil Spot' =>
+
+2024-04-06 08:24:06.040270   trade_instrument = 'Brent Crude Oil Spot'
+
+2024-04-06 08:24:06.040288   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 08:24:06.096336   => Trading Platform opened in Chart mode
+
+2024-04-06 08:24:06.097094   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 08:24:06.220947   4.3. Check that opened trade instrument info page =>
+2024-04-06 08:24:07.241676   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:11.02.03.01_06-de.de.Auth
+
+2024-04-06 08:24:07.241728   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f44f4fc52b0>
+
+2024-04-06 08:24:07.767065   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:24:07.985202   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:24:08.952286   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:24:09.164985   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:24:09.167324   Баг Bid:11.02.03.01_06-de.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

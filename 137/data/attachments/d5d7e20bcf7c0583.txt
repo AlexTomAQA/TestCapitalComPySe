@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 09:15:29.269507   worker_id = master
+
+2024-04-06 09:15:29.269523   0. Allure grouping v4
+
+2024-04-06 09:15:29.269715   START PRECONDITIONS =>
+
+2024-04-06 09:15:29.269731   => Current URL - https://capital.com/de/gleitender-durchschnitt
+
+2024-04-06 09:15:29.273872   => URL after prev. preconditions - https://capital.com/de/gleitender-durchschnitt
+
+2024-04-06 09:15:29.273905   => flag_of_bug - False
+
+2024-04-06 09:15:29.273917   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 09:15:29.277265   Set windows position at (0, 0) =>
+2024-04-06 09:15:29.379836   Set resolution 1280 * 800 =>
+2024-04-06 09:15:29.483106   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 09:15:30.535332   Капчи нет. Идем дальше
+
+2024-04-06 09:15:30.535424   Работа с куками
+
+2024-04-06 09:15:30.535438   Prev. country - 'de'
+2024-04-06 09:15:30.535448   Cur. country - 'de'
+2024-04-06 09:15:30.535457   => Country set to 'de'
+
+2024-04-06 09:15:30.535466   Prev. language - 'de'
+2024-04-06 09:15:30.535474   Cur. language - 'de'
+2024-04-06 09:15:30.535483   => Language is set to 'de'
+
+2024-04-06 09:15:30.535492   Prev. role - 'NoAuth'
+2024-04-06 09:15:30.535500   Cur. role - 'NoAuth'
+2024-04-06 09:15:30.535509   => The 'NoAuth' role is set
+
+2024-04-06 09:15:30.538870   => Current URL - https://capital.com/de/gleitender-durchschnitt
+
+2024-04-06 09:15:30.538899   => THE END PRECONDITIONS
+
+2024-04-06 09:15:30.539097   1. Arrange_v0
+2024-04-06 09:15:30.539114   current_page = https://capital.com/de/gleitender-durchschnitt
+2024-04-06 09:15:30.542736   link = https://capital.com/de/bollinger-baender
+2024-04-06 09:15:30.553392   => current_url != cur_item_link
+2024-04-06 09:15:30.553434   Current page URL = https://capital.com/de/gleitender-durchschnitt
+2024-04-06 09:15:30.556217   self.link = https://capital.com/de/bollinger-baender
+2024-04-06 09:15:30.556233   link = https://capital.com/de/bollinger-baender
+2024-04-06 09:15:32.283714   => Loaded page https://capital.com/de/bollinger-baender
+2024-04-06 09:15:32.297075   BUTTON_START_TRADING scroll =>
+2024-04-06 09:15:32.301392   BUTTON_START_TRADING is visible? =>
+2024-04-06 09:15:32.326312   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-06 09:15:32.326492   2. Act_v0
+2024-04-06 09:15:32.326508   Start Click button [Start Trading] =>
+2024-04-06 09:15:32.333073   BUTTON_START_TRADING is clickable? =>
+2024-04-06 09:15:32.346226   BUTTON_START_TRADING click =>
+2024-04-06 09:15:32.384574   => BUTTON_START_TRADING clicked
+
+2024-04-06 09:15:32.384805   3. Assert_Login_v0
+2024-04-06 09:15:32.384891   Check that 'Login' form is opened
+2024-04-06 09:15:35.449809   'Login' form not opened
+2024-04-06 09:15:35.449992   Check that new 'Login' form is opened
+2024-04-06 09:15:38.556257   => New 'Login' form not opened
+2024-04-06 09:15:38.559484   'Login' page not opened
+2024-04-06 09:15:41.635589   'Login' form on trading platform not opened
+2024-04-06 09:15:41.635798   Start step Check that [Sign up] form is opened
+2024-04-06 09:15:41.646537   'Sign up' form opened
+2024-04-06 09:15:41.646570   Assert SIGNUP_HEADER =>
+2024-04-06 09:15:41.656812   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 09:15:41.667190   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 09:15:41.677396   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 09:15:41.677423   => 'Signup' form is checked
+
+Bug: Bid:11.03.01.01_01-de.de.NoAuth
+
+2024-04-06 09:15:41.677487   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fa5290e51c0>
+
+2024-04-06 09:15:42.018427   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 09:15:42.227834   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 09:15:43.202232   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 09:15:43.445549   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 09:15:43.447153   Баг Bid:11.03.01.01_01-de.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

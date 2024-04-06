@@ -1,0 +1,97 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 06:34:15.297130   worker_id = master
+
+2024-04-06 06:34:15.297145   0. Allure grouping v4
+
+2024-04-06 06:34:15.297334   START PRECONDITIONS =>
+
+2024-04-06 06:34:15.297350   => Current URL - https://capital.com/trading/platform/
+
+2024-04-06 06:34:15.300226   => URL after prev. preconditions - https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:34:15.300240   => flag_of_bug - True
+2024-04-06 06:34:15.300252   Current page URL = https://capital.com/trading/platform/
+2024-04-06 06:34:15.302758   self.link = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:34:15.302772   link = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:34:17.123303   => Loaded page https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:34:17.128593   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 06:34:17.130046   Set windows position at (0, 0) =>
+2024-04-06 06:34:17.234154   Set resolution 1280 * 800 =>
+2024-04-06 06:34:17.336362   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 06:34:18.366144   Капчи нет. Идем дальше
+
+2024-04-06 06:34:18.366230   Работа с куками
+
+2024-04-06 06:34:18.366243   Prev. country - 'de'
+2024-04-06 06:34:18.366253   Cur. country - 'de'
+2024-04-06 06:34:18.366262   => Country set to 'de'
+
+2024-04-06 06:34:18.366271   Prev. language - 'de'
+2024-04-06 06:34:18.366280   Cur. language - 'de'
+2024-04-06 06:34:18.366289   => Language is set to 'de'
+
+2024-04-06 06:34:18.366298   Prev. role - 'NoAuth'
+2024-04-06 06:34:18.366306   Cur. role - 'NoAuth'
+2024-04-06 06:34:18.366315   => The 'NoAuth' role is set
+
+2024-04-06 06:34:18.369007   => Current URL - https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:34:18.369029   => THE END PRECONDITIONS
+
+2024-04-06 06:34:18.369205   1. Arrange_v2
+2024-04-06 06:34:18.369222   current_page = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:34:18.371690   link = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:34:18.374111 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-06 06:34:18.381699   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-06 06:34:18.381722   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-06 06:34:18.387214   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-06 06:34:18.387396   2. Act_v2
+2024-04-06 06:34:18.387421   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-06 06:34:19.181390   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-06 06:34:19.194357   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-06 06:34:19.194386   Move focus to button [Go to platform] and click on =>
+2024-04-06 06:34:19.976627   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-06 06:34:20.710258 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-06 06:34:20.710502   3. Assert_Login_v0
+2024-04-06 06:34:20.710588   Check that 'Login' form is opened
+2024-04-06 06:34:23.824682   'Login' form not opened
+2024-04-06 06:34:23.824857   Check that new 'Login' form is opened
+2024-04-06 06:34:26.903232   => New 'Login' form not opened
+2024-04-06 06:34:26.905966   'Login' page not opened
+2024-04-06 06:34:29.974297   'Login' form on trading platform not opened
+2024-04-06 06:34:29.974484   Start step Check that [Sign up] form is opened
+2024-04-06 06:34:33.041315   'Sign up' form not opened
+2024-04-06 06:34:33.041503   Start step Check that new [Sign up] form is opened
+2024-04-06 06:34:36.113108   => new 'Sign up' form not opened
+2024-04-06 06:34:36.113298   Start method Check that [Sign up] page opened =>
+2024-04-06 06:34:37.117170   'Sign up' page not opened
+2024-04-06 06:34:37.117366   Check that [Sign up] form on trading platform opened =>
+2024-04-06 06:34:37.127577   => 'Sign up' form on trading platform page opened
+2024-04-06 06:34:37.127600   Assert SIGNUP_HEADER =>
+2024-04-06 06:34:37.136912   => SIGNUP_HEADER is OK
+2024-04-06 06:34:37.136934   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-06 06:34:37.146003   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-06 06:34:37.146039   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 06:34:37.155175   => SIGNUP_REF_LOGIN is OK
+2024-04-06 06:34:37.155197   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.02.01_004-de.de.NoAuth
+
+2024-04-06 06:34:37.155245   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe2007c7aa0>
+
+2024-04-06 06:34:37.577290   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 06:34:37.805457   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 06:34:38.762629   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 06:34:39.104591   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 06:34:39.106064   Баг Bid:01.02.01_004-de.de.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,96 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 06:35:49.360745   worker_id = master
+
+2024-04-06 06:35:49.360764   0. Allure grouping v4
+
+2024-04-06 06:35:49.361017   START PRECONDITIONS =>
+
+2024-04-06 06:35:49.361033   => Current URL - https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:35:49.372806   => URL after prev. preconditions - https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:35:49.372824   => flag_of_bug - False
+
+2024-04-06 06:35:49.372837   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 06:35:49.374222   Set windows position at (0, 0) =>
+2024-04-06 06:35:49.476930   Set resolution 1280 * 800 =>
+2024-04-06 06:35:49.582525   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 06:35:50.602400   Капчи нет. Идем дальше
+
+2024-04-06 06:35:50.602487   Работа с куками
+
+2024-04-06 06:35:50.602501   Prev. country - 'de'
+2024-04-06 06:35:50.602510   Cur. country - 'de'
+2024-04-06 06:35:50.602519   => Country set to 'de'
+
+2024-04-06 06:35:50.602528   Prev. language - 'de'
+2024-04-06 06:35:50.602537   Cur. language - 'de'
+2024-04-06 06:35:50.602545   => Language is set to 'de'
+
+2024-04-06 06:35:50.602554   Prev. role - 'Auth'
+2024-04-06 06:35:50.602563   Cur. role - 'Auth'
+2024-04-06 06:35:50.602571   => The 'Auth' role is set
+
+2024-04-06 06:35:50.605449   => Current URL - https://capital.com/de/marathon-patent-group-inc-aktienkurs
+
+2024-04-06 06:35:50.605471   => THE END PRECONDITIONS
+
+2024-04-06 06:35:50.605515   1. Arrange_v0
+2024-04-06 06:35:50.605529   current_page = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:35:50.608043   link = https://capital.com/de/marathon-patent-group-inc-aktienkurs
+2024-04-06 06:35:50.612105   BUTTON_BUY is located on the page? =>
+2024-04-06 06:35:50.621620   => BUTTON_BUY is located on the page!
+2024-04-06 06:35:50.621782   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 06:35:52.170860   '[Sign up]' form was not popped up
+
+2024-04-06 06:35:52.171045   2. Act_v0
+2024-04-06 06:35:52.176552   BUTTON_BUY is present? =>
+2024-04-06 06:35:52.176575   => BUTTON_BUY is present on the page
+2024-04-06 06:35:52.176584   BUTTON_BUY scroll =>
+2024-04-06 06:35:52.180070   => BUTTON_BUY scrolled
+2024-04-06 06:35:52.199194   BUTTON_BUY is clickable? =>
+2024-04-06 06:35:52.224128   BUTTON_BUY CLICK =>
+2024-04-06 06:35:52.496331   => BUTTON_BUY clicked!
+
+2024-04-06 06:35:52.496674   3. Assert_v4
+2024-04-06 06:35:52.496869   Checking that the trading platform page has opened (v4) =>
+2024-04-06 06:35:52.506234   Checking way # 1 => 
+
+2024-04-06 06:35:52.506418   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 06:35:52.513968   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 06:35:52.514094   2. Checking that the LOGO is present on the page =>
+2024-04-06 06:35:54.162328   => 'capital*com' logo is present on the current page
+
+2024-04-06 06:35:54.162385   tpd = False
+
+2024-04-06 06:35:54.162404   4. Check that opened page with https://capital.com/trading/platform/charting/14659243072378052?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388,16150730595456196,27041281599427780,1657857463492 url
+with selected corresponding trading instrument 'Marathon Digital Holdings, Inc' =>
+
+2024-04-06 06:35:54.168070   trade_instrument = 'Marathon Digital Holdings, Inc'
+
+2024-04-06 06:35:54.168093   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 06:35:54.581734   => Trading Platform opened in Chart mode
+
+2024-04-06 06:35:54.581776   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 06:35:54.647157   4.3. Check that opened trade instrument info page =>
+2024-04-06 06:35:55.680634   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.02.01_005-de.de.Auth
+
+2024-04-06 06:35:55.680685   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe2007c7aa0>
+
+2024-04-06 06:35:56.024640   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 06:35:56.347232   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 06:35:57.239059   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 06:35:57.586945   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 06:35:57.588640   Баг Bid:01.02.01_005-de.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

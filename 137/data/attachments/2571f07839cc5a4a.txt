@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 08:56:30.751826   worker_id = master
+
+2024-04-06 08:56:30.751840   0. Allure grouping v4
+
+2024-04-06 08:56:30.752020   START PRECONDITIONS =>
+
+2024-04-06 08:56:30.752036   => Current URL - https://capital.com/de/trade-nikkei225
+
+2024-04-06 08:56:30.755777   => URL after prev. preconditions - https://capital.com/de/trade-nikkei225
+
+2024-04-06 08:56:30.755792   => flag_of_bug - False
+
+2024-04-06 08:56:30.755804   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 08:56:30.757440   Set windows position at (0, 0) =>
+2024-04-06 08:56:30.859796   Set resolution 1280 * 800 =>
+2024-04-06 08:56:30.962045   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 08:56:31.993935   Капчи нет. Идем дальше
+
+2024-04-06 08:56:31.994018   Работа с куками
+
+2024-04-06 08:56:31.994032   Prev. country - 'de'
+2024-04-06 08:56:31.994042   Cur. country - 'de'
+2024-04-06 08:56:31.994051   => Country set to 'de'
+
+2024-04-06 08:56:31.994060   Prev. language - 'de'
+2024-04-06 08:56:31.994069   Cur. language - 'de'
+2024-04-06 08:56:31.994078   => Language is set to 'de'
+
+2024-04-06 08:56:31.994086   Prev. role - 'Auth'
+2024-04-06 08:56:31.994095   Cur. role - 'Auth'
+2024-04-06 08:56:31.994104   => The 'Auth' role is set
+
+2024-04-06 08:56:31.996802   => Current URL - https://capital.com/de/trade-nikkei225
+
+2024-04-06 08:56:31.996824   => THE END PRECONDITIONS
+
+2024-04-06 08:56:31.996867   1. Arrange_v0
+2024-04-06 08:56:31.996881   current_page = https://capital.com/de/trade-nikkei225
+2024-04-06 08:56:31.999322   link = https://capital.com/de/trade-nikkei225
+2024-04-06 08:56:32.016804   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 08:56:32.016835   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 08:56:32.016845   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 08:56:32.020249   => 'Sell' button in Content block scrolled
+2024-04-06 08:56:32.020406   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 08:56:33.567352   '[Sign up]' form was not popped up
+
+2024-04-06 08:56:33.567563   2. Act_v0
+2024-04-06 08:56:33.828079   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 08:56:33.828128   => return trade_instrument = 12241936693896217
+
+2024-04-06 08:56:33.828406   3. Assert_v4
+2024-04-06 08:56:33.828561   Checking that the trading platform page has opened (v4) =>
+2024-04-06 08:56:34.343056   Checking way # 1 => 
+
+2024-04-06 08:56:34.343220   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 08:56:34.345574   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 08:56:34.345641   2. Checking that the LOGO is present on the page =>
+2024-04-06 08:56:35.334828   => 'capital*com' logo is present on the current page
+
+2024-04-06 08:56:35.334867   tpd = False
+
+2024-04-06 08:56:35.334879   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '12241936693896217' =>
+
+2024-04-06 08:56:35.337540   trade_instrument = '12241936693896217'
+
+2024-04-06 08:56:35.337557   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 08:56:36.376328   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.06.01_07-de.de.Auth
+
+2024-04-06 08:56:36.376381   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f44f9025760>
+
+2024-04-06 08:56:36.741588   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:56:36.956585   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:56:37.930170   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 08:56:38.134092   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 08:56:38.135408   Баг Bid:11.02.06.01_07-de.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
