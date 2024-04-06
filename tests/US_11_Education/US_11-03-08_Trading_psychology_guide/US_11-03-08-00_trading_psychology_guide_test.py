@@ -147,7 +147,7 @@ class TestTradingPsychologyGuideMain:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_99", "Pretest")
@@ -165,7 +165,7 @@ class TestTradingPsychologyGuideMain:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, main_page_link)
-        cur_item_link = page_menu.open_education_trading_psychology_guides_menu(
+        page_menu.open_education_trading_psychology_guides_menu(
             d, cur_language, cur_country, main_page_link)
 
         file_name = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
