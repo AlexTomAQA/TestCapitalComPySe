@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 22:01:52.411629   worker_id = master
+
+2024-04-06 22:01:52.411643   0. Allure grouping v4
+
+2024-04-06 22:01:52.411817   START PRECONDITIONS =>
+
+2024-04-06 22:01:52.411833   => Current URL - https://capital.com/de/trade-audcad
+
+2024-04-06 22:01:52.414653   => URL after prev. preconditions - https://capital.com/de/trade-audcad
+
+2024-04-06 22:01:52.414667   => flag_of_bug - False
+
+2024-04-06 22:01:52.414678   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 22:01:52.415992   Set windows position at (0, 0) =>
+2024-04-06 22:01:52.518033   Set resolution 1280 * 800 =>
+2024-04-06 22:01:52.620226   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 22:01:53.645260   Капчи нет. Идем дальше
+
+2024-04-06 22:01:53.645354   Работа с куками
+
+2024-04-06 22:01:53.645368   Prev. country - 'au'
+2024-04-06 22:01:53.645379   Cur. country - 'au'
+2024-04-06 22:01:53.645388   => Country set to 'au'
+
+2024-04-06 22:01:53.645397   Prev. language - 'de'
+2024-04-06 22:01:53.645406   Cur. language - 'de'
+2024-04-06 22:01:53.645415   => Language is set to 'de'
+
+2024-04-06 22:01:53.645423   Prev. role - 'NoAuth'
+2024-04-06 22:01:53.645432   Cur. role - 'NoAuth'
+2024-04-06 22:01:53.645441   => The 'NoAuth' role is set
+
+2024-04-06 22:01:53.648288   => Current URL - https://capital.com/de/trade-audcad
+
+2024-04-06 22:01:53.648309   => THE END PRECONDITIONS
+
+2024-04-06 22:01:53.648495   1. Arrange_v0
+2024-04-06 22:01:53.648513   current_page = https://capital.com/de/trade-audcad
+2024-04-06 22:01:53.651216   link = https://capital.com/de/usdchf-handel
+2024-04-06 22:01:53.653837   => current_url != cur_item_link
+2024-04-06 22:01:54.653971   Current page URL = https://capital.com/de/trade-audcad
+2024-04-06 22:01:54.657617   self.link = https://capital.com/de/usdchf-handel
+2024-04-06 22:01:54.657631   link = https://capital.com/de/usdchf-handel
+2024-04-06 22:01:56.529572   => Loaded page https://capital.com/de/usdchf-handel
+2024-04-06 22:01:56.545172   BUTTON_START_TRADING scroll =>
+2024-04-06 22:01:56.548369   BUTTON_START_TRADING is visible? =>
+2024-04-06 22:01:56.577707   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-06 22:01:56.577893   2. Act_v0
+2024-04-06 22:01:56.577909   Start Click button [Start Trading] =>
+2024-04-06 22:01:56.583069   BUTTON_START_TRADING is clickable? =>
+2024-04-06 22:01:56.595211   BUTTON_START_TRADING click =>
+2024-04-06 22:01:56.631984   => BUTTON_START_TRADING clicked
+
+2024-04-06 22:01:56.632221   3. Assert_Login_v0
+2024-04-06 22:01:56.632306   Check that 'Login' form is opened
+2024-04-06 22:01:59.683508   'Login' form not opened
+2024-04-06 22:01:59.683697   Check that new 'Login' form is opened
+2024-04-06 22:02:02.760750   => New 'Login' form not opened
+2024-04-06 22:02:02.763401   'Login' page not opened
+2024-04-06 22:02:05.820471   'Login' form on trading platform not opened
+2024-04-06 22:02:05.820704   Start step Check that [Sign up] form is opened
+2024-04-06 22:02:05.830757   'Sign up' form opened
+2024-04-06 22:02:05.830780   Assert SIGNUP_HEADER =>
+2024-04-06 22:02:05.840315   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 22:02:05.849990   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 22:02:05.859191   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 22:02:05.859213   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_01-de.au.NoAuth
+
+2024-04-06 22:02:05.859265   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe7a38d6cf0>
+
+2024-04-06 22:02:06.311770   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:02:06.512974   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:02:07.659461   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:02:07.981469   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:02:07.982640   Баг Bid:11.02.04.01_01-de.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

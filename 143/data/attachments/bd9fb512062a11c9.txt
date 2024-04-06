@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 21:50:44.448608   worker_id = master
+
+2024-04-06 21:50:44.448623   0. Allure grouping v4
+
+2024-04-06 21:50:44.448821   START PRECONDITIONS =>
+
+2024-04-06 21:50:44.448837   => Current URL - https://capital.com/de/trade-usgas
+
+2024-04-06 21:50:44.451492   => URL after prev. preconditions - https://capital.com/de/trade-usgas
+
+2024-04-06 21:50:44.451505   => flag_of_bug - False
+
+2024-04-06 21:50:44.451518   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 21:50:44.452826   Set windows position at (0, 0) =>
+2024-04-06 21:50:44.554928   Set resolution 1280 * 800 =>
+2024-04-06 21:50:44.657376   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 21:50:45.698831   Капчи нет. Идем дальше
+
+2024-04-06 21:50:45.698916   Работа с куками
+
+2024-04-06 21:50:45.698930   Prev. country - 'au'
+2024-04-06 21:50:45.698940   Cur. country - 'au'
+2024-04-06 21:50:45.698949   => Country set to 'au'
+
+2024-04-06 21:50:45.698959   Prev. language - 'de'
+2024-04-06 21:50:45.698968   Cur. language - 'de'
+2024-04-06 21:50:45.698977   => Language is set to 'de'
+
+2024-04-06 21:50:45.698986   Prev. role - 'Auth'
+2024-04-06 21:50:45.698994   Cur. role - 'Auth'
+2024-04-06 21:50:45.699003   => The 'Auth' role is set
+
+2024-04-06 21:50:45.701825   => Current URL - https://capital.com/de/trade-usgas
+
+2024-04-06 21:50:45.701847   => THE END PRECONDITIONS
+
+2024-04-06 21:50:45.701887   1. Arrange_v0
+2024-04-06 21:50:45.701901   current_page = https://capital.com/de/trade-usgas
+2024-04-06 21:50:45.704534   link = https://capital.com/de/trade-usgas
+2024-04-06 21:50:45.714717   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 21:50:45.714740   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 21:50:45.714750   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 21:50:45.718342   => 'Sell' button in Content block scrolled
+2024-04-06 21:50:45.718496   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 21:50:47.251841   '[Sign up]' form was not popped up
+
+2024-04-06 21:50:47.252030   2. Act_v0
+2024-04-06 21:50:47.495822   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 21:50:47.495884   => return trade_instrument = 426090820621508
+
+2024-04-06 21:50:47.496188   3. Assert_v4
+2024-04-06 21:50:47.496356   Checking that the trading platform page has opened (v4) =>
+2024-04-06 21:50:48.007459   Checking way # 1 => 
+
+2024-04-06 21:50:48.007642   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 21:50:48.010360   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 21:50:48.010426   2. Checking that the LOGO is present on the page =>
+2024-04-06 21:50:48.944359   => 'capital*com' logo is present on the current page
+
+2024-04-06 21:50:48.944397   tpd = False
+
+2024-04-06 21:50:48.944410   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '426090820621508' =>
+
+2024-04-06 21:50:48.947398   trade_instrument = '426090820621508'
+
+2024-04-06 21:50:48.947410   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 21:50:49.958122   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.03.01_03-de.au.Auth
+
+2024-04-06 21:50:49.958167   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fd7c83c5f10>
+
+2024-04-06 21:50:50.417033   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:50:50.737108   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:50:51.779287   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:50:51.978056   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:50:51.979678   Баг Bid:11.02.03.01_03-de.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

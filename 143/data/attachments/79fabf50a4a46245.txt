@@ -1,0 +1,106 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 21:02:00.833459   worker_id = master
+
+2024-04-06 21:02:00.833478   0. Allure grouping v4
+
+2024-04-06 21:02:00.833740   START PRECONDITIONS =>
+
+2024-04-06 21:02:00.833763   => Current URL - https://capital.com/de/was-ist-cfd-handel
+
+2024-04-06 21:02:00.836486   => URL after prev. preconditions - https://capital.com/de/was-ist-cfd-handel
+
+2024-04-06 21:02:00.836500   => flag_of_bug - False
+
+2024-04-06 21:02:00.836513   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 21:02:00.837823   Set windows position at (0, 0) =>
+2024-04-06 21:02:00.942721   Set resolution 1280 * 800 =>
+2024-04-06 21:02:01.045798   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 21:02:02.086713   Капчи нет. Идем дальше
+
+2024-04-06 21:02:02.086798   Работа с куками
+
+2024-04-06 21:02:02.086812   Prev. country - 'au'
+2024-04-06 21:02:02.086822   Cur. country - 'au'
+2024-04-06 21:02:02.086831   => Country set to 'au'
+
+2024-04-06 21:02:02.086840   Prev. language - 'de'
+2024-04-06 21:02:02.086849   Cur. language - 'de'
+2024-04-06 21:02:02.086858   => Language is set to 'de'
+
+2024-04-06 21:02:02.086866   Prev. role - 'Auth'
+2024-04-06 21:02:02.086875   Cur. role - 'Auth'
+2024-04-06 21:02:02.086883   => The 'Auth' role is set
+
+2024-04-06 21:02:02.089723   => Current URL - https://capital.com/de/was-ist-cfd-handel
+
+2024-04-06 21:02:02.089747   => THE END PRECONDITIONS
+
+2024-04-06 21:02:02.092461   1. Arrange_v4
+2024-04-06 21:02:02.092485   current_page = https://capital.com/de/was-ist-cfd-handel
+2024-04-06 21:02:02.094960   link = https://capital.com/de/was-ist-cfd-handel
+2024-04-06 21:02:02.097387   MOST_TRADED is present? =>
+2024-04-06 21:02:02.105208   => MOST_TRADED widget is present on this page
+2024-04-06 21:02:02.105231   => Found 5 elements in block MOST_TRADED
+2024-04-06 21:02:02.105242   Most traded widget is scroll =>
+2024-04-06 21:02:02.110761   => Most traded widget is scrolled into screen center
+
+2024-04-06 21:02:02.110820   Random indexes = [2]
+
+2024-04-06 21:02:02.110839   Testing Most traded 1 random element with 2 index
+
+2024-04-06 21:02:02.111025   2. Act_v4
+2024-04-06 21:02:02.111158   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 21:02:03.668928   '[Sign up]' form was not popped up
+2024-04-06 21:02:03.681875   instrument_title = 'Bitcoin to US Dollar'
+2024-04-06 21:02:03.686920   Selected Trade button on Most traded widget is scroll =>
+2024-04-06 21:02:03.689939   Selected Trade button click for 'Bitcoin to US Dollar' trading instrument =>
+2024-04-06 21:02:05.733799   => Selected Trade button clicked!
+
+2024-04-06 21:02:05.734072   3. Assert_v4
+2024-04-06 21:02:05.734194   Checking that the trading platform page has opened (v4) =>
+2024-04-06 21:02:05.739970   Checking way # 1 => 
+
+2024-04-06 21:02:05.740088   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 21:02:05.742783   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 21:02:05.742870   2. Checking that the LOGO is present on the page =>
+2024-04-06 21:02:07.334313   => 'capital*com' logo is present on the current page
+
+2024-04-06 21:02:07.334347   tpd = False
+
+2024-04-06 21:02:07.334359   4. Check that opened page with https://capital.com/trading/platform/charting/2604592722433220?side=buy&ids=22855552501634244,252415228073156,3400518881858756,67517667577209881,14659243072378052,15871553426248900,93810675766468,55001351234585,123763777635654,6003982027805892,253454610158788,23381802018436,15839732013552836,1679716659553719492,10500838556456274,389605073441988,27045129890124996,357105055839112,7093817094264004,426696411010244,427748677997764,15959415572223172,3644116541985988,10384900209333444,21621659937100996,93810675721241,55001351226694,250461017944395,23381802046660,426627691533508,27342779713672388,16150730595456196,27041281599427780,1657857463492,93810675762329,1496662958757060,23381801971780,93810675692038,7091880064013508,5983666832495812,422839530378436,374675767075865,305243519000335556,374675767088654,2604592722433220,374675767046212,7090561509053636,18425409712196,22734159545980100,123763777688772,3315714839748,21182778791108,426090820621508,3818389134988484,20337752478405828,93810675708048,93810675684676,53068615951385,2306899949212868,3663607190724,123763777643545,23381802001433,7096896585815236 url
+with selected corresponding trading instrument 'Bitcoin to US Dollar' =>
+
+2024-04-06 21:02:07.337038   trade_instrument = 'Bitcoin to US Dollar'
+
+2024-04-06 21:02:07.337050   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 21:02:07.752668   => Trading Platform opened in Chart mode
+
+2024-04-06 21:02:07.752713   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-06 21:02:07.781310   4.3. Check that opened trade instrument info page =>
+2024-04-06 21:02:08.835541   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:11.01.03.00_03-de.au.Auth
+
+2024-04-06 21:02:08.835589   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f778619a8d0>
+
+2024-04-06 21:02:09.227489   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:02:09.422439   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:02:10.606275   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:02:10.931781   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:02:10.931848   Баг Bid:11.01.03.00_03-de.au.Auth уже существует, но у него изменился тип с 17 на 16
+
+2024-04-06 21:02:10.932003   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:02:11.246957   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:02:11.248340   Баг Bid:11.01.03.00_03-de.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

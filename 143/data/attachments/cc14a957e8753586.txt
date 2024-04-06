@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 21:45:26.033919   worker_id = master
+
+2024-04-06 21:45:26.033933   0. Allure grouping v4
+
+2024-04-06 21:45:26.034123   START PRECONDITIONS =>
+
+2024-04-06 21:45:26.034138   => Current URL - https://capital.com/de/trade-brent
+
+2024-04-06 21:45:26.036772   => URL after prev. preconditions - https://capital.com/de
+
+2024-04-06 21:45:26.036785   => flag_of_bug - True
+2024-04-06 21:45:26.036798   Current page URL = https://capital.com/de/trade-brent
+2024-04-06 21:45:26.040333   self.link = https://capital.com/de
+2024-04-06 21:45:26.040348   link = https://capital.com/de
+2024-04-06 21:45:27.882140   => Loaded page https://capital.com/de
+
+2024-04-06 21:45:27.886889   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 21:45:27.888273   Set windows position at (0, 0) =>
+2024-04-06 21:45:27.992289   Set resolution 1280 * 800 =>
+2024-04-06 21:45:28.094643   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 21:45:29.119812   Капчи нет. Идем дальше
+
+2024-04-06 21:45:29.119901   Работа с куками
+
+2024-04-06 21:45:29.119914   Prev. country - 'au'
+2024-04-06 21:45:29.119924   Cur. country - 'au'
+2024-04-06 21:45:29.119934   => Country set to 'au'
+
+2024-04-06 21:45:29.119943   Prev. language - 'de'
+2024-04-06 21:45:29.119952   Cur. language - 'de'
+2024-04-06 21:45:29.119960   => Language is set to 'de'
+
+2024-04-06 21:45:29.119969   Prev. role - 'NoAuth'
+2024-04-06 21:45:29.119978   Cur. role - 'NoAuth'
+2024-04-06 21:45:29.119987   => The 'NoAuth' role is set
+
+2024-04-06 21:45:29.122763   => Current URL - https://capital.com/de
+
+2024-04-06 21:45:29.122785   => THE END PRECONDITIONS
+
+2024-04-06 21:45:29.122963   1. Arrange_v3
+2024-04-06 21:45:29.122981   current_page = https://capital.com/de
+2024-04-06 21:45:29.125513   link = https://capital.com/de/trade-brent
+2024-04-06 21:45:29.128017   Current page URL = https://capital.com/de
+2024-04-06 21:45:29.130518   self.link = https://capital.com/de/trade-brent
+2024-04-06 21:45:29.130532   link = https://capital.com/de/trade-brent
+2024-04-06 21:45:30.866061   => Loaded page https://capital.com/de/trade-brent
+2024-04-06 21:45:30.870514   Is visible BUTTON_START_TRADING_IN_ARTICLE? =>
+2024-04-06 21:45:30.870529   => BUTTON_START_TRADING_IN_ARTICLE =>
+
+2024-04-06 21:45:30.878713   2. Act_v3
+2024-04-06 21:45:30.878735   Start Click button BUTTON_START_TRADING_IN_ARTICLE =>
+2024-04-06 21:45:30.936046   => BUTTON_START_TRADING_IN_ARTICLE is clicked
+
+2024-04-06 21:45:30.936272   3. Assert_Login_v0
+2024-04-06 21:45:30.936355   Check that 'Login' form is opened
+2024-04-06 21:45:34.021055   'Login' form not opened
+2024-04-06 21:45:34.021239   Check that new 'Login' form is opened
+2024-04-06 21:45:37.096752   => New 'Login' form not opened
+2024-04-06 21:45:37.099608   'Login' page not opened
+2024-04-06 21:45:40.190004   'Login' form on trading platform not opened
+2024-04-06 21:45:40.190199   Start step Check that [Sign up] form is opened
+2024-04-06 21:45:40.203848   'Sign up' form opened
+2024-04-06 21:45:40.203871   Assert SIGNUP_HEADER =>
+2024-04-06 21:45:40.217286   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 21:45:40.229634   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 21:45:40.242241   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 21:45:40.242265   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_05-de.au.NoAuth
+
+2024-04-06 21:45:40.242320   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fd7c83c5f10>
+
+2024-04-06 21:45:40.546834   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:45:40.721083   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:45:41.853811   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 21:45:42.158080   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 21:45:42.159294   Баг Bid:11.02.03.01_05-de.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

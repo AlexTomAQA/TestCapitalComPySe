@@ -1,0 +1,94 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 22:02:42.118442   worker_id = master
+
+2024-04-06 22:02:42.118457   0. Allure grouping v4
+
+2024-04-06 22:02:42.118645   START PRECONDITIONS =>
+
+2024-04-06 22:02:42.118661   => Current URL - https://capital.com/de/usdchf-handel
+
+2024-04-06 22:02:42.121541   => URL after prev. preconditions - https://capital.com/de/trade-audcad
+
+2024-04-06 22:02:42.121555   => flag_of_bug - True
+2024-04-06 22:02:42.121567   Current page URL = https://capital.com/de/usdchf-handel
+2024-04-06 22:02:42.124031   self.link = https://capital.com/de/trade-audcad
+2024-04-06 22:02:42.124045   link = https://capital.com/de/trade-audcad
+2024-04-06 22:02:44.265171   => Loaded page https://capital.com/de/trade-audcad
+
+2024-04-06 22:02:44.271205   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 22:02:44.272558   Set windows position at (0, 0) =>
+2024-04-06 22:02:44.375071   Set resolution 1280 * 800 =>
+2024-04-06 22:02:44.477328   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 22:02:45.499133   Капчи нет. Идем дальше
+
+2024-04-06 22:02:45.499219   Работа с куками
+
+2024-04-06 22:02:45.499233   Prev. country - 'au'
+2024-04-06 22:02:45.499244   Cur. country - 'au'
+2024-04-06 22:02:45.499254   => Country set to 'au'
+
+2024-04-06 22:02:45.499262   Prev. language - 'de'
+2024-04-06 22:02:45.499271   Cur. language - 'de'
+2024-04-06 22:02:45.499280   => Language is set to 'de'
+
+2024-04-06 22:02:45.499289   Prev. role - 'NoAuth'
+2024-04-06 22:02:45.499297   Cur. role - 'NoAuth'
+2024-04-06 22:02:45.499306   => The 'NoAuth' role is set
+
+2024-04-06 22:02:45.502093   => Current URL - https://capital.com/de/trade-audcad
+
+2024-04-06 22:02:45.502115   => THE END PRECONDITIONS
+
+2024-04-06 22:02:45.502158   1. Arrange_v0
+2024-04-06 22:02:45.502172   current_page = https://capital.com/de/trade-audcad
+2024-04-06 22:02:45.504625   link = https://capital.com/de/usdchf-handel
+2024-04-06 22:02:45.507065   Current page URL = https://capital.com/de/trade-audcad
+2024-04-06 22:02:45.509500   self.link = https://capital.com/de/usdchf-handel
+2024-04-06 22:02:45.509514   link = https://capital.com/de/usdchf-handel
+2024-04-06 22:02:47.333237   => Loaded page https://capital.com/de/usdchf-handel
+2024-04-06 22:02:47.337913   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-06 22:02:47.346016   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-06 22:02:47.346203   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 22:02:48.876388   '[Sign up]' form was not popped up
+
+2024-04-06 22:02:48.876615   2. Act_v0
+2024-04-06 22:02:48.882079   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-06 22:02:48.882102   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-06 22:02:48.882112   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-06 22:02:48.885627   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-06 22:02:48.890065   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-06 22:02:48.921906   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-06 22:02:48.932799   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-06 22:02:48.933012   3. Assert_Login_v0
+2024-04-06 22:02:48.933095   Check that 'Login' form is opened
+2024-04-06 22:02:51.982644   'Login' form not opened
+2024-04-06 22:02:51.982831   Check that new 'Login' form is opened
+2024-04-06 22:02:55.056273   => New 'Login' form not opened
+2024-04-06 22:02:55.059132   'Login' page not opened
+2024-04-06 22:02:58.117360   'Login' form on trading platform not opened
+2024-04-06 22:02:58.117555   Start step Check that [Sign up] form is opened
+2024-04-06 22:02:58.127534   'Sign up' form opened
+2024-04-06 22:02:58.127556   Assert SIGNUP_HEADER =>
+2024-04-06 22:02:58.137097   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 22:02:58.146354   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 22:02:58.156033   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 22:02:58.156055   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_05-de.au.NoAuth
+
+2024-04-06 22:02:58.156104   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe7a38d6cf0>
+
+2024-04-06 22:02:58.617298   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:02:58.776975   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:02:59.785143   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:02:59.975961   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:02:59.977783   Баг Bid:11.02.04.01_05-de.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

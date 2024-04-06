@@ -1,0 +1,88 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 22:03:36.860791   worker_id = master
+
+2024-04-06 22:03:36.860805   0. Allure grouping v4
+
+2024-04-06 22:03:36.860991   START PRECONDITIONS =>
+
+2024-04-06 22:03:36.861006   => Current URL - https://capital.com/de/usdchf-handel
+
+2024-04-06 22:03:36.869004   => URL after prev. preconditions - https://capital.com/de/usdchf-handel
+
+2024-04-06 22:03:36.869019   => flag_of_bug - False
+
+2024-04-06 22:03:36.869032   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 22:03:36.870364   Set windows position at (0, 0) =>
+2024-04-06 22:03:36.972703   Set resolution 1280 * 800 =>
+2024-04-06 22:03:37.075027   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 22:03:38.122507   Капчи нет. Идем дальше
+
+2024-04-06 22:03:38.122598   Работа с куками
+
+2024-04-06 22:03:38.122612   Prev. country - 'au'
+2024-04-06 22:03:38.122622   Cur. country - 'au'
+2024-04-06 22:03:38.122631   => Country set to 'au'
+
+2024-04-06 22:03:38.122640   Prev. language - 'de'
+2024-04-06 22:03:38.122649   Cur. language - 'de'
+2024-04-06 22:03:38.122658   => Language is set to 'de'
+
+2024-04-06 22:03:38.122667   Prev. role - 'Auth'
+2024-04-06 22:03:38.122676   Cur. role - 'Auth'
+2024-04-06 22:03:38.122684   => The 'Auth' role is set
+
+2024-04-06 22:03:38.125420   => Current URL - https://capital.com/de/usdchf-handel
+
+2024-04-06 22:03:38.125442   => THE END PRECONDITIONS
+
+2024-04-06 22:03:38.125486   1. Arrange_v0
+2024-04-06 22:03:38.125500   current_page = https://capital.com/de/usdchf-handel
+2024-04-06 22:03:38.127894   link = https://capital.com/de/usdchf-handel
+2024-04-06 22:03:38.137872   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 22:03:38.137894   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 22:03:38.137905   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 22:03:38.141301   => 'Sell' button in Content block scrolled
+2024-04-06 22:03:38.141453   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 22:03:39.672209   '[Sign up]' form was not popped up
+
+2024-04-06 22:03:39.672405   2. Act_v0
+2024-04-06 22:03:39.912126   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 22:03:39.912184   => return trade_instrument = 374675767046662
+
+2024-04-06 22:03:39.912507   3. Assert_v4
+2024-04-06 22:03:39.912728   Checking that the trading platform page has opened (v4) =>
+2024-04-06 22:03:40.423710   Checking way # 1 => 
+
+2024-04-06 22:03:40.423889   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-06 22:03:40.426304   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-06 22:03:40.426371   2. Checking that the LOGO is present on the page =>
+2024-04-06 22:03:42.070696   => 'capital*com' logo is present on the current page
+
+2024-04-06 22:03:42.070752   tpd = False
+
+2024-04-06 22:03:42.070769   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '374675767046662' =>
+
+2024-04-06 22:03:42.075985   trade_instrument = '374675767046662'
+
+2024-04-06 22:03:42.075997   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-06 22:03:43.087074   => Trading Platform opened, but not Chart mode
+
+Bug: Bid:11.02.04.01_04-de.au.Auth
+
+2024-04-06 22:03:43.087125   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fe7a38d6cf0>
+
+2024-04-06 22:03:43.386566   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:03:43.566332   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:03:44.610151   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:03:44.771433   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:03:44.773045   Баг Bid:11.02.04.01_04-de.au.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

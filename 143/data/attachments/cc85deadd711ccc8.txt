@@ -1,0 +1,83 @@
+{'width': 1280, 'height': 800}
+
+2024-04-06 22:13:49.479276   worker_id = master
+
+2024-04-06 22:13:49.479290   0. Allure grouping v4
+
+2024-04-06 22:13:49.479474   START PRECONDITIONS =>
+
+2024-04-06 22:13:49.479490   => Current URL - https://capital.com/de/trade-cardano
+
+2024-04-06 22:13:49.482245   => URL after prev. preconditions - https://capital.com/de
+
+2024-04-06 22:13:49.482259   => flag_of_bug - False
+
+2024-04-06 22:13:49.482270   => Windows size - {'width': 1280, 'height': 800}
+2024-04-06 22:13:49.483523   Set windows position at (0, 0) =>
+2024-04-06 22:13:49.585450   Set resolution 1280 * 800 =>
+2024-04-06 22:13:49.687812   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-06 22:13:50.714501   Капчи нет. Идем дальше
+
+2024-04-06 22:13:50.714591   Работа с куками
+
+2024-04-06 22:13:50.714605   Prev. country - 'au'
+2024-04-06 22:13:50.714615   Cur. country - 'au'
+2024-04-06 22:13:50.714624   => Country set to 'au'
+
+2024-04-06 22:13:50.714633   Prev. language - 'de'
+2024-04-06 22:13:50.714642   Cur. language - 'de'
+2024-04-06 22:13:50.714651   => Language is set to 'de'
+
+2024-04-06 22:13:50.714660   Prev. role - 'NoAuth'
+2024-04-06 22:13:50.714669   Cur. role - 'NoAuth'
+2024-04-06 22:13:50.714677   => The 'NoAuth' role is set
+
+2024-04-06 22:13:50.717431   => Current URL - https://capital.com/de/trade-cardano
+
+2024-04-06 22:13:50.717453   => THE END PRECONDITIONS
+
+2024-04-06 22:13:50.717497   1. Arrange_v0
+2024-04-06 22:13:50.717512   current_page = https://capital.com/de/trade-cardano
+2024-04-06 22:13:50.720005   link = https://capital.com/de/trade-cardano
+2024-04-06 22:13:50.730016   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-06 22:13:50.730038   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-06 22:13:50.730048   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-06 22:13:50.733520   => 'Sell' button in Content block scrolled
+2024-04-06 22:13:50.733676   Start Checking that form [Sign up] popped up on the page =>
+2024-04-06 22:13:52.262452   '[Sign up]' form was not popped up
+
+2024-04-06 22:13:52.262656   2. Act_v0
+2024-04-06 22:13:52.307896   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-06 22:13:52.307960   => return trade_instrument = 1196668083585245
+
+2024-04-06 22:13:52.308243   3. Assert_Login_v0
+2024-04-06 22:13:52.308366   Check that 'Login' form is opened
+2024-04-06 22:13:55.375854   'Login' form not opened
+2024-04-06 22:13:55.376047   Check that new 'Login' form is opened
+2024-04-06 22:13:58.446260   => New 'Login' form not opened
+2024-04-06 22:13:58.449027   'Login' page not opened
+2024-04-06 22:14:01.504673   'Login' form on trading platform not opened
+2024-04-06 22:14:01.504875   Start step Check that [Sign up] form is opened
+2024-04-06 22:14:01.514792   'Sign up' form opened
+2024-04-06 22:14:01.514814   Assert SIGNUP_HEADER =>
+2024-04-06 22:14:01.524430   Assert SIGNUP_REF_LOGIN =>
+2024-04-06 22:14:01.535672   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-06 22:14:01.545156   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-06 22:14:01.545180   => 'Signup' form is checked
+
+Bug: Bid:11.02.05.01_04-de.au.NoAuth
+
+2024-04-06 22:14:01.545245   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fd3a1df6390>
+
+2024-04-06 22:14:01.852992   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:14:02.050417   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:14:03.470615   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-06 22:14:03.673707   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-06 22:14:03.674903   Баг Bid:11.02.05.01_04-de.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
