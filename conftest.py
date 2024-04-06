@@ -93,7 +93,7 @@ def cur_role(request):
     params=[
         # "",  # "en" - 21 us
         # "es",  # 20 us
-        # "de",  # 15 us
+        "de",  # 15 us
         # "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
@@ -104,7 +104,7 @@ def cur_role(request):
         # "ar",  # 8 us
         # "nl",  # 8 us
         # "el",  # 5 us
-        "hu",  # 5 us Magyar
+        # "hu",  # 5 us Magyar
     ],
 )
 def cur_language(request):
