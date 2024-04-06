@@ -35,7 +35,7 @@ class GooglePlay(BasePage):
             # self.open_page()
             # ==== new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '03', self.link)
+            retest_table_fill(self.driver, self.bid, '03', self.link)
             # ==================================
             assert False, f'Bug # 03. Loaded page {current_page} with not {data["APP_URL"]} url'
 

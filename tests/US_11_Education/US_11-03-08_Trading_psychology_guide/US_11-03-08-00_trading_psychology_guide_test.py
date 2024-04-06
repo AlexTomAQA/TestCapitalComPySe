@@ -43,13 +43,12 @@ class TestTradingPsychologyGuideMain:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
         page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_trading_psychology_guide_move_focus_click(d, cur_language)
-        del page_menu
+        page_menu = MenuSection(d, main_page_link)
+        cur_item_link = page_menu.open_education_trading_psychology_guides_menu(
+            d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerStartTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
@@ -73,13 +72,12 @@ class TestTradingPsychologyGuideMain:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
         page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_trading_psychology_guide_move_focus_click(d, cur_language)
-        del page_menu
+        page_menu = MenuSection(d, main_page_link)
+        cur_item_link = page_menu.open_education_trading_psychology_guides_menu(
+            d, cur_language, cur_country, main_page_link)
 
         test_element = MainBannerTryDemo(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
@@ -105,13 +103,12 @@ class TestTradingPsychologyGuideMain:
             pytest.skip("This test-case not for FCA licence")
 
         page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_trading_psychology_guide_move_focus_click(d, cur_language)
-        del page_menu
+        page_menu = MenuSection(d, main_page_link)
+        cur_item_link = page_menu.open_education_trading_psychology_guides_menu(
+            d, cur_language, cur_country, main_page_link)
 
         test_element = ButtonTradeOnWidgetMostTraded(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
@@ -135,13 +132,12 @@ class TestTradingPsychologyGuideMain:
             pytest.skip("This test-case only for english language")
 
         page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_trading_psychology_guide_move_focus_click(d, cur_language)
-        del page_menu
+        page_menu = MenuSection(d, main_page_link)
+        cur_item_link = page_menu.open_education_trading_psychology_guides_menu(
+            d, cur_language, cur_country, main_page_link)
 
         test_element = BlockStepTrading(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
@@ -151,7 +147,7 @@ class TestTradingPsychologyGuideMain:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         global count
 
-        bid = build_dynamic_arg_v4(
+        build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.03.08", "Education > Menu item [Trading Psychology Guide]",
             ".00_99", "Pretest")
@@ -165,13 +161,12 @@ class TestTradingPsychologyGuideMain:
             pytest.skip(f"Test-case not for '{cur_language}' language")
 
         page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, link)
-        page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        page_menu.sub_menu_trading_psychology_guide_move_focus_click(d, cur_language)
-        del page_menu
+        page_menu = MenuSection(d, main_page_link)
+        page_menu.open_education_trading_psychology_guides_menu(
+            d, cur_language, cur_country, main_page_link)
 
         file_name = "tests/US_11_Education/US_11-03-08_Trading_psychology_guide/list_of_href.txt"
         list_items = d.find_elements(*TradingPsychologyContentList.LISTS)
