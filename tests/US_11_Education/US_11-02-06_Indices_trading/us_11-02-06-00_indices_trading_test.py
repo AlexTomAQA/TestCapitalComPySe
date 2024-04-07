@@ -251,11 +251,11 @@ class TestIndicesTradingGuidePreset:
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["", "de", "es", "it", "ru", "zh"])
 
         page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
+        main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, link)
-        cur_menu_link = page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
+        page_menu = MenuSection(d, main_page_link)
+        page_menu.open_education_indices_trading_menu(d, cur_language, cur_country, main_page_link)
 
         file_name = "tests/US_11_Education/US_11-02-06_Indices_trading/list_of_href.txt"
         list_items = d.find_elements(*SubPages.SUB_PAGES_LIST)
