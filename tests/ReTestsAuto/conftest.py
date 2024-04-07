@@ -33,8 +33,8 @@ lang_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        "gb",  # United Kingdom - "FCA"
-        # "de",  # Germany - "CYSEC"
+        # "gb",  # United Kingdom - "FCA"
+        "de",  # Germany - "CYSEC"
         # "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
 ]
