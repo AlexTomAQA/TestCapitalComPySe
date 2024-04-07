@@ -94,6 +94,15 @@ jobs:
 #        run: poetry run pytest -v
 #        continue-on-error: true
 #
+      - name: 8. Run US_01-01!00 | Menu [Markets] > Menu item [All Markets] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-01_All_markets/US_01-01-00_All_Markets_test.py
+        continue-on-error: true
+#      - name: 8. Run US_01-02!01 (Иван)
+#        if: always()
+#        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-01_Shares_test.py
+#        continue-on-error: true
+
       - name: 8. Run US_01-02!00 | Menu [Markets] > Menu item [Shares] Not FCA (Дима)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-00_Shares_test.py

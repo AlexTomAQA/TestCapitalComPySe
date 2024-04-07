@@ -426,7 +426,7 @@ class TradingPlatform(BasePage):
         print(f"\n{datetime.now()}   "
               f"4.4. Check that opened Info page of selected '{trade_instrument}' trade instrument =>")
         print(f"{datetime.now()}   Trading instrument - '{trade_instrument}'")
-        print(f"{datetime.now()}   Title opened trading instrument info page - '{open_ticket.text}'")
+        print(f"{datetime.now()}   Title opened trading instrument info page - '{open_ticket[0].text}'")
         if not (trade_instrument in open_ticket[0].text):
             msg = "Trading platform was opened, but does not contain trading info about selected TI"
             print(f"{datetime.now()}   => {msg}")

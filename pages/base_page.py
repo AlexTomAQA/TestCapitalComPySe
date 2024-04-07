@@ -148,9 +148,6 @@ class BasePage:
         print(f"{datetime.now()}   link = {link}")
         self.driver.get(link)
         time.sleep(1)
-        # if self.driver.current_url != self.link:
-        #     print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
-        #     pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
     @HandleExcElementsDecorator()
@@ -475,14 +472,17 @@ class BasePage:
             expected_title: expected page's title
         """
         print(f"\n{datetime.now()}"
-              f"   1. Checking that the page has expected title =>")
+              f"   Checking that the page has expected title =>")
         current_title = self.driver.title
-        print(f"{datetime.now()}   => The title of current page is '{current_title}'")
+        print(f"{datetime.now()}   The title of current page is '{current_title}'")
+        print(f"{datetime.now()}   The expected title is '{expected_title}'")
         # Check that the page title meets the requirements
         Common().assert_true_false(
             expected_title in current_title,
-            f"{datetime.now()}   Expected title '{expected_title}' but got '{current_title}' on page: {self.driver.current_url}"
+            f"{datetime.now()}   "
+            f"=> Expected title '{expected_title}' but got '{current_title}' on page: {self.driver.current_url}\n"
         )
+        print(f"{datetime.now()}   => The page has expected title.\n")
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):
