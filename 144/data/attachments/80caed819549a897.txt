@@ -1,0 +1,125 @@
+{'width': 1280, 'height': 800}
+
+2024-04-07 06:21:17.092958   worker_id = master
+
+2024-04-07 06:21:17.092977   0. Allure grouping v4
+
+2024-04-07 06:21:17.093228   START PRECONDITIONS =>
+
+2024-04-07 06:21:17.093250   => Current URL - https://capital.com/trading/platform/
+
+2024-04-07 06:21:17.096652   => URL after prev. preconditions - https://capital.com/fr/nok-sek-taux
+
+2024-04-07 06:21:17.096673   => flag_of_bug - True
+2024-04-07 06:21:17.096692   Current page URL = https://capital.com/trading/platform/
+2024-04-07 06:21:17.099386   self.link = https://capital.com/fr/nok-sek-taux
+2024-04-07 06:21:17.099400   link = https://capital.com/fr/nok-sek-taux
+2024-04-07 06:21:18.894207   => Loaded page https://capital.com/fr/nok-sek-taux
+
+2024-04-07 06:21:18.898594   => Windows size - {'width': 1280, 'height': 800}
+2024-04-07 06:21:18.900048   Set windows position at (0, 0) =>
+2024-04-07 06:21:19.004387   Set resolution 1280 * 800 =>
+2024-04-07 06:21:19.107218   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-07 06:21:20.148602   Капчи нет. Идем дальше
+
+2024-04-07 06:21:20.148702   Работа с куками
+
+2024-04-07 06:21:20.148718   Prev. country - 'ae'
+2024-04-07 06:21:20.148728   Cur. country - 'ae'
+2024-04-07 06:21:20.148737   => Country set to 'ae'
+
+2024-04-07 06:21:20.148746   Prev. language - 'fr'
+2024-04-07 06:21:20.148755   Cur. language - 'fr'
+2024-04-07 06:21:20.148763   => Language is set to 'fr'
+
+2024-04-07 06:21:20.148772   Prev. role - 'NoAuth'
+2024-04-07 06:21:20.148781   Cur. role - 'NoAuth'
+2024-04-07 06:21:20.148789   => The 'NoAuth' role is set
+
+2024-04-07 06:21:20.151708   => Current URL - https://capital.com/fr/nok-sek-taux
+
+2024-04-07 06:21:20.151761   => THE END PRECONDITIONS
+
+2024-04-07 06:21:20.151972   1. Arrange_v2
+2024-04-07 06:21:20.151991   current_page = https://capital.com/fr/nok-sek-taux
+2024-04-07 06:21:20.154684   link = https://capital.com/fr/nok-sek-taux
+2024-04-07 06:21:20.157816 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-07 06:21:20.166784   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-07 06:21:20.166817   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-07 06:21:20.171170   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-07 06:21:20.171336   2. Act_v2
+2024-04-07 06:21:20.171352   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-07 06:21:20.935017   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-07 06:21:20.948619   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-07 06:21:20.948658   Move focus to button [Go to platform] and click on =>
+2024-04-07 06:21:21.733441   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-07 06:21:22.284938 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-07 06:21:22.285237   3. Assert_Login_v0
+2024-04-07 06:21:22.285365   Check that 'Login' form is opened
+2024-04-07 06:21:25.359954   'Login' form not opened
+2024-04-07 06:21:25.360155   Check that new 'Login' form is opened
+2024-04-07 06:21:28.386170   => New 'Login' form not opened
+2024-04-07 06:21:28.389015   'Login' page not opened
+2024-04-07 06:21:31.491388   'Login' form on trading platform not opened
+2024-04-07 06:21:31.491593   Start step Check that [Sign up] form is opened
+2024-04-07 06:21:34.598506   'Sign up' form not opened
+2024-04-07 06:21:34.598706   Start step Check that new [Sign up] form is opened
+2024-04-07 06:21:37.674252   => new 'Sign up' form not opened
+2024-04-07 06:21:37.674463   Start method Check that [Sign up] page opened =>
+2024-04-07 06:21:38.679377   'Sign up' page not opened
+2024-04-07 06:21:38.679588   Check that [Sign up] form on trading platform opened =>
+2024-04-07 06:21:38.692791   => 'Sign up' form on trading platform page opened
+2024-04-07 06:21:38.692825   Assert SIGNUP_HEADER =>
+2024-04-07 06:21:38.705431   => SIGNUP_HEADER is OK
+2024-04-07 06:21:38.705464   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-07 06:21:38.717611   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-07 06:21:38.717639   Assert SIGNUP_REF_LOGIN =>
+2024-04-07 06:21:38.729735   => SIGNUP_REF_LOGIN is OK
+2024-04-07 06:21:38.729768   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.04.01_004-fr.ae.NoAuth
+
+2024-04-07 06:21:38.729850   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f427bd95760>
+
+2024-04-07 06:21:38.976788   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:39.155614   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:39.712742   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:39.934283   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:40.411689   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:40.588318   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:40.591119   Добавление новой строки =>
+
+2024-04-07 06:21:41.209712   => Новая строка добавлена
+
+2024-04-07 06:21:42.087367   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:42.310424   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:42.314282   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-07 06:21:42.589036   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:42.589334   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-07 06:21:43.092970   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:43.093212   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:43.240132   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:43.240354   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-07 06:21:43.410040   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-07 06:21:43.410117   Баг Bid:01.04.01_004-fr.ae.NoAuth-07 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
