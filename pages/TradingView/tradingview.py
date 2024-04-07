@@ -35,7 +35,7 @@ class TradingView(BasePage):
 
         # Check that the app title of current page meets the requirements
         Common().assert_true_false(
-            current_app_title in expected_app_title,
+            expected_app_title in current_app_title,
             f"{datetime.now()}   Expected title '{expected_app_title}' "
             f"but got '{current_app_title}' on page: {self.driver.current_url}"
         )
