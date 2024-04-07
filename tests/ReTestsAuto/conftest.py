@@ -35,8 +35,8 @@ lang_list = [
 country_list = [
         # "gb",  # United Kingdom - "FCA"
         # "de",  # Germany - "CYSEC"
-        "au",  # Australia - "ASIC"
-        # "ae",  # United Arab Emirates - "SCB"
+        # "au",  # Australia - "ASIC"
+        "ae",  # United Arab Emirates - "SCB"
 ]
 
 # ===========================================================
