@@ -11,6 +11,7 @@ import allure
 # import pytest
 
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Elements.testing_elements_locators import TradingPlatformWatchlistTabs
 from pages.base_page import BasePage
 from pages.common import Common
 # from pages.common import flag_of_bug
@@ -166,6 +167,96 @@ class TradingPlatform(BasePage):
                        f"but expected the Trading platform in Live mode (timeout=15c)")
                 assert False, msg
                 # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+
+    @allure.step("Checking that the trading platform page has opened and the element is selected")
+    def should_be_trading_platform_page_with_selected_element(self, d, test_link, tab, trade_instrument):
+        """
+        Check if the trading platform page for the corresponding trade instrument is opened
+        Args:
+            d: Webdriver
+            test_link: Link in the list of 3 random items and start page of the sidebar
+            tab: open Trade platform for corresponding trade instrument tab (False)
+            trade_instrument: corresponding trade instrument (False)
+        """
+
+        print(f"{datetime.now()}   Checking that the trading platform page has opened and the element is selected =>")
+        platform_url = data["PLATFORM_URL/"]
+        cur_url = self.driver.current_url
+        if self.wait_for_target_url(platform_url, 10):
+            print(f"{datetime.now()}   Checking way # 1 => ")
+            self.should_be_page_title_v2(data["PAGE_TITLE"])
+            self.should_be_platform_logo()
+            self.should_tab_be_selected(tab)
+
+            print(f"\n{datetime.now()}   4. Check that opened page with {self.driver.current_url} url\n"
+                  f"with selected corresponding trading instrument '{trade_instrument}' =>")
+            self.should_be_favourite_trading_instrument(test_link, trade_instrument)
+
+            msg = 'Trading platform is opened and the tab is selected'
+            Common.browser_back_to_link_and_test_pass(d, test_link, msg)
+        else:
+            print(f"{datetime.now()}   Checking way # 2 =>")
+            self.should_be_page_title_v2(data["PAGE_TITLE"])
+            self.should_be_platform_logo()
+            self.should_tab_be_selected(tab)
+
+            print(f"{datetime.now()}   => Loaded page {cur_url} with not {platform_url} url")
+            # проверка бага для ретеста
+
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(d, self.bid, '10', self.link)
+
+            Common.flag_of_bug = True
+            msg = (f"Bug # 10. Loaded page with {cur_url} url, "
+                   f"but expected the Trading platform in Live mode (timeout=15c)")
+            assert False, msg
+
+    def should_tab_be_selected(self, tab):
+        """Check that the tab is selected"""
+        allure.step(f"{datetime.now()}   Check that the tab is selected on the page")
+
+        print(f"\n{datetime.now()}   2. Checking that the tab is selected on the page =>")
+        if not self.element_is_selected(*tab):
+            msg = "tab is not selected on the current page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().assert_true_false(False, msg)
+        print(f"{datetime.now()}   => 'tab is selected on the current page")
+
+    def should_be_favourite_trading_instrument(self, test_link, trade_instrument):
+        """
+        Check that list of favourite instruments contain trade instrument
+        """
+        allure.step(f"{datetime.now()}   Check if Trading platform contains favourite trade instrument")
+
+        print(f"\n{datetime.now()}   trade_instrument = '{trade_instrument}'")
+
+        # определяем, какие вкладки открыты и избегаем ошибки пустого списка
+        print(f"\n{datetime.now()}   "
+              f"4.2. Check that Favourites List of Trading Platform is not empty =>")
+        favourites_list = self.elements_are_located(TradingPlatformWatchlistTabs.ITEM_TITLE, 5)
+        if len(favourites_list) == 0:
+            print(f"{datetime.now()}   => Trading Platform opened but Favourites List is empty")
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '15', self.link)
+            msg = ("Bug # . Trading platform was opened, "
+                   "but does not contain any trade instrument in the Favourites List")
+            Common().assert_true_false(False, msg)
+
+        # проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
+        print(f"{datetime.now()}   "
+              f"4.5. Check that the Top Charts List contain selected Trade instrument =>")
+        favourites = [i.text for i in self.driver.find_elements(*TradingPlatformWatchlistTabs.ITEM_TITLE)]
+        print(favourites)
+
+        if not (trade_instrument in favourites):
+            msg = "Trade instrument not is the Favourites List"
+            print(f"{datetime.now()}   {msg}")
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '18', self.link)
+            Common().pytest_fail(f"Bug # .   {msg}")
+        print(f"{datetime.now()}   => The Favourites List contains Trade instrument")
+
+        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Favourites List")
 
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
