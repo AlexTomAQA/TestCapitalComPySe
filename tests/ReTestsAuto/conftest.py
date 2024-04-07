@@ -15,14 +15,14 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # выбор необходимых языков для ретеста
 lang_list = [
         # "ar",
-        "cn",
+        # "cn",
         # "de",
         # "el",
         # "en",
         # "es",
         # "fr",
         # "hu",
-        # "it",
+        "it",
         # "nl",
         # "pl",
         # "ro",
@@ -33,9 +33,9 @@ lang_list = [
 # ===========================================================
 # выбор необходимых лицензий для ретеста
 country_list = [
-        "gb",  # United Kingdom - "FCA"
-        "de",  # Germany - "CYSEC"
-        "au",  # Australia - "ASIC"
+        # "gb",  # United Kingdom - "FCA"
+        # "de",  # Germany - "CYSEC"
+        # "au",  # Australia - "ASIC"
         "ae",  # United Arab Emirates - "SCB"
 ]
 

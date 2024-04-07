@@ -331,3 +331,6 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, "a[data-type='market_alerts']")
 
 
+class TradingPlatformWatchlistTabs:
+    FAVOURITES_TAB = (By.CSS_SELECTOR, "trade-category:nth-child(2)")
+    ITEM_TITLE = (By.CLASS_NAME, "market-title")
