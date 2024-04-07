@@ -606,3 +606,15 @@ class BasePage:
     def elements_are_visible(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
                                                 message=f"Can't see element by locator {locator}")
+
+    @HandleExcElementsDecorator()
+    def element_is_selected(self, method, locator):
+        """
+       Shows that element is selected By method and locator.
+
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+        """
+        return self.driver.find_element(method, locator).is_enabled()
+
