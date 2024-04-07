@@ -14,8 +14,8 @@ from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        "ar",
-        # "cn",
+        # "ar",
+        "cn",
         # "de",
         # "el",
         # "en",
