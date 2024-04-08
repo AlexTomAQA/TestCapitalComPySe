@@ -35,6 +35,7 @@ class TradingInstrumentTradeButton(BasePage):
         for i in item_list:
             self.element_click(d, i, cur_market)
             test_element = AssertClass(self.driver, cur_item_link)
+            print(f"\n{datetime.now()}   1. Arrange for 'Trading instrument' widget: '{cur_market}' market")
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(self.driver, cur_language, cur_item_link)
