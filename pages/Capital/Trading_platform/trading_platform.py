@@ -216,11 +216,12 @@ class TradingPlatform(BasePage):
         allure.step(f"{datetime.now()}   Check that the tab is selected on the page")
 
         print(f"\n{datetime.now()}   2. Checking that the tab is selected on the page =>")
-        if not self.element_is_selected(*tab):
+
+        if len(self.driver.find_elements(*tab)) == 0:
             msg = "tab is not selected on the current page"
             print(f"{datetime.now()}   => {msg}")
             Common().assert_true_false(False, msg)
-        print(f"{datetime.now()}   => 'tab is selected on the current page")
+        print(f"{datetime.now()}   => tab is selected on the current page")
 
     def should_be_favourite_trading_instrument(self, test_link, trade_instrument):
         """
