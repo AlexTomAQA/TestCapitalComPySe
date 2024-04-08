@@ -1,0 +1,85 @@
+{'width': 1280, 'height': 800}
+
+2024-04-08 10:52:10.580400   worker_id = master
+
+2024-04-08 10:52:10.580415   0. Allure grouping v4
+
+2024-04-08 10:52:10.580605   START PRECONDITIONS =>
+
+2024-04-08 10:52:10.580620   => Current URL - https://capital.com/trading/platform/
+
+2024-04-08 10:52:10.583632   => URL after prev. preconditions - https://capital.com/zh/amazon-com-inc-gu-jia
+
+2024-04-08 10:52:10.583654   => flag_of_bug - False
+
+2024-04-08 10:52:10.583673   => Windows size - {'width': 1280, 'height': 800}
+2024-04-08 10:52:10.590824   Set windows position at (0, 0) =>
+2024-04-08 10:52:10.693405   Set resolution 1280 * 800 =>
+2024-04-08 10:52:10.795981   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-08 10:52:11.833683   Капчи нет. Идем дальше
+
+2024-04-08 10:52:11.833777   Работа с куками
+
+2024-04-08 10:52:11.833791   Prev. country - 'au'
+2024-04-08 10:52:11.833801   Cur. country - 'au'
+2024-04-08 10:52:11.833810   => Country set to 'au'
+
+2024-04-08 10:52:11.833819   Prev. language - 'zh'
+2024-04-08 10:52:11.833828   Cur. language - 'zh'
+2024-04-08 10:52:11.833836   => Language is set to 'zh'
+
+2024-04-08 10:52:11.833845   Prev. role - 'NoAuth'
+2024-04-08 10:52:11.833854   Cur. role - 'NoAuth'
+2024-04-08 10:52:11.833862   => The 'NoAuth' role is set
+
+2024-04-08 10:52:11.836657   => Current URL - https://capital.com/trading/platform/
+
+2024-04-08 10:52:11.836679   => THE END PRECONDITIONS
+
+2024-04-08 10:52:11.836863   1. Arrange_v2
+2024-04-08 10:52:11.836881   current_page = https://capital.com/trading/platform/
+2024-04-08 10:52:11.839434   link = https://capital.com/zh/amazon-com-inc-gu-jia
+2024-04-08 10:52:11.842033   Current page URL = https://capital.com/trading/platform/
+2024-04-08 10:52:11.844539   self.link = https://capital.com/zh/amazon-com-inc-gu-jia
+2024-04-08 10:52:11.844553   link = https://capital.com/zh/amazon-com-inc-gu-jia
+2024-04-08 10:52:13.770073   => Loaded page https://capital.com/zh/amazon-com-inc-gu-jia
+2024-04-08 10:52:13.775529 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-08 10:52:13.787065   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-08 10:52:13.787107   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-08 10:52:13.791158   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-08 10:52:13.791322   2. Act_v2
+2024-04-08 10:52:13.791338   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-08 10:52:14.571631   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-08 10:52:14.586205   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-08 10:52:14.586247   Move focus to button [Go to platform] and click on =>
+2024-04-08 10:52:15.363913   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-08 10:52:15.936308 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-08 10:52:15.936615   3. Assert_Login_v0
+2024-04-08 10:52:15.936742   Check that 'Login' form is opened
+2024-04-08 10:52:19.100113   'Login' form not opened
+2024-04-08 10:52:19.100299   Check that new 'Login' form is opened
+2024-04-08 10:52:22.130645   => New 'Login' form not opened
+2024-04-08 10:52:22.133752   'Login' page not opened
+2024-04-08 10:52:25.224579   'Login' form on trading platform not opened
+2024-04-08 10:52:25.224781   Start step Check that [Sign up] form is opened
+2024-04-08 10:52:28.304410   'Sign up' form not opened
+2024-04-08 10:52:28.304597   Start step Check that new [Sign up] form is opened
+2024-04-08 10:52:31.393507   => new 'Sign up' form not opened
+2024-04-08 10:52:31.393711   Start method Check that [Sign up] page opened =>
+2024-04-08 10:52:32.397302   'Sign up' page not opened
+2024-04-08 10:52:32.397499   Check that [Sign up] form on trading platform opened =>
+2024-04-08 10:52:32.407621   => 'Sign up' form on trading platform page opened
+2024-04-08 10:52:32.407647   Assert SIGNUP_HEADER =>
+2024-04-08 10:52:32.416944   => SIGNUP_HEADER is OK
+2024-04-08 10:52:32.416970   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-08 10:52:32.426164   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-08 10:52:32.426191   Assert SIGNUP_REF_LOGIN =>
+2024-04-08 10:52:32.435308   => SIGNUP_REF_LOGIN is OK
+2024-04-08 10:52:32.435345   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.02.01_004-zh.au.NoAuth
+
+2024-04-08 10:52:32.435406   Проверка бага в таблице ретеста  =>
