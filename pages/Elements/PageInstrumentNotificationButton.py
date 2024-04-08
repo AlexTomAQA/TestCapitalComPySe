@@ -35,7 +35,7 @@ class PageInstrumentNotificationButton(BasePage):
             case "NoAuth":
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+                test_element.assert_trading_platform_v4(d, cur_item_link)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()} 1.Arrange_v0")
