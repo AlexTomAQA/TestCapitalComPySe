@@ -1,0 +1,75 @@
+{'width': 1280, 'height': 800}
+
+2024-04-08 10:43:01.476579   worker_id = master
+
+2024-04-08 10:43:01.476593   0. Allure grouping v4
+
+2024-04-08 10:43:01.476760   START PRECONDITIONS =>
+
+2024-04-08 10:43:01.476776   => Current URL - https://capital.com/zh/position-trading
+
+2024-04-08 10:43:01.479616   => URL after prev. preconditions - https://capital.com/trading/platform/
+
+2024-04-08 10:43:01.479630   => flag_of_bug - False
+
+2024-04-08 10:43:01.479641   => Windows size - {'width': 1280, 'height': 800}
+2024-04-08 10:43:01.480946   Set windows position at (0, 0) =>
+2024-04-08 10:43:01.583483   Set resolution 1280 * 800 =>
+2024-04-08 10:43:01.685924   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-08 10:43:02.715160   Капчи нет. Идем дальше
+
+2024-04-08 10:43:02.715249   Работа с куками
+
+2024-04-08 10:43:02.715263   Prev. country - 'de'
+2024-04-08 10:43:02.715273   Cur. country - 'de'
+2024-04-08 10:43:02.715282   => Country set to 'de'
+
+2024-04-08 10:43:02.715291   Prev. language - 'zh'
+2024-04-08 10:43:02.715300   Cur. language - 'zh'
+2024-04-08 10:43:02.715308   => Language is set to 'zh'
+
+2024-04-08 10:43:02.715317   Prev. role - 'NoAuth'
+2024-04-08 10:43:02.715325   Cur. role - 'NoAuth'
+2024-04-08 10:43:02.715334   => The 'NoAuth' role is set
+
+2024-04-08 10:43:02.718184   => Current URL - https://capital.com/zh/position-trading
+
+2024-04-08 10:43:02.718205   => THE END PRECONDITIONS
+
+2024-04-08 10:43:02.718381   1. Arrange_v0
+2024-04-08 10:43:02.718398   current_page = https://capital.com/zh/position-trading
+2024-04-08 10:43:02.721056   link = https://capital.com/zh/exponential-moving-average
+2024-04-08 10:43:02.723669   => current_url != cur_item_link
+2024-04-08 10:43:03.723790   Current page URL = https://capital.com/zh/position-trading
+2024-04-08 10:43:03.727149   self.link = https://capital.com/zh/exponential-moving-average
+2024-04-08 10:43:03.727164   link = https://capital.com/zh/exponential-moving-average
+2024-04-08 10:43:05.422913   => Loaded page https://capital.com/zh/exponential-moving-average
+2024-04-08 10:43:05.434514   BUTTON_START_TRADING scroll =>
+2024-04-08 10:43:05.438282   BUTTON_START_TRADING is visible? =>
+2024-04-08 10:43:05.449531   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-08 10:43:05.449679   2. Act_v0
+2024-04-08 10:43:05.449694   Start Click button [Start Trading] =>
+2024-04-08 10:43:05.455725   BUTTON_START_TRADING is clickable? =>
+2024-04-08 10:43:05.464474   BUTTON_START_TRADING click =>
+2024-04-08 10:43:05.495554   => BUTTON_START_TRADING clicked
+
+2024-04-08 10:43:05.495774   3. Assert_Login_v0
+2024-04-08 10:43:05.495860   Check that 'Login' form is opened
+2024-04-08 10:43:08.530078   'Login' form not opened
+2024-04-08 10:43:08.530249   Check that new 'Login' form is opened
+2024-04-08 10:43:11.597946   => New 'Login' form not opened
+2024-04-08 10:43:11.600683   'Login' page not opened
+2024-04-08 10:43:14.655927   'Login' form on trading platform not opened
+2024-04-08 10:43:14.656108   Start step Check that [Sign up] form is opened
+2024-04-08 10:43:14.665995   'Sign up' form opened
+2024-04-08 10:43:14.666018   Assert SIGNUP_HEADER =>
+2024-04-08 10:43:14.675082   Assert SIGNUP_REF_LOGIN =>
+2024-04-08 10:43:14.684037   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-08 10:43:14.692891   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-08 10:43:14.692912   => 'Signup' form is checked
+
+Bug: Bid:11.03.01.01_01-zh.de.NoAuth
+
+2024-04-08 10:43:14.692957   Проверка бага в таблице ретеста  =>
