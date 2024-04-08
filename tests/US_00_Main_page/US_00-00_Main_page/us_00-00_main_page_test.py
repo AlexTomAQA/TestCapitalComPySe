@@ -24,7 +24,7 @@ from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from pages.conditions import Conditions
-from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
 
 
 @pytest.mark.us_00_00
@@ -341,7 +341,7 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ContentStartTrading(d, main_page_link, bid)
+        test_element = TradingExperienceStartTradingButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in 'Steps trading' block")
