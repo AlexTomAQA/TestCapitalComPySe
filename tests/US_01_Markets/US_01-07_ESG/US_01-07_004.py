@@ -1,6 +1,9 @@
 import allure
 import pytest
 
+from pages.Elements.ContentBlockCreateAccountButton import ArticleCreateAccount
+from pages.Elements.OurCoursesBlockCreateAccountButton import ButtonCreateAccountBlockOurCourses
+from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStartTradingNowButton
 from pages.common import Common
 from pages.Menu.menu import MenuSection
@@ -36,6 +39,6 @@ class TestESG:
         page_menu = MenuSection(d, link)
         cur_page_url = page_menu.open_esg_markets_menu(d, cur_language, cur_country, link)
 
-        test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_url, bid)
+        test_element = BlockStepTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
 

@@ -1078,3 +1078,7 @@ class MenuUS0102MarketsShares:
     SUB_MENU_RU_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/kotirovki-aktsiy']")
     SUB_MENU_ZH_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-share-prices']")
     SUB_MENU_CN_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-share-prices']")
+
+
+class MenuUS0107MarketsESG:
+    SUB_MENU_EN_ESG = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/esg-rating']")
