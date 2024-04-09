@@ -58,8 +58,8 @@ def new_row_data(d, bid, bug_num, link, manual=False):
     # bid = "Bid:11.01.01.01_02-ru.au.NoAuth" or
     # bid = "Bid:01.05.00_01-nl.au.NoReg" or
     # bid = "Bid:01.05.01_04-nl.cn.Auth"
-    us = bid.split(':')[1].split('-')[0].split('_')[0]
-    tc = '_' + bid.split(':')[1].split('-')[0].split('_')[1]
+    us = "'" + bid.split(':')[1].split('-')[0].split('_')[0]
+    tc = "'_" + bid.split(':')[1].split('-')[0].split('_')[1]
     lng = bid.split(':')[1].split('-')[1].split('.')[0]
     ctr = bid.split(':')[1].split('-')[1].split('.')[1]
     rol = bid.split(':')[1].split('-')[1].split('.')[2]
@@ -138,7 +138,6 @@ def retest_table_fill(d="", bid="", bug_n="", link="", manual=False, new_layout=
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
     spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
-    print(f'\n gs = GoogleSheet() - создаем объект gs # 1: {gs}')
 
     if bid != "":
         bug_num = "'" + bug_n
