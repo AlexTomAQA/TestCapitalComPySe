@@ -1,0 +1,114 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 14:11:17.804493   worker_id = master
+
+2024-04-09 14:11:17.804514   0. Allure grouping v4
+
+2024-04-09 14:11:17.804796   START PRECONDITIONS =>
+
+2024-04-09 14:11:17.804817   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 14:11:17.804832   => flag_of_bug - False
+2024-04-09 14:11:17.804848   => Current URL - https://capital.com/zh/relative-strength-index
+2024-04-09 14:11:17.811601   Current page URL = https://capital.com/zh/relative-strength-index
+2024-04-09 14:11:17.813940   self.link = https://capital.com/zh
+2024-04-09 14:11:17.813954   driver.get(https://capital.com/zh) =>
+2024-04-09 14:11:19.752748   => Loaded page https://capital.com/zh
+
+2024-04-09 14:11:19.760081   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 14:11:19.761426   Set windows position at (0, 0) =>
+2024-04-09 14:11:19.863626   Set resolution 1280 * 800 =>
+2024-04-09 14:11:19.966071   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 14:11:21.011323   Капчи нет. Идем дальше
+
+2024-04-09 14:11:21.011413   Работа с куками =>
+
+2024-04-09 14:11:21.011427   => не требуется
+
+2024-04-09 14:11:21.011437   Prev. country - 'de'
+2024-04-09 14:11:21.011446   Cur. country - 'de'
+2024-04-09 14:11:21.011456   => Country set to 'de'
+
+2024-04-09 14:11:21.011465   Prev. language - 'zh'
+2024-04-09 14:11:21.011474   Cur. language - 'zh'
+2024-04-09 14:11:21.011482   => Language is set to 'zh'
+
+2024-04-09 14:11:21.011491   Prev. role - 'Auth'
+2024-04-09 14:11:21.011500   Cur. role - 'Auth'
+2024-04-09 14:11:21.011509   => The 'Auth' role is set
+
+2024-04-09 14:11:21.014267   => Current URL - https://capital.com/zh
+
+2024-04-09 14:11:21.014290   => THE END PRECONDITIONS
+
+2024-04-09 14:11:21.014472   1. Arrange_v4
+2024-04-09 14:11:21.014489   current_page = https://capital.com/zh
+2024-04-09 14:11:21.016912   link = https://capital.com/zh/relative-strength-index
+2024-04-09 14:11:21.019366   Current page URL = https://capital.com/zh
+2024-04-09 14:11:21.025057   self.link = https://capital.com/zh/relative-strength-index
+2024-04-09 14:11:21.025073   driver.get(https://capital.com/zh/relative-strength-index) =>
+2024-04-09 14:11:22.818794   => Loaded page https://capital.com/zh/relative-strength-index
+2024-04-09 14:11:22.823227   MOST_TRADED is present? =>
+2024-04-09 14:11:22.832003   => MOST_TRADED widget is present on this page
+2024-04-09 14:11:22.832035   => Found 5 elements in block MOST_TRADED
+2024-04-09 14:11:22.832045   Most traded widget is scroll =>
+2024-04-09 14:11:22.836077   => Most traded widget is scrolled into screen center
+
+2024-04-09 14:11:22.836122   Random indexes = [1]
+
+2024-04-09 14:11:22.836138   Testing Most traded 1 random element with 1 index
+
+2024-04-09 14:11:22.836284   2. Act_v4
+2024-04-09 14:11:22.836376   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 14:11:24.374728   '[Sign up]' form was not popped up
+2024-04-09 14:11:24.388002   instrument_title = 'US Tech 100'
+2024-04-09 14:11:24.393359   Selected Trade button on Most traded widget is scroll =>
+2024-04-09 14:11:24.396789   Selected Trade button click for 'US Tech 100' trading instrument =>
+2024-04-09 14:11:25.646082   => Selected Trade button clicked!
+
+2024-04-09 14:11:25.646402   3. Assert_v4
+
+2024-04-09 14:11:25.646427   
+2024-04-09 14:11:25.646571   Checking that the trading platform page has opened (v4) =>
+2024-04-09 14:11:25.653805   Checking way # 1 => 
+
+2024-04-09 14:11:25.653984   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-09 14:11:25.658653   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-09 14:11:25.658771   2. Checking that the LOGO is present on the page =>
+2024-04-09 14:11:28.933766   => 'capital*com' logo is present on the current page
+
+2024-04-09 14:11:28.933804   tpd = False
+
+2024-04-09 14:11:28.933817   4. Check that opened page with https://capital.com/trading/platform/charting/15839732013552836?side=buy&ids=85177791492548 url
+with selected corresponding trading instrument 'US Tech 100' =>
+
+2024-04-09 14:11:28.936823   trade_instrument = 'US Tech 100'
+
+2024-04-09 14:11:28.936835   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-09 14:11:28.946294   => Trading Platform opened in Chart mode
+
+2024-04-09 14:11:28.946325   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-09 14:11:28.953854   4.3. Check that opened trade instrument info page =>
+
+2024-04-09 14:11:28.965550   4.4. Check that opened Info page of selected 'US Tech 100' trade instrument =>
+2024-04-09 14:11:28.965585   Trading instrument - 'US Tech 100'
+2024-04-09 14:11:28.965596   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-09 14:11:28.984102   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:11.03.01.01_03-zh.de.Auth
+
+2024-04-09 14:11:28.984149   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f1c1e6930e0>
+
+2024-04-09 14:11:29.426079   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 14:11:29.717518   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 14:11:30.659212   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 14:11:30.841864   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 14:11:30.843118   Баг Bid:11.03.01.01_03-zh.de.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

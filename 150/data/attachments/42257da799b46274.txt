@@ -1,0 +1,115 @@
+
+
+
+Current tab - top_fallers
+{'width': 1280, 'height': 800}
+
+2024-04-09 13:46:52.793414   worker_id = master
+
+2024-04-09 13:46:52.793428   0. Allure grouping v4
+
+2024-04-09 13:46:52.793614   START PRECONDITIONS =>
+
+2024-04-09 13:46:52.793630   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 13:46:52.793640   => flag_of_bug - True
+2024-04-09 13:46:52.793651   => Current URL - https://capital.com/trading/platform/charting/18773302138052?side=buy&ids=85177791492548
+2024-04-09 13:46:52.800039   Current page URL = https://capital.com/trading/platform/charting/18773302138052?side=buy&ids=85177791492548
+2024-04-09 13:46:52.802687   self.link = https://capital.com/zh
+2024-04-09 13:46:52.802701   driver.get(https://capital.com/zh) =>
+2024-04-09 13:46:54.884579   => Loaded page https://capital.com/zh
+
+2024-04-09 13:46:54.888838   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 13:46:54.890407   Set windows position at (0, 0) =>
+2024-04-09 13:46:54.992667   Set resolution 1280 * 800 =>
+2024-04-09 13:46:55.095172   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 13:46:56.144535   Капчи нет. Идем дальше
+
+2024-04-09 13:46:56.144628   Работа с куками =>
+
+2024-04-09 13:46:56.144642   => не требуется
+
+2024-04-09 13:46:56.144652   Prev. country - 'de'
+2024-04-09 13:46:56.144661   Cur. country - 'de'
+2024-04-09 13:46:56.144670   => Country set to 'de'
+
+2024-04-09 13:46:56.144679   Prev. language - 'zh'
+2024-04-09 13:46:56.144688   Cur. language - 'zh'
+2024-04-09 13:46:56.144697   => Language is set to 'zh'
+
+2024-04-09 13:46:56.144705   Prev. role - 'Auth'
+2024-04-09 13:46:56.144714   Cur. role - 'Auth'
+2024-04-09 13:46:56.144723   => The 'Auth' role is set
+
+2024-04-09 13:46:56.154744   => Current URL - https://capital.com/zh
+
+2024-04-09 13:46:56.154770   => THE END PRECONDITIONS
+
+2024-04-09 13:46:56.154829   1. Arrange for Indices finance instrument and "top_fallers" tab
+2024-04-09 13:46:56.154843   current_page = https://capital.com/zh
+2024-04-09 13:46:56.157334   link = https://capital.com/zh/trade-dax
+2024-04-09 13:46:56.159736   Current page URL = https://capital.com/zh
+2024-04-09 13:46:56.162138   self.link = https://capital.com/zh/trade-dax
+2024-04-09 13:46:56.162151   driver.get(https://capital.com/zh/trade-dax) =>
+2024-04-09 13:46:58.323799   => Loaded page https://capital.com/zh/trade-dax
+2024-04-09 13:46:58.328505   IS CFDs TABLE visible on the page? =>
+2024-04-09 13:46:58.334140   => CFDs TABLE is visible on the page!
+
+2024-04-09 13:46:58.334179   IS TAB "top_fallers" visible on the page? =>
+2024-04-09 13:46:58.342203   => TAB "top_fallers" is visible on the page!
+
+2024-04-09 13:46:58.342244   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-04-09 13:46:58.350644   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-04-09 13:46:58.350670   Start Click button TAB "top_fallers" =>
+2024-04-09 13:46:58.456508   => End Click button TAB "top_fallers"
+
+2024-04-09 13:46:58.456566   Start Click button [Show all] on the TAB "top_fallers" =>
+2024-04-09 13:46:58.516758   => End Click button [Show all] on the TAB "top_fallers"
+
+2024-04-09 13:46:58.516801   Start find two random buttons [Buy] on the TAB "top_fallers"=>
+2024-04-09 13:46:58.525379   => End find two random buttons [Buy] on the TAB "top_fallers"
+
+2024-04-09 13:46:58.525551   2. Act for Indices finance instrument and "top_fallers" tab
+2024-04-09 13:46:58.545323   Start click button [Buy] =>
+2024-04-09 13:46:58.586555   => BUTTON_TRADING_BUY with item 323003015517522 clicked!
+
+
+2024-04-09 13:46:58.586808   3. Assert_v4
+
+2024-04-09 13:46:58.586827   
+2024-04-09 13:46:58.586930   Checking that the trading platform page has opened (v4) =>
+2024-04-09 13:46:59.095467   Checking way # 1 => 
+
+2024-04-09 13:46:59.095650   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-09 13:46:59.098465   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-09 13:46:59.098545   2. Checking that the LOGO is present on the page =>
+2024-04-09 13:47:00.827229   => 'capital*com' logo is present on the current page
+
+2024-04-09 13:47:00.827275   tpd = False
+
+2024-04-09 13:47:00.827288   4. Check that opened page with https://capital.com/trading/platform/charting/323003015517522?side=buy&ids=85177791492548 url
+with selected corresponding trading instrument '323003015517522' =>
+
+2024-04-09 13:47:00.830635   trade_instrument = '323003015517522'
+
+2024-04-09 13:47:00.830655   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-09 13:47:01.148887   => Trading Platform opened in Chart mode
+
+2024-04-09 13:47:01.148934   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-09 13:47:01.153775   4.3. Check that opened trade instrument info page =>
+
+2024-04-09 13:47:01.158542   4.4. Check that opened Info page of selected '323003015517522' trade instrument =>
+2024-04-09 13:47:01.158574   Trading instrument - '323003015517522'
+2024-04-09 13:47:01.158590   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-09 13:47:01.183759   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: 
+
+2024-04-09 13:47:01.183832   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f88703974a0>
+
+2024-04-09 13:47:01.188580  Для бага: Bid-17 необходимо использовать проверку на ретест!!!

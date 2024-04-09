@@ -1,0 +1,103 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 13:16:37.525693   worker_id = master
+
+2024-04-09 13:16:37.525707   0. Allure grouping v4
+
+2024-04-09 13:16:37.525917   START PRECONDITIONS =>
+
+2024-04-09 13:16:37.525935   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 13:16:37.525945   => flag_of_bug - False
+2024-04-09 13:16:37.525955   => Current URL - https://capital.com/zh/trade-canopygrowth
+2024-04-09 13:16:37.530846   Current page URL = https://capital.com/zh/trade-canopygrowth
+2024-04-09 13:16:37.533127   self.link = https://capital.com/zh
+2024-04-09 13:16:37.533141   driver.get(https://capital.com/zh) =>
+2024-04-09 13:16:39.490859   => Loaded page https://capital.com/zh
+
+2024-04-09 13:16:39.495429   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 13:16:39.496787   Set windows position at (0, 0) =>
+2024-04-09 13:16:39.599039   Set resolution 1280 * 800 =>
+2024-04-09 13:16:39.701403   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 13:16:40.750847   Капчи нет. Идем дальше
+
+2024-04-09 13:16:40.750943   Работа с куками =>
+
+2024-04-09 13:16:40.750958   => не требуется
+
+2024-04-09 13:16:40.750967   Prev. country - 'de'
+2024-04-09 13:16:40.750977   Cur. country - 'de'
+2024-04-09 13:16:40.750986   => Country set to 'de'
+
+2024-04-09 13:16:40.750994   Prev. language - 'zh'
+2024-04-09 13:16:40.751003   Cur. language - 'zh'
+2024-04-09 13:16:40.751012   => Language is set to 'zh'
+
+2024-04-09 13:16:40.751021   Prev. role - 'NoAuth'
+2024-04-09 13:16:40.751030   Cur. role - 'NoAuth'
+2024-04-09 13:16:40.751038   => The 'NoAuth' role is set
+
+2024-04-09 13:16:40.756448   => Current URL - https://capital.com/zh
+
+2024-04-09 13:16:40.756479   => THE END PRECONDITIONS
+
+2024-04-09 13:16:40.756542   1. Arrange
+2024-04-09 13:16:40.756556   current_page = https://capital.com/zh
+2024-04-09 13:16:40.759138   link = https://capital.com/zh/trade-canopygrowth
+
+2024-04-09 13:16:40.761573   Open page: https://capital.com/zh/trade-canopygrowth
+2024-04-09 13:16:40.761598   Current page URL = https://capital.com/zh
+2024-04-09 13:16:40.764131   self.link = https://capital.com/zh/trade-canopygrowth
+2024-04-09 13:16:40.764145   driver.get(https://capital.com/zh/trade-canopygrowth) =>
+2024-04-09 13:16:42.680669   => Loaded page https://capital.com/zh/trade-canopygrowth
+2024-04-09 13:16:42.685203   BUTTON_ON_HOR_BANNER is present? =>
+2024-04-09 13:16:42.693473   => BUTTON_ON_HOR_BANNER is present on this page
+2024-04-09 13:16:42.693498   BUTTON_ON_HOR_BANNER scroll =>
+2024-04-09 13:16:42.740571   BUTTON_ON_HOR_BANNER is visible? =>
+2024-04-09 13:16:42.768444   => BUTTON_ON_HOR_BANNER is visible on the page!
+2024-04-09 13:16:42.768668   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 13:16:44.304759   '[Sign up]' form was not popped up
+
+2024-04-09 13:16:44.304950   2. Act
+
+2024-04-09 13:16:44.320472   => Button on Horizontal banner is clickable
+
+2024-04-09 13:16:44.325214   data_id = 430
+2024-04-09 13:16:44.358331   => BUTTON_ON_HOR_BANNER clicked!
+
+2024-04-09 13:16:44.358609   3. Assert_Login_v0
+2024-04-09 13:16:44.358702   Check that 'Login' form is opened
+2024-04-09 13:16:47.406605   'Login' form not opened
+2024-04-09 13:16:47.406789   Check that new 'Login' form is opened
+2024-04-09 13:16:50.497349   => New 'Login' form not opened
+2024-04-09 13:16:50.500305   'Login' page not opened
+2024-04-09 13:16:53.577964   'Login' form on trading platform not opened
+2024-04-09 13:16:53.578160   Start step Check that [Sign up] form is opened
+2024-04-09 13:16:53.588085   'Sign up' form opened
+2024-04-09 13:16:53.588110   Assert SIGNUP_HEADER =>
+2024-04-09 13:16:53.597443   Assert SIGNUP_REF_LOGIN =>
+2024-04-09 13:16:53.606836   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-09 13:16:53.616081   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-09 13:16:53.616103   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_09-zh.de.NoAuth
+
+2024-04-09 13:16:53.616164   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f8ee7edf6b0>
+
+2024-04-09 13:16:54.010296   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:16:54.291835   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:16:55.363442   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:16:55.549358   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:16:55.549447   Баг Bid:11.02.02.01_09-zh.de.NoAuth уже существует, но у него изменился тип с  на 05
+
+2024-04-09 13:16:55.549617   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:16:55.747924   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:16:55.749124   Баг Bid:11.02.02.01_09-zh.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

@@ -1,0 +1,128 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 13:40:45.532868   worker_id = master
+
+2024-04-09 13:40:45.532882   0. Allure grouping v4
+
+2024-04-09 13:40:45.533073   START PRECONDITIONS =>
+
+2024-04-09 13:40:45.533089   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 13:40:45.533098   => flag_of_bug - False
+2024-04-09 13:40:45.533108   => Current URL - https://capital.com/zh/trade-indices
+2024-04-09 13:40:45.538120   Current page URL = https://capital.com/zh/trade-indices
+2024-04-09 13:40:45.540428   self.link = https://capital.com/zh
+2024-04-09 13:40:45.540442   driver.get(https://capital.com/zh) =>
+2024-04-09 13:40:47.599359   => Loaded page https://capital.com/zh
+
+2024-04-09 13:40:47.603420   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 13:40:47.604753   Set windows position at (0, 0) =>
+2024-04-09 13:40:47.707115   Set resolution 1280 * 800 =>
+2024-04-09 13:40:47.809610   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 13:40:48.863941   Капчи нет. Идем дальше
+
+2024-04-09 13:40:48.864041   Работа с куками =>
+
+2024-04-09 13:40:48.864058   => не требуется
+
+2024-04-09 13:40:48.864070   Prev. country - 'de'
+2024-04-09 13:40:48.864082   Cur. country - 'de'
+2024-04-09 13:40:48.864093   => Country set to 'de'
+
+2024-04-09 13:40:48.864104   Prev. language - 'zh'
+2024-04-09 13:40:48.864114   Cur. language - 'zh'
+2024-04-09 13:40:48.864125   => Language is set to 'zh'
+
+2024-04-09 13:40:48.864136   Prev. role - 'Auth'
+2024-04-09 13:40:48.864147   Cur. role - 'Auth'
+2024-04-09 13:40:48.864157   => The 'Auth' role is set
+
+2024-04-09 13:40:48.867474   => Current URL - https://capital.com/zh
+
+2024-04-09 13:40:48.867500   => THE END PRECONDITIONS
+
+2024-04-09 13:40:48.867694   1. Cur URL = https://capital.com/zh
+
+2024-04-09 13:40:48.870980   2. Link = https://capital.com/zh
+2024-04-09 13:40:48.870998   current_page = https://capital.com/zh
+2024-04-09 13:40:48.873463   link = https://capital.com/zh
+2024-04-09 13:40:49.387952   => Education menu is present in DOM
+2024-04-09 13:40:49.393132   => Education menu is visible
+2024-04-09 13:40:50.664429   => Focus moved to Education menu
+2024-04-09 13:40:52.829620   => Focus moved to 'capital*com' logo
+
+2024-04-09 13:40:52.829668   3. Cur URL = https://capital.com/zh/trade-indices
+
+2024-04-09 13:40:52.836098   1. Arrange_v4
+2024-04-09 13:40:52.836127   current_page = https://capital.com/zh/trade-indices
+2024-04-09 13:40:52.838618   link = https://capital.com/zh/trade-indices
+2024-04-09 13:40:52.841015   MOST_TRADED is present? =>
+2024-04-09 13:40:52.850790   => MOST_TRADED widget is present on this page
+2024-04-09 13:40:52.850830   => Found 5 elements in block MOST_TRADED
+2024-04-09 13:40:52.850843   Most traded widget is scroll =>
+2024-04-09 13:40:52.854267   => Most traded widget is scrolled into screen center
+
+2024-04-09 13:40:52.854313   Random indexes = [3]
+
+2024-04-09 13:40:52.854328   Testing Most traded 1 random element with 3 index
+
+2024-04-09 13:40:52.854479   2. Act_v4
+2024-04-09 13:40:52.854575   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 13:40:54.379066   '[Sign up]' form was not popped up
+2024-04-09 13:40:54.392220   instrument_title = 'US 500'
+2024-04-09 13:40:54.397466   Selected Trade button on Most traded widget is scroll =>
+2024-04-09 13:40:54.401933   Selected Trade button click for 'US 500' trading instrument =>
+2024-04-09 13:40:56.368937   => Selected Trade button clicked!
+
+2024-04-09 13:40:56.369228   3. Assert_v4
+
+2024-04-09 13:40:56.369252   
+2024-04-09 13:40:56.369380   Checking that the trading platform page has opened (v4) =>
+2024-04-09 13:40:56.375117   Checking way # 1 => 
+
+2024-04-09 13:40:56.375231   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-09 13:40:56.378622   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-09 13:40:56.378710   2. Checking that the LOGO is present on the page =>
+2024-04-09 13:40:58.174203   => 'capital*com' logo is present on the current page
+
+2024-04-09 13:40:58.174240   tpd = False
+
+2024-04-09 13:40:58.174261   4. Check that opened page with https://capital.com/trading/platform/charting/21680337780298948?side=buy&ids=85177791492548 url
+with selected corresponding trading instrument 'US 500' =>
+
+2024-04-09 13:40:58.178391   trade_instrument = 'US 500'
+
+2024-04-09 13:40:58.178404   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-09 13:40:58.694616   => Trading Platform opened in Chart mode
+
+2024-04-09 13:40:58.694671   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-09 13:40:58.715775   4.3. Check that opened trade instrument info page =>
+
+2024-04-09 13:40:58.738804   4.4. Check that opened Info page of selected 'US 500' trade instrument =>
+2024-04-09 13:40:58.738851   Trading instrument - 'US 500'
+2024-04-09 13:40:58.738865   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-09 13:40:58.770837   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:11.02.06.00_03-zh.de.Auth
+
+2024-04-09 13:40:58.770899   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7fb6790e10a0>
+
+2024-04-09 13:40:59.358592   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:40:59.650279   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:41:00.580498   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:41:00.827480   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:41:00.827561   Баг Bid:11.02.06.00_03-zh.de.Auth уже существует, но у него изменился тип с  на 17
+
+2024-04-09 13:41:00.827741   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 13:41:01.017244   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 13:41:01.018761   Баг Bid:11.02.06.00_03-zh.de.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
