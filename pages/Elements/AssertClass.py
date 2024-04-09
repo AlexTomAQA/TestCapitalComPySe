@@ -163,6 +163,7 @@ class AssertClass(BasePage):
 
         print(f"\n{datetime.now()}   3. Assert_v4")
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
+        print(f"\n{datetime.now()}   ")
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
 
     @allure.step('Checking that "Trading platform" page opened and the element is selected')
