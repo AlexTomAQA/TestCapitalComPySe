@@ -332,5 +332,5 @@ class PageTradingInstrumentMarketsLocators:
 
 
 class TradingPlatformWatchlistTabs:
-    FAVOURITES_TAB = (By.CSS_SELECTOR, "trade-category:nth-of-type(2) > .selected")
+    FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
     ITEM_TITLE = (By.CLASS_NAME, "market-title")
