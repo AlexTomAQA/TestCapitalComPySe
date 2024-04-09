@@ -1,0 +1,79 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 11:44:50.353683   worker_id = master
+
+2024-04-09 11:44:50.353697   0. Allure grouping v4
+
+2024-04-09 11:44:50.353877   START PRECONDITIONS =>
+
+2024-04-09 11:44:50.353892   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 11:44:50.353902   => flag_of_bug - False
+2024-04-09 11:44:50.353913   => Current URL - https://capital.com/zh/trade-ftsemib
+2024-04-09 11:44:50.359375   Current page URL = https://capital.com/zh/trade-ftsemib
+2024-04-09 11:44:50.361938   self.link = https://capital.com/zh
+2024-04-09 11:44:50.361952   driver.get(https://capital.com/zh) =>
+2024-04-09 11:44:52.372510   => Loaded page https://capital.com/zh
+
+2024-04-09 11:44:52.379068   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 11:44:52.380521   Set windows position at (0, 0) =>
+2024-04-09 11:44:52.482820   Set resolution 1280 * 800 =>
+2024-04-09 11:44:52.585503   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 11:44:53.616125   Капчи нет. Идем дальше
+
+2024-04-09 11:44:53.616213   Работа с куками =>
+
+2024-04-09 11:44:53.616228   => не требуется
+
+2024-04-09 11:44:53.616237   Prev. country - 'ae'
+2024-04-09 11:44:53.616246   Cur. country - 'ae'
+2024-04-09 11:44:53.616255   => Country set to 'ae'
+
+2024-04-09 11:44:53.616264   Prev. language - 'zh'
+2024-04-09 11:44:53.616273   Cur. language - 'zh'
+2024-04-09 11:44:53.616282   => Language is set to 'zh'
+
+2024-04-09 11:44:53.616290   Prev. role - 'NoAuth'
+2024-04-09 11:44:53.616299   Cur. role - 'NoAuth'
+2024-04-09 11:44:53.616307   => The 'NoAuth' role is set
+
+2024-04-09 11:44:53.618939   => Current URL - https://capital.com/zh
+
+2024-04-09 11:44:53.618962   => THE END PRECONDITIONS
+
+2024-04-09 11:44:53.619140   1. Arrange_v0
+2024-04-09 11:44:53.619157   current_page = https://capital.com/zh
+2024-04-09 11:44:53.621538   link = https://capital.com/zh/trade-hangseng
+2024-04-09 11:44:53.623965   => current_url != cur_item_link
+2024-04-09 11:44:54.624072   Current page URL = https://capital.com/zh
+2024-04-09 11:44:54.630404   self.link = https://capital.com/zh/trade-hangseng
+2024-04-09 11:44:54.630422   driver.get(https://capital.com/zh/trade-hangseng) =>
+2024-04-09 11:44:56.612817   => Loaded page https://capital.com/zh/trade-hangseng
+2024-04-09 11:44:56.625151   BUTTON_START_TRADING scroll =>
+2024-04-09 11:44:56.630014   BUTTON_START_TRADING is visible? =>
+2024-04-09 11:44:56.647802   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-09 11:44:56.647967   2. Act_v0
+2024-04-09 11:44:56.647982   Start Click button [Start Trading] =>
+2024-04-09 11:44:56.653136   BUTTON_START_TRADING is clickable? =>
+2024-04-09 11:44:56.664159   BUTTON_START_TRADING click =>
+2024-04-09 11:44:56.696517   => BUTTON_START_TRADING clicked
+
+2024-04-09 11:44:56.696737   3. Assert_Login_v0
+2024-04-09 11:44:56.696819   Check that 'Login' form is opened
+2024-04-09 11:44:59.764220   'Login' form not opened
+2024-04-09 11:44:59.764409   Check that new 'Login' form is opened
+2024-04-09 11:45:02.856013   => New 'Login' form not opened
+2024-04-09 11:45:02.858850   'Login' page not opened
+2024-04-09 11:45:05.928626   'Login' form on trading platform not opened
+2024-04-09 11:45:05.928820   Start step Check that [Sign up] form is opened
+2024-04-09 11:45:05.938696   'Sign up' form opened
+2024-04-09 11:45:05.938728   Assert SIGNUP_HEADER =>
+2024-04-09 11:45:05.949845   Assert SIGNUP_REF_LOGIN =>
+2024-04-09 11:45:05.959667   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-09 11:45:05.969373   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-09 11:45:05.969405   => 'Signup' form is checked
+
+Bug: Bid:11.02.06.01_01-zh.ae.NoAuth
+
+2024-04-09 11:45:05.969476   Проверка бага в таблице ретеста  =>
