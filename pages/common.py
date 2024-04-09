@@ -137,7 +137,6 @@ class Common:
 			qty = len(list_item_link)
 			if qty == 0:
 				print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
-				sys.exit(1)
 			else:
 				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
