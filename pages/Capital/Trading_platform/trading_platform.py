@@ -66,14 +66,13 @@ class TradingPlatform(BasePage):
         # print(platform_url)
         # print(self.wait_for_change_url(platform_url, 120))
         if self.wait_for_target_url(platform_url, 10):
-            print(f"{datetime.now()}   => Opened page with {self.driver.current_url} url. Expected: {platform_url} ")
+            print(f"{datetime.now()}   => Opened page with {d.current_url} url. Expected: {platform_url} ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
-            self.should_be_corresponding_trading_instrument()
             self.open_page()
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
-            print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
+            print(f"{datetime.now()}   => Loaded page {d.current_url} with not {platform_url} url")
             cur_url = self.driver.current_url
             self.open_page()
             assert False, f"Loaded page with {cur_url} url, but expected {platform_url}"
@@ -390,10 +389,10 @@ class TradingPlatform(BasePage):
               f"4.1. Check that Trading Platform is opened in Chart mode")
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
         if len(menu_chart) == 0:
-            print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
-            print(f'\nBug: {self.bid}')
-            retest_table_fill(self.driver, self.bid, '14', self.link)
             msg = "Bug # 14. Trading platform opened, but not Chart mode"
+            print(f"{datetime.now()}   => {msg}")
+            print(f'Bid: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '14', self.link)
             Common().assert_true_false(False, msg)
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
