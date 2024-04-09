@@ -65,8 +65,6 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        # test_title = ("00", "Main Page",
-        #               ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
