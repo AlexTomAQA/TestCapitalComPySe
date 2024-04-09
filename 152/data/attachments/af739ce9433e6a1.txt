@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 19:15:49.595138   worker_id = master
+
+2024-04-09 19:15:49.595153   0. Allure grouping v4
+
+2024-04-09 19:15:49.595348   START PRECONDITIONS =>
+
+2024-04-09 19:15:49.595363   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 19:15:49.595373   => flag_of_bug - True
+2024-04-09 19:15:49.595383   => Current URL - https://capital.com/zh/what-is-cfd-trading
+2024-04-09 19:15:49.600756   Current page URL = https://capital.com/zh/what-is-cfd-trading
+2024-04-09 19:15:49.603352   self.link = https://capital.com/zh
+2024-04-09 19:15:49.603366   driver.get(https://capital.com/zh) =>
+2024-04-09 19:15:51.410709   => Loaded page https://capital.com/zh
+
+2024-04-09 19:15:51.415100   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 19:15:51.416425   Set windows position at (0, 0) =>
+2024-04-09 19:15:51.518361   Set resolution 1280 * 800 =>
+2024-04-09 19:15:51.620280   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 19:15:52.661980   Капчи нет. Идем дальше
+
+2024-04-09 19:15:52.662074   Работа с куками =>
+
+2024-04-09 19:15:52.662088   => не требуется
+
+2024-04-09 19:15:52.662098   Prev. country - 'ae'
+2024-04-09 19:15:52.662108   Cur. country - 'ae'
+2024-04-09 19:15:52.662117   => Country set to 'ae'
+
+2024-04-09 19:15:52.662125   Prev. language - 'zh'
+2024-04-09 19:15:52.662134   Cur. language - 'zh'
+2024-04-09 19:15:52.662143   => Language is set to 'zh'
+
+2024-04-09 19:15:52.662152   Prev. role - 'NoAuth'
+2024-04-09 19:15:52.662160   Cur. role - 'NoAuth'
+2024-04-09 19:15:52.662169   => The 'NoAuth' role is set
+
+2024-04-09 19:15:52.664953   => Current URL - https://capital.com/zh
+
+2024-04-09 19:15:52.664976   => THE END PRECONDITIONS
+
+2024-04-09 19:15:52.667594   START Open "Education" menu, "CFD trading guide" submenu =>
+
+2024-04-09 19:15:52.667614   1. Cur URL = https://capital.com/zh
+
+2024-04-09 19:15:52.670032   2. Link = https://capital.com/zh
+2024-04-09 19:15:52.670047   current_page = https://capital.com/zh
+2024-04-09 19:15:52.672505   link = https://capital.com/zh
+2024-04-09 19:15:53.183181   => Education menu is present in DOM
+2024-04-09 19:15:53.188054   => Education menu is visible
+2024-04-09 19:15:54.457546   => Focus moved to Education menu
+2024-04-09 19:15:56.005232   => CFD trading guide submenu focus moved and clicked
+2024-04-09 19:15:56.303298   => Focus moved to 'capital*com' logo
+
+2024-04-09 19:15:56.303345   3. Cur URL = https://capital.com/zh/what-is-cfd-trading
+
+2024-04-09 19:15:56.310889   1. Arrange_v0
+2024-04-09 19:15:56.310914   current_page = https://capital.com/zh/what-is-cfd-trading
+2024-04-09 19:15:56.313363   link = https://capital.com/zh/what-is-cfd-trading
+2024-04-09 19:15:56.324724   => BUTTON_TRY_DEMO is present on this page
+2024-04-09 19:15:56.324748   BUTTON_TRY_DEMO scroll =>
+2024-04-09 19:15:56.328046   BUTTON_TRY_DEMO is visible? =>
+2024-04-09 19:15:56.342794   => BUTTON_TRY_DEMO is visible on this page
+
+2024-04-09 19:15:56.342994   2. Act_v0
+2024-04-09 19:15:56.352236   BUTTON_TRY_DEMO is clickable? =>
+2024-04-09 19:15:56.376341   => BUTTON_TRY_DEMO clicked!
+
+2024-04-09 19:15:56.376560   3. Assert_Login_v0
+2024-04-09 19:15:56.376654   Check that 'Login' form is opened
+2024-04-09 19:15:59.460328   'Login' form not opened
+2024-04-09 19:15:59.460516   Check that new 'Login' form is opened
+2024-04-09 19:16:02.550075   => New 'Login' form not opened
+2024-04-09 19:16:02.552907   'Login' page not opened
+2024-04-09 19:16:05.608681   'Login' form on trading platform not opened
+2024-04-09 19:16:05.608904   Start step Check that [Sign up] form is opened
+2024-04-09 19:16:05.619092   'Sign up' form opened
+2024-04-09 19:16:05.619115   Assert SIGNUP_HEADER =>
+2024-04-09 19:16:05.628278   Assert SIGNUP_REF_LOGIN =>
+2024-04-09 19:16:05.637579   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-09 19:16:05.646859   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-09 19:16:05.646882   => 'Signup' form is checked
+
+Bug: Bid:11.01.03.00_02-zh.ae.NoAuth
+
+2024-04-09 19:16:05.646934   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f89383a29c0>
+
+2024-04-09 19:16:06.026783   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 19:16:06.226474   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 19:16:07.109419   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 19:16:07.286497   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 19:16:07.287733   Баг Bid:11.01.03.00_02-zh.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

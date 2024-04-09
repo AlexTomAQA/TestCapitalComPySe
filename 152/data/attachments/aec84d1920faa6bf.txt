@@ -1,0 +1,106 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 19:34:55.882752   worker_id = master
+
+2024-04-09 19:34:55.882766   0. Allure grouping v4
+
+2024-04-09 19:34:55.882958   START PRECONDITIONS =>
+
+2024-04-09 19:34:55.882974   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 19:34:55.882984   => flag_of_bug - False
+2024-04-09 19:34:55.882994   => Current URL - https://capital.com/zh/trade-stocks
+2024-04-09 19:34:55.888271   Current page URL = https://capital.com/zh/trade-stocks
+2024-04-09 19:34:55.890759   self.link = https://capital.com/zh
+2024-04-09 19:34:55.890773   driver.get(https://capital.com/zh) =>
+2024-04-09 19:34:57.759906   => Loaded page https://capital.com/zh
+
+2024-04-09 19:34:57.765224   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 19:34:57.766549   Set windows position at (0, 0) =>
+2024-04-09 19:34:57.868696   Set resolution 1280 * 800 =>
+2024-04-09 19:34:57.970810   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 19:34:58.997124   Капчи нет. Идем дальше
+
+2024-04-09 19:34:58.997218   Работа с куками =>
+
+2024-04-09 19:34:58.997233   => не требуется
+
+2024-04-09 19:34:58.997242   Prev. country - 'ae'
+2024-04-09 19:34:58.997252   Cur. country - 'ae'
+2024-04-09 19:34:58.997261   => Country set to 'ae'
+
+2024-04-09 19:34:58.997270   Prev. language - 'zh'
+2024-04-09 19:34:58.997278   Cur. language - 'zh'
+2024-04-09 19:34:58.997287   => Language is set to 'zh'
+
+2024-04-09 19:34:58.997296   Prev. role - 'NoAuth'
+2024-04-09 19:34:58.997305   Cur. role - 'NoAuth'
+2024-04-09 19:34:58.997313   => The 'NoAuth' role is set
+
+2024-04-09 19:34:58.999954   => Current URL - https://capital.com/zh
+
+2024-04-09 19:34:58.999975   => THE END PRECONDITIONS
+
+2024-04-09 19:34:59.000148   1. Cur URL = https://capital.com/zh
+
+2024-04-09 19:34:59.002606   2. Link = https://capital.com/zh
+2024-04-09 19:34:59.002622   current_page = https://capital.com/zh
+2024-04-09 19:34:59.005078   link = https://capital.com/zh
+2024-04-09 19:34:59.513889   => Education menu is present in DOM
+2024-04-09 19:34:59.518819   => Education menu is visible
+2024-04-09 19:35:00.795188   => Focus moved to Education menu
+
+
+2024-04-09 19:35:02.624106   => Shares trading sub-menu clicked
+2024-04-09 19:35:02.897923   => Focus moved to 'capital*com' logo
+
+2024-04-09 19:35:02.897969   3. Cur URL = https://capital.com/zh/trade-stocks
+
+2024-04-09 19:35:02.903270   1. Arrange
+2024-04-09 19:35:02.903297   current_page = https://capital.com/zh/trade-stocks
+2024-04-09 19:35:02.905803   link = https://capital.com/zh/trade-stocks
+2024-04-09 19:35:02.908207   BUTTON_ON_HOR_BANNER is present? =>
+2024-04-09 19:35:02.918323   => BUTTON_ON_HOR_BANNER is present on this page
+2024-04-09 19:35:02.918350   BUTTON_ON_HOR_BANNER scroll =>
+2024-04-09 19:35:02.921760   BUTTON_ON_HOR_BANNER is visible? =>
+2024-04-09 19:35:03.031436   => BUTTON_ON_HOR_BANNER is visible on the page!
+2024-04-09 19:35:03.031634   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 19:35:04.562840   '[Sign up]' form was not popped up
+
+2024-04-09 19:35:04.563023   2. Act
+
+2024-04-09 19:35:04.577888   => Button on Horizontal banner is clickable
+
+2024-04-09 19:35:04.582511   data_id = 427
+2024-04-09 19:35:04.615214   => BUTTON_ON_HOR_BANNER clicked!
+
+2024-04-09 19:35:04.615433   3. Assert_Login_v0
+2024-04-09 19:35:04.615519   Check that 'Login' form is opened
+2024-04-09 19:35:07.706256   'Login' form not opened
+2024-04-09 19:35:07.706438   Check that new 'Login' form is opened
+2024-04-09 19:35:10.783778   => New 'Login' form not opened
+2024-04-09 19:35:10.786542   'Login' page not opened
+2024-04-09 19:35:13.850707   'Login' form on trading platform not opened
+2024-04-09 19:35:13.850901   Start step Check that [Sign up] form is opened
+2024-04-09 19:35:13.860884   'Sign up' form opened
+2024-04-09 19:35:13.860908   Assert SIGNUP_HEADER =>
+2024-04-09 19:35:13.870561   Assert SIGNUP_REF_LOGIN =>
+2024-04-09 19:35:13.879979   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-09 19:35:13.889266   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-09 19:35:13.889289   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.00_09-zh.ae.NoAuth
+
+2024-04-09 19:35:13.889354   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6e496c1400>
+
+2024-04-09 19:35:14.311356   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 19:35:14.498505   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 19:35:15.460908   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 19:35:15.637365   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 19:35:15.638919   Баг Bid:11.02.02.00_09-zh.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
