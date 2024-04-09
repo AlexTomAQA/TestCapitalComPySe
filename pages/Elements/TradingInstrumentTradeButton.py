@@ -34,7 +34,8 @@ class TradingInstrumentTradeButton(BasePage):
         item_list = self.arrange_(d, cur_item_link, cur_market)
         for i in item_list:
             self.element_click(d, i, cur_market)
-            test_element = AssertClass(self.driver, cur_item_link)
+            # test_element = AssertClass(self.driver, cur_item_link)
+            test_element = AssertClass(self.driver, cur_item_link, self.bid)
             print(f"\n{datetime.now()}   1. Arrange for 'Trading instrument' widget: '{cur_market}' market")
             match cur_role:
                 case "NoReg":
