@@ -14,6 +14,7 @@ from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
+from pages.common import Common
 
 
 class PageInstrumentNotificationButton(BasePage):
@@ -48,44 +49,38 @@ class PageInstrumentNotificationButton(BasePage):
         button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
         print(f"{datetime.now()}   Is BUTTON_NOTIFICATION present on the page? =>")
         if len(button) == 0:
-            print(f"{datetime.now()}   => BUTTON_NOTIFICATION is not present on the page")
+            print(f"{datetime.now()}   => BUTTON_NOTIFICATION is not present on the DOM")
             return False
-        print(f"{datetime.now()}   => BUTTON_NOTIFICATION is present on the page")
+        print(f"{datetime.now()}   => BUTTON_NOTIFICATION is present on the DOM")
 
         print(f"{datetime.now()}   [Notification] button scroll =>")
         self.driver.execute_script(
-        'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button[0])
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button[0]
+        )
+        print(f"{datetime.now()}   => [Notification] button scrolled")
 
     @allure.step("Click button [Notification]")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   Start Click button [Notification] =>")
+        print(f"{datetime.now()}   Start Click 'Notification' button =>")
 
         button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
 
         if not self.element_is_clickable(button[0], 5):
-            print(f"{datetime.now()} => BUTTON_NOTIFICATION is not clickable after more then 5 sec")
-            pytest.fail(f"BUTTON_NOTIFICATION is not clickable more then 5 sec.")
+            msg = "BUTTON_NOTIFICATION is not clickable after more then 5 sec"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
         print(f"{datetime.now()} BUTTON_NOTIFICATION is clickable =>")
 
         try:
             button[0].click()
             print(f"{datetime.now()} => BUTTON_NOTIFICATION clicked")
         except ElementClickInterceptedException:
-            print(f"{datetime.now()} => BUTTON_NOTIFICATION not clicked")
-            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
+            msg = "BUTTON_NOTIFICATION not clicked"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
 
-            page_ = SignupLogin(self.driver)
-            if page_.close_signup_form():
-                pass
-            elif page_.close_login_form():
-                pass
-            elif page_.close_signup_page():
-                pass
-            else:
-                page_.close_login_page()
-
-            button[0].click()
-            del page_
         del button
+
         return True
