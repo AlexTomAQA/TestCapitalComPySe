@@ -3,6 +3,8 @@
 @Time    : 2023/05/14 19:30 GMT+3
 @Author  : Suleyman Alirzaev
 """
+import sys
+
 import pytest
 import allure
 
@@ -22,6 +24,8 @@ def pytest_generate_tests(metafunc):
     """
     file_name = "tests/US_11_Education/US_11-01-04_spread_betting_guide/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
+    if len(list_item_link) == 0:
+        sys.exit(1)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
