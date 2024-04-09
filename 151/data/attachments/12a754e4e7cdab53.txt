@@ -1,0 +1,110 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 18:25:12.155294   worker_id = master
+
+2024-04-09 18:25:12.155308   0. Allure grouping v4
+
+2024-04-09 18:25:12.155494   START PRECONDITIONS =>
+
+2024-04-09 18:25:12.155509   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 18:25:12.155519   => flag_of_bug - True
+2024-04-09 18:25:12.155530   => Current URL - https://capital.com/zh/trade-cryptocurrency
+2024-04-09 18:25:12.161092   Current page URL = https://capital.com/zh/trade-cryptocurrency
+2024-04-09 18:25:12.163573   self.link = https://capital.com/zh
+2024-04-09 18:25:12.163586   driver.get(https://capital.com/zh) =>
+2024-04-09 18:25:14.627265   => Loaded page https://capital.com/zh
+
+2024-04-09 18:25:14.631901   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 18:25:14.635682   Set windows position at (0, 0) =>
+2024-04-09 18:25:14.737862   Set resolution 1280 * 800 =>
+2024-04-09 18:25:14.840300   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 18:25:15.903140   Капчи нет. Идем дальше
+
+2024-04-09 18:25:15.903242   Работа с куками =>
+
+2024-04-09 18:25:15.903256   => не требуется
+
+2024-04-09 18:25:15.903266   Prev. country - 'au'
+2024-04-09 18:25:15.903276   Cur. country - 'au'
+2024-04-09 18:25:15.903285   => Country set to 'au'
+
+2024-04-09 18:25:15.903294   Prev. language - 'zh'
+2024-04-09 18:25:15.903303   Cur. language - 'zh'
+2024-04-09 18:25:15.903311   => Language is set to 'zh'
+
+2024-04-09 18:25:15.903320   Prev. role - 'NoAuth'
+2024-04-09 18:25:15.903329   Cur. role - 'NoAuth'
+2024-04-09 18:25:15.903338   => The 'NoAuth' role is set
+
+2024-04-09 18:25:15.906124   => Current URL - https://capital.com/zh
+
+2024-04-09 18:25:15.906148   => THE END PRECONDITIONS
+
+2024-04-09 18:25:15.906340   1. Cur URL = https://capital.com/zh
+
+2024-04-09 18:25:15.908808   2. Link = https://capital.com/zh
+2024-04-09 18:25:15.908824   current_page = https://capital.com/zh
+2024-04-09 18:25:15.911314   link = https://capital.com/zh
+2024-04-09 18:25:16.423023   => Education menu is present in DOM
+2024-04-09 18:25:16.428077   => Education menu is visible
+2024-04-09 18:25:17.702186   => Focus moved to Education menu
+2024-04-09 18:25:19.488482   => Cryptocurrency trading submenu focus moved and clicked
+2024-04-09 18:25:19.816715   => Focus moved to 'capital*com' logo
+
+2024-04-09 18:25:19.816758   3. Cur URL = https://capital.com/zh/trade-cryptocurrency
+
+2024-04-09 18:25:19.822465   1. Arrange
+2024-04-09 18:25:19.822494   current_page = https://capital.com/zh/trade-cryptocurrency
+2024-04-09 18:25:19.824972   link = https://capital.com/zh/trade-cryptocurrency
+2024-04-09 18:25:19.827496   BUTTON_ON_VER_BANNER is present? =>
+2024-04-09 18:25:19.836715   => BUTTON_ON_VER_BANNER is present on the page!
+2024-04-09 18:25:19.836739   BUTTON_ON_VER_BANNER scroll =>
+2024-04-09 18:25:19.840022   BUTTON_ON_VER_BANNER is visible? =>
+2024-04-09 18:25:19.877427   => BUTTON_ON_VER_BANNER is visible on the page!
+2024-04-09 18:25:19.877705   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 18:25:21.436929   '[Sign up]' form was not popped up
+
+2024-04-09 18:25:21.437190   2. Act
+
+2024-04-09 18:25:21.453912   => Button on Vertical banner clickable
+
+2024-04-09 18:25:21.458729   data_id = 425
+2024-04-09 18:25:21.496129   => BUTTON_ON_VER_BANNER clicked!
+
+2024-04-09 18:25:21.496361   3. Assert_Login_v0
+2024-04-09 18:25:21.496451   Check that 'Login' form is opened
+2024-04-09 18:25:24.597476   'Login' form not opened
+2024-04-09 18:25:24.597665   Check that new 'Login' form is opened
+2024-04-09 18:25:27.698846   => New 'Login' form not opened
+2024-04-09 18:25:27.701845   'Login' page not opened
+2024-04-09 18:25:30.782244   'Login' form on trading platform not opened
+2024-04-09 18:25:30.782436   Start step Check that [Sign up] form is opened
+2024-04-09 18:25:30.792687   'Sign up' form opened
+2024-04-09 18:25:30.792714   Assert SIGNUP_HEADER =>
+2024-04-09 18:25:30.803168   Assert SIGNUP_REF_LOGIN =>
+2024-04-09 18:25:30.813448   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-09 18:25:30.824065   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-09 18:25:30.824107   => 'Signup' form is checked
+
+Bug: Bid:11.02.05.00_05-zh.au.NoAuth
+
+2024-04-09 18:25:30.824172   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f6e7d2b5820>
+
+2024-04-09 18:25:31.236311   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 18:25:31.484562   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 18:25:32.571324   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 18:25:32.793332   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 18:25:32.793425   Баг Bid:11.02.05.00_05-zh.au.NoAuth уже существует, но у него изменился тип с  на 05
+
+2024-04-09 18:25:32.793648   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 18:25:34.050818   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 18:25:34.052113   Баг Bid:11.02.05.00_05-zh.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

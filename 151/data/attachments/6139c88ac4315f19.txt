@@ -1,0 +1,123 @@
+{'width': 1280, 'height': 800}
+
+2024-04-09 18:19:06.950755   worker_id = master
+
+2024-04-09 18:19:06.950771   0. Allure grouping v4
+
+2024-04-09 18:19:06.951013   START PRECONDITIONS =>
+
+2024-04-09 18:19:06.951032   => URL after prev. preconditions - https://capital.com/zh
+2024-04-09 18:19:06.951042   => flag_of_bug - False
+2024-04-09 18:19:06.951052   => Current URL - https://capital.com/zh/trade-currency
+2024-04-09 18:19:06.956483   Current page URL = https://capital.com/zh/trade-currency
+2024-04-09 18:19:06.958966   self.link = https://capital.com/zh
+2024-04-09 18:19:06.958980   driver.get(https://capital.com/zh) =>
+2024-04-09 18:19:09.224151   => Loaded page https://capital.com/zh
+
+2024-04-09 18:19:09.228448   => Windows size - {'width': 1280, 'height': 800}
+2024-04-09 18:19:09.229927   Set windows position at (0, 0) =>
+2024-04-09 18:19:09.333559   Set resolution 1280 * 800 =>
+2024-04-09 18:19:09.436135   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-09 18:19:10.488351   Капчи нет. Идем дальше
+
+2024-04-09 18:19:10.488443   Работа с куками =>
+
+2024-04-09 18:19:10.488458   => не требуется
+
+2024-04-09 18:19:10.488469   Prev. country - 'au'
+2024-04-09 18:19:10.488478   Cur. country - 'au'
+2024-04-09 18:19:10.488487   => Country set to 'au'
+
+2024-04-09 18:19:10.488496   Prev. language - 'zh'
+2024-04-09 18:19:10.488505   Cur. language - 'zh'
+2024-04-09 18:19:10.488514   => Language is set to 'zh'
+
+2024-04-09 18:19:10.488522   Prev. role - 'Auth'
+2024-04-09 18:19:10.488531   Cur. role - 'Auth'
+2024-04-09 18:19:10.488539   => The 'Auth' role is set
+
+2024-04-09 18:19:10.491359   => Current URL - https://capital.com/zh
+
+2024-04-09 18:19:10.491383   => THE END PRECONDITIONS
+
+2024-04-09 18:19:10.491586   1. Cur URL = https://capital.com/zh
+
+2024-04-09 18:19:10.494251   2. Link = https://capital.com/zh
+2024-04-09 18:19:10.494268   current_page = https://capital.com/zh
+2024-04-09 18:19:10.498804   link = https://capital.com/zh
+2024-04-09 18:19:11.018370   => Education menu is present in DOM
+2024-04-09 18:19:11.027174   => Education menu is visible
+2024-04-09 18:19:12.299044   => Focus moved to Education menu
+2024-04-09 18:19:14.163025   => Focus moved to Forex trading sub-menu and clicked
+2024-04-09 18:19:14.498270   => Focus moved to 'capital*com' logo
+
+2024-04-09 18:19:14.498316   3. Cur URL = https://capital.com/zh/trade-currency
+
+2024-04-09 18:19:14.505182   1. Arrange_v4
+2024-04-09 18:19:14.505223   current_page = https://capital.com/zh/trade-currency
+2024-04-09 18:19:14.508900   link = https://capital.com/zh/trade-currency
+2024-04-09 18:19:14.511606   MOST_TRADED is present? =>
+2024-04-09 18:19:14.521375   => MOST_TRADED widget is present on this page
+2024-04-09 18:19:14.521401   => Found 5 elements in block MOST_TRADED
+2024-04-09 18:19:14.521412   Most traded widget is scroll =>
+2024-04-09 18:19:14.524719   => Most traded widget is scrolled into screen center
+
+2024-04-09 18:19:14.524763   Random indexes = [2]
+
+2024-04-09 18:19:14.524779   Testing Most traded 1 random element with 2 index
+
+2024-04-09 18:19:14.524931   2. Act_v4
+2024-04-09 18:19:14.525071   Start Checking that form [Sign up] popped up on the page =>
+2024-04-09 18:19:16.042301   '[Sign up]' form was not popped up
+2024-04-09 18:19:16.059324   instrument_title = 'Australian Dollar / US Dollar'
+2024-04-09 18:19:16.065435   Selected Trade button on Most traded widget is scroll =>
+2024-04-09 18:19:16.069419   Selected Trade button click for 'Australian Dollar / US Dollar' trading instrument =>
+2024-04-09 18:19:18.130368   => Selected Trade button clicked!
+
+2024-04-09 18:19:18.130704   3. Assert_v4
+
+2024-04-09 18:19:18.130739   
+2024-04-09 18:19:18.130921   Checking that the trading platform page has opened (v4) =>
+2024-04-09 18:19:18.137645   Checking way # 1 => 
+
+2024-04-09 18:19:18.137851   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-09 18:19:18.140773   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-09 18:19:18.140859   2. Checking that the LOGO is present on the page =>
+2024-04-09 18:19:19.967763   => 'capital*com' logo is present on the current page
+
+2024-04-09 18:19:19.967801   tpd = False
+
+2024-04-09 18:19:19.967815   4. Check that opened page with https://capital.com/trading/platform/charting/23381802046660?side=buy&ids=85177791492548 url
+with selected corresponding trading instrument 'Australian Dollar / US Dollar' =>
+
+2024-04-09 18:19:19.970653   trade_instrument = 'Australian Dollar / US Dollar'
+
+2024-04-09 18:19:19.970665   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-09 18:19:20.290275   => Trading Platform opened in Chart mode
+
+2024-04-09 18:19:20.290323   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-09 18:19:20.565219   4.3. Check that opened trade instrument info page =>
+
+2024-04-09 18:19:20.589638   4.4. Check that opened Info page of selected 'Australian Dollar / US Dollar' trade instrument =>
+2024-04-09 18:19:20.589674   Trading instrument - 'Australian Dollar / US Dollar'
+2024-04-09 18:19:20.589684   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-09 18:19:20.607040   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:11.02.04.00_06-zh.au.Auth
+
+2024-04-09 18:19:20.607083   Проверка бага в таблице ретеста  =>
+
+ gs = GoogleSheet() - создаем объект gs # 1: <tests.ReTestsAuto.GoogleSheets.googlesheets.GoogleSheet object at 0x7f710e7d47d0>
+
+2024-04-09 18:19:21.169303   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 18:19:21.405646   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 18:19:22.509943   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-09 18:19:22.825178   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-09 18:19:22.826711   Баг Bid:11.02.04.00_06-zh.au.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
