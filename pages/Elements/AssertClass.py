@@ -13,6 +13,7 @@ from pages.common import Common
 from pages.AppStore.app_store import AppStore
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
+from pages.TradingView.tradingview import TradingView
 from pages.base_page import BasePage
 from pages.Signup_login.signup_login import SignupLogin
 from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
@@ -23,6 +24,7 @@ class AssertClass(BasePage):
     page_trading = None
     page_app_store = None
     page_google_play = None
+    page_tradingview = None
     platform_url = ""
 
     # def __init__(self, *args):
@@ -161,7 +163,24 @@ class AssertClass(BasePage):
 
         print(f"\n{datetime.now()}   3. Assert_v4")
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
+        print(f"\n{datetime.now()}   ")
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
+
+    @allure.step('Checking that "Trading platform" page opened and the element is selected')
+    def assert_trading_platform_with_selected_element(self, d, cur_link, tab="", trade_instrument=""):
+        """
+        Check if the trading platform page for the corresponding trade instrument is opened
+        Args:
+            d: Webdriver
+            cur_link: Link in the list of 3 random items and start page of the sidebar
+            "Shares trading" is selected (Param)
+            tab: open Trade platform for corresponding trade instrument tab (False)
+            trade_instrument: corresponding trade instrument (False)
+        """
+
+        print(f"\n{datetime.now()}   3. Assert element is selected")
+        self.page_trading = TradingPlatform(d, cur_link, self.bid)
+        self.page_trading.should_be_trading_platform_page_with_selected_element(d, cur_link, tab, trade_instrument)
 
     @allure.step('Checking that "Trading platform" page opened in demo mode')
     def assert_trading_platform_demo(self, d):
@@ -200,3 +219,14 @@ class AssertClass(BasePage):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading = TradingPlatform(d, self.link, self.bid)
         self.page_trading.should_be_login_form_on_the_trading_platform()
+
+    @allure.step('Checking the Site TradingView is opened')
+    def assert_site_tradingview(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        self.page_tradingview = TradingView(d)
+        self.page_tradingview.should_be_tradingview_page(d)
+
+        tabs = self.driver.window_handles
+        if len(tabs) == 2:
+            self.driver.close()
+            self.driver.switch_to.window(tabs[0])

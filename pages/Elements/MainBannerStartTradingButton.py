@@ -3,14 +3,17 @@
 @Time    : 2023/04/19 23:50
 @Author  : Suleyman Alirzaev
 """
+import time
 from datetime import datetime
+
+from selenium.common.exceptions import ElementClickInterceptedException
 import pytest
 import allure
+
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import MainBannerLocators
-from selenium.common.exceptions import ElementClickInterceptedException
 
 
 class MainBannerStartTrading(BasePage):
@@ -57,7 +60,9 @@ class MainBannerStartTrading(BasePage):
         if not self.current_page_is(cur_item_link):
             print(f"{datetime.now()}   => current_url != cur_item_link")
             self.link = cur_item_link
+            time.sleep(1)
             self.open_page()
+            # time.sleep(2)
         else:
             print(f"{datetime.now()}   => current_url == cur_item_link")
 

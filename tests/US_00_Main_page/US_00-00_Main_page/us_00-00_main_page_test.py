@@ -15,6 +15,7 @@ from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButt
 from pages.Elements.OurMarketsTableBuyButton import BuyButtonOurMarketsTable
 from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.TradeCFDsBlock import TradeCFDsBlock
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
 from pages.Elements.TradingInstrumentTradeButton import TradingInstrumentTradeButton
 from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
@@ -23,7 +24,7 @@ from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from pages.conditions import Conditions
-from pages.Elements.ContentPageStartTradingButton import ContentStartTrading
+from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
 
 
 @pytest.mark.us_00_00
@@ -64,8 +65,6 @@ class TestMainPage:
         Check: Button [Sign Up] in Block 'Helping traders make better decisions' Main Page
         Language: EN. License: FCA.
         """
-        # test_title = ("00", "Main Page",
-        #               ".00_102", "Testing button [Sign Up] in Block 'Helping traders make better decisions' Main Page")
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -340,7 +339,7 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = ContentStartTrading(d, main_page_link, bid)
+        test_element = TradingExperienceStartTradingButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in 'Steps trading' block")
@@ -371,6 +370,35 @@ class TestMainPage:
 
         test_element = BlockStepTrading(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Explore Features] in 'Trade CFDs on Capital.com via TradingView' block")
+    @pytest.mark.test_005
+    def test_005_create_and_verify_your_account_button_in_block_trade_cfds(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Explore Features] in 'Trade CFDs on Capital.com via TradingView' block
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_005",
+            "Start test of button [Explore Features] in 'Trade CFDs on Capital.com via TradingView' block",
+            False, False
+        )
+
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'au', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradeCFDsBlock(d, main_page_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")
     @pytest.mark.test_015

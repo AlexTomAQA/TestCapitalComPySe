@@ -145,15 +145,15 @@ class TestShares:
         if count == 0:
             pytest.skip("Links of hrefs already created")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country,["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
-        page_conditions = Conditions(d,"")
+        page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, link)
-        cur_page_link = page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
+        page_menu.open_shares_market_menu(d, cur_language, cur_country, link)
 
         # Записываем ссылки в файл
         file_name = "tests/US_01_Markets/US_01-02_Shares/list_of_href.txt"

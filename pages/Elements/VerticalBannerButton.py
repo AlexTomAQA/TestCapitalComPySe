@@ -103,15 +103,6 @@ class ButtonOnVerticalBanner(BasePage):
             print(f"{datetime.now()}   => BUTTON_ON_VER_BANNER NOT CLICKED")
             pytest.fail("Button on Vertical banner not clicked")
 
-            # page_ = SignupLogin(self.driver)
-            # if page_.close_signup_form():
-            #     pass
-            # else:
-            #     page_.close_signup_page()
-            #
-            # button_list[0].click()
-            # del page_
-
         del web_element
         del button_list
         return data_id

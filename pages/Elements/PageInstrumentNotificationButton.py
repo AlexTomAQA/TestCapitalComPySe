@@ -18,7 +18,7 @@ from pages.base_page import BasePage
 
 class PageInstrumentNotificationButton(BasePage):
 
-    @allure.step(f"{datetime.now()} Start testing for PageInstrumentNotificationButton of the trading instrument page")
+    @allure.step("Start testing for PageInstrumentNotificationButton of the trading instrument page")
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
 
@@ -45,27 +45,31 @@ class PageInstrumentNotificationButton(BasePage):
             self.open_page()
 
         print(f"{datetime.now()} BUTTON_NOTIFICATION is located on the page? =>")
-        button_list = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
+        button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
         print(f"{datetime.now()}   Is BUTTON_NOTIFICATION present on the page? =>")
-        if len(button_list) == 0:
+        if len(button) == 0:
             print(f"{datetime.now()}   => BUTTON_NOTIFICATION is not present on the page")
             return False
         print(f"{datetime.now()}   => BUTTON_NOTIFICATION is present on the page")
+
+        print(f"{datetime.now()}   [Notification] button scroll =>")
+        self.driver.execute_script(
+        'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button[0])
 
     @allure.step("Click button [Notification]")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click button [Notification] =>")
 
-        button_list = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
+        button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
 
-        if not self.element_is_clickable(button_list[0], 5):
+        if not self.element_is_clickable(button[0], 5):
             print(f"{datetime.now()} => BUTTON_NOTIFICATION is not clickable after more then 5 sec")
             pytest.fail(f"BUTTON_NOTIFICATION is not clickable more then 5 sec.")
         print(f"{datetime.now()} BUTTON_NOTIFICATION is clickable =>")
 
         try:
-            button_list[0].click()
+            button[0].click()
             print(f"{datetime.now()} => BUTTON_NOTIFICATION clicked")
         except ElementClickInterceptedException:
             print(f"{datetime.now()} => BUTTON_NOTIFICATION not clicked")
@@ -81,7 +85,7 @@ class PageInstrumentNotificationButton(BasePage):
             else:
                 page_.close_login_page()
 
-            button_list[0].click()
+            button[0].click()
             del page_
-        del button_list
+        del button
         return True

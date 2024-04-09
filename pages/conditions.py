@@ -65,13 +65,18 @@ class Conditions(BasePage):
         global prev_country
 
         print(f"\n{datetime.now()}   START PRECONDITIONS =>")
-        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
         print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_preconditions}")
-        print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        print(f"{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        print(f"{datetime.now()}   => Current URL - {self.driver.current_url}")
+
         if url_after_preconditions == "?":
             url_after_preconditions = host
 
-        if Common.flag_of_bug:
+        # if Common.flag_of_bug:
+        #     self.link = url_after_preconditions
+        #     self.open_page()
+
+        if self.driver.current_url != url_after_preconditions:
             self.link = url_after_preconditions
             self.open_page()
 
@@ -85,7 +90,7 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Работа с куками")
+        print(f"\n{datetime.now()}   Работа с куками =>")
         # if cur_role != prev_role or Common.flag_of_bug:
         if cur_role != prev_role:
             print(f"{datetime.now()}   Prev. role - '{prev_role}'")
@@ -100,6 +105,8 @@ class Conditions(BasePage):
             self.button_accept_all_cookies_click()
             prev_country = "?"
             prev_language = "?"
+        else:
+            print(f"\n{datetime.now()}   => не требуется")
 
         # устанавливаем Страну, если не соответствует предыдущей
         # Captcha(d).fail_test_if_captcha_present_v2()
@@ -144,10 +151,10 @@ class Conditions(BasePage):
         if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
-                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_language, cur_login, cur_password)
                     self.to_do_de_authorization(d, self.driver.current_url)
                 case "Auth":
-                    self.to_do_authorization(d, self.driver.current_url, cur_login, cur_password)
+                    self.to_do_authorization(d, self.driver.current_url, cur_language, cur_login, cur_password)
 
             prev_role = cur_role
         print(f"{datetime.now()}   => The '{cur_role}' role is set")
@@ -161,7 +168,7 @@ class Conditions(BasePage):
     # авторизация пользователя
     # @profile(precision=3)
     @allure.step("Authorization")
-    def to_do_authorization(self, d, link, login, password):
+    def to_do_authorization(self, d, link, cur_language, login, password):
         """Authorisation"""
 
         print(f"" f"{datetime.now()}   Start Autorization")
@@ -178,10 +185,12 @@ class Conditions(BasePage):
             print(f"{datetime.now()}   => 'Login' form is opened")
         elif SignupLogin(d, link).should_be_login_page():
             print(f"{datetime.now()}   => 'Login' page is opened")
-        elif SignupLogin(d, link).should_be_trading_platform_login_form():
+        elif SignupLogin(d, link).should_be_trading_platform_login_form(cur_language):
             print(f"{datetime.now()}   => 'Login' form is opened on Trading platform")
         else:
-            pytest.fail("Problem with Authorisation")
+            msg = "Problem with Authorisation"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
 
         # User's name is passed to the text element on the login page
         if not self.send_keys(login, *LoginFormLocators.LOGIN_INPUT_EMAIL):

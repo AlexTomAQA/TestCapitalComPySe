@@ -12,8 +12,15 @@ import allure
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-import googleapiclient.discovery
+# import googleapiclient.discovery
+from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+
+# The ID and range of a spreadsheet.
+
+SPREADSHEET_ID1 = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"  # auto tests
+# SPREADSHEET_ID = "1XyKqXEib1-2ZlpEXnr85--XhHZSPOODWkQJe5XW0YbA"     # copy for debugging
+SPREADSHEET_ID2 = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"  # manual tests
 
 
 class GoogleSheet:
@@ -26,11 +33,6 @@ class GoogleSheet:
     # If modifying these scopes, delete the file token.json.
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
-    # The ID and range of a spreadsheet.
-
-    SPREADSHEET_ID1 = "1jG0hdjrUdjMFBYHXyBKRGbBwV0ICxfBPaBkgB98Nuuk"     # auto tests
-    # SPREADSHEET_ID = "1XyKqXEib1-2ZlpEXnr85--XhHZSPOODWkQJe5XW0YbA"     # copy for debugging
-    SPREADSHEET_ID2 = "1oSNjS0UufE8KZQCfkXrvbR0s0m_aw6OfVBn0RPOup14"     # manual tests
     SHEET_NAME = 'BugsReport'
     SHEET_ID = '540090404'
     service = None
@@ -43,7 +45,10 @@ class GoogleSheet:
     def __init__(self, spreadsheet_id=None):
         self.creds = None
         self.manual = False
-        self.SPREADSHEET_ID = spreadsheet_id or self.SPREADSHEET_ID1
+        # self.SPREADSHEET_ID = spreadsheet_id or self.SPREADSHEET_ID1
+        if not spreadsheet_id:
+            spreadsheet_id = SPREADSHEET_ID1
+        self.SPREADSHEET_ID = spreadsheet_id
 
         if os.path.exists("./tests/ReTestsAuto/token.json"):
             self.creds = Credentials.from_authorized_user_file("./tests/ReTestsAuto/token.json", self.SCOPES)
@@ -61,7 +66,8 @@ class GoogleSheet:
                 token.write(self.creds.to_json())
 
         try:
-            self.service = googleapiclient.discovery.build("sheets", "v4", credentials=self.creds)
+            # self.service = googleapiclient.discovery.build("sheets", "v4", credentials=self.creds)
+            self.service = build("sheets", "v4", credentials=self.creds)
         except HttpError as err:
             print(err)
 

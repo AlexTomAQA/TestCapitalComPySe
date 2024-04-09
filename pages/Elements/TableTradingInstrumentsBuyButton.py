@@ -1,8 +1,15 @@
+"""
+-*- coding: utf-8 -*-
+@Time    : 2023/03/06 11:30
+@Author  : Kasila
+"""
+
 from datetime import datetime
 import random
 
 # import pytest
 import allure
+from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
 from pages.common import Common
@@ -29,6 +36,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
 
         super().__init__(browser, link, bid)
 
+    @allure.step('Start Full test [Buy] button on Table Widget Trading Instruments')
     def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link, cur_sort):
         item_list = self.arrange_(d, cur_item_link, cur_sort)
         print(f"\n{datetime.now()}   Item_list = {item_list}")
@@ -53,7 +61,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
 
     def arrange_(self, d, cur_item_link, cur_sort):
         global COUNT_OF_RUNS
-        print(f"\n{datetime.now()}   1. Arrange for Trading instrument and \"{cur_sort}\" cur_sort")
+        print(f"\n{datetime.now()}   1. Arrange for Trading instrument table and \"{cur_sort}\" cur_sort")
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
@@ -98,13 +106,6 @@ class TableTradingInstrumentsBuyButton(BasePage):
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_VOLATILE
 # 1
 # 2
-# 3
-# 4
-# 5
-# 6
-# 7
-# 8
-# 9
         # self.buy_locator = TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT  # кнопка buy
         # self.item = TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT  # трейдинговый инструмент
 
@@ -134,7 +135,7 @@ class TableTradingInstrumentsBuyButton(BasePage):
         print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"\n")
 
         print(f"{datetime.now()}   Buttons [Buy] is visible and quantity buttons not zero? =>")
-        if self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT) != 0:
+        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)) != 0:
             print(f"{datetime.now()}   => Buttons [Buy] is visible and quantity buttons not zero!\n")
             print(f"{datetime.now()}   Start find two random buttons [Buy] on cur_sort \"{cur_sort}\"=>")
             self.buy_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)
@@ -145,42 +146,44 @@ class TableTradingInstrumentsBuyButton(BasePage):
                   f"\"{cur_sort}\"\n")
             return item_list
         else:
-            print(f"{datetime.now()}   => Buttons [Buy] is NOT visible or quantity buttons zero!\n")
+            print(f"{datetime.now()}   => Buttons [Buy] is NOT visible or quantity buttons zero!")
             Common().pytest_fail("Bug # ??? element is not on this page")
 
     @allure.step("Click Buy button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
-        print(f"{datetime.now()}   Start click button [Buy] =>")
-        self.buy_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)
-        button = self.buy_list[value]
-        id_instrument = button.get_attribute("data-iid")
-        print(f"{datetime.now()}   =>   BUTTON_BUY on item with ID = {id_instrument}")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            button
-        )
-
         item_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         item = item_list[value]
         self.trade_instrument = item.text
 
+        print(f"{datetime.now()}   Start click button [Buy] =>")
+        buy_list = wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)
+        button = buy_list[value]
+        id_instrument = button.get_attribute("data-iid")
+        print(f"{datetime.now()}   =>   BUTTON_BUY on item with ID = {id_instrument}")
+        print(f"{datetime.now()}   BUTTON_BUY on item with ID = '{id_instrument}' scroll into view =>")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button
+        )
+        print(f"{datetime.now()}   => BUTTON_SELL on item with ID = '{id_instrument}' scrolled into view")
+
+        print(f"{datetime.now()}   Check that BUTTON_BUY with item {self.trade_instrument} clickable =>")
         time_out = 5
-        if not self.element_is_clickable(button, time_out):
+        button = self.element_is_clickable(
+            wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[0], time_out)
+        if not button:
             print(f"{datetime.now()}   => BUTTON_BUY not clickable after {time_out} sec.")
             Common().pytest_fail(f"Bug # ??? Buy button not clickable after {time_out} sec.")
-        button.click()
-        print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked")
+        print(f"{datetime.now()}   => BUTTON_BUY is clickable")
 
-        # # Вытаскиваем линк из кнопки
-        # button_link = button.get_attribute('data-href')
-        # # Берём ID item, на который кликаем для сравнения с открытым ID на платформе
-        # self.trade_instrument = button_link[button_link.find("spotlight") + 10:button_link.find("?")]
-        #
-        # ActionChains(d) \
-        #     .click(button) \
-        #     .pause(0.5) \
-        #     .perform()
-        # #        button.click()
-        # print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked!\n")
+        ActionChains(wd) \
+            .move_to_element(button) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
+        # button.click()
+        # wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_BUY_TRADING_INSTRUMENT)[value].click()
+        print(f"{datetime.now()}   =>   BUTTON_BUY with item {self.trade_instrument} clicked")

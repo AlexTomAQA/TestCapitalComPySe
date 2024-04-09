@@ -1,10 +1,14 @@
 import platform
 from datetime import datetime
-from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
+from tests.ReTestsAuto.GoogleSheets.googlesheets import (
+    GoogleSheet,
+    SPREADSHEET_ID1,
+    SPREADSHEET_ID2
+)
 
 
 def check_gs_table(bid, bug_n, manual=False):
-    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
     gs.wait_while_bugs_report_busy()
     gs_out = ["Busy"]
@@ -79,7 +83,7 @@ def new_row_data(d, bid, bug_num, link, manual=False):
 
 
 def add_new_row_with_format(manual=False):
-    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
 
     start_update_date = [datetime.now().strftime("%d/%m/%y")]
@@ -93,7 +97,7 @@ def add_new_row_with_format(manual=False):
 
 
 def fill_gs_table(value_1, value_2, bug_num, manual=False, new_layout=False):
-    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
     gs.update_range_values('A5', value_1)
     gs.update_range_values('I5', value_2)
@@ -132,7 +136,7 @@ def retest_table_fill(d="", bid="", bug_n="", link="", manual=False, new_layout=
     """
 
     print(f"\n{datetime.now()}   Проверка бага в таблице ретеста  =>")
-    spreadsheet_id = GoogleSheet.SPREADSHEET_ID2 if manual else GoogleSheet.SPREADSHEET_ID1
+    spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
     print(f'\n gs = GoogleSheet() - создаем объект gs # 1: {gs}')
 
