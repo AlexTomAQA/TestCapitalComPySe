@@ -25,7 +25,7 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
-@pytest.mark.us_01_05
+@pytest.mark.us_01_01_01
 class TestCommodities:
     page_conditions = None
 
