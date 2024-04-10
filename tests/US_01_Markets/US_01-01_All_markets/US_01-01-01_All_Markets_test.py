@@ -20,7 +20,7 @@ def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
     """
-    file_name = "tests/US_01_Markets/US_01-05_Commodities/list_of_href.txt"
+    file_name = "tests/US_01_Markets/US_01-01_All_markets/list_of_href.txt"
     list_item_link = Common().generate_cur_item_link_parameter(file_name)
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
@@ -40,7 +40,8 @@ class TestCommodities:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.01", "Markets > Menu item [All markets]",
-            ".01_001", "Testing button [Add to favourite] on 'Trade CFD' page")
+            ".01_001", "Testing button [Add to favourite] on 'Trade CFD' page"
+        )
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
