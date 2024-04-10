@@ -1,0 +1,118 @@
+{'width': 1280, 'height': 800}
+
+2024-04-10 14:12:10.994811   worker_id = master
+
+2024-04-10 14:12:10.994826   0. Allure grouping v4
+
+2024-04-10 14:12:10.995033   START PRECONDITIONS =>
+
+2024-04-10 14:12:10.995048   => URL after prev. preconditions - https://capital.com/pl
+2024-04-10 14:12:10.995058   => flag_of_bug - False
+2024-04-10 14:12:10.995068   => Current URL - https://capital.com/pl/rynki-cfd
+2024-04-10 14:12:11.000329   Current page URL = https://capital.com/pl/rynki-cfd
+2024-04-10 14:12:11.002746   self.link = https://capital.com/pl
+2024-04-10 14:12:11.002759   driver.get(https://capital.com/pl) =>
+2024-04-10 14:12:12.780829   => Loaded page https://capital.com/pl
+
+2024-04-10 14:12:12.785118   => Windows size - {'width': 1280, 'height': 800}
+2024-04-10 14:12:12.786478   Set windows position at (0, 0) =>
+2024-04-10 14:12:12.888783   Set resolution 1280 * 800 =>
+2024-04-10 14:12:12.991449   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-10 14:12:14.041818   Капчи нет. Идем дальше
+
+2024-04-10 14:12:14.041910   Работа с куками =>
+
+2024-04-10 14:12:14.041925   => не требуется
+
+2024-04-10 14:12:14.041935   Prev. country - 'ae'
+2024-04-10 14:12:14.041944   Cur. country - 'ae'
+2024-04-10 14:12:14.041953   => Country set to 'ae'
+
+2024-04-10 14:12:14.041962   Prev. language - 'pl'
+2024-04-10 14:12:14.041971   Cur. language - 'pl'
+2024-04-10 14:12:14.041979   => Language is set to 'pl'
+
+2024-04-10 14:12:14.041988   Prev. role - 'Auth'
+2024-04-10 14:12:14.041997   Cur. role - 'Auth'
+2024-04-10 14:12:14.042005   => The 'Auth' role is set
+
+2024-04-10 14:12:14.046481   => Current URL - https://capital.com/pl
+
+2024-04-10 14:12:14.046507   => THE END PRECONDITIONS
+
+2024-04-10 14:12:14.046710   1. Arrange_v4
+2024-04-10 14:12:14.046728   current_page = https://capital.com/pl
+2024-04-10 14:12:14.049420   link = https://capital.com/pl/rynki-cfd
+2024-04-10 14:12:14.051922   Current page URL = https://capital.com/pl
+2024-04-10 14:12:14.054281   self.link = https://capital.com/pl/rynki-cfd
+2024-04-10 14:12:14.054295   driver.get(https://capital.com/pl/rynki-cfd) =>
+2024-04-10 14:12:15.880695   => Loaded page https://capital.com/pl/rynki-cfd
+2024-04-10 14:12:15.885256   MOST_TRADED is present? =>
+2024-04-10 14:12:15.895059   => MOST_TRADED widget is present on this page
+2024-04-10 14:12:15.895095   => Found 5 elements in block MOST_TRADED
+2024-04-10 14:12:15.895106   Most traded widget is scroll =>
+2024-04-10 14:12:15.898565   => Most traded widget is scrolled into screen center
+
+2024-04-10 14:12:15.898617   Random indexes = [4]
+
+2024-04-10 14:12:15.898633   Testing Most traded 1 random element with 4 index
+
+2024-04-10 14:12:15.898793   2. Act_v4
+2024-04-10 14:12:15.898889   Start Checking that form [Sign up] popped up on the page =>
+2024-04-10 14:12:17.448039   '[Sign up]' form was not popped up
+2024-04-10 14:12:17.464729   instrument_title = 'Ethereum to US Dollar'
+2024-04-10 14:12:17.470608   Selected Trade button on Most traded widget is scroll =>
+2024-04-10 14:12:17.474122   Selected Trade button click for 'Ethereum to US Dollar' trading instrument =>
+2024-04-10 14:12:19.428007   => Selected Trade button clicked!
+
+2024-04-10 14:12:19.428329   3. Assert_v4
+
+2024-04-10 14:12:19.428352   
+2024-04-10 14:12:19.428494   Checking that the trading platform page has opened (v4) =>
+2024-04-10 14:12:19.434604   Checking way # 1 => 
+
+2024-04-10 14:12:19.434757   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-10 14:12:19.437575   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-10 14:12:19.437659   2. Checking that the LOGO is present on the page =>
+2024-04-10 14:12:21.134846   => 'capital*com' logo is present on the current page
+
+2024-04-10 14:12:21.134903   tpd = False
+
+2024-04-10 14:12:21.134922   4. Check that opened page with https://capital.com/trading/platform/charting/5983666832495812?popup=questionnaire-low-skilled url
+with selected corresponding trading instrument 'Ethereum to US Dollar' =>
+
+2024-04-10 14:12:21.139231   trade_instrument = 'Ethereum to US Dollar'
+
+2024-04-10 14:12:21.139264   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-10 14:12:21.501776   => Trading Platform opened in Chart mode
+
+2024-04-10 14:12:21.501829   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-10 14:12:21.522007   4.3. Check that opened trade instrument info page =>
+
+2024-04-10 14:12:21.534868   4.4. Check that opened Info page of selected 'Ethereum to US Dollar' trade instrument =>
+2024-04-10 14:12:21.534905   Trading instrument - 'Ethereum to US Dollar'
+2024-04-10 14:12:21.534916   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-10 14:12:21.557570   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:11.01.03.01_03-pl.ae.Auth
+
+2024-04-10 14:12:21.557617   Проверка бага в таблице ретеста  =>
+
+2024-04-10 14:12:22.055244   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 14:12:22.329463   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 14:12:23.316833   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 14:12:23.493851   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 14:12:23.493932   Баг Bid:11.01.03.01_03-pl.ae.Auth уже существует, но у него изменился тип с 16 на 17
+
+2024-04-10 14:12:23.494132   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 14:12:23.671903   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 14:12:23.673483   Баг Bid:11.01.03.01_03-pl.ae.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
