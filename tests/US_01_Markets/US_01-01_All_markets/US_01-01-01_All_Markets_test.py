@@ -27,6 +27,13 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
+def check_cur_href(cur_item_link, list_href):
+    if cur_item_link in list_href:
+        return
+    else:
+        pytest.skip(f"This test case is not for page: '{cur_item_link}'")
+
+
 @pytest.mark.us_01_01_01
 class TestCommodities:
     page_conditions = None
@@ -45,7 +52,6 @@ class TestCommodities:
             ".01_001", "Testing button [Add to favourite] on 'Trade CFD' page"
         )
 
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
@@ -179,6 +185,8 @@ class TestCommodities:
             "01.01", "Markets > Menu item [All markets]",
             ".01_007", "Testing button [Notification] on trading instrument page")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -223,7 +231,6 @@ class TestCommodities:
             ".01_011", "Testing button [1. Create your account] in Step trading block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
