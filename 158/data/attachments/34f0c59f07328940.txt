@@ -1,0 +1,136 @@
+{'width': 1280, 'height': 800}
+
+2024-04-10 05:35:58.077782   worker_id = master
+
+2024-04-10 05:35:58.077811   0. Allure grouping v4
+
+2024-04-10 05:35:58.078185   START PRECONDITIONS =>
+
+2024-04-10 05:35:58.078210   => URL after prev. preconditions - https://capital.com/pl
+2024-04-10 05:35:58.078227   => flag_of_bug - False
+2024-04-10 05:35:58.078246   => Current URL - https://capital.com/pl/aluminum-spot-towar
+2024-04-10 05:35:58.230137   Current page URL = https://capital.com/pl/aluminum-spot-towar
+2024-04-10 05:35:58.233386   self.link = https://capital.com/pl
+2024-04-10 05:35:58.233401   driver.get(https://capital.com/pl) =>
+2024-04-10 05:36:00.056440   => Loaded page https://capital.com/pl
+
+2024-04-10 05:36:00.060554   => Windows size - {'width': 1280, 'height': 800}
+2024-04-10 05:36:00.061932   Set windows position at (0, 0) =>
+2024-04-10 05:36:00.164218   Set resolution 1280 * 800 =>
+2024-04-10 05:36:00.266796   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-10 05:36:01.305345   Капчи нет. Идем дальше
+
+2024-04-10 05:36:01.305434   Работа с куками =>
+
+2024-04-10 05:36:01.305448   => не требуется
+
+2024-04-10 05:36:01.305458   Prev. country - 'de'
+2024-04-10 05:36:01.305467   Cur. country - 'de'
+2024-04-10 05:36:01.305477   => Country set to 'de'
+
+2024-04-10 05:36:01.305485   Prev. language - 'pl'
+2024-04-10 05:36:01.305494   Cur. language - 'pl'
+2024-04-10 05:36:01.305503   => Language is set to 'pl'
+
+2024-04-10 05:36:01.305512   Prev. role - 'Auth'
+2024-04-10 05:36:01.305520   Cur. role - 'Auth'
+2024-04-10 05:36:01.305529   => The 'Auth' role is set
+
+2024-04-10 05:36:01.308352   => Current URL - https://capital.com/pl
+
+2024-04-10 05:36:01.308376   => THE END PRECONDITIONS
+
+2024-04-10 05:36:01.308421   1. Arrange_v0
+2024-04-10 05:36:01.308436   current_page = https://capital.com/pl
+2024-04-10 05:36:01.311370   link = https://capital.com/pl/aluminum-spot-towar
+2024-04-10 05:36:01.314465   Current page URL = https://capital.com/pl
+2024-04-10 05:36:01.317160   self.link = https://capital.com/pl/aluminum-spot-towar
+2024-04-10 05:36:01.317174   driver.get(https://capital.com/pl/aluminum-spot-towar) =>
+2024-04-10 05:36:03.526564   => Loaded page https://capital.com/pl/aluminum-spot-towar
+2024-04-10 05:36:03.530914   BUTTON_BUY is located on the page? =>
+2024-04-10 05:36:03.542475   => BUTTON_BUY is located on the page!
+2024-04-10 05:36:03.542660   Start Checking that form [Sign up] popped up on the page =>
+2024-04-10 05:36:05.081866   '[Sign up]' form was not popped up
+
+2024-04-10 05:36:05.082057   2. Act_v0
+2024-04-10 05:36:05.087740   BUTTON_BUY is present? =>
+2024-04-10 05:36:05.087763   => BUTTON_BUY is present on the page
+2024-04-10 05:36:05.087774   BUTTON_BUY scroll =>
+2024-04-10 05:36:05.090979   => BUTTON_BUY scrolled
+2024-04-10 05:36:05.126460   BUTTON_BUY is clickable? =>
+2024-04-10 05:36:05.136770   BUTTON_BUY CLICK =>
+2024-04-10 05:36:05.686754   => BUTTON_BUY clicked!
+
+2024-04-10 05:36:05.687111   3. Assert_v4
+
+2024-04-10 05:36:05.687143   
+2024-04-10 05:36:05.687275   Checking that the trading platform page has opened (v4) =>
+2024-04-10 05:36:05.692775   Checking way # 1 => 
+
+2024-04-10 05:36:05.692889   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-10 05:36:05.695353   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-10 05:36:05.695419   2. Checking that the LOGO is present on the page =>
+2024-04-10 05:36:06.707768   => 'capital*com' logo is present on the current page
+
+2024-04-10 05:36:06.707837   tpd = False
+
+2024-04-10 05:36:06.707852   4. Check that opened page with https://capital.com/trading/platform/charting/7089977393501380?side=buy&ids=85177791492548 url
+with selected corresponding trading instrument 'Aluminum' =>
+
+2024-04-10 05:36:06.751269   trade_instrument = 'Aluminum'
+
+2024-04-10 05:36:06.751281   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-10 05:36:06.916306   => Trading Platform opened in Chart mode
+
+2024-04-10 05:36:06.916348   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-04-10 05:36:06.924501   4.3. Check that opened trade instrument info page =>
+
+2024-04-10 05:36:06.931655   4.4. Check that opened Info page of selected 'Aluminum' trade instrument =>
+2024-04-10 05:36:06.931680   Trading instrument - 'Aluminum'
+2024-04-10 05:36:06.931691   Title opened trading instrument info page - 'Del Monte Pac'
+2024-04-10 05:36:06.948328   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:01.05.01_005-pl.de.Auth
+
+2024-04-10 05:36:06.948367   Проверка бага в таблице ретеста  =>
+
+2024-04-10 05:36:07.292222   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:07.464493   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:08.404370   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:08.610768   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:09.394356   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:09.551047   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:09.554442   Добавление новой строки =>
+
+2024-04-10 05:36:10.537983   => Новая строка добавлена
+
+2024-04-10 05:36:12.396889   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:12.558274   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:12.561123   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-04-10 05:36:12.848041   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:12.848291   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-04-10 05:36:13.003461   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:13.003705   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:13.153242   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:13.153459   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-10 05:36:13.347823   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-10 05:36:13.347905   Баг Bid:01.05.01_005-pl.de.Auth-17 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
