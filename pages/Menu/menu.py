@@ -1749,9 +1749,8 @@ class MenuSection(BasePage):
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
-
     @allure.step('Select "Markets" menu, "All Markets" submenu')
-    def open_all_markets_menu(self, d, cur_language, cur_country, link):
+    def open_market_menu_all_markets_submenu(self, d, cur_language, cur_country, link):
 
         print(f'\n{datetime.now()}   START Open "Markets" menu, "All Markets" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")

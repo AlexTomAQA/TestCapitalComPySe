@@ -16,8 +16,6 @@ from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 
-count = 1
-
 
 def pytest_generate_tests(metafunc):
     """
