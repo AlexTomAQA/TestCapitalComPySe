@@ -7,6 +7,7 @@ from selenium.webdriver import ActionChains
 from datetime import datetime
 from pages.base_page import BasePage
 from pages.Header.header import Header
+from pages.common import Common
 from src.src import (
     TradingViewPageSrc,
     ESGPageSrc,
@@ -23,7 +24,7 @@ from pages.Capital.capital_locators import (
     WidgetTradersDashboard,
     BannerOfCounters,
     MainBannerDe,
-    WhyCapitalDe,
+    WhyCapitalDe, PageTradingInstrumentLocators,
     # BannerNewToTrading,
 )
 from pages.Signup_login.signup_login_locators import (
@@ -512,3 +513,12 @@ class Capital(BasePage):
             .perform()
 
         print(f"{datetime.now()}   => Focus is moved on 'Meatballs menu' button")
+
+    @allure.step(f"{datetime.now()}   Check trading instrument page")
+    def check_open_trading_instrument_page(self, title_instrument):
+
+        page_instrument_title = self.driver.find_element(PageTradingInstrumentLocators.PAGE_INSTRUMENT_TITLE).text
+        page_instrument_title_list = page_instrument_title.replace(" ", "")
+        if title_instrument not in page_instrument_title_list:
+            print(f"{datetime.now()} Trading instrument page is not opened")
+            Common().pytest_fail("Bug ? Trading instrument page is not opened")

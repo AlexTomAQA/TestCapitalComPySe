@@ -268,8 +268,9 @@ class TableTradingInstrumentsLocators:
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
     BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="buy"]')  # список инструментов
 
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # название инструментов
-    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # ссылка
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # название инструментов
+    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
+    LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
 
 
 class FieldDropdownMarketsLocator:

@@ -150,3 +150,6 @@ class BannerNewToTrading:
 
 class Captcha:
 	CAPTCHA_IFRAME = (By.CSS_SELECTOR, "iframe[title='reCAPTCHA']")
+
+class PageTradingInstrumentLocators:
+	PAGE_INSTRUMENT_TITLE = (By.CSS_SELECTOR, "p > span")
