@@ -1,0 +1,32 @@
+2024-04-09 23:44:24 ERROR Elements not present after 0.5 seconds on page: https://capital.com/el/zontanes-times-metoxon?t=fallers
+2024-04-09 23:44:24 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 304, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x556c642ae873 <unknown>
+#1 0x556c63fa48c6 <unknown>
+#2 0x556c63fef618 <unknown>
+#3 0x556c63fef6d1 <unknown>
+#4 0x556c64032744 <unknown>
+#5 0x556c640115cd <unknown>
+#6 0x556c6402fc19 <unknown>
+#7 0x556c64011343 <unknown>
+#8 0x556c63fe2593 <unknown>
+#9 0x556c63fe2f5e <unknown>
+#10 0x556c6427285b <unknown>
+#11 0x556c642767b5 <unknown>
+#12 0x556c64260581 <unknown>
+#13 0x556c64277342 <unknown>
+#14 0x556c6424588f <unknown>
+#15 0x556c6429d738 <unknown>
+#16 0x556c6429d90b <unknown>
+#17 0x556c642ad9c4 <unknown>
+#18 0x7fbba7694ac3 <unknown>
