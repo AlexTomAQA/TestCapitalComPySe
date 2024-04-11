@@ -125,8 +125,8 @@ def cur_language(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "gb",  # Great Britain - "FCA"
-        # "de",  # Germany  - "CYSEC"
+        # "gb",  # Great Britain - "FCA"
+        "de",  # Germany  - "CYSEC"
         # "au",  # Australia - "ASIC"
         # "ae",  # United Arab Emirates - "SCB"
 
@@ -161,8 +161,8 @@ def cur_country(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "test001.miketar+1@gmail.com"
-        "aqa.tomelo.an@gmail.com"  # для локального тестирования у Саши
+        "test001.miketar+1@gmail.com"
+        # "aqa.tomelo.an@gmail.com"  # для локального тестирования у Саши
     ],
 )
 def cur_login(request):
@@ -174,8 +174,8 @@ def cur_login(request):
 @pytest.fixture(
     scope="class",
     params=[
-        # "Qwer1234-!@#$"
-        "iT9Vgqi6d$fiZ*Z"  # для локального тестирования у Саши
+        "Qwer1234-!@#$"
+        # "iT9Vgqi6d$fiZ*Z"  # для локального тестирования у Саши
     ],
 )
 def cur_password(request):
