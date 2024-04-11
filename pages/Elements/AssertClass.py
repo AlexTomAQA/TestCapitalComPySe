@@ -9,6 +9,7 @@ from datetime import datetime
 
 import allure
 
+from pages.Capital.trading_instrument_page import PageTradingInstrument
 from pages.common import Common
 from pages.AppStore.app_store import AppStore
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
@@ -26,6 +27,7 @@ class AssertClass(BasePage):
     page_google_play = None
     page_tradingview = None
     platform_url = ""
+    page_trading_instrument = None
 
     # def __init__(self, *args):
     #     super().__init__(*args)
@@ -230,3 +232,9 @@ class AssertClass(BasePage):
         if len(tabs) == 2:
             self.driver.close()
             self.driver.switch_to.window(tabs[0])
+
+    @allure.step('Checking that "Page of trading instrument" on capital.com with corresponding instrument is opened')
+    def assert_page_trading_instrument(self, d, cur_language, cur_link, title_instrument):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        self.page_trading_instrument = PageTradingInstrument(d, cur_link, self.bid)
+        self.page_trading_instrument.check_open_trading_instrument_page(title_instrument)
