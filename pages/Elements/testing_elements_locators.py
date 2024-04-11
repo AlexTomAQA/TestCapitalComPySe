@@ -329,6 +329,7 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
     BUTTON_NOTIFICATION = \
         (By.CSS_SELECTOR, "a[data-type='market_alerts']")
+    TAG_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "div.cc-box h1")
 
 
 class TradingPlatformWatchlistTabs:
