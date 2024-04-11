@@ -11,6 +11,7 @@ import allure
 # import pytest
 
 from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Elements.testing_elements_locators import TradingPlatformWatchlistTabs
 from pages.base_page import BasePage
 from pages.common import Common
 # from pages.common import flag_of_bug
@@ -65,14 +66,13 @@ class TradingPlatform(BasePage):
         # print(platform_url)
         # print(self.wait_for_change_url(platform_url, 120))
         if self.wait_for_target_url(platform_url, 10):
-            print(f"{datetime.now()}   => Opened page with {self.driver.current_url} url. Expected: {platform_url} ")
+            print(f"{datetime.now()}   => Opened page with {d.current_url} url. Expected: {platform_url} ")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_platform_logo()
-            self.should_be_corresponding_trading_instrument()
             self.open_page()
             assert True, 'Trading platform with title "Trading Platform | Capital.com" opened'
         else:
-            print(f"{datetime.now()}   => Loaded page {self.driver.current_url} with not {platform_url} url")
+            print(f"{datetime.now()}   => Loaded page {d.current_url} with not {platform_url} url")
             cur_url = self.driver.current_url
             self.open_page()
             assert False, f"Loaded page with {cur_url} url, but expected {platform_url}"
@@ -166,6 +166,97 @@ class TradingPlatform(BasePage):
                        f"but expected the Trading platform in Live mode (timeout=15c)")
                 assert False, msg
                 # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+
+    @allure.step("Checking that the trading platform page has opened and the element is selected")
+    def should_be_trading_platform_page_with_selected_element(self, d, test_link, tab, trade_instrument):
+        """
+        Check if the trading platform page for the corresponding trade instrument is opened
+        Args:
+            d: Webdriver
+            test_link: Link in the list of 3 random items and start page of the sidebar
+            tab: open Trade platform for corresponding trade instrument tab (False)
+            trade_instrument: corresponding trade instrument (False)
+        """
+
+        print(f"{datetime.now()}   Checking that the trading platform page has opened and the element is selected =>")
+        platform_url = data["PLATFORM_URL/"]
+        cur_url = self.driver.current_url
+        if self.wait_for_target_url(platform_url, 10):
+            print(f"{datetime.now()}   Checking way # 1 => ")
+            self.should_be_page_title_v2(data["PAGE_TITLE"])
+            self.should_be_platform_logo()
+            self.should_tab_be_selected(tab)
+
+            print(f"\n{datetime.now()}   4. Check that opened page with {self.driver.current_url} url\n"
+                  f"with selected corresponding trading instrument '{trade_instrument}' =>")
+            self.should_be_favourite_trading_instrument(test_link, trade_instrument)
+
+            msg = 'Trading platform is opened and the tab is selected'
+            Common.browser_back_to_link_and_test_pass(d, test_link, msg)
+        else:
+            print(f"{datetime.now()}   Checking way # 2 =>")
+            self.should_be_page_title_v2(data["PAGE_TITLE"])
+            self.should_be_platform_logo()
+            self.should_tab_be_selected(tab)
+
+            print(f"{datetime.now()}   => Loaded page {cur_url} with not {platform_url} url")
+            # проверка бага для ретеста
+
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(d, self.bid, '10', self.link)
+
+            Common.flag_of_bug = True
+            msg = (f"Bug # 10. Loaded page with {cur_url} url, "
+                   f"but expected the Trading platform in Live mode (timeout=15c)")
+            assert False, msg
+
+    def should_tab_be_selected(self, tab):
+        """Check that the tab is selected"""
+        allure.step(f"{datetime.now()}   Check that the tab is selected on the page")
+
+        print(f"\n{datetime.now()}   2. Checking that the tab is selected on the page =>")
+
+        if len(self.driver.find_elements(*tab)) == 0:
+            msg = "tab is not selected on the current page"
+            print(f"{datetime.now()}   => {msg}")
+            Common().assert_true_false(False, msg)
+        print(f"{datetime.now()}   => tab is selected on the current page")
+
+    def should_be_favourite_trading_instrument(self, test_link, trade_instrument):
+        """
+        Check that list of favourite instruments contain trade instrument
+        """
+        allure.step(f"{datetime.now()}   Check if Trading platform contains favourite trade instrument")
+
+        print(f"\n{datetime.now()}   trade_instrument = '{trade_instrument}'")
+
+        # определяем, какие вкладки открыты и избегаем ошибки пустого списка
+        print(f"\n{datetime.now()}   "
+              f"4.2. Check that Favourites List of Trading Platform is not empty =>")
+        favourites_list = self.elements_are_located(TradingPlatformWatchlistTabs.ITEM_TITLE, 5)
+        if len(favourites_list) == 0:
+            print(f"{datetime.now()}   => Trading Platform opened but Favourites List is empty")
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '15', self.link)
+            msg = ("Bug # . Trading platform was opened, "
+                   "but does not contain any trade instrument in the Favourites List")
+            Common().assert_true_false(False, msg)
+
+        # проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
+        print(f"{datetime.now()}   "
+              f"4.5. Check that the Top Charts List contain selected Trade instrument =>")
+        favourites = [i.text for i in self.driver.find_elements(*TradingPlatformWatchlistTabs.ITEM_TITLE)]
+        print(favourites)
+
+        if not (trade_instrument in favourites):
+            msg = "Trade instrument not is the Favourites List"
+            print(f"{datetime.now()}   {msg}")
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '18', self.link)
+            Common().pytest_fail(f"Bug # .   {msg}")
+        print(f"{datetime.now()}   => The Favourites List contains Trade instrument")
+
+        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Favourites List")
 
     def should_be_platform_logo(self):
         """Check that the Capital.com Logo is present"""
@@ -294,19 +385,19 @@ class TradingPlatform(BasePage):
         # trade_instrument_name = trade_instrument.split(" ")[0]
         # print(f"{datetime.now()}   => trade_instrument_name = '{trade_instrument_name}'")
 
-        # проверяем, что открыта трейдинговая платформа на вкладке [Charts]
+        # 4.1. проверяем, что открыта трейдинговая платформа на вкладке [Charts]
         print(f"\n{datetime.now()}   "
               f"4.1. Check that Trading Platform is opened in Chart mode")
         menu_chart = self.elements_are_present(*ChartingLocators.MENU_CHART)
         if len(menu_chart) == 0:
-            print(f"{datetime.now()}   => Trading Platform opened, but not Chart mode")
-            print(f'\nBug: {self.bid}')
-            retest_table_fill(self.driver, self.bid, '14', self.link)
             msg = "Bug # 14. Trading platform opened, but not Chart mode"
+            print(f"{datetime.now()}   => {msg}")
+            print(f'Bid: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '14', self.link)
             Common().assert_true_false(False, msg)
         print(f"{datetime.now()}   => Trading Platform opened in Chart mode")
 
-        # определяем, какие вкладки открыты и избегаем ошибки пустого списка
+        # 4.2. определяем, какие вкладки открыты и избегаем ошибки пустого списка
         print(f"\n{datetime.now()}   "
               f"4.2. Check that Top Charts List of Trading Platform not empty =>")
         top_chart_trade_list = self.elements_are_located(TradingInstruments.LIST_TRADE_INSTRUMENTS, 5)
@@ -319,57 +410,54 @@ class TradingPlatform(BasePage):
             Common().assert_true_false(False, msg)
             # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
 
-        # проверяем, есть ли в списке вкладка запрашиваемого торгового инструмента
+        # 4.3. проверяем, открыты ли детали выбранного торгового инструмента
         print(f"\n{datetime.now()}   "
-              f"4.3. Check that Top Charts List contain selected trade instrument =>")
-        print(f"\n{datetime.now()}   Top Charts List contain {len(top_chart_trade_list)} trade instruments")
-        print(f"\n{datetime.now()}   Top Charts List contain following trade instruments:")
-        present = False
-        for element in top_chart_trade_list:
-            # print(f"'{element.text}'", " ", "")
-            print(f"'{element.text}'")
-            if trade_instrument in element.text:
-                print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
-                present = True
-                break
-
-        if not present:
-            # new bug re-test checking =====
+              f"4.3. Check that opened trade instrument info page =>")
+        open_ticket = self.driver.find_elements(*TradingInstruments.OPEN_TICKET_TRADE_INSTRUMENTS)
+        if len(open_ticket) == 0:
+            msg = ("Trading platform was opened, "
+                   "but does not contain any trading info")
+            print(f"{datetime.now()}   => {msg}")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '16', self.link)
-            msg = f"Bug # 16. Trade instrument '{trade_instrument}' is not present in the Top Charts List"
-            Common().assert_true_false(False, msg)
+            Common().pytest_fail(f"Bug # 16. {msg}")
 
-        print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List")
-
-        # 4.4. проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
-        print(f"{datetime.now()}   "
-              f"4.4. Check that the Top Charts List contain selected and visible Trade instrument =>")
-        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENT)
-        if not selected_trade_instrument:
-            # new bug re-test checking =====
+        # 4.4. проверяем, открыты ли детали выбранного торгового инструмента
+        print(f"\n{datetime.now()}   "
+              f"4.4. Check that opened Info page of selected '{trade_instrument}' trade instrument =>")
+        print(f"{datetime.now()}   Trading instrument - '{trade_instrument}'")
+        print(f"{datetime.now()}   Title opened trading instrument info page - '{open_ticket[0].text}'")
+        if not (trade_instrument in open_ticket[0].text):
+            msg = "Trading platform was opened, but does not contain trading info about selected TI"
+            print(f"{datetime.now()}   => {msg}")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '17', self.link)
-            msg = (f"Bug # 17. SeTrade instrument '{trade_instrument}' is the Top Charts List, "
-                   f"but not visible and not selected")
-            Common().assert_true_false(False, msg)
-            # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
-        print(f"{datetime.now()}   => The Top Charts List contain selected and visible Trade instrument")
+            Common().pytest_fail(f"Bug # 17. {msg}")
+        print(f"{datetime.now()}   => Open info page about selected '{trade_instrument}' TI")
 
-        # проверяем, что запрашиваемый торговый инструмент выбран
+        # 4.5. проверяем, что есть выбранный торговый инструмент и он отображен (виден) в списке инструментов
         print(f"{datetime.now()}   "
-              f"4.5. Check that Trade instrument '{trade_instrument}' is present in the Top Charts List, "
-              f"visible and selected =>")
-        if trade_instrument not in selected_trade_instrument.text:
-            # new bug re-test checking =====
-            print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts "
-                  f"List, visible, but not selected")
+              f"4.5. Check that the Top Charts List contain selected Trade instrument =>")
+        selected_trade_instrument = self.element_is_visible(TradingInstruments.SELECTED_TRADE_INSTRUMENT)
+        if not (trade_instrument in selected_trade_instrument.text):
+            msg = "Selected Trade instrument is the Top Charts List, but not visible"
+            print(f"{datetime.now()}   {msg}")
             print(f'\nBug: {self.bid}')
             retest_table_fill(self.driver, self.bid, '18', self.link)
-            msg = (f"Bug # 18. Trade instrument '{trade_instrument}' is on the Top Charts List, visible, "
-                   f"but Not selected")
-            Common().assert_true_false(False, msg)
-            # Common().browser_back_to_link_and_test_fail(self.driver, test_link, msg)
+            Common().pytest_fail(f"Bug # 18.   {msg}")
+        print(f"{datetime.now()}   => The Top Charts List contain selected and visible Trade instrument")
+
+        # 4.6. проверяем, что выбранный торговый инструмент отображен (виден) в списке инструментов
+        print(f"{datetime.now()}   "
+              f"4.6. Check that the selected Trade instrument is visible in Top Charts List =>")
+        if not selected_trade_instrument:
+            msg = "Selected Trade instrument is present the Top Charts List, but not visible"
+            print(f"{datetime.now()}   {msg}")
+            print(f'\nBug: {self.bid}')
+            retest_table_fill(self.driver, self.bid, '19', self.link)
+            Common().pytest_fail(f"Bug # 19. {msg}")
+        print(f"{datetime.now()}   => The Top Charts List contain selected and visible '{trade_instrument}' "
+              f"Trade instrument")
 
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Top Charts List, "
               f"visible and selected")

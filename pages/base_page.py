@@ -145,12 +145,9 @@ class BasePage:
         print(f"{datetime.now()}   Current page URL = {self.driver.current_url}")
         print(f"{datetime.now()}   self.link = {self.link}")
         link = self.link
-        print(f"{datetime.now()}   link = {link}")
+        print(f"{datetime.now()}   driver.get({link}) =>")
         self.driver.get(link)
         time.sleep(1)
-        # if self.driver.current_url != self.link:
-        #     print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
-        #     pytest.fail(f"Test error: Expected load page {self.link}, but loaded page {self.driver.current_url}")
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
 
     @HandleExcElementsDecorator()
@@ -399,6 +396,24 @@ class BasePage:
         print(f"{datetime.now()}   => Cur page is {link}")
 
     @HandleExcElementsDecorator()
+    @allure.step("Check the current page has expected URL")
+    def check_current_page_is_v2(self, expected_url):
+        """
+        Check that the current page has the expected URL.
+
+        Args:
+            expected_url: expected page's URL
+        """
+        print(f"{datetime.now()}   Checking that the current page has URL: {expected_url} =>")
+        current_url = self.driver.current_url
+        print(f"{datetime.now()}   => The current page URL is {current_url}")
+        # Checks that the page URL meets the requirements
+        Common.assert_true_false(
+            current_url in expected_url,
+            f"{datetime.now()}   Expected page: {expected_url}. Actual page: {self.driver.current_url}"
+        )
+
+    @HandleExcElementsDecorator()
     @allure.step("Check, that the link provided is in the current URL of the browser")
     def should_be_link(self, link):
         """
@@ -430,6 +445,7 @@ class BasePage:
         ), f"Expected title {title} but got {el_title.text} on page: {self.driver.current_url}"
 
     @HandleExcElementsDecorator()
+    @allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 2")
     def should_be_page_title_v2(self, title):
         """
         Check that the page has the expected title.
@@ -437,15 +453,36 @@ class BasePage:
         Args:
             title: expected page's title
         """
-        allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 2")
-
-        print(f"\n{datetime.now()}   1. Checking that the Trading platform page has valid title =>")
+        print(f"\n{datetime.now()}"
+              f"   1. Checking that the Trading platform (or TradingView site) page has valid title =>")
         el_title = self.driver.title
         print(f"{datetime.now()}   => The title of current page is '{el_title}'")
         # Checks that the page title meets the requirements
         if title not in el_title:
             msg = f"Bug # ??? Expected title '{title}' but got '{el_title}' on page: {self.driver.current_url}"
             Common().assert_true_false(False, msg)
+
+    @HandleExcElementsDecorator()
+    @allure.step(f"{datetime.now()}   Check that the page has the expected title - ver 3")
+    def should_be_page_title_v3(self, expected_title):
+        """
+        Check that the page has the expected title.
+
+        Args:
+            expected_title: expected page's title
+        """
+        print(f"\n{datetime.now()}"
+              f"   Checking that the page has expected title =>")
+        current_title = self.driver.title
+        print(f"{datetime.now()}   The title of current page is '{current_title}'")
+        print(f"{datetime.now()}   The expected title is '{expected_title}'")
+        # Check that the page title meets the requirements
+        Common().assert_true_false(
+            expected_title in current_title,
+            f"{datetime.now()}   "
+            f"=> Expected title '{expected_title}' but got '{current_title}' on page: {self.driver.current_url}\n"
+        )
+        print(f"{datetime.now()}   => The page has expected title.\n")
 
     @HandleExcElementsDecorator()
     def get_text(self, i, method, locator):
@@ -569,3 +606,15 @@ class BasePage:
     def elements_are_visible(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
                                                 message=f"Can't see element by locator {locator}")
+
+    @HandleExcElementsDecorator()
+    def element_is_selected(self, method, locator):
+        """
+       Shows that element is selected By method and locator.
+
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+        """
+        return self.driver.find_element(method, locator).is_enabled()
+

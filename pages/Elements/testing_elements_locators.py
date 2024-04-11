@@ -132,6 +132,10 @@ class ButtonsOnPageLocators:
     TAB_TRADING_ITEM_TOP_FALLERS = (By.CSS_SELECTOR, '[data-id="fallers"]')
     TAB_TRADING_ITEM_MOST_VOLATILE = (By.CSS_SELECTOR, '[data-id="volatile"]')
 
+    # Elements of 'Trade CFDs on Capital.com via TradingView' block
+    TRADE_CFDS_ON_CAPITAL_BLOCK = (By.CSS_SELECTOR, '.tradingView[data-type="tradingview"]')
+    EXPLORE_FEATURES_BUTTON = (By.CSS_SELECTOR, '.tradingView__btn[data-type="tradingview"]')
+
     # Elements of 'Trading instrument' widget
     TRADING_INSTRUMENT_WIDGET = (By.CSS_SELECTOR, '[data-wrap="homePage"]')
 
@@ -167,6 +171,10 @@ class ButtonsOnPageLocators:
     # Elements of Widget 'Trading calculator'
     TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
     BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
+
+    # Elements of 'Trading experience' block
+    TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
+    BUTTON_START_TRADING_IN_TRADING_EXPERIENCE = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
 
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
@@ -259,9 +267,9 @@ class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
     BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="buy"]')  # список инструментов
-
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # название инструментов
-    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # ссылка
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # названия инструментов
+    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
+    LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
 
 
 class FieldDropdownMarketsLocator:
@@ -321,5 +329,9 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
     BUTTON_NOTIFICATION = \
         (By.CSS_SELECTOR, "a[data-type='market_alerts']")
+    TAG_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "div.cc-box h1")
 
 
+class TradingPlatformWatchlistTabs:
+    FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
+    ITEM_TITLE = (By.CLASS_NAME, "market-title")
