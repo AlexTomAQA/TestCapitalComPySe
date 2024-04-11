@@ -1,0 +1,49 @@
+2024-04-11 13:42:45 ERROR Unable to initialize WebDriver
+2024-04-11 13:42:45 ERROR no such execution context
+  (Session info: chrome=123.0.6312.105)
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 564, in wait_for_change_url
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 138, in _predicate
+    return url != driver.current_url
+                  ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 437, in current_url
+    return self.execute(Command.GET_CURRENT_URL)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: no such execution context
+  (Session info: chrome=123.0.6312.105)
+Stacktrace:
+#0 0x564f36a91863 <unknown>
+#1 0x564f36787717 <unknown>
+#2 0x564f3676eadf <unknown>
+#3 0x564f3676d55b <unknown>
+#4 0x564f3676db9f <unknown>
+#5 0x564f3677e5d7 <unknown>
+#6 0x564f3679364c <unknown>
+#7 0x564f36798c2b <unknown>
+#8 0x564f3676e222 <unknown>
+#9 0x564f36793246 <unknown>
+#10 0x564f36812ae2 <unknown>
+#11 0x564f367f4343 <unknown>
+#12 0x564f367c5593 <unknown>
+#13 0x564f367c5f5e <unknown>
+#14 0x564f36a5584b <unknown>
+#15 0x564f36a597a5 <unknown>
+#16 0x564f36a43571 <unknown>
+#17 0x564f36a5a332 <unknown>
+#18 0x564f36a2887f <unknown>
+#19 0x564f36a80728 <unknown>
+#20 0x564f36a808fb <unknown>
+#21 0x564f36a909b4 <unknown>
+#22 0x7f670be94ac3 <unknown>
