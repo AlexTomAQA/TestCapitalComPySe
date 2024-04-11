@@ -267,9 +267,9 @@ class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
     BUTTON_BUY_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="buy"]')  # список инструментов
-
-    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # название инструментов
-    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, ".table--fixedInstr .stringEllipsed > a")  # ссылка
+    ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # названия инструментов
+    ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
+    LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
 
 
 class FieldDropdownMarketsLocator:
@@ -329,6 +329,7 @@ class PageTradingInstrumentMarketsLocators:
         (By.CSS_SELECTOR, "tbody > tr:nth-child(3) > td:nth-child(1) > div > div > a[href='trading/platform']")
     BUTTON_NOTIFICATION = \
         (By.CSS_SELECTOR, "a[data-type='market_alerts']")
+    TAG_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "div.cc-box h1")
 
 
 class TradingPlatformWatchlistTabs:

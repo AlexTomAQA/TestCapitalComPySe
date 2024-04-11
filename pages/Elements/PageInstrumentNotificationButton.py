@@ -26,8 +26,9 @@ class PageInstrumentNotificationButton(BasePage):
         page_signup_login = SignupLogin(d, cur_item_link)
         page_signup_login.check_popup_signup_form()
 
-        trade_instrument = self.element_click()
-        print(f'Trade instrument from Full test is {trade_instrument}')
+        trade_instrument_tag = self.element_click(cur_role)
+
+        print(f'Trade instrument from Full test is {trade_instrument_tag}')
         test_element = AssertClass(d, cur_item_link, self.bid)
         print(f'Test element is {test_element}')
         match cur_role:
@@ -36,7 +37,7 @@ class PageInstrumentNotificationButton(BasePage):
             case "NoAuth":
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument)
+                test_element.assert_trading_platform_v4(d, cur_item_link, False, True, trade_instrument_tag)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()} 1.Arrange_v0")
@@ -46,41 +47,55 @@ class PageInstrumentNotificationButton(BasePage):
             self.open_page()
 
         print(f"{datetime.now()} BUTTON_NOTIFICATION is located on the page? =>")
-        button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
+        buttons = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
         print(f"{datetime.now()}   Is BUTTON_NOTIFICATION present on the page? =>")
-        if len(button) == 0:
-            print(f"{datetime.now()}   => BUTTON_NOTIFICATION is not present on the DOM")
+
+        if len(buttons) == 0:
+            print(f"{datetime.now()} => BUTTON_NOTIFICATION is not present on the page")
             return False
-        print(f"{datetime.now()}   => BUTTON_NOTIFICATION is present on the DOM")
+        print(f"{datetime.now()} => BUTTON_NOTIFICATION is present on the page")
 
         print(f"{datetime.now()}   [Notification] button scroll =>")
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            button[0]
-        )
-        print(f"{datetime.now()}   => [Notification] button scrolled")
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', buttons[0])
 
     @allure.step("Click button [Notification]")
-    def element_click(self):
+    def element_click(self, cur_role):
         print(f"\n{datetime.now()}   2. Act_v0")
         print(f"{datetime.now()}   Start Click 'Notification' button =>")
 
-        button = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
+        # Вытаскиваем уникальный атрибут открытого ТИ
+        trade_instrument_tag = self.driver.find_element(
+            *PageTradingInstrumentMarketsLocators.TAG_TRADE_INSTRUMENT).text
 
-        if not self.element_is_clickable(button[0], 5):
-            msg = "BUTTON_NOTIFICATION is not clickable after more then 5 sec"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # ???   {msg}")
+        buttons = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
+
+        if not self.element_is_clickable(buttons[0], 5):
+            print(f"{datetime.now()} => BUTTON_NOTIFICATION is not clickable after more then 5 sec")
+            pytest.fail(f"BUTTON_NOTIFICATION is not clickable more then 5 sec.")
+
         print(f"{datetime.now()} BUTTON_NOTIFICATION is clickable =>")
 
         try:
-            button[0].click()
+            buttons[0].click()
             print(f"{datetime.now()} => BUTTON_NOTIFICATION clicked")
         except ElementClickInterceptedException:
-            msg = "BUTTON_NOTIFICATION not clicked"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # ???   {msg}")
+            print(f"{datetime.now()} => BUTTON_NOTIFICATION not clicked")
 
-        del button
+            print(f"{datetime.now()}   'Signup' or 'Login' form is automatically opened")
 
-        return True
+            page_ = SignupLogin(self.driver)
+            if page_.close_signup_form():
+                pass
+            elif page_.close_login_form():
+                pass
+            elif page_.close_signup_page():
+                pass
+            else:
+                page_.close_login_page()
+
+            buttons[0].click()
+            del page_
+
+        return trade_instrument_tag
+
