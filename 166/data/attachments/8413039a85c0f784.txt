@@ -1,0 +1,99 @@
+{'width': 1280, 'height': 800}
+
+2024-04-11 19:30:01.093095   worker_id = master
+
+2024-04-11 19:30:01.093109   0. Allure grouping v4
+
+2024-04-11 19:30:01.093292   START PRECONDITIONS =>
+
+2024-04-11 19:30:01.093307   => URL after prev. preconditions - https://capital.com/nl
+2024-04-11 19:30:01.093316   => flag_of_bug - True
+2024-04-11 19:30:01.093326   => Current URL - https://capital.com/trading/platform/
+2024-04-11 19:30:01.098910   Current page URL = https://capital.com/trading/platform/
+2024-04-11 19:30:01.101520   self.link = https://capital.com/nl
+2024-04-11 19:30:01.101534   driver.get(https://capital.com/nl) =>
+2024-04-11 19:30:02.936407   => Loaded page https://capital.com/nl
+
+2024-04-11 19:30:02.941034   => Windows size - {'width': 1280, 'height': 800}
+2024-04-11 19:30:02.944739   Set windows position at (0, 0) =>
+2024-04-11 19:30:03.047049   Set resolution 1280 * 800 =>
+2024-04-11 19:30:03.149502   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-11 19:30:04.199999   Капчи нет. Идем дальше
+
+2024-04-11 19:30:04.200092   Работа с куками =>
+
+2024-04-11 19:30:04.200106   => не требуется
+
+2024-04-11 19:30:04.200115   Prev. country - 'de'
+2024-04-11 19:30:04.200125   Cur. country - 'de'
+2024-04-11 19:30:04.200134   => Country set to 'de'
+
+2024-04-11 19:30:04.200143   Prev. language - 'nl'
+2024-04-11 19:30:04.200151   Cur. language - 'nl'
+2024-04-11 19:30:04.200160   => Language is set to 'nl'
+
+2024-04-11 19:30:04.200168   Prev. role - 'NoAuth'
+2024-04-11 19:30:04.200177   Cur. role - 'NoAuth'
+2024-04-11 19:30:04.200186   => The 'NoAuth' role is set
+
+2024-04-11 19:30:04.203016   => Current URL - https://capital.com/nl
+
+2024-04-11 19:30:04.203038   => THE END PRECONDITIONS
+
+2024-04-11 19:30:04.203231   1. Arrange_v2
+2024-04-11 19:30:04.203248   current_page = https://capital.com/nl
+2024-04-11 19:30:04.205679   link = https://capital.com/nl/eur-usd-koers
+2024-04-11 19:30:04.208221   Current page URL = https://capital.com/nl
+2024-04-11 19:30:04.214714   self.link = https://capital.com/nl/eur-usd-koers
+2024-04-11 19:30:04.214738   driver.get(https://capital.com/nl/eur-usd-koers) =>
+2024-04-11 19:30:05.853632   => Loaded page https://capital.com/nl/eur-usd-koers
+2024-04-11 19:30:05.858023 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-11 19:30:05.869034   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-11 19:30:05.869070   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-11 19:30:05.873139   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-11 19:30:05.873301   2. Act_v2
+2024-04-11 19:30:05.873316   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-11 19:30:06.661804   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-11 19:30:06.678385   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-11 19:30:06.678431   Move focus to button [Go to platform] and click on =>
+2024-04-11 19:30:07.456681   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-11 19:30:07.972107 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-11 19:30:07.972435   3. Assert_Login_v0
+2024-04-11 19:30:07.972566   Check that 'Login' form is opened
+2024-04-11 19:30:11.090917   'Login' form not opened
+2024-04-11 19:30:11.091110   Check that new 'Login' form is opened
+2024-04-11 19:30:14.113505   => New 'Login' form not opened
+2024-04-11 19:30:14.116373   'Login' page not opened
+2024-04-11 19:30:17.229269   'Login' form on trading platform not opened
+2024-04-11 19:30:17.229485   Start step Check that [Sign up] form is opened
+2024-04-11 19:30:20.327061   'Sign up' form not opened
+2024-04-11 19:30:20.327256   Start step Check that new [Sign up] form is opened
+2024-04-11 19:30:23.421407   => new 'Sign up' form not opened
+2024-04-11 19:30:23.421611   Start method Check that [Sign up] page opened =>
+2024-04-11 19:30:24.425353   'Sign up' page not opened
+2024-04-11 19:30:24.425558   Check that [Sign up] form on trading platform opened =>
+2024-04-11 19:30:24.438718   => 'Sign up' form on trading platform page opened
+2024-04-11 19:30:24.438745   Assert SIGNUP_HEADER =>
+2024-04-11 19:30:24.450902   => SIGNUP_HEADER is OK
+2024-04-11 19:30:24.450942   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-11 19:30:24.463185   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-11 19:30:24.463214   Assert SIGNUP_REF_LOGIN =>
+2024-04-11 19:30:24.479244   => SIGNUP_REF_LOGIN is OK
+2024-04-11 19:30:24.479285   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.01.01_004-nl.de.NoAuth
+
+2024-04-11 19:30:24.479354   Проверка бага в таблице ретеста  =>
+
+2024-04-11 19:30:24.791632   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-11 19:30:25.123604   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-11 19:30:26.199477   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-11 19:30:26.518354   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-11 19:30:26.519799   Баг Bid:01.01.01_004-nl.de.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
