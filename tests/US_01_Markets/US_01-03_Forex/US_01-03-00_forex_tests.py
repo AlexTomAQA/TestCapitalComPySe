@@ -16,7 +16,7 @@ from src.src import CapitalComPageSrc
 count = 1
 
 
-@pytest.mark.us_01_03
+@pytest.mark.us_01_03_00
 class TestForex:
     page_conditions = None
 
