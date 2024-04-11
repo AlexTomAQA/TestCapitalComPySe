@@ -22,7 +22,7 @@ class TestESG:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [1. Create & verify account]
-        Language: All. License: All,except FCA (GB country)
+        Language: En. License: All,except FCA (GB country)
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -30,6 +30,7 @@ class TestESG:
             "_004", "Testing button  [1. Create & verify your account]  on Block 'TSteps trading'")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")

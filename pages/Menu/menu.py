@@ -1718,9 +1718,9 @@ class MenuSection(BasePage):
     def sub_menu_esg_move_focus_click(self, d, test_language):
         sub_menu = None
 
-        match test_language:
-            case "":
-                sub_menu = d.find_elements(*MenuUS0107MarketsESG.SUB_MENU_EN_ESG)
+        if test_language == "":
+            sub_menu = d.find_elements(*MenuUS0107MarketsESG.SUB_MENU_EN_ESG)
+
         if len(sub_menu) == 0:
             Common().pytest_fail(f"Bug # ??? For language '{test_language}' \"Markets > ESG\" submenu doesn't exist")
 
