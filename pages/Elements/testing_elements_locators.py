@@ -335,3 +335,13 @@ class PageTradingInstrumentMarketsLocators:
 class TradingPlatformWatchlistTabs:
     FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
     ITEM_TITLE = (By.CLASS_NAME, "market-title")
+
+
+class MarketSortAllMarketsLocators:
+    ALL_TABS = (By.CLASS_NAME, "tabs__nav")
+    ALL_MARKETS_TAB = (By.CSS_SELECTOR, "[data-cat='ALL']")
+    COMMODITIES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='COM']")
+    INDICES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='IND']")
+    CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
+    SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
+    FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
