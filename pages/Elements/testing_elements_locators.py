@@ -172,6 +172,10 @@ class ButtonsOnPageLocators:
     TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
     BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
 
+    # Elements of 'Trading experience' block
+    TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
+    BUTTON_START_TRADING_IN_TRADING_EXPERIENCE = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
@@ -328,3 +332,6 @@ class PageTradingInstrumentMarketsLocators:
     TAG_TRADE_INSTRUMENT = (By.CSS_SELECTOR, "div.cc-box h1")
 
 
+class TradingPlatformWatchlistTabs:
+    FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
+    ITEM_TITLE = (By.CLASS_NAME, "market-title")

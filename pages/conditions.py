@@ -65,13 +65,18 @@ class Conditions(BasePage):
         global prev_country
 
         print(f"\n{datetime.now()}   START PRECONDITIONS =>")
-        print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
         print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_preconditions}")
-        print(f"\n{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        print(f"{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        print(f"{datetime.now()}   => Current URL - {self.driver.current_url}")
+
         if url_after_preconditions == "?":
             url_after_preconditions = host
 
-        if Common.flag_of_bug:
+        # if Common.flag_of_bug:
+        #     self.link = url_after_preconditions
+        #     self.open_page()
+
+        if self.driver.current_url != url_after_preconditions:
             self.link = url_after_preconditions
             self.open_page()
 
@@ -85,7 +90,7 @@ class Conditions(BasePage):
         Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Работа с куками")
+        print(f"\n{datetime.now()}   Работа с куками =>")
         # if cur_role != prev_role or Common.flag_of_bug:
         if cur_role != prev_role:
             print(f"{datetime.now()}   Prev. role - '{prev_role}'")
@@ -100,6 +105,8 @@ class Conditions(BasePage):
             self.button_accept_all_cookies_click()
             prev_country = "?"
             prev_language = "?"
+        else:
+            print(f"\n{datetime.now()}   => не требуется")
 
         # устанавливаем Страну, если не соответствует предыдущей
         # Captcha(d).fail_test_if_captcha_present_v2()

@@ -145,7 +145,7 @@ class BasePage:
         print(f"{datetime.now()}   Current page URL = {self.driver.current_url}")
         print(f"{datetime.now()}   self.link = {self.link}")
         link = self.link
-        print(f"{datetime.now()}   link = {link}")
+        print(f"{datetime.now()}   driver.get({link}) =>")
         self.driver.get(link)
         time.sleep(1)
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
@@ -606,3 +606,15 @@ class BasePage:
     def elements_are_visible(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.visibility_of_any_elements_located(locator),
                                                 message=f"Can't see element by locator {locator}")
+
+    @HandleExcElementsDecorator()
+    def element_is_selected(self, method, locator):
+        """
+       Shows that element is selected By method and locator.
+
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+        """
+        return self.driver.find_element(method, locator).is_enabled()
+

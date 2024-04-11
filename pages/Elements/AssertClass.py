@@ -163,7 +163,24 @@ class AssertClass(BasePage):
 
         print(f"\n{datetime.now()}   3. Assert_v4")
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
+        print(f"\n{datetime.now()}   ")
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
+
+    @allure.step('Checking that "Trading platform" page opened and the element is selected')
+    def assert_trading_platform_with_selected_element(self, d, cur_link, tab="", trade_instrument=""):
+        """
+        Check if the trading platform page for the corresponding trade instrument is opened
+        Args:
+            d: Webdriver
+            cur_link: Link in the list of 3 random items and start page of the sidebar
+            "Shares trading" is selected (Param)
+            tab: open Trade platform for corresponding trade instrument tab (False)
+            trade_instrument: corresponding trade instrument (False)
+        """
+
+        print(f"\n{datetime.now()}   3. Assert element is selected")
+        self.page_trading = TradingPlatform(d, cur_link, self.bid)
+        self.page_trading.should_be_trading_platform_page_with_selected_element(d, cur_link, tab, trade_instrument)
 
     @allure.step('Checking that "Trading platform" page opened in demo mode')
     def assert_trading_platform_demo(self, d):
