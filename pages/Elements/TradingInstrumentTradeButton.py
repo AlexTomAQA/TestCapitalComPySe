@@ -44,7 +44,7 @@ class TradingInstrumentTradeButton(BasePage):
                     test_element.assert_login(self.driver, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(
-                        self.driver, cur_item_link, False, True)
+                        self.driver, cur_item_link, False, True, self.trade_instrument)
             self.driver.get(cur_item_link)
 
     def arrange_(self, d, cur_item_link, cur_market):
@@ -213,6 +213,12 @@ class TradingInstrumentTradeButton(BasePage):
         except ElementNotInteractableException:
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clicked\n")
             pytest.fail("Checking element is not clicked")
+
+        # Get name of instrument
+        print(f"{datetime.now()}   Start get name of trading instrument =>")
+        trade_instrument_list = self.driver.find_elements(*ButtonsOnPageLocators.NAME_OF_TRADING_INSTRUMENT)
+        self.trade_instrument = trade_instrument_list[i].text
+        print(f'{datetime.now()}   => Name of trading instrument: {self.trade_instrument}\n')
 
         # Start click button [Trade]
         print(f"{datetime.now()}   Start click button [Trade] =>")
