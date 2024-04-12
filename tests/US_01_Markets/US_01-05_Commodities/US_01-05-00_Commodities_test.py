@@ -15,7 +15,7 @@ from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStart
 count = 1
 
 
-@pytest.mark.us_01_05
+@pytest.mark.us_01_05_00
 class TestCommodities:
     page_conditions = None
 
