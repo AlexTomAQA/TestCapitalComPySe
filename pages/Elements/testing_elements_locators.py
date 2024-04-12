@@ -150,6 +150,7 @@ class ButtonsOnPageLocators:
     MEATBALLS_MENU_BUTTON = (By.CSS_SELECTOR, '.cc-boxXs.tabsDrop__btn.js-tabsDrop__btn')
 
     TRADE_BUTTON_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets__btn.js-wMarkets__tradeBtn.showLg')
+    NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets .wMarkets__item.js-wMarkets__item .wMarkets__link')
 
     # Elements of Our markets block
     OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
@@ -335,3 +336,13 @@ class PageTradingInstrumentMarketsLocators:
 class TradingPlatformWatchlistTabs:
     FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
     ITEM_TITLE = (By.CLASS_NAME, "market-title")
+
+
+class MarketSortAllMarketsLocators:
+    ALL_TABS = (By.CLASS_NAME, "tabs__nav")
+    ALL_MARKETS_TAB = (By.CSS_SELECTOR, "[data-cat='ALL']")
+    COMMODITIES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='COM']")
+    INDICES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='IND']")
+    CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
+    SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
+    FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
