@@ -119,6 +119,7 @@ class Common:
 			retest = sys.argv[1].split('=')[1]
 		except IndexError:
 			retest = False
+
 		if retest == 'True':
 			if sys.argv[6].split('=')[0] == "--tpi_link":
 				list_item_link.append(sys.argv[6].split('=')[1])
@@ -134,11 +135,13 @@ class Common:
 					print(f"{datetime.now()}   {line[:-1]}")
 				file.close()
 
-			qty = len(list_item_link)
-			if qty == 0:
-				print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
-			else:
-				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
+		qty = len(list_item_link)
+		if qty == 0:
+			msg = "Отсутствуют тестовые данные: нет списка ссылок на страницы"
+			print(f"{datetime.now()}   {msg}")
+			pytest.exit(msg)
+		else:
+			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
 		return list_item_link
 
