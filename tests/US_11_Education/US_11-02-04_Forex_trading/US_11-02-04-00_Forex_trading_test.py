@@ -22,7 +22,7 @@ count = 1
 cur_page_url = ""
 
 
-@pytest.mark.us_11_02_04
+@pytest.mark.us_11_02_04_00
 class TestForexTradingMainPage:
     # def __init__(self):
     #     self.forex_trading_main_page_url = conf.URL
