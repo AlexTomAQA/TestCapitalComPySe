@@ -177,6 +177,12 @@ class ButtonsOnPageLocators:
     TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
     BUTTON_START_TRADING_IN_TRADING_EXPERIENCE = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
 
+    # Elements of 'Try trading for free' block
+    TRY_TRADING_FOR_FREE_BLOCK = (By.CSS_SELECTOR, ".cc-boxXl.newToTrading")
+    BUTTON_CREATE_DEMO_ACCOUNT_IN_TRADING_FOR_FREE = \
+        (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup?go=demo']")
+
+
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
