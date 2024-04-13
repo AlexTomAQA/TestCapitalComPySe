@@ -18,9 +18,10 @@ from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDsBlock import TradeCFDsBlock
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
 from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
-from pages.Elements.TradingForFreeCreateDemoAccountButton import TradingForFreeCreateDemoAccountButton
+from pages.Elements.TradingForFreeBlockCreateDemoAccountButton import TradingForFreeBlockCreateDemoAccountButton
 from pages.Elements.TradingInstrumentTradeButton import TradingInstrumentTradeButton
 from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
+from pages.Elements.WhyChooseBlockTryNowButton import WhyChooseBlockTryNowButton
 from pages.Elements.WhyChooseBlockSignUpButton import WhyChooseBlockSignUpButton
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -424,7 +425,32 @@ class TestMainPage:
         main_page_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = TradingForFreeCreateDemoAccountButton(d, main_page_link, bid)
+        test_element = TradingForFreeBlockCreateDemoAccountButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try now] in 'Why choose Capital.com?' block")
+    @pytest.mark.test_010
+    def test_010_why_choose_block_try_now_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try now] in 'Why choose Capital.com?' block
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_010", "Start test of button [Try now] in 'Why choose Capital.com?' block",
+            False, False
+        )
+
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = WhyChooseBlockTryNowButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")
