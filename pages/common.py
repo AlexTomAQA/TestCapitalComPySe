@@ -127,7 +127,7 @@ class Common:
 			try:
 				file = open(file_name, "r")
 			except FileNotFoundError:
-				print(f"{datetime.now()}   There is no file with name {file_name}!")
+				print(f"{datetime.now()}   There is no file with name {file_name}")
 			else:
 				for line in file:
 					list_item_link.append(line[:-1])
