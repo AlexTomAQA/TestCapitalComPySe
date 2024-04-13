@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-04-13 14:35:25.834317   worker_id = master
+
+2024-04-13 14:35:25.834331   0. Allure grouping v4
+
+2024-04-13 14:35:25.834513   START PRECONDITIONS =>
+
+2024-04-13 14:35:25.834528   => URL after prev. preconditions - https://capital.com/
+2024-04-13 14:35:25.834538   => flag_of_bug - False
+2024-04-13 14:35:25.834549   => Current URL - https://capital.com/trade-platinum
+2024-04-13 14:35:25.845759   Current page URL = https://capital.com/trade-platinum
+2024-04-13 14:35:25.848230   self.link = https://capital.com/
+2024-04-13 14:35:25.848244   driver.get(https://capital.com/) =>
+2024-04-13 14:35:27.826042   => Loaded page https://capital.com/
+
+2024-04-13 14:35:27.830910   => Windows size - {'width': 1280, 'height': 800}
+2024-04-13 14:35:27.832293   Set windows position at (0, 0) =>
+2024-04-13 14:35:27.934553   Set resolution 1280 * 800 =>
+2024-04-13 14:35:28.037112   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-13 14:35:29.062264   Капчи нет. Идем дальше
+
+2024-04-13 14:35:29.062357   Работа с куками =>
+
+2024-04-13 14:35:29.062371   => не требуется
+
+2024-04-13 14:35:29.062381   Prev. country - 'de'
+2024-04-13 14:35:29.062390   Cur. country - 'de'
+2024-04-13 14:35:29.062399   => Country set to 'de'
+
+2024-04-13 14:35:29.062408   Prev. language - 'en'
+2024-04-13 14:35:29.062417   Cur. language - 'en'
+2024-04-13 14:35:29.062426   => Language is set to 'en'
+
+2024-04-13 14:35:29.062435   Prev. role - 'Auth'
+2024-04-13 14:35:29.062444   Cur. role - 'Auth'
+2024-04-13 14:35:29.062453   => The 'Auth' role is set
+
+2024-04-13 14:35:29.065325   => Current URL - https://capital.com/
+
+2024-04-13 14:35:29.065347   => THE END PRECONDITIONS
+
+2024-04-13 14:35:29.065388   1. Arrange_v0
+2024-04-13 14:35:29.065402   current_page = https://capital.com/
+2024-04-13 14:35:29.067881   link = https://capital.com/trade-platinum
+2024-04-13 14:35:29.070368   Current page URL = https://capital.com/
+2024-04-13 14:35:29.072812   self.link = https://capital.com/trade-platinum
+2024-04-13 14:35:29.072826   driver.get(https://capital.com/trade-platinum) =>
+2024-04-13 14:35:31.311553   => Loaded page https://capital.com/trade-platinum
+2024-04-13 14:35:31.329484   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-04-13 14:35:31.329514   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-04-13 14:35:31.329524   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-04-13 14:35:31.332797   => 'Sell' button in Content block scrolled
+2024-04-13 14:35:31.332960   Start Checking that form [Sign up] popped up on the page =>
+2024-04-13 14:35:32.867050   '[Sign up]' form was not popped up
+
+2024-04-13 14:35:32.867235   2. Act_v0
+2024-04-13 14:35:33.424180   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-04-13 14:35:33.424229   => return trade_instrument = 426696411010244
+
+2024-04-13 14:35:33.424460   3. Assert_v4
+
+2024-04-13 14:35:33.424481   
+2024-04-13 14:35:33.424582   Checking that the trading platform page has opened (v4) =>
+2024-04-13 14:35:33.429848   Checking way # 1 => 
+
+2024-04-13 14:35:33.429956   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-13 14:35:33.432702   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-13 14:35:33.432765   2. Checking that the LOGO is present on the page =>
+2024-04-13 14:35:35.129461   => 'capital*com' logo is present on the current page
+
+2024-04-13 14:35:35.129506   tpd = False
+
+2024-04-13 14:35:35.129518   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '426696411010244' =>
+
+2024-04-13 14:35:35.133550   trade_instrument = '426696411010244'
+
+2024-04-13 14:35:35.133562   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-13 14:35:36.175202   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:11.02.03.01_03-en.de.Auth
+
+2024-04-13 14:35:36.175254   Проверка бага в таблице ретеста  =>
+
+2024-04-13 14:35:36.611033   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-13 14:35:36.819755   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-13 14:35:37.919628   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-13 14:35:38.098987   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-13 14:35:38.100439   Баг Bid:11.02.03.01_03-en.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

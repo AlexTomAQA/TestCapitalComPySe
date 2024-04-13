@@ -1,0 +1,89 @@
+{'width': 1280, 'height': 800}
+
+2024-04-13 14:20:43.831942   worker_id = master
+
+2024-04-13 14:20:43.831956   0. Allure grouping v4
+
+2024-04-13 14:20:43.832132   START PRECONDITIONS =>
+
+2024-04-13 14:20:43.832147   => URL after prev. preconditions - https://capital.com/
+2024-04-13 14:20:43.832157   => flag_of_bug - False
+2024-04-13 14:20:43.832168   => Current URL - https://capital.com/trade-alibaba
+2024-04-13 14:20:43.837248   Current page URL = https://capital.com/trade-alibaba
+2024-04-13 14:20:43.842909   self.link = https://capital.com/
+2024-04-13 14:20:43.842923   driver.get(https://capital.com/) =>
+2024-04-13 14:20:45.589237   => Loaded page https://capital.com/
+
+2024-04-13 14:20:45.594793   => Windows size - {'width': 1280, 'height': 800}
+2024-04-13 14:20:45.596136   Set windows position at (0, 0) =>
+2024-04-13 14:20:45.698093   Set resolution 1280 * 800 =>
+2024-04-13 14:20:45.800157   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-13 14:20:46.819809   Капчи нет. Идем дальше
+
+2024-04-13 14:20:46.819896   Работа с куками =>
+
+2024-04-13 14:20:46.819910   => не требуется
+
+2024-04-13 14:20:46.819921   Prev. country - 'de'
+2024-04-13 14:20:46.819930   Cur. country - 'de'
+2024-04-13 14:20:46.819939   => Country set to 'de'
+
+2024-04-13 14:20:46.819948   Prev. language - 'en'
+2024-04-13 14:20:46.819957   Cur. language - 'en'
+2024-04-13 14:20:46.819966   => Language is set to 'en'
+
+2024-04-13 14:20:46.819974   Prev. role - 'NoAuth'
+2024-04-13 14:20:46.819983   Cur. role - 'NoAuth'
+2024-04-13 14:20:46.819992   => The 'NoAuth' role is set
+
+2024-04-13 14:20:46.822702   => Current URL - https://capital.com/
+
+2024-04-13 14:20:46.822723   => THE END PRECONDITIONS
+
+2024-04-13 14:20:46.822939   1. Arrange_v0
+2024-04-13 14:20:46.822959   current_page = https://capital.com/
+2024-04-13 14:20:46.825374   link = https://capital.com/trade-bp-share
+2024-04-13 14:20:46.827755   => current_url != cur_item_link
+2024-04-13 14:20:47.827887   Current page URL = https://capital.com/
+2024-04-13 14:20:47.831194   self.link = https://capital.com/trade-bp-share
+2024-04-13 14:20:47.831208   driver.get(https://capital.com/trade-bp-share) =>
+2024-04-13 14:20:49.588982   => Loaded page https://capital.com/trade-bp-share
+2024-04-13 14:20:49.603802   BUTTON_START_TRADING scroll =>
+2024-04-13 14:20:49.611229   BUTTON_START_TRADING is visible? =>
+2024-04-13 14:20:49.628495   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-13 14:20:49.628688   2. Act_v0
+2024-04-13 14:20:49.628706   Start Click button [Start Trading] =>
+2024-04-13 14:20:49.638302   BUTTON_START_TRADING is clickable? =>
+2024-04-13 14:20:49.651795   BUTTON_START_TRADING click =>
+2024-04-13 14:20:49.688987   => BUTTON_START_TRADING clicked
+
+2024-04-13 14:20:49.689223   3. Assert_Login_v0
+2024-04-13 14:20:49.689308   Check that 'Login' form is opened
+2024-04-13 14:20:52.766739   'Login' form not opened
+2024-04-13 14:20:52.766954   Check that new 'Login' form is opened
+2024-04-13 14:20:55.839105   => New 'Login' form not opened
+2024-04-13 14:20:55.841980   'Login' page not opened
+2024-04-13 14:20:58.901197   'Login' form on trading platform not opened
+2024-04-13 14:20:58.901388   Start step Check that [Sign up] form is opened
+2024-04-13 14:20:58.911001   'Sign up' form opened
+2024-04-13 14:20:58.911025   Assert SIGNUP_HEADER =>
+2024-04-13 14:20:58.920235   Assert SIGNUP_REF_LOGIN =>
+2024-04-13 14:20:58.929461   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-13 14:20:58.938546   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-13 14:20:58.938569   => 'Signup' form is checked
+
+Bug: Bid:11.02.02.01_01-en.de.NoAuth
+
+2024-04-13 14:20:58.938618   Проверка бага в таблице ретеста  =>
+
+2024-04-13 14:20:59.372845   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-13 14:20:59.569162   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-13 14:21:00.566432   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-13 14:21:00.747873   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-13 14:21:00.749147   Баг Bid:11.02.02.01_01-en.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
