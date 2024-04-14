@@ -214,7 +214,7 @@ class TradingPlatform(BasePage):
         """Check that the tab is selected"""
         allure.step(f"{datetime.now()}   Check that the tab is selected on the page")
 
-        print(f"\n{datetime.now()}   2. Checking that the tab is selected on the page =>")
+        print(f"\n{datetime.now()}   3. Checking that the tab is selected on the page =>")
 
         if len(self.driver.find_elements(*tab)) == 0:
             msg = "tab is not selected on the current page"
