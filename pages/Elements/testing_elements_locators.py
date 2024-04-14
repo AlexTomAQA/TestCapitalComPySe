@@ -172,6 +172,7 @@ class ButtonsOnPageLocators:
     # Elements of Widget 'Trading calculator'
     TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
     BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
+    BUTTON_TRADE_NOW_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator_3']")
 
     # Elements of 'Trading experience' block
     TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
