@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-04-13 23:38:22.168963   worker_id = master
+
+2024-04-13 23:38:22.168977   0. Allure grouping v4
+
+2024-04-13 23:38:22.169159   START PRECONDITIONS =>
+
+2024-04-13 23:38:22.169175   => URL after prev. preconditions - https://capital.com/
+2024-04-13 23:38:22.169184   => flag_of_bug - False
+2024-04-13 23:38:22.169195   => Current URL - https://capital.com/trade-bitcoin-cash
+2024-04-13 23:38:22.174336   Current page URL = https://capital.com/trade-bitcoin-cash
+2024-04-13 23:38:22.176915   self.link = https://capital.com/
+2024-04-13 23:38:22.176933   driver.get(https://capital.com/) =>
+2024-04-13 23:38:23.896132   => Loaded page https://capital.com/
+
+2024-04-13 23:38:23.900636   => Windows size - {'width': 1280, 'height': 800}
+2024-04-13 23:38:23.901915   Set windows position at (0, 0) =>
+2024-04-13 23:38:24.004097   Set resolution 1280 * 800 =>
+2024-04-13 23:38:24.106447   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-13 23:38:25.130880   Капчи нет. Идем дальше
+
+2024-04-13 23:38:25.130973   Работа с куками =>
+
+2024-04-13 23:38:25.130987   => не требуется
+
+2024-04-13 23:38:25.130996   Prev. country - 'ae'
+2024-04-13 23:38:25.131006   Cur. country - 'ae'
+2024-04-13 23:38:25.131015   => Country set to 'ae'
+
+2024-04-13 23:38:25.131024   Prev. language - 'en'
+2024-04-13 23:38:25.131032   Cur. language - 'en'
+2024-04-13 23:38:25.131041   => Language is set to 'en'
+
+2024-04-13 23:38:25.131050   Prev. role - 'NoAuth'
+2024-04-13 23:38:25.131059   Cur. role - 'NoAuth'
+2024-04-13 23:38:25.131067   => The 'NoAuth' role is set
+
+2024-04-13 23:38:25.134108   => Current URL - https://capital.com/
+
+2024-04-13 23:38:25.134129   => THE END PRECONDITIONS
+
+2024-04-13 23:38:25.134173   1. Arrange_v0
+2024-04-13 23:38:25.134187   current_page = https://capital.com/
+2024-04-13 23:38:25.136727   link = https://capital.com/trade-cardano
+2024-04-13 23:38:25.139176   => current_url != cur_item_link
+2024-04-13 23:38:26.139307   Current page URL = https://capital.com/
+2024-04-13 23:38:26.142647   self.link = https://capital.com/trade-cardano
+2024-04-13 23:38:26.142661   driver.get(https://capital.com/trade-cardano) =>
+2024-04-13 23:38:27.982508   => Loaded page https://capital.com/trade-cardano
+2024-04-13 23:38:27.998122   BUTTON_START_TRADING scroll =>
+2024-04-13 23:38:28.001749   BUTTON_START_TRADING is visible? =>
+2024-04-13 23:38:28.032202   => BUTTON_START_TRADING is visible on the page!
+
+2024-04-13 23:38:28.032390   2. Act_v0
+2024-04-13 23:38:28.032406   Start Click button [Start Trading] =>
+2024-04-13 23:38:28.037722   BUTTON_START_TRADING is clickable? =>
+2024-04-13 23:38:28.051459   BUTTON_START_TRADING click =>
+2024-04-13 23:38:28.089314   => BUTTON_START_TRADING clicked
+
+2024-04-13 23:38:28.089541   3. Assert_Login_v0
+2024-04-13 23:38:28.089623   Check that 'Login' form is opened
+2024-04-13 23:38:31.187961   'Login' form not opened
+2024-04-13 23:38:31.188211   Check that new 'Login' form is opened
+2024-04-13 23:38:34.271535   => New 'Login' form not opened
+2024-04-13 23:38:34.274834   'Login' page not opened
+2024-04-13 23:38:37.331564   'Login' form on trading platform not opened
+2024-04-13 23:38:37.331760   Start step Check that [Sign up] form is opened
+2024-04-13 23:38:37.341840   'Sign up' form opened
+2024-04-13 23:38:37.341862   Assert SIGNUP_HEADER =>
+2024-04-13 23:38:37.351109   Assert SIGNUP_REF_LOGIN =>
+2024-04-13 23:38:37.361236   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-13 23:38:37.370765   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-13 23:38:37.370819   => 'Signup' form is checked
+
+Bug: 
+
+2024-04-13 23:38:37.370884   Проверка бага в таблице ретеста  =>
+
+2024-04-13 23:38:37.373762  Для бага: Bid-05 необходимо использовать проверку на ретест!!!
