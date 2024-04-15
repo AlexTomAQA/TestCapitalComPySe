@@ -1,0 +1,98 @@
+{'width': 1280, 'height': 800}
+
+2024-04-15 16:03:36.026894   worker_id = master
+
+2024-04-15 16:03:36.026908   0. Allure grouping v4
+
+2024-04-15 16:03:36.027127   START PRECONDITIONS =>
+
+2024-04-15 16:03:36.027145   => URL after prev. preconditions - https://capital.com/ru
+2024-04-15 16:03:36.027155   => flag_of_bug - True
+2024-04-15 16:03:36.027166   => Current URL - https://capital.com/trading/platform/
+2024-04-15 16:03:36.032592   Current page URL = https://capital.com/trading/platform/
+2024-04-15 16:03:36.035140   self.link = https://capital.com/ru
+2024-04-15 16:03:36.035153   driver.get(https://capital.com/ru) =>
+2024-04-15 16:03:38.357972   => Loaded page https://capital.com/ru
+
+2024-04-15 16:03:38.365206   => Windows size - {'width': 1280, 'height': 800}
+2024-04-15 16:03:38.366688   Set windows position at (0, 0) =>
+2024-04-15 16:03:38.468868   Set resolution 1280 * 800 =>
+2024-04-15 16:03:38.571152   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-15 16:03:39.621323   Капчи нет. Идем дальше
+
+2024-04-15 16:03:39.621413   Работа с куками =>
+
+2024-04-15 16:03:39.621427   => не требуется
+
+2024-04-15 16:03:39.621437   Prev. country - 'ae'
+2024-04-15 16:03:39.621447   Cur. country - 'ae'
+2024-04-15 16:03:39.621456   => Country set to 'ae'
+
+2024-04-15 16:03:39.621466   Prev. language - 'ru'
+2024-04-15 16:03:39.621476   Cur. language - 'ru'
+2024-04-15 16:03:39.621485   => Language is set to 'ru'
+
+2024-04-15 16:03:39.621494   Prev. role - 'Auth'
+2024-04-15 16:03:39.621503   Cur. role - 'Auth'
+2024-04-15 16:03:39.621511   => The 'Auth' role is set
+
+2024-04-15 16:03:39.624305   => Current URL - https://capital.com/ru
+
+2024-04-15 16:03:39.624327   => THE END PRECONDITIONS
+
+2024-04-15 16:03:39.624379   1. Arrange_v0
+2024-04-15 16:03:39.624393   current_page = https://capital.com/ru
+2024-04-15 16:03:39.627010   link = https://capital.com/ru/torgovlya-qtum-cfd
+2024-04-15 16:03:39.629537   Current page URL = https://capital.com/ru
+2024-04-15 16:03:39.632049   self.link = https://capital.com/ru/torgovlya-qtum-cfd
+2024-04-15 16:03:39.632063   driver.get(https://capital.com/ru/torgovlya-qtum-cfd) =>
+2024-04-15 16:03:41.921878   => Loaded page https://capital.com/ru/torgovlya-qtum-cfd
+2024-04-15 16:03:41.926396   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-15 16:03:41.939522   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-15 16:03:41.939730   Start Checking that form [Sign up] popped up on the page =>
+2024-04-15 16:03:43.475009   '[Sign up]' form was not popped up
+
+2024-04-15 16:03:43.475207   2. Act_v0
+2024-04-15 16:03:43.481997   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-15 16:03:43.482022   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-15 16:03:43.482033   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-15 16:03:43.485614   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-15 16:03:43.489475   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-15 16:03:43.525387   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-15 16:03:44.019235   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-15 16:03:44.019518   3. Assert_v4
+
+2024-04-15 16:03:44.019541   
+2024-04-15 16:03:44.019647   Checking that the trading platform page has opened (v4) =>
+2024-04-15 16:03:44.025054   Checking way # 1 => 
+
+2024-04-15 16:03:44.025168   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-04-15 16:03:44.028112   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-04-15 16:03:44.028207   2. Checking that the LOGO is present on the page =>
+2024-04-15 16:03:44.793630   => 'capital*com' logo is present on the current page
+
+2024-04-15 16:03:44.793677   tpd = False
+
+2024-04-15 16:03:44.793696   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument '19495840104142020' =>
+
+2024-04-15 16:03:44.796702   trade_instrument = '19495840104142020'
+
+2024-04-15 16:03:44.796714   4.1. Check that Trading Platform is opened in Chart mode
+2024-04-15 16:03:45.826123   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:11.02.05.01_05-ru.ae.Auth
+
+2024-04-15 16:03:45.826190   Проверка бага в таблице ретеста  =>
+
+2024-04-15 16:03:46.126803   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-15 16:03:46.360325   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-15 16:03:47.853034   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-15 16:03:48.040674   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-15 16:03:48.042216   Баг Bid:11.02.05.01_05-ru.ae.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
