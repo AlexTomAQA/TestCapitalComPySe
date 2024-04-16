@@ -210,3 +210,8 @@ class Common:
 	def pytest_fail(msg):
 		Common.flag_of_bug = True
 		pytest.fail(msg)
+
+	@staticmethod
+	def pytest_skip(msg):
+		Common.flag_of_bug = True
+		pytest.skip(msg)
