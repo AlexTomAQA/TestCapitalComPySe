@@ -8,6 +8,7 @@ import allure
 import pytest
 
 from pages.common import Common
+from pages.Elements.ExploreOurPlatformBlockEasyToUseLink import ExploreOurPlatformBlockEasyToUseLink
 from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTradersBlockTryDemoButton
 from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersBlockSignUpButton
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
@@ -451,6 +452,32 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = WhyChooseBlockTryNowButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of link [easy-to-use] in 'Explore our platform' block")
+    @pytest.mark.test_012
+    def test_012_explore_our_platform_block_easy_to_use_link(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Link [easy-to-use] in 'Explore our platform' block
+        Language: Not EN, NL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_012", "Start test of link [easy-to-use] in 'Explore our platform' block",
+            False, False
+        )
+
+        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = ExploreOurPlatformBlockEasyToUseLink(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")

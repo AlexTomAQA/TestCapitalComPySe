@@ -258,6 +258,11 @@ class ContentBlockLocators:
     FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
+    # Elements of 'Explore our platform' block
+    EXPLORE_OUR_PLATFORM_BLOCK = (By.CSS_SELECTOR, '.wrap section.cc-boxLg > .flex-wrap')
+    EASY_TO_USE_LINK_EXPLORE_OUR_PLATFORM_BLOCK = (
+        By.CSS_SELECTOR,
+        '.hideXs [href="https://capital.com/trading/platform/"]')
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
