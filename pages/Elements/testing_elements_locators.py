@@ -281,6 +281,7 @@ class TableTradingInstrumentsLocators:
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # названия инструментов
     ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
     LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
+    MARKET_ICON = (By.CSS_SELECTOR, "i.marketIcon")
 
 
 class FieldDropdownMarketsLocator:
