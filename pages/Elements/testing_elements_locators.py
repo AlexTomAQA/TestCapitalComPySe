@@ -172,10 +172,17 @@ class ButtonsOnPageLocators:
     # Elements of Widget 'Trading calculator'
     TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
     BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
+    BUTTON_TRADE_NOW_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator_3']")
 
     # Elements of 'Trading experience' block
     TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
     BUTTON_START_TRADING_IN_TRADING_EXPERIENCE = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
+
+    # Elements of 'Try trading for free' block
+    TRY_TRADING_FOR_FREE_BLOCK = (By.CSS_SELECTOR, ".cc-boxXl.newToTrading")
+    BUTTON_CREATE_DEMO_ACCOUNT_IN_TRADING_FOR_FREE = \
+        (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup?go=demo']")
+
 
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
@@ -243,12 +250,20 @@ class ContentBlockLocators:
     BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
 
+    # Elements of 'Why choose Capital.com?' block
+    WHY_CHOOSE_BLOCK = (By.CSS_SELECTOR, ".js-bannerSection .js-showBanner")
     WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
+    WHY_CHOOSE_BLOCK_TRY_NOW_BUTTON = (By.CSS_SELECTOR, '.js-bannerSection .js-showBanner .btn.js_signup')
 
     FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
+    # Elements of 'Explore our platform' block
+    EXPLORE_OUR_PLATFORM_BLOCK = (By.CSS_SELECTOR, '.wrap section.cc-boxLg > .flex-wrap')
+    EASY_TO_USE_LINK_EXPLORE_OUR_PLATFORM_BLOCK = (
+        By.CSS_SELECTOR,
+        '.hideXs [href="https://capital.com/trading/platform/"]')
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
@@ -271,6 +286,7 @@ class TableTradingInstrumentsLocators:
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # названия инструментов
     ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
     LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
+    MARKET_ICON = (By.CSS_SELECTOR, "i.marketIcon")
 
 
 class FieldDropdownMarketsLocator:

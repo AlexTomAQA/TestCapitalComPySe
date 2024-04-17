@@ -214,7 +214,7 @@ class TradingPlatform(BasePage):
         """Check that the tab is selected"""
         allure.step(f"{datetime.now()}   Check that the tab is selected on the page")
 
-        print(f"\n{datetime.now()}   2. Checking that the tab is selected on the page =>")
+        print(f"\n{datetime.now()}   3. Checking that the tab is selected on the page =>")
 
         if len(self.driver.find_elements(*tab)) == 0:
             msg = "tab is not selected on the current page"
@@ -252,8 +252,8 @@ class TradingPlatform(BasePage):
             msg = "Trade instrument not is the Favourites List"
             print(f"{datetime.now()}   {msg}")
             print(f'\nBug: {self.bid}')
-            retest_table_fill(self.driver, self.bid, '18', self.link)
-            Common().pytest_fail(f"Bug # .   {msg}")
+            retest_table_fill(self.driver, self.bid, '19', self.link)
+            Common().pytest_fail(f"Bug # 19.   {msg}")
         print(f"{datetime.now()}   => The Favourites List contains Trade instrument")
 
         print(f"{datetime.now()}   => Trade instrument '{trade_instrument}' is present in the Favourites List")

@@ -37,7 +37,7 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
-@pytest.mark.us_11_02_04
+@pytest.mark.us_11_02_04_01
 class TestForexTradingItemPage:
     page_conditions = None
 
