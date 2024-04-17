@@ -16,7 +16,7 @@ from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
 
-@pytest.mark.us_01_09
+@pytest.mark.us_01_09_00
 class TestCFDCalculator:
     page_conditions = None
 
