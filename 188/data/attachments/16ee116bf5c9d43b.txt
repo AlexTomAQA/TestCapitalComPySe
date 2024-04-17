@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-04-17 17:44:55.693173   worker_id = master
+
+2024-04-17 17:44:55.693191   0. Allure grouping v4
+
+2024-04-17 17:44:55.693445   START PRECONDITIONS =>
+
+2024-04-17 17:44:55.693460   => URL after prev. preconditions - https://capital.com/it
+2024-04-17 17:44:55.693470   => flag_of_bug - False
+2024-04-17 17:44:55.693481   => Current URL - https://capital.com/it/palladium-spot-materie-prime
+2024-04-17 17:44:55.699312   Current page URL = https://capital.com/it/palladium-spot-materie-prime
+2024-04-17 17:44:55.705476   self.link = https://capital.com/it
+2024-04-17 17:44:55.705490   driver.get(https://capital.com/it) =>
+2024-04-17 17:44:57.550898   => Loaded page https://capital.com/it
+
+2024-04-17 17:44:57.557755   => Windows size - {'width': 1280, 'height': 800}
+2024-04-17 17:44:57.559136   Set windows position at (0, 0) =>
+2024-04-17 17:44:57.667468   Set resolution 1280 * 800 =>
+2024-04-17 17:44:57.772197   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-17 17:44:58.817659   Капчи нет. Идем дальше
+
+2024-04-17 17:44:58.817753   Работа с куками =>
+
+2024-04-17 17:44:58.817767   => не требуется
+
+2024-04-17 17:44:58.817776   Prev. country - 'ae'
+2024-04-17 17:44:58.817786   Cur. country - 'ae'
+2024-04-17 17:44:58.817795   => Country set to 'ae'
+
+2024-04-17 17:44:58.817803   Prev. language - 'it'
+2024-04-17 17:44:58.817812   Cur. language - 'it'
+2024-04-17 17:44:58.817821   => Language is set to 'it'
+
+2024-04-17 17:44:58.817830   Prev. role - 'NoReg'
+2024-04-17 17:44:58.817838   Cur. role - 'NoReg'
+2024-04-17 17:44:58.817847   => The 'NoReg' role is set
+
+2024-04-17 17:44:58.822735   => Current URL - https://capital.com/it
+
+2024-04-17 17:44:58.822765   => THE END PRECONDITIONS
+
+2024-04-17 17:44:58.822970   1. Arrange_v2
+2024-04-17 17:44:58.822987   current_page = https://capital.com/it
+2024-04-17 17:44:58.825627   link = https://capital.com/it/palladium-spot-materie-prime
+2024-04-17 17:44:58.828116   Current page URL = https://capital.com/it
+2024-04-17 17:44:58.830529   self.link = https://capital.com/it/palladium-spot-materie-prime
+2024-04-17 17:44:58.830543   driver.get(https://capital.com/it/palladium-spot-materie-prime) =>
+2024-04-17 17:45:00.657325   => Loaded page https://capital.com/it/palladium-spot-materie-prime
+2024-04-17 17:45:00.661836 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-17 17:45:00.670610   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-17 17:45:00.670650   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-17 17:45:00.674171   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-17 17:45:00.674336   2. Act_v2
+2024-04-17 17:45:00.674351   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-17 17:45:01.452561   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-17 17:45:01.466401   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-17 17:45:01.466435   Move focus to button [Go to platform] and click on =>
+2024-04-17 17:45:02.246807   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-17 17:45:02.489999 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-17 17:45:02.490334   3. Assert_v0
+2024-04-17 17:45:02.490461   Start step Check that [Sign up] form is opened
+2024-04-17 17:45:05.578671   'Sign up' form not opened
+2024-04-17 17:45:05.578878   Start step Check that new [Sign up] form is opened
+2024-04-17 17:45:08.684288   => new 'Sign up' form not opened
+2024-04-17 17:45:08.684485   Start method Check that [Sign up] page opened =>
+2024-04-17 17:45:09.688078   'Sign up' page not opened
+2024-04-17 17:45:09.688281   Check that [Sign up] form on trading platform opened =>
+2024-04-17 17:45:09.701499   => 'Sign up' form on trading platform page opened
+2024-04-17 17:45:09.701533   Assert SIGNUP_HEADER =>
+2024-04-17 17:45:09.715179   => SIGNUP_HEADER is OK
+2024-04-17 17:45:09.715220   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-17 17:45:09.728539   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-17 17:45:09.728577   Assert SIGNUP_REF_LOGIN =>
+2024-04-17 17:45:09.743372   => SIGNUP_REF_LOGIN is OK
+2024-04-17 17:45:09.743411   => 'Signup' form on trading platform page is checked
+2024-04-17 17:45:09.743597   Close [Sign up] form with trading platform page =>
+2024-04-17 17:45:10.638706   => [Sign up] form with trading platform page is closed
