@@ -5,6 +5,7 @@ import allure
 import pytest
 from selenium.common import ElementClickInterceptedException
 
+from conf import QTY_LINKS
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
 from pages.Signup_login.signup_login import SignupLogin
@@ -21,23 +22,14 @@ class TableTradingInstrumentsItem(BasePage):
 
     def full_test(self, d, cur_language, cur_country, cur_link, cur_item_link):
         self.arrange_(d, cur_item_link)
-        self.element_click(d, cur_item_link)
 
-        test_element = AssertClass(self.driver, cur_link)
-        test_element.assert_page_trading_instrument(d, cur_language, cur_link, self.title_instrument)
-        self.open_page()
+        for i in range(QTY_LINKS + 1):
+            self.element_click(d, cur_item_link)
+            self.open_page()
 
-    #        match cur_role:
-    #            case "NoReg":
-    #                test_element.assert_page_trading_instrument(
-    #                    self.driver, cur_language, cur_item_link, self.title_instrument)
-    #            case "NoAuth":
-    #                test_element.assert_page_trading_instrument(
-    #                    self.driver, cur_language, cur_item_link, self.title_instrument)
-    #            case "Auth":
-    #                test_element.assert_page_trading_instrument(
-    #                    self.driver, cur_language, cur_item_link, self.title_instrument)
-    #        self.driver.get(cur_item_link)
+            test_element = AssertClass(self.driver, cur_link)
+            test_element.assert_page_trading_instrument(d, cur_language, cur_link, self.title_instrument)
+            self.driver.back()
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange for Trading instrument")
@@ -71,20 +63,17 @@ class TableTradingInstrumentsItem(BasePage):
         value = random.randint(0, len(self.line_list) - 1)
         print(f"{datetime.now()}   => End find a random TRADING_INSTRUMENTS in TABLE_TRADING_INSTRUMENTS")
 
-        #        line_instrument = self.line_list[value]
-        instruments_list = self.driver.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
+        instruments_list = self.driver.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT_LINK)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            #            line_instrument
-            instruments_list[0]
+            instruments_list[value]
         )
 
         # определяем название инструмента
-        #        instruments_list = self.driver.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         self.title_instrument = instruments_list[value].text
 
         try:
-            self.driver.execute_script("arguments[0].click();", instruments_list[0])
+            self.driver.execute_script("arguments[0].click();", instruments_list[value])
         except ElementClickInterceptedException:
             page_ = SignupLogin(self.driver)
             if page_.close_signup_form():
@@ -92,6 +81,8 @@ class TableTradingInstrumentsItem(BasePage):
             else:
                 page_.close_signup_page()
 
-        instruments_list[0].click()
+        instruments_list[value].click()
         print(f"{datetime.now()}   =>   TRADING_INSTRUMENT {value} with trading instrument "
               f"{self.title_instrument} clicked!\n")
+
+        del self.line_list
