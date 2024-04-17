@@ -251,10 +251,10 @@ class ContentBlockLocators:
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
 
     # Elements of 'Why choose Capital.com?' block
-    WHY_CHOOSE_BLOCK = (By.CSS_SELECTOR, "[class='js-showBanner'][data-id='507']")
+    WHY_CHOOSE_BLOCK = (By.CSS_SELECTOR, ".js-bannerSection .js-showBanner")
     WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
-    WHY_CHOOSE_BLOCK_TRY_NOW_BUTTON = (By.CSS_SELECTOR, '[data-type="banner_with_counter_hor_counter_hor_newBlack_507"]')
+    WHY_CHOOSE_BLOCK_TRY_NOW_BUTTON = (By.CSS_SELECTOR, '.js-bannerSection .js-showBanner .btn.js_signup')
 
     FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
