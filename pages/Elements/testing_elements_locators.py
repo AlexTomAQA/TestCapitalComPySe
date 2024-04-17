@@ -339,6 +339,7 @@ class TradingPlatformWatchlistTabs:
 
 
 class MarketSortAllMarketsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CLASS_NAME, "tabs__panes")
     ALL_TABS = (By.CLASS_NAME, "tabs__nav")
     ALL_MARKETS_TAB = (By.CSS_SELECTOR, "[data-cat='ALL']")
     COMMODITIES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='COM']")
@@ -346,3 +347,5 @@ class MarketSortAllMarketsLocators:
     CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
     SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
     FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
+    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, "[data-type='wdg_markets_sell_btn']")
+    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, "[data-type='wdg_markets_buy_btn']")
