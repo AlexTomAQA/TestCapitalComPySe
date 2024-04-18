@@ -34,8 +34,8 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         self.market_name = None
         self.current_market = None
 
-        self.sell_locator = None
-        self.sell_list = None
+        self.buy_locator = None
+        self.buy_list = None
 
         self.item = None
         self.trade_instrument = ""
@@ -108,7 +108,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
                 self.market_name = MarketSortAllMarketsLocators.COMMODITIES_MARKET_TAB
             case "Indices":
                 self.market_name = MarketSortAllMarketsLocators.INDICES_MARKET_TAB
-            case "Crypto":
+            case "Cryptocurrencies":
                 self.market_name = MarketSortAllMarketsLocators.CRYPTO_MARKET_TAB
             case "Shares":
                 self.market_name = MarketSortAllMarketsLocators.SHARES_MARKET_TAB
@@ -229,10 +229,10 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
             print(
                 f'{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Buy] on cur_sort "{cur_sort}"=>'
             )
-            self.sell_list = self.driver.find_elements(
+            self.buy_list = self.driver.find_elements(
                 *MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS
             )
-            qty_buttons = len(self.sell_list)
+            qty_buttons = len(self.buy_list)
             count_of_runs = (
                 COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
             )
@@ -262,10 +262,10 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         self.trade_instrument = item.text
 
         print(f"{datetime.now()}   Start click button [Buy] =>")
-        sell_list = wd.find_elements(
+        buy_list = wd.find_elements(
             *MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS
         )
-        button = sell_list[value]
+        button = buy_list[value]
         id_instrument = button.get_attribute("data-iid")
         print(
             f"{datetime.now()}   =>   BUTTON_BUY on item with ID = '{id_instrument}' is present"
