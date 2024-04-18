@@ -7,8 +7,8 @@
 import allure
 import pytest
 
-from pages.Elements.HeaderLoginButton import HeaderButtonLogin
-from pages.Elements.HeaderSignUpButton import HeaderButtonSignUp
+from pages.Elements.HeaderCFDCalculatorPageLoginButton import HeaderCFDCalculatorPageLoginButton
+from pages.Elements.HeaderCFDCalculatorPageSignUpButton import HeaderCFDCalculatorPageSignUpButton
 from pages.Elements.TradingCalculatorTradeNowButton import TradingCalculatorTradeNowButton
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -42,8 +42,8 @@ class TestCFDCalculator:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = HeaderButtonSignUp(d, cur_item_link, bid)
-        test_element.arrange_(self, cur_role)
+        test_element = HeaderCFDCalculatorPageSignUpButton(d, cur_item_link, bid)
+        test_element.full_test(self, cur_role)
 
     @allure.step("Start test of button [Log in] in the 'Header'")
     @pytest.mark.test_002
@@ -67,8 +67,8 @@ class TestCFDCalculator:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = HeaderButtonLogin(d, cur_item_link, bid)
-        test_element.arrange_(self, cur_role)
+        test_element = HeaderCFDCalculatorPageLoginButton(d, cur_item_link, bid)
+        test_element.full_test(self, cur_role)
 
     @allure.step("Start test of button [Trade Now] in the 'Trading calculator' Block")
     @pytest.mark.test_005
