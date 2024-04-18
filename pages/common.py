@@ -213,5 +213,5 @@ class Common:
 
 	@staticmethod
 	def pytest_skip(msg):
-		Common.flag_of_bug = True
+		Common.flag_of_bug = False
 		pytest.skip(msg)

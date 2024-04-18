@@ -264,6 +264,9 @@ class ContentBlockLocators:
     EASY_TO_USE_LINK_EXPLORE_OUR_PLATFORM_BLOCK = (
         By.CSS_SELECTOR,
         '.hideXs [href="https://capital.com/trading/platform/"]')
+    TRY_NOW_BUTTON_EXPLORE_OUR_PLATFORM_BLOCK = (
+        By.CSS_SELECTOR,
+        'div.js-analyticsVisible[data-type="btn_nearby_video"] a.hideXs:nth-child(2)')
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
