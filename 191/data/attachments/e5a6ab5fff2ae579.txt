@@ -1,0 +1,32 @@
+2024-04-18 05:23:15 ERROR Elements not present after 0.5 seconds on page: https://capital.com/cn/canadian-dollar-japanese-yen-rate
+2024-04-18 05:23:15 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 85, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 304, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55a80a560863 <unknown>
+#1 0x55a80a2568c6 <unknown>
+#2 0x55a80a2a1618 <unknown>
+#3 0x55a80a2a16d1 <unknown>
+#4 0x55a80a2e4744 <unknown>
+#5 0x55a80a2c35cd <unknown>
+#6 0x55a80a2e1c19 <unknown>
+#7 0x55a80a2c3343 <unknown>
+#8 0x55a80a294593 <unknown>
+#9 0x55a80a294f5e <unknown>
+#10 0x55a80a52484b <unknown>
+#11 0x55a80a5287a5 <unknown>
+#12 0x55a80a512571 <unknown>
+#13 0x55a80a529332 <unknown>
+#14 0x55a80a4f787f <unknown>
+#15 0x55a80a54f728 <unknown>
+#16 0x55a80a54f8fb <unknown>
+#17 0x55a80a55f9b4 <unknown>
+#18 0x7fa92f294ac3 <unknown>
