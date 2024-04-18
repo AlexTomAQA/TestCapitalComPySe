@@ -238,12 +238,4 @@ class AssertClass(BasePage):
     def assert_page_trading_instrument(self, d, language, cur_link, title_instrument):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading_instrument = PageTradingInstrument(d, cur_link, self.bid)
-        self.page_trading_instrument.should_be_trading_instrument_page()
-#        self.page_trading_instrument.check_market_main_title()
-#        self.page_trading_instrument.check_open_trading_instrument_page(title_instrument)
-
-#        page_instrument_title = self.driver.find_element(PageTradingInstrumentLocators.PAGE_INSTRUMENT_TITLE).text
-#        page_instrument_title_list = page_instrument_title.split(" ")
-#        if title_instrument not in page_instrument_title_list:
-#            print(f"{datetime.now()} Trading instrument page is not opened")
-#            Common().pytest_fail("Bug ? Trading instrument page is not opened")
+        self.page_trading_instrument.should_be_trading_instrument_page(title_instrument)
