@@ -97,7 +97,10 @@ class ContentBlockCreateAliveAccountButton:
             test_element = AssertClass(d, cur_item_link, self.bid)
             match cur_role:
                 case "NoReg" | "NoAuth":
-                    test_element.assert_signup(d, cur_language, cur_item_link)
+                    if cur_country == "gb":
+                        test_element.assert_signup_pause(d, cur_language, cur_item_link)
+                    else:
+                        test_element.assert_signup(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(d, cur_item_link)
 
