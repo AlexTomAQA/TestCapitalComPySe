@@ -70,8 +70,6 @@ class AssertClass(BasePage):
             retest_table_fill(d, self.bid, '04', self.link)
             Common().assert_true_false(False, "Bug # 04. Unknown situation instead 'Sign Up' form opened")
 
-        Common().assert_true_false(True, "")
-
     @allure.step('Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):
         """Method Assert Login form or page"""
