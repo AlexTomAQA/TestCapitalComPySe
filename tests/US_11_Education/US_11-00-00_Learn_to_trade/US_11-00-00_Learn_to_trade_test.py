@@ -16,7 +16,7 @@ class TestLearnToTrade:
     page_conditions = None
 
     @allure.step("Start test_11.00.00_01 of button [Open an account] on Main banner")
-    @pytest.mark.test_01
+    @pytest.mark.test_101
     def test_01_main_banner_open_an_account_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -42,7 +42,7 @@ class TestLearnToTrade:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start test_11.00.00_02 of button [Try demo account] on Main banner")
-    @pytest.mark.test_02
+    @pytest.mark.test_102
     def test_02_main_banner_try_demo_account_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -68,7 +68,7 @@ class TestLearnToTrade:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start test_11.00.00_03 button [1. Create your account] in block 'Ready to join a leading broker?'")
-    @pytest.mark.test_03
+    @pytest.mark.test_103
     def test_03_create_your_account(
             self, worker_id, d, cur_role, cur_language, cur_country, cur_login, cur_password):
         """

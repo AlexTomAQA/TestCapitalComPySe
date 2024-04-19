@@ -15,8 +15,8 @@ class TestLearningHub:
     page_conditions = None
 
     @allure.step("Start test_11.00.06_01 button '1. Create your account' in the block [Steps trading].")
-    @pytest.mark.test_01
-    def test_01_create_your_account(
+    @pytest.mark.test_101
+    def test_101_create_your_account(
             self, worker_id, d, cur_role, cur_language, cur_country, cur_login, cur_password):
         """
         Check: Header -> button [Log In]
@@ -25,7 +25,7 @@ class TestLearningHub:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "11.00.06", "Learn to trade > Menu Item [Help]",
-            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
+            ".00_101", "Testing button [1. Create your account] in block [Steps trading]")
 
         list_languages = ['']
         list_countries = ['gb']
