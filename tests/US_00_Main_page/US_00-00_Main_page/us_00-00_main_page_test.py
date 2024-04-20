@@ -165,7 +165,9 @@ class TestMainPage:
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        Common().check_market_in_list_and_skip_if_present(cur_market, ['Cryptocurrencies'])
+        Common().check_market_in_list_and_skip_if_present(cur_market, [
+            'Cryptocurrencies', 'Commodities', 'Shares', 'Forex'
+        ])
 
         page_conditions = NewConditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -196,7 +198,9 @@ class TestMainPage:
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        Common().check_market_in_list_and_skip_if_present(cur_market, ['Cryptocurrencies'])
+        Common().check_market_in_list_and_skip_if_present(cur_market, [
+            'Cryptocurrencies', 'Commodities', 'Shares', 'Forex'
+        ])
 
         page_conditions = NewConditions(d, "")
         main_page_link = page_conditions.preconditions(
