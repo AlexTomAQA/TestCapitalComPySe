@@ -36,7 +36,10 @@ class BuyButtonOurMarketsTable(BasePage):
         test_element = AssertClass(self.driver, cur_item_link)
         match cur_role:
             case "NoReg":
-                test_element.assert_signup(self.driver, cur_language, cur_item_link)
+                if cur_country == 'gb':
+                    test_element.assert_signup_pause(self.driver, cur_language, cur_item_link)
+                else:
+                    test_element.assert_signup(self.driver, cur_language, cur_item_link)
             case "NoAuth":
                 test_element.assert_login(self.driver, cur_language, cur_item_link)
             case "Auth":
