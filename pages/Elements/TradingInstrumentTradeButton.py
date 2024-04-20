@@ -94,16 +94,17 @@ class TradingInstrumentTradeButton(BasePage):
 
         # Check presenting and visible current market Tab
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' present on this page? =>")
-        market_list = self.driver.find_elements(*self.market_locator)
-        if len(market_list) == 0:
+        elements = self.driver.find_elements(*self.market_locator)
+        if len(elements) == 0:
             msg = f"MARKET '{cur_market}' is NOT present on this page"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => MARKET '{cur_market}' present on this page!")
 
+        elements = d.find_elements(*self.market_locator)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*self.market_locator)[0]
+            elements[0]
         )
 
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")

@@ -108,7 +108,7 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
                 self.market_name = MarketSortAllMarketsLocators.COMMODITIES_MARKET_TAB
             case "Indices":
                 self.market_name = MarketSortAllMarketsLocators.INDICES_MARKET_TAB
-            case "Crypto":
+            case "Cryptocurrencies":
                 self.market_name = MarketSortAllMarketsLocators.CRYPTO_MARKET_TAB
             case "Shares":
                 self.market_name = MarketSortAllMarketsLocators.SHARES_MARKET_TAB
