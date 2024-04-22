@@ -20,7 +20,7 @@ class HeaderCFDCalculatorPageLoginButton(BasePage):
     @allure.step(f"{datetime.now()}  Start Full test for 'Log In' button of Header")
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
-        self.element_click(d)
+        self.element_click()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
 
@@ -83,6 +83,4 @@ class HeaderCFDCalculatorPageLoginButton(BasePage):
             self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 
-        del button_list
-        return True
 
