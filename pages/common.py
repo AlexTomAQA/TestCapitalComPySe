@@ -73,7 +73,7 @@ class Common:
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
 	@staticmethod
-	@allure.step(f'{datetime.now()}   Start Creating file of href method')
+	@allure.step('Start Creating file of href method')
 	def creating_file_of_hrefs(title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
@@ -88,8 +88,7 @@ class Common:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						# k = randint(first_index, count_in - 1)
-						k = randint(first_index, count_in)
+						k = randint(first_index, count_in - 1)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
