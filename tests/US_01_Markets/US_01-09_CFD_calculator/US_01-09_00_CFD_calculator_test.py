@@ -98,7 +98,7 @@ class TestCFDCalculator:
     @allure.step("Start test of button [Trade Now] in the 'Trading calculator' Block")
     @pytest.mark.test_005
     def test_005_block_trading_calculator_trade_now_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Trade Now] in the 'Trading calculator' Block
         Language: EN. License: All,except FCA.
@@ -112,7 +112,7 @@ class TestCFDCalculator:
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = TradingCalculatorTradeNowButton(d, cur_item_link, bid)
