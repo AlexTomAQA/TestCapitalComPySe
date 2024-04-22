@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2023/04/17 21:30
+@Time    : 2023/04/21 19:30
 @Author  : Mila Podchasova
 """
 from datetime import datetime
@@ -10,14 +10,14 @@ import allure
 from pages.Elements.AssertClass import AssertClass
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
-from pages.Markets.markets_locators import HeaderElementLocators
+from pages.Markets.markets_locators import BlockCFDCalculator
 from selenium.common.exceptions import ElementClickInterceptedException
 
 
-class HeaderCFDCalculatorPageSignUpButton(BasePage):
+class CFDCalculatorBlockSignUpButton(BasePage):
 
-    @allure.step(f"{datetime.now()}  Start Full test for 'Sign Up' button of Header")
-    def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
+    @allure.step(f"{datetime.now()}  Start Full test for 'Sign Up' button on 'Block CFD Calculator'")
+    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
         self.arrange_(d, cur_item_link)
         self.element_click(d)
 
@@ -26,6 +26,8 @@ class HeaderCFDCalculatorPageSignUpButton(BasePage):
         match cur_role:
             case "NoReg" | "NoAuth":
                 test_element.assert_signup(d, cur_language, cur_item_link)
+            case "Auth":
+                test_element.assert_trading_platform_v4(d, cur_item_link)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -34,11 +36,11 @@ class HeaderCFDCalculatorPageSignUpButton(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_SIGNUP)
+        button_list = self.driver.find_elements(*BlockCFDCalculator.BUTTON_SIGNUP)
         if len(button_list) == 0:
             print(f"{datetime.now()}   => BUTTON_SIGNUP is not present on this page")
             del button_list
-            pytest.fail("Testing element BUTTON_SIGNUP on the 'Header' is not present on this page")
+            pytest.fail("Testing element BUTTON_SIGNUP on 'Block CFD Calculator' is not present on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_SIGNUP is present on this page")
 
@@ -48,18 +50,18 @@ class HeaderCFDCalculatorPageSignUpButton(BasePage):
         )
 
         print(f"{datetime.now()}   BUTTON_SIGNUP is visible? =>")
-        if self.element_is_visible(HeaderElementLocators.BUTTON_SIGNUP):
+        if self.element_is_visible(BlockCFDCalculator.BUTTON_SIGNUP):
             print(f"{datetime.now()}   => BUTTON_SIGNUP is visible on this page")
         else:
             print(f"{datetime.now()}   => BUTTON_SIGNUP is not visible on this page")
-            pytest.fail("Bug! Testing element 'BUTTON_SIGNUP on the 'Header' is present on this page, "
+            pytest.fail("Bug! Testing element BUTTON_SIGNUP on 'Block CFD Calculator' is present on this page, "
                         "but not visible")
 
-    @allure.step("Click button [Sign Up] on 'Header'")
+    @allure.step("Click button [Sign Up] on 'Block CFD Calculator'")
     def element_click(self):
         print(f"\n{datetime.now()}   2. Act_v0")
 
-        button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_SIGNUP)
+        button_list = self.driver.find_elements(*BlockCFDCalculator.BUTTON_SIGNUP)
         print(f"{datetime.now()}   BUTTON_SIGNUP is clickable? =>")
         time_out = 3
         if not self.element_is_clickable(button_list[0], time_out):
