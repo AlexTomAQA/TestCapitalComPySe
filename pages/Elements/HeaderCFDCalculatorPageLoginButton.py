@@ -83,5 +83,4 @@ class HeaderCFDCalculatorPageLoginButton(BasePage):
             self.driver.execute_script("arguments[0].click();", button_list[0])
             del page_
 
-        del button_list
-        return True
+

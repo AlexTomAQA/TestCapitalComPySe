@@ -268,6 +268,11 @@ class ContentBlockLocators:
         By.CSS_SELECTOR,
         'div.js-analyticsVisible[data-type="btn_nearby_video"] a.hideXs:nth-child(2)')
 
+    # Elements of "Trader's Dashboard" widget
+    TRADERS_DASHBOARD_WIDGET = (By.CSS_SELECTOR, 'div[data-type="traders_dashboard"]')
+    TRADE_BUTTON_TRADERS_DASHBOARD_WIDGET = (By.XPATH, '(//div[@class="tradersDashboard__main"]//button)')
+    NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".tradersDashboard__item .tradersDashboard__name b")
+
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
     QR_CODE_EASY_LEARNING = (By.CSS_SELECTOR, "#qr_cfd_new2 > img")
