@@ -19,6 +19,7 @@ from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDsBlock import TradeCFDsBlock
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
+from pages.Elements.TradersDashboardWidgetTradeButton import TradersDashboardWidgetTradeButton
 from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
 from pages.Elements.TradingForFreeBlockCreateDemoAccountButton import TradingForFreeBlockCreateDemoAccountButton
 from pages.Elements.TradingInstrumentTradeButton import TradingInstrumentTradeButton
@@ -457,6 +458,32 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = WhyChooseBlockTryNowButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Trade] in 'Trader's Dashboard' widget")
+    @pytest.mark.test_011
+    def test_011_traders_dashboard_widget_trade_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Trade] in 'Trader's Dashboard' widget
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_011", "Start test of button [Trade] in 'Trader's Dashboard' widget",
+            False, False
+        )
+
+        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradersDashboardWidgetTradeButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of link [easy-to-use] in 'Explore our platform' block")

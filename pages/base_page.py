@@ -14,6 +14,7 @@ from selenium.common.exceptions import (
     InvalidElementStateException,
     StaleElementReferenceException,
 )
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -618,3 +619,19 @@ class BasePage:
         """
         return self.driver.find_element(method, locator).is_enabled()
 
+    @HandleExcElementsDecorator()
+    def specific_locator(self, locator, number):
+        """
+        Creates new locator with use specific item number of element from all found elements
+
+        Args:
+            locator: used to find all elements on the page; a tuple of 'by' and 'path'
+            number: specific item number of element from all found elements
+        Returns:
+            selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
+        """
+        if locator[0] == By.XPATH:
+            new_locator = (locator[0], f'{locator[1]}[{number}]' )
+            return new_locator
+        else:
+            pass

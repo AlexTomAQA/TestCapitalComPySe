@@ -149,6 +149,11 @@ jobs:
         run: poetry run pytest -v tests/US_01_Markets/US_01-07_ESG/US_01-07!00_ESG_test.py
         continue-on-error: true
 
+      - name: 8. Run US_01-09!00 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-09_CFD_calculator/US_01-09_00_CFD_calculator_test.py
+        continue-on-error: true
+
       - name: 8. Run US_11-00-00 | Menu [Learn to trade] FCA (Мила П)
         if: always()
         run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
