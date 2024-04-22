@@ -92,7 +92,7 @@ class TradersDashboardWidgetTradeButton(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*BUTTON_LOCATOR)[self.number_of_button]
+            self.driver.find_elements(*BUTTON_LOCATOR)[self.number_of_button-1]
         )
 
         print(f"{datetime.now()}   IS {BUTTON_NAME} button visible on this page? =>")
@@ -114,7 +114,7 @@ class TradersDashboardWidgetTradeButton(BasePage):
 
         print(f"{datetime.now()}   {BUTTON_NAME} button is clickable? =>")
         time_out = 5
-        self.button = self.driver.find_elements(*BUTTON_LOCATOR)[self.number_of_button]
+        self.button = self.driver.find_elements(*BUTTON_LOCATOR)[self.number_of_button-1]
         if not self.element_is_clickable(self.button, time_out):
             msg = f"{BUTTON_NAME} button is not clickable after {time_out} sec. Stop AT>"
             print(f"{datetime.now()}   => {msg}\n")
@@ -124,7 +124,7 @@ class TradersDashboardWidgetTradeButton(BasePage):
         # Get name of instrument
         print(f"{datetime.now()}   Start get name of trading instrument =>")
         trade_instrument_list = self.driver.find_elements(*NAME_OF_TRADING_INSTRUMENT_LOCATOR)
-        self.trade_instrument = trade_instrument_list[self.number_of_button].text
+        self.trade_instrument = trade_instrument_list[self.number_of_button-1].text
         print(f'{datetime.now()}   => Name of trading instrument: {self.trade_instrument}\n')
 
         try:
