@@ -9,6 +9,7 @@ import pytest
 
 from pages.Elements.HeaderCFDCalculatorPageLoginButton import HeaderCFDCalculatorPageLoginButton
 from pages.Elements.HeaderCFDCalculatorPageSignUpButton import HeaderCFDCalculatorPageSignUpButton
+from pages.Elements.CFDCalculatorBlockSignUpButton import CFDCalculatorBlockSignUpButton
 from pages.Elements.TradingCalculatorTradeNowButton import TradingCalculatorTradeNowButton
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -23,7 +24,7 @@ class TestCFDCalculator:
     @allure.step("Start test of button [Sign up] in the 'Header'")
     @pytest.mark.test_001
     def test_001_header_sign_up_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Sign up] in the 'Header'
         Language: EN. License: All,except FCA.
@@ -39,16 +40,16 @@ class TestCFDCalculator:
         Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = HeaderCFDCalculatorPageSignUpButton(d, cur_item_link, bid)
-        test_element.full_test(self, cur_role)
+        test_element.full_test(self, d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Log in] in the 'Header'")
     @pytest.mark.test_002
     def test_002_header_login_button(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Log in] in the 'Header'
         Language: EN. License: All,except FCA.
@@ -64,11 +65,35 @@ class TestCFDCalculator:
         Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth"])
 
         page_conditions = Conditions(d, "")
-        page_conditions.preconditions(
+        cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = HeaderCFDCalculatorPageLoginButton(d, cur_item_link, bid)
-        test_element.full_test(self, cur_role)
+        test_element.full_test(self, d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [Sign up] in the 'Block CFD Calculator'")
+    @pytest.mark.test_003
+    def test_003_block_cfd_calculator_signup_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Sign up] in the 'Block CFD Calculator'
+        Language: EN. License: All,except FCA.
+        Role: All
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.09", "Markets > Menu item [CFD Calculator]",
+            ".00_003", "Testing button [Sign up] in the 'Block CFD Calculator'")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
+
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = CFDCalculatorBlockSignUpButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Trade Now] in the 'Trading calculator' Block")
     @pytest.mark.test_005
