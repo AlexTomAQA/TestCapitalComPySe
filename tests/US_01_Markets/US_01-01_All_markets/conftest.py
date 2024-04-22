@@ -4,7 +4,7 @@
 @Author  : Ivan
 """
 
-import pytest
+import pytest, random
 
 
 @pytest.fixture(
@@ -17,6 +17,20 @@ import pytest
     ],
 )
 def cur_sort(request):
+    """Параметры сортировки трейдинговых инструментов"""
+    print(f"\n\n\nCurrent sort - {request.param}")
+    return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        "Most traded",
+        "Top risers",
+        "Top fallers",
+        "Most volatile"
+    ], 1),
+)
+def cur_sort_all_markets(request):
     """Параметры сортировки трейдинговых инструментов"""
     print(f"\n\n\nCurrent sort - {request.param}")
     return request.param
