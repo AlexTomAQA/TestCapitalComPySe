@@ -68,6 +68,11 @@ class MainBannerDe:
     BUTTON_RIGH = (By.CSS_SELECTOR, "div.banner--video a.btn[href='/trading/signup?go=demo']")
 
 
+class BlockCFDCalculator:
+    BUTTON_SIGNUP = (By.CSS_SELECTOR, "div.row-cont a[data-type='hp_banner_default1']")
+    BUTTON_TRY_FREE_DEMO = (By.CSS_SELECTOR, "div.row-cont a[data-type='hp_banner_demo_11']")
+
+
 class WidgetStillLookingFor:
     BUT_CREATE_YOUR_ACCOUNT_EN = (By.CSS_SELECTOR, "div.regSteps__shape > i.regSteps__item.js_signup")
     BUT_CREATE_YOUR_ACCOUNT_DE = (By.CSS_SELECTOR, "#cc_ab42 div.js_signup")
