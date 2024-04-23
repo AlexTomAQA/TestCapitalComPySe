@@ -1,0 +1,87 @@
+{'width': 1280, 'height': 800}
+
+2024-04-23 10:00:53.477200   worker_id = master
+
+2024-04-23 10:00:53.477214   0. Allure grouping v4
+
+2024-04-23 10:00:53.477399   START PRECONDITIONS =>
+
+2024-04-23 10:00:53.477415   => URL after prev. preconditions - https://capital.com/de
+2024-04-23 10:00:53.477424   => flag_of_bug - True
+2024-04-23 10:00:53.477434   => Current URL - https://capital.com/de/waehrungshandel
+2024-04-23 10:00:53.482814   Current page URL = https://capital.com/de/waehrungshandel
+2024-04-23 10:00:53.485340   self.link = https://capital.com/de
+2024-04-23 10:00:53.485353   driver.get(https://capital.com/de) =>
+2024-04-23 10:00:55.283744   => Loaded page https://capital.com/de
+
+2024-04-23 10:00:55.288343   => Windows size - {'width': 1280, 'height': 800}
+2024-04-23 10:00:55.289802   Set windows position at (0, 0) =>
+2024-04-23 10:00:55.392135   Set resolution 1280 * 800 =>
+2024-04-23 10:00:55.494596   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-23 10:00:56.535441   Капчи нет. Идем дальше
+
+2024-04-23 10:00:56.535529   Работа с куками =>
+
+2024-04-23 10:00:56.535543   => не требуется
+
+2024-04-23 10:00:56.535553   Prev. country - 'au'
+2024-04-23 10:00:56.535562   Cur. country - 'au'
+2024-04-23 10:00:56.535571   => Country set to 'au'
+
+2024-04-23 10:00:56.535580   Prev. language - 'de'
+2024-04-23 10:00:56.535589   Cur. language - 'de'
+2024-04-23 10:00:56.535597   => Language is set to 'de'
+
+2024-04-23 10:00:56.535606   Prev. role - 'NoAuth'
+2024-04-23 10:00:56.535614   Cur. role - 'NoAuth'
+2024-04-23 10:00:56.535623   => The 'NoAuth' role is set
+
+2024-04-23 10:00:56.538416   => Current URL - https://capital.com/de
+
+2024-04-23 10:00:56.538438   => THE END PRECONDITIONS
+
+2024-04-23 10:00:56.538614   1. Cur URL = https://capital.com/de
+
+2024-04-23 10:00:56.541015   2. Link = https://capital.com/de
+2024-04-23 10:00:56.541030   current_page = https://capital.com/de
+2024-04-23 10:00:56.543553   link = https://capital.com/de
+2024-04-23 10:00:57.054348   => Education menu is present in DOM
+2024-04-23 10:00:57.059831   => Education menu is visible
+2024-04-23 10:00:58.330751   => Focus moved to Education menu
+2024-04-23 10:01:00.191096   => Focus moved to Forex trading sub-menu and clicked
+2024-04-23 10:01:00.515751   => Focus moved to 'capital*com' logo
+
+2024-04-23 10:01:00.515797   3. Cur URL = https://capital.com/de/waehrungshandel
+
+2024-04-23 10:01:00.521040   1. Arrange_v4
+2024-04-23 10:01:00.521062   current_page = https://capital.com/de/waehrungshandel
+2024-04-23 10:01:00.523447   link = https://capital.com/de/waehrungshandel
+2024-04-23 10:01:00.525964   MOST_TRADED is present? =>
+2024-04-23 10:01:00.539030   => MOST_TRADED widget is present on this page
+2024-04-23 10:01:00.539060   => Found 5 elements in block MOST_TRADED
+2024-04-23 10:01:00.539071   Most traded widget is scroll =>
+2024-04-23 10:01:00.542384   => Most traded widget is scrolled into screen center
+
+2024-04-23 10:01:00.542427   Random indexes = [3]
+
+2024-04-23 10:01:00.542442   Testing Most traded 1 random element with 3 index
+
+2024-04-23 10:01:00.542582   2. Act_v4
+2024-04-23 10:01:00.542674   Start Checking that form [Sign up] popped up on the page =>
+2024-04-23 10:01:02.077858   '[Sign up]' form was not popped up
+2024-04-23 10:01:02.090787   instrument_title = 'Australian Dollar / US Dollar'
+2024-04-23 10:01:02.096011   Selected Trade button on Most traded widget is scroll =>
+2024-04-23 10:01:02.099415   Selected Trade button click for 'Australian Dollar / US Dollar' trading instrument =>
+2024-04-23 10:01:03.158611   => Selected Trade button clicked!
+
+2024-04-23 10:01:03.158835   3. Assert_Login_v0
+2024-04-23 10:01:03.158914   Check that 'Login' form is opened
+2024-04-23 10:01:03.360812   'Login' form opened
+2024-04-23 10:01:03.360870   Assert LOGIN_REF_SIGNUP =>
+2024-04-23 10:01:03.376697   Assert LOGIN_CHECKBOX =>
+2024-04-23 10:01:03.399486   Assert LOGIN_PASS_FORGOT =>
+2024-04-23 10:01:03.419495   => 'Login' form is checked
+2024-04-23 10:01:03.470546   Click 'Close' button on 'Login' form =>
+2024-04-23 10:01:03.794787   => Focus moved to 'capital*com' logo
+2024-04-23 10:01:03.794825   => 'Login' form closed
