@@ -287,6 +287,11 @@ class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
 
 
+class OurAppsBlock:
+    OUR_APPS_BLOCK = (By.CSS_SELECTOR, "section > .promoApps")
+    DOWNLOAD_ON_THE_APP_STORE_BUTTON_OUR_APPS_BLOCK = (By.CSS_SELECTOR, ".storeBtns  > [data-type='our_app_Ios']")
+
+
 class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')

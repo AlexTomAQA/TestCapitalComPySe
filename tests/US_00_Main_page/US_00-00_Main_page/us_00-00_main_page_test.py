@@ -14,6 +14,7 @@ from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTraders
 from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersBlockSignUpButton
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
+from pages.Elements.OurAppsBlockDownloadOnTheAppStoreButton import OurAppsBlockDownloadOnTheAppStoreButton
 from pages.Elements.OurMarketsTableBuyButton import BuyButtonOurMarketsTable
 from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
@@ -315,6 +316,9 @@ class TestMainPage:
             cur_country,
             ['de', 'au', 'ae']
         )
+        Common().check_market_in_list_and_skip_if_present(cur_market, [
+            'Commodities', 'Indices', 'Shares', 'Forex'
+        ])
 
         page_conditions = Conditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -382,7 +386,7 @@ class TestMainPage:
 
     @allure.step("Start test of button [Explore Features] in 'Trade CFDs on Capital.com via TradingView' block")
     @pytest.mark.test_005
-    def test_005_create_and_verify_your_account_button_in_block_trade_cfds(
+    def test_005_explore_features_button_in_block_trade_cfds(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Explore Features] in 'Trade CFDs on Capital.com via TradingView' block
@@ -434,6 +438,35 @@ class TestMainPage:
 
         test_element = TradingForFreeBlockCreateDemoAccountButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Download on the App Store] in 'Our Apps' block")
+    @pytest.mark.test_008
+    def test_008_download_on_the_app_store_button_in_our_apps_block(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Download on the App Store] in 'Our Apps' block
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_008",
+            "Start test of button [Download on the App Store] in 'Our Apps' block",
+            False, False
+        )
+
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'au', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = OurAppsBlockDownloadOnTheAppStoreButton(d, main_page_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Try now] in 'Why choose Capital.com?' block")
     @pytest.mark.test_010
