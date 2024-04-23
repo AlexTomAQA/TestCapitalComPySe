@@ -373,3 +373,6 @@ class MarketSortAllMarketsLocators:
     FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
     BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
     BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
+
+class GlobalEnvironmentalLocators:
+    BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")
