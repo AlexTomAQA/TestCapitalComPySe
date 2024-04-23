@@ -335,3 +335,6 @@ class PageTradingInstrumentMarketsLocators:
 class TradingPlatformWatchlistTabs:
     FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
     ITEM_TITLE = (By.CLASS_NAME, "market-title")
+
+class GlobalEnvironmentalLocators:
+    BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")
