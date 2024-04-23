@@ -150,6 +150,7 @@ class ButtonsOnPageLocators:
     MEATBALLS_MENU_BUTTON = (By.CSS_SELECTOR, '.cc-boxXs.tabsDrop__btn.js-tabsDrop__btn')
 
     TRADE_BUTTON_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets__btn.js-wMarkets__tradeBtn.showLg')
+    NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.wMarkets .wMarkets__item.js-wMarkets__item .wMarkets__link')
 
     # Elements of Our markets block
     OUR_MARKETS_BLOCK = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_grid__2D3md.grid_gComponent__Xx_xR')
@@ -171,10 +172,17 @@ class ButtonsOnPageLocators:
     # Elements of Widget 'Trading calculator'
     TRADING_CALCULATOR_WIDGET = (By.CSS_SELECTOR, '.tradingCalc.js-tradingCalc')
     BUTTON_START_TRADING_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator']")
+    BUTTON_TRADE_NOW_IN_TRADING_CALCULATOR = (By.CSS_SELECTOR, "[data-type='btn_calculator_3']")
 
     # Elements of 'Trading experience' block
     TRADING_EXPERIENCE_BLOCK = (By.XPATH, "//div[@class='gapMd']")
     BUTTON_START_TRADING_IN_TRADING_EXPERIENCE = (By.CSS_SELECTOR, "[data-type='hp_choose_capital']")
+
+    # Elements of 'Try trading for free' block
+    TRY_TRADING_FOR_FREE_BLOCK = (By.CSS_SELECTOR, ".cc-boxXl.newToTrading")
+    BUTTON_CREATE_DEMO_ACCOUNT_IN_TRADING_FOR_FREE = \
+        (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup?go=demo']")
+
 
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
@@ -242,12 +250,28 @@ class ContentBlockLocators:
     BUTTON_CREATE_A_RISK_FREE_DEMO_ACCOUNT_HOW_TO_GET_STARTED_WITH_TRADING_BLOCK = \
         (By.CSS_SELECTOR, 'div > p:nth-child(21) > a[data-type="plain_button_demo"]')
 
+    # Elements of 'Why choose Capital.com?' block
+    WHY_CHOOSE_BLOCK = (By.CSS_SELECTOR, ".js-bannerSection .js-showBanner")
     WHY_CHOOSE_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_demo"]')
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
+    WHY_CHOOSE_BLOCK_TRY_NOW_BUTTON = (By.CSS_SELECTOR, '.js-bannerSection .js-showBanner .btn.js_signup')
 
     FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
     FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
+    # Elements of 'Explore our platform' block
+    EXPLORE_OUR_PLATFORM_BLOCK = (By.CSS_SELECTOR, '.wrap section.cc-boxLg > .flex-wrap')
+    EASY_TO_USE_LINK_EXPLORE_OUR_PLATFORM_BLOCK = (
+        By.CSS_SELECTOR,
+        '.hideXs [href="https://capital.com/trading/platform/"]')
+    TRY_NOW_BUTTON_EXPLORE_OUR_PLATFORM_BLOCK = (
+        By.CSS_SELECTOR,
+        'div.js-analyticsVisible[data-type="btn_nearby_video"] a.hideXs:nth-child(2)')
+
+    # Elements of "Trader's Dashboard" widget
+    TRADERS_DASHBOARD_WIDGET = (By.CSS_SELECTOR, 'div[data-type="traders_dashboard"]')
+    TRADE_BUTTON_TRADERS_DASHBOARD_WIDGET = (By.XPATH, '(//div[@class="tradersDashboard__main"]//button)')
+    NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".tradersDashboard__item .tradersDashboard__name b")
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
@@ -270,6 +294,7 @@ class TableTradingInstrumentsLocators:
     ITEM_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "p.stringEllipsed > b")  # названия инструментов
     ITEM_TRADING_INSTRUMENT_LINK = (By.CSS_SELECTOR, "p.table__info.stringEllipsed > a")  # ссылка
     LINE_TRADING_INSTRUMENT = (By.CSS_SELECTOR, "tr.trlink.js-trlink")
+    MARKET_ICON = (By.CSS_SELECTOR, "i.marketIcon")
 
 
 class FieldDropdownMarketsLocator:
@@ -335,6 +360,19 @@ class PageTradingInstrumentMarketsLocators:
 class TradingPlatformWatchlistTabs:
     FAVOURITES_TAB = (By.CSS_SELECTOR, ".selected .iconex-favourites-outline")
     ITEM_TITLE = (By.CLASS_NAME, "market-title")
+
+
+class MarketSortAllMarketsLocators:
+    TABLE_TRADING_INSTRUMENTS = (By.CLASS_NAME, "tabs__panes")
+    ALL_TABS = (By.CLASS_NAME, "tabs__nav")
+    ALL_MARKETS_TAB = (By.CSS_SELECTOR, "[data-cat='ALL']")
+    COMMODITIES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='COM']")
+    INDICES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='IND']")
+    CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
+    SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
+    FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
+    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
+    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
 
 class GlobalEnvironmentalLocators:
     BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")

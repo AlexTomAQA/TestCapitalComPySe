@@ -8,6 +8,8 @@ import allure
 import pytest
 
 from pages.common import Common
+from pages.Elements.ExploreOurPlatformBlockEasyToUseLink import ExploreOurPlatformBlockEasyToUseLink
+from pages.Elements.ExploreOurPlatformBlockTryNowButton import ExploreOurPlatformBlockTryNowButton
 from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTradersBlockTryDemoButton
 from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersBlockSignUpButton
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
@@ -17,14 +19,17 @@ from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDsBlock import TradeCFDsBlock
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
+from pages.Elements.TradersDashboardWidgetTradeButton import TradersDashboardWidgetTradeButton
+from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
+from pages.Elements.TradingForFreeBlockCreateDemoAccountButton import TradingForFreeBlockCreateDemoAccountButton
 from pages.Elements.TradingInstrumentTradeButton import TradingInstrumentTradeButton
 from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButton
+from pages.Elements.WhyChooseBlockTryNowButton import WhyChooseBlockTryNowButton
 from pages.Elements.WhyChooseBlockSignUpButton import WhyChooseBlockSignUpButton
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from tests.ReTestsManual.pages.conditions_new import NewConditions
 from pages.conditions import Conditions
-from pages.Elements.TradingExperienceStartTradingButton import TradingExperienceStartTradingButton
 
 
 @pytest.mark.us_00_00
@@ -161,7 +166,9 @@ class TestMainPage:
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        Common().check_market_in_list_and_skip_if_present(cur_market, ['Cryptocurrencies'])
+        Common().check_market_in_list_and_skip_if_present(cur_market, [
+            'Cryptocurrencies', 'Commodities', 'Shares', 'Forex'
+        ])
 
         page_conditions = NewConditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -192,7 +199,9 @@ class TestMainPage:
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        Common().check_market_in_list_and_skip_if_present(cur_market, ['Cryptocurrencies'])
+        Common().check_market_in_list_and_skip_if_present(cur_market, [
+            'Cryptocurrencies', 'Commodities', 'Shares', 'Forex'
+        ])
 
         page_conditions = NewConditions(d, "")
         main_page_link = page_conditions.preconditions(
@@ -399,6 +408,135 @@ class TestMainPage:
 
         test_element = TradeCFDsBlock(d, main_page_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Create a demo account] in 'Try trading for free' block")
+    @pytest.mark.test_006
+    def test_006_create_demo_account_in_try_trading_for_free_block_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Create a demo account] in 'Try trading for free' block
+        Language: EN. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_006", "Start test of button [Create a demo account] in 'Try trading for free' block",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradingForFreeBlockCreateDemoAccountButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try now] in 'Why choose Capital.com?' block")
+    @pytest.mark.test_010
+    def test_010_why_choose_block_try_now_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try now] in 'Why choose Capital.com?' block
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_010", "Start test of button [Try now] in 'Why choose Capital.com?' block",
+            False, False
+        )
+
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = WhyChooseBlockTryNowButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Trade] in 'Trader's Dashboard' widget")
+    @pytest.mark.test_011
+    def test_011_traders_dashboard_widget_trade_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Trade] in 'Trader's Dashboard' widget
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_011", "Start test of button [Trade] in 'Trader's Dashboard' widget",
+            False, False
+        )
+
+        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = TradersDashboardWidgetTradeButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of link [easy-to-use] in 'Explore our platform' block")
+    @pytest.mark.test_012
+    def test_012_explore_our_platform_block_easy_to_use_link(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Link [easy-to-use] in 'Explore our platform' block
+        Language: Not EN, NL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_012", "Start test of link [easy-to-use] in 'Explore our platform' block",
+            False, False
+        )
+
+        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = ExploreOurPlatformBlockEasyToUseLink(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try now] in 'Explore our platform' block")
+    @pytest.mark.test_013
+    def test_013_explore_our_platform_block_try_now_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try now] in 'Explore our platform' block
+        Language: Not EN, NL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_013", "Start test of button [Try now] in 'Explore our platform' block",
+            False, False
+        )
+
+        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = ExploreOurPlatformBlockTryNowButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Start Trading] in Widget 'Trading calculator'")
     @pytest.mark.test_015

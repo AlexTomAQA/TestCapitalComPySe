@@ -14,7 +14,8 @@ class CapitalPageLocators:
 
 class HeaderElementLocators:
     BUTTON_LOGIN = (By.CSS_SELECTOR, "div.cc-header__wrap > div#wphWrap a#wg_loginBtn")
-    BUTTON_SIGNUP = (By.CSS_SELECTOR, ".cc-header__wrap > #wphWrap > .js_signup")
+    # BUTTON_SIGNUP = (By.CSS_SELECTOR, ".cc-header__wrap > #wphWrap > .js_signup") не рабочий локатор
+    BUTTON_SIGNUP = (By.CSS_SELECTOR, "div.cc-header__wrap > div#wphWrap a.cc-header__btn.js-signup")
 
 
 class FooterElementLocators:
@@ -65,6 +66,11 @@ class MainBanner:
 class MainBannerDe:
     BUTTON_LEFT = (By.CSS_SELECTOR, "div.banner--video a.btn[href='/trading/signup']")
     BUTTON_RIGH = (By.CSS_SELECTOR, "div.banner--video a.btn[href='/trading/signup?go=demo']")
+
+
+class BlockCFDCalculator:
+    BUTTON_SIGNUP = (By.CSS_SELECTOR, "div.row-cont a[data-type='hp_banner_default1']")
+    BUTTON_TRY_FREE_DEMO = (By.CSS_SELECTOR, "div.row-cont a[data-type='hp_banner_demo_11']")
 
 
 class WidgetStillLookingFor:

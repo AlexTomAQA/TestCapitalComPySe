@@ -17,6 +17,13 @@ from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 
 
+def check_cur_href(cur_item_link, list_href):
+    if cur_item_link in list_href:
+        return
+    else:
+        pytest.skip(f"This test case is not for page: '{cur_item_link}'")
+
+
 def pytest_generate_tests(metafunc):
     """
     Fixture generation test data
@@ -26,7 +33,7 @@ def pytest_generate_tests(metafunc):
     metafunc.parametrize("cur_item_link", list_item_link, scope="class")
 
 
-@pytest.mark.us_01_05
+@pytest.mark.us_01_05_01
 class TestCommodities:
     page_conditions = None
 
@@ -43,7 +50,6 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".01_001", "Testing button [Add to favourite] on 'Trade CFD' page")
 
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
         page_conditions = Conditions(d, "")
@@ -177,6 +183,8 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".01_007", "Testing button [Notification] on trading instrument page")
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -221,7 +229,6 @@ class TestCommodities:
             ".01_011", "Testing button [1. Create your account] in Step trading block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(

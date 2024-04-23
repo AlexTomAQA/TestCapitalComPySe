@@ -2,8 +2,8 @@ import allure
 import pytest
 
 from pages.Elements.StepTradingBlock import BlockStepTrading
-from pages.Elements.TableTradingInstrumentsBuyButton import TableTradingInstrumentsBuyButton
-from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
+from pages.Elements.TableTradingInstrumentsBuyButtonAllMarkets import TableTradingInstrumentsBuyButtonAllMarkets
+from pages.Elements.TableTradingInstrumentsSellButtonAllMarkets import TableTradingInstrumentsSellButtonAllMarkets
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
 from pages.Menu.menu import MenuSection
 from pages.common import Common
@@ -21,7 +21,7 @@ class TestAllMarkets:
     # @allure.step("Start test of button [Sell] in Widget 'Trading instrument'")
     # @pytest.mark.test_001
     # def test_001_sell_trading_instrument(
-    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_sort):
+    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_market, cur_sort):
     #     """
     #     Check: button [Sell] in Widget 'Trading instrument'
     #     Language: All License: All (except FCA) Role: All.
@@ -41,13 +41,13 @@ class TestAllMarkets:
     #     page_menu = MenuSection(d, link)
     #     cur_page_url = page_menu.open_market_menu_all_markets_submenu(d, cur_language, cur_country, link)
     #
-    #     test_element = TableTradingInstrumentsSellButton(d, cur_page_url, bid)
-    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_sort)
-    #
-    # @allure.step("Start test of button [Buy] in Widget 'Trading instrument'")
-    # @pytest.mark.test_002
+    #     test_element = TableTradingInstrumentsSellButtonAllMarkets(d, cur_page_url, bid)
+    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_market, cur_sort)
+
+    @allure.step("Start test of button [Buy] in Widget 'Trading instrument'")
+    @pytest.mark.test_002
     # def test_002_buy_trading_instrument(
-    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_sort):
+    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_market, cur_sort_all_markets):
     #     """
     #     Check: button [Buy] in Widget 'Trading instrument'
     #     Language: All License: All (except FCA) Role: All.
@@ -67,8 +67,8 @@ class TestAllMarkets:
     #     page_menu = MenuSection(d, link)
     #     cur_page_url = page_menu.open_market_menu_all_markets_submenu(d, cur_language, cur_country, link)
     #
-    #     test_element = TableTradingInstrumentsBuyButton(d, cur_page_url, bid)
-    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_sort)
+    #     test_element = TableTradingInstrumentsBuyButtonAllMarkets(d, cur_page_url, bid)
+    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_market, cur_sort_all_markets)
 
     @allure.step("Start test of button [1. Create & verify your account] in Step trading block")
     @pytest.mark.test_003

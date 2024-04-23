@@ -73,8 +73,11 @@ class SignupLogin(BasePage):
         Check there are an elements to on Sign up form
         """
         print(f"{datetime.now()}   Check that [Sign up Pause] form is opened =>")
-        if self.element_is_visible(SignupFormLocators.SIGNUP_PAUSE_FORM, 3):
-            print(f"{datetime.now()}   => 'Sign up Pause' form opened")
+        if not self.element_is_visible(SignupFormLocators.SIGNUP_PAUSE_FORM, 3):
+            print(f"{datetime.now()}   => 'Sign up Pause' form is not opened")
+            return False
+        print(f"{datetime.now()}   => 'Sign up Pause' form opened")
+        return True
 
     @allure.step('Check that "Sign up" form opened')
     def should_be_signup_form(self, cur_language):

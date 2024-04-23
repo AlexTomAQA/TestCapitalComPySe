@@ -19,9 +19,8 @@ class TradeCFDAddToFavoriteButton(BasePage):
 
         tab = TradingPlatformWatchlistTabs.FAVOURITES_TAB
         trade_instrument = self.element_click(cur_role)
-        print(f'Trade instrument from Full test is {trade_instrument}')
+        print(f"{datetime.now()}   Trade instrument from Full test is '{trade_instrument}'")
         test_element = AssertClass(d, cur_item_link, self.bid)
-        print(f'Test element is {test_element}')
         match cur_role:
             case "NoReg":
                 test_element.assert_signup(d, cur_language, cur_item_link)
@@ -101,6 +100,6 @@ class TradeCFDAddToFavoriteButton(BasePage):
             del page_
 
         del button_list
-        print(f'Trade instrument from element click is {trade_instrument}')
+        print(f'{datetime.now()}   Trade instrument from element click is {trade_instrument}')
         return trade_instrument
 

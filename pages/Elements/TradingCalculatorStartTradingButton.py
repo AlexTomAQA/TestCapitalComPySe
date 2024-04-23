@@ -49,7 +49,7 @@ class TradingCalculatorStartTradingButton(BasePage):
             pytest.fail("'Trading calculator' widget is NOT present on this page")
         print(f"{datetime.now()}   => 'Trading calculator' widget present on this page!\n")
 
-        print(f"{datetime.now()}   IS 'Trading calculator' widget present on this page? =>")
+        print(f"{datetime.now()}   IS 'Trading calculator' widget visible on this page? =>")
         if not self.element_is_visible(ButtonsOnPageLocators.TRADING_CALCULATOR_WIDGET, 5):
             print(f"{datetime.now()}   => 'Trading calculator' widget is NOT visible on this page!\n")
             pytest.fail("'Trading calculator' widget is NOT visible on this page!")
@@ -64,7 +64,7 @@ class TradingCalculatorStartTradingButton(BasePage):
             pytest.fail("[Start Trading] button is NOT present on this page")
         print(f"{datetime.now()}   => [Start Trading] button present on this page!\n")
 
-        print(f"{datetime.now()}   IS [Start Trading] button present on this page? =>")
+        print(f"{datetime.now()}   IS [Start Trading] button visible on this page? =>")
         if not self.element_is_visible(
                 ButtonsOnPageLocators.BUTTON_START_TRADING_IN_TRADING_CALCULATOR, 5):
             print(f"{datetime.now()}   => [Start Trading] button is NOT visible on this page!\n")

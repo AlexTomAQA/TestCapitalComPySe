@@ -70,8 +70,6 @@ class AssertClass(BasePage):
             retest_table_fill(d, self.bid, '04', self.link)
             Common().assert_true_false(False, "Bug # 04. Unknown situation instead 'Sign Up' form opened")
 
-        Common().assert_true_false(True, "")
-
     @allure.step('Checking that "Login" form or page opened')
     def assert_login(self, d, cur_language, cur_link):
         """Method Assert Login form or page"""
@@ -233,8 +231,9 @@ class AssertClass(BasePage):
             self.driver.close()
             self.driver.switch_to.window(tabs[0])
 
-    @allure.step('Checking that "Page of trading instrument" on capital.com with corresponding instrument is opened')
-    def assert_page_trading_instrument(self, d, cur_language, cur_link, title_instrument):
+    @allure.step(
+        'Checking that "Page of trading instrument" on capital.com with corresponding instrument is opened')
+    def assert_page_trading_instrument(self, d, language, cur_link, title_instrument):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading_instrument = PageTradingInstrument(d, cur_link, self.bid)
-        self.page_trading_instrument.check_open_trading_instrument_page(title_instrument)
+        self.page_trading_instrument.should_be_trading_instrument_page(title_instrument)

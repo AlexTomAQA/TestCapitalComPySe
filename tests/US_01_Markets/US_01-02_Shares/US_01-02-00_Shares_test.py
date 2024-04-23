@@ -20,7 +20,7 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 count = 1
 
 
-@pytest.mark.us_01_02
+@pytest.mark.us_01_02_00
 class TestShares:
     page_conditions = None
 
