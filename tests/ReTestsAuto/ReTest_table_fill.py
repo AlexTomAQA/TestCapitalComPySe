@@ -86,7 +86,7 @@ def add_new_row_with_format(manual=False):
     spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
 
-    start_update_date = [datetime.now().strftime("%d/%m/%y")]
+    start_update_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
     # добавление новой 4-й строки
     gs.add_new_row_before_()
     # копирование данных из предыдущей строки
