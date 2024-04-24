@@ -18,7 +18,7 @@ def check_gs_table(bid, bug_n, manual=False):
     bug_present = False
     # для таблицы мануальных багов
     if manual:
-        start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        start_update_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
         gs.update_range_values('V1', [start_update_date])
 
     values = gs.get_all_row_values()
@@ -35,7 +35,9 @@ def check_gs_table(bid, bug_n, manual=False):
                         pass
                 else:
                     bug_num = [["'" + bug_n]]
+                    time_update = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
                     gs.update_range_values(f'P{5 + index}', bug_num)
+                    gs.update_range_values(f'U{5 + index}', time_update)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
                           f"но у него изменился тип с {row[-6]} на {bug_n}")
                     if manual:      # для таблицы мануальных багов
@@ -113,7 +115,7 @@ def fill_gs_table(value_1, value_2, bug_num, manual=False, new_layout=False):
         else:
             gs.update_range_values('K5', [['O']])
 
-        finish_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+        finish_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
         gs.update_range_values('V2', [finish_date])
 
 
