@@ -192,7 +192,8 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
 
             print(f"{datetime.now()}   => Buttons [Buy] is visible and sum buttons no zero!\n")
             print(
-                f'{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Buy] on cur_sort "{cur_sort_all_markets}"=>')
+                f'{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Buy] on cur_sort '
+                f'"{cur_sort_all_markets}"=>')
 
             self.buy_list = self.driver.find_elements(
                 *MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)
@@ -249,7 +250,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         print(f"{datetime.now()}   => BUTTON_BUY is clickable")
 
         (ActionChains(wd).move_to_element(wd.find_elements(
-            *MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value]).
-            pause(0.5).click().perform())
+            *MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+            .pause(0.5).click().perform())
 
         print(f"{datetime.now()}   =>   BUTTON_BUY on item '{self.trade_instrument}' clicked")
