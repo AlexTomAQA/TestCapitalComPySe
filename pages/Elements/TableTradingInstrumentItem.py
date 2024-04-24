@@ -10,6 +10,7 @@ from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
+from pages.common import Common
 
 
 class TableTradingInstrumentsItem(BasePage):
@@ -42,7 +43,7 @@ class TableTradingInstrumentsItem(BasePage):
         table_list = self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)
         if len(table_list) == 0:
             print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is NOT present on the page!\n")
-            pytest.fail(f" Bug ? Checking element is not on this page")
+            Common().pytest_fail(f" Bug ? Checking element is not on this page")
 
         print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is present on the page!")
 
@@ -51,7 +52,7 @@ class TableTradingInstrumentsItem(BasePage):
 
         if len(line_list) == 0:
             print(f"{datetime.now()}   => TRADING_INSTRUMENTS is NOT present or quantity buttons zero!\n")
-            pytest.fail("Bug ? element is not on this page")
+            Common().pytest_fail("Bug ? element is not on this page")
 
     @allure.step("Click line instrument")
     def element_click(self, d, cur_item_link):
@@ -68,6 +69,11 @@ class TableTradingInstrumentsItem(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             instruments_list[value]
         )
+
+        time_out = 3
+        if not self.element_is_clickable(instruments_list[value], time_out):
+            print(f"{datetime.now()}   => {self.title_instrument} is not clickable after {time_out} sec.")
+            Common().pytest_fail("Bug  ?  element is not clickable")
 
         # определяем название инструмента
         self.title_instrument = instruments_list[value].text
