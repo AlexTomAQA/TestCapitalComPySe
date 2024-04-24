@@ -32,7 +32,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         self.sell_list = None
 
         self.item = None
-        self.trade_instrument = ""
+        self.name_of_instrument = ""
 
         super().__init__(browser, link, bid)
 
@@ -56,7 +56,7 @@ class TableTradingInstrumentsSellButton(BasePage):
                     test_element.assert_login(d, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(
-                        self.driver, cur_item_link, False, True, self.trade_instrument
+                        self.driver, cur_item_link, False, True, self.name_of_instrument
                     )
             self.driver.get(cur_item_link)
 
@@ -72,21 +72,23 @@ class TableTradingInstrumentsSellButton(BasePage):
         table_list = self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)
         if len(table_list) == 0:
             print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is NOT present on this page\n")
-            Common().pytest_fail("Bug # ??? Testing element is not on this page")
+            Common().pytest_fail("Bug # ??? Trading Instrument table is not on this page")
 
-        print(f"{datetime.now()}   => TABLE_TRADING_INSTRUMENTS is present on the page!")
+        print(f"{datetime.now()}   => Trading Instrument table is present on the page!")
 
-        print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>")
+        print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the Live TI prices table? =>")
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         if len(field_dropdown_list) == 0:
-            Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in Live table")
-        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the table!")
+            Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in the Live TI price table")
+        print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the Live TI price table!")
 
         print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             field_dropdown_list[0]
         )
+
+        field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
         field_dropdown_list[0].click()
 
         match cur_sort:
@@ -110,24 +112,23 @@ class TableTradingInstrumentsSellButton(BasePage):
         # self.item = TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT
 
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
-
         item_sort_list = self.element_is_visible(ItemSortDropdownLocators.ALL_ITEM_DROPDOWN_SORT)
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            item_sort_list
-        )
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     item_sort_list
+        # )
 
         if not item_sort_list:
             print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not visible in item_sort_list?")
-            Common().pytest_fail("Bug # ??? item_sort_list is not visible")
-        print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
+            Common().pytest_fail("Bug # ??? items_sort_list is not visible")
+        print(f"{datetime.now()}   => items_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
-        print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in item_sort_list? =>")
+        print(f"{datetime.now()}   Is cur_sort \"{cur_sort}\" present in items_sort_list? =>")
         if not self.driver.find_element(*self.item_sort):
-            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in item_sort_list!")
-            Common().pytest_fail(f"Bug # ??? cur_sort \"{cur_sort}\" is not present in item_sort_list!")
+            print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is not present in items_sort_list")
+            Common().pytest_fail(f"Bug # ??? cur_sort \"{cur_sort}\" is not present in items_sort_list")
         print(f"{datetime.now()}   => cur_sort \"{cur_sort}\" is present in item_sort_list!")
-        print(f"{datetime.now()}   Start click cur_sort \"{cur_sort}\" =>")
+        print(f"{datetime.now()}   Start click cur_sort item - \"{cur_sort}\"=>")
 
         self.current_sort = self.driver.find_element(*self.item_sort)
         self.current_sort.click()
@@ -135,31 +136,31 @@ class TableTradingInstrumentsSellButton(BasePage):
         print(f"{datetime.now()}   => End Click cur_sort \"{cur_sort}\"")
 
         print(f"\n{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
-        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)) != 0:
-            print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
-            print(f"{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
-            self.sell_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
-            qty_buttons = len(self.sell_list)
-            count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
-            item_list = random.sample(range(qty_buttons), count_of_runs)
-            print(f"{datetime.now()}   => End find {count_of_runs} random buttons [Sell] on the cur_sort "
-                  f"\"{cur_sort}\"")
-            return item_list
-        else:
+        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)) == 0:
             print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!")
-            Common().pytest_fail("Bug # ??? element is not on this page")
+            Common().pytest_fail("Bug # ??? Testing element is not on this page")
+
+        print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
+        print(f"{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort \"{cur_sort}\"=>")
+        self.sell_list = self.driver.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
+        qty_buttons = len(self.sell_list)
+        count_of_runs = COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons
+        item_list = random.sample(range(qty_buttons), count_of_runs)
+        print(f"{datetime.now()}   => End find {count_of_runs} random buttons [Sell] on the cur_sort "
+              f"\"{cur_sort}\"")
+        return item_list
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort}\" cur_sort")
 
-        item_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
-        item = item_list[value]
-        self.trade_instrument = item.text
+        items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
+        item = items_list[value]
+        self.name_of_instrument = item.text
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-        sell_list = wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
-        button = sell_list[value]
+        sell_buttons_list = wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)
+        button = sell_buttons_list[value]
         id_instrument = button.get_attribute("data-iid")
         print(f"{datetime.now()}   =>   BUTTON_SELL on item with ID = '{id_instrument}' is present")
         print(f"{datetime.now()}   BUTTON_SELL on item with ID = '{id_instrument}' scroll into view =>")
@@ -169,7 +170,7 @@ class TableTradingInstrumentsSellButton(BasePage):
         )
         print(f"{datetime.now()}   => BUTTON_SELL on item with ID = '{id_instrument}' scrolled into view")
 
-        print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
+        print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.name_of_instrument}' clickable =>")
         time_out = 5
         button = self.element_is_clickable(
             wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[0], time_out)
@@ -180,10 +181,13 @@ class TableTradingInstrumentsSellButton(BasePage):
 
         ActionChains(wd) \
             .move_to_element(button) \
-            .pause(0.5) \
             .click() \
             .perform()
+        # .move_to_element(button) \
+        # .pause(0.5) \
+        # .click() \
+        # .perform()
 
         # button.click()
         # wd.find_elements(*TableTradingInstrumentsLocators.BUTTON_SELL_TRADING_INSTRUMENT)[value].click()
-        print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
+        print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.name_of_instrument}' clicked")
