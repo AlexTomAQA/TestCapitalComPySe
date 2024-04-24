@@ -37,7 +37,6 @@ def check_cur_href(cur_item_link, list_href):
 
 @pytest.mark.us_01_02_01
 class TestSharesItemPage:
-    page_conditions = None
 
     @allure.step("Start testing the [Add to favourite] button on the trading instrument page")
     @pytest.mark.test_001
