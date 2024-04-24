@@ -44,8 +44,8 @@ class TestAllMarkets:
     #     test_element = TableTradingInstrumentsSellButtonAllMarkets(d, cur_page_url, bid)
     #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url, cur_market, cur_sort)
 
-    @allure.step("Start test of button [Buy] in Widget 'Trading instrument'")
-    @pytest.mark.test_002
+    # @allure.step("Start test of button [Buy] in Widget 'Trading instrument'")
+    # @pytest.mark.test_002
     # def test_002_buy_trading_instrument(
     #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_market, cur_sort_all_markets):
     #     """
