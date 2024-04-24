@@ -10,7 +10,7 @@ from datetime import datetime
 from selenium.webdriver import ActionChains
 import allure
 
-from pages.Signup_login.signup_login import SignupLogin
+# from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.common import Common
 from pages.Elements.testing_elements_locators import (
