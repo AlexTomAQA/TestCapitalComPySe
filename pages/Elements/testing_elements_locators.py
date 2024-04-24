@@ -287,6 +287,11 @@ class CounterBanner:
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, ".cc-counter__btn")
 
 
+class OurAppsBlock:
+    OUR_APPS_BLOCK = (By.CSS_SELECTOR, "section > .promoApps")
+    DOWNLOAD_ON_THE_APP_STORE_BUTTON_OUR_APPS_BLOCK = (By.CSS_SELECTOR, ".storeBtns  > [data-type='our_app_Ios']")
+
+
 class TableTradingInstrumentsLocators:
     TABLE_TRADING_INSTRUMENTS = (By.CSS_SELECTOR, "div.row")  # таблица инструментов
     BUTTON_SELL_TRADING_INSTRUMENT = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
@@ -373,3 +378,6 @@ class MarketSortAllMarketsLocators:
     FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
     BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
     BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
+
+class GlobalEnvironmentalLocators:
+    BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")

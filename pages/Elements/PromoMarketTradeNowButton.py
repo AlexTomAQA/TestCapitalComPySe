@@ -44,7 +44,7 @@ class PromoMarketTradeNowButton(BasePage):
         # Click по кнопке "Trade now" с соотв. индексом
         button = None
         if i == 0:
-            button = self.driver.find_element(*WidgetPromoMarket.BUT_1_TRADE_git NOW_ACTIVE)
+            button = self.driver.find_element(*WidgetPromoMarket.BUT_1_TRADE_NOW_ACTIVE)
         elif i == 1:
             button = self.driver.find_element(*WidgetPromoMarket.BUT_2_TRADE_NOW_ACTIVE)
         elif i == 2:
@@ -54,8 +54,12 @@ class PromoMarketTradeNowButton(BasePage):
         if button:
             self.scroll_to_element(button)
             button.click()
+
     def scroll_to_element(self, element):
-         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', element)
 
     def arrange_(self, d, cur_role, cur_item_link):
         print(f"\n{datetime.now()} 1.Arrange_v0")
