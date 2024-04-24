@@ -18,7 +18,7 @@ def check_gs_table(bid, bug_n, manual=False):
     bug_present = False
     # для таблицы мануальных багов
     if manual:
-        start_update_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
+        start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         gs.update_range_values('V1', [start_update_date])
 
     values = gs.get_all_row_values()
@@ -35,7 +35,7 @@ def check_gs_table(bid, bug_n, manual=False):
                         pass
                 else:
                     bug_num = [["'" + bug_n]]
-                    time_update = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
+                    time_update = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
                     gs.update_range_values(f'P{5 + index}', bug_num)
                     gs.update_range_values(f'U{5 + index}', time_update)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
@@ -88,7 +88,7 @@ def add_new_row_with_format(manual=False):
     spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
 
-    start_update_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
+    start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
     # добавление новой 4-й строки
     gs.add_new_row_before_()
     # копирование данных из предыдущей строки
@@ -115,7 +115,7 @@ def fill_gs_table(value_1, value_2, bug_num, manual=False, new_layout=False):
         else:
             gs.update_range_values('K5', [['O']])
 
-        finish_date = [datetime.now().strftime("%d.%m.%Y %H:%M:%S")]
+        finish_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
         gs.update_range_values('V2', [finish_date])
 
 
