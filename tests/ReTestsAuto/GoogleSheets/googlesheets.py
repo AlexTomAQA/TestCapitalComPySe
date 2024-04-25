@@ -130,8 +130,10 @@ class GoogleSheet:
             'valueInputOption': 'USER_ENTERED',
             'data': data
         }
-        result = self.service.spreadsheets().values().batchUpdate(spreadsheetId=self.SPREADSHEET_ID,
-                                                                  body=body).execute()
+        result = (self.service.spreadsheets().values().
+                  batchUpdate(spreadsheetId=self.SPREADSHEET_ID, body=body)
+                  .execute()
+                  )
         print('{0} cells updated.'.format(result.get('totalUpdatedCells')))
         print(f"{datetime.now()}   => 4. One row check results into Google Sheet Bugs Report fixed")
         return result
