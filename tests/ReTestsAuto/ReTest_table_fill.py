@@ -35,7 +35,7 @@ def check_gs_table(bid, bug_n, manual=False):
                         pass
                 else:
                     bug_num = [["'" + bug_n]]
-                    time_update = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
+                    time_update = [[datetime.now().strftime("%d/%m/%Y %H:%M:%S")]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
                     gs.update_range_values(f'U{5 + index}', time_update)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
