@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-04-25 15:42:21.334017   worker_id = master
+
+2024-04-25 15:42:21.334031   0. Allure grouping v4
+
+2024-04-25 15:42:21.334213   START PRECONDITIONS =>
+
+2024-04-25 15:42:21.334228   => URL after prev. preconditions - https://capital.com/zh
+2024-04-25 15:42:21.334237   => flag_of_bug - True
+2024-04-25 15:42:21.334248   => Current URL - https://capital.com/trading/platform/charting/74865574958418?ids=110522393449810,286753491539282,25040243451254098,336746910864722,2276324076967250,53373558609234,74865574958418
+2024-04-25 15:42:21.339641   Current page URL = https://capital.com/trading/platform/charting/74865574958418?ids=110522393449810,286753491539282,25040243451254098,336746910864722,2276324076967250,53373558609234,74865574958418
+2024-04-25 15:42:21.342149   self.link = https://capital.com/zh
+2024-04-25 15:42:21.342162   driver.get(https://capital.com/zh) =>
+2024-04-25 15:42:27.518174   => Loaded page https://capital.com/zh
+
+2024-04-25 15:42:27.522598   => Windows size - {'width': 1280, 'height': 800}
+2024-04-25 15:42:27.523924   Set windows position at (0, 0) =>
+2024-04-25 15:42:27.525619   Set resolution 1280 * 800 =>
+2024-04-25 15:42:27.527225   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-25 15:42:28.562703   Капчи нет. Идем дальше
+
+2024-04-25 15:42:28.562790   Работа с куками =>
+
+2024-04-25 15:42:28.562804   => не требуется
+
+2024-04-25 15:42:28.562814   Prev. country - 'ae'
+2024-04-25 15:42:28.562823   Cur. country - 'ae'
+2024-04-25 15:42:28.562832   => Country set to 'ae'
+
+2024-04-25 15:42:28.562841   Prev. language - 'zh'
+2024-04-25 15:42:28.562850   Cur. language - 'zh'
+2024-04-25 15:42:28.562859   => Language is set to 'zh'
+
+2024-04-25 15:42:28.562868   Prev. role - 'NoAuth'
+2024-04-25 15:42:28.562876   Cur. role - 'NoAuth'
+2024-04-25 15:42:28.562885   => The 'NoAuth' role is set
+
+2024-04-25 15:42:28.565720   => Current URL - https://capital.com/zh
+
+2024-04-25 15:42:28.565743   => THE END PRECONDITIONS
+
+2024-04-25 15:42:28.565788   1. Arrange
+2024-04-25 15:42:28.565802   current_page = https://capital.com/zh
+2024-04-25 15:42:28.568271   link = https://capital.com/zh/trade-dax
+
+2024-04-25 15:42:28.570706   Open page: https://capital.com/zh/trade-dax
+2024-04-25 15:42:28.570728   Current page URL = https://capital.com/zh
+2024-04-25 15:42:28.573142   self.link = https://capital.com/zh/trade-dax
+2024-04-25 15:42:28.573155   driver.get(https://capital.com/zh/trade-dax) =>
+2024-04-25 15:42:30.634959   => Loaded page https://capital.com/zh/trade-dax
+2024-04-25 15:42:30.639473   BUTTON_ON_VER_BANNER is present? =>
+2024-04-25 15:42:30.647868   => BUTTON_ON_VER_BANNER is present on the page!
+2024-04-25 15:42:30.647894   BUTTON_ON_VER_BANNER scroll =>
+2024-04-25 15:42:30.651490   BUTTON_ON_VER_BANNER is visible? =>
+2024-04-25 15:42:30.685390   => BUTTON_ON_VER_BANNER is visible on the page!
+2024-04-25 15:42:30.685616   Start Checking that form [Sign up] popped up on the page =>
+2024-04-25 15:42:32.217617   '[Sign up]' form was not popped up
+
+2024-04-25 15:42:32.217802   2. Act
+
+2024-04-25 15:42:32.234340   => Button on Vertical banner clickable
+
+2024-04-25 15:42:32.238776   data_id = 426
+2024-04-25 15:42:32.278834   => BUTTON_ON_VER_BANNER clicked!
+
+2024-04-25 15:42:32.279076   3. Assert_Login_v0
+2024-04-25 15:42:32.279160   Check that 'Login' form is opened
+2024-04-25 15:42:38.447858   'Login' form not opened
+2024-04-25 15:42:38.448041   Check that new 'Login' form is opened
+2024-04-25 15:42:41.556891   => New 'Login' form not opened
+2024-04-25 15:42:41.561272   'Login' page not opened
+2024-04-25 15:42:44.638104   'Login' form on trading platform not opened
+2024-04-25 15:42:44.638290   Start step Check that [Sign up] form is opened
+2024-04-25 15:42:44.649094   'Sign up' form opened
+2024-04-25 15:42:44.649120   Assert SIGNUP_HEADER =>
+2024-04-25 15:42:44.662693   Assert SIGNUP_REF_LOGIN =>
+2024-04-25 15:42:44.675120   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-25 15:42:44.686680   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-25 15:42:44.686703   => 'Signup' form is checked
+
+Bug: Bid:11.02.06.01_11-zh.ae.NoAuth
+
+2024-04-25 15:42:44.686775   Проверка бага в таблице ретеста  =>
+
+2024-04-25 15:42:45.049411   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-25 15:42:45.353557   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-25 15:42:47.681551   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-25 15:42:47.863221   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-25 15:42:47.864912   Баг Bid:11.02.06.01_11-zh.ae.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
