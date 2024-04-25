@@ -35,7 +35,9 @@ def check_gs_table(bid, bug_n, manual=False):
                         pass
                 else:
                     bug_num = [["'" + bug_n]]
+                    time_update = [[datetime.now().strftime("%d/%m/%Y %H:%M:%S")]]
                     gs.update_range_values(f'P{5 + index}', bug_num)
+                    gs.update_range_values(f'U{5 + index}', time_update)
                     print(f"\n{datetime.now()}   Баг {bid} уже существует, "
                           f"но у него изменился тип с {row[-6]} на {bug_n}")
                     if manual:      # для таблицы мануальных багов
@@ -86,7 +88,7 @@ def add_new_row_with_format(manual=False):
     spreadsheet_id = SPREADSHEET_ID2 if manual else SPREADSHEET_ID1
     gs = GoogleSheet(spreadsheet_id)
 
-    start_update_date = [datetime.now().strftime("%d/%m/%y")]
+    start_update_date = [datetime.now().strftime("%d/%m/%Y %H:%M:%S")]
     # добавление новой 4-й строки
     gs.add_new_row_before_()
     # копирование данных из предыдущей строки
