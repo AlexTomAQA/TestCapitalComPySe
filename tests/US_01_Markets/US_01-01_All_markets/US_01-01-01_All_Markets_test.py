@@ -5,6 +5,7 @@ from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInst
 from pages.Elements.PageInstrumentNotificationButton import PageInstrumentNotificationButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
 from pages.Elements.PageInstrumentViewDetailedChartButton import PageInstrumentViewDetailedChartButton
+from pages.Elements.PromoMarketTradeNowButton import PromoMarketTradeNowButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradeCFDAddToFavouriteButton import TradeCFDAddToFavoriteButton
 from pages.Elements.TradeCFDBuyButton import TradeCFDBuyButton
@@ -35,7 +36,7 @@ def check_cur_href(cur_item_link, list_href):
 
 
 @pytest.mark.us_01_01_01
-class TestCommodities:
+class TestAllMarkets:
     page_conditions = None
 
     @allure.step("Start test of button [Add to favourite] on 'Trade CFD' page")
@@ -216,6 +217,29 @@ class TestCommodities:
 
         test_element = TradingCalculatorStartTradingButton(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start testing the [Trade now] button in the widget Promo Market on the trading instrument page")
+    @pytest.mark.test_010
+    def test_010_page_instrument_widget_promo_market_trade_now_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
+        """
+        Check: Button [Trade now] in the widget Promo Market on the trading instrument page
+        Language: All. License: All,except FCA.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.01", "Markets > Menu item [All markets]",
+            ".01_010", "Testing button [Trade now] in the widget Promo Market "
+                       "on the trading instrument page")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+
+        page_conditions = Conditions(d, "")
+        page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = PromoMarketTradeNowButton(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [1. Create & verify your account] in Step trading block")
     @pytest.mark.test_011

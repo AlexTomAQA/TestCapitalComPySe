@@ -2,6 +2,7 @@ import allure
 import pytest
 
 from pages.Elements.StepTradingBlock import BlockStepTrading
+from pages.Elements.TableTradingInstrumentItem import TableTradingInstrumentsItem
 from pages.Elements.TableTradingInstrumentsBuyButton import TableTradingInstrumentsBuyButton
 from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
@@ -122,6 +123,31 @@ class TestCommodities:
 
         test_element = BlockStepTrading(d, cur_page_url, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_url)
+
+    @allure.step("Start test open Trading instrument page")
+    @pytest.mark.test_005
+    def test_005_trading_instrument(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: open Trading instrument page
+        Language: All License: All (except FCA)
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.05", "Markets > Menu item [Commodities]",
+            ".00_005", "open Trading instrument page")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_forex_markets_menu(d, cur_language, cur_country, link)
+
+        test_element = TableTradingInstrumentsItem(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start pretest")
     def test_099_commodities_trading_pretest(
