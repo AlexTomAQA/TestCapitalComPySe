@@ -101,10 +101,9 @@ class TradingInstrumentTradeButton(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => MARKET '{cur_market}' present on this page!")
 
-        elements = d.find_elements(*self.market_locator)
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            elements[0]
+            d.find_elements(*self.market_locator)[0]
         )
 
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")

@@ -288,8 +288,9 @@ class CounterBanner:
 
 
 class OurAppsBlock:
-    OUR_APPS_BLOCK = (By.CSS_SELECTOR, "section > .promoApps")
+    OUR_APPS_BLOCK = (By.CSS_SELECTOR, ".promoApps > .promoApps__content")
     DOWNLOAD_ON_THE_APP_STORE_BUTTON_OUR_APPS_BLOCK = (By.CSS_SELECTOR, ".storeBtns  > [data-type='our_app_Ios']")
+    GET_IT_ON_GOOGLE_PLAY_BUTTON_OUR_APPS_BLOCK = (By.CSS_SELECTOR, ".storeBtns  > [data-type='our_app_Googl']")
 
 
 class TableTradingInstrumentsLocators:

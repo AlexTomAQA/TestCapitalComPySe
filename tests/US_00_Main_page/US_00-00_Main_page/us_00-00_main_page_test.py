@@ -15,6 +15,7 @@ from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersB
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
 from pages.Elements.OurAppsBlockDownloadOnTheAppStoreButton import OurAppsBlockDownloadOnTheAppStoreButton
+from pages.Elements.OurAppsBlockGetItOnGooglePlayButton import OurAppsBlockGetItOnGooglePlayButton
 from pages.Elements.OurMarketsTableBuyButton import BuyButtonOurMarketsTable
 from pages.Elements.OurMarketsTableSellButton import SellButtonOurMarketsTable
 from pages.Elements.StepTradingBlock import BlockStepTrading
@@ -466,6 +467,35 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = OurAppsBlockDownloadOnTheAppStoreButton(d, main_page_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Get it on Google Play] in 'Our Apps' block")
+    @pytest.mark.test_009
+    def test_009_get_it_on_google_play_button_in_our_apps_block(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Get it on Google Play] in 'Our Apps' block
+        Language: ALL. License: Not FCA.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_009",
+            "Start test of button [Get it on Google Play] in 'Our Apps' block",
+            False, False
+        )
+
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'au', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = OurAppsBlockGetItOnGooglePlayButton(d, main_page_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Try now] in 'Why choose Capital.com?' block")
