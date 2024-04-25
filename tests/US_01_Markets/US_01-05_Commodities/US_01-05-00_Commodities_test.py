@@ -144,7 +144,7 @@ class TestCommodities:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
-        cur_item_link = menu.open_forex_markets_menu(d, cur_language, cur_country, link)
+        cur_item_link = menu.open_commodities_markets_menu(d, cur_language, cur_country, link)
 
         test_element = TableTradingInstrumentsItem(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
