@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-04-26 11:30:39.403279   worker_id = master
+
+2024-04-26 11:30:39.403298   0. Allure grouping v4
+
+2024-04-26 11:30:39.403582   START PRECONDITIONS =>
+
+2024-04-26 11:30:39.403601   => URL after prev. preconditions - https://capital.com/
+2024-04-26 11:30:39.403611   => flag_of_bug - False
+2024-04-26 11:30:39.403622   => Current URL - https://capital.com/amazon-share-price
+2024-04-26 11:30:39.413493   Current page URL = https://capital.com/amazon-share-price
+2024-04-26 11:30:39.416296   self.link = https://capital.com/
+2024-04-26 11:30:39.416312   driver.get(https://capital.com/) =>
+2024-04-26 11:30:41.072252   => Loaded page https://capital.com/
+
+2024-04-26 11:30:41.079174   => Windows size - {'width': 1280, 'height': 800}
+2024-04-26 11:30:41.080736   Set windows position at (0, 0) =>
+2024-04-26 11:30:41.082535   Set resolution 1280 * 800 =>
+2024-04-26 11:30:41.084342   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-26 11:30:42.136561   Капчи нет. Идем дальше
+
+2024-04-26 11:30:42.136653   Работа с куками =>
+
+2024-04-26 11:30:42.136667   => не требуется
+
+2024-04-26 11:30:42.136677   Prev. country - 'de'
+2024-04-26 11:30:42.136686   Cur. country - 'de'
+2024-04-26 11:30:42.136695   => Country set to 'de'
+
+2024-04-26 11:30:42.136704   Prev. language - 'en'
+2024-04-26 11:30:42.136712   Cur. language - 'en'
+2024-04-26 11:30:42.136721   => Language is set to 'en'
+
+2024-04-26 11:30:42.136729   Prev. role - 'NoReg'
+2024-04-26 11:30:42.136738   Cur. role - 'NoReg'
+2024-04-26 11:30:42.136747   => The 'NoReg' role is set
+
+2024-04-26 11:30:42.139615   => Current URL - https://capital.com/
+
+2024-04-26 11:30:42.139641   => THE END PRECONDITIONS
+
+2024-04-26 11:30:42.139846   1. Arrange_v2
+2024-04-26 11:30:42.139865   current_page = https://capital.com/
+2024-04-26 11:30:42.144959   link = https://capital.com/amazon-share-price
+2024-04-26 11:30:42.147870   Current page URL = https://capital.com/
+2024-04-26 11:30:42.150473   self.link = https://capital.com/amazon-share-price
+2024-04-26 11:30:42.150487   driver.get(https://capital.com/amazon-share-price) =>
+2024-04-26 11:30:44.005056   => Loaded page https://capital.com/amazon-share-price
+2024-04-26 11:30:44.008806 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-04-26 11:30:44.020422   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-04-26 11:30:44.020465   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-04-26 11:30:44.024538   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-04-26 11:30:44.024705   2. Act_v2
+2024-04-26 11:30:44.024723   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-04-26 11:30:44.827268   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-04-26 11:30:44.841718   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-04-26 11:30:44.841754   Move focus to button [Go to platform] and click on =>
+2024-04-26 11:30:45.623692   => BUTTON_GO_TO_PLATFORM is clickable
+2024-04-26 11:30:46.133395 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-04-26 11:30:46.133717   3. Assert_v0
+2024-04-26 11:30:46.133873   Start step Check that [Sign up] form is opened
+2024-04-26 11:30:49.282552   'Sign up' form not opened
+2024-04-26 11:30:49.282741   Start step Check that new [Sign up] form is opened
+2024-04-26 11:30:52.395791   => new 'Sign up' form not opened
+2024-04-26 11:30:52.395991   Start method Check that [Sign up] page opened =>
+2024-04-26 11:30:53.399913   'Sign up' page not opened
+2024-04-26 11:30:53.400115   Check that [Sign up] form on trading platform opened =>
+2024-04-26 11:30:53.414016   => 'Sign up' form on trading platform page opened
+2024-04-26 11:30:53.414049   Assert SIGNUP_HEADER =>
+2024-04-26 11:30:53.427085   => SIGNUP_HEADER is OK
+2024-04-26 11:30:53.427122   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-04-26 11:30:53.439796   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-04-26 11:30:53.439843   Assert SIGNUP_REF_LOGIN =>
+2024-04-26 11:30:53.454688   => SIGNUP_REF_LOGIN is OK
+2024-04-26 11:30:53.454726   => 'Signup' form on trading platform page is checked
+2024-04-26 11:30:53.454893   Close [Sign up] form with trading platform page =>
+2024-04-26 11:30:54.184992   => [Sign up] form with trading platform page is closed
