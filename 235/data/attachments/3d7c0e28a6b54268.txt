@@ -1,0 +1,32 @@
+2024-04-27 09:24:59 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ar/corn-spot-sl-t
+2024-04-27 09:24:59 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 305, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55e992a90cb3 <unknown>
+#1 0x55e99277f4a7 <unknown>
+#2 0x55e9927ca31d <unknown>
+#3 0x55e9927ca3d1 <unknown>
+#4 0x55e99280d734 <unknown>
+#5 0x55e9927ec43d <unknown>
+#6 0x55e99280abe9 <unknown>
+#7 0x55e9927ec1b3 <unknown>
+#8 0x55e9927bd24a <unknown>
+#9 0x55e9927bdc1e <unknown>
+#10 0x55e992a54fdb <unknown>
+#11 0x55e992a58f2b <unknown>
+#12 0x55e992a410f1 <unknown>
+#13 0x55e992a59a92 <unknown>
+#14 0x55e992a25faf <unknown>
+#15 0x55e992a7fe08 <unknown>
+#16 0x55e992a7ffe0 <unknown>
+#17 0x55e992a8fe04 <unknown>
+#18 0x7ff9e9094ac3 <unknown>
