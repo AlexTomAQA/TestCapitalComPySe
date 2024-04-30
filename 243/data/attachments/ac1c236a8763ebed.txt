@@ -1,0 +1,54 @@
+2024-04-30 05:50:14 ERROR The elements are no longer attached to the DOM on page: https://capital.com/ru/proizvodnyye-finansovyye-instrumenty
+2024-04-30 05:50:14 ERROR stale element reference: stale element not found in the current frame
+  (Session info: chrome=124.0.6367.60); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 345, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 364, in _predicate
+    element = visibility_of(target)(driver)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 173, in _predicate
+    return _element_if_visible(element)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 179, in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 252, in is_displayed
+    return self.parent.execute_script(f"/* isDisplayed */return ({isDisplayed_js}).apply(null, arguments);", self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 407, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=124.0.6367.60); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+#0 0x56401dd39cb3 <unknown>
+#1 0x56401da284a7 <unknown>
+#2 0x56401da2da5c <unknown>
+#3 0x56401da2fa6a <unknown>
+#4 0x56401dab4bf9 <unknown>
+#5 0x56401da95412 <unknown>
+#6 0x56401dab3be9 <unknown>
+#7 0x56401da951b3 <unknown>
+#8 0x56401da6624a <unknown>
+#9 0x56401da66c1e <unknown>
+#10 0x56401dcfdfdb <unknown>
+#11 0x56401dd01f2b <unknown>
+#12 0x56401dcea0f1 <unknown>
+#13 0x56401dd02a92 <unknown>
+#14 0x56401dccefaf <unknown>
+#15 0x56401dd28e08 <unknown>
+#16 0x56401dd28fe0 <unknown>
+#17 0x56401dd38e04 <unknown>
+#18 0x7f997a894ac3 <unknown>

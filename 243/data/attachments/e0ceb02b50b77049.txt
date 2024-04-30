@@ -1,0 +1,32 @@
+2024-04-30 07:07:51 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ru/kak-torgovat-cfd
+2024-04-30 07:07:51 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 305, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x55a57f1cfcb3 <unknown>
+#1 0x55a57eebe4a7 <unknown>
+#2 0x55a57ef0931d <unknown>
+#3 0x55a57ef093d1 <unknown>
+#4 0x55a57ef4c734 <unknown>
+#5 0x55a57ef2b43d <unknown>
+#6 0x55a57ef49be9 <unknown>
+#7 0x55a57ef2b1b3 <unknown>
+#8 0x55a57eefc24a <unknown>
+#9 0x55a57eefcc1e <unknown>
+#10 0x55a57f193fdb <unknown>
+#11 0x55a57f197f2b <unknown>
+#12 0x55a57f1800f1 <unknown>
+#13 0x55a57f198a92 <unknown>
+#14 0x55a57f164faf <unknown>
+#15 0x55a57f1bee08 <unknown>
+#16 0x55a57f1befe0 <unknown>
+#17 0x55a57f1cee04 <unknown>
+#18 0x7f1ba6e94ac3 <unknown>

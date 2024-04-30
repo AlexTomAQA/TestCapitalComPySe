@@ -1,0 +1,92 @@
+{'width': 1280, 'height': 800}
+
+2024-04-30 07:37:00.533679   worker_id = master
+
+2024-04-30 07:37:00.533693   0. Allure grouping v4
+
+2024-04-30 07:37:00.533879   START PRECONDITIONS =>
+
+2024-04-30 07:37:00.533895   => URL after prev. preconditions - https://capital.com/ru
+2024-04-30 07:37:00.533905   => flag_of_bug - True
+2024-04-30 07:37:00.533915   => Current URL - https://capital.com/ru/torgovlya-zolotom-cfd
+2024-04-30 07:37:00.539192   Current page URL = https://capital.com/ru/torgovlya-zolotom-cfd
+2024-04-30 07:37:00.541665   self.link = https://capital.com/ru
+2024-04-30 07:37:00.541678   driver.get(https://capital.com/ru) =>
+2024-04-30 07:37:02.499294   => Loaded page https://capital.com/ru
+
+2024-04-30 07:37:02.503775   => Windows size - {'width': 1280, 'height': 800}
+2024-04-30 07:37:02.505087   Set windows position at (0, 0) =>
+2024-04-30 07:37:02.506702   Set resolution 1280 * 800 =>
+2024-04-30 07:37:02.508316   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-04-30 07:37:03.541768   Капчи нет. Идем дальше
+
+2024-04-30 07:37:03.541855   Работа с куками =>
+
+2024-04-30 07:37:03.541869   => не требуется
+
+2024-04-30 07:37:03.541879   Prev. country - 'au'
+2024-04-30 07:37:03.541888   Cur. country - 'au'
+2024-04-30 07:37:03.541897   => Country set to 'au'
+
+2024-04-30 07:37:03.541906   Prev. language - 'ru'
+2024-04-30 07:37:03.541914   Cur. language - 'ru'
+2024-04-30 07:37:03.541923   => Language is set to 'ru'
+
+2024-04-30 07:37:03.541932   Prev. role - 'NoAuth'
+2024-04-30 07:37:03.541941   Cur. role - 'NoAuth'
+2024-04-30 07:37:03.541958   => The 'NoAuth' role is set
+
+2024-04-30 07:37:03.544705   => Current URL - https://capital.com/ru
+
+2024-04-30 07:37:03.544727   => THE END PRECONDITIONS
+
+2024-04-30 07:37:03.544771   1. Arrange_v0
+2024-04-30 07:37:03.544785   current_page = https://capital.com/ru
+2024-04-30 07:37:03.547145   link = https://capital.com/ru/torgovlya-zolotom-cfd
+2024-04-30 07:37:03.549582   Current page URL = https://capital.com/ru
+2024-04-30 07:37:03.551911   self.link = https://capital.com/ru/torgovlya-zolotom-cfd
+2024-04-30 07:37:03.551925   driver.get(https://capital.com/ru/torgovlya-zolotom-cfd) =>
+2024-04-30 07:37:05.607473   => Loaded page https://capital.com/ru/torgovlya-zolotom-cfd
+2024-04-30 07:37:05.614823   BUTTON_BUY_IN_CONTENT_BLOCK is located on the page? =>
+2024-04-30 07:37:05.622855   => BUTTON_BUY_IN_CONTENT_BLOCK is located on the page!
+2024-04-30 07:37:05.623027   Start Checking that form [Sign up] popped up on the page =>
+2024-04-30 07:37:07.181402   '[Sign up]' form was not popped up
+
+2024-04-30 07:37:07.181598   2. Act_v0
+2024-04-30 07:37:07.186967   BUTTON_BUY_IN_CONTENT_BLOCK is present? =>
+2024-04-30 07:37:07.186990   => BUTTON_BUY_IN_CONTENT_BLOCK is present on the page
+2024-04-30 07:37:07.187000   BUTTON_BUY_IN_CONTENT_BLOCK scroll =>
+2024-04-30 07:37:07.190747   => BUTTON_BUY_IN_CONTENT_BLOCK scrolled
+2024-04-30 07:37:07.239216   BUTTON_BUY_IN_CONTENT_BLOCK is clickable? =>
+2024-04-30 07:37:07.254261   BUTTON_BUY_IN_CONTENT_BLOCK CLICK =>
+2024-04-30 07:37:07.270347   => BUTTON_BUY_IN_CONTENT_BLOCK clicked!
+
+2024-04-30 07:37:07.270623   3. Assert_Login_v0
+2024-04-30 07:37:07.270739   Check that 'Login' form is opened
+2024-04-30 07:37:13.434251   'Login' form not opened
+2024-04-30 07:37:13.434435   Check that new 'Login' form is opened
+2024-04-30 07:37:16.550353   => New 'Login' form not opened
+2024-04-30 07:37:16.553138   'Login' page not opened
+2024-04-30 07:37:19.635922   'Login' form on trading platform not opened
+2024-04-30 07:37:19.636115   Start step Check that [Sign up] form is opened
+2024-04-30 07:37:19.646604   'Sign up' form opened
+2024-04-30 07:37:19.646626   Assert SIGNUP_HEADER =>
+2024-04-30 07:37:19.658536   Assert SIGNUP_REF_LOGIN =>
+2024-04-30 07:37:19.670272   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-04-30 07:37:19.681648   => SIGNUP_PRIVACY_POLICY_ALL
+2024-04-30 07:37:19.681671   => 'Signup' form is checked
+
+Bug: Bid:11.02.03.01_04-ru.au.NoAuth
+
+2024-04-30 07:37:19.681720   Проверка бага в таблице ретеста  =>
+
+2024-04-30 07:37:20.231767   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-30 07:37:20.504753   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-30 07:37:22.031642   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-04-30 07:37:22.425761   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-04-30 07:37:22.427435   Баг Bid:11.02.03.01_04-ru.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
