@@ -1,0 +1,79 @@
+{'width': 1280, 'height': 800}
+
+2024-05-03 07:01:44.028856   worker_id = master
+
+2024-05-03 07:01:44.028870   0. Allure grouping v4
+
+2024-05-03 07:01:44.029060   START PRECONDITIONS =>
+
+2024-05-03 07:01:44.029076   => URL after prev. preconditions - https://capital.com/it
+2024-05-03 07:01:44.029087   => flag_of_bug - False
+2024-05-03 07:01:44.029097   => Current URL - https://capital.com/it/negozia-petrolio-wti
+2024-05-03 07:01:44.035066   Current page URL = https://capital.com/it/negozia-petrolio-wti
+2024-05-03 07:01:44.041696   self.link = https://capital.com/it
+2024-05-03 07:01:44.041710   driver.get(https://capital.com/it) =>
+2024-05-03 07:01:45.901645   => Loaded page https://capital.com/it
+
+2024-05-03 07:01:45.909509   => Windows size - {'width': 1280, 'height': 800}
+2024-05-03 07:01:45.910933   Set windows position at (0, 0) =>
+2024-05-03 07:01:45.912683   Set resolution 1280 * 800 =>
+2024-05-03 07:01:45.914294   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-03 07:01:46.960295   Капчи нет. Идем дальше
+
+2024-05-03 07:01:46.960396   Работа с куками =>
+
+2024-05-03 07:01:46.960410   => не требуется
+
+2024-05-03 07:01:46.960419   Prev. country - 'de'
+2024-05-03 07:01:46.960429   Cur. country - 'de'
+2024-05-03 07:01:46.960438   => Country set to 'de'
+
+2024-05-03 07:01:46.960447   Prev. language - 'it'
+2024-05-03 07:01:46.960456   Cur. language - 'it'
+2024-05-03 07:01:46.960464   => Language is set to 'it'
+
+2024-05-03 07:01:46.960473   Prev. role - 'NoReg'
+2024-05-03 07:01:46.960482   Cur. role - 'NoReg'
+2024-05-03 07:01:46.960490   => The 'NoReg' role is set
+
+2024-05-03 07:01:46.963548   => Current URL - https://capital.com/it
+
+2024-05-03 07:01:46.963571   => THE END PRECONDITIONS
+
+2024-05-03 07:01:46.963792   1. Arrange_v4
+2024-05-03 07:01:46.963811   current_page = https://capital.com/it
+2024-05-03 07:01:46.966562   link = https://capital.com/it/negozia-petrolio-wti
+2024-05-03 07:01:46.971910   Current page URL = https://capital.com/it
+2024-05-03 07:01:46.974773   self.link = https://capital.com/it/negozia-petrolio-wti
+2024-05-03 07:01:46.974788   driver.get(https://capital.com/it/negozia-petrolio-wti) =>
+2024-05-03 07:01:48.785244   => Loaded page https://capital.com/it/negozia-petrolio-wti
+2024-05-03 07:01:48.802284   MOST_TRADED is present? =>
+2024-05-03 07:01:48.811413   => MOST_TRADED widget is present on this page
+2024-05-03 07:01:48.811444   => Found 5 elements in block MOST_TRADED
+2024-05-03 07:01:48.811455   Most traded widget is scroll =>
+2024-05-03 07:01:48.815101   => Most traded widget is scrolled into screen center
+
+2024-05-03 07:01:48.815146   Random indexes = [1]
+
+2024-05-03 07:01:48.815160   Testing Most traded 1 random element with 1 index
+
+2024-05-03 07:01:48.815333   2. Act_v4
+2024-05-03 07:01:48.815445   Start Checking that form [Sign up] popped up on the page =>
+2024-05-03 07:01:50.357169   '[Sign up]' form was not popped up
+2024-05-03 07:01:50.370682   instrument_title = 'US Crude Oil Spot'
+2024-05-03 07:01:50.375695   Selected Trade button on Most traded widget is scroll =>
+2024-05-03 07:01:50.379039   Selected Trade button click for 'US Crude Oil Spot' trading instrument =>
+2024-05-03 07:01:51.429933   => Selected Trade button clicked!
+
+2024-05-03 07:01:51.430179   3. Assert_v0
+2024-05-03 07:01:51.430269   Start step Check that [Sign up] form is opened
+2024-05-03 07:01:51.607878   'Sign up' form opened
+2024-05-03 07:01:51.607946   Assert SIGNUP_HEADER =>
+2024-05-03 07:01:51.617854   Assert SIGNUP_REF_LOGIN =>
+2024-05-03 07:01:51.631093   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-05-03 07:01:51.643160   => SIGNUP_PRIVACY_POLICY_ALL
+2024-05-03 07:01:51.643198   => 'Signup' form is checked
+2024-05-03 07:01:51.643370   Start step Close [Sign up] form =>
+2024-05-03 07:01:51.732019   => 'Signup' form closed
+2024-05-03 07:01:52.008216   => Focus moved to 'capital*com' logo
