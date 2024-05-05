@@ -384,4 +384,5 @@ class MarketSortAllMarketsLocators:
 
 
 class GlobalEnvironmentalLocators:
-    BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")
+    BUTTON_START_TRADING = (By.CSS_SELECTOR, "a[data-type='esg_start_trading']")
+    BUTTON_TRY_DEMO = (By.CSS_SELECTOR, "a[data-demomode='true']")
