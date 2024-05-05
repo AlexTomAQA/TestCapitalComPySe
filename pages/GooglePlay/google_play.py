@@ -25,6 +25,7 @@ class GooglePlay(BasePage):
         # self.link = "https://play.google.com/store/apps/details?id=com.capital.trading"
         # self.open_page()
         if self.current_page_url_contain_the(data["APP_URL"]):
+            print(f"{datetime.now()}   Current page URL contain expected URL")
             self.should_be_page_title_v2(data["PAGE_TITLE"])
             self.should_be_google_play_app_title(data["APP_TITLE"])
             self.should_be_google_play_specifies_provider(data["PROVIDER"])

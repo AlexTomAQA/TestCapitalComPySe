@@ -107,11 +107,6 @@ class OurAppsBlockDownloadOnTheAppStoreButton(BasePage):
 
         self.driver.find_elements(*BUTTON_LOCATOR)[0].click()
         print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
-        # try:
-        #     self.button_create_demo_account[0].click()
-        #     print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
-        # except ElementClickInterceptedException:
-        #     print(f"{datetime.now()}   => {BUTTON_NAME} button NOT CLICKED")
 
         del self.button_create_demo_account
         return True
