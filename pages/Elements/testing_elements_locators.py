@@ -391,8 +391,8 @@ class MarketSortAllMarketsLocators:
 
 
 class GlobalEnvironmentalLocators:
-    BUTTON_START_TRADING = (By.CSS_SELECTOR, "[data-type='esg_start_trading']")
-
+    BUTTON_START_TRADING = (By.CSS_SELECTOR, "a[data-type='esg_start_trading']")
+    BUTTON_TRY_DEMO = (By.CSS_SELECTOR, "a[data-demomode='true']")
 
 class HowToStartTradingLocators:
     # Elements of 'How to start trading' Block
@@ -400,3 +400,4 @@ class HowToStartTradingLocators:
     INPUT_FIELD_EMAIL_ADDRESS = (By.CSS_SELECTOR, 'div #lp_form_126_6-email input.field__control')
     INPUT_FIELD_PASSWORD = (By.CSS_SELECTOR, "div #lp_form_126_6-pass input.field__control")
     BUTTON_SIGN_UP = (By.CSS_SELECTOR, "div.bannerForm.black button.btn.btn")
+
