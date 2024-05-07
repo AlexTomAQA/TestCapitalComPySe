@@ -105,11 +105,8 @@ class OurAppsBlockDownloadOnTheAppStoreButton(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BUTTON_NAME} button is clickable!\n")
 
-        try:
-            self.button_create_demo_account[0].click()
-            print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
-        except ElementClickInterceptedException:
-            print(f"{datetime.now()}   => {BUTTON_NAME} button NOT CLICKED")
+        self.driver.find_elements(*BUTTON_LOCATOR)[0].click()
+        print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
 
         del self.button_create_demo_account
         return True
