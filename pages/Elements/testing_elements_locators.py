@@ -225,7 +225,7 @@ class MainBannerLocators:
 
 
 class MainPageBannerLocators:
-    MAIN_PAGE_BANNER_BLOCK = (By.CSS_SELECTOR, ".grid.gLg > .bannersHome")
+    MAIN_PAGE_BANNER_BLOCK = (By.CSS_SELECTOR, "main > .bannersHome")
     GET_INVOLVED_TAB_MAIN_PAGE_BANNER = (By.CSS_SELECTOR, '.bannersHome__nav > [data-slick-index = "0"]')
     TRADE_NOW_BUTTON_GET_INVOLVED_TAB = (
         By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup"]')
