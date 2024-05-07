@@ -1,0 +1,81 @@
+{'width': 1280, 'height': 800}
+
+2024-05-07 20:01:59.376216   worker_id = master
+
+2024-05-07 20:01:59.376235   0. Allure grouping v4
+
+2024-05-07 20:01:59.376494   START PRECONDITIONS =>
+
+2024-05-07 20:01:59.376510   => URL after prev. preconditions - https://capital.com/fr
+2024-05-07 20:01:59.376520   => flag_of_bug - False
+2024-05-07 20:01:59.376531   => Current URL - https://capital.com/fr/gbp-aud-taux
+2024-05-07 20:01:59.382569   Current page URL = https://capital.com/fr/gbp-aud-taux
+2024-05-07 20:01:59.385513   self.link = https://capital.com/fr
+2024-05-07 20:01:59.385527   driver.get(https://capital.com/fr) =>
+2024-05-07 20:02:01.157639   => Loaded page https://capital.com/fr
+
+2024-05-07 20:02:01.166111   => Windows size - {'width': 1280, 'height': 800}
+2024-05-07 20:02:01.167518   Set windows position at (0, 0) =>
+2024-05-07 20:02:01.169225   Set resolution 1280 * 800 =>
+2024-05-07 20:02:01.173440   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-07 20:02:02.224075   Капчи нет. Идем дальше
+
+2024-05-07 20:02:02.224162   Работа с куками =>
+
+2024-05-07 20:02:02.224176   => не требуется
+
+2024-05-07 20:02:02.224185   Prev. country - 'de'
+2024-05-07 20:02:02.224195   Cur. country - 'de'
+2024-05-07 20:02:02.224204   => Country set to 'de'
+
+2024-05-07 20:02:02.224213   Prev. language - 'fr'
+2024-05-07 20:02:02.224222   Cur. language - 'fr'
+2024-05-07 20:02:02.224231   => Language is set to 'fr'
+
+2024-05-07 20:02:02.224239   Prev. role - 'NoReg'
+2024-05-07 20:02:02.224248   Cur. role - 'NoReg'
+2024-05-07 20:02:02.224257   => The 'NoReg' role is set
+
+2024-05-07 20:02:02.226952   => Current URL - https://capital.com/fr
+
+2024-05-07 20:02:02.226973   => THE END PRECONDITIONS
+
+2024-05-07 20:02:02.227150   1. Arrange_v2
+2024-05-07 20:02:02.227168   current_page = https://capital.com/fr
+2024-05-07 20:02:02.229676   link = https://capital.com/fr/gbp-aud-taux
+2024-05-07 20:02:02.232152   Current page URL = https://capital.com/fr
+2024-05-07 20:02:02.234580   self.link = https://capital.com/fr/gbp-aud-taux
+2024-05-07 20:02:02.234594   driver.get(https://capital.com/fr/gbp-aud-taux) =>
+2024-05-07 20:02:03.917899   => Loaded page https://capital.com/fr/gbp-aud-taux
+2024-05-07 20:02:03.924286   Is LONG_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-05-07 20:02:03.932977   => LONG_POSITION_OVERNIGHT_FEE is present on the page
+2024-05-07 20:02:03.933007   LONG_POSITION_OVERNIGHT_FEE scroll =>
+2024-05-07 20:02:03.940237   => LONG_POSITION_OVERNIGHT_FEE scrolled
+
+2024-05-07 20:02:03.940432   2. Act_v2
+2024-05-07 20:02:03.940450   LONG_POSITION_OVERNIGHT_FEE open =>
+2024-05-07 20:02:04.720716   Is LONG_POSITION_OVERNIGHT_FEE open?  =>
+2024-05-07 20:02:04.735313   => LONG_POSITION_OVERNIGHT_FEE opened
+2024-05-07 20:02:04.735346   Move focus to button [Go to platform] and click on=>
+2024-05-07 20:02:05.515177   => BUTTON_GO_TO_PLATFORM is clickable
+2024-05-07 20:02:06.067906 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-05-07 20:02:06.068250   3. Assert_v0
+2024-05-07 20:02:06.068414   Start step Check that [Sign up] form is opened
+2024-05-07 20:02:09.204460   'Sign up' form not opened
+2024-05-07 20:02:09.204663   Start step Check that new [Sign up] form is opened
+2024-05-07 20:02:12.310313   => new 'Sign up' form not opened
+2024-05-07 20:02:12.310516   Start method Check that [Sign up] page opened =>
+2024-05-07 20:02:13.314163   'Sign up' page not opened
+2024-05-07 20:02:13.314377   Check that [Sign up] form on trading platform opened =>
+2024-05-07 20:02:13.327858   => 'Sign up' form on trading platform page opened
+2024-05-07 20:02:13.327887   Assert SIGNUP_HEADER =>
+2024-05-07 20:02:13.340044   => SIGNUP_HEADER is OK
+2024-05-07 20:02:13.340073   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-05-07 20:02:13.351842   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-05-07 20:02:13.351871   Assert SIGNUP_REF_LOGIN =>
+2024-05-07 20:02:13.364316   => SIGNUP_REF_LOGIN is OK
+2024-05-07 20:02:13.364349   => 'Signup' form on trading platform page is checked
+2024-05-07 20:02:13.364513   Close [Sign up] form with trading platform page =>
+2024-05-07 20:02:14.224099   => [Sign up] form with trading platform page is closed
