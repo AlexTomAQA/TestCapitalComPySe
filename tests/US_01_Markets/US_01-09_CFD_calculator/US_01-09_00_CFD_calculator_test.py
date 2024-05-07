@@ -11,6 +11,7 @@ from pages.Elements.CFDCalculatorBlockTryFreeDemoButton import CFDCalculatorBloc
 from pages.Elements.HeaderCFDCalculatorPageLoginButton import HeaderCFDCalculatorPageLoginButton
 from pages.Elements.HeaderCFDCalculatorPageSignUpButton import HeaderCFDCalculatorPageSignUpButton
 from pages.Elements.CFDCalculatorBlockSignUpButton import CFDCalculatorBlockSignUpButton
+from pages.Elements.HowToStartTradingBlockSignUpButton import HowToStartTradingBlockSignUpButton
 from pages.Elements.TradingCalculatorTradeNowButton import TradingCalculatorTradeNowButton
 from pages.common import Common
 from tests.build_dynamic_arg import build_dynamic_arg_v4
@@ -143,25 +144,26 @@ class TestCFDCalculator:
         test_element = TradingCalculatorTradeNowButton(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    # @allure.step("Start test of button [Sign up] in 'How to start trading' Block")
-    # @pytest.mark.test_006
-    # def test_006_block_how_to_start_trading_sign_up_button(
-    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-    #     """
-    #     Check: Button [Sign up] in 'How to start trading' Block
-    #     Language: EN. License: All,except FCA.
-    #     """
-    #     bid = build_dynamic_arg_v4(
-    #         d, worker_id, cur_language, cur_country, cur_role,
-    #         "01.09", "Markets > Menu item [CFD Calculator]",
-    #         ".00_006", "Testing button [Sign up] in 'How to start trading' Block")
-    #
-    #     Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-    #     Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
-    #
-    #     page_conditions = Conditions(d, "")
-    #     cur_item_link = page_conditions.preconditions(
-    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-    #
-    #     test_element = HowToStartTradingBlockSignUpButton(d, cur_item_link, bid)
-    #     test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+    @allure.step("Start test of button [Sign up] in 'How to start trading' Block")
+    @pytest.mark.test_006
+    def test_006_block_how_to_start_trading_sign_up_button(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Sign up] in 'How to start trading' Block
+        Language: EN. License: All,except FCA.
+        """
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "01.09", "Markets > Menu item [CFD Calculator]",
+            ".00_006", "Testing button [Sign up] in 'How to start trading' Block")
+
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
+        Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth", "NoAuth"])
+
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = HowToStartTradingBlockSignUpButton(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
