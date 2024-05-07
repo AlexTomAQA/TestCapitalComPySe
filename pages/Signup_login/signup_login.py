@@ -11,6 +11,7 @@ from datetime import datetime
 
 from selenium.webdriver import ActionChains
 
+from pages.Elements.testing_elements_locators import HowToStartTradingSignupLocators
 from pages.base_page import BasePage
 from pages.common import Common
 from pages.Header.header_locators import HeaderElementLocators
@@ -152,6 +153,36 @@ class SignupLogin(BasePage):
             return True
         else:
             print(f"{datetime.now()}   'Sign up' page not opened")
+            return False
+
+    @allure.step("Check that 'Sign up form' on 'CFD Calculator' page open")
+    def should_be_open_signup_form(self, cur_language):
+        """
+        Check there are an elements to on Sign up form
+        """
+        print(f"{datetime.now()}   Start step Check that [Sign up] form on 'CFD Calculator' page opened")
+        if self.element_is_visible(HowToStartTradingSignupLocators.SIGNUP_FRAME, 3):
+            print(f"{datetime.now()}   'Sign up' form on 'CFD Calculator' page opened")
+
+            print(f"{datetime.now()}   Assert SIGNUP_INPUT_EMAIL =>")
+            assert self.element_is_visible(HowToStartTradingSignupLocators.SIGNUP_INPUT_EMAIL), \
+                f"{datetime.now()}   Problem with field SIGNUP_INPUT_EMAIL "
+
+            print(f"{datetime.now()}   Assert SIGNUP_INPUT_PASSWORD =>")
+            assert self.element_is_visible(HowToStartTradingSignupLocators.SIGNUP_INPUT_PASSWORD), \
+                f"{datetime.now()})   Problem with field SIGNUP_INPUT_PASSWORD"
+
+            print(f"{datetime.now()}   Assert SIGNUP_PRIVACY_POLICY =>")
+            if not self.element_is_visible(HowToStartTradingSignupLocators.SIGNUP_PRIVACY_POLICY):
+                Common().assert_true_false(
+                    False,
+                    f"{datetime.now()}   Problem with 'Privacy policy' reference on '{cur_language}' language!"
+                )
+
+            print(f"{datetime.now()}   => 'Signup' form is checked")
+            return True
+        else:
+            print(f"{datetime.now()}   'Sign up' form not opened")
             return False
 
     @allure.step("Check that [Sign up] form on trading platform page opened")
