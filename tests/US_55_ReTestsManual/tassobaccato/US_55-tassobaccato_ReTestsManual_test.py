@@ -20,6 +20,6 @@ class TestManualDetectedBugs:
         # """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTest Manual Detected]",
-            ".010", "??? Description Bug")
+            "55", "ReTest Manual Detected Bugs]",
+            ".005", "??? Description Bug")
         pytest.skip("Autotest under construction")
