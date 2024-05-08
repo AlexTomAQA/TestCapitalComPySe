@@ -220,23 +220,23 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         self.trade_instrument = item.text
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-        sell_buttons_list = wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
-        button = sell_buttons_list[value]
 
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button)
+        ActionChains(wd) \
+            .move_to_element(
+            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
+            .perform()
 
         print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
-        time_out = 5
-        button = self.element_is_clickable(
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value], time_out)
-        if not button:
-            print(f"{datetime.now()}   => BUTTON_SELL not clickable after {time_out} sec.")
-            Common().pytest_fail(f"Bug # ??? Sell button not clickable after {time_out} sec.")
+
+        if not self.element_is_clickable(
+             wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
+            print(f"{datetime.now()}   => BUTTON_SELL not clickable")
+            Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
         print(f"{datetime.now()}   => BUTTON_SELL is clickable")
 
         ActionChains(wd) \
-            .move_to_element(button) \
+            .move_to_element(
+            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
             .click() \
             .perform()
 

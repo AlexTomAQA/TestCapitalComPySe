@@ -9,6 +9,7 @@ import pytest
 
 from pages.common import Common
 from pages.Elements.GetInvolvedBannerTradeNowButton import GetInvolvedBannerTradeNowButton
+from pages.Elements.GetInvolvedBannerTryFreeDemoButton import GetInvolvedBannerTryFreeDemoButton
 from pages.Elements.ExploreOurPlatformBlockEasyToUseLink import ExploreOurPlatformBlockEasyToUseLink
 from pages.Elements.ExploreOurPlatformBlockTryNowButton import ExploreOurPlatformBlockTryNowButton
 from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTradersBlockTryDemoButton
@@ -649,7 +650,7 @@ class TestMainPage:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "00", "Main Page",
-            ".00_031", "Testing button [Start Trading] in Widget 'Trading calculator' Main Page",
+            ".00_031", "Testing button [Trade now] in Widget 'Get involved. Become a trader' Main Page",
             False, False
         )
 
@@ -667,4 +668,39 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = GetInvolvedBannerTradeNowButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Try free demo] in Banner 'Get involved. Become a trader'")
+    @pytest.mark.test_032
+    def test_032_try_free_demo_button_in_get_involved_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Try free demo] in Banner 'Get involved. Become a trader' Main Page
+        Language: Except EN.
+        License:
+            CYSEC, SCB - for AR, IT
+            CYSEC, ASIC, SCB - for All except AR, IT, EN
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_032", "Testing button [Try free demo] in Banner 'Get involved. Become a trader' Main Page",
+            False, False
+        )
+
+        Common().check_language_and_country_in_list_and_skip_if_not_present(
+            cur_language,
+            cur_country,
+            [['de', 'el', 'es', 'fr', 'hu', 'pl', 'cn', 'ro', 'ru', 'zh'],
+             ['de', 'au', 'ae']],
+            [['ar', 'it'],
+             ['de', 'ae']]
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = GetInvolvedBannerTryFreeDemoButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)

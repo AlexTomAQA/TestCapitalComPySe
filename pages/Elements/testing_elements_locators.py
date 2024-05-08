@@ -229,6 +229,8 @@ class MainPageBannerLocators:
     GET_INVOLVED_TAB_MAIN_PAGE_BANNER = (By.CSS_SELECTOR, '.bannersHome__nav > [data-slick-index = "0"]')
     TRADE_NOW_BUTTON_GET_INVOLVED_TAB = (
         By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup"]')
+    TRY_FREE_DEMO_BUTTON_GET_INVOLVED_TAB = (
+        By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup?go=demo"]')
 
 
 class RightBannerLocators:
@@ -384,11 +386,12 @@ class MarketSortAllMarketsLocators:
     CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
     SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
     FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
-    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
-    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
+    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
+    # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
     # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="buy"]')
-    # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
-    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
+    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
+    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
+    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
 
 
 class GlobalEnvironmentalLocators:
