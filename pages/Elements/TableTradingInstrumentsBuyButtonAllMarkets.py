@@ -213,31 +213,31 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
 
     @allure.step("Click Buy button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_market, cur_sort_all_markets):
-        print(f"{datetime.now()}   2. Act for trading instrument, cur_market {cur_market}"
-              f" and \"{cur_sort_all_markets}\" cur_sort")
+        print(f"{datetime.now()}   2. Act for trading instrument, cur_market {cur_market} "
+              f"and \"{cur_sort_all_markets}\" cur_sort")
 
         items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         item = items_list[value]
         self.trade_instrument = item.text
 
         print(f"{datetime.now()}   Start click button [Buy] =>")
-        buy_buttons_list = wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)
-        button = buy_buttons_list[value]
 
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});', button)
+        ActionChains(wd) \
+            .move_to_element(
+            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
+            .perform()
 
         print(f"{datetime.now()}   Check that BUTTON_BUY with item '{self.trade_instrument}' clickable =>")
-        time_out = 5
-        button = self.element_is_clickable(
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value], time_out)
-        if not button:
-            print(f"{datetime.now()}   => BUTTON_BUY not clickable after {time_out} sec.")
-            Common().pytest_fail(f"Bug # ??? Buy button not clickable after {time_out} sec.")
+
+        if not self.element_is_clickable(
+                wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
+            print(f"{datetime.now()}   => BUTTON_BUY not clickable")
+            Common().pytest_fail(f"Bug # ??? Buy button not clickable.")
         print(f"{datetime.now()}   => BUTTON_BUY is clickable")
 
         ActionChains(wd) \
-            .move_to_element(button) \
+            .move_to_element(
+            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
             .click() \
             .perform()
 

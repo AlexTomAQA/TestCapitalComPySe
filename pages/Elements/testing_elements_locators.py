@@ -386,11 +386,12 @@ class MarketSortAllMarketsLocators:
     CRYPTO_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CRYPTO']")
     SHARES_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='SHARE']")
     FOREX_MARKET_TAB = (By.CSS_SELECTOR, "[data-cat='CURRENCY']")
-    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
-    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
+    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_sell_btn"]')
+    # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'a[data-type="wdg_markets_buy_btn"]')
     # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="buy"]')
-    # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
-    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
+    # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
+    BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
+    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
 
 
 class GlobalEnvironmentalLocators:
