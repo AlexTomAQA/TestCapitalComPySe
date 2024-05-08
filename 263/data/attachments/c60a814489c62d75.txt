@@ -1,0 +1,114 @@
+{'width': 1280, 'height': 800}
+
+2024-05-08 15:31:53.825308   worker_id = master
+
+2024-05-08 15:31:53.825332   0. Allure grouping v4
+
+2024-05-08 15:31:53.825692   START PRECONDITIONS =>
+
+2024-05-08 15:31:53.825719   => URL after prev. preconditions - https://capital.com/de
+2024-05-08 15:31:53.825736   => flag_of_bug - False
+2024-05-08 15:31:53.825756   => Current URL - https://capital.com/de/snap-aktienkurs
+2024-05-08 15:31:53.988344   Current page URL = https://capital.com/de/snap-aktienkurs
+2024-05-08 15:31:53.991033   self.link = https://capital.com/de
+2024-05-08 15:31:53.991047   driver.get(https://capital.com/de) =>
+2024-05-08 15:31:55.780384   => Loaded page https://capital.com/de
+
+2024-05-08 15:31:55.788142   => Windows size - {'width': 1280, 'height': 800}
+2024-05-08 15:31:55.789750   Set windows position at (0, 0) =>
+2024-05-08 15:31:55.791523   Set resolution 1280 * 800 =>
+2024-05-08 15:31:55.793266   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-08 15:31:56.840634   Капчи нет. Идем дальше
+
+2024-05-08 15:31:56.840726   Работа с куками =>
+
+2024-05-08 15:31:56.840740   => не требуется
+
+2024-05-08 15:31:56.840750   Prev. country - 'au'
+2024-05-08 15:31:56.840759   Cur. country - 'au'
+2024-05-08 15:31:56.840768   => Country set to 'au'
+
+2024-05-08 15:31:56.840777   Prev. language - 'de'
+2024-05-08 15:31:56.840786   Cur. language - 'de'
+2024-05-08 15:31:56.840795   => Language is set to 'de'
+
+2024-05-08 15:31:56.840804   Prev. role - 'Auth'
+2024-05-08 15:31:56.840813   Cur. role - 'Auth'
+2024-05-08 15:31:56.840822   => The 'Auth' role is set
+
+2024-05-08 15:31:56.843480   => Current URL - https://capital.com/de
+
+2024-05-08 15:31:56.843502   => THE END PRECONDITIONS
+
+2024-05-08 15:31:56.843548   1. Arrange_v0
+2024-05-08 15:31:56.843563   current_page = https://capital.com/de
+2024-05-08 15:31:56.845979   link = https://capital.com/de/snap-aktienkurs
+2024-05-08 15:31:56.848387   Current page URL = https://capital.com/de
+2024-05-08 15:31:56.850804   self.link = https://capital.com/de/snap-aktienkurs
+2024-05-08 15:31:56.850817   driver.get(https://capital.com/de/snap-aktienkurs) =>
+2024-05-08 15:31:58.921053   => Loaded page https://capital.com/de/snap-aktienkurs
+2024-05-08 15:31:58.925298   BUTTON_BUY is located on the page? =>
+2024-05-08 15:31:58.933777   => BUTTON_BUY is located on the page!
+2024-05-08 15:31:58.933963   Start Checking that form [Sign up] popped up on the page =>
+2024-05-08 15:32:00.488931   '[Sign up]' form was not popped up
+
+2024-05-08 15:32:00.489132   2. Act_v0
+2024-05-08 15:32:00.494535   BUTTON_BUY is present? =>
+2024-05-08 15:32:00.494559   => BUTTON_BUY is present on the page
+2024-05-08 15:32:00.494569   BUTTON_BUY scroll =>
+2024-05-08 15:32:00.498271   => BUTTON_BUY scrolled
+2024-05-08 15:32:00.550283   BUTTON_BUY is clickable? =>
+2024-05-08 15:32:00.563326   BUTTON_BUY CLICK =>
+2024-05-08 15:32:01.116398   => BUTTON_BUY clicked!
+
+2024-05-08 15:32:01.116722   3. Assert_v4
+
+2024-05-08 15:32:01.116750   
+2024-05-08 15:32:01.116933   Checking that the trading platform page has opened (v4) =>
+2024-05-08 15:32:01.128964   Checking way # 1 => 
+
+2024-05-08 15:32:01.129187   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-05-08 15:32:01.133049   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-05-08 15:32:01.133146   2. Checking that the LOGO is present on the page =>
+2024-05-08 15:32:02.839923   => 'capital*com' logo is present on the current page
+
+2024-05-08 15:32:02.839985   tpd = False
+
+2024-05-08 15:32:02.840005   4. Check that opened page with https://capital.com/trading/platform/charting/21638732432102596?side=buy&ids=27045129890124996,22855552501634244,426090820621508,70913517829530649,22770954530804932,18425409712196,93810675766468,55001351226694,123763777635654,53068615951385,15839732013552836,21812064427192838,389605073441988,12241936693896217,374675767075865,453930102762329284,7089977393501380,453949400050390212,426696411010244,27342779713672388,3644116541985988,427748677997764,21182778791108,65195228436407321,21638732432102596 url
+with selected corresponding trading instrument 'Snap Inc' =>
+
+2024-05-08 15:32:02.858793   trade_instrument = 'Snap Inc'
+
+2024-05-08 15:32:02.858815   4.1. Check that Trading Platform is opened in Chart mode
+2024-05-08 15:32:03.008016   => Trading Platform opened in Chart mode
+
+2024-05-08 15:32:03.008067   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-05-08 15:32:03.030601   4.3. Check that opened trade instrument info page =>
+2024-05-08 15:32:04.072545   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.02.01_005-de.au.Auth
+
+2024-05-08 15:32:04.072599   Проверка бага в таблице ретеста  =>
+
+2024-05-08 15:32:04.487365   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:32:04.686357   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:32:05.681268   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:32:05.864425   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:32:05.864674   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:32:06.070008   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:32:06.070088   Баг Bid:01.02.01_005-de.au.Auth уже существует, но у него изменился тип с  на 16
+
+2024-05-08 15:32:06.070251   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:32:06.267804   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:32:06.269980   Баг Bid:01.02.01_005-de.au.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
