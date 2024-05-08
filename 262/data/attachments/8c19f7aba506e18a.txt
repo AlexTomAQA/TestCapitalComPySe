@@ -1,0 +1,114 @@
+{'width': 1280, 'height': 800}
+
+2024-05-08 14:02:22.464970   worker_id = master
+
+2024-05-08 14:02:22.464988   0. Allure grouping v4
+
+2024-05-08 14:02:22.465200   START PRECONDITIONS =>
+
+2024-05-08 14:02:22.465218   => URL after prev. preconditions - https://capital.com/de
+2024-05-08 14:02:22.465228   => flag_of_bug - False
+2024-05-08 14:02:22.465240   => Current URL - https://capital.com/de/aurora-cannabis-inc-aktienkurs
+2024-05-08 14:02:22.470884   Current page URL = https://capital.com/de/aurora-cannabis-inc-aktienkurs
+2024-05-08 14:02:22.475204   self.link = https://capital.com/de
+2024-05-08 14:02:22.475222   driver.get(https://capital.com/de) =>
+2024-05-08 14:02:25.557206   => Loaded page https://capital.com/de
+
+2024-05-08 14:02:25.563995   => Windows size - {'width': 1280, 'height': 800}
+2024-05-08 14:02:25.565335   Set windows position at (0, 0) =>
+2024-05-08 14:02:25.566976   Set resolution 1280 * 800 =>
+2024-05-08 14:02:25.568554   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-08 14:02:26.618654   Капчи нет. Идем дальше
+
+2024-05-08 14:02:26.618746   Работа с куками =>
+
+2024-05-08 14:02:26.618759   => не требуется
+
+2024-05-08 14:02:26.618769   Prev. country - 'de'
+2024-05-08 14:02:26.618778   Cur. country - 'de'
+2024-05-08 14:02:26.618787   => Country set to 'de'
+
+2024-05-08 14:02:26.618796   Prev. language - 'de'
+2024-05-08 14:02:26.618805   Cur. language - 'de'
+2024-05-08 14:02:26.618814   => Language is set to 'de'
+
+2024-05-08 14:02:26.618822   Prev. role - 'Auth'
+2024-05-08 14:02:26.618831   Cur. role - 'Auth'
+2024-05-08 14:02:26.618840   => The 'Auth' role is set
+
+2024-05-08 14:02:26.621763   => Current URL - https://capital.com/de
+
+2024-05-08 14:02:26.621796   => THE END PRECONDITIONS
+
+2024-05-08 14:02:26.621861   1. Arrange_v0
+2024-05-08 14:02:26.621877   current_page = https://capital.com/de
+2024-05-08 14:02:26.624777   link = https://capital.com/de/aurora-cannabis-inc-aktienkurs
+2024-05-08 14:02:26.637785   Current page URL = https://capital.com/de
+2024-05-08 14:02:26.641068   self.link = https://capital.com/de/aurora-cannabis-inc-aktienkurs
+2024-05-08 14:02:26.641086   driver.get(https://capital.com/de/aurora-cannabis-inc-aktienkurs) =>
+2024-05-08 14:02:28.638891   => Loaded page https://capital.com/de/aurora-cannabis-inc-aktienkurs
+2024-05-08 14:02:28.643410   BUTTON_BUY is located on the page? =>
+2024-05-08 14:02:28.653381   => BUTTON_BUY is located on the page!
+2024-05-08 14:02:28.653568   Start Checking that form [Sign up] popped up on the page =>
+2024-05-08 14:02:30.216349   '[Sign up]' form was not popped up
+
+2024-05-08 14:02:30.216547   2. Act_v0
+2024-05-08 14:02:30.222090   BUTTON_BUY is present? =>
+2024-05-08 14:02:30.222113   => BUTTON_BUY is present on the page
+2024-05-08 14:02:30.222123   BUTTON_BUY scroll =>
+2024-05-08 14:02:30.229810   => BUTTON_BUY scrolled
+2024-05-08 14:02:30.264094   BUTTON_BUY is clickable? =>
+2024-05-08 14:02:30.273857   BUTTON_BUY CLICK =>
+2024-05-08 14:02:30.580654   => BUTTON_BUY clicked!
+
+2024-05-08 14:02:30.581002   3. Assert_v4
+
+2024-05-08 14:02:30.581031   
+2024-05-08 14:02:30.581208   Checking that the trading platform page has opened (v4) =>
+2024-05-08 14:02:30.588469   Checking way # 1 => 
+
+2024-05-08 14:02:30.588615   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-05-08 14:02:30.592267   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-05-08 14:02:30.592374   2. Checking that the LOGO is present on the page =>
+2024-05-08 14:02:32.266050   => 'capital*com' logo is present on the current page
+
+2024-05-08 14:02:32.266098   tpd = False
+
+2024-05-08 14:02:32.266120   4. Check that opened page with https://capital.com/trading/platform/charting/18425409712196?side=buy&ids=27045129890124996,22855552501634244,426090820621508,70913517829530649,22770954530804932,18425409712196 url
+with selected corresponding trading instrument 'Aurora Cannabis Inc.' =>
+
+2024-05-08 14:02:32.288031   trade_instrument = 'Aurora Cannabis Inc.'
+
+2024-05-08 14:02:32.288049   4.1. Check that Trading Platform is opened in Chart mode
+2024-05-08 14:02:32.490328   => Trading Platform opened in Chart mode
+
+2024-05-08 14:02:32.490388   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-05-08 14:02:32.514476   4.3. Check that opened trade instrument info page =>
+2024-05-08 14:02:33.617111   => Trading platform was opened, but does not contain any trading info
+
+Bug: Bid:01.02.01_005-de.de.Auth
+
+2024-05-08 14:02:33.617193   Проверка бага в таблице ретеста  =>
+
+2024-05-08 14:02:34.020194   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 14:02:34.255573   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 14:02:35.452441   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 14:02:35.702270   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 14:02:35.702520   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 14:02:35.941431   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 14:02:35.941516   Баг Bid:01.02.01_005-de.de.Auth уже существует, но у него изменился тип с  на 16
+
+2024-05-08 14:02:35.941756   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 14:02:36.174763   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 14:02:36.177261   Баг Bid:01.02.01_005-de.de.Auth-16 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

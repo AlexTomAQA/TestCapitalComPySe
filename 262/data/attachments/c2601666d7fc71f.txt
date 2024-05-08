@@ -1,0 +1,122 @@
+{'width': 1280, 'height': 800}
+
+2024-05-08 15:38:21.738805   worker_id = master
+
+2024-05-08 15:38:21.738819   0. Allure grouping v4
+
+2024-05-08 15:38:21.739004   START PRECONDITIONS =>
+
+2024-05-08 15:38:21.739019   => URL after prev. preconditions - https://capital.com/de
+2024-05-08 15:38:21.739029   => flag_of_bug - True
+2024-05-08 15:38:21.739039   => Current URL - https://capital.com/de/trade-palladium
+2024-05-08 15:38:21.744669   Current page URL = https://capital.com/de/trade-palladium
+2024-05-08 15:38:21.748000   self.link = https://capital.com/de
+2024-05-08 15:38:21.748020   driver.get(https://capital.com/de) =>
+2024-05-08 15:38:23.682296   => Loaded page https://capital.com/de
+
+2024-05-08 15:38:23.686615   => Windows size - {'width': 1280, 'height': 800}
+2024-05-08 15:38:23.687986   Set windows position at (0, 0) =>
+2024-05-08 15:38:23.689623   Set resolution 1280 * 800 =>
+2024-05-08 15:38:23.691255   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-08 15:38:24.739502   Капчи нет. Идем дальше
+
+2024-05-08 15:38:24.739586   Работа с куками =>
+
+2024-05-08 15:38:24.739601   => не требуется
+
+2024-05-08 15:38:24.739610   Prev. country - 'de'
+2024-05-08 15:38:24.739619   Cur. country - 'de'
+2024-05-08 15:38:24.739628   => Country set to 'de'
+
+2024-05-08 15:38:24.739637   Prev. language - 'de'
+2024-05-08 15:38:24.739646   Cur. language - 'de'
+2024-05-08 15:38:24.739654   => Language is set to 'de'
+
+2024-05-08 15:38:24.739663   Prev. role - 'Auth'
+2024-05-08 15:38:24.739672   Cur. role - 'Auth'
+2024-05-08 15:38:24.739680   => The 'Auth' role is set
+
+2024-05-08 15:38:24.742397   => Current URL - https://capital.com/de
+
+2024-05-08 15:38:24.742421   => THE END PRECONDITIONS
+
+2024-05-08 15:38:24.742604   1. Arrange_v4
+2024-05-08 15:38:24.742622   current_page = https://capital.com/de
+2024-05-08 15:38:24.744999   link = https://capital.com/de/trade-palladium
+2024-05-08 15:38:24.755290   Current page URL = https://capital.com/de
+2024-05-08 15:38:24.757669   self.link = https://capital.com/de/trade-palladium
+2024-05-08 15:38:24.757682   driver.get(https://capital.com/de/trade-palladium) =>
+2024-05-08 15:38:26.687157   => Loaded page https://capital.com/de/trade-palladium
+2024-05-08 15:38:26.691704   MOST_TRADED is present? =>
+2024-05-08 15:38:26.704166   => MOST_TRADED widget is present on this page
+2024-05-08 15:38:26.704208   => Found 5 elements in block MOST_TRADED
+2024-05-08 15:38:26.704219   Most traded widget is scroll =>
+2024-05-08 15:38:26.708043   => Most traded widget is scrolled into screen center
+
+2024-05-08 15:38:26.708087   Random indexes = [0]
+
+2024-05-08 15:38:26.708102   Testing Most traded 1 random element with 0 index
+
+2024-05-08 15:38:26.708245   2. Act_v4
+2024-05-08 15:38:26.708337   Start Checking that form [Sign up] popped up on the page =>
+2024-05-08 15:38:28.251584   '[Sign up]' form was not popped up
+2024-05-08 15:38:28.265290   instrument_title = 'Gold Spot'
+2024-05-08 15:38:28.270677   Selected Trade button on Most traded widget is scroll =>
+2024-05-08 15:38:28.274034   Selected Trade button click for 'Gold Spot' trading instrument =>
+2024-05-08 15:38:30.573119   => Selected Trade button clicked!
+
+2024-05-08 15:38:30.573430   3. Assert_v4
+
+2024-05-08 15:38:30.573453   
+2024-05-08 15:38:30.573594   Checking that the trading platform page has opened (v4) =>
+2024-05-08 15:38:30.580135   Checking way # 1 => 
+
+2024-05-08 15:38:30.580305   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-05-08 15:38:30.583836   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-05-08 15:38:30.583933   2. Checking that the LOGO is present on the page =>
+2024-05-08 15:38:32.603954   => 'capital*com' logo is present on the current page
+
+2024-05-08 15:38:32.604013   tpd = False
+
+2024-05-08 15:38:32.604036   4. Check that opened page with https://capital.com/trading/platform/charting/27045129890124996?side=buy&ids=27045129890124996,22855552501634244,426090820621508,70913517829530649,22770954530804932,18425409712196,93810675766468,55001351226694,123763777635654,53068615951385,15839732013552836,21812064427192838,389605073441988,12241936693896217,374675767075865,453930102762329284,7089977393501380,453949400050390212,426696411010244,27342779713672388,3644116541985988,427748677997764,21182778791108,65195228436407321,21638732432102596,55001351234585 url
+with selected corresponding trading instrument 'Gold Spot' =>
+
+2024-05-08 15:38:32.711342   trade_instrument = 'Gold Spot'
+
+2024-05-08 15:38:32.711354   4.1. Check that Trading Platform is opened in Chart mode
+2024-05-08 15:38:32.729049   => Trading Platform opened in Chart mode
+
+2024-05-08 15:38:32.729109   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-05-08 15:38:32.749243   4.3. Check that opened trade instrument info page =>
+
+2024-05-08 15:38:32.756965   4.4. Check that opened Info page of selected 'Gold Spot' trade instrument =>
+2024-05-08 15:38:32.756994   Trading instrument - 'Gold Spot'
+2024-05-08 15:38:32.757004   Title opened trading instrument info page - 'Gold'
+2024-05-08 15:38:32.776344   => Trading platform was opened, but does not contain trading info about selected TI
+
+Bug: Bid:11.02.03.01_06-de.de.Auth
+
+2024-05-08 15:38:32.776382   Проверка бага в таблице ретеста  =>
+
+2024-05-08 15:38:33.194277   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:38:33.583329   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:38:34.994595   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:38:35.388926   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:38:35.389159   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:38:35.639963   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:38:35.640036   Баг Bid:11.02.03.01_06-de.de.Auth уже существует, но у него изменился тип с 16 на 17
+
+2024-05-08 15:38:35.640210   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 15:38:35.894776   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 15:38:35.896898   Баг Bid:11.02.03.01_06-de.de.Auth-17 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
