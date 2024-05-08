@@ -229,6 +229,8 @@ class MainPageBannerLocators:
     GET_INVOLVED_TAB_MAIN_PAGE_BANNER = (By.CSS_SELECTOR, '.bannersHome__nav > [data-slick-index = "0"]')
     TRADE_NOW_BUTTON_GET_INVOLVED_TAB = (
         By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup"]')
+    TRY_FREE_DEMO_BUTTON_GET_INVOLVED_TAB = (
+        By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup?go=demo"]')
 
 
 class RightBannerLocators:
