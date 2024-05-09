@@ -1,0 +1,109 @@
+{'width': 1280, 'height': 800}
+
+2024-05-09 13:54:46.620819   worker_id = master
+
+2024-05-09 13:54:46.620833   0. Allure grouping v4
+
+2024-05-09 13:54:46.621030   START PRECONDITIONS =>
+
+2024-05-09 13:54:46.621048   => URL after prev. preconditions - https://capital.com/el
+2024-05-09 13:54:46.621057   => flag_of_bug - True
+2024-05-09 13:54:46.621067   => Current URL - https://capital.com/trading/platform/
+2024-05-09 13:54:46.626564   Current page URL = https://capital.com/trading/platform/
+2024-05-09 13:54:46.629198   self.link = https://capital.com/el
+2024-05-09 13:54:46.629211   driver.get(https://capital.com/el) =>
+2024-05-09 13:54:48.439915   => Loaded page https://capital.com/el
+
+2024-05-09 13:54:48.444438   => Windows size - {'width': 1280, 'height': 800}
+2024-05-09 13:54:48.445823   Set windows position at (0, 0) =>
+2024-05-09 13:54:48.447472   Set resolution 1280 * 800 =>
+2024-05-09 13:54:48.449099   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-09 13:54:49.492846   Капчи нет. Идем дальше
+
+2024-05-09 13:54:49.492934   Работа с куками =>
+
+2024-05-09 13:54:49.492948   => не требуется
+
+2024-05-09 13:54:49.492958   Prev. country - 'au'
+2024-05-09 13:54:49.492967   Cur. country - 'au'
+2024-05-09 13:54:49.492976   => Country set to 'au'
+
+2024-05-09 13:54:49.492984   Prev. language - 'el'
+2024-05-09 13:54:49.492993   Cur. language - 'el'
+2024-05-09 13:54:49.493002   => Language is set to 'el'
+
+2024-05-09 13:54:49.493011   Prev. role - 'NoAuth'
+2024-05-09 13:54:49.493020   Cur. role - 'NoAuth'
+2024-05-09 13:54:49.493028   => The 'NoAuth' role is set
+
+2024-05-09 13:54:49.495731   => Current URL - https://capital.com/el
+
+2024-05-09 13:54:49.495753   => THE END PRECONDITIONS
+
+2024-05-09 13:54:49.495934   1. Arrange_v2
+2024-05-09 13:54:49.495951   current_page = https://capital.com/el
+2024-05-09 13:54:49.498416   link = https://capital.com/el/us-natural-gas-spot-emporeuma
+2024-05-09 13:54:49.500896   Current page URL = https://capital.com/el
+2024-05-09 13:54:49.504558   self.link = https://capital.com/el/us-natural-gas-spot-emporeuma
+2024-05-09 13:54:49.504572   driver.get(https://capital.com/el/us-natural-gas-spot-emporeuma) =>
+2024-05-09 13:54:51.195037   => Loaded page https://capital.com/el/us-natural-gas-spot-emporeuma
+2024-05-09 13:54:51.199551 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-05-09 13:54:51.209833   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-05-09 13:54:51.209858   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-05-09 13:54:51.213629   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-05-09 13:54:51.213780   2. Act_v2
+2024-05-09 13:54:51.213796   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-05-09 13:54:52.002270   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-05-09 13:54:52.015508   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-05-09 13:54:52.015535   Move focus to button [Go to platform] and click on =>
+2024-05-09 13:54:52.797365   => BUTTON_GO_TO_PLATFORM is clickable
+2024-05-09 13:54:53.337665 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-05-09 13:54:53.337980   3. Assert_Login_v0
+2024-05-09 13:54:53.338107   Check that 'Login' form is opened
+2024-05-09 13:54:59.573111   'Login' form not opened
+2024-05-09 13:54:59.573293   Check that new 'Login' form is opened
+2024-05-09 13:55:02.657394   => New 'Login' form not opened
+2024-05-09 13:55:02.660172   'Login' page not opened
+2024-05-09 13:55:05.746890   'Login' form on trading platform not opened
+2024-05-09 13:55:05.747085   Start step Check that [Sign up] form is opened
+2024-05-09 13:55:08.834287   'Sign up' form not opened
+2024-05-09 13:55:08.834484   Start step Check that new [Sign up] form is opened
+2024-05-09 13:55:11.936904   => new 'Sign up' form not opened
+2024-05-09 13:55:11.937092   Start method Check that [Sign up] page opened =>
+2024-05-09 13:55:12.940639   'Sign up' page not opened
+2024-05-09 13:55:12.940892   Check that [Sign up] form on trading platform opened =>
+2024-05-09 13:55:12.955791   => 'Sign up' form on trading platform page opened
+2024-05-09 13:55:12.955816   Assert SIGNUP_HEADER =>
+2024-05-09 13:55:12.967425   => SIGNUP_HEADER is OK
+2024-05-09 13:55:12.967450   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-05-09 13:55:12.980843   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-05-09 13:55:12.980870   Assert SIGNUP_REF_LOGIN =>
+2024-05-09 13:55:12.992846   => SIGNUP_REF_LOGIN is OK
+2024-05-09 13:55:12.992869   => 'Signup' form on trading platform page is checked
+
+Bug: Bid:01.01.01_004-el.au.NoAuth
+
+2024-05-09 13:55:12.992932   Проверка бага в таблице ретеста  =>
+
+2024-05-09 13:55:13.340787   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-09 13:55:13.588083   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-09 13:55:14.947449   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-09 13:55:15.157554   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-09 13:55:15.157799   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-09 13:55:15.374639   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-09 13:55:15.374710   Баг Bid:01.01.01_004-el.au.NoAuth уже существует, но у него изменился тип с  на 07
+
+2024-05-09 13:55:15.374868   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-09 13:55:15.611728   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-09 13:55:15.614138   Баг Bid:01.01.01_004-el.au.NoAuth-07 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
