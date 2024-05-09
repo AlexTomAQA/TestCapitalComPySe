@@ -1,0 +1,111 @@
+{'width': 1280, 'height': 800}
+
+2024-05-08 22:51:22.827439   worker_id = master
+
+2024-05-08 22:51:22.827458   0. Allure grouping v4
+
+2024-05-08 22:51:22.827734   START PRECONDITIONS =>
+
+2024-05-08 22:51:22.827750   => URL after prev. preconditions - https://capital.com/zh
+2024-05-08 22:51:22.827760   => flag_of_bug - False
+2024-05-08 22:51:22.827771   => Current URL - https://capital.com/zh
+
+2024-05-08 22:51:22.832573   => Windows size - {'width': 1280, 'height': 800}
+2024-05-08 22:51:22.833852   Set windows position at (0, 0) =>
+2024-05-08 22:51:22.835653   Set resolution 1280 * 800 =>
+2024-05-08 22:51:22.840901   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-08 22:51:23.844347   Капчи нет. Идем дальше
+
+2024-05-08 22:51:23.844436   Работа с куками =>
+
+2024-05-08 22:51:23.844450   => не требуется
+
+2024-05-08 22:51:23.844460   Prev. country - 'de'
+2024-05-08 22:51:23.844469   Cur. country - 'de'
+2024-05-08 22:51:23.844478   => Country set to 'de'
+
+2024-05-08 22:51:23.844487   Prev. language - 'zh'
+2024-05-08 22:51:23.844496   Cur. language - 'zh'
+2024-05-08 22:51:23.844504   => Language is set to 'zh'
+
+2024-05-08 22:51:23.844513   Prev. role - 'Auth'
+2024-05-08 22:51:23.844522   Cur. role - 'Auth'
+2024-05-08 22:51:23.844531   => The 'Auth' role is set
+
+2024-05-08 22:51:23.847386   => Current URL - https://capital.com/zh
+
+2024-05-08 22:51:23.847408   => THE END PRECONDITIONS
+
+2024-05-08 22:51:23.847609   1. Arrange_v0
+2024-05-08 22:51:23.847628   current_page = https://capital.com/zh
+2024-05-08 22:51:23.850099   link = https://capital.com/zh
+2024-05-08 22:51:23.852564   IS Trader's Dashboard widget present on this page? =>
+2024-05-08 22:51:23.860558   => Trader's Dashboard widget present on this page!
+
+2024-05-08 22:51:23.868303   IS Trader's Dashboard widget visible on this page? =>
+2024-05-08 22:51:23.916567   => Trader's Dashboard widget is visible on this page!
+
+2024-05-08 22:51:23.916603   IS [Trade] button present on this page? =>
+2024-05-08 22:51:23.926665   => [Trade] button present on this page!
+
+2024-05-08 22:51:23.926704   Defined random number of test button, item is: 3 
+
+2024-05-08 22:51:23.935904   IS [Trade] button visible on this page? =>
+2024-05-08 22:51:23.950701   => [Trade] button is visible on this page!
+
+2024-05-08 22:51:23.950727   [Trade] button scroll =>
+
+2024-05-08 22:51:23.950886   2. Act_v0
+2024-05-08 22:51:23.950902   [Trade] button is clickable? =>
+2024-05-08 22:51:23.966108   => [Trade] button is clickable!
+
+2024-05-08 22:51:23.966139   Start get name of trading instrument =>
+2024-05-08 22:51:23.990474   => Name of trading instrument: BTC/USD
+
+2024-05-08 22:51:24.209681   => [Trade] button clicked!
+
+2024-05-08 22:51:24.209963   3. Assert_v4
+
+2024-05-08 22:51:24.209995   
+2024-05-08 22:51:24.210182   Checking that the trading platform page has opened (v4) =>
+2024-05-08 22:51:24.719971   Checking way # 1 => 
+
+2024-05-08 22:51:24.720161   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-05-08 22:51:24.722611   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-05-08 22:51:24.722680   2. Checking that the LOGO is present on the page =>
+2024-05-08 22:51:26.274199   => 'capital*com' logo is present on the current page
+
+2024-05-08 22:51:26.274239   tpd = False
+
+2024-05-08 22:51:26.274251   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument 'BTC/USD' =>
+
+2024-05-08 22:51:26.276988   trade_instrument = 'BTC/USD'
+
+2024-05-08 22:51:26.276999   4.1. Check that Trading Platform is opened in Chart mode
+2024-05-08 22:51:27.347555   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:00.00_011-zh.de.Auth
+
+2024-05-08 22:51:27.347610   Проверка бага в таблице ретеста  =>
+
+2024-05-08 22:51:27.820416   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 22:51:28.136502   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 22:51:29.584029   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 22:51:29.803626   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 22:51:29.803876   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 22:51:30.149830   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 22:51:30.149907   Баг Bid:00.00_011-zh.de.Auth уже существует, но у него изменился тип с  на 14
+
+2024-05-08 22:51:30.150077   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-08 22:51:30.482974   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-08 22:51:30.485160   Баг Bid:00.00_011-zh.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

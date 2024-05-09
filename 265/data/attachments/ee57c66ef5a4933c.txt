@@ -1,0 +1,120 @@
+
+
+
+Current tab - most_traded
+{'width': 1280, 'height': 800}
+
+2024-05-09 01:14:14.419878   worker_id = master
+
+2024-05-09 01:14:14.419895   0. Allure grouping v4
+
+2024-05-09 01:14:14.420103   START PRECONDITIONS =>
+
+2024-05-09 01:14:14.420119   => URL after prev. preconditions - https://capital.com/zh
+2024-05-09 01:14:14.420128   => flag_of_bug - False
+2024-05-09 01:14:14.420139   => Current URL - https://capital.com/zh/trade-dax
+2024-05-09 01:14:14.427061   Current page URL = https://capital.com/zh/trade-dax
+2024-05-09 01:14:14.429633   self.link = https://capital.com/zh
+2024-05-09 01:14:14.429648   driver.get(https://capital.com/zh) =>
+2024-05-09 01:14:16.308655   => Loaded page https://capital.com/zh
+
+2024-05-09 01:14:16.315885   => Windows size - {'width': 1280, 'height': 800}
+2024-05-09 01:14:16.317390   Set windows position at (0, 0) =>
+2024-05-09 01:14:16.319028   Set resolution 1280 * 800 =>
+2024-05-09 01:14:16.320585   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-09 01:14:17.362161   Капчи нет. Идем дальше
+
+2024-05-09 01:14:17.362254   Работа с куками =>
+
+2024-05-09 01:14:17.362268   => не требуется
+
+2024-05-09 01:14:17.362278   Prev. country - 'de'
+2024-05-09 01:14:17.362287   Cur. country - 'de'
+2024-05-09 01:14:17.362296   => Country set to 'de'
+
+2024-05-09 01:14:17.362305   Prev. language - 'zh'
+2024-05-09 01:14:17.362314   Cur. language - 'zh'
+2024-05-09 01:14:17.362323   => Language is set to 'zh'
+
+2024-05-09 01:14:17.362331   Prev. role - 'NoReg'
+2024-05-09 01:14:17.362340   Cur. role - 'NoReg'
+2024-05-09 01:14:17.362349   => The 'NoReg' role is set
+
+2024-05-09 01:14:17.365185   => Current URL - https://capital.com/zh
+
+2024-05-09 01:14:17.365209   => THE END PRECONDITIONS
+
+2024-05-09 01:14:17.365258   1. Arrange for Indices finance instrument and "most_traded" tab
+2024-05-09 01:14:17.365272   current_page = https://capital.com/zh
+2024-05-09 01:14:17.367811   link = https://capital.com/zh/trade-dax
+2024-05-09 01:14:17.370301   Current page URL = https://capital.com/zh
+2024-05-09 01:14:17.372745   self.link = https://capital.com/zh/trade-dax
+2024-05-09 01:14:17.372759   driver.get(https://capital.com/zh/trade-dax) =>
+2024-05-09 01:14:19.338429   => Loaded page https://capital.com/zh/trade-dax
+2024-05-09 01:14:19.342850   IS CFDs TABLE visible on the page? =>
+2024-05-09 01:14:19.350984   => CFDs TABLE is visible on the page!
+
+2024-05-09 01:14:19.351009   IS TAB "most_traded" visible on the page? =>
+2024-05-09 01:14:19.358024   => TAB "most_traded" is visible on the page!
+
+2024-05-09 01:14:19.358047   Buttons [Buy] is visible and quantity buttons not zero? =>
+2024-05-09 01:14:19.366476   => Buttons [Buy] is visible and quantity buttons not zero!
+
+2024-05-09 01:14:19.366501   Start Click button TAB "most_traded" =>
+2024-05-09 01:14:19.461313   => End Click button TAB "most_traded"
+
+2024-05-09 01:14:19.461360   Start Click button [Show all] on the TAB "most_traded" =>
+2024-05-09 01:14:19.528639   => End Click button [Show all] on the TAB "most_traded"
+
+2024-05-09 01:14:19.528696   Start find two random buttons [Buy] on the TAB "most_traded"=>
+2024-05-09 01:14:19.565202   => End find two random buttons [Buy] on the TAB "most_traded"
+
+2024-05-09 01:14:19.565400   2. Act for Indices finance instrument and "most_traded" tab
+2024-05-09 01:14:19.587289   Start click button [Buy] =>
+2024-05-09 01:14:19.631613   => BUTTON_TRADING_BUY with item 334595132249426 clicked!
+
+
+2024-05-09 01:14:19.631937   3. Assert_v0
+2024-05-09 01:14:19.632079   Start step Check that [Sign up] form is opened
+2024-05-09 01:14:22.730073   'Sign up' form not opened
+2024-05-09 01:14:22.730272   Start step Check that new [Sign up] form is opened
+2024-05-09 01:14:25.812443   => new 'Sign up' form not opened
+2024-05-09 01:14:25.812642   Start method Check that [Sign up] page opened =>
+2024-05-09 01:14:26.816290   'Sign up' page not opened
+2024-05-09 01:14:26.816494   Check that [Sign up] form on trading platform opened =>
+2024-05-09 01:14:26.829688   => 'Sign up' form on trading platform page opened
+2024-05-09 01:14:26.829713   Assert SIGNUP_HEADER =>
+2024-05-09 01:14:26.841675   => SIGNUP_HEADER is OK
+2024-05-09 01:14:26.841699   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-05-09 01:14:26.853649   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-05-09 01:14:26.853672   Assert SIGNUP_REF_LOGIN =>
+2024-05-09 01:14:26.865570   => SIGNUP_REF_LOGIN is OK
+2024-05-09 01:14:26.865596   => 'Signup' form on trading platform page is checked
+2024-05-09 01:14:26.865749   Close [Sign up] form with trading platform page =>
+2024-05-09 01:14:26.941503   => [Sign up] form with trading platform page is closed
+2024-05-09 01:14:28.058196   2. Act for Indices finance instrument and "most_traded" tab
+2024-05-09 01:14:28.086491   Start Click button [Show all] on the TAB "most_traded" in METHOD: element_click =>
+2024-05-09 01:14:28.237924   Start Click button [Show all] on the TAB "most_traded" in METHOD: element_click =>
+2024-05-09 01:14:28.237977   Start click button [Buy] =>
+2024-05-09 01:14:28.320755   => BUTTON_TRADING_BUY with item 35540854396242 clicked!
+
+
+2024-05-09 01:14:28.321024   3. Assert_v0
+2024-05-09 01:14:28.321119   Start step Check that [Sign up] form is opened
+2024-05-09 01:14:31.414723   'Sign up' form not opened
+2024-05-09 01:14:31.414917   Start step Check that new [Sign up] form is opened
+2024-05-09 01:14:34.493029   => new 'Sign up' form not opened
+2024-05-09 01:14:34.493223   Start method Check that [Sign up] page opened =>
+2024-05-09 01:14:35.496717   'Sign up' page not opened
+2024-05-09 01:14:35.496951   Check that [Sign up] form on trading platform opened =>
+2024-05-09 01:14:35.507368   => 'Sign up' form on trading platform page opened
+2024-05-09 01:14:35.507392   Assert SIGNUP_HEADER =>
+2024-05-09 01:14:35.516611   => SIGNUP_HEADER is OK
+2024-05-09 01:14:35.516634   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-05-09 01:14:35.526011   => SIGNUP_PRIVACY_POLICY_ALL_1 is OK
+2024-05-09 01:14:35.526035   Assert SIGNUP_REF_LOGIN =>
+2024-05-09 01:14:35.535265   => SIGNUP_REF_LOGIN is OK
+2024-05-09 01:14:35.535288   => 'Signup' form on trading platform page is checked
+2024-05-09 01:14:35.535429   Close [Sign up] form with trading platform page =>
+2024-05-09 01:14:35.622258   => [Sign up] form with trading platform page is closed
