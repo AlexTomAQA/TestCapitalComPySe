@@ -1,0 +1,106 @@
+{'width': 1280, 'height': 800}
+
+2024-05-09 05:05:35.911965   worker_id = master
+
+2024-05-09 05:05:35.911979   0. Allure grouping v4
+
+2024-05-09 05:05:35.912159   START PRECONDITIONS =>
+
+2024-05-09 05:05:35.912175   => URL after prev. preconditions - https://capital.com/zh
+2024-05-09 05:05:35.912185   => flag_of_bug - False
+2024-05-09 05:05:35.912195   => Current URL - https://capital.com/zh/trade-aurora
+2024-05-09 05:05:35.917122   Current page URL = https://capital.com/zh/trade-aurora
+2024-05-09 05:05:35.937822   self.link = https://capital.com/zh
+2024-05-09 05:05:35.937847   driver.get(https://capital.com/zh) =>
+2024-05-09 05:05:37.921224   => Loaded page https://capital.com/zh
+
+2024-05-09 05:05:37.925349   => Windows size - {'width': 1280, 'height': 800}
+2024-05-09 05:05:37.926715   Set windows position at (0, 0) =>
+2024-05-09 05:05:37.928363   Set resolution 1280 * 800 =>
+2024-05-09 05:05:37.929921   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-09 05:05:38.965229   Капчи нет. Идем дальше
+
+2024-05-09 05:05:38.965310   Работа с куками =>
+
+2024-05-09 05:05:38.965324   => не требуется
+
+2024-05-09 05:05:38.965334   Prev. country - 'au'
+2024-05-09 05:05:38.965343   Cur. country - 'au'
+2024-05-09 05:05:38.965352   => Country set to 'au'
+
+2024-05-09 05:05:38.965360   Prev. language - 'zh'
+2024-05-09 05:05:38.965369   Cur. language - 'zh'
+2024-05-09 05:05:38.965378   => Language is set to 'zh'
+
+2024-05-09 05:05:38.965386   Prev. role - 'Auth'
+2024-05-09 05:05:38.965395   Cur. role - 'Auth'
+2024-05-09 05:05:38.965404   => The 'Auth' role is set
+
+2024-05-09 05:05:38.969795   => Current URL - https://capital.com/zh
+
+2024-05-09 05:05:38.969818   => THE END PRECONDITIONS
+
+2024-05-09 05:05:38.970034   1. Arrange_v4
+2024-05-09 05:05:38.970054   current_page = https://capital.com/zh
+2024-05-09 05:05:38.972470   link = https://capital.com/zh/trade-aurora
+2024-05-09 05:05:38.975015   Current page URL = https://capital.com/zh
+2024-05-09 05:05:38.977569   self.link = https://capital.com/zh/trade-aurora
+2024-05-09 05:05:38.977583   driver.get(https://capital.com/zh/trade-aurora) =>
+2024-05-09 05:05:41.056580   => Loaded page https://capital.com/zh/trade-aurora
+2024-05-09 05:05:41.059604   MOST_TRADED is present? =>
+2024-05-09 05:05:41.068482   => MOST_TRADED widget is present on this page
+2024-05-09 05:05:41.068509   => Found 5 elements in block MOST_TRADED
+2024-05-09 05:05:41.068520   Most traded widget is scroll =>
+2024-05-09 05:05:41.071847   => Most traded widget is scrolled into screen center
+
+2024-05-09 05:05:41.071889   Random indexes = [0]
+
+2024-05-09 05:05:41.071904   Testing Most traded 1 random element with 0 index
+
+2024-05-09 05:05:41.072046   2. Act_v4
+2024-05-09 05:05:41.072135   Start Checking that form [Sign up] popped up on the page =>
+2024-05-09 05:05:42.618379   '[Sign up]' form was not popped up
+2024-05-09 05:05:42.635575   instrument_title = 'Tesla Inc'
+2024-05-09 05:05:42.640889   Selected Trade button on Most traded widget is scroll =>
+2024-05-09 05:05:42.643991   Selected Trade button click for 'Tesla Inc' trading instrument =>
+2024-05-09 05:05:44.852763   => Selected Trade button clicked!
+
+2024-05-09 05:05:44.853030   3. Assert_v4
+
+2024-05-09 05:05:44.853058   
+2024-05-09 05:05:44.853231   Checking that the trading platform page has opened (v4) =>
+2024-05-09 05:05:44.859650   Checking way # 1 => 
+
+2024-05-09 05:05:44.859760   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-05-09 05:05:44.862099   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-05-09 05:05:44.862161   2. Checking that the LOGO is present on the page =>
+2024-05-09 05:05:46.648391   => 'capital*com' logo is present on the current page
+
+2024-05-09 05:05:46.648438   tpd = False
+
+2024-05-09 05:05:46.648457   4. Check that opened page with https://capital.com/trading/platform/charting/22855552501634244?side=buy&ids=426090820621508,1679716659553719492,22855552501634244,67429732416791577,22770954530804932,67535556115997721,248828930380996,21621659937100996,23979347874456601,123763777615499,123763777635654,93810675766468,93810675708048,23381801971780,145998823326404,10500838556456274,389605073441988,15839732013552836,27045129890124996,7089977393501380,7094972440466628,453949400050390212,7092687517865156,2604592722433220,3644116541985988,126740190024900 url
+with selected corresponding trading instrument 'Tesla Inc' =>
+
+2024-05-09 05:05:46.652774   trade_instrument = 'Tesla Inc'
+
+2024-05-09 05:05:46.652794   4.1. Check that Trading Platform is opened in Chart mode
+2024-05-09 05:05:46.912624   => Trading Platform opened in Chart mode
+
+2024-05-09 05:05:46.912682   4.2. Check that Top Charts List of Trading Platform not empty =>
+
+2024-05-09 05:05:46.922057   4.3. Check that opened trade instrument info page =>
+
+2024-05-09 05:05:46.929154   4.4. Check that opened Info page of selected 'Tesla Inc' trade instrument =>
+2024-05-09 05:05:46.929181   Trading instrument - 'Tesla Inc'
+2024-05-09 05:05:46.929191   Title opened trading instrument info page - 'Tesla Inc (Extended Hours)'
+2024-05-09 05:05:46.943775   => Open info page about selected 'Tesla Inc' TI
+2024-05-09 05:05:46.943799   4.5. Check that the Top Charts List contain selected Trade instrument =>
+2024-05-09 05:05:46.961651   => The Top Charts List contain selected and visible Trade instrument
+2024-05-09 05:05:46.961676   4.6. Check that the selected Trade instrument is visible in Top Charts List =>
+2024-05-09 05:05:46.961686   => The Top Charts List contain selected and visible 'Tesla Inc' Trade instrument
+2024-05-09 05:05:46.961695   => Trade instrument 'Tesla Inc' is present in the Top Charts List, visible and selected
+2024-05-09 05:05:47.052425   => Driver.backed
+2024-05-09 05:05:47.364069   => Driver.backed
+2024-05-09 05:05:48.550724   => Driver.backed
