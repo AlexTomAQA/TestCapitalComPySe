@@ -8,6 +8,7 @@ import allure
 import pytest
 
 from pages.common import Common
+from pages.Elements.FindUsOnTradingviewBannerExploreFeaturesButton import FindUsOnTradingviewBannerExploreFeaturesButton
 from pages.Elements.GetInvolvedBannerTradeNowButton import GetInvolvedBannerTradeNowButton
 from pages.Elements.GetInvolvedBannerTryFreeDemoButton import GetInvolvedBannerTryFreeDemoButton
 from pages.Elements.ExploreOurPlatformBlockEasyToUseLink import ExploreOurPlatformBlockEasyToUseLink
@@ -593,7 +594,7 @@ class TestMainPage:
             False, False
         )
 
-        Common().check_market_in_list_and_skip_if_present(cur_language, ['', 'nl'])
+        Common().check_language_in_list_and_skip_if_present(cur_language, ['', 'nl'])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
 
         page_conditions = Conditions(d, "")
@@ -703,4 +704,31 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = GetInvolvedBannerTryFreeDemoButton(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Explore features] in Banner 'Find us on Tradingview'")
+    @pytest.mark.test_033
+    def test_033_explore_features_button_in_find_us_on_tradingview_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Explore features] in Banner 'Find us on Tradingview' Main Page
+        Language: Except EN.
+        License: Not FCA
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_033", "Testing button [Explore features] in Banner 'Find us on Tradingview' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = FindUsOnTradingviewBannerExploreFeaturesButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)

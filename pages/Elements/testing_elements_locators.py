@@ -232,6 +232,9 @@ class MainPageBannerLocators:
     TRY_FREE_DEMO_BUTTON_GET_INVOLVED_TAB = (
         By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="/trading/signup?go=demo"]')
 
+    FIND_US_ON_TRADINGVIEW_TAB_MAIN_PAGE_BANNER = (By.CSS_SELECTOR, 'button[data-type="topbanner-tradingview_slider"]')
+    EXPLORE_FEATURES_BUTTON_FIND_US_ON_TRADINGVIEW_TAB = (
+        By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="https://www.tradingview.com/broker/Capitalcom/"]')
 
 class RightBannerLocators:
     BUTTON_TRY_DEMO_RIGHT_BANNER = (By.CSS_SELECTOR, "btn inBanner__btn rounded-lg ln-auto")
