@@ -22,7 +22,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_005
-    def test_005(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_105(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Button [My account] in the Header
          Language: En. License: FCA.
@@ -30,7 +30,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTest Manual Detected Bugs]",
-            ".005", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header")
+            ".105", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
