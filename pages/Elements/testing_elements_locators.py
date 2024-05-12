@@ -236,6 +236,10 @@ class MainPageBannerLocators:
     EXPLORE_FEATURES_BUTTON_FIND_US_ON_TRADINGVIEW_TAB = (
         By.XPATH, '//div[@class="bannersHome__buttons"] /a[@href="https://www.tradingview.com/broker/Capitalcom/"]')
 
+    MAIN_PAGE_BANNER_BLOCK_V2 = (By.CSS_SELECTOR, "main.grid.gLg")
+    GET_INVOLVED_TAB_MAIN_PAGE_BANNER_V2 = (By.CSS_SELECTOR, 'button[aria-controls="splide01-slide02"]')
+    TRADE_NOW_BUTTON_GET_INVOLVED_TAB_V2 = (By.CSS_SELECTOR, '#splide01-slide02 [href="/trading/signup"]')
+
 class RightBannerLocators:
     BUTTON_TRY_DEMO_RIGHT_BANNER = (By.CSS_SELECTOR, "btn inBanner__btn rounded-lg ln-auto")
 
