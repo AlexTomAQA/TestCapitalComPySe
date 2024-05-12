@@ -5,6 +5,8 @@
 """
 from selenium.webdriver.common.by import By
 
+from pages.base_page import BasePage
+
 
 class HeaderButtonLoginLocators:
     """ Locators for ..."""
@@ -412,3 +414,8 @@ class HowToStartTradingSignupLocators:
     SIGNUP_INPUT_PASSWORD = (By.CSS_SELECTOR, "#lp_form_126_6-pass > input")
     BUTTON_SIGN_UP = (By.CSS_SELECTOR, "div.bannerForm button.btn.btn")
     SIGNUP_PRIVACY_POLICY = (By.CSS_SELECTOR, "div.bannerForm div.reg-desc a[target='_blank']")
+
+
+class MyAccountButtonLocators(BasePage):
+    BUTTON_MY_ACCOUNT = (By.CSS_SELECTOR, ".accountBtns_userBtn__kCJ5A.accountBtns_btnEmpty__TCWRE")
+    HEADER_LOGIN_BTN2 = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')

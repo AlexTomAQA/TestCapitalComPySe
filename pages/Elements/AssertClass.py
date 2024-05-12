@@ -237,3 +237,14 @@ class AssertClass(BasePage):
         print(f"\n{datetime.now()}   3. Assert_v0")
         self.page_trading_instrument = PageTradingInstrument(d, cur_link, self.bid)
         self.page_trading_instrument.should_be_trading_instrument_page(title_instrument)
+
+    @allure.step('Checking that the "My account" menu is opened')
+    def assert_my_account_menu(self, d):
+        account_btn_link = d.current_url
+        if account_btn_link == "https://capital.com/trading/platform":
+            print(f"\n{datetime.now()}   3. Assert_v0")
+            assert False, \
+                ('Bug#005. '
+                 'Expected result: Menu "My account" is displayed'
+                 '\n'
+                 'Actual result: The trading platform page is opened')

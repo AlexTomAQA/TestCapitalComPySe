@@ -1113,3 +1113,33 @@ class MenuUS0101AllMarkets:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/derivative-financial-instruments']")
     SUB_MENU_CN_ALLMARKETS_BUTTON = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/derivative-financial-instruments']")
+
+    class MenuUS0106Cryptocurrencies:
+        SUB_MENU_EN_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/live-cryptocurrency-prices']")
+        SUB_MENU_AR_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/alrasm-albayaniu-lileumlat-alraqamia']")
+        SUB_MENU_DE_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/kryptowaehrung-preise']")
+        SUB_MENU_EL_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/zwntana-kryptonomismata-times']")
+        SUB_MENU_ES_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/live-cryptocurrency-prices']")
+        SUB_MENU_FR_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/live-monnaies-crypto-prix']")
+        SUB_MENU_IT_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/prezzi-delle-criptovalute-in-tempo-reale']")
+        SUB_MENU_HU_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/live-cryptocurrency-prices']")
+        SUB_MENU_NL_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/live-cryptovaluta-prijzen']")
+        SUB_MENU_PL_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/na-zywo-kryptowaluta-ceny']")
+        SUB_MENU_RO_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/live-criptomoneda-preturile']")
+        SUB_MENU_RU_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/tseny-na-kriptovalyuty']")
+        SUB_MENU_ZH_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-cryptocurrency-prices']")
+        SUB_MENU_CN_CRYPTOCURRENCIES = \
+            (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-cryptocurrency-prices']")
