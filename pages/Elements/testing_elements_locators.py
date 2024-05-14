@@ -240,6 +240,10 @@ class MainPageBannerLocators:
 
     MAIN_PAGE_BANNER_BLOCK_V2 = (By.CSS_SELECTOR, "main.grid.gLg")
     GET_INVOLVED_TAB_MAIN_PAGE_BANNER_V2 = (By.CSS_SELECTOR, 'button[aria-controls="splide01-slide02"]')
+    INDUSTRY_LEADING_SUPPORT_TAB_MAIN_PAGE_BANNER_V2 = (
+        By.CSS_SELECTOR, 'button[aria-controls="splide01-slide04"]')
+    START_TRADING_BUTTON_INDUSTRY_LEADING_SUPPORT_TAB_V2 = (
+        By.CSS_SELECTOR, '#splide01-slide04 [href="/trading/signup"]')
     TRADE_NOW_BUTTON_GET_INVOLVED_TAB_V2 = (By.CSS_SELECTOR, '#splide01-slide02 [href="/trading/signup"]')
     PRACTICE_FOR_FREE_BUTTON_GET_INVOLVED_TAB_V2 = (
         By.CSS_SELECTOR, '#splide01-slide02 [href="/trading/signup?go=demo"]')
