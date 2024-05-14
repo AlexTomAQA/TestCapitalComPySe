@@ -17,6 +17,7 @@ from pages.Elements.GetInvolvedBannerPracticeForFreeButtonV2 import GetInvolvedB
 from pages.Elements.GetInvolvedBannerTradeNowButton import GetInvolvedBannerTradeNowButton
 from pages.Elements.GetInvolvedBannerTradeNowButtonV2 import GetInvolvedBannerTradeNowButtonV2
 from pages.Elements.GetInvolvedBannerTryFreeDemoButton import GetInvolvedBannerTryFreeDemoButton
+from pages.Elements.IndustryLeadingSupportBannerPracticeForFreeButtonV2 import IndustryLeadingSupportBannerPracticeForFreeButtonV2
 from pages.Elements.IndustryLeadingSupportBannerStartTradingButtonV2 import IndustryLeadingSupportBannerStartTradingButtonV2
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
@@ -737,6 +738,40 @@ class TestMainPage:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = IndustryLeadingSupportBannerStartTradingButtonV2(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Practice for free] in Banner 'Industry-leading support for new traders_v2'")
+    @pytest.mark.test_025
+    def test_025_practice_for_free_button_in_industry_leading_support_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Practice for free] in Banner 'Industry-leading support for new traders_v2' Main Page
+        Language: EN.
+        License: CYSEC, SCB.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_025",
+            "Testing button [Practice for free] in Banner 'Industry-leading support for new traders_v2' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = IndustryLeadingSupportBannerPracticeForFreeButtonV2(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
     @allure.step("Start test of button [Trade now] in Banner 'Get involved. Become a trader'")
