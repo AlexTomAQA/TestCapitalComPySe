@@ -14,6 +14,7 @@ from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
+from pages.common import Common
 
 
 class PageInstrumentNotificationButton(BasePage):
@@ -48,6 +49,7 @@ class PageInstrumentNotificationButton(BasePage):
         print(f"{datetime.now()} BUTTON_NOTIFICATION is located on the page? =>")
         buttons = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.BUTTON_NOTIFICATION)
         print(f"{datetime.now()}   Is BUTTON_NOTIFICATION present on the page? =>")
+
         if len(buttons) == 0:
             print(f"{datetime.now()} => BUTTON_NOTIFICATION is not present on the page")
             return False
@@ -60,7 +62,7 @@ class PageInstrumentNotificationButton(BasePage):
     @allure.step("Click button [Notification]")
     def element_click(self, cur_role):
         print(f"\n{datetime.now()}   2. Act_v0")
-        print(f"{datetime.now()}   Start Click button [Notification] =>")
+        print(f"{datetime.now()}   Start Click 'Notification' button =>")
 
         # Вытаскиваем уникальный атрибут открытого ТИ
         trade_instrument_tag = self.driver.find_element(
@@ -71,6 +73,7 @@ class PageInstrumentNotificationButton(BasePage):
         if not self.element_is_clickable(buttons[0], 5):
             print(f"{datetime.now()} => BUTTON_NOTIFICATION is not clickable after more then 5 sec")
             pytest.fail(f"BUTTON_NOTIFICATION is not clickable more then 5 sec.")
+
         print(f"{datetime.now()} BUTTON_NOTIFICATION is clickable =>")
 
         try:
@@ -95,3 +98,4 @@ class PageInstrumentNotificationButton(BasePage):
             del page_
 
         return trade_instrument_tag
+

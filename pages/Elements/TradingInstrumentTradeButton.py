@@ -34,7 +34,9 @@ class TradingInstrumentTradeButton(BasePage):
         item_list = self.arrange_(d, cur_item_link, cur_market)
         for i in item_list:
             self.element_click(d, i, cur_market)
-            test_element = AssertClass(self.driver, cur_item_link)
+            # test_element = AssertClass(self.driver, cur_item_link)
+            test_element = AssertClass(self.driver, cur_item_link, self.bid)
+            print(f"\n{datetime.now()}   1. Arrange for 'Trading instrument' widget: '{cur_market}' market")
             match cur_role:
                 case "NoReg":
                     test_element.assert_signup(self.driver, cur_language, cur_item_link)
@@ -42,7 +44,7 @@ class TradingInstrumentTradeButton(BasePage):
                     test_element.assert_login(self.driver, cur_language, cur_item_link)
                 case "Auth":
                     test_element.assert_trading_platform_v4(
-                        self.driver, cur_item_link, False, True)
+                        self.driver, cur_item_link, False, True, self.trade_instrument)
             self.driver.get(cur_item_link)
 
     def arrange_(self, d, cur_item_link, cur_market):
@@ -92,8 +94,8 @@ class TradingInstrumentTradeButton(BasePage):
 
         # Check presenting and visible current market Tab
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' present on this page? =>")
-        market_list = self.driver.find_elements(*self.market_locator)
-        if len(market_list) == 0:
+        elements = self.driver.find_elements(*self.market_locator)
+        if len(elements) == 0:
             msg = f"MARKET '{cur_market}' is NOT present on this page"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
@@ -101,7 +103,7 @@ class TradingInstrumentTradeButton(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            market_list[0]
+            d.find_elements(*self.market_locator)[0]
         )
 
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
@@ -211,6 +213,12 @@ class TradingInstrumentTradeButton(BasePage):
         except ElementNotInteractableException:
             print(f"{datetime.now()}   => Tab '{cur_market}' MARKET is NOT clicked\n")
             pytest.fail("Checking element is not clicked")
+
+        # Get name of instrument
+        print(f"{datetime.now()}   Start get name of trading instrument =>")
+        trade_instrument_list = self.driver.find_elements(*ButtonsOnPageLocators.NAME_OF_TRADING_INSTRUMENT)
+        self.trade_instrument = trade_instrument_list[i].text
+        print(f'{datetime.now()}   => Name of trading instrument: {self.trade_instrument}\n')
 
         # Start click button [Trade]
         print(f"{datetime.now()}   Start click button [Trade] =>")

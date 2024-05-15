@@ -41,6 +41,24 @@ class Common:
 		return
 
 	@staticmethod
+	def check_language_and_country_in_list_and_skip_if_not_present(cur_language, cur_country, *list_languages_country_args):
+		flag_language_country = None
+		for list_languages_country in list_languages_country_args:
+			if cur_language in list_languages_country[0] and cur_country in list_languages_country[1]:
+				flag_language_country = True
+				break
+			else:
+				flag_language_country = False
+		if not flag_language_country:
+			pytest.skip(f"This test is not for couple '{cur_language}' language and '{cur_country}' country")
+
+	@staticmethod
+	def check_role_in_list_and_skip_if_present(cur_role, list_role):
+		if cur_role not in list_role:
+			pytest.skip(f"This test is not for '{cur_role}' role")
+		return
+
+	@staticmethod
 	def check_country_in_list_and_skip_if_present(cur_country, list_countries):
 		if cur_country in list_countries:
 			pytest.skip(f"This test is not for '{cur_country}' country")
@@ -67,7 +85,7 @@ class Common:
 		pytest.skip(f"This test-case is not for {cur_country} country")
 
 	@staticmethod
-	@allure.step(f'{datetime.now()}   Start Creating file of href method')
+	@allure.step('Start Creating file of href method')
 	def creating_file_of_hrefs(title_us, list_items, file_name, first_index=1):
 		file = None
 		list_url_out = list()
@@ -82,8 +100,7 @@ class Common:
 			for i in range(QTY_LINKS):
 				if i < count_in:
 					while True:
-						# k = randint(first_index, count_in - 1)
-						k = randint(first_index, count_in)
+						k = randint(first_index, count_in - 1)
 						item = list_items[k]
 						url = item.get_property("href")
 						print(f"{datetime.now()}   k = {k} - {url}")
@@ -119,6 +136,7 @@ class Common:
 			retest = sys.argv[1].split('=')[1]
 		except IndexError:
 			retest = False
+
 		if retest == 'True':
 			if sys.argv[6].split('=')[0] == "--tpi_link":
 				list_item_link.append(sys.argv[6].split('=')[1])
@@ -127,19 +145,20 @@ class Common:
 			try:
 				file = open(file_name, "r")
 			except FileNotFoundError:
-				print(f"{datetime.now()}   There is no file with name {file_name}!")
+				print(f"{datetime.now()}   There is no file with name {file_name}")
 			else:
 				for line in file:
 					list_item_link.append(line[:-1])
 					print(f"{datetime.now()}   {line[:-1]}")
 				file.close()
 
-			qty = len(list_item_link)
-			if qty == 0:
-				print(f"{datetime.now()}   Отсутствуют тестовые данные: нет списка ссылок на страницы")
-				sys.exit(1)
-			else:
-				print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
+		qty = len(list_item_link)
+		if qty == 0:
+			msg = "Отсутствуют тестовые данные: нет списка ссылок на страницы"
+			print(f"{datetime.now()}   {msg}")
+			pytest.exit(msg)
+		else:
+			print(f"{datetime.now()}   List of hrefs contains {qty} URLs")
 
 		return list_item_link
 
@@ -208,3 +227,8 @@ class Common:
 	def pytest_fail(msg):
 		Common.flag_of_bug = True
 		pytest.fail(msg)
+
+	@staticmethod
+	def pytest_skip(msg):
+		Common.flag_of_bug = False
+		pytest.skip(msg)

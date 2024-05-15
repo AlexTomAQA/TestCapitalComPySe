@@ -1080,6 +1080,10 @@ class MenuUS0102MarketsShares:
     SUB_MENU_CN_SHARES = (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-share-prices']")
 
 
+class MenuUS0107MarketsESG:
+    SUB_MENU_EN_ESG = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/esg-rating']")
+
+    
 class MenuUS0101AllMarkets:
     SUB_MENU_EN_ALLMARKETS_BUTTON = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/derivative-financial-instruments']")
