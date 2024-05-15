@@ -8,13 +8,17 @@ import allure
 import pytest
 
 from pages.common import Common
-from pages.Elements.FindUsOnTradingviewBannerExploreFeaturesButton import FindUsOnTradingviewBannerExploreFeaturesButton
-from pages.Elements.GetInvolvedBannerTradeNowButton import GetInvolvedBannerTradeNowButton
-from pages.Elements.GetInvolvedBannerTryFreeDemoButton import GetInvolvedBannerTryFreeDemoButton
 from pages.Elements.ExploreOurPlatformBlockEasyToUseLink import ExploreOurPlatformBlockEasyToUseLink
 from pages.Elements.ExploreOurPlatformBlockTryNowButton import ExploreOurPlatformBlockTryNowButton
+from pages.Elements.FindUsOnTradingviewBannerExploreFeaturesButton import FindUsOnTradingviewBannerExploreFeaturesButton
 from pages.Elements.ForLearnerTradersBlockTryDemoButton import ForLearnerTradersBlockTryDemoButton
 from pages.Elements.ForLearnerTradersBlockSignUpButton import ForLearnerTradersBlockSignUpButton
+from pages.Elements.GetInvolvedBannerPracticeForFreeButtonV2 import GetInvolvedBannerPracticeForFreeButtonV2
+from pages.Elements.GetInvolvedBannerTradeNowButton import GetInvolvedBannerTradeNowButton
+from pages.Elements.GetInvolvedBannerTradeNowButtonV2 import GetInvolvedBannerTradeNowButtonV2
+from pages.Elements.GetInvolvedBannerTryFreeDemoButton import GetInvolvedBannerTryFreeDemoButton
+from pages.Elements.IndustryLeadingSupportBannerPracticeForFreeButtonV2 import IndustryLeadingSupportBannerPracticeForFreeButtonV2
+from pages.Elements.IndustryLeadingSupportBannerStartTradingButtonV2 import IndustryLeadingSupportBannerStartTradingButtonV2
 from pages.Elements.MainBannerSignUpButtonMainPage import MainBannerSignUpButtonMainPage
 from pages.Elements.MainBannerTryDemoButtonMainPage import MainBannerTryDemoButtonMainPage
 from pages.Elements.OurAppsBlockDownloadOnTheAppStoreButton import OurAppsBlockDownloadOnTheAppStoreButton
@@ -636,6 +640,140 @@ class TestMainPage:
         test_element = TradingCalculatorStartTradingButton(d, main_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
 
+    @allure.step("Start test of button [Trade now] in Banner 'Get involved. Become a trader_v2'")
+    @pytest.mark.test_022
+    def test_022_trade_now_button_in_get_involved_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Trade now] in Banner 'Get involved. Become a trader_v2' Main Page
+        Language: EN.
+        License: CYSEC, SCB.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_022", "Testing button [Trade now] in Banner 'Get involved. Become a trader_v2' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = GetInvolvedBannerTradeNowButtonV2(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Practice for free] in Banner 'Get involved. Become a trader_v2'")
+    @pytest.mark.test_023
+    def test_023_practice_for_free_button_in_get_involved_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Practice for free] in Banner 'Get involved. Become a trader_v2' Main Page
+        Language: EN.
+        License: CYSEC, SCB.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_023", "Testing button [Practice for free] in Banner 'Get involved. Become a trader_v2' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = GetInvolvedBannerPracticeForFreeButtonV2(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Start trading] in Banner 'Industry-leading support for new traders_v2'")
+    @pytest.mark.test_024
+    def test_024_start_trading_button_in_industry_leading_support_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Start trading] in Banner 'Industry-leading support for new traders_v2' Main Page
+        Language: EN.
+        License: CYSEC, SCB.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_024",
+            "Testing button [Start trading] in Banner 'Industry-leading support for new traders_v2' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = IndustryLeadingSupportBannerStartTradingButtonV2(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
+    @allure.step("Start test of button [Practice for free] in Banner 'Industry-leading support for new traders_v2'")
+    @pytest.mark.test_025
+    def test_025_practice_for_free_button_in_industry_leading_support_banner(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Practice for free] in Banner 'Industry-leading support for new traders_v2' Main Page
+        Language: EN.
+        License: CYSEC, SCB.
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "00", "Main Page",
+            ".00_025",
+            "Testing button [Practice for free] in Banner 'Industry-leading support for new traders_v2' Main Page",
+            False, False
+        )
+
+        Common().check_language_in_list_and_skip_if_not_present(
+            cur_language,
+            ['']
+        )
+        Common().check_country_in_list_and_skip_if_not_present(
+            cur_country,
+            ['de', 'ae']
+        )
+
+        page_conditions = Conditions(d, "")
+        main_page_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = IndustryLeadingSupportBannerPracticeForFreeButtonV2(d, main_page_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, main_page_link)
+
     @allure.step("Start test of button [Trade now] in Banner 'Get involved. Become a trader'")
     @pytest.mark.test_031
     def test_031_trade_now_button_in_get_involved_banner(
@@ -651,7 +789,7 @@ class TestMainPage:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "00", "Main Page",
-            ".00_031", "Testing button [Trade now] in Widget 'Get involved. Become a trader' Main Page",
+            ".00_031", "Testing button [Trade now] in Banner 'Get involved. Become a trader' Main Page",
             False, False
         )
 
