@@ -13,7 +13,6 @@ import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
-from pages.base_page import BasePage
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
@@ -37,9 +36,13 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingPsychologyGuide, MenuUS11PositionTrading, MenuUS11SwingTrading, MenuUS11ScalpTrading,
     MenuUS11SharesTrading, MenuUS11RiskManagement, MenuUS11TechnicalAnalysis, MenuUS11HELP, MenuUS11LearnToTrade,
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
-    MenuUS01Markets, MenuUS0101AllMarkets, MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0107MarketsESG
+    MenuUS01Markets,
+    MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets,
+    MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG
 )
+from pages.base_page import BasePage
 from pages.common import Common
+
 # from pages.common import bug_11_01_03_00
 
 logger = logging.getLogger()
@@ -54,9 +57,11 @@ class MenuSection(BasePage):
         flag_set_menu - признак того, что нужное меню выбрано (установлено), необязательный аргумент. По умолчанию =
         False
     """
+
     def __init__(self, wd, main_page_link, flag_set_menu=False):
         self.flag_set_menu = flag_set_menu
         super().__init__(wd, main_page_link)
+
     # bug_11_01_03_00
 
     @allure.step('Select "Learn to trade" menu, "Risk-management guide')
@@ -397,7 +402,7 @@ class MenuSection(BasePage):
     def move_focus_to_markets_menu(self, d, test_language, test_country):
         markets_menu_locator = None
         if test_language == "" and test_country == "gb":
-            markets_menu_locator = MenuUS01Markets.MENU_EN_GB_MARKETS   # новая верстка, FCA
+            markets_menu_locator = MenuUS01Markets.MENU_EN_GB_MARKETS  # новая верстка, FCA
         else:
             match test_language:
                 case "":
@@ -1448,7 +1453,7 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
-               
+
         del sub_menu
         return d.current_url
 
@@ -1505,7 +1510,7 @@ class MenuSection(BasePage):
         if len(sub_menu) == 0:
             Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
                                  f"the page \"Menu > Forex\" doesn't exist on production")
-        
+
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
             .pause(0.5) \
@@ -1554,7 +1559,8 @@ class MenuSection(BasePage):
     def sub_menu_indices_move_focus_click(self, d, test_language):
         sub_menu = list()
         match test_language:
-            case "": sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EN_INDICES)
+            case "":
+                sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_EN_INDICES)
             case "ar":
                 sub_menu = d.find_elements(*MenuUS01Indices.SUB_MENU_AR_INDICES)
             case "de":
@@ -1805,3 +1811,66 @@ class MenuSection(BasePage):
         del sub_menu
 
         return d.current_url
+
+    @allure.step('Select "Markets" menu, "Cryptocurrencies" submenu click')
+    def open_cryptocurrencies_market_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Cryptocurrencies" submenu =>')
+        print(f"{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_cryptocurrencies_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus move to 'Cryptocurrencies' submenu and click.")
+    def sub_menu_cryptocurrencies_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_EN_CRYPTOCURRENCIES)
+            case "ar":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_AR_CRYPTOCURRENCIES)
+            case "de":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_DE_CRYPTOCURRENCIES)
+            case "el":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_EL_CRYPTOCURRENCIES)
+            case "es":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_ES_CRYPTOCURRENCIES)
+            case "fr":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_FR_CRYPTOCURRENCIES)
+            case "it":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_IT_CRYPTOCURRENCIES)
+            case "hu":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_HU_CRYPTOCURRENCIES)
+            case "nl":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_NL_CRYPTOCURRENCIES)
+            case "pl":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_PL_CRYPTOCURRENCIES)
+            case "ro":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_RO_CRYPTOCURRENCIES)
+            case "ru":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_RU_CRYPTOCURRENCIES)
+            case "zn":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_ZH_CRYPTOCURRENCIES)
+            case "cn":
+                sub_menu = d.find_elements(*MenuUS0106MarketsCryptocurrencies.SUB_MENU_CN_CRYPTOCURRENCIES)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Markets > Cryptocurrencies\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Cryptocurrencies' submenu and clicked")
+        del sub_menu
