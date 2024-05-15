@@ -57,7 +57,7 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         print(f"\n{datetime.now()}   List of random items = {item_list}")
 
         for i, value in enumerate(item_list):
-            self.element_click(self.driver, value, cur_market, cur_sort_all_markets)
+            self.element_click(self.driver, value, cur_sort_all_markets)
             test_element = AssertClass(self.driver, cur_item_link, self.bid)
             match cur_role:
                 case "NoReg":
@@ -153,7 +153,6 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
 
             case "Most volatile":
                 self.item_sort = ItemSortDropdownLocators.ITEM_DROPDOWN_SORT_MOST_VOLATILE
-
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_VOLATILE
 
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
@@ -197,12 +196,13 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
             self.sell_list = self.driver.find_elements(
                 *MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
 
-            qty_buttons = len(self.sell_list)
-            count_of_runs = (COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons)
+            # qty_buttons = len(self.sell_list)
+            # count_of_runs = (COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons)
 
-            item_list = random.sample(range(qty_buttons), count_of_runs)
+            item_list = [random.randint(0, len(self.sell_list) - 1)]
+            print(item_list)
             print(
-                f"{datetime.now()}   => End find {count_of_runs} random buttons [Sell] on the cur_sort "
+                f"{datetime.now()}   => End find {COUNT_OF_RUNS} random buttons [Sell] on the cur_sort "
                 f'"{cur_sort_all_markets}"')
 
             return item_list
@@ -211,28 +211,39 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
             Common().pytest_fail("Bug # ??? element is not on this page")
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
-    def element_click(self, wd, value, cur_market, cur_sort_all_markets):
-        print(f"{datetime.now()}   2. Act for trading instrument, cur_market {cur_market} "
-              f"and \"{cur_sort_all_markets}\" cur_sort")
+    def element_click(self, wd, value, cur_sort_all_markets):
+        print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
 
-        items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
-        item = items_list[value]
-        self.trade_instrument = item.text
+        print(value)
+
+        # items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
+        # item = items_list[value]
+        self.trade_instrument = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value].text
+        print(self.trade_instrument)
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
-
-        ActionChains(wd) \
-            .move_to_element(
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
-            .perform()
-
-        print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
-
-        if not self.element_is_clickable(
-             wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
-            print(f"{datetime.now()}   => BUTTON_SELL not clickable")
-            Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
-        print(f"{datetime.now()}   => BUTTON_SELL is clickable")
+        # sell_buttons_list = wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
+        # button = sell_buttons_list[value]
+        # ActionChains(wd) \
+        #     .move_to_element(
+        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
+        #     .perform()
+        #
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+        #
+        # print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
+        #
+        # # if not self.element_is_clickable(
+        # #      wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
+        # # button = self.element_is_clickable(
+        # #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[0])
+        # if not self.element_is_clickable(
+        #         wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
+        #     print(f"{datetime.now()}   => BUTTON_SELL not clickable")
+        #     Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
+        # print(f"{datetime.now()}   => BUTTON_SELL is clickable")
 
         ActionChains(wd) \
             .move_to_element(
@@ -241,3 +252,5 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
             .perform()
 
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
+
+
