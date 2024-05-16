@@ -93,7 +93,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         print(f"{datetime.now()}   Start scroll to markets list =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            markets_list[0], )
+            markets_list[0])
 
         if len(markets_list) == 0:
             print(f"{datetime.now()}   => MARKETS_LIST is NOT present on this page\n")
@@ -117,7 +117,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         print(f"{datetime.now()}   Start scroll and click cur_market '{cur_market}' =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            markets_list[0], )
+            markets_list[0])
 
         self.current_market = self.driver.find_element(*self.market_name)
         self.current_market.click()
@@ -136,7 +136,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
         print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            field_dropdown_list[0], )
+            field_dropdown_list[0])
 
         field_dropdown_list[0].click()
 
@@ -163,7 +163,7 @@ class TableTradingInstrumentsBuyButtonAllMarkets(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            item_sort_list, )
+            item_sort_list)
 
         if not item_sort_list:
             print(f'{datetime.now()}   => cur_sort "{cur_sort_all_markets}" is not visible in item_sort_list?')
