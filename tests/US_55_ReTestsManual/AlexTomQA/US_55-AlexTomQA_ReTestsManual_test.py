@@ -8,7 +8,7 @@ import pytest
 import allure
 # from pages.common import Common
 # from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
 # from pages.conditions import Conditions
 # from pages.Elements.StepTradingBlock import BlockStepTrading
 # from pages.Elements.AssertClass import AssertClass
@@ -21,17 +21,17 @@ from tests.build_dynamic_arg import build_dynamic_arg_v4
 @pytest.mark.us_55
 class TestManualDetected:
 
-    @allure.step("Start test of ???")
-    @pytest.mark.test_01
-    def test_501(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @allure.step("Start test of _006")
+    @pytest.mark.test_006
+    def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         # """
         # Check: Button [1. Create your account] in block [Steps trading]
         # Language: All. License: All.
         # """
-        bid = build_dynamic_arg_v4(
+        bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTest Manual Detected > Menu item [Glossary of trading terms]",
-            ".00_01", "Testing button [1. Create your account] in block [Steps trading]")
+            "_006", "Testing button [1. Create your account] in block [Steps trading]")
         pytest.skip("Autotest under construction")
 
         #
