@@ -154,8 +154,10 @@ def build_dynamic_arg_for_us_55(
     if cur_language == "":
         cur_language = "en"
     dynamic_epic = f"US_{us} | {desc_us}"
-    dynamic_feature = f"Language: {cur_language}"
-    dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+    # dynamic_feature = f"Language: {cur_language}"
+    dynamic_feature = f"Country: {cur_country}"
+    # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+    dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
     if manual:
         bug_id = (f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}"
                   f"-M{"N" if new_layout else "O"}")
