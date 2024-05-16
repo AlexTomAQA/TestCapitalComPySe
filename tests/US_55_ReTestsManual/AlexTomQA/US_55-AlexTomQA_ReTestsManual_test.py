@@ -22,6 +22,9 @@ from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
 class TestManualDetected:
 
     @allure.step("Start test of _006")
+    @pytest.mark.parametrize('cur_language', [])
+    @pytest.mark.parametrize('cur_country', [])
+    @pytest.mark.parametrize('cur_role', [])
     @pytest.mark.test_006
     def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         # """
@@ -30,8 +33,8 @@ class TestManualDetected:
         # """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTest Manual Detected > Menu item [Glossary of trading terms]",
-            "_006", "Testing button [1. Create your account] in block [Steps trading]")
+            "55", "ReTest Manual Detected Bugs",
+            "_006", "??? Description Bug")
         pytest.skip("Autotest under construction")
 
         #
