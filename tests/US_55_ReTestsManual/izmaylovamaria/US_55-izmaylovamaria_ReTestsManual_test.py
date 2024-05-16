@@ -12,6 +12,9 @@ from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
 class TestManualDetectedBugs:
 
     @allure.step("Start test of _010")
+    @pytest.mark.parametrize('cur_language', [])
+    @pytest.mark.parametrize('cur_country', [])
+    @pytest.mark.parametrize('cur_role', [])
     @pytest.mark.test_010
     def test_010(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         # """
