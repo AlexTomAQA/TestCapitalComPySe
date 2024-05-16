@@ -185,7 +185,6 @@ class ButtonsOnPageLocators:
     BUTTON_CREATE_DEMO_ACCOUNT_IN_TRADING_FOR_FREE = \
         (By.CSS_SELECTOR, "div [href='https://capital.com/trading/signup?go=demo']")
 
-
     # Item name
     SPAN_TRADING_ITEM_MOST_TRADED = (By.CSS_SELECTOR, ".table-tools.catTabs.tab-mosttraded > table > "
                                                       "tbody > tr > td.name > a > span.table-tools__title")
@@ -283,8 +282,10 @@ class ContentBlockLocators:
     WHY_CHOOSE_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn2_signup"]')
     WHY_CHOOSE_BLOCK_TRY_NOW_BUTTON = (By.CSS_SELECTOR, '.js-bannerSection .js-showBanner .btn.js_signup')
 
-    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
-    FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
+    FOR_LEARNER_TRADERS_BLOCK_TRY_DEMO_BUTTON = (
+        By.CSS_SELECTOR, '[data-type="learn_traders_block"] .l_btn_signup_demo')
+    FOR_LEARNER_TRADERS_BLOCK_SIGN_UP_BUTTON = (
+        By.CSS_SELECTOR, '[data-type="learn_traders_block_btn1_signup"]')
 
     # Elements of 'Explore our platform' block
     EXPLORE_OUR_PLATFORM_BLOCK = (By.CSS_SELECTOR, '.wrap section.cc-boxLg > .flex-wrap')
@@ -299,6 +300,7 @@ class ContentBlockLocators:
     TRADERS_DASHBOARD_WIDGET = (By.CSS_SELECTOR, 'div[data-type="traders_dashboard"]')
     TRADE_BUTTON_TRADERS_DASHBOARD_WIDGET = (By.XPATH, '(//div[@class="tradersDashboard__main"]//button)')
     NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".tradersDashboard__item .tradersDashboard__name b")
+
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")
@@ -411,7 +413,6 @@ class MarketSortAllMarketsLocators:
     # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
     # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
     BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, "td.sell")
-
 
 
 class GlobalEnvironmentalLocators:
