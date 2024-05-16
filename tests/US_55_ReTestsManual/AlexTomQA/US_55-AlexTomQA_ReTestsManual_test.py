@@ -30,8 +30,8 @@ class TestManualDetected:
         # """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTest Manual Detected > Menu item [Glossary of trading terms]",
-            "_006", "Testing button [1. Create your account] in block [Steps trading]")
+            "55", "ReTest Manual Detected Bugs",
+            "_006", "??? Description Bug")
         pytest.skip("Autotest under construction")
 
         #
