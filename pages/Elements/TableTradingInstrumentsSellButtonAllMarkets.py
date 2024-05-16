@@ -95,7 +95,7 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         print(f"{datetime.now()}   Start scroll to markets list =>")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            markets_list[0], )
+            markets_list[0])
 
         if len(markets_list) == 0:
             print(f"{datetime.now()}   => MARKETS_LIST is NOT present on this page\n")
@@ -117,24 +117,20 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
                 self.market_name = MarketSortAllMarketsLocators.FOREX_MARKET_TAB
 
         print(f"{datetime.now()}   Start scroll and click cur_market '{cur_market}' =>")
-
         self.current_market = self.driver.find_element(*self.market_name)
         self.current_market.click()
-
         print(f'{datetime.now()}   => End Click cur_market "{cur_market}"')
 
         print(f"{datetime.now()}   IS FIELD_DROPDOWN_SORT present in the Live prices table? =>")
-
         field_dropdown_list = self.driver.find_elements(*FieldDropdownMarketsLocator.FIELD_DROPDOWN_MARKETS)
-
         if len(field_dropdown_list) == 0:
             Common().pytest_fail("Bug # ??? FIELD_DROPDOWN_SORT is not present in Live table")
         print(f"{datetime.now()}   =>  FIELD_DROPDOWN_SORT is present in the table!")
 
-        print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            field_dropdown_list[0], )
+        # print(f"{datetime.now()}   Start scroll and click FIELD_DROPDOWN_SORT =>")
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     field_dropdown_list[0])
 
         field_dropdown_list[0].click()
 
@@ -156,66 +152,53 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
                 self.sort_locator = FieldDropdownMarketsLocator.FIELD_DROPDOWN_MOST_VOLATILE
 
         print(f"{datetime.now()}   Is item_sort_list visible on the FIELD_DROPDOWN_SORT ? =>")
-
         item_sort_list = self.element_is_visible(ItemSortDropdownLocators.ALL_ITEM_DROPDOWN_SORT)
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            item_sort_list, )
-
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     item_sort_list)
         if not item_sort_list:
             print(f'{datetime.now()}   => cur_sort "{cur_sort_all_markets}" is not visible in item_sort_list?')
             Common().pytest_fail("Bug # ??? item_sort_list is not visible")
-
         print(f"{datetime.now()}   => item_sort_list is visible on the FIELD_DROPDOWN_SORT!")
 
         print(f'{datetime.now()}   Is cur_sort "{cur_sort_all_markets}" present in item_sort_list? =>')
-
         if not self.driver.find_element(*self.item_sort):
             print(f'{datetime.now()}   => cur_sort "{cur_sort_all_markets}" is not present in item_sort_list!')
             Common().pytest_fail(f'Bug # ??? cur_sort "{cur_sort_all_markets}" is not present in item_sort_list!')
-
         print(f'{datetime.now()}   => cur_sort "{cur_sort_all_markets}" is present in item_sort_list!')
 
         print(f'{datetime.now()}   Start click cur_sort "{cur_sort_all_markets}" =>')
-
         self.current_sort = self.driver.find_element(*self.item_sort)
         self.current_sort.click()
-
         print(f'{datetime.now()}   => End Click cur_sort "{cur_sort_all_markets}"')
 
         print(f"\n{datetime.now()}   Buttons [Sell] is visible and sum buttons no zero? =>")
-
         if len(self.driver.find_elements(
-                *MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)) != 0:
-
-            print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero!\n")
-
-            print(f'{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort=>')
-
-            self.sell_list = self.driver.find_elements(
-                *MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
-
-            # qty_buttons = len(self.sell_list)
-            # count_of_runs = (COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons)
-
-            item_list = [random.randint(0, len(self.sell_list) - 1)]
-            print(item_list)
-            print(
-                f"{datetime.now()}   => End find {COUNT_OF_RUNS} random buttons [Sell] on the cur_sort "
-                f'"{cur_sort_all_markets}"')
-
-            return item_list
-        else:
-            print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero!")
+                *MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)) == 0:
+            print(f"{datetime.now()}   => Buttons [Sell] is NOT visible or sum buttons zero")
             Common().pytest_fail("Bug # ??? element is not on this page")
+        print(f"{datetime.now()}   => Buttons [Sell] is visible and sum buttons no zero")
+
+        print(f'\n{datetime.now()}   Start find {COUNT_OF_RUNS} random buttons [Sell] on cur_sort=>')
+        self.sell_list = self.driver.find_elements(
+            *MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
+
+        # qty_buttons = len(self.sell_list)
+        # count_of_runs = (COUNT_OF_RUNS if qty_buttons >= COUNT_OF_RUNS else qty_buttons)
+
+        item_list = [random.randint(0, len(self.sell_list) - 1)]
+        print(item_list)
+        print(
+            f"{datetime.now()}   => End find {COUNT_OF_RUNS} random buttons [Sell] on the cur_sort "
+            f'"{cur_sort_all_markets}"')
+
+        return item_list
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort_all_markets):
         print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
 
-        print(value)
-
+        print(f"{datetime.now()}   Index in item_list = {value}")
         # items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         # item = items_list[value]
         self.trade_instrument = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value].text
