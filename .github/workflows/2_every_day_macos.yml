@@ -1,0 +1,429 @@
+name: 2. MacOS, All US
+on:
+#  push:
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+
+#  schedule:
+#    - cron: '00 13 * * *'
+#    - cron: '10 06 * * *'
+
+jobs:
+  tests:
+    name: I. Building environment and testing the capital.com website
+    runs-on: macos-latest
+
+    steps:
+      - name: 1. Check out this repo, master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: 2.1. Install Python
+        if: always()
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12.3"
+
+      - name: 3.1. Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: 3.3. Install Neofetch
+        if: always()
+        run: brew install neofetch
+
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: pip3 install psutil
+      - name: For Run hwinfo.py first time
+        if: always()
+        run: pip3 install speedtest
+      - name: Run hwinfo.py first time
+        if: always()
+        run: python3 tests/hwinfo.py
+
+      - name: 4. Install Zbar for QReader
+        if: always()
+        run: brew install zbar
+
+      - name: 4. install Poetry
+        if: always()
+        run: pip3 install poetry
+
+      - name: 5. install dependencies
+        if: always()
+        run: poetry install --sync
+
+      - name: Run hwinfo.py
+        if: always()
+        run: poetry run python3 tests/hwinfo.py
+
+#      - name: 6. Check code for errors by flake8 and format code with black
+#        if: always()
+#        uses: ricardochaves/python-lint@v1.4.0
+#        with:
+#          python-root-list: ""
+#          use-pylint: false
+#          use-pycodestyle: false
+#          use-flake8: true
+#          use-black: false
+#          use-mypy: false
+#          use-isort: false
+#          extra-pylint-options: ""
+#          extra-pycodestyle-options: ""
+#          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
+#          extra-black-options: ". -S"
+#          extra-mypy-options: ""
+#          extra-isort-options: ""
+#
+      - name: 8. Run US_00-00 | Main Page of Capital.com FCA (Артем)
+        if: always()
+        run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
+        continue-on-error: true
+
+#      - name: 8. Run US_01-00 ()
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+#
+#      - name: 8. Run US_01-01 ()
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+#
+      - name: 8. Run US_01-01!00 | Menu [Markets] > Menu item [All Markets] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-01_All_markets/US_01-01-00_All_Markets_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-01!01 (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-01_All_markets/US_01-01-01_All_Markets_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-02!00 | Menu [Markets] > Menu item [Shares] Not FCA (Дима)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-00_Shares_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-02!01 (Дима)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-01_Shares_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-03-00 | Menu [Markets] > Menu item [Forex] Not FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-03_Forex/US_01-03-00_forex_tests.py
+        continue-on-error: true
+      - name: 8. Run US_01-03-01 | Menu [Markets] > Menu item [Forex] Not FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-03_Forex/US_01-03-01_forex_tests.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-04-00 | Menu [Markets] > Menu item [Indices] Not FCA (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-00_Indices_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-04-01 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-05-00 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-00_Commodities_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-05-01 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-01_Commodities_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-06 ()
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-06_Cryptocurrencies/US_01-06-00_Cryptocurrencies_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-07!00 (Мария)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-07_ESG/US_01-07!00_ESG_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-09!00 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-09_CFD_calculator/US_01-09_00_CFD_calculator_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-00 | Menu [Learn to trade] FCA (Мила П)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-01 | Learn to trade > Menu item [Essentials of trading] FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-01_Essentials_of_trading/US_11-00-01_Essentials_of_trading.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-02 | Learn to trade > Menu item [Risk-management guide] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-03 | Learn to trade > Menu item [Market guides] FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-03_Market_guides/US_11-00-03_Market_guides.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-04 | Learn to trade > Menu item [Trading Strategies] FCA (Дмитрий)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-04_Trading_strategies/US_11-00-04_Trading_strategies.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-05 | Learn to trade > Menu item [Technical analysis] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-05_Technical_analysis/US_11-00-05_Technical_analysis.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-06 | Learn to trade > Menu item [Help] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-06_Help/US_11-00-06_Help.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-01_Learning_hub/US_11-01-01_Learning_hub.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-02 (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-02_Basics_of_trading/US_11-01-02_Basics_of_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-03 test (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03!00_cfd_trading_guide_test.py
+        continue-on-error: true
+      - name: 8. Run US_11-01-03-01 (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03!01_cfd_trading_guide_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.01.04.00 test (Сулейман/Андрей/Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-04_spread_betting_guide/us_11-01-04!00_spread_betting_guide_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.01.04.01 test (Сулейман/Андрей/Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-04_spread_betting_guide/us_11-01-04!01_spread_betting_guide_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-05 (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-05_Trading_courses/US_11-01-05-00_Trading_courses_test.py
+        continue-on-error: true
+      - name: 8. Run US_11-01-05-01_test (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-05_Trading_courses/US_11-01-05-01_Trading_courses_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-06 (Сулейман/Андрей/Михаил)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-06_investmate_app/us_11-01-06_investmate_app_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-01-07 (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-07_Glossary/US_11-01-07-00_Glossary_of_trading_terms_test.py
+        continue-on-error: true
+      - name: 8. Run US_11-01-07-01 (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-07_Glossary/US_11-01-07-01_Glossary_of_trading_terms_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.01 (Мила Д/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-01_Market_guides/US_11-02-01_Market_guides_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.02.00 test (Михаил)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-00_Shares_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.02.01 test (Михаил)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-02_Shares_trading/US_11-02-02-01_Shares_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.03.00 test (Сулейман/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03-00_Commodities_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.03.01 test (Сулейман/Михаил)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-03_Commodities_trading/us_11-02-03-01_Commodities_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.04.00 (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-04_Forex_trading/US_11-02-04-00_Forex_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.04.01 (Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-04_Forex_trading/US_11-02-04-01_Forex_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.05.00 test (Сулейман/Саша Т/Дима)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05-00_cryptocurrency_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.05.01 test (Сулейман/Саша Т/Дима)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-05_Cryptocurrency_trading/us_11-02-05-01_cryptocurrency_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11.02.06.00 test (Андрей/Артем)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-00_indices_trading_test.py
+        continue-on-error: true
+      - name: 8. Run US_11.02.06.01 test (Андрей/Артем)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-01_indices_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-02-07 (Сулейман/Саша Т)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-07_ETF_trading/us_11-02-07_etf_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run us_11.03.01.00 test (Мила П)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-01_trading_strategies_guide/US_11-03-01-00_trading_strategies_guide_test.py
+        continue-on-error: true
+      - name: 8. Run us_11.03.01.01 test(Мила П)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-01_trading_strategies_guide/US_11-03-01-01_trading_strategies_guide_test.py
+        continue-on-error: true
+
+      - name: 8. Run us_11-03-02 (Andrey)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-02_Day_trading/us_11-03-02_day_trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run us_11-03-03 (Анна/Мила П)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-03_Trend_Trading/US_11-03-03_Trend_Trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-03-04 (Андрей)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-04_Position_Trading/US_11-03-04_Position_Trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-03-05 (Андрей)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-05_Swing_Trading/US_11-03-05_Swing_Trading_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-03-07 (Андрей)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-07_What_is_a_margin/US_11-03-07_What_is_a_margin_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-03-08-00 test (Мила П/Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-08_Trading_psychology_guide/US_11-03-08-00_trading_psychology_guide_test.py
+        continue-on-error: true
+      - name: 8. Run US_11-03-08-01 test (Мила П/Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-08_Trading_psychology_guide/US_11-03-08-01_trading_psychology_guide_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Касила)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Мария)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: Run hwinfo.py
+        if: always()
+        run: poetry run python3 tests/hwinfo.py
+
+      - name: 9. Upload artifact "allure-results"
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 1
+
+  generate_report:
+    name: II. Generate & Deploy Allure report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [ tests ]
+
+    steps:
+      - name: 1. Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: 2. Download Artifacts
+        uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: 3. Create Allure report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+          allure_report: allure-report
+          gh_pages: gh-pages
+          ref: gh-pages
+          path: gh-pages
+          keep_reports: 70
+
+      - name: 4. Deploy report to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          personal_token: ${{ secrets.GITHUB_TOKEN }}
+#          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./allure-history
+          commit_message: ${{ github.event.head_commit.message }}
+
+#      - name: 12. Send telegram message on push
+#        uses: appleboy/telegram-action@master
+#        if: always()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
+##           to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+##           disable_web_page_preview: true
+#          message: |
+#            Message from GitHub CI Actions
+#
+#            Testing of the "Capital.com" web application in the "macOS/Chrome" environment is completed!
+#
+#            See allure-result testing: https://${{ github.actor }}.github.io/TestCapitalCom/
+##             Tests Repository: https://github.com/${{ github.repository }}
