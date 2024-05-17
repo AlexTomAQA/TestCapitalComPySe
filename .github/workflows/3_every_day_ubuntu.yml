@@ -55,7 +55,6 @@ jobs:
       - name: 5. install dependencies
         if: always()
         run: poetry install --sync
-#        run: poetry update
 
       - name: Run hwinfo.py
         if: always()
@@ -139,11 +138,11 @@ jobs:
         run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-01_Commodities_test.py
         continue-on-error: true
 
-#      - name: 8. Run US_01-06 ()
-#        if: always()
-#        run: poetry run pytest -v
-#        continue-on-error: true
-#
+      - name: 8. Run US_01-06 ()
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-06_Cryptocurrencies/US_01-06-00_Cryptocurrencies_test.py
+        continue-on-error: true
+
       - name: 8. Run US_01-07!00 (Мария)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-07_ESG/US_01-07!00_ESG_test.py
@@ -400,7 +399,7 @@ jobs:
           allure_history: allure-history
           ref: gh-pages
           path: gh-pages
-          keep_reports: 80
+          keep_reports: 70
 
       - name: 4. Deploy allure_report to Github Pages
         uses: peaceiris/actions-gh-pages@v3
