@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-05-17 18:27:53.303023   worker_id = master
+
+2024-05-17 18:27:53.303023   0. Allure grouping v4
+
+2024-05-17 18:27:53.303023   START PRECONDITIONS =>
+
+2024-05-17 18:27:53.303023   => URL after prev. preconditions - https://capital.com/fr
+2024-05-17 18:27:53.303023   => flag_of_bug - True
+2024-05-17 18:27:53.303023   => Current URL - https://capital.com/trading/signup
+2024-05-17 18:27:53.303023   Current page URL = https://capital.com/trading/signup
+2024-05-17 18:27:53.303023   self.link = https://capital.com/fr
+2024-05-17 18:27:53.303023   driver.get(https://capital.com/fr) =>
+2024-05-17 18:27:55.461249   => Loaded page https://capital.com/fr
+
+2024-05-17 18:27:55.539807   => Windows size - {'width': 1280, 'height': 800}
+2024-05-17 18:27:55.541810   Set windows position at (0, 0) =>
+2024-05-17 18:27:55.544497   Set resolution 1280 * 800 =>
+2024-05-17 18:27:55.549190   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-17 18:27:56.555774   Капчи нет. Идем дальше
+
+2024-05-17 18:27:56.555774   Работа с куками =>
+
+2024-05-17 18:27:56.555774   => не требуется
+
+2024-05-17 18:27:56.555774   Prev. country - 'de'
+2024-05-17 18:27:56.555774   Cur. country - 'de'
+2024-05-17 18:27:56.555774   => Country set to 'de'
+
+2024-05-17 18:27:56.555774   Prev. language - 'fr'
+2024-05-17 18:27:56.555774   Cur. language - 'fr'
+2024-05-17 18:27:56.555774   => Language is set to 'fr'
+
+2024-05-17 18:27:56.555774   Prev. role - 'NoAuth'
+2024-05-17 18:27:56.555774   Cur. role - 'NoAuth'
+2024-05-17 18:27:56.555774   => The 'NoAuth' role is set
+
+2024-05-17 18:27:56.559768   => Current URL - https://capital.com/fr
+
+2024-05-17 18:27:56.559768   => THE END PRECONDITIONS
+
+2024-05-17 18:27:56.559768   1. Arrange
+2024-05-17 18:27:56.559768   current_page = https://capital.com/fr
+2024-05-17 18:27:56.565022   link = https://capital.com/fr/trading-amazon
+
+2024-05-17 18:27:56.569015   Open page: https://capital.com/fr/trading-amazon
+2024-05-17 18:27:56.569015   Current page URL = https://capital.com/fr
+2024-05-17 18:27:56.572013   self.link = https://capital.com/fr/trading-amazon
+2024-05-17 18:27:56.572013   driver.get(https://capital.com/fr/trading-amazon) =>
+2024-05-17 18:27:58.706862   => Loaded page https://capital.com/fr/trading-amazon
+2024-05-17 18:27:58.712125   BUTTON_ON_VER_BANNER is present? =>
+2024-05-17 18:27:58.725128   => BUTTON_ON_VER_BANNER is present on the page!
+2024-05-17 18:27:58.725128   BUTTON_ON_VER_BANNER scroll =>
+2024-05-17 18:27:58.737400   BUTTON_ON_VER_BANNER is visible? =>
+2024-05-17 18:27:58.800232   => BUTTON_ON_VER_BANNER is visible on the page!
+2024-05-17 18:27:58.800232   Start Checking that form [Sign up] popped up on the page =>
+2024-05-17 18:28:00.320251   '[Sign up]' form was not popped up
+
+2024-05-17 18:28:00.320251   2. Act
+
+2024-05-17 18:28:00.338831   => Button on Vertical banner clickable
+
+2024-05-17 18:28:00.344831   data_id = 222
+2024-05-17 18:28:01.004820   => BUTTON_ON_VER_BANNER clicked!
+
+2024-05-17 18:28:01.004820   3. Assert_Login_v0
+2024-05-17 18:28:01.004820   Check that 'Login' form is opened
+2024-05-17 18:28:08.433352   'Login' form not opened
+2024-05-17 18:28:08.433352   Check that new 'Login' form is opened
+2024-05-17 18:28:11.504752   => New 'Login' form not opened
+2024-05-17 18:28:11.504752   'Login' page not opened
+2024-05-17 18:28:14.530157   'Login' form on trading platform not opened
+2024-05-17 18:28:14.530157   Start step Check that [Sign up] form is opened
+2024-05-17 18:28:17.607700   'Sign up' form not opened
+2024-05-17 18:28:17.607700   Start step Check that new [Sign up] form is opened
+2024-05-17 18:28:20.687439   => new 'Sign up' form not opened
+2024-05-17 18:28:20.687439   Start method Check that [Sign up] page opened =>
+2024-05-17 18:28:21.690329   'Sign up' page opened
+2024-05-17 18:28:21.690329   Assert SIGNUP_SIGNUP_FRAME =>
+2024-05-17 18:28:21.701853   Assert SIGNUP_REF_LOGIN =>
+2024-05-17 18:28:21.701853   Assert SIGNUP_PRIVACY_POLICY_ALL_1 =>
+2024-05-17 18:28:23.231273   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-05-17 18:28:23.239800   => SIGNUP_PRIVACY_POLICY_ALL
+2024-05-17 18:28:23.239800   => 'Signup' page is checked
+
+Bug: Bid:11.02.02.01_10-fr.de.NoAuth
+
+2024-05-17 18:28:24.250744   Проверка бага в таблице ретеста  =>
+
+2024-05-17 18:28:24.928691   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-17 18:28:25.256932   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-17 18:28:27.071710   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-17 18:28:27.337328   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-17 18:28:27.337328   Баг Bid:11.02.02.01_10-fr.de.NoAuth-06 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
