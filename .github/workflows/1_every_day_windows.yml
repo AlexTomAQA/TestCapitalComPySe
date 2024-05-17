@@ -1,4 +1,4 @@
-name: 1. Windows, All US
+name: 1. Every day, Windows
 on:
 #  push:
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
         if: always()
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12.1"
+          python-version: "3.12.3"
 
       - name: 4. install Poetry
         if: always()
@@ -35,24 +35,115 @@ jobs:
         if: always()
         run: poetry install
 
-#      - name: 6. Check code for errors by flake8 and format code with black
+      - name: 8. Run US_00-00 | Main Page of Capital.com FCA (Артем)
+        if: always()
+        run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
+        continue-on-error: true
+
+#      - name: 8. Run US_01-00 ()
 #        if: always()
-#        uses: ricardochaves/python-lint@v1.4.0
-#        with:
-#          python-root-list: ""
-#          use-pylint: false
-#          use-pycodestyle: false
-#          use-flake8: true
-#          use-black: false
-#          use-mypy: false
-#          use-isort: false
-#          extra-pylint-options: ""
-#          extra-pycodestyle-options: ""
-#          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
-#          extra-black-options: ". -S"
-#          extra-mypy-options: ""
-#          extra-isort-options: ""
+#        run: poetry run pytest -v
+#        continue-on-error: true
 #
+#      - name: 8. Run US_01-01 ()
+#        if: always()
+#        run: poetry run pytest -v
+#        continue-on-error: true
+#
+      - name: 8. Run US_01-01!00 | Menu [Markets] > Menu item [All Markets] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-01_All_markets/US_01-01-00_All_Markets_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-01!01 (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-01_All_markets/US_01-01-01_All_Markets_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-02!00 | Menu [Markets] > Menu item [Shares] Not FCA (Дима)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-00_Shares_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-02!01 (Дима)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-02_Shares/US_01-02-01_Shares_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-03-00 | Menu [Markets] > Menu item [Forex] Not FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-03_Forex/US_01-03-00_forex_tests.py
+        continue-on-error: true
+      - name: 8. Run US_01-03-01 | Menu [Markets] > Menu item [Forex] Not FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-03_Forex/US_01-03-01_forex_tests.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-04-00 | Menu [Markets] > Menu item [Indices] Not FCA (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-00_Indices_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-04-01 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-04_Indices/US_01-04-01_Indices_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-05-00 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-00_Commodities_test.py
+        continue-on-error: true
+      - name: 8. Run US_01-05-01 | Menu [Markets] > Menu item [Commodities] Not FCA (Иван)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-01_Commodities_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-06 ()
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-06_Cryptocurrencies/US_01-06-00_Cryptocurrencies_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-07!00 (Мария)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-07_ESG/US_01-07!00_ESG_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_01-09!00 (Мила)
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-09_CFD_calculator/US_01-09_00_CFD_calculator_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-00 | Menu [Learn to trade] FCA (Мила П)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-00_Learn_to_trade/US_11-00-00_Learn_to_trade_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-01 | Learn to trade > Menu item [Essentials of trading] FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-01_Essentials_of_trading/US_11-00-01_Essentials_of_trading.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-02 | Learn to trade > Menu item [Risk-management guide] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-02_Risk_management_guide/US_11-00-02_Risk_management_guide.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-03 | Learn to trade > Menu item [Market guides] FCA (Касила)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-03_Market_guides/US_11-00-03_Market_guides.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-04 | Learn to trade > Menu item [Trading Strategies] FCA (Дмитрий)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-04_Trading_strategies/US_11-00-04_Trading_strategies.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-05 | Learn to trade > Menu item [Technical analysis] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-05_Technical_analysis/US_11-00-05_Technical_analysis.py
+        continue-on-error: true
+
+      - name: 8. Run US_11-00-06 | Learn to trade > Menu item [Help] FCA (Миша)
+        if: always()
+        run: poetry run pytest -v tests/US_11_Education/US_11-00-06_Help/US_11-00-06_Help.py
+        continue-on-error: true
 
       - name: 8. Run US_11-01-01 (Мила Д/Саша Т)
         if: always()
@@ -66,11 +157,11 @@ jobs:
 
       - name: 8. Run US_11-01-03 test (Саша Т)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03|00_cfd_trading_guide_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03!00_cfd_trading_guide_test.py
         continue-on-error: true
       - name: 8. Run US_11-01-03-01 (Саша Т)
         if: always()
-        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03:01_cfd_trading_guide_test.py
+        run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-01-03_cfd_trading_guide/us_11-01-03!01_cfd_trading_guide_test.py
         continue-on-error: true
 
       - name: 8. Run US_11.01.04.00 test (Сулейман/Андрей/Саша)
@@ -155,7 +246,7 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-06_Indices_trading/us_11-02-06-01_indices_trading_test.py
         continue-on-error: true
 
-      - name: 8. Run US_11-02-07 (Сулейман, Саша Т)
+      - name: 8. Run US_11-02-07 (Сулейман/Саша Т)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-02-07_ETF_trading/us_11-02-07_etf_trading_test.py
         continue-on-error: true
@@ -203,6 +294,21 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-08_Trading_psychology_guide/US_11-03-08-01_trading_psychology_guide_test.py
         continue-on-error: true
 
+      - name: 8. Run US_55_ReTestsManual (Касила)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Саша)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Мария)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
+        continue-on-error: true
+
       - name: 9. Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
@@ -244,7 +350,7 @@ jobs:
           gh_pages: gh-pages
           ref: gh-pages
           path: gh-pages
-          keep_reports: 100
+          keep_reports: 70
 
 #      - name: Run hwinfo.py
 #        if: always()
