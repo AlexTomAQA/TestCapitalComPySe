@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import conf
+from pages.common import Common
 from src.src import CapitalComPageSrc
 from pages.base_page import BasePage
 from pages.Menu.menu import MenuSection
@@ -30,6 +31,7 @@ test_link = "?"
 prev_role = "?"
 prev_language = "?"
 prev_country = "?"
+url_after_preconditions = "?"
 
 
 class NewConditions(BasePage):
@@ -56,38 +58,88 @@ class NewConditions(BasePage):
         global url_country
         # global host
         global test_link
+        global url_after_preconditions
         global prev_role
         global prev_language
         global prev_country
 
-        print(f"\n\n{datetime.now()}   START NEW PRECONDITIONS =>\n")
+        print(f"\n\n{datetime.now()}   START NEW PRECONDITIONS =>")
+        print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_preconditions}")
+        print(f"{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
+        print(f"{datetime.now()}   => Current URL - {self.driver.current_url}")
 
-        self.link = host
-        self.open_page()
+        # self.link = host
+        # self.open_page()
 
-        print(f"\n{datetime.now()}   {d.get_window_size()}")
+        if url_after_preconditions == "?":
+            url_after_preconditions = host
+
+        if self.driver.current_url != url_after_preconditions:
+            self.link = url_after_preconditions
+            self.open_page()
+
+        print(f"\n{datetime.now()}   => Windows size: {d.get_window_size()}")
         print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
         print(f"\n{datetime.now()}   Set resolution 1280 * 800 =>")
         d.set_window_size(1280, 800)
-        print(f"\n{datetime.now()}   => Resolution seted {d.get_window_size()}")
+        print(f"\n{datetime.now()}   => Resolution set {d.get_window_size()}")
 
         Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Prev. Role: {prev_role}")
+        print(f"\n{datetime.now()}   Работа с куками =>")
         if cur_role != prev_role:
-            print(f"\n{datetime.now()}   Run preconditions: set {cur_role} Role =>")
+            print(f"{datetime.now()}   Prev. role - '{prev_role}'")
+            print(f"{datetime.now()}   Current testing role - '{cur_role}'")
+            print(f"\n{datetime.now()}   All cookies must be delete =>")
 
-            test_link = host
-            self.link = test_link
-            self.open_page()
             d.delete_all_cookies()
             print(f"\n{datetime.now()}   => All cookies are deleted")
             self.open_page()
-
+            print(f"{datetime.now()}   => All cookies are deleted")
+            url_after_preconditions = host
+            self.link = url_after_preconditions
+            self.open_page()
             self.button_accept_all_cookies_click()
+        else:
+            print(f"\n{datetime.now()}   => не требуется")
 
+        # устанавливаем Страну, если не соответствует предыдущей
+        Captcha(d).fail_test_if_captcha_present_v2()
+        # print(f"\n{datetime.now()}   Prev country: {prev_country}")
+        # if cur_country != prev_country:
+        #     print(f"{datetime.now()}   Set '{cur_country}' country =>")
+        #     page_menu = MenuSection(d, self.driver.current_url)
+        #     page_menu.menu_language_and_country_move_focus(cur_language)
+        #     page_menu.set_country(cur_country)
+        #     del page_menu
+        #     prev_country = cur_country
+        print(f"{datetime.now()}   => Current country: {cur_country}")
+
+        # устанавливаем Язык, если не соответствует предыдущему
+        # Captcha(d).fail_test_if_captcha_present_v2()
+        language_prev, language_cur = prev_language, cur_language
+        if language_prev == "":
+            language_prev = "en"
+        print(f"{datetime.now()}   Prev. language: '{language_prev}'")
+        if language_cur == "":
+            language_cur = "en"
+        print(f"{datetime.now()}   Cur. language - '{language_cur}'")
+        if cur_language != prev_language:
+            print(f"{datetime.now()}   Set '{language_cur}' language =>")
+            # page_menu = MenuSection(d, self.driver.current_url)
+            # page_menu.menu_language_and_country_move_focus(cur_language)
+            # page_menu.set_language(cur_language)
+            # del page_menu
+            # prev_language = cur_language
+        print(f"{datetime.now()}   => Language is set to '{language_cur}'")
+
+        # Продолжаем настройки в соответствии с параметром "Роль"
+        print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
+        print(f"{datetime.now()}   Cur. role - '{cur_role}'")
+        # if cur_role != prev_role or Common.flag_of_bug:
+        if cur_role != prev_role:
             match cur_role:
                 case "NoAuth":
                     self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
@@ -99,49 +151,13 @@ class NewConditions(BasePage):
                     self.to_do_authorisation(d, host, cur_login, cur_password, cur_role)
 
             prev_role = cur_role
-            prev_language = "?"
-            prev_country = "?"
+        print(f"\n{datetime.now()}   => The '{cur_role}' role is set")
 
-        print(f"\n{datetime.now()}   Current role: {cur_role}")
-
-        # устанавливаем Язык, если не соответствует предыдущему
-        # Captcha(d).fail_test_if_captcha_present_v2()
-        # language_prev, language_cur = prev_language, cur_language
-        # if language_prev == "":
-        #     language_prev = "en"
-        # print(f"\n{datetime.now()}   Prev language: {language_prev}")
-        # if language_cur == "":
-        #     language_cur = "en"
-        # if cur_language != prev_language:
-        #     print(f"\n{datetime.now()}   Run preconditions: set {language_cur} language =>")
-        #
-        #     page_menu = MenuSection(d, host)
-        #     page_menu.menu_language_and_country_move_focus(cur_language)
-        #     page_menu.set_language(cur_language)
-        #     test_link = self.driver.current_url
-        #     del page_menu
-        #     prev_language = cur_language
-        #
-        print(f"\n{datetime.now()}   => Current language: {url_language}")
-
-        # устанавливаем Страну, если не соответствует предыдущей
-        Captcha(d).fail_test_if_captcha_present_v2()
-
-        # print(f"\n{datetime.now()}   Prev country: {prev_country}")
-        # if cur_country != prev_country:
-        #     print(f'{datetime.now()}   Run preconditions: set "{cur_country}" country =>')
-        #
-        #     page_menu = MenuSection(d, host)
-        #     page_menu.menu_language_and_country_move_focus(cur_language)
-        #     page_menu.set_country(cur_country)
-        #     del page_menu
-        #
-        #     prev_country = cur_country
-        print(f"{datetime.now()}   => Current country: {cur_country}")
-
+        url_after_preconditions = self.driver.current_url
+        print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions}")
         print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
 
-        return test_link
+        return url_after_preconditions
 
     # авторизация пользователя
     @allure.step(f"{datetime.now()}   Start Authorisation")
