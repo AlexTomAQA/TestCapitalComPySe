@@ -196,7 +196,7 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort_all_markets):
-        print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
+        print(f"\n{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
 
         print(f"{datetime.now()}   Index in item_list = {value}")
         # items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)

@@ -412,7 +412,7 @@ class MarketSortAllMarketsLocators:
     # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, '.table--fixedInstr [data-side="sell"]')
     # BUTTON_BUY_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.buy.text-right')
     # BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, 'td.sell.text-right')
-    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, "td.sell")
+    BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS = (By.CSS_SELECTOR, "tbody > tr > td.sell")
 
 
 class GlobalEnvironmentalLocators:
