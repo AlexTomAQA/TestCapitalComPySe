@@ -212,10 +212,10 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
         #     .perform()
         #
-        # self.driver.execute_script(
-        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
-        #
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+
         # print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
         #
         # # if not self.element_is_clickable(
@@ -233,7 +233,5 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
             wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
             .click() \
             .perform()
-
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
-
 
