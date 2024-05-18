@@ -93,10 +93,7 @@ class NewConditions(BasePage):
             print(f"{datetime.now()}   Prev. role - '{prev_role}'")
             print(f"{datetime.now()}   Current testing role - '{cur_role}'")
             print(f"\n{datetime.now()}   All cookies must be delete =>")
-
             d.delete_all_cookies()
-            print(f"\n{datetime.now()}   => All cookies are deleted")
-            self.open_page()
             print(f"{datetime.now()}   => All cookies are deleted")
             url_after_preconditions = host
             self.link = url_after_preconditions
