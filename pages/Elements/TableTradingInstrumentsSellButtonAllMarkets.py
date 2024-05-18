@@ -202,7 +202,7 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         # items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         # item = items_list[value]
         self.trade_instrument = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value].text
-        print(self.trade_instrument)
+        print(f"{datetime.now()}   Trade instrument = '{self.trade_instrument}'")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
         # sell_buttons_list = wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
@@ -214,7 +214,9 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         #
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+            # wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+            wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value])
+        print(f"{datetime.now()}   => Item[{value}] scrolled into center of screen")
 
         # print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
         #
@@ -228,10 +230,10 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         #     Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
         # print(f"{datetime.now()}   => BUTTON_SELL is clickable")
 
-        ActionChains(wd) \
-            .move_to_element(
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
-            .click() \
-            .perform()
+        # ActionChains(wd) \
+        #     .move_to_element(
+        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
+        #     .click() \
+        #     .perform()
+        wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
-
