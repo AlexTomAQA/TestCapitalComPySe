@@ -104,18 +104,18 @@ class NewConditions(BasePage):
 
         # устанавливаем Страну, если не соответствует предыдущей
         Captcha(d).fail_test_if_captcha_present_v2()
-        # print(f"\n{datetime.now()}   Prev country: {prev_country}")
-        # if cur_country != prev_country:
-        #     print(f"{datetime.now()}   Set '{cur_country}' country =>")
-        #     page_menu = MenuSection(d, self.driver.current_url)
-        #     page_menu.menu_language_and_country_move_focus(cur_language)
-        #     page_menu.set_country(cur_country)
-        #     del page_menu
-        #     prev_country = cur_country
+        print(f"\n{datetime.now()}   Prev country: {prev_country}")
+        if cur_country != prev_country:
+            print(f"{datetime.now()}   Set '{cur_country}' country =>")
+            # page_menu = MenuSection(d, self.driver.current_url)
+            # page_menu.menu_language_and_country_move_focus(cur_language)
+            # page_menu.set_country(cur_country)
+            # del page_menu
+            prev_country = cur_country
         print(f"{datetime.now()}   => Current country: {cur_country}")
 
         # устанавливаем Язык, если не соответствует предыдущему
-        # Captcha(d).fail_test_if_captcha_present_v2()
+        Captcha(d).fail_test_if_captcha_present_v2()
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
@@ -129,7 +129,7 @@ class NewConditions(BasePage):
             # page_menu.menu_language_and_country_move_focus(cur_language)
             # page_menu.set_language(cur_language)
             # del page_menu
-            # prev_language = cur_language
+            prev_language = cur_language
         print(f"{datetime.now()}   => Language is set to '{language_cur}'")
 
         # Продолжаем настройки в соответствии с параметром "Роль"
