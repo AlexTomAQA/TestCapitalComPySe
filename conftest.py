@@ -69,9 +69,9 @@ for item in input_list:
         break
 else:
     role_list = (
+        "NoReg",
         "Auth",
         "NoAuth",  # "Reg/NoAuth"
-        "NoReg",
     )
 
 
