@@ -1,0 +1,100 @@
+{'width': 1280, 'height': 800}
+
+2024-05-18 09:04:48.473620   worker_id = master
+
+2024-05-18 09:04:48.473620   0. Allure grouping v4
+
+2024-05-18 09:04:48.473620   START PRECONDITIONS =>
+
+2024-05-18 09:04:48.473620   => URL after prev. preconditions - https://capital.com/
+2024-05-18 09:04:48.473620   => flag_of_bug - False
+2024-05-18 09:04:48.473620   => Current URL - https://capital.com/
+
+2024-05-18 09:04:48.480620   => Windows size: {'width': 1280, 'height': 800}
+2024-05-18 09:04:48.482623   Set windows position at (0, 0) =>
+2024-05-18 09:04:48.509001   Set resolution 1280 * 800 =>
+2024-05-18 09:04:48.511999   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-05-18 09:04:49.527867   Капчи нет. Идем дальше
+
+2024-05-18 09:04:49.527867   Работа с куками =>
+
+2024-05-18 09:04:49.527867   => не требуется
+
+2024-05-18 09:04:49.527867   Prev. country - 'de'
+2024-05-18 09:04:49.527867   Cur. country - 'de'
+2024-05-18 09:04:49.527867   => Country set to 'de'
+
+2024-05-18 09:04:49.527867   Prev. language - 'en'
+2024-05-18 09:04:49.527867   Cur. language - 'en'
+2024-05-18 09:04:49.527867   => Language is set to 'en'
+
+2024-05-18 09:04:49.527867   Prev. role - 'NoAuth'
+2024-05-18 09:04:49.528877   Cur. role - 'NoAuth'
+2024-05-18 09:04:49.528877   => The 'NoAuth' role is set
+
+2024-05-18 09:04:49.531872   => Current URL - https://capital.com/
+
+2024-05-18 09:04:49.531872   => THE END PRECONDITIONS
+
+2024-05-18 09:04:49.531872   1. Arrange_v0
+2024-05-18 09:04:49.531872   current_page = https://capital.com/
+2024-05-18 09:04:49.536213   link = https://capital.com/
+2024-05-18 09:04:49.541220   IS 'Trading experience' block present on this page? =>
+2024-05-18 09:04:49.551217   => 'Trading experience' block present on this page!
+
+2024-05-18 09:04:49.563597   IS 'Trading experience' block present on this page? =>
+2024-05-18 09:04:49.597296   => 'Trading experience' block is visible on this page!
+
+2024-05-18 09:04:49.597296   IS [Start Trading] button present on this page? =>
+2024-05-18 09:04:49.606693   => [Start Trading] button present on this page!
+
+2024-05-18 09:04:49.629610   IS [Start Trading] button present on this page? =>
+2024-05-18 09:04:49.654634   => [Start Trading] button is visible on this page!
+
+2024-05-18 09:04:49.654634   [Start Trading] button scroll =>
+
+2024-05-18 09:04:49.663640   2. Act_v0
+2024-05-18 09:04:49.663640   [Start Trading] button is clickable? =>
+2024-05-18 09:04:49.681802   => [Start Trading] button is clickable!
+
+2024-05-18 09:04:49.721229   => [Start Trading] button clicked!
+
+2024-05-18 09:04:49.722325   3. Assert_Login_v0
+2024-05-18 09:04:49.722325   Check that 'Login' form is opened
+2024-05-18 09:04:55.950438   'Login' form not opened
+2024-05-18 09:04:55.950438   Check that new 'Login' form is opened
+2024-05-18 09:04:59.065598   => New 'Login' form not opened
+2024-05-18 09:04:59.065598   'Login' page not opened
+2024-05-18 09:05:02.179747   'Login' form on trading platform not opened
+2024-05-18 09:05:02.179747   Start step Check that [Sign up] form is opened
+2024-05-18 09:05:02.193286   'Sign up' form opened
+2024-05-18 09:05:02.193286   Assert SIGNUP_HEADER =>
+2024-05-18 09:05:02.208953   Assert SIGNUP_REF_LOGIN =>
+2024-05-18 09:05:02.224576   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-05-18 09:05:02.240205   => SIGNUP_PRIVACY_POLICY_ALL
+2024-05-18 09:05:02.240205   => 'Signup' form is checked
+
+Bug: Bid:00.00_002-en.de.NoAuth
+
+2024-05-18 09:05:02.240205   Проверка бага в таблице ретеста  =>
+
+2024-05-18 09:05:02.833666   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-18 09:05:03.067785   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-18 09:05:04.162631   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-18 09:05:04.400369   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-18 09:05:04.400369   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-18 09:05:04.625341   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-18 09:05:04.626340   Баг Bid:00.00_002-en.de.NoAuth уже существует, но у него изменился тип с  на 05
+
+2024-05-18 09:05:04.626340   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-05-18 09:05:04.859361   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-05-18 09:05:04.859361   Баг Bid:00.00_002-en.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
