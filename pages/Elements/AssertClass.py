@@ -37,7 +37,7 @@ class AssertClass(BasePage):
     def assert_signup(self, d, cur_language, cur_link):
         """Method Assert Signup"""
 
-        print(f"\n{datetime.now()}   3. Assert_v0")
+        print(f"\n{datetime.now()}   3. Assert_Signup_v0")
         self.page_signup_login = SignupLogin(d, cur_link)
         if self.page_signup_login.should_be_signup_form(cur_language):
             self.page_signup_login.close_signup_form()
@@ -161,7 +161,7 @@ class AssertClass(BasePage):
             trade_instrument: corresponding trade instrument (False)
         """
 
-        print(f"\n{datetime.now()}   3. Assert_v4")
+        print(f"\n{datetime.now()}   3. Assert_Trading_Platform_v4")
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
         print(f"\n{datetime.now()}   ")
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
