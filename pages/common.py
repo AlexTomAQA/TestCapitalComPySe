@@ -41,7 +41,9 @@ class Common:
 		return
 
 	@staticmethod
-	def check_language_and_country_in_list_and_skip_if_not_present(cur_language, cur_country, *list_languages_country_args):
+	def check_language_and_country_in_list_and_skip_if_not_present(
+			cur_language, cur_country, *list_languages_country_args
+	):
 		flag_language_country = None
 		for list_languages_country in list_languages_country_args:
 			if cur_language in list_languages_country[0] and cur_country in list_languages_country[1]:
@@ -60,6 +62,7 @@ class Common:
 
 	@staticmethod
 	def check_country_in_list_and_skip_if_present(cur_country, list_countries):
+
 		if cur_country in list_countries:
 			pytest.skip(f"This test is not for '{cur_country}' country")
 		return
