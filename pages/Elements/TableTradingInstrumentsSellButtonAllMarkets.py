@@ -10,7 +10,7 @@ from datetime import datetime
 from selenium.webdriver import ActionChains
 import allure
 
-from pages.Signup_login.signup_login import SignupLogin
+# from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.common import Common
 from pages.Elements.testing_elements_locators import (
@@ -218,22 +218,12 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
             wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value])
         print(f"{datetime.now()}   => Item[{value}] scrolled into center of screen")
 
-        # print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
-        #
-        # # if not self.element_is_clickable(
-        # #      wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
-        # # button = self.element_is_clickable(
-        # #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[0])
-        # if not self.element_is_clickable(
-        #         wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
-        #     print(f"{datetime.now()}   => BUTTON_SELL not clickable")
-        #     Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
-        # print(f"{datetime.now()}   => BUTTON_SELL is clickable")
+        ActionChains(wd) \
+            .move_to_element(
+            wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value]) \
+            .perform()
 
-        # ActionChains(wd) \
-        #     .move_to_element(
-        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
-        #     .click() \
-        #     .perform()
+        # Common().save_current_screenshot(wd, "screen")
+
         wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
