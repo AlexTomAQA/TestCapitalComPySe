@@ -431,3 +431,10 @@ class HowToStartTradingSignupLocators:
 class MyAccountButtonLocators(BasePage):
     BUTTON_MY_ACCOUNT = (By.CSS_SELECTOR, ".accountBtns_userBtn__kCJ5A.accountBtns_btnEmpty__TCWRE")
     HEADER_LOGIN_BTN2 = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+
+
+class WhyChooseAndStartGlobalLocators:
+    BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-id="302"]')
+    BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="banner_with_counter_hor_counter_hor_new_302"]')
+    BLOCK_START_GLOBAL = (By.CSS_SELECTOR, '[data-id="876"]')
+    BUTTON_TRADE_NOW_BLOCK_START_GLOBAL = (By.CSS_SELECTOR, '[data-type="b_hor_new_style_876"]')
