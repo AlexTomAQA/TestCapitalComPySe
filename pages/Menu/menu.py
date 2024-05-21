@@ -16,6 +16,8 @@ from selenium.webdriver.common.by import By
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
+    MenuProductsAndServices,
+    MenuProductsAndServicesOurMobileApps,
     MenuUS11Education,
     MenuUS11LearningHub,
     MenuUS11TradingCourses,
@@ -1873,4 +1875,125 @@ class MenuSection(BasePage):
             .perform()
 
         print(f"{datetime.now()}   => Focus moved to 'Cryptocurrencies' submenu and clicked")
+        del sub_menu
+
+    @allure.step('Select "Products and services" menu, "Our Mobile Apps" submenu click')
+    def open_our_mobile_apps_submenu_products_and_services_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Products and services" menu, "Our Mobile Apps" submenu =>')
+        print(f"{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        self.sub_menu_our_mobile_apps_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus moved to 'Products and services' menu")
+    def move_focus_to_products_and_services_menu(self, d, test_language, test_country):
+        products_and_services_menu_locator = None
+        match test_language:
+            case "":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_EN_BUTTON
+            case "ar":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_AR_BUTTON
+            case "de":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_DE_BUTTON
+            case "el":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_EL_BUTTON
+            case "es":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_ES_BUTTON
+            case "fr":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_FR_BUTTON
+            case "it":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_IT_BUTTON
+            case "hu":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_HU_BUTTON
+            case "nl":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_NL_BUTTON
+            case "pl":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_PL_BUTTON
+            case "ro":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_RO_BUTTON
+            case "ru":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_RU_BUTTON
+            case "zh":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_ZH_BUTTON
+            case "cn":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_CN_BUTTON
+
+        time.sleep(0.5)
+        menu = d.find_elements(*products_and_services_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'Products and services' menu not present")
+            Common().pytest_fail(f"Bug № ??? 'Products and services' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Products and services' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(products_and_services_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'Products and services' menu not visible")
+            Common().pytest_fail("Problem. 'Products and services' menu not visible")
+        print(f"{datetime.now()}   => 'Products and services' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*products_and_services_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Products and services' menu")
+        del menu
+        del element
+
+    @allure.step("Focus move to 'Our Mobile Apps' submenu and click.")
+    def sub_menu_our_mobile_apps_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_EN_OUR_MOBILE_APPS)
+            case "ar":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_AR_OUR_MOBILE_APPS)
+            case "de":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_DE_OUR_MOBILE_APPS)
+            case "es":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_ES_OUR_MOBILE_APPS)
+            case "fr":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_FR_OUR_MOBILE_APPS)
+            case "it":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_IT_OUR_MOBILE_APPS)
+            case "hu":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_HU_OUR_MOBILE_APPS)
+            case "nl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_NL_OUR_MOBILE_APPS)
+            case "pl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_PL_OUR_MOBILE_APPS)
+            case "ro":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_RO_OUR_MOBILE_APPS)
+            case "ru":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_RU_OUR_MOBILE_APPS)
+            case "cn":
+                sub_menu = d.find_elements(*MenuProductsAndServicesOurMobileApps.SUB_MENU_CN_OUR_MOBILE_APPS)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' \"Products and services > Our Mobile Apps\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Our Mobile Apps' submenu and clicked")
         del sub_menu
