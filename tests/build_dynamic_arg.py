@@ -139,7 +139,7 @@ def build_dynamic_arg_for_us_55(
     # print(f"\n{datetime.now()}   browser = {d.name}")
     print(f"\n{datetime.now()}   worker_id = {worker_id}")
     # print(f"\n{datetime.now()}   Start {tc}")
-    print(f"\n{datetime.now()}   0. Allure grouping v4")
+    print(f"\n{datetime.now()}   0. Allure grouping for US_55")
     # название OS и браузера
     platform_v = platform.platform()
     os_name = platform_v.split("-")[0][0] + platform_v.split("-")[1]
@@ -155,9 +155,11 @@ def build_dynamic_arg_for_us_55(
         cur_language = "en"
     dynamic_epic = f"US_{us} | {desc_us}"
     # dynamic_feature = f"Language: {cur_language}"
-    dynamic_feature = f"Country: {cur_country}"
+    # dynamic_feature = f"Country: {cur_country}"
+    dynamic_feature = f"Test-case: {num_tc}"
     # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
-    dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
+    # dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
+    dynamic_story = f"Role: {cur_role}"
     if manual:
         bug_id = (f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}"
                   f"-M{"N" if new_layout else "O"}")
@@ -167,8 +169,7 @@ def build_dynamic_arg_for_us_55(
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)
     allure.dynamic.story(dynamic_story)
-    allure.dynamic.title(
-        f"TC_{us}{num_tc} | {desc_tc}. {bug_id}")
+    allure.dynamic.title(f"TC_{us}!{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}")
 
     del dynamic_story
     del dynamic_feature

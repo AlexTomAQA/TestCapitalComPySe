@@ -10,7 +10,7 @@ from datetime import datetime
 from selenium.webdriver import ActionChains
 import allure
 
-from pages.Signup_login.signup_login import SignupLogin
+# from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.common import Common
 from pages.Elements.testing_elements_locators import (
@@ -196,13 +196,13 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
 
     @allure.step("Click Sell button on Table Widget Trading Instruments")
     def element_click(self, wd, value, cur_sort_all_markets):
-        print(f"{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
+        print(f"\n{datetime.now()}   2. Act for trading instrument and \"{cur_sort_all_markets}\" cur_sort")
 
         print(f"{datetime.now()}   Index in item_list = {value}")
         # items_list = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)
         # item = items_list[value]
         self.trade_instrument = wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value].text
-        print(self.trade_instrument)
+        print(f"{datetime.now()}   Trade instrument = '{self.trade_instrument}'")
 
         print(f"{datetime.now()}   Start click button [Sell] =>")
         # sell_buttons_list = wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)
@@ -212,28 +212,18 @@ class TableTradingInstrumentsSellButtonAllMarkets(BasePage):
         #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
         #     .perform()
         #
-        # self.driver.execute_script(
-        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-        #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
-        #
-        # print(f"{datetime.now()}   Check that BUTTON_SELL with item '{self.trade_instrument}' clickable =>")
-        #
-        # # if not self.element_is_clickable(
-        # #      wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
-        # # button = self.element_is_clickable(
-        # #     wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[0])
-        # if not self.element_is_clickable(
-        #         wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]):
-        #     print(f"{datetime.now()}   => BUTTON_SELL not clickable")
-        #     Common().pytest_fail(f"Bug # ??? Sell button not clickable.")
-        # print(f"{datetime.now()}   => BUTTON_SELL is clickable")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            # wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value])
+            wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value])
+        print(f"{datetime.now()}   => Item[{value}] scrolled into center of screen")
 
         ActionChains(wd) \
             .move_to_element(
-            wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value]) \
-            .click() \
+            wd.find_elements(*TableTradingInstrumentsLocators.ITEM_TRADING_INSTRUMENT)[value]) \
             .perform()
 
+        # Common().save_current_screenshot(wd, "screen")
+
+        wd.find_elements(*MarketSortAllMarketsLocators.BUTTON_SELL_TRADING_INSTRUMENT_ALL_MARKETS)[value].click()
         print(f"{datetime.now()}   =>   BUTTON_SELL on item '{self.trade_instrument}' clicked")
-
-

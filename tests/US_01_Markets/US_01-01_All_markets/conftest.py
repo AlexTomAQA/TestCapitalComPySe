@@ -4,7 +4,8 @@
 @Author  : Ivan
 """
 
-import pytest, random
+import pytest
+import random
 
 
 @pytest.fixture(
@@ -20,6 +21,7 @@ def cur_sort(request):
     """Параметры сортировки трейдинговых инструментов"""
     print(f"\n\n\nCurrent sort - {request.param}")
     return request.param
+
 
 @pytest.fixture(
     scope="function",

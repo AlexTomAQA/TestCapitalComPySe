@@ -1,4 +1,4 @@
-name: 3. Ubuntu, Every day, All US, All/All/All
+name: 1. Every day, Windows
 on:
 #  push:
   workflow_dispatch:
@@ -13,7 +13,8 @@ on:
 jobs:
   tests:
     name: I. Building environment and testing the capital.com website
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+
     steps:
       - name: 1. Check out this repo, master branch
         uses: actions/checkout@v4
@@ -24,29 +25,7 @@ jobs:
         if: always()
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12.2"
-
-      - name: 3.1. Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-      
-      - name: 3.3. Install neofetch
-        if: always()
-        run: brew install neofetch
-
-      - name: For Run hwinfo.py first time
-        if: always()
-        run: pip3 install psutil
-      - name: For Run hwinfo.py first time
-        if: always()
-        run: pip3 install speedtest
-      - name: Run hwinfo.py first time
-        if: always()
-        run: python3 tests/hwinfo.py
-
-      - name: 4. install Zbar for QReader
-        if: always()
-        run: sudo apt-get install libzbar0
+          python-version: "3.12.3"
 
       - name: 4. install Poetry
         if: always()
@@ -54,31 +33,8 @@ jobs:
 
       - name: 5. install dependencies
         if: always()
-        run: poetry install --sync
-#        run: poetry update
+        run: poetry install
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
-#      - name: 6. Check code for errors by flake8 and format code with black
-#        if: always()
-#        uses: ricardochaves/python-lint@v1.4.0
-#        with:
-#          python-root-list: ""
-#          use-pylint: false
-#          use-pycodestyle: false
-#          use-flake8: true
-#          use-black: false
-#          use-mypy: false
-#          use-isort: false
-#          extra-pylint-options: ""
-#          extra-pycodestyle-options: ""
-#          extra-flake8-options: "--count --benchmark --ignore=E501,E999,F401,F631,W191,W503"
-#          extra-black-options: ". -S"
-#          extra-mypy-options: ""
-#          extra-isort-options: ""
-#
       - name: 8. Run US_00-00 | Main Page of Capital.com FCA (Артем)
         if: always()
         run: poetry run pytest -v tests/US_00_Main_page/US_00-00_Main_page/us_00-00_main_page_test.py
@@ -139,11 +95,11 @@ jobs:
         run: poetry run pytest -v tests/US_01_Markets/US_01-05_Commodities/US_01-05-01_Commodities_test.py
         continue-on-error: true
 
-#      - name: 8. Run US_01-06 ()
-#        if: always()
-#        run: poetry run pytest -v
-#        continue-on-error: true
-#
+      - name: 8. Run US_01-06 ()
+        if: always()
+        run: poetry run pytest -v tests/US_01_Markets/US_01-06_Cryptocurrencies/US_01-06-00_Cryptocurrencies_test.py
+        continue-on-error: true
+
       - name: 8. Run US_01-07!00 (Мария)
         if: always()
         run: poetry run pytest -v tests/US_01_Markets/US_01-07_ESG/US_01-07!00_ESG_test.py
@@ -353,10 +309,6 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
         continue-on-error: true
 
-      - name: Run hwinfo.py
-        if: always()
-        run: poetry run python3 tests/hwinfo.py
-
       - name: 9. Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
@@ -365,7 +317,7 @@ jobs:
           path: allure-results/
           retention-days: 1
 
-  generate_and_deploy_report:
+  generate_report:
     name: II. Generate & Deploy Allure report
     runs-on: ubuntu-latest
     if: always()
@@ -389,7 +341,7 @@ jobs:
           name: allure-results
           path: allure-results
 
-      - name: 3. Generate allure report
+      - name: 3. Create Allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -400,9 +352,13 @@ jobs:
           allure_history: allure-history
           ref: gh-pages
           path: gh-pages
-          keep_reports: 80
+          keep_reports: 70
 
-      - name: 4. Deploy allure_report to Github Pages
+#      - name: Run hwinfo.py
+#        if: always()
+#        run: poetry run python3 tests/hwinfo.py
+#
+      - name: 4. Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
@@ -413,3 +369,23 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           publish_dir: ./allure-history
           commit_message: ${{ github.event.head_commit.message }}
+
+#      - name: Run hwinfo.py
+#        if: always()
+#        run: poetry run python3 tests/hwinfo.py
+#
+#      - name: 12. Send telegram message on push
+#        uses: appleboy/telegram-action@master
+#        if: always()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO_ALEXTOM22 }}
+##           to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+##           disable_web_page_preview: true
+#          message: |
+#            Message from GitHub CI Actions
+#
+#            Testing of the "Capital.com" web application in the "macOS/Chrome" environment is completed!
+#
+#            See allure-result testing: https://${{ github.actor }}.github.io/TestCapitalCom/
+##             Tests Repository: https://github.com/${{ github.repository }}

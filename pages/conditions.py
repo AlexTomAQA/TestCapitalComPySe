@@ -72,15 +72,11 @@ class Conditions(BasePage):
         if url_after_preconditions == "?":
             url_after_preconditions = host
 
-        # if Common.flag_of_bug:
-        #     self.link = url_after_preconditions
-        #     self.open_page()
-
         if self.driver.current_url != url_after_preconditions:
             self.link = url_after_preconditions
             self.open_page()
 
-        print(f"\n{datetime.now()}   => Windows size - {d.get_window_size()}")
+        print(f"\n{datetime.now()}   => Windows size: {d.get_window_size()}")
         print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
         print(f"{datetime.now()}   Set resolution 1280 * 800 =>")
@@ -115,7 +111,6 @@ class Conditions(BasePage):
         # if cur_country != prev_country or Common.flag_of_bug:
         if cur_country != prev_country:
             print(f"{datetime.now()}   Set '{cur_country}' country =>")
-            # page_menu = MenuSection(d, host)
             page_menu = MenuSection(d, self.driver.current_url)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_country(cur_country)
@@ -136,7 +131,6 @@ class Conditions(BasePage):
         # if cur_language != prev_language or Common.flag_of_bug:
         if cur_language != prev_language:
             print(f"{datetime.now()}   Set '{language_cur}' language =>")
-            # page_menu = MenuSection(d, host)
             page_menu = MenuSection(d, self.driver.current_url)
             page_menu.menu_language_and_country_move_focus(cur_language)
             page_menu.set_language(cur_language)
