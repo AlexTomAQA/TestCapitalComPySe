@@ -91,11 +91,11 @@ def cur_role(request):
 @pytest.fixture(
     scope="class",
     params=[
-        "",  # "en" - 21 us
+        # "",  # "en" - 21 us
         # "ar",  # 8 us
         # "de",  # 15 us
         # "es",  # 20 us
-        # "it",  # 15 us
+        "it",  # 15 us
         # "ru",  # 15 us
         # "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
