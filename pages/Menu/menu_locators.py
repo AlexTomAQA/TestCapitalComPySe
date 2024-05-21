@@ -923,6 +923,51 @@ class MenuUS11MarketGuidesNew:
 # ".menu_menu__3Lgen a[href="/en-gb/learn"]"
 
 
+class MenuProductsAndServices:
+    MENU_PRODUCTS_AND_SERVICES_EN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/./trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_AR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ar/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_DE_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/de/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_EL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/el/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_ES_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/es/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_FR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/fr/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_IT_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/it/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_HU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/hu/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_NL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/nl/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_PL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/pl/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_RO_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ro/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_RU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ru/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_ZH_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/zh/trading-products']")
+    MENU_PRODUCTS_AND_SERVICES_CN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/cn/trading-products']")
+
+
 class MenuUS01Markets:
     MENU_EN_GB_MARKETS = (By.CSS_SELECTOR, "#header a[href='/en-gb/markets']")
     MENU_MARKETS_EN_BUTTON = (
@@ -1113,6 +1158,33 @@ class MenuUS0101AllMarkets:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/derivative-financial-instruments']")
     SUB_MENU_CN_ALLMARKETS_BUTTON = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/derivative-financial-instruments']")
+
+
+class MenuProductsAndServicesOurMobileApps:
+    SUB_MENU_EN_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/mobile-apps']")
+    SUB_MENU_AR_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/mobile-apps']")
+    SUB_MENU_DE_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/mobile-apps']")
+    SUB_MENU_ES_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/mobile-apps']")
+    SUB_MENU_FR_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/mobile-apps']")
+    SUB_MENU_IT_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/mobile-apps']")
+    SUB_MENU_HU_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/mobile-apps']")
+    SUB_MENU_NL_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/mobile-apps']")
+    SUB_MENU_PL_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/mobile-apps']")
+    SUB_MENU_RO_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/mobile-apps']")
+    SUB_MENU_RU_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/mobile-apps']")
+    SUB_MENU_CN_OUR_MOBILE_APPS = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/mobile-apps']")
 
 
 class MenuUS0106MarketsCryptocurrencies:
