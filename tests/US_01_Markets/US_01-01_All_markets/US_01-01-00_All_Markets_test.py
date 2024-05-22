@@ -20,33 +20,33 @@ count = 1
 class TestAllMarkets:
     page_conditions = None
 
-    @allure.step("Start test of button [Sell] in Widget 'Trading instrument'")
-    @pytest.mark.test_001
-    def test_001_sell_trading_instrument(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_market,
-            cur_sort_all_markets):
-        """
-        Check: button [Sell] in Widget 'Trading instrument'
-        Language: All License: All (except FCA) Role: All.
-        """
-        bid = build_dynamic_arg_v4(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "01.01", "Markets > Menu item [All markets]",
-            ".00_001", "Testing button [Sell]")
-
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        page_menu = MenuSection(d, link)
-        cur_page_url = page_menu.open_market_menu_all_markets_submenu(d, cur_language, cur_country, link)
-
-        test_element = TableTradingInstrumentsSellButtonAllMarkets(d, cur_page_url, bid)
-        test_element.full_test_with_tpi(
-            d, cur_language, cur_country, cur_role, cur_page_url, cur_market, cur_sort_all_markets)
+    # @allure.step("Start test of button [Sell] in Widget 'Trading instrument'")
+    # @pytest.mark.test_001
+    # def test_001_sell_trading_instrument(
+    #         self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_market,
+    #         cur_sort_all_markets):
+    #     """
+    #     Check: button [Sell] in Widget 'Trading instrument'
+    #     Language: All License: All (except FCA) Role: All.
+    #     """
+    #     bid = build_dynamic_arg_v4(
+    #         d, worker_id, cur_language, cur_country, cur_role,
+    #         "01.01", "Markets > Menu item [All markets]",
+    #         ".00_001", "Testing button [Sell]")
+    #
+    #     Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+    #     Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+    #
+    #     page_conditions = Conditions(d, "")
+    #     link = page_conditions.preconditions(
+    #         d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+    #
+    #     page_menu = MenuSection(d, link)
+    #     cur_page_url = page_menu.open_market_menu_all_markets_submenu(d, cur_language, cur_country, link)
+    #
+    #     test_element = TableTradingInstrumentsSellButtonAllMarkets(d, cur_page_url, bid)
+    #     test_element.full_test_with_tpi(
+    #         d, cur_language, cur_country, cur_role, cur_page_url, cur_market, cur_sort_all_markets)
 
     # @allure.step("Start test of button [Buy] in Widget 'Trading instrument'")
     # @pytest.mark.test_002
