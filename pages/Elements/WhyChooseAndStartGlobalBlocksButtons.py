@@ -31,23 +31,28 @@ class WhyChooseAndStartGlobalBlocksButtons:
                 self.link = cur_item_link
                 self.open_page()
 
-            print(f"{datetime.now()}   IS 'Why choose Capital.com?'/'Start a global, multi-asset portfolio with an "
-                  f"award-winning platform' present on this page? =>")
-
+            print(f"{datetime.now()}   IS 'Why choose Capital.com?' block present on the page? =>")
+            refresh_count = 1
             why_choose_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_WHY_CHOOSE)
-            print(f"{datetime.now()},   Scroll to block 'Why choose Capital.com?'")
+            while why_choose_block and refresh_count < 5:
+                self.driver.refresh()
+                refresh_count += 1
 
-            if why_choose_block != 0:
-                self.driver.execute_script(
-                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                    why_choose_block
-                )
-                print(f"{datetime.now()},   Is BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE present in the block? =>")
-                button_try_now = self.driver.find_element(
-                    *WhyChooseAndStartGlobalLocators.BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE)
-                if button_try_now == 0:
-                    Common.pytest_fail("Bug ? BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is not present in the block")
-                print(f"{datetime.now()},   => BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is present in the block")
+            if why_choose_block == 0:
+                print(f"{datetime.now()},   => 'Why choose Capital.com?' is not present on the page")
+                Common.pytest_fail("'Why choose Capital.com?' is not present on the page")
+
+            print(f"{datetime.now()},   => Block 'Why choose Capital.com? is present. Scroll to block")
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                why_choose_block
+            )
+            print(f"{datetime.now()},   Is BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE present in the block? =>")
+            button_try_now = self.driver.find_element(
+                *WhyChooseAndStartGlobalLocators.BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE)
+            if button_try_now == 0:
+                Common.pytest_fail("Bug ? BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is not present in the block")
+            print(f"{datetime.now()},   => BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is present in the block")
 
         @allure.step("Click button [Try now] button in Block 'Why choose Capital.com?' ")
         def element_click(self, d):
@@ -88,7 +93,7 @@ class WhyChooseAndStartGlobalBlocksButtons:
                 self.open_page()
 
             print(f"{datetime.now()}   IS 'Start a global, multi-asset portfolio with an award-winning platform' "
-                  f"present on this page? =>")
+                  f"present on the page? =>")
             refresh_count = 1
             start_global_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_START_GLOBAL)
             while start_global_block and refresh_count < 5:
@@ -97,12 +102,15 @@ class WhyChooseAndStartGlobalBlocksButtons:
 
             if start_global_block == 0:
                 print(f"{datetime.now()},   => 'Start Global' Block is not present on the page")
-                Common.pytest_skip(" 'Start Global' Block is not present on the page")
+                Common.pytest_fail("Bug ? 'Start Global' Block is not present on the page")
 
+            print(f"{datetime.now()},   => Block 'Start Global' is present. Scroll to block.")
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 start_global_block
             )
+
+            print(f"{datetime.now()},   Is [Trade now] button present in the 'Start Global' Block? =>")
             button_trade_now = self.driver.find_element(
                 *WhyChooseAndStartGlobalLocators.BUTTON_TRADE_NOW_BLOCK_START_GLOBAL)
             if len(button_trade_now) == 0:
