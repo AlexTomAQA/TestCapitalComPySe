@@ -211,11 +211,11 @@ class TestTradingInstrumentPage:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element_1 = WhyChooseAndStartGlobalBlocksButtons.WhyChooseBlockTryNowButton(d, cur_item_link, bid)
-        test_element_1.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
-
         test_element_2 = WhyChooseAndStartGlobalBlocksButtons.StartGlobalBlockTradeNowButton(d, cur_item_link, bid)
         test_element_2.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+
+        test_element_1 = WhyChooseAndStartGlobalBlocksButtons.WhyChooseBlockTryNowButton(d, cur_item_link, bid)
+        test_element_1.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start Trading] in the 'Trading calculator' widget on trading instrument page ")
     @pytest.mark.test_009
