@@ -242,9 +242,11 @@ class AssertClass(BasePage):
     def assert_my_account_menu(self, d):
         print(f"\n{datetime.now()}   3. Assert_v0")
         account_btn_link = d.current_url
-        if account_btn_link == "https://capital.com/trading/platform":
+        if account_btn_link == "https://capital.com/trading/platform/":
             return False, \
                 ('Bug#005. '
                  'Expected result: Menu "My account" is displayed'
                  '\n'
                  'Actual result: The trading platform page is opened')
+        else:
+            print(f"{datetime.now()}, This does not mean that there is no bug")

@@ -33,11 +33,11 @@ class WhyChooseAndStartGlobalBlocksButtons:
 
             print(f"{datetime.now()}   IS 'Why choose Capital.com?' block present on the page? =>")
             refresh_count = 1
-            why_choose_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_WHY_CHOOSE)
-            while why_choose_block and refresh_count < 5:
+            while self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_WHY_CHOOSE) and refresh_count < 5:
                 self.driver.refresh()
                 refresh_count += 1
 
+            why_choose_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_WHY_CHOOSE)
             if why_choose_block == 0:
                 print(f"{datetime.now()},   => 'Why choose Capital.com?' is not present on the page")
                 Common.pytest_fail("'Why choose Capital.com?' is not present on the page")
@@ -95,11 +95,11 @@ class WhyChooseAndStartGlobalBlocksButtons:
             print(f"{datetime.now()}   IS 'Start a global, multi-asset portfolio with an award-winning platform' "
                   f"present on the page? =>")
             refresh_count = 1
-            start_global_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_START_GLOBAL)
-            while start_global_block and refresh_count < 5:
+            while self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_START_GLOBAL) and refresh_count < 5:
                 self.driver.refresh()
                 refresh_count += 1
 
+            start_global_block = self.driver.find_element(*WhyChooseAndStartGlobalLocators.BLOCK_START_GLOBAL)
             if start_global_block == 0:
                 print(f"{datetime.now()},   => 'Start Global' Block is not present on the page")
                 Common.pytest_fail("Bug ? 'Start Global' Block is not present on the page")
