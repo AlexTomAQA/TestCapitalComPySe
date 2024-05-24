@@ -353,6 +353,11 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
         continue-on-error: true
 
+      - name: 8. Run US_55_ReTestsManual (Артем)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
+        continue-on-error: true
+
       - name: Run hwinfo.py
         if: always()
         run: poetry run python3 tests/hwinfo.py
