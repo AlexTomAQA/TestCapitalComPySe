@@ -20,6 +20,9 @@ class TestManualDetected:
     page_conditions = None
 
     @allure.step("Start test of button [Try now] on the block 'Why choose Capital.com?'")
+    @pytest.mark.parametrize('cur_language', ["", "ar", "de", "es", "fr", "it", "hu", "nl", "pl", "ru", "cn", "ro"])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_012
     def test_012_try_now_button_on_why_choose_capital_com_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -31,13 +34,11 @@ class TestManualDetected:
 
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
-            "00", "Bugs Manual Detect",
+            "55", "Bugs Manual Detect",
             ".00_012",
             "Testing button [Try now] on the block 'Why choose Capital.com?'",
             False, False
         )
-
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['de', 'au', 'ae'])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
