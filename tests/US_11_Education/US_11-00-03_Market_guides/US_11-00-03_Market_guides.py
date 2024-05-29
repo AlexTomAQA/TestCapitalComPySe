@@ -3,8 +3,8 @@ import allure
 
 from pages.common import Common
 from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_v4
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.build_dynamic_arg import build_dynamic_arg_v4
+from pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 from pages.Elements.ContentBlockOpenAnAccountButton import ContentBlockOpenAnAccountButton
 from pages.Elements.ContentBlockTryDemoAccountButton import ContentBlockTryDemoAccountButton

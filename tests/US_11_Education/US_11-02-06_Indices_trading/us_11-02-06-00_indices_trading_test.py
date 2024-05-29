@@ -18,7 +18,7 @@ from pages.Elements.HorizontalBannerButton import ButtonOnHorizontalBanner
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.testing_elements_locators import SubPages
 
 # logger = logging.getLogger()
