@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
+from pages.GoogleSheets.googlesheets import GoogleSheet
 # from tests.ReTestsAuto.ReTestsAuto import unique_test, retest_skipped_tests, no_new_column
 
 # ===========================================================

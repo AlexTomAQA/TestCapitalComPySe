@@ -17,7 +17,7 @@ from pages.build_dynamic_arg import build_dynamic_arg_v4
 count = 1
 
 
-@pytest.mark.us_01_06
+@pytest.mark.us_01_06_00
 class TestCryptocurrencies:
     page_conditions = None
 

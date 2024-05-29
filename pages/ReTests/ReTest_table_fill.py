@@ -1,6 +1,6 @@
 import platform
 from datetime import datetime
-from tests.ReTestsAuto.GoogleSheets.googlesheets import (
+from pages.GoogleSheets.googlesheets import (
     GoogleSheet,
     SPREADSHEET_ID1,
     SPREADSHEET_ID2
