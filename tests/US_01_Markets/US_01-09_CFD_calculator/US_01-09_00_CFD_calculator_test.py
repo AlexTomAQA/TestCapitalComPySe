@@ -14,7 +14,7 @@ from pages.Elements.CFDCalculatorBlockSignUpButton import CFDCalculatorBlockSign
 from pages.Elements.HowToStartTradingBlockSignUpButton import HowToStartTradingBlockSignUpButton
 from pages.Elements.TradingCalculatorTradeNowButton import TradingCalculatorTradeNowButton
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
