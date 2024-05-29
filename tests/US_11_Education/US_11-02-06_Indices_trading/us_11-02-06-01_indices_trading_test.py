@@ -18,7 +18,7 @@ from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTr
 from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 # from pages.Elements.AssertClass import AssertClass
 
 logger = logging.getLogger()

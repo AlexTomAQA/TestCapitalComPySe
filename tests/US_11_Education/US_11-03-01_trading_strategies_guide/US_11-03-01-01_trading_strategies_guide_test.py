@@ -4,7 +4,7 @@ import pytest
 from src.src import CapitalComPageSrc
 from pages.conditions import Conditions
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.ContentBlockBuyInButton import BuyButtonContentBlock
 from pages.Elements.AppStoreDownloadButton import ButtonDownloadAppStore
 from pages.Elements.WebPlatformExploreButton import ButtonExploreWebPlatform

@@ -15,8 +15,8 @@ import pytest
 from tests.ReTestsAuto.conftest import (
     lang_list, country_list, role_list, list_rows, status_list, unique_test, retest_skipped_tests, new_column, host
 )
-from tests.ReTestsAuto.retest_data import us_data
-from tests.ReTestsAuto.GoogleSheets.googlesheets import GoogleSheet
+from test_data.retest_data import us_data
+from pages.GoogleSheets.googlesheets import GoogleSheet
 
 start_row = 5
 test_id = None

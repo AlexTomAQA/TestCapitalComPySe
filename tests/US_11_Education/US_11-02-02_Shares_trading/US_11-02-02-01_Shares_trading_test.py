@@ -10,7 +10,7 @@ import pytest
 
 from pages.common import Common
 from pages.conditions import Conditions
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
 from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Elements.ContentPageStartTradingButton import ContentStartTrading

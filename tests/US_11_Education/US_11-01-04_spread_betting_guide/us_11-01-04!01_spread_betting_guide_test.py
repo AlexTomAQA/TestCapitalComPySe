@@ -9,7 +9,7 @@ import pytest
 import allure
 
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.common import Common
 from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading

@@ -6,8 +6,8 @@ from pages.Menu.menu import MenuSection
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.ContentBlockCreateALiveAccountButton import ContentBlockCreateAliveAccountButton
 from pages.Elements.ContentBlockCreateARiskFreeDemoAccountButton import ContentBlockCreateARiskFreeDemoAccountButton
-from tests.build_dynamic_arg import build_dynamic_arg_v4
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.build_dynamic_arg import build_dynamic_arg_v4
+from pages.conditions_new import NewConditions
 from src.src import CapitalComPageSrc
 
 

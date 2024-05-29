@@ -9,7 +9,7 @@ from pages.Elements.TradeCFDBlockStartTradingNowButton import TradeCFDBlockStart
 from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.testing_elements_locators import SubPages
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 

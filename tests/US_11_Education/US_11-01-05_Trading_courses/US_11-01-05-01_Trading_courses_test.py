@@ -8,7 +8,7 @@ from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.BuildYourSkillsBlockCreateDemoAccButton import BuildYourSkillsButtonCreateDemoAccount
 from pages.Elements.LearnFirstTradeCFDBlockTryDemoButton import BlockLearnFistTradeCFDTryDemo
 from pages.Elements.AssertClass import AssertClass
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
