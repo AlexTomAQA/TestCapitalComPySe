@@ -8,7 +8,7 @@ from pages.Elements.AppStoreDownloadButton import ButtonDownloadAppStore
 from pages.Elements.WebPlatformExploreButton import ButtonExploreWebPlatform
 from pages.Elements.GooglePlayGetItButton import ButtonGetItOnGooglePlay
 from pages.Elements.MostTradedWidgetTradeButton import ButtonTradeOnWidgetMostTraded
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Elements.AssertClass import AssertClass

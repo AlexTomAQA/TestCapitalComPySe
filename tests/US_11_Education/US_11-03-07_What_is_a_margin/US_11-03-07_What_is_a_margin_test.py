@@ -12,7 +12,7 @@ from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Elements.AssertClass import AssertClass
 
 
