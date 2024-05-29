@@ -5,7 +5,7 @@
 """
 import pytest
 import allure
-from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
+from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 
 @pytest.mark.us_55

@@ -8,7 +8,7 @@ import pytest
 import allure
 # from pages.common import Common
 # from pages.Menu.menu import MenuSection
-from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
+from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 # from pages.conditions import Conditions
 # from pages.Elements.StepTradingBlock import BlockStepTrading
 # from pages.Elements.AssertClass import AssertClass

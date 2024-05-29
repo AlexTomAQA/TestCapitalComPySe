@@ -5,12 +5,12 @@
 """
 import pytest
 import allure
-from tests.build_dynamic_arg import build_dynamic_arg_for_us_55
+from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.Elements.MyAccountButton import MyAccountButton
 from pages.common import Common
 from src.src import CapitalComPageSrc
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.conditions_new import NewConditions
 
 
 @pytest.mark.us_55
