@@ -13,14 +13,14 @@ from selenium.webdriver.common.by import By
 from pages.Elements.AssertClass import AssertClass
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSignupFormLocators
 from pages.conditions import Conditions
-from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
+from pages.ReTests.ReTest_table_fill import retest_table_fill
 
-from tests.ReTestsManual.pages.menu.menu import MainMenu
-from tests.ReTestsManual.pages.menu_section.menu_section import MenuSections
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.Menu.menu_new import MainMenu
+from pages.menu_section.menu_section import MenuSections
+from pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 # import io
 from src.src import CapitalComPageSrc
 

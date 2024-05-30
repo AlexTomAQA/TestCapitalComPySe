@@ -36,8 +36,8 @@ from pages.Elements.WhyChooseBlockTryDemoButton import WhyChooseBlockTryDemoButt
 from pages.Elements.WhyChooseBlockTryNowButton import WhyChooseBlockTryNowButton
 from pages.Elements.WhyChooseBlockSignUpButton import WhyChooseBlockSignUpButton
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.build_dynamic_arg import build_dynamic_arg_v4
+from pages.conditions_new import NewConditions
 from pages.conditions import Conditions
 
 

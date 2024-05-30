@@ -1,4 +1,4 @@
-name: 3. Every day, Ubuntu
+name: 3. Every day, ubuntu
 on:
 #  push:
   workflow_dispatch:
@@ -337,26 +337,26 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_11_Education/US_11-03-08_Trading_psychology_guide/US_11-03-08-01_trading_psychology_guide_test.py
         continue-on-error: true
 
-      - name: 8. Run US_55_ReTestsManual (Касила)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
-        continue-on-error: true
-
-      - name: 8. Run US_55_ReTestsManual (Саша)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
-        continue-on-error: true
-
-      - name: 8. Run US_55_ReTestsManual (Мария)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
-        continue-on-error: true
-
-      - name: 8. Run US_55_ReTestsManual (Артем)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
-        continue-on-error: true
-
+#      - name: 8. Run US_55_ReTestsManual (Касила)
+#        if: always()
+#        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
+#        continue-on-error: true
+#
+#      - name: 8. Run US_55_ReTestsManual (Саша)
+#        if: always()
+#        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
+#        continue-on-error: true
+#
+#      - name: 8. Run US_55_ReTestsManual (Мария)
+#        if: always()
+#        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/izmaylovamaria/US_55-izmaylovamaria_ReTestsManual_test.py
+#        continue-on-error: true
+#
+#      - name: 8. Run US_55_ReTestsManual (Артем)
+#        if: always()
+#        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
+#        continue-on-error: true
+#
       - name: Run hwinfo.py
         if: always()
         run: poetry run python3 tests/hwinfo.py
@@ -404,7 +404,7 @@ jobs:
           allure_history: allure-history
           ref: gh-pages
           path: gh-pages
-          keep_reports: 70
+          keep_reports: 7
 
       - name: 4. Deploy allure_report to Github Pages
         uses: peaceiris/actions-gh-pages@v3

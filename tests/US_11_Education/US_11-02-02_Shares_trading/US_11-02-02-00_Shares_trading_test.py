@@ -19,7 +19,7 @@ from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
 from pages.Menu.menu import MenuSection
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Education.shares_trading_locators import SharesTradingItem
 from src.src import CapitalComPageSrc

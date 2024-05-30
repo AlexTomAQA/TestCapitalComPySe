@@ -11,7 +11,7 @@ from pages.common import Common
 from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
 from src.src import CapitalComPageSrc
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from tests.ReTestsManual.pages.conditions_new import NewConditions
@@ -34,7 +34,7 @@ class TestManualDetected:
         License: Not FCA
         """
 
-        bid = build_dynamic_arg_v4(
+        bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "Bugs Manual Detect",
             ".00_012",

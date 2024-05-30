@@ -8,7 +8,7 @@ from datetime import datetime
 from pages.base_page import BasePage
 from pages.AppStore.app_store_locators import AppStoreLocators
 from test_data.app_store_data import data, data_investmate
-from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
+from pages.ReTests.ReTest_table_fill import retest_table_fill
 
 
 class AppStore(BasePage):
@@ -27,9 +27,11 @@ class AppStore(BasePage):
             # self.open_page()
             # ==== new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '01', self.link)
+            # retest_table_fill(d, self.bid, '01', self.link)
+            retest_table_fill("", self.bid, '01', self.link)
             # ==================================
-            assert False, f'Bug # 01. Loaded page with not {data["APP_URL"]} url. Current URL is {self.driver.current_url}'
+            assert False, \
+                f'Bug # 01. Loaded page with not {data["APP_URL"]} url. Current URL is {self.driver.current_url}'
 
     @allure.step("Checking that the App Store Investmate page has opened")
     def should_be_app_store_investmane_page(self):
@@ -46,7 +48,7 @@ class AppStore(BasePage):
             # self.open_page()
             # ==== new bug re-test checking =====
             print(f'\nBug: {self.bid}')
-            retest_table_fill(d, self.bid, '02', self.link)
+            retest_table_fill("", self.bid, '02', self.link)
             # ==================================
             assert False, (f'Bug # 02. Loaded page with not {data_investmate["APP_URL"]} url. '
                            f'Current URL is {self.driver.current_url}')

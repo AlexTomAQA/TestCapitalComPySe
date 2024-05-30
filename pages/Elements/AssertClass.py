@@ -17,7 +17,7 @@ from pages.GooglePlay.google_play import GooglePlay
 from pages.TradingView.tradingview import TradingView
 from pages.base_page import BasePage
 from pages.Signup_login.signup_login import SignupLogin
-from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
+from pages.ReTests.ReTest_table_fill import retest_table_fill
 
 
 class AssertClass(BasePage):

@@ -14,7 +14,7 @@ from pages.common import Common
 from pages.Elements.BuyInTableButton import BuyButtonTable
 from pages.Elements.TableSellButton import SellButtonTable
 from test_data.cfd_markets import cfd_markets_href
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading

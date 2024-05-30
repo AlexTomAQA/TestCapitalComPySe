@@ -21,7 +21,7 @@ from pages.My_account.my_account import MyAccount
 # from pages.Capital.Trading_platform.Topbar.topbar import TopBar
 from pages.Capital.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators
-from tests.ReTestsManual.pages.menu.menu import MainMenu
+from pages.Menu.menu_new import MainMenu
 
 flag_cookies = False
 url_language = "?"

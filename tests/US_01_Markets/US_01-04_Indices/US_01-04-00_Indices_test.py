@@ -6,7 +6,7 @@ from pages.Elements.TableTradingInstrumentsBuyButton import TableTradingInstrume
 from pages.Elements.TableTradingInstrumentsSellButton import TableTradingInstrumentsSellButton
 from pages.Elements.testing_elements_locators import SubPages
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.Menu.menu import MenuSection
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc

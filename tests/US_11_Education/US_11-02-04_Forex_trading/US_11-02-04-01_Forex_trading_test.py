@@ -15,7 +15,7 @@ import allure
 import pytest
 
 from pages.common import Common
-from tests.build_dynamic_arg import build_dynamic_arg_v4
+from pages.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Elements.MainBannerStartTradingButton import MainBannerStartTrading
 from pages.Elements.MainBannerTryDemoButton import MainBannerTryDemo
