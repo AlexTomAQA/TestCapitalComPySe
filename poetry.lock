@@ -132,36 +132,6 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 
 [[package]]
-name = "contourpy"
-version = "1.2.1"
-description = "Python library for calculating contours of 2D quadrilateral grids"
-category = "main"
-optional = false
-python-versions = ">=3.9"
-
-[package.dependencies]
-numpy = ">=1.20"
-
-[package.extras]
-docs = ["furo", "sphinx (>=7.2)", "sphinx-copybutton"]
-bokeh = ["bokeh", "selenium"]
-mypy = ["contourpy", "docutils-stubs", "mypy (==1.8.0)", "types-pillow"]
-test = ["contourpy", "matplotlib", "pillow"]
-test-no-images = ["pytest", "pytest-cov", "pytest-xdist", "wurlitzer"]
-
-[[package]]
-name = "cycler"
-version = "0.12.1"
-description = "Composable style cycles"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.extras]
-docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
-tests = ["pytest", "pytest-cov", "pytest-xdist"]
-
-[[package]]
 name = "execnet"
 version = "2.1.1"
 description = "execnet: rapid multi-Python deployment"
@@ -171,19 +141,6 @@ python-versions = ">=3.8"
 
 [package.extras]
 testing = ["hatch", "pre-commit", "pytest", "tox"]
-
-[[package]]
-name = "filelock"
-version = "3.14.0"
-description = "A platform independent file lock."
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.extras]
-docs = ["furo (>=2023.9.10)", "sphinx-autodoc-typehints (>=1.25.2)", "sphinx (>=7.2.6)"]
-testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)", "pytest (>=7.4.3)"]
-typing = ["typing-extensions (>=4.8)"]
 
 [[package]]
 name = "flake8"
@@ -197,63 +154,6 @@ python-versions = ">=3.8.1"
 mccabe = ">=0.7.0,<0.8.0"
 pycodestyle = ">=2.11.0,<2.12.0"
 pyflakes = ">=3.2.0,<3.3.0"
-
-[[package]]
-name = "fonttools"
-version = "4.52.4"
-description = "Tools to manipulate font files"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.extras]
-all = ["fs (>=2.2.0,<3)", "lxml (>=4.0)", "zopfli (>=0.1.4)", "lz4 (>=1.7.4.2)", "pycairo", "matplotlib", "sympy", "skia-pathops (>=0.5.0)", "uharfbuzz (>=0.23.0)", "brotlicffi (>=0.8.0)", "scipy", "brotli (>=1.0.1)", "munkres", "unicodedata2 (>=15.1.0)", "xattr"]
-graphite = ["lz4 (>=1.7.4.2)"]
-interpolatable = ["pycairo", "scipy", "munkres"]
-lxml = ["lxml (>=4.0)"]
-pathops = ["skia-pathops (>=0.5.0)"]
-plot = ["matplotlib"]
-repacker = ["uharfbuzz (>=0.23.0)"]
-symfont = ["sympy"]
-type1 = ["xattr"]
-ufo = ["fs (>=2.2.0,<3)"]
-unicode = ["unicodedata2 (>=15.1.0)"]
-woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
-
-[[package]]
-name = "fsspec"
-version = "2024.5.0"
-description = "File-system specification"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.extras]
-abfs = ["adlfs"]
-adl = ["adlfs"]
-arrow = ["pyarrow (>=1)"]
-dask = ["dask", "distributed"]
-dev = ["pre-commit", "ruff"]
-dropbox = ["dropbox", "dropboxdrivefs", "requests"]
-full = ["adlfs", "aiohttp (!=4.0.0a0,!=4.0.0a1)", "dask", "distributed", "dropbox", "dropboxdrivefs", "fusepy", "gcsfs", "libarchive-c", "ocifs", "panel", "paramiko", "pyarrow (>=1)", "pygit2", "requests", "s3fs", "smbprotocol", "tqdm"]
-fuse = ["fusepy"]
-gcs = ["gcsfs"]
-git = ["pygit2"]
-github = ["requests"]
-gs = ["gcsfs"]
-gui = ["panel"]
-hdfs = ["pyarrow (>=1)"]
-http = ["aiohttp (!=4.0.0a0,!=4.0.0a1)"]
-libarchive = ["libarchive-c"]
-oci = ["ocifs"]
-s3 = ["s3fs"]
-sftp = ["paramiko"]
-smb = ["smbprotocol"]
-ssh = ["paramiko"]
-test = ["aiohttp (!=4.0.0a0,!=4.0.0a1)", "numpy", "pytest", "pytest-asyncio (!=0.22.0)", "pytest-benchmark", "pytest-cov", "pytest-mock", "pytest-recording", "pytest-rerunfailures", "requests"]
-test-downstream = ["aiobotocore (>=2.5.4,<3.0.0)", "dask-expr", "dask", "moto[server] (>4,<5)", "pytest-timeout", "xarray"]
-test-full = ["adlfs", "aiohttp (!=4.0.0a0,!=4.0.0a1)", "cloudpickle", "dask", "distributed", "dropbox", "dropboxdrivefs", "fastparquet", "fusepy", "gcsfs", "jinja2", "kerchunk", "libarchive-c", "lz4", "notebook", "numpy", "ocifs", "pandas", "panel", "paramiko", "pyarrow", "pyarrow (>=1)", "pyftpdlib", "pygit2", "pytest", "pytest-asyncio (!=0.22.0)", "pytest-benchmark", "pytest-cov", "pytest-mock", "pytest-recording", "pytest-rerunfailures", "python-snappy", "requests", "smbprotocol", "tqdm", "urllib3", "zarr", "zstandard"]
-tqdm = ["tqdm"]
 
 [[package]]
 name = "google"
@@ -412,42 +312,12 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
-name = "kiwisolver"
-version = "1.4.5"
-description = "A fast implementation of the Cassowary constraint solver"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
 name = "markupsafe"
 version = "2.1.5"
 description = "Safely add untrusted strings to HTML/XML markup."
 category = "main"
 optional = false
 python-versions = ">=3.7"
-
-[[package]]
-name = "matplotlib"
-version = "3.9.0"
-description = "Python plotting package"
-category = "main"
-optional = false
-python-versions = ">=3.9"
-
-[package.dependencies]
-contourpy = ">=1.0.1"
-cycler = ">=0.10"
-fonttools = ">=4.22.0"
-kiwisolver = ">=1.3.1"
-numpy = ">=1.23"
-packaging = ">=20.0"
-pillow = ">=8"
-pyparsing = ">=2.3.1"
-python-dateutil = ">=2.7"
-
-[package.extras]
-dev = ["meson-python (>=0.13.1)", "numpy (>=1.25)", "pybind11 (>=2.6)", "setuptools_scm (>=7)", "setuptools (>=64)"]
 
 [[package]]
 name = "mccabe"
@@ -458,156 +328,12 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "mpmath"
-version = "1.3.0"
-description = "Python library for arbitrary-precision floating-point arithmetic"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-develop = ["pytest (>=4.6)", "pycodestyle", "pytest-cov", "codecov", "wheel"]
-docs = ["sphinx"]
-gmpy = ["gmpy2 (>=2.1.0a4)"]
-tests = ["pytest (>=4.6)"]
-
-[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
 category = "main"
 optional = false
 python-versions = ">=3.5"
-
-[[package]]
-name = "networkx"
-version = "3.3"
-description = "Python package for creating and manipulating graphs and networks"
-category = "main"
-optional = false
-python-versions = ">=3.10"
-
-[package.extras]
-default = ["numpy (>=1.23)", "scipy (>=1.9,!=1.11.0,!=1.11.1)", "matplotlib (>=3.6)", "pandas (>=1.4)"]
-developer = ["changelist (==0.5)", "pre-commit (>=3.2)", "mypy (>=1.1)", "rtoml"]
-doc = ["sphinx (>=7)", "pydata-sphinx-theme (>=0.14)", "sphinx-gallery (>=0.14)", "numpydoc (>=1.7)", "pillow (>=9.4)", "texext (>=0.6.7)", "myst-nb (>=1.0)"]
-extra = ["lxml (>=4.6)", "pygraphviz (>=1.12)", "pydot (>=2.0)", "sympy (>=1.10)"]
-test = ["pytest (>=7.2)", "pytest-cov (>=4.0)"]
-
-[[package]]
-name = "numpy"
-version = "1.26.4"
-description = "Fundamental package for array computing in Python"
-category = "main"
-optional = false
-python-versions = ">=3.9"
-
-[[package]]
-name = "nvidia-cublas-cu12"
-version = "12.1.3.1"
-description = "CUBLAS native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-cuda-cupti-cu12"
-version = "12.1.105"
-description = "CUDA profiling tools runtime libs."
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-cuda-nvrtc-cu12"
-version = "12.1.105"
-description = "NVRTC native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-cuda-runtime-cu12"
-version = "12.1.105"
-description = "CUDA Runtime native Libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-cudnn-cu12"
-version = "8.9.2.26"
-description = "cuDNN runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[package.dependencies]
-nvidia-cublas-cu12 = "*"
-
-[[package]]
-name = "nvidia-cufft-cu12"
-version = "11.0.2.54"
-description = "CUFFT native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-curand-cu12"
-version = "10.3.2.106"
-description = "CURAND native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-cusolver-cu12"
-version = "11.4.5.107"
-description = "CUDA solver native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[package.dependencies]
-nvidia-cublas-cu12 = "*"
-nvidia-cusparse-cu12 = "*"
-nvidia-nvjitlink-cu12 = "*"
-
-[[package]]
-name = "nvidia-cusparse-cu12"
-version = "12.1.0.106"
-description = "CUSPARSE native runtime libraries"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[package.dependencies]
-nvidia-nvjitlink-cu12 = "*"
-
-[[package]]
-name = "nvidia-nccl-cu12"
-version = "2.19.3"
-description = "NVIDIA Collective Communication Library (NCCL) Runtime"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-nvjitlink-cu12"
-version = "12.5.40"
-description = "Nvidia JIT LTO Library"
-category = "main"
-optional = false
-python-versions = ">=3"
-
-[[package]]
-name = "nvidia-nvtx-cu12"
-version = "12.1.105"
-description = "NVIDIA Tools Extension"
-category = "main"
-optional = false
-python-versions = ">=3"
 
 [[package]]
 name = "oauthlib"
@@ -621,25 +347,6 @@ python-versions = ">=3.6"
 rsa = ["cryptography (>=3.0.0)"]
 signals = ["blinker (>=1.4.0)"]
 signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
-
-[[package]]
-name = "opencv-python"
-version = "4.9.0.80"
-description = "Wrapper package for OpenCV python bindings."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-numpy = [
-    {version = ">=1.21.2", markers = "python_version >= \"3.10\""},
-    {version = ">=1.21.4", markers = "python_version >= \"3.10\" and platform_system == \"Darwin\""},
-    {version = ">=1.23.5", markers = "python_version >= \"3.11\""},
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
-    {version = ">=1.19.3", markers = "python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\" or python_version >= \"3.9\""},
-    {version = ">=1.17.0", markers = "python_version >= \"3.7\""},
-    {version = ">=1.17.3", markers = "python_version >= \"3.8\""},
-]
 
 [[package]]
 name = "outcome"
@@ -661,67 +368,12 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
-name = "pandas"
-version = "2.2.2"
-description = "Powerful data structures for data analysis, time series, and statistics"
-category = "main"
-optional = false
-python-versions = ">=3.9"
-
-[package.dependencies]
-numpy = {version = ">=1.26.0", markers = "python_version >= \"3.12\""}
-python-dateutil = ">=2.8.2"
-pytz = ">=2020.1"
-tzdata = ">=2022.7"
-
-[package.extras]
-test = ["hypothesis (>=6.46.1)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)"]
-pyarrow = ["pyarrow (>=10.0.1)"]
-performance = ["bottleneck (>=1.3.6)", "numba (>=0.56.4)", "numexpr (>=2.8.4)"]
-computation = ["scipy (>=1.10.0)", "xarray (>=2022.12.0)"]
-fss = ["fsspec (>=2022.11.0)"]
-aws = ["s3fs (>=2022.11.0)"]
-gcp = ["gcsfs (>=2022.11.0)", "pandas-gbq (>=0.19.0)"]
-excel = ["odfpy (>=1.4.1)", "openpyxl (>=3.1.0)", "python-calamine (>=0.1.7)", "pyxlsb (>=1.0.10)", "xlrd (>=2.0.1)", "xlsxwriter (>=3.0.5)"]
-parquet = ["pyarrow (>=10.0.1)"]
-feather = ["pyarrow (>=10.0.1)"]
-hdf5 = ["tables (>=3.8.0)"]
-spss = ["pyreadstat (>=1.2.0)"]
-postgresql = ["SQLAlchemy (>=2.0.0)", "psycopg2 (>=2.9.6)", "adbc-driver-postgresql (>=0.8.0)"]
-mysql = ["SQLAlchemy (>=2.0.0)", "pymysql (>=1.0.2)"]
-sql-other = ["SQLAlchemy (>=2.0.0)", "adbc-driver-postgresql (>=0.8.0)", "adbc-driver-sqlite (>=0.8.0)"]
-html = ["beautifulsoup4 (>=4.11.2)", "html5lib (>=1.1)", "lxml (>=4.9.2)"]
-xml = ["lxml (>=4.9.2)"]
-plot = ["matplotlib (>=3.6.3)"]
-output-formatting = ["jinja2 (>=3.1.2)", "tabulate (>=0.9.0)"]
-clipboard = ["PyQt5 (>=5.15.9)", "qtpy (>=2.3.0)"]
-compression = ["zstandard (>=0.19.0)"]
-consortium-standard = ["dataframe-api-compat (>=0.1.7)"]
-all = ["adbc-driver-postgresql (>=0.8.0)", "adbc-driver-sqlite (>=0.8.0)", "beautifulsoup4 (>=4.11.2)", "bottleneck (>=1.3.6)", "dataframe-api-compat (>=0.1.7)", "fastparquet (>=2022.12.0)", "fsspec (>=2022.11.0)", "gcsfs (>=2022.11.0)", "html5lib (>=1.1)", "hypothesis (>=6.46.1)", "jinja2 (>=3.1.2)", "lxml (>=4.9.2)", "matplotlib (>=3.6.3)", "numba (>=0.56.4)", "numexpr (>=2.8.4)", "odfpy (>=1.4.1)", "openpyxl (>=3.1.0)", "pandas-gbq (>=0.19.0)", "psycopg2 (>=2.9.6)", "pyarrow (>=10.0.1)", "pymysql (>=1.0.2)", "PyQt5 (>=5.15.9)", "pyreadstat (>=1.2.0)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)", "python-calamine (>=0.1.7)", "pyxlsb (>=1.0.10)", "qtpy (>=2.3.0)", "scipy (>=1.10.0)", "s3fs (>=2022.11.0)", "SQLAlchemy (>=2.0.0)", "tables (>=3.8.0)", "tabulate (>=0.9.0)", "xarray (>=2022.12.0)", "xlrd (>=2.0.1)", "xlsxwriter (>=3.0.5)", "zstandard (>=0.19.0)"]
-
-[[package]]
 name = "pathspec"
 version = "0.12.1"
 description = "Utility library for gitignore style pattern matching of file paths."
 category = "main"
 optional = false
 python-versions = ">=3.8"
-
-[[package]]
-name = "pillow"
-version = "10.3.0"
-description = "Python Imaging Library (Fork)"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.extras]
-docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-removed-in", "sphinxext-opengraph"]
-fpx = ["olefile"]
-mic = ["olefile"]
-tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
-typing = ["typing-extensions"]
-xmp = ["defusedxml"]
 
 [[package]]
 name = "platformdirs"
@@ -780,14 +432,6 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [package.extras]
 test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
-
-[[package]]
-name = "py-cpuinfo"
-version = "9.0.0"
-description = "Get CPU info with pure Python"
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "pyasn1"
@@ -900,17 +544,6 @@ pytest = ">=7.0.0"
 test = ["black (>=22.1.0)", "flake8 (>=4.0.1)", "pre-commit (>=2.17.0)", "tox (>=3.24.5)"]
 
 [[package]]
-name = "pytest-timeout"
-version = "2.3.1"
-description = "pytest plugin to abort hanging tests"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-pytest = ">=7.0.0"
-
-[[package]]
 name = "pytest-xdist"
 version = "3.6.1"
 description = "pytest xdist plugin for distributed testing, most importantly across multiple CPUs"
@@ -928,17 +561,6 @@ setproctitle = ["setproctitle"]
 testing = ["filelock"]
 
 [[package]]
-name = "python-dateutil"
-version = "2.9.0.post0"
-description = "Extensions to the standard Python datetime module"
-category = "main"
-optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
-
-[package.dependencies]
-six = ">=1.5"
-
-[[package]]
 name = "python-dotenv"
 version = "1.0.1"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -948,75 +570,6 @@ python-versions = ">=3.8"
 
 [package.extras]
 cli = ["click (>=5.0)"]
-
-[[package]]
-name = "pytz"
-version = "2024.1"
-description = "World timezone definitions, modern and historical"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "pyyaml"
-version = "6.0.1"
-description = "YAML parser and emitter for Python"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
-name = "pyzbar"
-version = "0.1.9"
-description = "Read one-dimensional barcodes and QR codes from Python 2 and 3."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-scripts = ["Pillow (>=3.2.0)"]
-
-[[package]]
-name = "qrdet"
-version = "2.4"
-description = "Robust QR Detector based on YOLOv8"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-numpy = "*"
-quadrilateral-fitter = "*"
-requests = "*"
-tqdm = "*"
-ultralytics = "*"
-
-[[package]]
-name = "qreader"
-version = "3.12"
-description = "Robust and Straight-Forward solution for reading difficult and tricky QR codes within images in Python. Supported by a YOLOv8 QR Segmentation model."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-numpy = "*"
-opencv-python = "*"
-pyzbar = "*"
-qrdet = ">=2.1"
-
-[[package]]
-name = "quadrilateral-fitter"
-version = "1.8"
-description = "QuadrilateralFitter is an efficient and easy-to-use Python library for fitting irregular quadrilaterals from irregular polygons or any noisy data."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-numpy = "*"
-scipy = "*"
-shapely = "*"
 
 [[package]]
 name = "requests"
@@ -1063,40 +616,6 @@ python-versions = ">=3.6,<4"
 pyasn1 = ">=0.1.3"
 
 [[package]]
-name = "scipy"
-version = "1.13.1"
-description = "Fundamental algorithms for scientific computing in Python"
-category = "main"
-optional = false
-python-versions = ">=3.9"
-
-[package.dependencies]
-numpy = ">=1.22.4,<2.3"
-
-[package.extras]
-test = ["pytest", "pytest-cov", "pytest-timeout", "pytest-xdist", "asv", "mpmath", "gmpy2", "threadpoolctl", "scikit-umfpack", "pooch", "hypothesis (>=6.30)", "array-api-strict"]
-doc = ["sphinx (>=5.0.0)", "pydata-sphinx-theme (>=0.15.2)", "sphinx-design (>=0.4.0)", "matplotlib (>=3.5)", "numpydoc", "jupytext", "myst-nb", "pooch", "jupyterlite-sphinx (>=0.12.0)", "jupyterlite-pyodide-kernel"]
-dev = ["mypy", "typing-extensions", "types-psutil", "pycodestyle", "ruff", "cython-lint (>=0.12.2)", "rich-click", "doit (>=0.36.0)", "pydevtool"]
-
-[[package]]
-name = "seaborn"
-version = "0.13.2"
-description = "Statistical data visualization"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-matplotlib = ">=3.4,<3.6.1 || >3.6.1"
-numpy = ">=1.20,<1.24.0 || >1.24.0"
-pandas = ">=1.2"
-
-[package.extras]
-dev = ["pytest", "pytest-cov", "pytest-xdist", "flake8", "mypy", "pandas-stubs", "pre-commit", "flit"]
-docs = ["numpydoc", "nbconvert", "ipykernel", "sphinx (<6.0.0)", "sphinx-copybutton", "sphinx-issues", "sphinx-design", "pyyaml", "pydata_sphinx_theme (==0.10.0rc2)"]
-stats = ["scipy (>=1.7)", "statsmodels (>=0.12)"]
-
-[[package]]
 name = "selenium"
 version = "4.21.0"
 description = ""
@@ -1110,29 +629,6 @@ trio = ">=0.17,<1.0"
 trio-websocket = ">=0.9,<1.0"
 typing_extensions = ">=4.9.0"
 urllib3 = {version = ">=1.26,<3", extras = ["socks"]}
-
-[[package]]
-name = "shapely"
-version = "2.0.4"
-description = "Manipulation and analysis of geometric objects"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-numpy = ">=1.14,<3"
-
-[package.extras]
-docs = ["numpydoc (>=1.1.0,<1.2.0)", "matplotlib", "sphinx", "sphinx-book-theme", "sphinx-remove-toctrees"]
-test = ["pytest", "pytest-cov"]
-
-[[package]]
-name = "six"
-version = "1.16.0"
-description = "Python 2 and 3 compatibility utilities"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "sniffio"
@@ -1165,92 +661,6 @@ description = "Command line interface for testing internet bandwidth using speed
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "sympy"
-version = "1.12.1"
-description = "Computer algebra system (CAS) in Python"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-mpmath = ">=1.1.0,<1.4.0"
-
-[[package]]
-name = "thop"
-version = "0.1.1.post2209072238"
-description = "A tool to count the FLOPs of PyTorch model."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-torch = "*"
-
-[[package]]
-name = "torch"
-version = "2.2.2"
-description = "Tensors and Dynamic neural networks in Python with strong GPU acceleration"
-category = "main"
-optional = false
-python-versions = ">=3.8.0"
-
-[package.dependencies]
-filelock = "*"
-fsspec = "*"
-jinja2 = "*"
-networkx = "*"
-nvidia-cublas-cu12 = {version = "12.1.3.1", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cuda-cupti-cu12 = {version = "12.1.105", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cuda-nvrtc-cu12 = {version = "12.1.105", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cuda-runtime-cu12 = {version = "12.1.105", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cudnn-cu12 = {version = "8.9.2.26", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cufft-cu12 = {version = "11.0.2.54", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-curand-cu12 = {version = "10.3.2.106", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cusolver-cu12 = {version = "11.4.5.107", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-cusparse-cu12 = {version = "12.1.0.106", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-nccl-cu12 = {version = "2.19.3", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-nvidia-nvtx-cu12 = {version = "12.1.105", markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\""}
-sympy = "*"
-typing-extensions = ">=4.8.0"
-
-[package.extras]
-opt-einsum = ["opt-einsum (>=3.3)"]
-optree = ["optree (>=0.9.1)"]
-
-[[package]]
-name = "torchvision"
-version = "0.17.2"
-description = "image and video datasets and models for torch deep learning"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-numpy = "*"
-pillow = ">=5.3.0,<8.3.0 || >=8.4.0"
-torch = "2.2.2"
-
-[package.extras]
-scipy = ["scipy"]
-
-[[package]]
-name = "tqdm"
-version = "4.66.4"
-description = "Fast, Extensible Progress Meter"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-colorama = {version = "*", markers = "platform_system == \"Windows\""}
-
-[package.extras]
-dev = ["pytest (>=6)", "pytest-cov", "pytest-timeout", "pytest-xdist"]
-notebook = ["ipywidgets (>=6)"]
-slack = ["slack-sdk"]
-telegram = ["requests"]
 
 [[package]]
 name = "trio"
@@ -1287,45 +697,6 @@ description = "Backported and Experimental Type Hints for Python 3.8+"
 category = "main"
 optional = false
 python-versions = ">=3.8"
-
-[[package]]
-name = "tzdata"
-version = "2024.1"
-description = "Provider of IANA time zone data"
-category = "main"
-optional = false
-python-versions = ">=2"
-
-[[package]]
-name = "ultralytics"
-version = "8.2.25"
-description = "Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-matplotlib = ">=3.3.0"
-opencv-python = ">=4.6.0"
-pandas = ">=1.1.4"
-pillow = ">=7.1.2"
-psutil = "*"
-py-cpuinfo = "*"
-pyyaml = ">=5.3.1"
-requests = ">=2.23.0"
-scipy = ">=1.4.1"
-seaborn = ">=0.11.0"
-thop = ">=0.1.1"
-torch = ">=1.8.0"
-torchvision = ">=0.9.0"
-tqdm = ">=4.64.0"
-
-[package.extras]
-dev = ["ipython", "check-manifest", "pre-commit", "pytest", "pytest-cov", "coverage", "mkdocs (>=1.6.0)", "mkdocs-material (>=9.5.9)", "mkdocstrings", "mkdocs-jupyter", "mkdocs-redirects", "mkdocs-ultralytics-plugin (>=0.0.44)"]
-explorer = ["lancedb", "duckdb (<=0.9.2)", "streamlit"]
-export = ["onnx (>=1.12.0)", "openvino (>=2024.0.0)", "tensorflow (>=2.0.0)", "tensorflowjs (>=3.9.0)", "keras", "flatbuffers (>=23.5.26,<100)", "numpy (==1.23.5)", "h5py (!=3.11.0)", "coremltools (>=7.0)"]
-extra = ["hub-sdk (>=0.0.5)", "ipython", "albumentations (>=1.4.6)", "pycocotools (>=2.0.7)"]
-logging = ["comet", "tensorboard (>=2.13.0)", "dvclive (>=2.12.0)"]
 
 [[package]]
 name = "uritemplate"
@@ -1379,7 +750,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.12.3"
-content-hash = "a0e95055aa67be66118e6db82e4bf6df1b03b5ac8b8feccb3135545c8cdb7169"
+content-hash = "57d7d4b35eeaf1afa4fb18f5851839ffcf19eb2123efcfd053d3c3ebda4e7014"
 
 [metadata.files]
 allure-pytest = []
@@ -1393,13 +764,8 @@ cffi = []
 charset-normalizer = []
 click = []
 colorama = []
-contourpy = []
-cycler = []
 execnet = []
-filelock = []
 flake8 = []
-fonttools = []
-fsspec = []
 google = []
 google-api-core = []
 google-api-python-client = []
@@ -1412,39 +778,18 @@ httplib2 = []
 idna = []
 iniconfig = []
 jinja2 = []
-kiwisolver = []
 markupsafe = []
-matplotlib = []
 mccabe = []
-mpmath = []
 mypy-extensions = []
-networkx = []
-numpy = []
-nvidia-cublas-cu12 = []
-nvidia-cuda-cupti-cu12 = []
-nvidia-cuda-nvrtc-cu12 = []
-nvidia-cuda-runtime-cu12 = []
-nvidia-cudnn-cu12 = []
-nvidia-cufft-cu12 = []
-nvidia-curand-cu12 = []
-nvidia-cusolver-cu12 = []
-nvidia-cusparse-cu12 = []
-nvidia-nccl-cu12 = []
-nvidia-nvjitlink-cu12 = []
-nvidia-nvtx-cu12 = []
 oauthlib = []
-opencv-python = []
 outcome = []
 packaging = []
-pandas = []
 pathspec = []
-pillow = []
 platformdirs = []
 pluggy = []
 proto-plus = []
 protobuf = []
 psutil = []
-py-cpuinfo = []
 pyasn1 = []
 pyasn1-modules = []
 pycodestyle = []
@@ -1455,38 +800,19 @@ pysocks = []
 pytest = []
 pytest-html = []
 pytest-metadata = []
-pytest-timeout = []
 pytest-xdist = []
-python-dateutil = []
 python-dotenv = []
-pytz = []
-pyyaml = []
-pyzbar = []
-qrdet = []
-qreader = []
-quadrilateral-fitter = []
 requests = []
 requests-oauthlib = []
 rsa = []
-scipy = []
-seaborn = []
 selenium = []
-shapely = []
-six = []
 sniffio = []
 sortedcontainers = []
 soupsieve = []
 speedtest-cli = []
-sympy = []
-thop = []
-torch = []
-torchvision = []
-tqdm = []
 trio = []
 trio-websocket = []
 typing-extensions = []
-tzdata = []
-ultralytics = []
 uritemplate = []
 urllib3 = []
 webdriver-manager = []
