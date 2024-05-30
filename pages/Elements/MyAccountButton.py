@@ -7,6 +7,9 @@ from pages.Elements.testing_elements_locators import MyAccountButtonLocators
 from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 
 class MyAccountButton(BasePage):
@@ -53,5 +56,9 @@ class MyAccountButton(BasePage):
 
         button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT)
         button[0].click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_changes(self.driver.current_url)
+        )
 
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clicked")
