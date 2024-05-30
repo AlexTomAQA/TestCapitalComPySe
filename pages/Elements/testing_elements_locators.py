@@ -263,6 +263,16 @@ class BlockSignUpAndTradeSmartTodayLocators:
         By.CSS_SELECTOR, "div.banner-capital__buttons a[data-type='banner_capital_platform']")
 
 
+class ContentsBlockLocators:
+    # LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='Learn more about us ']")
+    LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='How we manage your money']")
+    CONTENTS_BLOCK = ('css selector', '#tableOfContent')
+    TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='Learn more about us ']")
+    TITLE_LEARN_MORE_ABOUT_US_CSS = ('xpath', "//h2[text()='Learn more about us ']")
+    # TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='How we manage your money']")
+    # TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='Separating client funds from our own']")
+
+
 class ContentBlockLocators:
     BUTTON_PRACTISE_FOR_FREE = (By.CSS_SELECTOR, "a[data-type='wdg_go_to_market_deeplink']")
     BUTTON_OPEN_AN_ACCOUNT_CONTENT_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img_btn1_signup"]')

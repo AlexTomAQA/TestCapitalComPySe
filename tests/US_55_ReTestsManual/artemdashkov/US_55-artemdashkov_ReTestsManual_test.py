@@ -8,11 +8,13 @@ import allure
 import pytest
 
 from pages.common import Common
+from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
 from src.src import CapitalComPageSrc
 from tests.build_dynamic_arg import build_dynamic_arg_v4
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
+from tests.ReTestsManual.pages.conditions_new import NewConditions
 
 
 @pytest.mark.us_55
@@ -50,4 +52,37 @@ class TestManualDetected:
         )
 
         test_element = WhyChooseBlockTryNowButtonInContent(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of link [Learn more about us] on the block 'Contents'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.test_024
+    def test_024_learn_more_about_us_link_on_contents_block(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Link [Learn more about us] on block Contents?
+        Language: En.
+        License: FCA
+        """
+
+        bid = build_dynamic_arg_v4(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "Bugs Manual Detect",
+            ".00_024",
+            "Testing link [Learn more about us] on the block 'Contents'",
+            False, True
+        )
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_why_capital_com_client_funds_menu(
+            d, cur_language, cur_country, link
+        )
+
+        test_element = ContentsBlockLearnMoreAboutUsLink(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
