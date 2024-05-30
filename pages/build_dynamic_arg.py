@@ -156,7 +156,7 @@ def build_dynamic_arg_for_us_55(
     dynamic_epic = f"US_{us} | {desc_us}"
     # dynamic_feature = f"Language: {cur_language}"
     # dynamic_feature = f"Country: {cur_country}"
-    dynamic_feature = f"Test-case: {num_tc}"
+    dynamic_feature = f"Test-case: {us}{num_tc}"
     # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
     # dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
     dynamic_story = f"Role: {cur_role}"
@@ -169,7 +169,7 @@ def build_dynamic_arg_for_us_55(
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)
     allure.dynamic.story(dynamic_story)
-    allure.dynamic.title(f"TC_{us}!{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}")
+    allure.dynamic.title(f"TC_{us}{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}")
 
     del dynamic_story
     del dynamic_feature
