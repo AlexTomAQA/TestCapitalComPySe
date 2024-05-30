@@ -56,7 +56,7 @@ jobs:
 
       - name: 5. install dependencies
         if: always()
-        run: poetry install --sinc
+        run: poetry install --sync
 
       - name: Poetry Run Python3 hwinfo.py
         if: always()
