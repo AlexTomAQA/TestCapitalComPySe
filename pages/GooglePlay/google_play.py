@@ -12,7 +12,7 @@ import pytest
 from pages.base_page import BasePage
 from pages.GooglePlay.google_play_locators import GooglePlayLocators
 from test_data.google_play_data import data
-from tests.ReTestsAuto.ReTest_table_fill import retest_table_fill
+from pages.ReTests.ReTest_table_fill import retest_table_fill
 
 
 class GooglePlay(BasePage):
