@@ -154,7 +154,7 @@ def build_dynamic_arg_for_us_55(
     if cur_language == "":
         cur_language = "en"
 
-    dynamic_epic = f"TC_{us}!{num_tc}"
+    dynamic_epic = f"TC_{us}!{num_tc} | {desc_tc}"
     # dynamic_epic = f"US_{us} | {desc_us}"
 
     dynamic_feature = f"Role: {cur_role}"
