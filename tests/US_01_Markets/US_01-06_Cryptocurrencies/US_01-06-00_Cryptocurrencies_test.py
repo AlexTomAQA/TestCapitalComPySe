@@ -46,6 +46,7 @@ class TestCryptocurrencies:
 
         test_element = TradeCFDBlockStartTradingNowButton(d, cur_page_link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_page_link)
+
     @allure.step("Test button [Sell] 'numeric values' in Widget 'Trading instrument'")
     @pytest.mark.test_002
     def test_002_sell_widget_trading_instrument(
