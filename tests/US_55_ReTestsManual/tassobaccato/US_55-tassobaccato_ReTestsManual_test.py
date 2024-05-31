@@ -29,8 +29,9 @@ class TestManualDetectedBugs:
          """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTest Manual Detected Bugs",
-            "_005", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header")
+            "55", "ReTests of Manual Detected Bugs",
+            "005", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header"
+        )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
