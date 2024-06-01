@@ -12,11 +12,7 @@ import allure
 import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-<<<<<<< HEAD
-=======
 from pages.captcha import Captcha
-
->>>>>>> master
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
