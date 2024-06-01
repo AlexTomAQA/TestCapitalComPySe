@@ -12,6 +12,7 @@ import allure
 import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from pages.captcha import Captcha
 
 from pages.Menu.menu_locators import (
     Menu1101,
@@ -1880,12 +1881,13 @@ class MenuSection(BasePage):
     @allure.step('Select "Products and services" menu, "Our Mobile Apps" submenu click')
     def open_our_mobile_apps_submenu_products_and_services_menu(self, d, cur_language, cur_country, link):
         print(f'\n{datetime.now()}   START Open "Products and services" menu, "Our Mobile Apps" submenu =>')
-        print(f"{datetime.now()}   1. Cur URL = {d.current_url}")
-        print(f"{datetime.now()}   2. Link = {link}")
+        print(f"{datetime.now()}   1. Cur URL: {d.current_url}")
+        print(f"{datetime.now()}   2. New Link: {link}")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
+        Captcha(d).fail_test_if_captcha_present_v2()
         self.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
         self.sub_menu_our_mobile_apps_move_focus_click(d, cur_language)
         Common().move_pointer_to_capital_com_label(d)
@@ -1986,7 +1988,8 @@ class MenuSection(BasePage):
 
         if len(sub_menu) == 0:
             Common().pytest_fail(
-                f"Bug # ??? For language '{test_language}' \"Products and services > Our Mobile Apps\" submenu doesn't exist")
+                f"Bug # ??? For language '{test_language}' "
+                f"\"Products and services > Our Mobile Apps\" submenu doesn't exist")
 
         ActionChains(d) \
             .move_to_element(sub_menu[0]) \
