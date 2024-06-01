@@ -22,9 +22,9 @@ from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 class TestManualDetected:
 
     @allure.step("Start test of _006")
-    @pytest.mark.parametrize('cur_language', [])
-    @pytest.mark.parametrize('cur_country', [])
-    @pytest.mark.parametrize('cur_role', [])
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["de"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
     @pytest.mark.test_006
     def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         # """
@@ -33,8 +33,9 @@ class TestManualDetected:
         # """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTest Manual Detected Bugs",
-            "_006", "??? Description Bug")
+            "55", "ReTests of Manual Detected Bugs",
+            "006", "There are no digital values of the product \"ECFZ24\""
+        )
         pytest.skip("Autotest under construction")
 
         #

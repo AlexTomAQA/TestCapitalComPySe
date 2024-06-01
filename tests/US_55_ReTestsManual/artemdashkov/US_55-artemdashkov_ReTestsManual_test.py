@@ -36,8 +36,8 @@ class TestManualDetected:
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "Bugs Manual Detect",
-            ".00_012",
+            "55", "ReTests of Manual Detected Bugs",
+            "012",
             "Testing button [Try now] on the block 'Why choose Capital.com?'",
             False, False
         )
