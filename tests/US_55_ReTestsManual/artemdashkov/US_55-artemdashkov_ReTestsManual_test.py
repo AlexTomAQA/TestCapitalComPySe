@@ -20,7 +20,9 @@ class TestManualDetected:
     page_conditions = None
 
     @allure.step("Start test of button [Try now] on the block 'Why choose Capital.com?'")
-    @pytest.mark.parametrize('cur_language', ["", "ar", "de", "es", "fr", "it", "hu", "nl", "pl", "ru", "cn", "ro"])
+    # @pytest.mark.parametrize('cur_language', ["", "ar", "de", "es", "fr", "it", "hu", "nl", "pl", "ru", "cn", "ro"])
+    @pytest.mark.parametrize('cur_language',
+                             ["", "ar", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "cn", "zh"])
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_012
