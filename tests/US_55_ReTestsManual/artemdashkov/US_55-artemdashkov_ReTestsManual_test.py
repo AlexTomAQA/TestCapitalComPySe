@@ -14,7 +14,7 @@ from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
-from tests.ReTestsManual.pages.conditions_new import NewConditions
+from pages.conditions_new import NewConditions
 
 
 @pytest.mark.us_55
@@ -67,7 +67,7 @@ class TestManualDetected:
         License: FCA
         """
 
-        bid = build_dynamic_arg_v4(
+        bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "Bugs Manual Detect",
             ".00_024",

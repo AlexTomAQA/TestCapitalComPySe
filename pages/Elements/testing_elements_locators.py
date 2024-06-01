@@ -264,13 +264,9 @@ class BlockSignUpAndTradeSmartTodayLocators:
 
 
 class ContentsBlockLocators:
-    # LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='Learn more about us ']")
-    LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='How we manage your money']")
+    LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='Learn more about us ']")
     CONTENTS_BLOCK = ('css selector', '#tableOfContent')
     TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='Learn more about us ']")
-    TITLE_LEARN_MORE_ABOUT_US_CSS = ('xpath', "//h2[text()='Learn more about us ']")
-    # TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='How we manage your money']")
-    # TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='Separating client funds from our own']")
 
 
 class ContentBlockLocators:

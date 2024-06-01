@@ -19,7 +19,7 @@ TITLE_NAME = '"Learn more about us"'
 BUTTON_LOCATOR = ContentsBlockLocators.LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK
 BLOCK_LOCATOR = ContentsBlockLocators.CONTENTS_BLOCK
 TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentsBlockLocators.TITLE_LEARN_MORE_ABOUT_US
-TITLE_LEARN_MORE_ABOUT_US_LOCATOR_CSS = ContentsBlockLocators.TITLE_LEARN_MORE_ABOUT_US_CSS
+
 
 class ContentsBlockLearnMoreAboutUsLink(BasePage):
     global BUTTON_NAME
@@ -51,26 +51,31 @@ class ContentsBlockLearnMoreAboutUsLink(BasePage):
 
         # Check visible Title
         print(f"{datetime.now()}   IS {TITLE_NAME} title visible on this page? =>")
-        time.sleep(4)
-
-        element = self.driver.find_element(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)
-        window_size = self.driver.get_window_size()
-        window_width = window_size['width']
-        window_height = window_size['height']
-
-        print(window_width)
-        print(window_height)
-
-        element_present = self.driver.execute_script("return document.querySelector('CSS_selector') !== null;")
-
-
-        # if not self.element_is_clickable(TITLE_LEARN_MORE_ABOUT_US_LOCATOR, 5):
         if not self.element_is_visible(TITLE_LEARN_MORE_ABOUT_US_LOCATOR, 5):
             msg = f"{TITLE_NAME} title is NOT visible on this page!"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        time.sleep(4)
         print(f"{datetime.now()}   => {TITLE_NAME} title is visible on this page!\n")
+
+        # Check visibility Title on area of window
+        print(f"{datetime.now()}   IS {TITLE_NAME} title visible on area of window? =>")
+
+        title = self.driver.find_element(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)
+        title_y = title.location['y'] # height coordinate of title
+        time.sleep(1)
+        current_y = self.driver.execute_script("return window.scrollY;") # current height coordinate
+        window_height = self.driver.execute_script("return window.innerHeight;") # height inner window
+        print('Height coordinate of title:', title_y)
+        print('Current height coordinate:', current_y)
+        print('Height inner window', window_height)
+
+        if title_y >= current_y and title_y <= (current_y + window_height):
+            print(f"{datetime.now()}   {TITLE_NAME} title IS visible on area of window. =>")
+        else:
+            msg = f"{TITLE_NAME} title is NOT visible on area of window!"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        del title, title_y, current_y, window_height
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -140,11 +145,11 @@ class ContentsBlockLearnMoreAboutUsLink(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BUTTON_NAME} link is clickable!\n")
 
-        # try:
-        #     self.button[0].click()
-        #     print(f"{datetime.now()}   => {BUTTON_NAME} link clicked!")
-        # except ElementClickInterceptedException:
-        #     print(f"{datetime.now()}   => {BUTTON_NAME} link NOT CLICKED\n")
+        try:
+            self.button[0].click()
+            print(f"{datetime.now()}   => {BUTTON_NAME} link clicked!")
+        except ElementClickInterceptedException:
+            print(f"{datetime.now()}   => {BUTTON_NAME} link NOT CLICKED\n")
 
         del self.button
         return True
