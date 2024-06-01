@@ -13,12 +13,12 @@ import pytest
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from pages.captcha import Captcha
-
 from pages.Menu.menu_locators import (
     Menu1101,
     MenuLanguageAndCountry,
     MenuProductsAndServices,
     MenuProductsAndServicesOurMobileApps,
+    MenuWhyCapitalCom,
     MenuUS11Education,
     MenuUS11LearningHub,
     MenuUS11TradingCourses,
@@ -43,6 +43,7 @@ from pages.Menu.menu_locators import (
     MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets,
     MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG
 )
+
 from pages.base_page import BasePage
 from pages.common import Common
 
@@ -1382,6 +1383,79 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()}   => Trading Strategies menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step('Select "Why Capital.com?" menu, "Client funds" submenu')
+    def open_why_capital_com_client_funds_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Why Capital.com?" menu, "Client funds" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_why_capital_com_move_focus(d, cur_language, cur_country)
+        self.sub_menu_client_funds_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Move focus to 'Learn to trade' menu section")
+    def menu_why_capital_com_move_focus(self, d, test_language, test_country):
+        why_menu_locator = None
+        if test_language == "" and test_country == "gb":
+            why_menu_locator = MenuWhyCapitalCom.SUB_MENU_EN_GB_WHY_CAPITAL_COM
+
+        time.sleep(0.5)
+        menu = d.find_elements(*why_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'Why Capital.com?' menu not present")
+            # allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            Common().pytest_fail(f"Bug # ? 'Why Capital.com?' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Why Capital.com?' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(why_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'Why Capital.com?' menu not visible")
+            Common().pytest_fail("Bug # ? 'Why Capital.com?' menu not visible")
+        print(f"{datetime.now()}   => 'Why Capital.com?' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*why_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        del menu
+        del element
+        print(f"{datetime.now()}   => Focus moved to 'Why Capital.com?' menu")
+
+    @allure.step("Focus move to 'Client funds' submenu item and click")
+    def sub_menu_client_funds_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "": sub_menu = d.find_elements(*MenuWhyCapitalCom.SUB_MENU_EN_ESSENTIALS_OF_TRADING)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Why Capital.com?->Client funds\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"{datetime.now()} => 'Client funds' menu clicked")
 
         del sub_menu
         return d.current_url
