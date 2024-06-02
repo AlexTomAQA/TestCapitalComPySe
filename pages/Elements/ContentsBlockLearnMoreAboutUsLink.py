@@ -10,15 +10,15 @@ import allure
 from pages.common import Common
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
-from pages.Elements.testing_elements_locators import ContentsBlockLocators
+from pages.Elements.testing_elements_locators import ContentBlockLocators
 from selenium.common.exceptions import ElementClickInterceptedException
 
 BUTTON_NAME = '[Learn more about us]'
 BLOCK_NAME = '"Contents"'
 TITLE_NAME = '"Learn more about us"'
-BUTTON_LOCATOR = ContentsBlockLocators.LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK
-BLOCK_LOCATOR = ContentsBlockLocators.CONTENTS_BLOCK
-TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentsBlockLocators.TITLE_LEARN_MORE_ABOUT_US
+BUTTON_LOCATOR = ContentBlockLocators.LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK
+BLOCK_LOCATOR = ContentBlockLocators.CONTENTS_BLOCK
+TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentBlockLocators.TITLE_LEARN_MORE_ABOUT_US
 
 
 class ContentsBlockLearnMoreAboutUsLink(BasePage):
