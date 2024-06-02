@@ -14,14 +14,14 @@ from pages.GoogleSheets.googlesheets import GoogleSheet
 # ===========================================================
 # выбор необходимых языков для ретеста
 lang_list = [
-        # "ar",
+        "ar",
         # "cn",
         # "de",
         # "el",
         # "en",
         # "es",
         # "fr",
-        "hu",
+        # "hu",
         # "it",
         # "nl",
         # "pl",
