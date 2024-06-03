@@ -69,8 +69,8 @@ class TestManualDetected:
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
-            "55", "Bugs Manual Detect",
-            ".00_024",
+            "55", "ReTests of Manual Detected Bugs",
+            "024",
             "Testing link [Learn more about us] on the block 'Contents'",
             False, True
         )
