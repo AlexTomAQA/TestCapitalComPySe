@@ -81,6 +81,7 @@ class TestManualDetectedBugs:
             print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is not visible")
             Common.pytest_fail(
                 "Bug#034. The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
+        Common().save_current_screenshot(d, "test_34")
         print(f"{datetime.now()}   => The footer is displayed")
 
 
