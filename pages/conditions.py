@@ -105,7 +105,7 @@ class Conditions(BasePage):
             print(f"\n{datetime.now()}   => не требуется")
 
         # устанавливаем Страну, если не соответствует предыдущей
-        # Captcha(d).fail_test_if_captcha_present_v2()
+        Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev. country - '{prev_country}'")
         print(f"{datetime.now()}   Cur. country - '{cur_country}'")
         # if cur_country != prev_country or Common.flag_of_bug:
@@ -120,7 +120,7 @@ class Conditions(BasePage):
         print(f"{datetime.now()}   => Country set to '{cur_country}'")
 
         # устанавливаем Язык, если не соответствует предыдущему
-        # Captcha(d).fail_test_if_captcha_present_v2()
+        Captcha(d).fail_test_if_captcha_present_v2()
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
@@ -139,6 +139,7 @@ class Conditions(BasePage):
         print(f"{datetime.now()}   => Language is set to '{language_cur}'")
 
         # Продолжаем настройки в соответствии с параметром "Роль"
+        Captcha(d).fail_test_if_captcha_present_v2()
         print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
         print(f"{datetime.now()}   Cur. role - '{cur_role}'")
         # if cur_role != prev_role or Common.flag_of_bug:

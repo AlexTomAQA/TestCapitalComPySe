@@ -8,6 +8,7 @@ from pages.base_page import BasePage
 from pages.common import Common
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import PageTradingInstrumentMarketsLocators
+from pages.Elements.testing_elements_locators import TradeCFDLocators
 
 
 class PageInstrumentLongPositionGoToPlatformButton(BasePage):
@@ -19,7 +20,7 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
         # page_signup_login = SignupLogin(d, cur_item_link)
         # page_signup_login.check_popup_signup_form()
         #
-        self.element_act_v2()
+        trade_instrument = self.element_act_v2()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
         match cur_role:
@@ -28,7 +29,8 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
             case "NoAuth":
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
+                test_element.assert_trading_platform_v4(d, cur_item_link, tpd=False, tpi=True,
+                                                        trade_instrument=trade_instrument)
         self.driver.get(cur_item_link)
 
     def arrange_v2(self, d, cur_item_link):
@@ -57,6 +59,10 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
     def element_act_v2(self):
         print(f"\n{datetime.now()}   2. Act_v2")
         print(f"{datetime.now()}   LONG_POSITION_OVERNIGHT_FEE open =>")
+
+        trade_instrument = self.driver.find_element(*TradeCFDLocators.ITEM_NAME).text.split(' Spot')[0]
+        print(f"{datetime.now()}   TRADE_INSTRUMENT IS: {trade_instrument}")
+
         tool_info = self.driver.find_elements(*PageTradingInstrumentMarketsLocators.LONG_POSITION_OVERNIGHT_FEE)
         ActionChains(self.driver) \
             .move_to_element(tool_info[0]) \
@@ -87,3 +93,4 @@ class PageInstrumentLongPositionGoToPlatformButton(BasePage):
 
         button_go_to_platform.click()
         print(f"{datetime.now()} => BUTTON_GO_TO_PLATFORM clicked")
+        return trade_instrument

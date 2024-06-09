@@ -1,25 +1,17 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/05/06 22:00
-@Author  : Alexander Tomelo
+@Time    : 2024/05/26 18:00
+@Author  : Artem Dashkov
 """
-from datetime import datetime
 import time
-
-import pytest
+from datetime import datetime
 import allure
-from selenium.common.exceptions import ElementClickInterceptedException
 
-from pages.base_page import BasePage
 from pages.common import Common
-from pages.Menu.menu import MenuSection
-from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
-from pages.conditions_new import NewConditions
-# from pages.Elements.StepTradingBlock import BlockStepTrading
-# from pages.Elements.AssertClass import AssertClass
-from src.src import CapitalComPageSrc
+from pages.base_page import BasePage
+from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import ContentBlockLocators
-# from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
+from selenium.common.exceptions import ElementClickInterceptedException
 
 BUTTON_NAME = '[Learn more about us]'
 BLOCK_NAME = '"Contents"'
@@ -29,97 +21,29 @@ BLOCK_LOCATOR = ContentBlockLocators.CONTENTS_BLOCK
 TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentBlockLocators.TITLE_LEARN_MORE_ABOUT_US
 
 
-@pytest.mark.us_55
-class TestManualDetected:
+class ContentsBlockLearnMoreAboutUsLink(BasePage):
+    global BUTTON_NAME
+    global BLOCK_NAME
+    global TITLE_NAME
 
-    @allure.step("Start test of _006")
-    @pytest.mark.parametrize('cur_language', [""])
-    @pytest.mark.parametrize('cur_country', ["de"])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
-    @pytest.mark.test_006
-    def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        # """
-        # Check: Button [1. Create your account] in block [Steps trading]
-        # Language: All. License: All.
-        # """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "006", "There are no digital values of the product \"ECFZ24\""
-        )
-        pytest.skip("Autotest under construction")
+    global BUTTON_LOCATOR
+    global BLOCK_LOCATOR
+    global TITLE_LEARN_MORE_ABOUT_US_LOCATOR
 
-        #
-        # Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
-        # Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        # if cur_language not in ["", "de", "el", "es", "fr", "it", "hu", "nl", "pl", "ro", "ru", "zh"]:
-        #     pytest.skip(f"This test-case is not for {cur_language} language")
-        #
-        # page_conditions = Conditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        #
-        # page_menu = MenuSection(d, link)
-        # page_menu.menu_education_move_focus(d, cur_language, cur_country)
-        # link = page_menu.sub_menu_glossary_move_focus_click(d, cur_language)
-        #
-        # test_element = BlockStepTrading(d, link)
-        # test_element.arrange_(d, link)
-        #
-        # test_element.element_click()
-        #
-        # test_element = AssertClass(d, link, bid)
-        # match cur_role:
-        #     case "NoReg" | "NoAuth":
-        #         test_element.assert_signup(d, cur_language, link)
-        #     case "Auth":
-        #         test_element.assert_trading_platform_v4(d, link)
-        #
-        # del test_element
-        # del page_menu
+    def __init__(self, browser, link, bid):
+        self.button = None
 
-    @allure.step("Start test of link [Learn more about us] on the block 'Contents'")
-    @pytest.mark.parametrize('cur_language', [""])
-    @pytest.mark.parametrize('cur_country', ['gb'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_024v2
-    def test_024v2_learn_more_about_us_link_on_contents_block(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        """
-        Check: Link [Learn more about us] on block Contents?
-        Language: En.
-        License: FCA
-        """
+        super().__init__(browser, link, bid)
 
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "024v2",
-            "Testing link [Learn more about us] on the block 'Contents'",
-            False, True
-        )
-
-        pytest.skip("Autotest under construction")
-
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
-        menu = MenuSection(d, link)
-        cur_item_link = menu.open_why_capital_com_client_funds_menu(
-            d, cur_language, cur_country, link
-        )
-
-        # test_element = ContentsBlockLearnMoreAboutUsLink(d, cur_item_link, bid)
-        # test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
-        lo = LocalObject(d, cur_item_link)
-        lo.arrange_(d, cur_item_link)
-        lo.element_click(d)
+    @allure.step(f"{datetime.now()}   Start Full test for {BUTTON_NAME} link in {BLOCK_NAME} block")
+    def full_test_with_tpi(self, d, cur_language, cur_country, cur_role, cur_item_link):
+        self.arrange_(d, cur_item_link)
+        self.element_click(d)
 
         # Check presenting Title
         print(f"\n{datetime.now()}   3. Assert")
         print(f"{datetime.now()}   IS {TITLE_NAME} title present on this page? =>")
-        if len(d.find_elements(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)) == 0:
+        if len(self.driver.find_elements(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)) == 0:
             msg = f"{TITLE_NAME} title is NOT present on this page"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
@@ -127,7 +51,7 @@ class TestManualDetected:
 
         # Check visible Title
         print(f"{datetime.now()}   IS {TITLE_NAME} title visible on this page? =>")
-        if not d.element_is_visible(TITLE_LEARN_MORE_ABOUT_US_LOCATOR, 5):
+        if not self.element_is_visible(TITLE_LEARN_MORE_ABOUT_US_LOCATOR, 5):
             msg = f"{TITLE_NAME} title is NOT visible on this page!"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
@@ -136,16 +60,16 @@ class TestManualDetected:
         # Check visibility Title on area of window
         print(f"{datetime.now()}   IS {TITLE_NAME} title visible on area of window? =>")
 
-        title = d.find_element(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)
-        title_y = title.location['y']  # height coordinate of title
+        title = self.driver.find_element(*TITLE_LEARN_MORE_ABOUT_US_LOCATOR)
+        title_y = title.location['y'] # height coordinate of title
         time.sleep(1)
-        current_y = d.execute_script("return window.scrollY;") # current height coordinate
-        window_height = d.execute_script("return window.innerHeight;") # height inner window
+        current_y = self.driver.execute_script("return window.scrollY;") # current height coordinate
+        window_height = self.driver.execute_script("return window.innerHeight;") # height inner window
         print('Height coordinate of title:', title_y)
         print('Current height coordinate:', current_y)
         print('Height inner window', window_height)
 
-        if (title_y >= current_y) and (title_y <= (current_y + window_height)):
+        if title_y >= current_y and title_y <= (current_y + window_height):
             print(f"{datetime.now()}   {TITLE_NAME} title IS visible on area of window. =>")
         else:
             msg = f"{TITLE_NAME} title is NOT visible on area of window!"
@@ -153,13 +77,10 @@ class TestManualDetected:
             Common().pytest_fail(msg)
         del title, title_y, current_y, window_height
 
-
-class LocalObject(BasePage):
-
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
 
-        if not d.current_page_is(cur_item_link):
+        if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
             self.open_page()
 

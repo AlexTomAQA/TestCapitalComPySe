@@ -82,7 +82,12 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
         continue-on-error: true
 
-#      - name: 8. Run ReTestManual
+      - name: 8. Run US_55_ReTestsManual (Мила)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/mila_podchasova/US_55-mila_podchasova_ReTestsManual_test.py
+        continue-on-error: true
+
+      #      - name: 8. Run ReTestManual
 #        if: always()
 #        continue-on-error: true
 #        run: poetry run pytest -v tests/ReTestsManual/ReTestsManual.py

@@ -304,6 +304,11 @@ class ContentBlockLocators:
     TRADE_BUTTON_TRADERS_DASHBOARD_WIDGET = (By.XPATH, '(//div[@class="tradersDashboard__main"]//button)')
     NAME_OF_TRADING_INSTRUMENT = (By.CSS_SELECTOR, ".tradersDashboard__item .tradersDashboard__name b")
 
+    # Elements of 'Why Capital.com?' > 'Client funds' menu
+    LEARN_MORE_ABOUT_US_LINK_CONTENTS_BLOCK = ('xpath', "//span[text()='Learn more about us ']")
+    CONTENTS_BLOCK = ('css selector', '#tableOfContent')
+    TITLE_LEARN_MORE_ABOUT_US = ('xpath', "//h2[text()='Learn more about us ']")
+
 
 class QRCodeLocators:
     QR_CODE_INVESTMATE = (By.CSS_SELECTOR, "#qr_cfd_new > img")

@@ -58,15 +58,26 @@ def check_gs_table(bid, bug_n, manual=False):
 def new_row_data(d, bid, bug_num, link, manual=False):
     # bid = "Bid:11.01.01.00_01-de.ae.NoReg" or
     # bid = "Bid:11.01.01.01_02-ru.au.NoAuth" or
+    # bid = "Bid:11.01.01!00_01-de.ae.NoReg" or
+    # bid = "Bid:11.01.01!01_02-ru.au.NoAuth" or
     # bid = "Bid:01.05.00_01-nl.au.NoReg" or
     # bid = "Bid:01.05.01_04-nl.cn.Auth"
-    us = "'" + bid.split(':')[1].split('-')[0].split('_')[0]
-    tc = "'_" + bid.split(':')[1].split('-')[0].split('_')[1]
+    # bid = "Bid:01.05!00_01-nl.au.NoReg" or
+    # bid = "Bid:01.05!01_04-nl.cn.Auth"
+    if "!" in bid:
+        us = "'" + bid.split(':')[1].split('!')[0]
+        tc = "'_" + bid.split(':')[1].split('-')[0].split('!')[1]
+        link = ""
+    else:
+        us = "'" + bid.split(':')[1].split('-')[0].split('_')[0]
+        tc = "'_" + bid.split(':')[1].split('-')[0].split('_')[1]
+        if us.split('.')[-1] == '00':
+            link = ""
+
     lng = bid.split(':')[1].split('-')[1].split('.')[0]
     ctr = bid.split(':')[1].split('-')[1].split('.')[1]
     rol = bid.split(':')[1].split('-')[1].split('.')[2]
-    if us.split('.')[-1] == '00':
-        link = ""
+
     new_bug_data_1 = [[bid, 'Ubuntu 22.04', 'Chrome', us, tc, lng, ctr]]
     new_bug_data_2 = [[rol, link]]
 

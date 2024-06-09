@@ -9,6 +9,11 @@ class MenuLanguageAndCountry:
     COUNTRIES_LIST = (By.CSS_SELECTOR, "header .js-countriesList a")
 
 
+class MenuWhyCapitalCom:
+    SUB_MENU_EN_GB_WHY_CAPITAL_COM = (By.CSS_SELECTOR, '[data-type="nav_id687"]')
+    SUB_MENU_EN_ESSENTIALS_OF_TRADING = (By.CSS_SELECTOR, '[data-type="nav_id706"]')
+
+
 class MenuUS11Education:
     SUB_MENU_AR_LEARN_TO_TRADE = \
         (By.CSS_SELECTOR, ".cc-header .cc-nav__item > a[href='https://capital.com/ar/learn-to-trade']")
