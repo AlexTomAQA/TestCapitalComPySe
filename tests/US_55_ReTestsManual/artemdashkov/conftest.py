@@ -1,7 +1,7 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/04/16 19:30
-@Author  : Ivan
+@Time    : 2024/06/09 20:30
+@Author  : Artem
 """
 
 import pytest
