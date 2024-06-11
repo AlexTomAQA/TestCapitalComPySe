@@ -1,11 +1,11 @@
 import allure
 import pytest
 
+from pages.Elements import PageInstrumentWhyChooseBlockButtons
 from pages.Elements.PageInstrumentNotificationButton import PageInstrumentNotificationButton
 from pages.Elements.PromoMarketTradeNowButton import PromoMarketTradeNowButton
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.Elements.TradingCalculatorStartTradingButton import TradingCalculatorStartTradingButton
-from pages.Elements.WhyChooseAndStartGlobalBlocksButtons import WhyChooseAndStartGlobalBlocksButtons
 from pages.common import Common
 from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
@@ -188,13 +188,12 @@ class TestTradingInstrumentPage:
         test_element = PageInstrumentNotificationButton(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
-    @allure.step("Start test of button [Try now]/[Trade now] in Block 'Why choose Capital.com''Start a global ...' on "
-                 "trading instrument page")
+    @allure.step("Start test of button [Try now] in Block 'Why choose Capital.com' on trading instrument page")
     @pytest.mark.test_008
-    def test_008_page_trading_instrument_why_choose_and_start_global_blocks_buttons(
+    def test_008_page_trading_instrument_why_choose_block_button(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_item_link):
         """
-        Check: Button [Try now]/[Trade now] in Block 'Why choose Capital.com?'/'Start a global ...' on trading
+        Check: Button [Try now] in Block 'Why choose Capital.com?' on trading
         instrument page
         Language: All. License: All, except FCA.
         """
@@ -202,8 +201,7 @@ class TestTradingInstrumentPage:
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
             "01.03", "Markets > Menu item [Forex]",
-            ".01_008", "Testing button [Try now]/[Trade now] in Block 'Why choose Capital.com?'/'Start a global ...' "
-                       "on trading instrument page")
+            ".01_008", "Testing button [Try now] in Block 'Why choose Capital.com?'on trading instrument page")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
 
@@ -211,11 +209,8 @@ class TestTradingInstrumentPage:
         page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element_2 = WhyChooseAndStartGlobalBlocksButtons.StartGlobalBlockTradeNowButton(d, cur_item_link, bid)
-        test_element_2.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
-
-        test_element_1 = WhyChooseAndStartGlobalBlocksButtons.WhyChooseBlockTryNowButton(d, cur_item_link, bid)
-        test_element_1.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element = PageInstrumentWhyChooseBlockButtons.PageInstrumentWhyChooseBlockButton(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Start Trading] in the 'Trading calculator' widget on trading instrument page ")
     @pytest.mark.test_009
