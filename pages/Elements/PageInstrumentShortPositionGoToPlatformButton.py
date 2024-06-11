@@ -19,7 +19,7 @@ class PageInstrumentShortPositionGoToPlatformButton(BasePage):
         # page_signup_login = SignupLogin(d, cur_item_link)
         # page_signup_login.check_popup_signup_form()
         #
-        self.element_act_v2()
+        trade_instrument = self.element_act_v2()
 
         test_element = AssertClass(d, cur_item_link, self.bid)
         match cur_role:
@@ -28,7 +28,8 @@ class PageInstrumentShortPositionGoToPlatformButton(BasePage):
             case "NoAuth":
                 test_element.assert_login(d, cur_language, cur_item_link)
             case "Auth":
-                test_element.assert_trading_platform_v4(d, cur_item_link)
+                test_element.assert_trading_platform_v4(d, cur_item_link, tpd=False, tpi=True,
+                                                        trade_instrument=trade_instrument)
         self.driver.get(cur_item_link)
 
     def arrange_v2(self, d, cur_item_link):
