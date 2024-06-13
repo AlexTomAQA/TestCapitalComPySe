@@ -8,7 +8,10 @@ import allure
 
 from datetime import datetime
 
+from selenium.common import ElementClickInterceptedException
+
 from pages.Menu.menu_new import MainMenu
+from pages.base_page import BasePage
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
@@ -75,14 +78,5 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MainMenu(d, link)
-        menu.open_waytotrade_professional_sub_menu(d, cur_language, cur_country, link)
-
-        if not menu.element_is_visible(menu.FOOTER_RISK_WARNING_BLOCK):
-            print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is not visible")
-            Common.pytest_fail(
-                "Bug#034. The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
-        Common().save_current_screenshot(d, "test_34")
-        print(f"{datetime.now()}   => The footer is displayed")
-
-
+        menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
 
