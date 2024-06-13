@@ -343,3 +343,42 @@ class MainMenu(BasePage):
             .pause(1) \
             .click() \
             .perform()
+
+    @allure.step(f"{datetime.now()}.   Check that Footer is opened on page [Professional]")
+    def check_that_footer_is_opened(self, d, test_language, footer_locator):
+        """
+        Check that Footer is opened on the page [Professional]
+        """
+
+        footer = d.find_elements(*footer_locator)
+        if len(footer) == 0:
+            pytest.fail("Bug #034! The footer is missing on click menu item [Professional] "
+                        "of the menu section [Ways to trade]")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            footer[0]
+        )
+
+        print(f"{datetime.now()}   FOOTER_RISK_WARNING_BLOCK is visible? =>")
+        if self.element_is_visible(MainMenu.FOOTER_RISK_WARNING_BLOCK):
+            print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is visible on the page!")
+        else:
+            print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is not visible on the page!")
+            pytest.fail("Bug #034! The footer is missing on click menu item [Professional] "
+                        "of the menu section [Ways to trade]")
+
+    @allure.step('Select Way_to_trade menu, Professional submenu, check that footer is displaed')
+    def check_that_footer_displayed_on_professional_page(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "Professional" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
+        self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
+        self.check_that_footer_is_opened(d, cur_language, self.FOOTER_RISK_WARNING_BLOCK)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
