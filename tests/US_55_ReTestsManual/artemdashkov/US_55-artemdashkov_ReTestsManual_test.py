@@ -13,6 +13,7 @@ from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteBu
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
 from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInstrumentLongPositionGoToPlatformButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
+from pages.Elements.EmailFieldSignUpForm import EmailFieldSignUpForm
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -223,3 +224,39 @@ class TestManualDetected:
         cur_item_link = d.current_url
         test_element = PageInstrumentShortPositionGoToPlatformButton(d, cur_item_link, bid)
         test_element.full_test_with_tpi(d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of field [email] in Sign up form")
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @pytest.mark.parametrize('invalid_login', ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'])
+    @pytest.mark.parametrize('valid_password', ['VALID_password44!'])
+    @pytest.mark.test_036a
+    def test_036a_email_field_sign_up_form(
+            self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
+            cur_login, cur_password, invalid_login, valid_password):
+        """
+        Check: Field [email] in Sign up form
+        Language: All.
+        License: All,
+        Role: NoReg, NoAuth,
+        Login: ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'],
+        Password: ['VALID_password44!']
+        """
+        pytest.skip("AT_DESIGN")
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "036a",
+            "Testing field [email] in Sign up form",
+            False, False
+        )
+
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role, cur_login,
+            cur_password)
+
+        test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
+        test_element.full_test(
+            d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link, invalid_login, valid_password)

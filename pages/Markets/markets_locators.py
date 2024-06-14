@@ -14,8 +14,8 @@ class CapitalPageLocators:
 
 class HeaderElementLocators:
     BUTTON_LOGIN = (By.CSS_SELECTOR, "div.cc-header__wrap > div#wphWrap a#wg_loginBtn")
-    # BUTTON_SIGNUP = (By.CSS_SELECTOR, ".cc-header__wrap > #wphWrap > .js_signup") не рабочий локатор
     BUTTON_SIGNUP = (By.CSS_SELECTOR, "div.cc-header__wrap > div#wphWrap a.cc-header__btn.js-signup")
+    BUTTON_SIGNUP_2 = (By.CSS_SELECTOR, ".cc-header__wrap > #wphWrap > .js_signup")
 
 
 class FooterElementLocators:
