@@ -14,12 +14,12 @@ from pages.Markets.markets_locators import HeaderElementLocators
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.common.exceptions import ElementNotInteractableException
 
+from pages.Signup_login.signup_login_locators import SignupFormLocators
+
 
 BUTTON_NAME = '[Sign up]'
 
 BUTTON_LOCATOR = HeaderElementLocators.BUTTON_SIGNUP_2
-
-
 
 class EmailFieldSignUpForm(BasePage):
     global BUTTON_NAME
@@ -28,13 +28,56 @@ class EmailFieldSignUpForm(BasePage):
 
     def __init__(self, browser, link, bid):
         self.button = None
+        self.page_signup_login = None
 
         super().__init__(browser, link, bid)
 
     @allure.step(f"{datetime.now()}  Start Full test for field [email] in Sign up form")
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link, invalid_login, valid_password):
         self.arrange(d, cur_item_link)
-        self.element_click(d, invalid_login, valid_password)
+        self.element_click(d, cur_item_link, invalid_login, valid_password)
+
+        print(f"\n{datetime.now()}   3. Assert")
+
+        # Test popup message 'Please enter a valid Email'
+        print(f"{datetime.now()}   Is 'Please enter a valid Email' message displayed on this page"
+              f" after putting invalid email? =>")
+        print(f"{datetime.now()}   => Start fill out 'Email address' field.")
+        if not self.send_keys(invalid_login, *SignupFormLocators.SIGNUP_INPUT_EMAIL):
+            pytest.fail(f'{datetime.now()}   => "Email address" is not inputted')
+        print(f"{datetime.now()}   => 'Email address' is inputted\n")
+
+        signup_input_password_field = self.driver.find_element(*SignupFormLocators.SIGNUP_INPUT_PASSWORD)
+        signup_input_password_field.click()
+        print(f"{datetime.now()}   => Switch to 'Password' field\n")
+
+        if signup_input_password_field.get_attribute('style') != "display: block;":
+            msg = f"'Please enter a valid Email' message is NOT displayed"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => 'Please enter a valid Email' message is displayed\n")
+
+        # Test status of [Continue] button
+        print(f"{datetime.now()}   Is [Continue] button active after putting invalid email? =>")
+        print(f"{datetime.now()}   => Start fill out 'Password' field.")
+        if not self.send_keys(valid_password, *SignupFormLocators.SIGNUP_INPUT_PASSWORD):
+            pytest.fail(f'{datetime.now()}   => "Password" is not inputted')
+        print(f"{datetime.now()}   => 'Password' is inputted\n")
+
+        signup_input_email_address_field = self.driver.find_element(*SignupFormLocators.SIGNUP_INPUT_EMAIL)
+        signup_input_email_address_field.click()
+        print(f"{datetime.now()}   => Switch to 'Email address' field\n")
+        # continue_button = self.driver.find_element(*SignupFormLocators.SIGNUP_SUBMIT_BTN)
+
+        if self.element_is_clickable(SignupFormLocators.SIGNUP_SUBMIT_BTN):
+            msg = f"[Continue] button is active after putting invalid email"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => '[Continue] button is NOT active after putting invalid email\n")
+
+        self.page_signup_login = SignupLogin(d, cur_item_link)
+        self.page_signup_login.close_signup_form()
+        Common().assert_true_false(True, "")
 
     @allure.step("Click button [Trade] in 'Trading instrument' widget")
     def arrange(self, d, cur_item_link):
@@ -61,6 +104,10 @@ class EmailFieldSignUpForm(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BUTTON_NAME} button is visible on this page!\n")
 
+    @allure.step(f"Fill out fields")
+    def element_click(self, d, cur_item_link, invalid_login, valid_password):
+        print(f"\n{datetime.now()}   2. Act_v0")
+
         # IS [Sign Up] button clickable?
         print(f"{datetime.now()}   IS {BUTTON_NAME} clickable on the page? =>")
         if not self.element_is_clickable(BUTTON_LOCATOR):
@@ -78,15 +125,12 @@ class EmailFieldSignUpForm(BasePage):
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
 
-    @allure.step(f"Fill out fields")
-    def element_fill_out(self, d, invalid_login, valid_password):
-        print(f"\n{datetime.now()}   2. Act_v0")
-
-
-
-        """
-        Stopped here
-        """
+        if SignupLogin(d, cur_item_link).should_be_signup_form():
+            print(f"{datetime.now()}   => 'Sign up' form is opened")
+        else:
+            msg = "Problem with Authorisation"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # ???   {msg}")
 
         return True
 

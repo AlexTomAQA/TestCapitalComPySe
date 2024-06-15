@@ -39,6 +39,9 @@ class SignupFormLocators:
     #                                "#s_overlay .signup-form > div > div > p > a[href*='/terms-and-policies']")
     SIGNUP_PRIVACY_POLICY_ALL_2 = (By.CSS_SELECTOR,
                                    "#s_overlay > div > .signup-form > .form-container-small-footer > div > p > a")
+    SIGNUP_EMAIL_POPUP_MESSAGE = (By.CSS_SELECTOR, "#s_overlay ul[class='password-list password-list--new ']")
+    SIGNUP_PASSWORD_POPUP_MESSAGE = (By.CSS_SELECTOR,
+            "#s_overlay ul[class='password-list password-list--new password-list--poli  password-list--opened  ']")
 
 
 class TradingPlatformSignupFormLocators:
