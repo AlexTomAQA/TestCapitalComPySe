@@ -445,3 +445,10 @@ class MyAccountButtonLocators(BasePage):
 class WhyChooseLocators:
     BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '.js-showBanner')
     BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '.cc-counter__btn')
+
+
+class ProductsAndServicesOurMobileApps:
+    PRODUCTS_AND_SERVICES_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id2"]')
+    OUR_MOBILE_APPS_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id465"]')
+    GOOGLE_PLAY_BUTTON = (By.CSS_SELECTOR, 'a.onelink-mobile-url.badge-googleplay')
+    GOOGLE_PLAY_LOGO = (By.CSS_SELECTOR, 'span.google_logo')
