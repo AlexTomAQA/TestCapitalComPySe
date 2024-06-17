@@ -36,10 +36,17 @@ class EmailFieldSignUpForm(BasePage):
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link, invalid_login, valid_password):
         self.arrange(d, cur_item_link)
         self.element_click(d, cur_item_link, invalid_login, valid_password)
+        self.assert_step(d, cur_item_link, invalid_login, valid_password)
+        print("=============================")
 
+
+
+    @allure.step(f"{datetime.now()}  Assert step")
+    def assert_step(self, d, cur_item_link, invalid_login, valid_password):
         print(f"\n{datetime.now()}   3. Assert")
 
         # Test popup message 'Please enter a valid Email'
+        self.page_signup_login = SignupLogin(d, cur_item_link)
         print(f"{datetime.now()}   Is 'Please enter a valid Email' message displayed on this page"
               f" after putting invalid email? =>")
         print(f"{datetime.now()}   => Start fill out 'Email address' field.")
@@ -52,16 +59,24 @@ class EmailFieldSignUpForm(BasePage):
         print(f"{datetime.now()}   => Switch to 'Password' field\n")
 
         if signup_input_password_field.get_attribute('style') != "display: block;":
-            msg = f"'Please enter a valid Email' message is NOT displayed"
-            print(f"{datetime.now()}   => {msg}\n")
+            msg = "'Please enter a valid Email' message is NOT displayed"
+            print(f"{datetime.now()}   {msg}\n")
+            # print(f"{datetime.now()}   => {msg}\n")
+
+            Common().save_current_screenshot(d, str(datetime.now()))
+            Common().assert_true_false(False, msg)
+            self.page_signup_login.close_signup_form()
             Common().pytest_fail(msg)
+
         print(f"{datetime.now()}   => 'Please enter a valid Email' message is displayed\n")
 
         # Test status of [Continue] button
         print(f"{datetime.now()}   Is [Continue] button active after putting invalid email? =>")
         print(f"{datetime.now()}   => Start fill out 'Password' field.")
         if not self.send_keys(valid_password, *SignupFormLocators.SIGNUP_INPUT_PASSWORD):
-            pytest.fail(f'{datetime.now()}   => "Password" is not inputted')
+            msg = f"'Password' is not inputted"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
         print(f"{datetime.now()}   => 'Password' is inputted\n")
 
         signup_input_email_address_field = self.driver.find_element(*SignupFormLocators.SIGNUP_INPUT_EMAIL)
@@ -75,11 +90,9 @@ class EmailFieldSignUpForm(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => '[Continue] button is NOT active after putting invalid email\n")
 
-        self.page_signup_login = SignupLogin(d, cur_item_link)
-        self.page_signup_login.close_signup_form()
         Common().assert_true_false(True, "")
 
-    @allure.step("Click button [Trade] in 'Trading instrument' widget")
+    @allure.step(f'{datetime.now()}    Arrange')
     def arrange(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange for 'Trading instrument' widget: market")
 
@@ -104,7 +117,7 @@ class EmailFieldSignUpForm(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BUTTON_NAME} button is visible on this page!\n")
 
-    @allure.step(f"Fill out fields")
+    @allure.step(f"{datetime.now()}    Click button [Sign up]")
     def element_click(self, d, cur_item_link, invalid_login, valid_password):
         print(f"\n{datetime.now()}   2. Act_v0")
 
@@ -125,7 +138,7 @@ class EmailFieldSignUpForm(BasePage):
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
 
-        if SignupLogin(d, cur_item_link).should_be_signup_form():
+        if SignupLogin(d, cur_item_link).should_be_signup_form(cur_item_link):
             print(f"{datetime.now()}   => 'Sign up' form is opened")
         else:
             msg = "Problem with Authorisation"
