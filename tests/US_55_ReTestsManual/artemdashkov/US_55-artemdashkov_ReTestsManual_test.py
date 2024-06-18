@@ -36,6 +36,7 @@ class TestManualDetected:
         Check: Button [Add to favourite] on the 'Trading Instrument Page'
         Language: All.
         License: Not FCA
+        Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -79,6 +80,7 @@ class TestManualDetected:
         Check: Button [Go to platform] on tooltip 'Long position overnight fee'
         Language: All.
         License: Not FCA
+        Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -125,6 +127,7 @@ class TestManualDetected:
         Check: Button [Go to platform] on tooltip 'Short position overnight fee'
         Language: All.
         License: Not FCA
+        Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -170,6 +173,7 @@ class TestManualDetected:
         Check: Button [Try now] on block Why choose Capital.com?
         Language: All.
         License: Not FCA
+        Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -203,6 +207,7 @@ class TestManualDetected:
         Check: Link [Learn more about us] on block Contents?
         Language: En.
         License: FCA
+        Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -229,7 +234,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.parametrize('invalid_login', ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'])
-    @pytest.mark.parametrize('valid_password', ['VALID_password44!'])
+    @pytest.mark.parametrize('valid_password', ['VALID_password44!VALID_password44!VALID_password44!'])
     @pytest.mark.test_036a
     def test_036a_email_field_sign_up_form(
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
@@ -241,8 +246,8 @@ class TestManualDetected:
         Role: NoReg, NoAuth,
         Login: ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'],
         Password: ['VALID_password44!']
+        Author: Artem Dashkov
         """
-        pytest.skip("AT_DESIGN")
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
@@ -252,6 +257,7 @@ class TestManualDetected:
             False, False
         )
 
+        d.refresh()
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
