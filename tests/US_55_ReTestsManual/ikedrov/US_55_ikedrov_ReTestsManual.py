@@ -28,6 +28,8 @@ class TestManualDetected:
         Check: Button [Google Play] on the block CFD Trading app
         Language: All.
         License: Not FCA
+
+        Author  : Ivan Kedrov
         """
 
         bid = build_dynamic_arg_for_us_55(
