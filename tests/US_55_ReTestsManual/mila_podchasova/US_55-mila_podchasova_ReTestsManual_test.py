@@ -28,6 +28,8 @@ class TestManualDetectedBugs:
         """
          Check: Home page is not opened when click [Platform overview] button
          Language: En. License: FCA.
+
+         Author: podchasova11
          """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -56,10 +58,11 @@ class TestManualDetectedBugs:
     @pytest.mark.test_034
     def test_34(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-                    Page "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
-                    1. Hover over the [Ways to trade] menu section
-                    2. Click the [Professional]menu item
-                    """
+        Page "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
+        1. Hover over the [Ways to trade] menu section
+        2. Click the [Professional]menu item
+        Author: podchasova11
+        """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
@@ -75,6 +78,3 @@ class TestManualDetectedBugs:
 
         menu = WaysToTradeProfessional(d, link, bid)
         menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
-
-
-

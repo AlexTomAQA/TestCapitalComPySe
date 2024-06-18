@@ -24,8 +24,9 @@ class WaysToTradeProfessional(BasePage):
     # footer
     FOOTER_RISK_WARNING_BLOCK = (By.CSS_SELECTOR, 'footer .dark')
     FOOTER_RISK_WARNING_BLOCK_LINK = (By.CSS_SELECTOR, 'footer .dark a')
+    FOOTER_CAPITAL_LOGO = (By.CSS_SELECTOR, 'footer > div > a[href="/en-gb"]')
 
-    @allure.step('Select Way_to_trade menu, Professional submenu, check that footer is displaed')
+    @allure.step('Select Way_to_trade menu, Professional submenu, check that footer is displayed')
     def check_that_footer_displayed_on_professional_page(self, d, cur_language, cur_country, link):
         print(f'\n{datetime.now()}   START Open "Way_to_trade" menu, "Professional" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
@@ -36,7 +37,8 @@ class WaysToTradeProfessional(BasePage):
 
         self.main_menu_move_focus(d, cur_language, self.MENU_WAYS_TO_TRADE)
         self.sub_menu_move_focus_click(d, cur_language, self.SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
-        self.check_that_footer_is_opened(d, cur_language, self.FOOTER_RISK_WARNING_BLOCK)
+        # self.check_that_footer_is_opened(d, cur_language, self.FOOTER_RISK_WARNING_BLOCK)
+        self.check_that_footer_is_opened(d, cur_language, self.FOOTER_CAPITAL_LOGO)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
 
@@ -88,7 +90,7 @@ class WaysToTradeProfessional(BasePage):
 
         footer = d.find_elements(*footer_locator)
         if len(footer) == 0:
-            pytest.fail("Bug #034! The footer is missing on click menu item [Professional] "
+            pytest.fail("Bug # 034. The footer is missing after clicked menu item [Professional] "
                         "of the menu section [Ways to trade]")
 
         self.driver.execute_script(
@@ -96,11 +98,20 @@ class WaysToTradeProfessional(BasePage):
             footer[0]
         )
 
-        print(f"{datetime.now()}   FOOTER_RISK_WARNING_BLOCK is visible? =>")
-        if self.element_is_visible(WaysToTradeProfessional.FOOTER_RISK_WARNING_BLOCK):
+        # print(f"{datetime.now()}   FOOTER_RISK_WARNING_BLOCK is visible? =>")
+        # if self.element_is_visible(WaysToTradeProfessional.FOOTER_RISK_WARNING_BLOCK):
+        #     allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+        #     print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is visible on the page!")
+        # else:
+        #     print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is not visible on the page!")
+        #     pytest.fail("Bug #034! The footer is missing on click menu item [Professional] "
+        #                 "of the menu section [Ways to trade]")
+
+        print(f"{datetime.now()}   Is visible CAPITAL.COM logo from footer? =>")
+        if self.element_is_visible(WaysToTradeProfessional.FOOTER_CAPITAL_LOGO):
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is visible on the page!")
+            print(f"{datetime.now()}   => CAPITAL.COM logo from footer is visible on the page")
         else:
-            print(f"{datetime.now()}   => FOOTER_RISK_WARNING_BLOCK is not visible on the page!")
-            pytest.fail("Bug #034! The footer is missing on click menu item [Professional] "
+            print(f"{datetime.now()}   => CAPITAL.COM logo from footer is not visible on the page")
+            pytest.fail("Bug # 034. The footer is missing after click menu item [Professional] "
                         "of the menu section [Ways to trade]")
