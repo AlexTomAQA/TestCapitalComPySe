@@ -20,7 +20,6 @@ class TestManualDetectedBugs:
         """
         # Check: Button [1. Create your account] in block [Steps trading]
         # Language: All. License: All.
-
         Author: Maria Izmaylova
         """
         bid = build_dynamic_arg_for_us_55(

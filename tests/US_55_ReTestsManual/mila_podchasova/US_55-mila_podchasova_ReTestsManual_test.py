@@ -61,7 +61,6 @@ class TestManualDetectedBugs:
         Page "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
         1. Hover over the [Ways to trade] menu section
         2. Click the [Professional]menu item
-
         Author: podchasova11
         """
         bid = build_dynamic_arg_for_us_55(
