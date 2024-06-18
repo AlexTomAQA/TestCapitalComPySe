@@ -38,10 +38,11 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg"])
     @pytest.mark.test_006
     def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        # """
-        # Check: Button [1. Create your account] in block [Steps trading]
-        # Language: All. License: All.
-        # """
+        """
+        Check: Button [1. Create your account] in block [Steps trading]
+        Language: All. License: All.
+        Author  : Alexander Tomelo
+        """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
