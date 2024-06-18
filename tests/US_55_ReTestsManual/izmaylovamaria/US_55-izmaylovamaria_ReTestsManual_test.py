@@ -44,6 +44,7 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
+        cur_item_link = None
         match cur_market:
             case "Shares":
                 cur_item_link = menu.open_shares_market_menu(d, cur_language, cur_country, link)
@@ -57,7 +58,7 @@ class TestManualDetectedBugs:
                 cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language, cur_country, link)
 
         test_element = TradeCFDSellButton(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
+        test_element.full_test(d, cur_language, cur_country, cur_role, cur_market)
 
     # @allure.step("Start test of button [Buy] on trading instrument page'")
     # @pytest.mark.test_55
@@ -79,7 +80,7 @@ class TestManualDetectedBugs:
     #
     #     test_element = TradeCFDBuyButton(d, cur_item_link, bid)
     #     test_element.full_test(d, cur_language, cur_country, cur_role, cur_item_link)
-    #
+
     # @allure.step("Start test of button [Notification] on trading instrument page")
     # @pytest.mark.test_55
     # def test_010c(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_button):
