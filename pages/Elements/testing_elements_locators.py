@@ -442,8 +442,13 @@ class MyAccountButtonLocators(BasePage):
     HEADER_LOGIN_BTN2 = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
 
 
-class WhyChooseAndStartGlobalLocators:
-    BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-id="302"]')
-    BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '[data-type="banner_with_counter_hor_counter_hor_new_302"]')
-    BLOCK_START_GLOBAL = (By.CSS_SELECTOR, '[data-id="876"]')
-    BUTTON_TRADE_NOW_BLOCK_START_GLOBAL = (By.CSS_SELECTOR, '[data-type="b_hor_new_style_876"]')
+class WhyChooseLocators:
+    BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '.js-showBanner')
+    BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE = (By.CSS_SELECTOR, '.cc-counter__btn')
+
+
+class ProductsAndServicesOurMobileApps:
+    PRODUCTS_AND_SERVICES_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id2"]')
+    OUR_MOBILE_APPS_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id465"]')
+    GOOGLE_PLAY_BUTTON = (By.CSS_SELECTOR, 'a.onelink-mobile-url.badge-googleplay')
+    GOOGLE_PLAY_LOGO = (By.CSS_SELECTOR, 'span.google_logo')

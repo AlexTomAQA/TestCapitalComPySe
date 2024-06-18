@@ -103,7 +103,7 @@ class TradingInstrumentTradeButton(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            d.find_elements(*self.market_locator)[0]
+            self.driver.find_element(*self.market_locator)
         )
 
         print(f"\n{datetime.now()}   IS MARKET '{cur_market}' visible on this page? =>")
