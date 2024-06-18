@@ -26,7 +26,6 @@ class TestManualDetectedBugs:
         """
          Check: Button [My account] in the Header
          Language: En. License: FCA.
-
          Author: Kasila
          """
         bid = build_dynamic_arg_for_us_55(

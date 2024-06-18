@@ -28,7 +28,6 @@ class TestManualDetected:
         Check: Button [Google Play] on the block CFD Trading app
         Language: All.
         License: Not FCA
-
         Author  : Ivan Kedrov
         """
 
