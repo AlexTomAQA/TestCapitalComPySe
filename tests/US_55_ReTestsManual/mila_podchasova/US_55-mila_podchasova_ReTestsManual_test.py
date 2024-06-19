@@ -7,10 +7,12 @@
 import pytest
 import allure
 
+from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Elements.WaysToTradeProfessional import WaysToTradeProfessional
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
+from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 from pages.conditions_new import NewConditions
 
@@ -21,7 +23,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!00_029 Home page is not opened when click [Platform overview] button")
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_029
     def test_029(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -37,17 +39,15 @@ class TestManualDetectedBugs:
             "029", "Home page is not opened when click [Platform overview] button"
         )
 
-        pytest.skip("Autotest under construction")
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
 
-        # Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
-        # Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        #
-        # page_conditions = NewConditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        #
-        # test_element = PlatformOverviewButton(d, link, bid)
-        # test_element.full_test(d, cur_language, cur_country, cur_role, link)
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = PlatformOverviewButton(d, link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual TC_55!00_034 "
                  "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
@@ -69,12 +69,15 @@ class TestManualDetectedBugs:
             "034",
             "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"
         )
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        pytest.skip("Autotest under construction")
 
-        menu = WaysToTradeProfessional(d, link, bid)
-        menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
+        # Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        # Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        #
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        # menu = WaysToTradeProfessional(d, link, bid)
+        # menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
