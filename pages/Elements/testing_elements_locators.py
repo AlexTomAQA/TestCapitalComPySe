@@ -452,3 +452,9 @@ class ProductsAndServicesOurMobileApps:
     OUR_MOBILE_APPS_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id465"]')
     GOOGLE_PLAY_BUTTON = (By.CSS_SELECTOR, 'a.onelink-mobile-url.badge-googleplay')
     GOOGLE_PLAY_LOGO = (By.CSS_SELECTOR, 'span.google_logo')
+
+
+class MobileTradingAppBlockLocators:
+    MOBILE_TRADING_APP_BLOCK_PLATFORM_OVERVIEW_BUTTON = (
+        By.CSS_SELECTOR, 'div.platform-web-description__text p:nth-child(2) > a')
+    MOBILE_TRADING_APP_BLOCK = (By.CSS_SELECTOR, 'div.platform-web-description__text')
