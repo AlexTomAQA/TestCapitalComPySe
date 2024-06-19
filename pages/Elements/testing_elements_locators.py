@@ -452,3 +452,9 @@ class ProductsAndServicesOurMobileApps:
     OUR_MOBILE_APPS_BUTTON = (By.CSS_SELECTOR, '[data-type="nav_id465"]')
     GOOGLE_PLAY_BUTTON = (By.CSS_SELECTOR, 'a.onelink-mobile-url.badge-googleplay')
     GOOGLE_PLAY_LOGO = (By.CSS_SELECTOR, 'span.google_logo')
+
+
+class TradingCoursesMenuItem:
+    EDUCATION_SECTION = (By.CSS_SELECTOR, '[data-type="nav_id96"]')
+    TRADING_COURSES = (By.CSS_SELECTOR, '[data-type="nav_id11"]')
+    CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '[data-type="courses_hub"]')
