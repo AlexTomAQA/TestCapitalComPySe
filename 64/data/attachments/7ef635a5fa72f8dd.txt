@@ -1,0 +1,54 @@
+2024-06-19 20:01:11 ERROR The elements are no longer attached to the DOM on page: https://capital.com/fr/instruments-financiers-derives
+2024-06-19 20:01:11 ERROR stale element reference: stale element not found in the current frame
+  (Session info: chrome=125.0.6422.142); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Traceback (most recent call last):
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 345, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 365, in _predicate
+    if element and element.is_enabled():
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 192, in is_enabled
+    return self._execute(Command.IS_ELEMENT_ENABLED)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=125.0.6422.142); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	GetHandleVerifier [0x00CEB8E3+45827]
+	(No symbol) [0x00C7DCC4]
+	(No symbol) [0x00B7150F]
+	(No symbol) [0x00B7660F]
+	(No symbol) [0x00B78298]
+	(No symbol) [0x00B78310]
+	(No symbol) [0x00BAD6F0]
+	(No symbol) [0x00BD2DFC]
+	(No symbol) [0x00BA8075]
+	(No symbol) [0x00BD3094]
+	(No symbol) [0x00BEC034]
+	(No symbol) [0x00BD2B96]
+	(No symbol) [0x00BA6998]
+	(No symbol) [0x00BA751D]
+	GetHandleVerifier [0x00FA4513+2899763]
+	GetHandleVerifier [0x00FF793D+3240797]
+	GetHandleVerifier [0x00D713B4+593364]
+	GetHandleVerifier [0x00D782DC+621820]
+	(No symbol) [0x00C870A4]
+	(No symbol) [0x00C837A8]
+	(No symbol) [0x00C83947]
+	(No symbol) [0x00C759FE]
+	BaseThreadInitThunk [0x758567F9+25]
+	RtlGetFullPathName_UEx [0x77887F4D+173]
+	RtlGetFullPathName_UEx [0x77887F1B+123]
