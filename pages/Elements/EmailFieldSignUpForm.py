@@ -3,17 +3,14 @@
 @Time    : 2024/06/14 20:30
 @Author  : Artem Dashkov
 """
-import time
 from datetime import datetime
 import pytest
 import allure
 from pages.common import Common
-from pages.Elements.AssertClass import AssertClass
 from pages.Signup_login.signup_login import SignupLogin
 from pages.base_page import BasePage
 from pages.Markets.markets_locators import HeaderElementLocators
-from selenium.common.exceptions import ElementClickInterceptedException
-from selenium.common.exceptions import ElementNotInteractableException
+from selenium.common.exceptions import ElementNotInteractableException, StaleElementReferenceException
 
 from pages.Signup_login.signup_login_locators import SignupFormLocators
 
@@ -85,7 +82,7 @@ class EmailFieldSignUpForm(BasePage):
 
     @allure.step(f'{datetime.now()}    Arrange')
     def arrange(self, d, cur_item_link):
-        print(f"\n{datetime.now()}   1. Arrange for 'Trading instrument' widget: market")
+        print(f"\n{datetime.now()}   1. Arrange")
 
         # Check presenting and visible button [Sign Up]
         print(f"{datetime.now()}   IS {BUTTON_NAME} button present on this page? =>")
@@ -125,9 +122,12 @@ class EmailFieldSignUpForm(BasePage):
             self.driver.find_element(*BUTTON_LOCATOR).click()
             print(f"{datetime.now()}   => End Click button {BUTTON_NAME} ")
         except ElementNotInteractableException:
-            msg = "Tab '{cur_market}' MARKET is NOT clicked"
+            msg = f"{BUTTON_NAME} is NOT clicked"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(msg)
+        except StaleElementReferenceException:
+            self.driver.find_elements(*BUTTON_LOCATOR)[0].click()
+            print(f"{datetime.now()}   => End Click button {BUTTON_NAME} ")
 
         if SignupLogin(d, cur_item_link).should_be_signup_form(cur_item_link):
             print(f"{datetime.now()}   => 'Sign up' form is opened")
