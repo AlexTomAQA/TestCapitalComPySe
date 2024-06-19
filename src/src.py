@@ -43,3 +43,8 @@ class LearnToTradePageSrc:
 
 class ProfessionalClientsAu:
     URL = "https://capital.com/professional-clients-au"
+
+
+class InvestmateApp:
+    URL = "https://capital.com/learn-trading-app"
+
