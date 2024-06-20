@@ -1,0 +1,95 @@
+{'width': 1280, 'height': 800}
+
+2024-06-20 21:43:47.418630   worker_id = master
+
+2024-06-20 21:43:47.418630   0. Allure grouping v4
+
+2024-06-20 21:43:47.418630   START PRECONDITIONS =>
+
+2024-06-20 21:43:47.418630   => URL after prev. preconditions - https://capital.com/it
+2024-06-20 21:43:47.418630   => flag_of_bug - True
+2024-06-20 21:43:47.418630   => Current URL - https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-06-20 21:43:47.425625   Current page URL = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-06-20 21:43:47.428623   self.link = https://capital.com/it
+2024-06-20 21:43:47.428623   driver.get(https://capital.com/it) =>
+2024-06-20 21:43:49.297912   => Loaded page https://capital.com/it
+
+2024-06-20 21:43:49.302881   => Windows size: {'width': 1280, 'height': 800}
+2024-06-20 21:43:49.305022   Set windows position at (0, 0) =>
+2024-06-20 21:43:49.308009   Set resolution 1280 * 800 =>
+2024-06-20 21:43:49.310009   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-20 21:43:50.352364   Капчи нет. Идем дальше
+
+2024-06-20 21:43:50.352364   Работа с куками =>
+
+2024-06-20 21:43:50.352364   => не требуется
+
+2024-06-20 21:43:51.366959   Капчи нет. Идем дальше
+
+2024-06-20 21:43:51.366959   Prev. country - 'au'
+2024-06-20 21:43:51.366959   Cur. country - 'au'
+2024-06-20 21:43:51.366959   => Country set to 'au'
+
+2024-06-20 21:43:52.408158   Капчи нет. Идем дальше
+
+2024-06-20 21:43:52.408158   Prev. language - 'it'
+2024-06-20 21:43:52.408158   Cur. language - 'it'
+2024-06-20 21:43:52.408158   => Language is set to 'it'
+
+2024-06-20 21:43:53.441308   Капчи нет. Идем дальше
+
+2024-06-20 21:43:53.441308   Prev. role - 'NoAuth'
+2024-06-20 21:43:53.441308   Cur. role - 'NoAuth'
+2024-06-20 21:43:53.441308   => The 'NoAuth' role is set
+
+2024-06-20 21:43:53.445320   => Current URL - https://capital.com/it
+
+2024-06-20 21:43:53.445320   => THE END PRECONDITIONS
+
+2024-06-20 21:43:53.445320   1. Arrange_v0
+2024-06-20 21:43:53.445320   current_page = https://capital.com/it
+2024-06-20 21:43:53.448466   link = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-06-20 21:43:53.452454   Current page URL = https://capital.com/it
+2024-06-20 21:43:53.455474   self.link = https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-06-20 21:43:53.455474   driver.get(https://capital.com/it/la-tua-guida-al-trading-usd-jpy) =>
+2024-06-20 21:43:55.430086   => Loaded page https://capital.com/it/la-tua-guida-al-trading-usd-jpy
+2024-06-20 21:43:55.444154   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-06-20 21:43:55.444154   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-06-20 21:43:55.444154   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-06-20 21:43:55.448886   => 'Sell' button in Content block scrolled
+2024-06-20 21:43:55.448886   Start Checking that form [Sign up] popped up on the page =>
+2024-06-20 21:43:56.993820   '[Sign up]' form was not popped up
+
+2024-06-20 21:43:56.994827   2. Act_v0
+2024-06-20 21:43:57.031353   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-06-20 21:43:57.031353   => return trade_instrument = 374675767075865
+
+2024-06-20 21:43:57.031353   3. Assert_Login_v0
+2024-06-20 21:43:57.031353   Check that 'Login' form is opened
+2024-06-20 21:44:03.206433   'Login' form not opened
+2024-06-20 21:44:03.207420   Check that new 'Login' form is opened
+2024-06-20 21:44:06.300477   => New 'Login' form not opened
+2024-06-20 21:44:06.304481   'Login' page not opened
+2024-06-20 21:44:09.360017   'Login' form on trading platform not opened
+2024-06-20 21:44:09.360017   Start step Check that [Sign up] form is opened
+2024-06-20 21:44:09.371433   'Sign up' form opened
+2024-06-20 21:44:09.371433   Assert SIGNUP_HEADER =>
+2024-06-20 21:44:09.385215   Assert SIGNUP_REF_LOGIN =>
+2024-06-20 21:44:09.398560   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-06-20 21:44:09.410573   => SIGNUP_PRIVACY_POLICY_ALL
+2024-06-20 21:44:09.410573   => 'Signup' form is checked
+
+Bug: Bid:11.02.04.01_04-it.au.NoAuth
+
+2024-06-20 21:44:09.411628   Проверка бага в таблице ретеста  =>
+
+2024-06-20 21:44:09.984204   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-20 21:44:10.216925   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-20 21:44:13.089894   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-20 21:44:13.274624   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-20 21:44:13.275636   Баг Bid:11.02.04.01_04-it.au.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
