@@ -516,53 +516,6 @@ class MenuSection(BasePage):
         del sub_menu
         return d.current_url
 
-    @allure.step("Focus move to 'trading courses' menu item and click")
-    def sub_menu_trading_courses_move_focus_click(self, d, test_language, test_country):
-        sub_menu = None
-        match test_language:
-            case "":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_EN_ITEM_TRADING_COURSES)
-            case "ar":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_AR_ITEM_TRADING_COURSES)
-            case "de":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_DE_ITEM_TRADING_COURSES)
-            case "el":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_EL_ITEM_TRADING_COURSES)
-            case "es":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_ES_ITEM_TRADING_COURSES)
-            case "fr":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_FR_ITEM_TRADING_COURSES)
-            case "it":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_IT_ITEM_TRADING_COURSES)
-            case "hu":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_HU_ITEM_TRADING_COURSES)
-            case "nl":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_NL_ITEM_TRADING_COURSES)
-            case "pl":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_PL_ITEM_TRADING_COURSES)
-            case "ro":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_RO_ITEM_TRADING_COURSES)
-            case "ru":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_RU_ITEM_TRADING_COURSES)
-            case "zh":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_ZH_ITEM_TRADING_COURSES)
-            case "cn":
-                sub_menu = d.find_elements(*MenuUS11TradingCourses.SUB_MENU_CN_ITEM_TRADING_COURSES)
-
-        if len(sub_menu) == 0:
-            Common().save_current_screenshot(d, "SavePNG")
-            Common().pytest_fail(
-                f"Bug # ??? For language '{test_language}' \"Education > Trading courses\" submenu doesn't exist")
-
-        ActionChains(d) \
-            .move_to_element(sub_menu[0]) \
-            .pause(0.5) \
-            .click() \
-            .perform()
-
-        del sub_menu
-        return d.current_url
-
     @allure.step("Focus move to 'Basics_of_trading' menu item and click")
     def sub_menu_basics_of_trading_move_focus_click(self, d, test_language, test_country):
         sub_menu = list()
