@@ -6,6 +6,7 @@
 import pytest
 import allure
 
+from pages.BugsManual.bag_039 import AppliedFilters
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -71,6 +72,9 @@ class TestManualDetectedBugs:
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_shares_market_menu(d, cur_language, cur_country, link)
+
+        test_element = AppliedFilters(d, cur_item_link, bid)
+        test_element.full_test(d, cur_language, cur_country,cur_role, cur_item_link)
 
 
 #        assert len(selected_filters_list) == len(filters_list_after_refresh), \
