@@ -264,15 +264,16 @@ class AssertClass(BasePage):
                  'Actual result: The Home page is opened ')
 
     @allure.step('Checking that applied filters "Region/Sectors" are displayed')
-    def assert_filters(self, selected_filters_text_list):
+    def assert_filters(self, d, cur_link, selected_filters_text_list):
         print(f"\n{datetime.now()}   3. Assert_v0")
-        actual_filters_list = self.driver.find_elements(*By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
+        actual_filters_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
         actual_filters_text_list = [element.text for element in actual_filters_list]
 
         if actual_filters_text_list != selected_filters_text_list:
             assert False, \
                 ('Bug#039. '
                  'Expected result: applied filters "Region/Sectors" are displayed'
+                 '\n'
                  'Actual result: applied filters "Region/Sectors" are not displayed after selecting an item from '
                  'the "Most traded" dropdown')
         else:
