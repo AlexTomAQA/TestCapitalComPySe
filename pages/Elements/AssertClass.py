@@ -252,6 +252,17 @@ class AssertClass(BasePage):
         else:
             print(f"{datetime.now()}   =>This does not mean that there is no bug")
 
+    @allure.step('Checking that Home page is not opened when click [Platform overview] button')
+    def assert_that_trading_page_is_opened(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        platform_overview_btn_link = d.current_url
+        if platform_overview_btn_link == "https://capital.com/":
+            assert False, \
+                ('Bug#029. '
+                 'Expected result:The Desktop Trading page is opened '
+                 '\n'
+                 'Actual result: The Home page is opened ')
+
     @allure.step('Checking that applied filters "Region/Sectors" are displayed')
     def assert_filters(self, selected_filters_text_list):
         print(f"\n{datetime.now()}   3. Assert_v0")

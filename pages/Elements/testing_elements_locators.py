@@ -454,6 +454,12 @@ class ProductsAndServicesOurMobileApps:
     GOOGLE_PLAY_LOGO = (By.CSS_SELECTOR, 'span.google_logo')
 
 
+class MobileTradingAppBlockLocators:
+    MOBILE_TRADING_APP_BLOCK_PLATFORM_OVERVIEW_BUTTON = (
+        By.CSS_SELECTOR, 'div.platform-web-description__text p:nth-child(2) > a')
+    MOBILE_TRADING_APP_BLOCK = (By.CSS_SELECTOR, 'div.platform-web-description__text')
+
+
 class TradingCoursesMenuItem:
     EDUCATION_SECTION = (By.CSS_SELECTOR, '[data-type="nav_id96"]')
     TRADING_COURSES = (By.CSS_SELECTOR, '[data-type="nav_id11"]')
