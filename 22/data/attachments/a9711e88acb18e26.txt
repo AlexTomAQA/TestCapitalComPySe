@@ -1,0 +1,100 @@
+
+
+
+Current language - pl
+{'width': 1280, 'height': 800}
+
+2024-06-22 19:36:02.745160   worker_id = master
+
+2024-06-22 19:36:02.745176   0. Allure grouping for US_55
+
+2024-06-22 19:36:03.393344   START PRECONDITIONS =>
+
+2024-06-22 19:36:03.393389   => URL after prev. preconditions - https://capital.com/pl?country=au
+2024-06-22 19:36:03.393408   => flag_of_bug - False
+2024-06-22 19:36:03.393428   => Current URL - https://capital.com/pl?country=au
+
+2024-06-22 19:36:03.424966   => Windows size: {'width': 1280, 'height': 800}
+2024-06-22 19:36:03.429343   Set windows position at (0, 0) =>
+2024-06-22 19:36:03.431485   Set resolution 1280 * 800 =>
+2024-06-22 19:36:03.433060   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-22 19:36:04.471454   Капчи нет. Идем дальше
+
+2024-06-22 19:36:04.471542   Работа с куками =>
+
+2024-06-22 19:36:04.471555   => не требуется
+
+2024-06-22 19:36:05.499244   Капчи нет. Идем дальше
+
+2024-06-22 19:36:05.499332   Prev. country - 'au'
+2024-06-22 19:36:05.499353   Cur. country - 'ua'
+2024-06-22 19:36:05.499369   Set 'ua' country =>
+2024-06-22 19:36:05.508329   => Language and Country menu is present
+2024-06-22 19:36:05.517345   => Language and Country menu is visible
+2024-06-22 19:36:06.797977   => Focus is moved on Language and Country menu 
+2024-06-22 19:36:09.329039   => Cur url = https://capital.com/pl?country=ua
+2024-06-22 19:36:09.368542   => Country set to 'ua'
+
+2024-06-22 19:36:10.419108   Капчи нет. Идем дальше
+
+2024-06-22 19:36:10.419193   Prev. language - 'pl'
+2024-06-22 19:36:10.419206   Cur. language - 'pl'
+2024-06-22 19:36:10.419216   => Language is set to 'pl'
+
+2024-06-22 19:36:11.439651   Капчи нет. Идем дальше
+
+2024-06-22 19:36:11.439730   Prev. role - 'NoAuth'
+2024-06-22 19:36:11.439743   Cur. role - 'NoAuth'
+2024-06-22 19:36:11.439753   => The 'NoAuth' role is set
+
+2024-06-22 19:36:11.444958   => Current URL - https://capital.com/pl?country=ua
+
+2024-06-22 19:36:11.444982   => THE END PRECONDITIONS
+
+2024-06-22 19:36:11.445268   1. Arrange
+2024-06-22 19:36:11.445286   IS [Sign up] button present on this page? =>
+2024-06-22 19:36:11.450084   => [Sign up] button present on this page!
+
+2024-06-22 19:36:11.457614   IS [Sign up] button visible on this page? =>
+2024-06-22 19:36:11.468694   => [Sign up] button is visible on this page!
+
+
+2024-06-22 19:36:11.468860   2. Act_v0
+2024-06-22 19:36:11.468876   IS [Sign up] clickable on the page? =>
+2024-06-22 19:36:11.484138   => [Sign up] is clickable on the page!
+
+
+2024-06-22 19:36:11.484162   Start Click button [Sign up] =>
+2024-06-22 19:36:11.523468   => End Click button [Sign up] 
+2024-06-22 19:36:11.523648   Start step Check that [Sign up] form is opened
+2024-06-22 19:36:11.721435   'Sign up' form opened
+2024-06-22 19:36:11.721469   Assert SIGNUP_HEADER =>
+2024-06-22 19:36:11.732779   Assert SIGNUP_REF_LOGIN =>
+2024-06-22 19:36:11.743127   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-06-22 19:36:11.753120   => SIGNUP_PRIVACY_POLICY_ALL
+2024-06-22 19:36:11.753148   => 'Signup' form is checked
+2024-06-22 19:36:11.753198   => 'Sign up' form is opened
+
+2024-06-22 19:36:11.753362   3. Assert
+2024-06-22 19:36:11.753379   Is 'Please enter a valid Email' message displayed on this page after putting invalid email? =>
+2024-06-22 19:36:11.753389   => Start fill out 'Email address' field.
+2024-06-22 19:36:11.851977   => 'Email address' is inputted
+
+2024-06-22 19:36:11.957032   => Switch to 'Password' field
+
+get_attribute:  display: block;
+2024-06-22 19:36:11.972320   => 'Please enter a valid Email' message is displayed
+
+2024-06-22 19:36:11.972350   Save current screenshot into PNG file
+2024-06-22 19:36:12.074466   Is [Continue] button active after putting invalid email? =>
+2024-06-22 19:36:12.074494   => Start fill out 'Password' field.
+2024-06-22 19:36:12.149768   => 'Password' is inputted
+
+continue_button:  btn btn--md btn--wide s2_btn disabled hasPointer
+2024-06-22 19:36:12.170658   => '[Continue] button is not active after putting invalid email
+
+2024-06-22 19:36:12.170691   Save current screenshot into PNG file
+
+2024-06-22 19:36:12.518093   *** end fixture Browser = teardown ***
+
