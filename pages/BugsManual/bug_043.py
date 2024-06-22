@@ -17,14 +17,16 @@ BUTTON_LOCATOR = ("id", "headerSearch")
 
 class SearchField(BasePage):
     def __init__(self, browser, link, bid):
-        self.search_btn = self.driver.find_element(*BUTTON_LOCATOR)
+        self.search_btn = None
 
         super().__init__(browser, link, bid)
 
-    def open_search_page(self, search_str):
+    def open_search_page(self):
+        self.search_btn = self.driver.find_element(*BUTTON_LOCATOR)
         self.search_btn.click()
-        self.search_btn.send_keys(search_str)
+        self.search_btn.send_keys("123")
         self.search_btn.submit()
+
 
     # def arrange_(self, link):
     #     print(f"\n{datetime.now()}   1. Arrange_v0")

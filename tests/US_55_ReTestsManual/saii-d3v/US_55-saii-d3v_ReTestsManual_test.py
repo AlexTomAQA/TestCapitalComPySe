@@ -27,7 +27,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['au', 'ax', 'de'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.test_043
-    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password, random_search_string):
+    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page
          Language: All.
@@ -41,7 +41,6 @@ class TestManualDetectedBugs:
             "The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page"
         )
 
-        # pytest.skip("Autotest under construction")
 
         page_conditions = Conditions(d, "")  # проверить без явного указания ссылки
         link = page_conditions.preconditions(
@@ -50,4 +49,6 @@ class TestManualDetectedBugs:
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
 
         search_field = SearchField(d, link, bid)
-        search_field.open_search_page(random_search_string)
+        search_field.open_search_page()
+
+        pytest.skip("Autotest under construction")
