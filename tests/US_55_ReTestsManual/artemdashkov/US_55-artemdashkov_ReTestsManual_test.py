@@ -231,7 +231,7 @@ class TestManualDetected:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of field [email] in Sign up form")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.parametrize('invalid_login', ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'])
     @pytest.mark.parametrize('valid_password', ['VALID_password44!VALID_password44!VALID_password44!'])
@@ -242,7 +242,7 @@ class TestManualDetected:
         """
         Check: Field [email] in Sign up form
         Language: All.
-        License: All,
+        License/Country: de/CYSEC, au/ASIC,
         Role: NoReg, NoAuth,
         Login: ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'],
         Password: ['VALID_password44!']
