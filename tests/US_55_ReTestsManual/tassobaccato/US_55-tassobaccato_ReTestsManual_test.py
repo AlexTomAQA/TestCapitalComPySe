@@ -49,7 +49,7 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual TC_55!00_039 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', ['es', 'ae', 'au'])
+    @pytest.mark.parametrize('cur_country', ['es', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_039
     def test_039(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):

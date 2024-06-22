@@ -10,6 +10,11 @@ from pages.base_page import BasePage
 
 
 class AppliedFilters(BasePage):
+
+    def __init__(self, driver, link="", bid=""):
+        self.selected_filters_text_list = None
+        super().__init__(driver, link, bid)
+
     @allure.step(f"{datetime.now()}   Start full_test of display of applied filters")
     def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
@@ -19,7 +24,7 @@ class AppliedFilters(BasePage):
             self.element_click(d)
             self.open_page()
             test_element = AssertClass(d, cur_item_link)
-            test_element.assert_filters(d, cur_language, cur_item_link)
+            test_element.assert_filters(d, cur_item_link, self.selected_filters_text_list)
 
     def arrange_(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange")
@@ -43,9 +48,9 @@ class AppliedFilters(BasePage):
             element.click()
 
         selected_filters_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
-        selected_filters_text_list = [filters.text for filters in selected_filters_list]
+        self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
 
-        return selected_filters_text_list
+#        return self.selected_filters_text_list
 
     def element_click(self, d):
         print(f"\n{datetime.now()}   2. Act")
@@ -62,3 +67,4 @@ class AppliedFilters(BasePage):
             .move_to_element(dropdown_item) \
             .click(dropdown_item) \
             .perform()
+        print(f"{datetime.now()}   Sort is selected")

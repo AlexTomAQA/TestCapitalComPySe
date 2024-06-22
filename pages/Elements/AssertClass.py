@@ -272,9 +272,9 @@ class AssertClass(BasePage):
         if actual_filters_text_list != selected_filters_text_list:
             assert False, \
                 ('Bug#039. '
-                 'Expected result: applied filters "Region/Sectors" are displayed'
+                 f'Expected result: applied filters "Region/Sectors" are displayed {selected_filters_text_list}'
                  '\n'
                  'Actual result: applied filters "Region/Sectors" are not displayed after selecting an item from '
-                 'the "Most traded" dropdown')
+                 f'the "Most traded" dropdown {actual_filters_text_list}')
         else:
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
