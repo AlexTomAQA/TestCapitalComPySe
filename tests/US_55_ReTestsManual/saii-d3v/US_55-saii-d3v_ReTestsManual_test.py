@@ -23,7 +23,8 @@ from src.src import CapitalComPageSrc
 class TestManualDetectedBugs:
     page_conditions = None
 
-    @allure.step("Start retest manual TC_55!0043 The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page")
+    @allure.step("Start retest manual TC_55!0043 The page is refreshed instead of opening the Login "
+                 "form after clicking the [Log In] button on the Search page")
     @pytest.mark.parametrize('cur_country', ['au', 'ax', 'de'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.test_043
@@ -38,9 +39,9 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "043",
-            "The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page"
+            "The page is refreshed instead of opening the Login form after clicking the [Log In] button "
+            "on the Search page"
         )
-
 
         page_conditions = Conditions(d, "")  # проверить без явного указания ссылки
         link = page_conditions.preconditions(
