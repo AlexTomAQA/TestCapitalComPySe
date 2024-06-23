@@ -19,7 +19,7 @@ class TestManualDetected:
     page_conditions = None
 
     @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_022
     def test_022_google_play_button_on_cfd_trading_app_block(
@@ -52,7 +52,7 @@ class TestManualDetected:
         test_element.full_test_with_tpi(d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create account] button in the Menu item [Trading Courses]")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_046
     def test_046_create_account_button_in_the_nemu_item_trading_courses(

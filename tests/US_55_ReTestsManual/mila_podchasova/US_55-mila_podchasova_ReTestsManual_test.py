@@ -23,7 +23,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!00_029 Home page is not opened when click [Platform overview] button")
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_029
     def test_029(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
