@@ -6,7 +6,6 @@
 
 import pytest
 import allure
-import time
 
 from pages.common import Common                                      # check FCA, check Auth
 from pages.conditions import Conditions                              # accept cookies
@@ -56,8 +55,6 @@ class TestManualDetectedBugs:
         login_btn.element_click()
 
         login_form = SignupLogin(d, link, bid)
-        # time.sleep(1)
         assert login_form.should_be_login_form()
-
 
         # pytest.skip("Autotest under construction")
