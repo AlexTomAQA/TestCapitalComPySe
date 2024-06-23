@@ -6,8 +6,7 @@
 
 import pytest
 import allure
-
-from datetime import datetime
+import time
 
 from pages.common import Common                                      # check FCA, check Auth
 from pages.conditions import Conditions                              # accept cookies
@@ -31,7 +30,8 @@ class TestManualDetectedBugs:
         """
          Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page
          Language: All.
-         License: All, exclude FCA (GB country).
+         License: All, exclude FCA.
+         Country: All, exclude GB, AE
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -41,14 +41,23 @@ class TestManualDetectedBugs:
             "The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page"
         )
 
-
-        page_conditions = Conditions(d, "")  # проверить без явного указания ссылки
+        page_conditions = Conditions(d)
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
+        # refresh page to prevent "stale element exception" on NoAuth role + au country
+        d.refresh()
 
         search_field = SearchField(d, link, bid)
         search_field.open_search_page()
 
-        pytest.skip("Autotest under construction")
+        login_btn = HeaderButtonLogin(d, link, bid)
+        login_btn.element_click()
+
+        login_form = SignupLogin(d, link, bid)
+        # time.sleep(1)
+        assert login_form.should_be_login_form()
+
+
+        # pytest.skip("Autotest under construction")
