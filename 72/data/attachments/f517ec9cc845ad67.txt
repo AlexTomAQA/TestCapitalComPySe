@@ -1,0 +1,131 @@
+{'width': 1280, 'height': 800}
+
+2024-06-24 13:52:58.129665   worker_id = master
+
+2024-06-24 13:52:58.129665   0. Allure grouping v4
+
+2024-06-24 13:52:58.129665   START PRECONDITIONS =>
+
+2024-06-24 13:52:58.129665   => URL after prev. preconditions - https://capital.com/cn
+2024-06-24 13:52:58.129665   => flag_of_bug - True
+2024-06-24 13:52:58.129665   => Current URL - https://capital.com/trading/platform/
+2024-06-24 13:52:58.136664   Current page URL = https://capital.com/trading/platform/
+2024-06-24 13:52:58.137695   self.link = https://capital.com/cn
+2024-06-24 13:52:58.137695   driver.get(https://capital.com/cn) =>
+2024-06-24 13:53:00.136450   => Loaded page https://capital.com/cn
+
+2024-06-24 13:53:00.144747   => Windows size: {'width': 1280, 'height': 800}
+2024-06-24 13:53:00.145744   Set windows position at (0, 0) =>
+2024-06-24 13:53:00.149003   Set resolution 1280 * 800 =>
+2024-06-24 13:53:00.151001   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-24 13:53:01.175172   Капчи нет. Идем дальше
+
+2024-06-24 13:53:01.175172   Работа с куками =>
+
+2024-06-24 13:53:01.175172   => не требуется
+
+2024-06-24 13:53:02.228115   Капчи нет. Идем дальше
+
+2024-06-24 13:53:02.228115   Prev. country - 'au'
+2024-06-24 13:53:02.228115   Cur. country - 'au'
+2024-06-24 13:53:02.228115   => Country set to 'au'
+
+2024-06-24 13:53:03.241988   Капчи нет. Идем дальше
+
+2024-06-24 13:53:03.241988   Prev. language - 'cn'
+2024-06-24 13:53:03.241988   Cur. language - 'cn'
+2024-06-24 13:53:03.242993   => Language is set to 'cn'
+
+2024-06-24 13:53:04.246034   Капчи нет. Идем дальше
+
+2024-06-24 13:53:04.246034   Prev. role - 'Auth'
+2024-06-24 13:53:04.246034   Cur. role - 'Auth'
+2024-06-24 13:53:04.246034   => The 'Auth' role is set
+
+2024-06-24 13:53:04.250032   => Current URL - https://capital.com/cn
+
+2024-06-24 13:53:04.250032   => THE END PRECONDITIONS
+
+2024-06-24 13:53:04.250032   1. Arrange_v2
+2024-06-24 13:53:04.250032   current_page = https://capital.com/cn
+2024-06-24 13:53:04.254034   link = https://capital.com/cn/japan-225-index
+2024-06-24 13:53:04.260288   Current page URL = https://capital.com/cn
+2024-06-24 13:53:04.263293   self.link = https://capital.com/cn/japan-225-index
+2024-06-24 13:53:04.263293   driver.get(https://capital.com/cn/japan-225-index) =>
+2024-06-24 13:53:06.201978   => Loaded page https://capital.com/cn/japan-225-index
+2024-06-24 13:53:06.209756 Is SHORT_POSITION_OVERNIGHT_FEE present on the page? =>
+2024-06-24 13:53:06.217752   => SHORT_POSITION_OVERNIGHT_FEE is present on the page
+2024-06-24 13:53:06.217752   SHORT_POSITION_OVERNIGHT_FEE  scroll =>
+2024-06-24 13:53:06.226569   => SHORT_POSITION_OVERNIGHT_FEE  scrolled
+
+2024-06-24 13:53:06.227575   2. Act_v2
+2024-06-24 13:53:06.227575   SHORT_POSITION_OVERNIGHT_FEE open =>
+2024-06-24 13:53:07.024875   Is SHORT_POSITION_OVERNIGHT_FEE open?  =>
+2024-06-24 13:53:07.045816   => TOOLTIP_SHORT_POSITION_FEE is open
+2024-06-24 13:53:07.045816   Move focus to button [Go to platform] and click on =>
+2024-06-24 13:53:07.826163   => BUTTON_GO_TO_PLATFORM is clickable
+2024-06-24 13:53:08.398381 => BUTTON_GO_TO_PLATFORM clicked
+
+2024-06-24 13:53:08.398381   3. Assert_Trading_Platform_v4
+
+2024-06-24 13:53:08.398381   
+2024-06-24 13:53:08.399386   Checking that the trading platform page has opened (v4) =>
+2024-06-24 13:53:08.914466   Checking way # 1 => 
+
+2024-06-24 13:53:08.914466   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-06-24 13:53:08.917457   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-06-24 13:53:08.918469   2. Checking that the LOGO is present on the page =>
+2024-06-24 13:53:09.532849   => 'capital*com' logo is present on the current page
+
+2024-06-24 13:53:09.532849   tpd = False
+
+2024-06-24 13:53:09.532849   4. Check that opened page with https://capital.com/trading/platform/ url
+with selected corresponding trading instrument 'None' =>
+
+2024-06-24 13:53:09.535843   trade_instrument = 'None'
+
+2024-06-24 13:53:09.535843   4.1. Check that Trading Platform is opened in Chart mode
+2024-06-24 13:53:10.579906   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:01.01.01_004-cn.au.Auth
+
+2024-06-24 13:53:10.579906   Проверка бага в таблице ретеста  =>
+
+2024-06-24 13:53:11.120162   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:11.316975   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:12.647033   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:12.883413   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:14.144926   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:14.401130   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:14.405332   Добавление новой строки =>
+
+2024-06-24 13:53:15.720932   => Новая строка добавлена
+
+2024-06-24 13:53:17.262460   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:17.453516   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:17.469123   4. Fixing one row check results into Google Sheet Bugs Report =>
+7 cells updated.
+2024-06-24 13:53:17.994542   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:17.994542   4. Fixing one row check results into Google Sheet Bugs Report =>
+2 cells updated.
+2024-06-24 13:53:18.209020   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:18.209020   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:18.394853   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:18.394853   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:53:18.586990   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:53:18.586990   Баг Bid:01.01.01_004-cn.au.Auth-14 добавлен в таблицу 'Bugs Report Auto detect' (для ретестов)
