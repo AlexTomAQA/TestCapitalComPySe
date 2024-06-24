@@ -97,13 +97,13 @@ def cur_role(request):
         # "es",  # 20 us
         # "it",  # 15 us
         # "ru",  # 15 us
-        # "cn",  # 13 us Education to trade present, financial glossary not present
+        "cn",  # 13 us Education to trade present, financial glossary not present
         # "zh",  # 12 us
         # "fr",  # 11 us
         # "pl",  # 10 us
         # "ro",  # 10 us
         # "nl",  # 8 us
-        "el",  # 5 us
+        # "el",  # 5 us
         # "hu",  # 5 us Magyar
     ],
 )
@@ -126,12 +126,11 @@ def cur_language(request):
     scope="class",
     params=[
         # "gb",  # Great Britain - "FCA"
-        # "de",  # Germany  - "CYSEC"
-        "au",  # Australia - "ASIC"
-        # "ua",  # Ukraine - "SCB"
-        # "uz",  # Uzbekistan - "SCB"
+        # "ae",  # United Arab Emirates - "SCA" - New layout
         #
-        # "ae",  # United Arab Emirates - "SCB" - New layout
+        "de",  # Germany  - "CYSEC"
+        # "au",  # Australia - "ASIC"
+        # "ua",  # Ukraine - "SCB"
         #
         # "gr",  # Greece - "CYSEC"
         # "es",  # Spain - "CYSEC"
@@ -141,6 +140,7 @@ def cur_language(request):
         # "nl",  # Netherlands - "CYSEC"
         # "pl",  # Poland - "CYSEC"
         # "ro",  # Romania - "CYSEC"
+        # "uz",  # Uzbekistan - "SCB"
         # "tw",  # Taiwan - "SCB"
         # "hk",  # Hong Kong - "SCB"
 
