@@ -1,0 +1,53 @@
+2024-06-24 13:04:21 ERROR Elements not present after 0.5 seconds on page: https://capital.com/trading/platform/?mode=demo
+2024-06-24 13:04:21 ERROR timeout: Timed out receiving message from renderer: 60.000
+  (Session info: chrome=126.0.6478.115)
+Traceback (most recent call last):
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 578, in wait_for_target_url
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 98, in _predicate
+    return url in driver.current_url
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 437, in current_url
+    return self.execute(Command.GET_CURRENT_URL)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: timeout: Timed out receiving message from renderer: 60.000
+  (Session info: chrome=126.0.6478.115)
+Stacktrace:
+	GetHandleVerifier [0x00CE0ED3+27667]
+	(No symbol) [0x00C76BD4]
+	(No symbol) [0x00B71AFF]
+	(No symbol) [0x00B5DAD3]
+	(No symbol) [0x00B5D92E]
+	(No symbol) [0x00B5BD79]
+	(No symbol) [0x00B5C35D]
+	(No symbol) [0x00B6867A]
+	(No symbol) [0x00B7C7D1]
+	(No symbol) [0x00B80C76]
+	(No symbol) [0x00B5C9CC]
+	(No symbol) [0x00B7C672]
+	(No symbol) [0x00BEC9E6]
+	(No symbol) [0x00BD36C6]
+	(No symbol) [0x00BA74D1]
+	(No symbol) [0x00BA804D]
+	GetHandleVerifier [0x00F93D43+2857603]
+	GetHandleVerifier [0x00FE7EAD+3202029]
+	GetHandleVerifier [0x00D646D4+566292]
+	GetHandleVerifier [0x00D6B8CC+595468]
+	(No symbol) [0x00C7F9C4]
+	(No symbol) [0x00C7C6D8]
+	(No symbol) [0x00C7C877]
+	(No symbol) [0x00C6E76E]
+	BaseThreadInitThunk [0x767967F9+25]
+	RtlGetFullPathName_UEx [0x7755800D+173]
+	RtlGetFullPathName_UEx [0x77557FDB+123]

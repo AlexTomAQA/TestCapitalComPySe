@@ -1,0 +1,114 @@
+{'width': 1280, 'height': 800}
+
+2024-06-24 13:21:41.107545   worker_id = master
+
+2024-06-24 13:21:41.107545   0. Allure grouping v4
+
+2024-06-24 13:21:41.107545   START PRECONDITIONS =>
+
+2024-06-24 13:21:41.107545   => URL after prev. preconditions - https://capital.com/cn
+2024-06-24 13:21:41.107545   => flag_of_bug - True
+2024-06-24 13:21:41.107545   => Current URL - https://capital.com/trading/platform/charting/426090820621508?side=sell&ids=27342779713672388,426090820621508
+2024-06-24 13:21:41.115548   Current page URL = https://capital.com/trading/platform/charting/426090820621508?side=sell&ids=27342779713672388,426090820621508
+2024-06-24 13:21:41.118888   self.link = https://capital.com/cn
+2024-06-24 13:21:41.118888   driver.get(https://capital.com/cn) =>
+2024-06-24 13:21:43.024220   => Loaded page https://capital.com/cn
+
+2024-06-24 13:21:43.029679   => Windows size: {'width': 1280, 'height': 800}
+2024-06-24 13:21:43.031686   Set windows position at (0, 0) =>
+2024-06-24 13:21:43.038221   Set resolution 1280 * 800 =>
+2024-06-24 13:21:43.041215   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-24 13:21:44.066557   Капчи нет. Идем дальше
+
+2024-06-24 13:21:44.066557   Работа с куками =>
+
+2024-06-24 13:21:44.066557   => не требуется
+
+2024-06-24 13:21:45.089061   Капчи нет. Идем дальше
+
+2024-06-24 13:21:45.090063   Prev. country - 'de'
+2024-06-24 13:21:45.090063   Cur. country - 'de'
+2024-06-24 13:21:45.090063   => Country set to 'de'
+
+2024-06-24 13:21:46.105187   Капчи нет. Идем дальше
+
+2024-06-24 13:21:46.105187   Prev. language - 'cn'
+2024-06-24 13:21:46.106190   Cur. language - 'cn'
+2024-06-24 13:21:46.106190   => Language is set to 'cn'
+
+2024-06-24 13:21:47.110572   Капчи нет. Идем дальше
+
+2024-06-24 13:21:47.110572   Prev. role - 'Auth'
+2024-06-24 13:21:47.110572   Cur. role - 'Auth'
+2024-06-24 13:21:47.110572   => The 'Auth' role is set
+
+2024-06-24 13:21:47.114568   => Current URL - https://capital.com/cn
+
+2024-06-24 13:21:47.114568   => THE END PRECONDITIONS
+
+2024-06-24 13:21:47.114568 1.Arrange_v0
+2024-06-24 13:21:47.114568   current_page = https://capital.com/cn
+2024-06-24 13:21:47.120883   link = https://capital.com/cn/us-natural-gas-spot-commodity
+2024-06-24 13:21:47.123870   Current page URL = https://capital.com/cn
+2024-06-24 13:21:47.127874   self.link = https://capital.com/cn/us-natural-gas-spot-commodity
+2024-06-24 13:21:47.127874   driver.get(https://capital.com/cn/us-natural-gas-spot-commodity) =>
+2024-06-24 13:21:48.940914   => Loaded page https://capital.com/cn/us-natural-gas-spot-commodity
+2024-06-24 13:21:48.945919 BUTTON_NOTIFICATION is located on the page? =>
+2024-06-24 13:21:48.958814   Is BUTTON_NOTIFICATION present on the page? =>
+2024-06-24 13:21:48.958814 => BUTTON_NOTIFICATION is present on the page
+2024-06-24 13:21:48.958814   [Notification] button scroll =>
+2024-06-24 13:21:48.963813   Start Checking that form [Sign up] popped up on the page =>
+2024-06-24 13:21:50.477744   '[Sign up]' form was not popped up
+
+2024-06-24 13:21:50.477744   2. Act_v0
+2024-06-24 13:21:50.478752   Start Click 'Notification' button =>
+2024-06-24 13:21:50.501212 BUTTON_NOTIFICATION is clickable =>
+2024-06-24 13:21:50.809405 => BUTTON_NOTIFICATION clicked
+Trade instrument from Full test is 交易 US Natural Gas Spot CFD
+Test element is <pages.Elements.AssertClass.AssertClass object at 0x0000027B91A223C0>
+
+2024-06-24 13:21:50.810401   3. Assert_Trading_Platform_v4
+
+2024-06-24 13:21:50.810401   
+2024-06-24 13:21:50.811404   Checking that the trading platform page has opened (v4) =>
+2024-06-24 13:21:50.820576   Checking way # 1 => 
+
+2024-06-24 13:21:50.821578   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-06-24 13:21:50.825578   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-06-24 13:21:50.825578   2. Checking that the LOGO is present on the page =>
+2024-06-24 13:21:52.377767   => 'capital*com' logo is present on the current page
+
+2024-06-24 13:21:52.377767   tpd = False
+
+2024-06-24 13:21:52.377767   4. Check that opened page with https://capital.com/trading/platform/charting/426090820621508?side=buy&ids=27342779713672388,426090820621508 url
+with selected corresponding trading instrument '交易 US Natural Gas Spot CFD' =>
+
+2024-06-24 13:21:52.381765   trade_instrument = '交易 US Natural Gas Spot CFD'
+
+2024-06-24 13:21:52.381765   4.1. Check that Trading Platform is opened in Chart mode
+2024-06-24 13:21:53.396138   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:01.01.01_007-cn.de.Auth
+
+2024-06-24 13:21:53.396138   Проверка бага в таблице ретеста  =>
+
+2024-06-24 13:21:54.054082   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:21:54.249276   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:21:55.710857   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:21:55.953581   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:21:55.953581   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:21:56.226921   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:21:56.227929   Баг Bid:01.01.01_007-cn.de.Auth уже существует, но у него изменился тип с  на 14
+
+2024-06-24 13:21:56.227929   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 13:21:56.526820   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 13:21:56.528881   Баг Bid:01.01.01_007-cn.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'

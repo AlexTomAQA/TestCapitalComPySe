@@ -1,0 +1,110 @@
+{'width': 1280, 'height': 800}
+
+2024-06-24 15:12:36.486417   worker_id = master
+
+2024-06-24 15:12:36.486417   0. Allure grouping v4
+
+2024-06-24 15:12:36.486417   START PRECONDITIONS =>
+
+2024-06-24 15:12:36.486417   => URL after prev. preconditions - https://capital.com/cn
+2024-06-24 15:12:36.486417   => flag_of_bug - True
+2024-06-24 15:12:36.486417   => Current URL - https://capital.com/trading/platform/?mode=demo
+2024-06-24 15:12:36.486417   Current page URL = https://capital.com/trading/platform/?mode=demo
+2024-06-24 15:12:36.502051   self.link = https://capital.com/cn
+2024-06-24 15:12:36.502051   driver.get(https://capital.com/cn) =>
+2024-06-24 15:12:38.879827   => Loaded page https://capital.com/cn
+
+2024-06-24 15:12:38.883831   => Windows size: {'width': 1280, 'height': 800}
+2024-06-24 15:12:38.886066   Set windows position at (0, 0) =>
+2024-06-24 15:12:38.890063   Set resolution 1280 * 800 =>
+2024-06-24 15:12:38.893068   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-24 15:12:39.911382   Капчи нет. Идем дальше
+
+2024-06-24 15:12:39.911382   Работа с куками =>
+
+2024-06-24 15:12:39.911382   => не требуется
+
+2024-06-24 15:12:40.969088   Капчи нет. Идем дальше
+
+2024-06-24 15:12:40.969340   Prev. country - 'de'
+2024-06-24 15:12:40.969376   Cur. country - 'de'
+2024-06-24 15:12:40.969376   => Country set to 'de'
+
+2024-06-24 15:12:41.982782   Капчи нет. Идем дальше
+
+2024-06-24 15:12:41.983777   Prev. language - 'cn'
+2024-06-24 15:12:41.983777   Cur. language - 'cn'
+2024-06-24 15:12:41.983777   => Language is set to 'cn'
+
+2024-06-24 15:12:43.039325   Капчи нет. Идем дальше
+
+2024-06-24 15:12:43.039325   Prev. role - 'Auth'
+2024-06-24 15:12:43.039325   Cur. role - 'Auth'
+2024-06-24 15:12:43.039325   => The 'Auth' role is set
+
+2024-06-24 15:12:43.043324   => Current URL - https://capital.com/cn
+
+2024-06-24 15:12:43.043324   => THE END PRECONDITIONS
+
+2024-06-24 15:12:43.044334   1. Cur URL = https://capital.com/cn
+
+2024-06-24 15:12:43.047326   2. Link = https://capital.com/cn
+2024-06-24 15:12:43.047326   current_page = https://capital.com/cn
+2024-06-24 15:12:43.051325   link = https://capital.com/cn
+2024-06-24 15:12:43.567338   => Education menu is present in DOM
+2024-06-24 15:12:43.576661   => Education menu is visible
+2024-06-24 15:12:44.857734   => Focus moved to Education menu
+2024-06-24 15:12:46.903642   => Focus moved to Forex trading sub-menu and clicked
+2024-06-24 15:12:47.208927   => Focus moved to 'capital*com' logo
+
+2024-06-24 15:12:47.208927   3. Cur URL = https://capital.com/cn/trade-forex
+
+2024-06-24 15:12:47.216921   1. Arrange_v0
+2024-06-24 15:12:47.216921   current_page = https://capital.com/cn/trade-forex
+2024-06-24 15:12:47.226185   link = https://capital.com/cn/trade-forex
+2024-06-24 15:12:47.243572   BUTTON_SELL_IN_CONTENT_BLOCK is present? =>
+2024-06-24 15:12:47.243572   => BUTTON_SELL_IN_CONTENT_BLOCK is present on the page!
+2024-06-24 15:12:47.243572   BUTTON_SELL_IN_CONTENT_BLOCK scroll =>
+2024-06-24 15:12:47.249571   => 'Sell' button in Content block scrolled
+2024-06-24 15:12:47.249571   Start Checking that form [Sign up] popped up on the page =>
+2024-06-24 15:12:48.764976   '[Sign up]' form was not popped up
+
+2024-06-24 15:12:48.764976   2. Act_v0
+2024-06-24 15:12:49.288888   => BUTTON_SELL_IN_CONTENT_BLOCK clicked!
+2024-06-24 15:12:49.290841   => return trade_instrument = 123763777688772
+
+2024-06-24 15:12:49.290841   3. Assert_Trading_Platform_v4
+
+2024-06-24 15:12:49.290841   
+2024-06-24 15:12:49.290841   Checking that the trading platform page has opened (v4) =>
+2024-06-24 15:12:49.803853   Checking way # 1 => 
+
+2024-06-24 15:12:49.803853   1. Checking that the Trading platform (or TradingView site) page has valid title =>
+2024-06-24 15:12:49.807852   => The title of current page is 'Trading Platform | Capital.com'
+
+2024-06-24 15:12:49.807852   2. Checking that the LOGO is present on the page =>
+2024-06-24 15:12:50.513605   => 'capital*com' logo is present on the current page
+
+2024-06-24 15:12:50.513605   tpd = False
+
+2024-06-24 15:12:50.513605   4. Check that opened page with https://capital.com/trading/platform/?popup=language-update&onDoneCallback=function()%7Bx%7C%7C(x%3D!0,d.apply(null,arguments))%7D url
+with selected corresponding trading instrument '123763777688772' =>
+
+2024-06-24 15:12:50.517592   trade_instrument = '123763777688772'
+
+2024-06-24 15:12:50.517592   4.1. Check that Trading Platform is opened in Chart mode
+2024-06-24 15:12:51.538103   => Bug # 14. Trading platform opened, but not Chart mode
+Bid: Bid:11.02.04.00_04-cn.de.Auth
+
+2024-06-24 15:12:51.538103   Проверка бага в таблице ретеста  =>
+
+2024-06-24 15:12:52.228070   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 15:12:52.431338   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 15:12:53.834813   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-24 15:12:54.034027   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-24 15:12:54.034027   Баг Bid:11.02.04.00_04-cn.de.Auth-14 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
