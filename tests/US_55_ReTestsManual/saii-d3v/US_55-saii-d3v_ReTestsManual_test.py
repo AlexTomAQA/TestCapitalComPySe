@@ -22,7 +22,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!0043 The page is refreshed instead of opening the Login "
                  "form after clicking the [Log In] button on the Search page")
-    @pytest.mark.parametrize('cur_country', ['de', 'ax', 'au'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.test_043
     def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password, random_search_string):
