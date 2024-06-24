@@ -7,9 +7,8 @@
 import pytest
 import allure
 
-from pages.common import Common                                      # check FCA, check Auth
-from pages.conditions import Conditions                              # accept cookies
-from pages.base_page import BasePage
+from pages.common import Common
+from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.BugsManual.bug_043 import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -23,15 +22,15 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!0043 The page is refreshed instead of opening the Login "
                  "form after clicking the [Log In] button on the Search page")
-    @pytest.mark.parametrize('cur_country', ['au', 'ax', 'de'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.test_043
-    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password, random_search_string):
         """
          Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page
          Language: All.
-         License: All, exclude FCA.
-         Country: All, exclude GB, AE
+         License: All, exclude FCA, SCA.
+         Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -48,16 +47,19 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
-        # refresh page to prevent "stale element exception" on NoAuth role + au country
+
+        # Arrange
+        # refresh page to prevent "stale element exception" on 1st test if its on NoAuth role
         d.refresh()
 
         search_field = SearchField(d, link, bid)
-        search_field.open_search_page()
+        search_field.open_search_page(random_search_string)
 
+        # Act
         login_btn = HeaderButtonLogin(d, link, bid)
         login_btn.element_click()
 
+        # Assert
+        # time.sleep(1)
         login_form = SignupLogin(d, link, bid)
         assert login_form.should_be_login_form()
-
-        # pytest.skip("Autotest under construction")
