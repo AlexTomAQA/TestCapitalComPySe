@@ -1,7 +1,7 @@
 """
 -*- coding: utf-8 -*-
 @Time    : 2024/05/06 22:00
-@Author  : ???
+@Author  : Kasilà
 """
 import pytest
 import allure
@@ -49,14 +49,14 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual TC_55!00_039 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', ['es', 'au'])
+    @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_039
     def test_039(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
-        License: All (except FCA)
+        License: CYSEC, SCB, ASIC
         """
 
         bid = build_dynamic_arg_for_us_55(
@@ -75,7 +75,3 @@ class TestManualDetectedBugs:
 
         test_element = AppliedFilters(d, cur_item_link, bid)
         test_element.full_test(d, cur_language, cur_country,cur_role, cur_item_link)
-
-
-#        assert len(selected_filters_list) == len(filters_list_after_refresh), \
-#            'Applied filters "Region/Sectors" are not displayed in the "Live shares prices" widget'
