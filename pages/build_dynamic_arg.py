@@ -32,9 +32,15 @@ def build_dynamic_arg_new_v4(d, worker_id, cur_language, cur_country, cur_role,
     # language = cur_language
     if cur_language == "":
         cur_language = "en"
+
+    # dynamic_epic = f"US_{us} | {desc_us}"
+    # dynamic_feature = f"Language: {cur_language}"
+    # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+
     dynamic_epic = f"US_{us} | {desc_us}"
-    dynamic_feature = f"Language: {cur_language}"
-    dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+    dynamic_feature = f"Role: {cur_role}"
+    dynamic_story = f"Country: {cur_country} / Language: {cur_language}"
+
     bug_id = f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}"
 
     allure.dynamic.epic(dynamic_epic)
@@ -90,9 +96,18 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     # language = cur_language
     if cur_language == "":
         cur_language = "en"
+    # dynamic_epic = f"US_{us} | {desc_us}"
+    # dynamic_feature = f"Language: {cur_language}"
+    # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+
+    # dynamic_epic = f"US_{us} | {desc_us}"
+    # dynamic_feature = f"Country: {cur_country}"
+    # dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
+
     dynamic_epic = f"US_{us} | {desc_us}"
-    dynamic_feature = f"Language: {cur_language}"
-    dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
+    dynamic_feature = f"Role: {cur_role}"
+    dynamic_story = f"Country: {cur_country} / Language: {cur_language}"
+
     if manual:
         bug_id = (f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}"
                   f"-M{"N" if new_layout else "O"}")
