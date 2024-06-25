@@ -35,7 +35,7 @@ class TestCryptocurrencies:
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Cryptocurrency CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -61,7 +61,7 @@ class TestCryptocurrencies:
             ".00_002", "Testing button [Sell] 'numeric values' in Widget 'Trading instrument'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
