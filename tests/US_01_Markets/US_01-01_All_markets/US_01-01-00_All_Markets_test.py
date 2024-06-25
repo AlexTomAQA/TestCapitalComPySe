@@ -89,7 +89,7 @@ class TestAllMarkets:
             "01.01", "Markets > Menu item [All markets]",
             ".00_003", "Testing button [1. Create your account] in Step trading block")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
@@ -115,7 +115,7 @@ class TestAllMarkets:
             "01.01", "Markets > Menu item [All markets]",
             ".00_004", "open Trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -137,7 +137,7 @@ class TestAllMarkets:
             "01.01", "Markets > Menu item [All markets]",
             ".00_099", "Pretest for US_01.01.01")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if count == 0:
