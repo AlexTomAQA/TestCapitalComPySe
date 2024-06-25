@@ -38,7 +38,7 @@ class TestShares:
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Share CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         # Common().check_language_in_list_and_skip_if_not_present(cur_language, [])
 
         page_conditions = Conditions(d, "")
@@ -65,7 +65,7 @@ class TestShares:
             ".00_002", "Testing button [Sell] 'numeric values' in Widget 'Trading instrument'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -91,7 +91,7 @@ class TestShares:
             ".00_003", "Testing button [Buy] 'numeric values' in Widget 'Trading instrument'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -119,7 +119,7 @@ class TestShares:
                        "on Block 'Still looking for a broker you can trust?'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -145,7 +145,7 @@ class TestShares:
         if count == 0:
             pytest.skip("Links of hrefs already created")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
