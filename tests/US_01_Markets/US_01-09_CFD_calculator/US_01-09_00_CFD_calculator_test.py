@@ -37,7 +37,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_001", "Testing button [Sign up] in the 'Header'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
         Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth"])
 
@@ -62,7 +62,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_002", "Testing button [Log in] in the 'Header'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
         Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth"])
 
@@ -87,7 +87,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_003", "Testing button [Sign up] in the 'Block CFD Calculator'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
 
         page_conditions = Conditions(d, "")
@@ -111,7 +111,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_004", "Testing button [Try free demo] in the 'Block CFD Calculator'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
 
         page_conditions = Conditions(d, "")
@@ -134,7 +134,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_005", "Testing button [Trade Now] in the 'Trading calculator' Block")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
 
         page_conditions = Conditions(d, "")
@@ -157,7 +157,7 @@ class TestCFDCalculator:
             "01.09", "Markets > Menu item [CFD Calculator]",
             ".00_006", "Testing button [Sign up] in 'How to start trading' Block")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, ["en"])
         Common().check_role_in_list_and_skip_if_present(cur_role, ["Auth", "NoAuth"])
 
