@@ -25,9 +25,11 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.test_043
-    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password, random_search_string):
+    def test_043(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
+                 cur_login, cur_password, random_search_string):
         """
-         Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button on the Search page
+         Check: The page is refreshed instead of opening the Login form after clicking
+         the [Log In] button on the Search page
          Language: All.
          License: All, exclude FCA, SCA.
          Country: All, exclude GB, AE.
@@ -41,14 +43,13 @@ class TestManualDetectedBugs:
             "on the Search page"
         )
 
+        # Arrange
         page_conditions = Conditions(d)
-        
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
 
-        # Arrange
         # refresh page to prevent "stale element exception" on 1st test if its on NoAuth role
         d.refresh()
 
