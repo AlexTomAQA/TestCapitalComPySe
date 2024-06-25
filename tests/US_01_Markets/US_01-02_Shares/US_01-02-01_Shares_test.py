@@ -51,7 +51,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_001", "Testing button [Add to favourite] on the trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -73,7 +73,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_002", "Testing button [View detailed chart] on the trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -95,7 +95,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_003", "Testing button [Go to platform] on trading instrument page long position")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -117,7 +117,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_004", "Testing button [Go to platform] on trading instrument page short position")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -139,7 +139,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_005", "Testing button [Buy] on trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -161,7 +161,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_006", "Testing button [Buy] on trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -183,7 +183,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_007", "Testing button [Notification] on trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -211,7 +211,7 @@ class TestSharesItemPage:
             ".01_009", "Testing button [Start trading] in the widget Trading calculator "
                        "on the trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -233,7 +233,7 @@ class TestSharesItemPage:
             "01.02", "Markets > Menu item [Shares]",
             ".01_010", "Testing button [Trade now] in the widget Promo Market on the trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
@@ -258,7 +258,7 @@ class TestSharesItemPage:
             ".01_011", "Testing button [1. Create & verify your account] in the Block "
                        "Steps trading on the trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, "[gb]")
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         page_conditions.preconditions(
