@@ -7,7 +7,7 @@
 import pytest
 import allure
 
-from pages.BugsManual.bag_029 import ProfessionalMenuCheckFooter
+from pages.BugsManual.bag_034 import ProfessionalMenuCheckFooter
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
