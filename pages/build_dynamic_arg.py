@@ -169,29 +169,36 @@ def build_dynamic_arg_for_us_55(
     if cur_language == "":
         cur_language = "en"
 
-    dynamic_epic = f"TC_{us}!{num_tc} | {desc_tc}"
     # dynamic_epic = f"US_{us} | {desc_us}"
 
-    dynamic_feature = f"Role: {cur_role}"
     # dynamic_feature = f"Language: {cur_language}"
     # dynamic_feature = f"Country: {cur_country}"
     # dynamic_feature = f"Test-case: {us}{num_tc}"
 
-    dynamic_story = f"Country: {cur_country}"
     # dynamic_story = f"License: {cur_license} - Country: {cur_country}"
     # dynamic_story = f"Country: {cur_country} / Role: {cur_role}"
     # dynamic_story = f"Language: {cur_language} / Role: {cur_role}"
     # dynamic_story = f"Role: {cur_role}"
+
+    # dynamic_epic = f"TC_{us}!{num_tc} | {desc_tc}"
+    # dynamic_feature = f"Role: {cur_role}"
+    # dynamic_story = f"Country: {cur_country}"
+
+    dynamic_epic = f"TC_{us}!{num_tc} | {desc_tc}"
+    dynamic_feature = f"Role: {cur_role} / Country: {cur_country}"
+    dynamic_story = f"Language: {cur_language}`"
     if manual:
         bug_id = (f"Bid:{us}{num_tc}-{cur_language}.{cur_country}.{cur_role}-{os_name}.{browser_name}"
                   f"-M{"N" if new_layout else "O"}")
     else:
         bug_id = f"Bid:{us}!{num_tc}-{cur_language}.{cur_country}.{cur_role}"
+    # dynamic_title = f"TC_{us}!{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}"
+    dynamic_title = f"TC_{us}!{num_tc} | Bid: {bug_id}. Language: {cur_language}."
 
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)
     allure.dynamic.story(dynamic_story)
-    allure.dynamic.title(f"TC_{us}!{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}")
+    allure.dynamic.title(dynamic_title)
 
     del dynamic_story
     del dynamic_feature
