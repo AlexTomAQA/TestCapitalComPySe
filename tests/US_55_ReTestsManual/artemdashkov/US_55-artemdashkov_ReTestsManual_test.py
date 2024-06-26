@@ -25,7 +25,7 @@ from pages.conditions_new import NewConditions
 class TestManualDetected:
     page_conditions = None
 
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_011a
     @allure.step("Start test of button [Add to favourite] on the 'Trading Instrument Page'")
@@ -70,7 +70,7 @@ class TestManualDetected:
             d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link, cur_market_2_rnd_from_5)
 
     @allure.step("Start test of button [Go to platform] on tooltip 'Long position overnight fee'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_011b
     def test_011b_add_to_favourite_button_on_tooltip_long_position_overnight_fee(
@@ -117,7 +117,7 @@ class TestManualDetected:
         test_element.full_test_with_tpi_v2(d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Go to platform] on tooltip 'Short position overnight fee'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_011c
     def test_011c_add_to_favourite_button_on_tooltip_short_position_overnight_fee(
@@ -164,7 +164,7 @@ class TestManualDetected:
         test_element.full_test_with_tpi(d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try now] on the block 'Why choose Capital.com?'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ae'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_012
     def test_012_try_now_button_on_why_choose_capital_com_block(
@@ -231,7 +231,7 @@ class TestManualDetected:
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of field [email] in Sign up form")
-    @pytest.mark.parametrize('cur_country', ['de', 'au'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.parametrize('invalid_login', ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'])
     @pytest.mark.parametrize('valid_password', ['VALID_password44!VALID_password44!VALID_password44!'])

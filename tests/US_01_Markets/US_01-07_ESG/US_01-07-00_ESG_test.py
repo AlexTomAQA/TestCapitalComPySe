@@ -29,7 +29,7 @@ class TestESG:
             "01.07", "Markets > Menu item [ESG]",
             ".00_001", "Testing button [Start Trading] on Block 'Global Environmental'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
@@ -56,7 +56,7 @@ class TestESG:
             "01.07", "Markets > Menu item [ESG]",
             ".00_002", "Testing button [Try demo]] on Block 'Global Environmental'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
@@ -84,7 +84,7 @@ class TestESG:
             "01.07", "Markets > Menu item [ESG]",
             ".01_003", "Testing button [Try now] in Block 'Why choose Capital.com?' on trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
@@ -111,7 +111,7 @@ class TestESG:
             "01.07", "Markets > Menu item [ESG]",
             "_004", "Testing button  [1. Create & verify your account]  on Block 'TSteps trading'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
