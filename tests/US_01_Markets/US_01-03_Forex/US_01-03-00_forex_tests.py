@@ -33,7 +33,7 @@ class TestForex:
             "01.03", "Markets > Menu item [Forex]",
             ".00_001", "Testing button [Start Trading Now] in Block 'Trade Forex CFDs'")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -58,7 +58,7 @@ class TestForex:
             "01.03", "Markets > Menu item [Forex]",
             ".00_002", "Testing button [Sell]")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -83,7 +83,7 @@ class TestForex:
             "01.03", "Markets > Menu item [Forex]",
             ".00_003", "Testing button [Buy]")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -109,7 +109,7 @@ class TestForex:
             "01.03", "Markets > Menu item [Forex]",
             ".00_004", "Testing button [Create & verify your account]")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -134,7 +134,7 @@ class TestForex:
             "01.03", "Markets > Menu item [Forex]",
             ".00_005", "open Trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -159,7 +159,7 @@ class TestForex:
         if count == 0:
             pytest.skip("Так надо")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")

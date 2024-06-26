@@ -34,7 +34,7 @@ class TestCommodities:
             ".00_001", "Testing button [Start Trading Now] on Block 'Trade Commodities CFDs'")
 
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -59,7 +59,7 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".00_002", "Testing button [Sell]")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
@@ -85,7 +85,7 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".00_003", "Testing button [Buy]")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
@@ -111,7 +111,7 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".00_004", "Testing button [1. Create your account] in Step trading block")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
@@ -137,7 +137,7 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".00_005", "open Trading instrument page")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -160,7 +160,7 @@ class TestCommodities:
             "01.05", "Markets > Menu item [Commodities]",
             ".00_099", "Pretest for US_01.05.01")
 
-        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
         Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if count == 0:
