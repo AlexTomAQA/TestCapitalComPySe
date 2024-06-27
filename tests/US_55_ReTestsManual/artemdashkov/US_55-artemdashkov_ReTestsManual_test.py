@@ -7,7 +7,7 @@
 import allure
 import pytest
 
-# from pages.common import Common
+from pages.common import Common
 from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
@@ -265,3 +265,53 @@ class TestManualDetected:
         test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
         test_element.full_test(
             d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_item_link, invalid_login, valid_password)
+
+    @allure.step("Start test of voted function in 'What is your sentiment...' block")
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua', 'gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.test_058
+    def test_058_email_field_sign_up_form(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: voted function in 'What is your sentiment...' block
+        Language: All.
+        License/Country: All
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        if cur_country == 'gb':
+            bid = build_dynamic_arg_for_us_55(
+                d, worker_id, cur_language, cur_country, cur_role,
+                "55", "ReTests of Manual Detected Bugs",
+                "058",
+                "Testing voted function in 'What is your sentiment...' block",
+                False, True
+            )
+            pytest.skip("Промежуточная версия!")
+            page_conditions = NewConditions(d, "")
+            cur_item_link = page_conditions.preconditions(
+                d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        else:
+            bid = build_dynamic_arg_for_us_55(
+                d, worker_id, cur_language, cur_country, cur_role,
+                "55", "ReTests of Manual Detected Bugs",
+                "058",
+                "Testing voted function in 'What is your sentiment...' block",
+                False, False
+            )
+            pytest.skip("Промежуточная версия!")
+            page_conditions = Conditions(d, "")
+            cur_item_link = page_conditions.preconditions(
+                d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        if cur_country == 'gb':
+            page_menu.open_learn_to_trade_market_analysis_menu(d, cur_language, cur_country, cur_item_link)
+        else:
+            page_menu.open_news_and_analysis_market_analysis_menu(d, cur_language, cur_country, cur_item_link)
+
+        test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
+        test_element.full_test(
+            d, cur_language, cur_country, cur_role, cur_item_link)

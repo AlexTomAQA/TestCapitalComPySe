@@ -925,6 +925,11 @@ class MenuUS11EssentialsOfTrading:
 class MenuUS11MarketGuidesNew:
     SUB_MENU_MARKET_GUIDES_NEW = (By.CSS_SELECTOR, '[data-type="nav_id700"]')
 
+
+class MenuUS11MarketAnalysis:
+    SUB_MENU_MARKET_ANALYSIS_EN_GB = (By.CSS_SELECTOR, '[data-type="nav_id771"]')
+    SUB_MENU_MARKET_ANALYSIS_EN_AE = (By.CSS_SELECTOR, '[data-type="nav_id869"]')
+
 # ".menu_menu__3Lgen a[href="/en-gb/learn"]"
 
 
@@ -1017,6 +1022,56 @@ class MenuUS01Markets:
     MENU_MARKETS_CN_BUTTON = (
         By.CSS_SELECTOR,
         ".cc-header .cc-nav__item > a[href='https://capital.com/cn/derivative-financial-instruments']")
+
+
+class MenuUS02NewsAndAnalysis:
+    MENU_NEWS_AND_ANALYSIS_EN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/./market-analysis']")
+    MENU_NEWS_AND_ANALYSIS_AR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ar/news-ar-local']")
+    MENU_NEWS_AND_ANALYSIS_DE_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/de/wirtschaftsnews']")
+    MENU_NEWS_AND_ANALYSIS_EL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/el/financial-news-articles-local']")
+    MENU_NEWS_AND_ANALYSIS_ES_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/es/noticias-loc']")
+    MENU_NEWS_AND_ANALYSIS_FR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/fr/nouvelles-economiques-loc']")
+    MENU_NEWS_AND_ANALYSIS_IT_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/it/notizie-analisi']")
+    MENU_NEWS_AND_ANALYSIS_HU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/hu/financial-news-articles-local']")
+    MENU_NEWS_AND_ANALYSIS_NL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/nl/economie-nieuws-loc']")
+    MENU_NEWS_AND_ANALYSIS_PL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/pl/nowosci-ekonomiczne-loc']")
+    MENU_NEWS_AND_ANALYSIS_RO_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ro/stiri-economice-loc']")
+    MENU_NEWS_AND_ANALYSIS_RU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ru/financial-news-articles-local']")
+    MENU_NEWS_AND_ANALYSIS_ZH_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/zh/jingji-xinwen-loc']")
+    MENU_NEWS_AND_ANALYSIS_CN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/cn/learn-how-to-trade']")
+
+
+class MenuUS0201MarketAnalysis:
+    SUB_MENU_EN_MARKET_ANALYSIS = (By.CSS_SELECTOR,
+                           ".cc-nav__dropdown a[href='https://capital.com/./market-analysis']")
 
 
 class MenuUS01Indices:
@@ -1221,3 +1276,15 @@ class MenuUS0106MarketsCryptocurrencies:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-cryptocurrency-prices']")
     SUB_MENU_CN_CRYPTOCURRENCIES = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-cryptocurrency-prices']")
+
+
+class MenuUS55WaysToTrade:
+
+    # ways to trade
+    MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
+    SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
+
+    # footer
+    # FOOTER_RISK_WARNING_BLOCK = (By.CSS_SELECTOR, 'footer .dark')
+    # FOOTER_RISK_WARNING_BLOCK_LINK = (By.CSS_SELECTOR, 'footer .dark a')
+    FOOTER_CAPITAL_LOGO = (By.CSS_SELECTOR, 'footer > div > a[href="/en-gb"]')
