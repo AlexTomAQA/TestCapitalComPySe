@@ -1276,3 +1276,15 @@ class MenuUS0106MarketsCryptocurrencies:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/live-cryptocurrency-prices']")
     SUB_MENU_CN_CRYPTOCURRENCIES = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-cryptocurrency-prices']")
+
+
+class MenuUS55WaysToTrade:
+
+    # ways to trade
+    MENU_WAYS_TO_TRADE = (By.CSS_SELECTOR, '[data-type="nav_id686"]')
+    SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL = (By.CSS_SELECTOR, '[data-type="nav_id752"]')
+
+    # footer
+    # FOOTER_RISK_WARNING_BLOCK = (By.CSS_SELECTOR, 'footer .dark')
+    # FOOTER_RISK_WARNING_BLOCK_LINK = (By.CSS_SELECTOR, 'footer .dark a')
+    FOOTER_CAPITAL_LOGO = (By.CSS_SELECTOR, 'footer > div > a[href="/en-gb"]')

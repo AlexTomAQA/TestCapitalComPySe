@@ -7,8 +7,9 @@
 import pytest
 import allure
 
+from pages.BugsManual.bag_034 import ProfessionalMenuCheckFooter
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
-from pages.Elements.WaysToTradeProfessional import WaysToTradeProfessional
+from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
@@ -69,15 +70,20 @@ class TestManualDetectedBugs:
             "034",
             "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"
         )
+        # pytest.skip("Autotest under construction")
 
-        pytest.skip("Autotest under construction")
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
 
-        # Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
-        # Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-        #
-        # page_conditions = NewConditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        #
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        link = menu.open_ways_to_trade_professional_menu(d, cur_language, cur_country, link)
         # menu = WaysToTradeProfessional(d, link, bid)
         # menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
+
+        menu = ProfessionalMenuCheckFooter(d, link, bid)
+        menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
+
