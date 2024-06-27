@@ -40,7 +40,9 @@ class TestManualDetectedBugs:
             "55", "ReTests of Manual Detected Bugs",
             "043",
             "The page is refreshed instead of opening the Login form after clicking the [Log In] button "
-            "on the Search page"
+            "on the Search page",
+            False,
+            False
         )
 
         # Arrange
