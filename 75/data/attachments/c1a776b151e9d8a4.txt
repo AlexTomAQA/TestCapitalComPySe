@@ -1,0 +1,42 @@
+2024-06-27 21:30:35 ERROR Could not find elements on page: https://play.google.com/store/apps/details?id=com.capital.trading
+2024-06-27 21:30:35 ERROR no such element: Unable to locate element: {"method":"css selector","selector":"h1[itemprop='name'] span"}
+  (Session info: chrome=126.0.6478.127); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Traceback (most recent call last):
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 500, in get_text
+    return "".join(self.driver.find_element(method, locator).text.split("\n")[i:])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"h1[itemprop='name'] span"}
+  (Session info: chrome=126.0.6478.127); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x005CC1C3+27395]
+	(No symbol) [0x00563DC4]
+	(No symbol) [0x00461B7F]
+	(No symbol) [0x004A2C65]
+	(No symbol) [0x004A2D3B]
+	(No symbol) [0x004DEC82]
+	(No symbol) [0x004C39E4]
+	(No symbol) [0x004DCB24]
+	(No symbol) [0x004C3736]
+	(No symbol) [0x00497541]
+	(No symbol) [0x004980BD]
+	GetHandleVerifier [0x00883A93+2876371]
+	GetHandleVerifier [0x008D7F5D+3221661]
+	GetHandleVerifier [0x0064D634+556916]
+	GetHandleVerifier [0x0065474C+585868]
+	(No symbol) [0x0056CE04]
+	(No symbol) [0x00569818]
+	(No symbol) [0x005699B7]
+	(No symbol) [0x0055BF0E]
+	BaseThreadInitThunk [0x768467F9+25]
+	RtlGetFullPathName_UEx [0x779A800D+173]
+	RtlGetFullPathName_UEx [0x779A7FDB+123]

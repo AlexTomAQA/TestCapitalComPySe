@@ -1,0 +1,103 @@
+{'width': 1280, 'height': 800}
+
+2024-06-27 22:20:49.494697   worker_id = master
+
+2024-06-27 22:20:49.494697   0. Allure grouping v4
+
+2024-06-27 22:20:49.494697   START PRECONDITIONS =>
+
+2024-06-27 22:20:49.494697   => URL after prev. preconditions - https://capital.com/nl
+2024-06-27 22:20:49.494697   => flag_of_bug - False
+2024-06-27 22:20:49.494697   => Current URL - https://capital.com/nl/eur-aud-koers
+2024-06-27 22:20:49.501868   Current page URL = https://capital.com/nl/eur-aud-koers
+2024-06-27 22:20:49.505868   self.link = https://capital.com/nl
+2024-06-27 22:20:49.505868   driver.get(https://capital.com/nl) =>
+2024-06-27 22:20:51.179566   => Loaded page https://capital.com/nl
+
+2024-06-27 22:20:51.185261   => Windows size: {'width': 1280, 'height': 800}
+2024-06-27 22:20:51.189261   Set windows position at (0, 0) =>
+2024-06-27 22:20:51.191698   Set resolution 1280 * 800 =>
+2024-06-27 22:20:51.194702   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-06-27 22:20:52.201024   Капчи нет. Идем дальше
+
+2024-06-27 22:20:52.201024   Работа с куками =>
+
+2024-06-27 22:20:52.201024   => не требуется
+
+2024-06-27 22:20:53.254634   Капчи нет. Идем дальше
+
+2024-06-27 22:20:53.254634   Prev. country - 'de'
+2024-06-27 22:20:53.254634   Cur. country - 'de'
+2024-06-27 22:20:53.254634   => Country set to 'de'
+
+2024-06-27 22:20:54.302281   Капчи нет. Идем дальше
+
+2024-06-27 22:20:54.302281   Prev. language - 'nl'
+2024-06-27 22:20:54.302281   Cur. language - 'nl'
+2024-06-27 22:20:54.302281   => Language is set to 'nl'
+
+2024-06-27 22:20:55.316859   Капчи нет. Идем дальше
+
+2024-06-27 22:20:55.316859   Prev. role - 'NoAuth'
+2024-06-27 22:20:55.316859   Cur. role - 'NoAuth'
+2024-06-27 22:20:55.316859   => The 'NoAuth' role is set
+
+2024-06-27 22:20:55.316859   => Current URL - https://capital.com/nl
+
+2024-06-27 22:20:55.316859   => THE END PRECONDITIONS
+
+2024-06-27 22:20:55.316859   1. Arrange_v0
+2024-06-27 22:20:55.316859   current_page = https://capital.com/nl
+2024-06-27 22:20:55.316859   link = https://capital.com/nl/eur-aud-koers
+2024-06-27 22:20:55.316859   Current page URL = https://capital.com/nl
+2024-06-27 22:20:55.332456   self.link = https://capital.com/nl/eur-aud-koers
+2024-06-27 22:20:55.332456   driver.get(https://capital.com/nl/eur-aud-koers) =>
+2024-06-27 22:20:56.990363   => Loaded page https://capital.com/nl/eur-aud-koers
+2024-06-27 22:20:56.995365   IS 'Why choose Capital.com?' block present on the page? =>
+2024-06-27 22:20:57.007108,   => Block 'Why choose Capital.com? is present. Scroll to block
+2024-06-27 22:20:57.018100,   Is BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE present in the block? =>
+2024-06-27 22:20:57.047472,   => BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is present in the block
+
+2024-06-27 22:20:57.048471   2. Act_v0
+2024-06-27 22:20:57.048471   Start Click [Try now] button =>
+2024-06-27 22:20:58.136102, Bug ? BUTTON_TRY_NOW_BLOCK_WHY_CHOOSE is not clickable
+
+2024-06-27 22:20:58.136565   3. Assert_Login_v0
+2024-06-27 22:20:58.136565   Check that 'Login' form is opened
+2024-06-27 22:21:04.320239   'Login' form not opened
+2024-06-27 22:21:04.320239   Check that new 'Login' form is opened
+2024-06-27 22:21:07.396060   => New 'Login' form not opened
+2024-06-27 22:21:07.396060   'Login' page not opened
+2024-06-27 22:21:10.483819   'Login' form on trading platform not opened
+2024-06-27 22:21:10.483819   Start step Check that [Sign up] form is opened
+2024-06-27 22:21:10.496852   'Sign up' form opened
+2024-06-27 22:21:10.496852   Assert SIGNUP_HEADER =>
+2024-06-27 22:21:10.512510   Assert SIGNUP_REF_LOGIN =>
+2024-06-27 22:21:10.528144   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-06-27 22:21:10.542571   => SIGNUP_PRIVACY_POLICY_ALL
+2024-06-27 22:21:10.542571   => 'Signup' form is checked
+
+Bug: Bid:01.03.01_008-nl.de.NoAuth
+
+2024-06-27 22:21:10.542571   Проверка бага в таблице ретеста  =>
+
+2024-06-27 22:21:11.218177   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-27 22:21:11.498543   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-27 22:21:14.340984   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-27 22:21:14.574168   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-27 22:21:14.581162   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-27 22:21:14.836015   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-27 22:21:14.837026   Баг Bid:01.03.01_008-nl.de.NoAuth уже существует, но у него изменился тип с  на 05
+
+2024-06-27 22:21:14.837026   4. Fixing one row check results into Google Sheet Bugs Report =>
+1 cells updated.
+2024-06-27 22:21:15.094324   => 4. One row check results into Google Sheet Bugs Report fixed
+
+2024-06-27 22:21:15.096328   Баг Bid:01.03.01_008-nl.de.NoAuth-05 обнаружен ранее и уже находится в 'Bugs Report Auto detect'
