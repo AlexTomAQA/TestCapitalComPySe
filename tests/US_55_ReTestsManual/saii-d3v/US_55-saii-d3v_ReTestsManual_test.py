@@ -73,7 +73,7 @@ class TestManualDetectedBugs:
                  "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'")
     @pytest.mark.parametrize('cur_country', ['de'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
-    @pytest.mark.test_043
+    @pytest.mark.test_060
     def test_060(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Login form is opened instead of Sign up form after clicking the button [Apply]
