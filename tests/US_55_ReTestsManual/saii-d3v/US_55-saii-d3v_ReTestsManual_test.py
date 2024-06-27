@@ -100,11 +100,14 @@ class TestManualDetectedBugs:
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
+        # Arrange
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
-
         prof_acc_page.arrange_(d, cur_language_3_rnd_from_14, cur_country)
+
+        # Act
         prof_acc_page.click_the_apply_button()
 
+        # Assert
         signup_form = SignupLogin(d, link, bid)
         assert signup_form.should_be_signup_form(cur_language_3_rnd_from_14)
 
