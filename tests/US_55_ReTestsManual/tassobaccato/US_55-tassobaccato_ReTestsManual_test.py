@@ -57,6 +57,7 @@ class TestManualDetectedBugs:
         Check: Filters application in the 'Live shares prices' widget
         Language: All
         License: CYSEC, SCB, ASIC
+        Author: Kasila
         """
 
         bid = build_dynamic_arg_for_us_55(
