@@ -13,13 +13,10 @@ from pages.common import Common
 from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.BugsManual.bug_043 import SearchField
+from pages.BugsManual.bug_060 import ProfessionalAccountPage
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from src.src import CapitalComPageSrc
-# for 060
-# from pages.Menu.menu import MenuSection    # написать метод выбора и клика по Professional Account
-# создать файл для бага 060, написать класс для страницы, добавить метод клика на кнопку
-# проверить наличие Sign up формы
 
 
 @pytest.mark.us_55
@@ -74,10 +71,10 @@ class TestManualDetectedBugs:
 
     @allure.step("Login form is opened instead of Sign up form after clicking the button [Apply] "
                  "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'")
-    @pytest.mark.parametrize('cur_country', ['at'])
+    @pytest.mark.parametrize('cur_country', ['de'])
     @pytest.mark.parametrize('cur_role', ['NoReg'])
     @pytest.mark.test_043
-    def test_060(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role):
+    def test_060(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Login form is opened instead of Sign up form after clicking the button [Apply]
                 in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'
@@ -85,6 +82,9 @@ class TestManualDetectedBugs:
          License: CYSEC.
          Author: Sergey Aiidzhanov
          """
+
+        Common().check_language_in_list_and_skip_if_present(cur_language_3_rnd_from_14, ['el'])
+
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
@@ -95,9 +95,16 @@ class TestManualDetectedBugs:
 
         page_conditions = Conditions(d)
 
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14, cur_country, cur_role)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
+                                             cur_country, cur_role, cur_login, cur_password)
 
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['at'])
+        prof_acc_page = ProfessionalAccountPage(d, link, bid)
 
-        pytest.skip("AT is under construction")
+        prof_acc_page.arrange_(d, cur_language_3_rnd_from_14, cur_country)
+        prof_acc_page.click_the_apply_button()
+
+        signup_form = SignupLogin(d, link, bid)
+        assert signup_form.should_be_signup_form(cur_language_3_rnd_from_14)
+
+
+        # pytest.skip("AT is under construction")
