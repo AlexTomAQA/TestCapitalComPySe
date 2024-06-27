@@ -4,6 +4,8 @@ import random
 import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait as Wait
+from selenium.webdriver.support import expected_conditions as EC
 
 from pages.Elements.AssertClass import AssertClass
 from pages.base_page import BasePage
@@ -33,9 +35,12 @@ class AppliedFilters(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        region_checkbox_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_reg > li > label.checkbox > span')
-        sectors_checkbox_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_sec > li > label.checkbox > span')
+        filter_labels_list = self.driver.find_elements(By.CSS_SELECTOR, 'span.cross-button')
+        if len(filter_labels_list) > 0:
+            for element in filter_labels_list:
+                element.click()
 
+        region_checkbox_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_reg > li > label.checkbox > span')
         region_random_list = random.sample(region_checkbox_list, 3)
         for element in region_random_list:
             ActionChains(d) \
@@ -43,14 +48,26 @@ class AppliedFilters(BasePage):
                 .click(element) \
                 .perform()
 
+        sectors_checkbox_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_sec > li > label.checkbox > span')
         sectors_random_list = random.sample(sectors_checkbox_list, 2)
         for element in sectors_random_list:
-            element.click()
+            ActionChains(d) \
+                .move_to_element(element) \
+                .click(element) \
+                .pause(0.3) \
+                .perform()
 
-        selected_filters_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
+        filters_labels = self.driver.find_element(By.CSS_SELECTOR, '#flt_labels')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            filters_labels
+        )
+        selected_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
+        time_out = 5
+
+        selected_filters_list = self.elements_are_located(selected_filters_locator, time_out)
         self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
 
-#        return self.selected_filters_text_list
 
     def element_click(self, d):
         print(f"\n{datetime.now()}   2. Act")
@@ -62,9 +79,11 @@ class AppliedFilters(BasePage):
 
         dropdown_item_list = self.driver.find_elements(By.CSS_SELECTOR, 'ul > li.sort')
         dropdown_item = random.choice(dropdown_item_list)
+        dropdown_text_item = dropdown_item.text
 
         ActionChains(d) \
             .move_to_element(dropdown_item) \
             .click(dropdown_item) \
             .perform()
-        print(f"{datetime.now()}   Sort is selected")
+
+        print(f"{datetime.now()}   Sort - {dropdown_text_item} - is selected")

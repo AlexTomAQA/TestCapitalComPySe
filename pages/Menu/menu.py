@@ -41,7 +41,10 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
     MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets,
-    MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG
+    MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG, MenuUS55WaysToTrade,
+    MenuUS02NewsAndAnalysis,
+    MenuUS0201MarketAnalysis,
+    MenuUS11MarketAnalysis
 )
 
 from pages.base_page import BasePage
@@ -98,6 +101,24 @@ class MenuSection(BasePage):
 
         self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
         self.sub_menu_technical_analysis_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+        Common.flag_of_bug = False
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Learn to trade" menu, "Market analysis" submenu')
+    def open_learn_to_trade_market_analysis_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Learn to trade" menu, "Market analysis" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_market_analysis_move_focus_click(d, cur_language, cur_country)
         Common().move_pointer_to_capital_com_label(d)
         Common.flag_of_bug = False
 
@@ -277,6 +298,78 @@ class MenuSection(BasePage):
         Common.flag_of_bug = False
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step('Select "Ways to trade" menu, "Professional" submenu')
+    def open_ways_to_trade_professional_menu(self, d, cur_language, cur_country, link):
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.menu_ways_to_trade_move_focus(d, cur_language, cur_country)
+        self.sub_menu_professional_move_focus_click(d, cur_language, cur_country)
+        Common().move_pointer_to_capital_com_label(d)
+        Common.flag_of_bug = False
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Move focus to 'Ways to trade' menu section")
+    def menu_ways_to_trade_move_focus(self, d, test_language, test_country):
+        menu_locator = None
+        if test_country == "gb" and test_language == "":
+            menu_locator = MenuUS55WaysToTrade.MENU_WAYS_TO_TRADE
+
+        time.sleep(0.5)
+        menu = d.find_elements(*menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'Ways to trade' menu not present")
+            # allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            Common().pytest_fail(f"Bug # ? 'Ways to trade' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Ways to trade' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'Ways to trade' menu not visible")
+            Common().pytest_fail("Bug # ? 'Ways to trade' menu not visible")
+        print(f"{datetime.now()}   => 'Ways to trade' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        del menu
+        del element
+        print(f"{datetime.now()}   => Focus moved to 'Ways to trade' menu")
+
+    @allure.step("Focus move to 'Professional' menu item and click")
+    def sub_menu_professional_move_focus_click(self, d, test_language, test_country):
+        sub_menu = list()
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS55WaysToTrade.SUB_MENU_WAYS_TO_TRADE_PROFESSIONAL)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For test language '{test_language}' "
+                f"the page \"Ways to trade > Menu item [Professional]\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+
         return d.current_url
 
     @allure.step("Open 'Language and Country' menu section.")
@@ -1951,6 +2044,111 @@ class MenuSection(BasePage):
 
         print(f"{datetime.now()}   => Focus moved to 'Cryptocurrencies' submenu and clicked")
         del sub_menu
+
+    @allure.step('Select "News and Analysis" menu, "Market analysis"')
+    def open_news_and_analysis_market_analysis_menu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "News and Analysis" menu, "Market analysis" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_news_and_analysis_menu(d, cur_language, cur_country)
+        self.sub_menu_market_analysis_move_focus_click(d, cur_language, cur_country)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus moved to 'News and Analysis' menu")
+    def move_focus_to_news_and_analysis_menu(self, d, test_language, test_country):
+        news_and_analysis_menu_locator = None
+        match test_language:
+            case "":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_EN_BUTTON
+            case "ar":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_AR_BUTTON
+            case "de":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_DE_BUTTON
+            case "el":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_EL_BUTTON
+            case "es":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_ES_BUTTON
+            case "fr":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_FR_BUTTON
+            case "it":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_IT_BUTTON
+            case "hu":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_HU_BUTTON
+            case "nl":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_NL_BUTTON
+            case "pl":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_PL_BUTTON
+            case "ro":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_RO_BUTTON
+            case "ru":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_RU_BUTTON
+            case "zh":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_ZH_BUTTON
+            case "cn":
+                news_and_analysis_menu_locator = MenuUS02NewsAndAnalysis.MENU_NEWS_AND_ANALYSIS_CN_BUTTON
+
+        time.sleep(0.5)
+        menu = d.find_elements(*news_and_analysis_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'News and Analysis' menu not present")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail(f"Bug № ??? 'News and Analysis' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'News and Analysis' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(news_and_analysis_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'News and Analysis' menu not visible")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail("Problem. 'News and Analysis' menu not visible")
+        print(f"{datetime.now()}   => 'News and Analysis' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*news_and_analysis_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'News and Analysis' menu")
+        del menu
+        del element
+
+    @allure.step("Focus move to 'Market analysis' submenu item and click")
+    def sub_menu_market_analysis_move_focus_click(self, d, test_language, test_country):
+        sub_menu = None
+        if test_country == "gb" and test_language == "":
+            sub_menu = d.find_elements(*MenuUS11MarketAnalysis.SUB_MENU_MARKET_ANALYSIS_EN_GB)
+        elif test_country == "ae" and test_language == "":
+            sub_menu = d.find_elements(*MenuUS11MarketAnalysis.SUB_MENU_MARKET_ANALYSIS_EN_AE)
+        else:
+            sub_menu = d.find_elements(*MenuUS0201MarketAnalysis.SUB_MENU_EN_MARKET_ANALYSIS)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Menu > Market analysis\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Market analysis' sub-menu clicked")
+
+        del sub_menu
+        return d.current_url
 
     @allure.step('Select "Products and services" menu, "Our Mobile Apps" submenu click')
     def open_our_mobile_apps_submenu_products_and_services_menu(self, d, cur_language, cur_country, link):
