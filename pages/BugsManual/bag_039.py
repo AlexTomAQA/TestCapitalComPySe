@@ -57,13 +57,15 @@ class AppliedFilters(BasePage):
                 .pause(0.3) \
                 .perform()
 
-        selected_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
-        time_out = 10
-        Wait(self.driver, time_out).until(
-            EC.presence_of_all_elements_located(selected_filters_locator)
+        filters_labels = self.driver.find_element(By.CSS_SELECTOR, '#flt_labels')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            filters_labels
         )
+        selected_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
+        time_out = 5
 
-        selected_filters_list = self.driver.find_elements(*selected_filters_locator)
+        selected_filters_list = self.elements_are_located(selected_filters_locator, time_out)
         self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
 
 
