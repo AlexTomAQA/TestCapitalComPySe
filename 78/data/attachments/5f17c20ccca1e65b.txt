@@ -1,0 +1,35 @@
+2024-06-28 17:25:07 ERROR Elements not present after 0.5 seconds on page: https://capital.com/trading/platform/
+2024-06-28 17:25:07 ERROR 
+Traceback (most recent call last):
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\a\TestCapitalComPySe\TestCapitalComPySe\pages\base_page.py", line 305, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\runneradmin\AppData\Local\pypoetry\Cache\virtualenvs\testcapitalcompyse-ahTg7XpD-py3.12\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0111C1C3+27395]
+	(No symbol) [0x010B3DC4]
+	(No symbol) [0x00FB1B7F]
+	(No symbol) [0x00FF2C65]
+	(No symbol) [0x00FF2D3B]
+	(No symbol) [0x0102EC82]
+	(No symbol) [0x010139E4]
+	(No symbol) [0x0102CB24]
+	(No symbol) [0x01013736]
+	(No symbol) [0x00FE7541]
+	(No symbol) [0x00FE80BD]
+	GetHandleVerifier [0x013D3A93+2876371]
+	GetHandleVerifier [0x01427F5D+3221661]
+	GetHandleVerifier [0x0119D634+556916]
+	GetHandleVerifier [0x011A474C+585868]
+	(No symbol) [0x010BCE04]
+	(No symbol) [0x010B9818]
+	(No symbol) [0x010B99B7]
+	(No symbol) [0x010ABF0E]
+	BaseThreadInitThunk [0x767667F9+25]
+	RtlGetFullPathName_UEx [0x77CB800D+173]
+	RtlGetFullPathName_UEx [0x77CB7FDB+123]
