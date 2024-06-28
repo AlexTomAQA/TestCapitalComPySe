@@ -128,8 +128,8 @@ def cur_language(request):
         # "gb",  # Great Britain /          "FCA" - New layout
         # "ae",  # United Arab Emirates /   "SCA" - New layout
         #
-        "de",  # Germany  - "CYSEC"
-        # "au",  # Australia - "ASIC"
+        # "de",  # Germany  - "CYSEC"
+        "au",  # Australia - "ASIC"
         # "ua",  # Ukraine - "SCB"
         #
         # "gr",  # Greece - "CYSEC"
