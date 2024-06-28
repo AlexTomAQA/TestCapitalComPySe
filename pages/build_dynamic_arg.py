@@ -194,7 +194,7 @@ def build_dynamic_arg_for_us_55(
         bug_id = f"Bid:{us}!{num_tc}-{cur_language}.{cur_country}.{cur_role}"
     # dynamic_title = f"TC_{us}!{num_tc} | Country: {cur_country}, Language: {cur_language}. Bid: {bug_id}"
     # dynamic_title = f"TC_{us}!{num_tc} | Bid: {bug_id}. Language: {cur_language}."
-    dynamic_title = f"TC_{us}!{num_tc} | Bid: {bug_id}"
+    dynamic_title = f"TC_{us}!{num_tc} | {bug_id}"
 
     allure.dynamic.epic(dynamic_epic)
     allure.dynamic.feature(dynamic_feature)
