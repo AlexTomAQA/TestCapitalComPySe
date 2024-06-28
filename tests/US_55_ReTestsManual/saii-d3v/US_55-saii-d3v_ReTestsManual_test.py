@@ -84,9 +84,6 @@ class TestManualDetectedBugs:
          License: CYSEC.
          Author: Sergey Aiidzhanov
          """
-
-        Common().check_language_in_list_and_skip_if_present(cur_language_3_rnd_from_14, ['el'])
-
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
@@ -95,18 +92,21 @@ class TestManualDetectedBugs:
             "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'"
         )
 
+        # Bug is not reproduced in 'el' language
+        Common().check_language_in_list_and_skip_if_present(cur_language_3_rnd_from_14, ['el'])
+
         page_conditions = Conditions(d)
 
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
+        # Arrange
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
-
         prof_acc_page.arrange_(d, cur_language_3_rnd_from_14, cur_country)
+
+        # Act
         prof_acc_page.click_the_apply_button()
 
+        # Assert
         signup_form = SignupLogin(d, link, bid)
         assert signup_form.should_be_signup_form(cur_language_3_rnd_from_14)
-
-
-        # pytest.skip("AT is under construction")
