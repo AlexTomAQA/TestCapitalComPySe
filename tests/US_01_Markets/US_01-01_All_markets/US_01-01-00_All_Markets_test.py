@@ -90,7 +90,7 @@ class TestAllMarkets:
             ".00_003", "Testing button [1. Create your account] in Step trading block")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        # Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
@@ -138,7 +138,7 @@ class TestAllMarkets:
             ".00_099", "Pretest for US_01.01.01")
 
         Common().check_country_in_list_and_skip_if_present(cur_country, ["gb", "ae"])
-        Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
+        # Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
 
         if count == 0:
             pytest.skip("The list of Live All markets links is already created")
