@@ -26,7 +26,7 @@ class TestTradingStrategies:
         """
         Check: Button [Create account] on Main banner
         Language: En.
-        License: FCA (GB country)
+        License: FCA (GB country), SCA (UAE country)
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -34,7 +34,7 @@ class TestTradingStrategies:
             ".00_101", "Testing button [Create account] on the Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb", "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country,
@@ -53,7 +53,7 @@ class TestTradingStrategies:
         """
         Check: Button [Try demo account] on Main banner
         Language: En
-        License: FCA (GB country)
+        License: FCA (GB country), SCA (UAE country)
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -61,7 +61,7 @@ class TestTradingStrategies:
             ".00_102", "Testing button [Try demo account] on the Main banner")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb", "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country,
@@ -80,7 +80,7 @@ class TestTradingStrategies:
         """
         Check: Button [Create your account] in block "Ready to join a leading broker?"
         Language: En.
-        License: FCA (GB country)
+        License: FCA (GB country), SCA (UAE country)
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -88,7 +88,7 @@ class TestTradingStrategies:
             ".00_103", "Testing button [1.Create your account] in block 'Ready to join a leading broker?'")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb"])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ["gb", "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country,
