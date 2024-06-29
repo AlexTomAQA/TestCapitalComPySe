@@ -21,7 +21,7 @@ class TestEssentialsTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [Create a live account] in Unleveraged trading block
-        Language: En. License: FCA.
+        Language: En. License: FCA, SCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -29,7 +29,7 @@ class TestEssentialsTrading:
             ".00_101", "Testing button [Create a live account]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb', "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -48,7 +48,7 @@ class TestEssentialsTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [Create a risk-free demo account] in Unleveraged trading block
-        Language: En. License: FCA.
+        Language: En. License: FCA, SCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -56,7 +56,7 @@ class TestEssentialsTrading:
             ".00_102", "Testing button [Create a risk free demo account]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb', "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -75,7 +75,7 @@ class TestEssentialsTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check button [Create a live account]
-        Language: En. License: FCA.
+        Language: En. License: FCA, SCA.
         """
 
         bid = build_dynamic_arg_v4(
@@ -84,7 +84,7 @@ class TestEssentialsTrading:
             ".00_103", "Testing button [Create a live account]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb', "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -103,7 +103,7 @@ class TestEssentialsTrading:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: button [Create a risk-free demo account] in How to get started trading block
-        Language: En. License: FCA.
+        Language: En. License: FCA, SCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -111,7 +111,7 @@ class TestEssentialsTrading:
             ".00_104", "Testing button [Create a risk-free demo account]")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb', "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -130,7 +130,7 @@ class TestEssentialsTrading:
             self, worker_id, d, cur_role, cur_language, cur_country, cur_login, cur_password):
         """
         Check button [1. Create your account ] in block 'Ready to join a leading broker?'
-        Language: En. License: FCA.
+        Language: En. License: FCA, SCA.
         """
         bid = build_dynamic_arg_v4(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -138,7 +138,7 @@ class TestEssentialsTrading:
             ".00_105", "Testing button [1. Create your account] in block 'Ready to join a leading broker?'")
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [""])
-        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
+        Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb', "ae"])
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
