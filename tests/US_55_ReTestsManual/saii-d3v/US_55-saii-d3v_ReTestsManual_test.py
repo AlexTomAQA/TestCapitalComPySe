@@ -5,6 +5,7 @@
 """
 
 import time
+from datetime import datetime
 
 import pytest
 import allure
@@ -48,12 +49,11 @@ class TestManualDetectedBugs:
             False
         )
 
+        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
+
         page_conditions = Conditions(d)
-        
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
-
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
 
         # Arrange
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
@@ -68,8 +68,15 @@ class TestManualDetectedBugs:
 
         # Assert
         time.sleep(1)
+        print(f'\n{datetime.now()}   3. Assert')
         login_form = SignupLogin(d, link, bid)
-        assert login_form.should_be_login_form()
+        assert login_form.should_be_login_form(), "The Login form is NOT displayed"
+        Common().save_current_screenshot(d, "US_55!043 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        login_form.close_login_form()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Login form is opened instead of Sign up form after clicking the button [Apply] "
                  "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'")
@@ -96,7 +103,6 @@ class TestManualDetectedBugs:
         Common().check_language_in_list_and_skip_if_present(cur_language_3_rnd_from_14, ['el'])
 
         page_conditions = Conditions(d)
-
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
@@ -108,5 +114,12 @@ class TestManualDetectedBugs:
         prof_acc_page.click_the_apply_button()
 
         # Assert
+        print(f'\n{datetime.now()}   3. Assert')
         signup_form = SignupLogin(d, link, bid)
-        assert signup_form.should_be_signup_form(cur_language_3_rnd_from_14)
+        assert signup_form.should_be_signup_form(cur_language_3_rnd_from_14), "The Signup form is NOT displayed"
+        Common().save_current_screenshot(d, "US_55!060 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        signup_form.close_signup_form()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
