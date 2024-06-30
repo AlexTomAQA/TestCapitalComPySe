@@ -70,7 +70,7 @@ class TestManualDetectedBugs:
         time.sleep(1)
         print(f'\n{datetime.now()}   3. Assert')
         login_form = SignupLogin(d, link, bid)
-        if login_form.should_be_login_form():
+        if not login_form.should_be_login_form():
             Common().pytest_fail(f"Bug # 55!043   The Login form is NOT displayed")
         Common().save_current_screenshot(d, "AT_55!043 Pass")
 
@@ -117,7 +117,7 @@ class TestManualDetectedBugs:
         # Assert
         print(f'\n{datetime.now()}   3. Assert')
         signup_form = SignupLogin(d, link, bid)
-        if signup_form.should_be_signup_form(cur_language_3_rnd_from_14):
+        if not signup_form.should_be_signup_form(cur_language_3_rnd_from_14):
             Common().pytest_fail("Bug # 55!060   The Signup form is NOT displayed")
         Common().save_current_screenshot(d, "AT_55!060 Pass")
 
