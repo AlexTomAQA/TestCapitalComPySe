@@ -330,6 +330,47 @@ class BasePage:
                                                 message=f"Can't see element by locator {locator}")
 
     @HandleExcElementsDecorator()
+    def element_is_present_and_visible_v2(self, locator, name_of_element, timeout=5):
+        """
+        Check that an element is present on the DOM of a page and visible. For v2: Add time-code for message.
+        Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
+
+        Example of used:
+            BLOCK_NAME = '"What is your sentiment?" block'
+            BLOCK_LOCATOR = (By.CSS_SELECTOR, '.sentiment[data-type="bullBearWidget"]')
+
+            element_is_present_and_visible_v2(BLOCK_LOCATOR, BLOCK_NAME, 3)
+
+        Args:
+            locator: used with the specified method to find the element
+            name_of_element: name of web element that we are testing
+            timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 1.
+
+        Returns:
+            'True' if element is present and visible
+            pytest_fail(msg) - if not present or not visible
+        """
+        print(f"{datetime.now()}   IS {name_of_element} present on this page? =>")
+        if len(self.driver.find_elements(*locator)) == 0:
+            msg = f"{name_of_element} is NOT present on this page"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => {name_of_element} present on this page!\n")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_elements(*locator)[0]
+        )
+
+        print(f"{datetime.now()}   IS {name_of_element} visible on this page? =>")
+        if not self.element_is_visible(locator, timeout):
+            msg = f"{name_of_element} is NOT visible on this page!"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   => {name_of_element} is visible on this page!\n")
+        return True
+
+    @HandleExcElementsDecorator()
     def element_is_clickable(self, loc_or_elem, timeout=1):
         """
         Check that an element is present on the DOM of a page and enabled such that you can click it..
