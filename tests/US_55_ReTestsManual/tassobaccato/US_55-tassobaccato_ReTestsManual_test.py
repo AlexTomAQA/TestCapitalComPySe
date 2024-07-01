@@ -6,7 +6,7 @@
 import pytest
 import allure
 
-from pages.BugsManual.bag_039 import AppliedFilters
+from pages.BugsManual.bug_039 import AppliedFilters
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 

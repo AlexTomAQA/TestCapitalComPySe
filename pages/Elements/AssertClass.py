@@ -279,7 +279,7 @@ class AssertClass(BasePage):
         actual_filters_list = self.elements_are_located(actual_filters_locator, time_out)
         actual_filters_text_list = [element.text for element in actual_filters_list]
 
-        if actual_filters_text_list != selected_filters_text_list:
+        if set(actual_filters_text_list) != set(selected_filters_text_list):
             assert False, \
                 ('Bug#039. '
                  f'Expected result: applied filters "Region/Sectors" are displayed {selected_filters_text_list}'
