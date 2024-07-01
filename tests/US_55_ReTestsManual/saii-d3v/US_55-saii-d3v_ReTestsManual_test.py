@@ -49,13 +49,13 @@ class TestManualDetectedBugs:
             False
         )
 
+        # Arrange
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
 
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
-        # Arrange
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
 
@@ -102,6 +102,7 @@ class TestManualDetectedBugs:
             "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'"
         )
 
+        # Arrange
         # Bug is not reproduced in 'el' language
         Common().check_language_in_list_and_skip_if_present(cur_language_3_rnd_from_14, ['el'])
 
@@ -109,7 +110,6 @@ class TestManualDetectedBugs:
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
-        # Arrange
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
         prof_acc_page.arrange_(d, cur_language_3_rnd_from_14, cur_country)
 
@@ -128,14 +128,14 @@ class TestManualDetectedBugs:
         signup_form.close_signup_form()
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
-    @allure.step("Start retest manual TC_55!093 The Search field is not opened after performed search")
+    @allure.step("Start retest manual TC_55!093 The Search field in the header is not opened after performed search")
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.test_093
     def test_093(self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
                  cur_login, cur_password, random_search_string):
         """
-         Check: The Search field is not opened after performed search
+         Check: The Search field in the header is not opened after performed search
          Language: All.
          License: All, exclude FCA, SCA.
          Country: All, exclude GB, AE.
@@ -145,20 +145,18 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "093",
-            "The Search field is not opened after performed search",
+            "The Search field in the header is not opened after performed search",
             False,
             False
         )
 
-        # pytest.skip("AT is under construction")
-
+        # Arrange
         Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
 
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
-        # Arrange
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
 
