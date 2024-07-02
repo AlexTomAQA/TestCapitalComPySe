@@ -6,7 +6,8 @@
 
 import allure
 import pytest
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pages.common import Common
 from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
@@ -272,7 +273,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_058
-    def test_058_email_field_sign_up_form(
+    def test_058_voted_function_in_sentiment_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: voted function in 'What is your sentiment...' block
@@ -290,13 +291,20 @@ class TestManualDetected:
             False, False
         )
         pytest.skip("Промежуточная версия!")
+        # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
-        page_menu.open_news_and_analysis_market_analysis_menu(d, cur_language, cur_country, cur_item_link)
+        menu_link = page_menu.open_news_and_analysis_market_analysis_menu(d, cur_language, cur_country, cur_item_link)
+        test_element = WhatIsYourSentimentWidget(d, menu_link, bid)
+        test_element.arrange(d, menu_link)
 
-        test_element = WhatIsYourSentimentWidget(d, cur_item_link, bid)
-        test_element.full_test(
-            d, cur_language, cur_country, cur_role, cur_item_link)
+        # Act
+        d.back()
+        # WebDriverWait(d, 30, poll_frequency=1).until(EC.url_changes(menu_link))
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
