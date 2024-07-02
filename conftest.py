@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 import re
 import platform
+import random
 
 import pytest
 import allure
@@ -21,6 +22,8 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from allure_commons.types import AttachmentType
 
 import conf
+
+QTY_Lang = 1
 
 
 def pytest_addoption(parser):
@@ -184,6 +187,29 @@ def cur_login(request):
 def cur_password(request):
     """Fixture"""
     print(f"Current password - {request.param}")
+    return request.param
+
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        "",
+        "ar",
+        "de",
+        "es",
+        "it",
+        "ru",
+        "cn",
+        "zh",
+        "fr",
+        "pl",
+        "ro",
+        "nl",
+        "el",
+        "hu",
+    ], QTY_Lang),
+)
+def cur_language_qty_rnd_from_14(request):
     return request.param
 
 
