@@ -5,7 +5,7 @@
 """
 from datetime import datetime
 import allure
-
+import random
 from pages.common import Common
 from pages.base_page import BasePage
 from pages.Elements.AssertClass import AssertClass
@@ -19,6 +19,7 @@ BUTTON_LOCATOR = (By.CSS_SELECTOR, '.sentiment__btn.js_vote_bullBear[data-type="
 BLOCK_LOCATOR = (By.CSS_SELECTOR, '.sentiment[data-type="bullBearWidget"]')
 ARTICLES_LOCATOR = (By.XPATH, "//a [@class='main-article-item__thumb']")
 ARTICLE_TITLE_LOCATOR = (By.CSS_SELECTOR, ".sentiment__step.js-vote-step0 h2")
+INSTRUMENT_LOCATOR = (By.CSS_SELECTOR, "div.sentiment__bl.sentiment__memory p span")
 YOU_VOTED_BULLISH_LOCATOR = (By.XPATH, '//p[@class="js-vote-bull"]')
 STATUS_OF_SENTIMENT_LOCATOR = (By.CSS_SELECTOR, '[class*="sentiment__step js-vote-step0"]')
 
@@ -30,6 +31,9 @@ class WhatIsYourSentimentWidget(BasePage):
     global BLOCK_LOCATOR
     global ARTICLES_LOCATOR
     global ARTICLE_TITLE_LOCATOR
+    global INSTRUMENT_LOCATOR
+    global YOU_VOTED_BULLISH_LOCATOR
+    global STATUS_OF_SENTIMENT_LOCATOR
 
     def __init__(self, browser, link, bid):
         self.list_of_rest_numbers_articles = None
@@ -59,17 +63,20 @@ class WhatIsYourSentimentWidget(BasePage):
         self.list_of_rest_numbers_articles = list_of_numbers_articles.copy()
 
         # Selected random (first in line) article with block "What is your sentiment..."
-        for number_article in list_of_numbers_articles:
+        for number_article in random.sample(list_of_numbers_articles, len(list_of_numbers_articles)):
             print(f'{datetime.now()}   => Number_article: {number_article}')
+
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.driver.find_elements(*ARTICLES_LOCATOR)[number_article]
             )
             print(f'{datetime.now()}   => Scrolled on the article: {number_article}')
 
+            self.element_is_clickable(self.specific_locator(ARTICLES_LOCATOR, number_article), 10)
+
             self.driver.find_elements(*ARTICLES_LOCATOR)[number_article].click()
             print(f'{datetime.now()}   => Clicked on title of article')
-            print(f'{datetime.now()} Current page is: {self.driver.current_url}\n')
+            print(f'{datetime.now()}   Current page is: {self.driver.current_url}\n')
 
             # Check presenting widget "What is your sentiment..."
             print(f"{datetime.now()}   Widget present on this page? =>")
@@ -90,7 +97,7 @@ class WhatIsYourSentimentWidget(BasePage):
 
             break
 
-        # Check presenting and visible article's title
+        # Check presenting article's title
         print(f"{datetime.now()}   Article's title present on this page? =>")
         if len(self.driver.find_elements(*ARTICLE_TITLE_LOCATOR)) == 0:
             print(f"{datetime.now()}   => Article's title not present on this page.\n")
@@ -98,25 +105,57 @@ class WhatIsYourSentimentWidget(BasePage):
             Common.pytest_fail()
         print(f"{datetime.now()}   => Article's title present on this page!\n")
 
+        # Check visible article's title
+        print(f"{datetime.now()}   Article's title visible on this page? =>")
+        if not self.element_is_visible(ARTICLE_TITLE_LOCATOR):
+            print(f"{datetime.now()}   => Article's title not visible on this page.\n")
+            # self.wait_for_change_url(cur_item_link, timeout=30)
+            msg = "Widget already is in voted mode."
+            Common.pytest_fail(msg)
+        print(f"{datetime.now()}   => Article's title visible on this page!\n")
+
         # Get name of trading instrument
         article_title = self.driver.find_elements(*ARTICLE_TITLE_LOCATOR)[0].text
         print(f"article_title: {article_title}")
         self.trading_instrument_name = article_title.split()[-1].replace("?", "") # for example AUD/USD
         print(f"{datetime.now()}   Name of trading instrument is: {self.trading_instrument_name}.")
 
-        # Check presenting and visible [Bullish] button
-        self.element_is_present_and_visible_v2(BUTTON_LOCATOR, "[Bullish] button")
+        # Check presenting [Bullish] button
+        print(f"{datetime.now()}   [Bullish] button present on this page? =>")
+        if len(self.driver.find_elements(*BUTTON_LOCATOR)) == 0:
+            print(f"{datetime.now()}   => [Bullish] button not present on this page.\n")
+            Common.pytest_fail()
+        print(f"{datetime.now()}   => [Bullish] button present on this page!\n")
+
+        # Check visible [Bullish] button
+        print(f"{datetime.now()}   [Bullish] button visible on this page? =>")
+        if not self.element_is_visible(BUTTON_LOCATOR, 5):
+            print(f"{datetime.now()}   => [Bullish] button not visible on this page.\n")
+            Common.pytest_fail()
+        print(f"{datetime.now()}   => [Bullish] button visible on this page!\n")
 
         # [Bullish] button click
         self.driver.find_element(*BUTTON_LOCATOR).click()
         print(f"{datetime.now()}   [Bullish] button clicked.")
+        return True
 
     def act(self, d):
         print(f"\n{datetime.now()}   2. Act")
 
         # Selected random (second) article with block "What is your sentiment..."
-        for number_second_article in self.list_of_rest_numbers_articles:
+        for number_second_article in random.sample(self.list_of_rest_numbers_articles, len(self.list_of_rest_numbers_articles)):
+            print(f'{datetime.now()}   => Number_article: {number_second_article}')
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_elements(*ARTICLES_LOCATOR)[number_second_article]
+            )
+            print(f'{datetime.now()}   => Scrolled on the article: {number_second_article}')
+
+            self.element_is_clickable(self.specific_locator(ARTICLES_LOCATOR, number_second_article), 10)
+
             self.driver.find_elements(*ARTICLES_LOCATOR)[number_second_article].click()
+            print(f'{datetime.now()}   => Clicked on title of article')
+            print(f'{datetime.now()}   Current page is: {self.driver.current_url}\n')
 
             # Check presenting widget "What is your sentiment..."
             print(f"{datetime.now()}   Widget present on this page? =>")
@@ -130,8 +169,34 @@ class WhatIsYourSentimentWidget(BasePage):
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                 self.driver.find_elements(*BLOCK_LOCATOR)[0]
             )
+            print(f'{datetime.now()}   => Scrolled on the Widget.\n')
+
+            # Check visible article's title
+            print(f"{datetime.now()}   Article's title visible on this page? =>")
+            if not self.element_is_visible(ARTICLE_TITLE_LOCATOR):
+                print(f"{datetime.now()}   => Article's title not visible on this page. "
+                      f"Widget already is in voted mode.\n")
+                # self.wait_for_change_url(cur_item_link, timeout=30)
+                # msg = "Widget already is in voted mode."
+                # Common.pytest_fail(msg)
+
+                # Get name of trading instrument
+                second_article_title = self.driver.find_element(*INSTRUMENT_LOCATOR).text
+                print(f'second_article_title: {second_article_title}')
+                second_trading_instrument_name = second_article_title.split()[1]  # for example AUD/USD
+                print(f"{datetime.now()}   Name of trading instrument is: {second_trading_instrument_name}.")
+                if second_trading_instrument_name == self.trading_instrument_name:
+                    print(f"{datetime.now()}   => Names of trading instrument are the same.")
+                    self.driver.back()
+                    continue
+                else:
+                    msg = "Widget already is in voted mode with other instrument."
+                    Common.pytest_fail(msg)
+            print(f"{datetime.now()}   => Article's title visible on this page!\n")
+
             # Get name of trading instrument
             second_article_title = self.driver.find_element(*ARTICLE_TITLE_LOCATOR).text
+            print(f'second_article_title: {second_article_title}')
             second_trading_instrument_name = second_article_title.split()[-1].replace("?", "")  # for example AUD/USD
             print(f"{datetime.now()}   Name of trading instrument is: {second_trading_instrument_name}.")
 

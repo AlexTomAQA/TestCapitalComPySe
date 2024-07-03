@@ -9,6 +9,7 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.common import Common
+from datetime import datetime
 from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
@@ -290,7 +291,7 @@ class TestManualDetected:
             "Testing voted function in 'What is your sentiment...' block",
             False, False
         )
-        pytest.skip("Промежуточная версия!")
+        # pytest.skip("Промежуточная версия!")
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
@@ -303,6 +304,7 @@ class TestManualDetected:
 
         # Act
         d.back()
+        print(f"{datetime.now()}   Returned to article list page, current url is: {d.current_url}")
         # WebDriverWait(d, 30, poll_frequency=1).until(EC.url_changes(menu_link))
         test_element.act(d)
 
