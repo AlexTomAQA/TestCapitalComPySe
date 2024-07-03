@@ -15,6 +15,7 @@ from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.HeaderSearchField import SearchField
 from pages.BugsManual.bug_060 import ProfessionalAccountPage
+from pages.BugsManual.bug_090 import should_be_form_resubmission_window
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from src.src import CapitalComPageSrc
@@ -129,8 +130,8 @@ class TestManualDetectedBugs:
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!093 The Search field in the header is not opened after performed search")
-    @pytest.mark.parametrize('cur_country', ['au'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.test_093
     def test_093(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                  cur_login, cur_password, random_search_string):
@@ -172,6 +173,61 @@ class TestManualDetectedBugs:
 
         if not search_field.should_be_active_search_field():
             Common().pytest_fail("Bug # 55!093 The Search field in the header is NOT active")
+        Common().save_current_screenshot(d, "AT_55!093 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        "Start retest manual TC_55!090 Error 'ERR_CACHE_MISS' is displayed after clicking the button [Back] "
+        "in any article from search page.")
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.test_090
+    def test_090(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password, random_search_string):
+        """
+         Check: Error 'ERR_CACHE_MISS' is displayed after clicking the button [Back] in any article from search page.
+         Language: All.
+         License: All, exclude FCA, SCA.
+         Country: All, exclude GB, AE.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "090",
+            "Error 'ERR_CACHE_MISS' is displayed after clicking the button [Back] in any article from search page.",
+            False,
+            False
+        )
+
+        # Arrange
+        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
+
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        search_field = SearchField(d, link, bid)
+        search_field.element_click()
+        search_field.perform_search(random_search_string)
+
+        # Act
+        search_field.click_random_search_result_item()
+
+        # Assert
+        print(f'\n{datetime.now()}   Clicking the button [Back]')
+        d.back()
+        if not should_be_form_resubmission_window(d):
+            Common().pytest_fail('Bug # 55!090 The modal window "Confirm Form Resubmission" is not opened')
         Common().save_current_screenshot(d, "AT_55!093 Pass")
 
         # Postconditions
