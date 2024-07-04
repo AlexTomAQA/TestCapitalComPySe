@@ -58,5 +58,6 @@ class SearchField(BasePage):
     def click_random_search_result_item(self):
         print(f'\n{datetime.now()}   Clicking any search item...')
         search_items_list = self.driver.find_elements(*SEARCH_ITEM_LOCATOR)
-        search_items_list[randint(0, len(search_items_list))].click()
+        random_search_item = search_items_list[randint(0, len(search_items_list))]
+        Wait(self.driver, 5).until(EC.element_to_be_clickable(random_search_item)).click()
         print(f'\n{datetime.now()}   Item is clicked, corresponding page is opened')

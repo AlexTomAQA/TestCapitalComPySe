@@ -23,7 +23,7 @@ from allure_commons.types import AttachmentType
 
 import conf
 
-QTY_Lang = 1
+QTY_Lang = 2
 
 
 def pytest_addoption(parser):

@@ -227,8 +227,8 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Clicking the button [Back]')
         d.back()
         if not should_be_form_resubmission_window(d):
-            Common().pytest_fail('Bug # 55!090 The modal window "Confirm Form Resubmission" is not opened')
-        Common().save_current_screenshot(d, "AT_55!093 Pass")
+            Common().pytest_fail('Bug # 55!090 The modal window "Confirm Form Resubmission" is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!090 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
