@@ -7,6 +7,7 @@ import pytest
 import allure
 
 from pages.BugsManual.bug_039 import AppliedFilters
+from pages.BugsManual.bug_061 import Sidebar
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -97,7 +98,7 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language_2_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "061", 'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
-                   'stocks: What is the difference?"'
+                   'stocks: What’s the difference?"'
         )
 
         page_conditions = Conditions(d, "")
@@ -107,3 +108,7 @@ class TestManualDetectedBugs:
         menu = MenuSection(d, link)
         cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language_2_rnd_from_14, cur_country,
                                                                         link)
+
+        test_element = Sidebar(d, cur_item_link, bid)
+        test_element.sidebar(d, cur_item_link, sidebar_item)
+        test_element.assert_(sidebar_item)
