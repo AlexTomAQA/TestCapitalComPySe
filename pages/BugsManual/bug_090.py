@@ -16,3 +16,8 @@ def should_be_form_resubmission_window(d):
     if "neterror" in d.find_element("css selector", "body").get_attribute("class"):
         return False
     return True
+
+
+def accept_form_resubmission_window(d):
+    alert = Wait(d, 5).until(EC.alert_is_present())
+    alert.accept()
