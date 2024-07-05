@@ -12,7 +12,7 @@ import random
     params=random.sample([
         "usd",
         "doge",
-        "how to trade"
+        "how to trade",
         "bitcoin",
         "platform",
         "trading",
