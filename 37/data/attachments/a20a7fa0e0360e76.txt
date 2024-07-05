@@ -1,0 +1,91 @@
+
+
+
+Current language - 
+{'width': 1280, 'height': 800}
+
+2024-07-05 20:51:07.458538   worker_id = master
+
+2024-07-05 20:51:07.458553   0. Allure grouping for US_55
+
+2024-07-05 20:51:07.458738   START PRECONDITIONS =>
+
+2024-07-05 20:51:07.458753   => URL after prev. preconditions - https://capital.com/
+2024-07-05 20:51:07.458763   => flag_of_bug - True
+2024-07-05 20:51:07.458774   => Current URL - https://capital.com/live-share-prices
+2024-07-05 20:51:07.464217   Current page URL = https://capital.com/live-share-prices
+2024-07-05 20:51:07.466694   self.link = https://capital.com/
+2024-07-05 20:51:07.466708   driver.get(https://capital.com/) =>
+2024-07-05 20:51:09.407989   => Loaded page https://capital.com/
+
+2024-07-05 20:51:09.412164   => Windows size: {'width': 1280, 'height': 800}
+2024-07-05 20:51:09.413496   Set windows position at (0, 0) =>
+2024-07-05 20:51:09.415107   Set resolution 1280 * 800 =>
+2024-07-05 20:51:09.416713   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-05 20:51:10.453509   Капчи нет. Идем дальше
+
+2024-07-05 20:51:10.453611   Работа с куками =>
+
+2024-07-05 20:51:10.453625   => не требуется
+
+2024-07-05 20:51:11.495355   Капчи нет. Идем дальше
+
+2024-07-05 20:51:11.495479   Prev. country - 'es'
+2024-07-05 20:51:11.495493   Cur. country - 'ua'
+2024-07-05 20:51:11.495502   Set 'ua' country =>
+2024-07-05 20:51:11.507777   => Language and Country menu is present
+2024-07-05 20:51:11.524315   => Language and Country menu is visible
+2024-07-05 20:51:12.806821   => Focus is moved on Language and Country menu 
+2024-07-05 20:51:15.299533   => Cur url = https://capital.com/?country=ua
+2024-07-05 20:51:15.311193   => Country set to 'ua'
+
+2024-07-05 20:51:16.359961   Капчи нет. Идем дальше
+
+2024-07-05 20:51:16.360050   Prev. language - 'en'
+2024-07-05 20:51:16.360063   Cur. language - 'en'
+2024-07-05 20:51:16.360072   => Language is set to 'en'
+
+2024-07-05 20:51:17.390237   Капчи нет. Идем дальше
+
+2024-07-05 20:51:17.390327   Prev. role - 'NoReg'
+2024-07-05 20:51:17.390340   Cur. role - 'NoReg'
+2024-07-05 20:51:17.390350   => The 'NoReg' role is set
+
+2024-07-05 20:51:17.393143   => Current URL - https://capital.com/?country=ua
+
+2024-07-05 20:51:17.393168   => THE END PRECONDITIONS
+
+2024-07-05 20:51:17.393363   START Open "Markets" menu, "Shares" submenu =>
+2024-07-05 20:51:17.393379   1. Cur URL = https://capital.com/?country=ua
+2024-07-05 20:51:17.395978   2. Link = https://capital.com/?country=ua
+2024-07-05 20:51:17.395994   current_page = https://capital.com/?country=ua
+2024-07-05 20:51:17.398451   link = https://capital.com/?country=ua
+2024-07-05 20:51:17.910748   => 'Markets' menu is present
+2024-07-05 20:51:17.929313   => 'Markets' menu is visible
+2024-07-05 20:51:19.203254   => Focus moved to 'Markets' menu
+2024-07-05 20:51:20.679849   => Focus moved to 'Shares' submenu and clicked
+2024-07-05 20:51:20.952504   => Focus moved to 'capital*com' logo
+2024-07-05 20:51:20.952547   3. Cur URL = https://capital.com/live-share-prices
+
+2024-07-05 20:51:20.957787   1. Arrange_v0
+2024-07-05 20:51:20.957811   current_page = https://capital.com/live-share-prices
+2024-07-05 20:51:20.960294   link = https://capital.com/live-share-prices
+2024-07-05 20:51:20.962712   Scroll to the labels
+2024-07-05 20:51:20.972476   Close the filters if selected
+2024-07-05 20:51:21.156121   Select region filters
+2024-07-05 20:51:22.761359   Select sectors filters
+2024-07-05 20:51:24.830569   Scroll to selected filters
+2024-07-05 20:51:24.834614   Extract the text attribute from the labels of the selected filters
+
+2024-07-05 20:51:25.386748   2. Act
+2024-07-05 20:51:25.386786   Select a random item sort
+2024-07-05 20:51:30.597367   Sort - Most traded - is selected
+2024-07-05 20:51:30.597420   Current page URL = https://capital.com/live-share-prices?t=most
+2024-07-05 20:51:30.602057   self.link = https://capital.com/live-share-prices
+2024-07-05 20:51:30.602079   driver.get(https://capital.com/live-share-prices) =>
+2024-07-05 20:51:32.211641   => Loaded page https://capital.com/live-share-prices
+
+2024-07-05 20:51:32.216319   3. Assert_v0
+2024-07-05 20:51:32.327924   Expected result: applied filters 'Region/Sectors' ['Norway', 'Singapore', 'United States of America', 'Basic Materials', 'Utilities']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Norway', 'Singapore', 'United States of America']

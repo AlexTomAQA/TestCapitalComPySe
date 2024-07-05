@@ -1,0 +1,91 @@
+
+
+
+Current language - 
+{'width': 1280, 'height': 800}
+
+2024-07-05 20:53:16.216123   worker_id = master
+
+2024-07-05 20:53:16.216137   0. Allure grouping for US_55
+
+2024-07-05 20:53:16.216316   START PRECONDITIONS =>
+
+2024-07-05 20:53:16.216331   => URL after prev. preconditions - https://capital.com/?country=ua
+2024-07-05 20:53:16.216341   => flag_of_bug - True
+2024-07-05 20:53:16.216351   => Current URL - https://capital.com/live-share-prices
+2024-07-05 20:53:16.221313   Current page URL = https://capital.com/live-share-prices
+2024-07-05 20:53:16.223630   self.link = https://capital.com/?country=ua
+2024-07-05 20:53:16.223644   driver.get(https://capital.com/?country=ua) =>
+2024-07-05 20:53:18.060548   => Loaded page https://capital.com/?country=ua
+
+2024-07-05 20:53:18.066384   => Windows size: {'width': 1280, 'height': 800}
+2024-07-05 20:53:18.067771   Set windows position at (0, 0) =>
+2024-07-05 20:53:18.069424   Set resolution 1280 * 800 =>
+2024-07-05 20:53:18.071047   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-05 20:53:19.101402   Капчи нет. Идем дальше
+
+2024-07-05 20:53:19.101495   Работа с куками =>
+
+2024-07-05 20:53:19.101509   => не требуется
+
+2024-07-05 20:53:20.149962   Капчи нет. Идем дальше
+
+2024-07-05 20:53:20.150057   Prev. country - 'ua'
+2024-07-05 20:53:20.150071   Cur. country - 'au'
+2024-07-05 20:53:20.150080   Set 'au' country =>
+2024-07-05 20:53:20.160530   => Language and Country menu is present
+2024-07-05 20:53:20.175582   => Language and Country menu is visible
+2024-07-05 20:53:21.452276   => Focus is moved on Language and Country menu 
+2024-07-05 20:53:24.435158   => Cur url = https://capital.com/?country=au
+2024-07-05 20:53:24.441778   => Country set to 'au'
+
+2024-07-05 20:53:25.495666   Капчи нет. Идем дальше
+
+2024-07-05 20:53:25.495756   Prev. language - 'en'
+2024-07-05 20:53:25.495770   Cur. language - 'en'
+2024-07-05 20:53:25.495779   => Language is set to 'en'
+
+2024-07-05 20:53:26.532318   Капчи нет. Идем дальше
+
+2024-07-05 20:53:26.532406   Prev. role - 'Auth'
+2024-07-05 20:53:26.532419   Cur. role - 'Auth'
+2024-07-05 20:53:26.532429   => The 'Auth' role is set
+
+2024-07-05 20:53:26.535163   => Current URL - https://capital.com/?country=au
+
+2024-07-05 20:53:26.535183   => THE END PRECONDITIONS
+
+2024-07-05 20:53:26.535391   START Open "Markets" menu, "Shares" submenu =>
+2024-07-05 20:53:26.535410   1. Cur URL = https://capital.com/?country=au
+2024-07-05 20:53:26.537844   2. Link = https://capital.com/?country=au
+2024-07-05 20:53:26.537861   current_page = https://capital.com/?country=au
+2024-07-05 20:53:26.540297   link = https://capital.com/?country=au
+2024-07-05 20:53:27.051447   => 'Markets' menu is present
+2024-07-05 20:53:27.069530   => 'Markets' menu is visible
+2024-07-05 20:53:28.348165   => Focus moved to 'Markets' menu
+2024-07-05 20:53:29.882142   => Focus moved to 'Shares' submenu and clicked
+2024-07-05 20:53:30.153428   => Focus moved to 'capital*com' logo
+2024-07-05 20:53:30.153471   3. Cur URL = https://capital.com/live-share-prices
+
+2024-07-05 20:53:30.158803   1. Arrange_v0
+2024-07-05 20:53:30.158825   current_page = https://capital.com/live-share-prices
+2024-07-05 20:53:30.161245   link = https://capital.com/live-share-prices
+2024-07-05 20:53:30.163759   Scroll to the labels
+2024-07-05 20:53:30.173729   Close the filters if selected
+2024-07-05 20:53:30.419020   Select region filters
+2024-07-05 20:53:32.068658   Select sectors filters
+2024-07-05 20:53:34.143395   Scroll to selected filters
+2024-07-05 20:53:34.148176   Extract the text attribute from the labels of the selected filters
+
+2024-07-05 20:53:44.269847   2. Act
+2024-07-05 20:53:44.269900   Select a random item sort
+2024-07-05 20:53:46.394265   Sort - Most volatile - is selected
+2024-07-05 20:53:46.394320   Current page URL = https://capital.com/live-share-prices?t=volatile
+2024-07-05 20:53:46.401344   self.link = https://capital.com/live-share-prices
+2024-07-05 20:53:46.401362   driver.get(https://capital.com/live-share-prices) =>
+2024-07-05 20:53:48.360679   => Loaded page https://capital.com/live-share-prices
+
+2024-07-05 20:53:48.365362   3. Assert_v0
+2024-07-05 20:53:48.456970   Expected result: applied filters 'Region/Sectors' []
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['France', 'Great Britain', 'Energy', 'Non-Cyclical Consumer Goods & Services']
