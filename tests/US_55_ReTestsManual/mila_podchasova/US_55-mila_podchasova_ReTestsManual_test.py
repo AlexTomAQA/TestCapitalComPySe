@@ -6,8 +6,10 @@
 
 import pytest
 import allure
+from datetime import datetime
 
 from pages.BugsManual.bag_034 import ProfessionalMenuCheckFooter
+from pages.BugsManual.bug_029 import WebTradingPlatformPage
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -22,22 +24,24 @@ from pages.conditions_new import NewConditions
 class TestManualDetectedBugs:
     page_conditions = None
 
-    @allure.step("Start retest manual TC_55!00_029 Home page is not opened when click [Platform overview] button")
+    @allure.step("Start retest manual TC_55!00_029 The Trading platform overview page not open when"
+                 " button [Platform overview] click on the 'Investmate app' page")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_029
     def test_029(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         Check: Home page is not opened when click [Platform overview] button
-         Language: En. License: FCA.
+         Check: The Trading platform overview page does not open when
+         the button [Platform overview] is pressed on the "Investmate app" page
 
          Author: podchasova11
          """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "029", "Home page is not opened when click [Platform overview] button"
+            "029", "The Trading platform overview page not open when"
+                   " button [Platform overview] click on the 'Investmate app' page"
         )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
@@ -49,6 +53,16 @@ class TestManualDetectedBugs:
 
         test_element = PlatformOverviewButton(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
+
+        print(f'\n{datetime.now()}   3. Assert')
+
+        page = WebTradingPlatformPage(d, link, bid)
+        if not page.should_be_web_trading_platform_page(d, link):
+            Common().pytest_fail(f"Bug#029. "
+                                 "Expected result:The Desktop Trading page is opened "
+                                 "\n"
+                                 "Actual result: The Home page is opened ")
+        Common().save_current_screenshot(d, "AT_55!029 Pass")
 
     @allure.step("Start retest manual TC_55!00_034 "
                  "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
