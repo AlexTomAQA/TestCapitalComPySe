@@ -464,3 +464,8 @@ class TradingCoursesMenuItem:
     EDUCATION_SECTION = (By.CSS_SELECTOR, '[data-type="nav_id96"]')
     TRADING_COURSES = (By.CSS_SELECTOR, '[data-type="nav_id11"]')
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '[data-type="courses_hub"]')
+
+
+class WebTradingPlatformPageLocators:
+    BREADCRUMBS_DESKTOP_TRADING = (By.CSS_SELECTOR, '[div.cc-breadcrumbs-wrap > nav > p > span]')
+    PAGE_DESKTOP_TRADING_TITLE = (By.XPATH, '//title[text()="The Capital.com web trading platform | Capital.com"]')
