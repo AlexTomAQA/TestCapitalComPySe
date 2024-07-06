@@ -32,24 +32,24 @@ TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentBlockLocators.TITLE_LEARN_MORE_ABOUT_
 @pytest.mark.us_55
 class TestManualDetected:
 
-    @allure.step("Start test of _006")
-    @pytest.mark.parametrize('cur_language', [""])
-    @pytest.mark.parametrize('cur_country', ["de"])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])
-    @pytest.mark.test_006
-    def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        """
-        Check: Button [1. Create your account] in block [Steps trading]
-        Language: All. License: All.
-        Author  : Alexander Tomelo
-        """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "006", "There are no digital values of the product \"ECFZ24\""
-        )
-        pytest.skip("Autotest under construction")
-
+    # @allure.step("Start test of _006")
+    # @pytest.mark.parametrize('cur_language', [""])
+    # @pytest.mark.parametrize('cur_country', ["de"])
+    # @pytest.mark.parametrize('cur_role', ["NoReg"])
+    # @pytest.mark.test_006
+    # def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    #     """
+    #     Check: Button [1. Create your account] in block [Steps trading]
+    #     Language: All. License: All.
+    #     Author  : Alexander Tomelo
+    #     """
+    #     bid = build_dynamic_arg_for_us_55(
+    #         d, worker_id, cur_language, cur_country, cur_role,
+    #         "55", "ReTests of Manual Detected Bugs",
+    #         "006", "There are no digital values of the product \"ECFZ24\""
+    #     )
+    #     pytest.skip("Autotest under construction")
+    #
         #
         # Common().check_country_in_list_and_skip_if_present(cur_country, ["gb"])
         # Common().skip_if_eng_lang_and_fca_license(cur_language, cur_country)
