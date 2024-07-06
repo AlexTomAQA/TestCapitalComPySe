@@ -134,10 +134,8 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!090 The modal window "Confirm Form Resubmission" is not opened '
         'after clicking the button [Back] on any article from search page.')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['au'])
-    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])
-    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.test_090
     def test_090(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password, random_search_string):
