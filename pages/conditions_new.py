@@ -10,7 +10,6 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-import conf
 from pages.common import Common
 from src.src import CapitalComPageSrc
 from pages.base_page import BasePage
@@ -19,7 +18,7 @@ from pages.captcha import Captcha
 from pages.Header.header import Header
 from pages.My_account.my_account import MyAccount
 # from pages.Capital.Trading_platform.Topbar.topbar import TopBar
-from pages.Capital.Trading_platform.trading_platform import TradingPlatform
+from pages.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators
 from pages.Menu.menu_new import MainMenu
 

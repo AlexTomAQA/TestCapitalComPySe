@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 from pages.Capital.trading_instrument_page import PageTradingInstrument
 from pages.common import Common
 from pages.AppStore.app_store import AppStore
-from pages.Capital.Trading_platform.trading_platform import TradingPlatform
+from pages.Trading_platform.trading_platform import TradingPlatform
 from pages.GooglePlay.google_play import GooglePlay
 from pages.TradingView.tradingview import TradingView
 from pages.base_page import BasePage

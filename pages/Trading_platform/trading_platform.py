@@ -10,19 +10,19 @@ import allure
 # from selenium import webdriver
 # import pytest
 
-from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Trading_platform.Topbar.topbar import TopBar
 from pages.Elements.testing_elements_locators import TradingPlatformWatchlistTabs
 from pages.base_page import BasePage
 from pages.common import Common
 # from pages.common import flag_of_bug
 from test_data.trading_platform_data import data as tp_data
-from pages.Capital.Trading_platform.trading_platform_locators import (
+from pages.Trading_platform.trading_platform_locators import (
     TradingPlatformSignupFormLocators as TPSignupFormLocators,
     TradingInstruments,
     MenuSideBar
 )
-from pages.Capital.Trading_platform.trading_platform_locators import TopBarLocators
-from pages.Capital.Trading_platform.trading_platform_locators import ChartingLocators
+from pages.Trading_platform.trading_platform_locators import TopBarLocators
+from pages.Trading_platform.trading_platform_locators import ChartingLocators
 from test_data.trading_platform_data import data
 from pages.ReTests.ReTest_table_fill import retest_table_fill
 

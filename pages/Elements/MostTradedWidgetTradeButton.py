@@ -16,7 +16,7 @@ from pages.common import Common
 from pages.Elements.testing_elements_locators import ButtonTradeOnWidgetMostTradedLocators
 from test_data.trading_platform_data import data
 from pages.Elements.AssertClass import AssertClass
-from pages.Capital.Trading_platform.trading_platform_locators import TradingInstruments
+from pages.Trading_platform.trading_platform_locators import TradingInstruments
 from pages.Signup_login.signup_login import SignupLogin
 
 

@@ -22,7 +22,7 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.My_account.my_account import MyAccount
 # from pages.Capital.Trading_platform.Topbar.topbar import TopBar
-from pages.Capital.Trading_platform.trading_platform import TradingPlatform
+from pages.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import (
     # SignupFormLocators,
     LoginFormLocators,
