@@ -5,6 +5,7 @@
 """
 
 from datetime import datetime
+from random import randint
 
 from pages.common import Common
 from pages.base_page import BasePage
@@ -16,6 +17,7 @@ HEADER_LOCATOR = ("css selector", "header.cc-header.js-header")
 SEARCH_FRAME_LOCATOR = ("css selector", ".cc-search.js-searchRef")
 SEARCH_FORM_LOCATOR = ("css selector", ".cc-search__form.js-searchNew")
 SEARCH_FIELD_LOCATOR = ("id", "headerSearch")
+SEARCH_ITEM_LOCATOR = ("css selector", ".global-search__item>a")
 
 
 class SearchField(BasePage):
@@ -52,3 +54,10 @@ class SearchField(BasePage):
 
         print(f'{datetime.now()}   The Search page is opened')
         print(f'{datetime.now()}   Current URL: {self.driver.current_url}')
+
+    def click_random_search_result_item(self):
+        print(f'\n{datetime.now()}   Clicking any search item...')
+        search_items_list = self.driver.find_elements(*SEARCH_ITEM_LOCATOR)
+        random_search_item = search_items_list[randint(0, len(search_items_list) - 1)]
+        Wait(self.driver, 5).until(EC.element_to_be_clickable(random_search_item)).click()
+        print(f'\n{datetime.now()}   Item is clicked, corresponding page is opened')

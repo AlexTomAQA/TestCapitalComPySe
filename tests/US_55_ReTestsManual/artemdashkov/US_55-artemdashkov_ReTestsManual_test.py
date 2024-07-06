@@ -9,6 +9,7 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.common import Common
+from datetime import datetime
 from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
@@ -35,7 +36,7 @@ class TestManualDetected:
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
-        Check: Button [Add to favourite] on the 'Trading Instrument Page'
+        Check: The trading platform is opened, not the page of the corresponding trading instrument on the trading platform
         Language: All.
         License: Not FCA
         Author: Artem Dashkov
@@ -79,7 +80,7 @@ class TestManualDetected:
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
-        Check: Button [Go to platform] on tooltip 'Long position overnight fee'
+        Check: The trading platform is opened, not the page of the corresponding trading instrument on the trading platform
         Language: All.
         License: Not FCA
         Author: Artem Dashkov
@@ -126,7 +127,8 @@ class TestManualDetected:
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
-        Check: Button [Go to platform] on tooltip 'Short position overnight fee'
+        Check:  The trading platform is opened, not the page of the corresponding trading instrument
+                on the trading platform
         Language: All.
         License: Not FCA
         Author: Artem Dashkov
@@ -172,7 +174,9 @@ class TestManualDetected:
     def test_012_try_now_button_on_why_choose_capital_com_block(
             self, worker_id, d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_login, cur_password):
         """
-        Check: Button [Try now] on block Why choose Capital.com?
+        Check:  Sign up/log in/forms or the transition to the trading platform are
+                not opened after clicking the [Try now] button in "Why choose
+                Capital.com?.." Block in the menu item [Our Mobile Apps]
         Language: All.
         License: Not FCA
         Author: Artem Dashkov
@@ -206,7 +210,8 @@ class TestManualDetected:
     def test_024_learn_more_about_us_link_on_contents_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        Check: Link [Learn more about us] on block Contents?
+        Check:  [Learn more about us] anchor doesn't navigate to the "Learn more about us"
+                section on the "Client funds" page when clicking on it.
         Language: En.
         License: FCA
         Author: Artem Dashkov
@@ -290,7 +295,7 @@ class TestManualDetected:
             "Testing voted function in 'What is your sentiment...' block",
             False, False
         )
-        pytest.skip("Промежуточная версия!")
+        # pytest.skip("Промежуточная версия!")
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
@@ -303,6 +308,7 @@ class TestManualDetected:
 
         # Act
         d.back()
+        print(f"{datetime.now()}   Returned to article list page, current url is: {d.current_url}")
         # WebDriverWait(d, 30, poll_frequency=1).until(EC.url_changes(menu_link))
         test_element.act(d)
 

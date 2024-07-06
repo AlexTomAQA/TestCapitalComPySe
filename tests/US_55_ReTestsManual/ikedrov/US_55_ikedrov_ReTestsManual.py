@@ -21,9 +21,9 @@ class TestManualDetected:
     @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_022
+    @pytest.mark.bug_022
     def test_022_google_play_button_on_cfd_trading_app_block(
-            self, worker_id, d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Google Play] on the block CFD Trading app
         Language: All.
@@ -32,7 +32,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_3_rnd_from_12, cur_country, cur_role,
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "022",
             "Testing button [Google Play] on the block 'CFD trading app'",
@@ -41,22 +41,22 @@ class TestManualDetected:
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_12, cur_country, cur_role, cur_login,
+            d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login,
             cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
-            d, cur_language_3_rnd_from_12, cur_country, link)
+            d, cur_language_qty_rnd_from_14, cur_country, link)
 
         test_element = GooglePlayButtonOnCFDTradingAppBlock(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Create account] button in the Menu item [Trading Courses]")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_046
+    @pytest.mark.bug_046
     def test_046_create_account_button_in_the_nemu_item_trading_courses(
-            self, worker_id, d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Button [Create account] button in the Menu item [Trading Courses]
         Language: All.
@@ -65,7 +65,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_3_rnd_from_12, cur_country, cur_role,
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "046",
             "Testing button [Create account] button in the Menu item [Trading Courses]",
