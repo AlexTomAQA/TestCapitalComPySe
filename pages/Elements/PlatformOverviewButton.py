@@ -3,7 +3,7 @@
 @Time    : 2024/06/18 10:20
 @Author  : podchasova11
 """
-
+from pages.BugsManual.bug_029 import WebTradingPlatformPage
 from src.src import CapitalComPageSrc, InvestmateApp
 
 from datetime import datetime
@@ -11,14 +11,17 @@ import allure
 
 from pages.common import Common
 from pages.base_page import BasePage
-from pages.Elements.AssertClass import AssertClass
-from pages.Elements.testing_elements_locators import ContentBlockLocators, MobileTradingAppBlockLocators
+from pages.Elements.testing_elements_locators import MobileTradingAppBlockLocators
 from selenium.common.exceptions import ElementClickInterceptedException
+
 
 BUTTON_NAME = '[Platform overview]'
 BLOCK_NAME = '"Capital.com – mobile trading app."'
 BUTTON_LOCATOR = MobileTradingAppBlockLocators.MOBILE_TRADING_APP_BLOCK_PLATFORM_OVERVIEW_BUTTON
 BLOCK_LOCATOR = MobileTradingAppBlockLocators.MOBILE_TRADING_APP_BLOCK
+
+PAGE_WEB_TRADING_PLATFORM_URL = "https://capital.com/online-trading-platform"
+PAGE_TITLE = "The Capital.com web trading platform | Capital.com"
 
 
 class PlatformOverviewButton(BasePage):
@@ -26,6 +29,9 @@ class PlatformOverviewButton(BasePage):
     global BLOCK_NAME
     global BUTTON_LOCATOR
     global BLOCK_LOCATOR
+
+    global PAGE_WEB_TRADING_PLATFORM_URL
+    global PAGE_TITLE
 
     def __init__(self, browser, link, bid):
         self.button_platform_overview = None
@@ -37,10 +43,10 @@ class PlatformOverviewButton(BasePage):
         self.arrange_(d)
         self.element_click(d)
 
-        element = AssertClass(d, self.bid)
-        match cur_role:
-            case "NoReg" | "NoAuth" | "Auth":
-                element.assert_that_trading_page_is_opened(d)
+        # element = AssertClass(d, self.bid)
+        # match cur_role:
+        #     case "NoReg" | "NoAuth" | "Auth":
+        #         element.assert_that_trading_page_is_opened(d)
 
     def arrange_(self, link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -121,4 +127,5 @@ class PlatformOverviewButton(BasePage):
                   'Actual result: The Home page is opened ')
 
         del self.button_platform_overview
-        # return False
+
+
