@@ -30,3 +30,7 @@ class Alert(BasePage):
     def accept_alert(self):
         alert = Wait(self.driver, 5).until(EC.alert_is_present())
         alert.accept()
+
+    def dismiss_alert(self):
+        alert = Wait(self.driver, 5).until(EC.alert_is_present())
+        alert.dismiss()
