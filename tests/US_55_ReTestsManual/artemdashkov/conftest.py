@@ -68,3 +68,39 @@ def cur_market_2_rnd_from_5(request):
     """Markets sorting parameters"""
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param
+
+# @pytest.fixture(
+#     scope="function",
+#     params=[
+#         "EUR/USD",
+#         "GBP/USD",
+#         "Natural Gas",
+#         "US Tech 100",
+#         "NVIDIA Corp",
+#         "Gold",
+#         "Germany 40",
+#     ],
+# )
+# def calc_instrument_1(request):
+#     """Fixture - Trading calculator Instrument 1"""
+#     print(f"\n\n\nCurrent instrument_1 - {request.param}")
+#     return request.param
+#
+# @pytest.fixture(
+#     scope="function",
+#     params=[
+#         "EUR/USD",
+#         "GBP/USD",
+#         "Natural Gas",
+#         "US Tech 100",
+#         "NVIDIA Corp",
+#         "Gold",
+#         "Germany 40",
+#     ],
+# )
+# def calc_instrument_2(request, calc_instrument_1):
+#     """Fixture - Trading calculator Instrument 2"""
+#     if calc_instrument_1 == request.param:
+#
+#     print(f"\n\n\nCurrent instrument_2 - {request.param}")
+#     return request.param
