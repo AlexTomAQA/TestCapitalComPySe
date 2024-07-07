@@ -13,10 +13,11 @@ import allure
 from pages.common import Common
 from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
-from pages.Elements.HeaderSearchField import SearchField
+
 from pages.BugsManual.bug_060 import ProfessionalAccountPage
-from pages.BugsManual.bug_090 import should_be_form_resubmission_window
-from pages.BugsManual.bug_090 import accept_form_resubmission_window
+from pages.BugsManual.bug_091 import NewsAndAnalysisMenuSection
+from pages.Elements.HeaderSearchField import SearchField
+from pages.Elements.Alert import Alert
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from src.src import CapitalComPageSrc
@@ -177,13 +178,70 @@ class TestManualDetectedBugs:
         # Assert
         print(f'\n{datetime.now()}   Clicking the button [Back]')
         d.back()
-        if not should_be_form_resubmission_window(d):
+
+        alert = Alert(d, link, bid)
+        if not alert.should_be_alert():
             Common().pytest_fail('Bug # 55!090 The modal window "Confirm Form Resubmission" is NOT opened')
         Common().save_current_screenshot(d, "AT_55!090 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        accept_form_resubmission_window(d)
+        alert.accept_alert()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        "Start retest manual TC_55!091 | Page '教育' (Education) is opened after click "
+        "on menu section [新聞和分析] (News and analysis) in CN language")
+    @pytest.mark.parametrize('cur_language', ['cn'])
+    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    @pytest.mark.test_091
+    def test_091(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
+         on any article from search page.
+         Language: All.
+         License: All, exclude FCA, SCA.
+         Country: All, exclude GB, AE.
+         Author: Sergey Aiidzhanov
+         """
+        # pytest.skip("AT is under construction")
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "091",
+            "Start retest manual TC_55!091 | Page '教育' (Education) is opened after click "
+            "on menu section [新聞和分析] (News and analysis) in CN language",
+            False,
+            False
+        )
+
+        # Arrange
+        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
+        Common().check_language_in_list_and_skip_if_not_present(cur_language, 'cn')
+
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        news_and_analysis_menu_section = NewsAndAnalysisMenuSection(d, link, bid)
+
+        # Act
+        news_and_analysis_menu_section.click_element()
+
+        # Assert
+        if not news_and_analysis_menu_section.should_be_news_and_analysis_page():
+            Common().pytest_fail("Bug # 55!091 The News and Analysis page is NOT opened")
+        Common().save_current_screenshot(d, "AT_55!091 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!093 The Search field in the header is not opened after performed search")
