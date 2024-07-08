@@ -84,18 +84,18 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold', 'Cryptocurrencies vs. Stocks: What is the Difference?'])
     @pytest.mark.test_061
-    def test_061(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password,
+    def test_061(self, worker_id, d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password,
                  sidebar_item):
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" and "Cryptocurrencies vs. Stocks:
         What's the Difference?" pages.
-        Language: All
+        Language: EN, DE, ZH, RU, ES,IT, PL
         License: CYSEC, SCB, ASIC
         Author: Kasila
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country, cur_role,
+            d, worker_id, cur_language_2_rnd_from_7, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "061", 'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
                    'stocks: What’s the difference?"'
@@ -103,12 +103,16 @@ class TestManualDetectedBugs:
 
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
-        cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language_2_rnd_from_14, cur_country,
+        cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language_2_rnd_from_7, cur_country,
                                                                         link)
 
         test_element = Sidebar(d, cur_item_link, bid)
-        test_element.sidebar(d, cur_item_link, sidebar_item)
+        match cur_language_2_rnd_from_7:
+            case "" | "de" | "zh":
+                test_element.sidebar_en_de_zh(d, cur_item_link, sidebar_item)
+            case "ru" | "es" | "it" | "pl":
+                test_element.sidebar_ru_es_it_pl(d, cur_item_link, sidebar_item)
         test_element.assert_(sidebar_item)

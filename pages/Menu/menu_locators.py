@@ -1188,6 +1188,10 @@ class MenuUS0102MarketsShares:
 class MenuUS0107MarketsESG:
     SUB_MENU_EN_ESG = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/esg-rating']")
 
+
+class MenuUS0109MarketsCFDCalculator:
+    SUB_MENU_EN_CFDCALCULATOR = (By.CSS_SELECTOR, ".cc-header a[href='https://capital.com/./cfd-calculator']")
+
     
 class MenuUS0101AllMarkets:
     SUB_MENU_EN_ALLMARKETS_BUTTON = \
