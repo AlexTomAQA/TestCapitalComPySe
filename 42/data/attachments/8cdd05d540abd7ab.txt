@@ -1,0 +1,97 @@
+
+
+
+Current language - it
+{'width': 1280, 'height': 800}
+
+2024-07-08 12:38:06.612287   worker_id = master
+
+2024-07-08 12:38:06.612302   0. Allure grouping for US_55
+
+2024-07-08 12:38:07.884091   START PRECONDITIONS =>
+
+2024-07-08 12:38:07.884136   => URL after prev. preconditions - https://capital.com/it?country=au
+2024-07-08 12:38:07.884153   => flag_of_bug - False
+2024-07-08 12:38:07.884170   => Current URL - https://capital.com/it?country=au
+
+2024-07-08 12:38:07.911194   => Windows size: {'width': 1280, 'height': 800}
+2024-07-08 12:38:07.912560   Set windows position at (0, 0) =>
+2024-07-08 12:38:07.914202   Set resolution 1280 * 800 =>
+2024-07-08 12:38:07.915883   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-08 12:38:08.970157   Капчи нет. Идем дальше
+
+2024-07-08 12:38:08.970247   Работа с куками =>
+
+2024-07-08 12:38:08.970261   => не требуется
+
+2024-07-08 12:38:10.012615   Капчи нет. Идем дальше
+
+2024-07-08 12:38:10.012708   Prev. country - 'au'
+2024-07-08 12:38:10.012721   Cur. country - 'ua'
+2024-07-08 12:38:10.012731   Set 'ua' country =>
+2024-07-08 12:38:10.020363   => Language and Country menu is present
+2024-07-08 12:38:10.032926   => Language and Country menu is visible
+2024-07-08 12:38:11.314113   => Focus is moved on Language and Country menu 
+2024-07-08 12:38:14.403493   => Cur url = https://capital.com/it?country=ua
+2024-07-08 12:38:14.430878   => Country set to 'ua'
+
+2024-07-08 12:38:15.489554   Капчи нет. Идем дальше
+
+2024-07-08 12:38:15.489641   Prev. language - 'it'
+2024-07-08 12:38:15.489655   Cur. language - 'it'
+2024-07-08 12:38:15.489664   => Language is set to 'it'
+
+2024-07-08 12:38:16.530289   Капчи нет. Идем дальше
+
+2024-07-08 12:38:16.530391   Prev. role - 'NoReg'
+2024-07-08 12:38:16.530404   Cur. role - 'NoReg'
+2024-07-08 12:38:16.530414   => The 'NoReg' role is set
+
+2024-07-08 12:38:16.533258   => Current URL - https://capital.com/it?country=ua
+
+2024-07-08 12:38:16.533281   => THE END PRECONDITIONS
+
+2024-07-08 12:38:16.533540   1. Arrange
+2024-07-08 12:38:16.533556   IS [Sign up] button present on this page? =>
+2024-07-08 12:38:16.538103   => [Sign up] button present on this page!
+
+2024-07-08 12:38:16.547791   IS [Sign up] button visible on this page? =>
+2024-07-08 12:38:16.556840   => [Sign up] button is visible on this page!
+
+
+2024-07-08 12:38:16.557013   2. Act_v0
+2024-07-08 12:38:16.557029   IS [Sign up] clickable on the page? =>
+2024-07-08 12:38:16.573840   => [Sign up] is clickable on the page!
+
+
+2024-07-08 12:38:16.573869   Start Click button [Sign up] =>
+2024-07-08 12:38:16.618316   => End Click button [Sign up] 
+2024-07-08 12:38:16.618517   Start step Check that [Sign up] form is opened
+2024-07-08 12:38:16.786176   'Sign up' form opened
+2024-07-08 12:38:16.786213   Assert SIGNUP_HEADER =>
+2024-07-08 12:38:16.796638   Assert SIGNUP_REF_LOGIN =>
+2024-07-08 12:38:16.805811   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-07-08 12:38:16.816526   => SIGNUP_PRIVACY_POLICY_ALL
+2024-07-08 12:38:16.816560   => 'Signup' form is checked
+2024-07-08 12:38:16.816614   => 'Sign up' form is opened
+
+2024-07-08 12:38:16.816787   3. Assert
+2024-07-08 12:38:16.816804   Is 'Please enter a valid Email' message displayed on this page after putting invalid email? =>
+2024-07-08 12:38:16.816814   => Start fill out 'Email address' field.
+2024-07-08 12:38:16.908221   => 'Email address' is inputted
+
+2024-07-08 12:38:17.006137   => Switch to 'Password' field
+
+get_attribute:  display: block;
+2024-07-08 12:38:17.023791   => 'Please enter a valid Email' message is displayed
+
+2024-07-08 12:38:17.023823   Save current screenshot into PNG file
+2024-07-08 12:38:17.135267   Is [Continue] button active after putting invalid email? =>
+2024-07-08 12:38:17.135306   => Start fill out 'Password' field.
+2024-07-08 12:38:17.226950   => 'Password' is inputted
+
+continue_button:  btn btn--md btn--wide s2_btn disabled hasPointer
+2024-07-08 12:38:17.241707   => '[Continue] button is not active after putting invalid email
+
+2024-07-08 12:38:17.241737   Save current screenshot into PNG file
