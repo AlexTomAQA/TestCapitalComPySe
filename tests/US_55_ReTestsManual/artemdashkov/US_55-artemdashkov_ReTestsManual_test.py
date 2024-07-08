@@ -17,6 +17,7 @@ from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInst
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
 from pages.Elements.EmailFieldSignUpForm import EmailFieldSignUpForm
 from pages.BugsManual.bug_058 import WhatIsYourSentimentWidget
+from pages.BugsManual.bug_077 import TradingCalculatorCFDCalculatorPage
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -314,3 +315,49 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d)
+
+    @allure.step("Start test of 'Trading calculator' widget in menu [CFD calculator]")
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('calc_instrument_1', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
+                                                   "Gold", "Germany 40"])
+    @pytest.mark.parametrize('calc_instrument_2', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
+                                                   "Gold", "Germany 40"])
+    @pytest.mark.test_077
+    def test_077_trading_calculator_collapse_after_setting_duration(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password, calc_instrument_1, calc_instrument_2):
+        """
+        Check: The trading calculator is collapsed in the menu section [Markets] --> [CFD calculator]
+        after setting the maximum duration on the Prof/Loss element and changing the asset
+        Language: En.
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth,
+        Calc_instrument_1: ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
+                                                   "Gold", "Germany 40"],
+        Calc_instrument_2: ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
+                                                   "Gold", "Germany 40"]
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "077",
+            "Testing 'Trading calculator' widget in menu [CFD calculator]",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+        if calc_instrument_1 == calc_instrument_2:
+            pytest.skip("calc_instrument_1 = calc_instrument_2")
+
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_markets_menu_cfd_calculator_submenu(d, cur_language, cur_country, cur_item_link)
+
+        test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
+        test_element.arrange(d, cur_language, cur_country, cur_role, cur_item_link, calc_instrument_1, calc_instrument_2)

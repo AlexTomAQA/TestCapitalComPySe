@@ -41,7 +41,7 @@ from pages.Menu.menu_locators import (
     MenuUS11TradingStrategies, MenuUS11EssentialsOfTrading, MenuUS11MarketGuidesNew,
     MenuUS01Markets,
     MenuUS01Indices, MenuUS0102MarketsShares, MenuUS0103MarketsForex, MenuUS0104Commodities, MenuUS0101AllMarkets,
-    MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG, MenuUS55WaysToTrade,
+    MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG, MenuUS0109MarketsCFDCalculator, MenuUS55WaysToTrade,
     MenuUS02NewsAndAnalysis,
     MenuUS0201MarketAnalysis,
     MenuUS11MarketAnalysis
@@ -1623,6 +1623,44 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step('Select "Markets" menu, "CFD Calculator" submenu')
+    def open_markets_menu_cfd_calculator_submenu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "CFD Calculator" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_cfd_calculator_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus move to 'CFD Calculator' submenu item and click")
+    def sub_menu_cfd_calculator_move_focus_click(self, d, test_language):
+        sub_menu = list()
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuUS0109MarketsCFDCalculator.SUB_MENU_EN_CFDCALCULATOR)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Menu > CFD Calculator\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'CFD Calculator' sub-menu clicked")
 
         del sub_menu
         return d.current_url
