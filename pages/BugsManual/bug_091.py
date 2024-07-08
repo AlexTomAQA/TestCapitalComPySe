@@ -16,23 +16,18 @@ TITLE_LOC = ("css selector", "h1.hero")
 
 
 class NewsAndAnalysisMenuSection(BasePage):
-    def __init__(self, browser, link, bid):
-
-        super().__init__(browser, link, bid)
-
     def click_element(self):
         print(f'\n{datetime.now()}   Click the News and Analysis menu section =>')
         btn = Wait(self.driver, 5).until(EC.element_to_be_clickable(NEWS_AND_ANALYSIS_MENU_SECTION_LOC))
         btn.click()
-        print(f'{datetime.now()}   => Done')
-        print(f'\n{datetime.now()}   => Current URL: {self.driver.current_url}')
+        print(f'{datetime.now()}   => Done, corresponding page is opened')
+        print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
 
     def should_be_news_and_analysis_page(self):
         print(f'\n{datetime.now()}   Check if the News and Analysis page is opened =>')
-        if "learn-to-trade" in self.driver.current_url:
-            if "教育" in self.driver.find_element(*BREADCRUMB_LOC).text:
-                if "教育中心" in self.driver.find_element(*TITLE_LOC).text:
-                    print(f'{datetime.now()}   => Wrong page')
-                    return False
+        if "教育" in self.driver.find_element(*BREADCRUMB_LOC).text:
+            if "教育中心" in self.driver.find_element(*TITLE_LOC).text:
+                print(f'{datetime.now()}   => Wrong page')
+                return False
         print(f'{datetime.now()}   => The News and Analysis page is opened')
         return True
