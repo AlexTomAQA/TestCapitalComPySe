@@ -193,17 +193,14 @@ class TestManualDetectedBugs:
         "Start retest manual TC_55!091 | Page '教育' (Education) is opened after click "
         "on menu section [新聞和分析] (News and analysis) in CN language")
     @pytest.mark.parametrize('cur_language', ['cn'])
-    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.parametrize('cur_country', ['de'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.test_091
     def test_091(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
         """
-         Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
-         on any article from search page.
-         Language: All.
+         Check: Page '教育' (Education) is opened after click on menu section [新聞和分析] (News and analysis) in CN language.
+         Language: CN.
          License: All, exclude FCA, SCA.
          Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
@@ -220,9 +217,6 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
-        Common().check_language_in_list_and_skip_if_not_present(cur_language, 'cn')
-
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
                                              cur_country, cur_role, cur_login, cur_password)
