@@ -9,6 +9,7 @@ import pytest
 
 from pages.Menu.menu_locators import MenuUS55WaysToTrade
 from pages.base_page import BasePage
+from test_data.professional_page_data import page_title
 
 
 class ProfessionalMenuCheckFooter(BasePage):
@@ -19,7 +20,7 @@ class ProfessionalMenuCheckFooter(BasePage):
             self.link = link
             self.open_page()
 
-        self.check_that_footer_is_opened(d, cur_language, cur_country, link )
+        self.check_that_footer_is_opened(d, cur_language, cur_country, link)
 
         print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
 
@@ -28,6 +29,8 @@ class ProfessionalMenuCheckFooter(BasePage):
         """
         Check that Footer is opened on the page [Professional]
         """
+
+        self.should_be_page_title_v3(page_title["PAGE_TITLE"])
 
         footer = d.find_elements(*MenuUS55WaysToTrade.FOOTER_CAPITAL_LOGO)
         if len(footer) == 0:
