@@ -363,4 +363,8 @@ class TestManualDetected:
         test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
         test_element.arrange(d, cur_language, cur_country, cur_role, cur_item_link, calc_instrument_1, calc_instrument_2)
 
+        # Act
+        test_element.act(d, cur_language, cur_country, cur_role, cur_item_link, calc_instrument_1,
+                             calc_instrument_2)
+        # Assert
 
