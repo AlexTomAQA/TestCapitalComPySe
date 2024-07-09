@@ -13,10 +13,6 @@ from selenium.common.exceptions import TimeoutException
 
 
 class Alert(BasePage):
-    def __init__(self, browser, link,  bid):
-
-        super().__init__(browser, link, bid)
-
     def should_be_alert(self):
         print(f'\n{datetime.now()}   Checking if the alert is opened')
         try:
