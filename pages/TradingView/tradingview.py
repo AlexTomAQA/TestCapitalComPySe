@@ -7,8 +7,11 @@ import allure
 from datetime import datetime
 from pages.base_page import BasePage
 from pages.common import Common
-from pages.TradingView.tradingview_locators import TradingViewSiteLocators
 from test_data.tradingview_site_data import data
+
+
+class TradingViewSiteLocators:
+    APP_TITLE = ('css selector', '.tv-profile-header__username')
 
 
 class TradingView(BasePage):
