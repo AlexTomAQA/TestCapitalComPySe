@@ -4,7 +4,6 @@
 @Author  : Sergey Aiidzhanov
 """
 
-import time
 from datetime import datetime
 
 from pages.base_page import BasePage
@@ -25,7 +24,6 @@ class NewsAndAnalysisMenuSection(BasePage):
         print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
 
     def should_be_news_and_analysis_page(self):
-        time.sleep(1)  # wait for CN lang loading
         print(f'\n{datetime.now()}   Check if the News and Analysis page is opened =>')
         if "教育" in self.driver.find_element(*BREADCRUMB_LOC).text:
             if "教育中心" in self.driver.find_element(*TITLE_LOC).text:
