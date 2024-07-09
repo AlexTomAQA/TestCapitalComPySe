@@ -17,9 +17,9 @@ from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.BugsManual.bug_060 import ProfessionalAccountPage
 from pages.BugsManual.bug_091 import NewsAndAnalysisMenuSection
 from pages.Elements.HeaderSearchField import SearchField
-from pages.Elements.Alert import Alert
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
+from pages.Elements.Alert import Alert
 from src.src import CapitalComPageSrc
 
 
