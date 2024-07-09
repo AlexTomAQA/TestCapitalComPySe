@@ -317,7 +317,7 @@ class TestManualDetected:
         test_element.assert_(d)
 
     @allure.step("Start test of 'Trading calculator' widget in menu [CFD calculator]")
-    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('calc_instrument_1', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
@@ -361,10 +361,10 @@ class TestManualDetected:
         cur_item_link = page_menu.open_markets_menu_cfd_calculator_submenu(d, cur_language, cur_country, cur_item_link)
 
         test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
-        test_element.arrange(d, cur_language, cur_country, cur_role, cur_item_link, calc_instrument_1, calc_instrument_2)
+        test_element.arrange(d)
 
         # Act
-        test_element.act(d, cur_language, cur_country, cur_role, cur_item_link, calc_instrument_1,
-                             calc_instrument_2)
-        # Assert
+        test_element.act(d, calc_instrument_1, calc_instrument_2)
 
+        # Assert
+        test_element.assert_(d)
