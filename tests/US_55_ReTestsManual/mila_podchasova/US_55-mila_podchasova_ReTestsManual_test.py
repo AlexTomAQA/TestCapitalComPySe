@@ -67,7 +67,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_034
-    def test_34(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_034(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
         1. Hover over the [Ways to trade] menu section
@@ -94,4 +94,31 @@ class TestManualDetectedBugs:
 
         menu = ProfessionalMenuCheckFooter(d, link, bid)
         menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
+
+        @allure.step("Start retest manual TC_55!00_069 "
+                     "The trading platform page is not opened in 'Demo account' page "
+                     "after clicking on the [Create a risk-free demo account] button")
+        @pytest.mark.parametrize('cur_language', [''])
+        @pytest.mark.parametrize('cur_country', ['gb', 'ae'])
+        @pytest.mark.parametrize('cur_role', ["Auth"])
+        @pytest.mark.test_069
+        def test_069(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+            """
+            The trading platform page is not opened in "Demo account" page
+            after clicking on the [Create a risk-free demo account] button
+            Language: All.
+            License: All, except FCA, SCA.
+            Country: All, except GB, AE.
+            Author: podchasova11
+            """
+            bid = build_dynamic_arg_for_us_55(
+                d, worker_id, cur_language, cur_country, cur_role,
+                "55", "ReTests of Manual Detected Bugs",
+                "069",
+                "The trading platform page is not opened in 'Demo account' page "
+                "after clicking on the [Create a risk-free demo account] button"
+            )
+
+            pytest.skip("Autotest under construction")
+
 
