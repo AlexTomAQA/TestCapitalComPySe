@@ -37,7 +37,7 @@ import random
         "COPPER",
         "CORN",
         "WHEAT",
-    ], 26),
+    ], 26),  # 26
 )
 def cur_rnd_trading_instrument(request):
     print(f"Current trading instrument - {request.param}\n")
