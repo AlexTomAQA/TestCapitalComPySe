@@ -1,0 +1,88 @@
+
+
+
+Current language - nl
+{'width': 1280, 'height': 800}
+
+2024-07-10 21:51:07.921113   worker_id = master
+
+2024-07-10 21:51:07.921127   0. Allure grouping for US_55
+
+2024-07-10 21:51:07.921309   START PRECONDITIONS =>
+
+2024-07-10 21:51:07.921324   => URL after prev. preconditions - https://capital.com/nl?country=ua
+2024-07-10 21:51:07.921334   => flag_of_bug - True
+2024-07-10 21:51:07.921345   => Current URL - https://capital.com/nl/live-aandelen-koersen?t=most
+2024-07-10 21:51:07.926447   Current page URL = https://capital.com/nl/live-aandelen-koersen?t=most
+2024-07-10 21:51:07.929078   self.link = https://capital.com/nl?country=ua
+2024-07-10 21:51:07.929092   driver.get(https://capital.com/nl?country=ua) =>
+2024-07-10 21:51:09.600468   => Loaded page https://capital.com/nl?country=ua
+
+2024-07-10 21:51:09.604824   => Windows size: {'width': 1280, 'height': 800}
+2024-07-10 21:51:09.606137   Set windows position at (0, 0) =>
+2024-07-10 21:51:09.607771   Set resolution 1280 * 800 =>
+2024-07-10 21:51:09.609346   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-10 21:51:10.639324   Капчи нет. Идем дальше
+
+2024-07-10 21:51:10.639417   Работа с куками =>
+
+2024-07-10 21:51:10.639431   => не требуется
+
+2024-07-10 21:51:11.661654   Капчи нет. Идем дальше
+
+2024-07-10 21:51:11.661746   Prev. country - 'ua'
+2024-07-10 21:51:11.661760   Cur. country - 'au'
+2024-07-10 21:51:11.661769   Set 'au' country =>
+2024-07-10 21:51:11.671784   => Language and Country menu is present
+2024-07-10 21:51:11.684600   => Language and Country menu is visible
+2024-07-10 21:51:12.955166   => Focus is moved on Language and Country menu 
+2024-07-10 21:51:15.545194   => Cur url = https://capital.com/nl?country=au
+2024-07-10 21:51:15.593016   => Country set to 'au'
+
+2024-07-10 21:51:16.640476   Капчи нет. Идем дальше
+
+2024-07-10 21:51:16.640569   Prev. language - 'nl'
+2024-07-10 21:51:16.640582   Cur. language - 'nl'
+2024-07-10 21:51:16.640591   => Language is set to 'nl'
+
+2024-07-10 21:51:17.664647   Капчи нет. Идем дальше
+
+2024-07-10 21:51:17.664736   Prev. role - 'NoReg'
+2024-07-10 21:51:17.664749   Cur. role - 'NoReg'
+2024-07-10 21:51:17.664759   => The 'NoReg' role is set
+
+2024-07-10 21:51:17.667550   => Current URL - https://capital.com/nl?country=au
+
+2024-07-10 21:51:17.667571   => THE END PRECONDITIONS
+
+2024-07-10 21:51:17.667786   START Open "Markets" menu, "Shares" submenu =>
+2024-07-10 21:51:17.667804   1. Cur URL = https://capital.com/nl?country=au
+2024-07-10 21:51:17.670244   2. Link = https://capital.com/nl?country=au
+2024-07-10 21:51:17.670260   current_page = https://capital.com/nl?country=au
+2024-07-10 21:51:17.672703   link = https://capital.com/nl?country=au
+2024-07-10 21:51:18.186671   => 'Markets' menu is present
+2024-07-10 21:51:18.202097   => 'Markets' menu is visible
+2024-07-10 21:51:19.467642   => Focus moved to 'Markets' menu
+2024-07-10 21:51:20.885549   => Focus moved to 'Shares' submenu and clicked
+2024-07-10 21:51:21.168890   => Focus moved to 'capital*com' logo
+2024-07-10 21:51:21.168936   3. Cur URL = https://capital.com/nl/live-aandelen-koersen
+
+2024-07-10 21:51:21.174346   1. Arrange_v0
+2024-07-10 21:51:21.174370   current_page = https://capital.com/nl/live-aandelen-koersen
+2024-07-10 21:51:21.176786   link = https://capital.com/nl/live-aandelen-koersen
+2024-07-10 21:51:21.179148   Scroll to the labels
+2024-07-10 21:51:21.188853   Close the filters if selected
+2024-07-10 21:51:21.385991   Select region filters
+2024-07-10 21:51:22.991837   Select sectors filters
+2024-07-10 21:51:25.061668   Scroll to selected filters
+2024-07-10 21:51:25.065363   Check the labels of the selected filters
+2024-07-10 21:51:25.583214   Extract the text attribute from the labels of the selected filters
+
+2024-07-10 21:51:25.618331   2. Act
+2024-07-10 21:51:25.618363   Select a random item sort
+2024-07-10 21:51:27.333018   Sort - Meest verhandeld - is selected
+
+2024-07-10 21:51:27.333302   3. Assert_v0
+2024-07-10 21:51:27.434594   Expected result: applied filters 'Region/Sectors' ['Australië', 'Canada', 'Nederland', 'Cyclische consumptiegoederen & diensten', 'Energieproducten']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Australië', 'Canada', 'Nederland']
