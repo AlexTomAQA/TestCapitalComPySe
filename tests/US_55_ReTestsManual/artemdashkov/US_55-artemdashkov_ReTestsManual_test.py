@@ -318,8 +318,8 @@ class TestManualDetected:
 
     @allure.step("Start test of 'Trading calculator' widget in menu [CFD calculator]")
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('cur_country', ['de'])   # ('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])   # ('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('calc_instrument_1', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
                                                    "Gold", "Germany 40"])
     @pytest.mark.parametrize('calc_instrument_2', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
@@ -348,7 +348,7 @@ class TestManualDetected:
             "Testing 'Trading calculator' widget in menu [CFD calculator]",
             False, False
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         if calc_instrument_1 == calc_instrument_2:
             pytest.skip("calc_instrument_1 = calc_instrument_2")
 
