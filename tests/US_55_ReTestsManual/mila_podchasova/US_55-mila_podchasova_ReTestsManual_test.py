@@ -8,8 +8,9 @@ import pytest
 import allure
 from datetime import datetime
 
-from pages.BugsManual.bag_034 import ProfessionalMenuCheckFooter
+from pages.BugsManual.bug_034 import ProfessionalMenuCheckFooter
 from pages.BugsManual.bug_029 import WebTradingPlatformPage
+from pages.BugsManual.bug_069 import CreateARiskFreeDemoAccountButton
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -95,30 +96,40 @@ class TestManualDetectedBugs:
         menu = ProfessionalMenuCheckFooter(d, link, bid)
         menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
 
-        @allure.step("Start retest manual TC_55!00_069 "
-                     "The trading platform page is not opened in 'Demo account' page "
-                     "after clicking on the [Create a risk-free demo account] button")
-        @pytest.mark.parametrize('cur_language', [''])
-        @pytest.mark.parametrize('cur_country', ['gb', 'ae'])
-        @pytest.mark.parametrize('cur_role', ["Auth"])
-        @pytest.mark.test_069
-        def test_069(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-            """
-            The trading platform page is not opened in "Demo account" page
-            after clicking on the [Create a risk-free demo account] button
-            Language: All.
-            License: All, except FCA, SCA.
-            Country: All, except GB, AE.
-            Author: podchasova11
-            """
-            bid = build_dynamic_arg_for_us_55(
-                d, worker_id, cur_language, cur_country, cur_role,
-                "55", "ReTests of Manual Detected Bugs",
-                "069",
-                "The trading platform page is not opened in 'Demo account' page "
-                "after clicking on the [Create a risk-free demo account] button"
-            )
+    @allure.step("Start retest manual TC_55!00_069 "
+                 "The trading platform page is not opened "
+                 "in [demo mode] after clicking on the [Create a risk-free demo account] button "
+                 "on the 'Demo account' page")
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.test_069
+    def test_069(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        The trading platform page is not opened in "Demo account" page
+        after clicking on the [Create a risk-free demo account] button
+        Language: All.
+        License: All, except FCA, SCA.
+        Country: All, except GB, AE.
+        Author: podchasova11
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "069",
+            "The trading platform page is not opened "
+            "in [demo mode] after clicking on the [Create a risk-free demo account] button"
+            "on the 'Demo account' page"
+        )
 
-            pytest.skip("Autotest under construction")
+        pytest.skip("Autotest under construction")
 
+        # Arrange
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        #
+        # test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
+        # test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
+        # Act
