@@ -8,7 +8,6 @@
 from datetime import datetime
 
 import allure
-from selenium.webdriver.common.by import By
 
 from pages.Capital.trading_instrument_page import PageTradingInstrument
 from pages.common import Common
@@ -262,32 +261,3 @@ class AssertClass(BasePage):
                  'Expected result:The Desktop Trading page is opened '
                  '\n'
                  'Actual result: The Home page is opened ')
-
-    @allure.step('Checking that applied filters "Region/Sectors" are displayed')
-    def assert_filters(self, d, cur_link, selected_filters_text_list):
-        print(f"\n{datetime.now()}   3. Assert_v0")
-
-        filters_labels = self.driver.find_element(By.CSS_SELECTOR, '#flt_labels')
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            filters_labels
-        )
-
-        actual_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span > span.text-ellipsis')
-        time_out = 10
-
-        actual_filters_list = self.elements_are_located(actual_filters_locator, time_out)
-        actual_filters_text_list = [element.text for element in actual_filters_list]
-
-        if set(actual_filters_text_list) != set(selected_filters_text_list) or not actual_filters_text_list:
-            print(f"{datetime.now()}   Expected result: applied filters 'Region/Sectors' {selected_filters_text_list}"
-                  f"\n"
-                  f"Actual result: after selecting item 'Most traded' from the dropdown, are displayed {actual_filters_text_list}")
-            Common.pytest_fail(f"Bug # 55!039  Applied filters 'Region/Sectors': {selected_filters_text_list} "
-                               f"\n"
-                               f"are not displayed after selecting item 'Most traded' from the dropdown, "
-                               f"\n"
-                               f"only filters are displayed: {actual_filters_text_list}")
-        else:
-            print(f"{datetime.now()}   Applied filters {selected_filters_text_list} are displayed")
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
