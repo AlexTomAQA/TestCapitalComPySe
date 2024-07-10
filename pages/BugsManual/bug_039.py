@@ -15,6 +15,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.Elements.AssertClass import AssertClass
 from pages.base_page import BasePage
+from pages.common import Common
 
 
 class AppliedFilters(BasePage):
@@ -23,15 +24,14 @@ class AppliedFilters(BasePage):
         self.selected_filters_text_list = None
         super().__init__(driver, link, bid)
 
-    @allure.step(f"{datetime.now()}   Start full_test of display of applied filters")
-    def full_test(self, d, cur_language, cur_country, cur_role, cur_item_link):
+    @allure.step(f"{datetime.now()}   Start test the display of the applied filters")
+    def test_(self, d, cur_language, cur_country, cur_role, cur_item_link):
 
         self.arrange_v0(d, cur_item_link)
 
         for i in range(5):
             self.element_click(d)
-            self.open_page()
-            test_element = AssertClass(d, cur_item_link)
+            test_element = AssertFilters(d, cur_item_link)
             test_element.assert_filters(d, cur_item_link, self.selected_filters_text_list)
 
     def arrange_v0(self, d, cur_item_link):
@@ -59,7 +59,6 @@ class AppliedFilters(BasePage):
             except StaleElementReferenceException:
                 filter_labels_list = self.driver.find_elements(By.CSS_SELECTOR,
                                                                '#flt_labels > span > span.cross-button')
-        self.selected_filters_text_list = []
 
         print(f"{datetime.now()}   Select region filters")
         region_checkbox_list = self.driver.find_elements(By.CSS_SELECTOR, '#flt_reg > li > label.checkbox > span')
@@ -88,7 +87,7 @@ class AppliedFilters(BasePage):
         selected_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span >span.text-ellipsis')
         time_out = 10
 
-        print(f"{datetime.now()}   Extract the text attribute from the labels of the selected filters")
+        print(f"{datetime.now()}   Check the labels of the selected filters")
 
         while True:
             try:
@@ -99,8 +98,16 @@ class AppliedFilters(BasePage):
             except TimeoutException:
                 return
 
-        selected_filters_list = self.driver.find_elements(*selected_filters_locator)
-        self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
+        print(f"{datetime.now()}   Extract the text attribute from the labels of the selected filters")
+        try:
+            selected_filters_list = self.driver.find_elements(*selected_filters_locator)
+            self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
+        except StaleElementReferenceException:
+            selected_filters_list = self.driver.find_elements(*selected_filters_locator)
+            self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
+
+#        selected_filters_list = self.driver.find_elements(*selected_filters_locator)
+#        self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
 
 
     def arrange_v1(self, d, cur_item_link):
@@ -166,3 +173,36 @@ class AppliedFilters(BasePage):
             .perform()
 
         print(f"{datetime.now()}   Sort - {dropdown_text_item} - is selected")
+
+class AssertFilters(BasePage):
+    @allure.step('Checking that applied filters "Region/Sectors" are displayed')
+    def assert_filters(self, d, cur_link, selected_filters_text_list):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+
+        filters_labels = self.driver.find_element(By.CSS_SELECTOR, '#flt_labels')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            filters_labels
+        )
+
+        actual_filters_locator = (By.CSS_SELECTOR, '#flt_labels > span > span.text-ellipsis')
+        time_out = 10
+
+        actual_filters_list = self.elements_are_located(actual_filters_locator, time_out)
+        actual_filters_text_list = [element.text for element in actual_filters_list]
+
+        if set(actual_filters_text_list) != set(selected_filters_text_list) or not actual_filters_text_list:
+            print(f"{datetime.now()}   Expected result: applied filters 'Region/Sectors' {selected_filters_text_list}"
+                  f"\n"
+                  f"Actual result: after selecting item 'Most traded' from the dropdown, are displayed {actual_filters_text_list}")
+            Common.pytest_fail(f"Bug # 55!039  Applied filters 'Region/Sectors': {selected_filters_text_list} "
+                               f"\n"
+                               f"are not displayed after selecting item 'Most traded' from the dropdown, "
+                               f"\n"
+                               f"only filters are displayed: {actual_filters_text_list}")
+            if len(selected_filters_text_list) != 0:
+                selected_filters_text_list = []
+            return selected_filters_text_list
+        else:
+            print(f"{datetime.now()}   Applied filters {selected_filters_text_list} are displayed")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
