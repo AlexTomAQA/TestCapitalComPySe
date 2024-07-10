@@ -1,7 +1,7 @@
 """
 -*- coding: utf-8 -*-
 @Time    : 2024/06/25 07:00
-@Author  : odchasova11
+@Author  : podchasova11
 """
 from datetime import datetime
 import allure

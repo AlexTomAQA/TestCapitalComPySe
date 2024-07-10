@@ -44,7 +44,7 @@ from pages.Menu.menu_locators import (
     MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG, MenuUS0109MarketsCFDCalculator, MenuUS55WaysToTrade,
     MenuUS02NewsAndAnalysis,
     MenuUS0201MarketAnalysis,
-    MenuUS11MarketAnalysis
+    MenuUS11MarketAnalysis, MenuProductsAndServicesDemoAccount
 )
 
 from pages.base_page import BasePage
@@ -2309,4 +2309,52 @@ class MenuSection(BasePage):
             .perform()
 
         print(f"{datetime.now()}   => Focus moved to 'Our Mobile Apps' submenu and clicked")
+        del sub_menu
+
+    @allure.step("Focus move to 'Demo account' submenu and click.")
+    def sub_menu_demo_account_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_EN_DEMO_ACCOUNT)
+            case "ar":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_AR_DEMO_ACCOUNT)
+            case "de":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_DE_DEMO_ACCOUNT)
+            case "el":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_EL_DEMO_ACCOUNT)
+            case "es":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_ES_DEMO_ACCOUNT)
+            case "fr":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_FR_DEMO_ACCOUNT)
+            case "it":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_IT_DEMO_ACCOUNT)
+            case "hu":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_HU_DEMO_ACCOUNT)
+            case "nl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_NL_DEMO_ACCOUNT)
+            case "pl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_PL_DEMO_ACCOUNT)
+            case "ro":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_RO_DEMO_ACCOUNT)
+            case "ru":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_RU_DEMO_ACCOUNT)
+            case "zh":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_ZH_DEMO_ACCOUNT)
+            case "cn":
+                sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_CN_DEMO_ACCOUNT)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' "
+                f"\"Products and services > Demo account\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Demo account' submenu and clicked")
         del sub_menu
