@@ -42,20 +42,3 @@ import random
 def cur_rnd_trading_instrument(request):
     print(f"Current trading instrument - {request.param}\n")
     return request.param
-
-
-@pytest.fixture(
-    scope="function",
-    params=random.sample([
-        "Shares",
-        "Forex",
-        "Indices",
-        "Commodities",
-        "Cryptocurrencies"
-    ], 2)
-)
-def cur_market_2_rnd_from_5(request):
-    """Markets sorting parameters"""
-    print(f"\n\n\nCurrent market - {request.param}")
-    return request.param
-
