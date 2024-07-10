@@ -15,6 +15,7 @@ from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_060 import ProfessionalAccountPage
+from pages.BugsManual.bug_065 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_091 import NewsAndAnalysisMenuSection
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -131,6 +132,52 @@ class TestManualDetectedBugs:
         signup_form.close_signup_form()
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
+    @allure.step("Start retest manual TC_55!065 The Trading Guides page is not opened "
+                 "after clicking the link [Handelsleitfäden] (trading guides) "
+                 "on the page [Demo-Konto] (Demo Account) in DE lang")
+    @pytest.mark.parametrize('cur_language', ['de'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_065
+    def test_065(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The Trading Guides page is not opened after clicking the link [Handelsleitfäden] (trading guides)
+         on the page [Demo-Konto] (Demo Account) in DE lang
+         Language: CN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "065",
+            "The Trading Guides page is not opened after clicking the link [Handelsleitfäden] (trading guides) "
+            "on the page [Demo-Konto] (Demo Account) in DE lang"
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        trading_guides_page = TradingGuidesPageDeTest(d, link, bid)
+        trading_guides_page.click_demo_acc_menu_item(d, cur_language, cur_country)
+
+        # Act
+        trading_guides_page.click_trading_guides_link()
+
+        # Assert
+        if not trading_guides_page.should_be_trading_guides_page():
+            Common().pytest_fail("Bug # 55!065 The Trading Guides page is NOT opened")
+        Common().save_current_screenshot(d, "AT_55!065 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
     @allure.step(
         'Start retest manual TC_55!090 The modal window "Confirm Form Resubmission" is not opened '
         'after clicking the button [Back] on any article from search page.')
@@ -205,7 +252,6 @@ class TestManualDetectedBugs:
          Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
-        # pytest.skip("AT is under construction")
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
