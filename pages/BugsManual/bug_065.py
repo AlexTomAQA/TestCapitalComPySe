@@ -24,8 +24,8 @@ class TradingGuidesPageDeTest(BasePage):
         super().__init__(browser, link, bid)
 
     def click_demo_acc_menu_item(self, browser, lang, country):
-        print(f'\n{datetime.now()}   Click the Demo Account menu item =>')
         self.menu_section.move_focus_to_products_and_services_menu(browser, lang, country)
+        print(f'\n{datetime.now()}   Click the Demo Account menu item =>')
         btn = Wait(self.driver, 5).until(EC.element_to_be_clickable(DEMO_ACCOUNT_MENU_ITEM_LOC))
         btn.click()
         print(f'{datetime.now()}   => Done, the corresponding page is opened')
