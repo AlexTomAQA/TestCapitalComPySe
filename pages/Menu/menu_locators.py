@@ -1251,6 +1251,37 @@ class MenuProductsAndServicesOurMobileApps:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/mobile-apps']")
 
 
+class MenuProductsAndServicesDemoAccount:
+    SUB_MENU_EN_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/demo-trading-account']")
+    SUB_MENU_AR_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ar/demo-account']")
+    SUB_MENU_DE_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/demokonto']")
+    SUB_MENU_EL_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/demo-account ']")
+    SUB_MENU_ES_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/demo-account']")
+    SUB_MENU_FR_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/demo-account']")
+    SUB_MENU_IT_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/account-demo']")
+    SUB_MENU_HU_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/demo-account']")
+    SUB_MENU_NL_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/demo-account']")
+    SUB_MENU_PL_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/demo-account']")
+    SUB_MENU_RO_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/demo-account']")
+    SUB_MENU_RU_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/demo-account']")
+    SUB_MENU_ZH_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/demo-account']")
+    SUB_MENU_CN_DEMO_ACCOUNT = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/demo-account']")
+
+
 class MenuUS0106MarketsCryptocurrencies:
     SUB_MENU_EN_CRYPTOCURRENCIES = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/live-cryptocurrency-prices']")

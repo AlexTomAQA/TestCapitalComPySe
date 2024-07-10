@@ -25,8 +25,12 @@ NVIDIA_CORP_LOCATOR = (By.CSS_SELECTOR, 'li[data-sort="16150730595456196"]')
 GOLD_LOCATOR = (By.CSS_SELECTOR, 'li[data-sort="27045129890124996"]')
 GERMANY_40_LOCATOR = (By.CSS_SELECTOR, 'li[data-sort="508931114652423506"]')
 
+SLIDER_RANGE_LOCATOR = (By.CSS_SELECTOR, 'div.ui-slider-range.ui-widget-header.ui-corner-all')
 SLIDER_HANDLE_LEFT_LOCATOR = (By.XPATH, '(//a[@class="ui-slider-handle ui-state-default ui-corner-all"])[1]')
 SLIDER_HANDLE_RIGHT_LOCATOR = (By.XPATH, '(//a[@class="ui-slider-handle ui-state-default ui-corner-all"])[2]')
+
+DATE_OPEN_LOCATOR = (By.CSS_SELECTOR, 'div.textSub > span.js-dateFromOut')
+DATE_CLOSE_LOCATOR = (By.CSS_SELECTOR, 'div.text-right.textSub > span.js-dateToOut')
 
 BLOCK_NAME = "[Trading calculator] widget"
 
@@ -130,10 +134,34 @@ class TradingCalculatorCFDCalculatorPage(BasePage):
         print(f"{datetime.now()}   Start set minimum and maximum value of slider range bar =>")
         slider_handle_left = self.driver.find_element(*SLIDER_HANDLE_LEFT_LOCATOR)
         slider_handle_right = self.driver.find_element(*SLIDER_HANDLE_RIGHT_LOCATOR)
+        slider_handle_range = self.driver.find_element(*SLIDER_RANGE_LOCATOR)
 
-        self.driver.execute_script("arguments[0].setAttribute('style', 'left: 0%;')", slider_handle_left)
-        self.driver.execute_script("arguments[0].setAttribute('style', 'left: 100%;')", slider_handle_right)
+        print(f'BEFORE CHANGING - slider_handle_left: {slider_handle_left.get_attribute("style")}')
+        print(f'BEFORE CHANGING - slider_handle_right: {slider_handle_right.get_attribute("style")}')
+        print(f'BEFORE CHANGING - slider_handle_range: {slider_handle_range.get_attribute("style")}')
+
+        ActionChains(d) \
+            .click_and_hold(slider_handle_left) \
+            .pause(0.5) \
+            .move_to_element(self.driver.find_element(*DATE_OPEN_LOCATOR)) \
+            .release() \
+            .pause(0.5) \
+            .perform()
+        print(f'AFTER CHANGING - slider_handle_left: {slider_handle_left.get_attribute("style")}')
+
+        ActionChains(d) \
+            .click_and_hold(slider_handle_right) \
+            .pause(0.5) \
+            .move_to_element(self.driver.find_element(*DATE_CLOSE_LOCATOR)) \
+            .release() \
+            .pause(0.5) \
+            .perform()
+        print(f'AFTER CHANGING - slider_handle_right: {slider_handle_right.get_attribute("style")}')
+        print(f'AFTER CHANGING - slider_handle_range: {slider_handle_range.get_attribute("style")}')
         time.sleep(1)
+        print(f'AFTER CHANGING (2) - slider_handle_left: {slider_handle_left.get_attribute("style")}')
+        print(f'AFTER CHANGING (2) - slider_handle_right: {slider_handle_right.get_attribute("style")}')
+        print(f'AFTER CHANGING (2) - slider_handle_range: {slider_handle_range.get_attribute("style")}')
         Common().save_current_screenshot(d, f"Finished setting minimum and maximum value of slider range bar")
         print(f"{datetime.now()}   => Finished setting minimum and maximum value of slider range bar\n")
 
