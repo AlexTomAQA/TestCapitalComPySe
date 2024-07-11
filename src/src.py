@@ -48,3 +48,6 @@ class ProfessionalClientsAu:
 class InvestmateApp:
     URL = "https://capital.com/learn-trading-app"
 
+
+class DemoTradingAccount:
+    URL = "https://capital.com/demo-trading-account"
