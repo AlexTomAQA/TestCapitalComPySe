@@ -22,7 +22,7 @@ from pages.conditions_new import NewConditions
 class TestManualDetectedBugs:
     page_conditions = None
 
-    @allure.step("Start retest manual TC_55!00_005 of button [My account] in the Header")
+    @allure.step("Start retest manual TC_55!005 of button [My account] in the Header")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
@@ -76,7 +76,7 @@ class TestManualDetectedBugs:
         cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country, link)
 
         test_element = AppliedFilters(d, cur_item_link, bid)
-        test_element.full_test(d, cur_language_2_rnd_from_14, cur_country,cur_role, cur_item_link)
+        test_element.test_(d, cur_language_2_rnd_from_14, cur_country,cur_role, cur_item_link)
 
     @allure.step('Start retest manual AT_55!061 of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" and "Crypto vs stocks: What is the difference?" pages')

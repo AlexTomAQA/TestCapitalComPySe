@@ -137,10 +137,8 @@ class TestManualDetectedBugs:
                  "after clicking the link [Handelsleitfäden] (trading guides) "
                  "on the page [Demo-Konto] (Demo Account) in DE lang")
     @pytest.mark.parametrize('cur_language', ['de'])
-    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.parametrize('cur_country', ['de'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_065
     def test_065(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -167,9 +165,9 @@ class TestManualDetectedBugs:
         d.refresh()
 
         page_header_menu = MenuSection(d, link)
-        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
-
         trading_guides_page = TradingGuidesPageDeTest(d, link, bid)
+        
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
         trading_guides_page.click_demo_acc_menu_item()
 
         # Act

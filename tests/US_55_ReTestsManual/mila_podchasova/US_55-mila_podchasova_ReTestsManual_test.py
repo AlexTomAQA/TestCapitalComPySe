@@ -122,14 +122,15 @@ class TestManualDetectedBugs:
             "on the 'Demo account' page"
         )
 
-        pytest.skip("Autotest under construction")
+        # pytest.skip("Autotest under construction")
 
-        # Arrange
-        # page_conditions = Conditions(d, "")
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        #
-        # test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
-        # test_element.full_test(d, cur_language, cur_country, cur_role, link)
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        # Act
+        menu = MenuSection(d, link)
+        link = menu.sub_menu_demo_account_move_focus_click(d, cur_language, cur_country, link)
+
+        test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
+        test_element.full_test(d, cur_language, cur_country, cur_role, link)
+

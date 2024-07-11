@@ -18,7 +18,6 @@ TITLE_LOC = ("css selector", "h1.hero")
 
 class TradingGuidesPageDeTest(BasePage):
     def click_demo_acc_menu_item(self):
-        # self.menu_section.move_focus_to_products_and_services_menu(browser, lang, country)
         print(f'\n{datetime.now()}   Click the Demo Account menu item =>')
         btn = Wait(self.driver, 5).until(EC.element_to_be_clickable(DEMO_ACCOUNT_MENU_ITEM_LOC))
         btn.click()
