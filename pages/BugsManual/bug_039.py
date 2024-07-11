@@ -13,7 +13,6 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.Elements.AssertClass import AssertClass
 from pages.base_page import BasePage
 from pages.common import Common
 
@@ -21,7 +20,7 @@ from pages.common import Common
 class AppliedFilters(BasePage):
 
     def __init__(self, driver, link="", bid=""):
-        self.selected_filters_text_list = None
+        self.selected_filters_text_list = []
         super().__init__(driver, link, bid)
 
     @allure.step(f"{datetime.now()}   Start test the display of the applied filters")
@@ -33,6 +32,8 @@ class AppliedFilters(BasePage):
             self.element_click(d)
             test_element = AssertFilters(d, cur_item_link)
             test_element.assert_filters(d, cur_item_link, self.selected_filters_text_list)
+        if len(self.selected_filters_text_list) != 0:
+            self.selected_filters_text_list = []
 
     def arrange_v0(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v0")
@@ -105,10 +106,6 @@ class AppliedFilters(BasePage):
         except StaleElementReferenceException:
             selected_filters_list = self.driver.find_elements(*selected_filters_locator)
             self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
-
-#        selected_filters_list = self.driver.find_elements(*selected_filters_locator)
-#        self.selected_filters_text_list = [filters.text for filters in selected_filters_list]
-
 
     def arrange_v1(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange_v1")
@@ -200,9 +197,6 @@ class AssertFilters(BasePage):
                                f"are not displayed after selecting item 'Most traded' from the dropdown, "
                                f"\n"
                                f"only filters are displayed: {actual_filters_text_list}")
-            if len(selected_filters_text_list) != 0:
-                selected_filters_text_list = []
-            return selected_filters_text_list
         else:
             print(f"{datetime.now()}   Applied filters {selected_filters_text_list} are displayed")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
