@@ -166,7 +166,7 @@ class TestManualDetectedBugs:
 
         page_header_menu = MenuSection(d, link)
         trading_guides_page = TradingGuidesPageDeTest(d, link, bid)
-        
+
         page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
         trading_guides_page.click_demo_acc_menu_item()
 
