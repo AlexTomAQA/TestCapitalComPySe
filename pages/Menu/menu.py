@@ -2312,9 +2312,9 @@ class MenuSection(BasePage):
         del sub_menu
 
     @allure.step("Focus move to 'Demo account' submenu and click.")
-    def sub_menu_demo_account_move_focus_click(self, d, test_language):
+    def sub_menu_demo_account_move_focus_click(self, d, cur_language, cur_country, link):
         sub_menu = None
-        match test_language:
+        match cur_language:
             case "":
                 sub_menu = d.find_elements(*MenuProductsAndServicesDemoAccount.SUB_MENU_EN_DEMO_ACCOUNT)
             case "ar":
@@ -2346,7 +2346,7 @@ class MenuSection(BasePage):
 
         if len(sub_menu) == 0:
             Common().pytest_fail(
-                f"Bug # ??? For language '{test_language}' "
+                f"Bug # ??? For language '{cur_language}' "
                 f"\"Products and services > Demo account\" submenu doesn't exist")
 
         ActionChains(d) \
