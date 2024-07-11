@@ -21,6 +21,7 @@ from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
+from pages.Menu.menu import MenuSection
 from src.src import CapitalComPageSrc
 
 
@@ -163,8 +164,11 @@ class TestManualDetectedBugs:
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
 
+        page_header_menu = MenuSection(d, link)
         trading_guides_page = TradingGuidesPageDeTest(d, link, bid)
-        trading_guides_page.click_demo_acc_menu_item(d, cur_language, cur_country)
+        
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        trading_guides_page.click_demo_acc_menu_item()
 
         # Act
         trading_guides_page.click_trading_guides_link()
