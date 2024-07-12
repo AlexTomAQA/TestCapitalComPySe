@@ -47,7 +47,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011a",
-            "Testing button [Add to favourite] on the 'Trading Instrument Page'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
@@ -91,7 +92,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011b",
-            "Testing button [Go to platform] on tooltip 'Long position overnight fee'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
@@ -139,7 +141,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011c",
-            "Testing button [Go to platform] on tooltip 'Short position overnight fee'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
