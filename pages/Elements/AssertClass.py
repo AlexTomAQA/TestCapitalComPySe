@@ -125,29 +125,6 @@ class AssertClass(BasePage):
 
         Common().assert_true_false(True, "")
 
-    @allure.step('Checking that "Trading platform" page opened')
-    def assert_trading_platform(self, d):
-        print(f"\n{datetime.now()}   3. Assert_v0")
-        # time.sleep(1)
-        self.platform_url = "https://capital.com/trading/platform/"
-        # self.platform_url = "https://capital.com/trading/platform"
-        self.page_trading = TradingPlatform(d)
-        # self.page_trading.should_be_trading_platform_page_v2(d, self.platform_url)
-        self.page_trading.should_be_trading_platform_page_v3()
-        del self.page_trading
-
-    @allure.step('Checking that "Trading platform" page opened - ver 2')
-    def assert_trading_platform_v2(self, d, cur_link, demo=False):
-        print(f"\n{datetime.now()}   3. Assert_v2")
-        self.page_trading = TradingPlatform(d, cur_link)
-        self.page_trading.should_be_trading_platform_page_v2(d, cur_link, demo)
-
-    @allure.step('Checking that "Trading platform" page opened - ver 3')
-    def assert_trading_platform_v3(self, d, cur_link, demo=False):
-        print(f"\n{datetime.now()}   3. Assert_v3")
-        self.page_trading = TradingPlatform(d, cur_link)
-        self.page_trading.should_be_trading_platform_page_v3(demo)
-
     @allure.step('Checking that "Trading platform" page opened - ver 4')
     def assert_trading_platform_v4(self, d, cur_link, tpd=False, tpi=False, trade_instrument=""):
         """
@@ -165,6 +142,29 @@ class AssertClass(BasePage):
         self.page_trading = TradingPlatform(d, cur_link, self.bid)
         print(f"\n{datetime.now()}   ")
         self.page_trading.should_be_trading_platform_page_v4(d, cur_link, tpd, tpi, trade_instrument)
+
+    @allure.step('Checking that "Trading platform" page opened - ver 3')
+    def assert_trading_platform_v3(self, d, cur_link, demo=False):
+        print(f"\n{datetime.now()}   3. Assert_v3")
+        self.page_trading = TradingPlatform(d, cur_link)
+        self.page_trading.should_be_trading_platform_page_v3(demo)
+
+    @allure.step('Checking that "Trading platform" page opened - ver 2')
+    def assert_trading_platform_v2(self, d, cur_link, demo=False):
+        print(f"\n{datetime.now()}   3. Assert_v2")
+        self.page_trading = TradingPlatform(d, cur_link)
+        self.page_trading.should_be_trading_platform_page_v2(d, cur_link, demo)
+
+    @allure.step('Checking that "Trading platform" page opened')
+    def assert_trading_platform(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        # time.sleep(1)
+        self.platform_url = "https://capital.com/trading/platform/"
+        # self.platform_url = "https://capital.com/trading/platform"
+        self.page_trading = TradingPlatform(d)
+        # self.page_trading.should_be_trading_platform_page_v2(d, self.platform_url)
+        self.page_trading.should_be_trading_platform_page_v3()
+        del self.page_trading
 
     @allure.step('Checking that "Trading platform" page opened and the element is selected')
     def assert_trading_platform_with_selected_element(self, d, cur_link, tab="", trade_instrument=""):

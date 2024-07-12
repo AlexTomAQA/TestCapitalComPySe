@@ -6,6 +6,9 @@
 # from datetime import datetime
 import time
 #
+# import ssl
+
+
 # import pytest
 # import allure
 # from selenium.common.exceptions import ElementClickInterceptedException
