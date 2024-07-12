@@ -8,6 +8,7 @@ from src.src import CapitalComPageSrc, InvestmateApp
 
 from datetime import datetime
 import allure
+import time
 
 from pages.common import Common
 from pages.base_page import BasePage
@@ -53,6 +54,7 @@ class PlatformOverviewButton(BasePage):
 
         if not self.current_page_is(link):
             self.link = InvestmateApp.URL
+            time.sleep(2)
             self.open_page()
 
         # Check that present and visible block
