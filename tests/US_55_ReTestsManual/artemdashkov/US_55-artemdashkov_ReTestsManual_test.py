@@ -293,7 +293,8 @@ class TestManualDetected:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "058",
-            "Testing voted function in 'What is your sentiment...' block",
+            "Not possible to vote for another trading instrument "
+            "in the block 'What is your sentiment...' if on another page voted for another instrument",
             False, False
         )
         # pytest.skip("Промежуточная версия!")
