@@ -16,35 +16,19 @@ APPLY_BTN_LOC = ("css selector", ".button-main.btn-pro")
 
 
 class ProfessionalAccountPage(BasePage):
-    def __init__(self, browser, link, bid):
-        self.menu_section = MenuSection(browser, link, bid)
-        self.prof_acc_submenu_btn = None
-        self.apply_btn = None
-
-        super().__init__(browser, link, bid)
-
-    def arrange_(self, browser, test_language, test_country):
-        print(f'\n{datetime.now()}   1. Arrange')
-        print(f'\n{datetime.now()}   Opening the Professional Account page...')
-        self.menu_section.move_focus_to_products_and_services_menu(browser, test_language, test_country)
-        self.click_the_professional_account_submenu()
-        print(f'\n{datetime.now()}   The Professional Account page is opened')
-
-    def click_the_professional_account_submenu(self):
-        print(f'\n{datetime.now()}   Clicking the "Professional Account" button...')
-        self.prof_acc_submenu_btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(PROF_ACC_SUBMENU_LOC))
-        self.prof_acc_submenu_btn.click()
-        print(f'\n{datetime.now()}   The button is clicked')
+    def click_the_professional_account_menu_item(self):
+        print(f'\n{datetime.now()}   Click the Professional Account menu item =>')
+        btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(PROF_ACC_SUBMENU_LOC))
+        btn.click()
+        print(f'{datetime.now()}   => Done, the corresponding page is opened')
+        print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
 
     def click_the_apply_button(self):
-        print(f'\n{datetime.now()}   2. Act')
         print(f'\n{datetime.now()}   Click the [Apply] button')
-        self.apply_btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(APPLY_BTN_LOC))
-
+        btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(APPLY_BTN_LOC))
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.apply_btn
+            btn
         )
-
-        self.apply_btn.click()
+        btn.click()
         print(f'\n{datetime.now()}   The [Apply] button is clicked')
