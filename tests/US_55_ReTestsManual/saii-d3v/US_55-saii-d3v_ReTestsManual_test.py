@@ -115,8 +115,11 @@ class TestManualDetectedBugs:
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
 
+        page_header_menu = MenuSection(d, link)
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
-        prof_acc_page.arrange_(d, cur_language_qty_rnd_from_14, cur_country)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language_qty_rnd_from_14, cur_country)
+        prof_acc_page.click_the_professional_account_menu_item()
 
         # Act
         prof_acc_page.click_the_apply_button()
