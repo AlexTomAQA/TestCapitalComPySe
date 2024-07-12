@@ -47,7 +47,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011a",
-            "Testing button [Add to favourite] on the 'Trading Instrument Page'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
@@ -91,7 +92,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011b",
-            "Testing button [Go to platform] on tooltip 'Long position overnight fee'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
@@ -139,7 +141,8 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "011c",
-            "Testing button [Go to platform] on tooltip 'Short position overnight fee'",
+            "The trading platform is opened, "
+            "not the page of the corresponding trading instrument on the trading platform",
             False, False
         )
 
@@ -187,7 +190,9 @@ class TestManualDetected:
             d, worker_id, cur_language_3_rnd_from_12, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "012",
-            "Testing button [Try now] on the block 'Why choose Capital.com?'",
+            "Sign up/log in/forms or the transition to the trading platform are not opened "
+            "after clicking the [Try now] button in 'Why choose Capital.com?..' Block "
+            "in the menu item [Our Mobile Apps]",
             False, False
         )
 
@@ -282,7 +287,8 @@ class TestManualDetected:
     def test_058_voted_function_in_sentiment_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        Check: voted function in 'What is your sentiment...' block
+        Check:  Not possible to vote for another trading instrument
+                in the block "What is your sentiment..."  if on another page voted for another instrument
         Language: All.
         License/Country: All
         Role: NoReg, NoAuth, Auth
@@ -293,7 +299,8 @@ class TestManualDetected:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "058",
-            "Testing voted function in 'What is your sentiment...' block",
+            "Not possible to vote for another trading instrument "
+            "in the block 'What is your sentiment...' if on another page voted for another instrument",
             False, False
         )
         # pytest.skip("Промежуточная версия!")
