@@ -190,6 +190,14 @@ class AssertClass(BasePage):
         self.page_trading.should_be_trading_platform_page(d, self.platform_url)
         del self.page_trading
 
+    @allure.step('Checking that "Trading platform" page opened in demo mode')
+    def assert_trading_platform_demo_v1(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        self.platform_url = "https://capital.com/trading/platform/?mode=demo"
+        self.page_trading = TradingPlatform(d)
+        self.page_trading.should_be_trading_platform_page_v1(d, self.platform_url)
+        del self.page_trading
+
     @allure.step('Checking that "App Store" page opened')
     def assert_app_store(self, d, cur_link):
         print(f"\n{datetime.now()}   3. Assert_v0")
