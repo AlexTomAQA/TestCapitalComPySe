@@ -18,6 +18,7 @@ from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageIns
 from pages.Elements.EmailFieldSignUpForm import EmailFieldSignUpForm
 from pages.BugsManual.bug_058 import WhatIsYourSentimentWidget
 from pages.BugsManual.bug_077 import TradingCalculatorCFDCalculatorPage
+from pages.BugsManual.bug_095 import BUG_095
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -412,11 +413,11 @@ class TestManualDetected:
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_more_menu_help_and_support_submenu(d, cur_language, cur_country, cur_item_link)
 
-        test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
+        test_element = BUG_095(d, cur_item_link, bid)
         test_element.arrange(d)
 
         # Act
-        test_element.act(d, calc_instrument_1, calc_instrument_2)
+        test_element.act(d, search_query)
 
         # Assert
         test_element.assert_(d)
