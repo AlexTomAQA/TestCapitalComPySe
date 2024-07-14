@@ -18,6 +18,7 @@ from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageIns
 from pages.Elements.EmailFieldSignUpForm import EmailFieldSignUpForm
 from pages.BugsManual.bug_058 import WhatIsYourSentimentWidget
 from pages.BugsManual.bug_077 import TradingCalculatorCFDCalculatorPage
+from pages.BugsManual.bug_095 import BUG_095
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -372,6 +373,51 @@ class TestManualDetected:
 
         # Act
         test_element.act(d, calc_instrument_1, calc_instrument_2)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of the Search field [How can we help?] in menu [Help & Support]")
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['de'])  # ('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])  # ('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('search_query', ["bitcoin"])
+    @pytest.mark.test_095
+    def test_095_search_field_does_not_search_in_help_and_support_menu(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password, calc_instrument_1, calc_instrument_2):
+        """
+        Check:  The search field [How can we help?] on the menu title [Help & Support]
+                of the section menu "More" isn't searched when any language is selected
+        Language: All (except ar).
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth,
+        Search_query: ["bitcoin"]
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "095",
+            "Testing Search field [How can we help?] in menu [Help & Support]",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+
+        # Arrange
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_more_menu_help_and_support_submenu(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_095(d, cur_item_link, bid)
+        test_element.arrange(d)
+
+        # Act
+        test_element.act(d, search_query)
 
         # Assert
         test_element.assert_(d)
