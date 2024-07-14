@@ -16,7 +16,6 @@ from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_060 import ProfessionalAccountPage
 from pages.BugsManual.bug_065 import TradingGuidesPageDeTest
-from pages.BugsManual.bug_080 import Bug080
 from pages.BugsManual.bug_091 import NewsAndAnalysisMenuSection
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -185,106 +184,6 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
-
-    # @allure.step("Start retest manual TC_55!080a| The sticky bar is not implemented "
-    #              "on the 'Bitcoin Gold' page when the page is opened")
-    # # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    # # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    # @pytest.mark.parametrize('cur_language_qty_from_14', ['hu'])
-    # @pytest.mark.parametrize('cur_country', ['de'])
-    # @pytest.mark.parametrize('cur_role', ['NoReg'])
-    # @pytest.mark.bug_080a
-    # def test_080a(self, worker_id, d, cur_language_qty_from_14, cur_country, cur_role, cur_login, cur_password):
-    #     """
-    #      Check: The sticky bar is not implemented on the 'Bitcoin Gold' page when the page is opened.
-    #      Language: ALL.
-    #      License: ASIC, CYSEC, SCB.
-    #      Author: Sergey Aiidzhanov
-    #      """
-    #     bid = build_dynamic_arg_for_us_55(
-    #         d, worker_id, cur_language_qty_from_14, cur_country, cur_role,
-    #         "55", "ReTests of Manual Detected Bugs",
-    #         "080a",
-    #         "The sticky bar is not implemented on the 'Bitcoin Gold' page when the page is opened."
-    #     )
-    #
-    #     # Arrange
-    #     page_conditions = Conditions(d)
-    #     link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_from_14,
-    #                                          cur_country, cur_role, cur_login, cur_password)
-    #
-    #     # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
-    #     d.refresh()
-    #
-    #     page_header_menu = MenuSection(d, link)
-    #     test_element = Bug080(d, link, bid)
-    #
-    #     if cur_language_qty_from_14 in ['ar', 'el', 'hu', 'nl']:   # These langs don't have the crypto. trading page
-    #         page_header_menu.menu_language_and_country_move_focus(cur_language_qty_from_14)
-    #         test_element.change_language('en')
-    #
-    #     page_header_menu.open_education_cryptocurrency_trading_menu(d, cur_language_qty_from_14, cur_country, link)
-    #
-    #     # Act
-    #     test_element.click_btc_gold_item()
-    #
-    #     if cur_language_qty_from_14 in ['ar', 'el', 'hu', 'nl']:   # Change back from EN to test language
-    #         page_header_menu.menu_language_and_country_move_focus('')
-    #         test_element.change_language(cur_language_qty_from_14)
-    #
-    #     # Assert
-    #     if not test_element.should_be_sticky_bar():
-    #         Common().pytest_fail("Bug # 55!080b The sticky bar is NOT present")
-    #     Common().save_current_screenshot(d, "AT_55!080b Pass")
-    #
-    #     # Postconditions
-    #     print(f'\n{datetime.now()}   Applying postconditions...')
-    #     Common().browser_back_to_link(d, CapitalComPageSrc.URL)
-    #
-    # @allure.step("Start retest manual TC_55!080b| The sticky bar is not implemented "
-    #              "on the 'Bitcoin Halving' page when the page is opened")
-    # @pytest.mark.parametrize('cur_language', ['', 'de', 'es', 'it', 'pl', 'ru', 'zh'])
-    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    # @pytest.mark.bug_080b
-    # def test_080b(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-    #     """
-    #      Check: The sticky bar is not implemented on the 'Bitcoin Halving' page when the page is opened.
-    #      Language: EN, DE, ES, IT, PL, RU, ZH.
-    #      License: ASIC, CYSEC, SCB.
-    #      Author: Sergey Aiidzhanov
-    #      """
-    #     bid = build_dynamic_arg_for_us_55(
-    #         d, worker_id, cur_language, cur_country, cur_role,
-    #         "55", "ReTests of Manual Detected Bugs",
-    #         "080b",
-    #         "The sticky bar is not implemented on the 'Bitcoin Halving' page when the page is opened."
-    #     )
-    #
-    #     # Arrange
-    #     page_conditions = Conditions(d)
-    #     link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-    #                                          cur_country, cur_role, cur_login, cur_password)
-    #
-    #     # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
-    #     d.refresh()
-    #
-    #     page_header_menu = MenuSection(d, link)
-    #     test_element = Bug080(d, link, bid)
-    #
-    #     page_header_menu.open_education_cryptocurrency_trading_menu(d, cur_language, cur_country, link)
-    #
-    #     # Act
-    #     test_element.click_btc_halving_item()
-    #
-    #     # Assert
-    #     if not test_element.should_be_sticky_bar():
-    #         Common().pytest_fail("Bug # 55!080b The sticky bar is NOT present")
-    #     Common().save_current_screenshot(d, "AT_55!080b Pass")
-    #
-    #     # Postconditions
-    #     print(f'\n{datetime.now()}   Applying postconditions...')
-    #     Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step(
         'Start retest manual TC_55!090 The modal window "Confirm Form Resubmission" is not opened '
