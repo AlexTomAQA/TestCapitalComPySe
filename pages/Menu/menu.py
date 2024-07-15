@@ -71,24 +71,6 @@ class MenuSection(BasePage):
 
     # bug_11_01_03_00
 
-    @allure.step('Select "Learn to trade" menu, "Risk-management guide')
-    def open_learn_to_trade_risk_management_guide_menu(self, d, cur_language, cur_country, link):
-
-        print(f'\n{datetime.now()}   START Open "Education" menu, "Risk-management guide" submenu =>')
-        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
-        print(f"\n{datetime.now()}   2. Link = {link}")
-        if not self.current_page_is(link):
-            self.link = link
-            self.open_page()
-
-        self.menu_learn_to_trade_move_focus(d, cur_language, cur_country)
-        self.sub_menu_risk_management_guide_move_focus_click(d, cur_language)
-        Common().move_pointer_to_capital_com_label(d)
-        Common.flag_of_bug = False
-
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
-        return d.current_url
-
     @allure.step('Select "Learn to trade" menu, "Technical analysis" submenu')
     def open_learn_to_trade_technical_analysis_guide_menu(self, d, cur_language, cur_country, link):
 
