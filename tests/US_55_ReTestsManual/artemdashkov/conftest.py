@@ -69,6 +69,26 @@ def cur_market_2_rnd_from_5(request):
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param
 
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        "bitcoin",
+        "bank",
+        "trader",
+        "USD",
+        "Still looking for a broker you can trust",
+        "+49 3046690292",
+        "contact",
+        "capital.com",
+        " ",
+        "#$%^*()_%"
+    ], 2)
+)
+def cur_search_query_2_rnd_from_10(request):
+    """Markets sorting parameters"""
+    print(f"\n\n\nCurrent market - {request.param}")
+    return request.param
+
 # @pytest.fixture(
 #     scope="function",
 #     params=[
