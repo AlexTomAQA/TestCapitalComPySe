@@ -18,7 +18,7 @@ BLOCK_NAME = "Search field"
 SEARCH_FIELD_LOCATOR = (By.CSS_SELECTOR, '#query')
 
 
-class BUG_095(BasePage):
+class BUG_171(BasePage):
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
 

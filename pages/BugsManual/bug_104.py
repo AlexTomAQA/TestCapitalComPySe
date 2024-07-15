@@ -94,30 +94,28 @@ class TradingCalculatorCFDCalculatorPage(BasePage):
         print(f"{datetime.now()}   => [Dropdown list] is clickable on this page!\n")
 
     @allure.step(f"{datetime.now()}   2. Start Act.")
-    def act(self, d, calc_instrument_1, calc_instrument_2):
+    def act(self, d, calc_1_and_calc_2):
         print(f"{datetime.now()}   2. Start Act.")
 
         # Start open Dropdown list and choose FIRST trading instrument
         print(f"{datetime.now()}   Start open Dropdown list and choose FIRST trading instrument =>")
         first_element = list()
-        match calc_instrument_1:
-            case "EUR/USD":
-                first_element = d.find_elements(*EUR_USD_LOCATOR)
+        match calc_1_and_calc_2[0]:
             case "GBP/USD":
                 first_element = d.find_elements(*GBP_USD_LOCATOR)
-            case "Natural Gas":
-                first_element = d.find_elements(*NATURAL_GAS_LOCATOR)
-            case "US Tech 100":
-                first_element = d.find_elements(*US_TECH_100_LOCATOR)
-            case "NVIDIA Corp":
-                first_element = d.find_elements(*NVIDIA_CORP_LOCATOR)
+            case "EUR/USD":
+                first_element = d.find_elements(*EUR_USD_LOCATOR)
             case "Gold":
                 first_element = d.find_elements(*GOLD_LOCATOR)
+            case "Natural Gas":
+                first_element = d.find_elements(*NATURAL_GAS_LOCATOR)
             case "Germany 40":
                 first_element = d.find_elements(*GERMANY_40_LOCATOR)
+            case "US Tech 100":
+                first_element = d.find_elements(*US_TECH_100_LOCATOR)
 
         if len(first_element) == 0:
-            Common().pytest_fail(f"Bug # ??? For Trading Instrument '{calc_instrument_1}' doesn't exist on production")
+            Common().pytest_fail(f"Bug # 104 For Trading Instrument '{calc_1_and_calc_2[0]}' doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(self.driver.find_element(*DROPDOWN_LIST_LOCATOR)) \
@@ -127,7 +125,7 @@ class TradingCalculatorCFDCalculatorPage(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => {calc_instrument_1} instrument clicked")
+        print(f"\n\n{datetime.now()}   => {calc_1_and_calc_2[0]} instrument clicked")
         print(f"{datetime.now()}   => Finished opening Dropdown list and choose FIRST trading instrument\n")
 
         # Start set minimum and maximum value of slider range bar
@@ -168,24 +166,22 @@ class TradingCalculatorCFDCalculatorPage(BasePage):
         # Start open Dropdown list and choose SECOND trading instrument
         print(f"{datetime.now()}   Start open Dropdown list and choose SECOND trading instrument =>")
         second_element = list()
-        match calc_instrument_2:
-            case "EUR/USD":
-                second_element = d.find_elements(*EUR_USD_LOCATOR)
+        match calc_1_and_calc_2[1]:
             case "GBP/USD":
                 second_element = d.find_elements(*GBP_USD_LOCATOR)
-            case "Natural Gas":
-                second_element = d.find_elements(*NATURAL_GAS_LOCATOR)
-            case "US Tech 100":
-                second_element = d.find_elements(*US_TECH_100_LOCATOR)
-            case "NVIDIA Corp":
-                second_element = d.find_elements(*NVIDIA_CORP_LOCATOR)
+            case "EUR/USD":
+                second_element = d.find_elements(*EUR_USD_LOCATOR)
             case "Gold":
                 second_element = d.find_elements(*GOLD_LOCATOR)
+            case "Natural Gas":
+                second_element = d.find_elements(*NATURAL_GAS_LOCATOR)
             case "Germany 40":
                 second_element = d.find_elements(*GERMANY_40_LOCATOR)
+            case "US Tech 100":
+                second_element = d.find_elements(*US_TECH_100_LOCATOR)
 
         if len(second_element) == 0:
-            Common().pytest_fail(f"Bug # ??? For Trading Instrument '{calc_instrument_2}' doesn't exist on production")
+            Common().pytest_fail(f"Bug # 104 For Trading Instrument '{calc_1_and_calc_2[1]}' doesn't exist on production")
 
         ActionChains(d) \
             .move_to_element(self.driver.find_element(*DROPDOWN_LIST_LOCATOR)) \
@@ -195,7 +191,7 @@ class TradingCalculatorCFDCalculatorPage(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => {calc_instrument_2} instrument clicked")
+        print(f"\n\n{datetime.now()}   => {calc_1_and_calc_2[1]} instrument clicked")
         print(f"{datetime.now()}   => Finished opening Dropdown list and choose SECOND trading instrument\n")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
