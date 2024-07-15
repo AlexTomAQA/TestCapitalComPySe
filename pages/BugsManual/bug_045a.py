@@ -134,7 +134,7 @@ class EmailFieldSignUpForm(BasePage):
         else:
             msg = "Problem with Authorisation"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # ???   {msg}")
+            Common().pytest_fail(f"Bug_045a   {msg}")
 
         return True
 

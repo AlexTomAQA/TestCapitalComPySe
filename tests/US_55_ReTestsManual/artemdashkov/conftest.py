@@ -55,6 +55,20 @@ def cur_language_and_query(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param
 
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        ("GBP/USD", "EUR/USD"),
+        ("EUR/USD", "GBP/USD"),
+        ("Gold", "Natural Gas"),
+        ("Natural Gas", "Gold"),
+        ("Germany 40", "US Tech 100"),
+        ("US Tech 100", "Germany 40")
+    ], 1),
+)
+def calc_1_and_calc_2(request):
+    print(f"\n\n\nCurrent language - {request.param}")
+    return request.param
 
 @pytest.fixture(
     scope="function",
