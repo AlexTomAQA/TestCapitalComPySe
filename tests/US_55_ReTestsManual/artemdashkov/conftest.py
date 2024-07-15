@@ -35,6 +35,30 @@ def cur_language_3_rnd_from_14(request):
 @pytest.fixture(
     scope="function",
     params=random.sample([
+        ("", "bank"),
+        ("ar", "بنك"),
+        ("de", "bank"),
+        ("es", "banco"),
+        ("it", "banca"),
+        ("ru", "банк"),
+        ("cn", "银行"),
+        ("zh", "銀行"),
+        ("fr", "banque"),
+        ("pl", "bank"),
+        ("ro", "bancă"),
+        ("nl", "bank"),
+        ("el", "τράπεζα"),
+        ("hu", "bank")
+    ], 3),
+)
+def cur_language_and_query(request):
+    print(f"\n\n\nCurrent language - {request.param}")
+    return request.param
+
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
         "",
         "ar",
         "de",
