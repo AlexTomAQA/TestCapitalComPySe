@@ -6,18 +6,16 @@
 
 import allure
 import pytest
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from pages.common import Common
 from datetime import datetime
-from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
+from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
-from pages.Elements.WhyChooseBlockTryNowButtonInContent import WhyChooseBlockTryNowButtonInContent
+from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
 from pages.Elements.PageInstrumentLongPositionGoToPlatformButton import PageInstrumentLongPositionGoToPlatformButton
 from pages.Elements.PageInstrumentShortPositionGoToPlatformButton import PageInstrumentShortPositionGoToPlatformButton
-from pages.Elements.EmailFieldSignUpForm import EmailFieldSignUpForm
-from pages.BugsManual.bug_058 import WhatIsYourSentimentWidget
-from pages.BugsManual.bug_077 import TradingCalculatorCFDCalculatorPage
+from pages.BugsManual.bug_045a import EmailFieldSignUpForm
+from pages.BugsManual.bug_074 import WhatIsYourSentimentWidget
+from pages.BugsManual.bug_104 import TradingCalculatorCFDCalculatorPage
+from pages.BugsManual.bug_171 import BUG_171
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -31,9 +29,9 @@ class TestManualDetected:
 
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_011a
+    @pytest.mark.bug_016a
     @allure.step("Start test of button [Add to favourite] on the 'Trading Instrument Page'")
-    def test_011a_add_to_favourite_button_on_trading_instrument_page(
+    def test_016a_add_to_favourite_button_on_trading_instrument_page(
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
@@ -46,7 +44,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "011a",
+            "016a",
             "The trading platform is opened, "
             "not the page of the corresponding trading instrument on the trading platform",
             False, False
@@ -77,8 +75,8 @@ class TestManualDetected:
     @allure.step("Start test of button [Go to platform] on tooltip 'Long position overnight fee'")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_011b
-    def test_011b_add_to_favourite_button_on_tooltip_long_position_overnight_fee(
+    @pytest.mark.bug_016b
+    def test_016b_add_to_favourite_button_on_tooltip_long_position_overnight_fee(
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
@@ -91,7 +89,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "011b",
+            "016b",
             "The trading platform is opened, "
             "not the page of the corresponding trading instrument on the trading platform",
             False, False
@@ -125,8 +123,8 @@ class TestManualDetected:
     @allure.step("Start test of button [Go to platform] on tooltip 'Short position overnight fee'")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_011c
-    def test_011c_add_to_favourite_button_on_tooltip_short_position_overnight_fee(
+    @pytest.mark.bug_016c
+    def test_016c_add_to_favourite_button_on_tooltip_short_position_overnight_fee(
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, cur_market_2_rnd_from_5):
         """
@@ -140,7 +138,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "011c",
+            "016c",
             "The trading platform is opened, "
             "not the page of the corresponding trading instrument on the trading platform",
             False, False
@@ -174,8 +172,8 @@ class TestManualDetected:
     @allure.step("Start test of button [Try now] on the block 'Why choose Capital.com?'")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_012
-    def test_012_try_now_button_on_why_choose_capital_com_block(
+    @pytest.mark.bug_017
+    def test_017_try_now_button_on_why_choose_capital_com_block(
             self, worker_id, d, cur_language_3_rnd_from_12, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  Sign up/log in/forms or the transition to the trading platform are
@@ -189,7 +187,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_12, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "012",
+            "017",
             "Sign up/log in/forms or the transition to the trading platform are not opened "
             "after clicking the [Try now] button in 'Why choose Capital.com?..' Block "
             "in the menu item [Our Mobile Apps]",
@@ -212,8 +210,8 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_024
-    def test_024_learn_more_about_us_link_on_contents_block(
+    @pytest.mark.bug_031
+    def test_031_learn_more_about_us_link_on_contents_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  [Learn more about us] anchor doesn't navigate to the "Learn more about us"
@@ -226,7 +224,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "024",
+            "031",
             "Testing link [Learn more about us] on the block 'Contents'",
             False, True
         )
@@ -248,8 +246,8 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg", "NoAuth"])
     @pytest.mark.parametrize('invalid_login', ['КИРИЛЛИЦА_без_пробелов@gmail.com', 'LATIN with space@gmail.com'])
     @pytest.mark.parametrize('valid_password', ['VALID_password44!VALID_password44!VALID_password44!'])
-    @pytest.mark.test_036a
-    def test_036a_email_field_sign_up_form(
+    @pytest.mark.bug_045a
+    def test_045a_email_field_sign_up_form(
             self, worker_id, d, cur_language_3_rnd_from_14, cur_country, cur_role,
             cur_login, cur_password, invalid_login, valid_password):
         """
@@ -265,7 +263,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_3_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "036a",
+            "045a",
             "Testing field [email] in Sign up form",
             False, False
         )
@@ -283,8 +281,8 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_058
-    def test_058_voted_function_in_sentiment_block(
+    @pytest.mark.bug_074
+    def test_074_voted_function_in_sentiment_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  Not possible to vote for another trading instrument
@@ -298,7 +296,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "058",
+            "074",
             "Not possible to vote for another trading instrument "
             "in the block 'What is your sentiment...' if on another page voted for another instrument",
             False, False
@@ -325,39 +323,34 @@ class TestManualDetected:
 
     @allure.step("Start test of 'Trading calculator' widget in menu [CFD calculator]")
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['de'])   # ('cur_country', ['de', 'au', 'ua'])
-    @pytest.mark.parametrize('cur_role', ["NoReg"])   # ('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('calc_instrument_1', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
-                                                   "Gold", "Germany 40"])
-    @pytest.mark.parametrize('calc_instrument_2', ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
-                                                   "Gold", "Germany 40"])
-    @pytest.mark.test_077
-    def test_077_trading_calculator_collapse_after_setting_duration(
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_104
+    def test_104_trading_calculator_collapse_after_setting_duration(
             self, worker_id, d, cur_language, cur_country, cur_role,
-            cur_login, cur_password, calc_instrument_1, calc_instrument_2):
+            cur_login, cur_password, calc_1_and_calc_2):
         """
         Check: The trading calculator is collapsed in the menu section [Markets] --> [CFD calculator]
         after setting the maximum duration on the Prof/Loss element and changing the asset
         Language: En.
         Country: CYSEC, ASIC, SCB
         Role: NoReg, Auth, NoAuth,
-        Calc_instrument_1: ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
-                                                   "Gold", "Germany 40"],
-        Calc_instrument_2: ["EUR/USD", "GBP/USD", "Natural Gas", "US Tech 100", "NVIDIA Corp",
-                                                   "Gold", "Germany 40"]
+        calc_1_and_calc_2:  ("GBP/USD", "EUR/USD"),
+                            ("EUR/USD", "GBP/USD"),
+                            ("Gold", "Natural Gas"),
+                            ("Natural Gas", "Gold"),
+                            ("Germany 40", "US Tech 100"),
+                            ("US Tech 100", "Germany 40")
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "077",
+            "104",
             "Testing 'Trading calculator' widget in menu [CFD calculator]",
             False, False
         )
-        # pytest.skip("Промежуточная версия")
-        if calc_instrument_1 == calc_instrument_2:
-            pytest.skip("calc_instrument_1 = calc_instrument_2")
 
         # Arrange
         page_conditions = Conditions(d, "")
@@ -371,7 +364,50 @@ class TestManualDetected:
         test_element.arrange(d)
 
         # Act
-        test_element.act(d, calc_instrument_1, calc_instrument_2)
+        test_element.act(d, calc_1_and_calc_2)
 
         # Assert
         test_element.assert_(d)
+
+    @allure.step("Start test of the Search field [How can we help?] in menu [Help & Support]")
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_171
+    def test_171_search_field_does_not_search_in_help_and_support_menu(
+            self, worker_id, d, cur_language_and_query, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The search field [How can we help?] on the menu title [Help & Support]
+                of the section menu "More" isn't searched when any language is selected
+        Language: All (except ar).
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth,
+        Search_query: cur_search_query_2_rnd_from_10
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_and_query[0], cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "171",
+            "Testing Search field [How can we help?] in menu [Help & Support]",
+            False, False
+        )
+        # pytest.skip("Промежуточная версия")
+
+        # Arrange
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language_and_query[0], cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_more_menu_help_and_support_submenu(d, cur_language_and_query[0], cur_country, cur_item_link)
+
+        test_element = BUG_171(d, cur_item_link, bid)
+        test_element.arrange(d)
+
+        # Act
+        test_element.act(d, cur_language_and_query[1])
+
+        # Assert
+        test_element.assert_(d, cur_item_link)

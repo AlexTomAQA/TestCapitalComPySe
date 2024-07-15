@@ -35,6 +35,44 @@ def cur_language_3_rnd_from_14(request):
 @pytest.fixture(
     scope="function",
     params=random.sample([
+        ("", "bank"),
+        ("ar", "بنك"),
+        ("de", "bank"),
+        ("es", "banco"),
+        ("it", "banca"),
+        ("ru", "банк"),
+        ("cn", "银行"),
+        ("zh", "銀行"),
+        ("fr", "banque"),
+        ("pl", "bank"),
+        ("ro", "bancă"),
+        ("nl", "bank"),
+        ("el", "τράπεζα"),
+        ("hu", "bank")
+    ], 3),
+)
+def cur_language_and_query(request):
+    print(f"\n\n\nCurrent language - {request.param}")
+    return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        ("GBP/USD", "EUR/USD"),
+        ("EUR/USD", "GBP/USD"),
+        ("Gold", "Natural Gas"),
+        ("Natural Gas", "Gold"),
+        ("Germany 40", "US Tech 100"),
+        ("US Tech 100", "Germany 40")
+    ], 1),
+)
+def calc_1_and_calc_2(request):
+    print(f"\n\n\nCurrent language - {request.param}")
+    return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
         "",
         "ar",
         "de",
@@ -65,6 +103,26 @@ def cur_language_3_rnd_from_12(request):
     ], 2)
 )
 def cur_market_2_rnd_from_5(request):
+    """Markets sorting parameters"""
+    print(f"\n\n\nCurrent market - {request.param}")
+    return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        "bitcoin",
+        "bank",
+        "trader",
+        "USD",
+        "Still looking for a broker you can trust",
+        "+49 3046690292",
+        "contact",
+        "capital.com",
+        " ",
+        "#$%^*()_%"
+    ], 2)
+)
+def cur_search_query_2_rnd_from_10(request):
     """Markets sorting parameters"""
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param

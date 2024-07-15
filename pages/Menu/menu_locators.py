@@ -1313,6 +1313,55 @@ class MenuUS0106MarketsCryptocurrencies:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/live-cryptocurrency-prices']")
 
 
+class MenuUS03More:
+    MENU_MORE_EN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/about-us']")
+    MENU_MORE_AR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ar/hwl1']")
+    MENU_MORE_DE_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/de/kontakt']")
+    MENU_MORE_EL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/el/sxetika-me-mas']")
+    MENU_MORE_ES_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/es/sobre-nosotros']")
+    MENU_MORE_FR_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/fr/a-propos-de-nous']")
+    MENU_MORE_IT_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/it/perche-capital-com']")
+    MENU_MORE_HU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/hu/rolunk']")
+    MENU_MORE_NL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/nl/waarom-capital-com']")
+    MENU_MORE_PL_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/pl/o-nas']")
+    MENU_MORE_RO_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ro/despre-noi']")
+    MENU_MORE_RU_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/ru/o-nas']")
+    MENU_MORE_ZH_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/zh/about-us']")
+    MENU_MORE_CN_BUTTON = (
+        By.CSS_SELECTOR,
+        ".cc-header .cc-nav__item > a[href='https://capital.com/cn/about-us']")
+
+
+class MenuUS0302HelpAndSupport:
+    SUB_MENU_MARKET_HELP_AND_SUPPORT = (By.CSS_SELECTOR, '[data-type="nav_id18"]')
+
+
 class MenuUS55WaysToTrade:
 
     # ways to trade

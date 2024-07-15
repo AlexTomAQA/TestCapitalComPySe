@@ -147,7 +147,7 @@ class TestManualDetectedBugs:
         """
          Check: The Trading Guides page is not opened after clicking the link [Handelsleitfäden] (trading guides)
          on the page [Demo-Konto] (Demo Account) in DE lang
-         Language: CN.
+         Language: DE.
          License: ASIC, CYSEC, SCB.
          Author: Sergey Aiidzhanov
          """

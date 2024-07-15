@@ -44,7 +44,8 @@ from pages.Menu.menu_locators import (
     MenuUS0106MarketsCryptocurrencies, MenuUS0107MarketsESG, MenuUS0109MarketsCFDCalculator, MenuUS55WaysToTrade,
     MenuUS02NewsAndAnalysis,
     MenuUS0201MarketAnalysis,
-    MenuUS11MarketAnalysis, MenuProductsAndServicesDemoAccount
+    MenuUS11MarketAnalysis, MenuProductsAndServicesDemoAccount,
+    MenuUS03More, MenuUS0302HelpAndSupport
 )
 
 from pages.base_page import BasePage
@@ -1605,6 +1606,105 @@ class MenuSection(BasePage):
             .click() \
             .perform()
         print(f"\n\n{datetime.now()} => Market guides menu item clicked")
+
+        del sub_menu
+        return d.current_url
+
+    @allure.step('Select "More" menu, "Help & Support" submenu')
+    def open_more_menu_help_and_support_submenu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "More" menu, "Help & Support" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_more_menu(d, cur_language, cur_country)
+        self.sub_menu_help_and_support_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus moved to 'More' menu")
+    def move_focus_to_more_menu(self, d, test_language, test_country):
+        more_menu_locator = None
+        match test_language:
+            case "":
+                more_menu_locator = MenuUS03More.MENU_MORE_EN_BUTTON
+            case "ar":
+                more_menu_locator = MenuUS03More.MENU_MORE_AR_BUTTON
+            case "de":
+                more_menu_locator = MenuUS03More.MENU_MORE_DE_BUTTON
+            case "el":
+                more_menu_locator = MenuUS03More.MENU_MORE_EL_BUTTON
+            case "es":
+                more_menu_locator = MenuUS03More.MENU_MORE_ES_BUTTON
+            case "fr":
+                more_menu_locator = MenuUS03More.MENU_MORE_FR_BUTTON
+            case "it":
+                more_menu_locator = MenuUS03More.MENU_MORE_IT_BUTTON
+            case "hu":
+                more_menu_locator = MenuUS03More.MENU_MORE_HU_BUTTON
+            case "nl":
+                more_menu_locator = MenuUS03More.MENU_MORE_NL_BUTTON
+            case "pl":
+                more_menu_locator = MenuUS03More.MENU_MORE_PL_BUTTON
+            case "ro":
+                more_menu_locator = MenuUS03More.MENU_MORE_RO_BUTTON
+            case "ru":
+                more_menu_locator = MenuUS03More.MENU_MORE_RU_BUTTON
+            case "zh":
+                more_menu_locator = MenuUS03More.MENU_MORE_ZH_BUTTON
+            case "cn":
+                more_menu_locator = MenuUS03More.MENU_MORE_CN_BUTTON
+
+        time.sleep(0.5)
+        menu = d.find_elements(*more_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'More' menu not present")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail(f"Bug № ??? 'More' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'More' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(more_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'More' menu not visible")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail("Problem. 'More' menu not visible")
+        print(f"{datetime.now()}   => 'More' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*more_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'More' menu")
+        del menu
+        del element
+
+    @allure.step("Focus move to 'Help and Support' submenu item and click")
+    def sub_menu_help_and_support_move_focus_click(self, d, test_language):
+        sub_menu = d.find_elements(*MenuUS0302HelpAndSupport.SUB_MENU_MARKET_HELP_AND_SUPPORT)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"Menu > Help and Support\" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Help and Support' sub-menu clicked")
 
         del sub_menu
         return d.current_url
