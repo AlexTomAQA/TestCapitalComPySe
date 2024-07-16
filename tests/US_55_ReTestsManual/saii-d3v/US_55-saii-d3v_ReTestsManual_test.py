@@ -294,7 +294,7 @@ class TestManualDetectedBugs:
     @allure.step("Start retest manual TC_55!160 The Search field in the header is not opened after performed search")
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.test_160
+    @pytest.mark.bug_160
     def test_160(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                  cur_login, cur_password, random_search_string):
         """
