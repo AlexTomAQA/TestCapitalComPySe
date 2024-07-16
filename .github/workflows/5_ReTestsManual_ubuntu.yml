@@ -62,11 +62,6 @@ jobs:
         if: always()
         run: poetry run python3 tests/hwinfo.py
 
-      - name: 8. Run US_55_ReTestsManual (Касила)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
-        continue-on-error: true
-
       - name: 8. Run US_55_ReTestsManual (Саша)
         if: always()
         run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
@@ -77,21 +72,26 @@ jobs:
         run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
         continue-on-error: true
 
-      - name: 8. Run US_55_ReTestsManual (Мила)
-        if: always()
-        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/mila_podchasova/US_55-mila_podchasova_ReTestsManual_test.py
-        continue-on-error: true
-
-      - name: 8. Run US_55_ReTestsManual (Иван)
-        if: always()
-        run: poetry run pytest -v tests/US_55_ReTestsManual/ikedrov/US_55_ikedrov_ReTestsManual.py
-        continue-on-error: true
-
       - name: 8. Run US_55_ReTestsManual (Сергей А.)
         if: always()
         run: poetry run pytest -v tests/US_55_ReTestsManual/saii-d3v/US_55-saii-d3v_ReTestsManual_test.py
         continue-on-error: true
 
+      - name: 8. Run US_55_ReTestsManual (Касила)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
+        continue-on-error: true
+
+      - name: 8. Run US_55_ReTestsManual (Мила)
+        if: always()
+        run: poetry run pytest --no-summary -v tests/US_55_ReTestsManual/mila_podchasova/US_55-mila_podchasova_ReTestsManual_test.py
+        continue-on-error: true
+
+#      - name: 8. Run US_55_ReTestsManual (Иван)
+#        if: always()
+#        run: poetry run pytest -v tests/US_55_ReTestsManual/ikedrov/US_55_ikedrov_ReTestsManual.py
+#        continue-on-error: true
+#
       - name: 9. Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
