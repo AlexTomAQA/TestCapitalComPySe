@@ -19,6 +19,9 @@ class TopBarLocators:
     LOGO = (By.CSS_SELECTOR, "logo a.logo object[data='./assets/pic/text-logo-capital.svg']")
     MODE_DEMO = (By.CSS_SELECTOR, "topbar .account__mode_demo")
     MODE_LIVE = (By.CSS_SELECTOR, "topbar .account__mode_live")
+    DEMO_MODE = (By.CSS_SELECTOR, "topbar account-info > menu-button > div.title")
+    DEMO_MODE_ICON_SQUARE = (By.CSS_SELECTOR, "topbar  account-info > menu-button > em.icon-square")
+    DEMO_MODE_BUTTON_SWITCH_TO_LIVE = (By.CSS_SELECTOR, "topbar .account-popup button[data-qa='switch-to-live']")
 
 
 class TradingInstruments:

@@ -73,7 +73,7 @@ class TradingPlatform(BasePage):
                 assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
         else:
             assert False, \
-                ('Bug#069. '
+                ('Bug#090. '
                  'Expected result:The trading platform page is opened in (demo mode) '
                  '\n'
                  'Actual result: The trading platform page is opened in (live mode)')

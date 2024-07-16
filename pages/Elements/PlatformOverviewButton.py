@@ -3,7 +3,7 @@
 @Time    : 2024/06/18 10:20
 @Author  : podchasova11
 """
-from pages.BugsManual.bug_029 import WebTradingPlatformPage
+from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from src.src import CapitalComPageSrc, InvestmateApp
 
 from datetime import datetime
@@ -123,7 +123,7 @@ class PlatformOverviewButton(BasePage):
             print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => {BUTTON_NAME} button NOT CLICKED"
-                  'Bug#029. '
+                  'Bug#038. '
                   'Expected result:The Desktop Trading page is opened '
                   '\n'
                   'Actual result: The Home page is opened ')

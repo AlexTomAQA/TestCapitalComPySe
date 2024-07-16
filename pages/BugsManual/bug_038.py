@@ -41,7 +41,7 @@ class WebTradingPlatformPage(BasePage):
         else:
             print(f"{datetime.now()}   => Page 'Web trading platform' not opened")
 
-        assert False, ("Bug#029."
+        assert False, ("Bug#038."
                        "Expected result:The Desktop Trading page is opened"
                        "\n"
                        "Actual result: The Home page is opened")
