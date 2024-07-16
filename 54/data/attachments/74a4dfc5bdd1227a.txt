@@ -1,0 +1,88 @@
+
+
+
+Current language - it
+{'width': 1280, 'height': 800}
+
+2024-07-16 18:11:42.665770   worker_id = master
+
+2024-07-16 18:11:42.665785   0. Allure grouping for US_55
+
+2024-07-16 18:11:42.665971   START PRECONDITIONS =>
+
+2024-07-16 18:11:42.665987   => URL after prev. preconditions - https://capital.com/it
+2024-07-16 18:11:42.665996   => flag_of_bug - True
+2024-07-16 18:11:42.666007   => Current URL - https://capital.com/it/perche-capital
+2024-07-16 18:11:42.671630   Current page URL = https://capital.com/it/perche-capital
+2024-07-16 18:11:42.674285   self.link = https://capital.com/it
+2024-07-16 18:11:42.674300   driver.get(https://capital.com/it) =>
+2024-07-16 18:11:44.922027   => Loaded page https://capital.com/it
+
+2024-07-16 18:11:44.927128   => Windows size: {'width': 1280, 'height': 800}
+2024-07-16 18:11:44.933386   Set windows position at (0, 0) =>
+2024-07-16 18:11:44.935275   Set resolution 1280 * 800 =>
+2024-07-16 18:11:44.937106   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-16 18:11:45.984118   Капчи нет. Идем дальше
+
+2024-07-16 18:11:45.984237   Работа с куками =>
+
+2024-07-16 18:11:45.984262   => не требуется
+
+2024-07-16 18:11:47.027446   Капчи нет. Идем дальше
+
+2024-07-16 18:11:47.027536   Prev. country - 'es'
+2024-07-16 18:11:47.027550   Cur. country - 'ua'
+2024-07-16 18:11:47.027587   Set 'ua' country =>
+2024-07-16 18:11:47.040902   => Language and Country menu is present
+2024-07-16 18:11:47.053721   => Language and Country menu is visible
+2024-07-16 18:11:48.327729   => Focus is moved on Language and Country menu 
+2024-07-16 18:11:51.345274   => Cur url = https://capital.com/it?country=ua
+2024-07-16 18:11:51.352837   => Country set to 'ua'
+
+2024-07-16 18:11:52.360086   Капчи нет. Идем дальше
+
+2024-07-16 18:11:52.360180   Prev. language - 'it'
+2024-07-16 18:11:52.360194   Cur. language - 'it'
+2024-07-16 18:11:52.360204   => Language is set to 'it'
+
+2024-07-16 18:11:53.394603   Капчи нет. Идем дальше
+
+2024-07-16 18:11:53.394694   Prev. role - 'Auth'
+2024-07-16 18:11:53.394708   Cur. role - 'Auth'
+2024-07-16 18:11:53.394718   => The 'Auth' role is set
+
+2024-07-16 18:11:53.397568   => Current URL - https://capital.com/it?country=ua
+
+2024-07-16 18:11:53.397591   => THE END PRECONDITIONS
+
+2024-07-16 18:11:53.397783   START Open "Markets" menu, "Shares" submenu =>
+2024-07-16 18:11:53.397798   1. Cur URL = https://capital.com/it?country=ua
+2024-07-16 18:11:53.400369   2. Link = https://capital.com/it?country=ua
+2024-07-16 18:11:53.400385   current_page = https://capital.com/it?country=ua
+2024-07-16 18:11:53.402909   link = https://capital.com/it?country=ua
+2024-07-16 18:11:53.918563   => 'Markets' menu is present
+2024-07-16 18:11:53.940479   => 'Markets' menu is visible
+2024-07-16 18:11:55.223347   => Focus moved to 'Markets' menu
+2024-07-16 18:11:57.143187   => Focus moved to 'Shares' submenu and clicked
+2024-07-16 18:11:57.434280   => Focus moved to 'capital*com' logo
+2024-07-16 18:11:57.434324   3. Cur URL = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+
+2024-07-16 18:11:57.440300   1. Arrange_v0
+2024-07-16 18:11:57.440328   current_page = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+2024-07-16 18:11:57.442822   link = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+2024-07-16 18:11:57.445262   Scroll to the labels
+2024-07-16 18:11:57.456803   Close the filters if selected
+2024-07-16 18:11:58.510468   Select region filters
+2024-07-16 18:12:00.134646   Select sectors filters
+2024-07-16 18:12:02.199300   Scroll to selected filters
+2024-07-16 18:12:02.202684   Check the labels of the selected filters
+2024-07-16 18:12:02.720456   Extract the text attribute from the labels of the selected filters
+
+2024-07-16 18:12:02.754801   2. Act
+2024-07-16 18:12:02.754828   Select a random item sort
+2024-07-16 18:12:04.910010   Sort - I migliori rialzi - is selected
+
+2024-07-16 18:12:04.910296   3. Assert_v0
+2024-07-16 18:12:05.015170   Expected result: applied filters 'Region/Sectors' ['Giappone', 'Olanda', 'Svezia', 'Energia', 'Beni di consumo e servizi non ciclici']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Giappone', 'Olanda', 'Svezia']

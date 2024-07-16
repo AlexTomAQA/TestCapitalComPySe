@@ -1,0 +1,88 @@
+
+
+
+Current language - it
+{'width': 1280, 'height': 800}
+
+2024-07-16 18:12:05.192737   worker_id = master
+
+2024-07-16 18:12:05.192751   0. Allure grouping for US_55
+
+2024-07-16 18:12:05.192928   START PRECONDITIONS =>
+
+2024-07-16 18:12:05.192943   => URL after prev. preconditions - https://capital.com/it?country=ua
+2024-07-16 18:12:05.192953   => flag_of_bug - True
+2024-07-16 18:12:05.192964   => Current URL - https://capital.com/it/prezzi-delle-azioni-in-tempo-reale?t=risers
+2024-07-16 18:12:05.197978   Current page URL = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale?t=risers
+2024-07-16 18:12:05.200375   self.link = https://capital.com/it?country=ua
+2024-07-16 18:12:05.200389   driver.get(https://capital.com/it?country=ua) =>
+2024-07-16 18:12:07.296052   => Loaded page https://capital.com/it?country=ua
+
+2024-07-16 18:12:07.300475   => Windows size: {'width': 1280, 'height': 800}
+2024-07-16 18:12:07.302254   Set windows position at (0, 0) =>
+2024-07-16 18:12:07.306706   Set resolution 1280 * 800 =>
+2024-07-16 18:12:07.308706   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-16 18:12:08.351460   Капчи нет. Идем дальше
+
+2024-07-16 18:12:08.351547   Работа с куками =>
+
+2024-07-16 18:12:08.351591   => не требуется
+
+2024-07-16 18:12:09.375273   Капчи нет. Идем дальше
+
+2024-07-16 18:12:09.375353   Prev. country - 'ua'
+2024-07-16 18:12:09.375366   Cur. country - 'au'
+2024-07-16 18:12:09.375375   Set 'au' country =>
+2024-07-16 18:12:09.385569   => Language and Country menu is present
+2024-07-16 18:12:09.399203   => Language and Country menu is visible
+2024-07-16 18:12:10.676371   => Focus is moved on Language and Country menu 
+2024-07-16 18:12:13.853539   => Cur url = https://capital.com/it?country=au
+2024-07-16 18:12:13.863952   => Country set to 'au'
+
+2024-07-16 18:12:14.905918   Капчи нет. Идем дальше
+
+2024-07-16 18:12:14.906000   Prev. language - 'it'
+2024-07-16 18:12:14.906014   Cur. language - 'it'
+2024-07-16 18:12:14.906023   => Language is set to 'it'
+
+2024-07-16 18:12:15.931759   Капчи нет. Идем дальше
+
+2024-07-16 18:12:15.931842   Prev. role - 'Auth'
+2024-07-16 18:12:15.931855   Cur. role - 'Auth'
+2024-07-16 18:12:15.931864   => The 'Auth' role is set
+
+2024-07-16 18:12:15.934559   => Current URL - https://capital.com/it?country=au
+
+2024-07-16 18:12:15.934579   => THE END PRECONDITIONS
+
+2024-07-16 18:12:15.934751   START Open "Markets" menu, "Shares" submenu =>
+2024-07-16 18:12:15.934767   1. Cur URL = https://capital.com/it?country=au
+2024-07-16 18:12:15.937222   2. Link = https://capital.com/it?country=au
+2024-07-16 18:12:15.937238   current_page = https://capital.com/it?country=au
+2024-07-16 18:12:15.939682   link = https://capital.com/it?country=au
+2024-07-16 18:12:16.450949   => 'Markets' menu is present
+2024-07-16 18:12:16.469284   => 'Markets' menu is visible
+2024-07-16 18:12:17.738561   => Focus moved to 'Markets' menu
+2024-07-16 18:12:19.534808   => Focus moved to 'Shares' submenu and clicked
+2024-07-16 18:12:19.809258   => Focus moved to 'capital*com' logo
+2024-07-16 18:12:19.809293   3. Cur URL = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+
+2024-07-16 18:12:19.814522   1. Arrange_v0
+2024-07-16 18:12:19.814545   current_page = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+2024-07-16 18:12:19.816937   link = https://capital.com/it/prezzi-delle-azioni-in-tempo-reale
+2024-07-16 18:12:19.819355   Scroll to the labels
+2024-07-16 18:12:19.828732   Close the filters if selected
+2024-07-16 18:12:20.033227   Select region filters
+2024-07-16 18:12:21.643309   Select sectors filters
+2024-07-16 18:12:23.714991   Scroll to selected filters
+2024-07-16 18:12:23.718438   Check the labels of the selected filters
+2024-07-16 18:12:24.235116   Extract the text attribute from the labels of the selected filters
+
+2024-07-16 18:12:24.270481   2. Act
+2024-07-16 18:12:24.270516   Select a random item sort
+2024-07-16 18:12:26.401572   Sort - I migliori rialzi - is selected
+
+2024-07-16 18:12:26.401866   3. Assert_v0
+2024-07-16 18:12:26.512092   Expected result: applied filters 'Region/Sectors' ['Francia', 'Gran Bretagna', 'Spagna', 'Beni di consumo e servizi ciclici', 'ETF']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Francia', 'Gran Bretagna', 'Spagna']
