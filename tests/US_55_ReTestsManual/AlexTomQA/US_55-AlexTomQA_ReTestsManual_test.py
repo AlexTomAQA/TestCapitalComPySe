@@ -11,6 +11,7 @@ import allure
 from selenium.common.exceptions import ElementClickInterceptedException
 
 from pages.base_page import BasePage
+from pages.conditions import Conditions
 from pages.common import Common
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -19,6 +20,7 @@ from pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
 from src.src import CapitalComPageSrc
 from pages.Elements.testing_elements_locators import ContentBlockLocators
+from pages.Elements.GooglePlayButtonCFDTradinAppBlock import GooglePlayButtonOnCFDTradingAppBlock
 # from pages.Elements.ContentsBlockLearnMoreAboutUsLink import ContentsBlockLearnMoreAboutUsLink
 
 BUTTON_NAME = '[Learn more about us]'
@@ -31,13 +33,14 @@ TITLE_LEARN_MORE_ABOUT_US_LOCATOR = ContentBlockLocators.TITLE_LEARN_MORE_ABOUT_
 
 @pytest.mark.us_55
 class TestManualDetected:
+    page_conditions = None
 
-    # @allure.step("Start test of _006")
+    # @allure.step("Start test of _011")
     # @pytest.mark.parametrize('cur_language', [""])
     # @pytest.mark.parametrize('cur_country', ["de"])
     # @pytest.mark.parametrize('cur_role', ["NoReg"])
-    # @pytest.mark.test_006
-    # def test_006(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    # @pytest.mark.bug_011
+    # def test_011(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
     #     """
     #     Check: Button [1. Create your account] in block [Steps trading]
     #     Language: All. License: All.
@@ -46,7 +49,7 @@ class TestManualDetected:
     #     bid = build_dynamic_arg_for_us_55(
     #         d, worker_id, cur_language, cur_country, cur_role,
     #         "55", "ReTests of Manual Detected Bugs",
-    #         "006", "There are no digital values of the product \"ECFZ24\""
+    #         "011", "There are no digital values of the product \"ECFZ24\""
     #     )
     #     pytest.skip("Autotest under construction")
     #
@@ -79,12 +82,12 @@ class TestManualDetected:
         # del test_element
         # del page_menu
 
-    @allure.step("Start test of _010")
+    @allure.step("Start test of _015")
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ["au"])
     @pytest.mark.parametrize('cur_role', ["NoAuth"])
-    @pytest.mark.test_010
-    def test_010(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_015a
+    def test_015a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         # Check: Button [1. Create your account] in block [Steps trading]
         # Language: All. License: All.
@@ -93,7 +96,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "010", "The page of the corresponding TI on the TP is not opened"
+            "015a", "The page of the corresponding TI on the TP is not opened"
         )
         pytest.skip("Autotest under construction")
 
@@ -171,6 +174,71 @@ class TestManualDetected:
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         del title, title_y, current_y, window_height
+
+    @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_029
+    def test_029_google_play_button_on_cfd_trading_app_block(
+            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Google Play] on the block CFD Trading app
+        Language: All.
+        License: Not FCA
+        Author  : Ivan Kedrov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "029",
+            "Testing button [Google Play] on the block 'CFD trading app'",
+            False, False
+        )
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
+            d, cur_language_qty_rnd_from_14, cur_country, link)
+
+        test_element = GooglePlayButtonOnCFDTradingAppBlock(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_item_link)
+
+    @allure.step("Start test of button [Create account] button in the Menu item [Trading Courses]")
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.bug_062
+    def test_062_create_account_button_in_the_nemu_item_trading_courses(
+            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Create account] button in the Menu item [Trading Courses]
+        Language: All.
+        License: Not FCA
+        Author  : Ivan Kedrov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "062",
+            "Testing button [Create account] button in the Menu item [Trading Courses]",
+            False, False
+        )
+        pytest.skip('Under construction')
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language_3_rnd_from_12, cur_country, cur_role, cur_login,
+        #     cur_password)
+        #
+        # menu = MenuSection(d, link)
+        # menu.menu_education_move_focus(d, cur_language_3_rnd_from_12, cur_country)
+        # cur_item_link = menu.sub_menu_trading_courses_move_focus_click(
+        #     d, cur_language_3_rnd_from_12, cur_country, link)
+
 
 
 class LocalObject(BasePage):
