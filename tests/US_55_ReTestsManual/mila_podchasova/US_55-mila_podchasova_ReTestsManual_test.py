@@ -8,9 +8,9 @@ import pytest
 import allure
 from datetime import datetime
 
-from pages.BugsManual.bug_034 import ProfessionalMenuCheckFooter
-from pages.BugsManual.bug_029 import WebTradingPlatformPage
-from pages.BugsManual.bug_069 import CreateARiskFreeDemoAccountButton
+from pages.BugsManual.bug_043 import ProfessionalMenuCheckFooter
+from pages.BugsManual.bug_038 import WebTradingPlatformPage
+from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -62,13 +62,13 @@ class TestManualDetectedBugs:
                                  "Actual result: The Home page is opened ")
         Common().save_current_screenshot(d, "AT_55!029 Pass")
 
-    @allure.step("Start retest manual TC_55!00_034 "
+    @allure.step("Start retest manual TC_55!00_043 "
                  "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_034
-    def test_034(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_043
+    def test_043(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
         1. Hover over the [Ways to trade] menu section
@@ -78,7 +78,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "034",
+            "043",
             "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"
         )
         # pytest.skip("Autotest under construction")
@@ -96,14 +96,14 @@ class TestManualDetectedBugs:
         menu = ProfessionalMenuCheckFooter(d, link, bid)
         menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
 
-    @allure.step("Start retest manual TC_55!00_069 "
+    @allure.step("Start retest manual TC_55!00_090 "
                  "The trading platform page is not opened "
                  "in [demo mode] after clicking on the [Create a risk-free demo account] button "
                  "on the 'Demo account' page")
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_069
-    def test_069(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_090
+    def test_090(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         The trading platform page is not opened in "Demo account" page
         after clicking on the [Create a risk-free demo account] button
@@ -115,7 +115,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "069",
+            "090",
             "The trading platform page is not opened "
             "in [demo mode] after clicking on the [Create a risk-free demo account] button"
             "on the 'Demo account' page"

@@ -34,7 +34,7 @@ class ProfessionalMenuCheckFooter(BasePage):
 
         footer = d.find_elements(*MenuUS55WaysToTrade.FOOTER_CAPITAL_LOGO)
         if len(footer) == 0:
-            pytest.fail("Bug # 034. The footer is missing after clicked menu item [Professional] "
+            pytest.fail("Bug # 043. The footer is missing after clicked menu item [Professional] "
                         "of the menu section [Ways to trade]")
 
         self.driver.execute_script(
@@ -48,7 +48,7 @@ class ProfessionalMenuCheckFooter(BasePage):
             print(f"{datetime.now()}   => CAPITAL.COM logo from footer is visible on the page")
         else:
             print(f"{datetime.now()}   => CAPITAL.COM logo from footer is not visible on the page")
-            pytest.fail("Bug # 034. The footer is missing after click menu item [Professional] "
+            pytest.fail("Bug # 043. The footer is missing after click menu item [Professional] "
                         "of the menu section [Ways to trade]")
 
 

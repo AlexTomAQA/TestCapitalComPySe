@@ -3,7 +3,7 @@
 @Time    : 2024/06/18 10:20
 @Author  : podchasova11
 """
-from pages.BugsManual.bug_029 import WebTradingPlatformPage
+from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from src.src import CapitalComPageSrc, InvestmateApp
 
 from datetime import datetime
