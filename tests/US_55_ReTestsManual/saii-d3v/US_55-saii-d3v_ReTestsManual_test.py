@@ -14,6 +14,7 @@ from pages.common import Common
 from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
+from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
@@ -22,6 +23,7 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
+from pages.Trading_platform.trading_platform import TradingPlatform
 from src.src import CapitalComPageSrc
 
 
@@ -85,7 +87,63 @@ class TestManualDetectedBugs:
         login_form.close_login_form()
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
-    @allure.step("Start retest manual TC_55!076 Login form is opened instead of Sign up form "
+    @allure.step("Start retest manual TC_55!054 The Sign-up/Login form or the trading platform page "
+                 "are not opened after clicking the [Try now] button on the 'Corporate Accounts' page")
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_054
+    def test_054(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The Sign-up/Login form or the trading platform page are not opened
+                after clicking the [Try now] button on the 'Corporate Accounts' page
+         Language: EN.
+         License: ASIC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "054",
+            "The Sign-up/Login form or the trading platform page are not opened "
+            "after clicking the [Try now] button on the 'Corporate Accounts' page"
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        page_header_menu = MenuSection(d, link)
+        corp_acc_page = CorporateAccountsPage(d, link, bid)
+        signup_login = SignupLogin(d, link, bid)
+        trading_platform = TradingPlatform(d, link, bid)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        corp_acc_page.click_corp_acc_menu_item()
+
+        # Act
+        corp_acc_page.click_try_now_btn()
+
+        # Assert
+        match cur_role:
+            case "NoAuth":
+                if not signup_login.should_be_signup_form(cur_language):
+                    Common().pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
+            case "NoReg":
+                if not signup_login.should_be_login_form():
+                    Common().pytest_fail("Bug # 55!054   The Login form is NOT displayed")
+            case "Auth":
+                if not trading_platform.should_be_trading_platform_page(d, link):
+                    Common().pytest_fail("Bug # 55!054   The Trading platform page is NOT displayed")
+        Common().save_current_screenshot(d, "AT_55!054 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        signup_login.close_signup_form()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step("Start retest manual TC_55!076 Login form is opened instead of Sign-up form "
                  "after clicking the button [Apply] in the Block 'Leverage Limits Professional Clients' "
                  "on page 'Professional Account'")
     @pytest.mark.parametrize('cur_country', ['de'])
@@ -93,7 +151,7 @@ class TestManualDetectedBugs:
     @pytest.mark.bug_076
     def test_076(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
-         Check: Login form is opened instead of Sign up form after clicking the button [Apply]
+         Check: Login form is opened instead of Sign-up form after clicking the button [Apply]
                 in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'
          Language: All, except EL.
          License: CYSEC.
@@ -103,7 +161,7 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "076",
-            "Login form is opened instead of Sign up form after clicking the button [Apply] "
+            "Login form is opened instead of Sign-up form after clicking the button [Apply] "
             "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'"
         )
 
@@ -128,7 +186,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   3. Assert')
         signup_form = SignupLogin(d, link, bid)
         if not signup_form.should_be_signup_form(cur_language_qty_rnd_from_14):
-            Common().pytest_fail("Bug # 55!076   The Signup form is NOT displayed")
+            Common().pytest_fail("Bug # 55!076   The Sign-up form is NOT displayed")
         Common().save_current_screenshot(d, "AT_55!076 Pass")
 
         # Postconditions

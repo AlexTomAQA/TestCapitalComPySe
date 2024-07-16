@@ -9,7 +9,6 @@ from datetime import datetime
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.Menu.menu import MenuSection
 
 PROF_ACC_SUBMENU_LOC = ("css selector", "a[data-type='nav_id89']")
 APPLY_BTN_LOC = ("css selector", ".button-main.btn-pro")
