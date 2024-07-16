@@ -25,13 +25,13 @@ from pages.conditions_new import NewConditions
 class TestManualDetectedBugs:
     page_conditions = None
 
-    @allure.step("Start retest manual TC_55!00_029 The Trading platform overview page not open when"
+    @allure.step("Start retest manual TC_55!00_038 The Trading platform overview page not open when"
                  " button [Platform overview] click on the 'Investmate app' page")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_029
-    def test_029(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_038
+    def test_038(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The Trading platform overview page does not open when
          the button [Platform overview] is pressed on the "Investmate app" page
@@ -41,7 +41,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "029", "The Trading platform overview page not open when"
+            "038", "The Trading platform overview page not open when"
                    " button [Platform overview] click on the 'Investmate app' page"
         )
 
@@ -100,7 +100,6 @@ class TestManualDetectedBugs:
                  "The trading platform page is not opened "
                  "in [demo mode] after clicking on the [Create a risk-free demo account] button "
                  "on the 'Demo account' page")
-    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.test_069
