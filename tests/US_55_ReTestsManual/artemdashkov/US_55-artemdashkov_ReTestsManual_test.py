@@ -16,6 +16,7 @@ from pages.BugsManual.bug_045a import EmailFieldSignUpForm
 from pages.BugsManual.bug_074 import WhatIsYourSentimentWidget
 from pages.BugsManual.bug_104 import TradingCalculatorCFDCalculatorPage
 from pages.BugsManual.bug_171 import BUG_171
+from pages.BugsManual.bug_129 import BUG_129
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -411,3 +412,47 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_item_link)
+
+    @allure.step("Start test of the link [Go to all cryptocurrencies] in menu [Cryptocurrency trading]")
+    @pytest.mark.parametrize('cur_language', ["ro", "it", "pl", "cn"])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_129
+    def test_129_link_go_to_all_cryptocurrencies_does_not_open_cfd_page(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The Main page is opened on the page "Cryptocurrency trading"
+                after clicking the button [Go to all cryptocurrencies]
+                when RO, IT, PL or CN language is selected
+        Language: RO, IT, PL, CN.
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth,
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "129",
+            "Testing button [Go to all cryptocurrencies] in menu [Cryptocurrency trading]",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+
+        # Arrange
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(d, cur_language, cur_country,
+                                                                          cur_item_link)
+
+        test_element = BUG_129(d, cur_item_link, bid)
+        test_element.arrange(d)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
