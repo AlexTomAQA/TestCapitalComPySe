@@ -123,7 +123,7 @@ class PlatformOverviewButton(BasePage):
             print(f"{datetime.now()}   => {BUTTON_NAME} button clicked!")
         except ElementClickInterceptedException:
             print(f"{datetime.now()}   => {BUTTON_NAME} button NOT CLICKED"
-                  'Bug#029. '
+                  'Bug#038. '
                   'Expected result:The Desktop Trading page is opened '
                   '\n'
                   'Actual result: The Home page is opened ')
