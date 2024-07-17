@@ -44,19 +44,22 @@ class TradingPlatform(BasePage):
     @allure.step("Checking that the trading platform page has opened")
     def should_be_trading_platform_page(self, d, link):
         """Check if the page is open"""
-        print(f"{datetime.now()}   Checking that the trading platform page has opened")
+        print(f"\n{datetime.now()}   Checking that the trading platform page has opened")
         if self.current_page_url_contain_the(link):
             page_ = TopBar(d, link)
             if page_.trading_platform_logo_is_present():
                 d.back()
                 del page_
-                assert True
+                return True
             else:
+                print(f'{datetime.now()}   The Trading Platform logo is missing on the current page')
                 # d.back()
                 del page_
-                assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
+                return False
         else:
-            assert False, f'Loaded page with not {link} url. Current url is {self.driver.current_url}'
+            print(f'{datetime.now()}   The loaded page URL does not contain {link}.')
+            print(f'{datetime.now()}   Current url is {self.driver.current_url}')
+            return False
 
     @allure.step("Checking that the trading platform page has opened")
     def should_be_trading_platform_page_v1(self, d, link):

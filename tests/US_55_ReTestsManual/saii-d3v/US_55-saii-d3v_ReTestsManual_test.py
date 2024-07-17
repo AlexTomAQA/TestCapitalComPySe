@@ -127,15 +127,15 @@ class TestManualDetectedBugs:
 
         # Assert
         match cur_role:
-            case "NoAuth":
-                if not signup_login.should_be_signup_form(cur_language):
-                    Common().pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
             case "NoReg":
                 if not signup_login.should_be_login_form():
                     Common().pytest_fail("Bug # 55!054   The Login form is NOT displayed")
+            case "NoAuth":
+                if not signup_login.should_be_signup_form(cur_language):
+                    Common().pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
             case "Auth":
                 if not trading_platform.should_be_trading_platform_page(d, link):
-                    Common().pytest_fail("Bug # 55!054   The Trading platform page is NOT displayed")
+                    Common().pytest_fail("Bug # 55!054   The Trading platform page is NOT opened")
         Common().save_current_screenshot(d, "AT_55!054 Pass")
 
         # Postconditions
