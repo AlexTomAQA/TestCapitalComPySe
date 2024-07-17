@@ -251,8 +251,7 @@ class AssertClass(BasePage):
         print(f"\n{datetime.now()}   3. Assert_v0")
         account_btn_link = d.current_url
         if account_btn_link == "https://capital.com/trading/platform/":
-            assert False, \
-                ('Bug#005. '
+            Common.pytest_fail('Bug#005. '
                  'Expected result: Menu "My account" is displayed'
                  '\n'
                  'Actual result: The trading platform page is opened')

@@ -88,4 +88,5 @@ class Sidebar(BasePage):
         except NoSuchElementException:
             self.driver.execute_script("window.scrollBy(0, 1000);")
             print(f"{datetime.now}   Sidebar is absent on the {sidebar_item} page")
-            Common.pytest_fail(f"#Bug # 55!061 Sidebar is absent on the {sidebar_item} page")
+            Common.pytest_fail(f"Bug#061 Expected result: Sidebar 'Crypto trading guide' is on this pages "
+                               f"Actual result: Sidebar 'Crypto trading guide' is absent on this pages")

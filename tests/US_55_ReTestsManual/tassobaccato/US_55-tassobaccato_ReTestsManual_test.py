@@ -26,7 +26,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.test_005
+    @pytest.mark.bug_005
     def test_005(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Button [My account] in the Header
@@ -36,7 +36,8 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "005", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header"
+            "005",
+            "The 'My Account' menu is not displayed when click on the [My Account] button in the Header"
         )
 
         Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
@@ -52,7 +53,7 @@ class TestManualDetectedBugs:
     @allure.step("Start retest manual AT_55!00_039 of filters application in the 'Live shares prices' widget")
     @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.test_039
+    @pytest.mark.bug_039
     def test_039(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
@@ -64,7 +65,8 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_2_rnd_from_14, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "039", "Applied filters 'Region/Sectors' are not displayed after selecting an item from the "
+            "039",
+            "Applied filters 'Region/Sectors' are not displayed after selecting an item from the "
                    "'Most traded' dropdown in the 'Live shares prices'  widget on the 'Shares' page"
             )
 
@@ -83,7 +85,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold', 'Cryptocurrencies vs. Stocks: What is the Difference?'])
-    @pytest.mark.test_061
+    @pytest.mark.bug_061
     def test_061(self, worker_id, d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password,
                  sidebar_item):
         """
@@ -97,7 +99,8 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_2_rnd_from_7, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "061", 'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
+            "061",
+            'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
                    'stocks: What’s the difference?"'
         )
 
