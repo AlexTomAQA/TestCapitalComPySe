@@ -88,7 +88,7 @@ class TradingPlatform(BasePage):
         """
         print(f"{datetime.now()}   Arrange =>")
         print(f"{datetime.now()}   Checking that the trading platform page has opened =>")
-        platform_url = data["PLATFORM_URL/"] PLATFORM_DEMO_URL
+        platform_url = data["PLATFORM_URL/"]
         cur_url = self.driver.current_url
         if self.wait_for_target_url(platform_url, 10):
 
