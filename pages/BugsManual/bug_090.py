@@ -6,6 +6,7 @@
 
 from datetime import datetime
 
+import time
 import allure
 from selenium.webdriver.common.by import By
 
@@ -15,6 +16,7 @@ from pages.common import Common
 from src.src import DemoTradingAccount
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+# "div.wrap > main > section.gridRTab.gLg > div > a.btn.btn"
 
 
 CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "div.wrap > main div > a[data-type='content_img_7_btn']")
@@ -25,29 +27,31 @@ class CreateARiskFreeDemoAccountButton(BasePage):
     global CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON
 
     def __init__(self, browser, link, bid):
-        self.search_btn = None
-
         super().__init__(browser, link, bid)
 
     def full_test(self, d, cur_language, cur_country, cur_role, link):
         self.arrange(d)
         self.element_click()
-        # self.assert()
+    #   self.assert()
 
         test_element = AssertClass(d, self.bid)
         match cur_role:
             case "Auth":
-                test_element.assert_trading_platform_demo_v1(d)
+                test_element.assert_trading_platform_demo_v1(d, link)
 
     def arrange(self, link):
-        print(f"\n{datetime.now()}   1. Arrange for CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON ")
+        print(f"\n{datetime.now()}   1. Arrange_v0 ")
 
         if not self.current_page_is(link):
             self.link = DemoTradingAccount.URL
+            time.sleep(3)
             self.open_page()
+            time.sleep(3)
 
         print(f"{datetime.now()}   Is CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON present on the page? =>")
+        time.sleep(3)
         button = self.driver.find_elements(*CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON)
+        time.sleep(3)
         if len(button) == 0:
             print(f"{datetime.now()}   => CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is not present on the page")
             Common().pytest_fail("CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is not present on the page")
@@ -67,7 +71,7 @@ class CreateARiskFreeDemoAccountButton(BasePage):
 
     @allure.step("Click CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON in the page ")
     def element_click(self):
-        print(f"{datetime.now()}   2. Act for CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON")
+        print(f"{datetime.now()}   2. Act_v0 ")
         print(f"{datetime.now()}   Start to click CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON =>")
 
         button = self.driver.find_elements(*CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON)
