@@ -7,6 +7,8 @@
 from datetime import datetime
 
 import allure
+import pytest
+
 # from selenium import webdriver
 # import pytest
 
@@ -61,25 +63,68 @@ class TradingPlatform(BasePage):
             print(f'{datetime.now()}   Current url is {self.driver.current_url}')
             return False
 
-    @allure.step("Checking that the trading platform page has opened")
-    def should_be_trading_platform_page_v1(self, d, link):
-        """Check if the page is open"""
-        print(f"{datetime.now()}   Checking that the trading platform page has opened")
-        if self.current_page_url_contain_the(link):
-            page_ = TopBar(d, link)
-            if page_.trading_platform_logo_is_present():
-                d.back()
-                del page_
-                assert True
+    # @allure.step("Checking that the trading platform page has opened")
+    # def should_be_trading_platform_page_v1(self, d, link):
+    #     """Check if the page is open"""
+    #     print(f"{datetime.now()}   Checking that the trading platform page has opened")
+    #     if self.current_page_url_contain_the(link):
+    #         page_ = TopBar(d, link)
+    #         if page_.trading_platform_logo_is_present():
+    #             d.back()
+    #             del page_
+    #             assert True
+    #         else:
+    #             del page_
+    #             assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
+    #     else:
+    #         assert False, \
+    #             ('Bug#090. '
+    #              'Expected result:The trading platform page is opened in (demo mode) '
+    #              '\n'
+    #              'Actual result: The trading platform page is opened in (live mode)')
+
+    @allure.step("Checking that the trading platform page has opened in demo-mode ")
+    def should_be_trading_platform_page_in_demo_mode_opened(self, d, link, tpd):
+        """
+        Check if the trading platform page in demo mode opened
+
+        """
+        print(f"{datetime.now()}   Arrange =>")
+        print(f"{datetime.now()}   Checking that the trading platform page has opened =>")
+        platform_url = data["PLATFORM_URL/"]
+        cur_url = self.driver.current_url
+        if self.wait_for_target_url(platform_url, 10):
+
+            self.should_be_page_title_v2(data["PAGE_TITLE"])
+            self.should_be_platform_logo()
+            print(f"\n{datetime.now()}  'Trading platform with title 'Trading Platform | Capital.com' has opened")
+            print(f"{datetime.now()}   Act =>")
+            print(f"\n{datetime.now()}   tpd = {tpd}")
+            if tpd:
+                self.should_be_platform_demo_mode_w(d, link, tpd)
+                print(f"{datetime.now()}   => The page with {self.driver.current_url} url was opened in DEMO mode")
             else:
-                del page_
-                assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
+                print(f"{datetime.now()}   => Loaded page {cur_url} with not {platform_url} url")
+                pytest.fail("Bug # 090. "
+                            "Expected result:The trading platform page is opened in (demo mode) "
+                            "\n"
+                            "Actual result: The trading platform page is opened in (live mode)")
+
+    @allure.step("Checking that trading platform opened in DEMO mode")
+    def should_be_platform_demo_mode_w(self, d, link):
+        """Check that Trading platform opened in Demo mode"""
+        allure.step(f"{datetime.now()}   Check if the trading platform opened in DEMO mode")
+
+        print(f"{datetime.now()}   Trading platform opened in DEMO mode? =>")
+        print(f"{datetime.now()}   Assert =>")
+        if not self.element_is_visible(TopBarLocators.DEMO_MODE, 10):
+            print(f"{datetime.now()}   => Trading platform is not opened in DEMO mode ")
+            pytest.fail("Bug # 090. "
+                        "Expected result:The trading platform page is opened in (demo mode) "
+                        "\n"
+                        "Actual result: The trading platform page is opened in (live mode)")
         else:
-            assert False, \
-                ('Bug#090. '
-                 'Expected result:The trading platform page is opened in (demo mode) '
-                 '\n'
-                 'Actual result: The trading platform page is opened in (live mode)')
+            print(f"{datetime.now()}   Trading platform opened in DEMO mode =>")
 
     @allure.step("Checking that the trading platform page has opened - ver 2")
     def should_be_trading_platform_page_v2(self, d, test_link, demo=False):
