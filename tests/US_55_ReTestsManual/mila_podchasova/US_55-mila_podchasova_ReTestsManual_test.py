@@ -56,11 +56,11 @@ class TestManualDetectedBugs:
 
         page = WebTradingPlatformPage(d, link, bid)
         if not page.should_be_web_trading_platform_page(d, link):
-            Common().pytest_fail(f"Bug#029. "
+            Common().pytest_fail(f"Bug#038. "
                                  "Expected result:The Desktop Trading page is opened "
                                  "\n"
                                  "Actual result: The Home page is opened ")
-        Common().save_current_screenshot(d, "AT_55!029 Pass")
+        Common().save_current_screenshot(d, "AT_55!038 Pass")
 
     @allure.step("Start retest manual TC_55!00_043 "
                  "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
@@ -126,10 +126,10 @@ class TestManualDetectedBugs:
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
+        # Arrange
         menu = MenuSection(d, link)
         link = menu.sub_menu_demo_account_move_focus_click(d, cur_language, cur_country, link)
-
+        # Act, Assert
         test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
