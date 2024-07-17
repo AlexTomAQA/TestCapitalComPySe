@@ -8,13 +8,14 @@ from datetime import datetime
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 
+from src.src import CapitalComPageSrc
 from pages.base_page import BasePage
 from pages.common import Common
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
 from pages.Signup_login.signup_login import SignupLogin
 
 BLOCK_NAME = "[Go to all cryptocurrencies] link"
-LINK_LOCATOR = (By.CSS_SELECTOR, 'data-type="wdg_go_to_market_deeplink"')
+LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_go_to_market_deeplink"]')
 
 
 class BUG_129(BasePage):
@@ -28,7 +29,7 @@ class BUG_129(BasePage):
         # Check presenting SEARCH FIELD
         print(f"{datetime.now()}   Check presenting {BLOCK_NAME}.")
         print(f"{datetime.now()}   IS {BLOCK_NAME} present on this page? =>")
-        if self.driver.find_elements(*LINK_LOCATOR) == 0:
+        if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
             msg = f"{BLOCK_NAME} is NOT present on this page"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
@@ -80,8 +81,8 @@ class BUG_129(BasePage):
             else:
                 page_.close_login_page()
 
-        self.driver.find_element(*LINK_LOCATOR).click()
-        print(f"{datetime.now()}   => {BLOCK_NAME} clicked!\n")
+            self.driver.find_element(*LINK_LOCATOR).click()
+            print(f"{datetime.now()}   => {BLOCK_NAME} clicked!\n")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d,):
@@ -90,8 +91,9 @@ class BUG_129(BasePage):
         # Check presenting TABLE_TRADING_INSTRUMENTS
         print(f"{datetime.now()}   Check presenting Table of CFD Instruments.")
         print(f"{datetime.now()}   IS Table of CFD Instruments present on this page? =>")
-        if self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS) == 0:
-            msg = f"Table of CFD Instruments is NOT present on this page"
+        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)) == 0:
+            self.driver.get(CapitalComPageSrc.URL)
+            msg = f"Table of CFD Instruments is NOT present on this page. Current page is not Cryptocurrencies page."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => Table of CFD Instruments present on this page!\n")
@@ -104,10 +106,12 @@ class BUG_129(BasePage):
         # Check presenting LIST of TRADING_INSTRUMENTS
         print(f"{datetime.now()}   Check presenting CFD Instruments.")
         print(f"{datetime.now()}   IS CFD Instruments present on this page? =>")
-        if self.driver.find_elements(*TableTradingInstrumentsLocators.LINE_TRADING_INSTRUMENT) == 0:
-            msg = f"CFD Instruments is NOT present on this page"
+        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.LINE_TRADING_INSTRUMENT)) == 0:
+            self.driver.get(CapitalComPageSrc.URL)
+            msg = f"CFD Instruments is NOT present on this page. Current page is not Cryptocurrencies page."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => CFD Instruments present on this page!\n")
+        self.driver.get(CapitalComPageSrc.URL)
 
         return True

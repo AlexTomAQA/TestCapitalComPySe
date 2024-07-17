@@ -422,8 +422,8 @@ class TestManualDetected:
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
-        Check:  The Main page is opened on the page "Cryptocurrency trading"
-                after clicking the button [Go to all cryptocurrencies]
+        Check:  The Main page is opened instead of the Cryptocurrencies page on the page
+                "Cryptocurrency trading" after clicking the button [Go to all cryptocurrencies]
                 when RO, IT, PL or CN language is selected
         Language: RO, IT, PL, CN.
         Country: CYSEC, ASIC, SCB
@@ -437,7 +437,7 @@ class TestManualDetected:
             "Testing button [Go to all cryptocurrencies] in menu [Cryptocurrency trading]",
             False, False
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
 
         # Arrange
         page_conditions = Conditions(d, "")
