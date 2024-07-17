@@ -1,0 +1,88 @@
+
+
+
+Current language - fr
+{'width': 1280, 'height': 800}
+
+2024-07-17 22:14:11.654070   worker_id = master
+
+2024-07-17 22:14:11.654085   0. Allure grouping for US_55
+
+2024-07-17 22:14:11.654278   START PRECONDITIONS =>
+
+2024-07-17 22:14:11.654294   => URL after prev. preconditions - https://capital.com/fr
+2024-07-17 22:14:11.654304   => flag_of_bug - True
+2024-07-17 22:14:11.654315   => Current URL - https://capital.com/fr/prix-des-actions-en-direct?t=risers
+2024-07-17 22:14:11.660114   Current page URL = https://capital.com/fr/prix-des-actions-en-direct?t=risers
+2024-07-17 22:14:11.662821   self.link = https://capital.com/fr
+2024-07-17 22:14:11.662837   driver.get(https://capital.com/fr) =>
+2024-07-17 22:14:13.496677   => Loaded page https://capital.com/fr
+
+2024-07-17 22:14:13.501845   => Windows size: {'width': 1280, 'height': 800}
+2024-07-17 22:14:13.503289   Set windows position at (0, 0) =>
+2024-07-17 22:14:13.505018   Set resolution 1280 * 800 =>
+2024-07-17 22:14:13.506680   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-17 22:14:14.557047   Капчи нет. Идем дальше
+
+2024-07-17 22:14:14.557138   Работа с куками =>
+
+2024-07-17 22:14:14.557152   => не требуется
+
+2024-07-17 22:14:15.590520   Капчи нет. Идем дальше
+
+2024-07-17 22:14:15.590615   Prev. country - 'es'
+2024-07-17 22:14:15.590628   Cur. country - 'ua'
+2024-07-17 22:14:15.590638   Set 'ua' country =>
+2024-07-17 22:14:15.601948   => Language and Country menu is present
+2024-07-17 22:14:15.616512   => Language and Country menu is visible
+2024-07-17 22:14:16.900483   => Focus is moved on Language and Country menu 
+2024-07-17 22:14:19.510349   => Cur url = https://capital.com/fr?country=ua
+2024-07-17 22:14:19.524598   => Country set to 'ua'
+
+2024-07-17 22:14:20.534551   Капчи нет. Идем дальше
+
+2024-07-17 22:14:20.534644   Prev. language - 'fr'
+2024-07-17 22:14:20.534660   Cur. language - 'fr'
+2024-07-17 22:14:20.534669   => Language is set to 'fr'
+
+2024-07-17 22:14:21.578023   Капчи нет. Идем дальше
+
+2024-07-17 22:14:21.578136   Prev. role - 'NoReg'
+2024-07-17 22:14:21.578156   Cur. role - 'NoReg'
+2024-07-17 22:14:21.578169   => The 'NoReg' role is set
+
+2024-07-17 22:14:21.583907   => Current URL - https://capital.com/fr?country=ua
+
+2024-07-17 22:14:21.583945   => THE END PRECONDITIONS
+
+2024-07-17 22:14:21.584161   START Open "Markets" menu, "Shares" submenu =>
+2024-07-17 22:14:21.584178   1. Cur URL = https://capital.com/fr?country=ua
+2024-07-17 22:14:21.586896   2. Link = https://capital.com/fr?country=ua
+2024-07-17 22:14:21.586913   current_page = https://capital.com/fr?country=ua
+2024-07-17 22:14:21.589492   link = https://capital.com/fr?country=ua
+2024-07-17 22:14:22.101515   => 'Markets' menu is present
+2024-07-17 22:14:22.118706   => 'Markets' menu is visible
+2024-07-17 22:14:23.398034   => Focus moved to 'Markets' menu
+2024-07-17 22:14:24.783121   => Focus moved to 'Shares' submenu and clicked
+2024-07-17 22:14:25.129923   => Focus moved to 'capital*com' logo
+2024-07-17 22:14:25.129967   3. Cur URL = https://capital.com/fr/prix-des-actions-en-direct
+
+2024-07-17 22:14:25.135792   1. Arrange_v0
+2024-07-17 22:14:25.135822   current_page = https://capital.com/fr/prix-des-actions-en-direct
+2024-07-17 22:14:25.138435   link = https://capital.com/fr/prix-des-actions-en-direct
+2024-07-17 22:14:25.140962   Scroll to the labels
+2024-07-17 22:14:25.151977   Close the filters if selected
+2024-07-17 22:14:25.421606   Select region filters
+2024-07-17 22:14:27.041146   Select sectors filters
+2024-07-17 22:14:29.119526   Scroll to selected filters
+2024-07-17 22:14:29.123084   Check the labels of the selected filters
+2024-07-17 22:14:29.640590   Extract the text attribute from the labels of the selected filters
+
+2024-07-17 22:14:29.681143   2. Act
+2024-07-17 22:14:29.681184   Select a random item sort
+2024-07-17 22:14:31.448064   Sort - Top baissiers - is selected
+
+2024-07-17 22:14:31.448351   3. Assert_v0
+2024-07-17 22:14:31.554235   Expected result: applied filters 'Region/Sectors' ['Hong Kong', "L'Irlande", 'Norvège', 'Services de télécommunications', 'Utilitaires']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Hong Kong', "L'Irlande", 'Norvège']
