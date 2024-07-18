@@ -55,13 +55,13 @@ class TradingPlatform(BasePage):
                 return True
             else:
                 print(f'{datetime.now()}   The Trading Platform logo is missing on the current page')
-                print(f'\n{datetime.now()}   Current url is {self.driver.current_url}')
+                print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
                 # d.back()
                 del page_
                 return False
         else:
             print(f'{datetime.now()}   The loaded page URL does not contain {link}.')
-            print(f'\n{datetime.now()}   Current url is {self.driver.current_url}')
+            print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False
 
     # @allure.step("Checking that the trading platform page has opened")
