@@ -252,7 +252,7 @@ class AssertClass(BasePage):
         account_btn_link = d.current_url
         if account_btn_link == "https://capital.com/trading/platform/":
             assert False, \
-                ('Bug#005. '
+                ('Bug#009. '
                  'Expected result: Menu "My account" is displayed'
                  '\n'
                  'Actual result: The trading platform page is opened')
