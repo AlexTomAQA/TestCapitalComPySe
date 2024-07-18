@@ -29,29 +29,28 @@ class CreateARiskFreeDemoAccountButton(BasePage):
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
 
-    def full_test(self, d, cur_language, cur_country, cur_role, link):
+    def full_test(self, d, cur_role, link):
         self.arrange(d)
         self.element_click()
     #   self.assert()
 
+        print(f"\n{datetime.now()}   3. Start Assert_v0 ")
         test_element = AssertClass(d, self.bid)
         match cur_role:
             case "Auth":
                 test_element.assert_trading_platform_demo_v1(d, link)
 
+    @allure.step(f"{datetime.now()}  1. Start Arrange_v0 ")
     def arrange(self, link):
-        print(f"\n{datetime.now()}   1. Arrange_v0 ")
+        print(f"\n{datetime.now()}   1. Start Arrange_v0 ")
 
         if not self.current_page_is(link):
             self.link = DemoTradingAccount.URL
-            time.sleep(3)
             self.open_page()
             time.sleep(3)
 
         print(f"{datetime.now()}   Is CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON present on the page? =>")
-        time.sleep(3)
         button = self.driver.find_elements(*CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON)
-        time.sleep(3)
         if len(button) == 0:
             print(f"{datetime.now()}   => CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is not present on the page")
             Common().pytest_fail("CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is not present on the page")
@@ -69,9 +68,9 @@ class CreateARiskFreeDemoAccountButton(BasePage):
             Common.pytest_fail("Bug ? CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is not clickable")
         print(f"{datetime.now()}   => CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON is clickable")
 
-    @allure.step("Click CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON in the page ")
+    @allure.step(f"{datetime.now()}  2. Start Act_v0 ")
     def element_click(self):
-        print(f"{datetime.now()}   2. Act_v0 ")
+        print(f"{datetime.now()}   2. Start Act_v0 ")
         print(f"{datetime.now()}   Start to click CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON =>")
 
         button = self.driver.find_elements(*CREATE_A_RISK_FREE_DEMO_ACCOUNT_BUTTON)

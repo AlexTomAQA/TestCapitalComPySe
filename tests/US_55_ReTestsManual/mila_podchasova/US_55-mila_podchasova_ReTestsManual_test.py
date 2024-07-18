@@ -131,5 +131,5 @@ class TestManualDetectedBugs:
         link = menu.sub_menu_demo_account_move_focus_click(d, cur_language, cur_country, link)
         # Act, Assert
         test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
-        test_element.full_test(d, cur_language, cur_country, cur_role, link)
+        test_element.full_test(d, cur_role, link)
 
