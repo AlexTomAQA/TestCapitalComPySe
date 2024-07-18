@@ -14,6 +14,7 @@ from pages.common import Common
 from pages.conditions import Conditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
+from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
 from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
@@ -30,6 +31,51 @@ from src.src import CapitalComPageSrc
 @pytest.mark.us_55
 class TestManualDetectedBugs:
     page_conditions = None
+
+    @allure.step("Start retest manual TC_55!052 The main page in EN language is opened "
+                 "after click on the link [Go to all commodities] on the 'Commodities trading' page "
+                 "when AR, IT, NL, PL, RO, CN language is selected")
+    @pytest.mark.parametrize('cur_language', ['ar', 'it', 'nl', 'pl', 'ro', 'cn'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_052
+    def test_052(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The main page in EN language is opened after click on the link [Go to all commodities]
+                on the "Commodities trading" page when AR, IT, NL, PL, RO, CN language is selected
+         Language: AR, IT, NL, PL, RO, CN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "052",
+            "The main page in EN language is opened after click on the link [Go to all commodities] "
+            "on the 'Commodities trading' page when AR, IT, NL, PL, RO, CN language is selected"
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        page_header_menu = MenuSection(d, link)
+        test_el = CommoditiesPageOpenCheck(d, link, bid)
+
+        page_header_menu.open_education_commodities_trading_menu(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_go_to_all_commodities_link()
+
+        # Assert
+        if not test_el.should_not_be_main_page():
+            Common().pytest_fail("Bug # 55!052   The Commodities page is NOT opened")
+        Common().save_current_screenshot(d, "AT_55!052 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!043 The page is refreshed instead of opening the Login "
                  "form after clicking the [Log In] button on the Search page")
@@ -127,15 +173,15 @@ class TestManualDetectedBugs:
 
         # Assert
         match cur_role:
-            case "NoAuth":
-                if not signup_login.should_be_signup_form(cur_language):
-                    Common().pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
             case "NoReg":
                 if not signup_login.should_be_login_form():
                     Common().pytest_fail("Bug # 55!054   The Login form is NOT displayed")
+            case "NoAuth":
+                if not signup_login.should_be_signup_form(cur_language):
+                    Common().pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
             case "Auth":
                 if not trading_platform.should_be_trading_platform_page(d, link):
-                    Common().pytest_fail("Bug # 55!054   The Trading platform page is NOT displayed")
+                    Common().pytest_fail("Bug # 55!054   The Trading platform page is NOT opened")
         Common().save_current_screenshot(d, "AT_55!054 Pass")
 
         # Postconditions
