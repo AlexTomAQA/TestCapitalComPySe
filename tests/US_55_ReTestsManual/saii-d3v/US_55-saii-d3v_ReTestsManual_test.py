@@ -36,10 +36,8 @@ class TestManualDetectedBugs:
                  "after click on the link [Go to all commodities] on the 'Commodities trading' page "
                  "when AR, IT, NL, PL, RO, CN language is selected")
     @pytest.mark.parametrize('cur_language', ['ar', 'it', 'nl', 'pl', 'ro', 'cn'])
-    # @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
-    # @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.parametrize('cur_country', ['de'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_052
     def test_052(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
