@@ -27,7 +27,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_009
-    def test_005(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_009(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Button [My account] in the Header
          Language: En. License: FCA.
@@ -53,7 +53,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
-    def test_039(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+    def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
@@ -78,18 +78,19 @@ class TestManualDetectedBugs:
         test_element = AppliedFilters(d, cur_item_link, bid)
         test_element.test_(d, cur_language_2_rnd_from_14, cur_country,cur_role, cur_item_link)
 
-    @allure.step('Start retest manual AT_55!077 of the  presence of the "Crypto trading  guide" sidebar on '
+    @allure.step('Start retest manual AT_55!077en of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" and "Crypto vs stocks: What is the difference?" pages')
     @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold', 'Cryptocurrencies vs. Stocks: What is the Difference?'])
-    @pytest.mark.bug_077
-    def test_061(self, worker_id, d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password,
-                 sidebar_item):
+    @pytest.mark.parametrize('cur_language_2_rnd_from_7', [""])
+    @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold', 'Crypto vs stocks: What’s the difference?'])
+    @pytest.mark.bug_077en
+    def test_077en(self, worker_id, d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password,
+                   sidebar_item):
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" and "Cryptocurrencies vs. Stocks:
         What's the Difference?" pages.
-        Language: EN, DE, ZH, RU, ES,IT, PL
+        Language: EN
         License: CYSEC, SCB, ASIC
         Author: Kasila
         """
@@ -97,7 +98,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_2_rnd_from_7, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "077", 'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
+            "077en", 'Sidebar " Crypto trading  guide" is absent on pages "Bitcoin Gold" and "Crypto vs '
                    'stocks: What’s the difference?"'
         )
 
@@ -111,8 +112,44 @@ class TestManualDetectedBugs:
 
         test_element = Sidebar(d, cur_item_link, bid)
         match cur_language_2_rnd_from_7:
-            case "" | "de" | "zh":
-                test_element.sidebar_en_de_zh(d, cur_item_link, sidebar_item)
+            case "":
+                test_element.sidebar_en(d, cur_item_link, sidebar_item)
+        test_element.assert_(sidebar_item)
+
+    @allure.step('Start retest manual AT_55!077 of the  presence of the "Crypto trading  guide" sidebar on '
+                 '"Bitcoin Gold" and "Crypto vs stocks: What is the difference?" pages')
+    @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
+    @pytest.mark.bug_077
+    def test_077(self, worker_id, d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password,
+                 sidebar_item):
+        """
+        Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" and "Cryptocurrencies vs. Stocks:
+        What's the Difference?" pages.
+        Language: DE, ZH, RU, ES,IT, PL
+        License: CYSEC, SCB, ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_2_rnd_from_7, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "077", 'Sidebar " Crypto trading  guide" is absent on page "Bitcoin Gold"'
+        )
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language_2_rnd_from_7, cur_country,
+                                                                        link)
+
+        test_element = Sidebar(d, cur_item_link, bid)
+        match cur_language_2_rnd_from_7:
+            case "de" | "zh":
+                test_element.sidebar_de_zh(d, cur_item_link, sidebar_item)
             case "ru" | "es" | "it" | "pl":
                 test_element.sidebar_ru_es_it_pl(d, cur_item_link, sidebar_item)
         test_element.assert_(sidebar_item)
