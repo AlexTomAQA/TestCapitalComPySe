@@ -192,7 +192,7 @@ class AssertFilters(BasePage):
             print(f"{datetime.now()}   Expected result: applied filters 'Region/Sectors' {selected_filters_text_list}"
                   f"\n"
                   f"Actual result: after selecting item 'Most traded' from the dropdown, are displayed {actual_filters_text_list}")
-            Common.pytest_fail(f"Bug # 55!039  Applied filters 'Region/Sectors': {selected_filters_text_list} "
+            Common.pytest_fail(f"Bug # 55!048 Expected result: Applied filters 'Region/Sectors': {selected_filters_text_list} "
                                f"\n"
                                f"are not displayed after selecting item 'Most traded' from the dropdown, "
                                f"\n"
