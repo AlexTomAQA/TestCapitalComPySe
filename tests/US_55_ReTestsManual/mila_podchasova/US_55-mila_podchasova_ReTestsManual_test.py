@@ -11,6 +11,8 @@ from datetime import datetime
 from pages.BugsManual.bug_043 import ProfessionalMenuCheckFooter
 from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
+from pages.BugsManual.bug_285 import ButtonMyAccount
+from pages.Elements.AssertClass import AssertClass
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -133,16 +135,17 @@ class TestManualDetectedBugs:
         test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
         test_element.full_test(d, cur_role, link)
 
-    @allure.step("Start retest manual TC_55!00_285 The trading platform page is opened "
-                 "after clicking the button [My account] instead of opening [My Account] menu")
+    @allure.step("Start retest manual TC_55!00_285 Opened the Trading platform page "
+                 "instead [My Account] menu after clicking the [My account] button")
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_285
     def test_285(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        The trading platform page is opened after clicking the button [My account]
-        instead of opening [My Account] menu
-        Language: All.
+        Opened the Trading platform page
+        instead [My Account] menu after clicking the [My account] button
+        Language: EN
         License: SCA.
         Country: AE.
         Author: podchasova11
@@ -151,9 +154,63 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "285",
-            "The trading platform page is opened "
-            "after clicking the button [My account] instead of opening [My Account] menu"
+            "Opened the Trading platform page "
+            "instead [My Account] menu after clicking the [My account] button"
         )
 
-        pytest.skip("Autotest under construction")
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
+        # Arrange
+        button = ButtonMyAccount(d, link, bid)
+        button.arrange_(link)
+
+        # Act
+        button.element_click()
+
+        # Assert
+        test_element = AssertClass(d, bid)
+        match cur_role:
+            case "Auth":
+                test_element.assert_my_account_menu_opened(d)
+
+    @allure.step("Start retest manual TC_55!00_285_ae Opened the Trading platform page "
+                 "instead [My Account] menu after clicking the [My account] button")
+    @pytest.mark.parametrize('cur_language', ['ae'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.bug_285_ae
+    def test_285_ae(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Opened the Trading platform page
+        instead [My Account] menu after clicking the [My account] button
+        Language: AE
+        License: SCA.
+        Country: AE.
+        Author: podchasova11
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "285_ae",
+            "Opened the Trading platform page "
+            "instead [My Account] menu after clicking the [My account] button"
+        )
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        # Arrange
+        button = ButtonMyAccount(d, link, bid)
+        button.arrange_(link)
+
+        # Act
+        button.element_click()
+
+        # Assert
+        test_element = AssertClass(d, bid)
+        match cur_role:
+            case "Auth":
+                test_element.assert_my_account_menu_opened(d)
