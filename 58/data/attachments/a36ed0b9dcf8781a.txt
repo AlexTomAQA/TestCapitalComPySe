@@ -1,0 +1,95 @@
+
+
+
+Current language - 
+{'width': 1280, 'height': 800}
+
+2024-07-20 04:48:50.791728   worker_id = master
+
+2024-07-20 04:48:50.791743   0. Allure grouping for US_55
+
+2024-07-20 04:48:50.791921   START PRECONDITIONS =>
+
+2024-07-20 04:48:50.791937   => URL after prev. preconditions - https://capital.com/?country=ua
+2024-07-20 04:48:50.791947   => flag_of_bug - True
+2024-07-20 04:48:50.791958   => Current URL - https://capital.com/live-share-prices?t=most
+2024-07-20 04:48:50.796964   Current page URL = https://capital.com/live-share-prices?t=most
+2024-07-20 04:48:50.799274   self.link = https://capital.com/?country=ua
+2024-07-20 04:48:50.799288   driver.get(https://capital.com/?country=ua) =>
+2024-07-20 04:48:52.397907   => Loaded page https://capital.com/?country=ua
+
+2024-07-20 04:48:52.401941   => Windows size: {'width': 1280, 'height': 800}
+2024-07-20 04:48:52.403254   Set windows position at (0, 0) =>
+2024-07-20 04:48:52.407292   Set resolution 1280 * 800 =>
+2024-07-20 04:48:52.408931   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-20 04:48:53.440929   Капчи нет. Идем дальше
+
+2024-07-20 04:48:53.441010   Работа с куками =>
+
+2024-07-20 04:48:53.441024   => не требуется
+
+2024-07-20 04:48:54.468072   Капчи нет. Идем дальше
+
+2024-07-20 04:48:54.468160   Prev. country - 'ua'
+2024-07-20 04:48:54.468174   Cur. country - 'au'
+2024-07-20 04:48:54.468184   Set 'au' country =>
+2024-07-20 04:48:54.476689   => Language and Country menu is present
+2024-07-20 04:48:54.487530   => Language and Country menu is visible
+2024-07-20 04:48:55.759548   => Focus is moved on Language and Country menu 
+2024-07-20 04:48:58.219137   => Cur url = https://capital.com/?country=au
+2024-07-20 04:48:58.231191   => Country set to 'au'
+
+2024-07-20 04:48:59.281522   Капчи нет. Идем дальше
+
+2024-07-20 04:48:59.281608   Prev. language - 'en'
+2024-07-20 04:48:59.281621   Cur. language - 'en'
+2024-07-20 04:48:59.281662   => Language is set to 'en'
+
+2024-07-20 04:49:00.314574   Капчи нет. Идем дальше
+
+2024-07-20 04:49:00.314656   Prev. role - 'NoReg'
+2024-07-20 04:49:00.314669   Cur. role - 'NoReg'
+2024-07-20 04:49:00.314679   => The 'NoReg' role is set
+
+2024-07-20 04:49:00.317416   => Current URL - https://capital.com/?country=au
+
+2024-07-20 04:49:00.317438   => THE END PRECONDITIONS
+
+2024-07-20 04:49:00.317613   START Open "Markets" menu, "Shares" submenu =>
+2024-07-20 04:49:00.317628   1. Cur URL = https://capital.com/?country=au
+2024-07-20 04:49:00.320090   2. Link = https://capital.com/?country=au
+2024-07-20 04:49:00.320106   current_page = https://capital.com/?country=au
+2024-07-20 04:49:00.330503   link = https://capital.com/?country=au
+2024-07-20 04:49:00.840596   => 'Markets' menu is present
+2024-07-20 04:49:00.852950   => 'Markets' menu is visible
+2024-07-20 04:49:02.124117   => Focus moved to 'Markets' menu
+2024-07-20 04:49:03.529637   => Focus moved to 'Shares' submenu and clicked
+2024-07-20 04:49:03.798323   => Focus moved to 'capital*com' logo
+2024-07-20 04:49:03.798359   3. Cur URL = https://capital.com/live-share-prices
+
+2024-07-20 04:49:03.803512   1. Arrange_v0
+2024-07-20 04:49:03.803535   current_page = https://capital.com/live-share-prices
+2024-07-20 04:49:03.805978   link = https://capital.com/live-share-prices
+2024-07-20 04:49:03.808338   Scroll to the labels
+2024-07-20 04:49:03.818306   Close the filters if selected
+2024-07-20 04:49:04.034946   Select region filters
+2024-07-20 04:49:05.663768   Select sectors filters
+2024-07-20 04:49:07.727753   Scroll to selected filters
+2024-07-20 04:49:07.731107   Check the labels of the selected filters
+2024-07-20 04:49:08.242380   Extract the text attribute from the labels of the selected filters
+
+2024-07-20 04:49:08.276328   2. Act
+2024-07-20 04:49:08.276353   Select a random item sort
+2024-07-20 04:49:10.069445   Sort - Most volatile - is selected
+
+2024-07-20 04:49:10.069704   3. Assert_v0
+2024-07-20 04:49:10.176097   Applied filters ['Australia', 'Canada', 'Netherlands', 'Energy', 'Financials'] are displayed
+
+2024-07-20 04:49:10.257110   2. Act
+2024-07-20 04:49:10.257143   Select a random item sort
+2024-07-20 04:49:11.980147   Sort - Top fallers - is selected
+
+2024-07-20 04:49:11.980415   3. Assert_v0
+2024-07-20 04:49:12.076151   Expected result: applied filters 'Region/Sectors' ['Australia', 'Canada', 'Netherlands', 'Energy', 'Financials']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Australia', 'Canada', 'Netherlands']

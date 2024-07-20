@@ -1,0 +1,88 @@
+
+
+
+Current language - 
+{'width': 1280, 'height': 800}
+
+2024-07-20 04:50:21.905481   worker_id = master
+
+2024-07-20 04:50:21.905495   0. Allure grouping for US_55
+
+2024-07-20 04:50:21.905675   START PRECONDITIONS =>
+
+2024-07-20 04:50:21.905690   => URL after prev. preconditions - https://capital.com/?country=ua
+2024-07-20 04:50:21.905700   => flag_of_bug - True
+2024-07-20 04:50:21.905711   => Current URL - https://capital.com/live-share-prices?t=fallers
+2024-07-20 04:50:21.911257   Current page URL = https://capital.com/live-share-prices?t=fallers
+2024-07-20 04:50:21.913635   self.link = https://capital.com/?country=ua
+2024-07-20 04:50:21.913649   driver.get(https://capital.com/?country=ua) =>
+2024-07-20 04:50:23.700614   => Loaded page https://capital.com/?country=ua
+
+2024-07-20 04:50:23.705661   => Windows size: {'width': 1280, 'height': 800}
+2024-07-20 04:50:23.706937   Set windows position at (0, 0) =>
+2024-07-20 04:50:23.708450   Set resolution 1280 * 800 =>
+2024-07-20 04:50:23.709996   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-20 04:50:24.742308   Капчи нет. Идем дальше
+
+2024-07-20 04:50:24.742397   Работа с куками =>
+
+2024-07-20 04:50:24.742411   => не требуется
+
+2024-07-20 04:50:25.763295   Капчи нет. Идем дальше
+
+2024-07-20 04:50:25.763378   Prev. country - 'ua'
+2024-07-20 04:50:25.763391   Cur. country - 'au'
+2024-07-20 04:50:25.763401   Set 'au' country =>
+2024-07-20 04:50:25.773687   => Language and Country menu is present
+2024-07-20 04:50:25.787348   => Language and Country menu is visible
+2024-07-20 04:50:27.056353   => Focus is moved on Language and Country menu 
+2024-07-20 04:50:29.673007   => Cur url = https://capital.com/?country=au
+2024-07-20 04:50:29.683126   => Country set to 'au'
+
+2024-07-20 04:50:30.731770   Капчи нет. Идем дальше
+
+2024-07-20 04:50:30.731858   Prev. language - 'en'
+2024-07-20 04:50:30.731872   Cur. language - 'en'
+2024-07-20 04:50:30.731881   => Language is set to 'en'
+
+2024-07-20 04:50:31.758877   Капчи нет. Идем дальше
+
+2024-07-20 04:50:31.758962   Prev. role - 'Auth'
+2024-07-20 04:50:31.758976   Cur. role - 'Auth'
+2024-07-20 04:50:31.758985   => The 'Auth' role is set
+
+2024-07-20 04:50:31.761655   => Current URL - https://capital.com/?country=au
+
+2024-07-20 04:50:31.761677   => THE END PRECONDITIONS
+
+2024-07-20 04:50:31.761855   START Open "Markets" menu, "Shares" submenu =>
+2024-07-20 04:50:31.761871   1. Cur URL = https://capital.com/?country=au
+2024-07-20 04:50:31.764198   2. Link = https://capital.com/?country=au
+2024-07-20 04:50:31.764213   current_page = https://capital.com/?country=au
+2024-07-20 04:50:31.773455   link = https://capital.com/?country=au
+2024-07-20 04:50:32.285981   => 'Markets' menu is present
+2024-07-20 04:50:32.303587   => 'Markets' menu is visible
+2024-07-20 04:50:33.573356   => Focus moved to 'Markets' menu
+2024-07-20 04:50:35.120742   => Focus moved to 'Shares' submenu and clicked
+2024-07-20 04:50:35.392350   => Focus moved to 'capital*com' logo
+2024-07-20 04:50:35.392391   3. Cur URL = https://capital.com/live-share-prices
+
+2024-07-20 04:50:35.397584   1. Arrange_v0
+2024-07-20 04:50:35.397607   current_page = https://capital.com/live-share-prices
+2024-07-20 04:50:35.399999   link = https://capital.com/live-share-prices
+2024-07-20 04:50:35.402459   Scroll to the labels
+2024-07-20 04:50:35.411941   Close the filters if selected
+2024-07-20 04:50:35.617152   Select region filters
+2024-07-20 04:50:37.253674   Select sectors filters
+2024-07-20 04:50:39.312321   Scroll to selected filters
+2024-07-20 04:50:39.315593   Check the labels of the selected filters
+2024-07-20 04:50:39.844205   Extract the text attribute from the labels of the selected filters
+
+2024-07-20 04:50:39.921876   2. Act
+2024-07-20 04:50:39.921914   Select a random item sort
+2024-07-20 04:50:41.779358   Sort - Top risers - is selected
+
+2024-07-20 04:50:41.779562   3. Assert_v0
+2024-07-20 04:50:41.865003   Expected result: applied filters 'Region/Sectors' ['Germany', 'Norway', 'Sweden', 'Basic Materials', 'Utilities']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Germany', 'Norway', 'Sweden', 'Utilities']
