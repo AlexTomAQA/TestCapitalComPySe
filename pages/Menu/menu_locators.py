@@ -1282,6 +1282,34 @@ class MenuProductsAndServicesDemoAccount:
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/demo-account']")
 
 
+class MenuProductsAndServicesChargesAndFees:
+    SUB_MENU_EN_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/charges-and-fees']")
+    SUB_MENU_DE_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/de/gebuhren-und-abgaben']")
+    SUB_MENU_EL_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/el/charges-and-fees-el']")
+    SUB_MENU_ES_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/es/comisiones-y-tarifas']")
+    SUB_MENU_FR_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/fr/charges-et-frais']")
+    SUB_MENU_IT_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/it/tariffe-e-commissioni']")
+    SUB_MENU_HU_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/hu/illetekek-es-dijak']")
+    SUB_MENU_NL_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/nl/kosten-en-tarieven']")
+    SUB_MENU_PL_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/pl/prowizje-i-oplaty']")
+    SUB_MENU_RO_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ro/cheltuieli-si-taxe']")
+    SUB_MENU_RU_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/ru/komissii-i-sbory']")
+    SUB_MENU_ZH_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/zh/fu-wu-shou-fei']")
+    SUB_MENU_CN_CHARGES_AND_FEES = \
+        (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/cn/charges-and-fees']")
+
 class MenuUS0106MarketsCryptocurrencies:
     SUB_MENU_EN_CRYPTOCURRENCIES = \
         (By.CSS_SELECTOR, ".cc-nav__dropdown a[href='https://capital.com/live-cryptocurrency-prices']")

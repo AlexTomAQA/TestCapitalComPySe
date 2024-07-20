@@ -17,6 +17,7 @@ from pages.BugsManual.bug_074 import WhatIsYourSentimentWidget
 from pages.BugsManual.bug_104 import TradingCalculatorCFDCalculatorPage
 from pages.BugsManual.bug_171 import BUG_171
 from pages.BugsManual.bug_129 import BUG_129
+from pages.BugsManual.bug_149 import BUG_149
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -493,6 +494,53 @@ class TestManualDetected:
                                                                              cur_item_link)
 
         test_element = BUG_129(d, cur_item_link, bid)
+        test_element.arrange(d, cur_language)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of the link [Browse all markets] in menu [Charges & fees]")
+    @pytest.mark.parametrize('cur_language', ["ar", "de", "es", "it", "ru", "cn", "zh", "fr", "pl", "ro", "nl", "el", "hu"])
+    # @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_country', ['de'])
+    # @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('cur_role', ["NoReg"])
+    @pytest.mark.bug_149
+    def test_149_link_browse_all_markets_does_not_open_markets_page_on_parameters_language(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  After clicking the link "Browse all markets"
+                on page "Charges & fees" in not EN language
+                always open EN-language version of page "Markets"
+        Language: All, except EN (NOT AR)
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "149",
+            "Testing link [Browse all markets] in menu [Charges & fees]",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+
+        # Arrange
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_charges_and_fees_submenu_products_and_services_menu(d, cur_language, cur_country,
+                                                                             cur_item_link)
+        # STOPPED HERE
+
+        test_element = BUG_149(d, cur_item_link, bid)
         test_element.arrange(d, cur_language)
 
         # Act
