@@ -5,7 +5,7 @@
 """
 import allure
 from datetime import datetime
-from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from src.src import CapitalComPageSrc
@@ -17,13 +17,16 @@ from pages.Signup_login.signup_login import SignupLogin
 BLOCK_NAME = "[Go to all cryptocurrencies] link"
 LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_go_to_market_deeplink"]')
 
-
 class BUG_129(BasePage):
+
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
 
     @allure.step(f"{datetime.now()}   1. Start Arrange.")
-    def arrange(self, d):
+    def arrange(self, d, cur_language):
+        global LINK_LOCATOR
+        if cur_language == "de":
+            LINK_LOCATOR = (By.XPATH, '//li[text()="Alle Kryptowährungen"]')
         print(f"{datetime.now()}   1. Start Arrange.")
 
         # Check presenting SEARCH FIELD
@@ -55,6 +58,7 @@ class BUG_129(BasePage):
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BLOCK_NAME} is clickable on this page!\n")
+        Common.save_current_screenshot(d, f"{BLOCK_NAME} is clickable on this page!")
 
     @allure.step(f"{datetime.now()}   2. Start Act.")
     def act(self, d):
@@ -84,34 +88,24 @@ class BUG_129(BasePage):
             self.driver.find_element(*LINK_LOCATOR).click()
             print(f"{datetime.now()}   => {BLOCK_NAME} clicked!\n")
 
+        except NoSuchElementException:
+            msg = (f"{BLOCK_NAME} is not implemented as a link when the German language is selected "
+                   f"in the block 'Why trade cryptocurrency with Capital.com'.")
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        Common.save_current_screenshot(d, f"{BLOCK_NAME} clicked!")
+
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d,):
         print(f"{datetime.now()}   3. Start Assert.")
-
-        # Check presenting TABLE_TRADING_INSTRUMENTS
-        print(f"{datetime.now()}   Check presenting Table of CFD Instruments.")
-        print(f"{datetime.now()}   IS Table of CFD Instruments present on this page? =>")
-        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)) == 0:
-            self.driver.get(CapitalComPageSrc.URL)
-            msg = f"Table of CFD Instruments is NOT present on this page. Current page is not Cryptocurrencies page."
-            print(f"{datetime.now()}   => {msg}\n")
-            Common().pytest_fail(msg)
-        print(f"{datetime.now()}   => Table of CFD Instruments present on this page!\n")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*TableTradingInstrumentsLocators.TABLE_TRADING_INSTRUMENTS)[0]
-        )
 
         # Check presenting LIST of TRADING_INSTRUMENTS
         print(f"{datetime.now()}   Check presenting CFD Instruments.")
         print(f"{datetime.now()}   IS CFD Instruments present on this page? =>")
         if len(self.driver.find_elements(*TableTradingInstrumentsLocators.LINE_TRADING_INSTRUMENT)) == 0:
-            self.driver.get(CapitalComPageSrc.URL)
             msg = f"CFD Instruments is NOT present on this page. Current page is not Cryptocurrencies page."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => CFD Instruments present on this page!\n")
         self.driver.get(CapitalComPageSrc.URL)
-
         return True

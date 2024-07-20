@@ -449,7 +449,51 @@ class TestManualDetected:
                                                                           cur_item_link)
 
         test_element = BUG_129(d, cur_item_link, bid)
-        test_element.arrange(d)
+        test_element.arrange(d, cur_language)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of the link [Go to all cryptocurrencies] "
+                 "in menu [Cryptocurrency trading] for Germany language")
+    @pytest.mark.parametrize('cur_language', ["de"])
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_130
+    def test_130_link_go_to_all_cryptocurrencies_does_not_open_cfd_page(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  "Alle Kryptowährungen" (Go to all cryptocurrencies) is not implemented as a link
+                when the German language is selected in the block "Why trade cryptocurrency with Capital.com"
+        Language: DE.
+        Country: CYSEC, ASIC, SCB
+        Role: NoReg, Auth, NoAuth,
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "130",
+            "Testing link [Go to all cryptocurrencies] in menu [Cryptocurrency trading]",
+            False, False
+        )
+        # pytest.skip("Промежуточная версия")
+
+        # Arrange
+        page_conditions = Conditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = MenuSection(d, cur_item_link)
+        cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(d, cur_language, cur_country,
+                                                                             cur_item_link)
+
+        test_element = BUG_129(d, cur_item_link, bid)
+        test_element.arrange(d, cur_language)
 
         # Act
         test_element.act(d)
