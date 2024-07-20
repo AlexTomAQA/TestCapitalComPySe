@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/07/16 23:00
+@Time    : 2024/07/20 21:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -17,7 +17,8 @@ from pages.Signup_login.signup_login import SignupLogin
 BLOCK_NAME = "[Go to all cryptocurrencies] link"
 LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_go_to_market_deeplink"]')
 
-class BUG_129(BasePage):
+
+class BUG_149(BasePage):
 
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
