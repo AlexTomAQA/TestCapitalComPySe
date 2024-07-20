@@ -89,7 +89,6 @@ class TestManualDetectedBugs:
                 on the Search page
          Language: All.
          License: All, exclude FCA, SCA.
-         Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -103,8 +102,6 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
-
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
@@ -292,7 +289,7 @@ class TestManualDetectedBugs:
     @allure.step(
         'Start retest manual TC_55!157 The modal window "Confirm Form Resubmission" is not opened '
         'after clicking the button [Back] on any article from search page.')
-    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_language', [''])  # temporary use only EN, because of bug #55!292
     @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_157
@@ -303,7 +300,6 @@ class TestManualDetectedBugs:
          on any article from search page.
          Language: All.
          License: All, exclude FCA, SCA.
-         Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -317,8 +313,6 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
-
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
                                              cur_country, cur_role, cur_login, cur_password)
@@ -360,7 +354,6 @@ class TestManualDetectedBugs:
          Check: Page '教育' (Education) is opened after click on menu section [新聞和分析] (News and analysis) in CN language.
          Language: CN.
          License: All, exclude FCA, SCA.
-         Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -405,7 +398,6 @@ class TestManualDetectedBugs:
          Check: The Search field in the header is not opened after performed search
          Language: All.
          License: All, exclude FCA, SCA.
-         Country: All, exclude GB, AE.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -418,8 +410,6 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        Common().check_country_in_list_and_skip_if_present(cur_country, ['gb', 'ae'])
-
         page_conditions = Conditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
                                              cur_country, cur_role, cur_login, cur_password)
@@ -440,6 +430,54 @@ class TestManualDetectedBugs:
         if not search_field.should_be_active_search_field():
             Common().pytest_fail("Bug # 55!160 The Search field in the header is NOT active")
         Common().save_current_screenshot(d, "AT_55!160 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!292 There are no search results on the Search page '
+        'when any language except EN is selected')
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_292
+    def test_292(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                 cur_login, cur_password, random_search_string):
+        """
+         Check: There are no search results on the Search page when any language except EN is selected.
+         Language: All, except EN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "292",
+            'There are no search results on the Search page when any language except EN is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        Common().check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
+
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        search_field = SearchField(d, link, bid)
+        search_field.element_click()
+
+        # Act
+        search_field.perform_search(random_search_string)
+
+        # Assert
+        if not search_field.should_be_any_search_result():
+            Common().pytest_fail('Bug # 55!292 There are NO search items presented')
+        Common().save_current_screenshot(d, "AT_55!292 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

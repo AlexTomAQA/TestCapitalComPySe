@@ -52,7 +52,7 @@ class SearchField(BasePage):
         print(f'{datetime.now()}   => The Search page is opened')
         print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
 
-    def should_be_any_search_item(self):
+    def should_be_any_search_result(self):
         print(f'\n{datetime.now()}   Check if there is any search result is present on the Search page => ')
         try:
             Wait(self.driver, 5).until(EC.element_to_be_clickable(SEARCH_ITEM_IMG_LOCATOR))
