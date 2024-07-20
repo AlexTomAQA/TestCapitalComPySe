@@ -18,6 +18,7 @@ from pages.Menu.menu_locators import (
     MenuLanguageAndCountry,
     MenuProductsAndServices,
     MenuProductsAndServicesOurMobileApps,
+    MenuProductsAndServicesChargesAndFees,
     MenuWhyCapitalCom,
     MenuUS11Education,
     MenuUS11LearningHub,
@@ -2287,6 +2288,23 @@ class MenuSection(BasePage):
         print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
         return d.current_url
 
+    @allure.step('Select "Products and services" menu, "Charges & fees" submenu click')
+    def open_charges_and_fees_submenu_products_and_services_menu(self, d, cur_language, cur_country, link):
+        print(f'\n{datetime.now()}   START Open "Products and services" menu, "Charges & fees" submenu =>')
+        print(f"{datetime.now()}   1. Cur URL: {d.current_url}")
+        print(f"{datetime.now()}   2. New Link: {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        Captcha(d).fail_test_if_captcha_present_v2()
+        self.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        self.sub_menu_charges_and_fees_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
     @allure.step("Focus moved to 'Products and services' menu")
     def move_focus_to_products_and_services_menu(self, d, test_language, test_country):
         products_and_services_menu_locator = None
@@ -2391,6 +2409,52 @@ class MenuSection(BasePage):
             .perform()
 
         print(f"{datetime.now()}   => Focus moved to 'Our Mobile Apps' submenu and clicked")
+        del sub_menu
+
+    @allure.step("Focus move to 'Charges & fees' submenu and click.")
+    def sub_menu_charges_and_fees_move_focus_click(self, d, test_language):
+        sub_menu = None
+        match test_language:
+            case "":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_EN_CHARGES_AND_FEES)
+            case "de":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_DE_CHARGES_AND_FEES)
+            case "el":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_EL_CHARGES_AND_FEES)
+            case "es":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_ES_CHARGES_AND_FEES)
+            case "fr":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_FR_CHARGES_AND_FEES)
+            case "it":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_IT_CHARGES_AND_FEES)
+            case "hu":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_HU_CHARGES_AND_FEES)
+            case "nl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_NL_CHARGES_AND_FEES)
+            case "pl":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_PL_CHARGES_AND_FEES)
+            case "ro":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_RO_CHARGES_AND_FEES)
+            case "ru":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_RU_CHARGES_AND_FEES)
+            case "zh":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_ZH_CHARGES_AND_FEES)
+            case "cn":
+                sub_menu = d.find_elements(*MenuProductsAndServicesChargesAndFees.SUB_MENU_CN_CHARGES_AND_FEES)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(
+                f"Bug # ??? For language '{test_language}' "
+                f"\"Products and services > Charges & fees\" submenu doesn't exist")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Charges & fees' submenu and clicked")
         del sub_menu
 
     @allure.step("Focus move to 'Demo account' submenu and click.")

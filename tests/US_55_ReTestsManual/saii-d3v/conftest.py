@@ -10,16 +10,13 @@ import random
 
 @pytest.fixture(
     params=random.sample([
-        "usd",
-        "doge",
-        "how to trade",
-        "bitcoin",
-        "platform",
-        "trading",
-        "course",
+        "USD",
+        "$",
+        "BTC",
         "1",
-        "graph",
-        "meta trader",
+        "CFD",
+        "Capital",
+        "EUR",
     ], 1))
 def random_search_string(request):
     print(f"\n\n\nCurrent search string - {request.param}")
