@@ -504,7 +504,7 @@ class TestManualDetected:
         test_element.assert_(d)
 
     @allure.step("Start test of the link [Browse all markets] in menu [Charges & fees]")
-    @pytest.mark.parametrize('cur_language', ["ar", "de", "es", "it", "ru", "cn", "zh", "fr", "pl", "ro", "nl", "el", "hu"])
+    @pytest.mark.parametrize('cur_language', ["de", "es", "it", "ru", "cn", "zh", "fr", "pl", "ro", "nl", "el", "hu"])
     # @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_country', ['de'])
     # @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
@@ -517,7 +517,7 @@ class TestManualDetected:
         Check:  After clicking the link "Browse all markets"
                 on page "Charges & fees" in not EN language
                 always open EN-language version of page "Markets"
-        Language: All, except EN (NOT AR)
+        Language: All, except EN (AND AR)
         Country: CYSEC, ASIC, SCB
         Role: NoReg, Auth, NoAuth
         Author: Artem Dashkov
@@ -529,7 +529,7 @@ class TestManualDetected:
             "Testing link [Browse all markets] in menu [Charges & fees]",
             False, False
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
 
         # Arrange
         page_conditions = Conditions(d, "")
@@ -548,4 +548,4 @@ class TestManualDetected:
         test_element.act(d)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, cur_language)
