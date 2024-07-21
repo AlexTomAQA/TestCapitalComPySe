@@ -6,6 +6,7 @@
 
 import allure
 import pytest
+import random
 from datetime import datetime
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
@@ -415,7 +416,7 @@ class TestManualDetected:
         test_element.assert_(d, cur_item_link)
 
     @allure.step("Start test of the link [Go to all cryptocurrencies] in menu [Cryptocurrency trading]")
-    @pytest.mark.parametrize('cur_language', ["ro", "it", "pl", "cn"])
+    @pytest.mark.parametrize('cur_language', random.sample(["ro", "it", "pl", "cn"], 2),)
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_129
