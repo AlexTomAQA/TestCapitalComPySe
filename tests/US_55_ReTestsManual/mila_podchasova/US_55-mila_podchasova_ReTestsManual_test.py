@@ -177,7 +177,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!00_285_ae Opened the Trading platform page "
                  "instead [My Account] menu after clicking the [My account] button")
-    @pytest.mark.parametrize('cur_language', ['ae'])
+    @pytest.mark.parametrize('cur_language', ['ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_285_ae
