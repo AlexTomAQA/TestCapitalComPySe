@@ -135,13 +135,13 @@ class TestManualDetectedBugs:
         test_element = CreateARiskFreeDemoAccountButton(d, link, bid)
         test_element.full_test(d, cur_role, link)
 
-    @allure.step("Start retest manual TC_55!00_285 Opened the Trading platform page "
+    @allure.step("Start retest manual TC_55!00_285en Opened the Trading platform page "
                  "instead [My Account] menu after clicking the [My account] button")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.bug_285
-    def test_285(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_285en
+    def test_285en(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Opened the Trading platform page
         instead [My Account] menu after clicking the [My account] button
@@ -153,7 +153,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "285",
+            "285en",
             "Opened the Trading platform page "
             "instead [My Account] menu after clicking the [My account] button"
         )
@@ -175,17 +175,17 @@ class TestManualDetectedBugs:
             case "Auth":
                 test_element.assert_my_account_menu_opened(d)
 
-    @allure.step("Start retest manual TC_55!00_285_ae Opened the Trading platform page "
+    @allure.step("Start retest manual TC_55!00_285ar Opened the Trading platform page "
                  "instead [My Account] menu after clicking the [My account] button")
     @pytest.mark.parametrize('cur_language', ['ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
-    @pytest.mark.bug_285_ae
-    def test_285_ae(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    @pytest.mark.bug_285ar
+    def test_285ar(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Opened the Trading platform page
         instead [My Account] menu after clicking the [My account] button
-        Language: AE
+        Language: AR
         License: SCA.
         Country: AE.
         Author: podchasova11
@@ -193,7 +193,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "285_ae",
+            "285ar",
             "Opened the Trading platform page "
             "instead [My Account] menu after clicking the [My account] button"
         )
@@ -213,4 +213,4 @@ class TestManualDetectedBugs:
         test_element = AssertClass(d, bid)
         match cur_role:
             case "Auth":
-                test_element.assert_my_account_menu_opened(d)
+                test_element.assert_my_account_menu_opened_(d)
