@@ -14,8 +14,8 @@ from pages.common import Common
 from pages.Elements.testing_elements_locators import TableTradingInstrumentsLocators
 from pages.Signup_login.signup_login import SignupLogin
 
-BLOCK_NAME = "[Go to all cryptocurrencies] link"
-LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_go_to_market_deeplink"]')
+BLOCK_NAME = "[Browse all markets] link"
+LINK_LOCATOR = (By.CSS_SELECTOR, '.arrowLink.js-mWidget-link.js-mWidget--mosttraded')
 
 
 class BUG_149(BasePage):
@@ -26,11 +26,9 @@ class BUG_149(BasePage):
     @allure.step(f"{datetime.now()}   1. Start Arrange.")
     def arrange(self, d, cur_language):
         global LINK_LOCATOR
-        if cur_language == "de":
-            LINK_LOCATOR = (By.XPATH, '//li[text()="Alle Kryptowährungen"]')
         print(f"{datetime.now()}   1. Start Arrange.")
 
-        # Check presenting SEARCH FIELD
+        # Check presenting "Browse all markets" link
         print(f"{datetime.now()}   Check presenting {BLOCK_NAME}.")
         print(f"{datetime.now()}   IS {BLOCK_NAME} present on this page? =>")
         if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
@@ -44,7 +42,7 @@ class BUG_149(BasePage):
             self.driver.find_elements(*LINK_LOCATOR)[0]
         )
 
-        # Check visible SEARCH FIELD
+        # Check visible "Browse all markets" link
         print(f"{datetime.now()}   IS {BLOCK_NAME} visible on this page? =>")
         if not self.element_is_visible(LINK_LOCATOR, 5):
             msg = f"{BLOCK_NAME} is NOT visible on this page!"
@@ -52,7 +50,7 @@ class BUG_149(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BLOCK_NAME} is visible on this page!\n")
 
-        # Check clickable SEARCH FIELD
+        # Check clickable "Browse all markets" link
         print(f"{datetime.now()}   IS {BLOCK_NAME} clickable on this page? =>")
         if not self.element_is_clickable(LINK_LOCATOR, 5):
             msg = f"{BLOCK_NAME} is NOT clickable on this page!"
@@ -89,24 +87,54 @@ class BUG_149(BasePage):
             self.driver.find_element(*LINK_LOCATOR).click()
             print(f"{datetime.now()}   => {BLOCK_NAME} clicked!\n")
 
-        except NoSuchElementException:
-            msg = (f"{BLOCK_NAME} is not implemented as a link when the German language is selected "
-                   f"in the block 'Why trade cryptocurrency with Capital.com'.")
-            print(f"{datetime.now()}   => {msg}\n")
-            Common().pytest_fail(msg)
         Common.save_current_screenshot(d, f"{BLOCK_NAME} clicked!")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
-    def assert_(self, d,):
+    def assert_(self, d, cur_language):
         print(f"{datetime.now()}   3. Start Assert.")
 
-        # Check presenting LIST of TRADING_INSTRUMENTS
-        print(f"{datetime.now()}   Check presenting CFD Instruments.")
-        print(f"{datetime.now()}   IS CFD Instruments present on this page? =>")
-        if len(self.driver.find_elements(*TableTradingInstrumentsLocators.LINE_TRADING_INSTRUMENT)) == 0:
-            msg = f"CFD Instruments is NOT present on this page. Current page is not Cryptocurrencies page."
+        # Check language version of page "Markets"
+        print(f"{datetime.now()}   Check language version of page 'Markets'. ")
+        print(f"{datetime.now()}   IS page 'Markets' opened EN-language version? =>")
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
+        if self.current_page_url_contain_the('https://capital.com/derivative-financial-instruments'):
+            msg = f"Page 'Markets' opened in EN-language version."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   => CFD Instruments present on this page!\n")
-        self.driver.get(CapitalComPageSrc.URL)
+        expected_page = ''
+        match cur_language:
+            case "de":
+                expected_page = 'https://capital.com/de/alle-maerkte'
+            case "es":
+                expected_page = 'https://capital.com/es/instrumentos-financieros-derivados'
+            case "it":
+                expected_page = 'https://capital.com/it/derivati'
+            case "ru":
+                expected_page = 'https://capital.com/ru/proizvodnyye-finansovyye-instrumenty'
+            case "cn":
+                expected_page = 'https://capital.com/cn/derivative-financial-instruments'
+            case "zh":
+                expected_page = 'https://capital.com/zh/derivative-financial-instruments'
+            case "fr":
+                expected_page = 'https://capital.com/fr/instruments-financiers-derives'
+            case "pl":
+                expected_page = 'https://capital.com/pl/pochodne-instrumenty-finansowe'
+            case "ro":
+                expected_page = 'https://capital.com/ro/instrumente-financiare-derivate'
+            case "nl":
+                expected_page = 'https://capital.com/nl/derivaat-financieel-instrument'
+            case "el":
+                expected_page = 'https://capital.com/el/paragoga-xrimatopistotika-mesa'
+            case "hu":
+                expected_page = 'https://capital.com/hu/derivativ-penzugyi-eszkozok'
+
+        if not self.current_page_url_contain_the(expected_page):
+            msg = (f"Page 'Markets' opened in not EN-language version and not expected language."
+                   f"Current language is {cur_language}, expected_page is {expected_page},"
+                   f"current page is {self.driver.current_url}")
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+
+        print(f"{datetime.now()}   => Page 'Markets' present on expected language!\n")
+        Common.save_current_screenshot(d, f"Page 'Markets' present on expected language!")
         return True
