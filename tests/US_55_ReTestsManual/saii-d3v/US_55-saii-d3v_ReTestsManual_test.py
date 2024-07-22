@@ -19,6 +19,7 @@ from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
+from pages.BugsManual.bug_288 import Bug288
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -430,6 +431,61 @@ class TestManualDetectedBugs:
         if not search_field.should_be_active_search_field():
             Common().pytest_fail("Bug # 55!160 The Search field in the header is NOT active")
         Common().save_current_screenshot(d, "AT_55!160 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step('Start retest manual TC_55!288 The page "Trading products" is opened '
+                 'after clicking the link [Our mobile Apps] '
+                 'in the tile "Industry-leading features for an industry-leading platform" '
+                 'on the page "Why Capital.com?" when any language (except EN) is selected')
+    # @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['fr'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])   # 'de', 'ua', 'au'
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])   # 'Auth', 'NoAuth', 'NoReg'
+    @pytest.mark.bug_288
+    def test_288(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The page "Trading products" is opened after clicking the link [Our mobile Apps]
+                in the tile "Industry-leading features for an industry-leading platform"
+                on the page "Why Capital.com?" when any language (except EN) is selected
+         Language: All, except EN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "288",
+            'The page "Trading products" is opened after clicking the link [Our mobile Apps] '
+            'in the tile "Industry-leading features for an industry-leading platform" on the page "Why Capital.com?" '
+            'when any language (except EN) is selected'
+        )
+
+        # Arrange
+        Common().check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
+        if cur_language_qty_rnd_from_14 in ['el', 'zh']:
+            pytest.skip("AT development is in process...")
+
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug288(d, link, bid)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language_qty_rnd_from_14, cur_country)
+
+        # Act
+        test_el.click_why_capital_menu_item()
+
+        # Assert
+        if not test_el.should_be_mobile_apps_page(cur_language_qty_rnd_from_14):
+            Common().pytest_fail("Bug # 55!288 The Mobile Apps page is NOT opened")
+        Common().save_current_screenshot(d, "AT_55!288 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
