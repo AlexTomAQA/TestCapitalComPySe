@@ -4,6 +4,7 @@ class CapitalComPageSrc:
     URL_NEW_EN_AE = 'https://capital.com/en-ae'
     URL_NEW_AR_AE = 'https://capital.com/ar-ae'
 
+
 class Markets:
     EP = "/derivative-financial-instruments"
 

@@ -21,16 +21,6 @@ class ButtonMyAccount(BasePage):
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
 
-    # @allure.step(f"{datetime.now()}   Start full test of 'My account' button in the header")
-    # def full_test(self, d, cur_language, cur_country, cur_role, link):
-    #     self.arrange_(d)
-    #     self.element_click()
-    #
-    #     test_element = AssertClass(d, self.bid)
-    #     match cur_role:
-    #         case "Auth":
-    #             test_element.assert_my_account_menu(d)
-
     @allure.step(f"{datetime.now()}  1. Start Arrange  ")
     def arrange_(self, link):
         print(f"\n{datetime.now()}   1. Arrange for [My account] button")
