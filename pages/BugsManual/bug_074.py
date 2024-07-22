@@ -84,7 +84,6 @@ class WhatIsYourSentimentWidget(BasePage):
                 print(f"{datetime.now()}   => Widget not present on this page.\n")
                 self.list_of_rest_numbers_articles.remove(number_article)
                 self.driver.back()
-                # self.wait_for_change_url(cur_item_link, timeout=30)
                 continue
             print(f"{datetime.now()}   => Widget present on this page!")
             self.list_of_rest_numbers_articles.remove(number_article)
@@ -101,7 +100,6 @@ class WhatIsYourSentimentWidget(BasePage):
         print(f"{datetime.now()}   Article's title present on this page? =>")
         if len(self.driver.find_elements(*ARTICLE_TITLE_LOCATOR)) == 0:
             print(f"{datetime.now()}   => Article's title not present on this page.\n")
-            # self.wait_for_change_url(cur_item_link, timeout=30)
             Common.pytest_fail()
         print(f"{datetime.now()}   => Article's title present on this page!\n")
 
@@ -109,7 +107,6 @@ class WhatIsYourSentimentWidget(BasePage):
         print(f"{datetime.now()}   Article's title visible on this page? =>")
         if not self.element_is_visible(ARTICLE_TITLE_LOCATOR):
             print(f"{datetime.now()}   => Article's title not visible on this page.\n")
-            # self.wait_for_change_url(cur_item_link, timeout=30)
             msg = "Widget already is in voted mode."
             Common.pytest_fail(msg)
         print(f"{datetime.now()}   => Article's title visible on this page!\n")
@@ -176,9 +173,6 @@ class WhatIsYourSentimentWidget(BasePage):
             if not self.element_is_visible(ARTICLE_TITLE_LOCATOR):
                 print(f"{datetime.now()}   => Article's title not visible on this page. "
                       f"Widget already is in voted mode.\n")
-                # self.wait_for_change_url(cur_item_link, timeout=30)
-                # msg = "Widget already is in voted mode."
-                # Common.pytest_fail(msg)
 
                 # Get name of trading instrument
                 second_article_title = self.driver.find_element(*INSTRUMENT_LOCATOR).text

@@ -25,9 +25,9 @@ import random
         "nl",
         "el",
         "hu",
-    ], 3),
+    ], 2),
 )
-def cur_language_3_rnd_from_14(request):
+def cur_language_2_rnd_from_14(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param
 
@@ -49,7 +49,7 @@ def cur_language_3_rnd_from_14(request):
         ("nl", "bank"),
         ("el", "τράπεζα"),
         ("hu", "bank")
-    ], 3),
+    ], 2),
 )
 def cur_language_and_query(request):
     print(f"\n\n\nCurrent language - {request.param}")
@@ -85,9 +85,9 @@ def calc_1_and_calc_2(request):
         "ru",
         "cn",
         "ro"
-    ], 3),
+    ], 2),
 )
-def cur_language_3_rnd_from_12(request):
+def cur_language_2_rnd_from_12(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param
 
@@ -100,9 +100,9 @@ def cur_language_3_rnd_from_12(request):
         "Indices",
         "Commodities",
         "Cryptocurrencies"
-    ], 2)
+    ], 1)
 )
-def cur_market_2_rnd_from_5(request):
+def cur_market_1_rnd_from_5(request):
     """Markets sorting parameters"""
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param
@@ -127,38 +127,15 @@ def cur_search_query_2_rnd_from_10(request):
     print(f"\n\n\nCurrent market - {request.param}")
     return request.param
 
-# @pytest.fixture(
-#     scope="function",
-#     params=[
-#         "EUR/USD",
-#         "GBP/USD",
-#         "Natural Gas",
-#         "US Tech 100",
-#         "NVIDIA Corp",
-#         "Gold",
-#         "Germany 40",
-#     ],
-# )
-# def calc_instrument_1(request):
-#     """Fixture - Trading calculator Instrument 1"""
-#     print(f"\n\n\nCurrent instrument_1 - {request.param}")
-#     return request.param
-#
-# @pytest.fixture(
-#     scope="function",
-#     params=[
-#         "EUR/USD",
-#         "GBP/USD",
-#         "Natural Gas",
-#         "US Tech 100",
-#         "NVIDIA Corp",
-#         "Gold",
-#         "Germany 40",
-#     ],
-# )
-# def calc_instrument_2(request, calc_instrument_1):
-#     """Fixture - Trading calculator Instrument 2"""
-#     if calc_instrument_1 == request.param:
-#
-#     print(f"\n\n\nCurrent instrument_2 - {request.param}")
-#     return request.param
+@pytest.fixture(
+    scope="function",
+    params=random.sample([
+        "de",
+        "au",
+        "ua"
+    ], 1)
+)
+def cur_country_1_rnd_from_3(request):
+    """Country sorting parameters"""
+    print(f"\n\n\nCurrent country - {request.param}")
+    return request.param
