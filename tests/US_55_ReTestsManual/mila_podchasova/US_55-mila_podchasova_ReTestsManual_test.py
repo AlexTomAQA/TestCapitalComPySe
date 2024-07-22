@@ -170,10 +170,9 @@ class TestManualDetectedBugs:
         button.element_click()
 
         # Assert
-        test_element = AssertClass(d, bid)
         match cur_role:
             case "Auth":
-                test_element.assert_my_account_menu_opened(d)
+                button.assert_my_account_menu_opened_en(d)
 
     @allure.step("Start retest manual TC_55!00_285ar Opened the Trading platform page "
                  "instead [My Account] menu after clicking the [My account] button")
@@ -210,7 +209,6 @@ class TestManualDetectedBugs:
         button.element_click()
 
         # Assert
-        test_element = AssertClass(d, bid)
         match cur_role:
             case "Auth":
-                test_element.assert_my_account_menu_opened_(d)
+                button.assert_my_account_menu_opened_ar(d)

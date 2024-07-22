@@ -258,31 +258,3 @@ class AssertClass(BasePage):
                  'Actual result: The trading platform page is opened')
         else:
             print(f"{datetime.now()}   =>This does not mean that there is no bug")
-
-    @allure.step('Checking that the "My account" menu is opened')
-    def assert_my_account_menu_opened(self, d):
-        print(f"\n{datetime.now()}   3. Assert")
-        btn_link = d.current_url
-        if btn_link == "https://capital.com/trading/platform/":
-            assert False, \
-                ('Bug#285en. '
-                 'Expected result: Menu [My Account] is displayed'
-                 '\n'
-                 'Actual result: The trading platform page is opened')
-        else:
-            print(f"{datetime.now()}   =>This does not mean that there is no bug")
-
-    @allure.step('Checking that the "My account" menu is opened')
-    def assert_my_account_menu_opened_(self, d):
-        print(f"\n{datetime.now()}   3. Assert")
-        btn_link = d.current_url
-        if btn_link == "https://capital.com/trading/platform/":
-            assert False, \
-                ('Bug#285ar. '
-                 'Expected result: Menu [My Account] is displayed'
-                 '\n'
-                 'Actual result: The trading platform page is opened')
-        else:
-            print(f"{datetime.now()}   =>This does not mean that there is no bug")
-
-
