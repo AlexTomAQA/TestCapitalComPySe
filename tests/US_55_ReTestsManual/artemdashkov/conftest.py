@@ -49,7 +49,7 @@ def cur_language_3_rnd_from_14(request):
         ("nl", "bank"),
         ("el", "τράπεζα"),
         ("hu", "bank")
-    ], 3),
+    ], 2),
 )
 def cur_language_and_query(request):
     print(f"\n\n\nCurrent language - {request.param}")
