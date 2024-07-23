@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/07/20 21:00
+@Time    : 2024/07/23 14:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -12,15 +12,15 @@ from pages.base_page import BasePage
 from pages.common import Common
 from pages.Signup_login.signup_login import SignupLogin
 
-BLOCK_NAME = "[Browse all markets] link"
-LINK_LOCATOR = (By.CSS_SELECTOR, '.arrowLink.js-mWidget-link.js-mWidget--mosttraded')
+BLOCK_NAME = "[demo account] link"
+# LINK_LOCATOR = (By.CSS_SELECTOR, '.arrowLink.js-mWidget-link.js-mWidget--mosttraded')
 
 
-class BUG_149(BasePage):
+class BUG_151(BasePage):
 
     def __init__(self, browser, link, bid):
         super().__init__(browser, link, bid)
-
+"""
     @allure.step(f"{datetime.now()}   1. Start Arrange.")
     def arrange(self, d, cur_language):
         global LINK_LOCATOR
@@ -136,3 +136,4 @@ class BUG_149(BasePage):
         print(f"{datetime.now()}   => Page 'Markets' present on expected language!\n")
         Common.save_current_screenshot(d, f"Page 'Markets' present on expected language!")
         return True
+"""
