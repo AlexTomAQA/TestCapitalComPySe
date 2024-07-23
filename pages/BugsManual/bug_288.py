@@ -84,16 +84,12 @@ class Bug288(BasePage):
                 title_name = 'Capital.com 移動應用程序'
 
         if cur_language in ['el', 'zh']:
-            if bc_name in self.driver.find_element(*BREADCRUMB_LOC).text:
-                if title_name in self.driver.find_element(*TITLE_ALT_LOC).text:
-                    # print(f'{datetime.now()}   => {title_name}')
-                    # print(f'{datetime.now()}   => {self.driver.find_element(*TITLE_ALT_LOC).text}')
-                    print(f'{datetime.now()}   => Wrong page')
-                    return False
-            print(f'{datetime.now()}   => {title_name}')
-            print(f'{datetime.now()}   => {self.driver.find_element(*TITLE_ALT_LOC).text}')
-            print(f'{datetime.now()}   => The Mobile Apps page is opened')
-            return True
+            if bc_name not in self.driver.find_element(*BREADCRUMB_LOC).text:
+                if title_name not in self.driver.find_element(*TITLE_ALT_LOC).text:
+                    print(f'{datetime.now()}   => The Mobile Apps page is opened')
+                    return True
+            print(f'{datetime.now()}   => Wrong page')
+            return False
 
         if bc_name in self.driver.find_element(*BREADCRUMB_LOC).text:
             if title_name in self.driver.find_element(*TITLE_LOC).text:
