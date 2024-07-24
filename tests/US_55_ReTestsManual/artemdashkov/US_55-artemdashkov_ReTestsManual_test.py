@@ -530,19 +530,15 @@ class TestManualDetected:
             "Testing link [demo account] on the 'Main page'",
             False, False
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
             cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
-        cur_item_link = page_menu.open_charges_and_fees_submenu_products_and_services_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
-
         test_element = BUG_151(d, cur_item_link, bid)
-        test_element.arrange(d, cur_language)
+        test_element.arrange(d, cur_language, cur_item_link)
 
         # Act
         test_element.act(d)
