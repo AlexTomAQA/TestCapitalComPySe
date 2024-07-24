@@ -515,9 +515,8 @@ class TestManualDetected:
             self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
             cur_login, cur_password):
         """
-        Check:  The [demo account] page is opened in EN language on the "Main page"
-                instead corresponding language,
-                when clicked [demo account] link for HU or RU language is selected
+        Check:  The [demo account] page is opened in EN language instead corresponding language,
+                when clicked [demo account] link on the "Main page" for HU or RU language is selected
         Language: HU, RU
         Country: CYSEC, ASIC, SCB
         Role: NoReg, Auth, NoAuth
