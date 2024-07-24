@@ -1,0 +1,88 @@
+
+
+
+Current language - ro
+{'width': 1280, 'height': 800}
+
+2024-07-24 17:41:17.921610   worker_id = master
+
+2024-07-24 17:41:17.921624   0. Allure grouping for US_55
+
+2024-07-24 17:41:17.921801   START PRECONDITIONS =>
+
+2024-07-24 17:41:17.921817   => URL after prev. preconditions - https://capital.com/ro
+2024-07-24 17:41:17.921827   => flag_of_bug - True
+2024-07-24 17:41:17.921838   => Current URL - https://capital.com/ro/live-actiuni-preturi?t=most
+2024-07-24 17:41:17.927005   Current page URL = https://capital.com/ro/live-actiuni-preturi?t=most
+2024-07-24 17:41:17.929408   self.link = https://capital.com/ro
+2024-07-24 17:41:17.929422   driver.get(https://capital.com/ro) =>
+2024-07-24 17:41:19.738338   => Loaded page https://capital.com/ro
+
+2024-07-24 17:41:19.742646   => Windows size: {'width': 1280, 'height': 800}
+2024-07-24 17:41:19.743989   Set windows position at (0, 0) =>
+2024-07-24 17:41:19.745548   Set resolution 1280 * 800 =>
+2024-07-24 17:41:19.747147   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-24 17:41:20.791213   Капчи нет. Идем дальше
+
+2024-07-24 17:41:20.791303   Работа с куками =>
+
+2024-07-24 17:41:20.791318   => не требуется
+
+2024-07-24 17:41:21.824446   Капчи нет. Идем дальше
+
+2024-07-24 17:41:21.824536   Prev. country - 'es'
+2024-07-24 17:41:21.824550   Cur. country - 'ua'
+2024-07-24 17:41:21.824560   Set 'ua' country =>
+2024-07-24 17:41:21.838094   => Language and Country menu is present
+2024-07-24 17:41:21.853319   => Language and Country menu is visible
+2024-07-24 17:41:23.120283   => Focus is moved on Language and Country menu 
+2024-07-24 17:41:25.742447   => Cur url = https://capital.com/ro?country=ua
+2024-07-24 17:41:25.750423   => Country set to 'ua'
+
+2024-07-24 17:41:26.805336   Капчи нет. Идем дальше
+
+2024-07-24 17:41:26.805424   Prev. language - 'ro'
+2024-07-24 17:41:26.805438   Cur. language - 'ro'
+2024-07-24 17:41:26.805448   => Language is set to 'ro'
+
+2024-07-24 17:41:27.837540   Капчи нет. Идем дальше
+
+2024-07-24 17:41:27.837621   Prev. role - 'NoReg'
+2024-07-24 17:41:27.837635   Cur. role - 'NoReg'
+2024-07-24 17:41:27.837645   => The 'NoReg' role is set
+
+2024-07-24 17:41:27.840336   => Current URL - https://capital.com/ro?country=ua
+
+2024-07-24 17:41:27.840359   => THE END PRECONDITIONS
+
+2024-07-24 17:41:27.840534   START Open "Markets" menu, "Shares" submenu =>
+2024-07-24 17:41:27.840550   1. Cur URL = https://capital.com/ro?country=ua
+2024-07-24 17:41:27.843012   2. Link = https://capital.com/ro?country=ua
+2024-07-24 17:41:27.843028   current_page = https://capital.com/ro?country=ua
+2024-07-24 17:41:27.845445   link = https://capital.com/ro?country=ua
+2024-07-24 17:41:28.357554   => 'Markets' menu is present
+2024-07-24 17:41:28.374413   => 'Markets' menu is visible
+2024-07-24 17:41:29.650633   => Focus moved to 'Markets' menu
+2024-07-24 17:41:31.072031   => Focus moved to 'Shares' submenu and clicked
+2024-07-24 17:41:31.344365   => Focus moved to 'capital*com' logo
+2024-07-24 17:41:31.344407   3. Cur URL = https://capital.com/ro/live-actiuni-preturi
+
+2024-07-24 17:41:31.349578   1. Arrange_v0
+2024-07-24 17:41:31.349600   current_page = https://capital.com/ro/live-actiuni-preturi
+2024-07-24 17:41:31.351953   link = https://capital.com/ro/live-actiuni-preturi
+2024-07-24 17:41:31.354240   Scroll to the labels
+2024-07-24 17:41:31.363812   Close the filters if selected
+2024-07-24 17:41:31.605142   Select region filters
+2024-07-24 17:41:33.222550   Select sectors filters
+2024-07-24 17:41:35.293070   Scroll to selected filters
+2024-07-24 17:41:35.296358   Check the labels of the selected filters
+2024-07-24 17:41:35.810950   Extract the text attribute from the labels of the selected filters
+
+2024-07-24 17:41:35.845892   2. Act
+2024-07-24 17:41:35.845927   Select a random item sort
+2024-07-24 17:41:37.547820   Sort - Cele mai tranzacționate - is selected
+
+2024-07-24 17:41:37.548109   3. Assert_v0
+2024-07-24 17:41:37.650717   Expected result: applied filters 'Region/Sectors' ['Olanda', 'Singapore', 'Suedia', 'Materii prime', 'Îngrijire medicală']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Olanda', 'Singapore', 'Suedia', 'Materii prime']
