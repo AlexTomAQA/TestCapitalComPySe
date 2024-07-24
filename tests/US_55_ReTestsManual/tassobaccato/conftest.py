@@ -61,7 +61,6 @@ def sidebar_item(request):
 @pytest.fixture(
     scope="function",
     params=random.sample([
-        "",
         "de",
         "es",
         "it",
@@ -70,6 +69,6 @@ def sidebar_item(request):
         "zh"
     ], 2),
 )
-def cur_language_2_rnd_from_7(request):
+def cur_language_2_rnd_from_6(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param

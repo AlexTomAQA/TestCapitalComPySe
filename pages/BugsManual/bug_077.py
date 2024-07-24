@@ -49,21 +49,24 @@ class Sidebar(BasePage):
             self.link = cur_item_link
             self.open_page()
 
+        print(f"{datetime.now()}   Scroll to the sidebar")
         sidebar = self.driver.find_element(By.CSS_SELECTOR, "div.side-nav")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             sidebar
         )
 
+        print(f"{datetime.now()}   Click the item")
         match sidebar_item:
             case 'Bitcoin Gold':
                 self.item_sidebar = self.driver.find_element(By.CSS_SELECTOR, "a[href*='trade-bitcoingold']")
+                if self.item_sidebar:
+                    self.item_sidebar.click()
+                    print(f"{datetime.now()}   The item '{sidebar_item}' is clicked")
+                else:
+                    print(f"{datetime.now()}   The {sidebar_item} is missing from the sidebar")
+                    Common.pytest_skip("The item is missing from the sidebar")
 
-        if self.item_sidebar:
-            self.item_sidebar.click()
-        else:
-            print(f"{datetime.now()}   The {sidebar_item} is missing from the sidebar")
-            Common.pytest_skip("The item is missing from the sidebar")
 
     def sidebar_ru_es_it_pl(self, d, cur_item_link, sidebar_item):
         print(f"\n{datetime.now()}   1. Arrange")
@@ -72,21 +75,23 @@ class Sidebar(BasePage):
             self.link = cur_item_link
             self.open_page()
 
+        print(f"{datetime.now()}   Scroll to the sidebar")
         sidebar = self.driver.find_element(By.CSS_SELECTOR, "div.side-nav")
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             sidebar
         )
 
+        print(f"{datetime.now()}   Click the item")
         match sidebar_item:
             case 'Bitcoin Gold':
                 self.item_sidebar = self.driver.find_element(By.CSS_SELECTOR, "a[href*='bitcoin-gold']")
-
-        if self.item_sidebar:
-            self.item_sidebar.click()
-        else:
-            print(f"{datetime.now()}   The {sidebar_item} is missing from the sidebar")
-            Common.pytest_skip("The item is missing from the sidebar")
+                if self.item_sidebar:
+                    self.item_sidebar.click()
+                    print(f"{datetime.now()}   The item '{sidebar_item}' is clicked")
+                else:
+                    print(f"{datetime.now()}   The {sidebar_item} is missing from the sidebar")
+                    Common.pytest_skip("The item is missing from the sidebar")
 
     def assert_(self, sidebar_item):
         print(f"\n{datetime.now()}   2. Assert")
