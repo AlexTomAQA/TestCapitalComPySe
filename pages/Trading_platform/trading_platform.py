@@ -64,26 +64,6 @@ class TradingPlatform(BasePage):
             print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False
 
-    # @allure.step("Checking that the trading platform page has opened")
-    # def should_be_trading_platform_page_v1(self, d, link):
-    #     """Check if the page is open"""
-    #     print(f"{datetime.now()}   Checking that the trading platform page has opened")
-    #     if self.current_page_url_contain_the(link):
-    #         page_ = TopBar(d, link)
-    #         if page_.trading_platform_logo_is_present():
-    #             d.back()
-    #             del page_
-    #             assert True
-    #         else:
-    #             del page_
-    #             assert False, 'Page with title "Trading Platform | Capital.com" not loaded'
-    #     else:
-    #         assert False, \
-    #             ('Bug#090. '
-    #              'Expected result:The trading platform page is opened in (demo mode) '
-    #              '\n'
-    #              'Actual result: The trading platform page is opened in (live mode)')
-
     @allure.step("Checking that the trading platform page has opened in demo-mode ")
     def should_be_trading_platform_page_in_demo_mode_opened(self, d, link, tpd):
         """
