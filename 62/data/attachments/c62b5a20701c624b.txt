@@ -1,0 +1,88 @@
+
+
+
+Current language - ru
+{'width': 1280, 'height': 800}
+
+2024-07-24 03:20:57.372397   worker_id = master
+
+2024-07-24 03:20:57.372411   0. Allure grouping for US_55
+
+2024-07-24 03:20:57.372598   START PRECONDITIONS =>
+
+2024-07-24 03:20:57.372613   => URL after prev. preconditions - https://capital.com/ru
+2024-07-24 03:20:57.372648   => flag_of_bug - True
+2024-07-24 03:20:57.372661   => Current URL - https://capital.com/ru/kotirovki-aktsiy?t=volatile
+2024-07-24 03:20:57.377812   Current page URL = https://capital.com/ru/kotirovki-aktsiy?t=volatile
+2024-07-24 03:20:57.380247   self.link = https://capital.com/ru
+2024-07-24 03:20:57.380261   driver.get(https://capital.com/ru) =>
+2024-07-24 03:20:59.363932   => Loaded page https://capital.com/ru
+
+2024-07-24 03:20:59.371262   => Windows size: {'width': 1280, 'height': 800}
+2024-07-24 03:20:59.372759   Set windows position at (0, 0) =>
+2024-07-24 03:20:59.374699   Set resolution 1280 * 800 =>
+2024-07-24 03:20:59.376668   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-24 03:21:00.414504   Капчи нет. Идем дальше
+
+2024-07-24 03:21:00.414595   Работа с куками =>
+
+2024-07-24 03:21:00.414609   => не требуется
+
+2024-07-24 03:21:01.463849   Капчи нет. Идем дальше
+
+2024-07-24 03:21:01.463943   Prev. country - 'es'
+2024-07-24 03:21:01.463957   Cur. country - 'ua'
+2024-07-24 03:21:01.463966   Set 'ua' country =>
+2024-07-24 03:21:01.476860   => Language and Country menu is present
+2024-07-24 03:21:01.493577   => Language and Country menu is visible
+2024-07-24 03:21:02.770471   => Focus is moved on Language and Country menu 
+2024-07-24 03:21:06.497917   => Cur url = https://capital.com/ru?country=ua
+2024-07-24 03:21:06.507446   => Country set to 'ua'
+
+2024-07-24 03:21:07.541552   Капчи нет. Идем дальше
+
+2024-07-24 03:21:07.541645   Prev. language - 'ru'
+2024-07-24 03:21:07.541659   Cur. language - 'ru'
+2024-07-24 03:21:07.541668   => Language is set to 'ru'
+
+2024-07-24 03:21:08.578579   Капчи нет. Идем дальше
+
+2024-07-24 03:21:08.578668   Prev. role - 'Auth'
+2024-07-24 03:21:08.578681   Cur. role - 'Auth'
+2024-07-24 03:21:08.578691   => The 'Auth' role is set
+
+2024-07-24 03:21:08.583257   => Current URL - https://capital.com/ru?country=ua
+
+2024-07-24 03:21:08.583282   => THE END PRECONDITIONS
+
+2024-07-24 03:21:08.583478   START Open "Markets" menu, "Shares" submenu =>
+2024-07-24 03:21:08.583499   1. Cur URL = https://capital.com/ru?country=ua
+2024-07-24 03:21:08.586087   2. Link = https://capital.com/ru?country=ua
+2024-07-24 03:21:08.586102   current_page = https://capital.com/ru?country=ua
+2024-07-24 03:21:08.588580   link = https://capital.com/ru?country=ua
+2024-07-24 03:21:09.101011   => 'Markets' menu is present
+2024-07-24 03:21:09.117762   => 'Markets' menu is visible
+2024-07-24 03:21:10.384789   => Focus moved to 'Markets' menu
+2024-07-24 03:21:12.010859   => Focus moved to 'Shares' submenu and clicked
+2024-07-24 03:21:12.283150   => Focus moved to 'capital*com' logo
+2024-07-24 03:21:12.283194   3. Cur URL = https://capital.com/ru/kotirovki-aktsiy
+
+2024-07-24 03:21:12.288578   1. Arrange_v0
+2024-07-24 03:21:12.288600   current_page = https://capital.com/ru/kotirovki-aktsiy
+2024-07-24 03:21:12.290991   link = https://capital.com/ru/kotirovki-aktsiy
+2024-07-24 03:21:12.293304   Scroll to the labels
+2024-07-24 03:21:12.302756   Close the filters if selected
+2024-07-24 03:21:12.484805   Select region filters
+2024-07-24 03:21:14.093894   Select sectors filters
+2024-07-24 03:21:16.173418   Scroll to selected filters
+2024-07-24 03:21:16.176707   Check the labels of the selected filters
+2024-07-24 03:21:16.693139   Extract the text attribute from the labels of the selected filters
+
+2024-07-24 03:21:16.727791   2. Act
+2024-07-24 03:21:16.727832   Select a random item sort
+2024-07-24 03:21:18.601330   Sort - Активно растущие рынки - is selected
+
+2024-07-24 03:21:18.601611   3. Assert_v0
+2024-07-24 03:21:18.714763   Expected result: applied filters 'Region/Sectors' ['Канада', 'Испания', 'Соединенные Штаты Америки', 'Здравоохранение', 'Нециклические потребительские товары и услуги']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Канада', 'Испания', 'Соединенные Штаты Америки', 'Нециклические потребительские товары и услуги']
