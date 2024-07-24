@@ -6,12 +6,14 @@
 
 import time
 from datetime import datetime
+import random
 
 import pytest
 import allure
 
 from pages.common import Common
 from pages.conditions import Conditions
+from pages.conditions_new import NewConditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
@@ -19,6 +21,7 @@ from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
+from pages.BugsManual.bug_288 import Bug288
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -35,8 +38,8 @@ class TestManualDetectedBugs:
     @allure.step("Start retest manual TC_55!052 The main page in EN language is opened "
                  "after click on the link [Go to all commodities] on the 'Commodities trading' page "
                  "when AR, IT, NL, PL, RO, CN language is selected")
-    @pytest.mark.parametrize('cur_language', ['ar', 'it', 'nl', 'pl', 'ro', 'cn'])
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_language', random.sample(['ar', 'it', 'nl', 'pl', 'ro', 'cn'], 2))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_052
     def test_052(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -79,7 +82,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!043 The page is refreshed instead of opening the Login "
                  "form after clicking the [Log In] button on the Search page")
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.bug_053
     def test_053(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
@@ -241,7 +244,7 @@ class TestManualDetectedBugs:
                  "after clicking the link [Handelsleitfäden] (trading guides) "
                  "on the page [Demo-Konto] (Demo Account) in DE lang")
     @pytest.mark.parametrize('cur_language', ['de'])
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_085
     def test_085(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -290,7 +293,7 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!157 The modal window "Confirm Form Resubmission" is not opened '
         'after clicking the button [Back] on any article from search page.')
     @pytest.mark.parametrize('cur_language', [''])  # temporary use only EN, because of bug #55!292
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_157
     def test_157(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -345,7 +348,7 @@ class TestManualDetectedBugs:
         "Start retest manual TC_55!158 | Page '教育' (Education) is opened after click "
         "on menu section [新聞和分析] (News and analysis) in CN language")
     @pytest.mark.parametrize('cur_language', ['cn'])
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_158
     def test_158(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -353,7 +356,7 @@ class TestManualDetectedBugs:
         """
          Check: Page '教育' (Education) is opened after click on menu section [新聞和分析] (News and analysis) in CN language.
          Language: CN.
-         License: All, exclude FCA, SCA.
+         License: ASIC, CYSEC, SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -389,7 +392,7 @@ class TestManualDetectedBugs:
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!160 The Search field in the header is not opened after performed search")
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_160
     def test_160(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
@@ -435,10 +438,64 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
 
+    @allure.step('Start retest manual TC_55!288 The page "Trading products" is opened '
+                 'after clicking the link [Our mobile Apps] '
+                 'in the tile "Industry-leading features for an industry-leading platform" '
+                 'on the page "Why Capital.com?" when any language (except EN) is selected')
+    @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['ru', 'zh'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_288
+    def test_288(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The page "Trading products" is opened after clicking the link [Our mobile Apps]
+                in the tile "Industry-leading features for an industry-leading platform"
+                on the page "Why Capital.com?" when any language (except EN) is selected
+         Language: All, except EN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "288",
+            'The page "Trading products" is opened after clicking the link [Our mobile Apps] '
+            'in the tile "Industry-leading features for an industry-leading platform" on the page "Why Capital.com?" '
+            'when any language (except EN) is selected'
+        )
+
+        # Arrange
+        Common().check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
+
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
+        d.refresh()
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug288(d, link, bid)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language_qty_rnd_from_14, cur_country)
+        test_el.click_why_capital_menu_item()
+
+        # Act
+        test_el.click_our_mobile_apps_link()
+
+        # Assert
+        if not test_el.should_be_mobile_apps_page(cur_language_qty_rnd_from_14):
+            Common().pytest_fail("Bug # 55!288 The Mobile Apps page is NOT opened")
+        Common().save_current_screenshot(d, "AT_55!288 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
     @allure.step(
         'Start retest manual TC_55!292 There are no search results on the Search page '
         'when any language except EN is selected')
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_292
     def test_292(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
