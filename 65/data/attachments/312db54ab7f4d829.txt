@@ -1,0 +1,88 @@
+
+
+
+Current language - cn
+{'width': 1280, 'height': 800}
+
+2024-07-25 07:53:33.405957   worker_id = master
+
+2024-07-25 07:53:33.405972   0. Allure grouping for US_55
+
+2024-07-25 07:53:33.406147   START PRECONDITIONS =>
+
+2024-07-25 07:53:33.406163   => URL after prev. preconditions - https://capital.com/cn
+2024-07-25 07:53:33.406172   => flag_of_bug - True
+2024-07-25 07:53:33.406184   => Current URL - https://capital.com/cn/about-us
+2024-07-25 07:53:33.411306   Current page URL = https://capital.com/cn/about-us
+2024-07-25 07:53:33.413698   self.link = https://capital.com/cn
+2024-07-25 07:53:33.413712   driver.get(https://capital.com/cn) =>
+2024-07-25 07:53:37.626233   => Loaded page https://capital.com/cn
+
+2024-07-25 07:53:37.630926   => Windows size: {'width': 1280, 'height': 800}
+2024-07-25 07:53:37.632318   Set windows position at (0, 0) =>
+2024-07-25 07:53:37.633966   Set resolution 1280 * 800 =>
+2024-07-25 07:53:37.635600   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-25 07:53:38.672624   Капчи нет. Идем дальше
+
+2024-07-25 07:53:38.672708   Работа с куками =>
+
+2024-07-25 07:53:38.672722   => не требуется
+
+2024-07-25 07:53:39.713001   Капчи нет. Идем дальше
+
+2024-07-25 07:53:39.713087   Prev. country - 'es'
+2024-07-25 07:53:39.713101   Cur. country - 'ua'
+2024-07-25 07:53:39.713110   Set 'ua' country =>
+2024-07-25 07:53:39.720707   => Language and Country menu is present
+2024-07-25 07:53:39.731960   => Language and Country menu is visible
+2024-07-25 07:53:41.013981   => Focus is moved on Language and Country menu 
+2024-07-25 07:53:43.764020   => Cur url = https://capital.com/cn?country=ua
+2024-07-25 07:53:43.798633   => Country set to 'ua'
+
+2024-07-25 07:53:44.834375   Капчи нет. Идем дальше
+
+2024-07-25 07:53:44.834462   Prev. language - 'cn'
+2024-07-25 07:53:44.834475   Cur. language - 'cn'
+2024-07-25 07:53:44.834485   => Language is set to 'cn'
+
+2024-07-25 07:53:45.868421   Капчи нет. Идем дальше
+
+2024-07-25 07:53:45.868505   Prev. role - 'NoReg'
+2024-07-25 07:53:45.868518   Cur. role - 'NoReg'
+2024-07-25 07:53:45.868528   => The 'NoReg' role is set
+
+2024-07-25 07:53:45.871302   => Current URL - https://capital.com/cn?country=ua
+
+2024-07-25 07:53:45.871324   => THE END PRECONDITIONS
+
+2024-07-25 07:53:45.871501   START Open "Markets" menu, "Shares" submenu =>
+2024-07-25 07:53:45.871517   1. Cur URL = https://capital.com/cn?country=ua
+2024-07-25 07:53:45.873988   2. Link = https://capital.com/cn?country=ua
+2024-07-25 07:53:45.874003   current_page = https://capital.com/cn?country=ua
+2024-07-25 07:53:45.878691   link = https://capital.com/cn?country=ua
+2024-07-25 07:53:46.390039   => 'Markets' menu is present
+2024-07-25 07:53:46.412889   => 'Markets' menu is visible
+2024-07-25 07:53:47.678127   => Focus moved to 'Markets' menu
+2024-07-25 07:53:49.213146   => Focus moved to 'Shares' submenu and clicked
+2024-07-25 07:53:49.509856   => Focus moved to 'capital*com' logo
+2024-07-25 07:53:49.509904   3. Cur URL = https://capital.com/cn/live-share-prices
+
+2024-07-25 07:53:49.516621   1. Arrange_v0
+2024-07-25 07:53:49.516652   current_page = https://capital.com/cn/live-share-prices
+2024-07-25 07:53:49.519489   link = https://capital.com/cn/live-share-prices
+2024-07-25 07:53:49.521860   Scroll to the labels
+2024-07-25 07:53:49.533911   Close the filters if selected
+2024-07-25 07:53:49.650015   Select region filters
+2024-07-25 07:53:51.252127   Select sectors filters
+2024-07-25 07:53:53.332467   Scroll to selected filters
+2024-07-25 07:53:53.335933   Check the labels of the selected filters
+2024-07-25 07:53:53.852035   Extract the text attribute from the labels of the selected filters
+
+2024-07-25 07:53:53.887525   2. Act
+2024-07-25 07:53:53.887562   Select a random item sort
+2024-07-25 07:53:55.746183   Sort - 領先下跌者（Top Fallers） - is selected
+
+2024-07-25 07:53:55.746498   3. Assert_v0
+2024-07-25 07:53:55.835632   Expected result: applied filters 'Region/Sectors' ['加拿大', '荷蘭', '美利堅合眾國', '產業', '科技']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['瑞士']
