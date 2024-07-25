@@ -48,8 +48,8 @@ class ProfessionalMenuCheckFooter(BasePage):
             print(f"{datetime.now()}   => CAPITAL.COM logo from footer is visible on the page")
         else:
             print(f"{datetime.now()}   => CAPITAL.COM logo from footer is not visible on the page")
-            pytest.fail("Bug # 043. The footer is missing after click menu item [Professional] "
-                        "of the menu section [Ways to trade]")
+            pytest.fail("Bug # 043. The footer is missing on click Top Panel "
+                        "item [Professional] of the Header ")
 
 
 
