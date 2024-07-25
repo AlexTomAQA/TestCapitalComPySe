@@ -51,7 +51,9 @@ class LearnToTradePage(BasePage):
         try:
             Wait(self.driver, 5).until(EC.element_to_be_clickable(BLOCK_272_LOC))
         except TimeoutException:
+            print(f'{datetime.now()}   => The block is not into viewport')
             return False
+        print(f'{datetime.now()}   => The block is into viewport')
         return True
 
     def should_be_visible_block_experienced_traders(self):
@@ -59,5 +61,7 @@ class LearnToTradePage(BasePage):
         try:
             Wait(self.driver, 5).until(EC.element_to_be_clickable(BLOCK_273_LOC))
         except TimeoutException:
+            print(f'{datetime.now()}   => The block is not into viewport')
             return False
+        print(f'{datetime.now()}   => The block is into viewport')
         return True
