@@ -65,23 +65,23 @@ class TestManualDetectedBugs:
         Common().save_current_screenshot(d, "AT_55!038 Pass")
 
     @allure.step("Start retest manual TC_55!00_043 "
-                 "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
+                 "The footer is missing on click Top Panel item [Professional] of the Header")
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_043
     def test_043(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
-        1. Hover over the [Ways to trade] menu section
-        2. Click the [Professional]menu item
+        The footer is missing on click Top Panel item [Professional] of the Header
+        1. Hover over the Top Panel item [Professional]
+        2. Click the [Professional] item
         Author: podchasova11
         """
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "043",
-            "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"
+            "The footer is missing on click Top Panel item [Professional] of the Header"
         )
         # pytest.skip("Autotest under construction")
 
