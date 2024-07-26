@@ -21,6 +21,7 @@ from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
+from pages.BugsManual.bugs_272_273 import LearnToTradePage
 from pages.BugsManual.bug_288 import Bug288
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -437,6 +438,110 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!272 | The page with “404 error” message is displayed '
+        'after clicking the link [تعلّم التداول] (Learn to trade) '
+        'in the tile  [تبدأ الطريق من أوله؟] (Starting from the beginning?) '
+        'on the page "تعلّم التداول" (Learn to trade) when AR language is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_272
+    def test_272(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The page with “404 error” message is displayed
+                after clicking the link [تعلّم التداول] (Learn to trade)
+                in the tile  [تبدأ الطريق من أوله؟] (Starting from the beginning?)
+                on the page "تعلّم التداول" (Learn to trade) when AR language is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "272",
+            'The page with “404 error” message is displayed '
+            'after clicking the link [تعلّم التداول] (Learn to trade) '
+            'in the tile  [تبدأ الطريق من أوله؟] (Starting from the beginning?) '
+            'on the page "تعلّم التداول" (Learn to trade) when AR language is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        test_el = LearnToTradePage(d, link, bid)
+        test_el.click_learn_menu_section()
+
+        # Act
+        test_el.click_the_learn_to_trade_link272()
+
+        # Assert
+        if not test_el.should_be_visible_block_trading_for_beginners():
+            Common().pytest_fail('Bug # 55!272 The the block "Trading for beginners" is NOT into viewport')
+        Common().save_current_screenshot(d, "AT_55!272 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!273 | The page with “404 error” message is displayed '
+        'after clicking the link [تعلّم التداول] (Learn to trade) '
+        'in the tile [ترغب في تحسين استراتيجياتك؟] (Looking to sharpen your strategies?) '
+        'on the page "تعلّم التداول" (Learn to trade) when AR language is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_273
+    def test_273(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The page with “404 error” message is displayed
+                after clicking the link [تعلّم التداول] (Learn to trade)
+                in the tile [ترغب في تحسين استراتيجياتك؟] (Looking to sharpen your strategies?)
+                on the page "تعلّم التداول" (Learn to trade) when AR language is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "272",
+            'The page with “404 error” message is displayed '
+            'after clicking the link [تعلّم التداول] (Learn to trade) '
+            'in the tile [ترغب في تحسين استراتيجياتك؟] (Looking to sharpen your strategies?) '
+            'on the page "تعلّم التداول" (Learn to trade) when AR language is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        test_el = LearnToTradePage(d, link, bid)
+        test_el.click_learn_menu_section()
+
+        # Act
+        test_el.click_the_learn_to_trade_link273()
+
+        # Assert
+        if not test_el.should_be_visible_block_trading_for_beginners():
+            Common().pytest_fail('Bug # 55!273 The the block "Experienced traders" is NOT into viewport')
+        Common().save_current_screenshot(d, "AT_55!273 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step('Start retest manual TC_55!288 The page "Trading products" is opened '
                  'after clicking the link [Our mobile Apps] '

@@ -78,7 +78,7 @@ class MainMenu(BasePage):
 
     # account
     MENU_ACCOUNT = (By.CSS_SELECTOR, '[class*="accountBtns"]>a')
-    MENU_LOGIN = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+    MENU_LOGIN = (By.CSS_SELECTOR, "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header_login']")
 
     # Why Capital.com?
     MENU_WHY_CAPITAL = (By.CSS_SELECTOR, '[data-type="nav_id687"]')
