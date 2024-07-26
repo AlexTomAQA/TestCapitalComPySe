@@ -1,0 +1,88 @@
+
+
+
+Current language - de
+{'width': 1280, 'height': 800}
+
+2024-07-26 14:46:00.015709   worker_id = master
+
+2024-07-26 14:46:00.015723   0. Allure grouping for US_55
+
+2024-07-26 14:46:00.015925   START PRECONDITIONS =>
+
+2024-07-26 14:46:00.015944   => URL after prev. preconditions - https://capital.com/de
+2024-07-26 14:46:00.015954   => flag_of_bug - True
+2024-07-26 14:46:00.015966   => Current URL - https://capital.com/de/aktienkurse-realtime?t=fallers
+2024-07-26 14:46:00.021486   Current page URL = https://capital.com/de/aktienkurse-realtime?t=fallers
+2024-07-26 14:46:00.024009   self.link = https://capital.com/de
+2024-07-26 14:46:00.024023   driver.get(https://capital.com/de) =>
+2024-07-26 14:46:05.627426   => Loaded page https://capital.com/de
+
+2024-07-26 14:46:05.631964   => Windows size: {'width': 1280, 'height': 800}
+2024-07-26 14:46:05.633351   Set windows position at (0, 0) =>
+2024-07-26 14:46:05.635109   Set resolution 1280 * 800 =>
+2024-07-26 14:46:05.636824   => Windows size is set to {'width': 1280, 'height': 800}
+
+2024-07-26 14:46:06.683035   Капчи нет. Идем дальше
+
+2024-07-26 14:46:06.683121   Работа с куками =>
+
+2024-07-26 14:46:06.683135   => не требуется
+
+2024-07-26 14:46:07.727602   Капчи нет. Идем дальше
+
+2024-07-26 14:46:07.727690   Prev. country - 'es'
+2024-07-26 14:46:07.727704   Cur. country - 'ua'
+2024-07-26 14:46:07.727714   Set 'ua' country =>
+2024-07-26 14:46:07.738391   => Language and Country menu is present
+2024-07-26 14:46:07.754205   => Language and Country menu is visible
+2024-07-26 14:46:09.030093   => Focus is moved on Language and Country menu 
+2024-07-26 14:46:11.626309   => Cur url = https://capital.com/de?country=ua
+2024-07-26 14:46:11.667010   => Country set to 'ua'
+
+2024-07-26 14:46:12.722285   Капчи нет. Идем дальше
+
+2024-07-26 14:46:12.722377   Prev. language - 'de'
+2024-07-26 14:46:12.722391   Cur. language - 'de'
+2024-07-26 14:46:12.722401   => Language is set to 'de'
+
+2024-07-26 14:46:13.768223   Капчи нет. Идем дальше
+
+2024-07-26 14:46:13.768315   Prev. role - 'NoReg'
+2024-07-26 14:46:13.768328   Cur. role - 'NoReg'
+2024-07-26 14:46:13.768338   => The 'NoReg' role is set
+
+2024-07-26 14:46:13.771269   => Current URL - https://capital.com/de?country=ua
+
+2024-07-26 14:46:13.771291   => THE END PRECONDITIONS
+
+2024-07-26 14:46:13.771468   START Open "Markets" menu, "Shares" submenu =>
+2024-07-26 14:46:13.771484   1. Cur URL = https://capital.com/de?country=ua
+2024-07-26 14:46:13.774096   2. Link = https://capital.com/de?country=ua
+2024-07-26 14:46:13.774112   current_page = https://capital.com/de?country=ua
+2024-07-26 14:46:13.778848   link = https://capital.com/de?country=ua
+2024-07-26 14:46:14.290774   => 'Markets' menu is present
+2024-07-26 14:46:14.312769   => 'Markets' menu is visible
+2024-07-26 14:46:15.577388   => Focus moved to 'Markets' menu
+2024-07-26 14:46:17.119235   => Focus moved to 'Shares' submenu and clicked
+2024-07-26 14:46:17.410369   => Focus moved to 'capital*com' logo
+2024-07-26 14:46:17.410413   3. Cur URL = https://capital.com/de/aktienkurse-realtime
+
+2024-07-26 14:46:17.416008   1. Arrange_v0
+2024-07-26 14:46:17.416030   current_page = https://capital.com/de/aktienkurse-realtime
+2024-07-26 14:46:17.418597   link = https://capital.com/de/aktienkurse-realtime
+2024-07-26 14:46:17.421101   Scroll to the labels
+2024-07-26 14:46:17.432951   Close the filters if selected
+2024-07-26 14:46:18.434564   Select region filters
+2024-07-26 14:46:20.019199   Select sectors filters
+2024-07-26 14:46:22.085386   Scroll to selected filters
+2024-07-26 14:46:22.088814   Check the labels of the selected filters
+2024-07-26 14:46:22.606196   Extract the text attribute from the labels of the selected filters
+
+2024-07-26 14:46:22.642814   2. Act
+2024-07-26 14:46:22.642850   Select a random item sort
+2024-07-26 14:46:24.442176   Sort - Die volatilsten - is selected
+
+2024-07-26 14:46:24.442495   3. Assert_v0
+2024-07-26 14:46:24.543955   Expected result: applied filters 'Region/Sectors' ['Belgien', 'Niederlande', 'Philippinen', 'Energie', 'Gesundheitswesen']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Niederlande', 'Philippinen']
