@@ -9,6 +9,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 
 from pages.base_page import BasePage
+from pages.common import Common
+
+from pages.Menu.menu_new_locators import MenuTrading
 
 
 class MainMenu(BasePage):
@@ -343,3 +346,75 @@ class MainMenu(BasePage):
             .pause(1) \
             .click() \
             .perform()
+
+
+class MenuNew(BasePage):
+    """Class for Menu on license SCA"""
+    @allure.step('Select "Trading" menu, "Web platform" submenu')
+    def open_trading_menu_web_platform_submenu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Trading" menu, "Web platform" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_trading_menu(d, cur_language, cur_country)
+        self.sub_menu_web_platform_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus moved to 'Trading' menu")
+    def move_focus_to_trading_menu(self, d, test_language, test_country):
+        trading_menu_locator = MenuTrading.MENU_SCA_TRADING
+
+        time.sleep(0.5)
+        menu = d.find_elements(*trading_menu_locator)
+        if len(menu) == 0:
+            print(f"{datetime.now()}   => 'Trading' menu not present")
+            Common().pytest_fail(f"Bug № ??? 'Trading' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Trading' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu[0]
+        )
+
+        element = self.element_is_visible(trading_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'Trading' menu not visible")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail("Problem. 'Trading' menu not visible")
+        print(f"{datetime.now()}   => 'Trading' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_elements(*trading_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu[0]) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Trading' menu")
+        del menu
+        del element
+
+    @allure.step("Focus move to 'Web platform' submenu item and click")
+    def sub_menu_web_platform_move_focus_click(self, d, test_language):
+        sub_menu = d.find_elements(*MenuTrading.SUB_MENU_SCA_WEB_PLATFORM)
+
+        if len(sub_menu) == 0:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"'Trading' Menu > 'Web platform' Submenu \" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu[0]) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Web platform' sub-menu clicked")
+
+        del sub_menu
+        return d.current_url

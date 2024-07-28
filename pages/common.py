@@ -218,8 +218,10 @@ class Common:
 		if len(elements) == 0:
 			elements = wd.find_elements(*HeaderElementLocators.MAIN_LOGO_NEW_CAPITAL_COM)
 			if len(elements) == 0:
-				msg = "Problem with capital.com logo"
-				Common().pytest_fail(f"Bug # ???   {msg}")
+				elements = wd.find_elements(*HeaderElementLocators.MAIN_LOGO_CAPITAL_COM_SCA)
+				if len(elements) == 0:
+					msg = "Problem with capital.com logo"
+					Common().pytest_fail(f"Bug # ???   {msg}")
 
 		ActionChains(wd) \
 			.move_to_element(elements[0]) \

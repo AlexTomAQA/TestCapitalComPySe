@@ -11,3 +11,4 @@ class HeaderElementLocators:
 	MAIN_LOGO_CAPITAL_COM = (By.CSS_SELECTOR, ".cc-header .cc-header__logo")
 	MAIN_LOGO_NEW_CAPITAL_COM = (By.CSS_SELECTOR, '#header [class*="logo_link__wVTFX helpers_hide"]')
 	NEW_MAIN_LOGO_CAPITAL_COM = (By.CSS_SELECTOR, "header .helpers_hideXs__vzgPk.logo_link__wVTFX")
+	MAIN_LOGO_CAPITAL_COM_SCA = (By.CSS_SELECTOR, ".logo_logo__x10mm.panel_logo__xwk_Y")
