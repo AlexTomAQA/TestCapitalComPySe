@@ -514,7 +514,7 @@ class TestManualDetectedBugs:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "272",
+            "273",
             'The page with “404 error” message is displayed '
             'after clicking the link [تعلّم التداول] (Learn to trade) '
             'in the tile [ترغب في تحسين استراتيجياتك؟] (Looking to sharpen your strategies?) '
