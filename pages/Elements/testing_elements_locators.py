@@ -440,6 +440,7 @@ class HowToStartTradingSignupLocators:
 class MyAccountButtonLocators(BasePage):
     BUTTON_MY_ACCOUNT = (By.CSS_SELECTOR, ".accountBtns_userBtn__kCJ5A.accountBtns_btnEmpty__TCWRE")
     HEADER_LOGIN_BTN2 = (By.CSS_SELECTOR, '[data-type="btn_header_login"]')
+    BUTTON_MY_ACCOUNT2 = (By.CSS_SELECTOR, "#header > div > div.accountBtns_btnsPlace___6pn2 > a")
 
 
 class WhyChooseLocators:
