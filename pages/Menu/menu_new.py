@@ -418,3 +418,69 @@ class MenuNew(BasePage):
 
         del sub_menu
         return d.current_url
+
+    @allure.step('Select "Trading" menu, "Web platform" submenu')
+    def open_markets_menu_cryptocurrencies_submenu(self, d, cur_language, cur_country, link):
+
+        print(f'\n{datetime.now()}   START Open "Markets" menu, "Cryptocurrencies" submenu =>')
+        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+        print(f"\n{datetime.now()}   2. Link = {link}")
+        if not self.current_page_is(link):
+            self.link = link
+            self.open_page()
+
+        self.move_focus_to_markets_menu(d, cur_language, cur_country)
+        self.sub_menu_cryptocurrencies_move_focus_click(d, cur_language)
+        Common().move_pointer_to_capital_com_label(d)
+
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        return d.current_url
+
+    @allure.step("Focus moved to 'Markets' menu")
+    def move_focus_to_markets_menu(self, d, test_language, test_country):
+        markets_menu_locator = MenuTrading.MENU_SCA_MARKETS
+
+        time.sleep(0.5)
+        menu = d.find_element(markets_menu_locator)
+        if not menu:
+            print(f"{datetime.now()}   => 'Trading' menu not present")
+            Common().pytest_fail(f"Bug № ??? 'Trading' menu not present for '{test_language}' language")
+        print(f"{datetime.now()}   => 'Trading' menu is present")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            menu
+        )
+
+        element = self.element_is_visible(markets_menu_locator, 5)
+        if not element:
+            print(f"{datetime.now()}   => 'Trading' menu not visible")
+            # Common().save_current_screenshot(d, "scr_qr")
+            Common().pytest_fail("Problem. 'Trading' menu not visible")
+        print(f"{datetime.now()}   => 'Trading' menu is visible")
+
+        time.sleep(0.5)
+        menu = d.find_element(markets_menu_locator)
+        ActionChains(d) \
+            .move_to_element(menu) \
+            .pause(0.5) \
+            .perform()
+
+        print(f"{datetime.now()}   => Focus moved to 'Trading' menu")
+
+    @allure.step("Focus move to 'Cryptocurrencies' submenu item and click")
+    def sub_menu_cryptocurrencies_move_focus_click(self, d, test_language):
+        sub_menu = d.find_element(MenuTrading.SUB_MENU_SCA_CRYPTOCURRENCIES)
+
+        if not sub_menu:
+            Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "
+                                 f"the page \"'Markets' Menu > 'Cryptocurrencies' Submenu \" doesn't exist on production")
+
+        ActionChains(d) \
+            .move_to_element(sub_menu) \
+            .pause(0.5) \
+            .click() \
+            .perform()
+        print(f"\n\n{datetime.now()}   => 'Cryptocurrencies' sub-menu clicked")
+
+        return d.current_url
