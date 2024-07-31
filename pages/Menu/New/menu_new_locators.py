@@ -19,7 +19,8 @@ class PricingMenuNew:
 
 
 class LearnMenuNew:
-    pass
+    MENU_NEW_LEARN = ()
+    SUB_MENU_NEW_RISK = ()
 
 
 class AboutUsMenuNew:

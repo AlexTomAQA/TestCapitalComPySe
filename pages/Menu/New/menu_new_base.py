@@ -24,7 +24,6 @@ class MenuBase(BasePage):
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
 
         #     @allure.step("Focus moved to {menu_name} menu")
         time.sleep(0.5)
@@ -85,6 +84,8 @@ class MenuBase(BasePage):
 
         del sub_menu
 
+        Common.flag_of_bug = False
         Common().move_pointer_to_capital_com_label(d)
+        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
 
         return d.current_url
