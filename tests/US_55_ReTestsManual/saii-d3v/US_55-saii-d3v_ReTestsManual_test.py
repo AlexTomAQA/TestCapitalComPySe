@@ -23,6 +23,7 @@ from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
 from pages.BugsManual.bugs_272_273 import LearnToTradePage
 from pages.BugsManual.bug_288 import Bug288
+from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -644,3 +645,119 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!299 | The modal window "Log in to your Facebook account" is not opened '
+        'after clicking the button [Facebook] in the Sign up / Log in form on any page '
+        'when EN/AR language and SCA license is selected')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['NoReg', 'NoAuth'])
+    @pytest.mark.bug_299en
+    def test_299en(self, worker_id, d, cur_language, cur_country, cur_role,
+                   cur_login, cur_password):
+        """
+         Check: The modal window "Log in to your Facebook account" is not opened
+                after clicking the button [Facebook] in the Sign up / Log in form
+                on any page when EN/AR language and SCA license is selected
+         Language: AR, EN.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "299en",
+            'The modal window "Log in to your Facebook account" is not opened '
+            'after clicking the button [Facebook] in the Sign up / Log in form on any page '
+            'when EN/AR language and SCA license is selected',
+            False,
+            False
+        )
+        # pytest.skip("AT development is in progress")
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        test_el = CheckLoginFacebookModal(d, link, bid)
+        signup_login = SignupLogin(d, link, bid)
+
+        if cur_role == "NoReg":
+            test_el.click_signup_button()
+        if cur_role == "NoAuth":
+            test_el.click_login_button()
+
+        # Act
+        test_el.click_fb_btn()
+
+        # Assert
+        if not test_el.should_be_fb_modal():
+            Common().pytest_fail('Bug # 55!299 The "Log in to your Facebook account" modal window is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!299 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        if cur_role == "NoReg":
+            signup_login.close_new_signup_form()
+        if cur_role == "NoAuth":
+            signup_login.close_new_login_form()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!299 | The modal window "Log in to your Facebook account" is not opened '
+        'after clicking the button [Facebook] in the Sign up / Log in form on any page '
+        'when EN/AR language and SCA license is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['NoReg', 'NoAuth'])
+    @pytest.mark.bug_299ar
+    def test_299ar(self, worker_id, d, cur_language, cur_country, cur_role,
+                   cur_login, cur_password):
+        """
+         Check: The modal window "Log in to your Facebook account" is not opened
+                after clicking the button [Facebook] in the Sign up / Log in form
+                on any page when EN/AR language and SCA license is selected
+         Language: AR, EN.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "299ar",
+            'The modal window "Log in to your Facebook account" is not opened '
+            'after clicking the button [Facebook] in the Sign up / Log in form on any page '
+            'when EN/AR language and SCA license is selected',
+            False,
+            False
+        )
+        # pytest.skip("AT development is in progress")
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
+                                             cur_country, cur_role, cur_login, cur_password)
+
+        test_el = CheckLoginFacebookModal(d, link, bid)
+        signup_login = SignupLogin(d, link, bid)
+
+        if cur_role == "NoReg":
+            test_el.click_signup_button()
+        if cur_role == "NoAuth":
+            test_el.click_login_button()
+
+        # Act
+        test_el.click_fb_btn()
+
+        # Assert
+        if not test_el.should_be_fb_modal():
+            Common().pytest_fail('Bug # 55!299 The "Log in to your Facebook account" modal window is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!299 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        if cur_role == "NoReg":
+            signup_login.close_new_signup_form()
+        if cur_role == "NoAuth":
+            signup_login.close_new_login_form()
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)

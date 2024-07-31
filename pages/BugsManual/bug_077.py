@@ -122,7 +122,7 @@ class Sidebar(BasePage):
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         except NoSuchElementException:
             self.driver.execute_script("window.scrollBy(0, 1000);")
-            print(f"{datetime.now}   Sidebar is absent on the {sidebar_item} page")
+            print(f"{datetime.now()}   Sidebar is absent on the {sidebar_item} page")
             Common.pytest_fail(f"#Bug # 55!077b "
                                f"\n"
                                f"Expected result: Sidebar 'Crypto trading guide' is on the '{sidebar_item}' page"

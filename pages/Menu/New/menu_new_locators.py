@@ -11,7 +11,8 @@ class TradingMenuNew:
 
 
 class MarketsMenuNew:
-    pass
+    MENU_SCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
+    SUB_MENU_SCA_CRYPTOCURRENCIES = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id895"')
 
 
 class PricingMenuNew:
