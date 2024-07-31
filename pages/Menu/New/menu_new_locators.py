@@ -5,9 +5,12 @@ class TradingMenuNew:
     # Trading
     MENU_SCA_TRADING = (
         By.CSS_SELECTOR, '.menuGroup_linkfirstLevel__d5JGC > [data-type="nav_id798"]')
+    MENU_FCA_TRADING = (
+        By.CSS_SELECTOR, '.menuGroup_linkfirstLevel__d5JGC > [data-type="nav_id686"]')
 
     # Trading platforms
     SUB_MENU_SCA_WEB_PLATFORM = (By.CSS_SELECTOR, '[data-type="nav_id818"]')
+    SUB_MENU_FCA_SPREAD_BETTING = (By.CSS_SELECTOR, '[data-type="nav_id735"]')
 
 
 class MarketsMenuNew:
