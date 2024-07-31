@@ -20,6 +20,7 @@ from pages.BugsManual.bug_171 import BUG_171
 from pages.BugsManual.bug_129 import BUG_129
 from pages.BugsManual.bug_149 import BUG_149
 from pages.BugsManual.bug_151 import BUG_151
+from pages.BugsManual.bug_257 import BUG_257
 from pages.BugsManual.bug_300 import BUG_300
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -589,6 +590,51 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_item_link)
+
+    @allure.step("Start test of the [How we manage your money] link on the 'How Capital.com makes money' page")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_257
+    def test_257_link_how_we_manage_your_money_does_not_open_client_funds_page_on_parameters_language(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The "Charges and fees" page is opened instead "Client funds" page,
+                when clicked [How we manage your money] link in "You might also be interested in..." block
+                on the "How Capital.com makes money" page for AR language is selected.
+        Language: AR
+        Country: SCA
+        Role: NoReg, Auth, NoAuth
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "257",
+            "Testing link [How we manage your money] in 'You might also be interested in...' block "
+            "on the 'How Capital.com makes money' page",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
+            cur_role, cur_login, cur_password)
+
+        # page_menu = MenuNew(d, cur_item_link)
+        # cur_item_link = page_menu.open_trading_menu_web_platform_submenu(
+        #     d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_257(d, cur_item_link, bid)
+        # test_element.arrange(d, cur_language, cur_item_link)
+
+        # Act
+        # test_element.act(d)
+
+        # Assert
+        # test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the [Explore features] button in the 'Web platform' page")
     @pytest.mark.parametrize('cur_language', ["ar"])
