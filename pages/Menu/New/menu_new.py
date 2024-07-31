@@ -11,7 +11,7 @@ from selenium.webdriver import ActionChains
 from pages.base_page import BasePage
 from pages.common import Common
 
-from pages.Menu.menu_new_locators import MenuTrading
+from pages.Menu.New.menu_new_locators import MenuTrading
 
 
 class MainMenu(BasePage):
