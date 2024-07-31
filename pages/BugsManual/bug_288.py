@@ -83,6 +83,8 @@ class Bug288(BasePage):
                 bc_name = '我们的移动应用程序'
                 title_name = 'Capital.com 移動應用程序'
 
+            # TEST TEST
+
         if cur_language in ['el', 'zh']:
             if bc_name not in self.driver.find_element(*BREADCRUMB_LOC).text:
                 if title_name not in self.driver.find_element(*TITLE_ALT_LOC).text:
