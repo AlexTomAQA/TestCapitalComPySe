@@ -2,11 +2,10 @@ import allure
 import pytest
 
 from pages.common import Common
-from pages.Menu.menu import MenuSection
+from pages.Menu.New.from_learn_menu_open_risk_managment_guide import MenuNew
 from pages.Elements.StepTradingBlock import BlockStepTrading
 from pages.conditions_new import NewConditions
 from pages.build_dynamic_arg import build_dynamic_arg_v4
-from pages.conditions import Conditions
 from src.src import CapitalComPageSrc
 
 
@@ -36,8 +35,8 @@ class TestLearningHub:
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuSection(d, link)
-        link = menu.open_learn_to_trade_risk_management_guide_menu(d, cur_language, cur_country, link)
+        menu_new = MenuNew(d, link)
+        link = menu_new.from_learn_menu_open_risk_management_guide(d, cur_language, cur_country, link)
 
         test_element = BlockStepTrading(d, link, bid)
         test_element.full_test_with_tpi(d, cur_language, cur_country, cur_role, link)
