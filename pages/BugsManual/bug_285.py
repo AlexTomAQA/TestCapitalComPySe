@@ -30,7 +30,7 @@ class ButtonMyAccount(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   Is BUTTON_MY_ACCOUNT present on the page? => ")
-        button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT)
+        button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT2)
         if len(button) == 0:
             print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is not present on the page")
             Common().pytest_fail("BUTTON_MY_ACCOUNT is not present on the page")
@@ -53,7 +53,7 @@ class ButtonMyAccount(BasePage):
         print(f"{datetime.now()}   2. Act for [My account] button")
         print(f"{datetime.now()}   Start to click BUTTON_MY_ACCOUNT =>")
 
-        button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT)
+        button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT2)
         button[0].click()
 
         WebDriverWait(self.driver, 10).until(
