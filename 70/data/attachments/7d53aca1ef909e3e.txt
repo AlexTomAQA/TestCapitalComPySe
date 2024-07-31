@@ -1,0 +1,32 @@
+2024-07-31 21:12:42 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ar-ae
+2024-07-31 21:12:42 ERROR Can't click element by locator ('css selector', "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header_login']")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 386, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator ('css selector', "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header_login']")
+Stacktrace:
+#0 0x5649fb48ec5a <unknown>
+#1 0x5649fb171e2c <unknown>
+#2 0x5649fb1be661 <unknown>
+#3 0x5649fb1be751 <unknown>
+#4 0x5649fb202f64 <unknown>
+#5 0x5649fb1e15ed <unknown>
+#6 0x5649fb200303 <unknown>
+#7 0x5649fb1e1363 <unknown>
+#8 0x5649fb1b1247 <unknown>
+#9 0x5649fb1b1b9e <unknown>
+#10 0x5649fb45522b <unknown>
+#11 0x5649fb4592d1 <unknown>
+#12 0x5649fb440ade <unknown>
+#13 0x5649fb459e32 <unknown>
+#14 0x5649fb42577f <unknown>
+#15 0x5649fb47e618 <unknown>
+#16 0x5649fb47e7f0 <unknown>
+#17 0x5649fb48dd8c <unknown>
+#18 0x7f4c5ba94ac3 <unknown>
