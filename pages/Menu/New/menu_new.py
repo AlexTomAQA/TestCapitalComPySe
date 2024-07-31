@@ -11,7 +11,7 @@ from selenium.webdriver import ActionChains
 from pages.base_page import BasePage
 from pages.common import Common
 
-from pages.Menu.menu_new_locators import MenuTrading
+from pages.Menu.New.menu_new_locators import TradingMenuNew
 
 
 class MainMenu(BasePage):
@@ -350,26 +350,27 @@ class MainMenu(BasePage):
 
 class MenuNew(BasePage):
     """Class for Menu on license SCA"""
-    @allure.step('Select "Trading" menu, "Web platform" submenu')
-    def open_trading_menu_web_platform_submenu(self, d, cur_language, cur_country, link):
-
-        print(f'\n{datetime.now()}   START Open "Trading" menu, "Web platform" submenu =>')
-        print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
-        print(f"\n{datetime.now()}   2. Link = {link}")
-        if not self.current_page_is(link):
-            self.link = link
-            self.open_page()
-
-        self.move_focus_to_trading_menu(d, cur_language, cur_country)
-        self.sub_menu_web_platform_move_focus_click(d, cur_language)
-        Common().move_pointer_to_capital_com_label(d)
-
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
-        return d.current_url
+    # @allure.step('Select "Trading" menu, "Web platform" submenu')
+    # def open_trading_menu_web_platform_submenu(self, d, cur_language, cur_country, link):
+    #
+    #     print(f'\n{datetime.now()}   START Open "Trading" menu, "Web platform" submenu =>')
+    #     print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
+    #     print(f"\n{datetime.now()}   2. Link = {link}")
+    #     if not self.current_page_is(link):
+    #         self.link = link
+    #         self.open_page()
+    #
+    #     self.move_focus_to_trading_menu(d, cur_language, cur_country)
+    #     self.sub_menu_web_platform_move_focus_click(d, cur_language)
+    #     Common().move_pointer_to_capital_com_label(d)
+    #
+    #     print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+    #     return d.current_url
+    #
 
     @allure.step("Focus moved to 'Trading' menu")
     def move_focus_to_trading_menu(self, d, test_language, test_country):
-        trading_menu_locator = MenuTrading.MENU_SCA_TRADING
+        trading_menu_locator = TradingMenuNew.MENU_SCA_TRADING
 
         time.sleep(0.5)
         menu = d.find_elements(*trading_menu_locator)
@@ -403,7 +404,7 @@ class MenuNew(BasePage):
 
     @allure.step("Focus move to 'Web platform' submenu item and click")
     def sub_menu_web_platform_move_focus_click(self, d, test_language):
-        sub_menu = d.find_elements(*MenuTrading.SUB_MENU_SCA_WEB_PLATFORM)
+        sub_menu = d.find_elements(*TradingMenuNew.SUB_MENU_SCA_WEB_PLATFORM)
 
         if len(sub_menu) == 0:
             Common().pytest_fail(f"Bug # ??? For test language '{test_language}' "

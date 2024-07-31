@@ -15,7 +15,7 @@ from pages.Signup_login.signup_login_locators import NewLoginFormLocators, NewSi
 from pages.conditions import Conditions
 from pages.ReTests.ReTest_table_fill import retest_table_fill
 
-from pages.Menu.menu_new import MainMenu
+from pages.Menu.New.menu_new import MainMenu
 from pages.menu_section.menu_section import MenuSections
 from pages.conditions_new import NewConditions
 # from pages.Elements.AssertClass import AssertClass
