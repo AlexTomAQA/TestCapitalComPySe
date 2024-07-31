@@ -25,17 +25,21 @@ class LearnMoreAbout(BasePage):
                 learn_more_about_link
             )
             learn_more_about_link.click()
-
+            self.wait_for_change_url()
 
     def assert_(self):
         print(f"\n{datetime.now()}   2. Assert")
 
-        expected_url = 'https://capital.com/ar-ae/learn/market-guides/what-is-cryptocurrency-trading'
-        actual_url = self.driver.current_url
-        if actual_url != expected_url:
-            print(f"{datetime.now()}   The page 'what is cryptocurrency trading' is not opened")
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
+
+        if not self.current_page_url_contain_the(
+                'https://capital.com/ar-ae/learn/market-guides/what-is-cryptocurrency-trading'):
+            print(f"{datetime.now()}   The page 'What is cryptocurrency trading' is not opened")
             Common.pytest_fail(f"#Bug # 55!270 "
                                f"\n"
-                               f"Expected result: The page 'what is cryptocurrency trading' is opened"
+                               f"Expected result: The page 'What is cryptocurrency trading' is opened"
                                f"\n"
-                               f"Actual result: The page 'what is cryptocurrency trading' is not opened")
+                               f"Actual result: The page 'What is cryptocurrency trading' is not opened")
+        else:
+            print(f"{datetime.now()}   The page 'What is cryptocurrency trading' is opened")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
