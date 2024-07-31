@@ -8,7 +8,9 @@ import allure
 
 from pages.BugsManual.bug_048 import AppliedFilters
 from pages.BugsManual.bug_077 import Sidebar
+from pages.BugsManual.bug_270 import LearnMoreAbout
 from pages.Menu.menu import MenuSection
+from pages.Menu.menu_new import MenuNew
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -152,3 +154,35 @@ class TestManualDetectedBugs:
             case "ru" | "es" | "it" | "pl":
                 test_element.sidebar_ru_es_it_pl(d, cur_item_link, sidebar_item)
         test_element.assert_b(sidebar_item)
+
+    @allure.step('Start retest manual AT_55!270 that the page "what is cryptocurrency trading" is opened')
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_270
+    def test_270(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: The page "what is cryptocurrency trading" is not opened after clicking the link [Learn more about
+            cryptocurrency trading] in the block "Why trade cryptocurrencies with Capital.com?" on the page
+            "Cryptocurrencies" when SCA license is selected.
+        Language: AR
+        License: SCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "270", 'The page "what is cryptocurrency trading" is not opened'
+        )
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuNew(d, link)
+        cur_item_link = menu.open_markets_menu_cryptocurrencies_submenu(d, cur_language, cur_country, link)
+
+        test_element = LearnMoreAbout(cur_item_link, bid)
+        test_element.learn_more_about(cur_item_link)
