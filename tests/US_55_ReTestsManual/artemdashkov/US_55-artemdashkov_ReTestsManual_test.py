@@ -25,7 +25,8 @@ from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
-from pages.Menu.menu_new import MenuNew
+from pages.Menu.New.menu_new import MenuNew
+from pages.Menu.New.from_trading_menu_open_web_platform import MenuNew
 from pages.conditions_new import NewConditions
 
 
@@ -621,7 +622,7 @@ class TestManualDetected:
             cur_role, cur_login, cur_password)
 
         page_menu = MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.open_trading_menu_web_platform_submenu(
+        cur_item_link = page_menu.from_trading_menu_open_web_platform(
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_300(d, cur_item_link, bid)
