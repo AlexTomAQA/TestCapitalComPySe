@@ -39,65 +39,49 @@ class Bug288(BasePage):
     def should_be_mobile_apps_page(self, cur_language):
         print(f'\n{datetime.now()}   Check if the Mobile Apps page is opened =>')
 
-        # bc_name = ''
-        # title_name = ''
-        #
-        # match cur_language:
-        #     case "ar":
-        #         bc_name = 'تطبيقاتنا للهواتف المحمولة'
-        #         title_name = 'تطبيقات جوّال Capital.com'
-        #     case "de":
-        #         bc_name = 'Unsere mobile App'
-        #         title_name = 'Capital.com: Mobile Apps'
-        #     case "el":
-        #         bc_name = 'Τρόποι να διαπραγματευτείτε'     # breadcrumb and title of Trading Products page
-        #         title_name = 'Τρόποι να διαπραγματευτείτε'   # Mobile Apps page does not exist
-        #     case "es":
-        #         bc_name = 'Nuestras aplicaciones móviles'
-        #         title_name = 'Aplicaciones móviles de Capital.com'
-        #     case "fr":
-        #         bc_name = 'Nos applis mobiles'
-        #         title_name = 'Applications mobiles de Capital.com'
-        #     case "it":
-        #         bc_name = 'Le nostre app mobili'
-        #         title_name = 'App per dispositivi mobili di Capital.com'
-        #     case "hu":
-        #         bc_name = 'Mobilalkalmazásunk'
-        #         title_name = 'Capital.com mobilalkalmazások'
-        #     case "nl":
-        #         bc_name = 'Onze mobiele apps'
-        #         title_name = 'Capital.com mobiele apps'
-        #     case "pl":
-        #         bc_name = 'Nasze aplikacje mobilne'
-        #         title_name = 'Aplikacje mobilne Capital.com'
-        #     case "ro":
-        #         bc_name = 'Aplicațiile noastre mobile'
-        #         title_name = 'Aplicații mobile Capital.com'
-        #     case "ru":
-        #         bc_name = 'Наше мобильное приложение'
-        #         title_name = 'Мобильные приложения Capital.com'
-        #     case "zh":
-        #         bc_name = '交易方式'       # breadcrumb and title of Trading Products page
-        #         title_name = '交易方式'    # Mobile Apps page does not exist
-        #     case "cn":
-        #         bc_name = '我们的移动应用程序'
-        #         title_name = 'Capital.com 移動應用程序'
+        bc_name = ''
+        title_name = ''
 
-        bc_name, title_name = {
-            "ar": ['تطبيقاتنا للهواتف المحمولة', 'تطبيقات جوّال Capital.com'],
-            "de": ['Unsere mobile App', 'Capital.com: Mobile Apps'],
-            "el": ['Τρόποι να διαπραγματευτείτε', 'Τρόποι να διαπραγματευτείτε'],
-            "es": ['Nuestras aplicaciones móviles', 'Aplicaciones móviles de Capital.com'],
-            "fr": ['Nos applis mobiles', 'Applications mobiles de Capital.com'],
-            "it": ['Le nostre app mobili', 'App per dispositivi mobili di Capital.com'],
-            "hu": ['Mobilalkalmazásunk', 'Capital.com mobilalkalmazások'],
-            "nl": ['Onze mobiele apps', 'Capital.com mobiele apps'],
-            "pl": ['Nasze aplikacje mobilne', 'Aplikacje mobilne Capital.com'],
-            "ro": ['Aplicațiile noastre mobile', 'Aplicații mobile Capital.com'],
-            "ru": ['Наше мобильное приложение', 'Мобильные приложения Capital.com'],
-            "zh": ['交易方式', '交易方式'],
-            "cn": ['我们的移动应用程序', 'Capital.com 移動應用程序'],
-        }.get(cur_language, ("", ""))
+        match cur_language:
+            case "ar":
+                bc_name = 'تطبيقاتنا للهواتف المحمولة'
+                title_name = 'تطبيقات جوّال Capital.com'
+            case "de":
+                bc_name = 'Unsere mobile App'
+                title_name = 'Capital.com: Mobile Apps'
+            case "el":
+                bc_name = 'Τρόποι να διαπραγματευτείτε'     # breadcrumb and title of Trading Products page
+                title_name = 'Τρόποι να διαπραγματευτείτε'   # Mobile Apps page does not exist
+            case "es":
+                bc_name = 'Nuestras aplicaciones móviles'
+                title_name = 'Aplicaciones móviles de Capital.com'
+            case "fr":
+                bc_name = 'Nos applis mobiles'
+                title_name = 'Applications mobiles de Capital.com'
+            case "it":
+                bc_name = 'Le nostre app mobili'
+                title_name = 'App per dispositivi mobili di Capital.com'
+            case "hu":
+                bc_name = 'Mobilalkalmazásunk'
+                title_name = 'Capital.com mobilalkalmazások'
+            case "nl":
+                bc_name = 'Onze mobiele apps'
+                title_name = 'Capital.com mobiele apps'
+            case "pl":
+                bc_name = 'Nasze aplikacje mobilne'
+                title_name = 'Aplikacje mobilne Capital.com'
+            case "ro":
+                bc_name = 'Aplicațiile noastre mobile'
+                title_name = 'Aplicații mobile Capital.com'
+            case "ru":
+                bc_name = 'Наше мобильное приложение'
+                title_name = 'Мобильные приложения Capital.com'
+            case "zh":
+                bc_name = '交易方式'       # breadcrumb and title of Trading Products page
+                title_name = '交易方式'    # Mobile Apps page does not exist
+            case "cn":
+                bc_name = '我们的移动应用程序'
+                title_name = 'Capital.com 移動應用程序'
 
         if cur_language in ['el', 'zh']:
             if bc_name not in self.driver.find_element(*BREADCRUMB_LOC).text:
