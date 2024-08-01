@@ -642,7 +642,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_300
-    def test_300_button_explore_features_does_not_open_tradingView_page_on_parameters_language(
+    def test_300_button_explore_features_does_not_open_trading_view_page_on_parameters_language(
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
@@ -658,9 +658,7 @@ class TestManualDetected:
             "55", "ReTests of Manual Detected Bugs",
             "300",
             "Testing button [Explore features] on the 'Web platform' page",
-            False, False
         )
-        # pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(

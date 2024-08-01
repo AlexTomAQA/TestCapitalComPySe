@@ -77,6 +77,9 @@ class NewConditions(BasePage):
             self.link = url_after_preconditions
             self.open_page()
 
+        # if url_after_preconditions == "?":
+        #     url_after_preconditions = host
+
         print(f"\n{datetime.now()}   => Windows size: {d.get_window_size()}")
         print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
