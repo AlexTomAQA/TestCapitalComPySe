@@ -18,7 +18,8 @@ class LearnMoreAbout(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        learn_more_about_link = self.driver.find_element(By.CSS_SELECTOR, 'a[href*="learn/market-guides/what-is-cryptocurrency-trading"]')
+        learn_more_about_link = self.driver.find_element(By.CSS_SELECTOR,
+                                                         'a[href*="learn/market-guides/what-is-cryptocurrency-trading"]')
         if learn_more_about_link:
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -42,8 +43,5 @@ class LearnMoreAbout(BasePage):
                                f"Actual result: The page 'What is cryptocurrency trading' is not opened")
         else:
             print(f"{datetime.now()}   The page 'What is cryptocurrency trading' is opened")
-<<<<<<< HEAD
+
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-=======
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
->>>>>>> 7fcd23ff66627e1917758f160c2c6c954c00ef1e
