@@ -168,7 +168,7 @@ def cur_country(request):
     scope="class",
     params=[
         "test001.miketar+1@gmail.com"
-        # "aqa.tomelo.an@gmail.com"  # для локального тестирования у Саши
+        # "aqa.tomelo.an@gmail.com" # для локального тестирования у Саши
     ],
 )
 def cur_login(request):
