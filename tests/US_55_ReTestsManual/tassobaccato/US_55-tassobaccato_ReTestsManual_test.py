@@ -9,8 +9,8 @@ import allure
 from pages.BugsManual.bug_048 import AppliedFilters
 from pages.BugsManual.bug_077 import Sidebar
 from pages.BugsManual.bug_270 import LearnMoreAbout
+from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.menu import MenuSection
-from pages.Menu.menu_new import MenuNew
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -181,8 +181,9 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login,
             cur_password)
 
-        menu = MenuNew(d, link)
-        cur_item_link = menu.open_markets_menu_cryptocurrencies_submenu(d, cur_language, cur_country, link)
+        menu = MenuBase(d, link)
+        cur_item_link = menu.move_focus_menu_pause_move_focus_to_submenu_and_click(d, cur_language, cur_country, link,
+                            'Markets', '', 'Cryptocurrencies', '')
 
         test_element = LearnMoreAbout(cur_item_link, bid)
         test_element.learn_more_about(cur_item_link)

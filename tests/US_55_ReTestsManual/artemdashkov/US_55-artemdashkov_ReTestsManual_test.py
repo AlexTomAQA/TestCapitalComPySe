@@ -28,6 +28,7 @@ from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Menu.New.menu_new import MenuNew
 from pages.Menu.New.from_trading_menu_open_web_platform import MenuNew
+from pages.Menu.New.from_pricing_menu_open_how_capital_com_makes_money import MenuNew
 from pages.conditions_new import NewConditions
 
 
@@ -624,18 +625,18 @@ class TestManualDetected:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
-        # page_menu = MenuNew(d, cur_item_link)
-        # cur_item_link = page_menu.open_trading_menu_web_platform_submenu(
-        #     d, cur_language, cur_country, cur_item_link)
+        page_menu = MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_pricing_menu_open_how_capital_com_makes_money(
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_257(d, cur_item_link, bid)
-        # test_element.arrange(d, cur_language, cur_item_link)
+        test_element.arrange(d, cur_language, cur_item_link)
 
         # Act
-        # test_element.act(d)
+        test_element.act(d)
 
         # Assert
-        # test_element.assert_(d, cur_language)
+        test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the [Explore features] button in the 'Web platform' page")
     @pytest.mark.parametrize('cur_language', ["ar"])

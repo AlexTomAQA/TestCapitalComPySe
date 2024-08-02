@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/07/26 18:00
+@Time    : 2024/07/31 22:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -14,12 +14,12 @@ from pages.common import Common
 from pages.Signup_login.signup_login import SignupLogin
 
 BLOCK_NAME = "[How we manage your money] link"
-# LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="cross_promo_block_btn2"]')
+LINK_LOCATOR = (By.CSS_SELECTOR, 'ul > li [href*="what-capital-does-with-your-money"]')
 
 
 class BUG_257(BasePage):
     pass
-    """
+
     @allure.step(f"{datetime.now()}   1. Start Arrange.")
     def arrange(self, d, cur_language, cur_item_link):
         global LINK_LOCATOR
@@ -33,7 +33,7 @@ class BUG_257(BasePage):
         else:
             print(f"{datetime.now()}   => current_url == cur_item_link")
 
-        # Check presenting [Explore features] button
+        # Check presenting [How we manage your money] link
         print(f"{datetime.now()}   Check presenting {BLOCK_NAME}.")
         print(f"{datetime.now()}   IS {BLOCK_NAME} present on this page? =>")
         if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
@@ -47,7 +47,7 @@ class BUG_257(BasePage):
             self.driver.find_elements(*LINK_LOCATOR)[0]
         )
 
-        # Check visible [Explore features] button
+        # Check visible [How we manage your money] link
         print(f"{datetime.now()}   IS {BLOCK_NAME} visible on this page? =>")
         if not self.element_is_visible(LINK_LOCATOR, 5):
             msg = f"{BLOCK_NAME} is NOT visible on this page!"
@@ -55,7 +55,7 @@ class BUG_257(BasePage):
             Common().pytest_fail(msg)
         print(f"{datetime.now()}   => {BLOCK_NAME} is visible on this page!\n")
 
-        # Check clickable [Explore features] button
+        # Check clickable [How we manage your money] link
         print(f"{datetime.now()}   IS {BLOCK_NAME} clickable on this page? =>")
         if not self.element_is_clickable(LINK_LOCATOR, 5):
             msg = f"{BLOCK_NAME} is NOT clickable on this page!"
@@ -68,7 +68,7 @@ class BUG_257(BasePage):
     def act(self, d):
         print(f"{datetime.now()}   2. Start Act.")
 
-        # Start click on link
+        # Start click [How we manage your money] link
         print(f"{datetime.now()}   Start click on {BLOCK_NAME} =>")
         try:
             self.driver.find_element(*LINK_LOCATOR).click()
@@ -99,24 +99,23 @@ class BUG_257(BasePage):
     def assert_(self, d, cur_language):
         print(f"{datetime.now()}   3. Start Assert.")
 
-        # Check language version of page "TradingView"
-        print(f"{datetime.now()}   Check language version of page 'TradingView'. ")
-        print(f"{datetime.now()}   IS page 'TradingView' opened EN-language version? =>")
+        # Check opened page
+        print(f"{datetime.now()}   Check 'Charges and fees' page is opened instead 'Client funds' page. ")
+        print(f"{datetime.now()}   IS 'Charges and fees' page open instead 'Client funds' page? =>")
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-        if self.current_page_url_contain_the('https://capital.com/en-ae/trading-platforms/trading-view'):
-            msg = f"Page 'TradingView' opened in EN-language version."
+        if self.current_page_url_contain_the('https://capital.com/ar-ae/ways-to-trade/fees-and-charges'):
+            msg = f"'Charges and fees' page is opened instead 'Client funds' page."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        expected_page = 'https://capital.com/ar-ae/trading-platforms/trading-view'
+        expected_page = 'https://capital.com/ar-ae/about-us/what-capital-does-with-your-money'
 
         if not self.current_page_url_contain_the(expected_page):
-            msg = (f"Page 'TradingView' opened in not EN-language version and not expected language. "
-                   f"Current language is '{cur_language}', expected_page is '{expected_page}', "
+            msg = (f"Instead 'Client funds' page opened other page. "
+                   f"Expected_page is '{expected_page}', "
                    f"current page is '{self.driver.current_url}'")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
 
-        print(f"{datetime.now()}   => Page 'TradingView' present on expected language!\n")
-        Common.save_current_screenshot(d, f"Page 'TradingView' present on expected language!")
+        print(f"{datetime.now()}   => Opened expected page 'Client funds'!\n")
+        Common.save_current_screenshot(d, f"Opened expected page 'Client funds'!")
         return True
-    """
