@@ -11,6 +11,8 @@ from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import LearnMenuNew
 from pages.common import Common
 
+SUB_MENU_NEW_RISK = ()
+
 
 class MenuNew(MenuBase):
     """
@@ -32,7 +34,7 @@ class MenuNew(MenuBase):
         menu_name = "Learn"
         menu_locator = LearnMenuNew.MENU_NEW_LEARN
         submenu_name = "Risk-management guide"
-        submenu_locator = LearnMenuNew.SUB_MENU_NEW_RISK
+        submenu_locator = SUB_MENU_NEW_RISK
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
 
