@@ -6,9 +6,8 @@
 import allure
 
 from pages.Menu.New.menu_new_base import MenuBase
+from pages.Menu.New.menu_new_locators import TradingMenuNew
 
-trading_menu_loc_fca = ("css selector", ".menuGroup_linkfirstLevel__d5JGC > [data-type='nav_id686']")
-trading_menu_loc_sca = ("css selector", ".menuGroup_linkfirstLevel__d5JGC > [data-type='nav_id798']")
 cfd_trading_submenu_loc_fca = ("css selector", "[data-type='nav_id734']")
 cfd_trading_submenu_loc_sca = ("css selector", "[data-type='nav_id800']")
 
@@ -24,10 +23,10 @@ class MenuNew(MenuBase):
         submenu_locator = ""
 
         if cur_country == 'gb':
-            menu_locator = trading_menu_loc_fca
+            menu_locator = TradingMenuNew.MENU_FCA_TRADING
             submenu_locator = cfd_trading_submenu_loc_fca
         if cur_country == 'ae':
-            menu_locator = trading_menu_loc_sca
+            menu_locator = TradingMenuNew.MENU_SCA_TRADING
             submenu_locator = cfd_trading_submenu_loc_sca
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
