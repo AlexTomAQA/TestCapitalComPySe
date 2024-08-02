@@ -10,6 +10,7 @@ class TradingMenuNew:
 
 
 class MarketsMenuNew:
+    MENU_FCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
     MENU_SCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
 
 
