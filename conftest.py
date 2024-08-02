@@ -13,12 +13,18 @@ import random
 import pytest
 import allure
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
+
+from selenium.webdriver.chrome.service import Service as ChromiumService
 from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.service import Service as EdgeService
+
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
+
 from allure_commons.types import AttachmentType
 
 import conf
@@ -168,7 +174,7 @@ def cur_country(request):
     scope="class",
     params=[
         "test001.miketar+1@gmail.com"
-        # "aqa.tomelo.an@gmail.com"  # для локального тестирования у Саши
+        # "aqa.tomelo.an@gmail.com" # для локального тестирования у Саши
     ],
 )
 def cur_login(request):
@@ -255,6 +261,7 @@ def cur_headless(request):
     # scope="module",
     scope="session",
     params=[
+        # "Chromium",
         "Chrome",
         # "Edge",
         # "Firefox",
@@ -274,9 +281,10 @@ def d(request):
         test_browser = request.param
 
     d = None
+    if test_browser == "Chromium":
+        d = init_remote_driver_chromium()
     if test_browser == "Chrome":
         d = init_remote_driver_chrome()
-        # d = init_remote_driver_chrome_v2(cur_headless)
     elif test_browser == "Edge":
         d = init_remote_driver_edge()
     elif test_browser == "Firefox":
@@ -295,6 +303,33 @@ def d(request):
 
     d.quit()
     print(f"\n{datetime.now()}   *** end fixture Browser = teardown ***\n")
+
+
+def init_remote_driver_chromium():
+    chromium_options = webdriver.ChromeOptions()
+
+    chromium_options.page_load_strategy = "normal"
+
+    chromium_options.add_argument(conf.CHROMIUM_WINDOW_SIZES)
+
+    # !!!
+    # безголовый режим задается переменной headless в самом начале текущего модуля
+    if conf.HEADLESS:
+        chromium_options.add_argument(conf.CHROMIUM_HEADLESS)
+
+    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chromium_options)
+    # driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+    driver = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(
+        chrome_type=ChromeType.CHROMIUM).install()), options=chromium_options)
+    # driver = webdriver.Chrome(
+    #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
+    # )
+
+    print(driver.get_window_size())
+    driver.implicitly_wait(1)
+    driver.set_script_timeout(20000)
+
+    return driver
 
 
 def init_remote_driver_chrome():
@@ -326,8 +361,9 @@ def init_remote_driver_chrome():
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
     #                           options=options)
 
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-    # driver = webdriver.Chrome(
+    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+# driver = webdriver.Chrome(
     #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
     # )
 
@@ -335,29 +371,6 @@ def init_remote_driver_chrome():
     driver.implicitly_wait(1)
     driver.set_script_timeout(20000)
 
-    return driver
-
-
-def init_remote_driver_chrome_v2(headless):
-    chrome_options = webdriver.ChromeOptions()
-
-    chrome_options.page_load_strategy = "normal"
-
-    chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
-
-    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    chrome_options.add_argument("--accept-lang=en")
-
-    # !!!
-    # безголовый режим задается переменной headless в самом начале текущего модуля
-    if headless:
-        chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
-
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-
-    print(driver.get_window_size())
-    driver.implicitly_wait(1)
-    driver.set_script_timeout(20000)
     return driver
 
 
@@ -397,9 +410,9 @@ def init_remote_driver_firefox():
     # безголовый режим браузера задается переменной headless
     if conf.HEADLESS:
         firefox_options.add_argument("--headless")  # ?похоже, не работает на MacOS
-    ser = FirefoxService(GeckoDriverManager().install())
-    driver = webdriver.Firefox(service=ser, options=firefox_options)
-
+    # ser = FirefoxService(GeckoDriverManager().install())
+    # driver = webdriver.Firefox(service=ser, options=firefox_options)
+    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     print(driver.get_window_size())
     driver.implicitly_wait(5)
     return driver

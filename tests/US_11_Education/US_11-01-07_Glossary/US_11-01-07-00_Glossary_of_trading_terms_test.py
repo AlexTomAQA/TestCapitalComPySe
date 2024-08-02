@@ -3,7 +3,7 @@
 @Time    : 2023/04/11 19:00
 @Author  : Alexander Tomelo
 """
-from datetime import datetime
+# from datetime import datetime
 import pytest
 import allure
 from pages.common import Common
