@@ -24,7 +24,7 @@ class Cryptocurrencies(MenuBase):
         submenu_locator = ""
 
         if cur_country == 'ae':
-            menu_locator = MarketsMenuNew.MARKETS_MENU_SCA_LOCATOR
+            menu_locator = MarketsMenuNew.MENU_SCA_MARKETS
             submenu_locator = CRYPTOCURRENCIES_SUBMENU_SCA_LOCATOR
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
