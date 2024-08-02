@@ -3,15 +3,19 @@
 @Time    : 2024/08/01
 @Author  : Artem Dashkov
 """
-import time
-from datetime import datetime
+# import time
+# from datetime import datetime
 
 import allure
+from selenium.webdriver.common.by import By
 
-from pages.base_page import BasePage
-from pages.common import Common
+# from pages.base_page import BasePage
+# from pages.common import Common
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import PricingMenuNew
+
+SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id742"')
+SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id814"')
 
 
 class MenuNew(MenuBase):
@@ -31,9 +35,9 @@ class MenuNew(MenuBase):
         submenu_name = "How Capital.com makes money"
         match cur_country:
             case "":
-                submenu_locator = PricingMenuNew.SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY
+                submenu_locator = SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY
             case "ae":
-                submenu_locator = PricingMenuNew.SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY
+                submenu_locator = SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
