@@ -8,15 +8,13 @@ class TradingMenuNew:
     MENU_FCA_TRADING = (
         By.CSS_SELECTOR, '.menuGroup_linkfirstLevel__d5JGC > [data-type="nav_id686"]')
 
-    SUB_MENU_FCA_DEMO_EN = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id751']")
-    SUB_MENU_SCA_DEMO_EN = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id1029']")
-
     # Trading platforms
     SUB_MENU_SCA_WEB_PLATFORM = (By.CSS_SELECTOR, '[data-type="nav_id818"]')
     SUB_MENU_FCA_SPREAD_BETTING = (By.CSS_SELECTOR, '[data-type="nav_id735"]')
 
 
 class MarketsMenuNew:
+    MENU_FCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
     MENU_SCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
     SUB_MENU_SCA_CRYPTOCURRENCIES = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id895"')
 
