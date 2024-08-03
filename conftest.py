@@ -262,8 +262,8 @@ def cur_headless(request):
     scope="session",
     params=[
         # "Chromium",
-        "Chrome",
-        # "Edge",
+        # "Chrome",
+        "Edge",
         # "Firefox",
         # "Safari",
     ],
@@ -380,9 +380,9 @@ def init_remote_driver_edge():
     edge_options.page_load_strategy = 'normal'
     # edge_options.page_load_strategy = "eager"
 
-    # edge_options.add_argument(conf.WINDOW_SIZES)
-    edge_options.add_argument(conf.CHROMIUM_WINDOW_WIDTH)
-    edge_options.add_argument(conf.CHROMIUM_WINDOW_HEIGHT)
+    edge_options.add_argument(conf.WINDOW_SIZES)
+    # edge_options.add_argument(conf.CHROMIUM_WINDOW_WIDTH)
+    # edge_options.add_argument(conf.CHROMIUM_WINDOW_HEIGHT)
 
     # !!!
     # безголовый режим браузера задается переменной headless, задаваемой в самом начале
