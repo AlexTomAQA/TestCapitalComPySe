@@ -79,11 +79,15 @@ class Conditions(BasePage):
         print(f"\n{datetime.now()}   => Windows size: {d.get_window_size()}")
         print(f"{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
-        print(f"{datetime.now()}   Set resolution 1280 * 800 =>")
-        d.set_window_size(1280, 800)
+
+        # print(f"{datetime.now()}   Set resolution 1280 * 800 =>")
+        # d.set_window_size(1280, 800)
+        print(f"{datetime.now()}   Set resolution 1920 * 1080 =>")
+        d.set_window_size(1920, 1080)
+
         print(f"{datetime.now()}   => Windows size is set to {d.get_window_size()}")
 
-        Captcha(d).fail_test_if_captcha_present_v2()
+        answer = Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Работа с куками =>")

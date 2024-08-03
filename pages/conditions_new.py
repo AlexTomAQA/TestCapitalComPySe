@@ -83,8 +83,8 @@ class NewConditions(BasePage):
         print(f"\n{datetime.now()}   => Windows size: {d.get_window_size()}")
         print(f"\n{datetime.now()}   Set windows position at (0, 0) =>")
         d.set_window_position(0, 0)
-        print(f"\n{datetime.now()}   Set resolution 1280 * 800 =>")
-        d.set_window_size(1280, 800)
+        print(f"\n{datetime.now()}   Set resolution 1920 * 1080 =>")
+        d.set_window_size(1920, 1080)
         print(f"\n{datetime.now()}   => Resolution set {d.get_window_size()}")
 
         Captcha(d).fail_test_if_captcha_present_v2()
