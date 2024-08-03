@@ -325,8 +325,15 @@ def init_remote_driver_chrome():
 
     # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
     #                           options=options)
-
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    driver_path = ChromeDriverManager().install()
+    if driver_path:
+        driver_name = driver_path.split('/')[-1]
+        if driver_name != "chromedriver":
+            driver_path = "/".join(driver_path.split('/')[:-1] + ["chromedriver.exe"])
+            if '/' in driver_path:
+                driver_path = driver_path.replace('/', '\\')
+            os.chmod(driver_path, 0o755)
+    driver = webdriver.Chrome(service=ChromeService(driver_path), options=chrome_options)
     # driver = webdriver.Chrome(
     #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
     # )

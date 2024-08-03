@@ -16,7 +16,7 @@ from pages.common import Common
 class MenuBase(BasePage):
 
     def move_focus_menu_pause_move_focus_to_submenu_and_click(
-            self, d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator):
+            self, d, link, cur_language, cur_country,  menu_name, menu_locator, submenu_name, submenu_locator):
 
         print(f'\n{datetime.now()}   START Open "{menu_name}" menu, "{submenu_name}" submenu =>')
         print(f"\n{datetime.now()}   1. Cur URL = {d.current_url}")
