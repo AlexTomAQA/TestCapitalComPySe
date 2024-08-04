@@ -8,8 +8,8 @@ import allure
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import TradingMenuNew
 
-all_platforms_submenu_loc_fca = ("css selector", "[data-type='nav_id688']")
-trading_platforms_submenu_loc_sca = ("css selector", "[data-type='nav_id817']")
+SUBMENU_ALL_PLATFORMS = ("css selector", "[data-type='nav_id688']")
+SUBMENU_TRADING_PLATFORMS = ("css selector", "[data-type='nav_id817']")
 
 
 class MenuNew(MenuBase):
@@ -20,7 +20,7 @@ class MenuNew(MenuBase):
         menu_name = "Trading"
         menu_locator = TradingMenuNew.MENU_FCA_TRADING
         submenu_name = "All platforms"
-        submenu_locator = all_platforms_submenu_loc_fca
+        submenu_locator = SUBMENU_ALL_PLATFORMS
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
 
@@ -32,7 +32,7 @@ class MenuNew(MenuBase):
         menu_name = "Trading"
         menu_locator = TradingMenuNew.MENU_SCA_TRADING
         submenu_name = "Trading platforms"
-        submenu_locator = trading_platforms_submenu_loc_sca
+        submenu_locator = SUBMENU_TRADING_PLATFORMS
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
