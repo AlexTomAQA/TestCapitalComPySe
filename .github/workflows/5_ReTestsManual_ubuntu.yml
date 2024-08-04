@@ -3,13 +3,14 @@ name: 5. ReTestsManual, ubuntu
 on:
 #  push:
   workflow_dispatch:
-  
+
+  schedule:
+    - cron: '10 00 * * *'
+#    - cron: '10 06 * * *'
+
 #permissions:
 #  contents: write
 
-#  schedule:
-#    - cron: '00 13 * * *'
-#    - cron: '10 06 * * *'
 
 jobs:
   tests:
