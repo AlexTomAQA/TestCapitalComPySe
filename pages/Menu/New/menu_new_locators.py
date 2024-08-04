@@ -4,13 +4,13 @@ from selenium.webdriver.common.by import By
 class TradingMenuNew:
     # Trading
     MENU_SCA_TRADING = (
-        By.CSS_SELECTOR, '.menuGroup_linkfirstLevel__d5JGC > [data-type="nav_id798"]')
+        By.CSS_SELECTOR, 'span > a[data-type="nav_id798"]')
     MENU_FCA_TRADING = (
-        By.CSS_SELECTOR, '.menuGroup_linkfirstLevel__d5JGC > [data-type="nav_id686"]')
+        By.CSS_SELECTOR, 'span > a[data-type="nav_id686"]')
 
 
 class MarketsMenuNew:
-    MENU_FCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
+    MENU_FCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id689"]')
     MENU_SCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
 
 
