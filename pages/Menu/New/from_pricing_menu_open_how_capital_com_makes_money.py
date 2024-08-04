@@ -40,6 +40,6 @@ class MenuNew(MenuBase):
                 submenu_locator = SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
-            d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
+            d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
 
         return answer

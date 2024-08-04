@@ -14,7 +14,8 @@ from pages.common import Common
 from pages.Signup_login.signup_login import SignupLogin
 
 BLOCK_NAME = "[How we manage your money] link"
-LINK_LOCATOR = (By.CSS_SELECTOR, 'ul > li [href*="what-capital-does-with-your-money"]')
+# LINK_LOCATOR = (By.CSS_SELECTOR, 'ul > li [href*="what-capital-does-with-your-money"]')
+LINK_LOCATOR = (By.CSS_SELECTOR, 'p ~ ul > li:nth-child(2) > a')
 
 
 class BUG_257(BasePage):

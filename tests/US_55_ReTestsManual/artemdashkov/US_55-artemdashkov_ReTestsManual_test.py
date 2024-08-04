@@ -618,7 +618,6 @@ class TestManualDetected:
             "on the 'How Capital.com makes money' page",
             False, False
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
