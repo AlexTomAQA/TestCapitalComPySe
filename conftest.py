@@ -262,8 +262,8 @@ def cur_headless(request):
     scope="session",
     params=[
         # "Chromium",
-        # "Chrome",
-        "Edge",
+        "Chrome",
+        # "Edge",
         # "Firefox",
         # "Safari",
     ],
@@ -296,9 +296,18 @@ def d(request):
     else:
         print(f'Please pass the correct browser name: {test_browser}')
         raise Exception('driver is not found')
+
     print(f'Current browser name: {d.capabilities["browserName"]}')
+
+    d.set_window_position(0, 0)
+    d.set_window_size(1280, 720)
+    print(d.get_window_size())
+    d.implicitly_wait(5)
+    d.set_script_timeout(20000)
+
     # Установка максимального тайм-аута загрузки страницы
     d.set_page_load_timeout(60)
+
     yield d
 
     d.quit()
@@ -333,66 +342,76 @@ def init_remote_driver_chromium():
 
 
 def init_remote_driver_chrome():
-    # chrome_version = "114.0.5735.90"
-    # chrome_version = "115.0.5790.102" - версия chromium CFT
-    # chrome_version = "115.0.5790.114"
-    # chrome_version = "116.0.5845.96"
-    chrome_options = webdriver.ChromeOptions()
 
+    driver = None
+    variant = 1
+    chrome_options = webdriver.ChromeOptions()
     chrome_options.page_load_strategy = "normal"
     # chrome_options.page_load_strategy = "eager"
 
-    chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
-    # chrome_options.add_argument(conf.CHROME_WINDOW_SIZES_4k)
-
-    # Код, отмены информационного сообщения "USB: usb_device_handle_win.cc"
-    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    chrome_options.add_argument("--accept-lang=en")
-
-    # !!!
-    # безголовый режим задается переменной headless в самом начале текущего модуля
     if conf.HEADLESS:
         chrome_options.add_argument(conf.CHROMIUM_HEADLESS)
 
-    # chrome_options.add_argument("--disable-browser-side-navigation")
-    # chrome_options.add_argument("--no-sandbox")
-    # chrome_options.add_argument("--disable-gpu")
+    if variant == 1:
+        driver_path = ChromeDriverManager().install()
+        driver = webdriver.Chrome(
+            service=ChromeService(driver_path),
+            options=chrome_options
+        )
+    elif variant == 2:
+        # chrome_version = "115.0.5790.102" - версия chromium CFT
+        # chrome_version = "115.0.5790.114"
+        # chrome_version = "116.0.5845.96"
+        # chrome_version = "127.0.6533.88"
 
-    # driver = webdriver.Chrome(executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
-    #                           options=options)
+        # chrome_options.add_argument("--disable-browser-side-navigation")
+        # chrome_options.add_argument("--no-sandbox")
+        # chrome_options.add_argument("--disable-gpu")
+        # chrome_options.add_argument(conf.CHROME_WINDOW_SIZES)
+        # chrome_options.add_argument(conf.CHROME_WINDOW_SIZES_4k)
+        # chrome_options.add_argument("--accept-lang=en")
 
-    # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-# driver = webdriver.Chrome(
-    #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()), options=chrome_options
-    # )
+        # Код, отмены информационного сообщения "USB: usb_device_handle_win.cc"
+        # chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-    print(driver.get_window_size())
-    driver.implicitly_wait(1)
-    driver.set_script_timeout(20000)
+        driver = webdriver.Chrome(
+            executable_path="/home/atom/.wdm/drivers/chromedriver/linux64/127.0.6533.88/chromedriver-linux64",
+            options=chrome_options
+        )
+        # executable_path='/home/trendsen/virtualenv/GoogleTrendsBOT/3.8/bin/chromedriver',
+
+        # driver = webdriver.Chrome(
+        #     service=ChromeService(ChromeDriverManager(version=chrome_version).install()),
+        #     options=chrome_options
+        # )
+
+        pass
 
     return driver
 
 
 def init_remote_driver_edge():
-    edge_options = webdriver.EdgeOptions()
+    driver = None
+    variant = 1
+    if variant == 1:
+        edge_options = webdriver.EdgeOptions()
+        edge_options.page_load_strategy = 'normal'
+        # edge_options.page_load_strategy = "eager"
 
-    edge_options.page_load_strategy = 'normal'
-    # edge_options.page_load_strategy = "eager"
+        if conf.HEADLESS:
+            edge_options.add_argument(conf.CHROMIUM_HEADLESS)
 
-    edge_options.add_argument(conf.WINDOW_SIZES)
-    # edge_options.add_argument(conf.CHROMIUM_WINDOW_WIDTH)
-    # edge_options.add_argument(conf.CHROMIUM_WINDOW_HEIGHT)
+        driver_path = EdgeChromiumDriverManager().install()
+        driver = webdriver.Edge(
+            service=EdgeService(driver_path),
+            options=edge_options
+        )
+    elif variant == 2:
+        edge_options = Options()
+        edge_options.binary_location = ""
 
-    # !!!
-    # безголовый режим браузера задается переменной headless, задаваемой в самом начале
-    if conf.HEADLESS:
-        edge_options.add_argument(conf.CHROMIUM_HEADLESS)
-
-    driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=edge_options)
-
-    print(driver.get_window_size())
-    driver.implicitly_wait(5)
+        service = Service(verbose=True)
+        driver = webdriver.Edge(service=service)
 
     return driver
 
