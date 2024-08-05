@@ -674,7 +674,6 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        # pytest.skip("AT development is in progress")
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
@@ -732,7 +731,6 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        # pytest.skip("AT development is in progress")
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
