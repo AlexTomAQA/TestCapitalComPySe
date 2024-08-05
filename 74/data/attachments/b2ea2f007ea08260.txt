@@ -1,0 +1,88 @@
+
+
+
+Current language - de
+{'width': 1920, 'height': 1080}
+
+2024-08-05 03:30:52.039247   worker_id = master
+
+2024-08-05 03:30:52.039261   0. Allure grouping for US_55
+
+2024-08-05 03:30:52.039435   START PRECONDITIONS =>
+
+2024-08-05 03:30:52.039451   => URL after prev. preconditions - https://capital.com/de
+2024-08-05 03:30:52.039460   => flag_of_bug - True
+2024-08-05 03:30:52.039471   => Current URL - https://capital.com/de/aktienkurse-realtime?t=most
+2024-08-05 03:30:52.045038   Current page URL = https://capital.com/de/aktienkurse-realtime?t=most
+2024-08-05 03:30:52.047443   self.link = https://capital.com/de
+2024-08-05 03:30:52.047457   driver.get(https://capital.com/de) =>
+2024-08-05 03:31:00.205025   => Loaded page https://capital.com/de
+
+2024-08-05 03:31:00.209475   => Windows size: {'width': 1920, 'height': 1080}
+2024-08-05 03:31:00.210879   Set windows position at (0, 0) =>
+2024-08-05 03:31:00.212515   Set resolution 1920 * 1080 =>
+2024-08-05 03:31:00.216477   => Windows size is set to {'width': 1920, 'height': 1080}
+
+2024-08-05 03:31:05.241688   Капчи нет. Идем дальше
+
+2024-08-05 03:31:05.241777   Работа с куками =>
+
+2024-08-05 03:31:05.241792   => не требуется
+
+2024-08-05 03:31:10.249410   Капчи нет. Идем дальше
+
+2024-08-05 03:31:10.249500   Prev. country - 'ua'
+2024-08-05 03:31:10.249514   Cur. country - 'au'
+2024-08-05 03:31:10.249524   Set 'au' country =>
+2024-08-05 03:31:10.260110   => Language and Country menu is present
+2024-08-05 03:31:10.274976   => Language and Country menu is visible
+2024-08-05 03:31:11.552054   => Focus is moved on Language and Country menu 
+2024-08-05 03:31:14.226219   => Cur url = https://capital.com/de?country=au
+2024-08-05 03:31:14.256855   => Country set to 'au'
+
+2024-08-05 03:31:19.284817   Капчи нет. Идем дальше
+
+2024-08-05 03:31:19.284935   Prev. language - 'de'
+2024-08-05 03:31:19.284951   Cur. language - 'de'
+2024-08-05 03:31:19.284961   => Language is set to 'de'
+
+2024-08-05 03:31:24.338338   Капчи нет. Идем дальше
+
+2024-08-05 03:31:24.338427   Prev. role - 'NoReg'
+2024-08-05 03:31:24.338441   Cur. role - 'NoReg'
+2024-08-05 03:31:24.338451   => The 'NoReg' role is set
+
+2024-08-05 03:31:24.341126   => Current URL - https://capital.com/de?country=au
+
+2024-08-05 03:31:24.341146   => THE END PRECONDITIONS
+
+2024-08-05 03:31:24.341317   START Open "Markets" menu, "Shares" submenu =>
+2024-08-05 03:31:24.341333   1. Cur URL = https://capital.com/de?country=au
+2024-08-05 03:31:24.343719   2. Link = https://capital.com/de?country=au
+2024-08-05 03:31:24.343734   current_page = https://capital.com/de?country=au
+2024-08-05 03:31:24.348219   link = https://capital.com/de?country=au
+2024-08-05 03:31:24.859441   => 'Markets' menu is present
+2024-08-05 03:31:24.878900   => 'Markets' menu is visible
+2024-08-05 03:31:26.148633   => Focus moved to 'Markets' menu
+2024-08-05 03:31:27.627820   => Focus moved to 'Shares' submenu and clicked
+2024-08-05 03:31:27.913261   => Focus moved to 'capital*com' logo
+2024-08-05 03:31:27.913304   3. Cur URL = https://capital.com/de/aktienkurse-realtime
+
+2024-08-05 03:31:27.918576   1. Arrange_v0
+2024-08-05 03:31:27.918598   current_page = https://capital.com/de/aktienkurse-realtime
+2024-08-05 03:31:27.920978   link = https://capital.com/de/aktienkurse-realtime
+2024-08-05 03:31:27.923417   Scroll to the labels
+2024-08-05 03:31:27.934169   Close the filters if selected
+2024-08-05 03:31:28.155959   Select region filters
+2024-08-05 03:31:29.773073   Select sectors filters
+2024-08-05 03:31:31.852484   Scroll to selected filters
+2024-08-05 03:31:31.855801   Check the labels of the selected filters
+2024-08-05 03:31:32.371992   Extract the text attribute from the labels of the selected filters
+
+2024-08-05 03:31:32.408812   2. Act
+2024-08-05 03:31:32.408852   Select a random item sort
+2024-08-05 03:31:35.313167   Sort - Die meistgehandelten - is selected
+
+2024-08-05 03:31:35.313453   3. Assert_v0
+2024-08-05 03:31:35.404173   Expected result: applied filters 'Region/Sectors' ['Deutschland', 'Schweden', 'Vereinigte Staaten von Amerika', 'Nicht-zyklische Konsumgüter & Dienstleistungen', 'Telekommunikation Dienstleistungen']
+Actual result: after selecting item 'Most traded' from the dropdown, are displayed ['Deutschland', 'Schweden', 'Vereinigte Staaten von Amerika']
