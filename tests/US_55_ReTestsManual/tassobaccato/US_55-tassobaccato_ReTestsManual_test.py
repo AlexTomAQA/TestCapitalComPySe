@@ -181,9 +181,8 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login,
             cur_password)
 
-        menu = MenuBase(d, link)
-        cur_item_link = menu.move_focus_menu_pause_move_focus_to_submenu_and_click(d, cur_language, cur_country, link,
-                            'Markets', '', 'Cryptocurrencies', '')
+        menu = FromMarketsOpenCryptocurrencies(d, link)
+        cur_item_link = menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, link)
 
         test_element = LearnMoreAbout(cur_item_link, bid)
         test_element.learn_more_about(cur_item_link)
