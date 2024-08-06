@@ -9,7 +9,7 @@ import allure
 from pages.BugsManual.bug_048 import AppliedFilters
 from pages.BugsManual.bug_077 import Sidebar
 from pages.BugsManual.bug_270 import LearnMoreAbout
-from pages.Menu.New.menu_new_base import MenuBase
+from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -185,4 +185,4 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, link)
 
         test_element = LearnMoreAbout(cur_item_link, bid)
-        test_element.learn_more_about(cur_item_link)
+        test_element.learn_more_about(d, cur_item_link, cur_link='')
