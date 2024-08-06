@@ -3,7 +3,7 @@
 @Time    : 2024/07/30 17:30 GMT+5
 @Author  : Sergey Aiidzhanov
 """
-
+import time
 from datetime import datetime
 
 from pages.base_page import BasePage
@@ -35,12 +35,15 @@ class CheckLoginFacebookModal(BasePage):
     def click_fb_btn(self):
         print(f'\n{datetime.now()}   Click the Facebook button =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(FB_BTN_LOC))
+        print(f'\n{datetime.now()}   {el.is_enabled()}')
         el.click()
-        print(f'{datetime.now()}   Done, the corresponding modal window is opened')
+        print(f'\n{datetime.now()}   {el.is_enabled()}')
+        print(f'{datetime.now()}   Done, the button is clicked')
 
     def should_be_fb_modal(self):
         print(f'\n{datetime.now()}   Check if the "Log in to your Facebook account" modal window is opened =>')
         tabs = self.driver.window_handles
+        print(f'\n{datetime.now()}   TABS NUMBER: {len(tabs)}')
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[1])
             self.deal_with_cookies()
