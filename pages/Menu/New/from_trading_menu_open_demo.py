@@ -6,12 +6,13 @@
 """
 
 import allure
+from selenium.webdriver.common.by import By
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import TradingMenuNew
 
-SUB_MENU_FCA_DEMO_EN = ("css selector", "div.grid_grid__2D3md > a[data-type='nav_id751']")
-SUB_MENU_SCA_DEMO_EN = ("css selector", "div.grid_grid__2D3md > a[data-type='nav_id1029']")
+SUB_MENU_FCA_DEMO_EN = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id751']")
+SUB_MENU_SCA_DEMO_EN = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id1029']")
 
 
 class MenuNewDemo(MenuBase):
@@ -31,7 +32,7 @@ class MenuNewDemo(MenuBase):
             submenu_locator = SUB_MENU_SCA_DEMO_EN
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
-            d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
+            d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
 
         return answer
 
