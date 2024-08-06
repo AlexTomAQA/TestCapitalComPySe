@@ -14,12 +14,12 @@ SUBMENU_SCA_TRADING_ANALYSIS = ('css selector', '[data-type="nav_id846"]')
 
 class MenuNew(MenuBase):
 
-    @allure.step('Select "Learn" menu, "Trading Analysis" submenu')
+    @allure.step('Select "Learn" menu, "Trading analysis" submenu')
     def from_learn_menu_open_trading_analysis(self, d, cur_language, cur_country, link):
 
         menu_name = "Learn"
         menu_locator = ""
-        submenu_name = "Trading Analysis"
+        submenu_name = "Trading analysis"
         submenu_locator = ""
 
         if cur_country == 'gb':

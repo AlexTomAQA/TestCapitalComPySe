@@ -14,12 +14,12 @@ SUBMENU_SCA_MARKET_ANALYSIS = ('css selector', '[data-type="nav_id1022"]')
 
 class MenuNew(MenuBase):
 
-    @allure.step('Select "Learn" menu, "Market Analysis" submenu')
+    @allure.step('Select "Learn" menu, "Market analysis" submenu')
     def from_learn_menu_open_market_analysis(self, d, cur_language, cur_country, link):
 
         menu_name = "Learn"
         menu_locator = ""
-        submenu_name = "Market Analysis"
+        submenu_name = "Market analysis"
         submenu_locator = ""
 
         if cur_country == 'gb':
