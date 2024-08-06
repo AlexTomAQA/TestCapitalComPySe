@@ -20,8 +20,10 @@ class PricingMenuNew:
 
 
 class LearnMenuNew:
-    MENU_NEW_LEARN = ()
+    MENU_FCA_LEARN = (By.CSS_SELECTOR, 'span > a[data-type="nav_id698"]')
+    MENU_SCA_LEARN = (By.CSS_SELECTOR, 'span > a[data-type="nav_id831"]')
 
 
 class AboutUsMenuNew:
-    pass
+    MENU_FCA_ABOUT_US = (By.CSS_SELECTOR, 'span > a[data-type="nav_id691"]')
+    MENU_SCA_ABOUT_US = (By.CSS_SELECTOR, 'span > a[data-type="nav_id808"]')
