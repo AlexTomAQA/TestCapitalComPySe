@@ -8,8 +8,8 @@ import allure
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import TradingMenuNew
 
-SUBMENU_FCA_TRADING = ("css selector", ".helpers_showLg__UPEqH > [data-type='nav_id686']")
-SUBMENU_SCA_TRADING = ("css selector", ".helpers_showLg__UPEqH > [data-type='nav_id798']")
+SUBMENU_FCA_TRADING = ("css selector", "div > [data-type='nav_id686']")
+SUBMENU_SCA_TRADING = ("css selector", "div > [data-type='nav_id798']")
 
 
 class MenuNew(MenuBase):
