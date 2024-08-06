@@ -4,13 +4,14 @@
 @Author  : podchasova11
 """
 import allure
+from selenium.webdriver.common.by import By
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import MarketsMenuNew
 
-SUBMENU_FCA_FOREX = ("css selector", ".menuGroup_link__z_L3O[data-type='nav_id690']")
-SUBMENU_SCA_FOREX = ("css selector", ".menuGroup_link__z_L3O[data-type='nav_id825']")
-SUBMENU_SCA_AR_LOCATOR = ("css selector", ".menuGroup_link__z_L3O[data-type='nav_id825']")
+SUBMENU_FCA_FOREX = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id690']")
+SUBMENU_SCA_FOREX = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id825']")
+SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id825']")
 
 
 class MenuNewForex(MenuBase):
@@ -34,6 +35,6 @@ class MenuNewForex(MenuBase):
             submenu_locator = SUBMENU_SCA_AR_LOCATOR
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
-            d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
+            d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
 
         return answer
