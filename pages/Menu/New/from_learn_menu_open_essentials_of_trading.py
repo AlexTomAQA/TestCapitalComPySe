@@ -19,12 +19,12 @@ SUBMENU_SCA_AR_ESSENTIAL_TRADING = (
 
 class MenuNewLearn(MenuBase):
 
-    @allure.step('Select "Trading" menu, "Learn" submenu')
+    @allure.step('Select "Learn" menu, "Essentials of trading" submenu')
     def from_markets_menu_open_markets(self, d, cur_language, cur_country, link):
 
         menu_name = "Learn"
         menu_locator = ""
-        submenu_name = "Learn"
+        submenu_name = "Essentials of trading"
         submenu_locator = ""
 
         if cur_country == 'gb':
