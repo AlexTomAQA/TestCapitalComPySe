@@ -25,4 +25,5 @@ class LearnMenuNew:
 
 
 class AboutUsMenuNew:
-    pass
+    MENU_FCA_ABOUT_US = (By.CSS_SELECTOR, 'span > a[data-type="nav_id691"]')
+    MENU_SCA_ABOUT_US = (By.CSS_SELECTOR, 'span > a[data-type="nav_id808"]')

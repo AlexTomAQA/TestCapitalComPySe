@@ -14,12 +14,12 @@ SUBMENU_SCA_MARGIN_CALLS = ("css selector", "[data-type='nav_id806']")
 
 class MenuNew(MenuBase):
 
-    @allure.step('Select "Trading" menu, "Margin calls" submenu')
+    @allure.step('Select "Trading" menu, "Margin Calls" submenu')
     def from_trading_menu_open_margin_calls(self, d, cur_language, cur_country, link):
 
         menu_name = "Trading"
         menu_locator = ""
-        submenu_name = "Margin calls"
+        submenu_name = "Margin Calls"
         submenu_locator = ""
 
         if cur_country == 'gb':
@@ -30,6 +30,6 @@ class MenuNew(MenuBase):
             submenu_locator = SUBMENU_SCA_MARGIN_CALLS
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
-            d, link, cur_language, cur_country, menu_name, menu_locator, submenu_name, submenu_locator)
+            d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
 
         return answer
