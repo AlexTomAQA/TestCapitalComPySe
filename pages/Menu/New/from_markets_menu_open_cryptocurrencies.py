@@ -10,9 +10,8 @@ from selenium.webdriver.common.by import By
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import MarketsMenuNew
 
-CRYPTOCURRENCIES_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id895"]')
-# SUB_MENU_SCA_CRYPTOCURRENCIES = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id895"')
 
+CRYPTOCURRENCIES_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id895"]')
 
 class FromMarketsOpenCryptocurrencies(MenuBase):
     @allure.step('Select "Markets" menu, "Cryptocurrencies" submenu')
