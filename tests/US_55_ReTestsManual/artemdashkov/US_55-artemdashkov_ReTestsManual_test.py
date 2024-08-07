@@ -21,12 +21,15 @@ from pages.BugsManual.bug_129 import BUG_129
 from pages.BugsManual.bug_149 import BUG_149
 from pages.BugsManual.bug_151 import BUG_151
 from pages.BugsManual.bug_257 import BUG_257
+from pages.BugsManual.bug_265 import BUG_265
 from pages.BugsManual.bug_300 import BUG_300
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
-from pages.Menu.New import from_trading_menu_open_web_platform, from_pricing_menu_open_how_capital_com_makes_money
+from pages.Menu.New import (from_trading_menu_open_web_platform,
+                            from_pricing_menu_open_how_capital_com_makes_money,
+                            from_trading_menu_open_platforms)
 from pages.conditions_new import NewConditions
 
 
@@ -532,7 +535,6 @@ class TestManualDetected:
             "Testing link [demo account] on the 'Main page'",
             False, False
         )
-        # pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
@@ -634,6 +636,51 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_language)
+
+    @allure.step("Start test of the [Open an account] button on the 'Trading platforms' page")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_265
+    def test_265_button_open_an_account_does_not_open_contact_us_page_on_parameters_language(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The page with "404 error" message is displayed instead "Contact us" page,
+                when clicked the button [Open an account] in the block "We’re here to help"
+                on the page "Trading platforms" for AR language is selected
+        Language: AR
+        Country: SCA
+        Role: NoReg, Auth, NoAuth
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "265",
+            "Testing button [Open an account] in 'We’re here to help' block "
+            "on the 'Trading platforms' page",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
+            cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_platforms.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_trading_menu_open_trading_platforms(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_265(d, cur_item_link, bid)
+        # test_element.arrange(d, cur_language, cur_item_link)
+        #
+        # # Act
+        # test_element.act(d)
+        #
+        # # Assert
+        # test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the [Explore features] button in the 'Web platform' page")
     @pytest.mark.parametrize('cur_language', ["ar"])

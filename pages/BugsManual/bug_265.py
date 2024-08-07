@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/07/31 22:00
+@Time    : 2024/08/24 21:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -13,12 +13,15 @@ from pages.base_page import BasePage
 from pages.common import Common
 from pages.Signup_login.signup_login import SignupLogin
 
-BLOCK_NAME = "[How we manage your money] link"
-LINK_LOCATOR = (By.CSS_SELECTOR, 'p ~ ul > li:nth-child(2) > a')
+# BLOCK_NAME = "[How we manage your money] link"
+# LINK_LOCATOR = (By.CSS_SELECTOR, 'ul > li [href*="what-capital-does-with-your-money"]')
+# LINK_LOCATOR = (By.CSS_SELECTOR, 'p ~ ul > li:nth-child(2) > a')
 
 
-class BUG_257(BasePage):
+class BUG_265(BasePage):
+    pass
 
+    """
     @allure.step(f"{datetime.now()}   1. Start Arrange.")
     def arrange(self, d, cur_language, cur_item_link):
         global LINK_LOCATOR
@@ -118,3 +121,4 @@ class BUG_257(BasePage):
         print(f"{datetime.now()}   => Opened expected page 'Client funds'!\n")
         Common.save_current_screenshot(d, f"Opened expected page 'Client funds'!")
         return True
+    """
