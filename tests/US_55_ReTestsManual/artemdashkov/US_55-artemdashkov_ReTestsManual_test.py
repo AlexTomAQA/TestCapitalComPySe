@@ -26,9 +26,7 @@ from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
-from pages.Menu.New.menu_new import MenuNew
-from pages.Menu.New.from_trading_menu_open_web_platform import MenuNew
-from pages.Menu.New.from_pricing_menu_open_how_capital_com_makes_money import MenuNew
+from pages.Menu.New import from_trading_menu_open_web_platform, from_pricing_menu_open_how_capital_com_makes_money
 from pages.conditions_new import NewConditions
 
 
@@ -624,7 +622,7 @@ class TestManualDetected:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
-        page_menu = MenuNew(d, cur_item_link)
+        page_menu = from_pricing_menu_open_how_capital_com_makes_money.MenuNew(d, cur_item_link)
         cur_item_link = page_menu.from_pricing_menu_open_how_capital_com_makes_money(
             d, cur_language, cur_country, cur_item_link)
 
@@ -665,7 +663,7 @@ class TestManualDetected:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
-        page_menu = MenuNew(d, cur_item_link)
+        page_menu = from_trading_menu_open_web_platform.MenuNew(d, cur_item_link)
         cur_item_link = page_menu.from_trading_menu_open_web_platform(
             d, cur_language, cur_country, cur_item_link)
 

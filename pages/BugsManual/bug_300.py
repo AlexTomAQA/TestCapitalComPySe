@@ -102,8 +102,9 @@ class BUG_300(BasePage):
         print(f"{datetime.now()}   Check language version of page 'TradingView'. ")
         print(f"{datetime.now()}   IS page 'TradingView' opened EN-language version? =>")
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-        if self.current_page_url_contain_the('https://capital.com/en-ae/trading-platforms/trading-view'):
-            msg = f"Page 'TradingView' opened in EN-language version."
+        if (self.current_page_url_contain_the('https://capital.com/en-ae/trading-platforms/trading-view') or
+                self.current_page_url_contain_the('https://capital.com/tradingview')):
+            msg = f"Page 'TradingView' opened in EN-language version instead AR-language."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         expected_page = 'https://capital.com/ar-ae/trading-platforms/trading-view'
@@ -115,6 +116,6 @@ class BUG_300(BasePage):
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
 
-        print(f"{datetime.now()}   => Page 'TradingView' present on expected language!\n")
-        Common.save_current_screenshot(d, f"Page 'TradingView' present on expected language!")
+        print(f"{datetime.now()}   => Page 'TradingView' present on expected AR-language!\n")
+        Common.save_current_screenshot(d, f"Page 'TradingView' present on expected AR-language!")
         return True
