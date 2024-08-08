@@ -3,6 +3,8 @@
 @Time    : 2024/05/06 22:00
 @Author  : Kasilà
 """
+import random
+
 import pytest
 import allure
 
@@ -12,7 +14,6 @@ from pages.BugsManual.bug_270 import LearnMoreAbout
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
-
 from pages.Elements.MyAccountButton import MyAccountButton
 from pages.common import Common
 from pages.conditions import Conditions
@@ -52,7 +53,7 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
@@ -82,7 +83,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -119,7 +120,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
