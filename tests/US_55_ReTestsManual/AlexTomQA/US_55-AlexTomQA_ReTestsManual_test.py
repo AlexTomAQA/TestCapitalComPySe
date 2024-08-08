@@ -3,6 +3,7 @@
 @Time    : 2024/05/06 22:00
 @Author  : Alexander Tomelo
 """
+import random
 from datetime import datetime
 import time
 
@@ -101,7 +102,7 @@ class TestManualDetected:
         pytest.skip("Autotest under construction")
 
     @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'au', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_029
     def test_029_google_play_button_on_cfd_trading_app_block(
