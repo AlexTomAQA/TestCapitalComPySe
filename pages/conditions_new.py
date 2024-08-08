@@ -13,11 +13,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.common import Common
 from src.src import CapitalComPageSrc
 from pages.base_page import BasePage
-from pages.Menu.menu import MenuSection
+# from pages.Menu.menu import MenuSection
 from pages.captcha import Captcha
 from pages.Header.header import Header
 from pages.My_account.my_account import MyAccount
-# from pages.Capital.Trading_platform.Topbar.topbar import TopBar
+from pages.Trading_platform.Topbar.topbar import TopBar
 from pages.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators
 from pages.Menu.New.menu_new import MainMenu
@@ -53,8 +53,8 @@ class NewConditions(BasePage):
         """
         Method Preconditions
         """
-        global url_language
-        global url_country
+        # global url_language
+        # global url_country
         # global host
         global test_link
         global url_after_prev_preconditions_new
@@ -231,8 +231,8 @@ class NewConditions(BasePage):
         else:
             print(f'{datetime.now()}   -> "Capital.com" logo mission')
 
-        # self.clear_charts_list(d)
-        d.back()
+        if cur_role == "Auth":
+            d.back()
 
     @allure.step(f"{datetime.now()}   Set language and country")
     def set_language_country_new(self, d, cur_language, cur_country):
@@ -272,18 +272,30 @@ class NewConditions(BasePage):
     def to_do_de_authorisation_new(self, d, link):
         """DeAuthorisation"""
         print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
-        menu = MainMenu(d, link)
-        if not Header(d, link).header_button_my_account_click():
-            msg = "Button 'My account' missing"
-            print(f"{datetime.now()}   {msg}")
 
-        if not Header(d.link).check_opened_my_account_panel():
-            # Header(d.link).
-            pass
+        top_bar = TopBar(d, link)
+        if not top_bar.trading_platform_top_bar_account_info_menu_logout():
+            msg = "De authorisation failed"
+            print(f"{datetime.now()}   => {msg}")
+            pytest.fail(f"Bug!   {msg}")
+        print(f"{datetime.now()}   => Logout is OK")
 
-        print(f"{datetime.now()}   => 'My account' panel opened")
+        return True
 
-        assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
+    # def to_do_de_authorisation_new(self, d, link):
+    #     """DeAuthorisation"""
+        # print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+        # menu = MainMenu(d, link)
+        # if not Header(d, link).header_button_my_account_click():
+        #     msg = "Button 'My account' missing"
+        #     print(f"{datetime.now()}   {msg}")
+        # if not Header(d.link).check_opened_my_account_panel():
+        #     # Header(d.link).
+        #     pass
+
+        # print(f"{datetime.now()}   => 'My account' panel opened")
+        #
+        # assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
 
     @allure.step("Start Checking that Main Page is opened")
     def arrange_0(self):
