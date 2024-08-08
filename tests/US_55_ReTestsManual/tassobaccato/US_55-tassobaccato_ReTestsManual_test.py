@@ -184,5 +184,6 @@ class TestManualDetectedBugs:
         menu = FromMarketsOpenCryptocurrencies(d, link)
         cur_item_link = menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, link)
 
-        test_element = LearnMoreAbout(cur_item_link, bid)
-        test_element.learn_more_about(d, cur_item_link, cur_link='')
+        test_element = LearnMoreAbout(d, cur_item_link, bid)
+        test_element.learn_more_about(d, cur_item_link, link)
+        test_element.assert_(d)
