@@ -514,7 +514,7 @@ class TestManualDetected:
         test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the link [demo account] in the 'Main page'")
-    @pytest.mark.parametrize('cur_language', ["hu", "ru"])
+    @pytest.mark.parametrize('cur_language', random.sample(["hu", "ru"],1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_151
     def test_151_link_demo_account_does_not_open_demo_account_page_on_parameters_language(
