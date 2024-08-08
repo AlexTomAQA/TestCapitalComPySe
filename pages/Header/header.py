@@ -3,20 +3,20 @@
 @Time    : 2023/02/08 10:00
 @Author  : Alexander Tomelo
 """
+from datetime import datetime
 
 import allure
 import pytest
 from selenium.webdriver import ActionChains
-# from selenium.common.exceptions import (
-#     ElementClickInterceptedException,
-#     ElementNotInteractableException
-# )
-from datetime import datetime
+from selenium.webdriver.common.by import By
+
 from pages.base_page import BasePage
 # from pages.Signup_login.signup_login import SignupLogin
 from pages.Header.header_locators import HeaderElementLocators
 from pages.My_account.my_account_locators import MyAccountLocator
 # from .src.src import HeaderSrc
+
+LOGIN_BUTTON_IN_HEADER_NEW = (By.CSS_SELECTOR, "[class*=panel_holder] [data-type=btn_header_login]")
 
 
 class Header(BasePage):
@@ -76,5 +76,12 @@ class Header(BasePage):
             return False
 
         print(f"{datetime.now()}   => User panel [My account] is opened")
-        del button_list
         return True
+
+    def check_visible_login_button_in_header_on_capital_com_new_page(self):
+        print(f"{datetime.now()}   LogIn button is visible? =>")
+        if not self.element_is_visible(LOGIN_BUTTON_IN_HEADER_NEW, 10):
+            msg = "LogIn button in header new is not visible"
+            print(f"{datetime.now()}   => {msg}")
+            pytest.fail(f"Problem!   => {msg}")
+        print(f"{datetime.now()}   => LogIn button in header new is visible")
