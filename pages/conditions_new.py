@@ -160,7 +160,7 @@ class NewConditions(BasePage):
                     self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
                 case "NoAuth":
                     self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
-                    self.to_do_de_authorisation_new(d, host, cur_login, cur_password, cur_role)
+                    self.to_do_de_authorisation_new(d, host)
                 case "NoReg":
                     pass
                 case _:
