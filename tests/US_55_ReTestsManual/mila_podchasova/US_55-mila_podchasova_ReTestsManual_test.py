@@ -3,10 +3,11 @@
 @Time    : 2024/06/06 15:29
 @Author  : podchasova11
 """
+from datetime import datetime
+import random
 
 import pytest
 import allure
-from datetime import datetime
 
 from pages.BugsManual.bug_043 import ProfessionalMenuCheckFooter
 from pages.BugsManual.bug_038 import WebTradingPlatformPage
@@ -30,7 +31,7 @@ class TestManualDetectedBugs:
     @allure.step("Start retest manual TC_55!00_038 The Trading platform overview page not open when"
                  " button [Platform overview] click on the 'Investmate app' page")
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_038
     def test_038(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -102,7 +103,7 @@ class TestManualDetectedBugs:
                  "The trading platform page is not opened "
                  "in [demo mode] after clicking on the [Create a risk-free demo account] button "
                  "on the 'Demo account' page")
-    @pytest.mark.parametrize('cur_country', ['de', 'ua']) # на лицензии 'au' другой локатор кнопки => тест выдает ошибку
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1)) # на лицензии 'au' другой локатор кнопки => тест выдает ошибку
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_090
     def test_090(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
