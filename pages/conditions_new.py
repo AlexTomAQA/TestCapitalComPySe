@@ -16,7 +16,7 @@ from pages.base_page import BasePage
 # from pages.Menu.menu import MenuSection
 from pages.captcha import Captcha
 from pages.Header.header import Header
-from pages.My_account.my_account import MyAccount
+# from pages.My_account.my_account import MyAccount
 from pages.Trading_platform.Topbar.topbar import TopBar
 from pages.Trading_platform.trading_platform import TradingPlatform
 from pages.Signup_login.signup_login_locators import NewLoginFormLocators
@@ -226,10 +226,7 @@ class NewConditions(BasePage):
         trading_platform = TradingPlatform(d, platform_url)
 
         # if top_bar.trading_platform_logo_is_present():
-        if trading_platform.should_be_platform_logo():
-            print(f'{datetime.now()}   -> "Capital.com" logo is present on trading platform page')
-        else:
-            print(f'{datetime.now()}   -> "Capital.com" logo mission')
+        trading_platform.should_be_platform_logo()
 
         if cur_role == "Auth":
             d.back()
@@ -278,6 +275,9 @@ class NewConditions(BasePage):
             msg = "De authorisation failed"
             print(f"{datetime.now()}   => {msg}")
             pytest.fail(f"Bug!   {msg}")
+
+        Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
+
         print(f"{datetime.now()}   => Logout is OK")
 
         return True

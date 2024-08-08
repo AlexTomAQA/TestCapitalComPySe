@@ -316,6 +316,7 @@ class TradingPlatform(BasePage):
             print(f"{datetime.now()}   => {msg}")
             Common().assert_true_false(False, msg)
         print(f"{datetime.now()}   => 'capital*com' logo is present on the current page")
+        return True
 
     def should_be_platform_demo_mode(self, d, test_link):
         """Check that Trading platform opened in Demo mode"""
