@@ -60,7 +60,7 @@ class TopBar(BasePage):
         if not self.element_is_visible(ACCOUNT_INFO_MENU_LOGOUT, timeout):
             print(f"{datetime.now()}   => Logout button from account info menu is not visible")
             return False
-        print(f"{datetime.now()}   => Logout button from account info menu is not visible")
+        print(f"{datetime.now()}   => Logout button from account info menu is visible")
 
         print(f"{datetime.now()}   Logout button is click =>")
         button_list = self.driver.find_elements(*ACCOUNT_INFO_MENU_LOGOUT)
