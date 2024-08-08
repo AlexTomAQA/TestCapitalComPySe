@@ -5,6 +5,7 @@
 """
 
 import allure
+import pytest
 from selenium.webdriver import ActionChains
 # from selenium.common.exceptions import (
 #     ElementClickInterceptedException,
@@ -41,7 +42,9 @@ class Header(BasePage):
         print(f"{datetime.now()}   2. BUTTON_MY_ACCOUNT is clickable? =>")
         button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
         if not self.element_is_clickable(button_list[0], 10):
-            print("Button [My account] is not clickable!")
+            msg = "Button [My account] is not clickable!"
+            print(f"{datetime.now()}   msg")
+            pytest.fail(f"Problem!   {msg}")
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clickable")
 
         print(f"{datetime.now()}   BUTTON_MY_ACCOUNT Click =>")
@@ -49,6 +52,9 @@ class Header(BasePage):
         ActionChains(self.driver) \
             .click(button_list[0]) \
             .perform()
+        return True
+
+    def check_opened_my_account_panel(self):
 
         if not self.element_is_visible(MyAccountLocator.LOGOUT, 10):
             print(f"{datetime.now()}   => User panel [My account] is not opened after first BUTTON_MY_ACCOUNT click")
