@@ -7,6 +7,7 @@
 import pytest
 import random
 
+
 @pytest.fixture(
     scope="function",
     params=random.sample([
@@ -29,6 +30,7 @@ import random
 def cur_language_2_rnd_from_14(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param
+
 
 @pytest.fixture(
     scope="function",
@@ -54,9 +56,9 @@ def cur_language_2_rnd_from_14(request):
         "TRON"
     ],
 )
-
 def sidebar_item(request):
     return request.param
+
 
 @pytest.fixture(
     scope="function",

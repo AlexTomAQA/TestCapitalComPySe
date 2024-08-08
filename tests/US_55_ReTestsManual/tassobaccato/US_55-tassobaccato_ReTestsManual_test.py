@@ -52,7 +52,7 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
@@ -62,7 +62,6 @@ class TestManualDetectedBugs:
         License: CYSEC, SCB, ASIC
         Author: Kasila
         """
-
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_2_rnd_from_14, cur_country, cur_role,
@@ -79,11 +78,11 @@ class TestManualDetectedBugs:
         cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country, link)
 
         test_element = AppliedFilters(d, cur_item_link, bid)
-        test_element.test_(d, cur_language_2_rnd_from_14, cur_country,cur_role, cur_item_link)
+        test_element.test_(d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_item_link)
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -120,7 +119,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', ['es', 'ua', 'au'])
+    @pytest.mark.parametrize('cur_country', ['de', 'ua', 'au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
