@@ -526,8 +526,10 @@ class TestManualDetectedBugs:
 
         # Arrange
         page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
 
         test_el = LearnToTradePage(d, link, bid)
         test_el.click_learn_menu_section()
