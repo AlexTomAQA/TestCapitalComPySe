@@ -100,12 +100,45 @@ class TestManualDetected:
         )
         pytest.skip("Autotest under construction")
 
+    @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
+    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_029
+    def test_029_google_play_button_on_cfd_trading_app_block(
+            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Button [Google Play] on the block CFD Trading app
+        Language: All.
+        License: Not FCA
+        Author  : Ivan Kedrov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "029",
+            "Testing button [Google Play] on the block 'CFD trading app'",
+            False, False
+        )
+
+        page_conditions = Conditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuSection(d, link)
+        cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
+            d, cur_language_qty_rnd_from_14, cur_country, link)
+
+        test_element = GooglePlayButtonOnCFDTradingAppBlock(d, cur_item_link, bid)
+        test_element.full_test_with_tpi(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_item_link)
+
     @allure.step("Start test of link [Learn more about us] on the block 'Contents'")
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.test_024v2
-    def test_024v2_learn_more_about_us_link_on_contents_block(
+    def test_031v2_learn_more_about_us_link_on_contents_block(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Link [Learn more about us] on block Contents?
@@ -116,7 +149,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "024v2",
+            "031v2",
             "Testing link [Learn more about us] on the block 'Contents'",
             False, True
         )
@@ -175,39 +208,6 @@ class TestManualDetected:
             Common().pytest_fail(msg)
         del title, title_y, current_y, window_height
 
-    @allure.step("Start test of button [Google Play] on the block 'CFD trading app'")
-    @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
-    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.bug_029
-    def test_029_google_play_button_on_cfd_trading_app_block(
-            self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
-        """
-        Check: Button [Google Play] on the block CFD Trading app
-        Language: All.
-        License: Not FCA
-        Author  : Ivan Kedrov
-        """
-
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "029",
-            "Testing button [Google Play] on the block 'CFD trading app'",
-            False, False
-        )
-
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login,
-            cur_password)
-
-        menu = MenuSection(d, link)
-        cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
-            d, cur_language_qty_rnd_from_14, cur_country, link)
-
-        test_element = GooglePlayButtonOnCFDTradingAppBlock(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_item_link)
-
     @allure.step("Start test of button [Create account] button in the Menu item [Trading Courses]")
     @pytest.mark.parametrize('cur_country', ['de', 'au', 'ua'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
@@ -238,7 +238,6 @@ class TestManualDetected:
         # menu.menu_education_move_focus(d, cur_language_3_rnd_from_12, cur_country)
         # cur_item_link = menu.sub_menu_trading_courses_move_focus_click(
         #     d, cur_language_3_rnd_from_12, cur_country, link)
-
 
 
 class LocalObject(BasePage):
