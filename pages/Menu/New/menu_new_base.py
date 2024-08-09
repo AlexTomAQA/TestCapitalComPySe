@@ -80,12 +80,12 @@ class MenuBase(BasePage):
             .pause(0.5) \
             .click() \
             .perform()
-        print(f"\n\n{datetime.now()}   => '{submenu_name}' sub-menu clicked")
+        print(f"{datetime.now()}   => '{submenu_name}' sub-menu clicked")
 
         del sub_menu
 
         Common.flag_of_bug = False
         Common().move_pointer_to_capital_com_label(d)
-        print(f"\n{datetime.now()}   3. Cur URL = {d.current_url}")
+        print(f"{datetime.now()}   3. Cur URL = {d.current_url}")
 
         return d.current_url
