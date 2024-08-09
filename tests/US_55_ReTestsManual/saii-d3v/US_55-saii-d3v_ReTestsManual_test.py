@@ -677,7 +677,7 @@ class TestManualDetectedBugs:
         )
         # Arrange
         page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language,
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
                                              cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
