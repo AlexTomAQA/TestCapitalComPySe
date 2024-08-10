@@ -35,9 +35,9 @@ class TopBar(BasePage):
             print(f"{datetime.now()}   => LOGO not present on this page after more 30 seconds")
             return False
 
-    @allure.step("Start Logout from account info menu in topbar")
+    @allure.step("Start Logout from account info menu in top bar")
     def trading_platform_top_bar_account_info_menu_logout(self):
-        print(f"{datetime.now()}   Start Logout from account info menu in topbar =>")
+        print(f"{datetime.now()}   Start Logout from account info menu in top bar =>")
         timeout = 15
         print(f"{datetime.now()}   Set timeout = {timeout}")
         wait = WebDriverWait(self.driver, timeout)
