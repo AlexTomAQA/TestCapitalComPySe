@@ -10,7 +10,7 @@ from datetime import datetime
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 LOGIN_BTN_LOC = ("css selector", "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header_login']")
 SIGNUP_BTN_LOC = ("css selector", "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header']")
@@ -62,7 +62,10 @@ class CheckLoginFacebookModal(BasePage):
         try:
             Wait(self.driver, 5).until(EC.element_to_be_clickable(COOKIE_BTN))
         except TimeoutException:
-            print(f'{datetime.now()}   => The message is not present')
+            print(f'{datetime.now()}   => The message is not present (TimeoutException)')
+            return False
+        except NoSuchElementException:
+            print(f'{datetime.now()}   => The message is not present (NoSuchElementException)')
             return False
         print(f'{datetime.now()}   => The message is present, close the message')
         Wait(self.driver, 5).until(EC.element_to_be_clickable(COOKIE_BTN)).click()

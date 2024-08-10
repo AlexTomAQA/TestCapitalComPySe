@@ -24,11 +24,13 @@ from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
 from pages.BugsManual.bugs_272_273 import LearnToTradePage
 from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
+from pages.BugsManual.bug_305 import Bug305
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
+from pages.Menu.New.from_learn_menu_open_demo import MenuNew
 from pages.Trading_platform.trading_platform import TradingPlatform
 from src.src import CapitalComPageSrc
 
@@ -703,3 +705,54 @@ class TestManualDetectedBugs:
         if cur_role == "NoAuth":
             signup_login.close_new_login_form()
         Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!305 | Error message is displayed after clicking the link "أكثر" (More) '
+        'in the tile "العملات المشفرة" (Cryptocurrencies) on the page "تجريبي" (Demo) '
+        'when AR language and SCA license is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_305
+    def test_305(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: TC_55!305 | Error message is displayed after clicking the link "أكثر" (More)
+         in the tile "العملات المشفرة" (Cryptocurrencies) on the page "تجريبي" (Demo)
+         when AR language and SCA license is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "305",
+            'TC_55!305 | Error message is displayed after clicking the link "أكثر" (More) '
+            'in the tile "العملات المشفرة" (Cryptocurrencies) on the page "تجريبي" (Demo) '
+            'when AR language and SCA license is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_AR_AE, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug305(d, link, bid)
+        test_el.open_demo_account_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_more_button()
+
+        # Assert
+        if not test_el.should_be_cryptocurrency_trading_page():
+            Common().pytest_fail('Bug # 55!305 The Cryptocurrency Trading page is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!305 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_AR_AE)
