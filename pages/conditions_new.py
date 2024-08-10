@@ -231,6 +231,38 @@ class NewConditions(BasePage):
         if cur_role == "Auth":
             d.back()
 
+    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
+    def to_do_de_authorisation_new(self, d, link):
+        """DeAuthorisation"""
+        print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+
+        top_bar = TopBar(d, link)
+        if not top_bar.trading_platform_top_bar_account_info_menu_logout():
+            msg = "De authorisation failed"
+            print(f"{datetime.now()}   => {msg}")
+            pytest.fail(f"Bug!   {msg}")
+
+        Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
+
+        print(f"{datetime.now()}   => Logout is OK")
+
+        return True
+
+    # def to_do_de_authorisation_new(self, d, link):
+    #     """DeAuthorisation"""
+        # print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+        # menu = MainMenu(d, link)
+        # if not Header(d, link).header_button_my_account_click():
+        #     msg = "Button 'My account' missing"
+        #     print(f"{datetime.now()}   {msg}")
+        # if not Header(d.link).check_opened_my_account_panel():
+        #     # Header(d.link).
+        #     pass
+
+        # print(f"{datetime.now()}   => 'My account' panel opened")
+        #
+        # assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
+
     @allure.step(f"{datetime.now()}   Set language and country")
     def set_language_country_new(self, d, cur_language, cur_country):
         # устанавливаем Язык и Страну
@@ -264,38 +296,6 @@ class NewConditions(BasePage):
         # page_menu.menu_language_and_country_move_focus(cur_language)
         # page_menu.set_country(cur_country)
         # del page_menu
-
-    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
-    def to_do_de_authorisation_new(self, d, link):
-        """DeAuthorisation"""
-        print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
-
-        top_bar = TopBar(d, link)
-        if not top_bar.trading_platform_top_bar_account_info_menu_logout():
-            msg = "De authorisation failed"
-            print(f"{datetime.now()}   => {msg}")
-            pytest.fail(f"Bug!   {msg}")
-
-        Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
-
-        print(f"{datetime.now()}   => Logout is OK")
-
-        return True
-
-    # def to_do_de_authorisation_new(self, d, link):
-    #     """DeAuthorisation"""
-        # print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
-        # menu = MainMenu(d, link)
-        # if not Header(d, link).header_button_my_account_click():
-        #     msg = "Button 'My account' missing"
-        #     print(f"{datetime.now()}   {msg}")
-        # if not Header(d.link).check_opened_my_account_panel():
-        #     # Header(d.link).
-        #     pass
-
-        # print(f"{datetime.now()}   => 'My account' panel opened")
-        #
-        # assert MyAccount(d, link).my_account_button_logout_click(), "Button 'Logout' missing"
 
     @allure.step("Start Checking that Main Page is opened")
     def arrange_0(self):
