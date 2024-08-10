@@ -662,7 +662,6 @@ class TestManualDetected:
             "on the 'Trading platforms' page",
             False, False
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
@@ -674,13 +673,13 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_265(d, cur_item_link, bid)
-        # test_element.arrange(d, cur_language, cur_item_link)
-        #
-        # # Act
-        # test_element.act(d)
-        #
-        # # Assert
-        # test_element.assert_(d, cur_language)
+        test_element.arrange(d, cur_language, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the [Explore features] button in the 'Web platform' page")
     @pytest.mark.parametrize('cur_language', ["ar"])
