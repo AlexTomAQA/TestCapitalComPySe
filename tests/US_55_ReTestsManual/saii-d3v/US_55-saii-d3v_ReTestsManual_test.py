@@ -30,7 +30,6 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
-from pages.Menu.New.from_learn_menu_open_demo import MenuNew
 from pages.Trading_platform.trading_platform import TradingPlatform
 from src.src import CapitalComPageSrc
 
@@ -95,7 +94,7 @@ class TestManualDetectedBugs:
          Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button
                 on the Search page
          Language: All.
-         License: All, exclude FCA, SCA.
+         License: ASIC, CYSEC, SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -306,7 +305,7 @@ class TestManualDetectedBugs:
          Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
          on any article from search page.
          Language: All.
-         License: All, exclude FCA, SCA.
+         License: ASIC, CYSEC, SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -404,7 +403,7 @@ class TestManualDetectedBugs:
         """
          Check: The Search field in the header is not opened after performed search
          Language: All.
-         License: All, exclude FCA, SCA.
+         License: ASIC, CYSEC, SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -480,7 +479,7 @@ class TestManualDetectedBugs:
                                              cur_country, cur_role, cur_login, cur_password)
 
         test_el = LearnToTradePage(d, link, bid)
-        test_el.click_learn_menu_section()
+        test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
         test_el.click_the_learn_to_trade_link272()
@@ -534,7 +533,7 @@ class TestManualDetectedBugs:
         )
 
         test_el = LearnToTradePage(d, link, bid)
-        test_el.click_learn_menu_section()
+        test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
         test_el.click_the_learn_to_trade_link273()

@@ -16,8 +16,8 @@ SUBMENU_SCA_AR_LEARN = (By.CSS_SELECTOR, 'div:nth-child(3) > div.menuGroup_dropd
 
 class MenuNewLearn(MenuBase):
 
-    @allure.step('Select "Trading" menu, "Learn" submenu')
-    def from_markets_menu_open_markets(self, d, cur_language, cur_country, link):
+    @allure.step('Select "Learn" menu, "Learn" submenu')
+    def from_learn_menu_open_learn(self, d, cur_language, cur_country, link):
 
         menu_name = "Learn"
         menu_locator = ""
