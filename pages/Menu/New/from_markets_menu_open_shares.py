@@ -14,14 +14,14 @@ SUBMENU_SCA_SHARES = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id
 SUBMENU_SCA_AR_SHARES = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id827']")
 
 
-class MenuNewIndices(MenuBase):
+class MenuNewShares(MenuBase):
 
-    @allure.step('Select "Markets" menu, "Indices" submenu')
-    def from_markets_menu_open_indices(self, d, cur_language, cur_country, link):
+    @allure.step('Select "Markets" menu, "Shares" submenu')
+    def from_markets_menu_open_shares(self, d, cur_language, cur_country, link):
 
         menu_name = "Markets"
         menu_locator = ""
-        submenu_name = "Indices"
+        submenu_name = "Shares"
         submenu_locator = ""
 
         if cur_country == 'gb':

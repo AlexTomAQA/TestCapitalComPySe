@@ -17,7 +17,7 @@ STOCK_EXCHANGE_BTN_LOC = ('xpath', '//a[contains(text(), "stock exchange")]')
 TRADING_INSTRUMENTS_LINK_LOC = ('css selector', '.js-ckeContent > p > a:not([data-type="plain_button"])')
 
 
-class Bug305(BasePage):
+class Bug307(BasePage):
 
     @staticmethod
     def open_shares_trading_page(d, cur_language, cur_country, link):
