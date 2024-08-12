@@ -9,7 +9,7 @@ from pages.base_page import BasePage
 from pages.Menu.New.from_learn_menu_open_demo import MenuNew
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException
 
 MORE_BTN_LOC = ('css selector', '[data-type="tiles_w_img_link5_signup"]')
 BREADCRUMB_LOC = ('css selector', '.breadcrumbs_breadcrumbs__UgZeo span')
