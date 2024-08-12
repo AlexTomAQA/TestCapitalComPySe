@@ -23,13 +23,15 @@ from pages.BugsManual.bug_151 import BUG_151
 from pages.BugsManual.bug_257 import BUG_257
 from pages.BugsManual.bug_265 import BUG_265
 from pages.BugsManual.bug_300 import BUG_300
+from pages.BugsManual.bug_312 import BUG_312
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
-                            from_trading_menu_open_platforms)
+                            from_trading_menu_open_platforms,
+                            from_markets_menu_open_forex)
 from pages.conditions_new import NewConditions
 
 
@@ -721,3 +723,47 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_language)
+
+    @allure.step("Start test of the [MT4 platforms] link on the 'Forex' page")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_312
+    def test_312_link_mt4_platforms_does_not_open_mt4_page_on_parameters_language(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The "TradingView" page is opened instead "MT4" page,
+                when clicked the link [MT4 platforms] in the block "Forex trading"
+                on the page "Forex" for EN language is selected
+        Language: EN
+        Country: SCA
+        Role: NoReg, Auth, NoAuth
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "312",
+            "Testing link [MT4 platforms] in 'Forex trading' block "
+            "on the 'Forex' page",
+            False, False
+        )
+        # Arrange
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country,
+            cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_forex.MenuNewForex(d, cur_item_link)
+        cur_item_link = page_menu.from_markets_menu_open_forex(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_312(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
