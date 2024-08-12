@@ -7,6 +7,7 @@
 from datetime import datetime
 
 from pages.base_page import BasePage
+from pages.Menu.New.from_learn_menu_open_learn import MenuNewLearn
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
@@ -19,12 +20,9 @@ BLOCK_273_LOC = ("css selector", "div[data-id='experiencedtraders']  a[data-type
 
 
 class LearnToTradePage(BasePage):
-    def click_learn_menu_section(self):
-        print(f'\n{datetime.now()}   Click the Learn menu section =>')
-        el = Wait(self.driver, 2).until(EC.element_to_be_clickable(LEARN_MENU_SECTION_LOC))
-        el.click()
-        print(f'{datetime.now()}   Done, the corresponding page is opened')
-        print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
+    @staticmethod
+    def open_learn_to_trade_page(d, cur_language, cur_country, link):
+        MenuNewLearn(d).from_learn_menu_open_learn(d, cur_language, cur_country, link)
 
     def click_the_learn_to_trade_link272(self):
         print(f'\n{datetime.now()}   Click the Learn to trade link =>')
