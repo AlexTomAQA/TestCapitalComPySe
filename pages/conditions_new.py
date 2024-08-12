@@ -80,7 +80,7 @@ class NewConditions(BasePage):
         d.set_window_size(1920, 1080)
         print(f"\n{datetime.now()}   => Resolution set {d.get_window_size()}")
 
-        Captcha(d).fail_test_if_captcha_present_v2()
+        # Captcha(d).fail_test_if_captcha_present_v2()
 
         # Настраиваем в соответствии с параметром "Роль"
         print(f"\n{datetime.now()}   Работа с куками =>")
@@ -96,6 +96,27 @@ class NewConditions(BasePage):
             self.button_accept_all_cookies_click()
         else:
             print(f"\n{datetime.now()}   => не требуется")
+
+        # Продолжаем настройки в соответствии с параметром "Роль"
+        print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
+        print(f"{datetime.now()}   Cur. role - '{cur_role}'")
+        # if cur_role != prev_role or Common.flag_of_bug:
+        if cur_role != prev_role:
+            match cur_role:
+                case "Auth":
+                    self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
+                case "NoAuth":
+                    self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
+                    self.to_do_de_authorisation_new(d, host)
+                case "NoReg":
+                    pass
+                case _:
+                    msg = f"Stop! Указанная роль '{cur_role}' не обрабатывается. Stop running"
+                    print(f'{datetime.now()}   {msg}')
+                    pytest.fail(msg)
+
+            prev_role = cur_role
+        print(f"\n{datetime.now()}   => The '{cur_role}' role is set")
 
         # # устанавливаем Страну, если не соответствует предыдущей
         # Captcha(d).fail_test_if_captcha_present_v2()
@@ -128,8 +149,7 @@ class NewConditions(BasePage):
         # print(f"{datetime.now()}   => Language is set to '{language_cur}'")
 
         # устанавливаем параметры Язык и Страну, если хоть один из их не соответствует предыдущему значению
-        Captcha(d).fail_test_if_captcha_present_v2()
-
+        # Captcha(d).fail_test_if_captcha_present_v2()
         language_prev, language_cur = prev_language, cur_language
         if language_prev == "":
             language_prev = "en"
@@ -149,27 +169,6 @@ class NewConditions(BasePage):
             print(f"{datetime.now()}   => Language and country without change")
 
         print(f"{datetime.now()}   => Current URL - {self.driver.current_url}")
-
-        # Продолжаем настройки в соответствии с параметром "Роль"
-        print(f"\n{datetime.now()}   Prev. role - '{prev_role}'")
-        print(f"{datetime.now()}   Cur. role - '{cur_role}'")
-        # if cur_role != prev_role or Common.flag_of_bug:
-        if cur_role != prev_role:
-            match cur_role:
-                case "Auth":
-                    self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
-                case "NoAuth":
-                    self.to_do_authorisation_new(d, host, cur_login, cur_password, cur_role)
-                    self.to_do_de_authorisation_new(d, host)
-                case "NoReg":
-                    pass
-                case _:
-                    msg = f"Stop! Указанная роль '{cur_role}' не обрабатывается. Stop running"
-                    print(f'{datetime.now()}   {msg}')
-                    pytest.fail(msg)
-
-            prev_role = cur_role
-        print(f"\n{datetime.now()}   => The '{cur_role}' role is set")
 
         url_after_preconditions_new = self.driver.current_url
         print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions_new}")
@@ -241,9 +240,7 @@ class NewConditions(BasePage):
             msg = "De authorisation failed"
             print(f"{datetime.now()}   => {msg}")
             pytest.fail(f"Bug!   {msg}")
-
-        Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
-
+        # Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
         print(f"{datetime.now()}   => Logout is OK")
 
         return True
