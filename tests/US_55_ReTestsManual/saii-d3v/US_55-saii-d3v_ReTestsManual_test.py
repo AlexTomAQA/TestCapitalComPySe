@@ -716,7 +716,7 @@ class TestManualDetectedBugs:
     def test_305(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
         """
-         Check: TC_55!305 | Error message is displayed after clicking the link "أكثر" (More)
+         Check: Error message is displayed after clicking the link "أكثر" (More)
          in the tile "العملات المشفرة" (Cryptocurrencies) on the page "تجريبي" (Demo)
          when AR language and SCA license is selected
          Language: AR.
@@ -727,7 +727,7 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "305",
-            'TC_55!305 | Error message is displayed after clicking the link "أكثر" (More) '
+            'Error message is displayed after clicking the link "أكثر" (More) '
             'in the tile "العملات المشفرة" (Cryptocurrencies) on the page "تجريبي" (Demo) '
             'when AR language and SCA license is selected',
             False,
@@ -755,3 +755,54 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_AR_AE)
+
+    @allure.step(
+        'Start retest manual TC_55!307 Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed '
+        'after clicking any of 12 links in the text on the page “Stock Market Trading Hours” '
+        'when EN language is selected')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_307
+    def test_307(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed
+         after clicking any of 12 links in the text on the page “Stock Market Trading Hours”
+         when EN language is selected
+         Language: EN.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "307",
+            'Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed '
+            'after clicking any of 12 links in the text on the page “Stock Market Trading Hours” '
+            'when EN language is selected',
+            False,
+            False
+        )
+        pytest.skip('AT development is in progress')
+        # # Arrange
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
+        #
+        # test_el = (d, link, bid)
+        # test_el.(d, cur_language, cur_country, link)
+        #
+        # # Act
+        # test_el.()
+        #
+        # # Assert
+        # if not test_el.():
+        #     Common().pytest_fail('Bug # 55!307')
+        # Common().save_current_screenshot(d, "AT_55!307 Pass")
+        #
+        # # Postconditions
+        # print(f'\n{datetime.now()}   Applying postconditions...')
+        # Common().browser_back_to_link(d, CapitalComPageSrc.URL)
