@@ -5,6 +5,7 @@
 """
 import pytest
 
+import time
 from datetime import datetime
 
 from pages.base_page import BasePage
@@ -43,6 +44,9 @@ class CheckLoginFacebookModal(BasePage):
         print(f'{datetime.now()}   => Done, the button is clicked')
 
     def should_be_fb_modal(self):
+
+        time.sleep(1)
+
         print(f'\n{datetime.now()}   Check if the "Log in to your Facebook account" modal window is opened =>')
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS NUMBER: {len(tabs)}')
@@ -58,6 +62,9 @@ class CheckLoginFacebookModal(BasePage):
         return False
 
     def deal_with_cookies(self):
+
+        time.sleep(1)
+
         print(f'\n{datetime.now()}   Check if the Cookies message is present =>')
         try:
             Wait(self.driver, 5).until(EC.element_to_be_clickable(COOKIE_BTN))
