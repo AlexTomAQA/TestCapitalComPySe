@@ -11,7 +11,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-
 class MyAccountButton(BasePage):
     @allure.step(f"{datetime.now()}   Start full test of 'My account' button in the header")
     def full_test(self, d, cur_language, cur_country, cur_role, link):
