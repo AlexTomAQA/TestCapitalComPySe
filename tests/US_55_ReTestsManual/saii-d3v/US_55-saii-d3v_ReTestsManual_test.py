@@ -25,6 +25,7 @@ from pages.BugsManual.bugs_272_273 import LearnToTradePage
 from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
+from pages.BugsManual.bug_307 import Bug307
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -762,7 +763,7 @@ class TestManualDetectedBugs:
         'when EN language is selected')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])  # 'Auth', 'NoAuth',
     @pytest.mark.bug_307
     def test_307(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
@@ -785,24 +786,25 @@ class TestManualDetectedBugs:
             False
         )
         pytest.skip('AT development is in progress')
-        # # Arrange
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
-        #
-        # test_el = (d, link, bid)
-        # test_el.(d, cur_language, cur_country, link)
-        #
-        # # Act
-        # test_el.()
-        #
-        # # Assert
-        # if not test_el.():
-        #     Common().pytest_fail('Bug # 55!307')
-        # Common().save_current_screenshot(d, "AT_55!307 Pass")
-        #
-        # # Postconditions
-        # print(f'\n{datetime.now()}   Applying postconditions...')
-        # Common().browser_back_to_link(d, CapitalComPageSrc.URL)
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug307(d, link, bid)
+        test_el.open_shares_trading_page(d, cur_language, cur_country, link)
+        test_el.open_stock_market_trading_hours_page()
+
+        # Act
+        test_el.click_any_trading_instrument_link()
+
+        # Assert
+        if not test_el.should_be_corresponding_page():
+            Common().pytest_fail('Bug # 55!307 The corresponding page is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!307 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
