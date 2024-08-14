@@ -24,6 +24,7 @@ from pages.BugsManual.bug_257 import BUG_257
 from pages.BugsManual.bug_265 import BUG_265
 from pages.BugsManual.bug_300 import BUG_300
 from pages.BugsManual.bug_312 import BUG_312
+from pages.BugsManual.bug_324 import BUG_324
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -760,6 +761,47 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_312(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of the menu item [Demo] in the menu section [Trading]")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_324
+    def test_324_menu_item_demo_is_not_displayed_in_the_header(
+            self, worker_id, d, cur_language, cur_country, cur_role,
+            cur_login, cur_password):
+        """
+        Check:  The text of the menu item [Demo] of the menu title [Trading tools]
+                in the menu section [Trading] is not displayed in the header when AR language is selected
+        Language: AR
+        Country: SCA
+        Role: NoReg, Auth, NoAuth
+        Author: Artem Dashkov
+        """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "324",
+            "The text of the menu item [Demo] of the menu title [Trading tools] "
+            "in the menu section [Trading] is not displayed in the header when AR language is selected",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country,
+            cur_role, cur_login, cur_password)
+
+        test_element = BUG_324(d, cur_item_link, bid)
+        test_element.from_trading_menu_focus_demo(d, cur_item_link)
         test_element.arrange(d, cur_item_link)
 
         # Act
