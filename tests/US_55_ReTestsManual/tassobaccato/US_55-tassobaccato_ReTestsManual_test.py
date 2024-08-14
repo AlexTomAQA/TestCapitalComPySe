@@ -219,5 +219,5 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_trading_menu_open_mobile_apps(d, cur_language, cur_country, link)
 
         test_element = InvestmateAppPage(d, cur_item_link, bid)
-        test_element.investment_app_page(d, cur_item_link)
+        test_element.investmate_app_page(d, cur_item_link)
         test_element.assert_(d)
