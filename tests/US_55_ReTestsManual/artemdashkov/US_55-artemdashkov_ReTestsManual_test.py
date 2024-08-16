@@ -793,7 +793,6 @@ class TestManualDetected:
             "in the menu section [Trading] is not displayed in the header when AR language is selected",
             False, False
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
@@ -801,7 +800,6 @@ class TestManualDetected:
             cur_role, cur_login, cur_password)
 
         test_element = BUG_324(d, cur_item_link, bid)
-        test_element.from_trading_menu_focus_demo(d, cur_item_link)
         test_element.arrange(d, cur_item_link)
 
         # Act
