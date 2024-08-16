@@ -679,7 +679,7 @@ class TestManualDetectedBugs:
         )
         # Arrange
         page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language,
                                              cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
@@ -738,7 +738,7 @@ class TestManualDetectedBugs:
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "",
+            d, CapitalComPageSrc.URL_NEW, "",
             cur_language, cur_country, cur_role, cur_login, cur_password
         )
 
@@ -755,7 +755,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_AR_AE)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!307 Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed '
@@ -763,7 +763,7 @@ class TestManualDetectedBugs:
         'when EN language is selected')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])  # 'Auth', 'NoAuth',
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_307
     def test_307(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
@@ -785,7 +785,6 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        pytest.skip('AT development is in progress')
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(

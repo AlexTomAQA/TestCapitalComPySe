@@ -22,7 +22,7 @@ TITLE_LOC = ('css selector', 'h1.heading_h1__1NQVK')
 class Bug307(BasePage):
 
     def __init__(self, browser, link, bid):
-        self.test_link = None
+        self.test_text = None
 
         super().__init__(browser, link, bid)
 
@@ -42,21 +42,34 @@ class Bug307(BasePage):
 
     def click_any_trading_instrument_link(self):
         print(f'\n{datetime.now()}   Click random trading instrument link =>')
-        self.test_link = random.sample(self.driver.find_elements(*TRADING_INSTRUMENTS_LINK_LOC), 1)[0]
-        print(self.test_link.text)
+        link = random.sample(self.driver.find_elements(*TRADING_INSTRUMENTS_LINK_LOC), 1)[0]
+        self.test_text = link.text
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.test_link
+            link
         )
-        self.test_link.click()
-        print(f'{datetime.now()}   => Done, the link "{self.test_link.text}" is clicked')
+        link.click()
+        print(f'{datetime.now()}   => Done, the link is clicked')
         print(f'{datetime.now()}   Current URL: "{self.driver.current_url}"')
 
     def should_be_corresponding_page(self):
         print(f'\n{datetime.now()}   Check if the corresponding page of the link is opened =>')
-        if self.test_link.text[:-1] in self.driver.find_element(*BREADCRUMB_LOC):
-            if self.test_link.text[:-1] in self.driver.find_element(*TITLE_LOC):
+
+        try:
+            self.driver.find_element(*BREADCRUMB_LOC)
+        except NoSuchElementException:
+            print(f'{datetime.now()}   => The page is not opened (Breadcrumb Element not found)')
+            return False
+
+        try:
+            self.driver.find_element(*TITLE_LOC)
+        except NoSuchElementException:
+            print(f'{datetime.now()}   => The page is not opened (Title Element not found)')
+            return False
+
+        if self.test_text[:-1] in self.driver.find_element(*BREADCRUMB_LOC):
+            if self.test_text[:-1] in self.driver.find_element(*TITLE_LOC):
                 print(f'{datetime.now()}   => The page is opened')
                 return True
-            print(f'{datetime.now()}   => The page is not opened')
+            print(f'{datetime.now()}   => The wrong page is opened')
         return False
