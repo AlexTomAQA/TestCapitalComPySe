@@ -26,6 +26,7 @@ from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
+from pages.BugsManual.bug_335 import Bug335
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -803,6 +804,61 @@ class TestManualDetectedBugs:
         if not test_el.should_be_corresponding_page():
             Common().pytest_fail('Bug # 55!307 The corresponding page is NOT opened')
         Common().save_current_screenshot(d, "AT_55!307 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!335 | Error message is displayed '
+        'after clicking the link “تعلّم المزيد حول كيفيّة التداول على الأسهم“ (Learn more about shares trading) '
+        'in the tile “التداول على الأسهم” (Shares trading) '
+        'on the page “ما هو مفهوم التداول على النفط” (What is oil trading) when AR language is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_335
+    def test_335(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Error message is displayed
+         after clicking the link “تعلّم المزيد حول كيفيّة التداول على الأسهم“ (Learn more about shares trading)
+         in the tile “التداول على الأسهم” (Shares trading)
+         on the page “ما هو مفهوم التداول على النفط” (What is oil trading) when AR language is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "335",
+            'Error message is displayed '
+            'after clicking the link “تعلّم المزيد حول كيفيّة التداول على الأسهم“ (Learn more about shares trading) '
+            'in the tile “التداول على الأسهم” (Shares trading) '
+            'on the page “ما هو مفهوم التداول على النفط” (What is oil trading) when AR language is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug335(d, link, bid)
+        test_el.open_market_guides_page(d, cur_language, cur_country, link)
+        test_el.click_oil_trading_guide_button()
+
+        # Act
+        test_el.click_learn_more_about_shares_trading_button()
+
+        # Assert
+        if not test_el.should_be_what_is_shares_trading_page():
+            Common().pytest_fail('Bug # 55!355 The "What is shares trading" page is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!355 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

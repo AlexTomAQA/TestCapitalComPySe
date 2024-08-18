@@ -17,7 +17,7 @@ BREADCRUMB_LOC = ('css selector', '.breadcrumbs_breadcrumbs__UgZeo span')
 TITLE_LOC = ('css selector', '.heading_h1__1NQVK')
 
 
-class Bug355(BasePage):
+class Bug335(BasePage):
 
     @staticmethod
     def open_market_guides_page(d, cur_language, cur_country, link):
