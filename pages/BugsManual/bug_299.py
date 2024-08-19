@@ -3,15 +3,17 @@
 @Time    : 2024/07/30 17:30 GMT+5
 @Author  : Sergey Aiidzhanov
 """
-import pytest
 
 import time
 from datetime import datetime
 
-from pages.base_page import BasePage
+import pytest
+import allure
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+from pages.base_page import BasePage
 
 LOGIN_BTN_LOC = ("css selector", "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header_login']")
 SIGNUP_BTN_LOC = ("css selector", "[class='accountBtns_btnsPlace___6pn2'] [data-type='btn_header']")
@@ -22,18 +24,22 @@ CAPITAL_MSG_EL = ("css selector", "#content span")
 
 
 class CheckLoginFacebookModal(BasePage):
+
+    @allure.step("Click Login button")
     def click_login_button(self):
         print(f'\n{datetime.now()}   Click the [Log In] button in the header =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(LOGIN_BTN_LOC))
         el.click()
         print(f'{datetime.now()}   => Done, the Login form is opened')
 
+    @allure.step("Click SignUp button")
     def click_signup_button(self):
         print(f'\n{datetime.now()}   Click the [Sign Up] button in the header =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(SIGNUP_BTN_LOC))
         el.click()
         print(f'{datetime.now()}   => Done, the Sign up form is opened')
 
+    @allure.step("Click the Facebook button")
     def click_fb_btn(self):
         print(f'\n{datetime.now()}   Click the Facebook button =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(FB_BTN_LOC))

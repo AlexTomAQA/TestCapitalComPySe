@@ -661,7 +661,7 @@ class TestManualDetectedBugs:
     def test_299(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The modal window "Log in to your Facebook account" is not opened
-                after clicking the button [Facebook] in the Sign up / Log in form
+                after clicking the button [Facebook] in the Signup / Log in form
                 on any page when EN/AR language and SCA license is selected
          Language: AR, EN.
          License: SCA.
