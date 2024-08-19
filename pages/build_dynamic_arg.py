@@ -128,6 +128,7 @@ def build_dynamic_arg_v4(d, worker_id, cur_language, cur_country, cur_role,
     return bug_id
 
 
+@allure.step("Build dynamic argument for TCs of US_55")
 def build_dynamic_arg_for_us_55(
         d, worker_id, cur_language, cur_country, cur_role,
         us, desc_us, num_tc, desc_tc, manual=False, new_layout=False):
