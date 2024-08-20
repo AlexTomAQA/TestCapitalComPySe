@@ -26,6 +26,7 @@ from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
+from pages.BugsManual.bug_330 import Bug330
 from pages.BugsManual.bug_335 import Bug335
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -810,6 +811,60 @@ class TestManualDetectedBugs:
         Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
+        'Start retest manual TC_55!330 | “Support” chat window is not opened after click on the “Support” button '
+        'and this button disappears after the second clicking on it on any page '
+        'after changing the language of the site (e.g. from EN to AR) (SCA license).')
+    @pytest.mark.parametrize('cur_language', ['ar', ''])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_330
+    def test_330(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: “Support” chat window is not opened after click on the “Support” button
+         and this button disappears after the second clicking on it on any page
+         after changing the language of the site (e.g. from EN to AR) (SCA license).
+         Language: AR, EN.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "330",
+            '“Support” chat window is not opened after click on the “Support” button '
+            'and this button disappears after the second clicking on it on any page '
+            'after changing the language of the site (e.g. from EN to AR) (SCA license).',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug330(d, link, bid)
+        test_el.open_support_window()
+        test_el.close_support_window()
+        test_el.change_language(cur_language)
+        test_el.should_be_support_window()
+
+        # Act
+        test_el.open_support_window()
+
+        # Assert
+        if not test_el.should_be_support_window():
+            Common().pytest_fail('Bug # 55!330 The Support Chat window is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!330 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
         'Start retest manual TC_55!335 | Error message is displayed '
         'after clicking the link “تعلّم المزيد حول كيفيّة التداول على الأسهم“ (Learn more about shares trading) '
         'in the tile “التداول على الأسهم” (Shares trading) '
@@ -857,8 +912,8 @@ class TestManualDetectedBugs:
 
         # Assert
         if not test_el.should_be_what_is_shares_trading_page():
-            Common().pytest_fail('Bug # 55!355 The "What is shares trading" page is NOT opened')
-        Common().save_current_screenshot(d, "AT_55!355 Pass")
+            Common().pytest_fail('Bug # 55!335 The "What is shares trading" page is NOT opened')
+        Common().save_current_screenshot(d, "AT_55!335 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
