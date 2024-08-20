@@ -12,7 +12,7 @@ from pages.BugsManual.bug_048 import AppliedFilters
 from pages.BugsManual.bug_077 import Sidebar
 from pages.BugsManual.bug_270 import LearnMoreAbout
 from pages.BugsManual.bug_308 import InvestmateAppPage
-from pages.BugsManual.bug_322 import TradingInstrumentSell
+from pages.BugsManual.bug_322 import TradingInstrumentSell, AssertTPI
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New.from_trading_menu_open_mobile_apps import MenuNew
@@ -230,8 +230,9 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', ['', 'ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('title_instrument')
     @pytest.mark.bug_322a
-    def test_322a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def test_322a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, title_instrument):
         """
         Check: Clicking [numeric values] in the Sell/Buy column in Menu tittle Markets does not open the
                 Sign-Up /Login form or page of the corresponding trading instrument on the trading platform using
@@ -255,17 +256,33 @@ class TestManualDetectedBugs:
                 link = page_conditions.preconditions(
                     d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login,
                     cur_password)
+                menu = MenuNewMarkets(d, link)
+                cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
+                test_element = TradingInstrumentSell(d, cur_item_link, bid)
+                test_element.trading_instruments(d, cur_item_link)
+                test_element.click_button_sell(d)
+                test_element = AssertTPI(d, cur_item_link)
+                match cur_role:
+                    case 'NoReg':
+                        test_element.assert_signup(d)
+                    case 'NoAuth':
+                        test_element.assert_login(d)
+                    case 'Auth':
+                        test_element.assert_tpi(d, title_instrument)
             case 'ar':
                 link = page_conditions.preconditions(
                     d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login,
                     cur_password)
-
-        menu = MenuNewMarkets(d, link)
-        cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
-
-        test_element = TradingInstrumentSell(d, cur_item_link, bid)
-        test_element.trading_instruments(d, cur_item_link)
-        test_element.click_button_sell(d)
-        match cur_role:
-            case NoReg:
-                test_element.assert_signup(d)
+                menu = MenuNewMarkets(d, link)
+                cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
+                test_element = TradingInstrumentSell(d, cur_item_link, bid)
+                test_element.trading_instruments(d, cur_item_link)
+                test_element.click_button_sell(d)
+                test_element = AssertTPI(d, cur_item_link)
+                match cur_role:
+                    case 'NoReg':
+                        test_element.assert_signup(d)
+                    case 'NoAuth':
+                        test_element.assert_login(d)
+                    case 'Auth':
+                        test_element.assert_tpi(d, title_instrument)
