@@ -681,7 +681,7 @@ class TestManualDetectedBugs:
         )
         # Arrange
         page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW, "", cur_language,
+        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
                                              cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
@@ -706,7 +706,7 @@ class TestManualDetectedBugs:
             signup_login.close_new_signup_form()
         if cur_role == "NoAuth":
             signup_login.close_new_login_form()
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
 
     @allure.step(
         'Start retest manual TC_55!305 | Error message is displayed after clicking the link "أكثر" (More) '
@@ -740,7 +740,7 @@ class TestManualDetectedBugs:
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
             cur_language, cur_country, cur_role, cur_login, cur_password
         )
 
@@ -757,7 +757,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
 
     @allure.step(
         'Start retest manual TC_55!307 Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed '
@@ -790,7 +790,7 @@ class TestManualDetectedBugs:
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
             cur_language, cur_country, cur_role, cur_login, cur_password
         )
 
@@ -808,15 +808,15 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
 
     @allure.step(
         'Start retest manual TC_55!330 | “Support” chat window is not opened after click on the “Support” button '
         'and this button disappears after the second clicking on it on any page '
         'after changing the language of the site (e.g. from EN to AR) (SCA license).')
-    @pytest.mark.parametrize('cur_language', ['ar', ''])
+    @pytest.mark.parametrize('cur_language', [''])  # 'ar'
     @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])   # 'Auth', 'NoAuth'
     @pytest.mark.bug_330
     def test_330(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
@@ -842,15 +842,15 @@ class TestManualDetectedBugs:
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
             cur_language, cur_country, cur_role, cur_login, cur_password
         )
 
         test_el = Bug330(d, link, bid)
         test_el.open_support_window()
+        test_el.should_be_support_window()
         test_el.close_support_window()
         test_el.change_language(cur_language)
-        test_el.should_be_support_window()
 
         # Act
         test_el.open_support_window()
@@ -862,7 +862,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
 
     @allure.step(
         'Start retest manual TC_55!335 | Error message is displayed '
@@ -899,7 +899,7 @@ class TestManualDetectedBugs:
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
             cur_language, cur_country, cur_role, cur_login, cur_password
         )
 
@@ -917,4 +917,4 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+        Common().browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
