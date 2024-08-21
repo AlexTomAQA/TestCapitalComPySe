@@ -230,7 +230,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', ['', 'ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('title_instrument')
+    @pytest.mark.parametrize('title_instrument', [''])
     @pytest.mark.bug_322a
     def test_322a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, title_instrument):
         """
@@ -261,7 +261,7 @@ class TestManualDetectedBugs:
                 test_element = TradingInstrumentSell(d, cur_item_link, bid)
                 test_element.trading_instruments(d, cur_item_link)
                 test_element.click_button_sell(d)
-                test_element = AssertTPI(d, cur_item_link)
+                test_element = AssertTPI(d, cur_item_link, title_instrument)
                 match cur_role:
                     case 'NoReg':
                         test_element.assert_signup(d)
@@ -278,7 +278,7 @@ class TestManualDetectedBugs:
                 test_element = TradingInstrumentSell(d, cur_item_link, bid)
                 test_element.trading_instruments(d, cur_item_link)
                 test_element.click_button_sell(d)
-                test_element = AssertTPI(d, cur_item_link)
+                test_element = AssertTPI(d, cur_item_link, title_instrument)
                 match cur_role:
                     case 'NoReg':
                         test_element.assert_signup(d)

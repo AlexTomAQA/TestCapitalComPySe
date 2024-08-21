@@ -70,6 +70,7 @@ class TradingInstrumentSell(BasePage):
         button_sell_list[value].click()
 
         print(f"{datetime.now()}   =>   Button 'Sell' ({value}) of trading instrument '{self.title_instrument}' is clicked!")
+        return self.title_instrument
 
 
 class AssertTPI(BasePage):
@@ -109,17 +110,36 @@ class AssertTPI(BasePage):
         print(f"\n{datetime.now()}   3. Assert")
         print(title_instrument)
 
+        current_page = self.driver.current_url
         actual_page_title = self.driver.title
         expected_page_title = "Trading Platform | Capital.com"
-        segment_ = self.driver.find_element(By.CSS_SELECTOR, 'segment > div >div.text')
-        actual_title_instrument = segment_.text
 
-        if actual_page_title == expected_page_title and actual_title_instrument == title_instrument:
+        if actual_page_title != expected_page_title:
+            print(f"{datetime.now()}   Trading Platform is not opened")
+            Common.pytest_fail(f"Bug # 55!322  "
+                               f"\n"
+                               f"Expected result: Trading platform with corresponding trading instrument is opened"
+                               f"\n"
+                               f"Actual result: Trading platform with corresponding trading instrument is not opened "
+                               f"Current page is: {current_page}")
+        try:
+            segment_ = self.driver.find_element(By.CSS_SELECTOR, 'segment > div > div.text')
+            actual_title_instrument = segment_.text
+
+            if actual_title_instrument != title_instrument:
+                Common.pytest_fail(f"Bug # 55!322  "
+                                   f"\n"
+                                   f"Expected result: Trading platform with corresponding trading instrument is opened"
+                                   f"\n"
+                                   f"Actual result: Trading platform with corresponding trading instrument is not opened "
+                                   f"Current page is: {current_page}")
             print(f"{datetime.now()}   Trading platform with corresponding trading instrument is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-        else:
-            Common.pytest_fail("Bug # 55!322  "
-                               "f\n"
-                               "Expected result: Trading platform with corresponding trading instrument is opened"
-                               "f\n"
-                               "Actual result: Trading platform with corresponding trading instrument is not opened")
+        except NoSuchElementException:
+            print(f"{datetime.now()}   The trading platform is not in chart mode")
+            Common.pytest_fail(f"Bug # 55!322  "
+                               f"\n"
+                               f"Expected result: Trading platform with corresponding trading instrument is opened"
+                               f"\n"
+                               f"Actual result: Trading platform with corresponding trading instrument is not opened "
+                               f"Current page is: {current_page}")
