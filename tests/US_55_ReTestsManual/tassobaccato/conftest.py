@@ -75,3 +75,11 @@ def sidebar_item(request):
 def cur_language_2_rnd_from_7(request):
     print(f"\n\n\nCurrent language - {request.param}")
     return request.param
+
+@pytest.fixture(
+    scope='function',
+    params=['']
+)
+
+def title_instrument(request):
+    print(f"\n\n\ntitle instrument - {request.param}")
