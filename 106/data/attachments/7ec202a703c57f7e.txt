@@ -1,0 +1,45 @@
+2024-08-22 22:59:56 ERROR Elements not present after 0.5 seconds on page: https://capital.com/market-analysis
+2024-08-22 22:59:56 ERROR Can't click element by locator ('xpath', "//a [@class='main-article-item__thumb'][9]")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 386, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator ('xpath', "//a [@class='main-article-item__thumb'][9]")
+Stacktrace:
+#0 0x55c9ecc126ca <unknown>
+#1 0x55c9ec8e3600 <unknown>
+#2 0x55c9ec932bcb <unknown>
+#3 0x55c9ec932eb1 <unknown>
+#4 0x55c9ec976b24 <unknown>
+#5 0x55c9ec9558cd <unknown>
+#6 0x55c9ec97404a <unknown>
+#7 0x55c9ec955643 <unknown>
+#8 0x55c9ec925d31 <unknown>
+#9 0x55c9ec92679e <unknown>
+#10 0x55c9ecbda25b <unknown>
+#11 0x55c9ecbde1f2 <unknown>
+#12 0x55c9ecbc7615 <unknown>
+#13 0x55c9ecbded82 <unknown>
+#14 0x55c9ecbac25f <unknown>
+#15 0x55c9ecc01e68 <unknown>
+#16 0x55c9ecc02040 <unknown>
+#17 0x55c9ecc1149c <unknown>
+#18 0x7fb7b0e94ac3 <unknown>
+
+2024-08-22 23:00:00 ERROR Elements not present after 0.5 seconds on page: https://capital.com/nvidia-q1-earnings-preview-analysts-forecast-another-blockbuster-set-of-results
+2024-08-22 23:00:00 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 305, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message:
