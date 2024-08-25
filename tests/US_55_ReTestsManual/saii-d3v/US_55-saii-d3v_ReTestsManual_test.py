@@ -27,6 +27,7 @@ from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
 from pages.BugsManual.bug_330 import Bug330
+from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -863,6 +864,65 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+
+    @allure.step(
+        '')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_332
+    def test_332(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check:
+         Language: EN.
+         License: ASIC, CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "332",
+            '',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug332(d, link, bid)
+
+        page_header_menu.menu_education_move_focus(d, cur_language, cur_country)
+        page_header_menu.sub_menu_trading_strategies_guide_move_focus_click(d, cur_language)
+        test_el.click_rsi_trading_strategy_link()
+
+        rnd_num = random.choice([1, 2])  # get num for random selection of test link in Act
+
+        # Act
+        if rnd_num == 1:
+            test_el.click_stochastic_oscillator_link()
+        else:
+            test_el.click_support_and_resistance_link()
+
+        # Assert
+        if rnd_num == 1:
+            if not test_el.should_be_stochastic_oscillator_strategy_page():
+                Common.pytest_fail('Bug # 55!332 The "Stochastic oscillator strategy" page is NOT opened')
+            Common.save_current_screenshot(d, "AT_55!332 Pass")
+        else:
+            if not test_el.should_be_support_and_resistance_page():
+                Common.pytest_fail('Bug # 55!332 The "What is support and resistance?" page is NOT opened')
+            Common.save_current_screenshot(d, "AT_55!332 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step(
         'Start retest manual TC_55!335 | Error message is displayed '
