@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 
-class TradingInstrumentSell(BasePage):
+class TradingInstrumentsMarkets(BasePage):
 
     def __init__(self, driver, link="", bid=""):
         self.title_instrument = None
@@ -54,23 +54,49 @@ class TradingInstrumentSell(BasePage):
         print(f"\n{datetime.now()}   2. Act for button 'Sell'")
 
         print(f"{datetime.now()}   Start clicking the random 'Sell' button")
-        trading_instruments_list = self.driver.find_elements(By.CSS_SELECTOR, 'div[data-type="markets_list_deep"]')
+        trading_instruments_list = self.driver.find_elements(By.CSS_SELECTOR, 'span.row_marketDescription__KNIql')
 
         value = random.randint(0, len(trading_instruments_list) - 1)
+        self.title_instrument = trading_instruments_list[value].text
         print(f"{datetime.now()}   => End find a random trading instrument in the trading_instruments_table")
 
         print(f"{datetime.now()}   Scroll and click random button 'Sell'")
-        button_sell_list = self.driver.find_elements(By.CSS_SELECTOR, 'span.row_marketDescription__KNIql')
+        button_sell_list = self.driver.find_elements(By.CSS_SELECTOR, 'div[data-type="markets_list_deep"] > div:nth-child(2)')
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             button_sell_list[value]
         )
 
-        self.title_instrument = button_sell_list[value].text
         button_sell_list[value].click()
 
         print(f"{datetime.now()}   =>   Button 'Sell' ({value}) of trading instrument '{self.title_instrument}' is clicked!")
         return self.title_instrument
+
+
+    def click_button_buy(self, d):
+        print(f"\n{datetime.now()}   2. Act for button 'Buy'")
+
+        print(f"{datetime.now()}   Start clicking the random 'Buy' button")
+        trading_instruments_list = self.driver.find_elements(By.CSS_SELECTOR, 'span.row_marketDescription__KNIql')
+
+        value = random.randint(0, len(trading_instruments_list) - 1)
+        self.title_instrument = trading_instruments_list[value].text
+
+        print(f"{datetime.now()}   => End find a random trading instrument in the trading_instruments_table")
+
+        print(f"{datetime.now()}   Scroll and click random button 'Buy'")
+        button_buy_list = self.driver.find_elements(By.CSS_SELECTOR, 'div[data-type="markets_list_deep"] > div:nth-child(3)')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            button_buy_list[value]
+        )
+
+        button_buy_list[value].click()
+
+        print(
+            f"{datetime.now()}   =>   Button 'Buy' ({value}) of trading instrument '{self.title_instrument}' is clicked!")
+        return self.title_instrument
+
 
 
 class AssertTPI(BasePage):
