@@ -38,6 +38,11 @@ class BUG_334(BasePage):
             self.open_page()
 
         sidebar_items = d.find_elements(*SIDEBAR_ITEMS_LOCATOR)
+        if len(sidebar_items) == 0:
+            msg = (f"The page 'Shares trading' don't have items of sidebar 'Shares trading guide' in DOM")
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 334 {msg}")
+
         self.sidebar_title = sidebar_items[0].text
         self.number_of_random_item = random.randrange(1, len(sidebar_items))
         self.sidebar_item = d.find_elements(*SIDEBAR_ITEMS_LOCATOR)[self.number_of_random_item].text
@@ -49,7 +54,7 @@ class BUG_334(BasePage):
         print(f"\n{datetime.now()}   Start to click of number item: {self.number_of_random_item}")
 
         d.find_elements(*SIDEBAR_ITEMS_LOCATOR)[self.number_of_random_item].click()
-        print(f"\n{datetime.now()}   Number item: {self.number_of_random_item} clicked")
+        print(f"\n{datetime.now()}   Number of item: {self.number_of_random_item} clicked")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d):
@@ -58,5 +63,9 @@ class BUG_334(BasePage):
         self.sidebar_title_after_click_sidebar_item = d.find_element(*SUBMENU_LOCATOR)[0].text
         print(f"{datetime.now()}   Sidebar title after click sidebar item is: "
               f"{self.sidebar_title_after_click_sidebar_item}")
+        Common.save_current_screenshot(d, f"Sidebar after click sidebar item")
 
-        assert self.sidebar_title == self.sidebar_title_after_click_sidebar_item
+        assert self.sidebar_title == self.sidebar_title_after_click_sidebar_item, \
+            (f"Sidebar title on the page {self.sidebar_item} does not match of Sidebar title 'Shares trading guide' "
+             f"or does not exist.")
+        return True

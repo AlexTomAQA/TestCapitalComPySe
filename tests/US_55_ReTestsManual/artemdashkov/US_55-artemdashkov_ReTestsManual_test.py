@@ -833,7 +833,6 @@ class TestManualDetected:
             " when selected any sidebar item in the sidebar [Shares trading guide]",
             False, False
         )
-        pytest.skip("Промежуточная версия: add test_334 and test class")
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
