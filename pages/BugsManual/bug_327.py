@@ -3,6 +3,7 @@
 @Time    : 2024/08/29 18:15 GMT+5
 @Author  : Sergey Aiidzhanov
 """
+import time
 from datetime import datetime
 
 from pages.base_page import BasePage
@@ -13,6 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 
 TRADE_CFDS_BTN_LOC = ('css selector', '[data-type="cross_promo_block_btn1"]')
+IMG_LOC = ('xpath', '//img[@alt="laptop"]')
 
 
 class Bug327(BasePage):
@@ -25,6 +27,7 @@ class Bug327(BasePage):
         print(f'\n{datetime.now()}   Hover over the [Trade CFDs on the web] button on the "Web platform" tile =>')
 
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(TRADE_CFDS_BTN_LOC))
+        # el = Wait(self.driver, 2).until(EC.element_to_be_clickable(IMG_LOC))
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -32,11 +35,16 @@ class Bug327(BasePage):
         )
 
         action = ActionChains(self.driver)
-        action.move_to_element_with_offset(el, -50, -10).perform()
+        action.move_to_element(el) \
+            .pause(2) \
+            .move_by_offset(-50, 10) \
+            .pause(2) \
+            .click(el) \
+            .perform()
 
         ael = self.driver.switch_to.active_element
 
-        print(f'\n{datetime.now()}   {ael.get_attribute("class")}')
+        print(f'\n{datetime.now()}   {ael.get_attribute("data-type")}\n')
 
         # if self.driver.switch_to.active_element == el:
         #     print(f'{datetime.now()}   same element')

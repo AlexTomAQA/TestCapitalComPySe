@@ -841,7 +841,7 @@ class TestManualDetectedBugs:
             False,
             False
         )
-
+        pytest.skip('In progress')
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
@@ -893,7 +893,7 @@ class TestManualDetectedBugs:
             False,
             False
         )
-
+        pytest.skip('In progress')
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(
@@ -924,7 +924,7 @@ class TestManualDetectedBugs:
         'of the block “How to trade using RSI and other indicators” '
         'on the page “RSI trading strategy: An educational guide”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['au', 'de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_332a
     def test_332a(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -979,7 +979,7 @@ class TestManualDetectedBugs:
         'of the block “How to trade using RSI and other indicators” '
         'on the page “RSI trading strategy: An educational guide”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['au', 'de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_332b
     def test_332b(self, worker_id, d, cur_language, cur_country, cur_role,
