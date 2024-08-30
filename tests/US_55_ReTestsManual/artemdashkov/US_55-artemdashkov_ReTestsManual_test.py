@@ -26,6 +26,7 @@ from pages.BugsManual.bug_300 import BUG_300
 from pages.BugsManual.bug_312 import BUG_312
 from pages.BugsManual.bug_324 import BUG_324
 from pages.BugsManual.bug_334 import BUG_334
+from pages.BugsManual.bug_351a import BUG_351a
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -845,6 +846,57 @@ class TestManualDetected:
 
         test_element = BUG_334(d, menu_link, bid)
         test_element.arrange(d, menu_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of check language date in 'Line chart'")
+    @pytest.mark.parametrize('cur_language_country', random.sample([("", "en"), ("", "ae"), ("ar", "ae")],
+                                                                   1), )
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_351a
+    def test_351a_sidebar_title_shares_trading_guide_is_not_displayed(
+            self, worker_id, d, cur_language_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Date in "Line chart" is displayed in RU language in the widget "Trading instrument"
+                of the block "Our markets" on the main page when EN language and FCA license is selected
+                or EN or AR language and SCA license is selected (e.g. EN language and FCA license)
+        Language:   EN - FCA, SCA;
+                    AR - SCA.
+        License/Country: FCA, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country[0], cur_language_country[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "351a",
+            "Date in 'Line chart' is displayed in RU language in the widget 'Trading instrument' "
+                    "of the block 'Our markets' on the main page when EN language and FCA license is selected "
+                    "or EN or AR language and SCA license is selected (e.g. EN language and FCA license)",
+            False, False
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        page_conditions = Conditions(d, "")
+        host = None
+        if cur_language_country[0] == '' and cur_language_country[1] == 'en':
+            host = CapitalComPageSrc.URL_NEW
+        elif cur_language_country[0] == '' and cur_language_country[1] == 'ae':
+            host = CapitalComPageSrc.URL_NEW_EN_AE
+        elif cur_language_country[0] == 'ar' and cur_language_country[1] == 'ae':
+            host = CapitalComPageSrc.URL_NEW_AR_AE
+
+        cur_item_link = page_conditions.preconditions(
+            d, host, "", cur_language_country[0], cur_language_country[1],
+            cur_role, cur_login, cur_password)
+
+        test_element = BUG_351a(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
 
         # Act
         test_element.act(d)
