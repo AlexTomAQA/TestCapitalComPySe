@@ -26,6 +26,7 @@ from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
+from pages.BugsManual.bug_327 import Bug327
 from pages.BugsManual.bug_330 import Bug330
 from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
@@ -807,6 +808,58 @@ class TestManualDetectedBugs:
         if not test_el.should_be_corresponding_page():
             Common.pytest_fail('Bug # 55!307 The corresponding page is NOT opened')
         Common.save_current_screenshot(d, "AT_55!307 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+
+    @allure.step(
+        'Start retest manual TC_55!327 Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
+        'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
+        'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])   # 'Auth', 'NoAuth', 'NoReg'
+    @pytest.mark.bug_327
+    def test_327(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web)
+         in the block "المنصة الإلكترونية عبر الويب" (Web platform)
+         on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "327",
+            'Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
+            'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
+            'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug327(d, link, bid)
+        test_el.open_cfd_trading_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.hover_over_trade_cfds_button()
+
+        # Assert
+        # if not test_el.:
+        #     Common.pytest_fail('Bug # 55!327 ')
+        # Common.save_current_screenshot(d, "AT_55!327 Pass")
+        Common.pytest_fail('Bug # 55!327 ')
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
