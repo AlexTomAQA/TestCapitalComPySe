@@ -893,7 +893,6 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        pytest.skip('In progress')
         # Arrange
         page_conditions = NewConditions(d)
         link = page_conditions.preconditions(

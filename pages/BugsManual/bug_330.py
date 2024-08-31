@@ -10,7 +10,7 @@ from datetime import datetime
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 
 SUPPORT_BTN_LOC = ('css selector', 'button.liveChat_blinger__WJsqh')
 CHAT_FRAME_LOC = ('css selector', 'iframe[tabindex="0"]')
@@ -26,6 +26,7 @@ LANG_APPLY_BTN_LOC = ('css selector', '.button_btn__vOh9h.button_main__4QZm1.but
 class Bug330(BasePage):
 
     def open_support_window(self):
+        time.sleep(2)
         print(f'\n{datetime.now()}   Click the Support chat button =>')
         Wait(self.driver, 2).until(EC.element_to_be_clickable(SUPPORT_BTN_LOC)).click()
         print(f'{datetime.now()}   => Done, the button is clicked')
@@ -35,7 +36,6 @@ class Bug330(BasePage):
         chat_frame = self.driver.find_element(*CHAT_FRAME_LOC)
         self.driver.switch_to.frame(chat_frame)
         btn = Wait(self.driver, 5).until(EC.element_to_be_clickable(CLOSE_CHAT_BTN_LOC))
-        btn.get_attribute("aria-label")
         btn.click()
         print(f'{datetime.now()}   => Done, the form is closed')
         self.driver.switch_to.default_content()
@@ -65,9 +65,8 @@ class Bug330(BasePage):
 
         try:
             print(f'{datetime.now()}   CHECK FRAME =>')
-            self.driver.find_element(*CHAT_FRAME_LOC)
-            self.driver.switch_to.frame(self.driver.find_element(*CHAT_FRAME_LOC))
-        except (NoSuchElementException, StaleElementReferenceException):
+            self.driver.switch_to.frame(Wait(self.driver, 2).until(EC.visibility_of_element_located(CHAT_FRAME_LOC)))
+        except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
             print(f'{datetime.now()}   => The window is not opened')
             return False
 
