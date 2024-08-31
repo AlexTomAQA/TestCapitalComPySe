@@ -13,6 +13,7 @@ from pages.BugsManual.bug_043 import ProfessionalMenuCheckFooter
 from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
 from pages.BugsManual.bug_285 import ButtonMyAccount
+from pages.BugsManual.bug_326 import Bug326
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
@@ -213,3 +214,56 @@ class TestManualDetectedBugs:
         match cur_role:
             case "Auth":
                 button.assert_my_account_menu_opened_ar(d)
+
+    @allure.step(
+        'Start retest manual TC_55!326 | The page "Oops, this help center no longer exists"'
+        ' is opened after clicking the link [Help Center] of the page "Contact us"')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_326
+    def test_326(self, worker_id, d, cur_language, cur_country, cur_role,
+                  cur_login, cur_password):
+        """
+         Check: The page "Oops, this help center no longer exists"
+         is opened after clicking the link [Help Center] of the page "Contact us"
+         Language: All.
+         License: ASIC, CYSEC.
+         Role: NoReg | NoAuth | Auth
+         Author: podchasova11
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "326",
+            "The page 'Oops, this help center no longer exists' "
+            "is opened after clicking the link [Help Center] of the page 'Contact us'",
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        page_header_menu = MenuSection(d, link)
+        page_header_menu.move_focus_to_more_menu(d, cur_language, cur_country)
+        page_header_menu.sub_menu_help_and_support_move_focus_click(d, cur_language)
+
+        test_el = Bug326(d, link, bid)
+        test_el.click_rsi_trading_strategy_link()
+
+        # Act
+        test_el.click_stochastic_oscillator_link()
+
+        # Assert
+        if not test_el.should_be_stochastic_oscillator_strategy_page():
+            Common.pytest_fail('Bug # 55!332a The "Stochastic oscillator strategy" page is NOT opened')
+        Common.save_current_screenshot(d, "AT_55!332a Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
