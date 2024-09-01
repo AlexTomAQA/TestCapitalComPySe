@@ -11,7 +11,7 @@ import pytest
 import allure
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, NoSuchWindowException
 
 from pages.base_page import BasePage
 
@@ -45,20 +45,27 @@ class CheckLoginFacebookModal(BasePage):
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(FB_BTN_LOC))
         el.click()
         if el.is_enabled():
-            print(f'{datetime.now()}   => The button is not clicked')
-            pytest.fail("The FB button is NOT clicked")
+            print(f'{datetime.now()}   => The button is not clicked, trying again')
+            el.click()
+            if el.is_enabled():
+                pytest.fail("The FB button is NOT clicked")
         print(f'{datetime.now()}   => Done, the button is clicked')
 
     def should_be_fb_modal(self):
-
-        time.sleep(1)
-
         print(f'\n{datetime.now()}   Check if the "Log in to your Facebook account" modal window is opened =>')
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS NUMBER: {len(tabs)}')
+
         if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[len(tabs) - 1])
+            try:
+                self.driver.switch_to.window(tabs[len(tabs) - 1])
+            except NoSuchWindowException:
+                print(f'\n{datetime.now()}   NO SUCH WINDOW EXCEPTION')
+                print(f'{datetime.now()}   Cur. URL: {self.driver.current_url}')
+                return False
+
             self.deal_with_cookies()
+
             if "Facebook" in self.driver.find_element(*FB_LOGO).text:
                 if "Capital.com" in self.driver.find_element(*CAPITAL_MSG_EL).text:
                     print(f'{datetime.now()}   => The modal window is opened')
