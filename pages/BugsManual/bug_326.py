@@ -5,10 +5,14 @@
 """
 from datetime import datetime
 
+import allure
+
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+
+from pages.common import Common
 
 HELP_CENTER_LOC = ('xpath', '//span[normalize-space()="Help Center"]')
 BREADCRUMB_LOC = ('css selector', '.cc-breadcrumbs span')
@@ -27,16 +31,20 @@ class Bug326(BasePage):
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
     def should_be_help_center_page(self):
-        print(f'\n{datetime.now()}   Check if the "Help Center" page is opened => ')
+        print(f'\n{datetime.now()}   Check if the "Help & Support" page is opened => ')
 
-        try:
-            self.driver.find_element(*BREADCRUMB_LOC)
-        except NoSuchElementException:
-            print(f'{datetime.now()}   => The page is not opened (Breadcrumb Element not found)')
-            return False
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
-        if 'Help' in self.driver.find_element(*BREADCRUMB_LOC).text:
-            print(f'{datetime.now()}   => The "Help Center" page is opened')
-            return True
-        print(f'{datetime.now()}   => The wrong page is opened')
-        return False
+        actual_page_title = self.driver.title
+        print(f"{datetime.now()}   actual_page_title is '{actual_page_title}'")
+        expected_page_title = "Help Center"
+        if actual_page_title != expected_page_title:
+            Common.pytest_fail(f"#Bug # 55!326 "
+                               f"\n"
+                               f"Expected result: The page 'Help Center' is opened"
+                               f"\n"
+                               f"Actual result: The page 'Oops, this help center no longer exists' is opened")
+        else:
+            print(f"{datetime.now()}   The page 'Help Center' is opened")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+
