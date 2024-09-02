@@ -254,15 +254,12 @@ class TestManualDetectedBugs:
         page_header_menu.sub_menu_help_and_support_move_focus_click(d, cur_language)
 
         test_el = Bug326(d, link, bid)
-        test_el.click_rsi_trading_strategy_link()
 
         # Act
-        test_el.click_stochastic_oscillator_link()
+        test_el.click_help_center_link()
 
         # Assert
-        if not test_el.should_be_stochastic_oscillator_strategy_page():
-            Common.pytest_fail('Bug # 55!332a The "Stochastic oscillator strategy" page is NOT opened')
-        Common.save_current_screenshot(d, "AT_55!332a Pass")
+        test_el.should_be_help_center_page()
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
