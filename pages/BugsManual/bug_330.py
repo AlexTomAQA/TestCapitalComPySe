@@ -64,7 +64,6 @@ class Bug330(BasePage):
         print(f'\n{datetime.now()}   Check if the Support Chat window is opened =>')
 
         try:
-            print(f'{datetime.now()}   CHECK FRAME =>')
             self.driver.switch_to.frame(Wait(self.driver, 2).until(EC.visibility_of_element_located(CHAT_FRAME_LOC)))
         except (TimeoutException, NoSuchElementException, StaleElementReferenceException):
             print(f'{datetime.now()}   => The window is not opened')
