@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/08/28 22:30
+@Time    : 2024/09/02 22:40
 @Author  : Artem Dashkov
 """
 import allure
@@ -20,7 +20,7 @@ SUBMENU_LOCATOR = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id1
 
 SIDEBAR_ITEMS_LOCATOR = (By.CSS_SELECTOR, '.side-nav > a[data-type="sidebar_deeplink"]')
 
-class BUG_351a(BasePage):
+class BUG_357(BasePage):
 
     def __init__(self, browser, link, bid):
         self.sidebar_title = None
