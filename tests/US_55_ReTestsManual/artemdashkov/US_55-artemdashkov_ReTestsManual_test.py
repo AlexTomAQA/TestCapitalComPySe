@@ -896,4 +896,4 @@ class TestManualDetected:
         test_element.act(d, cur_tool)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, cur_tool)

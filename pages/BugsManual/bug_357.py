@@ -10,14 +10,13 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
-WIDGET_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_gSm__iz2g4.grid_flex__Nv3nG')
+WIDGET_LOCATOR = (By.CSS_SELECTOR, '.main_chart__prq68')
 COMMODITIES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Commodities']")
 SHARES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Shares']")
 
 class BUG_357(BasePage):
 
     def __init__(self, browser, link, bid):
-        self.cur_tool = None
         self.button_locator = None
 
         super().__init__(browser, link, bid)
@@ -33,7 +32,7 @@ class BUG_357(BasePage):
         print(f"{datetime.now()}   Start to check widget of the block 'Our spread betting markets' "
               f"in DOM on the page 'Spread betting'\n")
         if len(d.find_elements(*WIDGET_LOCATOR)) == 0:
-            msg = f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM"
+            msg = (f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   The page 'Spread betting' have widget "
@@ -48,7 +47,7 @@ class BUG_357(BasePage):
         print(f"{datetime.now()}   Start to check visibility widget of the block 'Our spread betting markets' "
               f"on the page 'Spread betting'\n")
         if not self.element_is_visible(WIDGET_LOCATOR):
-            msg = "Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'"
+            msg = ("Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   Widget of the block 'Our spread betting markets' visible "
@@ -68,7 +67,7 @@ class BUG_357(BasePage):
         # Check presenting button on the page
         print(f"{datetime.now()}   Start check button {cur_tool} in DOM of the block 'Our spread betting markets' ")
         if len(d.find_elements(*self.button_locator)) == 0:
-            msg = f"The block 'Our spread betting markets' don't have button {cur_tool} in DOM"
+            msg = (f"The block 'Our spread betting markets' don't have button {cur_tool} in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   The block 'Our spread betting markets' have button {cur_tool} in DOM\n")
@@ -82,7 +81,7 @@ class BUG_357(BasePage):
         print(f"{datetime.now()}   Is Button {cur_tool} of the block 'Our spread betting markets' visible "
               f"on the page 'Spread betting'?")
         if not self.element_is_visible(self.button_locator):
-            msg = f"Button {cur_tool} don't visible in the block 'Our spread betting markets'"
+            msg = (f"Button {cur_tool} don't visible in the block 'Our spread betting markets'")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is visible "
@@ -92,7 +91,7 @@ class BUG_357(BasePage):
         print(f"{datetime.now()}   Is button {cur_tool} of the block 'Our spread betting markets' clickable "
               f"on the page 'Spread betting'")
         if not self.element_is_clickable(self.button_locator):
-            msg = f"Button {cur_tool} don't clickable in the block 'Our spread betting markets'"
+            msg = (f"Button {cur_tool} don't clickable in the block 'Our spread betting markets'")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is clickable "
@@ -102,18 +101,19 @@ class BUG_357(BasePage):
         print(f"\n{datetime.now()}   Button {cur_tool} clicked\n")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
-    def assert_(self, d):
+    def assert_(self, d, cur_tool):
         print(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
 
         # Check presenting widget on the page
         print(f"{datetime.now()}   Do the page 'Spread betting' have widget "
               f"of the block 'Our spread betting markets' in DOM?")
         if len(d.find_elements(*WIDGET_LOCATOR)) == 0:
-            msg = f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM"
+            msg = (f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM "
+                   f"when button {cur_tool} clicked")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   The page 'Spread betting' have widget "
-              f"of the block 'Our spread betting markets' in DOM")
+              f"of the block 'Our spread betting markets' in DOM when button {cur_tool} clicked")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -124,11 +124,12 @@ class BUG_357(BasePage):
         print(f"{datetime.now()}   Is Widget of the block 'Our spread betting markets' visible "
               f"on the page 'Spread betting'?")
         if not self.element_is_visible(WIDGET_LOCATOR):
-            msg = "Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'"
+            msg = (f"Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting' "
+                   f"when button {cur_tool} clicked")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # 357 {msg}")
         print(f"{datetime.now()}   Widget of the block 'Our spread betting markets' is visible "
-              f"on the page 'Spread betting'")
+              f"on the page 'Spread betting' when button {cur_tool} clicked")
         Common.save_current_screenshot(d, f"Widget of the block 'Our spread betting markets' is visible.")
         self.driver.get(CapitalComPageSrc.URL_NEW)
         return True
