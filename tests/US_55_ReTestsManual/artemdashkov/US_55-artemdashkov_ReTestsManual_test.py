@@ -858,9 +858,9 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('cur_tool', ["Commodities"])
-    @pytest.mark.bug_357a
-    def test_357a_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+    @pytest.mark.parametrize('cur_tool', ["Commodities", "Shares"])
+    @pytest.mark.bug_357
+    def test_357_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_tool):
         """
         Check:  The widget of the block "Our spread betting markets" is absent
@@ -874,7 +874,7 @@ class TestManualDetected:
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "357a",
+            "357",
             "Menu section [Trading] > Menu item [Spread betting] > "
             "The widget of the block 'Our spread betting markets' > Click on the button [Commodities]",
             False, False
