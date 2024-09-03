@@ -4,68 +4,131 @@
 @Author  : Artem Dashkov
 """
 import allure
-import random
-import time
 from datetime import datetime
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-
 from pages.base_page import BasePage
 from pages.common import Common
+from src.src import CapitalComPageSrc
 
-MENU_NAME = "[Trading]"
-SUBMENU_NAME = "menu item [Demo]"
-MENU_LOCATOR = (By.CSS_SELECTOR, 'span > a[data-type="nav_id798"]')
-SUBMENU_LOCATOR = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id1029']")
-
-SIDEBAR_ITEMS_LOCATOR = (By.CSS_SELECTOR, '.side-nav > a[data-type="sidebar_deeplink"]')
+WIDGET_LOCATOR = (By.CSS_SELECTOR, '[data-type="wdg_markets"] .grid_gSm__iz2g4.grid_flex__Nv3nG')
+COMMODITIES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Commodities']")
+SHARES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Shares']")
 
 class BUG_357(BasePage):
 
     def __init__(self, browser, link, bid):
-        self.sidebar_title = None
-        self.sidebar_title_after_click_sidebar_item = None
-        self.sidebar_item = None
-        self.number_of_random_item = None
+        self.cur_tool = None
+        self.button_locator = None
 
         super().__init__(browser, link, bid)
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find all sidebar items in the sidebar 'Shares trading guide'")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find widget in the block 'Our spread betting markets'")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find all sidebar items in the sidebar 'Shares trading guide'")
+        print(f"\n{datetime.now()}   1. Start Arrange: find widget in the block 'Our spread betting markets'")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        sidebar_items = d.find_elements(*SIDEBAR_ITEMS_LOCATOR)
-        if len(sidebar_items) == 0:
-            msg = (f"The page 'Shares trading' don't have items of sidebar 'Shares trading guide' in DOM")
+        # Check presenting widget on the page
+        print(f"{datetime.now()}   Start to check widget of the block 'Our spread betting markets' "
+              f"in DOM on the page 'Spread betting'\n")
+        if len(d.find_elements(*WIDGET_LOCATOR)) == 0:
+            msg = f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 334 {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   The page 'Spread betting' have widget "
+              f"of the block 'Our spread betting markets' in DOM\n")
 
-        self.sidebar_title = sidebar_items[0].text
-        self.number_of_random_item = random.randrange(1, len(sidebar_items))
-        self.sidebar_item = d.find_elements(*SIDEBAR_ITEMS_LOCATOR)[self.number_of_random_item].text
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*WIDGET_LOCATOR)
+        )
+
+        # Check visibility widget on the page
+        print(f"{datetime.now()}   Start to check visibility widget of the block 'Our spread betting markets' "
+              f"on the page 'Spread betting'\n")
+        if not self.element_is_visible(WIDGET_LOCATOR):
+            msg = "Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   Widget of the block 'Our spread betting markets' visible "
+              f"on the page 'Spread betting'\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
-    def act(self, d):
+    def act(self, d, cur_tool):
 
-        print(f"\n{datetime.now()}   2. Start Act.")
-        print(f"\n{datetime.now()}   Start to click of number item: {self.number_of_random_item}")
+        print(f"\n{datetime.now()}   2. Start Act. Click on the button {cur_tool}")
 
-        d.find_elements(*SIDEBAR_ITEMS_LOCATOR)[self.number_of_random_item].click()
-        print(f"\n{datetime.now()}   Number of item: {self.number_of_random_item} clicked")
+        match cur_tool:
+            case "Commodities":
+                self.button_locator = COMMODITIES_BUTTON_LOCATOR
+            case "Shares":
+                self.button_locator = SHARES_BUTTON_LOCATOR
 
-    @allure.step(f"{datetime.now()}   3. Start Assert.")
+        # Check presenting button on the page
+        print(f"{datetime.now()}   Start check button {cur_tool} in DOM of the block 'Our spread betting markets' ")
+        if len(d.find_elements(*self.button_locator)) == 0:
+            msg = f"The block 'Our spread betting markets' don't have button {cur_tool} in DOM"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   The block 'Our spread betting markets' have button {cur_tool} in DOM\n")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*self.button_locator)
+        )
+
+        # Check visibility button on the page
+        print(f"{datetime.now()}   Is Button {cur_tool} of the block 'Our spread betting markets' visible "
+              f"on the page 'Spread betting'?")
+        if not self.element_is_visible(self.button_locator):
+            msg = f"Button {cur_tool} don't visible in the block 'Our spread betting markets'"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is visible "
+              f"on the page 'Spread betting'\n")
+
+        # Check clickable button on the page
+        print(f"{datetime.now()}   Is button {cur_tool} of the block 'Our spread betting markets' clickable "
+              f"on the page 'Spread betting'")
+        if not self.element_is_clickable(self.button_locator):
+            msg = f"Button {cur_tool} don't clickable in the block 'Our spread betting markets'"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is clickable "
+              f"on the page 'Spread betting'\n")
+
+        d.find_element(*self.button_locator).click()
+        print(f"\n{datetime.now()}   Button {cur_tool} clicked\n")
+
+    @allure.step(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
     def assert_(self, d):
-        print(f"{datetime.now()}   3. Start Assert. Find sidebar title [Shares trading guide]")
+        print(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
 
-        self.sidebar_title_after_click_sidebar_item = d.find_element(*SUBMENU_LOCATOR)[0].text
-        print(f"{datetime.now()}   Sidebar title after click sidebar item is: "
-              f"{self.sidebar_title_after_click_sidebar_item}")
-        Common.save_current_screenshot(d, f"Sidebar after click sidebar item")
+        # Check presenting widget on the page
+        print(f"{datetime.now()}   Do the page 'Spread betting' have widget "
+              f"of the block 'Our spread betting markets' in DOM?")
+        if len(d.find_elements(*WIDGET_LOCATOR)) == 0:
+            msg = f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   The page 'Spread betting' have widget "
+              f"of the block 'Our spread betting markets' in DOM")
 
-        assert self.sidebar_title == self.sidebar_title_after_click_sidebar_item, \
-            (f"Sidebar title on the page {self.sidebar_item} does not match of Sidebar title 'Shares trading guide' "
-             f"or does not exist.")
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*WIDGET_LOCATOR)
+        )
+
+        # Check visibility widget on the page
+        print(f"{datetime.now()}   Is Widget of the block 'Our spread betting markets' visible "
+              f"on the page 'Spread betting'?")
+        if not self.element_is_visible(WIDGET_LOCATOR):
+            msg = "Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 357 {msg}")
+        print(f"{datetime.now()}   Widget of the block 'Our spread betting markets' is visible "
+              f"on the page 'Spread betting'")
+        Common.save_current_screenshot(d, f"Widget of the block 'Our spread betting markets' is visible.")
+        self.driver.get(CapitalComPageSrc.URL_NEW)
         return True

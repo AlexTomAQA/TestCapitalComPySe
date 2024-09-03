@@ -864,7 +864,7 @@ class TestManualDetected:
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_tool):
         """
         Check:  The widget of the block "Our spread betting markets" is absent
-                when click on the button [Commodities] on the page "Spread betting"
+                when click on the button [Commodities] or [Shares] on the page "Spread betting"
         Language: EN
         License/Country: FCA
         Role: NoReg, NoAuth, Auth
@@ -877,11 +877,11 @@ class TestManualDetected:
             "357",
             "Menu section [Trading] > Menu item [Spread betting] > "
             "The widget of the block 'Our spread betting markets' > Click on the button [Commodities]",
-            False, False
+            False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
-        page_conditions = Conditions(d, "")
+        page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -893,7 +893,7 @@ class TestManualDetected:
         test_element.arrange(d, cur_item_link)
 
         # Act
-        test_element.act(d)
+        test_element.act(d, cur_tool)
 
         # Assert
         test_element.assert_(d)
