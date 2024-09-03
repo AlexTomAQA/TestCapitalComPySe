@@ -13,7 +13,9 @@ from pages.BugsManual.bug_077 import Sidebar
 from pages.BugsManual.bug_270 import LearnMoreAbout
 from pages.BugsManual.bug_308 import InvestmateAppPage
 from pages.BugsManual.bug_322 import AssertTPI, TradingInstrumentsMarkets
+from pages.BugsManual.bug_360 import IndicesItaly40
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
+from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New.from_trading_menu_open_mobile_apps import MenuNew
 from pages.Menu.menu import MenuSection
@@ -349,3 +351,35 @@ class TestManualDetectedBugs:
                         test_element.assert_login(d)
                     case 'Auth':
                         test_element.assert_tpi(d, title_instrument)
+
+    @allure.step('Start retest manual AT_55!360 that the same license remains after clicking any of 5 links in the block'
+                 ' “Italy 40” on the page “Italy 40” when SCA license and EN language is selected')
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_360
+    def test_360(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Web pages with URLs of the FCA license are opened after clicking any of 5 links in the block “Italy 40”
+            on the page “Italy 40” when SCA license and EN language is selected.
+        Language: EN
+        License: SCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "360", 'The same license, SCA (AE country), remains after clicking any of 5 links in the block'
+                   ' “Italy 40”'
+        )
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuNewIndices(d, link)
+        cur_item_link = menu.from_markets_menu_open_indices(d, cur_language, cur_country, link)
+
+        test_element = IndicesItaly40(d, cur_item_link, bid)
