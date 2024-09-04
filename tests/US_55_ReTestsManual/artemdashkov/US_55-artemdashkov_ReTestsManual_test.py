@@ -26,7 +26,7 @@ from pages.BugsManual.bug_300 import BUG_300
 from pages.BugsManual.bug_312 import BUG_312
 from pages.BugsManual.bug_324 import BUG_324
 from pages.BugsManual.bug_334 import BUG_334
-from pages.BugsManual.bug_351a import BUG_351a
+from pages.BugsManual.bug_357 import BUG_357
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -34,7 +34,8 @@ from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
                             from_trading_menu_open_platforms,
-                            from_markets_menu_open_forex)
+                            from_markets_menu_open_forex,
+                            from_trading_menu_open_spread_betting)
 from pages.conditions_new import NewConditions
 
 
@@ -853,53 +854,46 @@ class TestManualDetected:
         # Assert
         test_element.assert_(d)
 
-    @allure.step("Start test of check language date in 'Line chart'")
-    @pytest.mark.parametrize('cur_language_country', random.sample([("", "en"), ("", "ae"), ("ar", "ae")],
-                                                                   1), )
+    @allure.step("Start test of check widget in the block 'Our spread betting markets'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.bug_351a
-    def test_351a_sidebar_title_shares_trading_guide_is_not_displayed(
-            self, worker_id, d, cur_language_country, cur_role, cur_login, cur_password):
+    @pytest.mark.parametrize('cur_tool', ["Commodities", "Shares"])
+    @pytest.mark.bug_357
+    def test_357_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_tool):
         """
-        Check:  Date in "Line chart" is displayed in RU language in the widget "Trading instrument"
-                of the block "Our markets" on the main page when EN language and FCA license is selected
-                or EN or AR language and SCA license is selected (e.g. EN language and FCA license)
-        Language:   EN - FCA, SCA;
-                    AR - SCA.
-        License/Country: FCA, SCA
+        Check:  The widget of the block "Our spread betting markets" is absent
+                when click on the button [Commodities] or [Shares] on the page "Spread betting"
+        Language: EN
+        License/Country: FCA
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_country[0], cur_language_country[1], cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "351a",
-            "Date in 'Line chart' is displayed in RU language in the widget 'Trading instrument' "
-                    "of the block 'Our markets' on the main page when EN language and FCA license is selected "
-                    "or EN or AR language and SCA license is selected (e.g. EN language and FCA license)",
-            False, False
+            "357",
+            "Menu section [Trading] > Menu item [Spread betting] > "
+            "The widget of the block 'Our spread betting markets' > Click on the button [Commodities]",
+            False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
-        page_conditions = Conditions(d, "")
-        host = None
-        if cur_language_country[0] == '' and cur_language_country[1] == 'en':
-            host = CapitalComPageSrc.URL_NEW
-        elif cur_language_country[0] == '' and cur_language_country[1] == 'ae':
-            host = CapitalComPageSrc.URL_NEW_EN_AE
-        elif cur_language_country[0] == 'ar' and cur_language_country[1] == 'ae':
-            host = CapitalComPageSrc.URL_NEW_AR_AE
-
+        page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, host, "", cur_language_country[0], cur_language_country[1],
-            cur_role, cur_login, cur_password)
+            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_element = BUG_351a(d, cur_item_link, bid)
+        page_menu = from_trading_menu_open_spread_betting.MenuNewSpreadBetting(d, cur_item_link)
+        cur_item_link = page_menu.from_trading_menu_open_spread_betting(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_357(d, cur_item_link, bid)
         test_element.arrange(d, cur_item_link)
 
         # Act
-        test_element.act(d)
+        test_element.act(d, cur_tool)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, cur_tool)
