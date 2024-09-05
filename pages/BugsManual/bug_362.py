@@ -9,8 +9,10 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
+from selenium.webdriver.common.action_chains import ActionChains
 
 LINK_COUNTRY_FOOTER_LOCATOR = (By.XPATH, '(//span[@class="localization_btn__9zIyt"])[1]')
+FIELD_COUNTRY_IN_REGIONAL_SETTINGS = (By.XPATH, '(//div[@class="select_selected__8wH_E select_gI__pn40f"])[1]')
 
 DROPDOWN_REGIONAL_SETTINGS = (By.CSS_SELECTOR, '.main_chart__prq68')
 COMMODITIES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Commodities']")
@@ -69,43 +71,30 @@ class BUG_362(BasePage):
 
         print(f"\n{datetime.now()}   2. Start Act. Select 'Honk Kong & Taiwan' and click button [Apply]")
 
-        # Check presenting button on the page
-        print(f"{datetime.now()}   Start check button {cur_tool} in DOM of the block 'Our spread betting markets' ")
-        if len(d.find_elements(*self.button_locator)) == 0:
-            msg = (f"The block 'Our spread betting markets' don't have button {cur_tool} in DOM")
+        # Check field country in Regional settings
+        print(f"{datetime.now()}   Start check field country in Regional settings")
+        if len(d.find_elements(*FIELD_COUNTRY_IN_REGIONAL_SETTINGS)) == 0:
+            msg = f"Field country in Regional settings isn't in DOM"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 357 {msg}")
-        print(f"{datetime.now()}   The block 'Our spread betting markets' have button {cur_tool} in DOM\n")
+            Common().pytest_fail(f"Bug # 362 {msg}")
+        print(f"{datetime.now()}   Field country in Regional settings is in DOM\n")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*self.button_locator)
+            self.driver.find_element(*FIELD_COUNTRY_IN_REGIONAL_SETTINGS)
         )
 
-        # Check visibility button on the page
-        print(f"{datetime.now()}   Is Button {cur_tool} of the block 'Our spread betting markets' visible "
-              f"on the page 'Spread betting'?")
-        if not self.element_is_visible(self.button_locator):
-            msg = (f"Button {cur_tool} don't visible in the block 'Our spread betting markets'")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 357 {msg}")
-        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is visible "
-              f"on the page 'Spread betting'\n")
+        # d.find_element(*FIELD_COUNTRY_IN_REGIONAL_SETTINGS).click()
+        # print(f"\n{datetime.now()}   Field country in Regional settings clicked\n")
 
-        # Check clickable button on the page
-        print(f"{datetime.now()}   Is button {cur_tool} of the block 'Our spread betting markets' clickable "
-              f"on the page 'Spread betting'")
-        if not self.element_is_clickable(self.button_locator):
-            msg = (f"Button {cur_tool} don't clickable in the block 'Our spread betting markets'")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 357 {msg}")
-        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is clickable "
-              f"on the page 'Spread betting'\n")
+        action = ActionChains()
+        action.click(d.find_element(*FIELD_COUNTRY_IN_REGIONAL_SETTINGS)) \
+            .pause(1) \
+            .scroll_to_element() \ # остановился
+            .pause(1) \
+            .perform()
 
-        d.find_element(*self.button_locator).click()
-        print(f"\n{datetime.now()}   Button {cur_tool} clicked\n")
-
-    @allure.step(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
+        @allure.step(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
     def assert_(self, d, cur_tool):
         print(f"{datetime.now()}   3. Start Assert. Find widget in the block 'Our spread betting markets'")
 
