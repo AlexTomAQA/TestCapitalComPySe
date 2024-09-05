@@ -60,7 +60,7 @@ class BUG_334(BasePage):
     def assert_(self, d):
         print(f"{datetime.now()}   3. Start Assert. Find sidebar title [Shares trading guide]")
 
-        self.sidebar_title_after_click_sidebar_item = d.find_element(*SUBMENU_LOCATOR)[0].text
+        self.sidebar_title_after_click_sidebar_item = d.find_elements(*SUBMENU_LOCATOR)[0].text
         print(f"{datetime.now()}   Sidebar title after click sidebar item is: "
               f"{self.sidebar_title_after_click_sidebar_item}")
         Common.save_current_screenshot(d, f"Sidebar after click sidebar item")
