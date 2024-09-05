@@ -12,16 +12,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 
 SEARCH_EL_LOC_OLD = ('css selector', '#iqf')
-GOOGL_SEARCH_ITEM_LOC_OLD = ('css selector', '//div[text()="GOOGL"]')
+GOOGL_SEARCH_ITEM_LOC_OLD = ('xpath', '//div[text()="GOOGL"]')
 BREADCRUMB_LOC_OLD = ('css selector', '.cc-breadcrumbs span')
 TITLE_LOC_OLD = ('css selector', '.marketMainTitle > h1')
 
 SEARCH_EL_LOC_NEW = ('css selector', '#marketlist_search')
-GOOGL_SEARCH_ITEM_LOC_NEW = ('css selector', '//strong[text()="GOOGL"]')
+GOOGL_SEARCH_ITEM_LOC_NEW = ('xpath', '//strong[text()="GOOGL"]')
 BREADCRUMB_LOC_NEW = ('css selector', '.breadcrumbs_breadcrumbs__UgZeo span')
 TITLE_LOC_NEW = ('css selector', 'h1.heading_h1__1NQVK')
 
 NASDAQ_LINK_LOC = ('xpath', '//a[text()="NASDAQ stock exchange"]')
+
+ERROR_PAGE_BODY_LOC = ('css selector', 'body.neterror')
 
 
 class Bug359(BasePage):
@@ -79,27 +81,13 @@ class Bug359(BasePage):
         print(f'{datetime.now()}   => Done, the link is clicked')
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
-    def should_not_be_alphabet_inc_page_new(self):
-        print(f'\n{datetime.now()}   Make sure that the "Trade Alphabet Inc - A - GOOGL CFD" page is not opened => ')
-
-        try:
-            self.driver.find_element(*BREADCRUMB_LOC_NEW)
-        except NoSuchElementException:
-            print(f'{datetime.now()}   => The page is not opened (Breadcrumb Element not found)')
+    def should_not_be_error_page(self):
+        print(f'\n{datetime.now()}   Make sure that there are no errors => ')
+        if self.driver.find_element(*ERROR_PAGE_BODY_LOC):
+            print(f'{datetime.now()}   => ERROR')
             return False
-
-        try:
-            self.driver.find_element(*TITLE_LOC_NEW)
-        except NoSuchElementException:
-            print(f'{datetime.now()}   => The page is not opened (Title Element not found)')
-            return False
-
-        if 'Alphabet Inc - A' in self.driver.find_element(*BREADCRUMB_LOC_NEW).text:
-            if 'Trade Alphabet Inc - A - GOOGL CFD' in self.driver.find_element(*TITLE_LOC_NEW).text:
-                print(f'{datetime.now()}   => The "Trade Alphabet Inc - A - GOOGL CFD" page is opened')
-                return True
-        print(f'{datetime.now()}   => The wrong page is opened')
-        return False
+        print(f'{datetime.now()}   => No errors')
+        return True
 
     def should_not_be_alphabet_inc_page_old(self):
         print(f'\n{datetime.now()}   Make sure that the "Trade Alphabet Inc - A - GOOGL CFD" page is not opened => ')
