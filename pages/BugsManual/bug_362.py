@@ -10,7 +10,9 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
-WIDGET_LOCATOR = (By.CSS_SELECTOR, '.main_chart__prq68')
+LINK_COUNTRY_FOOTER_LOCATOR = (By.XPATH, '(//span[@class="localization_btn__9zIyt"])[1]')
+
+DROPDOWN_REGIONAL_SETTINGS = (By.CSS_SELECTOR, '.main_chart__prq68')
 COMMODITIES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Commodities']")
 SHARES_BUTTON_LOCATOR = (By.CSS_SELECTOR, "[name='Shares']")
 
@@ -21,48 +23,51 @@ class BUG_362(BasePage):
 
         super().__init__(browser, link, bid)
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find widget in the block 'Our spread betting markets'")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: open dropdown [Regional settings]")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find widget in the block 'Our spread betting markets'")
+        print(f"\n{datetime.now()}   1. Start Arrange: open dropdown [Regional settings]")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting widget on the page
-        print(f"{datetime.now()}   Start to check widget of the block 'Our spread betting markets' "
-              f"in DOM on the page 'Spread betting'\n")
-        if len(d.find_elements(*WIDGET_LOCATOR)) == 0:
-            msg = (f"The page 'Spread betting' don't have widget of the block 'Our spread betting markets' in DOM")
+        # Check presenting link country to open dropdown [Regional settings]
+        print(f"{datetime.now()}   Start to check link country to open dropdown [Regional settings] "
+              f"in DOM on the Main page\n")
+        if len(d.find_elements(*LINK_COUNTRY_FOOTER_LOCATOR)) == 0:
+            msg = "The main page don't have link country to open dropdown [Regional settings] in DOM"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 357 {msg}")
-        print(f"{datetime.now()}   The page 'Spread betting' have widget "
-              f"of the block 'Our spread betting markets' in DOM\n")
+            Common().pytest_fail(f"Bug # 362 {msg}")
+        print(f"{datetime.now()}   The main page have link country to open dropdown [Regional settings] in DOM\n")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*WIDGET_LOCATOR)
+            self.driver.find_element(*LINK_COUNTRY_FOOTER_LOCATOR)
         )
 
-        # Check visibility widget on the page
-        print(f"{datetime.now()}   Start to check visibility widget of the block 'Our spread betting markets' "
-              f"on the page 'Spread betting'\n")
-        if not self.element_is_visible(WIDGET_LOCATOR):
-            msg = ("Widget of the block 'Our spread betting markets' don't visible on the page 'Spread betting'")
+        # Check visibility link country to open dropdown [Regional settings]
+        print(f"{datetime.now()}   Start to check visibility link country to open dropdown [Regional settings]\n")
+        if not self.element_is_visible(LINK_COUNTRY_FOOTER_LOCATOR):
+            msg = ("Link country to open dropdown [Regional settings] don't visible on the main page")
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 357 {msg}")
-        print(f"{datetime.now()}   Widget of the block 'Our spread betting markets' visible "
-              f"on the page 'Spread betting'\n")
+            Common().pytest_fail(f"Bug # 362 {msg}")
+        print(f"{datetime.now()}   Link country to open dropdown [Regional settings] visible "
+              f"on the main page\n")
+
+        # Check clickable link
+        print(f"{datetime.now()}   Is link country to open dropdown [Regional settings] clickable?")
+        if not self.element_is_clickable(LINK_COUNTRY_FOOTER_LOCATOR):
+            msg = "Link country to open dropdown [Regional settings] is not clickable"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 362 {msg}")
+        print(f"{datetime.now()}   Link country to open dropdown [Regional settings] is clickable\n")
+
+        d.find_element(*LINK_COUNTRY_FOOTER_LOCATOR).click()
+        print(f"\n{datetime.now()}   Link country to open dropdown [Regional settings] clicked\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d, cur_tool):
 
-        print(f"\n{datetime.now()}   2. Start Act. Click on the button {cur_tool}")
-
-        match cur_tool:
-            case "Commodities":
-                self.button_locator = COMMODITIES_BUTTON_LOCATOR
-            case "Shares":
-                self.button_locator = SHARES_BUTTON_LOCATOR
+        print(f"\n{datetime.now()}   2. Start Act. Select 'Honk Kong & Taiwan' and click button [Apply]")
 
         # Check presenting button on the page
         print(f"{datetime.now()}   Start check button {cur_tool} in DOM of the block 'Our spread betting markets' ")
