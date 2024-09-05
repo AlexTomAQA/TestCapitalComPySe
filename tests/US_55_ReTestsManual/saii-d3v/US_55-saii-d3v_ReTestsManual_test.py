@@ -661,7 +661,7 @@ class TestManualDetectedBugs:
         'when EN/AR language and SCA license is selected')
     @pytest.mark.parametrize('cur_language', ['ar', ''])
     @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])  # 'NoReg', 'NoAuth'
+    @pytest.mark.parametrize('cur_role', ['NoReg', 'NoAuth'])
     @pytest.mark.bug_299
     def test_299(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
