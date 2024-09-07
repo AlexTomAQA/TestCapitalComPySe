@@ -56,22 +56,20 @@ class CheckLoginFacebookModal(BasePage):
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS NUMBER: {len(tabs)}')
 
-        # if len(tabs) > 1:
-        #     try:
-        #         self.driver.switch_to.window(tabs[len(tabs) - 1])
-        #     except NoSuchWindowException:
-        #         print(f'\n{datetime.now()}   NO SUCH WINDOW EXCEPTION')
-        #         print(f'{datetime.now()}   Cur. URL: {self.driver.current_url}')
-        #         return False
-        #
-        #     self.deal_with_cookies()
-        #
-        #     if "Facebook" in self.driver.find_element(*FB_LOGO).text:
-        #         if "Capital.com" in self.driver.find_element(*CAPITAL_MSG_EL).text:
-        #             print(f'{datetime.now()}   => The modal window is opened')
-        #             self.driver.close()
-        #             return True
-        # print(f'{datetime.now()}   => The modal window is not opened')
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[len(tabs) - 1])
+            print(f'{datetime.now()}   Cur. URL: {self.driver.current_url}')
+
+            self.deal_with_cookies()
+
+            if "Facebook" in self.driver.find_element(*FB_LOGO).text:
+                if "Capital.com" in self.driver.find_element(*CAPITAL_MSG_EL).text:
+                    print(f'{datetime.now()}   => The modal window is opened')
+                    self.driver.close()
+                    self.driver.switch_to.window(tabs[0])
+                    return True
+
+        print(f'{datetime.now()}   => The modal window is not opened')
         return False
 
     def deal_with_cookies(self):
