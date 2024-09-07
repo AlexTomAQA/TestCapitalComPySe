@@ -31,6 +31,7 @@ from pages.BugsManual.bug_330 import Bug330
 from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
+from pages.BugsManual.bug_364 import Bug364
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -700,7 +701,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if not test_el.should_be_fb_modal():
-            Common.pytest_fail('Bug # 55!299 in progress')
+            Common.pytest_fail('Bug # 55!299 The modal window "Log in to your Facebook account" is NOT opened')
         Common.save_current_screenshot(d, "AT_55!299 Pass")
 
         # Postconditions
@@ -1180,3 +1181,50 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!364 | Error 404 page is opened after click on any Trading instrument link '
+        'in the widget on the "Spread betting" page')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_364
+    def test_364(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: Error 404 page is opened after click on any Trading instrument link
+         in the widget on the "Spread betting" page
+         Language: EN.
+         License: FCA, FCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "364",
+            'Error 404 page is opened after click on any Trading instrument link '
+            'in the widget on the "Spread betting" page',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = NewConditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        test_el = Bug364(d, link, bid)
+        test_el.open_spread_betting_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_trading_instrument_link()
+
+        # Assert
+        if not test_el.should_not_be_error_page():
+            Common.pytest_fail('Bug # 55!364 The ERROR page is opened')
+        Common.save_current_screenshot(d, "AT_55!359a Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
