@@ -905,8 +905,9 @@ class TestManualDetected:
     def test_362_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
             self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
         """
-        Check:  The widget of the block "Our spread betting markets" is absent
-                when click on the button [Commodities] or [Shares] on the page "Spread betting"
+        Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
+                Scroll down to the "Honk Kong & Taiwan" > Select "Honk Kong & Taiwan" > Click the button [Apply]
+                > Check country in Dropdown [Country & Language]
         Language: EN - FCA, SCA; AR - SCA
         License/Country: FCA, SCA
         Role: NoReg, NoAuth, Auth
@@ -922,7 +923,7 @@ class TestManualDetected:
             "Scroll down to the 'Honk Kong & Taiwan' > Select 'Honk Kong & Taiwan' > Click the button [Apply]",
             False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
         host = None
         if cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "gb":
@@ -944,4 +945,4 @@ class TestManualDetected:
         test_element.act(d)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
