@@ -27,6 +27,7 @@ from pages.BugsManual.bug_312 import BUG_312
 from pages.BugsManual.bug_324 import BUG_324
 from pages.BugsManual.bug_334 import BUG_334
 from pages.BugsManual.bug_357 import BUG_357
+from pages.BugsManual.bug_362 import BUG_362
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -897,3 +898,50 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_tool)
+
+    @allure.step("Start test of check selected country in Dropdown [Country & Language]")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_362
+    def test_362_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+        """
+        Check:  The widget of the block "Our spread betting markets" is absent
+                when click on the button [Commodities] or [Shares] on the page "Spread betting"
+        Language: EN - FCA, SCA; AR - SCA
+        License/Country: FCA, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "362",
+            "Click to the dropdown [Regional settings] > Click to the dropdown [Countries] > "
+            "Scroll down to the 'Honk Kong & Taiwan' > Select 'Honk Kong & Taiwan' > Click the button [Apply]",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        host = None
+        if cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "gb":
+            host = CapitalComPageSrc.URL_NEW
+        elif cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "ae":
+            host = CapitalComPageSrc.URL_NEW_EN_AE
+        elif cur_language_country_for_fca_and_sca[0] == "ar" and cur_language_country_for_fca_and_sca[1] == "ae":
+            host = CapitalComPageSrc.URL_NEW_AR_AE
+
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, host, "", cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
+
+        test_element = BUG_362(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
