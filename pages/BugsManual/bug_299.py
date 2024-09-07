@@ -54,7 +54,7 @@ class CheckLoginFacebookModal(BasePage):
     def should_be_fb_modal(self):
         print(f'\n{datetime.now()}   Check if the "Log in to your Facebook account" modal window is opened =>')
         tabs = self.driver.window_handles
-        print(f'\n{datetime.now()}   TABS NUMBER: {len(tabs)}')
+        print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
 
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[len(tabs) - 1])

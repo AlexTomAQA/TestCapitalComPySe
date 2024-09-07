@@ -700,7 +700,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if not test_el.should_be_fb_modal():
-            Common.pytest_fail('Bug # 55!299 in progress')
+            Common.pytest_fail('Bug # 55!299 The modal window "Log in to your Facebook account" is NOT opened')
         Common.save_current_screenshot(d, "AT_55!299 Pass")
 
         # Postconditions
