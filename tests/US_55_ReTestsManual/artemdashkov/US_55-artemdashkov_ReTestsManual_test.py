@@ -49,7 +49,7 @@ class TestManualDetected:
     @pytest.mark.bug_016a
     @allure.step("Start test of button [Add to favourite] on the 'Trading Instrument Page'")
     def test_016a_add_to_favourite_button_on_trading_instrument_page(
-            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             cur_login, cur_password, cur_market_1_rnd_from_5):
         """
         Check:  The trading platform is opened, not the page
@@ -60,7 +60,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "016a",
             "The trading platform is opened, "
@@ -71,31 +71,31 @@ class TestManualDetected:
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = None
         match cur_market_1_rnd_from_5:
             case "Shares":
-                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Forex":
-                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Indices":
-                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Commodities":
-                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Cryptocurrencies":
-                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
 
         test_element = TradePageAddToFavoriteButton(d, cur_item_link, bid)
         test_element.full_test(
-            d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role, cur_item_link, cur_market_1_rnd_from_5)
+            d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role, cur_item_link, cur_market_1_rnd_from_5)
 
     @allure.step("Start test of button [Go to platform] on tooltip 'Long position overnight fee'")
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_016b
     def test_016b_add_to_favourite_button_on_tooltip_long_position_overnight_fee(
-            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             cur_login, cur_password, cur_market_1_rnd_from_5):
         """
         Check:  The trading platform is opened, not the page
@@ -106,7 +106,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "016b",
             "The trading platform is opened, "
@@ -117,34 +117,34 @@ class TestManualDetected:
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
 
         cur_item_link = None
         menu = MenuSection(d, link)
         match cur_market_1_rnd_from_5:
             case "Shares":
-                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Forex":
-                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Indices":
-                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Commodities":
-                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Cryptocurrencies":
-                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
 
         test_element = TradePageAddToFavoriteButton(d, cur_item_link, bid)
         test_element.arrange_1(d, cur_item_link, cur_market_1_rnd_from_5)
 
         cur_item_link = d.current_url
         test_element = PageInstrumentLongPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi_v2(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role, cur_item_link)
+        test_element.full_test_with_tpi_v2(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Go to platform] on tooltip 'Short position overnight fee'")
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_016c
     def test_016c_add_to_favourite_button_on_tooltip_short_position_overnight_fee(
-            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             cur_login, cur_password, cur_market_1_rnd_from_5):
         """
         Check:  The trading platform is opened, not the page of the corresponding trading instrument
@@ -155,7 +155,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "016c",
             "The trading platform is opened, "
@@ -166,34 +166,34 @@ class TestManualDetected:
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
 
         cur_item_link = None
         menu = MenuSection(d, link)
         match cur_market_1_rnd_from_5:
             case "Shares":
-                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Forex":
-                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_forex_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Indices":
-                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_indices_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Commodities":
-                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_commodities_markets_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
             case "Cryptocurrencies":
-                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, link)
+                cur_item_link = menu.open_cryptocurrencies_market_menu(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, link)
 
         test_element = TradePageAddToFavoriteButton(d, cur_item_link, bid)
         test_element.arrange_1(d, cur_item_link, cur_market_1_rnd_from_5)
 
         cur_item_link = d.current_url
         test_element = PageInstrumentShortPositionGoToPlatformButton(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role, cur_item_link)
 
     @allure.step("Start test of button [Try now] on the block 'Why choose Capital.com?'")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_017
     def test_017_try_now_button_on_why_choose_capital_com_block(
-            self, worker_id, d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_3, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_2, cur_role, cur_login, cur_password):
         """
         Check:  Sign up/log in/forms or the transition to the trading platform are
                 not opened after clicking the [Try now] button in "Why choose
@@ -204,7 +204,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_12, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_2_rnd_from_12, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "017",
             "Sign up/log in/forms or the transition to the trading platform are not opened "
@@ -216,15 +216,15 @@ class TestManualDetected:
         page_conditions = Conditions(d, "")
         link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_12,
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
-            d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_3, link
+            d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_2, link
         )
 
         test_element = WhyChooseBlockTryNowButtonInContent(d, cur_item_link, bid)
-        test_element.full_test_with_tpi(d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_3, cur_role, cur_item_link)
+        test_element.full_test_with_tpi(d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_2, cur_role, cur_item_link)
 
     @allure.step("Start test of link [Learn more about us] on the block 'Contents'")
     @pytest.mark.parametrize('cur_language', [""])
@@ -267,7 +267,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('valid_password', ['VALID_password44!VALID_password44!VALID_password44!'])
     @pytest.mark.bug_045a
     def test_045a_email_field_sign_up_form(
-            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             cur_login, cur_password, invalid_login, valid_password):
         """
         Check: Field [email] in Sign up form
@@ -280,7 +280,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "045a",
             "Testing field [email] in Sign up form",
@@ -288,9 +288,9 @@ class TestManualDetected:
         )
 
         d.refresh()
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         host = None
-        if cur_country_1_rnd_from_3 == "au":
+        if cur_country_1_rnd_from_2 == "au":
             host = CapitalComPageSrc.URL_NEW_EN_AU
             page_conditions = NewConditions_v1(d, "")
         else:
@@ -300,11 +300,11 @@ class TestManualDetected:
         # page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, host, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
 
         test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
         test_element.full_test(
-            d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_3, cur_role,
+            d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
             cur_item_link, invalid_login, valid_password)
 
     @allure.step("Start test of voted function in 'What is your sentiment...' block")
@@ -312,7 +312,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_074
     def test_074_voted_function_in_sentiment_block(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language, cur_country_1_rnd_from_2, cur_role, cur_login, cur_password):
         """
         Check:  Not possible to vote for another trading instrument
                 in the block "What is your sentiment..."  if on another page voted for another instrument
@@ -323,7 +323,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country_1_rnd_from_2, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "074",
             "Not possible to vote for another trading instrument "
@@ -334,12 +334,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_2,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         menu_link = page_menu.open_news_and_analysis_market_analysis_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country_1_rnd_from_2, cur_item_link)
         test_element = WhatIsYourSentimentWidget(d, menu_link, bid)
         test_element.arrange(d, menu_link)
 

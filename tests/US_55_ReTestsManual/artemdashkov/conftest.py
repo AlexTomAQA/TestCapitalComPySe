@@ -131,11 +131,11 @@ def cur_search_query_2_rnd_from_10(request):
     scope="function",
     params=random.sample([
         "de",
-        "au",
+        # "au",
         "ua"
     ], 1)
 )
-def cur_country_1_rnd_from_3(request):
+def cur_country_1_rnd_from_2(request):
     """Country sorting parameters"""
     print(f"\n\n\nCurrent country - {request.param}")
     return request.param
