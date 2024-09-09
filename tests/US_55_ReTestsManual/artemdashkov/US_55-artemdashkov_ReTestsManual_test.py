@@ -34,7 +34,7 @@ from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
-                            from_trading_menu_open_platforms,
+                            from_trading_menu_open_all_platforms,
                             from_markets_menu_open_forex,
                             from_trading_menu_open_spread_betting)
 from pages.conditions_new import NewConditions
@@ -691,8 +691,8 @@ class TestManualDetected:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
-        page_menu = from_trading_menu_open_platforms.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_trading_platforms(
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_trading_menu_open_all_platforms(
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_265(d, cur_item_link, bid)
