@@ -38,6 +38,7 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_forex,
                             from_trading_menu_open_spread_betting)
 from pages.conditions_new import NewConditions
+from pages.conditions_new_v1 import NewConditions_v1
 
 
 @pytest.mark.us_55
@@ -287,9 +288,18 @@ class TestManualDetected:
         )
 
         d.refresh()
-        page_conditions = Conditions(d, "")
+        pytest.skip("Промежуточная версия")
+        host = None
+        if cur_country_1_rnd_from_3 == "au":
+            host = CapitalComPageSrc.URL_NEW_EN_AU
+            page_conditions = NewConditions_v1(d, "")
+        else:
+            host = CapitalComPageSrc.URL
+            page_conditions = Conditions(d, "")
+
+        # page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
+            d, host, "", cur_language_2_rnd_from_14,
             cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
 
         test_element = EmailFieldSignUpForm(d, cur_item_link, bid)

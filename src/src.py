@@ -3,6 +3,7 @@ class CapitalComPageSrc:
     URL_NEW = 'https://capital.com/en-gb'
     URL_NEW_EN_AE = 'https://capital.com/en-ae'
     URL_NEW_AR_AE = 'https://capital.com/ar-ae'
+    URL_NEW_EN_AU = 'https://capital.com/en-au'
 
 
 class Markets:
