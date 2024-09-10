@@ -8,10 +8,11 @@ import time
 from datetime import datetime
 
 import pytest
-import allure
+
+from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, NoSuchWindowException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 from pages.base_page import BasePage
 
@@ -25,21 +26,18 @@ CAPITAL_MSG_EL = ("css selector", "#content span")
 
 class CheckLoginFacebookModal(BasePage):
 
-    @allure.step("Click Login button")
     def click_login_button(self):
         print(f'\n{datetime.now()}   Click the [Log In] button in the header =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(LOGIN_BTN_LOC))
         el.click()
         print(f'{datetime.now()}   => Done, the Login form is opened')
 
-    @allure.step("Click SignUp button")
     def click_signup_button(self):
         print(f'\n{datetime.now()}   Click the [Sign Up] button in the header =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(SIGNUP_BTN_LOC))
         el.click()
         print(f'{datetime.now()}   => Done, the Sign up form is opened')
 
-    @allure.step("Click the Facebook button")
     def click_fb_btn(self):
         print(f'\n{datetime.now()}   Click the Facebook button =>')
         el = Wait(self.driver, 2).until(EC.element_to_be_clickable(FB_BTN_LOC))
@@ -48,7 +46,8 @@ class CheckLoginFacebookModal(BasePage):
             print(f'{datetime.now()}   => The button is not clicked, trying again')
             el.click()
             if el.is_enabled():
-                pytest.fail("The FB button is NOT clicked")
+                print(f'{datetime.now()}   => The button is not clicked 2')
+                pytest.fail("The FB button is NOT clicked after 2nd attempt")
         print(f'{datetime.now()}   => Done, the button is clicked')
 
     def should_be_fb_modal(self):
@@ -65,6 +64,7 @@ class CheckLoginFacebookModal(BasePage):
             if "Facebook" in self.driver.find_element(*FB_LOGO).text:
                 if "Capital.com" in self.driver.find_element(*CAPITAL_MSG_EL).text:
                     print(f'{datetime.now()}   => The modal window is opened')
+                    Common.save_current_screenshot(self.driver, "FB modal")
                     self.driver.close()
                     self.driver.switch_to.window(tabs[0])
                     return True
