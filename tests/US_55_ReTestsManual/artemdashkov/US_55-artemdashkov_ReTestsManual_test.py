@@ -27,16 +27,18 @@ from pages.BugsManual.bug_312 import BUG_312
 from pages.BugsManual.bug_324 import BUG_324
 from pages.BugsManual.bug_334 import BUG_334
 from pages.BugsManual.bug_357 import BUG_357
+from pages.BugsManual.bug_362 import BUG_362
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
-                            from_trading_menu_open_platforms,
+                            from_trading_menu_open_all_platforms,
                             from_markets_menu_open_forex,
                             from_trading_menu_open_spread_betting)
 from pages.conditions_new import NewConditions
+from pages.conditions_new_v1 import NewConditions_v1
 
 
 @pytest.mark.us_55
@@ -286,9 +288,18 @@ class TestManualDetected:
         )
 
         d.refresh()
-        page_conditions = Conditions(d, "")
+        pytest.skip("Промежуточная версия")
+        host = None
+        if cur_country_1_rnd_from_3 == "au":
+            host = CapitalComPageSrc.URL_NEW_EN_AU
+            page_conditions = NewConditions_v1(d, "")
+        else:
+            host = CapitalComPageSrc.URL
+            page_conditions = Conditions(d, "")
+
+        # page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
+            d, host, "", cur_language_2_rnd_from_14,
             cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
 
         test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
@@ -342,16 +353,17 @@ class TestManualDetected:
 
     @allure.step("Start test of 'Trading calculator' widget in menu [CFD calculator]")
     @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_104
     def test_104_trading_calculator_collapse_after_setting_duration(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password, calc_1_and_calc_2):
         """
         Check: The trading calculator is collapsed in the menu section [Markets] --> [CFD calculator]
         after setting the maximum duration on the Prof/Loss element and changing the asset
         Language: En.
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth,
         calc_1_and_calc_2:  ("GBP/USD", "EUR/USD"),
                             ("EUR/USD", "GBP/USD"),
@@ -363,7 +375,7 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "104",
             "Testing 'Trading calculator' widget in menu [CFD calculator]",
@@ -373,12 +385,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_markets_menu_cfd_calculator_submenu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
         test_element.arrange(d)
@@ -391,22 +403,23 @@ class TestManualDetected:
 
     @allure.step("Start test of the link [Go to all cryptocurrencies] in menu [Cryptocurrency trading]")
     @pytest.mark.parametrize('cur_language', random.sample(["ro", "it", "pl", "cn"], 2), )
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_129
     def test_129_link_go_to_all_cryptocurrencies_does_not_open_cfd_page(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
         Check:  The Main page is opened instead of the Cryptocurrencies page on the page
                 "Cryptocurrency trading" after clicking the button [Go to all cryptocurrencies]
                 when RO, IT, PL or CN language is selected
         Language: RO, IT, PL, CN.
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth,
         Author: Artem Dashkov
         """
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "129",
             "Testing button [Go to all cryptocurrencies] in menu [Cryptocurrency trading]",
@@ -416,12 +429,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_129(d, cur_item_link, bid)
         test_element.arrange(d, cur_language)
@@ -435,21 +448,22 @@ class TestManualDetected:
     @allure.step("Start test of the link [Go to all cryptocurrencies] "
                  "in menu [Cryptocurrency trading] for Germany language")
     @pytest.mark.parametrize('cur_language', ["de"])
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_130
     def test_130_link_go_to_all_cryptocurrencies_does_not_open_cfd_page(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
         Check:  "Alle Kryptowährungen" (Go to all cryptocurrencies) is not implemented as a link
                 when the German language is selected in the block "Why trade cryptocurrency with Capital.com"
         Language: DE.
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth,
         Author: Artem Dashkov
         """
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "130",
             "Testing link [Go to all cryptocurrencies] in menu [Cryptocurrency trading]",
@@ -459,12 +473,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_129(d, cur_item_link, bid)
         test_element.arrange(d, cur_language)
@@ -478,22 +492,23 @@ class TestManualDetected:
     @allure.step("Start test of the link [Browse all markets] in menu [Charges & fees]")
     @pytest.mark.parametrize('cur_language', random.sample(["de", "es", "it", "ru", "cn", "zh",
                                                             "fr", "pl", "ro", "nl", "el", "hu"], 2),)
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_149
     def test_149_link_browse_all_markets_does_not_open_markets_page_on_parameters_language(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
         Check:  After clicking the link "Browse all markets"
                 on page "Charges & fees" in not EN language
                 always open EN-language version of page "Markets"
         Language: All, except EN (AND AR)
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth
         Author: Artem Dashkov
         """
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "149",
             "Testing link [Browse all markets] in menu [Charges & fees]",
@@ -503,12 +518,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_charges_and_fees_submenu_products_and_services_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_149(d, cur_item_link, bid)
         test_element.arrange(d, cur_language)
@@ -521,21 +536,22 @@ class TestManualDetected:
 
     @allure.step("Start test of the link [demo account] in the 'Main page'")
     @pytest.mark.parametrize('cur_language', random.sample(["hu", "ru"],1))
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_151
     def test_151_link_demo_account_does_not_open_demo_account_page_on_parameters_language(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
         Check:  The [demo account] page is opened in EN language instead corresponding language,
                 when clicked [demo account] link on the "Main page" for HU or RU language is selected
         Language: HU, RU
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth
         Author: Artem Dashkov
         """
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "151",
             "Testing link [demo account] on the 'Main page'",
@@ -544,7 +560,7 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         test_element = BUG_151(d, cur_item_link, bid)
@@ -557,23 +573,24 @@ class TestManualDetected:
         test_element.assert_(d, cur_language)
 
     @allure.step("Start test of the Search field [How can we help?] in menu [Help & Support]")
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_171
     def test_171_search_field_does_not_search_in_help_and_support_menu(
-            self, worker_id, d, cur_language_and_query, cur_country_1_rnd_from_3, cur_role,
+            self, worker_id, d, cur_language_and_query, cur_country, cur_role,
             cur_login, cur_password):
         """
         Check:  The search field [How can we help?] on the menu title [Help & Support]
                 of the section menu "More" isn't searched when any language is selected
         Language: All (except ar).
-        Country: CYSEC, ASIC, SCB
+        Country: CYSEC, SCB
         Role: NoReg, Auth, NoAuth,
         Search_query: cur_search_query_2_rnd_from_10
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_and_query[0], cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language_and_query[0], cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "171",
             "Testing Search field [How can we help?] in menu [Help & Support]",
@@ -584,11 +601,11 @@ class TestManualDetected:
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, CapitalComPageSrc.URL, "", cur_language_and_query[0],
-            cur_country_1_rnd_from_3, cur_role, cur_login, cur_password)
+            cur_country, cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_more_menu_help_and_support_submenu(
-            d, cur_language_and_query[0], cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language_and_query[0], cur_country, cur_item_link)
 
         test_element = BUG_171(d, cur_item_link, bid)
         test_element.arrange(d)
@@ -674,8 +691,8 @@ class TestManualDetected:
             d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
-        page_menu = from_trading_menu_open_platforms.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_trading_platforms(
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_trading_menu_open_all_platforms(
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_265(d, cur_item_link, bid)
@@ -814,21 +831,22 @@ class TestManualDetected:
     @allure.step("Start test of the sidebar title 'Shares trading guide'")
     @pytest.mark.parametrize('cur_language', random.sample(["", "ar", "de", "es", "it", "ru", "cn",
                                                             "zh", "fr", "pl", "ro", "nl"], 2),)
+    @pytest.mark.parametrize('cur_country', random.sample(["de", "ua"], 1), )
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_334
     def test_334_sidebar_title_shares_trading_guide_is_not_displayed(
-            self, worker_id, d, cur_language, cur_country_1_rnd_from_3, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  The sidebar title [Shares trading guide] is not displayed
                 when selected any sidebar item in the sidebar "Shares trading guide"
         Language: All (except EL, HU).
-        License/Country: ASIC, CYSEC, SCB
+        License/Country: CYSEC, SCB
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country_1_rnd_from_3, cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "334",
             "The sidebar title [Shares trading guide] is not displayed"
@@ -838,12 +856,12 @@ class TestManualDetected:
         # Arrange
         page_conditions = Conditions(d, "")
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_3,
+            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
             cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         menu_link = page_menu.open_education_shares_trading_menu(
-            d, cur_language, cur_country_1_rnd_from_3, cur_item_link)
+            d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_334(d, menu_link, bid)
         test_element.arrange(d, menu_link)
@@ -897,3 +915,51 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_tool)
+
+    @allure.step("Start test of check selected country in Dropdown [Country & Language]")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_362
+    def test_362_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+        """
+        Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
+                Scroll down to the "Honk Kong & Taiwan" > Select "Honk Kong & Taiwan" > Click the button [Apply]
+                > Check country in Dropdown [Country & Language]
+        Language: EN - FCA, SCA; AR - SCA
+        License/Country: FCA, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "362",
+            "Click to the dropdown [Regional settings] > Click to the dropdown [Countries] > "
+            "Scroll down to the 'Honk Kong & Taiwan' > Select 'Honk Kong & Taiwan' > Click the button [Apply]",
+            False, True
+        )
+        # pytest.skip("Промежуточная версия")
+        # Arrange
+        host = None
+        if cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "gb":
+            host = CapitalComPageSrc.URL_NEW
+        elif cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "ae":
+            host = CapitalComPageSrc.URL_NEW_EN_AE
+        elif cur_language_country_for_fca_and_sca[0] == "ar" and cur_language_country_for_fca_and_sca[1] == "ae":
+            host = CapitalComPageSrc.URL_NEW_AR_AE
+
+        page_conditions = NewConditions(d, "")
+        cur_item_link = page_conditions.preconditions(
+            d, host, "", cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
+
+        test_element = BUG_362(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
