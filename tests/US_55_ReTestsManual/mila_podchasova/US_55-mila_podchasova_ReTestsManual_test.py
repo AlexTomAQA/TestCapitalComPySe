@@ -14,6 +14,7 @@ from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
 from pages.BugsManual.bug_285 import ButtonMyAccount
 from pages.BugsManual.bug_326 import Bug326
+from pages.BugsManual.bug_350 import Bug350
 from pages.Elements.AssertClass import AssertClass
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
@@ -264,3 +265,55 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!350 | Error message is displayed when clicking the link [How-to guides] '
+        'in block “Looking for more?” on the page [Trading courses]')
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_350
+    def test_350(self, worker_id, d, cur_language, cur_country, cur_role,
+                  cur_login, cur_password):
+        """
+         Check: Error message is displayed when clicking the link [How-to guides]
+         in block “Looking for more?” on the page [Trading courses]
+         Language: All.
+         License: CYSEC, SCB.
+         Role: NoReg | NoAuth | Auth
+         Author: podchasova11
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "350",
+            'Error message is displayed when clicking the link [How-to guides] '
+            'in block “Looking for more?” on the page [Trading courses] ',
+            False,
+            False
+        )
+
+        # Arrange
+        page_conditions = Conditions(d)
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL, "",
+            cur_language, cur_country, cur_role, cur_login, cur_password
+        )
+
+        page_header_menu = MenuSection(d, link)
+        page_header_menu.menu_education_move_focus(d, cur_language, cur_country)
+        page_header_menu.sub_menu_trading_courses_move_focus_click(d, cur_language)
+
+        test_el = Bug350(d, link, bid)
+
+        # Act
+        test_el.click_how_to_guides_link()
+
+        # Assert
+        if not test_el.should_be_how_to_guides_page():
+            Common.pytest_fail('Bug # 55!350 Error message is displayed after clicking the link [How-to guides]')
+        Common.save_current_screenshot(d, "AT_55!350 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
