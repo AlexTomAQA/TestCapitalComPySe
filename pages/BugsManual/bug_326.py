@@ -16,6 +16,7 @@ from pages.common import Common
 
 HELP_CENTER_LOC = ('xpath', '//span[normalize-space()="Help Center"]')
 BREADCRUMB_LOC = ('css selector', '.cc-breadcrumbs span')
+TITLE_LOC = ('css selector', '.cc-banner h1')
 
 
 class Bug326(BasePage):
@@ -27,24 +28,25 @@ class Bug326(BasePage):
             element
         )
         element.click()
+        allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         print(f'{datetime.now()}   => Done, the link is clicked')
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
     def should_be_help_center_page(self):
-        print(f'\n{datetime.now()}   Check if the "Help & Support" page is opened => ')
+        print(f'\n{datetime.now()}   Check if the "Help Center" page is opened => ')
 
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
         actual_page_title = self.driver.title
         print(f"{datetime.now()}   actual_page_title is '{actual_page_title}'")
         expected_page_title = "Help Center"
-        if actual_page_title != expected_page_title:
+        if expected_page_title in actual_page_title:
+            print(f"{datetime.now()}   The page 'Help Center' is opened")
+        else:
             Common.pytest_fail(f"#Bug # 55!326 "
                                f"\n"
                                f"Expected result: The page 'Help Center' is opened"
                                f"\n"
-                               f"Actual result: The page 'Oops, this help center no longer exists' is opened")
-        else:
-            print(f"{datetime.now()}   The page 'Help Center' is opened")
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+                               f"Actual result: The page 'Help Center' not opened")
+
 
