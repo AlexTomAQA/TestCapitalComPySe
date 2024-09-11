@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/08/31 16:09 GMT+3
+@Time    : 2024/09/05 20:47 GMT+3
 @Author  : podchasova11
 """
 from datetime import datetime
@@ -10,19 +10,16 @@ import allure
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
 
 from pages.common import Common
 
-HELP_CENTER_LOC = ('xpath', '//span[normalize-space()="Help Center"]')
-BREADCRUMB_LOC = ('css selector', '.cc-breadcrumbs span')
-TITLE_LOC = ('css selector', '.cc-banner h1')
+HOW_TO_GUIDES_LOC = ('css selector', 'div.grid.gSm > div:nth-child(2) > div > div > a')
 
 
-class Bug326(BasePage):
-    def click_help_center_link(self):
-        print(f'\n{datetime.now()}   Click the [Help Center] link =>')
-        element = Wait(self.driver, 2).until(EC.element_to_be_clickable(HELP_CENTER_LOC))
+class Bug350(BasePage):
+    def click_how_to_guides_link(self):
+        print(f'\n{datetime.now()}   Click the [How-to guides] link =>')
+        element = Wait(self.driver, 2).until(EC.element_to_be_clickable(HOW_TO_GUIDES_LOC))
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             element
@@ -32,21 +29,19 @@ class Bug326(BasePage):
         print(f'{datetime.now()}   => Done, the link is clicked')
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
-    def should_be_help_center_page(self):
-        print(f'\n{datetime.now()}   Check if the "Help Center" page is opened => ')
-
+    def should_be_how_to_guides_page(self):
+        print(f'\n{datetime.now()}   Check that Corresponding web page with resource is opened => ')
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
         actual_page_title = self.driver.title
         print(f"{datetime.now()}   actual_page_title is '{actual_page_title}'")
-        expected_page_title = "Help Center"
-        if expected_page_title in actual_page_title:
-            print(f"{datetime.now()}   The page 'Help Center' is opened")
+        expected_page_title_contain = "Help Center"
+        if expected_page_title_contain in actual_page_title:
+            print(f"{datetime.now()}   The Corresponding web page with resource  is opened")
         else:
-            Common.pytest_fail(f"#Bug # 55!326 "
+            Common.pytest_fail(f"#Bug # 55!350 "
                                f"\n"
-                               f"Expected result: The page 'Help Center' is opened"
+                               f"Expected result: The Corresponding web page with resource  is opened"
                                f"\n"
-                               f"Actual result: The page 'Help Center' not opened")
-
+                               f"Actual result: Error message is displayed after clicking the link [How-to guides]")
 
