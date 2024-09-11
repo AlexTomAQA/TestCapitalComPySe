@@ -3,8 +3,6 @@
 @Time    : 2024/07/30
 @Author  : Alexander Tomelo
 """
-from datetime import datetime
-
 import allure
 
 from pages.Menu.New.menu_new_base import MenuBase
