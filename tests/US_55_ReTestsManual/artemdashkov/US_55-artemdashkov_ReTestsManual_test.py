@@ -8,6 +8,7 @@ import allure
 import pytest
 import random
 from datetime import datetime
+from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -942,13 +943,8 @@ class TestManualDetected:
         )
         # pytest.skip("Промежуточная версия")
         # Arrange
-        host = None
-        if cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "gb":
-            host = CapitalComPageSrc.URL_NEW
-        elif cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "ae":
-            host = CapitalComPageSrc.URL_NEW_EN_AE
-        elif cur_language_country_for_fca_and_sca[0] == "ar" and cur_language_country_for_fca_and_sca[1] == "ae":
-            host = CapitalComPageSrc.URL_NEW_AR_AE
+        host = Common().check_language_and_country_and_define_host(cur_language_country_for_fca_and_sca[0],
+                                                                   cur_language_country_for_fca_and_sca[1])
 
         page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
