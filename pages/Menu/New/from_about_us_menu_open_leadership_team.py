@@ -10,6 +10,7 @@ from pages.Menu.New.menu_new_locators import AboutUsMenuNew
 
 SUBMENU_FCA_LEADERSHIP_TEAM = ("css selector", "[data-type='nav_id702']")
 SUBMENU_SCA_LEADERSHIP_TEAM = ("css selector", "[data-type='nav_id811']")
+SUBMENU_ASIC_LEADERSHIP_TEAM = ("css selector", "[data-type='nav_id811']")
 
 
 class MenuNew(MenuBase):
@@ -28,6 +29,9 @@ class MenuNew(MenuBase):
         if cur_country == 'ae':
             menu_locator = AboutUsMenuNew.MENU_SCA_ABOUT_US
             submenu_locator = SUBMENU_SCA_LEADERSHIP_TEAM
+        if cur_country == 'au':
+            menu_locator = AboutUsMenuNew.MENU_ASIC_ABOUT_US
+            submenu_locator = SUBMENU_ASIC_LEADERSHIP_TEAM
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
