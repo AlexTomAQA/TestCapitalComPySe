@@ -83,17 +83,3 @@ def cur_language_2_rnd_from_7(request):
 
 def title_instrument(request):
     print(f"\n\n\ntitle instrument - {request.param}")
-
-
-@pytest.fixture(
-    scope='function',
-    params=random.choice([
-        'Ferrari',
-        'Enel',
-        'Unicredit',
-        'ENI',
-        'indices markets'
-    ])
-)
-def random_link(request):
-    print(f"\n\n\nrandom link - {request.param}")
