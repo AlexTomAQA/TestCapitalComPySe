@@ -946,7 +946,13 @@ class TestManualDetected:
         host = Common().check_language_and_country_and_define_host(cur_language_country_for_fca_and_sca[0],
                                                                    cur_language_country_for_fca_and_sca[1])
 
-        page_conditions = NewConditions(d, "")
+        page_conditions = Common().check_language_and_country_and_define_conditions(
+                                                                    cur_language_country_for_fca_and_sca[0],
+                                                                    cur_language_country_for_fca_and_sca[1],
+                                                                    Conditions(d, ""),
+                                                                    NewConditions(d, ""))
+
+        # page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, host, "", cur_language_country_for_fca_and_sca[0],
             cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)

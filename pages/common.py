@@ -253,3 +253,12 @@ class Common:
 		else:
 			host = CapitalComPageSrc.URL
 		return host
+
+	@staticmethod
+	def check_language_and_country_and_define_conditions(cur_language, cur_country, conditions, newConditions):
+		if cur_language == "" and cur_country in ["gb", "au", "ae"]:
+			return newConditions
+		elif cur_language == "ar" and cur_country == "ae":
+			return newConditions
+		else:
+			return conditions
