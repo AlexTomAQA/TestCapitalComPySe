@@ -5,6 +5,7 @@
 """
 
 import random
+import time
 from datetime import datetime
 import allure
 from selenium.webdriver.common.by import By
@@ -62,18 +63,23 @@ class IndicesItaly40(BasePage):
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
         print(f"\n{datetime.now()}   3.Assert")
-        expected_license = 'United Arab Emirates'
-        actual_license = self.driver.find_element(By.CSS_SELECTOR,
-                                                  'div:nth-child(1) > span.localization_btn__9zIyt').text
-        if expected_license == actual_license:
-            print(f"{datetime.now()}   The same license, SCA (AE country), remains after clicking any of 5 links in "
-                  f"the block “Italy 40”")
+        expected_country = 'United Arab Emirates'
+        actual = self.driver.find_element(By.CSS_SELECTOR,
+                                          'div:nth-child(1) > span.localization_btn__9zIyt')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            actual
+        )
+        time.sleep(2)
+        actual_country = actual.text
+
+        if expected_country == actual_country:
+            print(f"{datetime.now()}   The page with the selected country ({expected_country}) is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         else:
             Common.pytest_fail(f"#Bug # 55!360 "
                                f"\n"
-                               f"Expected result: The same license, SCA (AE country), remains after clicking any of 5 "
-                               f"links in the block “Italy 40”"
+                               f"Expected result: The page with the selected country ({expected_country}) is opened"
                                f"\n"
-                               f"Actual result: Web pages with URLs of the FCA license are opened after clicking any of "
-                               f"5 links in the block “Italy 40”")
+                               f"Actual result: The page with a country ({actual_country}) other than the selected one "
+                               f"({expected_country}) is opened")
