@@ -950,7 +950,7 @@ class TestManualDetected:
                                                                     cur_language_country_for_fca_and_sca[0],
                                                                     cur_language_country_for_fca_and_sca[1],
                                                                     Conditions(d, ""),
-                                                                    NewConditions(d, ""))
+                                                                    NewConditions_v1(d, ""))
 
         # page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(

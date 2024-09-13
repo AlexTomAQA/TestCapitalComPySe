@@ -145,7 +145,8 @@ def cur_country_1_rnd_from_2(request):
     params=[
         ["", "gb"],
         ["", "ae"],
-        ["ar", "ae"]
+        ["ar", "ae"],
+        ["", "au"]
     ]
 )
 def cur_language_country_for_fca_and_sca(request):
