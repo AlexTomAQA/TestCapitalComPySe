@@ -17,7 +17,6 @@ from pages.conditions_new import NewConditions
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
-from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
@@ -26,7 +25,6 @@ from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
-from pages.BugsManual.bug_327 import Bug327
 from pages.BugsManual.bug_330 import Bug330
 from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
@@ -141,62 +139,6 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         login_form.close_login_form()
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
-
-    @allure.step("Start retest manual TC_55!054 The Sign-up/Login form or the trading platform page "
-                 "are not opened after clicking the [Try now] button on the 'Corporate Accounts' page")
-    @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['au'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.bug_054
-    def test_054(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        """
-         Check: The Sign-up/Login form or the trading platform page are not opened
-                after clicking the [Try now] button on the 'Corporate Accounts' page
-         Language: EN.
-         License: ASIC.
-         Author: Sergey Aiidzhanov
-         """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "054",
-            "The Sign-up/Login form or the trading platform page are not opened "
-            "after clicking the [Try now] button on the 'Corporate Accounts' page"
-        )
-        pytest.skip('Deprecated')
-        # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
-
-        page_header_menu = MenuSection(d, link)
-        corp_acc_page = CorporateAccountsPage(d, link, bid)
-        signup_login = SignupLogin(d, link, bid)
-        trading_platform = TradingPlatform(d, link, bid)
-
-        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
-        corp_acc_page.click_corp_acc_menu_item()
-
-        # Act
-        corp_acc_page.click_try_now_btn()
-
-        # Assert
-        match cur_role:
-            case "NoReg":
-                if not signup_login.should_be_login_form():
-                    Common.pytest_fail("Bug # 55!054   The Login form is NOT displayed")
-            case "NoAuth":
-                if not signup_login.should_be_signup_form(cur_language):
-                    Common.pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
-            case "Auth":
-                if not trading_platform.should_be_trading_platform_page(d, link):
-                    Common.pytest_fail("Bug # 55!054   The Trading platform page is NOT opened")
-        Common.save_current_screenshot(d, "AT_55!054 Pass")
-
-        # Postconditions
-        print(f'\n{datetime.now()}   Applying postconditions...')
-        signup_login.close_signup_form()
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!076 Login form is opened instead of Sign-up form "
@@ -807,58 +749,6 @@ class TestManualDetectedBugs:
         if not test_el.should_be_corresponding_page():
             Common.pytest_fail('Bug # 55!307 The corresponding page is NOT opened')
         Common.save_current_screenshot(d, "AT_55!307 Pass")
-
-        # Postconditions
-        print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
-
-    @allure.step(
-        'Start retest manual TC_55!327 Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
-        'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
-        'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable')
-    @pytest.mark.parametrize('cur_language', ['ar'])
-    @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])   # 'Auth', 'NoAuth', 'NoReg'
-    @pytest.mark.bug_327
-    def test_327(self, worker_id, d, cur_language, cur_country, cur_role,
-                 cur_login, cur_password):
-        """
-         Check: Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web)
-         in the block "المنصة الإلكترونية عبر الويب" (Web platform)
-         on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable
-         Language: AR.
-         License: SCA.
-         Author: Sergey Aiidzhanov
-         """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "327",
-            'Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
-            'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
-            'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable',
-            False,
-            False
-        )
-        pytest.skip('In progress')
-        # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
-
-        test_el = Bug327(d, link, bid)
-        test_el.open_cfd_trading_page(d, cur_language, cur_country, link)
-
-        # Act
-        test_el.hover_over_trade_cfds_button()
-
-        # Assert
-        # if not test_el.:
-        #     Common.pytest_fail('Bug # 55!327 ')
-        # Common.save_current_screenshot(d, "AT_55!327 Pass")
-        Common.pytest_fail('Bug # 55!327 ')
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

@@ -10,6 +10,7 @@ from pages.Menu.New.menu_new_locators import MarketsMenuNew
 
 SUBMENU_FCA_MARKET_ANALYSIS = ("css selector", "[data-type='nav_id771']")
 SUBMENU_SCA_MARKET_ANALYSIS = ("css selector", "[data-type='nav_id869']")
+SUBMENU_ASIC_MARKET_ANALYSIS = ("css selector", "[data-type='nav_id1268']")
 
 
 class MenuNew(MenuBase):
@@ -28,6 +29,9 @@ class MenuNew(MenuBase):
         if cur_country == 'ae':
             menu_locator = MarketsMenuNew.MENU_SCA_MARKETS
             submenu_locator = SUBMENU_SCA_MARKET_ANALYSIS
+        if cur_country == 'au':
+            menu_locator = MarketsMenuNew.MENU_ASIC_MARKETS
+            submenu_locator = SUBMENU_ASIC_MARKET_ANALYSIS
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)

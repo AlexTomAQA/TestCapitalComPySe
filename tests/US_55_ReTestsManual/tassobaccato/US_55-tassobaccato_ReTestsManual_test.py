@@ -353,13 +353,12 @@ class TestManualDetectedBugs:
                         test_element.assert_tpi(d, title_instrument)
 
     @allure.step('Start retest manual AT_55!360 that the same license remains after clicking any of 5 links in the block'
-                 ' “Italy 40” on the page “Italy 40” when SCA license and EN language is selected')
+        ' “Italy 40” on the page “Italy 40” when SCA license and EN language is selected')
     @pytest.mark.parametrize('cur_language', ['en'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('random_link', random.choice)
     @pytest.mark.bug_360
-    def test_360(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, random_link):
+    def test_360(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Web pages with URLs of the FCA license are opened after clicking any of 5 links in the block “Italy 40”
             on the page “Italy 40” when SCA license and EN language is selected.
@@ -374,7 +373,6 @@ class TestManualDetectedBugs:
             "360", 'The same license, SCA (AE country), remains after clicking any of 5 links in the block'
                    ' “Italy 40”'
         )
-        pass
 
         page_conditions = NewConditions(d, "")
         link = page_conditions.preconditions(
@@ -385,3 +383,6 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_indices(d, cur_language, cur_country, link)
 
         test_element = IndicesItaly40(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link, link)
+        test_element.element_click(d, link)
+        test_element.assert_()
