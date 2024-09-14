@@ -16,7 +16,7 @@ LINK_COUNTRY_FOOTER_LOCATOR = (By.XPATH, '(//span[@class="localization_btn__9zIy
 FIELD_COUNTRY_IN_REGIONAL_SETTINGS = (By.XPATH, '(//div[@class="select_selected__8wH_E select_gI__pn40f"])[1]')
 
 HONK_KONG_TAIWAN_LOCATOR = (By.CSS_SELECTOR, '[data-type="nav_country_honk_kong_&_taiwan"]')
-APPLY_IN_REGIONAL_SETTINGS_LOCATOR = (By.CSS_SELECTOR, '.grid_gXs__xir6K  button.button_primary__raeTg')
+APPLY_IN_REGIONAL_SETTINGS_LOCATOR = (By.CSS_SELECTOR, '.grid_gXs__xir6K > button.button_primary__raeTg')
 REGIONAL_SETTINGS_FRAME_LOCATOR = (By.CSS_SELECTOR, '.box_box__5Jmfa.box_xl__ox1gr.modal_modal__Y9d1p')
 
 COUNTRY_IN_DROP_DOWN_LIST = (By.ID, 'selectedCountryName')
