@@ -1,0 +1,100 @@
+
+
+
+Current language - ro
+
+
+
+Current country - ua
+{'width': 1920, 'height': 1080}
+
+2024-09-13 22:47:47.347001   worker_id = master
+
+2024-09-13 22:47:47.347016   0. Allure grouping for US_55
+
+2024-09-13 22:47:49.412805   START PRECONDITIONS =>
+
+2024-09-13 22:47:49.412856   => URL after prev. preconditions - https://capital.com/
+2024-09-13 22:47:49.412871   => flag_of_bug - True
+2024-09-13 22:47:49.412890   => Current URL - https://capital.com/ro
+2024-09-13 22:47:49.420464   Current page URL = https://capital.com/ro
+2024-09-13 22:47:49.422951   self.link = https://capital.com/
+2024-09-13 22:47:49.422966   driver.get(https://capital.com/) =>
+2024-09-13 22:47:51.805333   => Loaded page https://capital.com/
+
+2024-09-13 22:47:51.812939   => Windows size: {'width': 1920, 'height': 1080}
+2024-09-13 22:47:51.814494   Set windows position at (0, 0) =>
+2024-09-13 22:47:51.816357   Set resolution 1920 * 1080 =>
+2024-09-13 22:47:51.818107   => Windows size is set to {'width': 1920, 'height': 1080}
+
+2024-09-13 22:47:56.856049   Капчи нет. Идем дальше
+
+2024-09-13 22:47:56.856140   Работа с куками =>
+
+2024-09-13 22:47:56.856153   => не требуется
+
+2024-09-13 22:48:01.896650   Капчи нет. Идем дальше
+
+2024-09-13 22:48:01.896742   Prev. country - 'ua'
+2024-09-13 22:48:01.896756   Cur. country - 'ua'
+2024-09-13 22:48:01.896766   => Country set to 'ua'
+
+2024-09-13 22:48:06.898916   Капчи нет. Идем дальше
+
+2024-09-13 22:48:06.899003   Prev. language - 'ro'
+2024-09-13 22:48:06.899015   Cur. language - 'ro'
+2024-09-13 22:48:06.899025   => Language is set to 'ro'
+
+2024-09-13 22:48:11.932449   Капчи нет. Идем дальше
+
+2024-09-13 22:48:11.932540   Prev. role - 'NoReg'
+2024-09-13 22:48:11.932553   Cur. role - 'NoReg'
+2024-09-13 22:48:11.932563   => The 'NoReg' role is set
+
+2024-09-13 22:48:11.935583   => Current URL - https://capital.com/
+
+2024-09-13 22:48:11.935610   => THE END PRECONDITIONS
+
+2024-09-13 22:48:11.935882   1. Arrange
+2024-09-13 22:48:11.935899   IS [Sign up] button present on this page? =>
+2024-09-13 22:48:11.943833   => [Sign up] button present on this page!
+
+2024-09-13 22:48:11.952651   IS [Sign up] button visible on this page? =>
+2024-09-13 22:48:11.965902   => [Sign up] button is visible on this page!
+
+
+2024-09-13 22:48:11.966117   2. Act_v0
+2024-09-13 22:48:11.966133   IS [Sign up] clickable on the page? =>
+2024-09-13 22:48:11.982358   => [Sign up] is clickable on the page!
+
+
+2024-09-13 22:48:11.982399   Start Click button [Sign up] =>
+2024-09-13 22:48:12.046539   => End Click button [Sign up] 
+2024-09-13 22:48:12.046794   Start step Check that [Sign up] form is opened
+2024-09-13 22:48:12.084037   'Sign up' form opened
+2024-09-13 22:48:12.084088   Assert SIGNUP_HEADER =>
+2024-09-13 22:48:12.099328   Assert SIGNUP_REF_LOGIN =>
+2024-09-13 22:48:12.115540   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2024-09-13 22:48:12.129955   => SIGNUP_PRIVACY_POLICY_ALL
+2024-09-13 22:48:12.130004   => 'Signup' form is checked
+2024-09-13 22:48:12.130071   => 'Sign up' form is opened
+
+2024-09-13 22:48:12.130292   3. Assert
+2024-09-13 22:48:12.130317   Is 'Please enter a valid Email' message displayed on this page after putting invalid email? =>
+2024-09-13 22:48:12.130331   => Start fill out 'Email address' field.
+2024-09-13 22:48:12.215905   => 'Email address' is inputted
+
+2024-09-13 22:48:12.365146   => Switch to 'Password' field
+
+get_attribute:  display: block;
+2024-09-13 22:48:12.386220   => 'Please enter a valid Email' message is displayed
+
+2024-09-13 22:48:12.386252   Save current screenshot into PNG file
+2024-09-13 22:48:12.560296   Is [Continue] button active after putting invalid email? =>
+2024-09-13 22:48:12.560326   => Start fill out 'Password' field.
+2024-09-13 22:48:12.636608   => 'Password' is inputted
+
+continue_button:  btn btn--md btn--wide s2_btn disabled hasPointer
+2024-09-13 22:48:12.654814   => '[Continue] button is not active after putting invalid email
+
+2024-09-13 22:48:12.654862   Save current screenshot into PNG file
