@@ -31,6 +31,15 @@ class Header(BasePage):
             return False
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is present on this page")
 
+        # added block to resolve issue: {"status":60,"value":"[object HTMLButtonElement] has no size and location"}
+        print(f"{datetime.now()}   IS BUTTON_MY_ACCOUNT visible on this page? =>")
+        if not self.element_is_visible(HeaderElementLocators.BUTTON_MY_ACCOUNT, 5):
+            msg = f"BUTTON_MY_ACCOUNT is NOT visible on this page!"
+            print(f"{datetime.now()}   => {msg}\n")
+            pytest.fail(f"Problem!   {msg}")
+        print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is visible on this page!\n")
+        # end block
+
         button_list = self.driver.find_elements(*HeaderElementLocators.BUTTON_MY_ACCOUNT)
         ActionChains(self.driver) \
             .pause(0.5) \
