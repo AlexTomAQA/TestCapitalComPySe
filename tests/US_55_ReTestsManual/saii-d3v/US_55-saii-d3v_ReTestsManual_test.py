@@ -35,7 +35,6 @@ from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
-from pages.Trading_platform.trading_platform import TradingPlatform
 from src.src import CapitalComPageSrc
 
 
