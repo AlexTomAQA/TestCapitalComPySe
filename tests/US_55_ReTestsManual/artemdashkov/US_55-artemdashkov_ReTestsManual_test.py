@@ -920,7 +920,7 @@ class TestManualDetected:
     @allure.step("Start test of check selected country in Dropdown [Country & Language]")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_362
-    def test_362_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+    def test_362_selected_country_in_dropdown_country_and_language_is_not_displayed(
             self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
         """
         Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
@@ -966,19 +966,18 @@ class TestManualDetected:
         # Assert
         test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
 
-    @allure.step("Start test of check widget in the block 'Our spread betting markets'")
+    @allure.step("Start test of link 'Discover what you can trade' in block 'Why choose Capital.com?'")
     @pytest.mark.parametrize('cur_language', [""])
-    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('cur_tool', ["Commodities", "Shares"])
     @pytest.mark.bug_370
-    def test_370_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, cur_tool):
+    def test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        Check:  The widget of the block "Our spread betting markets" is absent
-                when click on the button [Commodities] or [Shares] on the page "Spread betting"
+        Check:  Menu section [About us] > Menu item [Why Capital.com?] >
+                Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'
         Language: EN
-        License/Country: FCA
+        License/Country: ASIC
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
@@ -987,16 +986,19 @@ class TestManualDetected:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "370",
-            "Menu section [Trading] > Menu item [Spread betting] > "
-            "The widget of the block 'Our spread betting markets' > Click on the button [Commodities]",
+            "Menu section [About us] > Menu item [Why Capital.com?] > "
+            "Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'",
             False, True
         )
         pytest.skip("Промежуточная версия")
         # Arrange
-        page_conditions = NewConditions(d, "")
+        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
+        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
+                                                                                Conditions(d, ""),
+                                                                                NewConditions_v1(d, ""))
         cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-
+            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        # stop here
         page_menu = from_trading_menu_open_spread_betting.MenuNewSpreadBetting(d, cur_item_link)
         cur_item_link = page_menu.from_trading_menu_open_spread_betting(
             d, cur_language, cur_country, cur_item_link)
