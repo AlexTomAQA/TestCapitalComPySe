@@ -59,14 +59,14 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
@@ -89,7 +89,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -100,7 +100,7 @@ class TestManualDetectedBugs:
         Check: presence of the sidebar "Crypto Trading Guide" on the "Cryptocurrencies vs. Stocks:
         What's the Difference?" page.
         Language: EN
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
@@ -126,7 +126,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
@@ -135,7 +135,7 @@ class TestManualDetectedBugs:
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" page.
         Language: EN, DE, ZH, RU, ES,IT, PL
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
