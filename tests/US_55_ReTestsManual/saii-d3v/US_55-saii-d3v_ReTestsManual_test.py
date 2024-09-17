@@ -31,6 +31,7 @@ from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
 from pages.BugsManual.bug_364 import Bug364
+from pages.BugsManual.bug_366 import Bug366
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1138,3 +1139,53 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!366 | The corresponding video does not open after click '
+        'on the banner "Market outlook with David Jones"')
+    # @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['ru'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])  # 'Auth', 'NoAuth', 'NoReg'
+    @pytest.mark.bug_366
+    def test_366(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The corresponding video does not open after click on the banner "Market outlook with David Jones"
+         Language: ALL.
+         License: CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "366",
+            'The corresponding video does not open after click on the banner "Market outlook with David Jones"',
+            False,
+            False
+        )
+
+        # Arrange
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug366(d, link, bid)
+
+        page_header_menu.open_commodities_markets_menu(d, cur_language_qty_rnd_from_14, cur_country, link)
+        test_el.open_trading_instrument_page()
+
+        # Act
+        test_el.click_banner()
+
+        # Assert
+        # if not test_el.():
+        #     Common.pytest_fail('Bug # 55!366 The corresponding video is not opened')
+        # Common.save_current_screenshot(d, "AT_55!366 Pass")
+        pytest.skip("366 In progress...")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
