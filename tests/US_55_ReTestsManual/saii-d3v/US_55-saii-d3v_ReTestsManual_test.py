@@ -12,9 +12,9 @@ import pytest
 import allure
 
 from pages.common import Common
-from pages.conditions import Conditions
-from pages.conditions_new import NewConditions
-from pages.conditions_switch import conditions_switch
+# from pages.conditions import Conditions
+# from pages.conditions_new import NewConditions
+from pages.conditions_v2 import conditions_switch
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
