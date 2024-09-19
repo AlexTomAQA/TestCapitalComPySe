@@ -110,10 +110,10 @@ class AssertTPI(BasePage):
                 allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         except NoSuchElementException:
             print(f"{datetime.now()}   Sign Up form is not opened")
-            Common.pytest_fail(f"Bug # 55!322 "
-                               "f\n"
+            Common.pytest_fail("Bug # 55!322 "
+                               "\n"
                                "Expected result: Sign Up form is opened"
-                               "f\n"
+                               "\n"
                                "Actual result: Sign Up form is not opened")
 
     def assert_login(self, d):
@@ -126,10 +126,10 @@ class AssertTPI(BasePage):
                 allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         except NoSuchElementException:
             print(f"{datetime.now()}   Login form is not opened")
-            Common.pytest_fail(f"Bug # 55!322 "
-                               "f\n"
+            Common.pytest_fail("Bug # 55!322 "
+                               "\n"
                                "Expected result: Login form is opened"
-                               "f\n"
+                               "\n"
                                "Actual result: Login form is not opened")
 
     def assert_tpi(self, d, title_instrument):
