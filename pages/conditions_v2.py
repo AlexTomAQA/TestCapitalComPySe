@@ -50,7 +50,6 @@ def apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_logi
 
 
 class NewConditions(BasePage):
-    """This class used as a base class for other page classes that represent specific pages on a website"""
 
     debug = False
 
@@ -78,7 +77,7 @@ class NewConditions(BasePage):
         global prev_language
         global prev_country
 
-        print(f"\n\n{datetime.now()}   START NEW PRECONDITIONS =>")
+        print(f"\n\n{datetime.now()}   START PRECONDITIONS =>")
         print(f"\n{datetime.now()}   => URL after prev. preconditions - {url_after_prev_preconditions_new}")
         print(f"{datetime.now()}   => flag_of_bug - {Common.flag_of_bug}")
         print(f"{datetime.now()}   => Current URL - {self.driver.current_url}")
@@ -188,16 +187,16 @@ class NewConditions(BasePage):
 
         url_after_preconditions_new = self.driver.current_url
         print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions_new}")
-        print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
+        print(f"\n{datetime.now()}   => END PRECONDITIONS")
 
         return url_after_preconditions_new
 
     # авторизация пользователя
-    @allure.step(f"{datetime.now()}   Start Authorisation")
+    @allure.step(f"{datetime.now()}   Start Authorization")
     # @profile(precision=3)
     def to_do_authorisation_new(self, d, link, login, password, cur_role):
-        """Authorisation"""
-        print(f"\n" f"{datetime.now()}   Start Autorization")
+        """Authorization"""
+        print(f"\n" f"{datetime.now()}   Start Authorization")
 
         # Setup wait for later
         menu = MainMenu(d, link)
@@ -246,14 +245,14 @@ class NewConditions(BasePage):
         if cur_role == "Auth":
             d.back()
 
-    @allure.step(f"{datetime.now()}   Start DeAuthorisation")
+    @allure.step(f"{datetime.now()}   Start Deauthorization")
     def to_do_de_authorisation_new(self, d, link):
-        """DeAuthorisation"""
-        print(f"\n" f"{datetime.now()}   Start DeAuthorisation")
+        """Deauthorization"""
+        print(f"\n" f"{datetime.now()}   Start Deauthorization")
 
         top_bar = TopBar(d, link)
         if not top_bar.trading_platform_top_bar_account_info_menu_logout():
-            msg = "De authorisation failed"
+            msg = "Deauthorization failed"
             print(f"{datetime.now()}   => {msg}")
             pytest.fail(f"Bug!   {msg}")
         # Header(d, link).check_visible_login_button_in_header_on_capital_com_new_page()
@@ -323,7 +322,6 @@ class NewConditions(BasePage):
 
 
 class Conditions(BasePage):
-    """This class used as a base class for other page classes that represent specific pages on a website"""
 
     debug = False
 
@@ -445,7 +443,7 @@ class Conditions(BasePage):
 
         url_after_preconditions = self.driver.current_url
         print(f"\n{datetime.now()}   => Current URL - {url_after_preconditions}")
-        print(f"\n{datetime.now()}   => THE END PRECONDITIONS")
+        print(f"\n{datetime.now()}   => END PRECONDITIONS")
 
         return url_after_preconditions
 
@@ -453,9 +451,9 @@ class Conditions(BasePage):
     # @profile(precision=3)
     @allure.step("Authorization")
     def to_do_authorization(self, d, link, cur_language, login, password):
-        """Authorisation"""
+        """Authorization"""
 
-        print(f"" f"{datetime.now()}   Start Autorization")
+        print(f"" f"{datetime.now()}   Start Authorization")
         # Setup wait for later
         print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
@@ -472,7 +470,7 @@ class Conditions(BasePage):
         elif SignupLogin(d, link).should_be_trading_platform_login_form(cur_language):
             print(f"{datetime.now()}   => 'Login' form is opened on Trading platform")
         else:
-            msg = "Problem with Authorisation"
+            msg = "Problem with Authorization"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # ???   {msg}")
 
@@ -516,11 +514,11 @@ class Conditions(BasePage):
     #     ti_page.select_menu_charts()
     #     ti_page.button_close_all_ti_click()
     #
-    @allure.step(f"{datetime.now()}   DeAuthorisation")
+    @allure.step(f"{datetime.now()}   Deauthorization")
     def to_do_de_authorization(self, d, link):
-        """DeAuthorisation"""
+        """Deauthorization"""
 
-        print(f"{datetime.now()}   Start DeAuthorisation")
+        print(f"{datetime.now()}   Start Deauthorization")
         print(f"\n{datetime.now()}   => Current URL - {self.driver.current_url}")
 
         if not Header(d, link).header_button_my_account_click():
