@@ -12,12 +12,12 @@ import pytest
 import allure
 
 from pages.common import Common
-from pages.conditions import Conditions
-from pages.conditions_new import NewConditions
+# from pages.conditions import Conditions
+# from pages.conditions_new import NewConditions
+from pages.conditions_v2 import conditions_switch
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
-from pages.BugsManual.bug_054 import CorporateAccountsPage
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
@@ -26,18 +26,17 @@ from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
 from pages.BugsManual.bug_307 import Bug307
-from pages.BugsManual.bug_327 import Bug327
 from pages.BugsManual.bug_330 import Bug330
 from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
 from pages.BugsManual.bug_364 import Bug364
+from pages.BugsManual.bug_366 import Bug366
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
-from pages.Trading_platform.trading_platform import TradingPlatform
 from src.src import CapitalComPageSrc
 
 
@@ -69,9 +68,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = CommoditiesPageOpenCheck(d, link, bid)
@@ -115,9 +115,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -141,62 +142,6 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         login_form.close_login_form()
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
-
-    @allure.step("Start retest manual TC_55!054 The Sign-up/Login form or the trading platform page "
-                 "are not opened after clicking the [Try now] button on the 'Corporate Accounts' page")
-    @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['au'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
-    @pytest.mark.bug_054
-    def test_054(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        """
-         Check: The Sign-up/Login form or the trading platform page are not opened
-                after clicking the [Try now] button on the 'Corporate Accounts' page
-         Language: EN.
-         License: ASIC.
-         Author: Sergey Aiidzhanov
-         """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "054",
-            "The Sign-up/Login form or the trading platform page are not opened "
-            "after clicking the [Try now] button on the 'Corporate Accounts' page"
-        )
-        pytest.skip('Deprecated')
-        # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
-
-        page_header_menu = MenuSection(d, link)
-        corp_acc_page = CorporateAccountsPage(d, link, bid)
-        signup_login = SignupLogin(d, link, bid)
-        trading_platform = TradingPlatform(d, link, bid)
-
-        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
-        corp_acc_page.click_corp_acc_menu_item()
-
-        # Act
-        corp_acc_page.click_try_now_btn()
-
-        # Assert
-        match cur_role:
-            case "NoReg":
-                if not signup_login.should_be_login_form():
-                    Common.pytest_fail("Bug # 55!054   The Login form is NOT displayed")
-            case "NoAuth":
-                if not signup_login.should_be_signup_form(cur_language):
-                    Common.pytest_fail("Bug # 55!054   The Sign-up form is NOT displayed")
-            case "Auth":
-                if not trading_platform.should_be_trading_platform_page(d, link):
-                    Common.pytest_fail("Bug # 55!054   The Trading platform page is NOT opened")
-        Common.save_current_screenshot(d, "AT_55!054 Pass")
-
-        # Postconditions
-        print(f'\n{datetime.now()}   Applying postconditions...')
-        signup_login.close_signup_form()
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!076 Login form is opened instead of Sign-up form "
@@ -225,9 +170,11 @@ class TestManualDetectedBugs:
         # Bug is not reproduced in 'el' language
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, ['el'])
 
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
@@ -274,9 +221,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -326,9 +274,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -380,9 +329,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -423,9 +373,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -481,9 +432,10 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         test_el = LearnToTradePage(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -533,11 +485,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_AR_AE, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = LearnToTradePage(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -582,9 +535,10 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -633,9 +587,10 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -683,9 +638,10 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
-                                             cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
+        #                                      cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
         signup_login = SignupLogin(d, link, bid)
@@ -708,7 +664,7 @@ class TestManualDetectedBugs:
             signup_login.close_new_signup_form()
         if cur_role == "NoAuth":
             signup_login.close_new_login_form()
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!305 | Error message is displayed after clicking the link "أكثر" (More) '
@@ -740,11 +696,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug305(d, link, bid)
         test_el.open_demo_account_page(d, cur_language, cur_country, link)
@@ -759,7 +716,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!307 Error message “DNS_PROBE_FINISHED_NXDOMAIN” is displayed '
@@ -790,11 +747,12 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug307(d, link, bid)
         test_el.open_shares_trading_page(d, cur_language, cur_country, link)
@@ -810,59 +768,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
-
-    @allure.step(
-        'Start retest manual TC_55!327 Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
-        'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
-        'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable')
-    @pytest.mark.parametrize('cur_language', ['ar'])
-    @pytest.mark.parametrize('cur_country', ['ae'])
-    @pytest.mark.parametrize('cur_role', ['NoReg'])   # 'Auth', 'NoAuth', 'NoReg'
-    @pytest.mark.bug_327
-    def test_327(self, worker_id, d, cur_language, cur_country, cur_role,
-                 cur_login, cur_password):
-        """
-         Check: Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web)
-         in the block "المنصة الإلكترونية عبر الويب" (Web platform)
-         on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable
-         Language: AR.
-         License: SCA.
-         Author: Sergey Aiidzhanov
-         """
-        bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language, cur_country, cur_role,
-            "55", "ReTests of Manual Detected Bugs",
-            "327",
-            'Part of the button [تداول عقود الفروقات عبر الويب] (Trade CFDs on the web) '
-            'in the block "المنصة الإلكترونية عبر الويب" (Web platform) '
-            'on the page "تداول العقود مقابل الفروقات" (CFD trading) is not clickable',
-            False,
-            False
-        )
-        pytest.skip('In progress')
-        # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
-
-        test_el = Bug327(d, link, bid)
-        test_el.open_cfd_trading_page(d, cur_language, cur_country, link)
-
-        # Act
-        test_el.hover_over_trade_cfds_button()
-
-        # Assert
-        # if not test_el.:
-        #     Common.pytest_fail('Bug # 55!327 ')
-        # Common.save_current_screenshot(d, "AT_55!327 Pass")
-        Common.pytest_fail('Bug # 55!327 ')
-
-        # Postconditions
-        print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!330 | “Support” chat window is not opened after click on the “Support” button '
@@ -893,11 +799,12 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug330(d, link, bid)
         test_el.open_support_window()
@@ -915,7 +822,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!332a | Error message is displayed after clicking the link "Stochastic Oscillator" '
@@ -947,11 +854,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -1002,11 +910,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -1060,11 +969,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug335(d, link, bid)
         test_el.open_market_guides_page(d, cur_language, cur_country, link)
@@ -1080,7 +990,7 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW_EN_AE)
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
         'Start retest manual TC_55!359a | Error message is displayed after clicking the link “NASDAQ stock exchange” '
@@ -1108,11 +1018,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug359(d, link, bid)
         test_el.open_shares_page(d, cur_language, cur_country, link)
@@ -1156,11 +1067,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug359(d, link, bid)
@@ -1206,11 +1118,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = NewConditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         test_el = Bug364(d, link, bid)
         test_el.open_spread_betting_page(d, cur_language, cur_country, link)
@@ -1226,3 +1139,53 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!366 | The corresponding video does not open after click '
+        'on the banner "Market outlook with David Jones"')
+    # @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['ru'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])  # 'Auth', 'NoAuth', 'NoReg'
+    @pytest.mark.bug_366
+    def test_366(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The corresponding video does not open after click on the banner "Market outlook with David Jones"
+         Language: ALL.
+         License: CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "366",
+            'The corresponding video does not open after click on the banner "Market outlook with David Jones"',
+            False,
+            False
+        )
+
+        # Arrange
+        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug366(d, link, bid)
+
+        page_header_menu.open_commodities_markets_menu(d, cur_language_qty_rnd_from_14, cur_country, link)
+        test_el.open_trading_instrument_page()
+
+        # Act
+        test_el.click_banner()
+
+        # Assert
+        # if not test_el.():
+        #     Common.pytest_fail('Bug # 55!366 The corresponding video is not opened')
+        # Common.save_current_screenshot(d, "AT_55!366 Pass")
+        pytest.skip("366 In progress...")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)

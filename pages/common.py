@@ -10,6 +10,7 @@ from random import randint
 import allure
 import pytest
 from selenium.webdriver import ActionChains
+from src.src import CapitalComPageSrc
 
 from conf import QTY_LINKS
 from pages.Header.header_locators import HeaderElementLocators
@@ -237,3 +238,27 @@ class Common:
 	def pytest_skip(msg):
 		Common.flag_of_bug = False
 		pytest.skip(msg)
+
+	@staticmethod
+	def check_language_and_country_and_define_host(cur_language, cur_country):
+		host = None
+		if cur_language == "" and cur_country == "gb":
+			host = CapitalComPageSrc.URL_NEW
+		elif cur_language == "" and cur_country == "au":
+			host = CapitalComPageSrc.URL_NEW_EN_AU
+		elif cur_language == "" and cur_country == "ae":
+			host = CapitalComPageSrc.URL_NEW_EN_AE
+		elif cur_language == "ar" and cur_country == "ae":
+			host = CapitalComPageSrc.URL_NEW_AR_AE
+		else:
+			host = CapitalComPageSrc.URL
+		return host
+
+	@staticmethod
+	def check_language_and_country_and_define_conditions(cur_language, cur_country, conditions, newConditions):
+		if cur_language == "" and cur_country in ["gb", "au", "ae"]:
+			return newConditions
+		elif cur_language == "ar" and cur_country == "ae":
+			return newConditions
+		else:
+			return conditions

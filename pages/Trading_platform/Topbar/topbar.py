@@ -12,7 +12,8 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
 LOGO = (By.CSS_SELECTOR, "logo a.logo object[data='./assets/pic/logo.svg']")
-ACCOUNT_INFO_ICON = (By.CSS_SELECTOR, "topbar account-info .iconex-arrow-down-mini")
+# ACCOUNT_INFO_ICON = (By.CSS_SELECTOR, "topbar account-info .iconex-arrow-down-mini")
+ACCOUNT_INFO_ICON = (By.CSS_SELECTOR, "topbar account-info [name='iconex-arrow-down-mini']")
 ACCOUNT_INFO_MENU_LOGOUT = (By.CSS_SELECTOR, "topbar account-info button[data-qa='logout']")
 
 

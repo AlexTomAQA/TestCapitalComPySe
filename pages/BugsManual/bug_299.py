@@ -57,7 +57,6 @@ class CheckLoginFacebookModal(BasePage):
 
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[len(tabs) - 1])
-            print(f'{datetime.now()}   Cur. URL: {self.driver.current_url}')
 
             self.deal_with_cookies()
 

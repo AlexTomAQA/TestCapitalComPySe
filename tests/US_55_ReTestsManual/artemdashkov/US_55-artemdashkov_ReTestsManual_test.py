@@ -8,6 +8,7 @@ import allure
 import pytest
 import random
 from datetime import datetime
+from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -919,7 +920,7 @@ class TestManualDetected:
     @allure.step("Start test of check selected country in Dropdown [Country & Language]")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_362
-    def test_362_widget_in_the_block_our_spread_betting_markets_is_not_displayed(
+    def test_362_selected_country_in_dropdown_country_and_language_is_not_displayed(
             self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
         """
         Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
@@ -942,15 +943,16 @@ class TestManualDetected:
         )
         # pytest.skip("Промежуточная версия")
         # Arrange
-        host = None
-        if cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "gb":
-            host = CapitalComPageSrc.URL_NEW
-        elif cur_language_country_for_fca_and_sca[0] == "" and cur_language_country_for_fca_and_sca[1] == "ae":
-            host = CapitalComPageSrc.URL_NEW_EN_AE
-        elif cur_language_country_for_fca_and_sca[0] == "ar" and cur_language_country_for_fca_and_sca[1] == "ae":
-            host = CapitalComPageSrc.URL_NEW_AR_AE
+        host = Common().check_language_and_country_and_define_host(cur_language_country_for_fca_and_sca[0],
+                                                                   cur_language_country_for_fca_and_sca[1])
 
-        page_conditions = NewConditions(d, "")
+        page_conditions = Common().check_language_and_country_and_define_conditions(
+                                                                    cur_language_country_for_fca_and_sca[0],
+                                                                    cur_language_country_for_fca_and_sca[1],
+                                                                    Conditions(d, ""),
+                                                                    NewConditions_v1(d, ""))
+
+        # page_conditions = NewConditions(d, "")
         cur_item_link = page_conditions.preconditions(
             d, host, "", cur_language_country_for_fca_and_sca[0],
             cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
@@ -963,3 +965,49 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
+
+    @allure.step("Start test of link 'Discover what you can trade' in block 'Why choose Capital.com?'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_370
+    def test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [About us] > Menu item [Why Capital.com?] >
+                Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'
+        Language: EN
+        License/Country: ASIC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "370",
+            "Menu section [About us] > Menu item [Why Capital.com?] > "
+            "Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
+        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
+                                                                                Conditions(d, ""),
+                                                                                NewConditions_v1(d, ""))
+        cur_item_link = page_conditions.preconditions(
+            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        # stop here
+        page_menu = from_trading_menu_open_spread_betting.MenuNewSpreadBetting(d, cur_item_link)
+        cur_item_link = page_menu.from_trading_menu_open_spread_betting(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_357(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d, cur_tool)
+
+        # Assert
+        test_element.assert_(d, cur_tool)
