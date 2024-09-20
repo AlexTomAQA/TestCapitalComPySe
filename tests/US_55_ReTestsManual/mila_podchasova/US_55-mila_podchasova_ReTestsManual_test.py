@@ -9,7 +9,6 @@ import random
 import pytest
 import allure
 
-from pages.BugsManual.bug_043 import ProfessionalMenuCheckFooter
 from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
 from pages.BugsManual.bug_285 import ButtonMyAccount
@@ -21,6 +20,7 @@ from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
 from pages.conditions import Conditions
+from pages.conditions_switch import conditions_switch
 from src.src import CapitalComPageSrc
 from pages.conditions_new import NewConditions
 
@@ -49,9 +49,10 @@ class TestManualDetectedBugs:
                    " button [Platform overview] click on the 'Investmate app' page"
         )
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = PlatformOverviewButton(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
@@ -127,9 +128,10 @@ class TestManualDetectedBugs:
 
         # pytest.skip("Autotest under construction")
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         # Arrange
         menu = MenuSection(d, link)
         link = menu.sub_menu_demo_account_move_focus_click(d, cur_language, cur_country, link)
@@ -222,8 +224,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_326
-    def test_326(self, worker_id, d, cur_language, cur_country, cur_role,
-                  cur_login, cur_password):
+    def test_326(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The page "Oops, this help center no longer exists"
          is opened after clicking the link [Help Center] of the page "Contact us"
@@ -243,11 +244,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         page_header_menu.move_focus_to_more_menu(d, cur_language, cur_country)
@@ -295,11 +297,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         page_header_menu.menu_education_move_focus(d, cur_language, cur_country)
@@ -326,7 +329,7 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step(
-        'Start retest manual TC_55!350 | Error message "The page you were looking for doesnt exist" '
+        'Start retest manual TC_55!350b | Error message "The page you were looking for doesnt exist" '
         'is displayed when clicking the link [How-to guides] '
         'in block “Looking for more?” on the page [Trading courses]')
     @pytest.mark.parametrize('cur_language', [''])
@@ -355,11 +358,12 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        page_conditions = Conditions(d)
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "",
-            cur_language, cur_country, cur_role, cur_login, cur_password
-        )
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = Conditions(d)
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL, "",
+        #     cur_language, cur_country, cur_role, cur_login, cur_password
+        # )
 
         page_header_menu = MenuSection(d, link)
         page_header_menu.menu_education_move_focus(d, cur_language, cur_country)

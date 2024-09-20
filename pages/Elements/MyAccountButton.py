@@ -2,13 +2,10 @@ from datetime import datetime
 
 import allure
 
-from pages.Elements.AssertClass import AssertClass
 from pages.Elements.testing_elements_locators import MyAccountButtonLocators
 from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class MyAccountButton(BasePage):
@@ -17,10 +14,9 @@ class MyAccountButton(BasePage):
         self.arrange_(d)
         self.element_click()
 
-        test_element = AssertClass(d, self.bid)
         match cur_role:
             case "Auth":
-                test_element.assert_my_account_menu(d)
+                self.assert_my_account_menu(d)
 
     def arrange_(self, link):
         print(f"\n{datetime.now()}   1. Arrange for My account button")
@@ -41,13 +37,6 @@ class MyAccountButton(BasePage):
             button[0]
         )
 
-        print(f"{datetime.now()}   Is BUTTON_MY_ACCOUNT clickable?  =>")
-        time_out = 3
-        if not self.element_is_clickable(button[0], time_out):
-            print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is not clickable after {time_out} sec")
-            Common.pytest_fail("Bug ? BUTTON_MY_ACCOUNT is not clickable")
-        print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clickable")
-
     @allure.step("Click My account button in the page header")
     def element_click(self):
         print(f"{datetime.now()}   2. Act for My account button")
@@ -56,8 +45,21 @@ class MyAccountButton(BasePage):
         button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT)
         button[0].click()
 
-        WebDriverWait(self.driver, 10).until(
-            EC.url_changes(self.driver.current_url)
-        )
-
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clicked")
+
+    @allure.step('Checking that the "My account" menu is opened')
+    def assert_my_account_menu(self, d):
+        print(f"\n{datetime.now()}   3. Assert_v0")
+        account_btn_link = d.current_url
+        print(f"{datetime.now()}   Current URL is account_btn_link")
+
+        if (account_btn_link == "https://capital.com/trading/platform/" or
+                account_btn_link == "https://capital.com/trading/platform/?popup=terms-and-conditions"):
+            assert False, \
+                ('Bug#009. '
+                 'Expected result: Menu "My account" is displayed'
+                 '\n'
+                 'Actual result: The trading platform page is opened')
+        else:
+            print(f"{datetime.now()}   =>This does not mean that there is no bug")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)

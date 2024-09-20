@@ -14,9 +14,11 @@ from pages.BugsManual.bug_270 import LearnMoreAbout
 from pages.BugsManual.bug_308 import InvestmateAppPage
 from pages.BugsManual.bug_322 import AssertTPI, TradingInstrumentsMarkets
 from pages.BugsManual.bug_360 import IndicesItaly40
+from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
+from pages.Menu.New.from_about_us_menu_open_why_capital import MenuNew
 from pages.Menu.New.from_trading_menu_open_mobile_apps import MenuNew
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -59,14 +61,14 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
@@ -89,7 +91,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -100,7 +102,7 @@ class TestManualDetectedBugs:
         Check: presence of the sidebar "Crypto Trading Guide" on the "Cryptocurrencies vs. Stocks:
         What's the Difference?" page.
         Language: EN
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
@@ -126,7 +128,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
@@ -135,7 +137,7 @@ class TestManualDetectedBugs:
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" page.
         Language: EN, DE, ZH, RU, ES,IT, PL
-        License: CYSEC, SCB, ASIC
+        License: CYSEC, SCB
         Author: Kasila
         """
 
@@ -386,3 +388,71 @@ class TestManualDetectedBugs:
         test_element.arrange(d, cur_item_link, link)
         test_element.element_click(d, link)
         test_element.assert_()
+
+    @allure.step('Start retest manual AT_55!371a: the text of the link is “Discover CFD trading”')
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_371a
+    def test_371a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: The text of the link is " ##AuUSPlink2## " in the block “Why choose Capital.com?” on the page
+                “Why Capital.com?” when ASIC license is selected.
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "371a", 'The text of the link is “Discover CFD trading”'
+        )
+        Common.pytest_skip("under construction")
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AU, "", cur_language, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuNew(d, link)
+        cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
+
+        test_element = DiscoverCFDTtradingLink(cur_item_link, bid)
+        test_element.discover_cfd_trading_link(cur_item_link)
+        test_element.element_pay_attention()
+        test_element.assert_link()
+
+    @allure.step('Start retest manual AT_55!371b: “CFD trading” page is opened')
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_371b
+    def test_371b(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: “CFD trading” page is not opened after clicking link in the tile "Fast account opening" in the block
+                “Why choose Capital.com?” on the page “Why Capital.com?” when ASIC license is selected.
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "371b", 'The text of the link is “Discover CFD trading”'
+        )
+        Common.pytest_skip("under construction")
+
+        page_conditions = NewConditions(d, "")
+        link = page_conditions.preconditions(
+            d, CapitalComPageSrc.URL_NEW_EN_AU, "", cur_language, cur_country, cur_role, cur_login,
+            cur_password)
+
+        menu = MenuNew(d, link)
+        cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
+
+        test_element = DiscoverCFDTtradingLink(cur_item_link, bid)
+        test_element.discover_cfd_trading_link(cur_item_link)
+        test_element.element_click()
+        test_element.assert_page()

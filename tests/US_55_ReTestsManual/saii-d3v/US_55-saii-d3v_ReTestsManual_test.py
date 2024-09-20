@@ -12,9 +12,8 @@ import pytest
 import allure
 
 from pages.common import Common
-from pages.conditions import Conditions
-from pages.conditions_new import NewConditions
-from pages.conditions_switch import conditions_switch
+from pages.conditions_v2 import apply_preconditions_to_link
+from pages.conditions_v2_TESTING_DO_NOT_USE import conditions_switch
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
@@ -31,6 +30,7 @@ from pages.BugsManual.bug_332 import Bug332
 from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
 from pages.BugsManual.bug_364 import Bug364
+from pages.BugsManual.bug_366 import Bug366
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -67,10 +67,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = CommoditiesPageOpenCheck(d, link, bid)
@@ -114,10 +112,9 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -169,11 +166,9 @@ class TestManualDetectedBugs:
         # Bug is not reproduced in 'el' language
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, ['el'])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
@@ -220,10 +215,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -273,10 +266,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -328,10 +319,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -372,10 +361,9 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -431,10 +419,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = LearnToTradePage(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -484,12 +470,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_AR_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = LearnToTradePage(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -534,10 +516,9 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -586,10 +567,9 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -637,10 +617,8 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
         signup_login = SignupLogin(d, link, bid)
@@ -695,12 +673,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug305(d, link, bid)
         test_el.open_demo_account_page(d, cur_language, cur_country, link)
@@ -746,12 +720,8 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug307(d, link, bid)
         test_el.open_shares_trading_page(d, cur_language, cur_country, link)
@@ -798,12 +768,8 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug330(d, link, bid)
         test_el.open_support_window()
@@ -853,12 +819,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -909,12 +871,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -968,12 +926,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug335(d, link, bid)
         test_el.open_market_guides_page(d, cur_language, cur_country, link)
@@ -1017,12 +971,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug359(d, link, bid)
         test_el.open_shares_page(d, cur_language, cur_country, link)
@@ -1066,12 +1016,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug359(d, link, bid)
@@ -1117,12 +1063,9 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
 
         test_el = Bug364(d, link, bid)
         test_el.open_spread_betting_page(d, cur_language, cur_country, link)
@@ -1138,3 +1081,49 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!366 | The corresponding video does not open after click '
+        'on the banner "Market outlook with David Jones"')
+    # @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['ru'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])  # 'Auth', 'NoAuth', 'NoReg'
+    @pytest.mark.bug_366
+    def test_366(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The corresponding video does not open after click on the banner "Market outlook with David Jones"
+         Language: ALL.
+         License: CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_qty_rnd_from_14, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "366",
+            'The corresponding video does not open after click on the banner "Market outlook with David Jones"',
+            False,
+            False
+        )
+        pytest.skip("366 In progress...")
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country,
+                                           cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug366(d, link, bid)
+
+        page_header_menu.open_commodities_markets_menu(d, cur_language_qty_rnd_from_14, cur_country, link)
+        test_el.open_trading_instrument_page()
+
+        # Act
+        test_el.click_banner()
+
+        # Assert
+        # if not test_el.():
+        #     Common.pytest_fail('Bug # 55!366 The corresponding video is not opened')
+        # Common.save_current_screenshot(d, "AT_55!366 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
