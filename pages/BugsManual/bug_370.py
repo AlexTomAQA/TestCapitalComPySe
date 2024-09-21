@@ -11,7 +11,9 @@ from pages.common import Common
 from src.src import CapitalComPageSrc
 
 LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
-LINK_NAME = "Discover what you can trade"
+LINK_NAME = '"Discover what you can trade"'
+
+MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
 class BUG_370(BasePage):
 
@@ -42,83 +44,45 @@ class BUG_370(BasePage):
             Common().pytest_fail(f"Bug # 370 {msg}")
         print(f"{datetime.now()}   Link {LINK_NAME} visible on the page 'Why Capital.com?'\n")
 
+        # Check clickability link on the page
+        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME} on the page 'Why Capital.com?'\n")
+        if not self.element_is_clickable(LINK_LOCATOR):
+            msg = f"Link {LINK_NAME} don't clickable on the page 'Why Capital.com?'"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 370 {msg}")
+        print(f"{datetime.now()}   Link {LINK_NAME} clickable on the page 'Why Capital.com?'\n")
+
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
-    def act(self, d, cur_tool):
+    def act(self, d):
 
-        print(f"\n{datetime.now()}   2. Start Act. Click on the button {cur_tool}")
+        print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
 
-        match cur_tool:
-            case "Commodities":
-                self.button_locator = COMMODITIES_BUTTON_LOCATOR
-            case "Shares":
-                self.button_locator = SHARES_BUTTON_LOCATOR
+        d.find_element(*LINK_LOCATOR).click()
+        print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
 
-        # Check presenting button on the page
-        print(f"{datetime.now()}   Start check button {cur_tool} in DOM of the block 'Our spread betting markets' ")
-        if len(d.find_elements(*self.button_locator)) == 0:
-            msg = (f"The block 'Our spread betting markets' don't have button {cur_tool} in DOM")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   The block 'Our spread betting markets' have button {cur_tool} in DOM\n")
+    @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
+    def assert_(self, d):
+        print(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
 
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*self.button_locator)
-        )
+        # Check presenting message '404 not found' on the opened page
+        print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+        if len(d.find_elements(*MESSAGE_404_LOCATOR)) != 0:
+            print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
 
-        # Check visibility button on the page
-        print(f"{datetime.now()}   Is Button {cur_tool} of the block 'Our spread betting markets' visible "
-              f"on the page 'Spread betting'?")
-        if not self.element_is_visible(self.button_locator):
-            msg = (f"Button {cur_tool} don't visible in the block 'Our spread betting markets'")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is visible "
-              f"on the page 'Spread betting'\n")
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_element(*MESSAGE_404_LOCATOR)
+            )
 
-        # Check clickable button on the page
-        print(f"{datetime.now()}   Is button {cur_tool} of the block 'Our spread betting markets' clickable "
-              f"on the page 'Spread betting'")
-        if not self.element_is_clickable(self.button_locator):
-            msg = (f"Button {cur_tool} don't clickable in the block 'Our spread betting markets'")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   Button {cur_tool} of the block 'Our spread betting markets' is clickable "
-              f"on the page 'Spread betting'\n")
+            # Check visibility message '404 not found' on the opened page
+            print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+            if self.element_is_visible(MESSAGE_404_LOCATOR):
+                print('========1111========')
+                msg = (f"Message '404 not found' is visible on the opened page")
+                print(f"{datetime.now()}   => {msg}")
+                Common().pytest_fail(f"Bug # 370 {msg}")
 
-        d.find_element(*self.button_locator).click()
-        print(f"\n{datetime.now()}   Button {cur_tool} clicked\n")
-
-    @allure.step(f"{datetime.now()}   3. Start Assert. Find link in the block 'Our spread betting markets'")
-    def assert_(self, d, cur_tool):
-        print(f"{datetime.now()}   3. Start Assert. Find link in the block 'Our spread betting markets'")
-
-        # Check presenting link on the page
-        print(f"{datetime.now()}   Do the page 'Spread betting' have link "
-              f"of the block 'Our spread betting markets' in DOM?")
-        if len(d.find_elements(*LINK_LOCATOR)) == 0:
-            msg = (f"The page 'Spread betting' don't have link of the block 'Our spread betting markets' in DOM "
-                   f"when button {cur_tool} clicked")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   The page 'Spread betting' have link "
-              f"of the block 'Our spread betting markets' in DOM when button {cur_tool} clicked")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*LINK_LOCATOR)
-        )
-
-        # Check visibility link on the page
-        print(f"{datetime.now()}   Is link of the block 'Our spread betting markets' visible "
-              f"on the page 'Spread betting'?")
-        if not self.element_is_visible(LINK_LOCATOR):
-            msg = (f"link of the block 'Our spread betting markets' don't visible on the page 'Spread betting' "
-                   f"when button {cur_tool} clicked")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   link of the block 'Our spread betting markets' is visible "
-              f"on the page 'Spread betting' when button {cur_tool} clicked")
-        Common.save_current_screenshot(d, f"link of the block 'Our spread betting markets' is visible.")
-        self.driver.get(CapitalComPageSrc.URL_NEW)
+        print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
+        Common.save_current_screenshot(d, f"Opened page don't have message '404 not found'")
+        self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
         return True

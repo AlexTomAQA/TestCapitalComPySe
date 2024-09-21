@@ -992,7 +992,7 @@ class TestManualDetected:
             "Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'",
             False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
         host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
         page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
