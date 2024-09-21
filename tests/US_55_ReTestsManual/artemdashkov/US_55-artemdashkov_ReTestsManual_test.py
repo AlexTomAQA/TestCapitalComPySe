@@ -29,6 +29,7 @@ from pages.BugsManual.bug_324 import BUG_324
 from pages.BugsManual.bug_334 import BUG_334
 from pages.BugsManual.bug_357 import BUG_357
 from pages.BugsManual.bug_362 import BUG_362
+from pages.BugsManual.bug_370 import BUG_370
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -37,7 +38,8 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
                             from_trading_menu_open_all_platforms,
                             from_markets_menu_open_forex,
-                            from_trading_menu_open_spread_betting)
+                            from_trading_menu_open_spread_betting,
+                            from_about_us_menu_open_why_capital)
 from pages.conditions_new import NewConditions
 from pages.conditions_new_v1 import NewConditions_v1
 
@@ -999,15 +1001,15 @@ class TestManualDetected:
         cur_item_link = page_conditions.preconditions(
             d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         # stop here
-        page_menu = from_trading_menu_open_spread_betting.MenuNewSpreadBetting(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_spread_betting(
+        page_menu = from_about_us_menu_open_why_capital.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_about_us_menu_open_why_capital(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_357(d, cur_item_link, bid)
+        test_element = BUG_370(d, cur_item_link, bid)
         test_element.arrange(d, cur_item_link)
 
         # Act
-        test_element.act(d, cur_tool)
+        test_element.act(d)
 
         # Assert
-        test_element.assert_(d, cur_tool)
+        test_element.assert_(d)
