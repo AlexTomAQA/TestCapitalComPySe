@@ -20,7 +20,8 @@ from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
-from pages.BugsManual.bugs_272_273 import LearnToTradePage
+from pages.BugsManual.bug_272 import Bug272
+from pages.BugsManual.bug_273 import Bug273
 from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
@@ -31,6 +32,8 @@ from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
 from pages.BugsManual.bug_364 import Bug364
 from pages.BugsManual.bug_366 import Bug366
+from pages.BugsManual.bug_372 import Bug372
+from pages.BugsManual.bug_373 import Bug373
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -422,11 +425,11 @@ class TestManualDetectedBugs:
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_el = LearnToTradePage(d, link, bid)
+        test_el = Bug272(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
-        test_el.click_the_learn_to_trade_link272()
+        test_el.click_the_learn_to_trade_link()
 
         # Assert
         if not test_el.should_be_visible_block_trading_for_beginners():
@@ -473,14 +476,14 @@ class TestManualDetectedBugs:
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_el = LearnToTradePage(d, link, bid)
+        test_el = Bug273(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
-        test_el.click_the_learn_to_trade_link273()
+        test_el.click_the_learn_to_trade_link()
 
         # Assert
-        if not test_el.should_be_visible_block_trading_for_beginners():
+        if not test_el.should_be_visible_block_experienced_traders():
             Common.pytest_fail('Bug # 55!273 The the block "Experienced traders" is NOT into viewport')
         Common.save_current_screenshot(d, "AT_55!273 Pass")
 
@@ -1127,3 +1130,93 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!372 | The block "Trading for beginners" on the page "Learn" is not in viewport '
+        'after clicking the link "Learn to trade" on the page "Why Capital.com?"')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_372
+    def test_372(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The block "Trading for beginners" on the page "Learn" is not in viewport
+         after clicking the link "Learn to trade" on the page "Why Capital.com?"
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "372",
+            'The block "Trading for beginners" on the page "Learn" is not in viewport '
+            'after clicking the link "Learn to trade" on the page "Why Capital.com?"',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug372(d, link, bid)
+        test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_the_learn_to_trade_link()
+
+        # Assert
+        if not test_el.should_be_visible_block_trading_for_beginners():
+            Common.pytest_fail('Bug # 55!372 The the block "Trading for beginners" is NOT into viewport')
+        Common.save_current_screenshot(d, "AT_55!372 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!373 | The block "Experienced traders" on the page "Learn" is not in viewport '
+        'after clicking the link "Learn to trade" on the page "Why Capital.com?"')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_373
+    def test_373(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The block "Experienced traders" on the page "Learn" is not in viewport
+         after clicking the link "Learn to trade" on the page "Why Capital.com?"
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "373",
+            'The block "Experienced traders" on the page "Learn" is not in viewport '
+            'after clicking the link "Learn to trade" on the page "Why Capital.com?"',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug373(d, link, bid)
+        test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_the_learn_to_trade_link()
+
+        # Assert
+        if not test_el.should_be_visible_block_experienced_traders():
+            Common.pytest_fail('Bug # 55!373 The the block "Experienced traders" is NOT into viewport')
+        Common.save_current_screenshot(d, "AT_55!373 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
