@@ -174,9 +174,8 @@ class NewConditions(BasePage):
         print(f"\n{datetime.now()}   Prev. language: {language_prev}")
         print(f"{datetime.now()}   Cur. language - '{language_cur}'")
         print(f"\n{datetime.now()}   Prev. country: {prev_country}")
-        print(f"\n{datetime.now()}   Cur. country: {cur_country}")
+        print(f"{datetime.now()}   Cur. country: {cur_country}")
         if cur_country != prev_country or language_cur != language_prev:
-            print(f"{datetime.now()}   Set '{language_cur}' language and '{cur_country}' country =>")
             self.set_language_country_new(d, language_cur, cur_country)
             print(f"{datetime.now()}   => Language is set to '{language_cur}'")
             print(f"{datetime.now()}   => Country is set to '{cur_country}'")
@@ -280,7 +279,7 @@ class NewConditions(BasePage):
         # устанавливаем Язык и Страну
         # if cur_language == "":
         #     cur_language = "en"
-        print(f'{datetime.now()}   Set "{cur_language}" language and "{cur_country}" country =>')
+        print(f'\n{datetime.now()}   Set "{cur_language}" language and "{cur_country}" country =>')
 
         host = 'https://capital.com/'
         # Captcha(d).fail_test_if_captcha_present_v2()

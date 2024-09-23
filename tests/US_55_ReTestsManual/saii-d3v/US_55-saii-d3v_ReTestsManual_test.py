@@ -1069,7 +1069,6 @@ class TestManualDetectedBugs:
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-
         test_el = Bug364(d, link, bid)
         test_el.open_spread_betting_page(d, cur_language, cur_country, link)
 
