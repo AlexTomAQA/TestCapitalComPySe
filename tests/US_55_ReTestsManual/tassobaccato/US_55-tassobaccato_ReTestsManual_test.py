@@ -18,13 +18,14 @@ from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
-from pages.Menu.New.from_about_us_menu_open_why_capital import MenuNew
 from pages.Menu.New.from_trading_menu_open_mobile_apps import MenuNew
+from pages.Menu.New.from_about_us_menu_open_why_capital import MenuNew
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
 from pages.common import Common
 from pages.conditions import Conditions
+from pages.conditions_new_v1 import NewConditions_v1
 from src.src import CapitalComPageSrc
 from pages.conditions_new import NewConditions
 
@@ -390,7 +391,7 @@ class TestManualDetectedBugs:
         test_element.assert_()
 
     @allure.step('Start retest manual AT_55!371a: the text of the link is “Discover CFD trading”')
-    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_371a
@@ -408,12 +409,13 @@ class TestManualDetectedBugs:
             "55", "ReTests of Manual Detected Bugs",
             "371a", 'The text of the link is “Discover CFD trading”'
         )
-        Common.pytest_skip("under construction")
 
-        page_conditions = NewConditions(d, "")
+        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
+        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
+                                                                                    Conditions(d, ""),
+                                                                                    NewConditions_v1(d, ""))
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AU, "", cur_language, cur_country, cur_role, cur_login,
-            cur_password)
+            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
@@ -424,7 +426,7 @@ class TestManualDetectedBugs:
         test_element.assert_link()
 
     @allure.step('Start retest manual AT_55!371b: “CFD trading” page is opened')
-    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_371b
@@ -442,12 +444,13 @@ class TestManualDetectedBugs:
             "55", "ReTests of Manual Detected Bugs",
             "371b", 'The text of the link is “Discover CFD trading”'
         )
-        Common.pytest_skip("under construction")
 
-        page_conditions = NewConditions(d, "")
+        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
+        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
+                                                                                    Conditions(d, ""),
+                                                                                    NewConditions_v1(d, ""))
         link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AU, "", cur_language, cur_country, cur_role, cur_login,
-            cur_password)
+            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
