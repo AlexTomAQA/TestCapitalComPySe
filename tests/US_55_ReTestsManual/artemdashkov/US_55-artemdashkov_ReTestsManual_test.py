@@ -30,6 +30,7 @@ from pages.BugsManual.bug_334 import BUG_334
 from pages.BugsManual.bug_357 import BUG_357
 from pages.BugsManual.bug_362 import BUG_362
 from pages.BugsManual.bug_370 import BUG_370
+from pages.BugsManual.bug_377 import BUG_377
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -1006,6 +1007,54 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_370(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of link 'Capital.com' in block 'Capital.com is an execution-only brokerage platform…'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_377
+    def test_377_link_in_the_block_capital_com_is_an_execution_only_brokerage_platform_does_not_open_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] > Menu item [Market analysis] >
+                Find articles and click article link > Click the link 'Capital.com'
+                in block 'Capital.com is an execution-only brokerage platform…'
+        Language: EN
+        License/Country: ASIC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "377",
+            "Menu section [Markets] > Menu item [Market analysis] > "
+            "Find articles and click article link > Click the link 'Capital.com'"
+            "in block 'Capital.com is an execution-only brokerage platform…'",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
+        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
+                                                                                    Conditions(d, ""),
+                                                                                    NewConditions_v1(d, ""))
+        cur_item_link = page_conditions.preconditions(
+            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        # stop here
+        page_menu = from_about_us_menu_open_why_capital.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_about_us_menu_open_why_capital(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_377(d, cur_item_link, bid)
         test_element.arrange(d, cur_item_link)
 
         # Act
