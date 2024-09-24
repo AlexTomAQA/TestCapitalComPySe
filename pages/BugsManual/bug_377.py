@@ -12,26 +12,39 @@ from src.src import CapitalComPageSrc
 
 BLOCK_NAME = '"Capital.com is an execution-only brokerage platform…"'
 LINK_NAME = '"Capital.com"'
+BUG_NUMBER = '377'
 
-BLOCK_LOCATOR = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
-LINK_LOCATOR = (By.CSS_SELECTOR, '//div[@class="text_xs__W_wA7"]') # не доделал
+BLOCK_LOCATOR = (By.XPATH, '//div[@class="box_box__5Jmfa box_sm__FGk8i grey"][1]')
+LINK_LOCATOR = (By.CSS_SELECTOR,
+                "//div[@class='box_box__5Jmfa box_sm__FGk8i grey'] //a[contains(text(), 'Capital.com')]")
+ARTICLES_LOCATOR = (By.CSS_SELECTOR, '[class="article_row__90E88"]')
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
 class BUG_377(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find link '{LINK_NAME}'")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find block and link")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find link '{LINK_NAME}'")
+        print(f"\n{datetime.now()}   1. Start Arrange: find articles, choose and click article, find block and link")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
+
+        # Check presenting articles on the page
+        if len(d.find_elements(*ARTICLES_LOCATOR)) == 0:
+            msg = f"The page 'Market analysis' don't have articles"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
+
+
+
 
         # Check presenting link on the page
         if len(d.find_elements(*LINK_LOCATOR)) == 0:
             msg = (f"The page 'Why Capital.com?' don't have link {LINK_NAME} in DOM")
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
 
         self.driver.execute_script(
@@ -44,7 +57,7 @@ class BUG_377(BasePage):
         if not self.element_is_visible(LINK_LOCATOR):
             msg = f"Link {LINK_NAME} don't visible on the page 'Why Capital.com?'"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   Link {LINK_NAME} visible on the page 'Why Capital.com?'\n")
 
         # Check clickability link on the page
@@ -52,7 +65,7 @@ class BUG_377(BasePage):
         if not self.element_is_clickable(LINK_LOCATOR):
             msg = f"Link {LINK_NAME} don't clickable on the page 'Why Capital.com?'"
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   Link {LINK_NAME} clickable on the page 'Why Capital.com?'\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
@@ -83,7 +96,7 @@ class BUG_377(BasePage):
                 print('========1111========')
                 msg = (f"Message '404 not found' is visible on the opened page")
                 print(f"{datetime.now()}   => {msg}")
-                Common().pytest_fail(f"Bug # 370 {msg}")
+                Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
 
         print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
         Common.save_current_screenshot(d, f"Opened page don't have message '404 not found'")

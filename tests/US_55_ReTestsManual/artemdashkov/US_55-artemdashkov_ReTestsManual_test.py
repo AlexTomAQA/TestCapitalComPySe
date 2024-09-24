@@ -39,6 +39,7 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
                             from_trading_menu_open_all_platforms,
                             from_markets_menu_open_forex,
+                            from_markets_menu_open_market_analysis,
                             from_trading_menu_open_spread_betting,
                             from_about_us_menu_open_why_capital)
 from pages.conditions_new import NewConditions
@@ -1050,8 +1051,8 @@ class TestManualDetected:
         cur_item_link = page_conditions.preconditions(
             d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
         # stop here
-        page_menu = from_about_us_menu_open_why_capital.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_about_us_menu_open_why_capital(
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        cur_item_link = page_menu.from_markets_menu_open_market_analysis(
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_377(d, cur_item_link, bid)

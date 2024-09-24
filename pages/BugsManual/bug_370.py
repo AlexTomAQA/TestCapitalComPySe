@@ -14,6 +14,7 @@ LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
 LINK_NAME = '"Discover what you can trade"'
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
+MARKETS_LOCATOR = (By.XPATH, "//div[@class='breadcrumbs_breadcrumbs__UgZeo'] //span[contains(text(), 'Markets')]")
 
 class BUG_370(BasePage):
 
@@ -77,12 +78,33 @@ class BUG_370(BasePage):
             # Check visibility message '404 not found' on the opened page
             print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
             if self.element_is_visible(MESSAGE_404_LOCATOR):
-                print('========1111========')
                 msg = (f"Message '404 not found' is visible on the opened page")
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # 370 {msg}")
 
         print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
-        Common.save_current_screenshot(d, f"Opened page don't have message '404 not found'")
+
+        # Check presenting 'Markets' in breadcrumbs
+        print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' presenting in breadcrumbs?")
+        if len(d.find_elements(*MARKETS_LOCATOR)) == 0:
+            msg = f"Opened page don't have presenting 'Markets' in breadcrumbs in DOM"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 370 {msg}")
+        print(f"{datetime.now()}   The opened page have presenting 'Markets' in breadcrumbs in DOM\n")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*MARKETS_LOCATOR)
+            )
+
+        # Check visible 'Markets' in breadcrumbs
+        print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' visible in breadcrumbs?")
+        if not self.element_is_visible(MARKETS_LOCATOR):
+            msg = f"Opened page don't have visible 'Markets' in breadcrumbs"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # 370 {msg}")
+        print(f"{datetime.now()}   The opened page have visible 'Markets' in breadcrumbs\n")
+
+        Common.save_current_screenshot(d, f"Opened page have visible 'Markets' in breadcrumbs")
         self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
         return True
