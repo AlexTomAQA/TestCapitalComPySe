@@ -18,8 +18,7 @@ from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
-from pages.Menu.New.from_trading_menu_open_mobile_apps import MenuNew
-from pages.Menu.New.from_about_us_menu_open_why_capital import MenuNew
+from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -222,7 +221,7 @@ class TestManualDetectedBugs:
             d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login,
             cur_password)
 
-        menu = MenuNew(d, link)
+        menu = from_trading_menu_open_mobile_apps.MenuNew(d, link)
         cur_item_link = menu.from_trading_menu_open_mobile_apps(d, cur_language, cur_country, link)
 
         test_element = InvestmateAppPage(d, cur_item_link, bid)
@@ -417,13 +416,14 @@ class TestManualDetectedBugs:
         link = page_conditions.preconditions(
             d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuNew(d, link)
+        menu = from_about_us_menu_open_why_capital.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
 
-        test_element = DiscoverCFDTtradingLink(cur_item_link, bid)
-        test_element.discover_cfd_trading_link(cur_item_link)
-        test_element.element_pay_attention()
-        test_element.assert_link()
+        test_element = DiscoverCFDTtradingLink(d, cur_item_link, bid)
+        test_element.discover_cfd_trading_link(d, cur_item_link)
+        test_element.element_pay_attention(d)
+        test_element.assert_link(d)
+
 
     @allure.step('Start retest manual AT_55!371b: “CFD trading” page is opened')
     @pytest.mark.parametrize('cur_language', [''])
@@ -452,10 +452,10 @@ class TestManualDetectedBugs:
         link = page_conditions.preconditions(
             d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        menu = MenuNew(d, link)
+        menu = from_about_us_menu_open_why_capital.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
 
-        test_element = DiscoverCFDTtradingLink(cur_item_link, bid)
-        test_element.discover_cfd_trading_link(cur_item_link)
-        test_element.element_click()
-        test_element.assert_page()
+        test_element = DiscoverCFDTtradingLink(d, cur_item_link, bid)
+        test_element.discover_cfd_trading_link(d, cur_item_link)
+        test_element.element_click(d)
+        test_element.assert_page(d)
