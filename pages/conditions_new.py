@@ -280,6 +280,7 @@ class NewConditions(BasePage):
         match cur_country:
             case "gb": host += "gb"
             case "ae": host += "ae"
+            case "au": host += "au"
             case _:
                 msg = f"Stop! Указанная страна '{cur_country}' не обрабатывается. Stop running"
                 print(f'{datetime.now()}   {msg}')
