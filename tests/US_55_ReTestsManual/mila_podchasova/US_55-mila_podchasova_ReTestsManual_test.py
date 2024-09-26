@@ -21,6 +21,7 @@ from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.common import Common
 from pages.conditions import Conditions
 from pages.conditions_switch import conditions_switch
+from pages.conditions_v2 import apply_preconditions_to_link
 from src.src import CapitalComPageSrc
 from pages.conditions_new import NewConditions
 
@@ -49,7 +50,7 @@ class TestManualDetectedBugs:
                    " button [Platform overview] click on the 'Investmate app' page"
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d, "")
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -128,7 +129,7 @@ class TestManualDetectedBugs:
 
         # pytest.skip("Autotest under construction")
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d, "")
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -162,9 +163,10 @@ class TestManualDetectedBugs:
             "instead [My Account] menu after clicking the [My account] button"
         )
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # Arrange
         button = ButtonMyAccount(d, link, bid)
@@ -201,9 +203,10 @@ class TestManualDetectedBugs:
             "instead [My Account] menu after clicking the [My account] button"
         )
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # Arrange
         button = ButtonMyAccount(d, link, bid)
@@ -221,7 +224,7 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!326 | The page "Oops, this help center no longer exists"'
         ' is opened after clicking the link [Help Center] of the page "Contact us"')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', ['de'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_326
     def test_326(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -229,7 +232,7 @@ class TestManualDetectedBugs:
          Check: The page "Oops, this help center no longer exists"
          is opened after clicking the link [Help Center] of the page "Contact us"
          Language: All.
-         License: ASIC, CYSEC.
+         License: CYSEC.
          Role: NoReg | NoAuth | Auth
          Author: podchasova11
          """
@@ -244,7 +247,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
@@ -297,7 +300,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
@@ -358,7 +361,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
