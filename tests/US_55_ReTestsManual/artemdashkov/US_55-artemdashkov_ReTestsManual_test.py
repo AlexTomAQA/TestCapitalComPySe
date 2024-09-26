@@ -34,6 +34,7 @@ from pages.BugsManual.bug_377 import BUG_377
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
+from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
@@ -73,10 +74,8 @@ class TestManualDetected:
             False, False
         )
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = None
@@ -119,10 +118,8 @@ class TestManualDetected:
             False, False
         )
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
         cur_item_link = None
         menu = MenuSection(d, link)
@@ -168,10 +165,8 @@ class TestManualDetected:
             False, False
         )
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
         cur_item_link = None
         menu = MenuSection(d, link)
@@ -218,10 +213,8 @@ class TestManualDetected:
             False, False
         )
 
-        page_conditions = Conditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_2_rnd_from_12,
-            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_12, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_our_mobile_apps_submenu_products_and_services_menu(
@@ -254,9 +247,8 @@ class TestManualDetected:
             False, True
         )
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_why_capital_com_client_funds_menu(
@@ -293,24 +285,14 @@ class TestManualDetected:
         )
 
         d.refresh()
-        # pytest.skip("Промежуточная версия")
-        host = None
-        if cur_country_1_rnd_from_2 == "au":
-            host = CapitalComPageSrc.URL_NEW_EN_AU
-            page_conditions = NewConditions_v1(d, "")
-        else:
-            host = CapitalComPageSrc.URL
-            page_conditions = Conditions(d, "")
 
-        # page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, host, "", cur_language_2_rnd_from_14,
-            cur_country_1_rnd_from_2, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
-        test_element = EmailFieldSignUpForm(d, cur_item_link, bid)
+        test_element = EmailFieldSignUpForm(d, link, bid)
         test_element.full_test(
             d, cur_language_2_rnd_from_14, cur_country_1_rnd_from_2, cur_role,
-            cur_item_link, invalid_login, valid_password)
+            link, invalid_login, valid_password)
 
     @allure.step("Start test of voted function in 'What is your sentiment...' block")
     @pytest.mark.parametrize('cur_language', [''])
@@ -337,14 +319,12 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country_1_rnd_from_2,
-            cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country_1_rnd_from_2,
+                                           cur_role, cur_login, cur_password)
 
-        page_menu = MenuSection(d, cur_item_link)
+        page_menu = MenuSection(d, link)
         menu_link = page_menu.open_news_and_analysis_market_analysis_menu(
-            d, cur_language, cur_country_1_rnd_from_2, cur_item_link)
+            d, cur_language, cur_country_1_rnd_from_2, link)
         test_element = WhatIsYourSentimentWidget(d, menu_link, bid)
         test_element.arrange(d, menu_link)
 
@@ -388,16 +368,14 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
-        cur_item_link = page_menu.open_markets_menu_cfd_calculator_submenu(
+        link = page_menu.open_markets_menu_cfd_calculator_submenu(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = TradingCalculatorCFDCalculatorPage(d, cur_item_link, bid)
+        test_element = TradingCalculatorCFDCalculatorPage(d, link, bid)
         test_element.arrange(d)
 
         # Act
@@ -432,10 +410,8 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(
@@ -476,10 +452,8 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_education_cryptocurrency_trading_menu(
@@ -521,10 +495,8 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_charges_and_fees_submenu_products_and_services_menu(
@@ -563,10 +535,8 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         test_element = BUG_151(d, cur_item_link, bid)
         test_element.arrange(d, cur_language, cur_item_link)
@@ -603,10 +573,8 @@ class TestManualDetected:
         )
 
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language_and_query[0],
-            cur_country, cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language_and_query[0], cur_country,
+                                    cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         cur_item_link = page_menu.open_more_menu_help_and_support_submenu(
@@ -647,10 +615,8 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = from_pricing_menu_open_how_capital_com_makes_money.MenuNew(d, cur_item_link)
         cur_item_link = page_menu.from_pricing_menu_open_how_capital_com_makes_money(
@@ -691,17 +657,15 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_all_platforms(
+        link = page_menu.from_trading_menu_open_all_platforms(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_265(d, cur_item_link, bid)
-        test_element.arrange(d, cur_language, cur_item_link)
+        test_element = BUG_265(d, link, bid)
+        test_element.arrange(d, cur_language, link)
 
         # Act
         test_element.act(d)
@@ -732,17 +696,15 @@ class TestManualDetected:
             "Testing button [Explore features] on the 'Web platform' page",
         )
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_web_platform.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_web_platform(
+        link = page_menu.from_trading_menu_open_web_platform(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_300(d, cur_item_link, bid)
-        test_element.arrange(d, cur_language, cur_item_link)
+        test_element = BUG_300(d, link, bid)
+        test_element.arrange(d, cur_language, link)
 
         # Act
         test_element.act(d)
@@ -776,17 +738,15 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = from_markets_menu_open_forex.MenuNewForex(d, cur_item_link)
-        cur_item_link = page_menu.from_markets_menu_open_forex(
+        link = page_menu.from_markets_menu_open_forex(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_312(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link)
+        test_element = BUG_312(d, link, bid)
+        test_element.arrange(d, link)
 
         # Act
         test_element.act(d)
@@ -819,10 +779,8 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         test_element = BUG_324(d, cur_item_link, bid)
         test_element.arrange(d, cur_item_link)
@@ -859,10 +817,8 @@ class TestManualDetected:
             False, False
         )
         # Arrange
-        page_conditions = Conditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL, "", cur_language, cur_country,
-            cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = MenuSection(d, cur_item_link)
         menu_link = page_menu.open_education_shares_trading_menu(
@@ -904,16 +860,15 @@ class TestManualDetected:
         )
         # pytest.skip("Промежуточная версия")
         # Arrange
-        page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_spread_betting.MenuNewSpreadBetting(d, cur_item_link)
-        cur_item_link = page_menu.from_trading_menu_open_spread_betting(
+        link = page_menu.from_trading_menu_open_spread_betting(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_357(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link)
+        test_element = BUG_357(d, link, bid)
+        test_element.arrange(d, link)
 
         # Act
         test_element.act(d, cur_tool)
@@ -945,21 +900,10 @@ class TestManualDetected:
             "Scroll down to the 'Honk Kong & Taiwan' > Select 'Honk Kong & Taiwan' > Click the button [Apply]",
             False, True
         )
-        # pytest.skip("Промежуточная версия")
         # Arrange
-        host = Common().check_language_and_country_and_define_host(cur_language_country_for_fca_and_sca[0],
-                                                                   cur_language_country_for_fca_and_sca[1])
-
-        page_conditions = Common().check_language_and_country_and_define_conditions(
-                                                                    cur_language_country_for_fca_and_sca[0],
-                                                                    cur_language_country_for_fca_and_sca[1],
-                                                                    Conditions(d, ""),
-                                                                    NewConditions_v1(d, ""))
-
-        # page_conditions = NewConditions(d, "")
-        cur_item_link = page_conditions.preconditions(
-            d, host, "", cur_language_country_for_fca_and_sca[0],
-            cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
+                                                    cur_language_country_for_fca_and_sca[1],
+                                                    cur_role, cur_login, cur_password)
 
         test_element = BUG_362(d, cur_item_link, bid)
         test_element.arrange(d, cur_item_link)
@@ -994,21 +938,16 @@ class TestManualDetected:
             "Find block 'Why choose Capital.com?' > Click the link 'Discover what you can trade'",
             False, True
         )
-        # pytest.skip("Промежуточная версия")
         # Arrange
-        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
-        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
-                                                                                Conditions(d, ""),
-                                                                                NewConditions_v1(d, ""))
-        cur_item_link = page_conditions.preconditions(
-            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        # stop here
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
         page_menu = from_about_us_menu_open_why_capital.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_about_us_menu_open_why_capital(
+        link = page_menu.from_about_us_menu_open_why_capital(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_370(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link)
+        test_element = BUG_370(d, link, bid)
+        test_element.arrange(d, link)
 
         # Act
         test_element.act(d)
@@ -1044,19 +983,15 @@ class TestManualDetected:
         )
         pytest.skip("Промежуточная версия")
         # Arrange
-        host = Common().check_language_and_country_and_define_host(cur_language, cur_country)
-        page_conditions = Common().check_language_and_country_and_define_conditions(cur_language, cur_country,
-                                                                                    Conditions(d, ""),
-                                                                                    NewConditions_v1(d, ""))
-        cur_item_link = page_conditions.preconditions(
-            d, host, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-        # stop here
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
         page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
-        cur_item_link = page_menu.from_markets_menu_open_market_analysis(
+        link = page_menu.from_markets_menu_open_market_analysis(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_377(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link)
+        test_element = BUG_377(d, link, bid)
+        test_element.arrange(d, link)
 
         # Act
         test_element.act(d)
