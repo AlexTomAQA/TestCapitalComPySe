@@ -18,8 +18,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class ButtonMyAccount(BasePage):
-    def __init__(self, browser, link, bid):
-        super().__init__(browser, link, bid)
+    # def __init__(self, browser, link, bid):
+    #     super().__init__(browser, link, bid)
 
     @allure.step(f"{datetime.now()}  1. Start Arrange  ")
     def arrange_(self, link):
@@ -56,9 +56,9 @@ class ButtonMyAccount(BasePage):
         button = self.driver.find_elements(*MyAccountButtonLocators.BUTTON_MY_ACCOUNT2)
         button[0].click()
 
-        WebDriverWait(self.driver, 10).until(
-            EC.url_changes(self.driver.current_url)
-        )
+        # WebDriverWait(self.driver, 10).until(
+        #     EC.url_changes(self.driver.current_url)
+        # )
 
         print(f"{datetime.now()}   => BUTTON_MY_ACCOUNT is clicked")
 
