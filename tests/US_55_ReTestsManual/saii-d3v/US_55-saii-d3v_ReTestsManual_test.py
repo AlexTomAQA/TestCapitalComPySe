@@ -13,7 +13,6 @@ import allure
 
 from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
-from pages.conditions_v2_TESTING_DO_NOT_USE import conditions_switch
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
@@ -71,7 +70,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = CommoditiesPageOpenCheck(d, link, bid)
@@ -117,7 +115,6 @@ class TestManualDetectedBugs:
         # Arrange
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                                            cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -171,7 +168,6 @@ class TestManualDetectedBugs:
 
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                                            cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
@@ -219,7 +215,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -270,7 +265,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -323,7 +317,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -366,7 +359,6 @@ class TestManualDetectedBugs:
         # Arrange
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                                            cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -423,7 +415,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug272(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -474,7 +465,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug273(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
@@ -521,7 +511,6 @@ class TestManualDetectedBugs:
 
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                                            cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -572,7 +561,6 @@ class TestManualDetectedBugs:
 
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
                                            cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -621,7 +609,6 @@ class TestManualDetectedBugs:
         )
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
         signup_login = SignupLogin(d, link, bid)
@@ -677,7 +664,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug305(d, link, bid)
         test_el.open_demo_account_page(d, cur_language, cur_country, link)
@@ -724,7 +710,6 @@ class TestManualDetectedBugs:
         )
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug307(d, link, bid)
         test_el.open_shares_trading_page(d, cur_language, cur_country, link)
@@ -772,7 +757,6 @@ class TestManualDetectedBugs:
         )
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug330(d, link, bid)
         test_el.open_support_window()
@@ -823,7 +807,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -875,7 +858,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -930,7 +912,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug335(d, link, bid)
         test_el.open_market_guides_page(d, cur_language, cur_country, link)
@@ -975,7 +956,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug359(d, link, bid)
         test_el.open_shares_page(d, cur_language, cur_country, link)
@@ -1020,7 +1000,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug359(d, link, bid)
@@ -1067,7 +1046,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug364(d, link, bid)
         test_el.open_spread_betting_page(d, cur_language, cur_country, link)
@@ -1110,7 +1088,6 @@ class TestManualDetectedBugs:
         # Arrange
         link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country,
                                            cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug366(d, link, bid)
@@ -1158,7 +1135,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug372(d, link, bid)
         test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
@@ -1203,7 +1179,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug373(d, link, bid)
         test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
