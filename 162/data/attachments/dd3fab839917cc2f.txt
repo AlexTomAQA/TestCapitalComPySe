@@ -1,0 +1,53 @@
+2024-09-27 01:07:29 ERROR The elements are no longer attached to the DOM on page: https://capital.com/ru
+2024-09-27 01:07:29 ERROR stale element reference: stale element not found
+  (Session info: chrome=129.0.6668.58); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 386, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 365, in _predicate
+    if element and element.is_enabled():
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 192, in is_enabled
+    return self._execute(Command.IS_ELEMENT_ENABLED)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=129.0.6668.58); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+#0 0x560fd0c2110a <unknown>
+#1 0x560fd09075e0 <unknown>
+#2 0x560fd091784b <unknown>
+#3 0x560fd090dcf8 <unknown>
+#4 0x560fd090bff9 <unknown>
+#5 0x560fd090f105 <unknown>
+#6 0x560fd090f18c <unknown>
+#7 0x560fd0951561 <unknown>
+#8 0x560fd097bb22 <unknown>
+#9 0x560fd094b478 <unknown>
+#10 0x560fd097bcee <unknown>
+#11 0x560fd099ad7d <unknown>
+#12 0x560fd097b8c3 <unknown>
+#13 0x560fd09496b3 <unknown>
+#14 0x560fd094a68e <unknown>
+#15 0x560fd0bebb0b <unknown>
+#16 0x560fd0befa91 <unknown>
+#17 0x560fd0bd8305 <unknown>
+#18 0x560fd0bf0612 <unknown>
+#19 0x560fd0bbd46f <unknown>
+#20 0x560fd0c10008 <unknown>
+#21 0x560fd0c101d3 <unknown>
+#22 0x560fd0c1ff5c <unknown>
+#23 0x7f912ca94ac3 <unknown>
