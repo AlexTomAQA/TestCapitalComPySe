@@ -3,6 +3,8 @@
 @Time    : 2024/09/24 08:40
 @Author  : Artem Dashkov
 """
+import random
+
 import allure
 from datetime import datetime
 from selenium.webdriver.common.by import By
@@ -17,7 +19,8 @@ BUG_NUMBER = '377'
 BLOCK_LOCATOR = (By.XPATH, '//div[@class="box_box__5Jmfa box_sm__FGk8i grey"][1]')
 LINK_LOCATOR = (By.CSS_SELECTOR,
                 "//div[@class='box_box__5Jmfa box_sm__FGk8i grey'] //a[contains(text(), 'Capital.com')]")
-ARTICLES_LOCATOR = (By.CSS_SELECTOR, '[class="article_row__90E88"]')
+ARTICLES_LOCATOR = (By.XPATH,
+                    '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
@@ -37,8 +40,26 @@ class BUG_377(BasePage):
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
 
+        # Choose random number of article and click
+        number_articles = len(d.find_elements(*ARTICLES_LOCATOR))
+        print(f'{datetime.now()}   Number of articles is: {number_articles}')
+        random_number_article = random.randint(1, number_articles)
+        print(f'{datetime.now()}   Random number of article for click is: {random_number_article}')
+        link_article = d.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].get_attribute("href")
+        print(f'{datetime.now()}   Link of article for click is: {link_article}')
+        print(f'{datetime.now()}   Start to click on article')
 
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1]
+        )
 
+        d.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].click()
+        print(f'{datetime.now()}   End to click on article')
+
+        # Check target url
+        self.wait_for_target_url(link_article, 5)
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
         # Check presenting link on the page
         if len(d.find_elements(*LINK_LOCATOR)) == 0:
@@ -53,20 +74,20 @@ class BUG_377(BasePage):
         )
 
         # Check visibility link on the page
-        print(f"{datetime.now()}   Start to check visibility link {LINK_NAME} on the page 'Why Capital.com?'\n")
+        print(f"{datetime.now()}   Start to check visibility link {LINK_NAME}'\n")
         if not self.element_is_visible(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't visible on the page 'Why Capital.com?'"
+            msg = f"Link {LINK_NAME} don't visible"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} visible on the page 'Why Capital.com?'\n")
+        print(f"{datetime.now()}   Link {LINK_NAME} visible \n")
 
         # Check clickability link on the page
-        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME} on the page 'Why Capital.com?'\n")
+        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME}\n")
         if not self.element_is_clickable(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't clickable on the page 'Why Capital.com?'"
+            msg = f"Link {LINK_NAME} don't clickable"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} clickable on the page 'Why Capital.com?'\n")
+        print(f"{datetime.now()}   Link {LINK_NAME} clickable\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
@@ -93,7 +114,6 @@ class BUG_377(BasePage):
             # Check visibility message '404 not found' on the opened page
             print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
             if self.element_is_visible(MESSAGE_404_LOCATOR):
-                print('========1111========')
                 msg = (f"Message '404 not found' is visible on the opened page")
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
