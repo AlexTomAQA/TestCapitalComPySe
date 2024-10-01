@@ -31,6 +31,7 @@ from pages.BugsManual.bug_357 import BUG_357
 from pages.BugsManual.bug_362 import BUG_362
 from pages.BugsManual.bug_370 import BUG_370
 from pages.BugsManual.bug_377 import BUG_377
+from pages.BugsManual.bug_383 import BUG_383
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -991,6 +992,50 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_377(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of link 'Daniela Hathorn' on page 'ECB Preview…'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_383
+    def test_383_link_daniela_hathorn_on_the_page_ecb_preview_does_not_open(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] > Menu item [Market analysis] >
+                Find and click article link “ECB Preview: Higher CPI expected to keep Lagarde on a hawkish path” >
+                Click the link 'Daniela Hathorn'
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "383",
+            "Menu section [Markets] > Menu item [Market analysis] > "
+            "Find and click article link 'ECB Preview: Higher CPI expected to keep Lagarde on a hawkish path' > "
+            "Click the link 'Daniela Hathorn'",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_383(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
