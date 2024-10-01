@@ -17,7 +17,7 @@ LINK_NAME = '"Capital.com"'
 BUG_NUMBER = '377'
 
 BLOCK_LOCATOR = (By.XPATH, '//div[@class="box_box__5Jmfa box_sm__FGk8i grey"][1]')
-LINK_LOCATOR = (By.CSS_SELECTOR,
+LINK_LOCATOR = (By.XPATH,
                 "//div[@class='box_box__5Jmfa box_sm__FGk8i grey'] //a[contains(text(), 'Capital.com')]")
 ARTICLES_LOCATOR = (By.XPATH,
                     '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
@@ -34,18 +34,18 @@ class BUG_377(BasePage):
             self.open_page()
 
         # Check presenting articles on the page
-        if len(d.find_elements(*ARTICLES_LOCATOR)) == 0:
+        if len(self.driver.find_elements(*ARTICLES_LOCATOR)) == 0:
             msg = f"The page 'Market analysis' don't have articles"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
 
         # Choose random number of article and click
-        number_articles = len(d.find_elements(*ARTICLES_LOCATOR))
+        number_articles = len(self.driver.find_elements(*ARTICLES_LOCATOR))
         print(f'{datetime.now()}   Number of articles is: {number_articles}')
         random_number_article = random.randint(1, number_articles)
         print(f'{datetime.now()}   Random number of article for click is: {random_number_article}')
-        link_article = d.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].get_attribute("href")
+        link_article = self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].get_attribute("href")
         print(f'{datetime.now()}   Link of article for click is: {link_article}')
         print(f'{datetime.now()}   Start to click on article')
 
@@ -54,7 +54,7 @@ class BUG_377(BasePage):
             self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1]
         )
 
-        d.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].click()
+        self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].click()
         print(f'{datetime.now()}   End to click on article')
 
         # Check target url
@@ -62,7 +62,7 @@ class BUG_377(BasePage):
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
         # Check presenting link on the page
-        if len(d.find_elements(*LINK_LOCATOR)) == 0:
+        if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
             msg = (f"The page 'Why Capital.com?' don't have link {LINK_NAME} in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
@@ -94,7 +94,7 @@ class BUG_377(BasePage):
 
         print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
 
-        d.find_element(*LINK_LOCATOR).click()
+        self.driver.find_element(*LINK_LOCATOR).click()
         print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
@@ -103,7 +103,7 @@ class BUG_377(BasePage):
 
         # Check presenting message '404 not found' on the opened page
         print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
-        if len(d.find_elements(*MESSAGE_404_LOCATOR)) != 0:
+        if len(self.driver.find_elements(*MESSAGE_404_LOCATOR)) != 0:
             print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
 
             self.driver.execute_script(
