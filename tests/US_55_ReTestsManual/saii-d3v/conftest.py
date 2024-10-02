@@ -27,9 +27,9 @@ def random_search_string(request):
 # Bug 378
 @pytest.fixture(
     params=random.choice([
-        ('xpath', '//a[text() = "BARC"]'),
-        ('xpath', '//a[text() = "HSBA"]'),
-        ('xpath', '//a[text() = "LSE"]')
+        [('xpath', '//a[text() = "BARC"]')],
+        [('xpath', '//a[text() = "HSBA"]')],
+        [('xpath', '//a[text() = "LSE"]')]
     ]))
 def bug_378_link_loc(request):
-    return request.param
+    return request.param[0]

@@ -15,6 +15,7 @@ from selenium.common.exceptions import TimeoutException
 
 ANALYSIS_ARTICLE_LOC = ('css selector', '[data-type="latest_articles_block_page_id_541702"]')
 NEXT_PAGE_BTN_LOC = ('css selector', '[aria-label="Go to the next page"]')
+COUNTRY_FLAG_LOC = ('xpath', '//div[@class="localization_item__KwMiX"][1]//i')
 
 
 class Bug378(BasePage):
@@ -60,4 +61,13 @@ class Bug378(BasePage):
         )
         el.click()
 
+        print(f'{datetime.now()}   => Done, current URL: {self.driver.current_url}')
 
+    def should_be_sca_license(self):
+        print(f'\n{datetime.now()}   Make sure that SCA license is selected =>')
+
+        if 'flag_ae__N7VMo' in self.driver.find_element(*COUNTRY_FLAG_LOC).get_attribute('class'):
+            print(f'{datetime.now()}   => SCA license is selected')
+            return True
+        print(f'{datetime.now()}   => SCA license is not selected')
+        return False
