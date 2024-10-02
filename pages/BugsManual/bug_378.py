@@ -31,21 +31,33 @@ class Bug378(BasePage):
     def open_lloyds_forecast_page(self):
         print(f'\n{datetime.now()}   Click the "Lloyds forecast" article =>')
 
-        try:
-            el = Wait(self.driver, 2).until(EC.element_to_be_clickable(ANALYSIS_ARTICLE_LOC))
+        while not Wait(self.driver, 2).until(EC.element_to_be_clickable(ANALYSIS_ARTICLE_LOC)):
+            print(f'\n{datetime.now()}   => Next Page =>')
+            next_page_btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(NEXT_PAGE_BTN_LOC))
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                el
+                next_page_btn
             )
-            el.click()
-        except TimeoutException:
-            while TimeoutException:
-                el = Wait(self.driver, 2).until(EC.element_to_be_clickable(NEXT_PAGE_BTN_LOC))
-                self.driver.execute_script(
-                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                    el
-                )
-                el.click()
+            next_page_btn.click()
+
+        el = Wait(self.driver, 2).until(EC.element_to_be_clickable(ANALYSIS_ARTICLE_LOC))
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            el
+        )
+        el.click()
 
         print(f'{datetime.now()}   => Done, the corresponding page is opened')
         print(f'{datetime.now()}   Current URL: {self.driver.current_url}')
+
+    def click_trading_instrument_link(self, link_loc):
+        print(f'\n{datetime.now()}   Click any trading instrument link =>')
+
+        el = Wait(self.driver, 2).until(EC.element_to_be_clickable(link_loc))
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            el
+        )
+        el.click()
+
+
