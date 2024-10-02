@@ -413,3 +413,33 @@ class TestManualDetectedBugs:
         test_element.discover_cfd_trading_link(d, cur_item_link)
         test_element.element_click(d)
         test_element.assert_page(d)
+
+
+    @allure.step('Start retest manual AT_55!380: The relevant pages of "Social networks" are opened')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_371b
+    def test_380(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: TC_55!380 | The relevant pages of "Social networks" aren't opened after clicking the Social Network Icons
+                when EN language and SCA license are selected.
+        Language: EN
+        License: SCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "380", 'The relevant pages of "Social networks" are opened”'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_about_us_menu_open_help.MenuNew(d, link)
+        cur_item_link = menu.from_about_us_menu_open_help(d, cur_language, cur_country, link)
+
+        test_element = SocialNetwork(d, cur_item_link, bid)
+        test_element.social_networks(d, cur_item_link, link)
+        test_element.element_click(d)
+        test_element.assert_page(d)
