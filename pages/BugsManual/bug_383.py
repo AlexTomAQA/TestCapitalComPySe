@@ -12,23 +12,24 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
-BLOCK_NAME = '"Capital.com is an execution-only brokerage platform…"'
-LINK_NAME = '"Capital.com"'
-BUG_NUMBER = '377'
+LINK_NAME = '"Daniela Hathorn"'
+BUG_NUMBER = '383'
 
-BLOCK_LOCATOR = (By.XPATH, '//div[@class="box_box__5Jmfa box_sm__FGk8i grey"][1]')
-LINK_LOCATOR = (By.XPATH,
-                "//div[@class='box_box__5Jmfa box_sm__FGk8i grey'] //a[contains(text(), 'Capital.com')]")
+PAGINATION_LOCATOR = (By.XPATH,
+                      '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8 ')
 ARTICLES_LOCATOR = (By.XPATH,
                     '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
+TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
+
+LINK_LOCATOR = (By.CSS_SELECTOR, 'a[data-type="author_link"]')
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
 class BUG_383(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find block and link")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find link")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find articles, choose and click article, find block and link")
+        print(f"\n{datetime.now()}   1. Start Arrange: find articles, choose and click article, find link")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
@@ -40,7 +41,29 @@ class BUG_383(BasePage):
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
         print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
 
-        # Choose random number of article and click
+        # Look for target article
+        count = 0
+        while count < 5:
+            # Check presenting pagination on the page
+            if len(self.driver.find_elements(*PAGINATION_LOCATOR)) == 0:
+                msg = f"The page 'Market analysis' don't have pagination"
+                print(f"{datetime.now()}   => {msg}")
+                Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+            print(f"{datetime.now()}   The page 'Market analysis' don't have pagination in DOM\n")
+
+            # Check presenting target article on the page
+            if len(self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)) == 0:
+                msg = f"The current page don't have target article. Try find on the other page."
+                print(f"{datetime.now()}   => {msg}")
+                print(f"{datetime.now()}   Start to click on the next page link")
+                self.driver.find_elements(*PAGINATION_LOCATOR)[0].click()
+                print(f"{datetime.now()}   End to click on the next page link")
+                count += 1
+                continue
+            print(f"{datetime.now()}   The current page have target article in DOM\n")
+
+            # stopped here
+            break
         number_articles = len(self.driver.find_elements(*ARTICLES_LOCATOR))
         print(f'{datetime.now()}   Number of articles is: {number_articles}')
         random_number_article = random.randint(1, number_articles)
