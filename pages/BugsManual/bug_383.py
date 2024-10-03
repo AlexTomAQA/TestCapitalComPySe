@@ -15,8 +15,8 @@ from src.src import CapitalComPageSrc
 LINK_NAME = '"Daniela Hathorn"'
 BUG_NUMBER = '383'
 
-PAGINATION_LOCATOR = (By.XPATH,
-                      '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8 ')
+PAGINATION_LOCATOR = (By.CSS_SELECTOR,
+                      '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8')
 ARTICLES_LOCATOR = (By.XPATH,
                     '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
 TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
@@ -39,19 +39,21 @@ class BUG_383(BasePage):
             msg = f"The page 'Market analysis' don't have articles"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
+        print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM\n")
 
         # Look for target article
         count = 0
         while count < 5:
             # Check presenting pagination on the page
+            print(f"{datetime.now()}   Start to check presenting pagination on the page\n")
             if len(self.driver.find_elements(*PAGINATION_LOCATOR)) == 0:
                 msg = f"The page 'Market analysis' don't have pagination"
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-            print(f"{datetime.now()}   The page 'Market analysis' don't have pagination in DOM\n")
+            print(f"{datetime.now()}   The page 'Market analysis' have pagination in DOM\n")
 
             # Check presenting target article on the page
+            print(f"{datetime.now()}   Start to check presenting target article on the page\n")
             if len(self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)) == 0:
                 msg = f"The current page don't have target article. Try find on the other page."
                 print(f"{datetime.now()}   => {msg}")
@@ -61,24 +63,32 @@ class BUG_383(BasePage):
                 count += 1
                 continue
             print(f"{datetime.now()}   The current page have target article in DOM\n")
-
-            # stopped here
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0]
+            )
             break
-        number_articles = len(self.driver.find_elements(*ARTICLES_LOCATOR))
-        print(f'{datetime.now()}   Number of articles is: {number_articles}')
-        random_number_article = random.randint(1, number_articles)
-        print(f'{datetime.now()}   Random number of article for click is: {random_number_article}')
-        link_article = self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].get_attribute("href")
-        print(f'{datetime.now()}   Link of article for click is: {link_article}')
-        print(f'{datetime.now()}   Start to click on article')
 
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1]
-        )
+        # Check visibility article on the page
+        print(f"{datetime.now()}   Start to check visibility target article'\n")
+        if not self.element_is_visible(TARGET_ARTICLE_LOCATOR):
+            msg = f"Target article don't visible"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   Target article is visible \n")
 
-        self.driver.find_elements(*ARTICLES_LOCATOR)[random_number_article-1].click()
-        print(f'{datetime.now()}   End to click on article')
+        # Check clickability article on the page
+        print(f"{datetime.now()}   Start to check clickability target article\n")
+        if not self.element_is_clickable(TARGET_ARTICLE_LOCATOR):
+            msg = f"Target article don't clickable"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   Target article clickable\n")
+        link_article = self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].get_attribute("href")
+
+        print(f'{datetime.now()}   Start to click on target article')
+        self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].click()
+        print(f'{datetime.now()}   End to click on target article')
 
         # Check target url
         self.wait_for_target_url(link_article, 5)
@@ -86,10 +96,10 @@ class BUG_383(BasePage):
 
         # Check presenting link on the page
         if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
-            msg = (f"The page 'Why Capital.com?' don't have link {LINK_NAME} in DOM")
+            msg = (f"The page 'ECB Preview...' don't have link {LINK_NAME} in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
+        print(f"{datetime.now()}   The page 'ECB Preview...' have link {LINK_NAME} in DOM\n")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
