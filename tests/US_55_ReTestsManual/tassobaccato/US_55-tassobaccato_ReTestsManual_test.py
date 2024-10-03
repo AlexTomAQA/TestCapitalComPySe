@@ -15,10 +15,12 @@ from pages.BugsManual.bug_308 import InvestmateAppPage
 from pages.BugsManual.bug_322 import AssertTPI, TradingInstrumentsMarkets
 from pages.BugsManual.bug_360 import IndicesItaly40
 from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
+from pages.BugsManual.bug_380 import SocialNetwork
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
-from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital
+from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital, \
+    from_about_us_menu_open_help
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
