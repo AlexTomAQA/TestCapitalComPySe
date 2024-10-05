@@ -33,6 +33,7 @@ from pages.BugsManual.bug_364 import Bug364
 from pages.BugsManual.bug_366 import Bug366
 from pages.BugsManual.bug_372 import Bug372
 from pages.BugsManual.bug_373 import Bug373
+from pages.BugsManual.bug_378 import Bug378
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1176,7 +1177,7 @@ class TestManualDetectedBugs:
             False,
             False
         )
-
+        pytest.skip("378 In progress...")
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -1190,6 +1191,54 @@ class TestManualDetectedBugs:
         if not test_el.should_be_visible_block_experienced_traders():
             Common.pytest_fail('Bug # 55!373 The the block "Experienced traders" is NOT into viewport')
         Common.save_current_screenshot(d, "AT_55!373 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!378 | FCA license is selected instead of SCA on trading instrument page '
+        'after clicking any of trading instrument links '
+        'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_378
+    def test_378(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password, bug_378_link_loc):
+        """
+         Check: FCA license is selected instead of SCA on trading instrument page
+         after clicking any of trading instrument links
+         on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "378",
+            'FCA license is selected instead of SCA on trading instrument page '
+            'after clicking any of trading instrument links '
+            'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug378(d, link, bid)
+        test_el.open_market_analysis_page(d, cur_language, cur_country, link)
+        test_el.open_lloyds_forecast_page()
+
+        # Act
+        test_el.click_trading_instrument_link(bug_378_link_loc)
+
+        # Assert
+        if not test_el.should_be_sca_license():
+            Common.pytest_fail('Bug # 55!378 The SCA license is NOT selected')
+        Common.save_current_screenshot(d, "AT_55!378 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
