@@ -1,7 +1,7 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/07/22 16:40 GMT+5
-@Author  : Sergey Aiidzhanov
+@Time    : 2024/10/05
+@Author  : podchasova11
 """
 
 from datetime import datetime
