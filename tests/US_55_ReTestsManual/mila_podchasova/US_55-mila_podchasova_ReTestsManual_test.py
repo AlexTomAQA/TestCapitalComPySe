@@ -418,28 +418,28 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        pytest.skip("315 In progress...")
+        # pytest.skip("315 In progress...")
         # Arrange
-        # Common.check_language_in_list_and_skip_if_present(cur_language, [''])
-        #
-        # link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role,
-        #                                    cur_login, cur_password)
-        #
-        # page_header_menu = MenuSection(d, link)
-        # test_el = Bug315(d, link, bid)
-        #
-        # page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
-        # test_el.click_why_capital_menu_item()
-        #
-        # # Act
-        # test_el.click_investmate_link()
-        #
-        # # Assert
-        # if not test_el.should_be_investmate_page(cur_language):
-        #     Common.pytest_fail("Bug # 55!315 The Investment page is NOT opened")
-        # Common.save_current_screenshot(d, "AT_55!315 Pass")
-        #
-        # # Postconditions
-        # print(f'\n{datetime.now()}   Applying postconditions...')
-        # Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+        Common.check_language_in_list_and_skip_if_present(cur_language, [''])
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role,
+                                           cur_login, cur_password)
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug315(d, link, bid)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        test_el.click_why_capital_menu_item()
+
+        # Act
+        test_el.click_investmate_link()
+
+        # Assert
+        if not test_el.should_be_investmate_page(cur_language):
+            Common.pytest_fail("Bug # 55!315 The Investment page is NOT opened")
+        Common.save_current_screenshot(d, "AT_55!315 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
