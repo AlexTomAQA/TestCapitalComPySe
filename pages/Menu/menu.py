@@ -2309,6 +2309,8 @@ class MenuSection(BasePage):
     def move_focus_to_products_and_services_menu(self, d, test_language, test_country):
         products_and_services_menu_locator = None
         match test_language:
+            case "en":
+                products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_EN_BUTTON
             case "":
                 products_and_services_menu_locator = MenuProductsAndServices.MENU_PRODUCTS_AND_SERVICES_EN_BUTTON
             case "ar":
