@@ -3,8 +3,6 @@
 @Time    : 2024/09/29 19:30 GMT+5
 @Author  : Sergey Aiidzhanov
 """
-import random
-import time
 
 from datetime import datetime
 
