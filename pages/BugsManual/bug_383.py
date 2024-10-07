@@ -19,7 +19,8 @@ PAGINATION_LOCATOR = (By.CSS_SELECTOR,
                       '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8')
 ARTICLES_LOCATOR = (By.XPATH,
                     '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
-TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
+# TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
+TARGET_ARTICLE_LOCATOR = (By.CSS_SELECTOR, '.article_content__1GOa_ > [data-type="latest_articles_block_page_id_541765"]')
 
 LINK_LOCATOR = (By.CSS_SELECTOR, 'a[data-type="author_link"]')
 
@@ -91,6 +92,7 @@ class BUG_383(BasePage):
         print(f'{datetime.now()}   End to click on target article')
 
         # Check target url
+        print(f'Link article: {link_article}')
         self.wait_for_target_url(link_article, 5)
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
