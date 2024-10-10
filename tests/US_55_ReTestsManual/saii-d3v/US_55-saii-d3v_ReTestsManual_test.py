@@ -34,6 +34,7 @@ from pages.BugsManual.bug_366 import Bug366
 from pages.BugsManual.bug_372 import Bug372
 from pages.BugsManual.bug_373 import Bug373
 from pages.BugsManual.bug_378 import Bug378
+from pages.BugsManual.bug_392 import Bug392
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1209,7 +1210,7 @@ class TestManualDetectedBugs:
          Check: FCA license is selected instead of SCA on trading instrument page
          after clicking any of trading instrument links
          on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”
-         Language: AR.
+         Language: EN.
          License: SCA.
          Author: Sergey Aiidzhanov
          """
@@ -1238,6 +1239,51 @@ class TestManualDetectedBugs:
         if not test_el.should_be_sca_license():
             Common.pytest_fail('Bug # 55!378 The SCA license is NOT selected')
         Common.save_current_screenshot(d, "AT_55!378 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!392 | All links on the page "استراتيجية التداول الموضعي" (Position trading strategy)'
+        ' lead on the EN pages on the old site version when AR language is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_392
+    def test_392(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: All links on the page "استراتيجية التداول الموضعي" (Position trading strategy)
+         lead on the EN pages on the old site version when AR language is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "392",
+            'All links on the page "استراتيجية التداول الموضعي" (Position trading strategy) '
+            'lead on the EN pages on the old site version when AR language is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug392(d, link, bid)
+        test_el.open_trading_strategies_page(d, cur_language, cur_country, link)
+        test_el.open_position_trading_page()
+
+        # Act
+        test_el.click_random_link()
+
+        # Assert
+        if not test_el.should_be_new_version_ar_language_page():
+            Common.pytest_fail('Bug # 55!392 The page is NOT opened on the new version and in AR language')
+        Common.save_current_screenshot(d, "AT_55!392 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
