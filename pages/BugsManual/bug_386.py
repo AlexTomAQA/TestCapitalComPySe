@@ -50,9 +50,9 @@ class ContactUs(BasePage):
             print(f"{datetime.now()}   The 'Contact us' page is not opened")
             Common.pytest_fail(f"Bug # 55!386"
                                f"\n"
-                               f"Expected result: The 'Contact us' page is not opened"
+                               f"Expected result: The page 'https://capital.com/ar-ae/contact-us' is opened"
                                f"\n"
-                               f"Actual result: The page with title '{actual_url}' is opened")
+                               f"Actual result: The page '{actual_url}' is opened")
         else:
-            print(f"{datetime.now()}   The 'Contact us' page is opened")
+            print(f"{datetime.now()}   The 'https://capital.com/ar-ae/contact-us' page is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
