@@ -15,16 +15,14 @@ from pages.BugsManual.bug_285 import ButtonMyAccount
 from pages.BugsManual.bug_315 import Bug315
 from pages.BugsManual.bug_326 import Bug326
 from pages.BugsManual.bug_350 import Bug350
+from pages.BugsManual.bug_363 import Bug363
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
-from pages.conditions import Conditions
-from pages.conditions_switch import conditions_switch
 from pages.conditions_v2 import apply_preconditions_to_link
 from src.src import CapitalComPageSrc
-from pages.conditions_new import NewConditions
 
 
 @pytest.mark.us_55
@@ -442,4 +440,46 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        "Start retest manual TC_55!363 | 'Honk Kong & Taiwan' not displayed up in search"
+        " the dropdown [Regional settings]")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_363
+    def test_363_selected_country_not_displayed_up_in_search_the_dropdown(
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+        """
+        Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
+                Click the [Search] input field > Enter value "Honk" > Check that country 'Honk Kong & Taiwan'
+                displayed in search results
+
+        Language: EN - FCA, SCA; AR - SCA
+        License/Country: FCA, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: podchasovq11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "363",
+            "Click to the dropdown [Regional settings] > Click to the dropdown [Countries] > "
+            "Click the [Search] input field > Enter value 'Honk' > Check that country 'Honk Kong & Taiwan'"
+            "displayed in search results",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
+                                                    cur_language_country_for_fca_and_sca[1],
+                                                    cur_role, cur_login, cur_password)
+
+        test_element = Bug363(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.check_present_honk_kong_taiwan_locator(d)
+
+        # Assert
+        test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
 
