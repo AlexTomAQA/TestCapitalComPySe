@@ -3,8 +3,6 @@
 @Time    : 2024/09/29 19:30 GMT+5
 @Author  : Sergey Aiidzhanov
 """
-import random
-import time
 
 from datetime import datetime
 
@@ -20,11 +18,6 @@ COUNTRY_FLAG_LOC = ('xpath', '//div[@class="localization_item__KwMiX"][1]//i')
 
 
 class Bug378(BasePage):
-
-    def __init__(self, browser, link, bid):
-        self.test_text = None
-
-        super().__init__(browser, link, bid)
 
     @staticmethod
     def open_market_analysis_page(d, cur_language, cur_country, link):

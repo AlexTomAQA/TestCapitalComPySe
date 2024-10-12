@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/10/01 22:00
+@Time    : 2024/10/08 06:00
 @Author  : Artem Dashkov
 """
 import random
@@ -12,8 +12,11 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
+BUG_NUMBER = '406'
+LINK_LEARN_MORE_LOCATOR = (By.XPATH,
+                           "//div[@class='js-ckeContent content_content__2ZOcD'] //a[contains(text(), 'Learn more')]")
+
 LINK_NAME = '"Daniela Hathorn"'
-BUG_NUMBER = '383'
 
 PAGINATION_LOCATOR = (By.CSS_SELECTOR,
                       '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8')
@@ -22,25 +25,61 @@ ARTICLES_LOCATOR = (By.XPATH,
 # TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
 TARGET_ARTICLE_LOCATOR = (By.CSS_SELECTOR, '.article_content__1GOa_ > [data-type="latest_articles_block_page_id_541765"]')
 
-LINK_LOCATOR = (By.CSS_SELECTOR, 'a[data-type="author_link"]')
+
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
-class BUG_383(BasePage):
+class BUG_406(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find link")
+    @allure.step(f"{datetime.now()}   Start Arrange: find and click link 'Learn more...', "
+                 f"find and click header of the accordion 'How do you trade...', "
+                 f"find link of markets 'CFDs' or 'ETFs'")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find articles, choose and click article, find link")
+        print(f"\n{datetime.now()}   1. Start Arrange: find and click link 'Learn more...'")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting articles on the page
-        if len(self.driver.find_elements(*ARTICLES_LOCATOR)) == 0:
-            msg = f"The page 'Market analysis' don't have articles"
+        # Check presenting link 'Learn more about commodities trading' on the page 'Commodities'
+        if len(self.driver.find_elements(*LINK_LEARN_MORE_LOCATOR)) == 0:
+            msg = f"The page 'Commodities' don't have link 'Learn more about commodities trading' in DOM"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM\n")
+        print(f"{datetime.now()}   The page 'Commodities' have link 'Learn more about commodities trading' in DOM\n")
+
+        # Scroll to the link 'Learn more about commodities trading'
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_elements(*LINK_LEARN_MORE_LOCATOR)[0]
+        )
+
+        # Check visibility link 'Learn more about commodities trading' on the page 'Commodities'
+        print(f"{datetime.now()}   Start to check visibility link 'Learn more about commodities trading'\n")
+        if not self.element_is_visible(TARGET_ARTICLE_LOCATOR):
+            msg = f"Link 'Learn more about commodities trading' don't visible"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   Link 'Learn more about commodities trading' is visible \n")
+
+        # Check clickability article on the page
+        print(f"{datetime.now()}   Start to check clickability link 'Learn more about commodities trading'\n")
+        if not self.element_is_clickable(LINK_LEARN_MORE_LOCATOR):
+            msg = f"Link 'Learn more about commodities trading' don't clickable"
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   Link 'Learn more about commodities trading' is clickable\n")
+        url_link_learn_more = self.driver.find_element(*LINK_LEARN_MORE_LOCATOR).get_attribute("href")
+
+        print(f'{datetime.now()}   Start to click on link "Learn more about commodities trading"')
+        self.driver.find_element(*LINK_LEARN_MORE_LOCATOR).click()
+        print(f'{datetime.now()}   End to click on target link "Learn more about commodities trading"')
+
+        # STOP HERE!!
+
+        # Check target url
+        print(f'Link article: {url_link_learn_more}')
+        self.wait_for_target_url(url_link_learn_more, 5)
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
         # Look for target article
         count = 0
