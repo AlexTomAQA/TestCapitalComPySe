@@ -1050,10 +1050,10 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('link_on_markets', ["CFDs", "ETFs"])
+    @pytest.mark.parametrize('type_of_markets', ["CFDs", "ETFs"])
     @pytest.mark.bug_406
     def test_406_link_cfds_and_etfs_on_page_what_is_commodity_trading_open_on_other_license(
-            self, worker_id, d, cur_language, cur_country, cur_role, link_on_markets, cur_login, cur_password):
+            self, worker_id, d, cur_language, cur_country, cur_role, type_of_markets, cur_login, cur_password):
         """
         Check:  Menu section [Markets] >
                 Menu item [Commodities] >
@@ -1080,7 +1080,6 @@ class TestManualDetected:
             "Click the links 'CFDs' or 'exchange traded funds'",
             False, True
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
@@ -1090,10 +1089,10 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_406(d, link, bid)
-        test_element.arrange(d, link)
+        test_element.arrange(d, link, type_of_markets)
 
         # Act
-        test_element.act(d)
+        test_element.act(d, type_of_markets)
 
         # Assert
         test_element.assert_(d)
