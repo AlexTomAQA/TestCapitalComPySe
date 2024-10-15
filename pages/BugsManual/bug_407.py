@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/10/01 22:00
+@Time    : 2024/10/15 21:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -11,7 +11,7 @@ from pages.common import Common
 from src.src import CapitalComPageSrc
 
 LINK_NAME = '"Daniela Hathorn"'
-BUG_NUMBER = '383'
+BUG_NUMBER = '407'
 
 PAGINATION_LOCATOR = (By.CSS_SELECTOR,
                       '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8')
@@ -24,7 +24,7 @@ LINK_LOCATOR = (By.CSS_SELECTOR, 'a[data-type="author_link"]')
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
-class BUG_383(BasePage):
+class BUG_407(BasePage):
 
     @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find link")
     def arrange(self, d, link):
