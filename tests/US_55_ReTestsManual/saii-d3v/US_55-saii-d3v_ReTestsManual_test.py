@@ -35,6 +35,7 @@ from pages.BugsManual.bug_372 import Bug372
 from pages.BugsManual.bug_373 import Bug373
 from pages.BugsManual.bug_378 import Bug378
 from pages.BugsManual.bug_392 import Bug392
+from pages.BugsManual.bug_416 import Bug416
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1284,6 +1285,47 @@ class TestManualDetectedBugs:
         if not test_el.should_be_new_version_ar_language_page():
             Common.pytest_fail('Bug # 55!392 The page is NOT opened on the new version and in AR language')
         Common.save_current_screenshot(d, "AT_55!392 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_416
+    def test_416(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]
+         Language: EN.
+         License: FCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "416",
+            'The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug416(d, link, bid)
+        test_el.open_client_funds_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_whatsapp_link()
+
+        # Assert
+        if not test_el.should_be_whatsapp_redirecting_page():
+            Common.pytest_fail('Bug # 55!416 The page with the link redirecting to the WhatsApp chat is NOT opened')
+        Common.save_current_screenshot(d, "AT_55!416 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

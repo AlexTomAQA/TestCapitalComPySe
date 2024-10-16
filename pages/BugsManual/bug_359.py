@@ -9,7 +9,7 @@ from pages.base_page import BasePage
 from pages.Menu.New.from_markets_menu_open_shares import MenuNewShares
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 SEARCH_EL_LOC_OLD = ('css selector', '#iqf')
 GOOGL_SEARCH_ITEM_LOC_OLD = ('xpath', '//div[text()="GOOGL"]')
@@ -20,6 +20,8 @@ SEARCH_EL_LOC_NEW = ('css selector', '#marketlist_search')
 GOOGL_SEARCH_ITEM_LOC_NEW = ('xpath', '//strong[text()="GOOGL"]')
 BREADCRUMB_LOC_NEW = ('css selector', '.breadcrumbs_breadcrumbs__UgZeo span')
 TITLE_LOC_NEW = ('css selector', 'h1.heading_h1__1NQVK')
+GOOGL_ITEM_LOC = ('xpath', '//a[text()="GOOGL"]')
+NEXT_PAGE_BTN_LOC = ('css selector', '[aria-label="Go to the next page"]')
 
 NASDAQ_LINK_LOC = ('xpath', '//a[text()="NASDAQ stock exchange"]')
 
@@ -34,21 +36,38 @@ class Bug359(BasePage):
 
     def open_trade_alphabet_page_new(self):
         print(f'\n{datetime.now()}   Opening the "Trade Alphabet Inc - A - GOOGL CFD" page =>')
-        print(f'{datetime.now()}   => Searching the "GOOGL" in the table of shares =>')
+        print(f'{datetime.now()}   => Click the "GOOGL" item in the table of shares =>')
 
-        search_field = Wait(self.driver, 2).until(EC.element_to_be_clickable(SEARCH_EL_LOC_NEW))
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            search_field
-        )
-        search_field.send_keys("GOOGL")
+        # search_field = Wait(self.driver, 2).until(EC.element_to_be_clickable(SEARCH_EL_LOC_NEW))
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     search_field
+        # )
+        # search_field.send_keys("GOOGL")
+        #
+        # search_item = Wait(self.driver, 2).until(EC.element_to_be_clickable(GOOGL_SEARCH_ITEM_LOC_NEW))
+        # search_item.click()
 
-        print(f'{datetime.now()}   => Done, clicking the search item =>')
+        flag = False
+        while flag is False:
+            try:
+                el = Wait(self.driver, 2).until(EC.element_to_be_clickable(GOOGL_ITEM_LOC))
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    el
+                )
+                el.click()
+                flag = True
+            except TimeoutException:
+                print(f'{datetime.now()}   => The item is not present, go to the next page =>')
+                next_page_btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(NEXT_PAGE_BTN_LOC))
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    next_page_btn
+                )
+                next_page_btn.click()
 
-        search_item = Wait(self.driver, 2).until(EC.element_to_be_clickable(GOOGL_SEARCH_ITEM_LOC_NEW))
-        search_item.click()
-
-        print(f'{datetime.now()}   => Done, the search item is clicked')
+        print(f'{datetime.now()}   => Done, the item is clicked')
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
     def open_trade_alphabet_page_old(self):
