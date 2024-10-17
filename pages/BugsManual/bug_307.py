@@ -67,8 +67,8 @@ class Bug307(BasePage):
             print(f'{datetime.now()}   => The page is not opened (Title Element not found)')
             return False
 
-        if self.test_text[:-1] in self.driver.find_element(*BREADCRUMB_LOC).text:
-            if self.test_text[:-1] in self.driver.find_element(*TITLE_LOC).text:
+        if self.test_text[:-1].lower() in self.driver.find_element(*BREADCRUMB_LOC).text.lower():
+            if self.test_text[:-1].lower() in self.driver.find_element(*TITLE_LOC).text.lower():
                 print(f'{datetime.now()}   => The page is opened')
                 return True
             print(f'{datetime.now()}   => The wrong page is opened')
