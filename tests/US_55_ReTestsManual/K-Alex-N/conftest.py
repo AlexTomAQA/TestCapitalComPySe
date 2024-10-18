@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 18/10/2024
+@Date    : 18/10/2024
 @Author  : Alexey Kurochkin
 """
 
