@@ -1126,7 +1126,7 @@ class TestManualDetected:
             "Click any article on the 'Daniela Hathorn' page",
             False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
