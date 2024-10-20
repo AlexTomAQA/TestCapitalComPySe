@@ -34,6 +34,7 @@ from pages.BugsManual.bug_366 import Bug366
 from pages.BugsManual.bug_372 import Bug372
 from pages.BugsManual.bug_373 import Bug373
 from pages.BugsManual.bug_378 import Bug378
+from pages.BugsManual.bug_379 import Bug379
 from pages.BugsManual.bug_392 import Bug392
 from pages.BugsManual.bug_416 import Bug416
 from pages.Elements.HeaderSearchField import SearchField
@@ -1244,6 +1245,54 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!379 | Only the text of the [Inflation news] button '
+        'is displayed without clickable area and button styling on the sidebar of the "Market Analysis" page, '
+        'when SCB or CYSEC license and EN language are selected.')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_379
+    def test_379(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Only the text of the [Inflation news] button is displayed
+         without clickable area and button styling on the sidebar of the "Market Analysis" page,
+         when SCB or CYSEC license and EN language are selected.
+         Language: EN.
+         License: CYSEC, SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "379",
+            'Only the text of the [Inflation news] button '
+            'is displayed without clickable area and button styling on the sidebar of the "Market Analysis" page, '
+            'when SCB or CYSEC license and EN language are selected.',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug379(d, link, bid)
+        page_menu = NewsAndAnalysisMenuSection(d, link, bid)
+        page_menu.click_element()
+
+        # Act
+        #
+
+        # Assert
+        if not test_el.should_be_existent_and_active_btn():
+            Common.pytest_fail('Bug # 55!379 The button is DOES NOT exist')
+        Common.save_current_screenshot(d, "AT_55!379 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step(
         'Start retest manual TC_55!392 | All links on the page "استراتيجية التداول الموضعي" (Position trading strategy)'
