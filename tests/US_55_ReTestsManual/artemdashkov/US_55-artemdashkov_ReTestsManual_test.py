@@ -33,6 +33,7 @@ from pages.BugsManual.bug_370 import BUG_370
 from pages.BugsManual.bug_377 import BUG_377
 from pages.BugsManual.bug_383 import BUG_383
 from pages.BugsManual.bug_406 import BUG_406
+from pages.BugsManual.bug_407 import BUG_407
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -1050,10 +1051,10 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('link_on_markets', ["CFDs", "ETFs"])
+    @pytest.mark.parametrize('type_of_markets', ["CFDs", "ETFs"])
     @pytest.mark.bug_406
     def test_406_link_cfds_and_etfs_on_page_what_is_commodity_trading_open_on_other_license(
-            self, worker_id, d, cur_language, cur_country, cur_role, link_on_markets, cur_login, cur_password):
+            self, worker_id, d, cur_language, cur_country, cur_role, type_of_markets, cur_login, cur_password):
         """
         Check:  Menu section [Markets] >
                 Menu item [Commodities] >
@@ -1080,7 +1081,6 @@ class TestManualDetected:
             "Click the links 'CFDs' or 'exchange traded funds'",
             False, True
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
@@ -1090,6 +1090,52 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_406(d, link, bid)
+        test_element.arrange(d, link, type_of_markets)
+
+        # Act
+        test_element.act(d, type_of_markets)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test authors of articles on the 'Daniela Hathorn' page")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_407
+    def test_407_articles_all_authors_present_on_the_daniela_hathorn_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] > Menu item [Market analysis] >
+                Find and click article of 'Daniela Hathorn' author >
+                Click the link 'Daniela Hathorn' >
+                Click any article on the 'Daniela Hathorn' page
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "407",
+            "Menu section [Markets] > Menu item [Market analysis] > "
+            "Find and click article of 'Daniela Hathorn' author > "
+            "Click the link 'Daniela Hathorn' > "
+            "Click any article on the 'Daniela Hathorn' page",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_407(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
