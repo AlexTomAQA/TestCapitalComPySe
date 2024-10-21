@@ -8,6 +8,7 @@ import random
 import time
 from datetime import datetime
 import allure
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
@@ -36,6 +37,44 @@ class IndicesItaly40(BasePage):
         print(f"{datetime.now()}   Click the link “IT40” in the widget “Trading Instrument”")
         it40.click()
         self.wait_for_change_url(cur_link)
+
+
+    def arrange_v2(self, d, cur_item_link, cur_link):
+        print(f"\n{datetime.now()}   1. Arrange")
+
+        if not self.current_page_is(cur_item_link):
+            self.link = cur_item_link
+            self.open_page()
+
+        print(f"{datetime.now()}   Scroll down to the table “Indices markets”")
+        indices_markets_table = self.driver.find_element(By.CSS_SELECTOR, 'div.table_table__g1rfk')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            indices_markets_table
+        )
+
+        p = 1
+        while p <= 3:
+            try:
+                it40 = self.driver.find_element(By.LINK_TEXT, 'IT40')
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    it40
+                )
+                it40.click()
+                break
+            except NoSuchElementException:
+                p += 1
+                print(f"{datetime.now()}   Click page {p}")
+                pagination = self.driver.find_element(By.LINK_TEXT, str(p))
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    pagination
+                )
+                pagination.click()
+
+        self.wait_for_change_url(cur_link)
+
 
     def element_click(self, d, cur_link):
         print(f"\n{datetime.now()}   2. Act")
