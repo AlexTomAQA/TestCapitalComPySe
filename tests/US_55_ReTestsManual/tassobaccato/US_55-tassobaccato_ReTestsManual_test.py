@@ -352,7 +352,7 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_indices(d, cur_language, cur_country, link)
 
         test_element = IndicesItaly40(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link, link)
+        test_element.arrange_v2(d, cur_item_link, link)
         test_element.element_click(d, link)
         test_element.assert_()
 
