@@ -18,6 +18,7 @@ from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
 from pages.BugsManual.bug_380 import SocialNetwork
 from pages.BugsManual.bug_386 import ContactUs
 from pages.BugsManual.bug_388 import TextIsNotLink
+from pages.BugsManual.bug_399 import ValueItems
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -506,3 +507,59 @@ class TestManualDetectedBugs:
         test_element = TextIsNotLink(d, cur_item_link, bid)
         test_element.text_is_not_link(d, cur_item_link)
         test_element.assert_text(d)
+
+
+    @allure.step('Start retest manual AT_55!399a the value of the "Traders" item')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_399a
+    def test_399a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Main page > tab [Corporate] > block “Why Open a Corporate Account with Capital.com?”  > Pay attention to
+                the value of the "Traders" item
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "399a", 'The value of the "Traders" item is displayed  as “640K” in the block “Why Open a '
+                   'Corporate Account with Capital.com?” on the page “Corporate Accounts with Capital.com” when ASIC '
+                    'license is selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = ValueItems(d, link, bid)
+        test_element.value_items(d, link)
+        test_element.assert_value_traders(d)
+
+    @allure.step('Start retest manual AT_55!399b the value of the "Active clients monthly" item')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_399b
+    def test_399b(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Main page > tab [Corporate] > block “Why Open a Corporate Account with Capital.com?”  > Pay attention to
+                the value of the "Active clients monthly" item
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "399b", 'The value of the "Active clients monthly" item is displayed  as “640K” in the block '
+                    '“Why Open a Corporate Account with Capital.com?” on the page “Corporate Accounts with Capital.com”'
+                    ' when ASIC license is selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = ValueItems(d, link, bid)
+        test_element.value_items(d, link)
+        test_element.assert_value_active_clients_monthly(d)
+
