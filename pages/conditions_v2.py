@@ -38,12 +38,12 @@ url_after_preconditions = "?"
 
 def apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
-    if cur_country in ['de', 'ua']:
+    if cur_country in ['ua']:
         cond = Conditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
 
-    if cur_country in ['ae', 'au', 'gb']:
+    if cur_country in ['ae', 'au', 'gb', 'at', 'de']:
         cond = NewConditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL_NEW, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
@@ -287,14 +287,26 @@ class NewConditions(BasePage):
         match cur_language:
             case "en": host += "en-"
             case "ar": host += "ar-"
+            case "de": host += "de-"
             case _:
                 msg = f"Stop! Указанный язык '{cur_language}' не обрабатывается. Stop running"
                 print(f'{datetime.now()}   {msg}')
                 pytest.fail(msg)
+
         match cur_country:
             case "gb": host += "gb"
             case "ae": host += "ae"
             case "au": host += "au"
+            case "de":
+                if cur_language == "de":
+                    host += "de"
+                else:
+                    host += "eu"
+            case "at":
+                if cur_language == "at":
+                    host += "at"
+                else:
+                    host += "eu"
             case _:
                 msg = f"Stop! Указанная страна '{cur_country}' не обрабатывается. Stop running"
                 print(f'{datetime.now()}   {msg}')
