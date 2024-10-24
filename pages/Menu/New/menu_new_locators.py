@@ -12,6 +12,7 @@ class MarketsMenuNew:
     MENU_FCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id689"]')
     MENU_SCA_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id824"]')
     MENU_ASIC_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id1256"]')
+    MENU_CYSEC_MARKETS = (By.CSS_SELECTOR, 'span > a[data-type="nav_id1673"]')
 
 
 class PricingMenuNew:
