@@ -19,6 +19,7 @@ LINK_CFDS_LOCATOR = (By.XPATH, "//div[@data-type='faq'] //a[contains(@href, 'cfd
 LINK_ETFS_LOCATOR = (By.XPATH, "//div[@data-type='faq'] //a[contains(@href, 'top-etfs')]")
 LINK_MARKET_LOCATOR = ()
 
+
 class BUG_406(BasePage):
 
     @allure.step(f"{datetime.now()}   Start Arrange: find and click link 'Learn more...', "
@@ -64,7 +65,7 @@ class BUG_406(BasePage):
         self.driver.find_element(*LINK_LEARN_MORE_LOCATOR).click()
         print(f'{datetime.now()}   End to click on target link "Learn more about commodities trading"')
 
-        # Check target url
+        # Check target url-
         print(f"Link of 'Learn more about commodities trading' is: {url_link_learn_more}")
         self.wait_for_target_url(url_link_learn_more, 5)
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
