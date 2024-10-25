@@ -34,6 +34,7 @@ from pages.BugsManual.bug_377 import BUG_377
 from pages.BugsManual.bug_383 import BUG_383
 from pages.BugsManual.bug_406 import BUG_406
 from pages.BugsManual.bug_407 import BUG_407
+from pages.BugsManual.bug_410 import BUG_410
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -1140,6 +1141,57 @@ class TestManualDetected:
 
         # Act
         test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of links 'CFDs' and 'ETFs' on page 'What is commodity trading'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('type_of_markets', ["CFDs", "ETFs"])
+    @pytest.mark.bug_410
+    def test_410_link_cfds_and_etfs_on_page_what_is_commodity_trading_open_on_other_license(
+            self, worker_id, d, cur_language, cur_country, cur_role, type_of_markets, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] >
+                Menu item [Commodities] >
+                Scroll down to the block “Why trade commodities with Capital.com?” >
+                Click the link “Learn more about commodities trading” >
+                Scroll down to the text block “Frequently asked questions” >
+                Сlick the header of the accordion “How do you trade commodities?” >
+                Click the links “CFDs” / ”exchange traded funds”
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "410",
+            "Menu section [Markets] > Menu item [Commodities] >"
+            "Scroll down to the block 'Why trade commodities with Capital.com?' >"
+            "Click the link 'Learn more about commodities trading' >"
+            "Scroll down to the text block 'Frequently asked questions' >"
+            "Сlick the header of the accordion 'How do you trade commodities?' >"
+            "Click the links 'CFDs' or 'exchange traded funds'",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_commodities.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_commodities(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_410(d, link, bid)
+        test_element.arrange(d, link, type_of_markets)
+
+        # Act
+        test_element.act(d, type_of_markets)
 
         # Assert
         test_element.assert_(d)
