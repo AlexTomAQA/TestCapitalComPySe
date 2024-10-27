@@ -34,7 +34,7 @@ from pages.BugsManual.bug_377 import BUG_377
 from pages.BugsManual.bug_383 import BUG_383
 from pages.BugsManual.bug_406 import BUG_406
 from pages.BugsManual.bug_407 import BUG_407
-from pages.BugsManual.bug_410 import BUG_410
+from pages.BugsManual.bug_411 import BUG_411
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -1145,51 +1145,46 @@ class TestManualDetected:
         # Assert
         test_element.assert_(d)
 
-    @allure.step("Start test of links 'CFDs' and 'ETFs' on page 'What is commodity trading'")
+    @allure.step("Start test of link 'indices' on page 'What is CFD trading?'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('article_link', ["CFDs", "ETFs"])
-    @pytest.mark.bug_410
-    def test_410_link_cfds_and_etfs_on_page_what_is_commodity_trading_open_on_other_license(
-            self, worker_id, d, cur_language_country_for_fca_sca_for_en_language, cur_role, type_of_markets, cur_login, cur_password):
+    @pytest.mark.bug_411
+    def test_411_link_indices_on_page_what_is_cfd_trading(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-        Check:  Menu section [Markets] >
-                Menu item [Market analysis] >
-                Scroll down and click the article link “Aluminium price forecast: Will prices rebound in 2023?” >
-                Scroll down to the block “Rise to record highs and recent fall” >
-                Click the links “aluminium had surged to 13-year highs” /
-                “recurring power shortages” /
-                “hikes from the US Federal Reserve”
+        Check:  Menu section [Trading] >
+                Menu item [CFD trading] >
+                Scroll down to the block “Read more before you trade” >
+                Click link "Go CFD trading guide" >
+                Scroll down to the block "What is a contract for difference (CFD)?" /
+                Click link "indices"
         Language: EN
-        License/Country: SCA
+        License/Country: FCA
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_country_for_fca_sca_for_en_language[0],
-            cur_language_country_for_fca_sca_for_en_language[1], cur_role,
+            d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
-            "410",
-            "Menu section [Markets] > Menu item [Market analysis] >"
-            "Scroll down and click the article link “Aluminium price forecast: Will prices rebound in 2023?” >"
-            "Scroll down to the block “Rise to record highs and recent fall” >"
-            "Click the links “aluminium had surged to 13-year highs” / "
-            "“recurring power shortages” / "
-            "hikes from the US Federal Reserve”",
+            "411",
+            "Menu section [Trading] > Menu item [CFD trading] >"
+            "Scroll down to the block “Read more before you trade” > "
+            "Click link 'Go CFD trading guide' > "
+            "Scroll down to the block 'What is a contract for difference (CFD)?' > "
+            "Click link 'indices'",
             False, True
         )
         # Arrange
         pytest.skip("Intermediate version")
-        cur_item_link = apply_preconditions_to_link(d,
-                                                    cur_language_country_for_fca_sca_for_en_language[0],
-                                                    cur_language_country_for_fca_sca_for_en_language[1],
-                                                    cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
         link = page_menu.from_markets_menu_open_market_analysis(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_410(d, link, bid)
+        test_element = BUG_411(d, link, bid)
         test_element.arrange(d, link, type_of_markets)
 
         # Act
