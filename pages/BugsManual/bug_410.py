@@ -3,173 +3,157 @@
 @Time    : 2024/10/25 19:50
 @Author  : Artem Dashkov
 """
-import time
-
 import allure
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
+from src.src import CapitalComPageSrc
 
+LINK_NAME = '"Daniela Hathorn"'
 BUG_NUMBER = '410'
-LINK_LEARN_MORE_LOCATOR = (By.XPATH,
-                           "//div[@class='js-ckeContent content_content__2ZOcD'] //a[contains(text(), 'Learn more')]")
-ACCORDION_HOW_DO_YOU_TRADE_LOCATOR = (By.XPATH, "(//summary[@data-type='faq_chevron'])[2]")
-LINK_CFDS_LOCATOR = (By.XPATH, "//div[@data-type='faq'] //a[contains(@href, 'cfd-trading')]")
-LINK_ETFS_LOCATOR = (By.XPATH, "//div[@data-type='faq'] //a[contains(@href, 'top-etfs')]")
-LINK_MARKET_LOCATOR = ()
+
+PAGINATION_LOCATOR = (By.CSS_SELECTOR,
+                      '.pagination_pagination__lllu8.pagination_active__1sAIU ~ .pagination_pagination__lllu8')
+ARTICLES_LOCATOR = (By.XPATH,
+                    '//div[@class="article_content__1GOa_"]//a [@class="js-analyticsClick link_link__caosC"]')
+# TARGET_ARTICLE_LOCATOR = (By.XPATH, "//b[contains(text(), 'ECB Preview')]")
+TARGET_ARTICLE_LOCATOR = (By.CSS_SELECTOR, '.article_content__1GOa_ > [data-type="latest_articles_block_page_id_541754"]')
+
+LINK_LOCATOR = (By.CSS_SELECTOR, 'a[data-type="author_link"]')
+
+MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
 class BUG_410(BasePage):
 
-    @allure.step(f"{datetime.now()}   Start Arrange: find and click link 'Learn more...', "
-                 f"find and click header of the accordion 'How do you trade...', "
-                 f"find link of markets 'CFDs' or 'ETFs'")
-    def arrange(self, d, link, type_of_markets):
-        print(f"\n{datetime.now()}   1.1. Start Arrange: find and click link 'Learn more...'")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find articles, choose and click article, find links")
+    def arrange(self, d, link):
+        print(f"\n{datetime.now()}   1. Start Arrange: find articles, choose and click article, find links")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting link 'Learn more about commodities trading' on the page 'Commodities'
-        if len(self.driver.find_elements(*LINK_LEARN_MORE_LOCATOR)) == 0:
-            msg = f"The page 'Commodities' don't have link 'Learn more about commodities trading' in DOM"
+        # Check presenting articles on the page
+        if len(self.driver.find_elements(*ARTICLES_LOCATOR)) == 0:
+            msg = f"The page 'Market analysis' don't have articles"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'Commodities' have link 'Learn more about commodities trading' in DOM\n")
+        print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM\n")
 
-        # Scroll to the link 'Learn more about commodities trading'
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*LINK_LEARN_MORE_LOCATOR)[0]
-        )
+        # Look for target article
+        count = 0
+        while count < 3:
+            # Check presenting pagination on the page
+            print(f"{datetime.now()}   Start to check presenting pagination on the page\n")
+            if len(self.driver.find_elements(*PAGINATION_LOCATOR)) == 0:
+                msg = f"The page 'Market analysis' don't have pagination"
+                print(f"{datetime.now()}   => {msg}")
+                Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+            print(f"{datetime.now()}   The page 'Market analysis' have pagination in DOM\n")
 
-        # Check visibility link 'Learn more about commodities trading' on the page 'Commodities'
-        print(f"{datetime.now()}   Start to check visibility link 'Learn more about commodities trading'\n")
-        if not self.element_is_visible(LINK_LEARN_MORE_LOCATOR):
-            msg = f"Link 'Learn more about commodities trading' don't visible"
+            # Check presenting target article on the page
+            print(f"{datetime.now()}   Start to check presenting target article on the page\n")
+            if len(self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)) == 0:
+                msg = f"The current page don't have target article. Try find on the other page."
+                print(f"{datetime.now()}   => {msg}")
+                print(f"{datetime.now()}   Start to click on the next page link")
+                self.driver.find_elements(*PAGINATION_LOCATOR)[0].click()
+                print(f"{datetime.now()}   End to click on the next page link")
+                count += 1
+                continue
+            print(f"{datetime.now()}   The current page have target article in DOM\n")
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0]
+            )
+            break
+
+        # Check visibility article on the page
+        print(f"{datetime.now()}   Start to check visibility target article'\n")
+        if not self.element_is_visible(TARGET_ARTICLE_LOCATOR):
+            msg = f"Target article don't visible"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link 'Learn more about commodities trading' is visible \n")
+        print(f"{datetime.now()}   Target article is visible \n")
 
-        # Check clickability link 'Learn more about commodities trading' on the page 'Commodities'
-        print(f"{datetime.now()}   Start to check clickability link 'Learn more about commodities trading'\n")
-        if not self.element_is_clickable(LINK_LEARN_MORE_LOCATOR):
-            msg = f"Link 'Learn more about commodities trading' don't clickable"
+        # Check clickability article on the page
+        print(f"{datetime.now()}   Start to check clickability target article\n")
+        if not self.element_is_clickable(TARGET_ARTICLE_LOCATOR):
+            msg = f"Target article don't clickable"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link 'Learn more about commodities trading' is clickable\n")
-        url_link_learn_more = self.driver.find_element(*LINK_LEARN_MORE_LOCATOR).get_attribute("href")
+        print(f"{datetime.now()}   Target article clickable\n")
+        link_article = self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].get_attribute("href")
 
-        print(f'{datetime.now()}   Start to click on link "Learn more about commodities trading"')
-        self.driver.find_element(*LINK_LEARN_MORE_LOCATOR).click()
-        print(f'{datetime.now()}   End to click on target link "Learn more about commodities trading"')
+        print(f'{datetime.now()}   Start to click on target article')
+        self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].click()
+        print(f'{datetime.now()}   End to click on target article')
 
         # Check target url
-        print(f"Link of 'Learn more about commodities trading' is: {url_link_learn_more}")
-        self.wait_for_target_url(url_link_learn_more, 5)
+        print(f'Link article: {link_article}')
+        self.wait_for_target_url(link_article, 5)
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
 
-        print(f"\n{datetime.now()}   1.2. Start Arrange: find and click accordion 'How do you trade commodities?'")
-        # Check presenting accordion 'How do you trade commodities?'
-        if len(self.driver.find_elements(*ACCORDION_HOW_DO_YOU_TRADE_LOCATOR)) == 0:
-            msg = f"The page 'What is commodity trading' don't have accordion 'How do you trade commodities?' in DOM"
+        # stop here
+
+        # Check presenting link on the page
+        if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
+            msg = (f"The page 'ECB Preview...' don't have link {LINK_NAME} in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'What is commodity trading' have accordion "
-              f"'How do you trade commodities?' in DOM\n")
+        print(f"{datetime.now()}   The page 'ECB Preview...' have link {LINK_NAME} in DOM\n")
 
-        # Scroll to the accordion 'How do you trade commodities?'
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*ACCORDION_HOW_DO_YOU_TRADE_LOCATOR)[0]
+            self.driver.find_element(*LINK_LOCATOR)
         )
 
-        # Check visibility accordion 'How do you trade commodities?'
-        print(f"{datetime.now()}   Start to check visibility accordion 'How do you trade commodities?'\n")
-        if not self.element_is_visible(ACCORDION_HOW_DO_YOU_TRADE_LOCATOR):
-            msg = f"Accordion 'How do you trade commodities?' don't visible"
+        # Check visibility link on the page
+        print(f"{datetime.now()}   Start to check visibility link {LINK_NAME}'\n")
+        if not self.element_is_visible(LINK_LOCATOR):
+            msg = f"Link {LINK_NAME} don't visible"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Accordion 'How do you trade commodities?' is visible \n")
+        print(f"{datetime.now()}   Link {LINK_NAME} visible \n")
 
-        # Check clickability accordion 'How do you trade commodities?'
-        print(f"{datetime.now()}   Start to check clickability accordion 'How do you trade commodities?'\n")
-        if not self.element_is_clickable(ACCORDION_HOW_DO_YOU_TRADE_LOCATOR):
-            msg = f"Accordion 'How do you trade commodities?' don't clickable"
+        # Check clickability link on the page
+        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME}\n")
+        if not self.element_is_clickable(LINK_LOCATOR):
+            msg = f"Link {LINK_NAME} don't clickable"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Accordion 'How do you trade commodities?' is clickable\n")
-
-        print(f"{datetime.now()}   Start to click on accordion 'How do you trade commodities?'")
-        self.driver.find_element(*ACCORDION_HOW_DO_YOU_TRADE_LOCATOR).click()
-        print(f"{datetime.now()}   End to click on accordion 'How do you trade commodities?'")
-        time.sleep(1)
-
-        print(f"\n{datetime.now()}   1.3. Start Arrange: find and click link 'CFDs' or 'exchange traded funds (ETFs)'")
-        print(f"\n{datetime.now()}   Type of market is {type_of_markets}.")
-        global LINK_MARKET_LOCATOR
-        match type_of_markets:
-            case 'CFDs':
-                LINK_MARKET_LOCATOR = LINK_CFDS_LOCATOR
-            case 'ETFs':
-                LINK_MARKET_LOCATOR = LINK_ETFS_LOCATOR
-
-        # Check presenting link 'CFDs' or 'ETFs'
-        if len(self.driver.find_elements(*LINK_MARKET_LOCATOR)) == 0:
-            msg = f"The page 'What is commodity trading' don't have link '{type_of_markets}' in DOM"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'What is commodity trading' have link '{type_of_markets}' in DOM\n")
-
-        # Scroll to the link 'CFDs' or 'ETFs'
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_elements(*LINK_MARKET_LOCATOR)[0]
-        )
-
-        # Check visibility link 'CFDs' or 'ETFs'
-        print(f"{datetime.now()}   Start to check visibility link '{type_of_markets}'\n")
-        if not self.element_is_visible(LINK_MARKET_LOCATOR):
-            msg = f"Link '{type_of_markets}' don't visible"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link '{type_of_markets}' is visible \n")
-
-        # Check clickability link 'CFDs' or 'ETFs'
-        print(f"{datetime.now()}   Start to check clickability link '{type_of_markets}'\n")
-        if not self.element_is_clickable(LINK_MARKET_LOCATOR):
-            msg = f"Link '{type_of_markets}' don't clickable"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link '{type_of_markets}' is clickable\n")
+        print(f"{datetime.now()}   Link {LINK_NAME} clickable\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
-    def act(self, d, type_of_markets):
+    def act(self, d):
 
-        print(f"\n{datetime.now()}   2. Start Act. Click on the link '{type_of_markets}'")
-        self.driver.find_element(*LINK_MARKET_LOCATOR).click()
-        print(f"\n{datetime.now()}   Link '{type_of_markets}' is clicked\n")
+        print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
+
+        self.driver.find_element(*LINK_LOCATOR).click()
+        print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
     def assert_(self, d):
         print(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
 
-        # Check presenting 'en-gb' in url on the opened page
-        print(f"{datetime.now()}   IS 'en-gb' in url on the opened page?")
-        if 'en-gb' in self.driver.current_url:
-            msg = f"Opened page have FCA license insted of SCA, url is: {self.driver.current_url}"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        elif 'en-ae' in self.driver.current_url:
-            if ('cfd-trading' or 'top-etfs') in self.driver.current_url:
-                print(f"{datetime.now()}   Current page opened in necessary license but need check screenshot")
-                Common.save_current_screenshot(d, f"Need to check content of opened page")
-            else:
-                msg = f"Need to check content of opened page, url is: {self.driver.current_url}"
+        # Check presenting message '404 not found' on the opened page
+        print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+        if len(self.driver.find_elements(*MESSAGE_404_LOCATOR)) != 0:
+            print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
+
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_element(*MESSAGE_404_LOCATOR)
+            )
+
+            # Check visibility message '404 not found' on the opened page
+            print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+            if self.element_is_visible(MESSAGE_404_LOCATOR):
+                msg = (f"Message '404 not found' is visible on the opened page")
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        else:
-            msg = f"Need to check content of opened page, url is: {self.driver.current_url}"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+
+        print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
+        Common.save_current_screenshot(d, f"Opened page don't have message '404 not found'")
+        self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
         return True
