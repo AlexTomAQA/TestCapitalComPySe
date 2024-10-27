@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/09/17 22:20
+@Time    : 2024/10/27 22:00
 @Author  : Artem Dashkov
 """
 import allure

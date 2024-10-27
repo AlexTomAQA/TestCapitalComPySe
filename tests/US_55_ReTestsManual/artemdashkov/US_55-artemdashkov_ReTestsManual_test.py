@@ -47,6 +47,7 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_market_analysis,
                             from_trading_menu_open_spread_betting,
+                            from_trading_menu_open_cfd_trading,
                             from_about_us_menu_open_why_capital)
 from pages.conditions_new import NewConditions
 from pages.conditions_new_v1 import NewConditions_v1
@@ -1180,8 +1181,8 @@ class TestManualDetected:
         pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
-        link = page_menu.from_markets_menu_open_market_analysis(
+        page_menu = from_trading_menu_open_cfd_trading.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_cfd_trading(
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_411(d, link, bid)
