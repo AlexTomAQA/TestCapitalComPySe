@@ -11,6 +11,7 @@ from pages.Menu.New.menu_new_locators import TradingMenuNew
 SUBMENU_FCA_TRADING_VIEW = ("css selector", "[data-type='nav_id747']")
 SUBMENU_SCA_TRADING_VIEW = ("css selector", "[data-type='nav_id820']")
 SUBMENU_ASIC_TRADING_VIEW = ("css selector", "[data-type='nav_id1301']")
+SUBMENU_CYSEC_TRADING_VIEW = ("css selector", "[data-type='nav_id1718']")
 
 
 class MenuNew(MenuBase):
@@ -32,6 +33,9 @@ class MenuNew(MenuBase):
         if cur_country == 'au':
             menu_locator = TradingMenuNew.MENU_ASIC_TRADING
             submenu_locator = SUBMENU_ASIC_TRADING_VIEW
+        if cur_country in ['at', 'de']:
+            menu_locator = TradingMenuNew.MENU_CYSEC_TRADING
+            submenu_locator = SUBMENU_CYSEC_TRADING_VIEW
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)
