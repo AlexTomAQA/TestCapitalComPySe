@@ -10,54 +10,46 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
-LINK_LOCATOR = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
-LINK_NAME = '"Discover what you can trade"'
+LINK_GO_CFD_TRADING_GUIDE_LOCATOR = (By.CSS_SELECTOR,
+                                     '[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
+LINK_indices = (By.CSS_SELECTOR,
+                                     '[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
+
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 MARKETS_LOCATOR = (By.XPATH, "//div[@class='breadcrumbs_breadcrumbs__UgZeo'] //span[contains(text(), 'Markets')]")
 
 class BUG_411(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find link '{LINK_NAME}'")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find and click link 'Go CFD trading guide'. "
+                 f"Find link 'indices'.")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find link '{LINK_NAME}'")
+        print(f"\n{datetime.now()}   1. Start Arrange: find and click link 'Go CFD trading guide'. "
+              f"Find link 'indices'.")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting link on the page
-        if len(d.find_elements(*LINK_LOCATOR)) == 0:
-            msg = (f"The page 'Why Capital.com?' don't have link {LINK_NAME} in DOM")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   The page 'Why Capital.com?' have link {LINK_NAME} in DOM\n")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*LINK_LOCATOR)
+        # Check presenting, visibility and clickability link 'Go CFD trading guide'
+        Common.find_link_scroll_check_visibility_and_clickability(
+            d, 'Go CFD trading guide', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+        )
+        # Click link 'Go CFD trading guide'
+        Common.click_link_and_print(
+            d, 'Go CFD trading guide', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
         )
 
-        # Check visibility link on the page
-        print(f"{datetime.now()}   Start to check visibility link {LINK_NAME} on the page 'Why Capital.com?'\n")
-        if not self.element_is_visible(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't visible on the page 'Why Capital.com?'"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} visible on the page 'Why Capital.com?'\n")
+        # stop here
+        # Check presenting, visibility and clickability link 'indices'
+        Common.find_link_scroll_check_visibility_and_clickability(
+            d, 'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+        )
 
-        # Check clickability link on the page
-        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME} on the page 'Why Capital.com?'\n")
-        if not self.element_is_clickable(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't clickable on the page 'Why Capital.com?'"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} clickable on the page 'Why Capital.com?'\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
 
         print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
-
         d.find_element(*LINK_LOCATOR).click()
         print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
 

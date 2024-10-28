@@ -262,3 +262,51 @@ class Common:
 			return newConditions
 		else:
 			return conditions
+
+	@staticmethod
+	def find_link_scroll_check_visibility_and_clickability(wd, name_of_link, link_locator):
+		"""
+		Example:
+			wd - 0bject of Selenium Webdriver
+			name_of_link = "Discover what you can trade"
+			locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
+		"""
+		# Check presenting link on the page
+		if len(wd.find_elements(*link_locator)) == 0:
+			msg = (f"The page 'Why Capital.com?' don't have link '{name_of_link}' in DOM")
+			print(f"{datetime.now()}   => {msg}")
+			Common().pytest_fail(f"Bug # 370 {msg}")
+		print(f"{datetime.now()}   The page 'Why Capital.com?' have link '{name_of_link}' in DOM\n")
+
+		wd.execute_script(
+			'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+			wd.find_element(*name_of_link)
+		)
+
+		# Check visibility link on the page
+		print(f"{datetime.now()}   Start to check visibility link '{name_of_link}' on the page 'Why Capital.com?'\n")
+		if not wd.element_is_visible(link_locator):
+			msg = f"Link '{name_of_link}' don't visible on the page 'Why Capital.com?'"
+			print(f"{datetime.now()}   => {msg}")
+			Common().pytest_fail(f"Bug # 370 {msg}")
+		print(f"{datetime.now()}   Link {name_of_link} visible on the page 'Why Capital.com?'\n")
+
+		# Check clickability link on the page
+		print(f"{datetime.now()}   Start to check clickability link '{name_of_link}' on the page 'Why Capital.com?'\n")
+		if not wd.element_is_clickable(link_locator):
+			msg = f"Link '{name_of_link}' don't clickable on the page 'Why Capital.com?'"
+			print(f"{datetime.now()}   => {msg}")
+			Common().pytest_fail(f"Bug # 370 {msg}")
+		print(f"{datetime.now()}   Link '{name_of_link}' clickable on the page 'Why Capital.com?'\n")
+
+	@staticmethod
+	def click_link_and_print(wd, name_of_link, link_locator):
+		"""
+		Example:
+			wd - 0bject of Selenium Webdriver
+        	name_of_link = "Discover what you can trade"
+            locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
+        """
+		print(f"\n{datetime.now()}   Start to click on the link '{name_of_link}'")
+		wd.find_element(*link_locator).click()
+		print(f"\n{datetime.now()}   Link '{name_of_link}' is clicked\n")
