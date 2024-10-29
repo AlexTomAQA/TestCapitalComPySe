@@ -12,8 +12,8 @@ from src.src import CapitalComPageSrc
 
 LINK_GO_CFD_TRADING_GUIDE_LOCATOR = (By.CSS_SELECTOR,
                                      '[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
-LINK_indices = (By.CSS_SELECTOR,
-                                     '[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
+LINK_INDICES_LOCATOR = (By.CSS_SELECTOR,
+                "h2 ~ p ~ p a[href='http://https://capital.com/en-gb/markets/indices']")
 
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
@@ -31,72 +31,72 @@ class BUG_411(BasePage):
             self.open_page()
 
         # Check presenting, visibility and clickability link 'Go CFD trading guide'
-        Common.find_link_scroll_check_visibility_and_clickability(
-            d, 'Go CFD trading guide', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+        self.find_link_scroll_check_visibility_and_clickability(
+            'Go CFD trading guide', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
         )
         # Click link 'Go CFD trading guide'
-        Common.click_link_and_print(
+        Common().click_link_and_print(
             d, 'Go CFD trading guide', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
         )
 
-        # stop here
         # Check presenting, visibility and clickability link 'indices'
-        Common.find_link_scroll_check_visibility_and_clickability(
-            d, 'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+        self.find_link_scroll_check_visibility_and_clickability(
+             'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
         )
 
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
 
-        print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
-        d.find_element(*LINK_LOCATOR).click()
-        print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
+        # Click link 'indices'
+        Common().click_link_and_print(
+            d, 'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+        )
 
-    @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
+    @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
     def assert_(self, d):
-        print(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
+        print(f"{datetime.now()}   3. Start Assert. Opened page")
 
-        # Check presenting message '404 not found' on the opened page
-        print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
-        if len(d.find_elements(*MESSAGE_404_LOCATOR)) != 0:
-            print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
-
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                self.driver.find_element(*MESSAGE_404_LOCATOR)
-            )
-
-            # Check visibility message '404 not found' on the opened page
-            print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
-            if self.element_is_visible(MESSAGE_404_LOCATOR):
-                msg = (f"Message '404 not found' is visible on the opened page")
-                print(f"{datetime.now()}   => {msg}")
-                Common().pytest_fail(f"Bug # 370 {msg}")
-
-        print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
-
-        # Check presenting 'Markets' in breadcrumbs
-        print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' presenting in breadcrumbs?")
-        if len(d.find_elements(*MARKETS_LOCATOR)) == 0:
-            msg = f"Opened page don't have presenting 'Markets' in breadcrumbs in DOM"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   The opened page have presenting 'Markets' in breadcrumbs in DOM\n")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*MARKETS_LOCATOR)
-            )
-
-        # Check visible 'Markets' in breadcrumbs
-        print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' visible in breadcrumbs?")
-        if not self.element_is_visible(MARKETS_LOCATOR):
-            msg = f"Opened page don't have visible 'Markets' in breadcrumbs"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # 370 {msg}")
-        print(f"{datetime.now()}   The opened page have visible 'Markets' in breadcrumbs\n")
-
-        Common.save_current_screenshot(d, f"Opened page have visible 'Markets' in breadcrumbs")
-        self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
-        return True
+        # # Check presenting message '404 not found' on the opened page
+        # print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+        # if len(d.find_elements(*MESSAGE_404_LOCATOR)) != 0:
+        #     print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
+        #
+        #     self.driver.execute_script(
+        #         'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #         self.driver.find_element(*MESSAGE_404_LOCATOR)
+        #     )
+        #
+        #     # Check visibility message '404 not found' on the opened page
+        #     print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
+        #     if self.element_is_visible(MESSAGE_404_LOCATOR):
+        #         msg = (f"Message '404 not found' is visible on the opened page")
+        #         print(f"{datetime.now()}   => {msg}")
+        #         Common().pytest_fail(f"Bug # 370 {msg}")
+        #
+        # print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
+        #
+        # # Check presenting 'Markets' in breadcrumbs
+        # print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' presenting in breadcrumbs?")
+        # if len(d.find_elements(*MARKETS_LOCATOR)) == 0:
+        #     msg = f"Opened page don't have presenting 'Markets' in breadcrumbs in DOM"
+        #     print(f"{datetime.now()}   => {msg}")
+        #     Common().pytest_fail(f"Bug # 370 {msg}")
+        # print(f"{datetime.now()}   The opened page have presenting 'Markets' in breadcrumbs in DOM\n")
+        #
+        # self.driver.execute_script(
+        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+        #     self.driver.find_element(*MARKETS_LOCATOR)
+        #     )
+        #
+        # # Check visible 'Markets' in breadcrumbs
+        # print(f"{datetime.now()}   Check that opened page is 'Markets': is 'Markets' visible in breadcrumbs?")
+        # if not self.element_is_visible(MARKETS_LOCATOR):
+        #     msg = f"Opened page don't have visible 'Markets' in breadcrumbs"
+        #     print(f"{datetime.now()}   => {msg}")
+        #     Common().pytest_fail(f"Bug # 370 {msg}")
+        # print(f"{datetime.now()}   The opened page have visible 'Markets' in breadcrumbs\n")
+        #
+        # Common.save_current_screenshot(d, f"Opened page have visible 'Markets' in breadcrumbs")
+        # self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
+        # return True

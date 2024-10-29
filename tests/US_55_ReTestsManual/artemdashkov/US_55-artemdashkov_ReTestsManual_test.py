@@ -8,7 +8,6 @@ import allure
 import pytest
 import random
 from datetime import datetime
-from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -1186,10 +1185,10 @@ class TestManualDetected:
             d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_411(d, link, bid)
-        test_element.arrange(d, link, type_of_markets)
+        test_element.arrange(d, link)
 
         # Act
-        test_element.act(d, type_of_markets)
+        test_element.act(d)
 
         # Assert
         test_element.assert_(d)
