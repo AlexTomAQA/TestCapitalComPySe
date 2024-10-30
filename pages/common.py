@@ -271,6 +271,6 @@ class Common:
         	name_of_link = "Discover what you can trade"
             locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
         """
-		print(f"\n{datetime.now()}   Start to click on the link '{name_of_link}'")
+		print(f"{datetime.now()}   Start to click on the link '{name_of_link}'")
 		wd.find_element(*link_locator).click()
-		print(f"\n{datetime.now()}   Link '{name_of_link}' is clicked\n")
+		print(f"{datetime.now()}   Link '{name_of_link}' is clicked\n")
