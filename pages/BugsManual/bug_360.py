@@ -101,7 +101,7 @@ class IndicesItaly40(BasePage):
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
-        print(f"\n{datetime.now()}   3.Assert")
+        print(f"{datetime.now()}   3.Assert")
         expected_country = 'United Arab Emirates'
         actual = self.driver.find_element(By.CSS_SELECTOR,
                                           'div:nth-child(1) > span.localization_btn__9zIyt')
@@ -109,7 +109,7 @@ class IndicesItaly40(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             actual
         )
-        time.sleep(2)
+        self.driver.execute_script("arguments[0].style.border='3px solid red'", actual)
         actual_country = actual.text
 
         if expected_country == actual_country:
