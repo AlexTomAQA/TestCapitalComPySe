@@ -303,7 +303,7 @@ class NewConditions(BasePage):
                 else:
                     host += "eu"
             case "at":
-                if cur_language == "at":
+                if cur_language == "de":
                     host += "at"
                 else:
                     host += "eu"

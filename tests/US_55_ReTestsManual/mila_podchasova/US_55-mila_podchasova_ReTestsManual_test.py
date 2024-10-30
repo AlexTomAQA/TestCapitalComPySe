@@ -16,7 +16,9 @@ from pages.BugsManual.bug_315 import Bug315
 from pages.BugsManual.bug_326 import Bug326
 from pages.BugsManual.bug_350 import Bug350
 from pages.BugsManual.bug_363 import Bug363
+from pages.BugsManual.bug_405 import Bug_405
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
+from pages.Menu.New import from_markets_menu_open_market_analysis
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -448,4 +450,54 @@ class TestManualDetectedBugs:
 
         # Assert
         test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
+
+    @allure.step("Start test of link 'Capital.com Research Team' on page 'BP share price forecast'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_405
+    def test_405_link_research_team_open_on_404_error_message(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] >
+                Menu item [Market analysis] >
+                Scroll down to the block “pagination” >
+                Click the link "11"
+                Click the link “BP share price forecast” >
+                Сlick the link “Capital.com Research Team” >
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: podchasova11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "405",
+            "Menu section [Markets] > Menu item [Market analysis] >"
+            "Scroll down to the block 'pagination' >"
+            "Click the link '11' >"
+            "Click the link 'BP share price forecast' >"
+            "Сlick the header of the accordion 'How do you trade commodities?' >"
+            "Сlick the link 'Capital.com Research Team' ",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = Bug_405(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
 
