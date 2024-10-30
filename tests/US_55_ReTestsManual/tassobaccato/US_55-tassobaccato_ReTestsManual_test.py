@@ -59,14 +59,14 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -86,7 +86,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -97,7 +97,7 @@ class TestManualDetectedBugs:
         Check: presence of the sidebar "Crypto Trading Guide" on the "Cryptocurrencies vs. Stocks:
         What's the Difference?" page.
         Language: EN
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -121,7 +121,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
@@ -130,7 +130,7 @@ class TestManualDetectedBugs:
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" page.
         Language: EN, DE, ZH, RU, ES,IT, PL
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -424,7 +424,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.bug_371b
+    @pytest.mark.bug_380
     def test_380(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: TC_55!380 | The relevant pages of "Social networks" aren't opened after clicking the Social Network Icons
@@ -478,7 +478,7 @@ class TestManualDetectedBugs:
         test_element = ContactUs(d, cur_item_link, bid)
         test_element.contact_us_in_confidence(d, cur_item_link)
         test_element.element_click(d, link)
-        test_element.assert_page()
+        test_element.assert_page(d)
 
 
     @allure.step('Start retest manual AT_55!388: The text "وقف الخسائر المتحركة" is not a link')

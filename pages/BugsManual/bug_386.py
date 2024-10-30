@@ -42,7 +42,7 @@ class ContactUs(BasePage):
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_page(self, d):
-        print(f"{datetime.now()},   3. Assert")
+        print(f"{datetime.now()}   3. Assert")
 
         actual_url = self.driver.current_url
 
