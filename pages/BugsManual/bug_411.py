@@ -41,7 +41,7 @@ class BUG_411(BasePage):
 
         # Check presenting, visibility and clickability link 'indices'
         self.find_link_scroll_check_visibility_and_clickability(
-             'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+             'indices', LINK_INDICES_LOCATOR
         )
 
 
@@ -50,11 +50,14 @@ class BUG_411(BasePage):
 
         # Click link 'indices'
         Common().click_link_and_print(
-            d, 'indices', LINK_GO_CFD_TRADING_GUIDE_LOCATOR
+            d, 'indices', LINK_INDICES_LOCATOR
         )
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
     def assert_(self, d):
+        logs = d.get_log('performance')
+        print(logs)
+        Common.save_current_screenshot('Current screenshot')
         print(f"{datetime.now()}   3. Start Assert. Opened page")
 
         # # Check presenting message '404 not found' on the opened page

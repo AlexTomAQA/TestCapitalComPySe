@@ -687,10 +687,10 @@ class BasePage:
         """
         # Check presenting link on the page
         if len(self.driver.find_elements(*link_locator)) == 0:
-            msg = (f"The current page don't have link '{name_of_link}' in DOM")
+            msg = (f"Page don't have link '{name_of_link}' in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   The current page have link '{name_of_link}' in DOM\n")
+        print(f"{datetime.now()}   Page have link '{name_of_link}' in DOM\n")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -699,17 +699,17 @@ class BasePage:
         print(f"{datetime.now()}   Scrolled to link '{name_of_link}'")
 
         # Check visibility link on the page
-        print(f"{datetime.now()}   Start to check visibility link '{name_of_link}' on the page 'Why Capital.com?'")
+        print(f"{datetime.now()}   Start to check visibility link '{name_of_link}'.'")
         if not self.element_is_visible(link_locator):
-            msg = f"Link '{name_of_link}' don't visible on the current page"
+            msg = f"Link '{name_of_link}' don't visible."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Link {name_of_link} visible on the current page\n")
 
         # Check clickability link on the page
-        print(f"{datetime.now()}   Start to check clickability link '{name_of_link}' on the current page")
+        print(f"{datetime.now()}   Start to check clickability link '{name_of_link}'.")
         if not self.element_is_clickable(link_locator):
-            msg = f"Link '{name_of_link}' don't clickable on the current page"
+            msg = f"Link '{name_of_link}' don't clickable."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Link '{name_of_link}' clickable on the current page\n")
+        print(f"{datetime.now()}   Link '{name_of_link}' clickable.\n")
