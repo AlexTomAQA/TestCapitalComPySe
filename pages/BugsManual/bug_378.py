@@ -12,7 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-LLOYDS_ARTICLE_LOC = ('css selector', '[data-type="latest_articles_block_page_id_541702"]')
+LLOYDS_ARTICLE_LOC = ('xpath', '//b[contains(text(), "Lloyds forecast")]')
 NEXT_PAGE_BTN_LOC = ('css selector', '[aria-label="Go to the next page"]')
 COUNTRY_FLAG_LOC = ('xpath', '//div[@class="localization_item__KwMiX"][1]//i')
 
