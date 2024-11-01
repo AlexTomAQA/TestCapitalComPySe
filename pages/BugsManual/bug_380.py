@@ -31,6 +31,7 @@ class SocialNetwork(BasePage):
 
         print(f"{datetime.now()}   Click on the 'More' link on a random tile")
         more_btn_list = self.driver.find_elements(By.CSS_SELECTOR, 'a[data-type="benefits_block_block_more_btn"]')
+        more_btn_list.pop()
         random_btn_more = random.choice(more_btn_list)
         random_btn_more.click()
         self.wait_for_change_url(cur_link)
