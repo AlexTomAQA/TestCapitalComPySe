@@ -16,7 +16,7 @@ from pages.common import Common
 MENU_NAME = "[Trading]"
 SUBMENU_NAME = "menu item [Demo]"
 MENU_LOCATOR = (By.CSS_SELECTOR, 'span > a[data-type="nav_id798"]')
-SUBMENU_LOCATOR = (By.CSS_SELECTOR, "div.grid_grid__2D3md > a[data-type='nav_id1029']")
+SUBMENU_LOCATOR = (By.XPATH, '//a[@data-type="sidebar_deeplink"][1]')
 
 SIDEBAR_ITEMS_LOCATOR = (By.CSS_SELECTOR, '.side-nav > a[data-type="sidebar_deeplink"]')
 

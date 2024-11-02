@@ -12,17 +12,19 @@ import allure
 from pages.BugsManual.bug_038 import WebTradingPlatformPage
 from pages.BugsManual.bug_090 import CreateARiskFreeDemoAccountButton
 from pages.BugsManual.bug_285 import ButtonMyAccount
+from pages.BugsManual.bug_315 import Bug315
 from pages.BugsManual.bug_326 import Bug326
 from pages.BugsManual.bug_350 import Bug350
+from pages.BugsManual.bug_363 import Bug363
+from pages.BugsManual.bug_405 import Bug_405
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
+from pages.Menu.New import from_markets_menu_open_market_analysis
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.common import Common
-from pages.conditions import Conditions
-from pages.conditions_switch import conditions_switch
+from pages.conditions_v2 import apply_preconditions_to_link
 from src.src import CapitalComPageSrc
-from pages.conditions_new import NewConditions
 
 
 @pytest.mark.us_55
@@ -49,7 +51,7 @@ class TestManualDetectedBugs:
                    " button [Platform overview] click on the 'Investmate app' page"
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d, "")
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -57,7 +59,7 @@ class TestManualDetectedBugs:
         test_element = PlatformOverviewButton(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
-        print(f'\n{datetime.now()}   3. Assert')
+        print(f'\n{datetime.now()}   Assert')
 
         page = WebTradingPlatformPage(d, link, bid)
         if not page.should_be_web_trading_platform_page(d, link):
@@ -66,40 +68,6 @@ class TestManualDetectedBugs:
                                  "\n"
                                  "Actual result: The Home page is opened ")
         Common().save_current_screenshot(d, "AT_55!038 Pass")
-
-    # @allure.step("Start retest manual TC_55!00_043 "
-    #              "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]")
-    # @pytest.mark.parametrize('cur_language', [''])
-    # @pytest.mark.parametrize('cur_country', ['gb'])
-    # @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    # @pytest.mark.bug_043
-    # def test_043(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-    #     """
-    #     The footer is missing on click menu item [Professional] of the menu section [Ways to trade]
-    #     1. Hover over the [Ways to trade] menu section
-    #     2. Click the [Professional]menu item
-    #     Author: podchasova11
-    #     """
-    #     bid = build_dynamic_arg_for_us_55(
-    #         d, worker_id, cur_language, cur_country, cur_role,
-    #         "55", "ReTests of Manual Detected Bugs",
-    #         "043",
-    #         "The footer is missing on click menu item [Professional] of the menu section [Ways to trade]"
-    #     )
-    #     # pytest.skip("Autotest under construction")
-    #
-    #     Common().check_language_in_list_and_skip_if_not_present(cur_language, [''])
-    #     Common().check_country_in_list_and_skip_if_not_present(cur_country, ['gb'])
-    #
-    #     page_conditions = NewConditions(d, "")
-    #     link = page_conditions.preconditions(
-    #         d, CapitalComPageSrc.URL_NEW, "", cur_language, cur_country, cur_role, cur_login, cur_password)
-    #
-    #     menu = MenuSection(d, link)
-    #     link = menu.open_ways_to_trade_professional_menu(d, cur_language, cur_country, link)
-    #
-    #     menu = ProfessionalMenuCheckFooter(d, link, bid)
-    #     menu.check_that_footer_displayed_on_professional_page(d, cur_language, cur_country, link)
 
     @allure.step("Start retest manual TC_55!00_090 "
                  "The trading platform page is not opened "
@@ -128,7 +96,7 @@ class TestManualDetectedBugs:
 
         # pytest.skip("Autotest under construction")
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d, "")
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "", cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -162,9 +130,10 @@ class TestManualDetectedBugs:
             "instead [My Account] menu after clicking the [My account] button"
         )
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # Arrange
         button = ButtonMyAccount(d, link, bid)
@@ -201,9 +170,10 @@ class TestManualDetectedBugs:
             "instead [My Account] menu after clicking the [My account] button"
         )
 
-        page_conditions = NewConditions(d, "")
-        link = page_conditions.preconditions(
-            d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        # page_conditions = NewConditions(d, "")
+        # link = page_conditions.preconditions(
+        #     d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # Arrange
         button = ButtonMyAccount(d, link, bid)
@@ -221,7 +191,7 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!326 | The page "Oops, this help center no longer exists"'
         ' is opened after clicking the link [Help Center] of the page "Contact us"')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua', 'au'], 1))
+    @pytest.mark.parametrize('cur_country', ['de'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_326
     def test_326(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -229,7 +199,7 @@ class TestManualDetectedBugs:
          Check: The page "Oops, this help center no longer exists"
          is opened after clicking the link [Help Center] of the page "Contact us"
          Language: All.
-         License: ASIC, CYSEC.
+         License: CYSEC.
          Role: NoReg | NoAuth | Auth
          Author: podchasova11
          """
@@ -244,7 +214,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
@@ -297,7 +267,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
@@ -358,7 +328,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         # page_conditions = Conditions(d)
         # link = page_conditions.preconditions(
         #     d, CapitalComPageSrc.URL, "",
@@ -389,4 +359,145 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!366 | The Investmate page does not open after click link “Investmate”'
+        ' in the block “Discover trading.” on the page “Why Capital.com?”')
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_315
+    def test_315(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The Investmate page does not open after click link “Investmate”'
+        ' in the block “Discover trading.” on the page “Why Capital.com?”
+         Language: ALL.
+         License: CYSEC, SCB.
+         Author: podchasova11
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "315",
+            'The Investmate page does not open after click link “Investmate”'
+            ' in the block “Discover trading.” on the page “Why Capital.com?”',
+            False,
+            False
+        )
+        # pytest.skip("315 In progress...")
+        # Arrange
+        Common.check_language_in_list_and_skip_if_present(cur_language, [''])
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role,
+                                           cur_login, cur_password)
+
+        page_header_menu = MenuSection(d, link)
+        test_el = Bug315(d, link, bid)
+
+        page_header_menu.move_focus_to_products_and_services_menu(d, cur_language, cur_country)
+        test_el.click_why_capital_menu_item()
+
+        # Act
+        test_el.click_investmate_link()
+
+        # Assert
+        if not test_el.should_be_investmate_page(cur_language):
+            Common.pytest_fail("Bug # 55!315 The Investment page is NOT opened")
+        Common.save_current_screenshot(d, "AT_55!315 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        "Start retest manual TC_55!363 | 'Honk Kong & Taiwan' not displayed up in search"
+        " the dropdown [Regional settings]")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_363
+    def test_363_selected_country_not_displayed_up_in_search_the_dropdown(
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+        """
+        Check:  Click to the dropdown [Regional settings] > Click to the dropdown [Countries] >
+                Click the [Search] input field > Enter value "Honk" > Check that country 'Honk Kong & Taiwan'
+                displayed in search results
+
+        Language: EN - FCA, SCA; AR - SCA
+        License/Country: FCA, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: podchasovq11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "363",
+            "Click to the dropdown [Regional settings] > Click to the dropdown [Countries] > "
+            "Click the [Search] input field > Enter value 'Honk' > Check that country 'Honk Kong & Taiwan'"
+            "displayed in search results",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
+                                                    cur_language_country_for_fca_and_sca[1],
+                                                    cur_role, cur_login, cur_password)
+
+        test_element = Bug363(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+
+        # Act
+        test_element.check_present_honk_kong_taiwan_locator(d)
+
+        # Assert
+        test_element.assert_(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1])
+
+    @allure.step("Start test of link 'Capital.com Research Team' on page 'BP share price forecast'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_405
+    def test_405_link_research_team_open_on_404_error_message(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] >
+                Menu item [Market analysis] >
+                Scroll down to the block “pagination” >
+                Click the link "11"
+                Click the link “BP share price forecast” >
+                Сlick the link “Capital.com Research Team” >
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: podchasova11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "405",
+            "Menu section [Markets] > Menu item [Market analysis] >"
+            "Scroll down to the block 'pagination' >"
+            "Click the link '11' >"
+            "Click the link 'BP share price forecast' >"
+            "Сlick the header of the accordion 'How do you trade commodities?' >"
+            "Сlick the link 'Capital.com Research Team' ",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = Bug_405(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
 

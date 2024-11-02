@@ -12,16 +12,15 @@ import pytest
 import allure
 
 from pages.common import Common
-# from pages.conditions import Conditions
-# from pages.conditions_new import NewConditions
-from pages.conditions_v2 import conditions_switch
+from pages.conditions_v2 import apply_preconditions_to_link
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
 from pages.BugsManual.bug_052 import CommoditiesPageOpenCheck
 from pages.BugsManual.bug_076 import ProfessionalAccountPage
 from pages.BugsManual.bug_085 import TradingGuidesPageDeTest
 from pages.BugsManual.bug_158 import NewsAndAnalysisMenuSection
-from pages.BugsManual.bugs_272_273 import LearnToTradePage
+from pages.BugsManual.bug_272 import Bug272
+from pages.BugsManual.bug_273 import Bug273
 from pages.BugsManual.bug_288 import Bug288
 from pages.BugsManual.bug_299 import CheckLoginFacebookModal
 from pages.BugsManual.bug_305 import Bug305
@@ -32,6 +31,12 @@ from pages.BugsManual.bug_335 import Bug335
 from pages.BugsManual.bug_359 import Bug359
 from pages.BugsManual.bug_364 import Bug364
 from pages.BugsManual.bug_366 import Bug366
+from pages.BugsManual.bug_372 import Bug372
+from pages.BugsManual.bug_373 import Bug373
+from pages.BugsManual.bug_378 import Bug378
+from pages.BugsManual.bug_379 import Bug379
+from pages.BugsManual.bug_392 import Bug392
+from pages.BugsManual.bug_416 import Bug416
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -48,7 +53,7 @@ class TestManualDetectedBugs:
                  "after click on the link [Go to all commodities] on the 'Commodities trading' page "
                  "when AR, IT, NL, PL, RO, CN language is selected")
     @pytest.mark.parametrize('cur_language', random.sample(['ar', 'it', 'nl', 'pl', 'ro', 'cn'], 2))
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_052
     def test_052(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -56,7 +61,7 @@ class TestManualDetectedBugs:
          Check: The main page in EN language is opened after click on the link [Go to all commodities]
                 on the "Commodities trading" page when AR, IT, NL, PL, RO, CN language is selected
          Language: AR, IT, NL, PL, RO, CN.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -68,10 +73,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = CommoditiesPageOpenCheck(d, link, bid)
@@ -92,7 +94,7 @@ class TestManualDetectedBugs:
 
     @allure.step("Start retest manual TC_55!043 The page is refreshed instead of opening the Login form "
                  "after clicking the [Log In] button on the Search page")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.bug_053
     def test_053(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
@@ -101,7 +103,7 @@ class TestManualDetectedBugs:
          Check: The page is refreshed instead of opening the Login form after clicking the [Log In] button
                 on the Search page
          Language: All.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -115,10 +117,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -165,16 +165,12 @@ class TestManualDetectedBugs:
             "Login form is opened instead of Sign-up form after clicking the button [Apply] "
             "in the Block 'Leverage Limits Professional Clients' on page 'Professional Account'"
         )
-
         # Arrange
         # Bug is not reproduced in 'el' language
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, ['el'])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         prof_acc_page = ProfessionalAccountPage(d, link, bid)
@@ -201,7 +197,7 @@ class TestManualDetectedBugs:
                  "after clicking the link [Handelsleitfäden] (trading guides) "
                  "on the page [Demo-Konto] (Demo Account) in DE lang")
     @pytest.mark.parametrize('cur_language', ['de'])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_085
     def test_085(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -209,7 +205,7 @@ class TestManualDetectedBugs:
          Check: The Trading Guides page is not opened after clicking the link [Handelsleitfäden] (trading guides)
          on the page [Demo-Konto] (Demo Account) in DE lang
          Language: DE.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -221,10 +217,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -251,7 +244,7 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!157 The modal window "Confirm Form Resubmission" is not opened '
         'after clicking the button [Back] on any article from search page.')
     @pytest.mark.parametrize('cur_language', [''])  # temporary use only EN, because of bug #55!292
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_157
     def test_157(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -260,7 +253,7 @@ class TestManualDetectedBugs:
          Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
          on any article from search page.
          Language: All.
-         License: CYSEC, SCB.
+         License: CB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -274,10 +267,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -307,7 +297,7 @@ class TestManualDetectedBugs:
         "Start retest manual TC_55!158 | Page '教育' (Education) is opened after click "
         "on menu section [新聞和分析] (News and analysis) in CN language")
     @pytest.mark.parametrize('cur_language', ['cn'])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_158
     def test_158(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -315,7 +305,7 @@ class TestManualDetectedBugs:
         """
          Check: Page '教育' (Education) is opened after click on menu section [新聞和分析] (News and analysis) in CN language.
          Language: CN.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -329,10 +319,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -352,7 +339,7 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
 
     @allure.step("Start retest manual TC_55!160 The Search field in the header is not opened after performed search")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_160
     def test_160(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
@@ -360,7 +347,7 @@ class TestManualDetectedBugs:
         """
          Check: The Search field in the header is not opened after performed search
          Language: All.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -373,10 +360,8 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -432,16 +417,13 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_AR_AE, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_el = LearnToTradePage(d, link, bid)
+        test_el = Bug272(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
-        test_el.click_the_learn_to_trade_link272()
+        test_el.click_the_learn_to_trade_link()
 
         # Assert
         if not test_el.should_be_visible_block_trading_for_beginners():
@@ -485,21 +467,16 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_AR_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
-        test_el = LearnToTradePage(d, link, bid)
+        test_el = Bug273(d, link, bid)
         test_el.open_learn_to_trade_page(d, cur_language, cur_country, link)
 
         # Act
-        test_el.click_the_learn_to_trade_link273()
+        test_el.click_the_learn_to_trade_link()
 
         # Assert
-        if not test_el.should_be_visible_block_trading_for_beginners():
+        if not test_el.should_be_visible_block_experienced_traders():
             Common.pytest_fail('Bug # 55!273 The the block "Experienced traders" is NOT into viewport')
         Common.save_current_screenshot(d, "AT_55!273 Pass")
 
@@ -511,7 +488,7 @@ class TestManualDetectedBugs:
                  'after clicking the link [Our mobile Apps] '
                  'in the tile "Industry-leading features for an industry-leading platform" '
                  'on the page "Why Capital.com?" when any language (except EN) is selected')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_288
     def test_288(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
@@ -520,7 +497,7 @@ class TestManualDetectedBugs:
                 in the tile "Industry-leading features for an industry-leading platform"
                 on the page "Why Capital.com?" when any language (except EN) is selected
          Language: All, except EN.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -535,10 +512,8 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -564,7 +539,7 @@ class TestManualDetectedBugs:
     @allure.step(
         'Start retest manual TC_55!292 There are no search results on the Search page '
         'when any language except EN is selected')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_292
     def test_292(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role,
@@ -572,7 +547,7 @@ class TestManualDetectedBugs:
         """
          Check: There are no search results on the Search page when any language except EN is selected.
          Language: All, except EN.
-         License: CYSEC, SCB.
+         License: CB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -587,10 +562,8 @@ class TestManualDetectedBugs:
         # Arrange
         Common.check_language_in_list_and_skip_if_present(cur_language_qty_rnd_from_14, [''])
 
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL, "", cur_language_qty_rnd_from_14,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country, cur_role,
+                                           cur_login, cur_password)
 
         # refresh page to prevent "stale element exception" on 1st test if its in NoAuth role
         d.refresh()
@@ -638,10 +611,7 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(d, CapitalComPageSrc.URL_NEW_EN_AE, "", cur_language,
-        #                                      cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = CheckLoginFacebookModal(d, link, bid)
         signup_login = SignupLogin(d, link, bid)
@@ -696,12 +666,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug305(d, link, bid)
         test_el.open_demo_account_page(d, cur_language, cur_country, link)
@@ -747,12 +712,7 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug307(d, link, bid)
         test_el.open_shares_trading_page(d, cur_language, cur_country, link)
@@ -799,12 +759,7 @@ class TestManualDetectedBugs:
             False
         )
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug330(d, link, bid)
         test_el.open_support_window()
@@ -829,7 +784,7 @@ class TestManualDetectedBugs:
         'of the block “How to trade using RSI and other indicators” '
         'on the page “RSI trading strategy: An educational guide”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_332a
     def test_332a(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -839,7 +794,7 @@ class TestManualDetectedBugs:
          of the block “How to trade using RSI and other indicators”
          on the page “RSI trading strategy: An educational guide”
          Language: EN.
-         License: CYSEC, SCB.
+         License: CB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -854,12 +809,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -885,7 +835,7 @@ class TestManualDetectedBugs:
         'of the block “How to trade using RSI and other indicators” '
         'on the page “RSI trading strategy: An educational guide”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_332b
     def test_332b(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -895,7 +845,7 @@ class TestManualDetectedBugs:
          of the block “How to trade using RSI and other indicators”
          on the page “RSI trading strategy: An educational guide”
          Language: EN.
-         License: CYSEC, SCB.
+         License: CB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -910,12 +860,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug332(d, link, bid)
@@ -969,12 +914,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW_EN_AE, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug335(d, link, bid)
         test_el.open_market_guides_page(d, cur_language, cur_country, link)
@@ -1018,12 +958,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug359(d, link, bid)
         test_el.open_shares_page(d, cur_language, cur_country, link)
@@ -1045,7 +980,7 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!359b | Error message is displayed after clicking the link “NASDAQ stock exchange” '
         'in the block “GOOGL Company profile” on the page “Trade Alphabet Inc - A - GOOGL CFD”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_359b
     def test_359b(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -1053,7 +988,7 @@ class TestManualDetectedBugs:
          Check: Error message is displayed after clicking the link “NASDAQ stock exchange”
          in the block “GOOGL Company profile” on the page “Trade Alphabet Inc - A - GOOGL CFD”
          Language: EN.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -1067,12 +1002,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug359(d, link, bid)
@@ -1118,12 +1048,7 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = NewConditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL_NEW, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_el = Bug364(d, link, bid)
         test_el.open_spread_betting_page(d, cur_language, cur_country, link)
@@ -1144,14 +1069,14 @@ class TestManualDetectedBugs:
         'Start retest manual TC_55!366 | The corresponding video does not open after click '
         'on the banner "Market outlook with David Jones"')
     # @pytest.mark.parametrize('cur_language_qty_rnd_from_14', ['ru'])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])  # 'Auth', 'NoAuth', 'NoReg'
     @pytest.mark.bug_366
     def test_366(self, worker_id, d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The corresponding video does not open after click on the banner "Market outlook with David Jones"
          Language: ALL.
-         License: CYSEC, SCB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -1162,14 +1087,10 @@ class TestManualDetectedBugs:
             False,
             False
         )
-
+        pytest.skip("366 In progress...")
         # Arrange
-        link = conditions_switch(d, cur_language_qty_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
-        # page_conditions = Conditions(d)
-        # link = page_conditions.preconditions(
-        #     d, CapitalComPageSrc.URL, "",
-        #     cur_language, cur_country, cur_role, cur_login, cur_password
-        # )
+        link = apply_preconditions_to_link(d, cur_language_qty_rnd_from_14, cur_country,
+                                           cur_role, cur_login, cur_password)
 
         page_header_menu = MenuSection(d, link)
         test_el = Bug366(d, link, bid)
@@ -1184,8 +1105,275 @@ class TestManualDetectedBugs:
         # if not test_el.():
         #     Common.pytest_fail('Bug # 55!366 The corresponding video is not opened')
         # Common.save_current_screenshot(d, "AT_55!366 Pass")
-        pytest.skip("366 In progress...")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!372 | The block "Trading for beginners" on the page "Learn" is not in viewport '
+        'after clicking the link "Learn to trade" on the page "Why Capital.com?"')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_372
+    def test_372(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The block "Trading for beginners" on the page "Learn" is not in viewport
+         after clicking the link "Learn to trade" on the page "Why Capital.com?"
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "372",
+            'The block "Trading for beginners" on the page "Learn" is not in viewport '
+            'after clicking the link "Learn to trade" on the page "Why Capital.com?"',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug372(d, link, bid)
+        test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_the_learn_to_trade_link()
+
+        # Assert
+        if not test_el.should_be_visible_block_trading_for_beginners():
+            Common.pytest_fail('Bug # 55!372 The the block "Trading for beginners" is NOT into viewport')
+        Common.save_current_screenshot(d, "AT_55!372 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!373 | The block "Experienced traders" on the page "Learn" is not in viewport '
+        'after clicking the link "Learn to trade" on the page "Why Capital.com?"')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_373
+    def test_373(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The block "Experienced traders" on the page "Learn" is not in viewport
+         after clicking the link "Learn to trade" on the page "Why Capital.com?"
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "373",
+            'The block "Experienced traders" on the page "Learn" is not in viewport '
+            'after clicking the link "Learn to trade" on the page "Why Capital.com?"',
+            False,
+            False
+        )
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug373(d, link, bid)
+        test_el.open_why_capital_com_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_the_learn_to_trade_link()
+
+        # Assert
+        if not test_el.should_be_visible_block_experienced_traders():
+            Common.pytest_fail('Bug # 55!373 The the block "Experienced traders" is NOT into viewport')
+        Common.save_current_screenshot(d, "AT_55!373 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!378 | FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page '
+        'after clicking any of trading instrument links '
+        'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(['ae', 'au', 'de'], 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_378
+    def test_378(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password, bug_378_link_loc):
+        """
+         Check: FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page
+         after clicking any of trading instrument links
+         on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”
+         Language: EN.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "378",
+            'FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page '
+            'after clicking any of trading instrument links '
+            'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug378(d, link, bid)
+        test_el.open_market_analysis_page(d, cur_language, cur_country, link)
+        test_el.open_lloyds_forecast_page()
+
+        # Act
+        test_el.click_trading_instrument_link(bug_378_link_loc)
+
+        # Assert
+        if not test_el.should_be_sca_license():
+            Common.pytest_fail('Bug # 55!378 The SCA license is NOT selected')
+        Common.save_current_screenshot(d, "AT_55!378 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!379 | Only the text of the [Inflation news] button '
+        'is displayed without clickable area and button styling on the sidebar of the "Market Analysis" page, '
+        'when SCB license and EN language are selected.')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ua'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_379
+    def test_379(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Only the text of the [Inflation news] button is displayed
+         without clickable area and button styling on the sidebar of the "Market Analysis" page,
+         when SCB license and EN language are selected.
+         Language: EN.
+         License: SCB.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "379",
+            'Only the text of the [Inflation news] button '
+            'is displayed without clickable area and button styling on the sidebar of the "Market Analysis" page, '
+            'when SCB license and EN language are selected.',
+            False,
+            False
+        )
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug379(d, link, bid)
+        page_menu = NewsAndAnalysisMenuSection(d, link, bid)
+        page_menu.click_element()
+
+        # Act
+        #
+
+        # Assert
+        if not test_el.should_be_existent_and_active_btn():
+            Common.pytest_fail('Bug # 55!379 The button is DOES NOT exist')
+        Common.save_current_screenshot(d, "AT_55!379 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL)
+
+    @allure.step(
+        'Start retest manual TC_55!392 | All links on the page "استراتيجية التداول الموضعي" (Position trading strategy)'
+        ' lead on the EN pages on the old site version when AR language is selected')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_392
+    def test_392(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: All links on the page "استراتيجية التداول الموضعي" (Position trading strategy)
+         lead on the EN pages on the old site version when AR language is selected
+         Language: AR.
+         License: SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "392",
+            'All links on the page "استراتيجية التداول الموضعي" (Position trading strategy) '
+            'lead on the EN pages on the old site version when AR language is selected',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug392(d, link, bid)
+        test_el.open_trading_strategies_page(d, cur_language, cur_country, link)
+        test_el.open_position_trading_page()
+
+        # Act
+        test_el.click_random_link()
+
+        # Assert
+        if not test_el.should_be_new_version_ar_language_page():
+            Common.pytest_fail('Bug # 55!392 The page is NOT opened on the new version and in AR language')
+        Common.save_current_screenshot(d, "AT_55!392 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_416
+    def test_416(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]
+         Language: EN.
+         License: FCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "416",
+            'The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug416(d, link, bid)
+        test_el.open_client_funds_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_whatsapp_link()
+
+        # Assert
+        if not test_el.should_be_whatsapp_redirecting_page():
+            Common.pytest_fail('Bug # 55!416 The page with the link redirecting to the WhatsApp chat is NOT opened')
+        Common.save_current_screenshot(d, "AT_55!416 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)

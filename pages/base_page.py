@@ -676,3 +676,40 @@ class BasePage:
             return new_locator
         else:
             pass
+
+    @HandleExcElementsDecorator()
+    def find_link_scroll_check_visibility_and_clickability(self, name_of_link, link_locator):
+        """
+        Example:
+            wd - 0bject of Selenium Webdriver
+            name_of_link = "Discover what you can trade"
+            locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
+        """
+        # Check presenting link on the page
+        if len(self.driver.find_elements(*link_locator)) == 0:
+            msg = (f"Page don't have link '{name_of_link}' in DOM")
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"{msg}")
+        print(f"{datetime.now()}   Page have link '{name_of_link}' in DOM\n")
+
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*link_locator)
+        )
+        print(f"{datetime.now()}   Scrolled to link '{name_of_link}'")
+
+        # Check visibility link on the page
+        print(f"{datetime.now()}   Start to check visibility link '{name_of_link}'.'")
+        if not self.element_is_visible(link_locator):
+            msg = f"Link '{name_of_link}' don't visible."
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"{msg}")
+        print(f"{datetime.now()}   Link {name_of_link} visible on the current page\n")
+
+        # Check clickability link on the page
+        print(f"{datetime.now()}   Start to check clickability link '{name_of_link}'.")
+        if not self.element_is_clickable(link_locator):
+            msg = f"Link '{name_of_link}' don't clickable."
+            print(f"{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"{msg}")
+        print(f"{datetime.now()}   Link '{name_of_link}' clickable.\n")

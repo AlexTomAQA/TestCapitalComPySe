@@ -8,6 +8,7 @@ import pytest
 import random
 
 
+# Bug 053
 @pytest.fixture(
     params=random.sample([
         "USD",
@@ -20,4 +21,15 @@ import random
     ], 1))
 def random_search_string(request):
     print(f"\n\n\nCurrent search string - {request.param}")
+    return request.param
+
+
+# Bug 378
+@pytest.fixture(
+    params=[
+        ('xpath', '//a[text() = "BARC"]'),
+        ('xpath', '//a[text() = "HSBA"]'),
+        ('xpath', '//a[text() = "LSE"]')
+    ])
+def bug_378_link_loc(request):
     return request.param
