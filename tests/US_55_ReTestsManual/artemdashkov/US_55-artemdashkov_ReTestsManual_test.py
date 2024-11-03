@@ -8,7 +8,6 @@ import allure
 import pytest
 import random
 from datetime import datetime
-from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -34,6 +33,8 @@ from pages.BugsManual.bug_377 import BUG_377
 from pages.BugsManual.bug_383 import BUG_383
 from pages.BugsManual.bug_406 import BUG_406
 from pages.BugsManual.bug_407 import BUG_407
+from pages.BugsManual.bug_411 import BUG_411
+from pages.BugsManual.bug_422 import BUG_422
 from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions import Conditions
@@ -45,7 +46,9 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_commodities,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_market_analysis,
+                            from_markets_menu_open_shares,
                             from_trading_menu_open_spread_betting,
+                            from_trading_menu_open_cfd_trading,
                             from_about_us_menu_open_why_capital)
 from pages.conditions_new import NewConditions
 from pages.conditions_new_v1 import NewConditions_v1
@@ -1126,7 +1129,7 @@ class TestManualDetected:
             "Click any article on the 'Daniela Hathorn' page",
             False, True
         )
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
@@ -1140,6 +1143,104 @@ class TestManualDetected:
 
         # Act
         test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of link 'indices' on page 'What is CFD trading?'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_411
+    def test_411_link_indices_on_page_what_is_cfd_trading(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [Trading] >
+                Menu item [CFD trading] >
+                Scroll down to the block “Read more before you trade” >
+                Click link "Go CFD trading guide" >
+                Scroll down to the block "What is a contract for difference (CFD)?" /
+                Click link "indices"
+        Language: EN
+        License/Country: FCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "411",
+            "Menu section [Trading] > Menu item [CFD trading] >"
+            "Scroll down to the block “Read more before you trade” > "
+            "Click link 'Go CFD trading guide' > "
+            "Scroll down to the block 'What is a contract for difference (CFD)?' > "
+            "Click link 'indices'",
+            False, True
+        )
+        # Arrange
+        # pytest.skip("Intermediate version")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_cfd_trading.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_cfd_trading(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_411(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of links 'JPMorgan Chase & Co', 'Exxon Mobil' and 'IBM' on page 'Largest Stock Exchanges'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["gb"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('link_for_check', ["JPMorgan Chase & Co", "Exxon Mobil", "IBM"])
+    @pytest.mark.bug_422
+    def test_422_links_jpmorgan_exxon_ibm_on_page_largest_stock_exchanges_dont_open_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, link_for_check, cur_login, cur_password):
+        """
+        Check:  Menu section [Markets] >
+                Menu item [Shares] >
+                Scroll down to the block “Why trade shares?” >
+                Click the link “the most popular markets to trade” >
+                Scroll down to the text block “NYSE” >
+                Click the links [JPMorgan Chase & Co]/[Exxon Mobil]/[IBM]
+        Language: EN
+        License/Country: FCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "422",
+            "Menu section [Markets] > Menu item [Shares] >"
+            "Scroll down to the block 'Why trade commodities with Capital.com?' >"
+            "Click the link 'the most popular markets to trade' >"
+            "Scroll down to the text block 'NYSE' >"
+            "Click the links [JPMorgan Chase & Co]/[Exxon Mobil]/[IBM]",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Intermediate version")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_shares(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_422(d, link, bid)
+        test_element.arrange(d, link, link_for_check)
+
+        # Act
+        test_element.act(d, link_for_check)
 
         # Assert
         test_element.assert_(d)

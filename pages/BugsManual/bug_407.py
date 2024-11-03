@@ -3,7 +3,10 @@
 @Time    : 2024/10/15 21:00
 @Author  : Artem Dashkov
 """
+import time
+
 import allure
+import random
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
@@ -26,7 +29,13 @@ DANIELA_HATHORN_AUTHOR_LOCATOR = (By.XPATH,
 
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
+
 class BUG_407(BasePage):
+
+    def __init__(self, driver, link="", bid=""):
+        BasePage.__init__(self, driver, link="", bid="")
+        # super().__init__()
+        self.list_of_authors = None
 
     @allure.step(f"{datetime.now()}   1. Start Arrange: "
                  f"find target article,"
@@ -41,7 +50,7 @@ class BUG_407(BasePage):
             self.open_page()
 
         # Look for target article
-        count = 0
+        count = 1
         while count < 7:
             # Check presenting articles on the page
             quantity_of_articles = len(self.driver.find_elements(*ARTICLES_LOCATOR))
@@ -49,7 +58,7 @@ class BUG_407(BasePage):
                 msg = f"The page 'Market analysis' don't have articles"
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-            print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM\n")
+            print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM")
 
             for number_of_article in range(0, quantity_of_articles):
 
@@ -61,149 +70,137 @@ class BUG_407(BasePage):
                 )
 
                 # Start to click on the article
-                print(f"\n{datetime.now()}   Start to click on the article number: {number_of_article+1}")
+                print(f"{datetime.now()}   Start to click on the article number: {number_of_article+1}")
                 self.driver.find_elements(*ARTICLES_LOCATOR)[number_of_article].click()
-                print(f"\n{datetime.now()}   Article number: {number_of_article+1} is clicked\n")
+                print(f"{datetime.now()}   Article number: {number_of_article+1} is clicked")
 
                 # Check presenting author link on the article page
                 if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
                     msg = f"The article number: {number_of_article+1} don't have link on author in DOM"
                     print(f"{datetime.now()}   => {msg}")
                     Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-                print(f"{datetime.now()}   The article number: {number_of_article+1} have link on author in DOM\n")
+                print(f"{datetime.now()}   The article number: {number_of_article+1} have link on author in DOM.")
 
                 # Scroll to the link author
-                print(f"\n{datetime.now()}   Scroll to the link author")
+                print(f"{datetime.now()}   Scroll to the link author")
                 self.driver.execute_script(
                     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                     self.driver.find_element(*LINK_LOCATOR)
                 )
 
                 # Check author of article is Daniela Hathorn
-                author_of_current_article = (self.driver.find_element(*LINK_LOCATOR).get_property()).lower()
+                author_of_current_article = (self.driver.find_element(*LINK_LOCATOR).get_property("innerText")).lower()
                 if TARGET_AUTHOR_NAME in author_of_current_article:
+                    msg = f"Author of article number: {number_of_article + 1} is Daniela Hathorn"
+                    print(f"{datetime.now()}   {msg}")
+                    self.driver.execute_script(
+                        'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                        self.driver.find_element(*LINK_LOCATOR)
+                    )
+                    # We find target article. Exit from loop while.
+                    count = 10
+                    break
+                else:
                     msg = (f"Author of article number: {number_of_article + 1} is not Daniela Hathorn, "
                            f"author is: {author_of_current_article}")
-                    print(f"{datetime.now()}   => {msg}")
-                    print(f"{datetime.now()}   => Come back on page with articles and try to check author of next article")
+                    print(f"{datetime.now()}   {msg}")
+                    print(
+                        f"{datetime.now()}   Come back on page with articles and try to check author of next article")
                     self.driver.back()
+                    time.sleep(1)
                     continue
 
-
-                    # STOP HERE!!!!!
-
-
-                print(f"{datetime.now()}   The article number: {number_of_article + 1} have link on author in DOM\n")
+            if count == 10:
+                break
+            print(f"{datetime.now()}   On the current page aren't Daniela Hathorn articles. "
+                  f"Need look for articles on the next page\n")
 
             # Check presenting pagination on the page
-            print(f"{datetime.now()}   Start to check presenting pagination on the page\n")
+            print(f"{datetime.now()}   Start to check presenting pagination on the page")
             if len(self.driver.find_elements(*PAGINATION_LOCATOR)) == 0:
                 msg = f"The page 'Market analysis' don't have pagination"
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
             print(f"{datetime.now()}   The page 'Market analysis' have pagination in DOM\n")
 
-            # Check presenting articles on the page
-            print(f"{datetime.now()}   Start to check presenting target article on the page\n")
-            if len(self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)) == 0:
-                msg = f"The current page don't have target article. Try find on the other page."
-                print(f"{datetime.now()}   => {msg}")
-                print(f"{datetime.now()}   Start to click on the next page link")
-                self.driver.find_elements(*PAGINATION_LOCATOR)[0].click()
-                print(f"{datetime.now()}   End to click on the next page link")
-                count += 1
-                continue
-            print(f"{datetime.now()}   The current page have target article in DOM\n")
-            self.driver.execute_script(
-                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0]
-            )
-            break
+            print(f"{datetime.now()}   Start to click on the next page link")
+            self.driver.find_elements(*PAGINATION_LOCATOR)[0].click()
+            print(f"{datetime.now()}   End to click on the next page link")
+            count += 1
+            print(f"{datetime.now()}   Number of current page is: {count}\n")
+            continue
 
-        # Check visibility article on the page
-        print(f"{datetime.now()}   Start to check visibility target article'\n")
-        if not self.element_is_visible(TARGET_ARTICLE_LOCATOR):
-            msg = f"Target article don't visible"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Target article is visible \n")
-
-        # Check clickability article on the page
-        print(f"{datetime.now()}   Start to check clickability target article\n")
-        if not self.element_is_clickable(TARGET_ARTICLE_LOCATOR):
-            msg = f"Target article don't clickable"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Target article clickable\n")
-        link_article = self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].get_attribute("href")
-
-        print(f'{datetime.now()}   Start to click on target article')
-        self.driver.find_elements(*TARGET_ARTICLE_LOCATOR)[0].click()
-        print(f'{datetime.now()}   End to click on target article')
-
-        # Check target url
-        print(f'Link article: {link_article}')
-        self.wait_for_target_url(link_article, 5)
-        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-
-        # Check presenting link on the page
-        if len(self.driver.find_elements(*LINK_LOCATOR)) == 0:
-            msg = (f"The page 'ECB Preview...' don't have link {LINK_NAME} in DOM")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   The page 'ECB Preview...' have link {LINK_NAME} in DOM\n")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*LINK_LOCATOR)
-        )
-
-        # Check visibility link on the page
-        print(f"{datetime.now()}   Start to check visibility link {LINK_NAME}'\n")
+        # Check visibility Daniela Hathorn link on the page
+        print(f"\n{datetime.now()}   Start to check visibility link {TARGET_AUTHOR_NAME}'")
         if not self.element_is_visible(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't visible"
+            msg = f"Link {TARGET_AUTHOR_NAME} don't visible"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} visible \n")
+        print(f"{datetime.now()}   Link {TARGET_AUTHOR_NAME} visible.")
 
         # Check clickability link on the page
-        print(f"{datetime.now()}   Start to check clickability link {LINK_NAME}\n")
+        print(f"{datetime.now()}   Start to check clickability link {TARGET_AUTHOR_NAME}.")
         if not self.element_is_clickable(LINK_LOCATOR):
-            msg = f"Link {LINK_NAME} don't clickable"
+            msg = f"Link {TARGET_AUTHOR_NAME} don't clickable"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        print(f"{datetime.now()}   Link {LINK_NAME} clickable\n")
+        print(f"{datetime.now()}   Link {TARGET_AUTHOR_NAME} clickable.")
+
+        # Start click on the link Daniela Hathorn
+        print(f"{datetime.now()}   Click on the link {TARGET_AUTHOR_NAME}")
+        self.driver.find_element(*LINK_LOCATOR).click()
+        print(f"{datetime.now()}   Link {TARGET_AUTHOR_NAME} is clicked\n")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
+        print(f"\n{datetime.now()}   2. Start Act. Choose any three random articles and create author list")
 
-        print(f"\n{datetime.now()}   2. Start Act. Click on the link {LINK_NAME}")
+        # Check presenting articles on the page
+        quantity_of_articles = len(self.driver.find_elements(*ARTICLES_LOCATOR))
+        if quantity_of_articles == 0:
+            msg = f"The page 'Daniela Hathorn' don't have articles"
+            print(f"\n{datetime.now()}   => {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+        print(f"{datetime.now()}   The page 'Market analysis' have articles in DOM.")
 
-        self.driver.find_element(*LINK_LOCATOR).click()
-        print(f"\n{datetime.now()}   Link {LINK_NAME} is clicked\n")
+        list_random_articles_for_check = random.sample(list(range(quantity_of_articles)), 3)
+        list_random_articles_for_check = sorted(list_random_articles_for_check)  # sorted by increase
+        print(f"{datetime.now()}   Three articles were selected at random: {list_random_articles_for_check}")
 
-    @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
-    def assert_(self, d):
-        print(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
-
-        # Check presenting message '404 not found' on the opened page
-        print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
-        if len(self.driver.find_elements(*MESSAGE_404_LOCATOR)) != 0:
-            print(f"{datetime.now()}   Opened page have message '404 not found' in the DOM")
-
+        print(f"{datetime.now()}   Start to check author in each articles.")
+        self.list_of_authors = []
+        for number_of_article in list_random_articles_for_check:
+            print(f"{datetime.now()}   Start to check author for {number_of_article} article.")
             self.driver.execute_script(
                 'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-                self.driver.find_element(*MESSAGE_404_LOCATOR)
+                self.driver.find_elements(*ARTICLES_LOCATOR)[number_of_article]
             )
 
-            # Check visibility message '404 not found' on the opened page
-            print(f"{datetime.now()}   IS message '404 not found' on the opened page?")
-            if self.element_is_visible(MESSAGE_404_LOCATOR):
-                msg = (f"Message '404 not found' is visible on the opened page")
+            # Start click on the article
+            print(f"\n{datetime.now()}   Click on the {number_of_article} article.")
+            self.driver.find_elements(*ARTICLES_LOCATOR)[number_of_article].click()
+            print(f"{datetime.now()}   Article number {number_of_article} is clicked")
+
+            # Check author of article
+            print(f"{datetime.now()}   Scroll to the link author")
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_element(*LINK_LOCATOR)
+            )
+            author_of_current_article = (self.driver.find_element(*LINK_LOCATOR).get_property("innerText")).lower()
+            self.list_of_authors.append(author_of_current_article)
+            print(f"{datetime.now()}   Added current author in the total list")
+            self.driver.back()
+
+    @allure.step(f"{datetime.now()}   3. Start Assert. Check author of articles")
+    def assert_(self, d):
+        print(f"{datetime.now()}   3. Start Assert. Check author of articles")
+
+        for author in self.list_of_authors:
+            if author == TARGET_AUTHOR_NAME:
+                print(f"{datetime.now()}   Current author is Daniela Hathorn")
+            else:
+                msg = (f"Current author is not Daniela Hathorn. Current author is {author}")
                 print(f"{datetime.now()}   => {msg}")
                 Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-
-        print(f"{datetime.now()}   Opened page don't have message '404 not found', but need to check content of page.")
-        Common.save_current_screenshot(d, f"Opened page don't have message '404 not found'")
-        self.driver.get(CapitalComPageSrc.URL_NEW_EN_AU)
         return True

@@ -11,6 +11,7 @@ from pages.Menu.New.menu_new_locators import LearnMenuNew
 SUBMENU_FCA_TECHNICAL_ANALYSIS = ('css selector', '[data-type="nav_id705"]')
 SUBMENU_SCA_TECHNICAL_ANALYSIS = ('css selector', '[data-type="nav_id846"]')
 SUBMENU_ASIC_TECHNICAL_ANALYSIS = ('css selector', '[data-type="nav_id1227"]')
+SUBMENU_CYSEC_TECHNICAL_ANALYSIS = ('css selector', '[data-type="nav_id1227"]')
 
 
 class MenuNew(MenuBase):
@@ -32,6 +33,9 @@ class MenuNew(MenuBase):
         if cur_country == 'au':
             menu_locator = LearnMenuNew.MENU_ASIC_LEARN
             submenu_locator = SUBMENU_ASIC_TECHNICAL_ANALYSIS
+        if cur_country in ['at', 'de']:
+            menu_locator = LearnMenuNew.MENU_ASIC_LEARN
+            submenu_locator = SUBMENU_CYSEC_TECHNICAL_ANALYSIS
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)

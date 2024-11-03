@@ -18,11 +18,14 @@ from pages.BugsManual.bug_371 import DiscoverCFDTtradingLink
 from pages.BugsManual.bug_380 import SocialNetwork
 from pages.BugsManual.bug_386 import ContactUs
 from pages.BugsManual.bug_388 import TextIsNotLink
+from pages.BugsManual.bug_399 import ValueItems
+from pages.BugsManual.bug_401 import LinkIPO
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital, \
-    from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform
+    from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform, \
+    from_markets_menu_open_shares
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -56,14 +59,14 @@ class TestManualDetectedBugs:
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
 
     @allure.step("Start retest manual AT_55!00_048 of filters application in the 'Live shares prices' widget")
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_048
     def test_048(self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
         """
         Check: Filters application in the 'Live shares prices' widget
         Language: All
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -83,7 +86,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077a of the  presence of the "Crypto trading  guide" sidebar on '
                  '"Crypto vs stocks: What is the difference?" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('cur_language', [""])
     @pytest.mark.parametrize('sidebar_item', ['Crypto vs stocks: What’s the difference?'])
@@ -94,7 +97,7 @@ class TestManualDetectedBugs:
         Check: presence of the sidebar "Crypto Trading Guide" on the "Cryptocurrencies vs. Stocks:
         What's the Difference?" page.
         Language: EN
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -118,7 +121,7 @@ class TestManualDetectedBugs:
 
     @allure.step('Start retest manual AT_55!077b of the presence of the "Crypto trading  guide" sidebar on '
                  '"Bitcoin Gold" page')
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('sidebar_item', ['Bitcoin Gold'])
     @pytest.mark.bug_077b
@@ -127,7 +130,7 @@ class TestManualDetectedBugs:
         """
         Check: presence of the sidebar "Crypto Trading Guide" on the "Bitcoin Gold" page.
         Language: EN, DE, ZH, RU, ES,IT, PL
-        License: CYSEC, SCB
+        License: SCB
         Author: Kasila
         """
 
@@ -352,7 +355,7 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_indices(d, cur_language, cur_country, link)
 
         test_element = IndicesItaly40(d, cur_item_link, bid)
-        test_element.arrange(d, cur_item_link, link)
+        test_element.arrange_v2(d, cur_item_link, link)
         test_element.element_click(d, link)
         test_element.assert_()
 
@@ -421,7 +424,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.bug_371b
+    @pytest.mark.bug_380
     def test_380(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check: TC_55!380 | The relevant pages of "Social networks" aren't opened after clicking the Social Network Icons
@@ -475,7 +478,7 @@ class TestManualDetectedBugs:
         test_element = ContactUs(d, cur_item_link, bid)
         test_element.contact_us_in_confidence(d, cur_item_link)
         test_element.element_click(d, link)
-        test_element.assert_page()
+        test_element.assert_page(d)
 
 
     @allure.step('Start retest manual AT_55!388: The text "وقف الخسائر المتحركة" is not a link')
@@ -506,3 +509,89 @@ class TestManualDetectedBugs:
         test_element = TextIsNotLink(d, cur_item_link, bid)
         test_element.text_is_not_link(d, cur_item_link)
         test_element.assert_text(d)
+
+
+    @allure.step('Start retest manual AT_55!399a the value of the "Traders" item')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_399a
+    def test_399a(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Main page > tab [Corporate] > block “Why Open a Corporate Account with Capital.com?”  > Pay attention to
+                the value of the "Traders" item
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "399a", 'The value of the "Traders" item is displayed  as “640K” in the block “Why Open a '
+                   'Corporate Account with Capital.com?” on the page “Corporate Accounts with Capital.com” when ASIC '
+                    'license is selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = ValueItems(d, link, bid)
+        test_element.value_items(d, link)
+        test_element.assert_value_traders(d)
+
+    @allure.step('Start retest manual AT_55!399b the value of the "Active clients monthly" item')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_399b
+    def test_399b(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Main page > tab [Corporate] > block “Why Open a Corporate Account with Capital.com?”  > Pay attention to
+                the value of the "Active clients monthly" item
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "399b", 'The value of the "Active clients monthly" item is displayed  as “640K” in the block '
+                    '“Why Open a Corporate Account with Capital.com?” on the page “Corporate Accounts with Capital.com”'
+                    ' when ASIC license is selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = ValueItems(d, link, bid)
+        test_element.value_items(d, link)
+        test_element.assert_value_active_clients_monthly(d)
+
+    @allure.step('Start retest manual AT_55!401 The page with “404 error message” is displayed')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae', 'gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_401
+    def test_401(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Markets] > Menu item [Shares] > “Rivian Automotive, Inc.” page > Click the link “initial
+                public offering (IPO)” in the  block “Rivian Automotive Inc. Company profile”
+        Language: EN
+        License: SCA, FCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "401", 'The page with “404 error message” is displayed after clicking the link “initial '
+                    'public offering (IPO)” in the block “Rivian Automotive Inc. Company profile” on the page “Rivian '
+                    'Automotive, Inc.” when SCA or FCA license is selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_markets_menu_open_shares.MenuNewShares(d, link)
+        cur_item_link = menu.from_markets_menu_open_shares(d, cur_language, cur_country, link)
+
+        test_element = LinkIPO(d, cur_item_link, bid)
+        test_element.link_ipo(d, cur_item_link, link)
+        test_element.element_click(d, link)
+        test_element.assert_url(d)

@@ -8,6 +8,7 @@ import random
 import time
 from datetime import datetime
 import allure
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
@@ -37,6 +38,44 @@ class IndicesItaly40(BasePage):
         it40.click()
         self.wait_for_change_url(cur_link)
 
+
+    def arrange_v2(self, d, cur_item_link, cur_link):
+        print(f"\n{datetime.now()}   1. Arrange")
+
+        if not self.current_page_is(cur_item_link):
+            self.link = cur_item_link
+            self.open_page()
+
+        print(f"{datetime.now()}   Scroll down to the table “Indices markets”")
+        indices_markets_table = self.driver.find_element(By.CSS_SELECTOR, 'div.table_table__g1rfk')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            indices_markets_table
+        )
+
+        p = 1
+        while p <= 3:
+            try:
+                it40 = self.driver.find_element(By.LINK_TEXT, 'IT40')
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    it40
+                )
+                it40.click()
+                break
+            except NoSuchElementException:
+                p += 1
+                print(f"{datetime.now()}   Click page {p}")
+                pagination = self.driver.find_element(By.LINK_TEXT, str(p))
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    pagination
+                )
+                pagination.click()
+
+        self.wait_for_change_url(cur_link)
+
+
     def element_click(self, d, cur_link):
         print(f"\n{datetime.now()}   2. Act")
 
@@ -62,7 +101,7 @@ class IndicesItaly40(BasePage):
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
-        print(f"\n{datetime.now()}   3.Assert")
+        print(f"{datetime.now()}   3.Assert")
         expected_country = 'United Arab Emirates'
         actual = self.driver.find_element(By.CSS_SELECTOR,
                                           'div:nth-child(1) > span.localization_btn__9zIyt')
@@ -70,7 +109,7 @@ class IndicesItaly40(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             actual
         )
-        time.sleep(2)
+        self.driver.execute_script("arguments[0].style.border='3px solid red'", actual)
         actual_country = actual.text
 
         if expected_country == actual_country:

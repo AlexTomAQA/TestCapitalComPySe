@@ -153,3 +153,16 @@ def cur_language_country_for_fca_and_sca(request):
     """Country sorting parameters"""
     print(f"\n\n\nCurrent country - {request.param}")
     return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=[
+        ["", "gb"],
+        ["", "ae"],
+        ["", "au"]
+    ]
+)
+def cur_language_country_for_fca_sca_for_en_language(request):
+    """Country sorting parameters"""
+    print(f"\n\n\nCurrent country - {request.param}")
+    return request.param
