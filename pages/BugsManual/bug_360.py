@@ -5,7 +5,6 @@
 """
 
 import random
-import time
 from datetime import datetime
 import allure
 from selenium.common import NoSuchElementException
@@ -105,12 +104,12 @@ class IndicesItaly40(BasePage):
         expected_country = 'United Arab Emirates'
         actual = self.driver.find_element(By.CSS_SELECTOR,
                                           'div:nth-child(1) > span.localization_btn__9zIyt')
+        actual_country = actual.text
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             actual
         )
         self.driver.execute_script("arguments[0].style.border='3px solid red'", actual)
-        actual_country = actual.text
 
         if expected_country == actual_country:
             print(f"{datetime.now()}   The page with the selected country ({expected_country}) is opened")
