@@ -3,11 +3,10 @@
 @Time    : 2024/11/01 20:30
 @Author  : Artem Dashkov
 """
-import time
-
 import allure
 from datetime import datetime
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import WebDriverException
 from pages.base_page import BasePage
 from pages.common import Common
 
@@ -19,8 +18,8 @@ LINK_JPMORGAN_LOCATOR = (By.XPATH, "//a[contains(text(), 'JPMorgan Chase & Co')]
 LINK_EXXON_MOBIL_LOCATOR = (By.XPATH, "//a[contains(text(), 'Exxon Mobil')]")
 LINK_IBM_LOCATOR = (By.XPATH, "//a[contains(text(), 'IBM')]")
 
-ACCORDION_HOW_DO_YOU_TRADE_LOCATOR = (By.XPATH, "(//summary[@data-type='faq_chevron'])[2]")
 LINK_LOCATOR = ()
+
 
 class BUG_422(BasePage):
 
@@ -41,8 +40,8 @@ class BUG_422(BasePage):
             d, 'the most popular markets to trade', LINK_MOST_POPULAR_MARKETS_TO_TRADE_LOCATOR
         )
 
-        print(f"\n{datetime.now()}   1.2. Start Arrange: find and click link 'CFDs' or 'exchange traded funds (ETFs)'")
-        print(f"\n{datetime.now()}   Target Link is: {link_for_check}.")
+        print(f"\n{datetime.now()}   1.2. Start Arrange: find and click link [JPMorgan Chase & Co]/[Exxon Mobil]/[IBM]")
+        print(f"\n{datetime.now()}   Target link is: {link_for_check}.")
         global LINK_LOCATOR
         match link_for_check:
             case 'JPMorgan Chase & Co':
@@ -52,7 +51,7 @@ class BUG_422(BasePage):
             case 'IBM':
                 LINK_LOCATOR = LINK_IBM_LOCATOR
 
-        # Check presenting, visibility and clickability link 'the most popular markets to trade'
+        # Check presenting, visibility and clickability link
         self.find_link_scroll_check_visibility_and_clickability(
             f'{link_for_check}', LINK_LOCATOR
         )
@@ -64,27 +63,20 @@ class BUG_422(BasePage):
         Common().click_link_and_print(
             d, f'{link_for_check}', LINK_LOCATOR
         )
+        Common.save_current_screenshot(d, f"Screen page after click '{link_for_check}'")
 
-    @allure.step(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
-    def assert_(self, d):
-        print(f"{datetime.now()}   3. Start Assert. Check message '404 not found' on the opened page")
+    @allure.step(f"{datetime.now()}   3. Start Assert")
+    def assert_(self, d, link_for_check):
+        print(f"{datetime.now()}   3. Start Assert")
 
-        # Check presenting 'en-gb' in url on the opened page
-        print(f"{datetime.now()}   IS 'en-gb' in url on the opened page?")
-        if 'en-gb' in self.driver.current_url:
-            msg = f"Opened page have FCA license insted of SCA, url is: {self.driver.current_url}"
+        try:
+            # try to reopen page
+            self.driver.get(self.driver.current_url)
+        except WebDriverException:
+            msg = f"No access to page after click '{link_for_check}'"
+            Common.save_current_screenshot(d, msg)
             print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        elif 'en-ae' in self.driver.current_url:
-            if ('cfd-trading' or 'top-etfs') in self.driver.current_url:
-                print(f"{datetime.now()}   Current page opened in necessary license but need check screenshot")
-                Common.save_current_screenshot(d, f"Need to check content of opened page")
-            else:
-                msg = f"Need to check content of opened page, url is: {self.driver.current_url}"
-                print(f"{datetime.now()}   => {msg}")
-                Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
-        else:
-            msg = f"Need to check content of opened page, url is: {self.driver.current_url}"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"Bug # {BUG_NUMBER} {msg}")
+            Common().pytest_fail(f"Bug # {BUG_NUMBER}: {msg}")
+        Common.save_current_screenshot(d, f"Screen page after reopen page: '{self.driver.current_url}'")
+        print(f"{datetime.now()}   Current page opened but need check screenshot")
         return True

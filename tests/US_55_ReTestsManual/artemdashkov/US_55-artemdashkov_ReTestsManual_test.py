@@ -35,9 +35,7 @@ from pages.BugsManual.bug_406 import BUG_406
 from pages.BugsManual.bug_407 import BUG_407
 from pages.BugsManual.bug_411 import BUG_411
 from pages.BugsManual.bug_422 import BUG_422
-from src.src import CapitalComPageSrc
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
-from pages.conditions import Conditions
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
@@ -50,8 +48,6 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_cfd_trading,
                             from_about_us_menu_open_why_capital)
-from pages.conditions_new import NewConditions
-from pages.conditions_new_v1 import NewConditions_v1
 
 
 @pytest.mark.us_55
@@ -1221,14 +1217,13 @@ class TestManualDetected:
             "55", "ReTests of Manual Detected Bugs",
             "422",
             "Menu section [Markets] > Menu item [Shares] >"
-            "Scroll down to the block 'Why trade commodities with Capital.com?' >"
+            "Scroll down to the block 'Why trade shares' >"
             "Click the link 'the most popular markets to trade' >"
             "Scroll down to the text block 'NYSE' >"
             "Click the links [JPMorgan Chase & Co]/[Exxon Mobil]/[IBM]",
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
 
@@ -1243,4 +1238,4 @@ class TestManualDetected:
         test_element.act(d, link_for_check)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, link_for_check)
