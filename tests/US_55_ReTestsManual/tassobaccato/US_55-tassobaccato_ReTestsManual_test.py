@@ -3,7 +3,6 @@
 @Time    : 2024/05/06 22:00
 @Author  : Kasilà
 """
-import random
 
 import pytest
 import allure
@@ -592,6 +591,6 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_shares(d, cur_language, cur_country, link)
 
         test_element = LinkIPO(d, cur_item_link, bid)
-        test_element.link_ipo(d, cur_item_link, link)
+        test_element.link_ipo_v2(d, cur_item_link, link)
         test_element.element_click(d, link)
         test_element.assert_url(d)

@@ -39,6 +39,7 @@ class LinkIPO(BasePage):
                     rivn
                 )
                 rivn.click()
+                self.wait_for_change_url(cur_link)
                 break
             except NoSuchElementException:
                 p += 1
@@ -49,8 +50,7 @@ class LinkIPO(BasePage):
                     pagination
                 )
                 pagination.click()
-
-        self.wait_for_change_url(cur_link)
+                self.wait_for_change_url(cur_link)
 
         print(f"{datetime.now()}   Scroll down to the block “Rivian Automotive Inc. Company profile”")
         block_rivn_company_profile = self.driver.find_element(By.CSS_SELECTOR, 'div.content_narrowMedia__I3o5X')
@@ -59,6 +59,35 @@ class LinkIPO(BasePage):
             block_rivn_company_profile
         )
 
+
+    @allure.step(f"{datetime.now()}   Start testing page opened after clicking the “initial public offering (IPO)” link")
+    def link_ipo_v2(self, d, cur_item_link, cur_link):
+        print(f"\n{datetime.now()}   1. Arrange_v2")
+
+        if not self.current_page_is(cur_item_link):
+            self.link = cur_item_link
+            self.open_page()
+
+        print(f"{datetime.now()}   Scroll down to the input field of the 'Shares markets' table")
+        input_field = self.driver.find_element(By.CSS_SELECTOR, 'input#marketlist_search')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            input_field
+        )
+
+        print(f"{datetime.now()}   Search 'RIVN' trading instrument in the 'Shares markets' table")
+        input_field.send_keys('RIVN')
+        rivn = self.driver.find_element(By.XPATH, '//div/strong[contains(text(), "RIVN")]')
+        print(f"{datetime.now()}   Click the “RIVN” in the dropdown menu")
+        rivn.click()
+        self.wait_for_change_url(cur_link)
+
+        print(f"{datetime.now()}   Scroll down to the block “Rivian Automotive Inc. Company profile”")
+        block_rivn_company_profile = self.driver.find_element(By.CSS_SELECTOR, 'div.content_narrowMedia__I3o5X')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            block_rivn_company_profile
+        )
 
     def element_click(self, d, cur_link):
         print(f"\n{datetime.now()}   2. Act")
