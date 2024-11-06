@@ -1339,7 +1339,8 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!414 | ')
+        'Start retest manual TC_55!414 | Sign up form is opened instead of Login '
+        'on the page "Charges and fees" after clicking the button [Start trading now]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['NoAuth'])
@@ -1347,7 +1348,8 @@ class TestManualDetectedBugs:
     def test_414(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password):
         """
-         Check:
+         Check: Sign up form is opened instead of Login
+         on the page "Charges and fees" after clicking the button [Start trading now]
          Language: EN.
          License: FCA.
          Author: Sergey Aiidzhanov
@@ -1356,7 +1358,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "414",
-            '',
+            'Sign up form is opened instead of Login '
+            'on the page "Charges and fees" after clicking the button [Start trading now]',
             False,
             False
         )
@@ -1382,7 +1385,8 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]')
+        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" '
+        'on the page [Client funds]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
