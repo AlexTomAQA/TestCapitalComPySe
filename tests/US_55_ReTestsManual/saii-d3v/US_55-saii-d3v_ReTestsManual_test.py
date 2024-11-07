@@ -36,6 +36,7 @@ from pages.BugsManual.bug_373 import Bug373
 from pages.BugsManual.bug_378 import Bug378
 from pages.BugsManual.bug_379 import Bug379
 from pages.BugsManual.bug_392 import Bug392
+from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -1198,17 +1199,17 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!378 | FCA license is selected instead of SCA on trading instrument page '
+        'Start retest manual TC_55!378 | FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page '
         'after clicking any of trading instrument links '
         'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_country', random.sample(['ae', 'au', 'de'], 1))
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_378
     def test_378(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password, bug_378_link_loc):
         """
-         Check: FCA license is selected instead of SCA on trading instrument page
+         Check: FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page
          after clicking any of trading instrument links
          on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”
          Language: EN.
@@ -1219,7 +1220,7 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "378",
-            'FCA license is selected instead of SCA on trading instrument page '
+            'FCA license is selected instead of ASIC/CYSEC/SCA on trading instrument page '
             'after clicking any of trading instrument links '
             'on the page “Lloyds forecast: will Lloyds share price return to £1? Third party data forecast”',
             False,
@@ -1250,7 +1251,7 @@ class TestManualDetectedBugs:
         'is displayed without clickable area and button styling on the sidebar of the "Market Analysis" page, '
         'when SCB license and EN language are selected.')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', random.sample(['de', 'ua'], 1))
+    @pytest.mark.parametrize('cur_country', ['ua'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_379
     def test_379(self, worker_id, d, cur_language, cur_country, cur_role,
@@ -1273,7 +1274,6 @@ class TestManualDetectedBugs:
             False,
             False
         )
-        pytest.skip("new CYSEC")
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -1336,6 +1336,49 @@ class TestManualDetectedBugs:
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!414 | ')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ['NoAuth'])
+    @pytest.mark.bug_414
+    def test_414(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check:
+         Language: EN.
+         License: FCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "414",
+            '',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug414(d, link, bid)
+        test_el.open_charges_and_fees_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_start_trading_btn()
+
+        # Assert
+        signup_login = SignupLogin(d, link, bid)
+        if not signup_login.should_be_new_login_form():
+            Common.pytest_fail('Bug # 55!414 The Login form is not opened')
+        Common.save_current_screenshot(d, "AT_55!414 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        signup_login.close_new_login_form()
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(

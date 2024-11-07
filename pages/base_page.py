@@ -147,6 +147,7 @@ class BasePage:
         print(f"{datetime.now()}   self.link = {self.link}")
         link = self.link
         print(f"{datetime.now()}   driver.get({link}) =>")
+        time.sleep(1)
         self.driver.get(link)
         time.sleep(1)
         print(f"{datetime.now()}   => Loaded page {self.driver.current_url}")
