@@ -1268,7 +1268,7 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
+        # pytest.skip("Intermediate version")
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = BUG_431(d, link, bid)
@@ -1278,4 +1278,4 @@ class TestManualDetected:
         test_element.act(d)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, link)
