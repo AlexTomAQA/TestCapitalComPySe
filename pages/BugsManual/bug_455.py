@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2024/11/06 13:40
+@Time    : 2024/11/09 18:20
 @Author  : Artem Dashkov
 """
 import allure
@@ -16,11 +16,17 @@ LINK_SUPPORT_LOCATOR = (By.XPATH,
 
 NAME_OF_BLOCK = "Dedicated help, 24/7"
 
-class BUG_431(BasePage):
+SEARCH_FIELD_LOCATOR = (By.ID, "#marketlist_search")
+SEARCH_FIELD_NAME = "Search field"
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'For learner traders'. ")
+class BUG_455(BasePage):
+
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find search field, "
+                 f"write 'CHF', "
+                 f"Click link [CHF/JPY], "
+                 f"find link [indices]. ")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find block 'For learner traders'. ")
+        print(f"\n{datetime.now()}   1. Start Arrange: find block search field. ")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
