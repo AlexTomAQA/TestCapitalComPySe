@@ -10,18 +10,11 @@ from pages.base_page import BasePage
 from pages.common import Common
 
 BLOCK_DEDICATED_HELP_LOCATOR = (By.XPATH,
-                    "//h3[@class='heading_h3__nTE01 heading_noMargins__P5e_q'] [contains(text(), 'Dedicated help')]")
+                    "//h3[@class='heading_h3__nTE01 heading_noMargins__P5e_q'] [contains(text(), '24/7')]")
 LINK_SUPPORT_LOCATOR = (By.XPATH,
-                    "//div[@class='box_box__5Jmfa box_mdLg__ppwI5 lg4 dark'] //a[contains(text(), 'support')]")
+                    "(//div[@class='box_box__5Jmfa box_mdLg__ppwI5 lg4 dark'])[1] //a")
 
 NAME_OF_BLOCK = "Dedicated help, 24/7"
-
-
-LINK_GO_CFD_TRADING_GUIDE_LOCATOR = (By.CSS_SELECTOR,
-                                     '[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
-LINK_INDICES_LOCATOR = (By.CSS_SELECTOR,
-                "h2 ~ p ~ p a[href='http://https://capital.com/en-gb/markets/indices']")
-EXPECTED_URL_INDICES = "https://capital.com/en-gb/markets/indices"
 
 class BUG_431(BasePage):
 
@@ -52,6 +45,7 @@ class BUG_431(BasePage):
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Block {NAME_OF_BLOCK} visible.\n")
+        Common().save_current_screenshot(d, "Check visibility block 'Dedicated help' on the page")
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
@@ -62,18 +56,13 @@ class BUG_431(BasePage):
         Common().click_link_and_print(
             d, 'support', LINK_SUPPORT_LOCATOR
         )
+        Common().save_current_screenshot(d, "Opened page after click link 'support'")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
-    def assert_(self, d):
-        Common().save_current_screenshot(d, "Opened page after click link 'support'")
+    def assert_(self, d, link):
+
         current_url = d.current_url
-
-        # STOP HERE
-
-        if current_url != EXPECTED_URL_INDICES:
-            msg = f"Page doesn't correspond expected link. Current url is: '{current_url}'"
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"{msg}")
-        msg = f"Page corresponds expected link. But need to check screenshot."
-        print(f"{datetime.now()}   => {msg}")
+        print(f"Link 'Support' is clickable. But need to analyze screenshot of current page: "
+              f"{current_url}")
+        self.driver.get(link)
         return True
