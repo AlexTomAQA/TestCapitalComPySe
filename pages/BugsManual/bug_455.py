@@ -16,8 +16,15 @@ LINK_SUPPORT_LOCATOR = (By.XPATH,
 
 NAME_OF_BLOCK = "Dedicated help, 24/7"
 
-SEARCH_FIELD_LOCATOR = (By.ID, "#marketlist_search")
+SEARCH_FIELD_LOCATOR = (By.CSS_SELECTOR, "[data-type='markets_list_search']")
 SEARCH_FIELD_NAME = "Search field"
+SEARCHING_TEXT = "CHF"
+CHF_JPY_LOCATOR = (
+    By.XPATH, "//strong[@class='helpers_stringEllipsed__ylDvq'][contains(text(), 'CHF/JPY')]"
+)
+INDICES_LOCATOR = (By.XPATH, "//a[@class='link-tool']")
+MESSAGE_404_LOCATOR = (By.XPATH, '//p[text()="404"]')
+EXPECTED_PAGE = 'https://capital.com/en-gb/markets/indices'
 
 class BUG_455(BasePage):
 
@@ -32,43 +39,57 @@ class BUG_455(BasePage):
             self.open_page()
 
         # Check presenting, visibility block 'For learner traders'
-        if len(self.driver.find_elements(*BLOCK_DEDICATED_HELP_LOCATOR)) == 0:
-            msg = (f"Page don't have block '{NAME_OF_BLOCK}' in DOM")
+        self.find_block_scroll_and_check_visibility(SEARCH_FIELD_NAME, SEARCH_FIELD_LOCATOR)
+
+        # Click on search field
+        search_field = self.driver.find_element(*SEARCH_FIELD_LOCATOR)
+        search_field.click()
+        print(f"{datetime.now()}   '{SEARCH_FIELD_NAME}' is clicked\n")
+
+        if not self.element_is_clickable(CHF_JPY_LOCATOR):
+            msg = f"Link 'CHF/JPY' don't clickable."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Page have block '{NAME_OF_BLOCK}' in DOM\n")
-
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*BLOCK_DEDICATED_HELP_LOCATOR)
+            self.driver.find_element(*CHF_JPY_LOCATOR)
         )
-        print(f"{datetime.now()}   Scrolled to block '{NAME_OF_BLOCK}'")
+        self.driver.find_element(CHF_JPY_LOCATOR).click()
 
-        # Check visibility block on the page
-        print(f"{datetime.now()}   Start to check visibility block '{NAME_OF_BLOCK}'.'")
-        if not self.element_is_visible(BLOCK_DEDICATED_HELP_LOCATOR):
-            msg = f"Block '{NAME_OF_BLOCK}' don't visible."
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Block {NAME_OF_BLOCK} visible.\n")
-        Common().save_current_screenshot(d, "Check visibility block 'Dedicated help' on the page")
+        self.find_link_scroll_check_visibility_and_clickability('indices', INDICES_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
 
-        # Start to check: is 'support' link?
-        self.find_link_scroll_check_visibility_and_clickability('support', LINK_SUPPORT_LOCATOR)
-
         Common().click_link_and_print(
-            d, 'support', LINK_SUPPORT_LOCATOR
+            d, 'indices', INDICES_LOCATOR
         )
-        Common().save_current_screenshot(d, "Opened page after click link 'support'")
+        Common().save_current_screenshot(d, "Opened page after click link 'indices'")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
     def assert_(self, d, link):
 
-        current_url = d.current_url
-        print(f"Link 'Support' is clickable. But need to analyze screenshot of current page: "
-              f"{current_url}")
-        self.driver.get(link)
+        print(f"{datetime.now()}   3. Start Assert.")
+
+        # Check opened page
+        print(f"{datetime.now()}   Check page with '404 error' message is displayed instead 'Indices' page.")
+        print(f"{datetime.now()}   IS page with '404 error' message is displayed instead 'Indices' page.? =>")
+        print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
+        if self.driver.find_elements(*MESSAGE_404_LOCATOR):
+            msg = f"Page with '404 error' message is displayed instead 'Indices' page"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   Current page don't have '404 error' message.")
+
+        print(f"{datetime.now()}   Check opened page is 'Indices' page.")
+        print(f"{datetime.now()}   IS opened page 'Indices' page.? =>")
+        if not self.current_page_url_contain_the(EXPECTED_PAGE):
+            msg = (f"Instead 'Indices' page and page with '404 error' message opened other page. "
+                   f"Expected_page is '{EXPECTED_PAGE}', "
+                   f"current page is '{self.driver.current_url}'")
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+
+        print(f"{datetime.now()}   => Opened expected page 'Indices'!\n")
+        Common.save_current_screenshot(d, f"Opened expected page 'Indices'!")
         return True
