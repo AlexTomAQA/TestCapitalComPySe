@@ -725,10 +725,10 @@ class BasePage:
         """
         # Check presenting block on the page
         if len(self.driver.find_elements(*block_locator)) == 0:
-            msg = (f"Page don't have block '{name_of_block}' in DOM")
+            msg = (f"\nPage don't have block '{name_of_block}' in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Page have block '{name_of_block}' in DOM\n")
+        print(f"\n{datetime.now()}   Page have block '{name_of_block}' in DOM.")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',

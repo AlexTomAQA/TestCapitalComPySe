@@ -45,6 +45,7 @@ class BUG_455(BasePage):
         search_field = self.driver.find_element(*SEARCH_FIELD_LOCATOR)
         search_field.click()
         print(f"{datetime.now()}   '{SEARCH_FIELD_NAME}' is clicked\n")
+        search_field.send_keys(SEARCHING_TEXT)
 
         if not self.element_is_clickable(CHF_JPY_LOCATOR):
             msg = f"Link 'CHF/JPY' don't clickable."
