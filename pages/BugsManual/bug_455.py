@@ -32,15 +32,14 @@ class BUG_455(BasePage):
             self.open_page()
 
         # Check presenting, visibility block 'Search field'
-        self.find_link_scroll_check_visibility_and_clickability(SEARCH_FIELD_NAME, SEARCH_FIELD_LOCATOR)
+        self.find_block_scroll_and_check_visibility(SEARCH_FIELD_NAME, SEARCH_FIELD_LOCATOR)
 
         # Click on search field
         search_field = self.driver.find_element(*SEARCH_FIELD_LOCATOR)
         search_field.click()
         print(f"{datetime.now()}   '{SEARCH_FIELD_NAME}' is clicked\n")
-        Common().save_current_screenshot(d, "SEARCH_FIELD is clicked")
 
-        self.driver.find_element(*SEARCH_FIELD_LOCATOR).send_keys(SEARCHING_TEXT)
+        search_field.send_keys(SEARCHING_TEXT)
         print(f"{datetime.now()}   Write message {SEARCHING_TEXT} in search field\n")
         Common().save_current_screenshot(d, "Write message in search field")
 
@@ -52,7 +51,7 @@ class BUG_455(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             self.driver.find_element(*CHF_JPY_LOCATOR)
         )
-        self.driver.find_element(CHF_JPY_LOCATOR).click()
+        self.driver.find_element(*CHF_JPY_LOCATOR).click()
 
         self.find_link_scroll_check_visibility_and_clickability('indices', INDICES_LOCATOR)
 
