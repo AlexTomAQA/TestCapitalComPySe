@@ -713,7 +713,7 @@ class BasePage:
             msg = f"Link '{name_of_link}' don't clickable."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Link '{name_of_link}' clickable.\n")
+        print(f"{datetime.now()}   Link '{name_of_link}' is clickable.\n")
 
     @HandleExcElementsDecorator()
     def find_block_scroll_and_check_visibility(self, name_of_block, block_locator):
