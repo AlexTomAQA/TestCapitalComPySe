@@ -445,7 +445,7 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_about_us_menu_open_help(d, cur_language, cur_country, link)
 
         test_element = SocialNetwork(d, cur_item_link, bid)
-        test_element.social_networks(d, cur_item_link, link)
+        test_element.social_networks(d, cur_item_link)
         test_element.element_click(d)
         test_element.assert_page(d)
 
