@@ -15,15 +15,21 @@ from pages.common import Common
 
 class SocialNetwork(BasePage):
     @allure.step(f"{datetime.now()}   Start testing that the relevant pages of 'Social networks' are opened”")
-    def social_networks(self, d, cur_item_link, cur_link):
+    def social_networks(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange")
+
+        tabs = self.driver.window_handles
+        while len(tabs) == 1:
+            self.driver.close()
+            self.driver.switch_to.window(self.driver.tabs[len(tabs)-2])
+            tabs = self.driver.window_handles
 
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
             self.open_page()
 
         print(f"{datetime.now()}   Scroll to the 'How can we help?' block")
-        how_can_we_help_block = self.driver.find_element(By.CSS_SELECTOR, 'div:nth-child(2) > div[data-type="benefits_block"]')
+        how_can_we_help_block = self.driver.find_element(By.CSS_SELECTOR, 'div:nth-child(2) > div.path_mainContent__TIwFt > div > div:nth-child(2) > div')
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             how_can_we_help_block
@@ -75,22 +81,7 @@ class SocialNetwork(BasePage):
         if current_page in expected_pages:
             print(f"{datetime.now()}   The ({current_page}) page is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-
-            self.driver.close()
-            tabs = self.driver.window_handles
-            if len(tabs) > 1:
-                self.driver.switch_to.window(self.driver.tabs[1])
-                self.driver.close()
-                self.driver.switch_to.window(self.driver.tabs[0])
-            self.driver.switch_to.window(self.driver.tabs[0])
         else:
-            self.driver.close()
-            tabs = self.driver.window_handles
-            if len(tabs) > 1:
-                self.driver.switch_to.window(self.driver.tabs[1])
-                self.driver.close()
-                self.driver.switch_to.window(self.driver.tabs[0])
-            self.driver.switch_to.window(self.driver.tabs[0])
             Common.pytest_fail(f"Bug # 55!380"
                                f"\n"
                                f"Expected result: The relevant page of a random 'Social network' is opened"
