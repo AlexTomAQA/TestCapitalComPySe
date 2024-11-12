@@ -38,6 +38,12 @@ class Bug416(BasePage):
     def should_be_whatsapp_redirecting_page(self):
         print(f'\n{datetime.now()}   Check if the page with the link redirecting to the WhatsApp chat is opened =>')
 
+        tabs = self.driver.window_handles
+        print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
+
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[len(tabs) - 1])
+
         try:
             if Wait(self.driver, 2).until(EC.visibility_of_element_located(TITLE_LOC)):
                 if Wait(self.driver, 2).until(EC.element_to_be_clickable(ACTION_BTN_LOC)):

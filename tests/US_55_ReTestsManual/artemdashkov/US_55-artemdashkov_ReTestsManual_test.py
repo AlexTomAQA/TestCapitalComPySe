@@ -35,9 +35,9 @@ from pages.BugsManual.bug_406 import BUG_406
 from pages.BugsManual.bug_407 import BUG_407
 from pages.BugsManual.bug_411 import BUG_411
 from pages.BugsManual.bug_422 import BUG_422
-from src.src import CapitalComPageSrc
+from pages.BugsManual.bug_431 import BUG_431
+from pages.BugsManual.bug_455 import BUG_455
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
-from pages.conditions import Conditions
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
@@ -45,13 +45,12 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_trading_menu_open_all_platforms,
                             from_markets_menu_open_commodities,
                             from_markets_menu_open_forex,
+                            from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
                             from_markets_menu_open_shares,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_cfd_trading,
                             from_about_us_menu_open_why_capital)
-from pages.conditions_new import NewConditions
-from pages.conditions_new_v1 import NewConditions_v1
 
 
 @pytest.mark.us_55
@@ -1221,14 +1220,13 @@ class TestManualDetected:
             "55", "ReTests of Manual Detected Bugs",
             "422",
             "Menu section [Markets] > Menu item [Shares] >"
-            "Scroll down to the block 'Why trade commodities with Capital.com?' >"
+            "Scroll down to the block 'Why trade shares' >"
             "Click the link 'the most popular markets to trade' >"
             "Scroll down to the text block 'NYSE' >"
             "Click the links [JPMorgan Chase & Co]/[Exxon Mobil]/[IBM]",
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                                     cur_role, cur_login, cur_password)
 
@@ -1243,4 +1241,92 @@ class TestManualDetected:
         test_element.act(d, link_for_check)
 
         # Assert
-        test_element.assert_(d)
+        test_element.assert_(d, link_for_check)
+
+    @allure.step("Start test of link 'support' in the block 'For learner traders' on the Main Page")
+    @pytest.mark.parametrize('cur_language', ["", "ar"])
+    @pytest.mark.parametrize('cur_country', ["au", "ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_431
+    def test_431_link_support_in_the_block_for_learner_traders(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Main page >
+                Scroll down to the block “For learner traders” >
+                Try to click link "support"
+        Language: EN, AR
+        License/Country: ASIC, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "431",
+            "Main page >"
+            "Scroll down to the block “For learner traders” >"
+            "Click link 'support'",
+            False, True
+        )
+        # Arrange
+        # pytest.skip("Intermediate version")
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BUG_431(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+    @allure.step("Start test of link 'indices' in the block 'Swiss franc vs Japanese yen' "
+                 "on the Page 'Swiss Franc / Japanese Yen'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["gb", "ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_455
+    def test_455_link_indices_in_the_block_swiss_franc_vs_japanese_yen(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Markets] >
+                Scroll down to the widget "All markets" >
+                "CHF" write in the search >
+                Click link [CHF/JPY] >
+                Scroll down to the block "Swiss franc vs Japanese yen" >
+                Click link [indices]
+        Language: EN
+        License/Country: ASIC, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "455",
+            "Click the Menu section [Markets] >"
+            "Scroll down to the widget 'All markets' >"
+            "'CHF' write in the search >"
+            "Click link [CHF/JPY] >"
+            "Scroll down to the block 'Swiss franc vs Japanese yen' >"
+            "Click link [indices]",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Intermediate version")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_markets_menu_open_markets.MenuNewMarkets(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_markets(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_455(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)

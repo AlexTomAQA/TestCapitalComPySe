@@ -3,7 +3,6 @@
 @Time    : 2024/05/06 22:00
 @Author  : Kasilà
 """
-import random
 
 import pytest
 import allure
@@ -20,6 +19,7 @@ from pages.BugsManual.bug_386 import ContactUs
 from pages.BugsManual.bug_388 import TextIsNotLink
 from pages.BugsManual.bug_399 import ValueItems
 from pages.BugsManual.bug_401 import LinkIPO
+from pages.BugsManual.bug_420 import MenuItemPayments
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -592,6 +592,32 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_markets_menu_open_shares(d, cur_language, cur_country, link)
 
         test_element = LinkIPO(d, cur_item_link, bid)
-        test_element.link_ipo(d, cur_item_link, link)
+        test_element.link_ipo_v2(d, cur_item_link, link)
         test_element.element_click(d, link)
         test_element.assert_url(d)
+
+
+    @allure.step('Start retest manual AT_55!420 Menu item [Payments and withdrawals] in the footer')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae', 'au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_420
+    def test_420(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Main page > Menu items of the menu section [Pricing] in the "Footer"
+        Language: EN
+        License: SCA, ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "420", 'Menu item [Payments and withdrawals] is missed in the footer when selected EN language'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = MenuItemPayments(d, bid)
+        test_element.arrange(link)
+        test_element.assert_menu_items()

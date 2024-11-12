@@ -36,6 +36,7 @@ from pages.BugsManual.bug_373 import Bug373
 from pages.BugsManual.bug_378 import Bug378
 from pages.BugsManual.bug_379 import Bug379
 from pages.BugsManual.bug_392 import Bug392
+from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -1338,7 +1339,54 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" on the page [Client funds]')
+        'Start retest manual TC_55!414 | Sign up form is opened instead of Login '
+        'on the page "Charges and fees" after clicking the button [Start trading now]')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ['NoAuth'])
+    @pytest.mark.bug_414
+    def test_414(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Sign up form is opened instead of Login
+         on the page "Charges and fees" after clicking the button [Start trading now]
+         Language: EN.
+         License: FCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "414",
+            'Sign up form is opened instead of Login '
+            'on the page "Charges and fees" after clicking the button [Start trading now]',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug414(d, link, bid)
+        test_el.open_charges_and_fees_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.click_start_trading_btn()
+
+        # Assert
+        signup_login = SignupLogin(d, link, bid)
+        if not signup_login.should_be_new_login_form():
+            Common.pytest_fail('Bug # 55!414 The Login form is not opened')
+        Common.save_current_screenshot(d, "AT_55!414 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        signup_login.close_new_login_form()
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!416 | The page with error is opened after clicking the link "WhatsApp" '
+        'on the page [Client funds]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
