@@ -11,8 +11,9 @@ from pages.Menu.New.menu_new_locators import MarketsMenuNew
 
 MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
 MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
-MARKETS_SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, 'div:nth-child(2) > div.menuGroup_dropdown__75ey5 > div > div > a')
-
+MARKETS_SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, 'div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2')
+MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div")
+MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div")
 
 class MenuNewMarkets(MenuBase):
 

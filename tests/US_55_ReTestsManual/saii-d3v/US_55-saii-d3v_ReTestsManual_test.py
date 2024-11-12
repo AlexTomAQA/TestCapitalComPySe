@@ -945,7 +945,7 @@ class TestManualDetectedBugs:
          Check: Error message is displayed after clicking the link “NASDAQ stock exchange”
          in the block “GOOGL Company profile” on the page “Trade Alphabet Inc - A - GOOGL CFD”
          Language: EN.
-         License: FCA, FCA.
+         License: FCA.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
@@ -969,7 +969,7 @@ class TestManualDetectedBugs:
         test_el.click_nasdaq_link()
 
         # Assert
-        if not test_el.should_not_be_error_page():
+        if not test_el.should_not_be_error_page_new():
             Common.pytest_fail('Bug # 55!359a The ERROR page is opened')
         Common.save_current_screenshot(d, "AT_55!359a Pass")
 
@@ -1015,8 +1015,8 @@ class TestManualDetectedBugs:
         test_el.click_nasdaq_link()
 
         # Assert
-        if not test_el.should_not_be_alphabet_inc_page_old():
-            Common.pytest_fail('Bug # 55!359b The "Trade Alphabet Inc - A - GOOGL CFD" page is still opened')
+        if not test_el.should_not_be_error_page_old():
+            Common.pytest_fail('Bug # 55!359b The ERROR page is opened')
         Common.save_current_screenshot(d, "AT_55!359b Pass")
 
         # Postconditions

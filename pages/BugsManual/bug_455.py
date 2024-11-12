@@ -9,14 +9,7 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 
-BLOCK_DEDICATED_HELP_LOCATOR = (By.XPATH,
-                    "//h3[@class='heading_h3__nTE01 heading_noMargins__P5e_q'] [contains(text(), '24/7')]")
-LINK_SUPPORT_LOCATOR = (By.XPATH,
-                    "(//div[@class='box_box__5Jmfa box_mdLg__ppwI5 lg4 dark'])[1] //a")
-
-NAME_OF_BLOCK = "Dedicated help, 24/7"
-
-SEARCH_FIELD_LOCATOR = (By.CSS_SELECTOR, "[data-type='markets_list_search']")
+SEARCH_FIELD_LOCATOR = (By.ID, "marketlist_search")
 SEARCH_FIELD_NAME = "Search field"
 SEARCHING_TEXT = "CHF"
 CHF_JPY_LOCATOR = (
@@ -38,13 +31,17 @@ class BUG_455(BasePage):
             self.link = link
             self.open_page()
 
-        # Check presenting, visibility block 'For learner traders'
+        # Check presenting, visibility block 'Search field'
         self.find_block_scroll_and_check_visibility(SEARCH_FIELD_NAME, SEARCH_FIELD_LOCATOR)
 
         # Click on search field
         search_field = self.driver.find_element(*SEARCH_FIELD_LOCATOR)
         search_field.click()
         print(f"{datetime.now()}   '{SEARCH_FIELD_NAME}' is clicked\n")
+
+        search_field.send_keys(SEARCHING_TEXT)
+        print(f"{datetime.now()}   Write message {SEARCHING_TEXT} in search field\n")
+        Common().save_current_screenshot(d, "Write message in search field")
 
         if not self.element_is_clickable(CHF_JPY_LOCATOR):
             msg = f"Link 'CHF/JPY' don't clickable."
@@ -54,7 +51,7 @@ class BUG_455(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             self.driver.find_element(*CHF_JPY_LOCATOR)
         )
-        self.driver.find_element(CHF_JPY_LOCATOR).click()
+        self.driver.find_element(*CHF_JPY_LOCATOR).click()
 
         self.find_link_scroll_check_visibility_and_clickability('indices', INDICES_LOCATOR)
 
