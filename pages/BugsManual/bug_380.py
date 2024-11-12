@@ -29,7 +29,7 @@ class SocialNetwork(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   Scroll to the 'How can we help?' block")
-        how_can_we_help_block = self.driver.find_element(By.CSS_SELECTOR, 'div:nth-child(2) > div.path_mainContent__TIwFt > div > div:nth-child(2) > div')
+        how_can_we_help_block = self.driver.find_element(By.CSS_SELECTOR, 'div.path_mainContent__TIwFt > div > div:nth-child(2) > div')
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             how_can_we_help_block
