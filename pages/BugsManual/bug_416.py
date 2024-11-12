@@ -40,7 +40,6 @@ class Bug416(BasePage):
 
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
-
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[len(tabs) - 1])
 
@@ -51,10 +50,12 @@ class Bug416(BasePage):
                     print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
                     self.driver.close()
                     self.driver.switch_to.window(tabs[0])
+                    print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
                     return True
         except TimeoutException:
             print(f'{datetime.now()}   => The page is not opened')
             print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             self.driver.close()
             self.driver.switch_to.window(tabs[0])
+            print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False
