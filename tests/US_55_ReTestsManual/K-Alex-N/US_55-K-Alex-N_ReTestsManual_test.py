@@ -35,12 +35,12 @@ class TestManualDetectedBugs:
         # 'on the page "Charges and fees" after clicking the button [Start trading now]')
         'Start retest manual TC_55!467 | ???')
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['au'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_country', ['au','ae'])
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_467
     def test_467(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: ????
+         # Check: ???? todo
 
          Language: EN
          License: ASIC
@@ -52,10 +52,9 @@ class TestManualDetectedBugs:
             "467",
             # 'Sign up form is opened instead of Login '
             # 'on the page "Charges and fees" after clicking the button [Start trading now]',
-            "???",
+            "???", #todo
             False,
             False
-            #     new layout ????
         )
 
         # Arrange
@@ -63,18 +62,15 @@ class TestManualDetectedBugs:
         test_el = Bug467(d, link, bid)
         test_el.open_risk_management_page(d, cur_language, cur_country, link)
 
-        time.sleep(5)
-        # Act
-        test_el.click_start_trading_btn()
+        # # Act
+        test_el.click_link_broker()
 
         # Assert
-        signup_login = SignupLogin(d, link, bid)
-        if not signup_login.should_be_new_login_form():
-            Common.pytest_fail('Bug # 55!414 The Login form is not opened')
-        Common.save_current_screenshot(d, "AT_55!414 Pass")
+        if not test_el.should_be_au_or_ae_page():
+            Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')
+        Common.save_current_screenshot(d, "AT_55!467 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
-        signup_login.close_new_login_form()
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
