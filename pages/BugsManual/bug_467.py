@@ -1,4 +1,3 @@
-import time
 from datetime import datetime
 
 from pages.Menu.New.from_learn_menu_open_risk_managment_guide import MenuNew
