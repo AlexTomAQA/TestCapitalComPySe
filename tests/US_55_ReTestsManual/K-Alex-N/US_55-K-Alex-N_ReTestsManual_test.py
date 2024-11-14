@@ -92,24 +92,17 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-
-
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        signup_login = SignupLogin(d, link, bid)
-        signup_login.should_be_login_form()
-        signup_login.should_be_signup_form()
 
-        time.sleep(999)
         test_el = Bug504(d, link, bid)
-        # test_el.open_risk_management_page(d, cur_language, cur_country, link)
-        #
-        # # # Act
-        # test_el.click_link_broker()
-        #
-        # # Assert
-        # if not test_el.should_be_au_or_ae_page():
-        #     Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')
-        # Common.save_current_screenshot(d, "AT_55!467 Pass")
+
+        # # Act
+        test_el.click_sign_up()
+
+        # Assert
+        if not test_el.should_be_link_to_privacy_policy():
+            Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country') #todo
+        Common.save_current_screenshot(d, "AT_55!504 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
