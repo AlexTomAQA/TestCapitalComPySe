@@ -20,12 +20,13 @@ from pages.BugsManual.bug_388 import TextIsNotLink
 from pages.BugsManual.bug_399 import ValueItems
 from pages.BugsManual.bug_401 import LinkIPO
 from pages.BugsManual.bug_420 import MenuItemPayments
+from pages.BugsManual.bug_432 import Links
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital, \
     from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform, \
-    from_markets_menu_open_shares
+    from_markets_menu_open_shares, from_trading_menu_open_cfd_trading
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -621,3 +622,40 @@ class TestManualDetectedBugs:
         test_element = MenuItemPayments(d, bid)
         test_element.arrange(link)
         test_element.assert_menu_items()
+
+
+    @allure.step('Start retest manual AT_55!432 check links in the block "What is a contract for difference (CFD)?" on '
+                 'the page "What is CFD trading and how does it work?"')
+    @pytest.mark.parametrize('cur_language, cur_country', [
+        ('', 'au'),
+        ('', 'ae'),
+        ('ar', 'ae'),
+        ('de', 'de')
+    ])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_432
+    def test_432(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Trading] > Menu item [CFD trading] > Click the link [Go CFD trading guide] in  the block
+                "Read more before you trade" > Check links in the block "What is a contract for difference (CFD)?"
+        Language: EN, AR, DE
+        License: ASIC, SCA, CYSEC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "432", 'The words [stocks], [indices], [commodities], [forex] are simple text  in the block '
+                   '"What is a contract for difference (CFD)?" on the page "What is CFD trading and how does it work?" '
+                   ' when ASIC, SCA, CYSEC licenses are selected'
+        )
+
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_trading_menu_open_cfd_trading.MenuNew(d, link)
+        cur_item_link = menu.from_trading_menu_open_cfd_trading(d, cur_language, cur_country, link)
+
+        test_element = Links(d, cur_item_link, bid)
+        test_element.arrange(cur_item_link, link)
+        test_element.assert_links()
