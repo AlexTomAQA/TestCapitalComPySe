@@ -720,8 +720,8 @@ class BasePage:
         """
         Example:
             wd - 0bject of Selenium Webdriver
-            name_of_link = "Discover what you can trade"
-            locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
+            name_of_block = "Discover what you can trade"
+            block_locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
         """
         # Check presenting block on the page
         if len(self.driver.find_elements(*block_locator)) == 0:

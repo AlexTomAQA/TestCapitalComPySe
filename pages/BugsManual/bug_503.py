@@ -9,60 +9,38 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 
-BLOCK_DEDICATED_HELP_LOCATOR = (By.XPATH,
-                    "//h3[@class='heading_h3__nTE01 heading_noMargins__P5e_q'] [contains(text(), '24/7')]")
-LINK_SUPPORT_LOCATOR = (By.XPATH,
-                    "(//div[@class='box_box__5Jmfa box_mdLg__ppwI5 lg4 dark'])[1] //a")
-
-NAME_OF_BLOCK = "Dedicated help, 24/7"
+LINK_RISK_MANAGEMENT_LOCATOR = (
+    By.XPATH, "//div[@class='wrap_wrap__S_v0r white helpers_section__H1_eK'] //a[contains(text(), 'risk-management')]")
+VULNERABILITY_NAME_OF_BLOCK = "Vulnerability: what to be aware of?"
+VULNERABILITY_BLOCK_LOCATOR = (By.CSS_SELECTOR, "h1[data-id='part_0']")
 
 class BUG_503(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'For learner traders'. ")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'Vulnerability: what to be aware of?'. ")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find block 'For learner traders'. ")
+        print(f"\n{datetime.now()}   1. Start Arrange: find block 'Vulnerability: what to be aware of?'. ")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting, visibility block 'For learner traders'
-        if len(self.driver.find_elements(*BLOCK_DEDICATED_HELP_LOCATOR)) == 0:
-            msg = (f"Page don't have block '{NAME_OF_BLOCK}' in DOM")
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Page have block '{NAME_OF_BLOCK}' in DOM\n")
-
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*BLOCK_DEDICATED_HELP_LOCATOR)
-        )
-        print(f"{datetime.now()}   Scrolled to block '{NAME_OF_BLOCK}'")
-
-        # Check visibility block on the page
-        print(f"{datetime.now()}   Start to check visibility block '{NAME_OF_BLOCK}'.'")
-        if not self.element_is_visible(BLOCK_DEDICATED_HELP_LOCATOR):
-            msg = f"Block '{NAME_OF_BLOCK}' don't visible."
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Block {NAME_OF_BLOCK} visible.\n")
-        Common().save_current_screenshot(d, "Check visibility block 'Dedicated help' on the page")
+        self.find_block_scroll_and_check_visibility(VULNERABILITY_NAME_OF_BLOCK, VULNERABILITY_BLOCK_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
 
-        # Start to check: is 'support' link?
-        self.find_link_scroll_check_visibility_and_clickability('support', LINK_SUPPORT_LOCATOR)
+        # Start to check: is 'risk-management' link?
+        self.find_link_scroll_check_visibility_and_clickability('risk-management', LINK_RISK_MANAGEMENT_LOCATOR)
 
         Common().click_link_and_print(
-            d, 'support', LINK_SUPPORT_LOCATOR
+            d, 'risk-management', LINK_RISK_MANAGEMENT_LOCATOR
         )
-        Common().save_current_screenshot(d, "Opened page after click link 'support'")
+        Common().save_current_screenshot(d, "Opened page after click link 'risk-management'")
 
     @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
     def assert_(self, d, link):
 
         current_url = d.current_url
-        print(f"Link 'Support' is clickable. But need to analyze screenshot of current page: "
+        print(f"Link 'risk-management' is clickable. But need to analyze screenshot of current page: "
               f"{current_url}")
         self.driver.get(link)
         return True

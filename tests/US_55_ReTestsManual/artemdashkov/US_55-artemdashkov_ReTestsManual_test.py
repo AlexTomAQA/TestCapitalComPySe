@@ -1343,7 +1343,6 @@ class TestManualDetected:
         """
         Check:  Menu section [About] >
                 Menu item [Client vulnerability] >
-                Main page >
                 Scroll down to the block “Vulnerability: what to be aware of?” >
                 Try to click link "risk-management"
         Language: EN
@@ -1362,7 +1361,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_about_us_menu_open_client_vulnerability.MenuNew(d, cur_item_link)
