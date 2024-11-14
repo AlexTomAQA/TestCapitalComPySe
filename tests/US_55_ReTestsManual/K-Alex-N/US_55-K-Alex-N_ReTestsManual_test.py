@@ -93,7 +93,6 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-
         test_el = Bug504(d, link, bid)
 
         # # Act

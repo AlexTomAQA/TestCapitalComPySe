@@ -16,10 +16,7 @@ class Bug504(BasePage):
 
     def should_be_link_to_privacy_policy(self):
         try:
-            self.driver.find_element(*LOCATOR_SIGNUP_BUTTON)
+            self.driver.find_element(*LOCATOR_LINK_PRIVACY_POLICY)
             return True
         except:
             return False
-
-        # right_urls = ["https://capital.com/en-au/why-capital", "https://capital.com/en-ae/why-capital"]
-        # return True if self.driver.current_url in right_urls else False
