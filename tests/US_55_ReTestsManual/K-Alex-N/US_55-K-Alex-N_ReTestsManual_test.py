@@ -3,6 +3,7 @@
 @Date    : 18/10/2024
 @Author  : Alexey Kurochkin
 """
+import time
 from datetime import datetime
 import random
 
@@ -10,6 +11,7 @@ import pytest
 import allure
 
 from pages.BugsManual.bug_467 import Bug467
+from pages.BugsManual.bug_504 import Bug504
 from pages.Signup_login.signup_login import SignupLogin
 from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
@@ -94,8 +96,10 @@ class TestManualDetectedBugs:
 
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         signup_login = SignupLogin(d, link, bid)
+        signup_login.should_be_login_form()
+        signup_login.should_be_signup_form()
 
-
+        time.sleep(999)
         test_el = Bug504(d, link, bid)
         # test_el.open_risk_management_page(d, cur_language, cur_country, link)
         #
