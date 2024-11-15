@@ -37,6 +37,7 @@ from pages.BugsManual.bug_411 import BUG_411
 from pages.BugsManual.bug_422 import BUG_422
 from pages.BugsManual.bug_431 import BUG_431
 from pages.BugsManual.bug_455 import BUG_455
+from pages.BugsManual.bug_503 import BUG_503
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -50,7 +51,9 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_shares,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_cfd_trading,
-                            from_about_us_menu_open_why_capital)
+                            from_about_us_menu_open_client_vulnerability,
+                            from_about_us_menu_open_why_capital
+                            )
 
 
 @pytest.mark.us_55
@@ -1322,6 +1325,48 @@ class TestManualDetected:
         link = page_menu.from_markets_menu_open_markets(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_455(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+    @allure.step("Start test of link 'risk-management' on the 'Client vulnerability' Page")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["gb"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_503
+    def test_503_link_risk_management_on_the_client_vulnerability_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section [About] >
+                Menu item [Client vulnerability] >
+                Scroll down to the block “Vulnerability: what to be aware of?” >
+                Try to click link "risk-management"
+        Language: EN
+        License/Country: FCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "503",
+            "'Client vulnerability' Page >"
+            "Scroll down to the block 'Vulnerability: what to be aware of?' >"
+            "Click link 'risk-management'",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_about_us_menu_open_client_vulnerability.MenuNew(d, cur_item_link)
+        link = page_menu.from_about_us_menu_open_client_vulnerability(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_503(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
