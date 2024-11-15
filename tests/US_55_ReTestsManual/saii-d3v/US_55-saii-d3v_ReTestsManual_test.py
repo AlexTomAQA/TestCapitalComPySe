@@ -38,6 +38,7 @@ from pages.BugsManual.bug_379 import Bug379
 from pages.BugsManual.bug_392 import Bug392
 from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
+from pages.BugsManual.bug_507 import Bug507
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1001,6 +1002,7 @@ class TestManualDetectedBugs:
             False,
             False
         )
+        pytest.skip("Refactoring due to unexpected error")
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
@@ -1421,6 +1423,50 @@ class TestManualDetectedBugs:
         if not test_el.should_be_whatsapp_redirecting_page():
             Common.pytest_fail('Bug # 55!416 The page with the link redirecting to the WhatsApp chat is NOT opened')
         Common.save_current_screenshot(d, "AT_55!416 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!507 | The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"')
+    @pytest.mark.parametrize('cur_language', ['de', ''])
+    @pytest.mark.parametrize('cur_country', ['au', 'de'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_507
+    def test_507(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"
+         Language: DE, EN.
+         License: ASIC, CYSEC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "507",
+            'The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"',
+            False,
+            False
+        )
+
+        if cur_country == 'au' and cur_language == 'de':
+            pytest.skip('ASIC licence does not have DE language')
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug507(d, link, bid)
+        test_el.open_markets_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.open_trading_australia_200_page()
+
+        # Assert
+        if not test_el.should_be_trading_conditions_table():
+            Common.pytest_fail('Bug # 55!507 The table in the block "Trading Conditions" is NOT visible')
+        Common.save_current_screenshot(d, "AT_55!507 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

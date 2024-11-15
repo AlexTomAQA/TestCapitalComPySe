@@ -12,8 +12,9 @@ from pages.Menu.New.menu_new_locators import MarketsMenuNew
 MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
 MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
 MARKETS_SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, 'div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2')
-MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div")
-MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div")
+MARKETS_SUBMENU_ASIC_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id1256']")
+MARKETS_SUBMENU_CYSEC_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id1673']")
+
 
 class MenuNewMarkets(MenuBase):
 
@@ -34,6 +35,12 @@ class MenuNewMarkets(MenuBase):
         elif cur_country == 'ae' and cur_language == 'ar':
             menu_locator = MarketsMenuNew.MENU_SCA_MARKETS
             submenu_locator = MARKETS_SUBMENU_SCA_AR_LOCATOR
+        elif cur_country == 'au':
+            menu_locator = MarketsMenuNew.MENU_ASIC_MARKETS
+            submenu_locator = MARKETS_SUBMENU_ASIC_LOCATOR
+        elif cur_country in ['at', 'de']:
+            menu_locator = MarketsMenuNew.MENU_CYSEC_MARKETS
+            submenu_locator = MARKETS_SUBMENU_CYSEC_LOCATOR
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)

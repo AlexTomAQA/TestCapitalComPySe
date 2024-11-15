@@ -9,7 +9,7 @@ from pages.base_page import BasePage
 from pages.Menu.New.from_markets_menu_open_shares import MenuNewShares
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import TimeoutException
 
 SEARCH_EL_LOC_OLD = ('css selector', '#iqf')
 GOOGL_SEARCH_ITEM_LOC_OLD = ('xpath', '//div[text()="GOOGL"]')
