@@ -10,6 +10,7 @@ import random
 import pytest
 import allure
 
+from pages.BugsManual.bug_444 import Bug444
 from pages.BugsManual.bug_467 import Bug467
 from pages.BugsManual.bug_504 import Bug504
 from pages.Signup_login.signup_login import SignupLogin
@@ -134,15 +135,17 @@ class TestManualDetectedBugs:
 
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        test_el = Bug504(d, link, bid)
+        test_el = Bug444(d, link, bid)
+        test_el.open_country_and_language_selection_pop_up_window()
 
         # # Act
-        test_el.click_sign_up()
+        test_el.click_dropdown_menu_country()
 
         # Assert
-        if not test_el.should_be_link_to_privacy_policy():
-            Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')  # todo
-        Common.save_current_screenshot(d, "AT_55!504 Pass")
+        test_el.check_placeholder_in_search_field()
+        # if not test_el.should_be_link_to_privacy_policy():
+        #     Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')  # todo
+        # Common.save_current_screenshot(d, "AT_55!504 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
