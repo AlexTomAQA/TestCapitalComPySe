@@ -1422,7 +1422,6 @@ class TestManualDetectedBugs:
         # Assert
         if not test_el.should_be_whatsapp_redirecting_page():
             Common.pytest_fail('Bug # 55!416 The page with the link redirecting to the WhatsApp chat is NOT opened')
-        Common.save_current_screenshot(d, "AT_55!416 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
