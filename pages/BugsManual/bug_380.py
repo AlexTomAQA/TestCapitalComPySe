@@ -19,9 +19,11 @@ class SocialNetwork(BasePage):
         print(f"\n{datetime.now()}   1. Arrange")
 
         tabs = self.driver.window_handles
-        while len(tabs) == 1:
+        while True:
+            if len(tabs) == 1:
+                break
             self.driver.close()
-            self.driver.switch_to.window(self.driver.tabs[len(tabs)-2])
+            self.driver.switch_to.window(tabs[len(tabs) - 2])
             tabs = self.driver.window_handles
 
         if not self.current_page_is(cur_item_link):
@@ -37,7 +39,7 @@ class SocialNetwork(BasePage):
 
         print(f"{datetime.now()}   Click on the 'More' link on a random tile")
         while True:
-            more_btn_list = self.driver.find_elements(By.CSS_SELECTOR, 'a[data-type="benefits_block_block_more_btn"]')
+            more_btn_list = self.driver.find_elements(By.CSS_SELECTOR, 'div.tile_content__zquEw > a')
             random_btn_more = random.choice(more_btn_list)
             random_btn_more.click()
             current_url = self.driver.current_url
