@@ -34,7 +34,7 @@ class MenuNew(MenuBase):
             menu_locator = LearnMenuNew.MENU_ASIC_LEARN
             submenu_locator = SUBMENU_ASIC_TRADING_STRATEGIES
         if cur_country in ['at', 'de']:
-            menu_locator = LearnMenuNew.MENU_ASIC_LEARN
+            menu_locator = LearnMenuNew.MENU_CYSEC_LEARN
             submenu_locator = SUBMENU_CYSEC_TRADING_STRATEGIES
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
