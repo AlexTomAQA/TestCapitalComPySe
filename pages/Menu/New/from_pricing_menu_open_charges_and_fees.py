@@ -34,7 +34,7 @@ class MenuNew(MenuBase):
             menu_locator = PricingMenuNew.MENU_ASIC_PRICING
             submenu_locator = SUBMENU_ASIC_CHARGES_AND_FEES
         if cur_country in ['at', 'de']:
-            menu_locator = PricingMenuNew.MENU_ASIC_PRICING
+            menu_locator = PricingMenuNew.MENU_CYSEC_PRICING
             submenu_locator = SUBMENU_CYSEC_CHARGES_AND_FEES
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
