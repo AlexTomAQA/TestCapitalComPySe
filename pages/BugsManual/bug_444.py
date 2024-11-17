@@ -21,26 +21,7 @@ class Bug444(BasePage):
     def check_placeholder_in_search_field(self):
         print(f'\n{datetime.now()}   Click dropdown menu country =>')
         search_field = self.driver.find_element(*LOCATOR_COUNTRY_SEARCH_FIELD)
-        print(search_field.title)
-        print(search_field.tag_name)
-        print(search_field.text)
-        print(search_field.get_attribute("placeholder"))
-        print(search_field.placeholder)
+        if search_field.get_attribute("placeholder") == "Country search":
+            return False
+        return True
 
-        # if search_field[placeholder] == 'Country search':
-        #     print("OK!!!")
-        # else:
-        #     print("FFFFFFFFFFF")
-
-
-
-    # def click_sign_up(self):
-    #     print(f'\n{datetime.now()}   Click [Sign Up] button =>')
-    #     self.driver.find_element(*LOCATOR_SIGNUP_BUTTON).click()
-    #
-    # def should_be_link_to_privacy_policy(self):
-    #     try:
-    #         self.driver.find_element(*LOCATOR_LINK_PRIVACY_POLICY)
-    #         return True
-    #     except:
-    #         return False
