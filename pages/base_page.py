@@ -713,22 +713,22 @@ class BasePage:
             msg = f"Link '{name_of_link}' don't clickable."
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Link '{name_of_link}' clickable.\n")
+        print(f"{datetime.now()}   Link '{name_of_link}' is clickable.\n")
 
     @HandleExcElementsDecorator()
     def find_block_scroll_and_check_visibility(self, name_of_block, block_locator):
         """
         Example:
             wd - 0bject of Selenium Webdriver
-            name_of_link = "Discover what you can trade"
-            locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
+            name_of_block = "Discover what you can trade"
+            block_locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
         """
         # Check presenting block on the page
         if len(self.driver.find_elements(*block_locator)) == 0:
-            msg = (f"Page don't have block '{name_of_block}' in DOM")
+            msg = (f"\nPage don't have block '{name_of_block}' in DOM")
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
-        print(f"{datetime.now()}   Page have block '{name_of_block}' in DOM\n")
+        print(f"\n{datetime.now()}   Page have block '{name_of_block}' in DOM.")
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',

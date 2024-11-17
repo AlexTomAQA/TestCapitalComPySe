@@ -5,6 +5,7 @@
 """
 from datetime import datetime
 
+from pages.common import Common
 from pages.base_page import BasePage
 from pages.Menu.New.from_about_us_menu_open_client_funds import MenuNew
 from selenium.webdriver.support.ui import WebDriverWait as Wait
@@ -40,7 +41,6 @@ class Bug416(BasePage):
 
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
-
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[len(tabs) - 1])
 
@@ -49,8 +49,15 @@ class Bug416(BasePage):
                 if Wait(self.driver, 2).until(EC.element_to_be_clickable(ACTION_BTN_LOC)):
                     print(f'{datetime.now()}   => The page is opened')
                     print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
+                    Common.save_current_screenshot(self.driver, "AT_55!416 Pass")
+                    self.driver.close()
+                    self.driver.switch_to.window(tabs[0])
+                    print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
                     return True
         except TimeoutException:
             print(f'{datetime.now()}   => The page is not opened')
+            print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
+            self.driver.close()
+            self.driver.switch_to.window(tabs[0])
             print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False

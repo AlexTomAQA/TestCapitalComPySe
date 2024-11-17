@@ -9,7 +9,7 @@ from pages.base_page import BasePage
 from pages.Menu.New.from_markets_menu_open_shares import MenuNewShares
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import TimeoutException
 
 SEARCH_EL_LOC_OLD = ('css selector', '#iqf')
 GOOGL_SEARCH_ITEM_LOC_OLD = ('xpath', '//div[text()="GOOGL"]')
@@ -37,16 +37,6 @@ class Bug359(BasePage):
     def open_trade_alphabet_page_new(self):
         print(f'\n{datetime.now()}   Opening the "Trade Alphabet Inc - A - GOOGL CFD" page =>')
         print(f'{datetime.now()}   => Click the "GOOGL" item in the table of shares =>')
-
-        # search_field = Wait(self.driver, 2).until(EC.element_to_be_clickable(SEARCH_EL_LOC_NEW))
-        # self.driver.execute_script(
-        #     'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-        #     search_field
-        # )
-        # search_field.send_keys("GOOGL")
-        #
-        # search_item = Wait(self.driver, 2).until(EC.element_to_be_clickable(GOOGL_SEARCH_ITEM_LOC_NEW))
-        # search_item.click()
 
         flag = False
         while flag is False:
@@ -100,7 +90,7 @@ class Bug359(BasePage):
         print(f'{datetime.now()}   => Done, the link is clicked')
         print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
-    def should_not_be_error_page(self):
+    def should_not_be_error_page_new(self):
         print(f'\n{datetime.now()}   Make sure that there are no errors => ')
         if self.driver.find_element(*ERROR_PAGE_BODY_LOC):
             print(f'{datetime.now()}   => ERROR')
@@ -108,24 +98,22 @@ class Bug359(BasePage):
         print(f'{datetime.now()}   => No errors')
         return True
 
-    def should_not_be_alphabet_inc_page_old(self):
-        print(f'\n{datetime.now()}   Make sure that the "Trade Alphabet Inc - A - GOOGL CFD" page is not opened => ')
+    def should_not_be_error_page_old(self):
+        print(f'\n{datetime.now()}   Make sure that there are no errors => ')
 
-        try:
-            self.driver.find_element(*BREADCRUMB_LOC_OLD)
-        except NoSuchElementException:
-            print(f'{datetime.now()}   => The page is not opened (Breadcrumb Element not found)')
+        tabs = self.driver.window_handles
+        print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[len(tabs) - 1])
+
+        if self.driver.find_element(*ERROR_PAGE_BODY_LOC):
+            print(f'{datetime.now()}   => ERROR')
+            self.driver.close()
+            self.driver.switch_to.window(tabs[len(tabs) - 1])
+            print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False
-
-        try:
-            self.driver.find_element(*TITLE_LOC_OLD)
-        except NoSuchElementException:
-            print(f'{datetime.now()}   => The page is not opened (Title Element not found)')
-            return False
-
-        if 'Alphabet Inc - A' not in self.driver.find_element(*BREADCRUMB_LOC_OLD).text:
-            if 'Trade Alphabet Inc - A - GOOGL CFD' not in self.driver.find_element(*TITLE_LOC_OLD).text:
-                print(f'{datetime.now()}   => The "Trade Alphabet Inc - A - GOOGL CFD" page is not opened')
-                return True
-        print(f'{datetime.now()}   => The wrong page is opened')
-        return False
+        print(f'{datetime.now()}   => No errors')
+        self.driver.close()
+        self.driver.switch_to.window(tabs[len(tabs) - 1])
+        print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
+        return True

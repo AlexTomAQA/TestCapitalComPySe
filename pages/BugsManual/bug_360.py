@@ -103,7 +103,7 @@ class IndicesItaly40(BasePage):
         print(f"{datetime.now()}   3.Assert")
         expected_country = 'United Arab Emirates'
         actual = self.driver.find_element(By.CSS_SELECTOR,
-                                          'div:nth-child(1) > span.localization_btn__9zIyt')
+                                          'div:nth-child(1) > button.localization_btn__9zIyt')
         actual_country = actual.text
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
