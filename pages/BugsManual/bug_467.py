@@ -21,5 +21,7 @@ class Bug467(BasePage):
         print(f'{datetime.now()}   Current URL: {self.driver.current_url}')
 
     def should_be_au_or_ae_page(self):
-        right_urls = ["https://capital.com/en-au/why-capital", "https://capital.com/en-ae/why-capital"]
+        right_urls = ["https://capital.com/en-au/why-capital",
+                      "https://capital.com/en-ae/why-capital",
+                      "https://capital.com/en-eu/why-capital"]
         return True if self.driver.current_url in right_urls else False
