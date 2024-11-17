@@ -271,16 +271,25 @@ class NewConditions(BasePage):
         # Captcha(d).fail_test_if_captcha_present_v2()
 
         match cur_language:
-            case "en": host += "en-"
-            case "ar": host += "ar-"
+            case "en":
+                host += "en-"
+            case "ar":
+                host += "ar-"
+            case "de":
+                host += "de-"
             case _:
                 msg = f"Stop! Указанный язык '{cur_language}' не обрабатывается. Stop running"
                 print(f'{datetime.now()}   {msg}')
                 pytest.fail(msg)
         match cur_country:
-            case "gb": host += "gb"
-            case "ae": host += "ae"
-            case "au": host += "au"
+            case "gb":
+                host += "gb"
+            case "ae":
+                host += "ae"
+            case "au":
+                host += "au"
+            case "de":
+                host += "de"
             case _:
                 msg = f"Stop! Указанная страна '{cur_country}' не обрабатывается. Stop running"
                 print(f'{datetime.now()}   {msg}')
