@@ -10,12 +10,12 @@ from src.src import CapitalComPageSrc
 
 def conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
-    if cur_country in ['de', 'ua']:
+    if cur_country in ['ua']:
         cond = Conditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
 
-    if cur_country in ['ae', 'au', 'gb']:
+    if cur_country in ['ae', 'au', 'gb', 'de']:
         cond = NewConditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL_NEW, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
