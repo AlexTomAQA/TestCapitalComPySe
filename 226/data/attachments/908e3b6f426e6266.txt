@@ -1,0 +1,32 @@
+2024-11-16 23:45:42 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ar-ae
+2024-11-16 23:45:42 ERROR Can't click element by locator ('css selector', ".modal_overlay__f_YlZ button [height='32']")
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 387, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator ('css selector', ".modal_overlay__f_YlZ button [height='32']")
+Stacktrace:
+#0 0x560decc174ca <unknown>
+#1 0x560dec72a620 <unknown>
+#2 0x560dec779306 <unknown>
+#3 0x560dec7795a1 <unknown>
+#4 0x560dec7bea04 <unknown>
+#5 0x560dec79d39d <unknown>
+#6 0x560dec7bbde0 <unknown>
+#7 0x560dec79d113 <unknown>
+#8 0x560dec76bbe0 <unknown>
+#9 0x560dec76cbbe <unknown>
+#10 0x560decbe3e4b <unknown>
+#11 0x560decbe7de2 <unknown>
+#12 0x560decbd0d2c <unknown>
+#13 0x560decbe8957 <unknown>
+#14 0x560decbb64bf <unknown>
+#15 0x560decc06348 <unknown>
+#16 0x560decc06510 <unknown>
+#17 0x560decc16346 <unknown>
+#18 0x7f166f294ac3 <unknown>
