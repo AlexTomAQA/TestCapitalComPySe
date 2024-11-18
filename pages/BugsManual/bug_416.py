@@ -34,6 +34,11 @@ class Bug416(BasePage):
         )
         el.click()
 
+        tabs = self.driver.window_handles
+        print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[len(tabs) - 1])
+
         print(f'{datetime.now()}   => Done, current URL: {self.driver.current_url}')
 
     def should_be_whatsapp_redirecting_page(self):
@@ -41,8 +46,8 @@ class Bug416(BasePage):
 
         tabs = self.driver.window_handles
         print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
-        if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[len(tabs) - 1])
+        # if len(tabs) > 1:
+        #     self.driver.switch_to.window(tabs[len(tabs) - 1])
 
         try:
             if Wait(self.driver, 2).until(EC.visibility_of_element_located(TITLE_LOC)):
