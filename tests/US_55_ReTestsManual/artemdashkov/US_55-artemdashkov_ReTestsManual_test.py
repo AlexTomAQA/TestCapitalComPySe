@@ -38,12 +38,14 @@ from pages.BugsManual.bug_422 import BUG_422
 from pages.BugsManual.bug_431 import BUG_431
 from pages.BugsManual.bug_455 import BUG_455
 from pages.BugsManual.bug_503 import BUG_503
+from pages.BugsManual.bug_581 import BUG_581
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_pricing_menu_open_how_capital_com_makes_money,
                             from_trading_menu_open_all_platforms,
+                            from_learn_menu_open_market_guides,
                             from_markets_menu_open_commodities,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_markets,
@@ -867,7 +869,6 @@ class TestManualDetected:
             "The widget of the block 'Our spread betting markets' > Click on the button [Commodities]",
             False, True
         )
-        # pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
                                            cur_role, cur_login, cur_password)
@@ -1367,6 +1368,55 @@ class TestManualDetected:
         link = page_menu.from_about_us_menu_open_client_vulnerability(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_503(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+    @allure.step("Start test of link 'Microsoft' in the block 'Popular shares to trade' "
+                 "on the Page 'What is share trading'")
+    @pytest.mark.parametrize('cur_language', [""])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_581
+    def test_581_link_microsoft_in_the_block_popular_shares_to_trade(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Learn] >
+                Click Menu item [Market guides] >
+                Scroll down to the widget "Market trading guides" >
+                Click link [Shares trading guide] >
+                Scroll down to the block "Popular shares to trade" >
+                Click link [Microsoft]
+        Language: EN
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "581",
+            "Click the Menu section [Learn] > "
+            "Click Menu item [Market guides] > "
+            "Scroll down to the widget 'Market trading guides' > "
+            "Click link [Shares trading guide] > "
+            "Scroll down to the block 'Popular shares to trade' > "
+            "Click link [Microsoft]",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Промежуточная версия")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_581(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
