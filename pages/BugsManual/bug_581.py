@@ -9,84 +9,75 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 
-SEARCH_FIELD_LOCATOR = (By.ID, "marketlist_search")
-SEARCH_FIELD_NAME = "Search field"
-SEARCHING_TEXT = "CHF"
-CHF_JPY_LOCATOR = (
-    By.XPATH, "//strong[@class='helpers_stringEllipsed__ylDvq'][contains(text(), 'CHF/JPY')]"
-)
-INDICES_LOCATOR = (By.XPATH, "//a[@class='link-tool']")
-MESSAGE_404_LOCATOR = (By.XPATH, '//p[text()="404"]')
-EXPECTED_PAGE = 'https://capital.com/en-gb/markets/indices'
+EXPECTED_PAGE = 'https://capital.com/en-ae/learn/market-guides/trade-microsoft'
+
+MARKET_TRADING_GUIDES_BLOCK_LOCATOR = (
+    By.CSS_SELECTOR, "[data-type='tiles_w_img'] h2[class='heading_h2__kkLcC heading_noMargins__P5e_q']")
+SHARES_TRADING_GUIDE_LINK_LOCATOR = (By.CSS_SELECTOR, "[data-type='tiles_w_img_link2_signup']")
+POPULAR_SHARES_TO_TRADE_LOCATOR = (By.CSS_SELECTOR, "[data-id='part_2']")
+MICROSOFT_LINK_LOCATOR = (By.XPATH, "//a[contains(text(), 'Microsoft')]")
+
 
 class BUG_581(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find search field, "
-                 f"write 'CHF', "
-                 f"Click link [CHF/JPY], "
-                 f"find link [indices]. ")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find 'Market trading guides' block, "
+                 f"find and click link [Shares trading guide], "
+                 f"find 'Popular shares to trade' block, "
+                 f"find link [Microsoft]. ")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find block search field. ")
+        print(f"\n{datetime.now()}   1. Start Arrange: find 'Market trading guides' block.")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
         # Check presenting, visibility block 'Search field'
-        self.find_block_scroll_and_check_visibility(SEARCH_FIELD_NAME, SEARCH_FIELD_LOCATOR)
+        self.find_block_scroll_and_check_visibility("Market trading guides",
+                                                    MARKET_TRADING_GUIDES_BLOCK_LOCATOR)
 
-        # Click on search field
-        search_field = self.driver.find_element(*SEARCH_FIELD_LOCATOR)
-        search_field.click()
-        print(f"{datetime.now()}   '{SEARCH_FIELD_NAME}' is clicked\n")
+        # Check presenting, visibility and clickability link 'Shares trading guide'
+        self.find_link_scroll_check_visibility_and_clickability("Shares trading guide",
+                                                                SHARES_TRADING_GUIDE_LINK_LOCATOR)
+        # Click link 'Shares trading guide'
+        Common().click_link_and_print(d, "Shares trading guide", SHARES_TRADING_GUIDE_LINK_LOCATOR)
 
-        search_field.send_keys(SEARCHING_TEXT)
-        print(f"{datetime.now()}   Write message {SEARCHING_TEXT} in search field\n")
-        Common().save_current_screenshot(d, "Write message in search field")
+        # Check presenting, visibility block 'Popular shares to trade'
+        self.find_block_scroll_and_check_visibility("Popular shares to trade",
+                                                    POPULAR_SHARES_TO_TRADE_LOCATOR)
 
-        if not self.element_is_clickable(CHF_JPY_LOCATOR):
-            msg = f"Link 'CHF/JPY' don't clickable."
-            print(f"{datetime.now()}   => {msg}")
-            Common().pytest_fail(f"{msg}")
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*CHF_JPY_LOCATOR)
-        )
-        self.driver.find_element(*CHF_JPY_LOCATOR).click()
-
-        self.find_link_scroll_check_visibility_and_clickability('indices', INDICES_LOCATOR)
+        # Check presenting, visibility and clickability link 'Microsoft'
+        self.find_link_scroll_check_visibility_and_clickability("Microsoft",
+                                                                MICROSOFT_LINK_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
+        print(f"{datetime.now()}   2. Start Act.")
+        # Click link 'Microsoft'
+        Common().click_link_and_print(d, 'Microsoft', MICROSOFT_LINK_LOCATOR)
+        Common().save_current_screenshot(d, "Opened page after click link 'Microsoft'")
 
-        Common().click_link_and_print(
-            d, 'indices', INDICES_LOCATOR
-        )
-        Common().save_current_screenshot(d, "Opened page after click link 'indices'")
-
-    @allure.step(f"{datetime.now()}   3. Start Assert. Opened page")
+    @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d, link):
 
         print(f"{datetime.now()}   3. Start Assert.")
 
         # Check opened page
-        print(f"{datetime.now()}   Check page with '404 error' message is displayed instead 'Indices' page.")
-        print(f"{datetime.now()}   IS page with '404 error' message is displayed instead 'Indices' page.? =>")
+        print(f"{datetime.now()}   Do current page have 'en-gb'? =>")
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-        if self.driver.find_elements(*MESSAGE_404_LOCATOR):
-            msg = f"Page with '404 error' message is displayed instead 'Indices' page"
+        if 'en-gb' in self.driver.current_url:
+            msg = f"Current page opened in FCA License. Current page is: {self.driver.current_url}"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Current page don't have '404 error' message.")
+        print(f"{datetime.now()}   Current page didn't open in FCA License.")
 
-        print(f"{datetime.now()}   Check opened page is 'Indices' page.")
-        print(f"{datetime.now()}   IS opened page 'Indices' page.? =>")
+        print(f"{datetime.now()}   IS opened page in SCA License? =>")
         if not self.current_page_url_contain_the(EXPECTED_PAGE):
-            msg = (f"Instead 'Indices' page and page with '404 error' message opened other page. "
+            msg = (f"Instead 'expected page opened other page. "
                    f"Expected_page is '{EXPECTED_PAGE}', "
                    f"current page is '{self.driver.current_url}'")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
 
-        print(f"{datetime.now()}   => Opened expected page 'Indices'!\n")
+        print(f"{datetime.now()}   => Opened expected page!\n")
         Common.save_current_screenshot(d, f"Opened expected page 'Indices'!")
+        self.driver.get(link)
         return True

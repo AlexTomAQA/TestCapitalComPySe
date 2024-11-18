@@ -1410,7 +1410,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Промежуточная версия")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
