@@ -109,11 +109,13 @@ class Bug359(BasePage):
         if self.driver.find_element(*ERROR_PAGE_BODY_LOC):
             print(f'{datetime.now()}   => ERROR')
             self.driver.close()
+            tabs = self.driver.window_handles
             self.driver.switch_to.window(tabs[len(tabs) - 1])
             print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
             return False
         print(f'{datetime.now()}   => No errors')
         self.driver.close()
+        tabs = self.driver.window_handles
         self.driver.switch_to.window(tabs[len(tabs) - 1])
         print(f'\n{datetime.now()}   Current URL: {self.driver.current_url}')
         return True
