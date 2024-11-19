@@ -4,7 +4,9 @@ from pages.Menu.New.from_learn_menu_open_risk_managment_guide import MenuNew
 from pages.base_page import BasePage
 
 main_page_link = 'https://capital.com/'
-LOCATOR_LINK_BROKER = ('xpath', "//a[text()='broker']")
+
+class Locators:
+    LINK_BROKER = ('xpath', "//a[text()='broker']")
 
 
 class Bug467(BasePage):
@@ -15,7 +17,7 @@ class Bug467(BasePage):
 
     def click_link_broker(self):
         print(f'\n{datetime.now()}   Click link "broker" =>')
-        self.driver.find_element(*LOCATOR_LINK_BROKER).click()
+        self.driver.find_element(*Locators.LINK_BROKER).click()
 
         print(f'{datetime.now()}   => Done, the corresponding page is opened')
         print(f'{datetime.now()}   Current URL: {self.driver.current_url}')

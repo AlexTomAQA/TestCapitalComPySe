@@ -107,10 +107,10 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     #
-    # BELOW IN PROGRESS
+    # BUGS BELOW ARE SKIPPED (IN PROGRESS)
     #
 
-    @pytest.skip("in progress")
+    @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!444 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['ar'])
@@ -154,7 +154,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.skip("in progress")
+    @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!429 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
