@@ -21,9 +21,9 @@ class Bug444(BasePage):
         print(f'\n{datetime.now()}   Click dropdown menu country =>')
         self.driver.find_element(*Locators.COUNTRY_SELECTION_BUTTON_IN_POPUP_WINDOW).click()
 
-    def check_placeholder_in_search_field(self):
+    def is_placeholder_in_english_language(self):
         print(f'\n{datetime.now()}   Click dropdown menu country =>')
         search_field = self.driver.find_element(*Locators.COUNTRY_SEARCH_FIELD)
         if search_field.get_attribute("placeholder") == "Country search":
-            return False
-        return True
+            return True
+        return False

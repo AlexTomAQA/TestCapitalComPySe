@@ -145,10 +145,9 @@ class TestManualDetectedBugs:
         test_el.click_dropdown_menu_country()
 
         # Assert
-        test_el.check_placeholder_in_search_field()
-        # if not test_el.should_be_link_to_privacy_policy():
-        #     Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')  # todo
-        # Common.save_current_screenshot(d, "AT_55!504 Pass")
+        if test_el.is_placeholder_in_english_language():
+            Common.pytest_fail('Bug # 55!444 The placeholder is "Country search"')
+        Common.save_current_screenshot(d, "AT_55!444 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
