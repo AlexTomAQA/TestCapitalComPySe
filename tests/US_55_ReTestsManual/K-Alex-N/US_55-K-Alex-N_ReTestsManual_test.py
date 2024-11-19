@@ -9,6 +9,7 @@ import random
 import pytest
 import allure
 
+from pages.BugsManual.bug_429 import Bug429
 from pages.BugsManual.bug_444 import Bug444
 from pages.BugsManual.bug_467 import Bug467
 from pages.BugsManual.bug_504 import Bug504
@@ -144,6 +145,48 @@ class TestManualDetectedBugs:
         # if not test_el.should_be_link_to_privacy_policy():
         #     Common.pytest_fail('Bug # 55!467 The page is not opened in AU or AE country')  # todo
         # Common.save_current_screenshot(d, "AT_55!504 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @pytest.mark.skip(reason="in progress")
+    @allure.step(
+        'Start retest manual TC_55!429 | ???')  # todo
+    @pytest.mark.parametrize('cur_language', [])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
+    @pytest.mark.bug_429
+    def test_429(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         # Check: ???? todo
+
+         Language: EN
+         License: ASIC
+         Author: Aleksei Kurochkin
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "429",
+            "???",  # todo
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_el = Bug429(d, link, bid)
+        test_el.open_commodities_page(d, cur_language, cur_country, link)
+        test_el.open_silver_commodity()
+
+        # # Act
+        test_el.open_the_article()
+
+        # Assert
+        if test_el.is_paragraph_with_bold_text_present():
+            Common.pytest_fail('Bug # 55!429 ....')  # todo
+        Common.save_current_screenshot(d, "AT_55!429 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
