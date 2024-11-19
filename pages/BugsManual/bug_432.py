@@ -28,7 +28,7 @@ class Links(BasePage):
         )
 
         print(f"{datetime.now()}   Click the link [Go CFD trading guide]")
-        go_cfd_link = self.driver.find_element(By.CSS_SELECTOR, 'a[data-type="benefits_block_block_go_cfd_trading_guide_btn"]')
+        go_cfd_link = self.driver.find_element(By.CSS_SELECTOR, 'a[href*="ways-to-trade/cfd-trading/what-is-cfd-trading"]')
         go_cfd_link.click()
         self.wait_for_change_url(link)
 
