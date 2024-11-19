@@ -24,4 +24,6 @@ class Bug467(BasePage):
         right_urls = ["https://capital.com/en-au/why-capital",
                       "https://capital.com/en-ae/why-capital",
                       "https://capital.com/en-eu/why-capital"]
-        return True if self.driver.current_url in right_urls else False
+        if self.driver.current_url in right_urls:
+            return True
+        return False
