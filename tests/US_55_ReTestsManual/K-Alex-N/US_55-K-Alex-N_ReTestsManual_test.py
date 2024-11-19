@@ -106,7 +106,11 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip(reason="in progress")
+    #
+    # BELOW IN PROGRESS
+    #
+
+    @pytest.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!444 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['ar'])
@@ -150,10 +154,10 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip(reason="in progress")
+    @pytest.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!429 | ???')  # todo
-    @pytest.mark.parametrize('cur_language', [])
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_429
