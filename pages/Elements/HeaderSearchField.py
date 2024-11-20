@@ -7,7 +7,6 @@
 from datetime import datetime
 from random import randint
 
-from pages.common import Common
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,7 +17,8 @@ HEADER_LOCATOR = ("css selector", "header.cc-header.js-header")
 SEARCH_FRAME_LOCATOR = ("css selector", ".cc-search.js-searchRef")
 SEARCH_FORM_LOCATOR = ("css selector", ".cc-search__form.js-searchNew")
 SEARCH_FIELD_LOCATOR = ("id", "headerSearch")
-SEARCH_ITEM_IMG_LOCATOR = ("css selector", ".global-search__item>a.global-search__img")
+# SEARCH_ITEM_IMG_LOCATOR = ("css selector", ".global-search__item>a.global-search__img")
+SEARCH_ITEM_LOCATOR = ("css selector", ".global-search__item h4")
 
 
 class SearchField(BasePage):
@@ -55,7 +55,7 @@ class SearchField(BasePage):
     def should_be_any_search_result(self):
         print(f'\n{datetime.now()}   Check if there is any search result is present on the Search page => ')
         try:
-            Wait(self.driver, 5).until(EC.element_to_be_clickable(SEARCH_ITEM_IMG_LOCATOR))
+            Wait(self.driver, 5).until(EC.element_to_be_clickable(SEARCH_ITEM_LOCATOR))
         except TimeoutException:
             print(f'{datetime.now()}   => No search results are present on the page')
             return False
@@ -64,7 +64,7 @@ class SearchField(BasePage):
 
     def click_random_search_result_item(self):
         print(f'\n{datetime.now()}   Clicking any search item =>')
-        search_items_list = self.driver.find_elements(*SEARCH_ITEM_IMG_LOCATOR)
+        search_items_list = self.driver.find_elements(*SEARCH_ITEM_LOCATOR)
         random_search_item = search_items_list[randint(0, len(search_items_list) - 1)]
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
