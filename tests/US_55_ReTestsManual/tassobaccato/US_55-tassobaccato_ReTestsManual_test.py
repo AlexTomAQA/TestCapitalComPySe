@@ -21,12 +21,13 @@ from pages.BugsManual.bug_399 import ValueItems
 from pages.BugsManual.bug_401 import LinkIPO
 from pages.BugsManual.bug_420 import MenuItemPayments
 from pages.BugsManual.bug_432 import Links
+from pages.BugsManual.bug_440 import LearnToTrade
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital, \
     from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform, \
-    from_markets_menu_open_shares, from_trading_menu_open_cfd_trading
+    from_markets_menu_open_shares, from_trading_menu_open_cfd_trading, from_learn_menu_open_essentials_of_trading
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -659,3 +660,34 @@ class TestManualDetectedBugs:
         test_element = Links(d, cur_item_link, bid)
         test_element.arrange(cur_item_link, link)
         test_element.assert_links()
+
+    @allure.step('Start retest manual AT_55!440 The page with “404 error message” is displayed')
+    @pytest.mark.parametrize('cur_language', ['ar'])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_440
+    def test_440(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Learn] > Menu item [Trading essentials] > Block "FAQs" > click on the link
+                [learning about trading]/[learn] in the expanded title "Can you make money day trading?"
+        Language: AR
+        License: SCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "440", 'Error message “Access denied Error 16 …” is displayed after clicking on the link '
+                   '[learning about trading]/ [learn] in the expanded title “Can you make money day trading?" when SCA '
+                   'license and AR language are selected'
+        )
+
+        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_learn_menu_open_essentials_of_trading.MenuNewLearn(d, link)
+        cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
+
+        test_element = LearnToTrade(d, cur_item_link, bid)
+        test_element.learn_to_trade(d, cur_item_link)
+        test_element.element_click(link)
+        test_element.assert_page()
