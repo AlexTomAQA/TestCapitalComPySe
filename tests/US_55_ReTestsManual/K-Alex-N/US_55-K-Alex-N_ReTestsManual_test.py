@@ -30,7 +30,7 @@ class TestManualDetectedBugs:
         'are opened in menu item [Risk-management guide] when click on the link [broker]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae', 'au'])
-    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1, counts=[1,1,10]))
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1, counts=[1, 1, 10]))
     @pytest.mark.bug_467
     def test_467(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -107,21 +107,19 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    #
-    # BUGS BELOW ARE SKIPPED (IN PROGRESS)
-    #
-
-    # @pytest.mark.skip("in progress")
     @allure.step(
-        'Start retest manual TC_55!444 | ???')  # todo
+        'Start retest manual TC_55!444 | Placeholder "Country search" is displayed in EN language '
+        'in the search field of dropdown "البلد" (Country) in the modal window '
+        '"الإعدادات الإقليمية" (Regional settings) when AR language and SCA license are selected')
     @pytest.mark.parametrize('cur_language', ['ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
     @pytest.mark.bug_444
     def test_444(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: ???? todo
-
+         Check: Scroll down to the footer >
+                Click button "البلد" (Country) / "اللغة" (Language) >
+                Click the arrow button of the dropdown "البلد" (Country) in pop up window
          Language: AR
          License: SCA
          Author: Aleksei Kurochkin
@@ -130,9 +128,9 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "444",
-            # 'Sign up form is opened instead of Login '
-            # 'on the page "Charges and fees" after clicking the button [Start trading now]',
-            "???",  # todo
+            'Placeholder "Country search" is displayed in EN language '
+            'in the search field of dropdown "البلد" (Country) in the modal window '
+            '"الإعدادات الإقليمية" (Regional settings) when AR language and SCA license are selected',
             False,
             False
         )
@@ -147,14 +145,18 @@ class TestManualDetectedBugs:
 
         # Assert
         if test_el.is_placeholder_in_english_language():
-            Common.pytest_fail('Bug # 55!444 The placeholder is "Country search"')
+            Common.pytest_fail('Bug # 55!444 The placeholder is "Country search" -> EN instead of AR')
         Common.save_current_screenshot(d, "AT_55!444 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip("in progress")
+    #
+    # BUGS BELOW ARE SKIPPED (IN PROGRESS)
+    #
+
+    @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!429 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -196,7 +198,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip("in progress")
+    @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!587 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -238,4 +240,3 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
-
