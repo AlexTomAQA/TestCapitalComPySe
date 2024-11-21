@@ -30,7 +30,7 @@ class TestManualDetectedBugs:
         'are opened in menu item [Risk-management guide] when click on the link [broker]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae', 'au'])
-    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1, counts=[1,1,10]))
     @pytest.mark.bug_467
     def test_467(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
@@ -111,7 +111,7 @@ class TestManualDetectedBugs:
     # BUGS BELOW ARE SKIPPED (IN PROGRESS)
     #
 
-    @pytest.mark.skip("in progress")
+    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!444 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['ar'])
@@ -154,7 +154,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip("in progress")
+    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!429 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -196,7 +196,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip("in progress")
+    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!587 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -238,3 +238,4 @@ class TestManualDetectedBugs:
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
