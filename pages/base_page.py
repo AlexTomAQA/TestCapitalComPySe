@@ -21,6 +21,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.Capital.capital_locators import OnTrustLocators, Captcha
 from pages.common import Common
 
+
 # from src.src import (
 #     CapitalComPageSrc,
 # )
@@ -673,7 +674,7 @@ class BasePage:
             selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
         """
         if locator[0] == By.XPATH:
-            new_locator = (locator[0], f'{locator[1]}[{number}]' )
+            new_locator = (locator[0], f'{locator[1]}[{number}]')
             return new_locator
         else:
             pass
@@ -744,8 +745,6 @@ class BasePage:
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Block '{name_of_block}' visible on the current page\n")
 
-
-
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
         article_locator = ('xpath', f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]")
@@ -764,7 +763,7 @@ class BasePage:
                 last_page_number = int(last_page.text)
                 return last_page_number
             except:
-                raise Exception ("Last page number was not found")
+                raise Exception("Last page number was not found")
 
         def open_the_article():
             self.driver.find_element(*article_locator).click()
@@ -783,4 +782,4 @@ class BasePage:
                 go_to_next_page(i)
 
         else:
-            raise Exception (f"{last_page} pages were checked. Artile was not found.")
+            raise Exception(f"{last_page} pages were checked. Artile was not found.")

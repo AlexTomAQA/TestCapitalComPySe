@@ -245,16 +245,15 @@ class TestManualDetectedBugs:
     # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!513 | ???')  # todo
-    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_language', ['en'])
     @pytest.mark.parametrize('cur_country', ['au'])  # ['au', 'gb', 'ae', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['NoReg'], 1))
     @pytest.mark.bug_513
     def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        test_obj = self
         self.cur_language = cur_language
         self.cur_country = cur_country
         self.driver = d
-
-        print(self.__dict__)
 
         """
          # Check: ???? todo
@@ -264,8 +263,7 @@ class TestManualDetectedBugs:
          Author: Aleksei Kurochkin
          """
 
-
-        bid = build_dynamic_arg_for_us_55(
+        self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "513",
@@ -274,11 +272,10 @@ class TestManualDetectedBugs:
             False
         )
 
-
         # Arrange
-        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        self.bug = Bug513(self.driver, link, bid)
-        self.bug.open_market_analysis_page(cur_language, cur_country)
+        self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        self.bug = Bug513(test_obj)
+        self.bug.open_market_analysis_page(test_obj)
         self.bug.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
 
         # Act
