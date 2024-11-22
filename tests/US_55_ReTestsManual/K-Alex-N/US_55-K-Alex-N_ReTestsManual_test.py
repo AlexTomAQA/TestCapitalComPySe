@@ -13,6 +13,7 @@ from pages.BugsManual.bug_429 import Bug429
 from pages.BugsManual.bug_444 import Bug444
 from pages.BugsManual.bug_467 import Bug467
 from pages.BugsManual.bug_504 import Bug504
+from pages.BugsManual.bug_513 import Bug513
 from pages.BugsManual.bug_587 import Bug587
 from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
@@ -198,11 +199,11 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip("in progress")
+    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!587 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
-    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_country', ['au', 'gb', 'ae', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_587
     def test_587(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -210,7 +211,7 @@ class TestManualDetectedBugs:
          # Check: ???? todo
 
          Language: EN
-         License: ASIC
+         License: SCA / FCA / ASIC / CYSEC
          Author: Aleksei Kurochkin
          """
         bid = build_dynamic_arg_for_us_55(
@@ -236,6 +237,57 @@ class TestManualDetectedBugs:
         if test_el.is_404_present_on_page():
             Common.pytest_fail('Bug # 55!587 ....')  # todo
         Common.save_current_screenshot(d, "AT_55!587 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    # @pytest.mark.skip("in progress")
+    @allure.step(
+        'Start retest manual TC_55!513 | ???')  # todo
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['au'])  # ['au', 'gb', 'ae', 'de'])
+    @pytest.mark.parametrize('cur_role', random.sample(['NoReg'], 1))
+    @pytest.mark.bug_513
+    def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
+
+        print(self.__dict__)
+
+        """
+         # Check: ???? todo
+
+         Language: EN
+         License: SCA / FCA / ASIC / CYSEC
+         Author: Aleksei Kurochkin
+         """
+
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "513",
+            "???",  # todo
+            False,
+            False
+        )
+
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        self.bug = Bug513(self.driver, link, bid)
+        self.bug.open_market_analysis_page(cur_language, cur_country)
+        self.bug.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
+
+        # Act
+        self.bug.is_link_to_part2_present_in_table_of_content()
+
+        # Assert
+        if not self.bug.is_part2_present_in_titles():
+            Common.pytest_fail('Bug # 55!513 ....')  # todo
+        Common.save_current_screenshot(d, "AT_55!513 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')

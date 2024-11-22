@@ -743,3 +743,44 @@ class BasePage:
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Block '{name_of_block}' visible on the current page\n")
+
+
+
+    def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
+
+        article_locator = ('xpath', f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]")
+        locator_last_page = ('xpath', '//a[@aria-label="Go to the next page"]/preceding::a[1]')
+
+        def is_article_present():
+            try:
+                self.driver.find_element(*article_locator)
+                return True
+            except NoSuchElementException:
+                return False
+
+        def get_last_page() -> int:
+            try:
+                last_page = self.driver.find_element(*locator_last_page)
+                last_page_number = int(last_page.text)
+                return last_page_number
+            except:
+                raise Exception ("Last page number was not found")
+
+        def open_the_article():
+            self.driver.find_element(*article_locator).click()
+
+        def go_to_next_page(i):
+            next_page = self.driver.current_url + "?page=" + str(i)
+            self.driver.get(next_page)
+
+        last_page = get_last_page()
+
+        for i in range(2, last_page):
+            if is_article_present():
+                open_the_article()
+                return
+            else:
+                go_to_next_page(i)
+
+        else:
+            raise Exception (f"{last_page} pages were checked. Artile was not found.")
