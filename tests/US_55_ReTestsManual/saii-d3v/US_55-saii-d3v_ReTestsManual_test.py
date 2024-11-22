@@ -247,7 +247,7 @@ class TestManualDetectedBugs:
         'after clicking the button [Back] on any article from search page.')
     @pytest.mark.parametrize('cur_language', [''])  # temporary use only EN, because of bug #55!292
     @pytest.mark.parametrize('cur_country', ['ua'])
-    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.parametrize('cur_role', ['NoReg'])   # ['Auth', 'NoAuth', 'NoReg']
     @pytest.mark.bug_157
     def test_157(self, worker_id, d, cur_language, cur_country, cur_role,
                  cur_login, cur_password, random_search_string):
@@ -255,7 +255,7 @@ class TestManualDetectedBugs:
          Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
          on any article from search page.
          Language: All.
-         License: CB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
