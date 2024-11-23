@@ -11,13 +11,13 @@ import random
 # Bug 053
 @pytest.fixture(
     params=random.sample([
-        # "USD",
-        # "$",
-        # "BTC",
-        # "1",
+        "USD",
+        "$",
+        "BTC",
+        "1",
         "CFD",
-        # "Capital",
-        # "EUR",
+        "Capital",
+        "EUR",
     ], 1))
 def random_search_string(request):
     print(f"\n\n\nCurrent search string - {request.param}")
