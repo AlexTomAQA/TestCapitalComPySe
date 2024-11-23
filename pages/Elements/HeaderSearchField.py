@@ -17,7 +17,6 @@ HEADER_LOCATOR = ("css selector", "header.cc-header.js-header")
 SEARCH_FRAME_LOCATOR = ("css selector", ".cc-search.js-searchRef")
 SEARCH_FORM_LOCATOR = ("css selector", ".cc-search__form.js-searchNew")
 SEARCH_FIELD_LOCATOR = ("id", "headerSearch")
-# SEARCH_ITEM_IMG_LOCATOR = ("css selector", ".global-search__item>a.global-search__img")
 SEARCH_ITEM_LOCATOR = ("css selector", ".global-search__item h4")
 
 
