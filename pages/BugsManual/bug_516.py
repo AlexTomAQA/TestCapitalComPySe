@@ -13,7 +13,7 @@ class Locators:
     PART2_IN_TITLE = (By.CSS_SELECTOR, '[data-id="part_2"]')
 
 
-class Bug513(BasePage):
+class Bug516(BasePage):
 
     def __init__(self, test):
         super().__init__(test.driver, test.link, test.bid)
