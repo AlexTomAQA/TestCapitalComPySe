@@ -9,9 +9,9 @@ from selenium.webdriver.common.by import By
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import MarketsMenuNew
 
-MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
-MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2")
-MARKETS_SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, 'div:nth-child(2) > div.menuGroup_dropdown__75ey5 a > div > h2')
+MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id689']")
+MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id824']")
+MARKETS_SUBMENU_SCA_AR_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id824']")
 MARKETS_SUBMENU_ASIC_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id1256']")
 MARKETS_SUBMENU_CYSEC_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id1673']")
 
