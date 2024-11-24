@@ -201,7 +201,6 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!587 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -244,7 +243,6 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!513 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['en'])
@@ -292,7 +290,6 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!516 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['en'])
@@ -326,14 +323,12 @@ class TestManualDetectedBugs:
         self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         self.bug = Bug516(test)
         self.bug.open_market_analysis_page(test)
+
+        # Act
         self.bug.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
 
-        time.sleep(55)
-        # Act
-        self.bug.is_link_to_part2_present_in_table_of_content()
-
         # Assert
-        if not self.bug.is_part2_present_in_titles():
+        if not self.bug.is_possible_open_collapse_page():
             Common.pytest_fail('Bug # 55!516 ....')  # todo
         Common.save_current_screenshot(d, "AT_55!516 Pass")
 

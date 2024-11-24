@@ -748,6 +748,7 @@ class BasePage:
     def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
 
         article_locator = ('xpath', f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]")
+        locator_link_next_page = ('xpath', '//a[@aria-label="Go to the next page"]')
         locator_last_page = ('xpath', '//a[@aria-label="Go to the next page"]/preceding::a[1]')
 
         def is_article_present():
@@ -759,8 +760,8 @@ class BasePage:
 
         def get_last_page() -> int:
             try:
-                last_page = self.driver.find_element(*locator_last_page)
-                last_page_number = int(last_page.text)
+                last_page_obj = self.driver.find_element(*locator_last_page)
+                last_page_number = int(last_page_obj.text)
                 return last_page_number
             except:
                 raise Exception("Last page number was not found")
@@ -769,12 +770,11 @@ class BasePage:
             self.driver.find_element(*article_locator).click()
 
         def go_to_next_page(i):
-            next_page = self.driver.current_url + "?page=" + str(i)
-            self.driver.get(next_page)
+            self.driver.find_element(*locator_link_next_page).click()
 
         last_page = get_last_page()
 
-        for i in range(2, last_page):
+        for i in range(1, last_page):
             if is_article_present():
                 open_the_article()
                 return
