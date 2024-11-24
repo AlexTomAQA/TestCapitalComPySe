@@ -88,6 +88,11 @@ jobs:
         run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/mila_podchasova/US_55-mila_podchasova_ReTestsManual_test.py
         continue-on-error: true
 
+      - name: 8. Run US_55_ReTestsManual (Алексей)
+        if: always()
+        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/K-Alex-N/US_55-K-Alex-N_ReTestsManual_test.py
+        continue-on-error: true
+
       - name: 9. Upload artifact "allure-results"
         if: always()
         uses: actions/upload-artifact@v3
