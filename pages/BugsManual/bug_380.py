@@ -57,7 +57,7 @@ class SocialNetwork(BasePage):
                 social_block
             )
         except NoSuchElementException:
-            Captcha(d).fail_test_if_captcha_present_v2()
+            Captcha(d).fail_test_if_captcha_present_v3()
 
     def element_click(self, d):
         print(f"{datetime.now()}   2. Act")

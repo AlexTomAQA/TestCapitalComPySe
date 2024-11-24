@@ -27,6 +27,17 @@ class Captcha(BasePage):
         self.print_env()
         pytest.fail("reCaptcha V2")
 
+    def fail_test_if_captcha_present_v3(self):
+        captcha = self.driver.find_element(By.CSS_SELECTOR, ".spacer-bottom")
+        if not captcha:
+            print(f"\n{datetime.now()}   Капчи нет. Идем дальше")
+            return
+
+        captcha_page_url = self.driver.current_url
+        print(f"{datetime.now()}   На странице {captcha_page_url} проявилась Captcha")
+        pytest.fail("reCaptcha V3")
+
+
     def print_env(self):
         data_site_key = self.driver.find_elements(By.CSS_SELECTOR, self.LOCATOR)[0].get_property("data-sitekey")
         captcha_page_url = self.driver.current_url
