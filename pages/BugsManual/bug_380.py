@@ -8,8 +8,10 @@
 import random
 from datetime import datetime
 import allure
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from pages.captcha import Captcha
 from pages.common import Common
 
 
@@ -41,15 +43,21 @@ class SocialNetwork(BasePage):
                 self.driver.back()
 
         tabs = self.driver.window_handles
+        self.driver.switch_to.window(tabs[0])
         self.driver.close()
         self.driver.switch_to.window(tabs[1])
+        current_url = self.driver.current_url
+        print(f"{datetime.now()}   Current URL is {current_url}")
 
         print(f"{datetime.now()}   Scroll down to the 'Social networks' block")
-        social_block = self.driver.find_element(By.CSS_SELECTOR, 'footer > div')
-        self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            social_block
-        )
+        try:
+            social_block = self.driver.find_element(By.CSS_SELECTOR, 'footer > div')
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                social_block
+            )
+        except NoSuchElementException:
+            Captcha(d).fail_test_if_captcha_present_v2()
 
     def element_click(self, d):
         print(f"{datetime.now()}   2. Act")
@@ -58,9 +66,11 @@ class SocialNetwork(BasePage):
         social_icon_list = self.driver.find_elements(By.CSS_SELECTOR, 'a.lt-footer__social-link')
         random_social_icon = random.choice(social_icon_list)
         random_social_icon.click()
+        print(f"{datetime.now()}   The {random_social_icon.text} icon is clicked")
 
         tabs = self.driver.window_handles
         if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[0])
             self.driver.close()
             self.driver.switch_to.window(tabs[1])
 

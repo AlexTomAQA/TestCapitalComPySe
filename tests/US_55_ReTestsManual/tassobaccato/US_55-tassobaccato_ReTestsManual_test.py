@@ -685,7 +685,7 @@ class TestManualDetectedBugs:
 
         link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_learn_menu_open_essentials_of_trading.MenuNewLearn(d, link)
-        cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
+        cur_item_link = menu.from_learn_menu_open_essentials_of_trading(d, cur_language, cur_country, link)
 
         test_element = LearnToTrade(d, cur_item_link, bid)
         test_element.learn_to_trade(d, cur_item_link)
