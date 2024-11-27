@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import MarketsMenuNew
+from pages.conditions_v2 import CYSEC_COUNTRIES
 
 MARKETS_SUBMENU_FCA_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id689']")
 MARKETS_SUBMENU_SCA_LOCATOR = (By.CSS_SELECTOR, "div > [data-type='nav_id824']")
@@ -38,7 +39,7 @@ class MenuNewMarkets(MenuBase):
         elif cur_country == 'au':
             menu_locator = MarketsMenuNew.MENU_ASIC_MARKETS
             submenu_locator = MARKETS_SUBMENU_ASIC_LOCATOR
-        elif cur_country in ['at', 'de']:
+        elif cur_country in CYSEC_COUNTRIES:
             menu_locator = MarketsMenuNew.MENU_CYSEC_MARKETS
             submenu_locator = MARKETS_SUBMENU_CYSEC_LOCATOR
 
