@@ -31,7 +31,7 @@ from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_men
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
-from pages.conditions_switch import conditions_switch
+from pages.conditions_v2 import apply_preconditions_to_link
 
 
 @pytest.mark.us_55
@@ -55,7 +55,7 @@ class TestManualDetectedBugs:
             "009", "The 'My Account' menu is not displayed when click on the [My Account] button in the Header"
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MyAccountButton(d, link, bid)
         test_element.full_test(d, cur_language, cur_country, cur_role, link)
@@ -79,7 +79,7 @@ class TestManualDetectedBugs:
                    "'Most traded' dropdown in the 'Live shares prices'  widget on the 'Shares' page"
             )
 
-        link = conditions_switch(d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
         menu = MenuSection(d, link)
         cur_item_link = menu.open_shares_market_menu(d, cur_language_2_rnd_from_14, cur_country, link)
 
@@ -110,7 +110,7 @@ class TestManualDetectedBugs:
                     'stocks: What’s the difference?"'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language, cur_country, link)
@@ -142,7 +142,7 @@ class TestManualDetectedBugs:
             "077b", 'Sidebar " Crypto trading  guide" is absent on page "Bitcoin Gold"'
         )
 
-        link = conditions_switch(d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language_2_rnd_from_7, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuSection(d, link)
         cur_item_link = menu.open_education_cryptocurrency_trading_menu(d, cur_language_2_rnd_from_7, cur_country,
@@ -177,7 +177,7 @@ class TestManualDetectedBugs:
             "270", 'The page "what is cryptocurrency trading" is not opened'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = FromMarketsOpenCryptocurrencies(d, link)
         cur_item_link = menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, link)
@@ -206,7 +206,7 @@ class TestManualDetectedBugs:
             "308", 'The "Investmate" app page is not opened on Google Play/App Store'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = from_trading_menu_open_mobile_apps.MenuNew(d, link)
         cur_item_link = menu.from_trading_menu_open_mobile_apps(d, cur_language, cur_country, link)
@@ -242,7 +242,7 @@ class TestManualDetectedBugs:
 
         match cur_language:
             case '':
-                link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+                link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
                 menu = MenuNewMarkets(d, link)
                 cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
                 test_element = TradingInstrumentsMarkets(d, cur_item_link, bid)
@@ -257,7 +257,7 @@ class TestManualDetectedBugs:
                     case 'Auth':
                         test_element.assert_tpi(d, title_instrument)
             case 'ar':
-                link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+                link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
                 menu = MenuNewMarkets(d, link)
                 cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
                 test_element = TradingInstrumentsMarkets(d, cur_item_link, bid)
@@ -299,7 +299,7 @@ class TestManualDetectedBugs:
 
         match cur_language:
             case '':
-                link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+                link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
                 menu = MenuNewMarkets(d, link)
                 cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
                 test_element = TradingInstrumentsMarkets(d, cur_item_link, bid)
@@ -314,7 +314,7 @@ class TestManualDetectedBugs:
                     case 'Auth':
                         test_element.assert_tpi(d, title_instrument)
             case 'ar':
-                link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+                link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
                 menu = MenuNewMarkets(d, link)
                 cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
                 test_element = TradingInstrumentsMarkets(d, cur_item_link, bid)
@@ -351,7 +351,7 @@ class TestManualDetectedBugs:
                    ' “Italy 40”'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = MenuNewIndices(d, link)
         cur_item_link = menu.from_markets_menu_open_indices(d, cur_language, cur_country, link)
@@ -381,7 +381,7 @@ class TestManualDetectedBugs:
             "371a", 'The text of the link is “Discover CFD trading”'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         menu = from_about_us_menu_open_why_capital.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
@@ -412,7 +412,7 @@ class TestManualDetectedBugs:
             "371b", 'The text of the link is “Discover CFD trading”'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_about_us_menu_open_why_capital.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_why_capital(d, cur_language, cur_country, link)
 
@@ -442,7 +442,7 @@ class TestManualDetectedBugs:
             "380", 'The relevant pages of "Social networks" are opened”'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_about_us_menu_open_help.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_help(d, cur_language, cur_country, link)
 
@@ -473,7 +473,7 @@ class TestManualDetectedBugs:
             "386", 'The "Contact us" page is opened'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_about_us_menu_open_client_vulnerability.MenuNew(d, link)
         cur_item_link = menu.from_about_us_menu_open_client_vulnerability(d, cur_language, cur_country, link)
 
@@ -504,7 +504,7 @@ class TestManualDetectedBugs:
                    ' language is selected'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_trading_menu_open_web_platform.MenuNew(d, link)
         cur_item_link = menu.from_trading_menu_open_web_platform(d, cur_language, cur_country, link)
 
@@ -535,7 +535,7 @@ class TestManualDetectedBugs:
                     'license is selected'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         test_element = ValueItems(d, link, bid)
         test_element.value_items(d, link)
         test_element.assert_value_traders(d)
@@ -562,7 +562,7 @@ class TestManualDetectedBugs:
                     ' when ASIC license is selected'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         test_element = ValueItems(d, link, bid)
         test_element.value_items(d, link)
         test_element.assert_value_active_clients_monthly(d)
@@ -589,7 +589,7 @@ class TestManualDetectedBugs:
                     'Automotive, Inc.” when SCA or FCA license is selected'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_markets_menu_open_shares.MenuNewShares(d, link)
         cur_item_link = menu.from_markets_menu_open_shares(d, cur_language, cur_country, link)
 
@@ -618,7 +618,7 @@ class TestManualDetectedBugs:
             "420", 'Menu item [Payments and withdrawals] is missed in the footer when selected EN language'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         test_element = MenuItemPayments(d, bid)
         test_element.arrange(link)
@@ -653,7 +653,7 @@ class TestManualDetectedBugs:
         )
 
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_trading_menu_open_cfd_trading.MenuNew(d, link)
         cur_item_link = menu.from_trading_menu_open_cfd_trading(d, cur_language, cur_country, link)
 
@@ -683,9 +683,9 @@ class TestManualDetectedBugs:
                    'license and AR language are selected'
         )
 
-        link = conditions_switch(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_learn_menu_open_essentials_of_trading.MenuNewLearn(d, link)
-        cur_item_link = menu.from_markets_menu_open_markets(d, cur_language, cur_country, link)
+        cur_item_link = menu.from_learn_menu_open_essentials_of_trading(d, cur_language, cur_country, link)
 
         test_element = LearnToTrade(d, cur_item_link, bid)
         test_element.learn_to_trade(d, cur_item_link)
