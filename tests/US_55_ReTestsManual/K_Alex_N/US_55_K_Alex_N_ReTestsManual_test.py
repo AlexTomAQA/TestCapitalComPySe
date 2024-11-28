@@ -159,7 +159,7 @@ class TestManualDetectedBugs:
     # BUGS BELOW ARE SKIPPED (IN PROGRESS)
     #
 
-    @pytest.mark.skip("in progress")
+    # @pytest.mark.skip("in progress")
     @allure.step(
         'Start retest manual TC_55!429 | ???')  # todo
     @pytest.mark.parametrize('cur_language', [''])
@@ -246,8 +246,8 @@ class TestManualDetectedBugs:
     @allure.step(
         'Start retest manual TC_55!513 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['en'])
-    @pytest.mark.parametrize('cur_country', ['au'])  # ['au', 'gb', 'ae', 'de'])
-    @pytest.mark.parametrize('cur_role', random.sample(['NoReg'], 1))
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_513
     def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         test = self
@@ -293,8 +293,8 @@ class TestManualDetectedBugs:
     @allure.step(
         'Start retest manual TC_55!516 | ???')  # todo
     @pytest.mark.parametrize('cur_language', ['en'])
-    @pytest.mark.parametrize('cur_country', ['au'])  # ['au', 'gb', 'ae', 'de'])
-    @pytest.mark.parametrize('cur_role', random.sample(['NoReg'], 1))
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_516
     def test_516(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         test = self
