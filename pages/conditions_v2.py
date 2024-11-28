@@ -35,6 +35,36 @@ prev_country = "?"
 url_after_prev_preconditions_new = "?"
 url_after_preconditions = "?"
 
+CYSEC_COUNTRIES = [
+                "at",
+                "bg",
+                "cy",
+                # "cz",
+                "de",
+                "dk",
+                # "ee",
+                # "es",
+                "fi",
+                "fr",
+                "gr",
+                "hr",
+                "hu",
+                "ie",
+                # "is",
+                "it",
+                # "lv",
+                # "li",
+                # "lt",
+                # "lu",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "se",
+                "si",
+                "sk"
+]
+
 
 def apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
@@ -43,7 +73,7 @@ def apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_logi
         return cond.preconditions(d, CapitalComPageSrc.URL, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
 
-    if cur_country in ['ae', 'au', 'gb', 'at', 'de']:
+    if cur_country in [*CYSEC_COUNTRIES, 'ae', 'au', 'gb']:
         cond = NewConditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL_NEW, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
@@ -284,33 +314,43 @@ class NewConditions(BasePage):
         host = 'https://capital.com/'
         # Captcha(d).fail_test_if_captcha_present_v2()
 
-        match cur_language:
-            case "en": host += "en-"
-            case "ar": host += "ar-"
-            case "de": host += "de-"
-            case _:
-                msg = f"Stop! Указанный язык '{cur_language}' не обрабатывается. Stop running"
-                print(f'{datetime.now()}   {msg}')
-                pytest.fail(msg)
+        if cur_language == "en":
+            if cur_country in CYSEC_COUNTRIES:
+                host += 'en-eu'
+            else:
+                host += f'en-{cur_country}'
+        elif cur_language == "el" and cur_country == 'cy':
+            host += 'el-gr'
+        else:
+            host += f'{cur_language}-{cur_country}'
 
-        match cur_country:
-            case "gb": host += "gb"
-            case "ae": host += "ae"
-            case "au": host += "au"
-            case "de":
-                if cur_language == "de":
-                    host += "de"
-                else:
-                    host += "eu"
-            case "at":
-                if cur_language == "de":
-                    host += "at"
-                else:
-                    host += "eu"
-            case _:
-                msg = f"Stop! Указанная страна '{cur_country}' не обрабатывается. Stop running"
-                print(f'{datetime.now()}   {msg}')
-                pytest.fail(msg)
+        # match cur_language:
+        #     case "en": host += "en-"
+        #     case "ar": host += "ar-"
+        #     case "de": host += "de-"
+        #     case _:
+        #         msg = f"Stop! Указанный язык '{cur_language}' не обрабатывается. Stop running"
+        #         print(f'{datetime.now()}   {msg}')
+        #         pytest.fail(msg)
+        #
+        # match cur_country:
+        #     case "gb": host += "gb"
+        #     case "ae": host += "ae"
+        #     case "au": host += "au"
+        #     case "de":
+        #         if cur_language == "de":
+        #             host += "de"
+        #         else:
+        #             host += "eu"
+        #     case "at":
+        #         if cur_language == "de":
+        #             host += "at"
+        #         else:
+        #             host += "eu"
+        #     case _:
+        #         msg = f"Stop! Указанная страна '{cur_country}' не обрабатывается. Stop running"
+        #         print(f'{datetime.now()}   {msg}')
+        #         pytest.fail(msg)
 
         self.driver = d
         self.link = host
