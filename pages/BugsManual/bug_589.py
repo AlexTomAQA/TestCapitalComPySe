@@ -4,6 +4,7 @@
 @Author  : Artem Dashkov
 """
 import allure
+import time
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
@@ -14,7 +15,7 @@ HOW_TO_AVOID_A_MARGIN_CLOSE_OUT_BLOCK_LOCATOR = (
     By.XPATH, "(//div[@data-type='benefits_block'] //h2[@class='heading_h2__kkLcC heading_noMargins__P5e_q'])[3]"
 )
 CHARGES_AND_FEES_PAGE_LINK_LOCATOR = (By.CSS_SELECTOR, "div[class*='helpers_content'] a[href*='fees-and-charges']")
-ERROR_16_LOCATOR = (By.CSS_SELECTOR, "[class='error-code']")
+CHARGES_AND_FEES_TITLE_LOCATOR = (By.XPATH, "//h1[contains(text(), 'Charges and fees')]")
 
 class BUG_589(BasePage):
 
@@ -48,11 +49,11 @@ class BUG_589(BasePage):
 
         # Check opened page
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-        if len(self.driver.find_elements(*ERROR_16_LOCATOR)) == 1:
-            msg = f"Current page opened with ERROR_16"
+        if len(self.driver.find_elements(*CHARGES_AND_FEES_TITLE_LOCATOR)) == 0:
+            msg = f"Current page isn't 'Charges and fees'"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Current page don't have ERROR_16, but need to analyze page screen.")
+        print(f"{datetime.now()}   Current page have title 'Charges and fees', need to analyze page screen.")
 
         self.driver.get(CapitalComPageSrc.URL_NEW_AR_AE)
         return True
