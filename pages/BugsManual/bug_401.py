@@ -93,10 +93,13 @@ class LinkIPO(BasePage):
         print(f"\n{datetime.now()}   2. Act")
 
         print(f"{datetime.now()}   Click the “initial public offering (IPO)” link")
-        ipo_link = self.driver.find_element(By.LINK_TEXT, 'initial public offering (IPO)')
-        ipo_link.click()
-        self.wait_for_change_url(cur_link)
-
+        try:
+            ipo_link = self.driver.find_element(By.LINK_TEXT, 'initial public offering (IPO)')
+            ipo_link.click()
+            self.wait_for_change_url(cur_link)
+        except NoSuchElementException:
+            print(f"{datetime.now()}   'initial public offering (IPO)' is not a link")
+            Common.pytest_skip("this is not a bug, because the 'initial public offering (IPO)' is not a link.")
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_url(self, d):

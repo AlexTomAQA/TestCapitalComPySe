@@ -45,9 +45,6 @@ class Bug416(BasePage):
         print(f'\n{datetime.now()}   Check if the page with the link redirecting to the WhatsApp chat is opened =>')
 
         tabs = self.driver.window_handles
-        print(f'\n{datetime.now()}   TABS QUANTITY: {len(tabs)}')
-        # if len(tabs) > 1:
-        #     self.driver.switch_to.window(tabs[len(tabs) - 1])
 
         try:
             if Wait(self.driver, 2).until(EC.visibility_of_element_located(TITLE_LOC)):

@@ -39,6 +39,7 @@ from pages.BugsManual.bug_431 import BUG_431
 from pages.BugsManual.bug_455 import BUG_455
 from pages.BugsManual.bug_503 import BUG_503
 from pages.BugsManual.bug_581 import BUG_581
+from pages.BugsManual.bug_589 import BUG_589
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -51,8 +52,9 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
                             from_markets_menu_open_shares,
-                            from_trading_menu_open_spread_betting,
                             from_trading_menu_open_cfd_trading,
+                            from_trading_menu_open_spread_betting,
+                            from_trading_menu_open_margin_calls,
                             from_about_us_menu_open_client_vulnerability,
                             from_about_us_menu_open_why_capital
                             )
@@ -1416,6 +1418,51 @@ class TestManualDetected:
         link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_581(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+    @allure.step("Start test of link 'charges and fees page' in the block 'How to avoid a margin close-out' "
+                 "on the Page 'Margin Calls'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_589
+    def test_589_link_charges_and_fees_page_in_the_block_how_to_avoid_a_margin_close_out(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [Margin Calls] >
+                Scroll down to the block "How to avoid a margin close-out" >
+                Click link [charges and fees page] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "589",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [Margin Calls] > "
+            "Scroll down to the block 'How to avoid a margin close-out' > "
+            "Click link [charges and fees page].",
+            False, True
+        )
+        pytest.skip("Промежуточная версия")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_margin_calls.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_margin_calls(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_589(d, link, bid)
         test_element.arrange(d, link)
 
         # Act

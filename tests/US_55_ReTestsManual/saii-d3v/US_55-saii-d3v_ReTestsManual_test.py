@@ -255,7 +255,7 @@ class TestManualDetectedBugs:
          Check: The modal window "Confirm Form Resubmission" is not opened after clicking the button [Back]
          on any article from search page.
          Language: All.
-         License: CB.
+         License: SCB.
          Author: Sergey Aiidzhanov
          """
         bid = build_dynamic_arg_for_us_55(
