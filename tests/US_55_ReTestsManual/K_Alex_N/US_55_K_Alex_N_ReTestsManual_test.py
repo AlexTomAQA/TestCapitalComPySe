@@ -3,7 +3,6 @@
 @Date    : 18/10/2024
 @Author  : Alexey Kurochkin
 """
-import time
 from datetime import datetime
 import random
 
@@ -37,8 +36,8 @@ class TestManualDetectedBugs:
     @pytest.mark.bug_467
     def test_467(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: Web pages with URLs of the FCA license are opened
-         in menu item [Risk-management guide] when click on the link [broker]
+         Check: Web pages with URLs of the FCA license are opened
+                in menu item [Risk-management guide] when click on the link [broker]
          Language: EN
          License: ASIC, SCA, CYSEC
          Author: Aleksei Kurochkin
@@ -79,7 +78,7 @@ class TestManualDetectedBugs:
     @pytest.mark.bug_504
     def test_504(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: Link [Privacy Policy] is not active in Sing up form when selected SCA (AR language)
+         Check: Link [Privacy Policy] is not active in Sing up form when selected SCA (AR language)
          Language: AR
          License: SCA
          Author: Aleksei Kurochkin
@@ -155,20 +154,23 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    #
-    # BUGS BELOW ARE SKIPPED (IN PROGRESS)
-    #
-
-    # @pytest.mark.skip("in progress")
     @allure.step(
-        'Start retest manual TC_55!429 | ???')  # todo
+        'Start retest manual TC_55!429 |  The text in the block “What is the outlook for silver prices?” is '
+        'displayed in bold font on the page “Why is the silver price falling? Sinks further below the pivotal '
+        '$20 mark” when ASIC license is selected')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_429
     def test_429(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: ???? todo
+         Check: Menu section [Markets] >
+                Menu item (Commodities) >
+                Scroll down to the block “Commodities markets” >
+                Click the link “Silver” in the widget “Trading instrument” >
+                Scroll down to the block “Latest commodities articles” >
+                Click the article link “Why is the silver price falling? Sinks further below the pivotal $20 mark” >
+                Scroll down to the block “What is the outlook for silver prices?”
 
          Language: EN
          License: ASIC
@@ -178,7 +180,10 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "429",
-            "???",  # todo
+            "Menu section [Markets] > Menu item (Commodities) > Scroll down to the block “Commodities "
+            "markets” > Click the link “Silver” in the widget “Trading instrument” > Scroll down to the block "
+            "“Latest commodities articles” > Click the article link “Why is the silver price falling? Sinks "
+            "further below the pivotal $20 mark” > Scroll down to the block “What is the outlook for silver prices?”",
             False,
             False
         )
@@ -194,7 +199,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if test_el.is_paragraph_with_bold_text_present():
-            Common.pytest_fail('Bug # 55!429 ....')  # todo
+            Common.pytest_fail('Bug # 55!429 there is paragraph\s with bold text')
         Common.save_current_screenshot(d, "AT_55!429 Pass")
 
         # Postconditions
@@ -202,14 +207,20 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!587 | ???')  # todo
+        'Start retest manual TC_55!587 | The page with “404 error message” is displayed after clicking the '
+        'link “liquidity” in the block “Why do companies go public?” on the page “What is an IPO” when EN language '
+        'is selected (SCA / FCA / ASIC / CYSEC licenses)')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au', 'gb', 'ae', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_587
     def test_587(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
-         # Check: ???? todo
+         Check: Hover over menu section [Learn] >
+                Click the menu item [Market guides] of the menu title [For trading beginners] >
+                Click the link “Shares trading guide” >
+                Click the link “Learn more about IPOs.” >
+                Click the link “liquidity”
 
          Language: EN
          License: SCA / FCA / ASIC / CYSEC
@@ -219,7 +230,9 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "587",
-            "???",  # todo
+            "Hover over menu section [Learn] > Click the menu item [Market guides] of the menu "
+            "title [For trading beginners] > Click the link “Shares trading guide” > "
+            "Click the link “Learn more about IPOs.” > Click the link “liquidity”",
             False,
             False
         )
@@ -236,7 +249,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if test_el.is_404_present_on_page():
-            Common.pytest_fail('Bug # 55!587 ....')  # todo
+            Common.pytest_fail('Bug # 55!587 page 404 is opened')
         Common.save_current_screenshot(d, "AT_55!587 Pass")
 
         # Postconditions
@@ -244,8 +257,9 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!513 | ???')  # todo
-    @pytest.mark.parametrize('cur_language', ['en'])
+        'Start retest manual TC_55!513 | The anchor "part 2" on the "Solana price prediction: Can SOL rebound?" '
+        'page is absent when selected ASIC license')
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_513
@@ -256,10 +270,13 @@ class TestManualDetectedBugs:
         self.driver = d
 
         """
-         # Check: ???? todo
+         Check: Hover over to [Markets] menu section >
+                Click to [Market analysis] menu item>  
+                Go through pages and find article "Solana price prediction: Can SOL rebound?" >
+                Click to [Solana to US Dollar] anchor link in "Table of Contents" block
 
          Language: EN
-         License: SCA / FCA / ASIC / CYSEC
+         License: ASIC
          Author: Aleksei Kurochkin
          """
 
@@ -267,7 +284,9 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "513",
-            "???",  # todo
+            'Hover over to [Markets] menu section > Click to [Market analysis] menu item > '
+            'Go through pages and find article "Solana price prediction: Can SOL rebound?" > '
+            'Click to [Solana to US Dollar] anchor link in "Table of Contents" block',
             False,
             False
         )
@@ -283,7 +302,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if not self.bug.is_part2_present_in_titles():
-            Common.pytest_fail('Bug # 55!513 ....')  # todo
+            Common.pytest_fail('Bug # 55!513 link to part2 in table of content do not work')
         Common.save_current_screenshot(d, "AT_55!513 Pass")
 
         # Postconditions
@@ -291,8 +310,9 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!516 | ???')  # todo
-    @pytest.mark.parametrize('cur_language', ['en'])
+        'Start retest manual TC_55!516 | The [collapse] link is leads to non-existent page in the '
+        '"The graph (GRT) price prediction..." article after click to [collapse] link')
+    @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_516
@@ -303,10 +323,12 @@ class TestManualDetectedBugs:
         self.driver = d
 
         """
-         # Check: ???? todo
-
+         Check: Menu section [Markets] > 
+                Menu item [Markets analysis] > 
+                article "The graph (GRT) price prediction.." > 
+                Click on the [collapse] link
          Language: EN
-         License: SCA / FCA / ASIC / CYSEC
+         License: ASIC
          Author: Aleksei Kurochkin
          """
 
@@ -314,7 +336,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "516",
-            "???",  # todo
+            'Menu section [Markets] > Menu item [Markets analysis] > '
+            'article "The graph (GRT) price prediction.." > Click on the [collapse] link',
             False,
             False
         )
@@ -329,7 +352,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if not self.bug.is_possible_open_collapse_page():
-            Common.pytest_fail('Bug # 55!516 ....')  # todo
+            Common.pytest_fail('Bug # 55!516 not possible to open page "collapse"')
         Common.save_current_screenshot(d, "AT_55!516 Pass")
 
         # Postconditions
