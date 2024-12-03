@@ -18,7 +18,7 @@ LINK_RESEARCH_TEAM_LOCATOR = (By.XPATH, "//a[contains(text(), 'Research Team')]"
 PAGE_RESEARCH_TEAM_LOCATOR = (By.XPATH, "//h1[contains(text(), 'Research Team')]")
 
 
-class Bug_405(BasePage):
+class Bug405(BasePage):
 
     @allure.step(f"{datetime.now()}   Start Arrange: find and click pagination item, "
                  f"find and click link page 'BP share price forecast...'")
