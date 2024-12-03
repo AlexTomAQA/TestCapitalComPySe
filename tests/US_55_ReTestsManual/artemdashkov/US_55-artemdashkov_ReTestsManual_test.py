@@ -1476,10 +1476,10 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_language', ["ar"])
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
-    @pytest.mark.parametrize('link_for_check', ["+97145768641", "support@capital.com"])
+    @pytest.mark.parametrize('name_link_for_check', ["+97145768641", "support@capital.com"])
     @pytest.mark.bug_610
     def test_610_link_97145768641_and_support_capital_com_on_the_client_vulnerability_page(
-            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, link_for_check):
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, name_link_for_check):
         """
         Check:  Menu section [About] >
                 Menu item [Help] >
@@ -1501,7 +1501,7 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Промежуточная версия")
+        # pytest.skip("Промежуточная версия")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_about_us_menu_open_help.MenuNew(d, cur_item_link)
@@ -1511,7 +1511,7 @@ class TestManualDetected:
         test_element.arrange(d, link)
 
         # Act
-        test_element.act(d, link_for_check)
+        test_element.act(d, name_link_for_check)
 
         # Assert
-        test_element.assert_(d, link, link_for_check)
+        test_element.assert_(d, link, name_link_for_check)
