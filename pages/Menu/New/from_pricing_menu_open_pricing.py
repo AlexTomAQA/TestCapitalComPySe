@@ -7,6 +7,7 @@ import allure
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import PricingMenuNew
+from pages.conditions_v2 import CYSEC_COUNTRIES
 
 SUBMENU_FCA_PRICING = ("css selector", "div > a[data-type='nav_id737']")
 SUBMENU_SCA_PRICING = ("css selector", "div > a[data-type='nav_id804']")
@@ -33,7 +34,7 @@ class MenuNew(MenuBase):
         if cur_country == 'au':
             menu_locator = PricingMenuNew.MENU_ASIC_PRICING
             submenu_locator = SUBMENU_ASIC_PRICING
-        if cur_country in ['at', 'de']:
+        if cur_country in CYSEC_COUNTRIES:
             menu_locator = PricingMenuNew.MENU_CYSEC_PRICING
             submenu_locator = SUBMENU_CYSEC_PRICING
 

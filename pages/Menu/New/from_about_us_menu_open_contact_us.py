@@ -7,6 +7,7 @@ import allure
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import AboutUsMenuNew
+from pages.conditions_v2 import CYSEC_COUNTRIES
 
 SUBMENU_FCA_CONTACT_US = ("css selector", "[data-type='nav_id699']")
 SUBMENU_SCA_CONTACT_US = ("css selector", "[data-type='nav_id810']")
@@ -33,7 +34,7 @@ class MenuNew(MenuBase):
         if cur_country == 'au':
             menu_locator = AboutUsMenuNew.MENU_ASIC_ABOUT_US
             submenu_locator = SUBMENU_ASIC_CONTACT_US
-        if cur_country in ['at', 'de']:
+        if cur_country in CYSEC_COUNTRIES:
             menu_locator = AboutUsMenuNew.MENU_CYSEC_ABOUT_US
             submenu_locator = SUBMENU_CYSEC_CONTACT_US
 
