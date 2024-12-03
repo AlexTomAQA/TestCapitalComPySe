@@ -719,13 +719,11 @@ class TestManualDetectedBugs:
                    'selected ASIC license'
         )
 
-        Common.pytest_skip("Under construction")
-
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_markets_menu_open_market_analysis.MenuNew(d, link)
         cur_item_link = menu.from_markets_menu_open_market_analysis(d, cur_language, cur_country, link)
 
         test_element = AnnouncedLink(d, cur_item_link, bid)
-        test_element.announced_link(d, cur_item_link)
+        test_element.announced_link(d, cur_item_link, link)
         test_element.element_click()
         test_element.assert_()
