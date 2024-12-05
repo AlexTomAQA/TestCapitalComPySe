@@ -20,6 +20,16 @@ class SocialNetwork(BasePage):
     def social_networks(self, d, cur_item_link):
         print(f"\n{datetime.now()}   1. Arrange")
 
+        tabs = self.driver.window_handles
+        while True:
+            if len(tabs) > 1:
+                self.driver.switch_to.window(tabs[0])
+                self.driver.close()
+                self.driver.switch_to.window(tabs[1])
+                tabs = self.driver.window_handles
+            else:
+                break
+
         if not self.current_page_is(cur_item_link):
             self.link = cur_item_link
             self.open_page()
@@ -43,9 +53,8 @@ class SocialNetwork(BasePage):
                 self.driver.back()
 
         tabs = self.driver.window_handles
-        self.driver.switch_to.window(tabs[0])
-        self.driver.close()
         self.driver.switch_to.window(tabs[1])
+
         current_url = self.driver.current_url
         print(f"{datetime.now()}   Current URL is {current_url}")
 
@@ -69,10 +78,8 @@ class SocialNetwork(BasePage):
         print(f"{datetime.now()}   The {random_social_icon.text} icon is clicked")
 
         tabs = self.driver.window_handles
-        if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[0])
-            self.driver.close()
-            self.driver.switch_to.window(tabs[1])
+        if len(tabs) > 2:
+            self.driver.switch_to.window(tabs[2])
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_page(self, d):
