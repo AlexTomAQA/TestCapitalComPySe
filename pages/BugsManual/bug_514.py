@@ -5,19 +5,17 @@
 """
 
 
-import random
 from datetime import datetime
 import allure
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
-from urllib import request, error
 
 
 class AnnouncedLink(BasePage):
     @allure.step(f"{datetime.now()}   Start testing that the page with 'Maple crypto-lending' content is opened”")
-    def announced_link(self, d, cur_item_link):
+    def announced_link(self, d, cur_item_link, cur_link):
         print(f"{datetime.now()}   1. Arrange")
 
         if not self.current_page_is(cur_item_link):
@@ -28,24 +26,26 @@ class AnnouncedLink(BasePage):
         p = 1
         while p <= 24:
             try:
-                article = self.driver.find_element(By.CSS_SELECTOR, 'div.article_content__1GOa_ > a[href*="solana-sol-price-prediction-is-it-a-solid-investment"]')
+                article = self.driver.find_element(By.CSS_SELECTOR, 'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment"]')
+                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                                           article)
                 article.click()
                 break
             except NoSuchElementException:
                 p += 1
-                print(f"{datetime.now()}   Go to the next page")
-#                pagination = self.driver.find_element(By.LINK_TEXT, str(page))
-                pagination = self.driver.find_element(By.CSS_SELECTOR, f'a[href*="page={p}"]')
+                print(f"{datetime.now()}   Go to the page {p}")
+                pagination = self.driver.find_element(By.LINK_TEXT, str(p))
                 self.driver.execute_script(
-                    'return arguments[0].scrollIntoView({block: "start", inline: "center"});',
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
                     pagination
                 )
                 pagination.click()
+        self.wait_for_change_url(cur_link)
 
         print(f"{datetime.now()}   Scroll to the 'Table of Contents'")
         table_of_contents = self.driver.find_element(By.CLASS_NAME, 'tableOfContent_frame__1c2SI')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "start", inline: "center"};',
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             table_of_contents
         )
 
@@ -58,24 +58,34 @@ class AnnouncedLink(BasePage):
 
         print(f"{datetime.now()}   Click on the [announced] link in the text")
         announced_link = self.driver.find_element(By.LINK_TEXT, 'announced')
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            announced_link
+        )
         announced_link.click()
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
         print(f"{datetime.now()}   3.Assert")
 
-        current_url = self.driver.current_url()
+        tabs = self.driver.window_handles
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[0])
+            self.driver.close()
+            self.driver.switch_to.window(tabs[1])
+            current_url = self.driver.current_url
+            print(f"{datetime.now()}   current URL is '{current_url}")
 
+        page_title = self.driver.title
+        allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+        print(f"{datetime.now()}   The page with title '{page_title}' is opened")
 
-        # Отправляем GET-запрос
-        response = request.urlopen(current_url)
-        # Получаем статус код
-        status_code = response.getcode()
-
-        if status_code != 200:
-            print(f"{datetime.now()}   Status code is {status_code}")
+        if page_title == 'Not Found':
             Common.pytest_fail(f"# Bug 55!514 "
                                f"\n"
-                               f"Expected result: The page with 'Maple crypto-lending' content is opened, Status code is 200"
+                               f"Expected result: The page with 'Maple crypto-lending' content is opened"
                                f"\n"
-                               f"Actual result: The page with 'Maple crypto-lending' content is not opened, Status code is {status_code}")
+                               f"Actual result: The page with title '{page_title}' is opened")
+        else:
+            print(f"{datetime.now()}   The page with 'Maple crypto-lending' is opened")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
