@@ -52,17 +52,17 @@ class TestManualDetectedBugs:
         def open_the_article():
             self.driver.find_element(*article_locator).click()
 
-        def go_to_next_page(i):
+        def go_to_next_page():
             self.driver.find_element(*locator_link_next_page).click()
 
         last_page = get_last_page()
 
-        for i in range(1, last_page):
+        for _ in range(1, last_page):
             if is_article_present():
                 open_the_article()
                 return
             else:
-                go_to_next_page(i)
+                go_to_next_page()
 
         else:
             raise Exception(f"{last_page} pages were checked. Artile was not found.")
