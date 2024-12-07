@@ -40,6 +40,7 @@ from pages.BugsManual.bug_455 import BUG_455
 from pages.BugsManual.bug_503 import BUG_503
 from pages.BugsManual.bug_581 import BUG_581
 from pages.BugsManual.bug_589 import BUG_589
+from pages.BugsManual.bug_610 import BUG_610
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -56,6 +57,7 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_margin_calls,
                             from_about_us_menu_open_client_vulnerability,
+                            from_about_us_menu_open_help,
                             from_about_us_menu_open_why_capital
                             )
 
@@ -1455,7 +1457,6 @@ class TestManualDetected:
             "Click link [charges and fees page].",
             False, True
         )
-        pytest.skip("Промежуточная версия")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
@@ -1470,3 +1471,47 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, link)
+
+    @allure.step("Start test of link '+97145768641' and 'support@capital.com' on the 'Help' Page")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.parametrize('name_link_for_check', ["+97145768641", "support@capital.com"])
+    @pytest.mark.bug_610
+    def test_610_link_97145768641_and_support_capital_com_on_the_client_vulnerability_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password, name_link_for_check):
+        """
+        Check:  Menu section [About] >
+                Menu item [Help] >
+                Scroll down to the block 'Still looking for help? Get in touch' >
+                Try to click link '+97145768641' and 'support@capital.com'
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "610",
+            "'Help' Page >"
+            "Scroll down to the block 'Still looking for help? Get in touch' >"
+            "Click link '+97145768641' and 'support@capital.com'",
+            False, True
+        )
+        # Arrange
+        # pytest.skip("Промежуточная версия")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_about_us_menu_open_help.MenuNew(d, cur_item_link)
+        link = page_menu.from_about_us_menu_open_help(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_610(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d, name_link_for_check)
+
+        # Assert
+        test_element.assert_(d, link, name_link_for_check)

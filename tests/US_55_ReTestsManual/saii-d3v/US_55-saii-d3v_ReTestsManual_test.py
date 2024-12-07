@@ -38,6 +38,7 @@ from pages.BugsManual.bug_379 import Bug379
 from pages.BugsManual.bug_392 import Bug392
 from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
+from pages.BugsManual.bug_433 import Bug433
 from pages.BugsManual.bug_507 import Bug507
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -1427,7 +1428,53 @@ class TestManualDetectedBugs:
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
     @allure.step(
-        'Start retest manual TC_55!507 | The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"')
+        'Start retest manual TC_55!433 | The old version of the page "US Tech 100 index trading guide" is opened '
+        'instead of the new one on FCA/SCA licences')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae', 'gb'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_433
+    def test_433(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: The old version of the page "US Tech 100 index trading guide" is opened
+         instead of the new one on FCA/SCA licences
+         Language: EN.
+         License: FCA, SCA.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "433",
+            'The old version of the page "US Tech 100 index trading guide" is opened '
+            'instead of the new one on FCA/SCA licences',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug433(d, link, bid)
+        test_el.open_markets_page(d, cur_language, cur_country, link)
+        test_el.open_us100_page()
+
+        # Act
+        test_el.click_trading_guide_link()
+
+        # Assert
+        if not test_el.should_be_new_version_page():
+            Common.pytest_fail('Bug # 55!433 The OLD VERSION of the page is opened')
+        Common.save_current_screenshot(d, "AT_55!433 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!507 | The "Trading Conditions" table is not visible '
+        'on the page "Trade Australia 200 - AU200au CFD"')
     @pytest.mark.parametrize('cur_language', ['de', ''])
     @pytest.mark.parametrize('cur_country', ['au', 'de'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
@@ -1444,7 +1491,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "507",
-            'The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"',
+            'The "Trading Conditions" table is not visible '
+            'on the page "Trade Australia 200 - AU200au CFD"',
             False,
             False
         )

@@ -16,11 +16,12 @@ from pages.BugsManual.bug_315 import Bug315
 from pages.BugsManual.bug_326 import Bug326
 from pages.BugsManual.bug_350 import Bug350
 from pages.BugsManual.bug_363 import Bug363
-from pages.BugsManual.bug_405 import Bug_405
+from pages.BugsManual.bug_405 import Bug405
+from pages.BugsManual.bug_408 import Bug408
 from pages.BugsManual.bug_472 import Bug472
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.New import from_markets_menu_open_market_analysis, from_markets_menu_open_cryptocurrencies, \
-    from_about_us_menu_open_about_us
+    from_about_us_menu_open_about_us, from_learn_menu_open_trading_strategies
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -493,7 +494,58 @@ class TestManualDetectedBugs:
         link = page_menu.from_markets_menu_open_market_analysis(
             d, cur_language, cur_country, cur_item_link)
 
-        test_element = Bug_405(d, link, bid)
+        test_element = Bug405(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of link '[ عقود الفروقات على الفضة ] (“silver CFDs”)'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ['ae'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_408
+    def test_408_link_research_silver_cfd_eng_lang(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section  [الأسواق ] (Learn) >
+                Menu item [ استراتيجيات التداول ](Trading Strategies) >
+                Scroll down to the block “Our most-read trading guides” >
+                Click the link  [دليل التداول بالهامش ] (Margin trading guide) >
+                Scroll down to the block “الأسئلة الشائعة” (FAQs) >
+                Сlick the header of accordion “ما هو التداول بالهامش مع الشرح بمثال؟” (“What is the margin ...”) >
+                Click the link [ عقود الفروقات على الفضة ] (“silver CFDs”)
+
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: podchasova11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "408",
+            "Menu section [Learn] > Menu item [Trading Strategies] >"
+            "Scroll down to the block 'Our most-read trading guides' >"
+            "Click the link  [دليل التداول بالهامش ] (Margin trading guide) >"
+            "Scroll down to the block “الأسئلة الشائعة” (FAQs) >"
+            "Сlick the header of the accordion “ما هو التداول بالهامش مع الشرح بمثال؟” (“What is the margin ...”) >"
+            "Click the link [ عقود الفروقات على الفضة ] (“silver CFDs”) ",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_learn_menu_open_trading_strategies.MenuNew(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_trading_strategies(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = Bug408(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
@@ -549,3 +601,4 @@ class TestManualDetectedBugs:
 
         # Assert
         test_element.assert_(d)
+

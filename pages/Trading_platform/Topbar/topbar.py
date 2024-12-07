@@ -49,10 +49,10 @@ class TopBar(BasePage):
             return False
         print(f"{datetime.now()}   => Account info icon is visible on this page")
 
-        print(f"{datetime.now()}   => Close 'Terms and policies' pop-up")
-        terms_and_policies = self.driver.find_element(By.CSS_SELECTOR,
-                                                      'terms-and-conditions-popup em.iconex-close-small.ng-star-inserted')
-        terms_and_policies.click()
+        # print(f"{datetime.now()}   => Close 'Terms and policies' pop-up")
+        # terms_and_policies = self.driver.find_element(By.CSS_SELECTOR,
+        #                                               'terms-and-conditions-popup em.iconex-close-small.ng-star-inserted')
+        # terms_and_policies.click()
 
         print(f"{datetime.now()}   Account info icon is click =>")
         button_list = self.driver.find_elements(*ACCOUNT_INFO_ICON)
