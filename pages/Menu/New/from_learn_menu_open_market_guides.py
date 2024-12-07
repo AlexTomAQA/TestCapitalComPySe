@@ -15,8 +15,9 @@ SUBMENU_SCA_MARKET_GUIDES = (
     By.CSS_SELECTOR, "div:nth-child(3) > div.menuGroup_dropdown__75ey5 a[data-type='nav_id839']")
 SUBMENU_SCA_AR_MARKET_GUIDES = (
     By.CSS_SELECTOR, "div:nth-child(3) > div.menuGroup_dropdown__75ey5 a[data-type='nav_id839']")
-SUBMENU_ASIC_MARKET_GUIDES = (
-    By.CSS_SELECTOR, "a[data-type='nav_id1179']")
+SUBMENU_ASIC_MARKET_GUIDES = (By.CSS_SELECTOR, "a[data-type='nav_id1179']")
+SUBMENU_CYSEC_MARKET_GUIDES = (By.CSS_SELECTOR, "a[data-type='nav_id1596']")
+
 
 class MenuNewLearn(MenuBase):
 
@@ -31,6 +32,9 @@ class MenuNewLearn(MenuBase):
         if cur_country == 'gb':
             menu_locator = LearnMenuNew.MENU_FCA_LEARN
             submenu_locator = SUBMENU_FCA_MARKET_GUIDES
+        elif cur_country == 'de':
+            menu_locator = LearnMenuNew.MENU_CYSEC_LEARN
+            submenu_locator = SUBMENU_CYSEC_MARKET_GUIDES
         elif cur_country == 'ae':
             menu_locator = LearnMenuNew.MENU_SCA_LEARN
             submenu_locator = SUBMENU_SCA_MARKET_GUIDES

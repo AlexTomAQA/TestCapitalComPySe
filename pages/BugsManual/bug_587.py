@@ -31,3 +31,4 @@ class Bug587(BasePage):
         if self.driver.find_element(*Locators.TEXT_404):
             return True
         return False
+
