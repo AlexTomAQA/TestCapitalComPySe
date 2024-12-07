@@ -41,6 +41,7 @@ from pages.BugsManual.bug_503 import BUG_503
 from pages.BugsManual.bug_581 import BUG_581
 from pages.BugsManual.bug_589 import BUG_589
 from pages.BugsManual.bug_610 import BUG_610
+from pages.BugsManual.bug_617 import BUG_617
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1501,7 +1502,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        # pytest.skip("Промежуточная версия")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_about_us_menu_open_help.MenuNew(d, cur_item_link)
@@ -1515,3 +1515,48 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, link, name_link_for_check)
+
+    @allure.step("Start test of link 'Trailing stop loss' in the block 'Risk-management tools' "
+                 "on the Page 'Web platform'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_617
+    def test_617_link_trailing_stop_loss_in_the_block_risk_management_tools(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [Web platform] >
+                Scroll down to the block "Risk-management tools" >
+                Click link [Trailing stop loss] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "617",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [Web platform] > "
+            "Scroll down to the block 'Risk-management tools' > "
+            "Click link [Trailing stop loss].",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Промежуточная версия")
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_web_platform.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_web_platform(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_617(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
