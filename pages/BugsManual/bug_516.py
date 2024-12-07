@@ -19,6 +19,7 @@ class Bug516(BasePage):
     def open_market_analysis_page(self, test):
         MenuNew(self.driver).from_markets_menu_open_market_analysis(test.driver, test.cur_language,
                                                                     test.cur_country, test.link)
+
     def is_possible_open_collapse_page(self):
         try:
             self.driver.find_element(Locators.LINK_COLLAPSE).click()

@@ -8,6 +8,7 @@ import random
 
 import pytest
 import allure
+from selenium.common import NoSuchElementException
 
 from pages.BugsManual.bug_429 import Bug429
 from pages.BugsManual.bug_444 import Bug444
@@ -26,6 +27,45 @@ from src.src import CapitalComPageSrc
 @pytest.mark.us_55
 class TestManualDetectedBugs:
     page_conditions = None
+
+    def search_and_open_an_article_in_market_analysis_page(self, part_of_article_title):
+
+        article_locator = ('xpath', f"//div[@id='alc']//b[contains(text(), '{part_of_article_title}')]")
+        locator_link_next_page = ('xpath', '//a[@aria-label="Go to the next page"]')
+        locator_last_page = ('xpath', '//a[@aria-label="Go to the next page"]/preceding::a[1]')
+
+        def is_article_present():
+            try:
+                self.driver.find_element(*article_locator)
+                return True
+            except NoSuchElementException:
+                return False
+
+        def get_last_page() -> int:
+            try:
+                last_page_obj = self.driver.find_element(*locator_last_page)
+                last_page_number = int(last_page_obj.text)
+                return last_page_number
+            except:
+                raise Exception("Last page number was not found")
+
+        def open_the_article():
+            self.driver.find_element(*article_locator).click()
+
+        def go_to_next_page(i):
+            self.driver.find_element(*locator_link_next_page).click()
+
+        last_page = get_last_page()
+
+        for i in range(1, last_page):
+            if is_article_present():
+                open_the_article()
+                return
+            else:
+                go_to_next_page(i)
+
+        else:
+            raise Exception(f"{last_page} pages were checked. Artile was not found.")
 
     @allure.step(
         'Start retest manual TC_55!467 | Web pages with URLs of the FCA license '
@@ -295,7 +335,7 @@ class TestManualDetectedBugs:
         self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         self.bug = Bug513(test)
         self.bug.open_market_analysis_page(test)
-        self.bug.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
+        self.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
 
         # Act
         self.bug.is_link_to_part2_present_in_table_of_content()
@@ -348,7 +388,7 @@ class TestManualDetectedBugs:
         self.bug.open_market_analysis_page(test)
 
         # Act
-        self.bug.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
+        self.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
 
         # Assert
         if not self.bug.is_possible_open_collapse_page():
