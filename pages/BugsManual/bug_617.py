@@ -11,36 +11,49 @@ from pages.base_page import BasePage
 from pages.common import Common
 from src.src import CapitalComPageSrc
 
-HOW_TO_AVOID_A_MARGIN_CLOSE_OUT_BLOCK_LOCATOR = (
-    By.XPATH, "(//div[@data-type='benefits_block'] //h2[@class='heading_h2__kkLcC heading_noMargins__P5e_q'])[3]"
+RISK_MANAGEMENT_TOOLS_BLOCK_LOCATOR = (
+    By.XPATH,
+    "(//div [@class='grid_grid__2D3md grid_md__Udd_J grid_gSmLg__B_vHD grid_center__cwyYf grid_fit__9qW_j'])[6]"
 )
-CHARGES_AND_FEES_PAGE_LINK_LOCATOR = (By.CSS_SELECTOR, "div[class*='helpers_content'] a[href*='fees-and-charges']")
-CHARGES_AND_FEES_TITLE_LOCATOR = (By.XPATH, "//h1[contains(text(), 'Charges and fees')]")
+# RISK_MANAGEMENT_TOOLS_BLOCK_LOCATOR = (
+#     By.CSS_SELECTOR,
+#     "[data-type='banner_in_body_block'] [class='grid_grid__2D3md grid_gMdLg__9Xp_H'] >.grid_grid__2D3md:nth-child(6)"
+# )
+
+TRAILING_STOP_LOSS_LINK_LOCATOR = (By.CSS_SELECTOR, "a[href*='capitalcysec.zendesk.com']")
+HELP_CENTER_NO_LONGER_EXISTS_LOCATOR = (By.XPATH, "//h1[contains(text(), 'Oops, this help center no longer exists')]")
 
 class BUG_617(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find 'How to avoid a margin close-out' block, "
-                 f"find link [charges and fees page].")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find 'Risk-management tools' block, "
+                 f"find link [Trailing stop loss].")
     def arrange(self, d, link):
-        print(f"\n{datetime.now()}   1. Start Arrange: find 'How to avoid a margin close-out' block.")
+        print(f"\n{datetime.now()}   1. Start Arrange: find 'Risk-management tools' block.")
         if not self.current_page_is(link):
             self.link = link
             self.open_page()
 
-        # Check presenting, visibility block 'How to avoid a margin close-out'
-        self.find_block_scroll_and_check_visibility("How to avoid a margin close-out",
-                                                    HOW_TO_AVOID_A_MARGIN_CLOSE_OUT_BLOCK_LOCATOR)
+        # Check presenting, visibility block
+        self.find_block_scroll_and_check_visibility("Risk-management tools",
+                                                    RISK_MANAGEMENT_TOOLS_BLOCK_LOCATOR)
 
-        # Check presenting, visibility and clickability link 'charges and fees page'
-        self.find_link_scroll_check_visibility_and_clickability("charges and fees page",
-                                                                CHARGES_AND_FEES_PAGE_LINK_LOCATOR)
+        # Check presenting, visibility and clickability link
+        self.find_link_scroll_check_visibility_and_clickability("Trailing stop loss",
+                                                                TRAILING_STOP_LOSS_LINK_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
         print(f"{datetime.now()}   2. Start Act.")
-        # Click link 'charges and fees page'
-        Common().click_link_and_print(d, 'charges and fees page', CHARGES_AND_FEES_PAGE_LINK_LOCATOR)
-        Common().save_current_screenshot(d, "Opened page after click link 'charges and fees page'")
+        # Click link
+        tabs = self.driver.window_handles
+        print(len(tabs))
+        Common().click_link_and_print(d, 'Trailing stop loss', TRAILING_STOP_LOSS_LINK_LOCATOR)
+        tabs = self.driver.window_handles
+        print(len(tabs))
+        if tabs != 0:
+            self.driver.switch_to.window(tabs[2])
+        time.sleep(5)
+        Common().save_current_screenshot(d, "Opened page after click link 'Trailing stop loss'")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d, link):
@@ -49,11 +62,12 @@ class BUG_617(BasePage):
 
         # Check opened page
         print(f'{datetime.now()}   Current page is: {self.driver.current_url}')
-        if len(self.driver.find_elements(*CHARGES_AND_FEES_TITLE_LOCATOR)) == 0:
-            msg = f"Current page isn't 'Charges and fees'"
+        if len(self.driver.find_elements(*HELP_CENTER_NO_LONGER_EXISTS_LOCATOR)) != 0:
+            msg = f"Help center no longer exists"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Current page have title 'Charges and fees', need to analyze page screen.")
+        print(f"{datetime.now()}   Current page don't have message 'Oops, this help center no longer exists', "
+              f"need to analyze page screen.")
 
         self.driver.get(CapitalComPageSrc.URL_NEW_AR_AE)
         return True
