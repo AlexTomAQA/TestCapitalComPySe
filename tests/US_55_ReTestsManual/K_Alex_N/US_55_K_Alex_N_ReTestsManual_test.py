@@ -17,6 +17,8 @@ from pages.BugsManual.bug_504 import Bug504
 from pages.BugsManual.bug_513 import Bug513
 from pages.BugsManual.bug_516 import Bug516
 from pages.BugsManual.bug_587 import Bug587
+from pages.BugsManual.bug_603 import Bug603
+from pages.BugsManual.bug_634 import Bug634
 from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
@@ -394,6 +396,98 @@ class TestManualDetectedBugs:
         if not self.bug.is_possible_open_collapse_page():
             Common.pytest_fail('Bug # 55!516 not possible to open page "collapse"')
         Common.save_current_screenshot(d, "AT_55!516 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!603 | ')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
+    @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
+    @pytest.mark.bug_603
+    def test_603(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
+
+        """
+         Check: 
+         Language: EN
+         License: SCA, FCA, CYSEC or ASIC
+         Author: Aleksei Kurochkin
+         """
+
+        self.bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "603",
+            '',
+            False,
+            False
+        )
+
+        # Arrange
+        self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        self.bug = Bug603(test)
+        self.bug.open_charges_and_fees_page(test)
+
+        # Act
+        self.bug.click_find_out_more_link()
+
+        # Assert
+        if self.bug.if_page_loader_present():
+            Common.pytest_fail('Bug # 55!603 the page loader is present"')
+        Common.save_current_screenshot(d, "AT_55!603 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!634 | ')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
+    @pytest.mark.parametrize('cur_role', random.sample(['NoAuth', 'NoReg'], 1))
+    @pytest.mark.bug_634
+    def test_634(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
+
+        """
+         Check: 
+         Language: EN
+         License: SCA, FCA, CYSEC or ASIC
+         Author: Aleksei Kurochkin
+         """
+
+        self.bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "634",
+            '',
+            False,
+            False
+        )
+
+        # Arrange
+        self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        self.bug = Bug634(test)
+        self.bug.open_market_analysis_page(test)
+        self.search_and_open_an_article_in_market_analysis_page("Gold price predictions for the next")
+        self.bug.click_try_demo()
+
+        # Act
+        self.bug.close_pop_up_window()
+
+        # Assert
+        if self.bug.if_page_loader_present():
+            Common.pytest_fail('Bug # 55!634 the page loader is present"')
+        Common.save_current_screenshot(d, "AT_55!634 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
