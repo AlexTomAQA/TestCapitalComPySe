@@ -53,7 +53,7 @@ class AnnouncedLink(BasePage):
         could_solana_item = self.driver.find_element(By.XPATH, '//span[contains(text(), "Could Solana become a Cardano side-chain?")]')
         could_solana_item.click()
 
-    def element_click(self):
+    def element_click(self, cur_link):
         print(f"{datetime.now()}   2. Act")
 
         print(f"{datetime.now()}   Click on the [announced] link in the text")
@@ -63,6 +63,7 @@ class AnnouncedLink(BasePage):
             announced_link
         )
         announced_link.click()
+        self.wait_for_change_url(cur_link)
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
