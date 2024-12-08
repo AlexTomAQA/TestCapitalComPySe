@@ -1,0 +1,12 @@
+2024-12-07 22:38:12 ERROR Elements not present after 0.5 seconds on page: https://capital.com/ru/crude-oil-future-syr-evye-tovary
+2024-12-07 22:38:12 ERROR Can't click element by locator <selenium.webdriver.remote.webelement.WebElement (session="aa5a4ce696407967f14db871bb46106d", element="f.DA6F9B802E057D42D77897B0F1F4B0E9.d.B8C68C4DFE18279B13C2A4A1E3433518.e.2221")>
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 387, in element_is_clickable
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: Can't click element by locator <selenium.webdriver.remote.webelement.WebElement (session="aa5a4ce696407967f14db871bb46106d", element="f.DA6F9B802E057D42D77897B0F1F4B0E9.d.B8C68C4DFE18279B13C2A4A1E3433518.e.2221")>
