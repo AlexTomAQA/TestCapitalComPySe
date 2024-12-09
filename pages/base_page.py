@@ -21,7 +21,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.Capital.capital_locators import OnTrustLocators, Captcha
 from pages.common import Common
 
-
 # from src.src import (
 #     CapitalComPageSrc,
 # )
@@ -674,7 +673,7 @@ class BasePage:
             selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
         """
         if locator[0] == By.XPATH:
-            new_locator = (locator[0], f'{locator[1]}[{number}]')
+            new_locator = (locator[0], f'{locator[1]}[{number}]' )
             return new_locator
         else:
             pass
@@ -744,5 +743,3 @@ class BasePage:
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Block '{name_of_block}' visible on the current page\n")
-
-
