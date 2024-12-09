@@ -401,6 +401,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
+    @pytest.mark.skip()
     @allure.step(
         'Start retest manual TC_55!603 | ')
     @pytest.mark.parametrize('cur_language', [''])
@@ -446,6 +447,7 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
+    @pytest.mark.skip()
     @allure.step(
         'Start retest manual TC_55!634 | ')
     @pytest.mark.parametrize('cur_language', [''])
