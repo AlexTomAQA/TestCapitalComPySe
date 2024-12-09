@@ -1546,7 +1546,13 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Промежуточная версия")
+        user_agent = self.d.execute_script("return navigator.userAgent;")
+        print(user_agent)
+        # pytest.skip("Промежуточная версия")
+
+        # chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+        # chrome_options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3")
+
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_web_platform.MenuNew(d, cur_item_link)

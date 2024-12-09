@@ -45,13 +45,11 @@ class BUG_617(BasePage):
     def act(self, d):
         print(f"{datetime.now()}   2. Start Act.")
         # Click link
-        tabs = self.driver.window_handles
-        print(len(tabs))
+        tabs_before_click = self.driver.window_handles
         Common().click_link_and_print(d, 'Trailing stop loss', TRAILING_STOP_LOSS_LINK_LOCATOR)
-        tabs = self.driver.window_handles
-        print(len(tabs))
-        if tabs != 0:
-            self.driver.switch_to.window(tabs[2])
+        tabs_after_click = self.driver.window_handles
+        if len(tabs_after_click) > len(tabs_before_click):
+            self.driver.switch_to.window(tabs_after_click[-1])
         time.sleep(5)
         Common().save_current_screenshot(d, "Opened page after click link 'Trailing stop loss'")
 
