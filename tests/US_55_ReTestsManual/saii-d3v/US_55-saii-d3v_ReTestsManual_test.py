@@ -40,12 +40,14 @@ from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
 from pages.BugsManual.bug_433 import Bug433
 from pages.BugsManual.bug_507 import Bug507
+from pages.BugsManual.bug_613 import Bug613
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
 from pages.Elements.Alert import Alert
 from pages.Menu.menu import MenuSection
 from src.src import CapitalComPageSrc
+from pages.conditions_v2 import CYSEC_COUNTRIES
 
 
 @pytest.mark.us_55
@@ -1513,6 +1515,47 @@ class TestManualDetectedBugs:
         if not test_el.should_be_trading_conditions_table():
             Common.pytest_fail('Bug # 55!507 The table in the block "Trading Conditions" is NOT visible')
         Common.save_current_screenshot(d, "AT_55!507 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!613 | Scrolling is disabled after changing one CYSEC country to another '
+        'in EN language')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', random.sample(CYSEC_COUNTRIES, 1))
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_613
+    def test_613(self, worker_id, d, cur_language, cur_country, cur_role,
+                 cur_login, cur_password):
+        """
+         Check: Scrolling is disabled after changing one CYSEC country to another
+         Language: EN.
+         License: CYSEC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "613",
+            'Scrolling is disabled after changing one CYSEC country to another in EN language',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug613(d, link, bid)
+
+        # Act
+        test_el.change_language(cur_country)
+
+        # Assert
+        if not test_el.should_be_enabled_scroll():
+            Common.pytest_fail('Bug # 55!613 Scroll of the page is DISABLED')
+        Common.save_current_screenshot(d, "AT_55!613 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
