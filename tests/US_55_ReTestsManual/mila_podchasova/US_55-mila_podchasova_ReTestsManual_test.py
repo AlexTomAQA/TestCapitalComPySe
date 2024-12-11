@@ -19,9 +19,10 @@ from pages.BugsManual.bug_363 import Bug363
 from pages.BugsManual.bug_405 import Bug405
 from pages.BugsManual.bug_408 import Bug408
 from pages.BugsManual.bug_472 import Bug472
+from pages.BugsManual.bug_594 import Bug594
 from pages.Elements.PlatformOverviewButton import PlatformOverviewButton
 from pages.Menu.New import from_markets_menu_open_market_analysis, from_markets_menu_open_cryptocurrencies, \
-    from_about_us_menu_open_about_us, from_learn_menu_open_trading_strategies
+    from_about_us_menu_open_about_us, from_learn_menu_open_trading_strategies, from_trading_menu_open_mobile_apps
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 
@@ -602,3 +603,46 @@ class TestManualDetectedBugs:
         # Assert
         test_element.assert_(d)
 
+    @allure.step("Start test of link “CFD” in the block 'Capital.com mobile apps' on the page 'Mobile apps'")
+    @pytest.mark.parametrize('cur_language', ['de'])
+    @pytest.mark.parametrize('cur_country', ['de'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_594
+    def test_594_link_research_silver_cfd_eng_lang(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Menu section  [Trading] (Trading) >
+                Menu item [Applications mobiles] (Mobile apps) >
+                Click the link “CFD” in the block
+                “Les applications mobiles de Capital.com” (Capital.com mobile apps) >
+
+        Language: FR, IT
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: podchasova11
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "594",
+            "Menu section [Trading] > Menu item [Mobile apps] >"
+            "Click the link [CFD] ",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country,
+                                                    cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_mobile_apps.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_mobile_apps(
+            d, cur_language, cur_country, cur_item_link)
+
+        test_element = Bug594(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d)
