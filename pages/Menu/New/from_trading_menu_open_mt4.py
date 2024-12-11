@@ -7,6 +7,7 @@ import allure
 
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import TradingMenuNew
+from pages.conditions_v2 import CYSEC_COUNTRIES
 
 SUBMENU_FCA_MT4 = ("css selector", "[data-type='nav_id746']")
 SUBMENU_SCA_MT4 = ("css selector", "[data-type='nav_id819']")
@@ -33,7 +34,7 @@ class MenuNew(MenuBase):
         if cur_country == 'au':
             menu_locator = TradingMenuNew.MENU_ASIC_TRADING
             submenu_locator = SUBMENU_ASIC_MT4
-        if cur_country in ['at', 'de']:
+        if cur_country in CYSEC_COUNTRIES:
             menu_locator = TradingMenuNew.MENU_CYSEC_TRADING
             submenu_locator = SUBMENU_CYSEC_MT4
 
