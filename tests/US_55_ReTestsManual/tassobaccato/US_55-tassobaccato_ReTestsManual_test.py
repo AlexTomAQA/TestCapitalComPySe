@@ -600,8 +600,7 @@ class TestManualDetectedBugs:
 
         test_element = LinkIPO(d, cur_item_link, bid)
         test_element.link_ipo_v2(d, cur_item_link, link)
-        test_element.element_click(d, link)
-        test_element.assert_url(d)
+        test_element.assert_url(d, link)
 
 
     @allure.step('Start retest manual AT_55!420 Menu item [Payments and withdrawals] in the footer')
