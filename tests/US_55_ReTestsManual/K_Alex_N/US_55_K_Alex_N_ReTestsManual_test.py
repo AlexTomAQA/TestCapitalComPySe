@@ -401,13 +401,11 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    # @pytest.mark.skip()
     @allure.step(
-        'Start retest manual TC_55!603 | ')
+        'Start retest manual TC_55!603 | Scrolling functionality is not available on the page "Charges and Fees" after '
+        'clicked any links in the block "Trading"')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
-    # @pytest.mark.parametrize('cur_language', ['ar'])
-    # @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_603
     def test_603(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -417,7 +415,10 @@ class TestManualDetectedBugs:
         self.driver = d
 
         """
-         Check: 
+         Check: menu section [Pricing]  > 
+                menu item [Charges and fees] > 
+                block "Trading" > 
+                click link [Find out more]
          Language: EN
          License: SCA, FCA, CYSEC or ASIC
          Author: Aleksei Kurochkin
@@ -427,7 +428,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "603",
-            '',
+            'Scrolling functionality is not available on the page "Charges and Fees" after '
+            'clicked any links in the block "Trading"',
             False,
             False
         )
