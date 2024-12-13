@@ -90,7 +90,7 @@ jobs:
 
       - name: 8. Run US_55_ReTestsManual (Алексей)
         if: always()
-        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/K-Alex-N/US_55-K-Alex-N_ReTestsManual_test.py
+        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/K_Alex_N/US_55_K_Alex_N_ReTestsManual_test.py
         continue-on-error: true
 
       - name: 9. Upload artifact "allure-results"
