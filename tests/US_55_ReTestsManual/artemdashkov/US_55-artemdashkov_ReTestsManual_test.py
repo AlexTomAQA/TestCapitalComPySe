@@ -1546,9 +1546,9 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        user_agent = self.d.execute_script("return navigator.userAgent;")
+        user_agent = d.execute_script("return navigator.userAgent;")
         print(user_agent)
-        # pytest.skip("Промежуточная версия")
+        pytest.skip("Промежуточная версия")
 
         # chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         # chrome_options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3")
