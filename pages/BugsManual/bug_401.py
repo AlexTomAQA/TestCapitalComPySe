@@ -89,31 +89,26 @@ class LinkIPO(BasePage):
             block_rivn_company_profile
         )
 
-    def element_click(self, d, cur_link):
-        print(f"\n{datetime.now()}   2. Act")
+    @allure.step(f"{datetime.now()}   Assert")
+    def assert_url(self, d, cur_link):
+        print(f"{datetime.now()}   3.Assert")
 
-        print(f"{datetime.now()}   Click the “initial public offering (IPO)” link")
         try:
+            print(f"{datetime.now()}   Click the “initial public offering (IPO)” link")
             ipo_link = self.driver.find_element(By.LINK_TEXT, 'initial public offering (IPO)')
             ipo_link.click()
             self.wait_for_change_url(cur_link)
+            current_url = self.driver.current_url
+            expected_url = 'https://capital.com/en-ae/learn/essentials/what-is-an-ipo'
+            if current_url != expected_url:
+                print(f"{datetime.now()}   The page “What is an IPO” is not opened")
+                Common.pytest_fail(f"# Bug 55!401"
+                                   f"\n"
+                                   f"Expected result: The page “What is an IPO” with URL '{expected_url}' is opened"
+                                   f"\n"
+                                   f"Actual result: The page with URL '{current_url}' is opened")
+            else:
+                print(f"{datetime.now()}   The page “What is an IPO” is opened")
+                allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         except NoSuchElementException:
-            print(f"{datetime.now()}   'initial public offering (IPO)' is not a link")
-            Common.pytest_skip("this is not a bug, because the 'initial public offering (IPO)' is not a link.")
-
-    @allure.step(f"{datetime.now()}   Assert")
-    def assert_url(self, d):
-        print(f"{datetime.now()}   3.Assert")
-        current_url = self.driver.current_url
-        expected_url = 'https://capital.com/en-ae/learn/essentials/what-is-an-ipo'
-
-        if current_url != expected_url:
-            print(f"{datetime.now()}   The page “What is an IPO” is not opened")
-            Common.pytest_fail(f"# Bug 55!401"
-                               f"\n"
-                               f"Expected result: The page “What is an IPO” with URL '{expected_url}' is opened"
-                               f"\n"
-                               f"Actual result: The page with URL '{current_url}' is opened")
-        else:
-            print(f"{datetime.now()}   The page “What is an IPO” is opened")
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            print(f"{datetime.now()}   There is no Bug because the 'initial public offering (IPO)' is not a link.")

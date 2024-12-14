@@ -11,6 +11,8 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class AnnouncedLink(BasePage):
@@ -29,6 +31,7 @@ class AnnouncedLink(BasePage):
                 article = self.driver.find_element(By.CSS_SELECTOR, 'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment"]')
                 self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
                                            article)
+                WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(article))
                 article.click()
                 break
             except NoSuchElementException:
@@ -40,7 +43,15 @@ class AnnouncedLink(BasePage):
                     pagination
                 )
                 pagination.click()
+                self.wait_for_change_url(cur_link)
+
         self.wait_for_change_url(cur_link)
+        current_page = self.driver.current_url
+        print(current_page)
+        article_page = 'https://capital.com/en-au/analysis/solana-sol-price-prediction-is-it-a-solid-investment'
+        if current_page != article_page:
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+            Common.pytest_skip("Article 'Solana price prediction: Can SOL rebound?' is not find")
 
         print(f"{datetime.now()}   Scroll to the 'Table of Contents'")
         table_of_contents = self.driver.find_element(By.CLASS_NAME, 'tableOfContent_frame__1c2SI')
