@@ -468,7 +468,7 @@ class TestManualDetectedBugs:
          Check: Menu section [Markets] > 
                 Menu item [Markets analysis] > 
                 Article "Gold price predictions for the next.." > 
-                Click on the [Trade now] link > 
+                Click on [Trade now] link > 
                 Click on [Close] button
          Language: EN
          License: SCA, FCA, CYSEC or ASIC
