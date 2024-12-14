@@ -401,9 +401,9 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip()
     @allure.step(
-        'Start retest manual TC_55!603 | ')
+        'Start retest manual TC_55!603 | Scrolling functionality is not available on the page "Charges and Fees" after '
+        'clicked any links in the block "Trading"')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
@@ -415,7 +415,10 @@ class TestManualDetectedBugs:
         self.driver = d
 
         """
-         Check: 
+         Check: menu section [Pricing]  > 
+                menu item [Charges and fees] > 
+                block "Trading" > 
+                click link [Find out more]
          Language: EN
          License: SCA, FCA, CYSEC or ASIC
          Author: Aleksei Kurochkin
@@ -425,7 +428,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "603",
-            '',
+            'Scrolling functionality is not available on the page "Charges and Fees" after '
+            'clicked any links in the block "Trading"',
             False,
             False
         )
@@ -447,9 +451,9 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @pytest.mark.skip()
     @allure.step(
-        'Start retest manual TC_55!634 | ')
+        'Start retest manual TC_55!634 | The loading spinner is displayed continuously on the page "Gold price '
+        'predictions for the next..." after click on [Trade now]')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['NoAuth', 'NoReg'], 1))
@@ -461,7 +465,11 @@ class TestManualDetectedBugs:
         self.driver = d
 
         """
-         Check: 
+         Check: Menu section [Markets] > 
+                Menu item [Markets analysis] > 
+                Article "Gold price predictions for the next.." > 
+                Click on the [Trade now] link > 
+                Click on [Close] button
          Language: EN
          License: SCA, FCA, CYSEC or ASIC
          Author: Aleksei Kurochkin
@@ -471,7 +479,8 @@ class TestManualDetectedBugs:
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "634",
-            '',
+            'The loading spinner is displayed continuously on the page "Gold price '
+                    'predictions for the next..." after click on [Trade now]',
             False,
             False
         )
@@ -488,7 +497,7 @@ class TestManualDetectedBugs:
 
         # Assert
         if self.bug.if_page_loader_present():
-            Common.pytest_fail('Bug # 55!634 the page loader is present"')
+            Common.pytest_fail('Bug # 55!634 the page loader is present')
         Common.save_current_screenshot(d, "AT_55!634 Pass")
 
         # Postconditions
