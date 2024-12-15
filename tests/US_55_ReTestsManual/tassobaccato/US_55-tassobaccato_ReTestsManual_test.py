@@ -762,7 +762,7 @@ class TestManualDetectedBugs:
         cur_item_link = menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, link)
 
         test_element = PageDisplay(d, cur_item_link, bid)
-        test_element.page_display(d, cur_item_link)
+        test_element.page_display(d, cur_item_link, cur_language)
         test_element.element_click()
         test_element.assert_()
 

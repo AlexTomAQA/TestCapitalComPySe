@@ -16,7 +16,7 @@ from pages.common import Common
 
 class PageDisplay(BasePage):
     @allure.step(f"{datetime.now()}   Start testing page display")
-    def page_display(self, d, cur_item_link):
+    def page_display(self, d, cur_item_link, cur_language):
         print(f"\n{datetime.now()}   1. Arrange")
 
         if not self.current_page_is(cur_item_link):
@@ -24,10 +24,12 @@ class PageDisplay(BasePage):
             self.open_page()
 
         print(f"{datetime.now()}   Scroll down to the 'What is oil trading?' tile in the 'Market trading guides' block")
-        try:
-            what_is_oil_tile = self.driver.find_element(By.XPATH, '//h3[contains(text(), "What is oil trading?")]')
-        except NoSuchElementException:
+        if cur_language == 'de':
+            what_is_oil_tile = self.driver.find_element(By.XPATH, '//h3[contains(text(), "Was ist Öl-Trading?")]')
+        elif cur_language == 'ar':
             what_is_oil_tile = self.driver.find_element(By.XPATH, '//h3[contains(text(), "ما هو التداول بالنفط؟")]')
+        else:
+            what_is_oil_tile = self.driver.find_element(By.XPATH, '//h3[contains(text(), "What is oil trading?")]')
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
@@ -35,11 +37,12 @@ class PageDisplay(BasePage):
         )
 
         print(f"{datetime.now()}   Click the link “Oil trading guide”")
-        try:
-            oil_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'Oil trading guide')
-        except NoSuchElementException:
+        if cur_language == 'de':
+            oil_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'Leitfaden zum Öl-Trading')
+        elif cur_language == 'ar':
             oil_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'دليل التداول بالنفط')
-
+        else:
+            oil_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'Oil trading guide')
         oil_trading_guide_link.click()
 
         print(f"{datetime.now()}   Scroll down to the block “Why trade oil with Capital.com”")
