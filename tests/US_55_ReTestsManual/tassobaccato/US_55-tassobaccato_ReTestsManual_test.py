@@ -25,13 +25,15 @@ from pages.BugsManual.bug_440 import LearnToTrade
 from pages.BugsManual.bug_514 import AnnouncedLink
 from pages.BugsManual.bug_604 import PageDisplay
 from pages.BugsManual.bug_612 import PageCFDCalcDisplay
+from pages.BugsManual.bug_622 import FraudAwarenessPage
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
 from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_menu_open_why_capital, \
     from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform, \
     from_markets_menu_open_shares, from_trading_menu_open_cfd_trading, from_learn_menu_open_essentials_of_trading, \
-    from_markets_menu_open_market_analysis, from_learn_menu_open_market_guides, from_trading_menu_open_cfd_calculator
+    from_markets_menu_open_market_analysis, from_learn_menu_open_market_guides, from_trading_menu_open_cfd_calculator, \
+    from_trading_menu_open_fraud_awareness
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
@@ -801,4 +803,32 @@ class TestManualDetectedBugs:
         test_element = PageCFDCalcDisplay(d, cur_item_link, bid)
         test_element.page_cfd_calc_display(d, cur_item_link)
         test_element.element_click()
+        test_element.assert_()
+
+    @allure.step('Start retest manual AT_55!622 The loading spinner is displayed continuously on the page')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['gb'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_622
+    def test_622(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Trading] > Menu item [Fraud prevention] > Menu section [Trading] > Menu item [Fraud prevention]
+        Language: EN
+        License: FCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "622", 'The loading spinner is continuously displayed on the page after re-selecting the '
+                   '[Fraud Prevention] menu item when selecting the FCA license.'
+        )
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_trading_menu_open_fraud_awareness.MenuNew(d, link)
+        cur_item_link = menu.from_trading_menu_open_fraud_awareness(d, cur_language, cur_country, link)
+
+        test_element = FraudAwarenessPage(d, cur_item_link,  bid)
+        test_element.fraud_awareness_page(d, cur_language, cur_country, cur_item_link)
         test_element.assert_()
