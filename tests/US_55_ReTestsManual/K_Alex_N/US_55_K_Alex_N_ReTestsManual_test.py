@@ -303,18 +303,14 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @allure.step(
-        'Start retest manual TC_55!513 | The anchor "part 2" on the "Solana price prediction: Can SOL rebound?" '
-        'page is absent when selected ASIC license')
+    # @allure.step(
+    #     'Start retest manual TC_55!513 | The anchor "part 2" on the "Solana price prediction: Can SOL rebound?" '
+    #     'page is absent when selected ASIC license')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_513
     def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        test = self
-        self.cur_language = cur_language
-        self.cur_country = cur_country
-        self.driver = d
 
         """
          Check: Hover over to [Markets] menu section >
@@ -326,6 +322,10 @@ class TestManualDetectedBugs:
          License: ASIC
          Author: Aleksei Kurochkin
          """
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
 
         self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
