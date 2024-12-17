@@ -21,7 +21,8 @@ COUNTRY_FIRST_SEARCH_ITEM_LOC = ('xpath', '(//button[@class="select_item__GdG7X 
 LANG_DROPDOWN_LOC = ('css selector', '[data-type="country_switcher_lng"]')
 LANG_DROPDOWN_TEXT_LOC = ('css selector', '[data-type="country_switcher_lng"]>.select_text__cd1pK]')
 ENG_LANG_LOC = ('css selector', '[data-type="nav_country_english"]')
-APPLY_BTN_LOC = ('css selector', '.button_main__4QZm1.button_primary__raeTg[data-type="country_switcher_cancel"]')
+APPLY_BTN_LOC = ('xpath', '//button[text()="Apply"]')
+# APPLY_BTN_LOC = ('css selector', '.button_main__4QZm1.button_primary__raeTg[data-type="country_switcher_cancel"]')
 # APPLY_BTN_LOC = ('css selector', '//div[@class="grid_grid__2D3md grid_gMdLg__9Xp_H"]//button[text()="Apply"]')
 BODY_WITH_DISABLED_SCROLL_LOC = ('css selector', 'body[style="overflow: hidden;"]')
 
@@ -62,6 +63,7 @@ class Bug613(BasePage):
         #     eng_lang.click()
 
         apply_btn = Wait(self.driver, 2).until(EC.element_to_be_clickable(APPLY_BTN_LOC))
+        # apply_btn = self.driver.find_element(*APPLY_BTN_LOC)
         apply_btn.click()
         print(f'{datetime.now()}   => Done, current URL: {self.driver.current_url}')
 
