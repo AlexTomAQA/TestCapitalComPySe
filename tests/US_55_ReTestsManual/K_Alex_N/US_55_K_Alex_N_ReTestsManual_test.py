@@ -218,7 +218,13 @@ class TestManualDetectedBugs:
          License: ASIC
          Author: Aleksei Kurochkin
          """
-        bid = build_dynamic_arg_for_us_55(
+
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
+
+        self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "429",
@@ -231,17 +237,16 @@ class TestManualDetectedBugs:
         )
 
         # Arrange
-        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-        test_el = Bug429(d, link, bid)
-        test_el.open_commodities_page(d, cur_language, cur_country, link)
-        test_el.open_silver_commodity()
+        self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        self.bug = Bug429(test)
+        self.bug.open_market_analysis_page(test)
 
         # Act
-        test_el.open_the_article()
+        self.search_and_open_an_article_in_market_analysis_page("Why is the silver price falling? Sinks")
 
         # Assert
-        if test_el.is_paragraph_with_bold_text_present():
-            Common.pytest_fail('Bug # 55!429 there is paragraph\s with bold text')
+        if self.bug.is_paragraph_with_bold_text_present():
+            Common.pytest_fail('Bug # 55!429 there is at least one paragraphs with bold text')
         Common.save_current_screenshot(d, "AT_55!429 Pass")
 
         # Postconditions
@@ -298,18 +303,14 @@ class TestManualDetectedBugs:
         print(f'\n{datetime.now()}   Applying postconditions...')
         Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
 
-    @allure.step(
-        'Start retest manual TC_55!513 | The anchor "part 2" on the "Solana price prediction: Can SOL rebound?" '
-        'page is absent when selected ASIC license')
+    # @allure.step(
+    #     'Start retest manual TC_55!513 | The anchor "part 2" on the "Solana price prediction: Can SOL rebound?" '
+    #     'page is absent when selected ASIC license')
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_513
     def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        test = self
-        self.cur_language = cur_language
-        self.cur_country = cur_country
-        self.driver = d
 
         """
          Check: Hover over to [Markets] menu section >
@@ -321,6 +322,10 @@ class TestManualDetectedBugs:
          License: ASIC
          Author: Aleksei Kurochkin
          """
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
 
         self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -468,7 +473,7 @@ class TestManualDetectedBugs:
          Check: Menu section [Markets] > 
                 Menu item [Markets analysis] > 
                 Article "Gold price predictions for the next.." > 
-                Click on the [Trade now] link > 
+                Click on [Trade now] link > 
                 Click on [Close] button
          Language: EN
          License: SCA, FCA, CYSEC or ASIC
@@ -480,7 +485,7 @@ class TestManualDetectedBugs:
             "55", "ReTests of Manual Detected Bugs",
             "634",
             'The loading spinner is displayed continuously on the page "Gold price '
-                    'predictions for the next..." after click on [Trade now]',
+            'predictions for the next..." after click on [Trade now]',
             False,
             False
         )
