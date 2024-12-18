@@ -8,7 +8,7 @@ import allure
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import TradingMenuNew
 
-SUBMENU_FCA_FRAUD_AWARENESS = ("css selector", "[data-type='nav_id736']")
+SUBMENU_FCA_FRAUD_AWARENESS = ("css selector", "[data-type='nav_id1736']")
 
 
 class MenuNew(MenuBase):

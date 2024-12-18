@@ -68,7 +68,8 @@ class AnnouncedLink(BasePage):
         print(f"{datetime.now()}   2. Act")
 
         print(f"{datetime.now()}   Click on the [announced] link in the text")
-        announced_link = self.driver.find_element(By.LINK_TEXT, 'announced')
+        announced_link = self.driver.find_element(By.CSS_SELECTOR, 'a[href*="/maple.finance/news/maple-2-0-new-smart-contracts"]')
+
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             announced_link
