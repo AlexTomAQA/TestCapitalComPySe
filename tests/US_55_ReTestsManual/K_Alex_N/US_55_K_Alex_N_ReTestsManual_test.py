@@ -31,11 +31,6 @@ class TestForFixedBugs:
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_603
     def test_603(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        test = self
-        self.cur_language = cur_language
-        self.cur_country = cur_country
-        self.driver = d
-
         """
          Check: menu section [Pricing]  > 
                 menu item [Charges and fees] > 
@@ -45,6 +40,11 @@ class TestForFixedBugs:
          License: SCA, FCA, CYSEC or ASIC
          Author: Aleksei Kurochkin
          """
+
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
 
         self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -75,15 +75,9 @@ class TestForFixedBugs:
 
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
-    # @pytest.mark.parametrize('cur_country', ['gb', 'ae'])
     @pytest.mark.parametrize('cur_role', random.sample(['NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_634
     def test_634(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        test = self
-        self.cur_language = cur_language
-        self.cur_country = cur_country
-        self.driver = d
-
         """
          Check: Menu section [Markets] > 
                 Menu item [Markets analysis] > 
@@ -94,6 +88,10 @@ class TestForFixedBugs:
          License: SCA, FCA, CYSEC or ASIC
          Author: Aleksei Kurochkin
          """
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
 
         self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -127,13 +125,7 @@ class TestForFixedBugs:
 
 @pytest.mark.us_55
 class TestManualDetectedBugs:
-    page_conditions = None
 
-    # ------------------------------
-    # FIXED BUGS
-
-    # ------------------------------
-    # NOT FIXED BUGS
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae', 'au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1, counts=[1, 1, 10]))
@@ -293,7 +285,7 @@ class TestManualDetectedBugs:
         self.bug.open_market_analysis_page(test)
 
         # Act
-        self.search_and_open_an_article_in_market_analysis_page("Why is the silver price falling? Sinks")
+        MyCommon.search_and_open_an_article_in_market_analysis_page("Why is the silver price falling? Sinks")
 
         # Assert
         if self.bug.is_paragraph_with_bold_text_present():
@@ -386,7 +378,7 @@ class TestManualDetectedBugs:
         self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         self.bug = Bug513(test)
         self.bug.open_market_analysis_page(test)
-        self.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
+        MyCommon.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
 
         # Act
         self.bug.is_link_to_part2_present_in_table_of_content()
@@ -405,11 +397,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
     @pytest.mark.bug_516
     def test_516(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
-        test = self
-        self.cur_language = cur_language
-        self.cur_country = cur_country
-        self.driver = d
-
         """
          Check: Menu section [Markets] > 
                 Menu item [Markets analysis] > 
@@ -419,6 +406,10 @@ class TestManualDetectedBugs:
          License: ASIC
          Author: Aleksei Kurochkin
          """
+        test = self
+        self.cur_language = cur_language
+        self.cur_country = cur_country
+        self.driver = d
 
         self.bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language, cur_country, cur_role,
@@ -436,7 +427,7 @@ class TestManualDetectedBugs:
         self.bug.open_market_analysis_page(test)
 
         # Act
-        self.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
+        MyCommon.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
 
         # Assert
         if not self.bug.is_possible_open_collapse_page():
