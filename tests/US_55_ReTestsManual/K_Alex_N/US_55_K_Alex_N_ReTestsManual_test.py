@@ -25,11 +25,11 @@ from src.src import CapitalComPageSrc
 from tests.US_55_ReTestsManual.K_Alex_N.MyCommon import MyCommon
 
 
+@pytest.mark.us_55
 class TestForFixedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_603
     def test_603(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: menu section [Pricing]  > 
@@ -76,7 +76,6 @@ class TestForFixedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['gb', 'ae', 'au', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_634
     def test_634(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Menu section [Markets] > 
@@ -107,7 +106,7 @@ class TestForFixedBugs:
         self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         self.bug = Bug634(test)
         self.bug.open_market_analysis_page(test)
-        MyCommon.search_and_open_an_article_in_market_analysis_page(self.driver, "Gold price predictions for the next")
+        MyCommon.search_and_open_an_article_in_market_analysis_page(d, "Gold price predictions for the next")
         self.bug.click_try_demo()
 
         # Act
@@ -129,7 +128,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['ae', 'au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1, counts=[1, 1, 10]))
-    @pytest.mark.bug_467
     def test_467(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Web pages with URLs of the FCA license are opened
@@ -168,7 +166,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', ['ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
-    @pytest.mark.bug_504
     def test_504(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Link [Privacy Policy] is not active in Sing up form when selected SCA (AR language)
@@ -205,7 +202,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', ['ar'])
     @pytest.mark.parametrize('cur_country', ['ae'])
     @pytest.mark.parametrize('cur_role', ['NoAuth', 'NoReg'])
-    @pytest.mark.bug_444
     def test_444(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Scroll down to the footer >
@@ -246,7 +242,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_429
     def test_429(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Menu section [Markets] >
@@ -285,7 +280,7 @@ class TestManualDetectedBugs:
         self.bug.open_market_analysis_page(test)
 
         # Act
-        MyCommon.search_and_open_an_article_in_market_analysis_page("Why is the silver price falling? Sinks")
+        MyCommon.search_and_open_an_article_in_market_analysis_page(d, "Why is the silver price falling? Sinks")
 
         # Assert
         if self.bug.is_paragraph_with_bold_text_present():
@@ -299,7 +294,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au', 'gb', 'ae', 'de'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_587
     def test_587(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Hover over menu section [Learn] >
@@ -345,7 +339,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_513
     def test_513(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
 
         """
@@ -378,7 +371,7 @@ class TestManualDetectedBugs:
         self.link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         self.bug = Bug513(test)
         self.bug.open_market_analysis_page(test)
-        MyCommon.search_and_open_an_article_in_market_analysis_page("Solana price prediction")
+        MyCommon.search_and_open_an_article_in_market_analysis_page(d, "Solana price prediction")
 
         # Act
         self.bug.is_link_to_part2_present_in_table_of_content()
@@ -395,7 +388,6 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_language', [''])
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', random.sample(['Auth', 'NoAuth', 'NoReg'], 1))
-    @pytest.mark.bug_516
     def test_516(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Menu section [Markets] > 
@@ -427,7 +419,7 @@ class TestManualDetectedBugs:
         self.bug.open_market_analysis_page(test)
 
         # Act
-        MyCommon.search_and_open_an_article_in_market_analysis_page("The graph (GRT) price prediction")
+        MyCommon.search_and_open_an_article_in_market_analysis_page(d, "The graph (GRT) price prediction")
 
         # Assert
         if not self.bug.is_possible_open_collapse_page():
