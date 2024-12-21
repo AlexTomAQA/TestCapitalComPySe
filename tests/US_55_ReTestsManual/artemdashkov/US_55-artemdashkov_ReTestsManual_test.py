@@ -1564,12 +1564,10 @@ class TestManualDetected:
         test_element.assert_(d, link)
 
     @allure.step("Start test of reopen 'Demo trading' page")
-    # @pytest.mark.parametrize('cur_language', ["ar"])
-    @pytest.mark.parametrize('cur_country', ["ae", "au"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_621
     def test_621_start_test_of_reopen_demo_trading_page(
-            self, worker_id, d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
         """
         Check:  Click the Menu section [Trading] >
                 Click Menu item [Demo trading] >
@@ -1582,7 +1580,8 @@ class TestManualDetected:
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_2_rnd_from_14, cur_country, cur_role,
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "621",
             "Click the Menu section [Trading] > "
@@ -1593,16 +1592,18 @@ class TestManualDetected:
         )
         # Arrange
         pytest.skip("Промежуточная версия")
-        cur_item_link = apply_preconditions_to_link(d, cur_language_2_rnd_from_14, cur_country, cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
+                                                    cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_demo.MenuNewDemo(d, cur_item_link)
-        link = page_menu.from_trading_menu_open_demo(d, cur_language_2_rnd_from_14, cur_country, cur_item_link)
+        link = page_menu.from_trading_menu_open_demo(d, cur_language_country_for_fca_and_sca[0],
+                                                     cur_language_country_for_fca_and_sca[1], cur_item_link)
 
         test_element = BUG_621(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
-        test_element.act(d)
+        test_element.act(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1], link)
 
         # Assert
         test_element.assert_(d, link)
