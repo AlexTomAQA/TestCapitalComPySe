@@ -26,6 +26,7 @@ from pages.BugsManual.bug_514 import AnnouncedLink
 from pages.BugsManual.bug_604 import PageDisplay
 from pages.BugsManual.bug_612 import PageCFDCalcDisplay
 from pages.BugsManual.bug_622 import FraudAwarenessPage
+from pages.BugsManual.bug_624 import CocaColaCOPage
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -832,3 +833,38 @@ class TestManualDetectedBugs:
         test_element = FraudAwarenessPage(d, cur_item_link,  bid)
         test_element.fraud_awareness_page(d, cur_language, cur_country, cur_item_link)
         test_element.assert_()
+
+    @allure.step('Start retest manual AT_55!624 The error message “This site can’t be reached” is displayed')
+    @pytest.mark.parametrize('cur_language', [''])
+    @pytest.mark.parametrize('cur_country', ['ae', 'gb', 'au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_624
+    def test_624(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Learn] > Menu item  [Market guides] > Click the link “Shares trading guide”
+                > Сlick the link “Netflix” > Сlick the link “Trade Coca-Cola shares”
+                > Сlick the link “KO” in the block “Performance of the Coca-Cola stock in recent years”
+        Language: EN
+        License: FCA
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "624", 'Error message “This site can’t be reached” is displayed after clicking the link “KO” '
+                   'in the block “Performance of the Coca-Cola stock in recent years” on the page “How to trade '
+                   'Coca-Cola stocks” when EN language is selected (SCA / FCA / ASIC licenses)'
+        )
+
+        Common.pytest_skip("under construction")
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_learn_menu_open_market_guides.MenuNewLearn(d, link)
+        cur_item_link = menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, link)
+
+        test_element = CocaColaCOPage(d, cur_item_link, bid)
+        test_element.coca_cola_co(d, cur_item_link)
+        test_element.element_click(d)
+        test_element.assert_()
+
