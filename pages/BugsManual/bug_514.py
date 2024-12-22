@@ -8,11 +8,10 @@
 from datetime import datetime
 import allure
 from selenium.common import NoSuchElementException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class AnnouncedLink(BasePage):
@@ -24,15 +23,22 @@ class AnnouncedLink(BasePage):
             self.link = cur_item_link
             self.open_page()
 
+        tabs = self.driver.window_handles
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[0])
+            self.driver.close()
+            self.driver.switch_to.window(tabs[1])
+
         print(f"{datetime.now()}   Selected Article 'Solana price prediction: Can SOL rebound?'")
         p = 1
         while p <= 24:
             try:
-                article = self.driver.find_element(By.CSS_SELECTOR, 'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment"]')
-                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
-                                           article)
-                WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(article))
-                article.click()
+                article = self.driver.find_element(By.CSS_SELECTOR,
+                        'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment')
+                ActionChains(d)\
+                    .move_to_element(article)\
+                    .click(article)\
+                    .perform()
                 break
             except NoSuchElementException:
                 p += 1
@@ -64,7 +70,7 @@ class AnnouncedLink(BasePage):
         could_solana_item = self.driver.find_element(By.XPATH, '//span[contains(text(), "Could Solana become a Cardano side-chain?")]')
         could_solana_item.click()
 
-    def element_click(self, cur_link):
+    def element_click(self):
         print(f"{datetime.now()}   2. Act")
 
         print(f"{datetime.now()}   Click on the [announced] link in the text")
@@ -75,7 +81,10 @@ class AnnouncedLink(BasePage):
             announced_link
         )
         announced_link.click()
-        self.wait_for_change_url(cur_link)
+        tabs = self.driver.window_handles
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[1])
+
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
@@ -100,5 +109,5 @@ class AnnouncedLink(BasePage):
                                f"\n"
                                f"Actual result: The page with title '{page_title}' is opened")
         else:
-            print(f"{datetime.now()}   The page with 'Maple crypto-lending' is opened")
+            print(f"{datetime.now()}   The 'Maple crypto-lending' page is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)

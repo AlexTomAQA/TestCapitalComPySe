@@ -729,7 +729,7 @@ class TestManualDetectedBugs:
 
         test_element = AnnouncedLink(d, cur_item_link, bid)
         test_element.announced_link(d, cur_item_link, link)
-        test_element.element_click(link)
+        test_element.element_click()
         test_element.assert_()
 
     @allure.step('Start retest manual AT_55!604 Loading spinner appears and spins endlessly in the center of the page')
