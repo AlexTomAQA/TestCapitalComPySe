@@ -40,6 +40,7 @@ from pages.BugsManual.bug_414 import Bug414
 from pages.BugsManual.bug_416 import Bug416
 from pages.BugsManual.bug_433 import Bug433
 from pages.BugsManual.bug_507 import Bug507
+from pages.BugsManual.bug_605 import Bug605
 from pages.BugsManual.bug_613 import Bug613
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
@@ -1481,8 +1482,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['au', 'de'])
     @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
     @pytest.mark.bug_507
-    def test_507(self, worker_id, d, cur_language, cur_country, cur_role,
-                 cur_login, cur_password):
+    def test_507(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: The "Trading Conditions" table is not visible on the page "Trade Australia 200 - AU200au CFD"
          Language: DE, EN.
@@ -1515,6 +1515,45 @@ class TestManualDetectedBugs:
         if not test_el.should_be_trading_conditions_table():
             Common.pytest_fail('Bug # 55!507 The table in the block "Trading Conditions" is NOT visible')
         Common.save_current_screenshot(d, "AT_55!507 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!605 | The Greece flag is displayed instead of Cyprus in the header')
+    @pytest.mark.parametrize('cur_language', ['el'])
+    @pytest.mark.parametrize('cur_country', ['gr'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_605
+    def test_605(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The Greece flag is displayed instead of Cyprus in the header
+         Language: EL.
+         License: CYSEC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "605",
+            'The Greece flag is displayed instead of Cyprus in the header',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug605(d, link, bid)
+
+        # Act
+        test_el.select_cyprus_country()
+
+        # Assert
+        if not test_el.should_be_cyprus_country():
+            Common.pytest_fail('Bug # 55!605 The flag is NOT displayed')
+        Common.save_current_screenshot(d, "AT_55!605 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
