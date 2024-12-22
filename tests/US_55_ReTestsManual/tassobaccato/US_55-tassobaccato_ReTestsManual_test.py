@@ -857,8 +857,6 @@ class TestManualDetectedBugs:
                    'Coca-Cola stocks” when EN language is selected (SCA / FCA / ASIC licenses)'
         )
 
-        Common.pytest_skip("under construction")
-
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_learn_menu_open_market_guides.MenuNewLearn(d, link)
         cur_item_link = menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, link)
