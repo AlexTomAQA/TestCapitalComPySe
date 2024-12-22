@@ -42,6 +42,7 @@ from pages.BugsManual.bug_581 import BUG_581
 from pages.BugsManual.bug_589 import BUG_589
 from pages.BugsManual.bug_610 import BUG_610
 from pages.BugsManual.bug_617 import BUG_617
+from pages.BugsManual.bug_621 import BUG_621
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -55,6 +56,7 @@ from pages.Menu.New import (from_trading_menu_open_web_platform,
                             from_markets_menu_open_market_analysis,
                             from_markets_menu_open_shares,
                             from_trading_menu_open_cfd_trading,
+                            from_trading_menu_open_demo,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_margin_calls,
                             from_about_us_menu_open_client_vulnerability,
@@ -1557,6 +1559,51 @@ class TestManualDetected:
 
         # Act
         test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+    @allure.step("Start test of reopen 'Demo trading' page")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_621
+    def test_621_start_test_of_reopen_demo_trading_page(
+            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [Demo trading] >
+                Click the Menu section [Trading] >
+                Click Menu item [Demo trading] >
+        Language: All
+        License/Country:  ASIC, SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_and_sca[0],
+            cur_language_country_for_fca_and_sca[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "621",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [Demo trading] > "
+            "Click the Menu section [Trading] > "
+            "Click Menu item [Demo trading].",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Промежуточная версия")
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
+                                                    cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_demo.MenuNewDemo(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_demo(d, cur_language_country_for_fca_and_sca[0],
+                                                     cur_language_country_for_fca_and_sca[1], cur_item_link)
+
+        test_element = BUG_621(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1], link)
 
         # Assert
         test_element.assert_(d, link)
