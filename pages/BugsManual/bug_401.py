@@ -112,3 +112,6 @@ class LinkIPO(BasePage):
                 allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         except NoSuchElementException:
             print(f"{datetime.now()}   There is no Bug because the 'initial public offering (IPO)' is not a link.")
+            text = self.driver.find_element(By.XPATH, '//p[contains(text(),"initial public offering (IPO)")]')
+            self.driver.execute_script("arguments[0].style.border='3px solid red'", text)
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
