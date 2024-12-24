@@ -41,7 +41,7 @@ class CocaColaCOPage(BasePage):
         print(f"{datetime.now()}   Scroll down to the block “Popular shares to trade”")
         popular_shares_to_trade_block = self.driver.find_element(By.CSS_SELECTOR, 'h2[data-id="part_2"]')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "start"});', popular_shares_to_trade_block
+            'return arguments[0].scrollIntoView({block: "center"});', popular_shares_to_trade_block
         )
 
         print(f"{datetime.now()}   Click on the link “Netflix”")
@@ -51,7 +51,7 @@ class CocaColaCOPage(BasePage):
         print(f"{datetime.now()}   Scroll down to the block “Visit our other complete guides”")
         visit_our_other_block = self.driver.find_element(By.XPATH, '//h2[contains(text(), "Visit our other complete")]')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "start"});', visit_our_other_block
+            'return arguments[0].scrollIntoView({block: "center"});', visit_our_other_block
         )
 
         print(f"{datetime.now()}   Click on the link “Trade Coca-Cola shares”")
@@ -61,7 +61,7 @@ class CocaColaCOPage(BasePage):
         print(f"{datetime.now()}   Scroll down to the block “Performance of the Coca-Cola stock in recent years”")
         performance_coca_cola_block = self.driver.find_element(By.CSS_SELECTOR, 'h2[data-id="part_3"]')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "start"});', performance_coca_cola_block
+            'return arguments[0].scrollIntoView({block: "center"});', performance_coca_cola_block
         )
 
     def element_click(self, d):

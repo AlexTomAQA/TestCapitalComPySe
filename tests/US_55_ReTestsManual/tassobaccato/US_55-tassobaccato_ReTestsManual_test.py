@@ -729,7 +729,7 @@ class TestManualDetectedBugs:
 
         test_element = AnnouncedLink(d, cur_item_link, bid)
         test_element.announced_link(d, cur_item_link, link)
-        test_element.element_click(link)
+        test_element.element_click()
         test_element.assert_()
 
     @allure.step('Start retest manual AT_55!604 Loading spinner appears and spins endlessly in the center of the page')
@@ -856,8 +856,6 @@ class TestManualDetectedBugs:
                    'in the block “Performance of the Coca-Cola stock in recent years” on the page “How to trade '
                    'Coca-Cola stocks” when EN language is selected (SCA / FCA / ASIC licenses)'
         )
-
-        Common.pytest_skip("under construction")
 
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_learn_menu_open_market_guides.MenuNewLearn(d, link)
