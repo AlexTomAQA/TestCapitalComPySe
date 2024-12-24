@@ -23,22 +23,20 @@ class AnnouncedLink(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        tabs = self.driver.window_handles
-        if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[0])
-            self.driver.close()
-            self.driver.switch_to.window(tabs[1])
-
         print(f"{datetime.now()}   Selected Article 'Solana price prediction: Can SOL rebound?'")
         p = 1
         while p <= 24:
             try:
                 article = self.driver.find_element(By.CSS_SELECTOR,
                         'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment')
-                ActionChains(d)\
-                    .move_to_element(article)\
-                    .click(article)\
-                    .perform()
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center"});', article
+                )
+                if not self.element_is_clickable(article):
+                    allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+                    Common.pytest_fail("Article 'Solana price prediction: Can SOL rebound?' is not clickable")
+                self.driver.find_element(By.CSS_SELECTOR,
+                'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment').click()
                 break
             except NoSuchElementException:
                 p += 1
@@ -49,20 +47,11 @@ class AnnouncedLink(BasePage):
                     pagination
                 )
                 pagination.click()
-                self.wait_for_change_url(cur_link)
-
-        self.wait_for_change_url(cur_link)
-        current_page = self.driver.current_url
-        print(current_page)
-        article_page = 'https://capital.com/en-au/analysis/solana-sol-price-prediction-is-it-a-solid-investment'
-        if current_page != article_page:
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            Common.pytest_skip("Article 'Solana price prediction: Can SOL rebound?' is not find")
 
         print(f"{datetime.now()}   Scroll to the 'Table of Contents'")
         table_of_contents = self.driver.find_element(By.CLASS_NAME, 'tableOfContent_frame__1c2SI')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            'return arguments[0].scrollIntoView({block: "center"});',
             table_of_contents
         )
 
@@ -77,7 +66,7 @@ class AnnouncedLink(BasePage):
         announced_link = self.driver.find_element(By.CSS_SELECTOR, 'a[href*="/maple.finance/news/maple-2-0-new-smart-contracts"]')
 
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            'return arguments[0].scrollIntoView({block: "center"});',
             announced_link
         )
         announced_link.click()
