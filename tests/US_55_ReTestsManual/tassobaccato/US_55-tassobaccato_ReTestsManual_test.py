@@ -27,6 +27,7 @@ from pages.BugsManual.bug_604 import PageDisplay
 from pages.BugsManual.bug_612 import PageCFDCalcDisplay
 from pages.BugsManual.bug_622 import FraudAwarenessPage
 from pages.BugsManual.bug_624 import CocaColaCOPage
+from pages.BugsManual.bug_627 import LicenseChange
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -38,7 +39,6 @@ from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_men
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
-from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
 
 
@@ -729,7 +729,7 @@ class TestManualDetectedBugs:
 
         test_element = AnnouncedLink(d, cur_item_link, bid)
         test_element.announced_link(d, cur_item_link, link)
-        test_element.element_click(link)
+        test_element.element_click()
         test_element.assert_()
 
     @allure.step('Start retest manual AT_55!604 Loading spinner appears and spins endlessly in the center of the page')
@@ -857,8 +857,6 @@ class TestManualDetectedBugs:
                    'Coca-Cola stocks” when EN language is selected (SCA / FCA / ASIC licenses)'
         )
 
-        Common.pytest_skip("under construction")
-
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_learn_menu_open_market_guides.MenuNewLearn(d, link)
         cur_item_link = menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, link)
@@ -868,3 +866,36 @@ class TestManualDetectedBugs:
         test_element.element_click(d)
         test_element.assert_()
 
+    @allure.step(
+        'Start retest manual AT_55!627 that the same license remains after clicking the link “overnight funding, spread'
+        ' costs” in the block “Trading calculator” on the page “CFD calculator”')
+    @pytest.mark.parametrize('cur_language', ['en'])
+    @pytest.mark.parametrize('cur_country', ['au'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_627
+    def test_627(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Trading] > Menu item [CFD calculator]
+                > Click the link “overnight funding, spread costs” in the block “Trading calculator”
+        Language: EN
+        License: ASIC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "627", 'Web page with FCA license is opened after clicking the link “overnight funding, '
+                   'spread costs” in the block “Trading calculator” on the page “CFD calculator” when EN language and '
+                   'ASIC license are selected.'
+        )
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        menu = from_trading_menu_open_cfd_calculator.MenuNew(d, link)
+        cur_item_link = menu.from_trading_menu_open_cfd_calculator(d, cur_language, cur_country, link)
+
+        test_element = LicenseChange(d, cur_item_link, bid)
+        test_element.license_change(d, cur_item_link)
+        test_element.element_click()
+        test_element.assert_()

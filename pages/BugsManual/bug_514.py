@@ -8,11 +8,10 @@
 from datetime import datetime
 import allure
 from selenium.common import NoSuchElementException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class AnnouncedLink(BasePage):
@@ -28,11 +27,16 @@ class AnnouncedLink(BasePage):
         p = 1
         while p <= 24:
             try:
-                article = self.driver.find_element(By.CSS_SELECTOR, 'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment"]')
-                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
-                                           article)
-                WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(article))
-                article.click()
+                article = self.driver.find_element(By.CSS_SELECTOR,
+                        'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment')
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center"});', article
+                )
+                if not self.element_is_clickable(article):
+                    allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
+                    Common.pytest_fail("Article 'Solana price prediction: Can SOL rebound?' is not clickable")
+                self.driver.find_element(By.CSS_SELECTOR,
+                'div.article_content__1GOa_ > a[href*="/solana-sol-price-prediction-is-it-a-solid-investment').click()
                 break
             except NoSuchElementException:
                 p += 1
@@ -43,20 +47,11 @@ class AnnouncedLink(BasePage):
                     pagination
                 )
                 pagination.click()
-                self.wait_for_change_url(cur_link)
-
-        self.wait_for_change_url(cur_link)
-        current_page = self.driver.current_url
-        print(current_page)
-        article_page = 'https://capital.com/en-au/analysis/solana-sol-price-prediction-is-it-a-solid-investment'
-        if current_page != article_page:
-            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
-            Common.pytest_skip("Article 'Solana price prediction: Can SOL rebound?' is not find")
 
         print(f"{datetime.now()}   Scroll to the 'Table of Contents'")
         table_of_contents = self.driver.find_element(By.CLASS_NAME, 'tableOfContent_frame__1c2SI')
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            'return arguments[0].scrollIntoView({block: "center"});',
             table_of_contents
         )
 
@@ -64,18 +59,21 @@ class AnnouncedLink(BasePage):
         could_solana_item = self.driver.find_element(By.XPATH, '//span[contains(text(), "Could Solana become a Cardano side-chain?")]')
         could_solana_item.click()
 
-    def element_click(self, cur_link):
+    def element_click(self):
         print(f"{datetime.now()}   2. Act")
 
         print(f"{datetime.now()}   Click on the [announced] link in the text")
         announced_link = self.driver.find_element(By.CSS_SELECTOR, 'a[href*="/maple.finance/news/maple-2-0-new-smart-contracts"]')
 
         self.driver.execute_script(
-            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            'return arguments[0].scrollIntoView({block: "center"});',
             announced_link
         )
         announced_link.click()
-        self.wait_for_change_url(cur_link)
+        tabs = self.driver.window_handles
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[1])
+
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
@@ -100,5 +98,5 @@ class AnnouncedLink(BasePage):
                                f"\n"
                                f"Actual result: The page with title '{page_title}' is opened")
         else:
-            print(f"{datetime.now()}   The page with 'Maple crypto-lending' is opened")
+            print(f"{datetime.now()}   The 'Maple crypto-lending' page is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
