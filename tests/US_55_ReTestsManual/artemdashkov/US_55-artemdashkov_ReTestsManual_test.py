@@ -43,6 +43,7 @@ from pages.BugsManual.bug_589 import BUG_589
 from pages.BugsManual.bug_610 import BUG_610
 from pages.BugsManual.bug_617 import BUG_617
 from pages.BugsManual.bug_621 import BUG_621
+from pages.BugsManual.bug_650 import BUG_650
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1608,3 +1609,48 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d)
+
+    @allure.step("Start test of the link 'app' in the block 'Our trading app' "
+                 "on the Page 'All platforms'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_650
+    def test_650_link_app_in_the_block_our_trading_app(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [All platforms] >
+                Scroll down to the block "Our trading app" >
+                Click link [app] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "650",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [All platforms] > "
+            "Scroll down to the block 'Our trading app' > "
+            "Click link [app].",
+            False, True
+        )
+        # Arrange
+
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_all_platforms(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_650(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
