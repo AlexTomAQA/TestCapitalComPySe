@@ -62,9 +62,9 @@ class Bug507(BasePage):
         #             next_page_btn
         #         )
         #         next_page_btn.click()
-
-        print(f'{datetime.now()}   => Done, the item is clicked')
-        print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
+        #
+        # print(f'{datetime.now()}   => Done, the item is clicked')
+        # print(f'{datetime.now()}   => Current URL: {self.driver.current_url}')
 
     def should_be_trading_conditions_table(self):
         print(f'\n{datetime.now()}   Check if the table in the block "Trading Conditions" is visible =>')
