@@ -42,6 +42,7 @@ from pages.BugsManual.bug_433 import Bug433
 from pages.BugsManual.bug_507 import Bug507
 from pages.BugsManual.bug_605 import Bug605
 from pages.BugsManual.bug_613 import Bug613
+from pages.BugsManual.bug_651 import Bug651
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1595,6 +1596,52 @@ class TestManualDetectedBugs:
         if not test_el.should_be_enabled_scroll():
             Common.pytest_fail('Bug # 55!613 Scroll of the page is DISABLED')
         Common.save_current_screenshot(d, "AT_55!613 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!651 | The page with 404 error message is displayed after clicking any link '
+        'of the block "Az árutőzsdei kereskedés alapjai" (The essentials of commodities trading) '
+        'on the "Árucikkek" (Commodities) page')
+    @pytest.mark.parametrize('cur_language', ['hu'])
+    @pytest.mark.parametrize('cur_country', ['hu'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_651
+    def test_651(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check: The page with 404 error message is displayed after clicking any link
+         of the block "Az árutőzsdei kereskedés alapjai" (The essentials of commodities trading)
+         on the "Árucikkek" (Commodities) page
+         Language: HU.
+         License: CYSEC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "651",
+            'The page with 404 error message is displayed after clicking any link '
+            'of the block "Az árutőzsdei kereskedés alapjai" (The essentials of commodities trading) '
+            'on the "Árucikkek" (Commodities) page',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug651(d, link, bid)
+        test_el.open_commodities_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.open_test_link()
+
+        # Assert
+        if not test_el.should_not_be_error_404():
+            Common.pytest_fail('Bug # 55!651 The corresponding page is opened with ERROR 404')
+        Common.save_current_screenshot(d, "AT_55!651 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
