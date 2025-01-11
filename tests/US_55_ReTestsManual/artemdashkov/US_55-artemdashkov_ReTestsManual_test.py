@@ -8,6 +8,7 @@ import allure
 import pytest
 import random
 from datetime import datetime
+from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -66,7 +67,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_web_platform
                             )
-
+from src.src import CapitalComPageSrc
 
 @pytest.mark.us_55
 class TestManualDetected:
@@ -1687,9 +1688,7 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-
         page_menu = from_trading_menu_open_mobile_apps.MenuNew(d, cur_item_link)
         link = page_menu.from_trading_menu_open_mobile_apps(d, cur_language, cur_country, cur_item_link)
 
@@ -1701,3 +1700,7 @@ class TestManualDetected:
 
         # Assert
         test_element.assert_(d, link)
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        Common().browser_back_to_link(d, cur_item_link)

@@ -4,25 +4,16 @@
 @Author  : Artem Dashkov
 """
 import allure
-import time
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
-from src.src import CapitalComPageSrc
-
-RISK_MANAGEMENT_TOOLS_BLOCK_LOCATOR = (
-    By.XPATH,
-    "(//div [@class='grid_grid__2D3md grid_md__Udd_J grid_gSmLg__B_vHD grid_center__cwyYf grid_fit__9qW_j'])[6]"
-)
 
 OUR_TRADING_APP_BLOCK_LOCATOR = (By.XPATH,
     "//div[@class='white cardsImage_bg__4z0G6'][2] //span //p")
 
 APP_LINK_LOCATOR = (By.XPATH,
                     "//div[@class='white cardsImage_bg__4z0G6'][2] //span //p //a")
-TRAILING_STOP_LOSS_LINK_LOCATOR = (By.CSS_SELECTOR, "a[href*='capitalcysec.zendesk.com']")
-HELP_CENTER_NO_LONGER_EXISTS_LOCATOR = (By.XPATH, "//h1[contains(text(), 'Oops, this help center no longer exists')]")
 
 class BUG_650(BasePage):
 
