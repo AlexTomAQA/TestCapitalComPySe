@@ -46,6 +46,7 @@ from pages.BugsManual.bug_617 import BUG_617
 from pages.BugsManual.bug_621 import BUG_621
 from pages.BugsManual.bug_650 import BUG_650
 from pages.BugsManual.bug_652 import BUG_652
+from pages.BugsManual.bug_653 import BUG_653
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -64,6 +65,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_trading_menu_open_demo,
                             from_trading_menu_open_margin_calls,
                             from_trading_menu_open_mobile_apps,
+                            from_trading_menu_open_mt4,
                             from_trading_menu_open_spread_betting,
                             from_trading_menu_open_web_platform
                             )
@@ -1701,6 +1703,54 @@ class TestManualDetected:
         # Assert
         test_element.assert_(d, link)
 
-        # Postconditions
+        # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
-        Common().browser_back_to_link(d, cur_item_link)
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link 'How to create an MT4 account' in the block 'Connect your account to MT4...' "
+                 "on the Page 'MT4'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_653
+    def test_653_link_how_to_create_an_mt4_account_in_the_block_connect_your_account_to_mt4(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [MT4] >
+                Scroll down to the block "Connect your account to MT4..." >
+                Click link [How to create an MT4 account] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "653",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [MT4] > "
+            "Scroll down to the tile 'How to trade with us' > "
+            "Click link [How to create an MT4 account].",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_mt4.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_mt4(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_653(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
