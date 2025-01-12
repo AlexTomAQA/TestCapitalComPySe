@@ -8,6 +8,7 @@ import allure
 import pytest
 import random
 from datetime import datetime
+from pages.common import Common
 from pages.BugsManual.bug_031 import ContentsBlockLearnMoreAboutUsLink
 from pages.Elements.TradePageAddToFavoriteButton import TradePageAddToFavoriteButton
 from pages.BugsManual.bug_017 import WhyChooseBlockTryNowButtonInContent
@@ -43,27 +44,30 @@ from pages.BugsManual.bug_589 import BUG_589
 from pages.BugsManual.bug_610 import BUG_610
 from pages.BugsManual.bug_617 import BUG_617
 from pages.BugsManual.bug_621 import BUG_621
+from pages.BugsManual.bug_650 import BUG_650
+from pages.BugsManual.bug_652 import BUG_652
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
-from pages.Menu.New import (from_trading_menu_open_web_platform,
-                            from_pricing_menu_open_how_capital_com_makes_money,
-                            from_trading_menu_open_all_platforms,
+from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
+                            from_about_us_menu_open_help,
+                            from_about_us_menu_open_why_capital,
                             from_learn_menu_open_market_guides,
                             from_markets_menu_open_commodities,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
                             from_markets_menu_open_shares,
+                            from_pricing_menu_open_how_capital_com_makes_money,
+                            from_trading_menu_open_all_platforms,
                             from_trading_menu_open_cfd_trading,
                             from_trading_menu_open_demo,
-                            from_trading_menu_open_spread_betting,
                             from_trading_menu_open_margin_calls,
-                            from_about_us_menu_open_client_vulnerability,
-                            from_about_us_menu_open_help,
-                            from_about_us_menu_open_why_capital
+                            from_trading_menu_open_mobile_apps,
+                            from_trading_menu_open_spread_betting,
+                            from_trading_menu_open_web_platform
                             )
-
+from src.src import CapitalComPageSrc
 
 @pytest.mark.us_55
 class TestManualDetected:
@@ -1567,21 +1571,21 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_621
     def test_621_start_test_of_reopen_demo_trading_page(
-            self, worker_id, d, cur_language_country_for_fca_and_sca, cur_role, cur_login, cur_password):
+            self, worker_id, d, cur_language_country_for_fca_sca_asic_cysec_2_rnd, cur_role, cur_login, cur_password):
         """
         Check:  Click the Menu section [Trading] >
                 Click Menu item [Demo trading] >
                 Click the Menu section [Trading] >
                 Click Menu item [Demo trading] >
         Language: All
-        License/Country:  ASIC, SCA
+        License/Country:  ASIC, SCA, CYSEC, FCA
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
 
         bid = build_dynamic_arg_for_us_55(
-            d, worker_id, cur_language_country_for_fca_and_sca[0],
-            cur_language_country_for_fca_and_sca[1], cur_role,
+            d, worker_id, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+            cur_language_country_for_fca_sca_asic_cysec_2_rnd[1], cur_role,
             "55", "ReTests of Manual Detected Bugs",
             "621",
             "Click the Menu section [Trading] > "
@@ -1591,19 +1595,112 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Промежуточная версия")
-        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_and_sca[0],
-                                                    cur_language_country_for_fca_and_sca[1], cur_role, cur_login, cur_password)
+        # pytest.skip("Промежуточная версия")
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+                                                    cur_language_country_for_fca_sca_asic_cysec_2_rnd[1], cur_role, cur_login, cur_password)
 
         page_menu = from_trading_menu_open_demo.MenuNewDemo(d, cur_item_link)
-        link = page_menu.from_trading_menu_open_demo(d, cur_language_country_for_fca_and_sca[0],
-                                                     cur_language_country_for_fca_and_sca[1], cur_item_link)
+        link = page_menu.from_trading_menu_open_demo(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+                                                     cur_language_country_for_fca_sca_asic_cysec_2_rnd[1], cur_item_link)
 
         test_element = BUG_621(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
-        test_element.act(d, cur_language_country_for_fca_and_sca[0], cur_language_country_for_fca_and_sca[1], link)
+        test_element.act(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+                         cur_language_country_for_fca_sca_asic_cysec_2_rnd[1], link)
+
+        # Assert
+        test_element.assert_(d)
+
+    @allure.step("Start test of the link 'app' in the block 'Our trading app' "
+                 "on the Page 'All platforms'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_650
+    def test_650_link_app_in_the_block_our_trading_app(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [All platforms] >
+                Scroll down to the block "Our trading app" >
+                Click link [app] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "650",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [All platforms] > "
+            "Scroll down to the block 'Our trading app' > "
+            "Click link [app].",
+            False, True
+        )
+        # Arrange
+
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_all_platforms(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_650(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
 
         # Assert
         test_element.assert_(d, link)
+
+    @allure.step("Start test of the link 'CFDs' in the tile 'How to trade with us' "
+                 "on the Page 'Mobile apps'")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_652
+    def test_652_link_app_in_the_block_our_trading_app(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Click Menu item [Mobile apps] >
+                Scroll down to the tile "How to trade with us" >
+                Click link [CFDs] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "652",
+            "Click the Menu section [Trading] > "
+            "Click Menu item [Mobile apps] > "
+            "Scroll down to the tile 'How to trade with us' > "
+            "Click link [CFDs].",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_mobile_apps.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_mobile_apps(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_652(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        Common().browser_back_to_link(d, cur_item_link)
