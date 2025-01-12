@@ -199,7 +199,7 @@ class Common:
 		while do:
 			wd.back()
 			print(f"{datetime.now()}   => Driver.back")
-			print(wd.current_url)
+			print(f"{datetime.now()}   Current page is: {wd.current_url}")
 			count -= 1
 			if wd.current_url == test_link or count == 0:
 				do = False
