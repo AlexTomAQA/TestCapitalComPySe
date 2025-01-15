@@ -1736,7 +1736,6 @@ class TestManualDetected:
             "Click link [How to create an MT4 account].",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_trading_menu_open_mt4.MenuNew(d, cur_item_link)
