@@ -22,12 +22,6 @@ class CocaColaCOPage(BasePage):
             self.link = cur_item_link
             self.open_page()
 
-        tabs = self.driver.window_handles
-        if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[0])
-            self.driver.close()
-            self.driver.switch_to.window(tabs[1])
-
         print(f"{datetime.now()}   Scroll down to the tile 'What is shares trading?' in the block “Market trading guides”")
         what_is_shares_trading_tile = self.driver.find_element(By.XPATH, '//h3[contains(text(), "What is shares trading?")]')
         self.driver.execute_script(
@@ -76,6 +70,12 @@ class CocaColaCOPage(BasePage):
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
         print(f"{datetime.now()}   3.Assert")
+
+        tabs = self.driver.window_handles
+        if len(tabs) > 1:
+            self.driver.switch_to.window(tabs[0])
+            self.driver.close()
+            self.driver.switch_to.window(tabs[1])
 
         try:
             error_information = self.driver.find_element(By.CSS_SELECTOR, 'a#error-information-button')

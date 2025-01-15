@@ -41,7 +41,7 @@ class LicenseChange(BasePage):
 
         expected_country = 'Australia'
         actual = self.driver.find_element(By.CSS_SELECTOR,
-                                          'div:nth-child(1) > button.localization_btn__9zIyt')
+                                          'div.localization_item__KwMiX:nth-child(1) > button')
         actual_country = actual.text
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center"});',
@@ -59,4 +59,3 @@ class LicenseChange(BasePage):
                                f"\n"
                                f"Actual result: The page with country ({actual_country}) other than the selected one "
                                f"({expected_country}) is opened")
-
