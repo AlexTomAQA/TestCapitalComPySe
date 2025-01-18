@@ -47,6 +47,7 @@ from pages.BugsManual.bug_621 import BUG_621
 from pages.BugsManual.bug_650 import BUG_650
 from pages.BugsManual.bug_652 import BUG_652
 from pages.BugsManual.bug_653 import BUG_653
+from pages.BugsManual.bug_656 import BUG_656
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1742,6 +1743,54 @@ class TestManualDetected:
         link = page_menu.from_trading_menu_open_mt4(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_653(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link 'buy and sell physical shares' in the block 'What is share trading?' "
+                 "on the Page 'Market guides'")
+    @pytest.mark.parametrize('cur_language', ["nl"])
+    @pytest.mark.parametrize('cur_country', ["nl"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_656
+    def test_656_link_buy_and_sell_physical_shares_in_the_block_what_is_share_trading(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Learn] >
+                Click Menu item [Market guides] >
+                Scroll down to the block "What is share trading?" >
+                Click link [buy and sell physical shares] >
+        Language: NL
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "656",
+            "Click the Menu section [Learn] > "
+            "Click Menu item [Market guides] > "
+            "Scroll down to the block 'What is share trading?' > "
+            "Click link [buy and sell physical shares].",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_656(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
