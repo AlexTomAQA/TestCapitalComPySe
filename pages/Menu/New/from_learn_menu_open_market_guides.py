@@ -32,7 +32,7 @@ class MenuNewLearn(MenuBase):
         if cur_country == 'gb':
             menu_locator = LearnMenuNew.MENU_FCA_LEARN
             submenu_locator = SUBMENU_FCA_MARKET_GUIDES
-        elif cur_country == 'de':
+        elif cur_country == 'de' or cur_country == 'nl':
             menu_locator = LearnMenuNew.MENU_CYSEC_LEARN
             submenu_locator = SUBMENU_CYSEC_MARKET_GUIDES
         elif cur_country == 'ae':
