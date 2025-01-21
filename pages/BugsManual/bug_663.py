@@ -4,13 +4,27 @@
 @Author  : Artem Dashkov
 """
 import allure
+import pytest
 from datetime import datetime
 from selenium.webdriver.common.by import By
+
+from pages.BugsManual.bug_366 import TRADING_INSTRUMENT_LOC
+from pages.BugsManual.bug_407 import PAGINATION_LOCATOR
 from pages.base_page import BasePage
 from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+TRADING_INSTRUMENT_LOCATOR = (By.CSS_SELECTOR, "[data-type='markets_list']")
+
+REGION_DROPDOWN_LOCATOR = (By.ID, "Region")
+REGION_USA_LOCATOR = (By.CSS_SELECTOR, "[for='United States of America']")
+
+SECTOR_DROPDOWN_LOCATOR = (By.ID, "Sector")
+SECTOR_FINANCIALS_LOCATOR = (By.CSS_SELECTOR, "[for='Financials']")
+
+PAGINATION_LOCATOR = (By.CSS_SELECTOR, "[data-type='markets_list_pagination']")
 
 WHAT_IS_SHARES_TRADING_LOCATOR = (By.XPATH, "(//div[@class='grid_grid__2D3md grid_gSmMd__aZHWz'])[2]")
 SHARES_TRADING_GUIDE_LINK_LOCATOR = (By.CSS_SELECTOR, "[data-type='tiles_w_img_link2_signup']")
@@ -29,7 +43,33 @@ class BUG_663(BasePage):
 
         # Check presenting, visibility block
         self.find_block_scroll_and_check_visibility(
-            "What is shares trading?", WHAT_IS_SHARES_TRADING_LOCATOR)
+            "Trading instrument", TRADING_INSTRUMENT_LOCATOR)
+
+        # Check Region - United States of America
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_element(*REGION_DROPDOWN_LOCATOR)
+        )
+        self.driver.find_element(*REGION_DROPDOWN_LOCATOR).click()
+        print("1")
+        self.driver.find_element(*REGION_USA_LOCATOR).click()
+        print("2")
+        self.driver.find_element(*REGION_DROPDOWN_LOCATOR).click()
+        print("3")
+
+        # Check Sector - Financials
+        self.driver.find_element(*SECTOR_DROPDOWN_LOCATOR).click()
+        self.driver.find_element(*SECTOR_FINANCIALS_LOCATOR).click()
+        self.driver.find_element(*SECTOR_DROPDOWN_LOCATOR).click()
+
+        # find max number of page
+        number_of_pages = self.driver.find_elements(*PAGINATION_LOCATOR)
+        list_number_of_pages = []
+        for number in number_of_pages.getText():
+            list_number_of_pages.append(number)
+
+        print(list_number_of_pages)
+
 
         # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(

@@ -1789,7 +1789,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
         link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
@@ -1846,6 +1845,7 @@ class TestManualDetected:
             False, True
         )
         # Arrange
+        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
         link = page_menu.from_markets_menu_open_shares(d, cur_language, cur_country, cur_item_link)
