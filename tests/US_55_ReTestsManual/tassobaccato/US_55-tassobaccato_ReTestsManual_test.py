@@ -29,6 +29,7 @@ from pages.BugsManual.bug_622 import FraudAwarenessPage
 from pages.BugsManual.bug_624 import CocaColaCOPage
 from pages.BugsManual.bug_627 import LicenseChange
 from pages.BugsManual.bug_655 import ErrorPage
+from pages.BugsManual.bug_660 import PageError404
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -930,5 +931,37 @@ class TestManualDetectedBugs:
 
         test_element = ErrorPage(d, cur_item_link, bid)
         test_element.error_page(d, cur_item_link)
+        test_element.element_click()
+        test_element.assert_()
+
+
+    @allure.step('Start retest manual AT_55!660  The page with "404 Pagina niet gevonden." text is displayed')
+    @pytest.mark.parametrize('cur_language', ['nl'])
+    @pytest.mark.parametrize('cur_country', ['nl'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_660
+    def test_660(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [Learn] > Menu item [Market guides] > Click on the "Commodity trading guide" link >
+                Click on the "commodities market" link
+        Language: NL
+        License: CYSEC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "660", 'The page with "404 Pagina niet gevonden." text is displayed after clicking the '
+                   '[grondstoffenmarkt](commodities market) link in "Een complete gids..."(A complete guide...) '
+                   'block after selected NL language and country'
+        )
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_learn_menu_open_market_guides.MenuNewLearn(d, link)
+        cur_item_link = menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, link)
+
+        test_element = PageError404(d, cur_item_link, bid)
+        test_element.page_error_404(d, cur_item_link)
         test_element.element_click()
         test_element.assert_()
