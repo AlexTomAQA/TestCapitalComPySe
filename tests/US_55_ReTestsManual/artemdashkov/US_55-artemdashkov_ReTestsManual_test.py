@@ -48,6 +48,7 @@ from pages.BugsManual.bug_650 import BUG_650
 from pages.BugsManual.bug_652 import BUG_652
 from pages.BugsManual.bug_653 import BUG_653
 from pages.BugsManual.bug_656 import BUG_656
+from pages.BugsManual.bug_663 import BUG_663
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1788,11 +1789,68 @@ class TestManualDetected:
             False, True
         )
         # Arrange
+        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
         link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_656(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the data in 'Trading instrument' widget on the Page 'Shares'")
+    @pytest.mark.parametrize('cur_language', ["en"])
+    @pytest.mark.parametrize('cur_country', ["eu"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_663
+    def test_663_data_in_trading_instrument_on_the_page_shares(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Market] >
+                Click Menu item [Shares] >
+                Scroll down to the widget "Trading instrument" >
+                Click dropdown [Region] >
+                Choose  United States of America >
+                Click dropdown [Sector] >
+                Choose Financials >
+                Scroll down to the end of the “Trading instrument” widget >
+                Select pages 34 to 49 from the list of “Trading Instrument” widgets
+        Language: EN
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "663",
+            "Click the Menu section [Market] > "
+                "Click Menu item [Shares] > "
+                "Scroll down to the widget 'Trading instrument' > "
+                "Click dropdown [Region] > "
+                "Choose  United States of America > "
+                "Click dropdown [Sector] > "
+                "Choose Financials > "
+                "Scroll down to the end of the “Trading instrument” widget > "
+                "Select pages 34 to 49 from the list of “Trading Instrument” widgets",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_shares(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_663(d, link, bid)
         test_element.arrange(d, link)
 
         # Act
