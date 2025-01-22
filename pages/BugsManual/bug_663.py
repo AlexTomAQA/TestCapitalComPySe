@@ -3,6 +3,8 @@
 @Time    : 2025/01/21 08:00
 @Author  : Artem Dashkov
 """
+import time
+
 import allure
 import pytest
 from datetime import datetime
@@ -33,6 +35,8 @@ MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(tex
 
 class BUG_663(BasePage):
 
+    pagination = None
+
     @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'What is share trading?', "
                  f"Click link [Shares trading guide], "
                  f"Find the link 'buy and sell physical shares'.")
@@ -51,41 +55,31 @@ class BUG_663(BasePage):
             self.driver.find_element(*REGION_DROPDOWN_LOCATOR)
         )
         self.driver.find_element(*REGION_DROPDOWN_LOCATOR).click()
-        print("1")
         self.driver.find_element(*REGION_USA_LOCATOR).click()
-        print("2")
         self.driver.find_element(*REGION_DROPDOWN_LOCATOR).click()
-        print("3")
 
         # Check Sector - Financials
         self.driver.find_element(*SECTOR_DROPDOWN_LOCATOR).click()
         self.driver.find_element(*SECTOR_FINANCIALS_LOCATOR).click()
         self.driver.find_element(*SECTOR_DROPDOWN_LOCATOR).click()
 
-        # find max number of page
-        number_of_pages = self.driver.find_elements(*PAGINATION_LOCATOR)
-        list_number_of_pages = []
-        for number in number_of_pages.getText():
-            list_number_of_pages.append(number)
+        WebDriverWait(self.driver, 5).until(EC.url_contains("sectors"))
 
-        print(list_number_of_pages)
+        # Find visible numbers of pages
+        self.driver.execute_script(
+            'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+            self.driver.find_elements(*PAGINATION_LOCATOR)[0]
+        )
+        print(f"Scroll to pagination")
+        self.pagination = self.driver.find_elements(*PAGINATION_LOCATOR)
 
-
-        # Check presenting, visibility link
-        self.find_link_scroll_check_visibility_and_clickability(
-            "Shares trading guide", SHARES_TRADING_GUIDE_LINK_LOCATOR)
-
-        print(f"{datetime.now()}   Start click link 'Shares trading guide'.")
-        self.driver.find_element(*SHARES_TRADING_GUIDE_LINK_LOCATOR).click()
-        print(f"{datetime.now()}   End click link 'Shares trading guide'.")
-        WebDriverWait(self.driver, 5).until(EC.url_changes(link))
-
-        # Check presenting, visibility link
-        self.find_link_scroll_check_visibility_and_clickability(
-            "buy and sell physical shares", BUY_AND_SELL_PHYSICAL_SHARES_LINK_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
+        print(f"Get innerText: {self.pagination[-2].get_property("innerText")}")
+        self.pagination[-2].click
+        # stop here
+
         print(f"{datetime.now()}   2. Start Act.")
 
         # click on the link 'buy and sell physical shares'
