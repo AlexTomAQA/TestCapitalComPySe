@@ -7,6 +7,7 @@ import time
 
 import allure
 import pytest
+import random
 from datetime import datetime
 from selenium.webdriver.common.by import By
 
@@ -27,6 +28,7 @@ SECTOR_DROPDOWN_LOCATOR = (By.ID, "Sector")
 SECTOR_FINANCIALS_LOCATOR = (By.CSS_SELECTOR, "[for='Financials']")
 
 PAGINATION_LOCATOR = (By.CSS_SELECTOR, "[data-type='markets_list_pagination']")
+TABLE_CELL_LOCATOR = (By.CSS_SELECTOR, ".table_cell__eiJNQ.helpers_textSmMob__9JkfJ")
 
 WHAT_IS_SHARES_TRADING_LOCATOR = (By.XPATH, "(//div[@class='grid_grid__2D3md grid_gSmMd__aZHWz'])[2]")
 SHARES_TRADING_GUIDE_LINK_LOCATOR = (By.CSS_SELECTOR, "[data-type='tiles_w_img_link2_signup']")
@@ -73,15 +75,33 @@ class BUG_663(BasePage):
         print(f"Scroll to pagination")
         self.pagination = self.driver.find_elements(*PAGINATION_LOCATOR)
 
-
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
         print(f"Get innerText: {self.pagination[-2].get_property("innerText")}")
-        self.pagination[-2].click
-        # stop here
+
+        # find random cells on last page
+        self.pagination[-2].click()
+        print(f"{datetime.now()} click[-2]")
+        WebDriverWait(self.driver, 10).until(EC.url_contains("page"))
+        table_cells_last_page = self.driver.find_elements(*TABLE_CELL_LOCATOR)
+        list_of_random_cells_last_page = random.choices(table_cells_last_page, k=4)
+        text_in_cells = []
+        for value in list_of_random_cells_last_page:
+            text_in_cells.append(value.get_property("innerText"))
+
+        # find random cells on pre last page
+        self.pagination[-3].click
+        # WebDriverWait(self.driver, 5).until(EC.url_contains("page"))
+        table_cells_pre_last_page = self.driver.find_elements(*TABLE_CELL_LOCATOR)
+        list_of_random_cells_pre_last_page = random.choices(table_cells_pre_last_page, k=4)
+        for value in list_of_random_cells_last_page:
+            text_in_cells.append(value.get_property("innerText"))
+
+        print(f"text_in_cells: {text_in_cells}")
 
         print(f"{datetime.now()}   2. Start Act.")
 
+        # STOP HERE
         # click on the link 'buy and sell physical shares'
         print(f"{datetime.now()}   Start to click link 'buy and sell physical shares'")
         link = self.driver.current_url
