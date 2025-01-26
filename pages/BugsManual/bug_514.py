@@ -8,7 +8,6 @@
 from datetime import datetime
 import allure
 from selenium.common import NoSuchElementException
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
@@ -74,6 +73,13 @@ class AnnouncedLink(BasePage):
         if len(tabs) > 1:
             self.driver.switch_to.window(tabs[1])
 
+        current_title = self.driver.title
+        if current_title == 'Solana Price Prediction | Is Solana a Good Investment? | Capital.com':
+            print(f"{datetime.now()}   announced_link is not clicked")
+            Common.pytest_fail("announced_link is not clicked")
+        else:
+            print(f"{datetime.now()}   announced_link is clicked")
+
 
     @allure.step(f"{datetime.now()}   Assert")
     def assert_(self):
@@ -90,13 +96,14 @@ class AnnouncedLink(BasePage):
         page_title = self.driver.title
         allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
         print(f"{datetime.now()}   The page with title '{page_title}' is opened")
+        main_frame_error = self.driver.find_element(By.CSS_SELECTOR, 'div#main-frame-error')
 
-        if page_title == 'Not Found':
+        if page_title == 'Not Found' or main_frame_error:
             Common.pytest_fail(f"# Bug 55!514 "
                                f"\n"
                                f"Expected result: The page with 'Maple crypto-lending' content is opened"
                                f"\n"
-                               f"Actual result: The page with title '{page_title}' is opened")
+                               f"Actual result: The page with title '{page_title}' and  text 'Page Not Found..' is opened")
         else:
-            print(f"{datetime.now()}   The 'Maple crypto-lending' page is opened")
+            print(f"{datetime.now()}   The page with 'Maple crypto-lending' content is opened")
             allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
