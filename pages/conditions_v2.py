@@ -73,7 +73,7 @@ def apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_logi
         return cond.preconditions(d, CapitalComPageSrc.URL, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
 
-    if cur_country in [*CYSEC_COUNTRIES, 'ae', 'au', 'gb']:
+    if cur_country in [*CYSEC_COUNTRIES, 'ae', 'au', 'gb', 'eu']:
         cond = NewConditions(d)
         return cond.preconditions(d, CapitalComPageSrc.URL_NEW, '', cur_language, cur_country, cur_role,
                                   cur_login, cur_password)
