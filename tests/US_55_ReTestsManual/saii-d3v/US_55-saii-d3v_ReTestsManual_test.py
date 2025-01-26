@@ -43,6 +43,7 @@ from pages.BugsManual.bug_507 import Bug507
 from pages.BugsManual.bug_605 import Bug605
 from pages.BugsManual.bug_613 import Bug613
 from pages.BugsManual.bug_651 import Bug651
+from pages.BugsManual.bug_654 import Bug654
 from pages.Elements.HeaderSearchField import SearchField
 from pages.Signup_login.signup_login import SignupLogin
 from pages.Elements.HeaderLoginButton import HeaderButtonLogin
@@ -1642,6 +1643,46 @@ class TestManualDetectedBugs:
         if not test_el.should_not_be_error_404():
             Common.pytest_fail('Bug # 55!651 The corresponding page is opened with ERROR 404')
         Common.save_current_screenshot(d, "AT_55!651 Pass")
+
+        # Postconditions
+        print(f'\n{datetime.now()}   Applying postconditions...')
+        Common.browser_back_to_link(d, CapitalComPageSrc.URL_NEW)
+
+    @allure.step(
+        'Start retest manual TC_55!654 | ')
+    @pytest.mark.parametrize('cur_language', ['nl'])
+    @pytest.mark.parametrize('cur_country', ['nl'])
+    @pytest.mark.parametrize('cur_role', ['Auth', 'NoAuth', 'NoReg'])
+    @pytest.mark.bug_654
+    def test_654(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+         Check:
+         Language: NL.
+         License: CYSEC.
+         Author: Sergey Aiidzhanov
+         """
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "654",
+            '',
+            False,
+            False
+        )
+
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_el = Bug654(d, link, bid)
+        test_el.open_trading_essentials_page(d, cur_language, cur_country, link)
+
+        # Act
+        test_el.open_investing_link()
+
+        # Assert
+        if not test_el.should_not_be_error_404():
+            Common.pytest_fail('Bug # 55!654 The corresponding page is opened with ERROR 404')
+        Common.save_current_screenshot(d, "AT_55!654 Pass")
 
         # Postconditions
         print(f'\n{datetime.now()}   Applying postconditions...')
