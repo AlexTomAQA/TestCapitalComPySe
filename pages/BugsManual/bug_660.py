@@ -29,7 +29,7 @@ class PageError404(BasePage):
         )
 
         print(f"{datetime.now()}   Click on the [Handelsgids voor grondstoffen](Commodity trading guide) link")
-        commodity_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'Commodity trading guide')
+        commodity_trading_guide_link = self.driver.find_element(By.LINK_TEXT, 'Handelsgids voor grondstoffen')
         commodity_trading_guide_link.click()
 
     def element_click(self):
@@ -37,7 +37,7 @@ class PageError404(BasePage):
         print(f"{datetime.now()}   Click on the [grondstoffenmarkt](commodities market) link in the 'A complete guide "
               f"to commodities trading' block")
 
-        commodities_market_link = self.driver.find_element(By.LINK_TEXT, 'commodities market')
+        commodities_market_link = self.driver.find_element(By.LINK_TEXT, 'grondstoffenmarkt')
         commodities_market_link.click()
 
     @allure.step(f"{datetime.now()}   Assert")
