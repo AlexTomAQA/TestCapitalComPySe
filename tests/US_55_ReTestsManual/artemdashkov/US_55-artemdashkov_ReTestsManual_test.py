@@ -743,7 +743,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_312
-    def test_312_link_mt4_platforms_does_not_open_mt4_page_on_parameters_language(
+    def decided_test_312_link_mt4_platforms_does_not_open_mt4_page_on_parameters_language(
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
@@ -785,7 +785,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_324
-    def test_324_menu_item_demo_is_not_displayed_in_the_header(
+    def decided_test_324_menu_item_demo_is_not_displayed_in_the_header(
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
@@ -944,7 +944,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_370
-    def test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
+    def decided_test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  Menu section [About us] > Menu item [Why Capital.com?] >
@@ -1219,7 +1219,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('link_for_check', ["JPMorgan Chase & Co", "Exxon Mobil", "IBM"])
     @pytest.mark.bug_422
-    def test_422_links_jpmorgan_exxon_ibm_on_page_largest_stock_exchanges_dont_open_page(
+    def decided_test_422_links_jpmorgan_exxon_ibm_on_page_largest_stock_exchanges_dont_open_page(
             self, worker_id, d, cur_language, cur_country, cur_role, link_for_check, cur_login, cur_password):
         """
         Check:  Menu section [Markets] >
@@ -1574,7 +1574,7 @@ class TestManualDetected:
     @allure.step("Start test of reopen 'Demo trading' page")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_621
-    def test_621_start_test_of_reopen_demo_trading_page(
+    def decided_test_621_start_test_of_reopen_demo_trading_page(
             self, worker_id, d, cur_language_country_for_fca_sca_asic_cysec_2_rnd, cur_role, cur_login, cur_password):
         """
         Check:  Click the Menu section [Trading] >
@@ -1845,7 +1845,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
         link = page_menu.from_markets_menu_open_shares(d, cur_language, cur_country, cur_item_link)
