@@ -1891,7 +1891,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_trading_menu_open_trading.MenuNew(d, cur_item_link)
         link = page_menu.from_trading_menu_open_trading(d, cur_language, cur_country, cur_item_link)
@@ -1900,7 +1899,7 @@ class TestManualDetected:
         test_element.arrange(d, link)
 
         # Act
-        test_element.act(d)
+        test_element.act(d, link)
 
         # Assert
         test_element.assert_(d, link)
