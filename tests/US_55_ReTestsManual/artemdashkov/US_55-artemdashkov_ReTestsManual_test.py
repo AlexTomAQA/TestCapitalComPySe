@@ -1940,7 +1940,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_trading_menu_open_margin_calls.MenuNew(d, cur_item_link)
         link = page_menu.from_trading_menu_open_margin_calls(d, cur_language, cur_country, cur_item_link)

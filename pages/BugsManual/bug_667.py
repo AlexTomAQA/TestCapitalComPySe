@@ -11,17 +11,15 @@ from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-FEATURES_OF_CFD_TRADING_BLOCK = (
-    By.CSS_SELECTOR,
-    "[data-type='background_banner_block'] ~ .grid_grid__2D3md.grid_gComponent__Xx_xR")
-DEDICATED_SUPPORT_24_7_LINK = (By.XPATH, "//a[contains(text(), '24/7')]")
+MARGIN_CALL_EXAMPLE_BLOCK_LOCATOR = (
+    By.XPATH, "(//div[@class='grid_grid__2D3md grid_gComponent__Xx_xR'])[2]")
+CFDS_LINK_LOCATOR = (By.XPATH, "//li //a[contains(text(), 'CFD')]")
 MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(text(), '404')]")
 
 class BUG_667(BasePage):
 
-    @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'Features of CFD trading', "
-                 f"Find the link '24/7 dedicated support'.")
+    @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'Margin call example', "
+                 f"Find the link 'CFDs'.")
     def arrange(self, d, link):
         if not self.current_page_is(link):
             self.link = link
@@ -29,21 +27,21 @@ class BUG_667(BasePage):
 
         # Check presenting, visibility block
         self.find_block_scroll_and_check_visibility(
-            "Features of CFD trading", FEATURES_OF_CFD_TRADING_BLOCK)
+            "Margin call example", MARGIN_CALL_EXAMPLE_BLOCK_LOCATOR)
 
         # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(
-            "24/7 dedicated support", DEDICATED_SUPPORT_24_7_LINK)
+            "CFDs", CFDS_LINK_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d, link):
         print(f"{datetime.now()}   2. Start Act.")
 
-        print(f"{datetime.now()}   Start click link '24/7 dedicated support'.")
-        self.driver.find_element(*DEDICATED_SUPPORT_24_7_LINK).click()
-        print(f"{datetime.now()}   End click link '24/7 dedicated support'.")
+        print(f"{datetime.now()}   Start click link 'CFDs'.")
+        self.driver.find_element(*CFDS_LINK_LOCATOR).click()
+        print(f"{datetime.now()}   End click link 'CFDs'.")
         WebDriverWait(self.driver, 10).until(EC.url_changes(link))
-        Common().save_current_screenshot(d, "After click on link '24/7 dedicated support'")
+        Common().save_current_screenshot(d, "After click on link 'CFDs'")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d, link):
