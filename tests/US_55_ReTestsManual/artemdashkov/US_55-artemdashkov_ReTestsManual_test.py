@@ -1986,19 +1986,18 @@ class TestManualDetected:
             "Click button [Try demo] > ",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
-
         test_element = BUG_668(d, link, bid)
-        test_element.arrange(d, link)
 
         # Act
-        test_element.act(d, link)
+        test_element.click_try_demo_button()
+        test_element.is_page_change_successfully()
+        d.back()
+        test_element.click_try_demo_button()
 
         # Assert
-        test_element.assert_(d, link)
-
+        test_element.is_page_change_successfully()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(link)
