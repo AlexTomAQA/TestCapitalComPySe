@@ -30,6 +30,7 @@ from pages.BugsManual.bug_624 import CocaColaCOPage
 from pages.BugsManual.bug_627 import LicenseChange
 from pages.BugsManual.bug_655 import ErrorPage
 from pages.BugsManual.bug_660 import PageError404
+from pages.BugsManual.bug_664 import Bug664
 from pages.Menu.New.from_markets_menu_open_cryptocurrencies import FromMarketsOpenCryptocurrencies
 from pages.Menu.New.from_markets_menu_open_indices import MenuNewIndices
 from pages.Menu.New.from_markets_menu_open_markets import MenuNewMarkets
@@ -37,10 +38,11 @@ from pages.Menu.New import from_trading_menu_open_mobile_apps, from_about_us_men
     from_about_us_menu_open_help, from_about_us_menu_open_client_vulnerability, from_trading_menu_open_web_platform, \
     from_markets_menu_open_shares, from_trading_menu_open_cfd_trading, from_learn_menu_open_essentials_of_trading, \
     from_markets_menu_open_market_analysis, from_learn_menu_open_market_guides, from_trading_menu_open_cfd_calculator, \
-    from_trading_menu_open_fraud_awareness, from_trading_menu_open_demo
+    from_trading_menu_open_fraud_awareness, from_trading_menu_open_demo, from_about_us_open_compliance_and_legals
 from pages.Menu.menu import MenuSection
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.Elements.MyAccountButton import MyAccountButton
+from pages.common import Common
 from pages.conditions_v2 import apply_preconditions_to_link
 
 
@@ -965,3 +967,36 @@ class TestManualDetectedBugs:
         test_element.page_error_404(d, cur_item_link)
         test_element.element_click()
         test_element.assert_()
+
+    @allure.step('Start retest manual AT_55!664  A redirection to the main page occurs in the "Compliance & Legals" '
+                 'section when clicking on the "Spread" link.')
+    @pytest.mark.parametrize('cur_language', ['el'])
+    @pytest.mark.parametrize('cur_country', ['el'])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_660
+    def test_664(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check: Menu section [About] > Menu item [Compliance & Legals] > Click on the link  "Spread" in the “Spread” block
+        Language: EL
+        License: CYSEC
+        Author: Kasila
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "664", ' A redirection to the main page occurs in the "Compliance & Legals" section when '
+                   'clicking on the "Spread" link.'
+        )
+
+        Common.pytest_skip("Under construction")
+
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        menu = from_about_us_open_compliance_and_legals.MenuNew(d, link)
+        cur_item_link = menu.from_about_us_open_compliance_and_legals(d, cur_language, cur_country, link)
+
+        test_element = Bug664(d, cur_item_link, bid)
+        test_element.arrange(d, cur_item_link)
+        test_element.element_click()
+        test_element.assert_()
+
