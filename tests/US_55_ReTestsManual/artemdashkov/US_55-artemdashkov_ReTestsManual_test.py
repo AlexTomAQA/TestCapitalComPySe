@@ -51,6 +51,7 @@ from pages.BugsManual.bug_656 import BUG_656
 from pages.BugsManual.bug_663 import BUG_663
 from pages.BugsManual.bug_665 import BUG_665
 from pages.BugsManual.bug_667 import BUG_667
+from pages.BugsManual.bug_668 import BUG_668
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1956,3 +1957,48 @@ class TestManualDetected:
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
+
+    @allure.step("Start test of the button [Try demo] on the Main Page")
+    @pytest.mark.parametrize('cur_language', ["en"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.bug_668
+    def test_668_button_try_demo_on_the_main_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Scroll to the button [Try demo] in block "Award-winning trading platform, here in the UAE" >
+                Click button [Try demo] >
+                Return to the main page >
+                Click button [Try demo] >
+        Language: EN
+        License/Country: SCA
+        Role: Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "668",
+            "Scroll to the button [Try demo] in block 'Award-winning trading platform, here in the UAE' >"
+            "Click button [Try demo] > "
+            "Return to the main page > "
+            "Click button [Try demo] > ",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+
+        test_element = BUG_668(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d, link)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(link)
