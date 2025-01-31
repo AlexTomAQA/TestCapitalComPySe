@@ -50,11 +50,12 @@ class PageError404(BasePage):
 
         try:
             error_404 = self.driver.find_element(By.CSS_SELECTOR, 'p.subTitle404')
-            Common.pytest_fail(f"#Bug # 55!660 "
-                               f"\n"
-                               f"Expected result: The page 'Grondstoffen'(Commodities) with '{expected_url}' URL is displayed"
-                               f"\n"
-                               f"Actual result: The page '404' with URL '{actual_url}' is displayed")
+            if error_404:
+                Common.pytest_fail(f"#Bug # 55!660 "
+                                   f"\n"
+                                   f"Expected result: The page 'Grondstoffen'(Commodities) with '{expected_url}' URL is displayed"
+                                   f"\n"
+                                   f"Actual result: The page '404' with URL '{actual_url}' is displayed")
         except NoSuchElementException:
             if actual_url != expected_url:
                 Common.pytest_fail(f"#Bug # 55!660 "

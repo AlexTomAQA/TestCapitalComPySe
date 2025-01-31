@@ -24,7 +24,7 @@ class MenuNew(MenuBase):
         submenu_locator = ""
 
         if cur_country in CYSEC_COUNTRIES:
-            menu_locator = AboutUsMenuNew.MENU_FCA_ABOUT_US
+            menu_locator = AboutUsMenuNew.MENU_CYSEC_ABOUT_US
             submenu_locator = SUBMENU_CYSEC_COMPLIANCE_AND_LEGALS
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(

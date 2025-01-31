@@ -971,7 +971,7 @@ class TestManualDetectedBugs:
     @allure.step('Start retest manual AT_55!664  A redirection to the main page occurs in the "Compliance & Legals" '
                  'section when clicking on the "Spread" link.')
     @pytest.mark.parametrize('cur_language', ['el'])
-    @pytest.mark.parametrize('cur_country', ['el'])
+    @pytest.mark.parametrize('cur_country', ['gr'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_660
     def test_664(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
@@ -988,8 +988,6 @@ class TestManualDetectedBugs:
             "664", ' A redirection to the main page occurs in the "Compliance & Legals" section when '
                    'clicking on the "Spread" link.'
         )
-
-        Common.pytest_skip("Under construction")
 
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         menu = from_about_us_open_compliance_and_legals.MenuNew(d, link)

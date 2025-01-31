@@ -10,7 +10,6 @@ import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
-from selenium.common import NoSuchElementException
 
 
 class Bug664(BasePage):
@@ -41,3 +40,15 @@ class Bug664(BasePage):
 
         expected_url = 'https://capital.com/el-gr/ways-to-trade/fees-and-charges'
         actual_url = self.driver.current_url
+
+        if actual_url != expected_url:
+            Common.pytest_fail(f"#Bug # 55!664 "
+                               f"\n"
+                               f"Expected result: The page “Χρεώσεις και προμήθειες” (Fees and Charges) with URL "
+                               f"'{expected_url}' is displayed"
+                               f"\n"
+                               f"Actual result: The page with URL '{actual_url}' is displayed")
+        else:
+            print(f"{datetime.now()}   The page “Χρεώσεις και προμήθειες” (Fees and Charges) with URL '{expected_url}' "
+                  f"is displayed")
+            allure.attach(self.driver.get_screenshot_as_png(), "scr_qr", allure.attachment_type.PNG)
