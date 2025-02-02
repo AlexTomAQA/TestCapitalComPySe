@@ -52,6 +52,7 @@ from pages.BugsManual.bug_663 import BUG_663
 from pages.BugsManual.bug_665 import BUG_665
 from pages.BugsManual.bug_667 import BUG_667
 from pages.BugsManual.bug_668 import BUG_668
+from pages.BugsManual.bug_673 import BUG_673
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -1989,6 +1990,49 @@ class TestManualDetected:
         # Arrange
         link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         test_element = BUG_668(d, link, bid)
+
+        # Act
+        test_element.click_try_demo_button()
+        test_element.is_page_change_successfully()
+        d.back()
+        test_element.click_try_demo_button()
+
+        # Assert
+        test_element.is_page_change_successfully()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(link)
+
+    @allure.step("Start test of the link [Learn more about cryptocurrency trading] on the 'Cryptocurrencies' Page")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_673
+    def test_673_link_learn_more_about_cryptocurrency_trading_on_the_cryptocurrencies_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Scroll to the link [Learn more about cryptocurrency trading]
+                in block "Why trade cryptocurrencies with Capital.com?" >
+                Click link [Learn more about cryptocurrency trading] >
+        Language: AR
+        License/Country: SCA
+        Role: Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "673",
+            "Scroll to the link [Learn more about cryptocurrency trading] "
+            "in block 'Why trade cryptocurrencies with Capital.com?' >"
+            "Click link [Learn more about cryptocurrency trading].",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = BUG_673(d, link, bid)
 
         # Act
         test_element.click_try_demo_button()
