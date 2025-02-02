@@ -61,6 +61,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_about_us_menu_open_why_capital,
                             from_learn_menu_open_market_guides,
                             from_markets_menu_open_commodities,
+                            from_markets_menu_open_cryptocurrencies,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
@@ -2029,19 +2030,18 @@ class TestManualDetected:
             "Click link [Learn more about cryptocurrency trading].",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
-        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_cryptocurrencies.FromMarketsOpenCryptocurrencies(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, cur_item_link)
+
         test_element = BUG_673(d, link, bid)
 
         # Act
-        test_element.click_try_demo_button()
-        test_element.is_page_change_successfully()
-        d.back()
-        test_element.click_try_demo_button()
+        test_element.click_learn_more_about_cryptocurrency_trading_link()
 
         # Assert
-        test_element.is_page_change_successfully()
+        test_element.is_expected_page_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
-        d.get(link)
+        d.get(cur_item_link)
