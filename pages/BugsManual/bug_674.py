@@ -6,7 +6,6 @@
 import allure
 from datetime import datetime
 
-from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
@@ -15,28 +14,28 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BUG_674(BasePage):
 
-    WHY_TRADE_CRYPTOCURRENCIES_BLOCK = (By.XPATH, "//h3[contains(text(), 'Capital.com')]")
-    LEARN_MORE_ABOUT_CRYPTOCURRENCY_TRADING_LINK = (By.XPATH, "//a[contains(@href, 'cryptocurrency-trading')]")
-    EXPECTED_PAGE = 'https://capital.com/ar-ae/learn/market-guides/what-is-cryptocurrency-trading'
+    HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK = (
+        By.CSS_SELECTOR, "[data-id='connectaccounttomt4'] [data-type='tiles_w_img_link2_signup']")
+    TITLE_HOW_TO_CREATE_A_METATRADER_PAGE = (By.CSS_SELECTOR, "h1.lt-page__title")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
-    @allure.step(f"{datetime.now()}   Click on [Try demo] button")
+    @allure.step(f"{datetime.now()}   Click on [How to create an MT4 account] link")
     def click_learn_more_about_cryptocurrency_trading_link(self):
         # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(
-            "Learn more about cryptocurrency trading",
-            self.LEARN_MORE_ABOUT_CRYPTOCURRENCY_TRADING_LINK)
+            "How to create an MT4 account",
+            self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK)
         # click link
-        print(f"{datetime.now()}   Start click [Learn more about cryptocurrency trading] link")
-        self.driver.find_element(*self.LEARN_MORE_ABOUT_CRYPTOCURRENCY_TRADING_LINK).click()
-        print(f"{datetime.now()}   End click [Learn more about cryptocurrency trading] link\n")
+        print(f"{datetime.now()}   Start click [How to create an MT4 account] link")
+        self.driver.find_element(*self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK).click()
+        print(f"{datetime.now()}   End click [How to create an MT4 account] link\n")
         Common().save_current_screenshot(self.driver,
-            "After click on [Learn more about cryptocurrency trading] link")
+            "After click on [How to create an MT4 account] link")
 
-    @allure.step(f"{datetime.now()}   Page changed successfully")
+    @allure.step(f"{datetime.now()}   Is expected page open?")
     def is_expected_page_open(self):
         print(f"{datetime.now()}   How are many opened window?")
         tabs = self.driver.window_handles
@@ -47,13 +46,14 @@ class BUG_674(BasePage):
             self.driver.switch_to.window(tabs[-1])
             Common().save_current_screenshot(self.driver,
                                              "After switch on second link")
-        print(f"{datetime.now()}   Start match URLs of expected and real page")
+        print(f"{datetime.now()}   Start to check language of the title on the opened page")
 
-        if self.driver.current_url != self.EXPECTED_PAGE:
-            msg = (f"Instead 'Expected' page opened other page. "
-                   f"Expected_page is '{self.EXPECTED_PAGE}', "
-                   f"current page is '{self.driver.current_url}'")
+        title_on_the_opened_page = self.driver.find_element(*self.TITLE_HOW_TO_CREATE_A_METATRADER_PAGE)
+
+        if "How to create" in title_on_the_opened_page.text:
+            msg = (f"Instead Dutch language opened page "
+                   f"has English language. "
+                   f"Title on the opened page is '{title_on_the_opened_page.text}'")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   End match URLs of expected and real page\n")
-        print(f"{datetime.now()}   URLs of expected and real page are the same\n")
+        print(f"{datetime.now()}   Language on the opened page is not English, need to check Screenshot.\n")
