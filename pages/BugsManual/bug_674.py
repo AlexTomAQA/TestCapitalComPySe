@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2025/02/02 18:00
+@Time    : 2025/02/05 16:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -13,8 +13,9 @@ from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class BUG_673(BasePage):
+class BUG_674(BasePage):
 
+    WHY_TRADE_CRYPTOCURRENCIES_BLOCK = (By.XPATH, "//h3[contains(text(), 'Capital.com')]")
     LEARN_MORE_ABOUT_CRYPTOCURRENCY_TRADING_LINK = (By.XPATH, "//a[contains(@href, 'cryptocurrency-trading')]")
     EXPECTED_PAGE = 'https://capital.com/ar-ae/learn/market-guides/what-is-cryptocurrency-trading'
 

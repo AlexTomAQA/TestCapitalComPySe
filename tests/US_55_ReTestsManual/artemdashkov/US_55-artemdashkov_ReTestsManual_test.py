@@ -53,6 +53,7 @@ from pages.BugsManual.bug_665 import BUG_665
 from pages.BugsManual.bug_667 import BUG_667
 from pages.BugsManual.bug_668 import BUG_668
 from pages.BugsManual.bug_673 import BUG_673
+from pages.BugsManual.bug_674 import BUG_674
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2017,7 +2018,7 @@ class TestManualDetected:
                 Click link [Learn more about cryptocurrency trading] >
         Language: AR
         License/Country: SCA
-        Role: Auth
+        Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
 
@@ -2036,6 +2037,50 @@ class TestManualDetected:
         link = page_menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_673(d, link, bid)
+
+        # Act
+        test_element.click_learn_more_about_cryptocurrency_trading_link()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [How to create an MT4 account] on the 'MT4' Page")
+    @pytest.mark.parametrize('cur_language', ["nl"])
+    @pytest.mark.parametrize('cur_country', ["nl"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_674
+    def test_674_how_to_create_an_mt4_account_on_the_mt4_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Trading] >
+                Click the Menu item [MT4] >
+                Scroll to the link [How to create a MetaTrader4 (MT4) account?] >
+                in block "Connect your account to MT4 in three steps" >
+                Click link [How to create a MetaTrader4 (MT4) account?] >
+        Language: NL
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "674",
+            "Scroll to the link [How to create a MetaTrader4 (MT4) account?] "
+            "in block 'Connect your account to MT4 in three steps' >"
+            "Click link [How to create a MetaTrader4 (MT4) account?].",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_mt4.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_mt4(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_674(d, link, bid)
 
         # Act
         test_element.click_learn_more_about_cryptocurrency_trading_link()
