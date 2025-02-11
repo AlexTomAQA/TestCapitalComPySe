@@ -13,18 +13,32 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class BUG_678(BasePage):
-
+    count = int
     HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK = (
         By.CSS_SELECTOR, "[data-id='connectaccounttomt4'] [data-type='tiles_w_img_link2_signup']")
     TITLE_HOW_TO_CREATE_A_METATRADER_PAGE = (By.CSS_SELECTOR, "h1.lt-page__title")
+
+    BITCOIN_PRICE_PREDICTIONS_ARTICLE = (By.XPATH, "//b[contains(text(), '2030-2050')]")
+    CURRENT_PAGE_OF_PAGINATION = (By.CSS_SELECTOR, "[aria-current='page']")
+    CURRENT_PAGE_OF_PAGINATION = (By.XPATH,
+            f"//a[contains(@class, 'pagination_pagination__lllu8')][contains(text(), '{count}')]")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
-    @allure.step(f"{datetime.now()}   Click on [How to create an MT4 account] link")
-    def click_learn_more_about_cryptocurrency_trading_link(self):
+    @allure.step(f"{datetime.now()}   Find article 'Bitcoin price predictions 2025–2050'")
+    def find_article_bitcoin_price_predictions(self):
         # Check presenting, visibility link
+        count = 1
+        while self.wait.until(EC.visibility_of_element_located(self.BITCOIN_PRICE_PREDICTIONS_ARTICLE)) or count==10:
+            self.find_link_scroll_check_visibility_and_clickability(
+                f"Number page of pagination is: {count}",
+                self.CURRENT_PAGE_OF_PAGINATION)
+            current_page_of_pagination = self.driver.find_element(*self.CURRENT_PAGE_OF_PAGINATION)
+            print(f"{datetime.now()}   Current page of pagination is {current_page_of_pagination.text}")
+
+
         self.find_link_scroll_check_visibility_and_clickability(
             "How to create an MT4 account",
             self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK)
