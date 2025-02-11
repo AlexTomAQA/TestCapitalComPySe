@@ -10,8 +10,9 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-class BUG_674(BasePage):
+class BUG_678(BasePage):
 
     HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK = (
         By.CSS_SELECTOR, "[data-id='connectaccounttomt4'] [data-type='tiles_w_img_link2_signup']")

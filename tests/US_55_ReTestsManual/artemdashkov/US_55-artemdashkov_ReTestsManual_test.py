@@ -2090,3 +2090,50 @@ class TestManualDetected:
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
+
+    @allure.step("Start test of the link [Goldman Sachs] in the 'Bitcoin price predictions' article")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_678
+    def test_678_link_goldman_sachs_in_the_bitcoin_price_predictions_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Markets] >
+                Click the Menu item [Market analysis] >
+                Find article [Bitcoin price predictions 2025–2050: third-party price target] >
+                Scroll to the link [Goldman Sachs] >
+                Click link [Goldman Sachs] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "678",
+            "Navigate to the Menu section [Markets] "
+            "Click the Menu item [Market analysis] "
+            "Find article [Bitcoin price predictions 2025–2050: third-party price target] "
+            "Scroll to the link [Goldman Sachs] "
+            "Click link [Goldman Sachs]",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_674(d, link, bid)
+
+        # Act
+        test_element.click_learn_more_about_cryptocurrency_trading_link()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
