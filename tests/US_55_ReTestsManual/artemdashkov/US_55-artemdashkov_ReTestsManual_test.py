@@ -54,6 +54,7 @@ from pages.BugsManual.bug_667 import BUG_667
 from pages.BugsManual.bug_668 import BUG_668
 from pages.BugsManual.bug_673 import BUG_673
 from pages.BugsManual.bug_674 import BUG_674
+from pages.BugsManual.bug_678 import BUG_678
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2127,10 +2128,10 @@ class TestManualDetected:
         page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
         link = page_menu.from_markets_menu_open_market_analysis(d, cur_language, cur_country, cur_item_link)
 
-        test_element = BUG_674(d, link, bid)
+        test_element = BUG_678(d, link, bid)
 
         # Act
-        test_element.click_learn_more_about_cryptocurrency_trading_link()
+        test_element.find_article_bitcoin_price_predictions()
 
         # Assert
         test_element.is_expected_page_open()

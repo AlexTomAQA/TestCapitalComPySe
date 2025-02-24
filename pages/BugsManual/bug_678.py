@@ -11,6 +11,7 @@ from pages.base_page import BasePage
 from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 class BUG_678(BasePage):
     count = int
@@ -20,7 +21,7 @@ class BUG_678(BasePage):
 
     BITCOIN_PRICE_PREDICTIONS_ARTICLE = (By.XPATH, "//b[contains(text(), '2030-2050')]")
     CURRENT_PAGE_OF_PAGINATION = (By.CSS_SELECTOR, "[aria-current='page']")
-    CURRENT_PAGE_OF_PAGINATION = (By.XPATH,
+    NEXT_PAGE_OF_PAGINATION = (By.XPATH,
             f"//a[contains(@class, 'pagination_pagination__lllu8')][contains(text(), '{count}')]")
 
     def __init__(self, driver, link, bid):
@@ -30,13 +31,25 @@ class BUG_678(BasePage):
     @allure.step(f"{datetime.now()}   Find article 'Bitcoin price predictions 2025–2050'")
     def find_article_bitcoin_price_predictions(self):
         # Check presenting, visibility link
-        count = 1
-        while self.wait.until(EC.visibility_of_element_located(self.BITCOIN_PRICE_PREDICTIONS_ARTICLE)) or count==10:
-            self.find_link_scroll_check_visibility_and_clickability(
-                f"Number page of pagination is: {count}",
-                self.CURRENT_PAGE_OF_PAGINATION)
-            current_page_of_pagination = self.driver.find_element(*self.CURRENT_PAGE_OF_PAGINATION)
-            print(f"{datetime.now()}   Current page of pagination is {current_page_of_pagination.text}")
+        count = 0
+        while count != 5:
+            try:
+                self.wait.until(EC.visibility_of_element_located(self.BITCOIN_PRICE_PREDICTIONS_ARTICLE))
+            except TimeoutException:
+                self.find_link_scroll_check_visibility_and_clickability(
+                    f"Number page of pagination is: {count}",
+                    self.CURRENT_PAGE_OF_PAGINATION)
+                current_number_page_of_pagination = self.driver.find_element(*self.CURRENT_PAGE_OF_PAGINATION)
+                count = current_number_page_of_pagination.text
+                print(f"{datetime.now()}   Current number page of pagination is {count}")
+                count += 1 # next number of page
+                print(f"{datetime.now()}   Start click next number page of pagination is {count}")
+
+                self.driver.find_element(By.XPATH,
+                f"//a[contains(@class, 'pagination_pagination__lllu8')][contains(text(), '{count}')]").click()
+                print(f"{datetime.now()}   End click next number page of pagination is {count}")
+
+        print("Stop here!")
 
 
         self.find_link_scroll_check_visibility_and_clickability(
