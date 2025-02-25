@@ -38,6 +38,7 @@ MESSAGE_404_LOCATOR = (By.XPATH, "//p[@class='textCenter title404'][contains(tex
 class BUG_663(BasePage):
 
     pagination = None
+    text_in_cells = None
 
     @allure.step(f"{datetime.now()}   1. Start Arrange: find block 'What is share trading?', "
                  f"Click link [Shares trading guide], "
@@ -72,53 +73,48 @@ class BUG_663(BasePage):
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
             self.driver.find_elements(*PAGINATION_LOCATOR)[0]
         )
-        print(f"Scroll to pagination")
+        print(f"{datetime.now()}   Scrolled to pagination")
         self.pagination = self.driver.find_elements(*PAGINATION_LOCATOR)
 
     @allure.step(f"\n{datetime.now()}   2. Start Act.")
     def act(self, d):
-        print(f"Get innerText: {self.pagination[-2].get_property("innerText")}")
+        print(f"{datetime.now()}   2. Start Act.")
+        inner_text_in_pagination = []
+        for text_in_pagination in self.pagination:
+            inner_text_in_pagination.append(text_in_pagination.get_property("innerText"))
+
+        print(f"{datetime.now()} Get innerText in pagination: {inner_text_in_pagination}")
 
         # find random cells on last page
+        print(f"{datetime.now()} Start to find text in last page")
         self.pagination[-2].click()
-        print(f"{datetime.now()} click[-2]")
         WebDriverWait(self.driver, 10).until(EC.url_contains("page"))
+        print(f"{datetime.now()} Clicked on last page")
+        Common().save_current_screenshot(d, "After click on last page'")
         table_cells_last_page = self.driver.find_elements(*TABLE_CELL_LOCATOR)
-        list_of_random_cells_last_page = random.choices(table_cells_last_page, k=4)
-        text_in_cells = []
+        list_of_random_cells_last_page = random.choices(table_cells_last_page, k=4) # take only 4 cells
+        self.text_in_cells = []
         for value in list_of_random_cells_last_page:
-            text_in_cells.append(value.get_property("innerText"))
+            self.text_in_cells.append(value.get_property("innerText"))
 
         # find random cells on pre last page
-        self.pagination[-3].click
-        # WebDriverWait(self.driver, 5).until(EC.url_contains("page"))
+        print(f"{datetime.now()} Start to find text in pre last page")
+        self.pagination[-3].click()
+        print(f"{datetime.now()} Clicked on pre last page")
+        Common().save_current_screenshot(d, "After click on pre last page'")
         table_cells_pre_last_page = self.driver.find_elements(*TABLE_CELL_LOCATOR)
         list_of_random_cells_pre_last_page = random.choices(table_cells_pre_last_page, k=4)
-        for value in list_of_random_cells_last_page:
-            text_in_cells.append(value.get_property("innerText"))
+        for value in list_of_random_cells_pre_last_page:
+            self.text_in_cells.append(value.get_property("innerText"))
 
-        print(f"text_in_cells: {text_in_cells}")
-
-        print(f"{datetime.now()}   2. Start Act.")
-
-        # STOP HERE
-        # click on the link 'buy and sell physical shares'
-        print(f"{datetime.now()}   Start to click link 'buy and sell physical shares'")
-        link = self.driver.current_url
-        self.driver.find_element(*BUY_AND_SELL_PHYSICAL_SHARES_LINK_LOCATOR).click()
-        WebDriverWait(self.driver, 10).until(EC.url_changes(link))
-        Common().save_current_screenshot(d, "After click on link 'buy and sell physical shares'")
+        print(f"{datetime.now()}   text_in_cells: {self.text_in_cells}")
 
     @allure.step(f"{datetime.now()}   3. Start Assert.")
     def assert_(self, d, link):
-        print(f"{datetime.now()}   3. Start Assert.")
-
-        print(f"{datetime.now()}   Try to find 404 Message on the page")
-
-        if len(self.driver.find_elements(*MESSAGE_404_LOCATOR)) != 0:
-            msg = f"Current page have 404 Message. Current URL is {self.driver.current_url}."
+        if "" in self.text_in_cells:
+            msg = f"Cells in trading instrument have empty value."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Current page don't have 404 Message, but need to check screenshot")
+        print(f"{datetime.now()}   Cells in trading instrument don't have empty value, but need to check screenshot")
 
         return True

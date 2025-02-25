@@ -49,6 +49,12 @@ from pages.BugsManual.bug_652 import BUG_652
 from pages.BugsManual.bug_653 import BUG_653
 from pages.BugsManual.bug_656 import BUG_656
 from pages.BugsManual.bug_663 import BUG_663
+from pages.BugsManual.bug_665 import BUG_665
+from pages.BugsManual.bug_667 import BUG_667
+from pages.BugsManual.bug_668 import BUG_668
+from pages.BugsManual.bug_673 import BUG_673
+from pages.BugsManual.bug_674 import BUG_674
+from pages.BugsManual.bug_678 import BUG_678
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -57,6 +63,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_about_us_menu_open_why_capital,
                             from_learn_menu_open_market_guides,
                             from_markets_menu_open_commodities,
+                            from_markets_menu_open_cryptocurrencies,
                             from_markets_menu_open_forex,
                             from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
@@ -69,6 +76,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_trading_menu_open_mobile_apps,
                             from_trading_menu_open_mt4,
                             from_trading_menu_open_spread_betting,
+                            from_trading_menu_open_trading,
                             from_trading_menu_open_web_platform
                             )
 from src.src import CapitalComPageSrc
@@ -743,7 +751,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_312
-    def test_312_link_mt4_platforms_does_not_open_mt4_page_on_parameters_language(
+    def decided_test_312_link_mt4_platforms_does_not_open_mt4_page_on_parameters_language(
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
@@ -785,7 +793,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ["ae"])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_324
-    def test_324_menu_item_demo_is_not_displayed_in_the_header(
+    def decided_test_324_menu_item_demo_is_not_displayed_in_the_header(
             self, worker_id, d, cur_language, cur_country, cur_role,
             cur_login, cur_password):
         """
@@ -944,7 +952,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_country', ['au'])
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_370
-    def test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
+    def decided_test_370_link_in_the_block_why_choose_capital_com_does_not_open_page(
             self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
         Check:  Menu section [About us] > Menu item [Why Capital.com?] >
@@ -1219,7 +1227,7 @@ class TestManualDetected:
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.parametrize('link_for_check', ["JPMorgan Chase & Co", "Exxon Mobil", "IBM"])
     @pytest.mark.bug_422
-    def test_422_links_jpmorgan_exxon_ibm_on_page_largest_stock_exchanges_dont_open_page(
+    def decided_test_422_links_jpmorgan_exxon_ibm_on_page_largest_stock_exchanges_dont_open_page(
             self, worker_id, d, cur_language, cur_country, cur_role, link_for_check, cur_login, cur_password):
         """
         Check:  Menu section [Markets] >
@@ -1574,7 +1582,7 @@ class TestManualDetected:
     @allure.step("Start test of reopen 'Demo trading' page")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_621
-    def test_621_start_test_of_reopen_demo_trading_page(
+    def decided_test_621_start_test_of_reopen_demo_trading_page(
             self, worker_id, d, cur_language_country_for_fca_sca_asic_cysec_2_rnd, cur_role, cur_login, cur_password):
         """
         Check:  Click the Menu section [Trading] >
@@ -1845,7 +1853,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
         link = page_menu.from_markets_menu_open_shares(d, cur_language, cur_country, cur_item_link)
@@ -1859,6 +1866,275 @@ class TestManualDetected:
         # Assert
         test_element.assert_(d, link)
 
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link '24/7 dedicated support' on the Page 'How to trade with us'")
+    @pytest.mark.parametrize('cur_language', ["nl"])
+    @pytest.mark.parametrize('cur_country', ["nl"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_665
+    def test_665_link_24_7_dedicated_support_on_the_page_how_to_trade_with_us(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Click the Menu section [Trading] >
+                Scroll down to the link "24/7 dedicated support" >
+                Click link [24/7 dedicated support] >
+        Language: NL
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "665",
+            "Click the Menu section [Trading] > "
+            "Scroll down to the link '24/7 dedicated support' > "
+            "Click link [24/7 dedicated support]",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_trading.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_trading(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_665(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d, link)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link 'CFDs' on the Page 'How we handle margin calls'")
+    @pytest.mark.parametrize('cur_language', ["nl"])
+    @pytest.mark.parametrize('cur_country', ["nl"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_667
+    def test_667_link_cfds_on_the_page_how_we_handle_margin_calls(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Trading] >
+                Click the Menu item [Margin Calls] >
+                Scroll down to the block "Margin call example" >
+                Scroll down to the link "CFDs" >
+                Click link "CFDs" >
+        Language: NL
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "667",
+            "Navigate on the Menu section [Trading] > "
+            "Click Menu item [Margin Calls] > "
+            "Scroll down to the block 'Margin call example' > "
+            "Scroll down to the link 'CFDs' > "
+            "Click link [CFDs]",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_margin_calls.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_margin_calls(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_667(d, link, bid)
+        test_element.arrange(d, link)
+
+        # Act
+        test_element.act(d, link)
+
+        # Assert
+        test_element.assert_(d, link)
+
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the button [Try demo] on the Main Page")
+    @pytest.mark.parametrize('cur_language', ["en"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["Auth"])
+    @pytest.mark.bug_668
+    def test_668_button_try_demo_on_the_main_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Scroll to the button [Try demo] in block "Award-winning trading platform, here in the UAE" >
+                Click button [Try demo] >
+                Return to the main page >
+                Click button [Try demo] >
+        Language: EN
+        License/Country: SCA
+        Role: Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "668",
+            "Scroll to the button [Try demo] in block 'Award-winning trading platform, here in the UAE' >"
+            "Click button [Try demo] > "
+            "Return to the main page > "
+            "Click button [Try demo] > ",
+            False, True
+        )
+        # Arrange
+        link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        test_element = BUG_668(d, link, bid)
+
+        # Act
+        test_element.click_try_demo_button()
+        test_element.is_page_change_successfully()
+        d.back()
+        test_element.click_try_demo_button()
+
+        # Assert
+        test_element.is_page_change_successfully()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(link)
+
+    @allure.step("Start test of the link [Learn more about cryptocurrency trading] on the 'Cryptocurrencies' Page")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_673
+    def test_673_link_learn_more_about_cryptocurrency_trading_on_the_cryptocurrencies_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Scroll to the link [Learn more about cryptocurrency trading]
+                in block "Why trade cryptocurrencies with Capital.com?" >
+                Click link [Learn more about cryptocurrency trading] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "673",
+            "Scroll to the link [Learn more about cryptocurrency trading] "
+            "in block 'Why trade cryptocurrencies with Capital.com?' >"
+            "Click link [Learn more about cryptocurrency trading].",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_cryptocurrencies.FromMarketsOpenCryptocurrencies(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_cryptocurrencies(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_673(d, link, bid)
+
+        # Act
+        test_element.click_learn_more_about_cryptocurrency_trading_link()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [How to create an MT4 account] on the 'MT4' Page")
+    @pytest.mark.parametrize('cur_language', ["nl"])
+    @pytest.mark.parametrize('cur_country', ["nl"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_674
+    def test_674_how_to_create_an_mt4_account_on_the_mt4_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Trading] >
+                Click the Menu item [MT4] >
+                Scroll to the link [How to create a MetaTrader4 (MT4) account?] >
+                in block "Connect your account to MT4 in three steps" >
+                Click link [How to create a MetaTrader4 (MT4) account?] >
+        Language: NL
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "674",
+            "Scroll to the link [How to create a MetaTrader4 (MT4) account?] "
+            "in block 'Connect your account to MT4 in three steps' >"
+            "Click link [How to create a MetaTrader4 (MT4) account?].",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_mt4.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_mt4(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_674(d, link, bid)
+
+        # Act
+        test_element.click_learn_more_about_cryptocurrency_trading_link()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [Goldman Sachs] in the 'Bitcoin price predictions' article")
+    @pytest.mark.parametrize('cur_language', ["ar"])
+    @pytest.mark.parametrize('cur_country', ["ae"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_678
+    def test_678_link_goldman_sachs_in_the_bitcoin_price_predictions_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Markets] >
+                Click the Menu item [Market analysis] >
+                Find article [Bitcoin price predictions 2025–2050: third-party price target] >
+                Scroll to the link [Goldman Sachs] >
+                Click link [Goldman Sachs] >
+        Language: AR
+        License/Country: SCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "678",
+            "Navigate to the Menu section [Markets] "
+            "Click the Menu item [Market analysis] "
+            "Find article [Bitcoin price predictions 2025–2050: third-party price target] "
+            "Scroll to the link [Goldman Sachs] "
+            "Click link [Goldman Sachs]",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_market_analysis.MenuNew(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_market_analysis(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_678(d, link, bid)
+
+        # Act
+        test_element.find_article_bitcoin_price_predictions()
+
+        # Assert
+        test_element.is_expected_page_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
