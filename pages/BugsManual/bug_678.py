@@ -6,6 +6,7 @@
 import allure
 from datetime import datetime
 
+import pytest
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
@@ -23,44 +24,62 @@ class BUG_678(BasePage):
     CURRENT_PAGE_OF_PAGINATION = (By.CSS_SELECTOR, "[aria-current='page']")
     NEXT_PAGE_OF_PAGINATION = (By.XPATH,
             f"//a[contains(@class, 'pagination_pagination__lllu8')][contains(text(), '{count}')]")
+    GOLDMAN_SACHS_LINK = (By.XPATH, "//p/a[contains(text(), 'Goldman Sachs')]")
+    PAGE_NOT_FOUND_TITLE = (By.XPATH, "//h1[contains(text(), 'Page Not Found')]")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
-    @allure.step(f"{datetime.now()}   Find article 'Bitcoin price predictions 2025–2050'")
+    @allure.step(f"{datetime.now()}   Find article and click 'Bitcoin price predictions 2025–2050'")
     def find_article_bitcoin_price_predictions(self):
         # Check presenting, visibility link
         count = 0
         while count != 5:
             try:
-                self.wait.until(EC.visibility_of_element_located(self.BITCOIN_PRICE_PREDICTIONS_ARTICLE))
+                bitcoin_price_predictions_article = self.wait.until(EC.visibility_of_element_located(self.BITCOIN_PRICE_PREDICTIONS_ARTICLE))
+                print(f"{datetime.now()}   'Bitcoin price predictions article' was found.")
+                print(f"{datetime.now()}   Start to navigate on article.")
+                self.driver.execute_script(
+                    'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                    self.driver.find_element(*self.BITCOIN_PRICE_PREDICTIONS_ARTICLE)
+                )
+                print(f"{datetime.now()}   End to navigate on article.")
+                print(f"{datetime.now()}   Start to click article")
+                bitcoin_price_predictions_article.click()
+                print(f"{datetime.now()}   End to click article")
+                break
             except TimeoutException:
                 self.find_link_scroll_check_visibility_and_clickability(
                     f"Number page of pagination is: {count}",
                     self.CURRENT_PAGE_OF_PAGINATION)
                 current_number_page_of_pagination = self.driver.find_element(*self.CURRENT_PAGE_OF_PAGINATION)
-                count = current_number_page_of_pagination.text
+                count = int(current_number_page_of_pagination.text)
                 print(f"{datetime.now()}   Current number page of pagination is {count}")
                 count += 1 # next number of page
+
+                if count == 5:
+                    msg = "Pages from 1 to 4 don't have article 'Bitcoin price predictions 2025–2050'"
+                    print(f"{datetime.now()}   => {msg}\n")
+                    Common().pytest_fail(msg)
+
                 print(f"{datetime.now()}   Start click next number page of pagination is {count}")
 
                 self.driver.find_element(By.XPATH,
                 f"//a[contains(@class, 'pagination_pagination__lllu8')][contains(text(), '{count}')]").click()
                 print(f"{datetime.now()}   End click next number page of pagination is {count}")
 
-        print("Stop here!")
-
-
+    @allure.step(f"{datetime.now()}   Find and click link 'Goldman Sachs'")
+    def find_and_click_link_goldman_sachs(self):
         self.find_link_scroll_check_visibility_and_clickability(
-            "How to create an MT4 account",
-            self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK)
+            "Goldman Sachs",
+            self.GOLDMAN_SACHS_LINK)
         # click link
-        print(f"{datetime.now()}   Start click [How to create an MT4 account] link")
-        self.driver.find_element(*self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK).click()
-        print(f"{datetime.now()}   End click [How to create an MT4 account] link\n")
+        print(f"{datetime.now()}   Start click [Goldman Sachs] link")
+        self.driver.find_element(*self.GOLDMAN_SACHS_LINK).click()
+        print(f"{datetime.now()}   End click [Goldman Sachs] link\n")
         Common().save_current_screenshot(self.driver,
-            "After click on [How to create an MT4 account] link")
+            "After click on [Goldman Sachs] link")
 
     @allure.step(f"{datetime.now()}   Is expected page open?")
     def is_expected_page_open(self):
@@ -72,15 +91,11 @@ class BUG_678(BasePage):
             self.driver.close()
             self.driver.switch_to.window(tabs[-1])
             Common().save_current_screenshot(self.driver,
-                                             "After switch on second link")
-        print(f"{datetime.now()}   Start to check language of the title on the opened page")
+                                             "After switch on second tab")
+        print(f"{datetime.now()}   Start to check title on the opened page")
 
-        title_on_the_opened_page = self.driver.find_element(*self.TITLE_HOW_TO_CREATE_A_METATRADER_PAGE)
-
-        if "How to create" in title_on_the_opened_page.text:
-            msg = (f"Instead Dutch language opened page "
-                   f"has English language. "
-                   f"Title on the opened page is '{title_on_the_opened_page.text}'")
+        if self.driver.find_element(*self.PAGE_NOT_FOUND_TITLE):
+            msg = f"Opened page has text 'Page Not Found'"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Language on the opened page is not English, need to check Screenshot.\n")
+        print(f"{datetime.now()}   Opened page has not text 'Page Not Found', but need to check Screenshot.\n")
