@@ -55,6 +55,7 @@ from pages.BugsManual.bug_668 import BUG_668
 from pages.BugsManual.bug_673 import BUG_673
 from pages.BugsManual.bug_674 import BUG_674
 from pages.BugsManual.bug_678 import BUG_678
+from pages.BugsManual.bug_681 import BUG_681
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2129,6 +2130,52 @@ class TestManualDetected:
         link = page_menu.from_markets_menu_open_market_analysis(d, cur_language, cur_country, cur_item_link)
 
         test_element = BUG_678(d, link, bid)
+
+        # Act
+        test_element.find_article_bitcoin_price_predictions()
+        test_element.find_and_click_link_goldman_sachs()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [App] in the 'All platforms' page")
+    @pytest.mark.parametrize('cur_language', ["de"])
+    @pytest.mark.parametrize('cur_country', ["at"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_681
+    def test_681_link_app_in_the_all_platforms_page(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Trading] >
+                Click the Menu item [All platforms] >
+                Scroll page down to the block "Our trading app" >
+                Click link [App] >
+        Language: DE
+        License/Country: CYSEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "681",
+            "Navigate to the Menu section [Trading] "
+            "Click the Menu item [All platforms] "
+            "Scroll page down to the block 'Our trading app' "
+            "Click link [App]",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_all_platforms(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_681(d, link, bid)
 
         # Act
         test_element.find_article_bitcoin_price_predictions()
