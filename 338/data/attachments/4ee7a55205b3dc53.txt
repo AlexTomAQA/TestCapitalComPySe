@@ -1,0 +1,87 @@
+{'width': 1920, 'height': 1080}
+
+2025-03-05 01:38:50.012831   worker_id = master
+
+2025-03-05 01:38:50.012841   0. Allure grouping for US_55
+
+
+2025-03-05 01:38:50.013022   START PRECONDITIONS =>
+
+2025-03-05 01:38:50.013033   => URL after prev. preconditions - https://capital.com/en-gb
+2025-03-05 01:38:50.013040   => flag_of_bug - True
+2025-03-05 01:38:50.013047   => Current URL - https://capital.com/en-au/corporate-accounts
+2025-03-05 01:38:50.018520   Current page URL = https://capital.com/en-au/corporate-accounts
+2025-03-05 01:38:50.021057   self.link = https://capital.com/en-gb
+2025-03-05 01:38:50.021066   driver.get(https://capital.com/en-gb) =>
+2025-03-05 01:38:52.488014   => Loaded page https://capital.com/en-gb
+
+2025-03-05 01:38:52.495713   => Windows size: {'width': 1920, 'height': 1080}
+
+2025-03-05 01:38:52.497149   Set windows position at (0, 0) =>
+
+2025-03-05 01:38:52.498909   Set resolution 1920 * 1080 =>
+
+2025-03-05 01:38:52.500568   => Resolution set {'width': 1920, 'height': 1080}
+
+2025-03-05 01:38:52.501861   Работа с куками =>
+2025-03-05 01:38:52.501872   Prev. role - 'NoReg'
+2025-03-05 01:38:52.501878   Current testing role - 'Auth'
+
+2025-03-05 01:38:52.501883   All cookies must be delete =>
+2025-03-05 01:38:52.584539   => All cookies are deleted
+2025-03-05 01:38:52.584571   Current page URL = https://capital.com/en-gb
+2025-03-05 01:38:52.587255   self.link = https://capital.com/en-gb
+2025-03-05 01:38:52.587265   driver.get(https://capital.com/en-gb) =>
+2025-03-05 01:38:55.062771   => Loaded page https://capital.com/en-gb
+
+2025-03-05 01:38:55.069405   Step 'Click button [Accept all cookies]'
+2025-03-05 01:38:55.069414   Is Visible Button [Accept all cookies]? =>
+2025-03-05 01:38:56.257054   => Button [Accept all cookies] is visible
+2025-03-05 01:38:56.757168   Is clickable Button [Accept all cookies] =>
+2025-03-05 01:38:56.772066   => Button [Accept all cookies] is clickable
+2025-03-05 01:38:56.772102   Click Button [Accept all cookies] =>
+2025-03-05 01:38:56.987018   => Button [Accept all cookies] is clicked
+2025-03-05 01:38:56.987063   => Accepted All Cookies
+
+2025-03-05 01:38:57.487158   Prev. role - 'NoReg'
+2025-03-05 01:38:57.487211   Cur. role - 'Auth'
+
+2025-03-05 01:38:57.487403   Start Authorization
+2025-03-05 01:38:57.630524   => 'Login' form is opened
+2025-03-05 01:38:57.867305   => "login" and "password" are inputted
+2025-03-05 01:38:57.867342   Click [Continue] button on [Login] form =>
+2025-03-05 01:38:57.954291   => [Continue] button on [Login] form is clicked
+2025-03-05 01:38:57.954329   Set timeout = 30
+2025-03-05 01:38:59.349246   => Page with 'Trading Platform | Capital.com' title opened
+
+2025-03-05 01:38:59.349311   2. Checking that the LOGO is present on the page =>
+2025-03-05 01:39:00.986606   => 'capital*com' logo is present on the current page
+
+2025-03-05 01:39:01.332520   => The 'Auth' role is set
+
+2025-03-05 01:39:01.332568   Prev. language: ru
+2025-03-05 01:39:01.332581   Cur. language - 'en'
+
+2025-03-05 01:39:01.332592   Prev. country: ua
+2025-03-05 01:39:01.332604   Cur. country: au
+
+2025-03-05 01:39:01.332779   Set "en" language and "au" country =>
+2025-03-05 01:39:01.332804   Current page URL = https://capital.com/en-gb
+2025-03-05 01:39:01.382122   self.link = https://capital.com/en-au
+2025-03-05 01:39:01.382149   driver.get(https://capital.com/en-au) =>
+2025-03-05 01:39:03.762285   => Loaded page https://capital.com/en-au
+2025-03-05 01:39:03.769182   => Language is set to 'en'
+2025-03-05 01:39:03.769201   => Country is set to 'au'
+2025-03-05 01:39:03.769209   => Current URL - https://capital.com/en-au
+
+2025-03-05 01:39:03.778179   => Current URL - https://capital.com/en-au
+
+2025-03-05 01:39:03.778218   => END PRECONDITIONS
+
+2025-03-05 01:39:03.778405   1. Arrange
+2025-03-05 01:39:03.778422   current_page = https://capital.com/en-au
+2025-03-05 01:39:03.781441   link = https://capital.com/en-au
+2025-03-05 01:39:03.784277   Click on the “CORPORATE” tab in the Header
+2025-03-05 01:39:03.863957   Scroll down to the block “Why Open a Corporate Account with Capital.com?”
+2025-03-05 01:39:04.152877   2. Assert
+2025-03-05 01:39:04.181280   The value of the 'Traders' item is displayed as '690K' and not '650K+'
