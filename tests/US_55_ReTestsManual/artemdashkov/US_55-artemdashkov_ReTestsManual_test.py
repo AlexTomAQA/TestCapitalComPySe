@@ -2169,7 +2169,6 @@ class TestManualDetected:
             "Click link [App]",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
@@ -2178,8 +2177,7 @@ class TestManualDetected:
         test_element = BUG_681(d, link, bid)
 
         # Act
-        test_element.find_article_bitcoin_price_predictions()
-        test_element.find_and_click_link_goldman_sachs()
+        test_element.click_app_link()
 
         # Assert
         test_element.is_expected_page_open()
