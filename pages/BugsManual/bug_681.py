@@ -27,43 +27,32 @@ class BUG_681(BasePage):
 
         # Check presenting, visibility block
         self.find_block_scroll_and_check_visibility(
-            "Our trading app", OUR_TRADING_APP_BLOCK)
+            "Our trading app", self.OUR_TRADING_APP_BLOCK)
 
         # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(
-            "App", APP_LINK)
+            "App", self.APP_LINK)
 
-
-        # Check presenting, visibility link
-        self.find_link_scroll_check_visibility_and_clickability(
-            "How to create an MT4 account",
-            self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK)
         # click link
-        print(f"{datetime.now()}   Start click [How to create an MT4 account] link")
-        self.driver.find_element(*self.HOW_TO_CREATE_AN_MT4_ACCOUNT_LINK).click()
-        print(f"{datetime.now()}   End click [How to create an MT4 account] link\n")
+        print(f"{datetime.now()}   Start click [App] link")
+        self.driver.find_element(*self.APP_LINK).click()
+        print(f"{datetime.now()}   End click [App] link\n")
         Common().save_current_screenshot(self.driver,
-                                         "After click on [How to create an MT4 account] link")
+                                         "After click on [App] link")
 
     @allure.step(f"{datetime.now()}   Is expected page open?")
     def is_expected_page_open(self):
-        print(f"{datetime.now()}   How are many opened window?")
-        tabs = self.driver.window_handles
-        print(f"{datetime.now()}   Opened window is: {len(tabs)}")
-        if len(tabs) > 1:
-            self.driver.switch_to.window(tabs[0])
-            self.driver.close()
-            self.driver.switch_to.window(tabs[-1])
-            Common().save_current_screenshot(self.driver,
-                                             "After switch on second link")
-        print(f"{datetime.now()}   Start to check language of the title on the opened page")
-
-        title_on_the_opened_page = self.driver.find_element(*self.TITLE_HOW_TO_CREATE_A_METATRADER_PAGE)
-
-        if "How to create" in title_on_the_opened_page.text:
-            msg = (f"Instead Dutch language opened page "
-                   f"has English language. "
-                   f"Title on the opened page is '{title_on_the_opened_page.text}'")
+        print(f"{datetime.now()}   What is language on the page?")
+        print(f"{datetime.now()}   Start get the URL page.")
+        page_url = self.driver.current_url
+        print(f"{datetime.now()}   Current url of page is {page_url}.")
+        if "en" in page_url:
+            msg = "Current page have english language."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        print(f"{datetime.now()}   Language on the opened page is not English, need to check Screenshot.\n")
+        elif "at" in page_url:
+            print("Current page have expected shortcut 'at', but need to check screenshot")
+        else:
+            msg = "Current page don't have shortcut 'at' or 'en', need to check screenshot"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)

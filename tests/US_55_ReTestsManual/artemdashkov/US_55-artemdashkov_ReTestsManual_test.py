@@ -2169,7 +2169,6 @@ class TestManualDetected:
             "Click link [App]",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
@@ -2178,8 +2177,61 @@ class TestManualDetected:
         test_element = BUG_681(d, link, bid)
 
         # Act
-        test_element.find_article_bitcoin_price_predictions()
-        test_element.find_and_click_link_goldman_sachs()
+        test_element.click_app_link()
+
+        # Assert
+        test_element.is_expected_page_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the button [Next page] in the widget 'Shares Markets'")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_690
+    def test_690_button_next_page_in_the_widget_shares_markets(
+            self, worker_id, d, cur_language_country_for_fca_sca_for_en_language, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Markets] >
+                Click the Menu item [Shares] >
+                Scroll down to block 'Shares markets' >
+                Click the last page in paginator >
+                Click dropdown [Sort] >
+                Select any other tab (e.g [Top fallers]) >
+                Check buttons [Previous page]/[Next page] in paginator >
+        Language: EN
+        License/Country: SCA, FCA, ASIC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_sca_for_en_language[0],
+            cur_language_country_for_fca_sca_for_en_language[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "690",
+            "Navigate to the Menu section [Markets] "
+                    "Click the Menu item [Shares] "
+                    "Scroll down to block 'Shares markets' "
+                    "Click the last page in paginator "
+                    "Click dropdown [Sort] "
+                    "Select any other tab (e.g [Top fallers]) "
+                    "Check buttons [Previous page]/[Next page] in paginator",
+            False, True
+        )
+        pytest.skip("Intermediate version")
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_for_en_language[0],
+                                                    cur_language_country_for_fca_sca_for_en_language[1],
+                                                    cur_role, cur_login, cur_password)
+        page_menu = from_markets_menu_open_shares.MenuNewShares(d, cur_item_link)
+        link = page_menu.from_markets_menu_open_shares(d, cur_language_country_for_fca_sca_for_en_language[0],
+                                                              cur_language_country_for_fca_sca_for_en_language[1],
+                                                              cur_item_link)
+        # stopped here
+        test_element = BUG_690(d, link, bid)
+
+        # Act
+        test_element.click_app_link()
 
         # Assert
         test_element.is_expected_page_open()
