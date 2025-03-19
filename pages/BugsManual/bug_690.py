@@ -1,6 +1,6 @@
 """
 -*- coding: utf-8 -*-
-@Time    : 2025/03/03 16:00
+@Time    : 2025/03/13 20:00
 @Author  : Artem Dashkov
 """
 import allure
@@ -11,7 +11,7 @@ from pages.base_page import BasePage
 from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 
-class BUG_681(BasePage):
+class BUG_690(BasePage):
     OUR_TRADING_APP_BLOCK = (By.XPATH, "(//div[@data-type='tiles_w_img'])[2]")
     APP_LINK = (By.XPATH, "(//div[@data-type='tiles_w_img'])[2] //a[contains(text(), 'pp')]")
 
