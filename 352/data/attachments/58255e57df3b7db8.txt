@@ -1,0 +1,100 @@
+
+
+
+Current language - pl
+
+
+
+Current country - de
+{'width': 1920, 'height': 1080}
+
+2025-03-18 22:35:51.687350   worker_id = master
+
+2025-03-18 22:35:51.687360   0. Allure grouping for US_55
+
+
+2025-03-18 22:35:52.226228   START PRECONDITIONS =>
+
+2025-03-18 22:35:52.226270   => URL after prev. preconditions - https://capital.com/en-gb
+2025-03-18 22:35:52.226281   => flag_of_bug - True
+2025-03-18 22:35:52.226293   => Current URL - https://capital.com/en-gb
+
+2025-03-18 22:35:52.263013   => Windows size: {'width': 1920, 'height': 1080}
+
+2025-03-18 22:35:52.265174   Set windows position at (0, 0) =>
+
+2025-03-18 22:35:52.267455   Set resolution 1920 * 1080 =>
+
+2025-03-18 22:35:52.272032   => Resolution set {'width': 1920, 'height': 1080}
+
+2025-03-18 22:35:52.275544   Работа с куками =>
+
+2025-03-18 22:35:52.275555   => не требуется
+
+2025-03-18 22:35:52.275561   Prev. role - 'NoReg'
+2025-03-18 22:35:52.275567   Cur. role - 'NoReg'
+
+2025-03-18 22:35:52.275572   => The 'NoReg' role is set
+
+2025-03-18 22:35:52.275578   Prev. language: ?
+2025-03-18 22:35:52.275584   Cur. language - 'pl'
+
+2025-03-18 22:35:52.275589   Prev. country: ?
+2025-03-18 22:35:52.275594   Cur. country: de
+
+2025-03-18 22:35:52.275736   Set "pl" language and "de" country =>
+2025-03-18 22:35:52.275748   Current page URL = https://capital.com/en-gb
+2025-03-18 22:35:52.283690   self.link = https://capital.com/pl-de
+2025-03-18 22:35:52.283700   driver.get(https://capital.com/pl-de) =>
+2025-03-18 22:35:55.147621   => Loaded page https://capital.com/pl-de
+2025-03-18 22:35:55.153643   => Language is set to 'pl'
+2025-03-18 22:35:55.153655   => Country is set to 'de'
+2025-03-18 22:35:55.153661   => Current URL - https://capital.com/pl-de
+
+2025-03-18 22:35:55.159347   => Current URL - https://capital.com/pl-de
+
+2025-03-18 22:35:55.159365   => END PRECONDITIONS
+
+2025-03-18 22:35:55.159601   1. Arrange
+2025-03-18 22:35:55.159612   IS [Sign up] button present on this page? =>
+2025-03-18 22:35:55.165007   => [Sign up] button present on this page!
+
+2025-03-18 22:35:55.172646   IS [Sign up] button visible on this page? =>
+2025-03-18 22:35:55.182318   => [Sign up] button is visible on this page!
+
+
+2025-03-18 22:35:55.182465   2. Act_v0
+2025-03-18 22:35:55.182476   IS [Sign up] clickable on the page? =>
+2025-03-18 22:35:55.195914   => [Sign up] is clickable on the page!
+
+
+2025-03-18 22:35:55.195933   Start Click button [Sign up] =>
+2025-03-18 22:35:55.249732   => End Click button [Sign up] 
+2025-03-18 22:35:55.249922   Start step Check that [Sign up] form is opened
+2025-03-18 22:35:55.522646   'Sign up' form opened
+2025-03-18 22:35:55.522679   Assert SIGNUP_HEADER =>
+2025-03-18 22:35:55.535305   Assert SIGNUP_REF_LOGIN =>
+2025-03-18 22:35:55.545480   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2025-03-18 22:35:55.556211   => SIGNUP_PRIVACY_POLICY_ALL
+2025-03-18 22:35:55.556240   => 'Signup' form is checked
+2025-03-18 22:35:55.556299   => 'Sign up' form is opened
+
+2025-03-18 22:35:55.556503   3. Assert
+2025-03-18 22:35:55.556521   Is 'Please enter a valid Email' message displayed on this page after putting invalid email? =>
+2025-03-18 22:35:55.556531   => Start fill out 'Email address' field.
+2025-03-18 22:35:55.638835   => 'Email address' is inputted
+
+2025-03-18 22:35:55.701971   => Switch to 'Password' field
+
+get_attribute:  display: block;
+2025-03-18 22:35:55.769345   => 'Please enter a valid Email' message is displayed
+
+2025-03-18 22:35:55.769370   Save current screenshot into PNG file
+2025-03-18 22:35:55.919966   Is [Continue] button active after putting invalid email? =>
+2025-03-18 22:35:55.919990   => Start fill out 'Password' field.
+2025-03-18 22:35:56.004427   => 'Password' is inputted
+
+continue_button:  btn btn--md btn--wide s2_btn disabled hasPointer
+2025-03-18 22:35:56.021396   => '[Continue] button is not active after putting invalid email
+
+2025-03-18 22:35:56.021419   Save current screenshot into PNG file
