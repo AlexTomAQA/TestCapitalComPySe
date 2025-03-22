@@ -1,0 +1,100 @@
+
+
+
+Current language - fr
+
+
+
+Current country - ua
+{'width': 1920, 'height': 1080}
+
+2025-03-21 22:47:07.482686   worker_id = master
+
+2025-03-21 22:47:07.482697   0. Allure grouping for US_55
+
+2025-03-21 22:47:07.913728   START PRECONDITIONS =>
+
+2025-03-21 22:47:07.913776   => URL after prev. preconditions - https://capital.com/
+2025-03-21 22:47:07.913788   => flag_of_bug - True
+2025-03-21 22:47:07.913800   => Current URL - https://capital.com/fr-int
+2025-03-21 22:47:07.932777   Current page URL = https://capital.com/fr-int
+2025-03-21 22:47:07.939071   self.link = https://capital.com/
+2025-03-21 22:47:07.939085   driver.get(https://capital.com/) =>
+2025-03-21 22:47:10.965973   => Loaded page https://capital.com/
+
+2025-03-21 22:47:10.972168   => Windows size: {'width': 1920, 'height': 1080}
+2025-03-21 22:47:10.973667   Set windows position at (0, 0) =>
+2025-03-21 22:47:10.975366   Set resolution 1920 * 1080 =>
+2025-03-21 22:47:10.977050   => Windows size is set to {'width': 1920, 'height': 1080}
+
+2025-03-21 22:47:16.024863   Капчи нет. Идем дальше
+
+2025-03-21 22:47:16.024966   Работа с куками =>
+
+2025-03-21 22:47:16.024980   => не требуется
+
+2025-03-21 22:47:21.027331   Капчи нет. Идем дальше
+
+2025-03-21 22:47:21.027418   Prev. country - 'ua'
+2025-03-21 22:47:21.027430   Cur. country - 'ua'
+2025-03-21 22:47:21.027439   => Country set to 'ua'
+
+2025-03-21 22:47:26.118530   Капчи нет. Идем дальше
+
+2025-03-21 22:47:26.118616   Prev. language - 'fr'
+2025-03-21 22:47:26.118629   Cur. language - 'fr'
+2025-03-21 22:47:26.118638   => Language is set to 'fr'
+
+2025-03-21 22:47:31.164751   Капчи нет. Идем дальше
+
+2025-03-21 22:47:31.164837   Prev. role - 'NoReg'
+2025-03-21 22:47:31.164849   Cur. role - 'NoReg'
+2025-03-21 22:47:31.164858   => The 'NoReg' role is set
+
+2025-03-21 22:47:31.167699   => Current URL - https://capital.com/
+
+2025-03-21 22:47:31.167719   => END PRECONDITIONS
+
+2025-03-21 22:47:31.167979   1. Arrange
+2025-03-21 22:47:31.167997   IS [Sign up] button present on this page? =>
+2025-03-21 22:47:31.175500   => [Sign up] button present on this page!
+
+2025-03-21 22:47:31.183642   IS [Sign up] button visible on this page? =>
+2025-03-21 22:47:31.196392   => [Sign up] button is visible on this page!
+
+
+2025-03-21 22:47:31.196535   2. Act_v0
+2025-03-21 22:47:31.196550   IS [Sign up] clickable on the page? =>
+2025-03-21 22:47:31.211519   => [Sign up] is clickable on the page!
+
+
+2025-03-21 22:47:31.211541   Start Click button [Sign up] =>
+2025-03-21 22:47:31.276473   => End Click button [Sign up] 
+2025-03-21 22:47:31.276661   Start step Check that [Sign up] form is opened
+2025-03-21 22:47:31.702016   'Sign up' form opened
+2025-03-21 22:47:31.702054   Assert SIGNUP_HEADER =>
+2025-03-21 22:47:31.719972   Assert SIGNUP_REF_LOGIN =>
+2025-03-21 22:47:31.733390   Assert SIGNUP_PRIVACY_POLICY_ALL_2 =>
+2025-03-21 22:47:31.746702   => SIGNUP_PRIVACY_POLICY_ALL
+2025-03-21 22:47:31.746736   => 'Signup' form is checked
+2025-03-21 22:47:31.746785   => 'Sign up' form is opened
+
+2025-03-21 22:47:31.746960   3. Assert
+2025-03-21 22:47:31.746980   Is 'Please enter a valid Email' message displayed on this page after putting invalid email? =>
+2025-03-21 22:47:31.746989   => Start fill out 'Email address' field.
+2025-03-21 22:47:31.826718   => 'Email address' is inputted
+
+2025-03-21 22:47:32.032167   => Switch to 'Password' field
+
+get_attribute:  display: block;
+2025-03-21 22:47:32.061482   => 'Please enter a valid Email' message is displayed
+
+2025-03-21 22:47:32.061516   Save current screenshot into PNG file
+2025-03-21 22:47:32.231090   Is [Continue] button active after putting invalid email? =>
+2025-03-21 22:47:32.231118   => Start fill out 'Password' field.
+2025-03-21 22:47:32.324838   => 'Password' is inputted
+
+continue_button:  btn btn--md btn--wide s2_btn disabled hasPointer
+2025-03-21 22:47:32.345594   => '[Continue] button is not active after putting invalid email
+
+2025-03-21 22:47:32.345620   Save current screenshot into PNG file
