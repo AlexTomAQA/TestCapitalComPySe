@@ -56,6 +56,7 @@ from pages.BugsManual.bug_673 import BUG_673
 from pages.BugsManual.bug_674 import BUG_674
 from pages.BugsManual.bug_678 import BUG_678
 from pages.BugsManual.bug_681 import BUG_681
+from pages.BugsManual.bug_690 import BUG_690
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
