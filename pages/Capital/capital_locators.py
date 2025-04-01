@@ -150,3 +150,6 @@ class BannerNewToTrading:
 
 class Captcha:
 	CAPTCHA_IFRAME = (By.CSS_SELECTOR, "iframe[title='reCAPTCHA']")
+
+class CaptchaStayOnThisSite:
+	BUTTON_STAY_ON_THIS_SITE = (By.CSS_SELECTOR, "[data-type='wrong_location_cancel']")

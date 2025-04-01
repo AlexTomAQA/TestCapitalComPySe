@@ -56,6 +56,7 @@ from pages.BugsManual.bug_673 import BUG_673
 from pages.BugsManual.bug_674 import BUG_674
 from pages.BugsManual.bug_678 import BUG_678
 from pages.BugsManual.bug_681 import BUG_681
+from pages.BugsManual.bug_690 import BUG_690
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2218,7 +2219,7 @@ class TestManualDetected:
                     "Check buttons [Previous page]/[Next page] in paginator",
             False, True
         )
-        pytest.skip("Intermediate version")
+        # pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_for_en_language[0],
                                                     cur_language_country_for_fca_sca_for_en_language[1],
@@ -2231,10 +2232,11 @@ class TestManualDetected:
         test_element = BUG_690(d, link, bid)
 
         # Act
-        test_element.click_app_link()
+        test_element.click_last_page_in_paginator()
+        test_element.click_top_fallers_on_dropdown_list_sort()
 
         # Assert
-        test_element.is_expected_page_open()
+        test_element.is_right_arrow_on_the_page()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)

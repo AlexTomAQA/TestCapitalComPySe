@@ -139,6 +139,7 @@ class NewConditions(BasePage):
             self.link = url_after_prev_preconditions_new
             self.open_page()
             self.button_accept_all_cookies_click()
+            self.button_stay_on_this_site_click()
         else:
             print(f"\n{datetime.now()}   => не требуется")
 
@@ -207,6 +208,7 @@ class NewConditions(BasePage):
         print(f"{datetime.now()}   Cur. country: {cur_country}")
         if cur_country != prev_country or language_cur != language_prev:
             self.set_language_country_new(d, language_cur, cur_country)
+            self.button_stay_on_this_site_click()
             print(f"{datetime.now()}   => Language is set to '{language_cur}'")
             print(f"{datetime.now()}   => Country is set to '{cur_country}'")
         else:
@@ -438,6 +440,7 @@ class Conditions(BasePage):
             self.link = url_after_preconditions
             self.open_page()
             self.button_accept_all_cookies_click()
+            self.button_stay_on_this_site_click()
             prev_country = "?"
             prev_language = "?"
         else:

@@ -18,7 +18,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 
-from pages.Capital.capital_locators import OnTrustLocators, Captcha
+from pages.Capital.capital_locators import OnTrustLocators, Captcha, CaptchaStayOnThisSite
 from pages.common import Common
 
 # from src.src import (
@@ -187,6 +187,40 @@ class BasePage:
         button.click()
         print(f"{datetime.now()}   => Button [Accept all cookies] is clicked")
         print(f"{datetime.now()}   => Accepted All Cookies")
+        time.sleep(0.5)
+
+    @HandleExcElementsDecorator()
+    def button_stay_on_this_site_click(self):
+        allure.step(f"{datetime.now()}   Start click button [Stay on this site]")
+
+        time_out = 30
+        print(f"\n{datetime.now()}   Step 'Click button [Stay on this site]'")
+
+        print(f"{datetime.now()}   Is Visible Button [Stay on this site]? =>")
+        button = self.element_is_visible(CaptchaStayOnThisSite.BUTTON_STAY_ON_THIS_SITE, time_out)
+        if not button:
+            print(f"{datetime.now()}   => Button [Stay on this site] is not visible after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
+            return
+        else:
+            print(f"{datetime.now()}   => Button [Stay on this site] is visible")
+
+        time.sleep(0.5)
+
+        print(f"{datetime.now()}   Is clickable Button [Stay on this site] =>")
+        button = self.driver.find_element(*CaptchaStayOnThisSite.BUTTON_STAY_ON_THIS_SITE)
+        button = self.element_is_clickable(button, time_out)
+        if not button:
+            print(f"{datetime.now()}   => Button [Stay on this site] is not clickable after {time_out} sec.")
+            print(f"{datetime.now()}   => Cur url = {self.driver.current_url}")
+            assert False, f"Button [Stay on this site] is not clickable after {time_out} sec."
+        else:
+            print(f"{datetime.now()}   => Button [Stay on this site] is clickable")
+
+        print(f"{datetime.now()}   Click Button [Stay on this site] =>")
+        button = self.driver.find_element(*CaptchaStayOnThisSite.BUTTON_STAY_ON_THIS_SITE)
+        button.click()
+        print(f"{datetime.now()}   => Button [Stay on this site] is clicked")
         time.sleep(0.5)
 
     @allure.step(f"{datetime.now()}   Reject all cookies")

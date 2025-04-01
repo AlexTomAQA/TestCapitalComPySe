@@ -13,6 +13,7 @@ SUBMENU_FCA_SHARES = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id
 SUBMENU_SCA_SHARES = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id827']")
 SUBMENU_SCA_AR_SHARES = (By.CSS_SELECTOR, ".menuGroup_link__z_L3O[data-type='nav_id827']")
 SUBMENU_CYSEC_MARKET_SHARES = (By.CSS_SELECTOR, "a[data-type='nav_id1678']")
+SUBMENU_ASIC_MARKET_SHARES = (By.CSS_SELECTOR, "a[data-type='nav_id1261']")
 
 
 class MenuNewShares(MenuBase):
@@ -37,6 +38,9 @@ class MenuNewShares(MenuBase):
         elif cur_country == 'eu':
             menu_locator = MarketsMenuNew.MENU_CYSEC_MARKETS
             submenu_locator = SUBMENU_CYSEC_MARKET_SHARES
+        elif cur_country == 'au':
+            menu_locator = MarketsMenuNew.MENU_ASIC_MARKETS
+            submenu_locator = SUBMENU_ASIC_MARKET_SHARES
 
         answer = MenuBase(d, link).move_focus_menu_pause_move_focus_to_submenu_and_click(
             d, cur_language, cur_country, link, menu_name, menu_locator, submenu_name, submenu_locator)

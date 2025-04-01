@@ -6,13 +6,10 @@
 import allure
 from datetime import datetime
 
-import pytest
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
 class BUG_681(BasePage):
     OUR_TRADING_APP_BLOCK = (By.XPATH, "(//div[@data-type='tiles_w_img'])[2]")
