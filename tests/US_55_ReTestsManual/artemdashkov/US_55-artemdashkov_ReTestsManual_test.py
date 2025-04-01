@@ -2219,7 +2219,7 @@ class TestManualDetected:
                     "Check buttons [Previous page]/[Next page] in paginator",
             False, True
         )
-        pytest.skip("Intermediate version")
+        # pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_for_en_language[0],
                                                     cur_language_country_for_fca_sca_for_en_language[1],
@@ -2232,10 +2232,11 @@ class TestManualDetected:
         test_element = BUG_690(d, link, bid)
 
         # Act
-        test_element.click_app_link()
+        test_element.click_last_page_in_paginator()
+        test_element.click_top_fallers_on_dropdown_list_sort()
 
         # Assert
-        test_element.is_expected_page_open()
+        test_element.is_right_arrow_on_the_page()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)

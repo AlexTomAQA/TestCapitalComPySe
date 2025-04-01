@@ -22,6 +22,7 @@ class BUG_690(BasePage):
                     "[class='pagination_pagination__lllu8 js-analyticsClick link_link__caosC']")
     DROPDOWN_LIST_SORT = (By.CSS_SELECTOR, "[class='filters_cell__jnXY0']:nth-child(1)")
     TOP_FALLERS_TAB = (By.CSS_SELECTOR, "[title='fallers']")
+    ARROW_GO_TO_THE_NEXT_PAGE = (By.CSS_SELECTOR, "[aria-label='Go to the next page']")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
@@ -43,13 +44,13 @@ class BUG_690(BasePage):
 
         self.driver.execute_script(
             'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
-            self.driver.find_element(*self.NOT_ACTIVE_PAGES_IN_PAGINATOR[-1])
+            self.driver.find_elements(*self.NOT_ACTIVE_PAGES_IN_PAGINATOR)[-1]
         )
         print(f"{datetime.now()}   Scrolled to link 'Pages in paginator'")
 
         # click link
         print(f"{datetime.now()}   Start click last page in paginator")
-        self.driver.find_element(*self.NOT_ACTIVE_PAGES_IN_PAGINATOR[-1]).click()
+        self.driver.find_elements(*self.NOT_ACTIVE_PAGES_IN_PAGINATOR)[-1].click()
         print(f"{datetime.now()}   End click last page in paginator\n")
         Common().save_current_screenshot(self.driver,
                                          "After click on last page in paginator")
@@ -60,12 +61,6 @@ class BUG_690(BasePage):
         self.find_block_scroll_and_check_visibility(
             "Dropdown list", self.DROPDOWN_LIST_SORT)
 
-        # # click dropdown list 'Sort'
-        # print(f"{datetime.now()}   Start click dropdown list 'Sort'")
-        # self.driver.find_element(*self.DROPDOWN_LIST_SORT).click()
-        # print(f"{datetime.now()}   End click dropdown list 'Sort'\n")
-
-        # Find, choose and click Tab [Top fallers] in dropdown list 'Sort'
         drop_down_list_sort = self.driver.find_element(*self.DROPDOWN_LIST_SORT)
         top_fallers_tab = self.driver.find_element(*self.TOP_FALLERS_TAB)
 
@@ -81,18 +76,16 @@ class BUG_690(BasePage):
                                          "After click on 'Top Fallers' Tab")
 
     @allure.step(f"{datetime.now()}   Is expected page open?")
-    def is_expected_page_open(self):
-        print(f"{datetime.now()}   What is language on the page?")
-        print(f"{datetime.now()}   Start get the URL page.")
-        page_url = self.driver.current_url
-        print(f"{datetime.now()}   Current url of page is {page_url}.")
-        if "en" in page_url:
-            msg = "Current page have english language."
+    def is_right_arrow_on_the_page(self):
+        print(f"{datetime.now()}   Start to check right arrow on the page.")
+        if len(self.driver.find_elements(*self.ARROW_GO_TO_THE_NEXT_PAGE)) > 0:
+            self.driver.execute_script(
+                'return arguments[0].scrollIntoView({block: "center", inline: "nearest"});',
+                self.driver.find_element(*self.ARROW_GO_TO_THE_NEXT_PAGE)
+            )
+            Common().save_current_screenshot(self.driver,
+                                             "After navigate on the right arrow")
+            msg = "There is a right arrow on the current page, but it shouldn't be there."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        elif "at" in page_url:
-            print("Current page have expected shortcut 'at', but need to check screenshot")
-        else:
-            msg = "Current page don't have shortcut 'at' or 'en', need to check screenshot"
-            print(f"{datetime.now()}   => {msg}\n")
-            Common().pytest_fail(msg)
+        print(f"{datetime.now()}   Current page don't have right arrow, but need to check screenshot.")
