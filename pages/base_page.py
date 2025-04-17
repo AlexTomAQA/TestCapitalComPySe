@@ -193,7 +193,7 @@ class BasePage:
     def button_stay_on_this_site_click(self):
         allure.step(f"{datetime.now()}   Start click button [Stay on this site]")
 
-        time_out = 30
+        time_out = 5
         print(f"\n{datetime.now()}   Step 'Click button [Stay on this site]'")
 
         print(f"{datetime.now()}   Is Visible Button [Stay on this site]? =>")
