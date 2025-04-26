@@ -68,30 +68,30 @@ jobs:
         run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/AlexTomQA/US_55-AlexTomQA_ReTestsManual_test.py
         continue-on-error: true
 
-#      - name: 8. Run US_55_ReTestsManual (Артем)
-#        if: always()
-#        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
-#        continue-on-error: true
+      - name: 8. Run US_55_ReTestsManual (Артем)
+        if: always()
+        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/artemdashkov/US_55-artemdashkov_ReTestsManual_test.py
+        continue-on-error: true
 
       - name: 8. Run US_55_ReTestsManual (Сергей А.)
         if: always()
         run: poetry run pytest -vv tests/US_55_ReTestsManual/saii-d3v/US_55-saii-d3v_ReTestsManual_test.py
         continue-on-error: true
 
-#      - name: 8. Run US_55_ReTestsManual (Касила)
-#        if: always()
-#        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
-#        continue-on-error: true
+      - name: 8. Run US_55_ReTestsManual (Касила)
+        if: always()
+        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/tassobaccato/US_55-tassobaccato_ReTestsManual_test.py
+        continue-on-error: true
 
       - name: 8. Run US_55_ReTestsManual (Мила)
         if: always()
         run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/mila_podchasova/US_55-mila_podchasova_ReTestsManual_test.py
         continue-on-error: true
 
-#      - name: 8. Run US_55_ReTestsManual (Алексей)
-#        if: always()
-#        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/K_Alex_N/US_55_K_Alex_N_ReTestsManual_test.py
-#        continue-on-error: true
+      - name: 8. Run US_55_ReTestsManual (Алексей)
+        if: always()
+        run: poetry run pytest --no-summary -vv tests/US_55_ReTestsManual/K_Alex_N/US_55_K_Alex_N_ReTestsManual_test.py
+        continue-on-error: true
 
       - name: 9. Upload artifact "allure-results"
         if: always()
