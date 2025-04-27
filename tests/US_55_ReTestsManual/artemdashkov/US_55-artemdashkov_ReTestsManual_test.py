@@ -2279,10 +2279,10 @@ class TestManualDetected:
         test_element = BUG_691(d, link, bid)
 
         # Act
-        test_element.click_app_link()
+        test_element.click_here_link()
 
         # Assert
-        test_element.is_expected_page_open()
+        test_element.is_page_with_expected_language_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
