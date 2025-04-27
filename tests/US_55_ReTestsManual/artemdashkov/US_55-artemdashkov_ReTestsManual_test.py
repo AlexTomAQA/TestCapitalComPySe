@@ -57,6 +57,7 @@ from pages.BugsManual.bug_674 import BUG_674
 from pages.BugsManual.bug_678 import BUG_678
 from pages.BugsManual.bug_681 import BUG_681
 from pages.BugsManual.bug_690 import BUG_690
+from pages.BugsManual.bug_691 import BUG_691
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -70,6 +71,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_markets_menu_open_markets,
                             from_markets_menu_open_market_analysis,
                             from_markets_menu_open_shares,
+                            from_pricing_menu_open_charges_and_fees,
                             from_pricing_menu_open_how_capital_com_makes_money,
                             from_trading_menu_open_all_platforms,
                             from_trading_menu_open_cfd_trading,
@@ -2237,6 +2239,50 @@ class TestManualDetected:
 
         # Assert
         test_element.is_right_arrow_on_the_page()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [here] in the block 'Deposits and withdrawals'")
+    @pytest.mark.parametrize('cur_language', ["it"])
+    @pytest.mark.parametrize('cur_country', ["it"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_691
+    def test_691_link_here_in_the_block_deposits_and_withdrawals(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Pricing] >
+                Click the Menu item [Charges and fees] >
+                Scroll page down to the block "Deposits and withdrawals" >
+                Click link [here]
+        Language: IT
+        License/Country: CYSEC/IT
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "691",
+            "Navigate to the Menu section [Pricing] "
+            "Click the Menu item [Charges and fees] "
+            "Scroll page down to the block 'Deposits and withdrawals' "
+            "Click link [here]",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_pricing_menu_open_charges_and_fees.MenuNew(d, cur_item_link)
+        link = page_menu.from_pricing_menu_open_charges_and_fees(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_691(d, link, bid)
+
+        # Act
+        test_element.click_here_link()
+
+        # Assert
+        test_element.is_page_with_expected_language_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
