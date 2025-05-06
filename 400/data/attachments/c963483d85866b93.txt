@@ -1,0 +1,86 @@
+{'width': 1920, 'height': 1080}
+
+2025-05-06 02:06:48.629657   worker_id = master
+
+2025-05-06 02:06:48.629668   0. Allure grouping for US_55
+
+
+2025-05-06 02:06:48.629842   START PRECONDITIONS =>
+
+2025-05-06 02:06:48.629853   => URL after prev. preconditions - https://capital.com/en-gb
+2025-05-06 02:06:48.629859   => flag_of_bug - True
+2025-05-06 02:06:48.629866   => Current URL - https://capital.com/en-au/corporate-accounts
+2025-05-06 02:06:48.635927   Current page URL = https://capital.com/en-au/corporate-accounts
+2025-05-06 02:06:48.638656   self.link = https://capital.com/en-gb
+2025-05-06 02:06:48.638666   driver.get(https://capital.com/en-gb) =>
+2025-05-06 02:06:51.017454   => Loaded page https://capital.com/en-gb
+
+2025-05-06 02:06:51.024553   => Windows size: {'width': 1920, 'height': 1080}
+
+2025-05-06 02:06:51.025973   Set windows position at (0, 0) =>
+
+2025-05-06 02:06:51.027736   Set resolution 1920 * 1080 =>
+
+2025-05-06 02:06:51.029497   => Resolution set {'width': 1920, 'height': 1080}
+
+2025-05-06 02:06:51.030848   Работа с куками =>
+2025-05-06 02:06:51.030859   Prev. role - 'NoAuth'
+2025-05-06 02:06:51.030865   Current testing role - 'NoReg'
+
+2025-05-06 02:06:51.030871   All cookies must be delete =>
+2025-05-06 02:06:51.103985   => All cookies are deleted
+2025-05-06 02:06:51.104010   Current page URL = https://capital.com/en-gb
+2025-05-06 02:06:51.106830   self.link = https://capital.com/en-gb
+2025-05-06 02:06:51.106840   driver.get(https://capital.com/en-gb) =>
+2025-05-06 02:06:53.524287   => Loaded page https://capital.com/en-gb
+
+2025-05-06 02:06:53.531103   Step 'Click button [Accept all cookies]'
+2025-05-06 02:06:53.531111   Is Visible Button [Accept all cookies]? =>
+2025-05-06 02:06:54.770848   => Button [Accept all cookies] is visible
+2025-05-06 02:06:55.270994   Is clickable Button [Accept all cookies] =>
+2025-05-06 02:06:55.287297   => Button [Accept all cookies] is clickable
+2025-05-06 02:06:55.287320   Click Button [Accept all cookies] =>
+2025-05-06 02:06:55.452570   => Button [Accept all cookies] is clicked
+2025-05-06 02:06:55.452609   => Accepted All Cookies
+
+2025-05-06 02:06:55.952781   Step 'Click button [Stay on this site]'
+2025-05-06 02:06:55.952817   Is Visible Button [Stay on this site]? =>
+2025-05-06 02:07:01.021944   => Button [Stay on this site] is not visible after 5 sec.
+2025-05-06 02:07:01.021971   => Cur url = https://capital.com/en-gb
+
+2025-05-06 02:07:01.024757   Prev. role - 'NoAuth'
+2025-05-06 02:07:01.024767   Cur. role - 'NoReg'
+
+2025-05-06 02:07:01.024773   => The 'NoReg' role is set
+
+2025-05-06 02:07:01.024780   Prev. language: de
+2025-05-06 02:07:01.024785   Cur. language - 'en'
+
+2025-05-06 02:07:01.024790   Prev. country: ua
+2025-05-06 02:07:01.024795   Cur. country: au
+
+2025-05-06 02:07:01.024929   Set "en" language and "au" country =>
+2025-05-06 02:07:01.024942   Current page URL = https://capital.com/en-gb
+2025-05-06 02:07:01.027481   self.link = https://capital.com/en-au
+2025-05-06 02:07:01.027491   driver.get(https://capital.com/en-au) =>
+2025-05-06 02:07:03.434655   => Loaded page https://capital.com/en-au
+
+2025-05-06 02:07:03.442487   Step 'Click button [Stay on this site]'
+2025-05-06 02:07:03.442497   Is Visible Button [Stay on this site]? =>
+2025-05-06 02:07:08.465010   => Button [Stay on this site] is not visible after 5 sec.
+2025-05-06 02:07:08.465037   => Cur url = https://capital.com/en-au
+2025-05-06 02:07:08.467711   => Language is set to 'en'
+2025-05-06 02:07:08.467720   => Country is set to 'au'
+2025-05-06 02:07:08.467725   => Current URL - https://capital.com/en-au
+
+2025-05-06 02:07:08.473532   => Current URL - https://capital.com/en-au
+
+2025-05-06 02:07:08.473555   => END PRECONDITIONS
+
+2025-05-06 02:07:08.473763   1. Arrange
+2025-05-06 02:07:08.473781   current_page = https://capital.com/en-au
+2025-05-06 02:07:08.476739   link = https://capital.com/en-au
+2025-05-06 02:07:08.479231   Click on the “CORPORATE” tab in the Header
+2025-05-06 02:07:08.525262   Scroll down to the block “Why Open a Corporate Account with Capital.com?”
+2025-05-06 02:07:08.670487   2. Assert
+2025-05-06 02:07:08.707674   The value of the 'Active clients monthly' item is displayed as '100K' and not '82K+'
