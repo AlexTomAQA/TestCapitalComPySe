@@ -12,41 +12,47 @@ from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 
 class BUG_696(BasePage):
-    DEPOSITS_AND_WITHDRAWALS_BLOCK = (By.CSS_SELECTOR, "[data-id='part_1']")
-    HERE_LINK = (By.CSS_SELECTOR, "[data-testid='link-with-safety']")
+    HOW_TO_START_TRADING_FOR_BEGINNERS_BLOCK = (By.XPATH, "(//summary[@data-type='faq_chevron'])[1]")
+    LEARN_ABOUT_STRATEGIES_LINK = (By.XPATH, "//a[contains(text(), 'learn about strategies')]")
+    MARKET_ANALYSIS_BREADCRUMB = (By.XPATH, "//div[@class='breadcrumbs_breadcrumbs__UgZeo'] //span[contains(text(), 'Market analysis')]")
     NUMBER_OF_TABS = None
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
-    @allure.step(f"{datetime.now()}   Click on [here] link")
-    def click_here_link(self):
+    @allure.step(f"{datetime.now()}   Click on [learn about strategies] link")
+    def click_learn_about_strategies_link(self):
 
         # Check presenting, visibility block
         self.find_block_scroll_and_check_visibility(
-            "Deposits and withdrawals", self.DEPOSITS_AND_WITHDRAWALS_BLOCK)
+            "How to start trading for beginners", self.HOW_TO_START_TRADING_FOR_BEGINNERS_BLOCK)
+
+        print(f"{datetime.now()}   Start to click 'How to start trading for beginners'")
+        self.driver.find_element(*self.HOW_TO_START_TRADING_FOR_BEGINNERS_BLOCK).click()
+        print(f"{datetime.now()}   End to click 'How to start trading for beginners'")
 
         # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(
-            "App", self.HERE_LINK)
+            "learn about strategies", self.LEARN_ABOUT_STRATEGIES_LINK)
 
-        # How many tabs before click link [here]
+        # How many tabs before click link [learn about strategies]
         tabs_before_click = self.driver.window_handles
         print(f"{datetime.now()}   Number of tabs before click link: {len(tabs_before_click)}")
 
         # click link
-        print(f"{datetime.now()}   Start click [here] link")
-        self.driver.find_element(*self.HERE_LINK).click()
-        print(f"{datetime.now()}   End click [here] link\n")
+        print(f"{datetime.now()}   Start click [learn about strategies] link")
+        self.driver.find_element(*self.LEARN_ABOUT_STRATEGIES_LINK).click()
+        print(f"{datetime.now()}   End click [learn about strategies] link\n")
 
-        # How many tabs after click link [here]
+        # How many tabs after click link [learn about strategies]
         tabs_after_click = self.driver.window_handles
         print(f"{datetime.now()}   Number of tabs after click link: {len(tabs_after_click)}")
 
         if len(tabs_before_click) < len(tabs_after_click):
-            self.driver.close()                                 # close active tab
-            self.driver.switch_to.window(tabs_after_click[-1])  # switch to tab, opened after click [here] link
+            self.driver.switch_to.window(tabs_after_click[0])   # switch to first tab
+            self.driver.close()                                 # close first tab
+            self.driver.switch_to.window(tabs_after_click[-1])  # switch to tab, opened after click [learn about strategies] link
             print(f"{datetime.now()}   Current number of tabs is: {len(self.driver.window_handles)}")
 
         Common().save_current_screenshot(self.driver,
@@ -58,13 +64,11 @@ class BUG_696(BasePage):
         print(f"{datetime.now()}   Start get the URL page.")
         page_url = self.driver.current_url
         print(f"{datetime.now()}   Current url of page is {page_url}.")
-        if "/en" in page_url:
-            msg = "Current page have english language."
+        if len(self.driver.find_elements(*self.MARKET_ANALYSIS_BREADCRUMB)) > 0:
+            msg = "Current page 'Market analysis' instead page 'Trading strategies'."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        elif "/it" in page_url:
-            print("Current page have expected shortcut '/it' in url, but need to check screenshot")
         else:
-            msg = "Current page don't have shortcut '/it' or '/en' in url, need to check screenshot"
+            msg = "Current page is not 'Market analysis', need to check screenshot"
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)

@@ -2327,7 +2327,7 @@ class TestManualDetected:
         test_element = BUG_696(d, link, bid)
 
         # Act
-        test_element.click_here_link()
+        test_element.click_learn_about_strategies_link()
 
         # Assert
         test_element.is_page_with_expected_language_open()
