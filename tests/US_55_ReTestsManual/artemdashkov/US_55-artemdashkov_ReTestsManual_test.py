@@ -58,12 +58,14 @@ from pages.BugsManual.bug_678 import BUG_678
 from pages.BugsManual.bug_681 import BUG_681
 from pages.BugsManual.bug_690 import BUG_690
 from pages.BugsManual.bug_691 import BUG_691
+from pages.BugsManual.bug_696 import BUG_696
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
 from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_about_us_menu_open_help,
                             from_about_us_menu_open_why_capital,
+                            from_learn_menu_open_essentials_of_trading,
                             from_learn_menu_open_market_guides,
                             from_markets_menu_open_commodities,
                             from_markets_menu_open_cryptocurrencies,
@@ -2280,6 +2282,52 @@ class TestManualDetected:
 
         # Act
         test_element.click_here_link()
+
+        # Assert
+        test_element.is_page_with_expected_language_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link [learn about strategies] in the block 'FAQs' in accordion 'How to start trading for beginners'")
+    @pytest.mark.parametrize('cur_language', ["en"])
+    @pytest.mark.parametrize('cur_country', ["gb"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_696
+    def test_696_link_learn_about_strategies_in_the_faqs_in_accordion_how_to_start_trading_for_beginners(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Learn] >
+                Click the Menu item [Trading essentials] >
+                Scroll page down to the block "FAQs" >
+                Click on accordion "How to start trading for beginners"
+                Click link [learn about strategies]
+        Language: EN
+        License/Country: FCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "696",
+            "Navigate to the Menu section [Learn] "
+            "Click the Menu item [Trading essentials] "
+            "Scroll page down to the block 'FAQs' "
+            "Click on accordion 'How to start trading for beginners' "
+            "Click link [learn about strategies]",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_learn_menu_open_essentials_of_trading.MenuNewLearn(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_essentials_of_trading(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_696(d, link, bid)
+
+        # Act
+        test_element.click_learn_about_strategies_link()
 
         # Assert
         test_element.is_page_with_expected_language_open()
