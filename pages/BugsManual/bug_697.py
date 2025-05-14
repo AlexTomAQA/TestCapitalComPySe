@@ -12,11 +12,6 @@ from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 
 class BUG_697(BasePage):
-    HOW_TO_START_TRADING_FOR_BEGINNERS_BLOCK = (By.XPATH, "(//summary[@data-type='faq_chevron'])[1]")
-    LEARN_ABOUT_STRATEGIES_LINK = (By.XPATH, "//a[contains(text(), 'learn about strategies')]")
-    MARKET_ANALYSIS_BREADCRUMB = (By.XPATH, "//div[@class='breadcrumbs_breadcrumbs__UgZeo'] //span[contains(text(), 'Market analysis')]")
-    NUMBER_OF_TABS = None
-
     WHAT_IS_INDICES_TRADING_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img"] [class="grid_grid__2D3md grid_gSmMd__aZHWz"]:nth-child(4) ')
     INDICES_TRADING_GUIDE_LINK = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
     VIX_LINK = (By.XPATH, "//a[contains(text(), 'VIX')]")
