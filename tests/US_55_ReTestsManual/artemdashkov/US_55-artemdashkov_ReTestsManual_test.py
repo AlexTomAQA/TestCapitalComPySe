@@ -2373,7 +2373,6 @@ class TestManualDetected:
             "Click link [S&P 100]",
             False, True
         )
-        pytest.skip("Intermediate version")
         # Arrange
         cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
         page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
@@ -2382,10 +2381,12 @@ class TestManualDetected:
         test_element = BUG_697(d, link, bid)
 
         # Act
-        test_element.click_learn_about_strategies_link()
+        test_element.click_indices_trading_guide_link()
+        test_element.click_vix_link()
+        test_element.click_sp_100_link_link()
 
         # Assert
-        test_element.is_page_with_expected_language_open()
+        test_element.is_page_us_tech_100_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
