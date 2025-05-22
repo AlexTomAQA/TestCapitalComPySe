@@ -59,6 +59,8 @@ from pages.BugsManual.bug_681 import BUG_681
 from pages.BugsManual.bug_690 import BUG_690
 from pages.BugsManual.bug_691 import BUG_691
 from pages.BugsManual.bug_696 import BUG_696
+from pages.BugsManual.bug_697 import BUG_697
+from pages.BugsManual.bug_701 import BUG_701
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2331,6 +2333,111 @@ class TestManualDetected:
 
         # Assert
         test_element.is_page_with_expected_language_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step(
+        "Start test of the link [S&P 500] in the block 'Popular indices to trade'")
+    @pytest.mark.parametrize('cur_language', ["en"])
+    @pytest.mark.parametrize('cur_country', ["gb"])
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_697
+    def test_697_link_sp_500_in_the_block_popular_indices_to_trade(
+            self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Learn] >
+                Click the Menu item [Market guides] >
+                Scroll page down to tile "What is indices trading?" >
+                Click link [Indices trading guide]
+                Scroll page down to tile "Popular indices to trade" >
+                Click link [VIX]
+                Scroll page down to tile "History of the VIX" >
+                Click link [S&P 100]
+        Language: EN
+        License/Country: FCA
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language, cur_country, cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "697",
+            "Navigate to the Menu section [Learn] "
+            "Click the Menu item [Market guides] "
+            "Scroll page down to tile 'What is indices trading?' "
+            "Click link [Indices trading guide] "
+            "Scroll page down to tile 'Popular indices to trade' "
+            "Click link [VIX] "
+            "Scroll page down to tile 'History of the VIX' "
+            "Click link [S&P 100]",
+            False, True
+        )
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(d, cur_language, cur_country, cur_role, cur_login, cur_password)
+        page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_market_guides(d, cur_language, cur_country, cur_item_link)
+
+        test_element = BUG_697(d, link, bid)
+
+        # Act
+        test_element.click_indices_trading_guide_link()
+        test_element.click_vix_link()
+        test_element.click_sp_100_link_link()
+
+        # Assert
+        test_element.is_page_us_tech_100_open()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step(
+        "Start test of the button [Open an account] in the block 'We’re here to help'")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_701
+    def test_701_button_open_an_account_in_the_block_We_are_here_to_help(
+            self, worker_id, d, cur_language_country_for_fca_sca_for_en_language, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Trading] >
+                Click the Menu item [All platforms] >
+                Scroll page down to the block "We’re here to help" >
+                Click button [Open an account]
+        Language: EN,AR,DE
+        License/Country: SCA,FCA,ASIC,CYCEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_sca_for_en_language[0],
+            cur_language_country_for_fca_sca_for_en_language[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "701",
+            "Navigate to the Menu section [Trading] "
+            "Click the Menu item [All platforms] "
+            "Scroll page down to tile 'We’re here to help' "
+            "Click link [Open an account]",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Intermediate version")
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_for_en_language[0],
+                                                    cur_language_country_for_fca_sca_for_en_language[1],
+                                                    cur_role, cur_login, cur_password)
+        page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
+        link = page_menu.from_learn_menu_open_market_guides(d, cur_language_country_for_fca_sca_for_en_language[0],
+                                                    cur_language_country_for_fca_sca_for_en_language[1], cur_item_link)
+
+        test_element = BUG_701(d, link, bid)
+
+        # Act
+        test_element.click_indices_trading_guide_link()
+        test_element.click_vix_link()
+        test_element.click_sp_100_link_link()
+
+        # Assert
+        test_element.is_page_us_tech_100_open()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
