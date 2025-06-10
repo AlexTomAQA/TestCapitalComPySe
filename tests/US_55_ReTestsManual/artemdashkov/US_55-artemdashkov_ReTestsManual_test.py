@@ -61,6 +61,7 @@ from pages.BugsManual.bug_691 import BUG_691
 from pages.BugsManual.bug_696 import BUG_696
 from pages.BugsManual.bug_697 import BUG_697
 from pages.BugsManual.bug_701 import BUG_701
+from pages.BugsManual.bug_702 import BUG_702
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -2430,6 +2431,52 @@ class TestManualDetected:
                                                     cur_language_country_for_fca_sca_for_en_language[1], cur_item_link)
 
         test_element = BUG_701(d, link, bid)
+
+        # Act
+        test_element.click_open_an_account_button()
+
+        # Assert
+        test_element.is_sign_up_form_opened()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the link name in Breadcrumbs on the page 'Our business model'")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_702
+    def test_702_link_name_in_breadcrumbs_on_the_page_our_business_model(
+            self, worker_id, d, cur_language_country_for_fca_sca_asic_cysec_2_rnd, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Pricing] >
+                Click the Menu item [Our business model] >
+                Pay attention to the Breadcrumbs
+        Language: EN,AR,DE
+        License/Country: SCA,FCA,ASIC,CYCEC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+            cur_language_country_for_fca_sca_asic_cysec_2_rnd[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "702",
+            "Navigate to the Menu section [Pricing] "
+            "Click the Menu item [Our business model] "
+            "Pay attention to the Breadcrumbs",
+            False, True
+        )
+        # Arrange
+        pytest.skip("Intermediate version")
+        cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+                                                    cur_language_country_for_fca_sca_asic_cysec_2_rnd[1],
+                                                    cur_role, cur_login, cur_password)
+        page_menu = from_pricing_menu_open_how_capital_com_makes_money.MenuNew(d, cur_item_link)
+        link = page_menu.from_pricing_menu_open_how_capital_com_makes_money(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
+                                                              cur_language_country_for_fca_sca_asic_cysec_2_rnd[1],
+                                                              cur_item_link)
+
+        test_element = BUG_702(d, link, bid)
 
         # Act
         test_element.click_open_an_account_button()
