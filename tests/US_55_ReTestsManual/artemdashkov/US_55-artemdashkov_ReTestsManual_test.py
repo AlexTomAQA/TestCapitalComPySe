@@ -2421,23 +2421,21 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
+        # pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_for_en_language[0],
                                                     cur_language_country_for_fca_sca_for_en_language[1],
                                                     cur_role, cur_login, cur_password)
-        page_menu = from_learn_menu_open_market_guides.MenuNewLearn(d, cur_item_link)
-        link = page_menu.from_learn_menu_open_market_guides(d, cur_language_country_for_fca_sca_for_en_language[0],
+        page_menu = from_trading_menu_open_all_platforms.MenuNew(d, cur_item_link)
+        link = page_menu.from_trading_menu_open_all_platforms(d, cur_language_country_for_fca_sca_for_en_language[0],
                                                     cur_language_country_for_fca_sca_for_en_language[1], cur_item_link)
 
         test_element = BUG_701(d, link, bid)
 
         # Act
-        test_element.click_indices_trading_guide_link()
-        test_element.click_vix_link()
-        test_element.click_sp_100_link_link()
+        test_element.click_open_an_account_button()
 
         # Assert
-        test_element.is_page_us_tech_100_open()
+        test_element.is_sign_up_form_opened()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
