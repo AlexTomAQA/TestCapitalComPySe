@@ -2441,10 +2441,10 @@ class TestManualDetected:
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)
 
-    @allure.step("Start test of the link name in Breadcrumbs on the page 'Our business model'")
+    @allure.step("Start test the name of link in Breadcrumbs on the page 'Our business model'")
     @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
     @pytest.mark.bug_702
-    def test_702_link_name_in_breadcrumbs_on_the_page_our_business_model(
+    def test_702_name_of_the_link_in_breadcrumbs_on_the_page_our_business_model(
             self, worker_id, d, cur_language_country_for_fca_sca_asic_cysec_2_rnd, cur_role, cur_login, cur_password):
         """
         Check:  Navigate to the Menu section [Pricing] >
@@ -2455,6 +2455,8 @@ class TestManualDetected:
         Role: NoReg, NoAuth, Auth
         Author: Artem Dashkov
         """
+        if cur_language_country_for_fca_sca_asic_cysec_2_rnd[1] == "ae":
+            pytest.skip("For country 'ae' isn't submenu [Our business model]")
 
         bid = build_dynamic_arg_for_us_55(
             d, worker_id, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
@@ -2478,11 +2480,8 @@ class TestManualDetected:
 
         test_element = BUG_702(d, link, bid)
 
-        # Act
-        test_element.click_open_an_account_button()
-
         # Assert
-        test_element.is_sign_up_form_opened()
+        test_element.is_pricing_link_displayed()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)

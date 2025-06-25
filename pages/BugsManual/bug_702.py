@@ -13,44 +13,30 @@ from selenium.webdriver.support.ui import WebDriverWait
 from pages.Signup_login.signup_login_locators import NewSignupFormLocators
 
 class BUG_702(BasePage):
-    WE_ARE_HERE_TO_HELP_BLOCK = (By.CSS_SELECTOR, "[data-type='banner_in_body_block']")
-    OPEN_AN_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "[data-type='banner_in_body_block_btn1_custom']")
+    SECOND_LINK_IN_BREADCRUMBS = (By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd .link_link__lpKUr:nth-child(2)")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
-    @allure.step(f"{datetime.now()}   Click on [Open an account] button")
-    def click_open_an_account_button(self):
+    @allure.step(f"{datetime.now()}   Is there an expected link?")
+    def is_pricing_link_displayed(self):
 
-        # Check presenting, visibility block
-        self.find_block_scroll_and_check_visibility(
-            "We’re here to help", self.WE_ARE_HERE_TO_HELP_BLOCK)
-
-        # Check presenting, visibility button
+        # Check presenting, visibility link
         self.find_link_scroll_check_visibility_and_clickability(
-            "Open an account", self.OPEN_AN_ACCOUNT_BUTTON)
+            "Second link in breadcrumbs", self.SECOND_LINK_IN_BREADCRUMBS)
 
-        print(f"{datetime.now()}   Start to click 'Open an account'")
-        self.driver.find_element(*self.OPEN_AN_ACCOUNT_BUTTON).click()
-        print(f"{datetime.now()}   End to click 'Open an account'")
+        print(f"{datetime.now()}   Start get link of second item of breadcrumbs")
+        second_item_of_breadcrumbs = self.driver.find_element(*self.SECOND_LINK_IN_BREADCRUMBS)
+        link_of_second_item = second_item_of_breadcrumbs.get_attribute("href")
+        print(f"{datetime.now()}   Link of second item of breadcrumbs {link_of_second_item}.")
 
-        Common().save_current_screenshot(self.driver,
-                                         "After click on [Open an account] button")
-
-    @allure.step(f"{datetime.now()}   Is expected page open?")
-    def is_sign_up_form_opened(self):
-        print(f"{datetime.now()}   Start get the URL page.")
-        page_url = self.driver.current_url
-        print(f"{datetime.now()}   Current url of page is {page_url}.")
-
-        if 'contact-us' in page_url:
-            msg = "Opened page 'Contact us' instead opening form 'Sign up' form."
+        if 'about-us' in link_of_second_item:
+            msg = "Link [About] is displayed in the Breadcrumbs on the page 'Our business model'."
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
-        elif self.element_is_visible(NewSignupFormLocators.SIGNUP_FORM):
-            print(f"{datetime.now()}   => There is form 'Sign up, but need check screen'\n")
         else:
-            msg = "Opened page don't have opening form 'Sign up' form, need check screen."
+            msg = (f"Opened page don't displayed Link [About] in the Breadcrumbs on the page 'Our business model', "
+                   f"but need check screen. Current link is {link_of_second_item}")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
