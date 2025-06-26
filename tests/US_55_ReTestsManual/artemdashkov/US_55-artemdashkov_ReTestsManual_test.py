@@ -2469,7 +2469,6 @@ class TestManualDetected:
             False, True
         )
         # Arrange
-        pytest.skip("Intermediate version")
         cur_item_link = apply_preconditions_to_link(d, cur_language_country_for_fca_sca_asic_cysec_2_rnd[0],
                                                     cur_language_country_for_fca_sca_asic_cysec_2_rnd[1],
                                                     cur_role, cur_login, cur_password)

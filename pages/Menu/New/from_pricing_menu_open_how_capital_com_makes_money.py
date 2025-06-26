@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 from pages.Menu.New.menu_new_base import MenuBase
 from pages.Menu.New.menu_new_locators import PricingMenuNew
 
-SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'span.menuGroup_linkfirstLevel__d5JGC > a[data-type="nav_id737"')
+SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__IpILJ  > a[data-type="nav_id742"]')
 SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__2D3md > a[data-type="nav_id814"')
 SUB_MENU_CYSEC_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__IpILJ > a[data-type="nav_id1707"')
 SUB_MENU_ASIC_HOW_CAPITAL_COM_MAKES_MONEY = (By.CSS_SELECTOR, 'div.grid_grid__IpILJ > a[data-type="nav_id1290"')
@@ -27,7 +27,7 @@ class MenuNew(MenuBase):
         menu_name = "Pricing"
         menu_locator = None
         match cur_country:
-            case "":
+            case "" | "gb":
                 menu_locator = PricingMenuNew.MENU_FCA_PRICING
             case "ae":
                 menu_locator = PricingMenuNew.MENU_SCA_PRICING
@@ -39,7 +39,7 @@ class MenuNew(MenuBase):
         submenu_locator = None
         submenu_name = "How Capital.com makes money"
         match cur_country:
-            case "":
+            case "" | "gb":
                 submenu_locator = SUB_MENU_FCA_HOW_CAPITAL_COM_MAKES_MONEY
             case "ae":
                 submenu_locator = SUB_MENU_SCA_HOW_CAPITAL_COM_MAKES_MONEY
