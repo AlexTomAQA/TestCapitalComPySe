@@ -182,3 +182,15 @@ def cur_language_country_for_fca_sca_asic_cysec_2_rnd(request):
     """Country sorting parameters"""
     print(f"\n\n\nCurrent country - {request.param}")
     return request.param
+
+@pytest.fixture(
+    scope="function",
+    params=[
+        ["", "ae"],    # SCA
+        ["", "au"]     # ASIC
+    ]
+)
+def cur_language_country_for_sca_asic_for_en_language(request):
+    """Country sorting parameters"""
+    print(f"\n\n\nCurrent country - {request.param}")
+    return request.param

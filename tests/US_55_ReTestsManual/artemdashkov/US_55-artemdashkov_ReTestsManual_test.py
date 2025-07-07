@@ -62,6 +62,7 @@ from pages.BugsManual.bug_696 import BUG_696
 from pages.BugsManual.bug_697 import BUG_697
 from pages.BugsManual.bug_701 import BUG_701
 from pages.BugsManual.bug_702 import BUG_702
+from pages.BugsManual.bug_703 import BUG_703
 from pages.build_dynamic_arg import build_dynamic_arg_for_us_55
 from pages.conditions_v2 import apply_preconditions_to_link
 from pages.Menu.menu import MenuSection
@@ -78,6 +79,7 @@ from pages.Menu.New import (from_about_us_menu_open_client_vulnerability,
                             from_markets_menu_open_shares,
                             from_pricing_menu_open_charges_and_fees,
                             from_pricing_menu_open_how_capital_com_makes_money,
+                            from_pricing_menu_open_payments_and_withdrawals,
                             from_trading_menu_open_all_platforms,
                             from_trading_menu_open_cfd_trading,
                             from_trading_menu_open_demo,
@@ -2478,6 +2480,57 @@ class TestManualDetected:
                                                               cur_item_link)
 
         test_element = BUG_702(d, link, bid)
+
+        # Assert
+        test_element.is_pricing_link_displayed()
+        # Postconditions: get start link
+        print(f'\n{datetime.now()}   Applying postconditions.')
+        d.get(cur_item_link)
+
+    @allure.step("Start test of the Breadcrumbs on the page 'Payments and withdrawals'")
+    @pytest.mark.parametrize('cur_role', ["NoReg", "Auth", "NoAuth"])
+    @pytest.mark.bug_703
+    def test_703_name_of_the_link_in_breadcrumbs_on_the_page_payments_and_withdrawals(
+            self, worker_id, d, cur_language_country_for_sca_asic_for_en_language, cur_role, cur_login, cur_password):
+        """
+        Check:  Navigate to the Menu section [Pricing] >
+                Click the Menu item [Payments and withdrawals] >
+                Pay attention to the Breadcrumbs
+        Language: EN
+        License/Country: SCA,ASIC
+        Role: NoReg, NoAuth, Auth
+        Author: Artem Dashkov
+        """
+
+        bid = build_dynamic_arg_for_us_55(
+            d, worker_id, cur_language_country_for_sca_asic_for_en_language[0],
+            cur_language_country_for_sca_asic_for_en_language[1], cur_role,
+            "55", "ReTests of Manual Detected Bugs",
+            "703",
+            "Navigate to the Menu section [Pricing] "
+            "Click the Menu item [Payments and withdrawals] "
+            "Pay attention to the Breadcrumbs",
+            False, True
+        )
+
+        pytest.skip("Intermediate version: bug_703")
+
+        # Arrange
+        cur_item_link = apply_preconditions_to_link(
+                    d,
+                    cur_language_country_for_sca_asic_for_en_language[0],
+                    cur_language_country_for_sca_asic_for_en_language[1],
+                    cur_role, cur_login, cur_password)
+
+        page_menu = from_pricing_menu_open_payments_and_withdrawals.MenuNew(d, cur_item_link)
+
+        link = page_menu.from_pricing_menu_open_payments_and_withdrawals(
+                    d,
+                    cur_language_country_for_sca_asic_for_en_language[0],
+                    cur_language_country_for_sca_asic_for_en_language[1],
+                    cur_item_link)
+
+        test_element = BUG_703(d, link, bid)
 
         # Assert
         test_element.is_pricing_link_displayed()
