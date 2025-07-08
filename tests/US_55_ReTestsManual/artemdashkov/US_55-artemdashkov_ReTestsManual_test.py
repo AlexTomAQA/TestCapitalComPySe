@@ -2513,7 +2513,7 @@ class TestManualDetected:
             False, True
         )
 
-        pytest.skip("Intermediate version: bug_703")
+        # pytest.skip("Intermediate version: bug_703")
 
         # Arrange
         cur_item_link = apply_preconditions_to_link(
@@ -2533,7 +2533,7 @@ class TestManualDetected:
         test_element = BUG_703(d, link, bid)
 
         # Assert
-        test_element.is_pricing_link_displayed()
+        test_element.is_payments_and_withdrawals_breadcrumbs_displayed()
         # Postconditions: get start link
         print(f'\n{datetime.now()}   Applying postconditions.')
         d.get(cur_item_link)

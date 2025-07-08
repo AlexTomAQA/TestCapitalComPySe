@@ -13,31 +13,55 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BUG_703(BasePage):
-    SECOND_LEVEL_IN_BREADCRUMBS = (By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd .link_link__lpKUr:nth-child(2)")
-    THIRD_LEVEL_IN_BREADCRUMBS = (By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd .link_link__lpKUr:nth-child(2)")
+    FIRST_LEVEL_IN_BREADCRUMBS = (By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd .link_link__lpKUr:nth-child(1)")
+    SECOND_LEVEL_IN_BREADCRUMBS = (
+        By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd .link_link__lpKUr:nth-child(2)") # if there are three levels
+    LAST_LEVEL_IN_BREADCRUMBS = (By.CSS_SELECTOR, ".breadcrumbs_breadcrumbs__vTxZd span")
 
     def __init__(self, driver, link, bid):
         super().__init__(driver, link, bid)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=1)
 
     @allure.step(f"{datetime.now()}   Is there an expected link?")
-    def is_pricing_link_displayed(self):
+    def is_payments_and_withdrawals_breadcrumbs_displayed(self):
 
-        # Check presenting, visibility link
-        self.find_link_scroll_check_visibility_and_clickability(
-            "Second link in breadcrumbs", self.SECOND_LINK_IN_BREADCRUMBS)
+        # Check numbers of levels breadcrumbs
+        first_level_in_breadcrumbs = self.driver.find_elements(*self.FIRST_LEVEL_IN_BREADCRUMBS)
+        second_level_in_breadcrumbs = self.driver.find_elements(*self.SECOND_LEVEL_IN_BREADCRUMBS)
+        last_level_in_breadcrumbs = self.driver.find_elements(*self.LAST_LEVEL_IN_BREADCRUMBS)
 
-        print(f"{datetime.now()}   Start get link of second item of breadcrumbs")
-        second_item_of_breadcrumbs = self.driver.find_element(*self.SECOND_LINK_IN_BREADCRUMBS)
-        link_of_second_item = second_item_of_breadcrumbs.get_attribute("href")
-        print(f"{datetime.now()}   Link of second item of breadcrumbs {link_of_second_item}.")
+        # first level
+        if len(first_level_in_breadcrumbs) > 0:
+            print(f"{datetime.now()}   First level is: '{first_level_in_breadcrumbs[0].text}'")
+        else:
+            print(f"{datetime.now()}   Current page don't have first level in breadcrumbs")
 
-        if 'about-us' in link_of_second_item:
-            msg = "Link [About] is displayed in the Breadcrumbs on the page 'Our business model'."
+        # second level
+        if len(second_level_in_breadcrumbs) > 0:
+            print(f"{datetime.now()}   Second level is: '{first_level_in_breadcrumbs[0].text}'")
+        elif len(last_level_in_breadcrumbs) > 0:
+            msg = (f"Current page has only two levels in breadcrumbs. "
+                   f"Second level is: '{last_level_in_breadcrumbs[0].text}'")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
         else:
-            msg = (f"Opened page don't displayed Link [About] in the Breadcrumbs on the page 'Our business model', "
-                   f"but need check screen. Current link is {link_of_second_item}")
+            msg = "Current page doesn't have second level in breadcrumbs"
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+
+        # third level
+        if len(last_level_in_breadcrumbs) > 0:
+            print(f"{datetime.now()}   Current page have three levels in breadcrumbs")
+            print(f"{datetime.now()}   Third level is: '{last_level_in_breadcrumbs[0].text}'")
+
+
+        if 'pricing' not in first_level_in_breadcrumbs.text.lower:
+            msg = (f"Second level in breadcrumbs doesn't have name of link 'pricing'. "
+                   f"Name of second level is: '{first_level_in_breadcrumbs.text}'")
+            print(f"{datetime.now()}   => {msg}\n")
+            Common().pytest_fail(msg)
+        elif 'payments and withdrawals' not in last_level_in_breadcrumbs.text.lower:
+            msg = (f"Third level in breadcrumbs doesn't have name of link 'payments and withdrawals'. "
+                   f"Name of third level is: '{last_level_in_breadcrumbs.text}'")
             print(f"{datetime.now()}   => {msg}\n")
             Common().pytest_fail(msg)
