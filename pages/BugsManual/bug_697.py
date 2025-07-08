@@ -12,7 +12,7 @@ from pages.common import Common
 from selenium.webdriver.support.ui import WebDriverWait
 
 class BUG_697(BasePage):
-    WHAT_IS_INDICES_TRADING_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img"] [class="grid_grid__2D3md grid_gSmMd__aZHWz"]:nth-child(4) ')
+    WHAT_IS_INDICES_TRADING_BLOCK = (By.CSS_SELECTOR, '[data-type="tiles_w_img"] [class="grid_grid__IpILJ grid_gSmMd__zHbN6"]:nth-child(4)')
     INDICES_TRADING_GUIDE_LINK = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
     VIX_LINK = (By.XPATH, "//a[contains(text(), 'VIX')]")
     SP_100_LINK = (By.XPATH, "//a[contains(text(), 'S&P 100')]")

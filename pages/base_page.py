@@ -721,8 +721,9 @@ class BasePage:
             locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
         """
         # Check presenting link on the page
+        print(f"{datetime.now()}   Start to check presenting link '{name_of_link}' on the page")
         if len(self.driver.find_elements(*link_locator)) == 0:
-            msg = (f"Page don't have link '{name_of_link}' in DOM")
+            msg = f"Page don't have link '{name_of_link}' in DOM"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"{datetime.now()}   Page have link '{name_of_link}' in DOM\n")
@@ -758,8 +759,9 @@ class BasePage:
             block_locator = (By.CSS_SELECTOR, '[data-type="tiles_w_img_link4_signup"]')
         """
         # Check presenting block on the page
+        print(f"{datetime.now()}   Start to check presenting block '{name_of_block}' on the page")
         if len(self.driver.find_elements(*block_locator)) == 0:
-            msg = (f"\nPage don't have block '{name_of_block}' in DOM")
+            msg = f"Page don't have block '{name_of_block}' in DOM"
             print(f"{datetime.now()}   => {msg}")
             Common().pytest_fail(f"{msg}")
         print(f"\n{datetime.now()}   Page have block '{name_of_block}' in DOM.")

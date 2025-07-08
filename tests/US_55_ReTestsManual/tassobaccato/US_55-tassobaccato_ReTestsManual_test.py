@@ -55,7 +55,7 @@ class TestManualDetectedBugs:
     @pytest.mark.parametrize('cur_country', ['gb'])
     @pytest.mark.parametrize('cur_role', ["Auth"])
     @pytest.mark.bug_009
-    def test_009(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
+    def decided_test_009(self, worker_id, d, cur_language, cur_country, cur_role, cur_login, cur_password):
         """
          Check: Button [My account] in the Header
          Language: En. License: FCA.
