@@ -1,0 +1,117 @@
+2025-07-13 00:05:10 ERROR Elements not present after 0.5 seconds on page: https://capital.com/en-gb
+2025-07-13 00:05:10 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 340, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x559c9816b23a <unknown>
+#1 0x559c97c15ab0 <unknown>
+#2 0x559c97c676f0 <unknown>
+#3 0x559c97c678e1 <unknown>
+#4 0x559c97cb5b94 <unknown>
+#5 0x559c97c8d1cd <unknown>
+#6 0x559c97cb2fee <unknown>
+#7 0x559c97c8cf73 <unknown>
+#8 0x559c97c59aeb <unknown>
+#9 0x559c97c5a751 <unknown>
+#10 0x559c9812fb4b <unknown>
+#11 0x559c98133929 <unknown>
+#12 0x559c98116929 <unknown>
+#13 0x559c981344e8 <unknown>
+#14 0x559c980fb0df <unknown>
+#15 0x559c981588e8 <unknown>
+#16 0x559c98158ac6 <unknown>
+#17 0x559c9816a556 <unknown>
+#18 0x7fc04be9caa4 <unknown>
+#19 0x7fc04bf29c3c <unknown>
+
+2025-07-13 00:05:20 ERROR Elements not present after 0.5 seconds on page: https://capital.com/en-gb
+2025-07-13 00:05:20 ERROR 
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 340, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x559c9816b23a <unknown>
+#1 0x559c97c15ab0 <unknown>
+#2 0x559c97c676f0 <unknown>
+#3 0x559c97c678e1 <unknown>
+#4 0x559c97cb5b94 <unknown>
+#5 0x559c97c8d1cd <unknown>
+#6 0x559c97cb2fee <unknown>
+#7 0x559c97c8cf73 <unknown>
+#8 0x559c97c59aeb <unknown>
+#9 0x559c97c5a751 <unknown>
+#10 0x559c9812fb4b <unknown>
+#11 0x559c98133929 <unknown>
+#12 0x559c98116929 <unknown>
+#13 0x559c981344e8 <unknown>
+#14 0x559c980fb0df <unknown>
+#15 0x559c981588e8 <unknown>
+#16 0x559c98158ac6 <unknown>
+#17 0x559c9816a556 <unknown>
+#18 0x7fc04be9caa4 <unknown>
+#19 0x7fc04bf29c3c <unknown>
+
+2025-07-13 00:05:24 ERROR Unable to initialize WebDriver
+2025-07-13 00:05:24 ERROR invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Traceback (most recent call last):
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 86, in inner_function
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/TestCapitalComPySe/TestCapitalComPySe/pages/base_page.py", line 340, in element_is_visible
+    return Wait(self.driver, timeout).until(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/support/expected_conditions.py", line 156, in _predicate
+    return _element_if_visible(driver.find_element(*locator))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 766, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 380, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/testcapitalcompyse-CcJ6hTD8-py3.12/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSelectorException: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Stacktrace:
+#0 0x559c9816b23a <unknown>
+#1 0x559c97c15ab0 <unknown>
+#2 0x559c97c1c748 <unknown>
+#3 0x559c97c1efe8 <unknown>
+#4 0x559c97c1f073 <unknown>
+#5 0x559c97c67125 <unknown>
+#6 0x559c97c678e1 <unknown>
+#7 0x559c97cb5b94 <unknown>
+#8 0x559c97c8d1cd <unknown>
+#9 0x559c97cb2fee <unknown>
+#10 0x559c97c8cf73 <unknown>
+#11 0x559c97c59aeb <unknown>
+#12 0x559c97c5a751 <unknown>
+#13 0x559c9812fb4b <unknown>
+#14 0x559c98133929 <unknown>
+#15 0x559c98116929 <unknown>
+#16 0x559c981344e8 <unknown>
+#17 0x559c980fb0df <unknown>
+#18 0x559c981588e8 <unknown>
+#19 0x559c98158ac6 <unknown>
+#20 0x559c9816a556 <unknown>
+#21 0x7fc04be9caa4 <unknown>
+#22 0x7fc04bf29c3c <unknown>
